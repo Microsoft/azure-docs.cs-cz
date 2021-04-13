@@ -4,12 +4,12 @@ description: Vložení imagí Docker do soukromého registru kontejnerů v Azure
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 83ef385313b035f5e5d7d993e7948725906c75a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 982a49af271648caeb62e5759530aa6049be4382
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99987775"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308298"
 ---
 # <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>Nahrání první image do služby Azure Container Registry pomocí Docker CLI
 
@@ -39,7 +39,7 @@ docker login myregistry.azurecr.io
 
 Oba příkazy se vrátí `Login Succeeded` po dokončení.
 > [!NOTE]
->* Možná budete chtít použít Visual Studio Code s rozšířením Docker pro rychlejší a pohodlnější přihlašování.
+>* Můžete chtít použít Visual Studio Code s rozšířením Docker pro rychlejší a pohodlnější přihlašování.
 
 > [!TIP]
 > Při použití `docker login` a při označování obrázků pro doručování do registru vždy zadejte plně kvalifikovaný název registru (všechna malá písmena). V příkladech v tomto článku je plně kvalifikovaný název *myregistry.azurecr.IO*.

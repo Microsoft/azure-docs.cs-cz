@@ -3,12 +3,12 @@ title: Přehled vyhrazených Center událostí – Azure Event Hubs | Microsoft 
 description: Tento článek obsahuje přehled vyhrazených Event Hubs Azure, které nabízí nasazení s jedním tenantům pro centra událostí.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 721acf354c7d14c1362b4f760982af37d59115f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe63b074bfdd01191d81dfb7024af5532a87a12f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715611"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310763"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Přehled Event Hubs úrovně Dedicated
 
@@ -71,4 +71,4 @@ Pokud chcete získat další podrobnosti o Event Hubs úrovně Dedicated, obrať
 
 - [Vytvoření clusteru Event Hubs pomocí Azure Portal](https://aka.ms/eventhubsclusterquickstart) 
 - [Event Hubs úrovně Dedicated ceny](https://azure.microsoft.com/pricing/details/event-hubs/). Můžete se také obrátit na prodejní zástupce Microsoftu nebo podpora Microsoftu a získat další podrobnosti o Event Hubs úrovně Dedicated kapacitě.
-- [Event Hubs Nejčastější dotazy](event-hubs-faq.md) obsahují informace o cenách a odpovědi na nejčastější dotazy týkající se Event Hubs.
+- [Event Hubs Nejčastější dotazy](event-hubs-faq.yml) obsahují informace o cenách a odpovědi na nejčastější dotazy týkající se Event Hubs.

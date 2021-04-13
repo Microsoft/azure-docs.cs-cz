@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Azure Certified Device Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 948fe25da8468e887693fe8c9f75f675dfbea858
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 497ffa4b3026491d6aa95df87708b3b1f2f1619e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969154"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308281"
 ---
 # <a name="azure-certified-device-requirements"></a>Požadavky na zařízení s certifikací Azure 
 (dříve označované jako IoT Hub)
@@ -40,7 +40,7 @@ Příslib certifikace zařízení s certifikací Azure je:
 | **Platí pro**          | Zařízení typu list/hraniční zařízení                                      |
 | **OS**                  | Nelze určit                                                     |
 | **Typ ověření**     | Automatizovaná                                                    |
-| **Ověřování**          | Zařízení musí IoT Hub odesílat všechna schémata telemetrie. Microsoft poskytuje [pracovní postup na portálu](https://certify.azure.come) pro provádění testů. Zařízení do cloudu (povinné): **1.** Ověří, jestli zařízení může odesílat zprávy do AICS spravované IoT Hub **2.** Uživatel musí zadat počet a četnost zpráv. **3.** AICS ověří, že telemetrie přijímá instance centra. |
+| **Ověřování**          | Zařízení musí IoT Hub odesílat všechna schémata telemetrie. Microsoft poskytuje [pracovní postup na portálu](https://certify.azure.com/) pro provádění testů. Zařízení do cloudu (povinné): **1.** Ověří, jestli zařízení může odesílat zprávy do AICS spravované IoT Hub **2.** Uživatel musí zadat počet a četnost zpráv. **3.** AICS ověří, že telemetrie přijímá instance centra. |
 | **Prostředky**           | [Postup certifikace](./overview.md) (má všechny další prostředky) |
 
 **Požadovanou DPS: účelem testu je zkontrolovat, jestli zařízení implementuje a podporuje IoT Hub Device Provisioning Service pomocí jedné ze tří metod ověření identity.**

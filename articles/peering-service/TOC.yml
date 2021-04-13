@@ -22,6 +22,10 @@
       href: connection-telemetry.md
     - name: Model onboardingu
       href: onboarding-model.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
     - name: Registrace služby Peering Service

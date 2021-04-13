@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 78e4b35feb4e830a9f4335614a55d49ca90cd791
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1977663f4661fca316e4839671abd76e07b5acda
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667641"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304796"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Použití externích tabulek s synapse SQL
 
@@ -339,9 +339,9 @@ Určuje složku, cestu k souboru a název souboru pro skutečná data v Azure Bl
 Pokud zadáte umístění složky, dotaz na fond SQL bez serveru se vybere z externí tabulky a načte soubory ze složky.
 
 > [!NOTE]
-> Na rozdíl od Hadoop a báze SQL bez serveru nevrací podsložky. Vrátí soubory, pro které název souboru začíná podtržítkem (_) nebo tečkou (.).
+> Na rozdíl od Hadoop a báze SQL bez serveru nevrátí podsložky, pokud nezadáte/* * na konci cesty.
 
-V tomto příkladu, pokud LOCATION = '/WebData/', není dotaz na fond SQL bez serveru, bude vracet řádky z mydata.txt a _hidden.txt. Nevrátí mydata2.txt a mydata3.txt, protože jsou umístěné v podsložce.
+V tomto příkladu, pokud LOCATION = '/WebData/', není dotaz na fond SQL bez serveru, bude vracet řádky z mydata.txt. Nevrátí mydata2.txt a mydata3.txt, protože jsou umístěné v podsložce.
 
 ![Rekurzivní data pro externí tabulky](./media/develop-tables-external-tables/folder-traversal.png)
 

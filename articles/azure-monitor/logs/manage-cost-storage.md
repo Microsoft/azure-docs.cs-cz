@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/28/2021
 ms.author: bwren
-ms.openlocfilehash: 975a3ea250307e445e9bf48abdc669f2b035038a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ac2d1ea17460c56a3369d00d2cc8e41cca616363
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554038"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310916"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -266,7 +266,7 @@ Pokud chcete začít, tady je doporučené nastavení výstrahy dotazování `Op
 - Cíl: Vyberte prostředek Log Analytics
 - Měřítk 
    - Název signálu: prohledávání vlastního protokolu
-   - Vyhledávací dotaz: `_LogOperation | where Operation == "Data Collection Status" | where Detail contains "OverQuota"`
+   - Vyhledávací dotaz: `_LogOperation | where Operation == "Data collection Status" | where Detail contains "OverQuota"`
    - Podle: počet výsledků
    - Podmínka: je větší než
    - Prahová hodnota: 0

@@ -3,12 +3,12 @@ title: Vytvoření specifikace šablony s propojenými šablonami
 description: Naučte se vytvořit specifikaci šablony s propojenými šablonami.
 ms.topic: conceptual
 ms.date: 01/05/2021
-ms.openlocfilehash: 31764b9adb1d0fc28a170fa2e6b5073812533083
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1c757895faee208590b638094591d246bf605d8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889837"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310610"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Kurz: Vytvoření specifikace šablony s propojenými šablonami (Preview)
 
@@ -27,7 +27,7 @@ Vytvořte hlavní šablonu a propojenou šablonu.
 
 Pokud chcete propojit šablonu, přidejte do hlavní šablony [prostředek nasazení](/azure/templates/microsoft.resources/deployments) . Do `templateLink` Vlastnosti zadejte relativní cestu k propojené šabloně v souladu s cestou nadřazené šablony.
 
-Odkazovaná šablona se nazývá **linkedTemplate.jsv** a je uložena v podsložce s názvem **artefakty** v cestě, kde je uložena hlavní šablona.  Můžete použít jednu z následujících hodnot pro relativePath:
+Odkazovaná šablona se nazývá **linkedTemplate.jsv** a je uložena v podsložce s názvem **artefakty** v cestě, kde je uložena hlavní šablona.  Pro relativePath můžete použít jednu z následujících hodnot:
 
 - `./artifacts/linkedTemplate.json`
 - `/artifacts/linkedTemplate.json`

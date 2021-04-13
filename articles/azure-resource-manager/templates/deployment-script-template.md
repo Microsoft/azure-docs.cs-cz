@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: jgao
-ms.openlocfilehash: fb5fc0b6b673f8a754d0d6bb6ff962697cd5f38b
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 3240cce34a6fa645986a58ab43b28ad38485e97b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967332"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308961"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Použití skriptů pro nasazení v šablonách ARM
 
@@ -140,7 +140,7 @@ Podrobnosti hodnoty vlastnosti:
 - `kind`: Zadejte typ skriptu. V současné době jsou podporovány skripty Azure PowerShell a Azure CLI. Hodnoty jsou **AzurePowerShell** a **Azure CLI**.
 - `forceUpdateTag`: Změna této hodnoty mezi nasazeními šablon vynutí opětovné spuštění skriptu nasazení. Použijete-li `newGuid()` funkce nebo `utcNow()` , lze obě funkce použít pouze ve výchozí hodnotě parametru. Další informace najdete v tématu [spuštění skriptu více než jednou](#run-script-more-than-once).
 - `containerSettings`: Zadejte nastavení pro přizpůsobení instance kontejneru Azure. Skript nasazení vyžaduje novou instanci kontejneru Azure. Nemůžete zadat existující instanci kontejneru Azure. Název skupiny kontejnerů ale můžete přizpůsobit pomocí `containerGroupName` . Pokud není zadaný, název skupiny se automaticky vygeneruje.
-- `storageAccountSettings`: Zadejte nastavení pro použití existujícího účtu úložiště. Pokud `containerGroupName` parametr není zadaný, automaticky se vytvoří účet úložiště. Viz [použití existujícího účtu úložiště](#use-existing-storage-account).
+- `storageAccountSettings`: Zadejte nastavení pro použití existujícího účtu úložiště. Pokud `storageAccountName` parametr není zadaný, automaticky se vytvoří účet úložiště. Viz [použití existujícího účtu úložiště](#use-existing-storage-account).
 - `azPowerShellVersion`/`azCliVersion`: Zadejte verzi modulu, která se má použít. Podívejte se na seznam [podporovaných verzí Azure PowerShell](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Podívejte se na seznam [podporovaných verzí rozhraní příkazového řádku Azure CLI](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
   >[!IMPORTANT]
@@ -245,7 +245,7 @@ Následující šablona ukazuje, jak předat hodnoty mezi dvěma `deploymentScri
 V prvním prostředku definujete proměnnou s názvem `$DeploymentScriptOutputs` a použijete ji k uložení výstupních hodnot. Chcete-li získat přístup k výstupní hodnotě z jiného prostředku v rámci šablony, použijte:
 
 ```json
-reference('<ResourceName>').output.text
+reference('<ResourceName>').outputs.text
 ```
 
 ## <a name="work-with-outputs-from-cli-script"></a>Práce s výstupy ze skriptu CLI

@@ -7,16 +7,16 @@ ms.author: cbroad
 ms.date: 02/23/2021
 ms.topic: how-to
 ms.service: certification
-ms.openlocfilehash: da3110b562bc5ddbd37657f31cbdd3790a13b897
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 3a4fd2838c0ddf6d7d03d68f105fc59471b77dea
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969214"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304473"
 ---
 # <a name="device-bundles-and-indirectly-connected-devices"></a>Sady prostředků zařízení a nepřímo připojená zařízení
 
-Aby bylo možné podporovat zařízení, která komunikují s Azure, prostřednictvím nabídek zařízení, SaaS nebo PaaS, našeho portálu pro odesílání ( https://www.certify.azure.com) a katalogu zařízení ( https://devicecatalog.azure.com) povolením konceptů sdružování a závislostí a povolením těchto kombinací těchto zařízení získáte přístup k našemu programu zařízení s certifikací Azure.
+Aby bylo možné podporovat zařízení, která komunikují s Azure, prostřednictvím nabídek zařízení, SaaS nebo PaaS, našeho portálu pro odesílání ( https://certify.azure.com/) a katalogu zařízení ( https://devicecatalog.azure.com) povolením konceptů sdružování a závislostí a povolením těchto kombinací těchto zařízení získáte přístup k našemu programu zařízení s certifikací Azure.
 
 V závislosti na vaší produktové lince a službách může vaše situace vyžadovat kombinaci těchto kroků:
 

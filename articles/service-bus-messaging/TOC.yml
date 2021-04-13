@@ -92,12 +92,20 @@
   items:
     - name: 'Fronty, témata a odběry'
       href: service-bus-queues-topics-subscriptions.md
+    - name: Relace zpráv
+      href: message-sessions.md
     - name: Akce a filtry témat
       href: topic-filters.md
     - name: Zasílání zpráv úrovně Premium
       href: service-bus-premium-messaging.md
     - name: Srovnání front Azure a front Service Bus
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
+    - name: 'Přenosy zpráv, zámky a vyrovnání'
+      href: message-transfers-locks-settlement.md
+    - name: Fronty nedoručených zpráv
+      href: service-bus-dead-letter-queues.md
+    - name: Čítače zpráv
+      href: message-counters.md
     - name: Optimalizace výkonu
       href: service-bus-performance-improvements.md
     - name: metadata
@@ -162,16 +170,12 @@
           href: service-bus-filter-examples.md
         - name: Zpracování zpráv
           items:
-            - name: 'Fronty, témata a odběry'
-              href: service-bus-queues-topics-subscriptions.md
             - name: 'Entity služby zprávy Java (JMS) 2,0'
               href: java-message-service-20-entities.md
             - name: JMS (Java Message Service) – guide.md pro vývojáře
               href: jms-developer-guide.md
             - name: 'Zprávy, datové části a serializace'
               href: service-bus-messages-payloads.md
-            - name: 'Přenosy zpráv, zámky a vyrovnání'
-              href: message-transfers-locks-settlement.md
             - name: Určování pořadí zpráv a časová razítka
               href: message-sequencing.md
             - name: Vypršení platnosti zpráv (hodnota TTL)
@@ -180,8 +184,6 @@
           href: service-bus-migrate-standard-premium.md
         - name: Dělené fronty a témata
           href: service-bus-partitioning.md
-        - name: Relace zpráv
-          href: message-sessions.md
         - name: AMQP
           items:
             - name: Přehled AMQP
@@ -198,14 +200,10 @@
               href: service-bus-amqp-troubleshoot.md
         - name: Pokročilé funkce
           items:
-            - name: Fronty nedoručených zpráv
-              href: service-bus-dead-letter-queues.md
             - name: Předběžné načtení zpráv
               href: service-bus-prefetch.md
             - name: Detekce duplicitních zpráv
               href: duplicate-detection.md
-            - name: Čítače zpráv
-              href: message-counters.md
             - name: Odložení zpráv
               href: message-deferral.md
             - name: Procházení zpráv

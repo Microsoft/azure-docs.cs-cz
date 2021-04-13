@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3c938e7fe180e6a9cf08031a2a4565486f3f77a9
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: d86cc6af34036f5bd638b4fc78abdb54d71e6859
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504630"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306513"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Omezení propustnosti příjmu streamování
 
@@ -59,7 +59,7 @@ Při plánování Azure Time Series Insightsho prostředí Gen2 je důležité z
 
 *Oddíl* je seřazená posloupnost událostí, která je držena v centru. Počet oddílů se nastaví během fáze vytváření centra a nedá se změnit.
 
-[Informace o tom, kolik oddílů](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need) potřebuji pro Event Hubs Doporučené postupy, najdete v tématu.
+[Informace o tom, kolik oddílů](../event-hubs/event-hubs-faq.yml#how-many-partitions-do-i-need-) potřebuji pro Event Hubs Doporučené postupy, najdete v tématu.
 
 > [!NOTE]
 > Většina Center IoT používá se Azure Time Series Insights Gen2 potřebuje jenom čtyři oddíly.

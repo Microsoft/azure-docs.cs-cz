@@ -12,23 +12,18 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 70b3ed53747deb1f3bdc90de8fe71f42f8f7ce13
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: e0912fb452a7f587fef19de835eea111b349a9a4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580484"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310015"
 ---
-# <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Připojení zařízení IoT Edge pro příjem dat k bráně Azure IoT Edge (Preview)
+# <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>Připojení zařízení IoT Edge pro příjem dat k bráně Azure IoT Edge
 
 [!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 Tento článek poskytuje pokyny pro vytvoření důvěryhodného připojení mezi IoT Edge bránou a zařízením IoT Edge pro příjem dat.
-
->[!NOTE]
->Tato funkce vyžaduje IoT Edge verze 1,2, která je ve verzi Public Preview, spouští se kontejnery Linux.
->
->Tento článek popisuje nejnovější verzi Preview verze IoT Edge 1,2. Ujistěte se, že je ve vašem zařízení spuštěná verze [1.2.0-RC4](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4) nebo novější. Postup získání nejnovější verze Preview v zařízení najdete v tématu [instalace Azure IoT Edge pro Linux (verze 1,2)](how-to-install-iot-edge.md) nebo [aktualizace IoT Edge na verzi 1,2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
 
 V případě brány může IoT Edge zařízení jak bránu, tak i zařízení pro příjem dat. Několik bran IoT Edge lze rozvrstvit a vytvořit tak hierarchii zařízení. Zařízení pro příjem dat (nebo podřízená) můžou ověřovat a odesílat nebo přijímat zprávy přes jejich bránu (nebo nadřazenou) zařízení.
 
@@ -162,13 +157,13 @@ Ujistěte se, že uživatel **iotedge** má oprávnění ke čtení pro adresá�
 
 1. Vyhledejte část **certifikát sady Trust** . Odkomentujte a aktualizujte `trust_bundle_cert` parametr pomocí identifikátoru URI souboru na certifikát kořenové certifikační autority na vašem zařízení.
 
-1. I když je tato funkce ve verzi Public Preview, musíte zařízení IoT Edge nakonfigurovat tak, aby při spuštění používala verzi Public Preview agenta IoT Edge.
+1. Ověřte, že zařízení IoT Edge bude při spuštění používat správnou verzi agenta IoT Edge.
 
-   Najděte **výchozí část agent Edge** a aktualizujte hodnotu image na obrázek verze Public Preview:
+   Najděte **výchozí část agent Edge** a ověřte, že hodnota image je IoT Edge verze 1,2. Pokud ne, aktualizujte je:
 
    ```toml
    [agent.config]
-   image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
+   image: "mcr.microsoft.com/azureiotedge-agent:1.2"
    ```
 
 1. V konfiguračním souboru vyhledejte část **certifikát hraniční autority** . Odkomentujte řádky v této části a zadejte cesty k identifikátorům URI souborů certifikátu a klíčů na zařízení IoT Edge.
@@ -200,21 +195,6 @@ Ujistěte se, že uživatel **iotedge** má oprávnění ke čtení pro adresá�
 
    >[!TIP]
    >Nástroj pro kontrolu IoT Edge používá kontejner k provedení některých kontrol diagnostiky. Pokud chcete tento nástroj použít na zařízeních IoT Edge pro příjem dat, ujistěte se, že k němu mají přístup `mcr.microsoft.com/azureiotedge-diagnostics:latest` , nebo jestli má image kontejneru ve vašem privátním registru kontejneru.
-
-## <a name="configure-runtime-modules-for-public-preview"></a>Konfigurace běhových modulů pro verzi Public Preview
-
-I když je tato funkce ve verzi Public Preview, musíte zařízení IoT Edge nakonfigurovat tak, aby používala verze Public Preview modulů IoT Edge runtime. V předchozí části najdete postup konfigurace edgeAgent při spuštění. Také je nutné nakonfigurovat moduly modulu runtime v nasazeních pro vaše zařízení.
-
-1. Nakonfigurujte modul edgeHub tak, aby používal image Public Preview: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
-
-1. Pro modul edgeHub nakonfigurujte následující proměnné prostředí:
-
-   | Name | Hodnota |
-   | - | - |
-   | `experimentalFeatures__enabled` | `true` |
-   | `experimentalFeatures__nestedEdgeEnabled` | `true` |
-
-1. Nakonfigurujte modul edgeAgent tak, aby používal image Public Preview: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
 
 ## <a name="network-isolate-downstream-devices"></a>Síť s izolací pro příjem dat
 
@@ -250,6 +230,8 @@ Pro každé zařízení brány v nižší vrstvě musí operátoři sítě:
 Zařízení IoT Edge v horní vrstvě hierarchie brány obsahuje sadu požadovaných modulů, které se do nich musí nasadit, kromě libovolných modulů úloh, které můžete na zařízení spouštět.
 
 Modul API proxy byl navržený tak, aby zpracovával nejběžnější scénáře brány. Tento článek popisuje a příklad nastavení modulů v základní konfiguraci. Podrobnější informace a příklady najdete [v tématu Konfigurace modulu API proxy pro scénář hierarchie brány](how-to-configure-api-proxy-module.md) .
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do svého centra IoT.
 1. V navigační nabídce vyberte **IoT Edge** .
@@ -337,6 +319,109 @@ Modul API proxy byl navržený tak, aby zpracovával nejběžnější scénáře
 1. Výběrem možnosti **zkontrolovat + vytvořit** přejdete k poslednímu kroku.
 1. Vyberte **vytvořit** a nasaďte ho do svého zařízení.
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. V [Azure Cloud Shell](https://shell.azure.com/)vytvořte soubor JSON nasazení. Například:
+
+   ```json
+   {
+       "modulesContent": {
+           "$edgeAgent": {
+               "properties.desired": {
+                   "modules": {
+                       "dockerContainerRegistry": {
+                           "settings": {
+                               "image": "registry:latest",
+                               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5000/tcp\":[{\"HostPort\":\"5000\"}]}}}"
+                           },
+                           "type": "docker",
+                           "version": "1.0",
+                           "env": {
+                               "REGISTRY_PROXY_REMOTEURL": {
+                                   "value": "The URL for the container registry you want this registry module to map to. For example, https://myregistry.azurecr"
+                               },
+                               "REGISTRY_PROXY_USERNAME": {
+                                   "value": "Username to authenticate to the container registry."
+                               },
+                               "REGISTRY_PROXY_PASSWORD": {
+                                   "value": "Password to authenticate to the container registry."
+                               }
+                           },
+                           "status": "running",
+                           "restartPolicy": "always"
+                       },
+                       "IoTEdgeAPIProxy": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-api-proxy:1.0",
+                               "createOptions": "{\"HostConfig\": {\"PortBindings\": {\"443/tcp\": [{\"HostPort\":\"443\"}]}}}"
+                           },
+                           "type": "docker",
+                           "env": {
+                               "NGINX_DEFAULT_PORT": {
+                                   "value": "443"
+                               },
+                               "DOCKER_REQUEST_ROUTE_ADDRESS": {
+                                   "value": "registry:5000"
+                               }
+                           },
+                           "status": "running",
+                           "restartPolicy": "always",
+                           "version": "1.0"
+                       }
+                   },
+                   "runtime": {
+                       "settings": {
+                           "minDockerVersion": "v1.25"
+                       },
+                       "type": "docker"
+                   },
+                   "schemaVersion": "1.1",
+                   "systemModules": {
+                       "edgeAgent": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2",
+                               "createOptions": ""
+                           },
+                           "type": "docker"
+                       },
+                       "edgeHub": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2",
+                               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
+                           },
+                           "type": "docker",
+                           "env": {},
+                           "status": "running",
+                           "restartPolicy": "always"
+                       }
+                   }
+               }
+           },
+           "$edgeHub": {
+               "properties.desired": {
+                   "routes": {
+                       "route": "FROM /messages/* INTO $upstream"
+                   },
+                   "schemaVersion": "1.1",
+                   "storeAndForwardConfiguration": {
+                       "timeToLiveSecs": 7200
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+   Tento soubor nasazení nakonfiguruje modul API proxy tak, aby naslouchal na portu 443. Aby nedošlo ke kolizím vazeb portů, soubor nakonfiguruje modul edgeHub tak, aby nenaslouchal na portu 443. Místo toho bude modul proxy serveru API směrovat jakýkoli edgeHub provoz na portu 443.
+
+1. Zadejte následující příkaz, který vytvoří nasazení pro IoT Edge zařízení:
+
+   ```bash
+   az iot edge set-modules --device-id <device_id> --hub-name <iot_hub_name> --content ./<deployment_file_name>.json
+   ```
+
+---
+
 ### <a name="deploy-modules-to-lower-layer-devices"></a>Nasazení modulů do nižších vrstev zařízení
 
 IoT Edge zařízení v nižších vrstvách hierarchie brány mají jeden požadovaný modul, který musí být do nich nasazený, kromě libovolných modulů zatížení, které můžete na zařízení spouštět.
@@ -347,7 +432,7 @@ Předtím, než se podíváte na požadovaný modul proxy pro zařízení IoT Ed
 
 Pokud se vaše zařízení s nižší vrstvou nemůžou připojit ke cloudu, ale chcete, aby vyčetla image modulu obvyklým způsobem, musí být zařízení nejvyšší vrstvy hierarchie brány nakonfigurované tak, aby zpracovávala tyto požadavky. Zařízení nejvyšší vrstvy potřebuje spustit modul Docker **registru** , který je namapovaný na váš registr kontejneru. Pak nakonfigurujte modul proxy rozhraní API na směrování požadavků na kontejner. Tyto podrobnosti jsou popsány v předchozích částech tohoto článku. V této konfiguraci by zařízení nižší vrstvy neměla ukazovat na Registry kontejnerů cloudu, ale do registru běžícího v horní vrstvě.
 
-Například namísto volání `mcr.microsoft.com/azureiotedge-api-proxy:latest` musí být na nižší vrstvě zavolána `$upstream:443/azureiotedge-api-proxy:latest` .
+Například namísto volání `mcr.microsoft.com/azureiotedge-api-proxy:1.0` musí být na nižší vrstvě zavolána `$upstream:443/azureiotedge-api-proxy:1.0` .
 
 Parametr **$upstream** odkazuje na nadřazenou položku nižší vrstvy, takže požadavek bude směrovat přes všechny vrstvy, dokud nedosáhne nejvyšší vrstvy, která obsahuje požadavky kontejneru směrování na proxy prostředí do modulu registru. `:443`Port v tomto příkladu by měl být nahrazen libovolným portem, na kterém naslouchá modul API proxy na nadřazeném zařízení.
 
@@ -369,7 +454,7 @@ name = "edgeAgent"
 type = "docker"
 
 [agent.config]
-image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc4"
+image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2"
 ```
 
 Pokud používáte místní registr kontejnerů nebo pokud chcete na zařízení ručně poskytnout image kontejneru, aktualizujte konfigurační soubor odpovídajícím způsobem.

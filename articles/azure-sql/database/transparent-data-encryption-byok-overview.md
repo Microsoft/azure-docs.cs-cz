@@ -8,16 +8,16 @@ ms.subservice: security
 ms.custom: seo-lt-2019, azure-synapse
 ms.devlang: ''
 ms.topic: conceptual
-author: jaszymas
-ms.author: jaszymas
+author: shohamMSFT
+ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: e096e21e7d20c992e18634d684f663f149cc3c55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 098d874d7de85aa7c66f92703eea9b4d12cee8df
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101691242"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305289"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparentní šifrování dat Azure SQL s využitím klíče spravovaného zákazníkem
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -86,13 +86,13 @@ Auditoři můžou pomocí Azure Monitor zkontrolovat protokoly AuditEvent trezor
 
 ### <a name="requirements-for-configuring-tde-protector"></a>Požadavky na konfiguraci ochrany TDE
 
-- Ochrana TDE může být jedině asymetrická, RSA nebo RSA HSM Key. Podporované délky klíčů jsou 2048 a 3072 bajtů.
+- Ochrana TDE může být jedině asymetrická, RSA nebo RSA HSM Key. Podporované délky klíčů jsou 2048 bajtů a 3072 bajtů.
 
 - Datum aktivace klíče (Pokud je nastaveno) musí být datum a čas v minulosti. Datum vypršení platnosti (Pokud je nastaveno) musí být budoucí datum a čas.
 
 - Klíč musí být v *povoleném* stavu.
 
-- Pokud importujete existující klíč do trezoru klíčů, nezapomeňte ho zadat v podporovaných formátech souborů (. pfx,. BYOK nebo. Backup).
+- Pokud importujete existující klíč do trezoru klíčů, nezapomeňte ho zadat v podporovaných formátech souborů ( `.pfx` , `.byok` nebo `.backup` ).
 
 > [!NOTE]
 > Azure SQL teď podporuje použití klíče RSA uloženého ve spravovaném HSM jako ochrany TDE. Tato funkce je ve **verzi Public Preview**. Azure Key Vault spravovaný modul HSM je plně spravovaná cloudová služba s vysokou dostupností, která vyhovuje standardům, která vám umožní chránit kryptografické klíče pro vaše cloudové aplikace, a to pomocí ověřené HSM úrovně 3 ve standardu FIPS 140-2. Přečtěte si další informace o [spravovaných HSM](../../key-vault/managed-hsm/index.yml).
@@ -116,7 +116,7 @@ Auditoři můžou pomocí Azure Monitor zkontrolovat protokoly AuditEvent trezor
 
 - Pokud se klíč vygeneruje v trezoru klíčů, před prvním použitím klíče v integrace vytvořte zálohu klíčů. Zálohování lze obnovit pouze do Azure Key Vault. Přečtěte si další informace o příkazu [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/backup-azkeyvaultkey) .
 
-- Vytvořte novou zálohu při každé změně klíče (např. klíčové atributy, značky, seznamy ACL).
+- Vytvořte novou zálohu, kdykoli provedete všechny změny klíče (například klíčové atributy, značky, seznamy ACL).
 
 - Při střídání klíčů **ponechte předchozí verze** klíče v trezoru klíčů, aby bylo možné obnovit starší zálohy databáze. Když se ochrana TDE u databáze změní, starší zálohy databáze **se neaktualizují** , aby používaly nejnovější ochranu TDE. V době obnovení potřebuje každá záloha TDE ochranu, která byla zašifrována v době vytváření. Rotace klíčů je možné provést podle pokynů v tématu [otočení transparentní šifrování dat ochrany pomocí PowerShellu](transparent-data-encryption-byok-key-rotation.md).
 
@@ -133,11 +133,11 @@ Pokud je transparentní šifrování dat nakonfigurované tak, aby používalo k
 
 Po obnovení přístupu k tomuto klíči bude zálohování databáze zpět online vyžadovat další čas a kroky, které se mohou lišit v závislosti na době uplynulé bez přístupu ke klíči a velikosti dat v databázi:
 
-- Pokud se přístup k klíči obnoví do 8 hodin, bude databáze automaticky zacelená během příští hodiny.
+- Pokud se přístup k klíči obnoví do 8 hodin, databáze se do příští hodiny zachová.
 
-- Pokud se přístup ke klíči obnoví za více než 8 hodin, automatická oprava není možná a vrácení databáze vyžaduje provedení dalších kroků na portálu a v závislosti na velikosti databáze může trvat poměrně dlouhou dobu. Jakmile je databáze znovu online, dříve konfigurovaná nastavení na úrovni serveru, jako je například konfigurace [skupiny převzetí služeb při selhání](auto-failover-group-overview.md) , historie obnovení bodu v čase a značky, **bude ztracena**. Proto se doporučuje implementovat systém oznámení, který vám umožní identifikovat a vyřešit problémy s přístupem k základnímu klíči během 8 hodin.
+- Pokud se přístup k klíči obnoví po více než 8 hodin, není možné, aby funkce autoretušovací databázi mohla získat další kroky na portálu a v závislosti na velikosti databáze může trvat poměrně dlouhou dobu. Jakmile je databáze znovu online, dříve konfigurovaná nastavení na úrovni serveru, jako je například konfigurace [skupiny převzetí služeb při selhání](auto-failover-group-overview.md) , historie obnovení bodu v čase a značky, **bude ztracena**. Proto se doporučuje implementovat systém oznámení, který vám umožní identifikovat a vyřešit problémy s přístupem k základnímu klíči během 8 hodin.
 
-Níže je uveden seznam dalších kroků požadovaných na portálu, které nepřístupné databáze vrátí zpět do online režimu.
+Níže je uveden seznam dalších kroků vyžadovaných na portálu, které nepřístupné databáze vrátí zpět do online režimu.
 
 ![Nepřístupná databáze TDE BYOK](./media/transparent-data-encryption-byok-overview/customer-managed-tde-inaccessible-database.jpg)
 
@@ -164,7 +164,7 @@ Pokud chcete monitorovat stav databáze a povolit upozorňování na ztrátu př
 
 - [Azure Resource Health](../../service-health/resource-health-overview.md). Nepřístupná databáze, která ztratila přístup k ochraně TDE, se po odepření prvního připojení k databázi zobrazí jako nedostupná.
 - [Protokol aktivit](../../service-health/alerts-activity-log-service-notifications-portal.md) , když se přístup k ochraně TDE v trezoru klíčů spravovaný zákazníkem nezdařil, přidají se do protokolu aktivit položky.  Vytváření výstrah pro tyto události vám umožní co nejdříve obnovit přístup.
-- [Skupiny akcí](../../azure-monitor/alerts/action-groups.md) můžou být definované tak, aby vám poslaly oznámení a výstrahy na základě vašich požadavků, třeba E-mail/SMS/Push/Voice, Logic Apps, Webhook, ITSM nebo Automation Runbook.
+- [Skupiny akcí](../../azure-monitor/alerts/action-groups.md) můžete definovat tak, aby vám odesílaly oznámení a výstrahy na základě vašich preferencí, například e-mailu, SMS/Push/Voice, Logic Apps, Webhook, ITSM nebo Automation Runbook.
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>Zálohování a obnovení databáze se TDE spravovanými zákazníky
 
@@ -175,7 +175,7 @@ Pokud chcete obnovit zálohu zašifrovanou pomocí ochrany TDE ochrany před Key
 > [!IMPORTANT]
 > V každém okamžiku může být pro server nedostupná více než jedna sada ochrany TDE. Je to klíč označený jako "nastavit klíč jako výchozí TDE ochrana" v okně Azure Portal. Na server ale můžete propojit víc dalších klíčů, aniž byste je museli označit jako ochranu pomocí TDE. Tyto klíče se nepoužívají k ochraně klíč DEK, ale během obnovování se dají použít při obnovení ze zálohy, pokud je záložní soubor zašifrovaný s klíčem s odpovídajícím kryptografickým otiskem.
 
-Pokud klíč potřebný k obnovení zálohy již není cílovým serverem k dispozici, vrátí se při obnovení následující chybová zpráva: "cílový server nemá `<Servername>` přístup ke všem identifikátorům URI integrace vytvořeným mezi \<Timestamp #1> a \<Timestamp #2> . Opakujte prosím operaci po obnovení všech identifikátorů URI integrace. "
+Pokud klíč potřebný k obnovení zálohy již není cílovým serverem k dispozici, vrátí se při obnovení následující chybová zpráva: "cílový server nemá `<Servername>` přístup ke všem identifikátorům URI integrace vytvořeným mezi \<Timestamp #1> a \<Timestamp #2> . Opakujte operaci po obnovení všech identifikátorů URI integrace. "
 
 Pokud ho chcete zmírnit, spusťte rutinu [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) pro cílový server nebo rutinu [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) pro cílovou spravovanou instanci, která vrátí seznam dostupných klíčů a určí chybějící. Aby bylo možné obnovit všechny zálohy, ujistěte se, že cílový server pro obnovení má přístup ke všem potřebným klíčům. Tyto klíče není nutné označit jako ochranu pomocí TDE.
 
@@ -187,13 +187,13 @@ Další aspekty pro soubory protokolu: zálohované soubory protokolu zůstávaj
 
 I v případě, že není k dispozici žádná nakonfigurovaná geografická redundance pro server, důrazně doporučujeme nakonfigurovat server tak, aby používal dvě různé trezory klíčů ve dvou různých oblastech se stejným materiálem klíče. Klíč v trezoru sekundárního klíče v jiné oblasti by neměl být označený jako TDE Protector a není ani povolený. Pokud dojde k výpadku, který má vliv na primární Trezor klíčů, systém se automaticky přepne na druhý propojený klíč se stejným kryptografickým otiskem v sekundárním trezoru klíčů, pokud existuje. Poznámka: Tento přepínač se nestane, pokud je ochrana TDE nepřístupná z důvodu odvolaných přístupových práv, nebo protože se odstranil klíč nebo Trezor klíčů, protože by mohl zákazník záměrně chtít, aby k tomuto klíči omezil přístup serveru. Poskytnutí stejného klíčového materiálu dvěma trezorům klíčů v různých oblastech je možné provést vytvořením klíče mimo Trezor klíčů a jejich importem do obou trezorů klíčů. 
 
-Alternativně se dá vytvořit klíč tak, že se pomocí primárního trezoru klíčů nachází ve stejné oblasti jako server a klonuje se klíč do trezoru klíčů v jiné oblasti Azure. Pomocí rutiny [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/Backup-AzKeyVaultKey) načtěte klíč v šifrovaném formátu z primárního trezoru klíčů a potom pomocí rutiny [Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) zadejte do druhé oblasti Trezor klíčů pro klonování klíče. Případně můžete k zálohování a obnovení klíče použít Azure Portal. Operace zálohování a obnovení klíče je povolená jenom mezi trezory klíčů v rámci stejného předplatného Azure a [geografické oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/).  
+Alternativně je možné to provést vygenerováním klíče pomocí primárního trezoru klíčů umístěného ve stejné oblasti jako server a klonování klíče do trezoru klíčů v jiné oblasti Azure. Pomocí rutiny [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/Backup-AzKeyVaultKey) načtěte klíč v šifrovaném formátu z primárního trezoru klíčů a potom pomocí rutiny [Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) zadejte do druhé oblasti Trezor klíčů pro klonování klíče. Případně můžete k zálohování a obnovení klíče použít Azure Portal. Operace zálohování a obnovení klíče je povolená jenom mezi trezory klíčů v rámci stejného předplatného Azure a [geografické oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/).  
 
 ![Single-Server HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 
 ## <a name="geo-dr-and-customer-managed-tde"></a>Geografická DR a TDE spravovaná zákazníky
 
-V rámci scénářů [aktivní geografické replikace](active-geo-replication-overview.md) a [skupiny převzetí služeb při selhání](auto-failover-group-overview.md) vyžaduje každý server samostatný Trezor klíčů, který musí být umístěný společně se serverem ve stejné oblasti Azure. Zákazník zodpovídá za to, že se klíčový materiál v trezorech klíčů udržuje konzistentně, takže geografická sekundární synchronizace je synchronizovaná a může přebírat stejný klíč z místního trezoru klíčů, pokud je primární z nich nedostupný kvůli výpadku v oblasti a aktivuje se převzetí služeb při selhání. Je možné nakonfigurovat až čtyři sekundární a řetězení (nesekundárních) není podporováno.
+V rámci scénářů [aktivní geografické replikace](active-geo-replication-overview.md) a [skupiny převzetí služeb při selhání](auto-failover-group-overview.md) vyžaduje každý server samostatný Trezor klíčů, který musí být ve stejné oblasti Azure společně se serverem. Zákazník zodpovídá za to, že se klíčový materiál v trezorech klíčů udržuje konzistentně, takže geografická sekundární synchronizace je synchronizovaná a může přebírat stejný klíč z místního trezoru klíčů, pokud je primární z nich nedostupný kvůli výpadku v oblasti a aktivuje se převzetí služeb při selhání. Je možné nakonfigurovat až čtyři sekundární a řetězení (nesekundárních) není podporováno.
 
 Aby nedocházelo k problémům při zřizování nebo během geografické replikace kvůli nekompletnímu klíčovému materiálu, je důležité při konfiguraci TDE spravovaného zákazníkem dodržovat tato pravidla:
 
@@ -205,7 +205,7 @@ Aby nedocházelo k problémům při zřizování nebo během geografické replik
 
 ![Skupiny převzetí služeb při selhání a geografická Dr](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-bcdr.png)
 
-Chcete-li otestovat převzetí služeb při selhání, postupujte podle kroků v [přehledu aktivní geografické replikace](active-geo-replication-overview.md). Testování převzetí služeb při selhání by se mělo provádět pravidelně, aby se ověřilo, že SQL Database zachovává přístupová oprávnění ke trezorům klíčů.
+Chcete-li otestovat převzetí služeb při selhání, postupujte podle kroků v [přehledu aktivní geografické replikace](active-geo-replication-overview.md). Testovací převzetí služeb při selhání by se mělo provádět pravidelně, aby se ověřilo, že SQL Database zachovává přístupová oprávnění ke trezorům klíčů.
 
 ## <a name="next-steps"></a>Další kroky
 

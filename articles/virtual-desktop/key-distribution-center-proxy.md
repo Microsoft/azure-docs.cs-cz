@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a1e6d2f4fc0444be364ce3c07c14f6408b3f19fe
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 21db7ed0cf13a3ed282929b09847c6c3ba8a36ed
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446906"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307244"
 ---
 # <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Konfigurace proxy služba KDC (Key Distribution Center) protokolu Kerberos (Preview)
 
@@ -29,7 +29,7 @@ Existují dvě součásti pro službu Virtual Desktop systému Windows, které j
 - Informační kanál klienta virtuální plochy Windows, který uživatelům poskytuje seznam dostupných ploch nebo aplikací, ke kterým mají přístup. K tomuto procesu ověřování dojde v Azure Active Directory, což znamená, že tato součást není zaměřená na tento článek.
 - Relace protokolu RDP, která je výsledkem výběru některého z dostupných prostředků uživatelem. Tato součást používá ověřování pomocí protokolu Kerberos a vyžaduje pro vzdálené uživatele proxy služby KDC.
 
-V tomto článku se dozvíte, jak nakonfigurovat informační kanál v klientovi virtuální plochy Windows v Azure Portal. Pokud se chcete dozvědět, jak nakonfigurovat roli Brána VP, přečtěte si téma [nasazení Brána VP role](/windows-server/remote/rd-gateway-role).
+V tomto článku se dozvíte, jak nakonfigurovat informační kanál v klientovi virtuální plochy Windows v Azure Portal. Pokud se chcete dozvědět, jak nakonfigurovat roli Brána VP, přečtěte si téma [nasazení Brána VP role](/azure/virtual-desktop/rd-gateway-role).
 
 ## <a name="requirements"></a>Požadavky
 

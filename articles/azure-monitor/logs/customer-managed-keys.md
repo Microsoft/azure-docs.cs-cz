@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 9fdaf42f18c320bf841e710b7066451fca24eaae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fdd62ebfe992398d33d2851a1aa1c66497296b5d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030983"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311188"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
 
@@ -59,7 +59,7 @@ Platí následující pravidla:
 - Účty úložiště Log Analytics clusteru generují jedinečný šifrovací klíč pro každý účet úložiště, který se označuje jako AEK.
 - AEK se používá k odvození DEKs, což jsou klíče, které slouží k zašifrování každého bloku dat zapsaných na disk.
 - Když nakonfigurujete klíč v Key Vault a odkazujete na něj v clusteru, Azure Storage posílá žádosti na vaše Azure Key Vault k zabalení a rozbalení AEK k provádění operací šifrování a dešifrování dat.
-- Váš KEK nikdy nezůstane Key Vault a v případě klíče HSM nikdy neopustí hardware.
+- Vaše KEK nikdy neopouští vaše Key Vault.
 - Azure Storage používá spravovanou identitu, která je přidružená k prostředku *clusteru* pro ověřování a přístup k Azure Key Vault prostřednictvím Azure Active Directory.
 
 ### <a name="customer-managed-key-provisioning-steps"></a>Customer-Managed kroky zřizování klíčů
@@ -169,6 +169,9 @@ Vyberte aktuální verzi klíče v Azure Key Vault, abyste získali podrobnosti 
 
 Aktualizuje KeyVaultProperties v clusteru s podrobnostmi identifikátoru klíče.
 
+>[!NOTE]
+>Rotace klíčů podporuje dva režimy: Automatické otočení nebo explicitní aktualizace verze klíče, viz [střídání klíčů](#key-rotation) a určení nejlepšího přístupu.
+
 Operace je asynchronní a její dokončení může chvíli trvat.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
@@ -266,7 +269,9 @@ Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným cluster�
 
 ## <a name="key-rotation"></a>Obměna klíčů
 
-Střídání klíčů spravované zákazníkem vyžaduje explicitní aktualizaci clusteru s novou verzí klíče v Azure Key Vault. [Aktualizujte cluster s podrobnostmi identifikátoru klíče](#update-cluster-with-key-identifier-details). Pokud novou verzi klíče v clusteru neaktualizujete, Log Analytics úložiště clusteru bude dál používat k šifrování předchozí klíč. Pokud před aktualizací nového klíče v clusteru zakážete nebo odstraníte starý klíč, dostanete se do stavu [odvolání klíče](#key-revocation) .
+Rotace klíčů má dva režimy: 
+- Automatické otočení – když aktualizujete cluster pomocí ```"keyVaultProperties"``` , ale vynecháte ```"keyVersion"``` vlastnost nebo nastavíte na ```""``` , úložiště bude autoamatically používat nejnovější verze.
+- Explicitní aktualizace verze klíče – když aktualizujete cluster a zadáte verzi klíče ve ```"keyVersion"``` vlastnosti, všechny nové verze klíče vyžadují explicitní ```"keyVaultProperties"``` aktualizaci v clusteru, viz téma [aktualizace clusteru s podrobnostmi identifikátoru klíče](#update-cluster-with-key-identifier-details). Pokud vygenerujete novou verzi klíče v Key Vault ale neaktualizujete ji v clusteru, Log Analytics úložiště clusteru bude dál používat předchozí klíč. Pokud před aktualizací nového klíče v clusteru zakážete nebo odstraníte starý klíč, dostanete se do stavu [odvolání klíče](#key-revocation) .
 
 Všechna vaše data zůstanou po operaci střídání klíčů přístupná, protože data vždycky zašifrovaná pomocí šifrovacího klíče účtu (AEK), zatímco AEK se teď šifruje pomocí nového klíče KEK (Key Encryption Key) v Key Vault.
 
@@ -395,7 +400,7 @@ Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace js
 - Zrušení propojení pracovního prostoru s clusterem
 - Odstranění clusteru
 
-## <a name="limitations-and-constraints"></a>Omezení a omezení
+## <a name="limitations-and-constraints"></a>Limity a omezení
 
 - Maximální počet clusterů na oblast a předplatné je 2.
 
@@ -423,7 +428,7 @@ Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace js
 
   - Pokud je vaše Key Vault v Private-Link (vNet), nemůžete použít klíč spravovaný zákazníkem s uživatelem přiřazenou spravovanou identitou. V tomto scénáři můžete použít spravovanou identitu přiřazenou systémem.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 - Chování při Key Vault dostupnosti
   - V normálním provozu – mezipaměť úložiště AEK na krátkou dobu a vrátí se zpět na Key Vault k pravidelnému rozbalení.

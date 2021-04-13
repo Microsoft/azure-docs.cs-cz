@@ -2,13 +2,13 @@
 title: Pravidla akcí pro výstrahy Azure Monitor
 description: Vysvětlení toho, jaká pravidla akcí v Azure Monitor jsou a jak je nakonfigurovat a spravovat.
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/08/2021
+ms.openlocfilehash: df71883d04106dd341af4571c13cc55f35a1ecc3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105036777"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304813"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
 
@@ -67,7 +67,7 @@ Jsou k dispozici tyto filtry:
 
 * **Závažnost**  
 Toto pravidlo bude platit jenom pro výstrahy s vybranými závažnostmi.  
-Například **závažnost = Sev1** znamená, že pravidlo bude platit jenom pro výstrahy se závažností Sev1.
+Například **závažnost = "Sev1"** znamená, že pravidlo bude platit pouze pro výstrahy se závažností Sev1.
 * **Monitorovat službu**  
 Toto pravidlo bude platit pouze pro výstrahy přicházející z vybraných monitorovacích služeb.  
 Například **monitor služba = "Azure Backup"** znamená, že pravidlo bude platit jenom pro výstrahy zálohování (pocházející z Azure Backup).
@@ -79,15 +79,22 @@ Toto pravidlo bude platit jenom pro výstrahy přicházející z konkrétního p
 Například **pravidlo upozornění ID = "/Subscriptions/SubId1/resourceGroups/RG1/Providers/Microsoft.Insights/metricalerts/API-Latency"** znamená, že toto pravidlo bude platit pouze pro výstrahy přicházející z pravidla upozornění metriky rozhraní API-latence.  
 _Poznámka: můžete získat správné ID pravidla upozornění uvedením pravidel upozornění z rozhraní příkazového řádku nebo otevřením konkrétního pravidla výstrahy na portálu, kliknutím na vlastnosti a zkopírováním hodnoty ID prostředku._
 * **Podmínka monitorování**  
-Toto pravidlo bude platit pouze pro události výstrah se zadanou podmínkou monitorování – buď **aktivováno** , nebo **Vyřešeno**.
+Toto pravidlo bude platit pouze pro události výstrah se zadanou podmínkou monitorování – buď **"Trigger"** , nebo **"Vyřešeno"**.
 * **Popis**  
 Toto pravidlo bude platit pouze pro výstrahy, které v poli Popis výstrahy obsahují konkrétní řetězec. Toto pole obsahuje popis pravidla výstrahy.  
-Například **Popis obsahuje ' prod '** znamená, že pravidlo bude odpovídat pouze výstrahám, které obsahují řetězec "prod" v jeho popisu.
+Například **Popis obsahuje "prod"** znamená, že pravidlo bude odpovídat pouze výstrahám, které obsahují řetězec "prod" v jeho popisu.
 * **Kontext výstrahy (datová část)**  
 Toto pravidlo bude platit pouze pro výstrahy, které obsahují jednu nebo více konkrétních hodnot v polích kontextu výstrahy.  
-Například **kontext výstrahy (datová část) obsahuje řetězec ' Computer-01 '** znamená, že pravidlo bude platit pouze pro výstrahy, jejichž datová část obsahuje řetězec "Computer-01".
+Například **kontext výstrahy (datová část) obsahuje řetězec "Computer-01"** znamená, že pravidlo bude platit pouze pro výstrahy, jejichž datová část obsahuje řetězec "Computer-01".
 
-Pokud v pravidle nastavíte více filtrů, uplatní se všechny. Pokud například nastavíte **typ prostředku = Virtual Machines** a **závažnost = Sev0**, pravidlo se použije jenom pro upozornění Sev0 na virtuálních počítačích.
+> [!NOTE]
+> Každý filtr může obsahovat až pět hodnot.  
+> Například filtr na službu monitorování může zahrnovat až pět názvů monitorovacích služeb.
+
+
+
+
+Pokud v pravidle nastavíte více filtrů, uplatní se všechny. Pokud například nastavíte **typ prostředku = "Virtual Machines"** a **závažnost = "Sev0"**, pravidlo bude platit pouze pro upozornění Sev0 na virtuálních počítačích.
 
 ![Filtry pravidla akcí](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 

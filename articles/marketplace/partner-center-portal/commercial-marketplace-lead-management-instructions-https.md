@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 03/30/2020
-ms.openlocfilehash: 5bea2cf256e30bd896957bbee0e0ad824057a569
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/09/2021
+ms.openlocfilehash: 0da1fd7b98b86ebd75926cc8a2d2bb5294d048ca
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98247178"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308139"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Použití koncového bodu HTTPS ke správě potenciálních zákazníků z obchodu na webu Marketplace
 
@@ -31,13 +31,13 @@ Tento článek vysvětluje, jak vytvořit nový tok v Power automatu pro generov
 
     ![Přihlášení mých toků](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-1. V části **+ Nový** vyberte **+ rychlá – od prázdná**.
+1. V části **+ Nový** vyberte **+ rychlý cloudový tok**.
 
-    ![Moje toky + automatizovaná – od prázdná](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    ![Moje toky + automatizovaná – od prázdná](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-create-from-blank.png)
 
 1. Pojmenujte tok a potom v části **Zvolte, jak se má tento tok aktivovat**, vyberte, **kdy se přijme požadavek HTTP**.
 
-    ![Tlačítko pro přeskočení okna pro automatické sestavování toku](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
+    ![Tlačítko pro přeskočení okna pro automatické sestavování toku](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-pick-request-trigger.png)
 
 1. Kliknutím na krok toku ho rozbalte.
 
@@ -137,9 +137,13 @@ Tento článek vysvětluje, jak vytvořit nový tok v Power automatu pro generov
 ### <a name="connect-to-a-crm-system"></a>Připojení k systému CRM
 
 1. Vyberte **+ Nový krok**.
-1. Zvolte systém CRM podle vašeho výběru, a to tak, že ho vyhledáte, kde říkají **spojnice a akce hledání**. Na kartě **Akce** vyberte tuto akci pro vytvoření nového záznamu. Následující obrazovka ukazuje jako příklad **Vytvoření nového záznamu (Dynamics 365)** .
+1. Zvolte systém CRM podle vašeho výběru, a to tak, že ho vyhledáte, kde říkají **spojnice a akce hledání**. Následující obrazovka ukazuje jako příklad vytvoření nového záznamu (Common Data Service).
 
     ![Vytvoření nového záznamu](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
+
+1. Vyberte **kartu akce** s akcí **Vytvoření nového záznamu**.
+
+    ![Vyberte vytvořit nový záznam.](./media/commercial-marketplace-lead-management-instructions-https/select-create-new-record.png)
 
 1. Zadejte **název organizace** , který je přidružený k systému CRM. V rozevíracím seznamu **název entity** vyberte **zájemci** .
 

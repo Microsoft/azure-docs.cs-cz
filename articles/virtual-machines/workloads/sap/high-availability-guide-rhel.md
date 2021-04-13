@@ -12,14 +12,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/11/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 2f55df70b2ebdaed9b7f15c940d3f4f0553a2856
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf71f180a1ce845df436391b98227ae173fe77f1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676906"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303657"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux
 
@@ -198,7 +198,6 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následn�
          1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **NW1-9,1-ASCS**).
          1. Vyberte front-end IP adresu, fond back-endu a sondu stavu, které jste vytvořili dříve (například **NW1-ASCS-front**-end, **NW1-back-end** a **NW1-ASCS-HP**).
          1. Vybrat **porty ha**
-         1. Prodloužit časový limit nečinnosti na 30 minut
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
          1. Klikněte na OK.
          * Zopakováním výše uvedených kroků vytvořte pravidla vyrovnávání zatížení pro OLAJÍCÍCH (například **NW1-9,1-olajících**).

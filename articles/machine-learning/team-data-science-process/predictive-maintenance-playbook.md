@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 1e939b86eeadfee276378488cfcb40c07f28684d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b6cf2abfa797965d75bacd0b9c5e2eaf02b57a4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98880654"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308570"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro prediktivní správu řešení
 
@@ -439,15 +439,16 @@ Microsoft Azure nabízí výukové postupy pro základní koncepty za techniky P
 
 | Školicí prostředek  | Dostupnost |
 |:-------------------|--------------|
-| [Výuková cesta pro PdM s využitím stromů a náhodné doménové struktury](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Veřejná | 
-| [Výuková cesta pro PdM s využitím hloubkového učení](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Veřejná |
-| [Pro vývojáře AI v Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Veřejná |
-| [Microsoft AI School](https://aischool.microsoft.com/learning-paths) | Veřejná |
-| [Učení Azure AI z GitHubu](https://github.com/Azure/connectthedots/blob/master/readme.md) | Veřejná |
+| [Microsoft Docs: role data vědecký pracovník](https://docs.microsoft.com/learn/roles/data-scientist) | Veřejná |
+| [Microsoft Docs: role inženýra AI](https://docs.microsoft.com/learn/roles/ai-engineer) | Veřejná |
+| [Microsoft Docs: role data inženýr](https://docs.microsoft.com/learn/roles/data-engineer) | Veřejná |
+| [Microsoft AI School](https://www.microsoft.com/ai/ai-school) | Veřejná |
 | [LinkedIn Learning](https://www.linkedin.com/learning) | Veřejná |
-| [Microsoft AI YouTube webináře](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Veřejná |
+| [Microsoft: seznamy stop na YouTube pro umělá inteligentní a analytické funkce](https://www.youtube.com/c/MicrosoftAzure/playlists?view=50&sort=dd&shelf_id=7) | Veřejná |
 | [Microsoft AI – zobrazení](https://channel9.msdn.com/Shows/AI-Show) | Veřejná |
-| [LearnAI@MS](https://learnanalytics.microsoft.com) | Partneři |
+| [Základní informace o platformě AI](https://azure.microsoft.com/overview/ai-platform/) | Veřejná |
+| [Laboratorní prostředí AI](https://www.microsoft.com/ai/ai-lab) | Veřejná |
+| [Microsoft AI](https://www.microsoft.com/AI) | Veřejná |
 | [Microsoft Partner Network](https://partner.microsoft.com/training/training-center) | Partneři |
 
 Kromě toho bezplatné Course (rozsáhlé otevřené online kurzy) v AI jsou nabízeny online pomocí akademických institucí, jako je Stanfordu a MIT, a dalších vzdělávacích společností.

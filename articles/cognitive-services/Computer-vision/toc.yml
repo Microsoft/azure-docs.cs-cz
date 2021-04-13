@@ -75,7 +75,7 @@
     - name: Přehled analýzy obrázků
       href: overview-image-analysis.md
     - name: Rychlý Start analýzy obrázků
-      href: quickstarts-sdk/client-library.md
+      href: quickstarts-sdk/image-analysis-client-library.md
     - name: ukázky
       items:
         - name: Aplikace pro zpracování obrázků
@@ -146,8 +146,6 @@
   items:
     - name: Přehled prostorové analýzy
       href: intro-to-spatial-analysis-public-preview.md
-    - name: Nastavení hostitelského počítače a spuštění kontejneru
-      href: spatial-analysis-container.md
     - name: Zodpovědné využití AI
       items:
         - name: Poznámky k transparentnosti
@@ -170,6 +168,8 @@
       items:
         - name: Použití kontejneru prostorových analýz
           items:
+            - name: Nastavení hostitelského počítače a spuštění kontejneru
+              href: spatial-analysis-container.md
             - name: Konfigurace operací
               href: spatial-analysis-operations.md
             - name: Nasazení webové aplikace pro počítání lidí

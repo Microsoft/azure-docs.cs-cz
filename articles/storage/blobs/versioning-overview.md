@@ -10,16 +10,16 @@ ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f104b98c870fe6eee1d32fe656c0bba416cf3700
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 268de3e8ea168ac721362d42149389b9f37c86fe
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259740"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305051"
 ---
 # <a name="blob-versioning"></a>Správa verzí objektů BLOB
 
-Chcete-li automaticky zachovat předchozí verze objektu, můžete povolit správu verzí služby Blob Storage.  Pokud je povolená Správa verzí objektů blob, můžete obnovit předchozí verzi objektu blob, aby se data obnovila v případě, že se omylem změnila nebo odstranila.
+Chcete-li automaticky zachovat předchozí verze objektu, můžete povolit správu verzí služby Blob Storage. Pokud je povolená Správa verzí objektů blob, můžete obnovit předchozí verzi objektu blob, aby se data obnovila v případě, že se omylem změnila nebo odstranila.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -35,21 +35,21 @@ Další informace o doporučeních Microsoftu pro ochranu dat najdete v tématu 
 
 ## <a name="how-blob-versioning-works"></a>Jak funguje Správa verzí objektů BLOB
 
-Verze zachytí stav objektu BLOB v daném časovém okamžiku. Když je pro účet úložiště povolená Správa verzí objektů blob, Azure Storage automaticky vytvoří novou verzi objektu BLOB pokaždé, když se objekt BLOB upraví.
+Verze zachytí stav objektu BLOB v daném časovém okamžiku. Každá verze se identifikuje s ID verze. Když je pro účet úložiště povolená Správa verzí objektů blob, Azure Storage automaticky vytvoří novou verzi s jedinečným ID při prvním vytvoření objektu BLOB a pokaždé, když se objekt BLOB následně upraví.
 
-Při vytváření objektu BLOB s povoleným správou verzí je nový objekt blob aktuální verzí objektu BLOB (nebo základního objektu BLOB). Pokud následně tento objekt BLOB upravíte, Azure Storage vytvoří verzi, která před úpravou zachytí stav objektu BLOB. Upravený objekt BLOB se změní na novou aktuální verzi. Při každé změně objektu BLOB se vytvoří nová verze.
+ID verze může identifikovat aktuální verzi nebo předchozí verzi. Objekt BLOB může mít v jednom okamžiku pouze jednu aktuální verzi.
+
+Když vytvoříte nový objekt blob, existuje jedna verze a tato verze je aktuální verze. Když upravíte existující objekt blob, aktuální verze se změní na předchozí verzi. Vytvoří se nová verze pro zachycení aktualizovaného stavu a tato nová verze je aktuální. Při odstranění objektu BLOB se stane aktuální verze objektu BLOB předchozí verzí a už neexistuje aktuální verze. Všechny předchozí verze objektu BLOB jsou trvalé.
 
 Následující diagram znázorňuje, jak se vytvářejí verze při operacích zápisu a jak může být předchozí verze povýšená na aktuální verzi:
 
 :::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="Diagram znázorňující, jak funguje Správa verzí objektů BLOB":::
 
-Když odstraníte objekt BLOB s povoleným správou verzí, stane se aktuální verze objektu BLOB předchozí verzí a už neexistuje aktuální verze. Všechny předchozí verze objektu BLOB jsou trvalé.
-
 Verze objektů BLOB jsou neměnné. Nemůžete změnit obsah nebo metadata existující verze objektu BLOB.
 
 Velký počet verzí na jeden objekt BLOB může zvýšit latenci pro operace výpisu objektů BLOB. Společnost Microsoft doporučuje udržovat méně než 1000 verzí na jeden objekt BLOB. Pokud chcete automaticky odstranit staré verze, můžete použít správu životního cyklu. Další informace o správě životního cyklu najdete v tématu [optimalizace nákladů díky automatizaci úrovní přístupu v Azure Blob Storage](storage-lifecycle-management-concepts.md).
 
-Správa verzí objektů BLOB je k dispozici pro obecné účely v2, objekty blob bloku a účty BLOB Storage. Účty úložiště s hierarchickým oborem názvů povoleným pro použití s Azure Data Lake Storage Gen2 nejsou aktuálně podporovány.
+Správa verzí objektů BLOB je k dispozici pro standardní účty blob bloku verze 2 pro obecné účely, Premium a starší účty BLOB Storage. Účty úložiště s hierarchickým oborem názvů povoleným pro použití s Azure Data Lake Storage Gen2 nejsou aktuálně podporovány.
 
 Verze 2019-10-10 a vyšší z Azure Storage REST API podporuje správu verzí objektů BLOB.
 
@@ -58,9 +58,9 @@ Verze 2019-10-10 a vyšší z Azure Storage REST API podporuje správu verzí ob
 
 ### <a name="version-id"></a>ID verze
 
-Každá verze objektu BLOB je identifikována ID verze. Hodnota ID verze je časové razítko, se kterým se aktualizoval objekt BLOB. ID verze je přiřazeno v době, kdy je vytvořena verze.
+Každá verze objektu BLOB je identifikována jedinečným ID verze. Hodnota ID verze je časové razítko, se kterým se aktualizoval objekt BLOB. ID verze je přiřazeno v době, kdy je vytvořena verze.
 
-Můžete provádět operace čtení nebo odstranění u konkrétní verze objektu BLOB zadáním jeho ID verze. Pokud ID verze vynecháte, operace bude fungovat s aktuální verzí (základní objekt BLOB).
+Můžete provádět operace čtení nebo odstranění u konkrétní verze objektu BLOB zadáním jeho ID verze. Pokud ID verze vynecháte, operace bude fungovat s aktuální verzí.
 
 Když zavoláte operaci zápisu pro vytvoření nebo úpravu objektu blob, Azure Storage v odpovědi vrátí hlavičku *x-MS-Version-ID* . Tato hlavička obsahuje ID verze pro aktuální verzi objektu blob, která byla vytvořena operací zápisu.
 
@@ -70,11 +70,9 @@ ID verze zůstane pro dobu života verze stejné.
 
 Když je zapnutá Správa verzí objektů blob, každá operace zápisu do objektu BLOB vytvoří novou verzi. Operace zápisu zahrnují [objekt BLOB pro vložení](/rest/api/storageservices/put-blob), [seznam blokovaných](/rest/api/storageservices/put-block-list) [objektů, kopírování objektů BLOB](/rest/api/storageservices/copy-blob)a [nastavení metadat objektů BLOB](/rest/api/storageservices/set-blob-metadata).
 
-Pokud operace zápisu vytvoří nový objekt blob, bude výsledný objekt blob aktuální verzí objektu BLOB. Pokud operace zápisu upraví existující objekt blob, budou nová data zachycena v aktualizovaném objektu blob, což je aktuální verze, a Azure Storage vytvoří verzi, která uloží předchozí stav objektu BLOB.
+Pokud operace zápisu vytvoří nový objekt blob, bude výsledný objekt blob aktuální verzí objektu BLOB. Pokud operace zápisu změní existující objekt blob, aktuální verze se změní na předchozí verzi a vytvoří se nová aktuální verze pro zachycení aktualizovaného objektu BLOB.
 
-V diagramech, které jsou uvedené v tomto článku, se pro jednoduchost zobrazuje ID verze jako jednoduchá celočíselná hodnota. Ve skutečnosti je ID verze časové razítko. Aktuální verze je zobrazena modře a předchozí verze jsou zobrazeny šedě.
-
-Následující diagram ukazuje, jak operace zápisu ovlivňují verze objektů BLOB. Tento objekt BLOB je aktuální verze, když se vytvoří objekt BLOB. Když dojde ke změně stejného objektu blob, vytvoří se nová verze, která uloží předchozí stav objektu BLOB a aktualizovaný objekt BLOB se změní na aktuální verzi.
+Následující diagram ukazuje, jak operace zápisu ovlivňují verze objektů BLOB. V diagramech, které jsou uvedené v tomto článku, se pro jednoduchost zobrazuje ID verze jako jednoduchá celočíselná hodnota. Ve skutečnosti je ID verze časové razítko. Aktuální verze je zobrazena modře a předchozí verze jsou zobrazeny šedě.
 
 :::image type="content" source="media/versioning-overview/write-operations-blob-versions.png" alt-text="Diagram znázorňující, jak operace zápisu ovlivňují objekty blob ve verzi":::
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 8f193cface177e6be6343f28ef4dc27c2d6c6a7b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f8fa0344a6959025856f002e1de4eb8700c32da5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030898"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311307"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat Log Analytics
 Účelem tohoto dokumentu je poskytnout informace, které jsou specifické pro Log Analytics, což je funkce Azure Monitor, která doplní informace na [Centrum zabezpečení Azure](https://www.microsoft.com/en-us/trust-center?rtc=1).  
@@ -103,7 +103,7 @@ Log Analytics má proces správy incidentů, na které se dodržují všechny sl
   * Operátoři, kteří pracují na službě Microsoft Azure, mají k dispozici školicí povinnosti obklopující jejich přístup k citlivým systémům hostujícím zákaznická data.
   * Zaměstnanci Microsoft Security Response obdrží specializované školení pro své role.
 
-Pokud dojde ke ztrátě jakýchkoli zákaznických dat, informujte každého zákazníka během jednoho dne. Ztráta dat zákazníků však ve službě nikdy neproběhla. 
+I když je velmi zřídka, společnost Microsoft upozorní každého zákazníka během jednoho dne, pokud dojde k významné ztrátě dat zákazníků. 
 
 Další informace o tom, jak Microsoft reaguje na incidenty zabezpečení, najdete v tématu [Microsoft Azure odezva zabezpečení v cloudu](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
 

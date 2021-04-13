@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 01/14/2020
+ms.date: 04/12/2021
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 48de06d28442b4d05cd3a7ab287732c0999e434c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9e87796c3557f21bb6192c7d7d0c0925d08d786
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101659694"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311749"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Obsáhlý Learning a strojové učení v Azure Machine Learning
 
@@ -99,7 +99,7 @@ Díky příslušné transformaci dat může neuronové síť pochopit textové, 
 
 Analýza textu založená na metodách hloubkového učení zahrnuje analýzu velkých objemů textových dat (například příjem lékařských dokumentů nebo příjmů výdajů), rozpoznávání vzorů a vytváření uspořádaných a stručných informací.
 
-Společnosti využívají k analýze textu v rámci hloubkového učení k detekci obchodování zasvěcených osob a dodržování předpisů pro státní správu. Dalším běžným příkladem je pojišťovací podvod: Text Analytics se často používá k analýze velkých objemů dokumentů, aby se zjistilo, že se poškodí pojistka pojistného pojištění. 
+Společnosti využívají k analýze textu v rámci hloubkového učení k detekci obchodování zasvěcených osob a dodržování předpisů pro státní správu. Dalším běžným příkladem je pojišťovací podvod: Text Analytics se často používá k analýze velkých objemů dokumentů, aby se zjistilo, že se poškodí pojistka pojistného pojištění.
 
 ## <a name="artificial-neural-networks"></a>Umělé sítě neuronové
 
@@ -111,15 +111,33 @@ V následujících částech se prozkoumá nejoblíbenější umělá neuronové
 
 Síť neuronové Feedforward je nejjednodušší typ umělé neuronové sítě. V Feedforward síti se informace pohybují pouze v jednom směru ze vstupní vrstvy do výstupní vrstvy. Feedforward neuronové Networks transformují vstup tím, že ho umístí prostřednictvím řady skrytých vrstev. Každá vrstva se skládá ze sady neurons a každá vrstva je plně připojená ke všem neurons ve vrstvě. Poslední plně připojená vrstva (výstupní vrstva) představuje vygenerované předpovědi.
 
-### <a name="recurrent-neural-network"></a>Znovu aktuální neuronové síť
+### <a name="recurrent-neural-network-rnn"></a>Znovu aktuální neuronové síť (RNN)
 
 Opakující se neuronové sítě jsou široce využívanou umělou neuronovéou síť. Tyto sítě ukládají výstup vrstvy a předává je zpět do vstupní vrstvy, aby bylo možné odhadnout výsledek vrstvy. Opakující se neuronové sítě mají skvělé možnosti učení. Jsou často používány pro komplexní úlohy, jako je prognózování časových řad, rozpoznávání rukopisu a rozpoznávání jazyka.
 
-### <a name="convolutional-neural-network"></a>Síť neuronové konvoluční
+### <a name="convolutional-neural-network-cnn"></a>Konvoluční neuronové Network (CNN)
 
 Síť neuronové konvoluční je zvláště efektivní umělá síť neuronové a představuje jedinečnou architekturu. Vrstvy jsou uspořádány do tří rozměrů: šířka, Výška a hloubka. Neurons v jedné vrstvě se připojí k neurons v následující vrstvě, ale pouze do malých oblastí neurons vrstvy. Konečný výstup je snížen na jeden vektor skóre pravděpodobnosti uspořádané podél rozměru hloubky. 
 
 Sítě konvoluční neuronové se používaly v oblastech, jako je rozpoznávání videa, rozpoznávání obrázků a systémy doporučení.
+
+### <a name="generative-adversarial-network-gan"></a>Adversarial síť (GAN)
+
+Adversarial sítě jsou realitové modely, které jsou vyškolené k vytváření realistického obsahu, jako jsou obrázky. Skládá se ze dvou sítí známých jako generátor a diskriminátor. Obě sítě jsou vyškoleny současně. Během školení generátor používá náhodný šum k vytváření nových syntetických dat, která se budou velmi podobat skutečným datům. Diskriminátor převezme výstup od generátoru jako vstup a pomocí reálných dat určí, jestli je vygenerovaný obsah skutečný nebo syntetický. Každá síť se vzájemně konkurují. Generátor se snaží vygenerovat syntetický obsah, který je neodlišit od skutečného obsahu a diskriminátor se snaží správně klasifikovat vstupy jako reálné nebo syntetické. Výstup se pak použije k aktualizaci vah obou sítí, aby lépe dosáhl jejich příslušných cílů.
+
+K řešení problémů, jako je obrázek k překladu imagí a průběh stáří, se používají regenerační Adversarial sítě.
+
+### <a name="transformers"></a>Transform
+
+Transformátory jsou modelová architektura, která je vhodná pro řešení problémů, které obsahují sekvence, jako je například text nebo data časové řady. Skládají se z [vrstev kodérů a dekodérů](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)#Encoder). Kodér přebírá vstup a mapuje ho na číselné vyjádření obsahující informace, jako je například kontext. Dekodér používá informace z kodéru k tvorbě výstupu, jako je například přeložený text. Díky tomu se v podvrstevch s informacemi o tom, že se křížové architektury liší od jiných architektur, které obsahují kodéry a dekodéry. Pozornost je nápad zaměřený na konkrétní části vstupu na základě důležitosti jejich kontextu ve vztahu k ostatním vstupům v sekvenci. Například při sumarizaci článku zprávy nejsou všechny věty relevantní pro popis hlavní myšlenky. Když se zaměříte na klíčová slova v celém článku, můžete Shrnutí udělat v jedné větě, nadpisu.
+
+Transformátory se použily k řešení problémů s zpracováním přirozeného jazyka, jako jsou překlady, generování textu, zodpovězení otázek a Sumarizace textu.
+
+Některé dobře známé implementace transformátorů jsou:
+
+- Reprezentace obousměrného kodéru z transformátorů (BERT)
+- Regenerační předem vyškolený transformátor 2 (GPT-2)
+- Regenerační předem vyškolený transformátor 3 (GPT-3)
 
 ## <a name="next-steps"></a>Další kroky
 

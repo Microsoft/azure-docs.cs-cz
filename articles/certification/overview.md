@@ -1,32 +1,32 @@
 ---
 title: Přehled programu zařízení s certifikací Azure
-description: Přehled programu zařízení s certifikací Azure pro naše partnery a zákazníky
-author: nikuntjo
+description: Přehled programu zařízení s certifikací Azure pro naše partnery a zákazníky. Pomocí těchto zdrojů spusťte proces certifikace zařízení. Zjistěte, jak zařízení certifikovat, od požadavků zařízení IoT pro publikování vašeho zařízení.
+author: nkuntjoro
 ms.author: nikuntjo
 ms.topic: overview
-ms.date: 03/03/2021
+ms.date: 04/09/2021
 ms.custom: template-overview
 ms.service: certification
-ms.openlocfilehash: 8f264c233a0e7cd14469a3931153decfe886061a
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: b9d599542a53e3d809748b72028512c66409b4ec
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969872"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307703"
 ---
-# <a name="what-is-azure-certified-device"></a>Co je zařízení certifikované pro Azure?
+# <a name="what-is-the-azure-certified-device-program"></a>Co je program zařízení s certifikací Azure?
 
-Děkujeme za váš zájem o program zařízení s certifikací Azure. Tento program je vaším základem pro snadné odlišení, zvýšení úrovně a hledání zařízení IoT, která jsou sestavena pro spuštění v Azure. Díky tomuto rozšířenému programu pro certifikaci zařízení IoT pomáhají tvůrci zařízení zlepšit viditelnost produktů a ušetřit čas při sestavování řešení od inteligentních fotoaparátů po připojené senzory k hraniční infrastruktuře.
+Děkujeme za váš zájem o program zařízení s certifikací Azure. Tento program vám umožní snadno odlišit, propagovat a vyhledávat zařízení IoT vytvořená v Azure. Díky tomuto rozšířenému programu pro certifikaci zařízení IoT pomáhají tvůrci zařízení zlepšit viditelnost produktů a ušetřit čas při sestavování řešení od inteligentních fotoaparátů po připojené senzory k hraniční infrastruktuře.
 
 ## <a name="our-certification-promise"></a>Náš příslib certifikace
 
 Program zařízení s certifikací Azure zajišťuje skvělou práci zákaznických řešení v Azure. Je to program, který využívá nástroje, služby a katalog ke sdílení vědomostí o znalostech s naší komunitou tvůrců v rámci ekosystému IoT, která umožňuje tvůrcům a zákazníkům podobně.
 
-Tři principy tohoto programu:
+V rámci procesu certifikace zařízení jsou tři principyy tohoto programu:
 
 - **Poskytování důvěry zákazníkům:** Zákazníci si můžou bez obav koupit zařízení s certifikací Azure, která budou mít příslib Microsoftu.
 
-- **Matchmaking zákazníky se správnými zařízeními pro tyto uživatele:** Tvůrci zařízení se můžou sám nastavit s certifikací, která zvýrazňuje své jedinečné schopnosti, a zákazníci můžou snadno vyhledat produkty, které vyhovují jejich potřebám.
+- **Matchmaking zákazníky se správnými zařízeními pro tyto uživatele:** Tvůrci zařízení se můžou sám nastavit s certifikací, která zvýrazňuje své jedinečné schopnosti, a zákazníci můžou snadno vyhledat kvalifikovaná zařízení IoT, která vyhovují jejich potřebám.
 
 - **Zvýšení úrovně certifikovaných zařízení:** Tvůrci zařízení získají zvýšenou viditelnost, kontaktovali zákazníky a využívají značku zařízení s certifikací Azure Certified společnosti Microsoft.
 
@@ -34,12 +34,12 @@ Tři principy tohoto programu:
 
 Program zařízení s certifikací Azure slouží pro dva různé cílové skupiny.
 
-1. **Sestavovatelé zařízení**: snadno odlišit možnosti zařízení IoT a získat přístup k celosvětovým účastníkům, kteří chtějí spolehlivě koupit zařízení vytvořená pro provoz v Azure. Pomocí katalogu zařízení s certifikací Azure můžete zvýšit viditelnost produktu a spojit se se zákazníky, a to tak, že si zařízení naosvědčují.
-1.  **Tvůrci řešení**: bez obav najít a koupit zařízení IoT vytvořená pro běh v Azure, aby splňovala konkrétní možnosti. Snadné vyhledávání a výběr správného certifikovaného zařízení pro řešení IoT v [katalogu zařízení s certifikací Azure](https://devicecatalog.azure.com/)
+1. **Tvůrci zařízení**: sestavíte zařízení IoT? Snadno odlišit možnosti zařízení IoT a získáte přístup k celosvětovým účastníkům, kteří chtějí spolehlivě koupit zařízení vytvořená pro provoz v Azure. Pomocí katalogu zařízení s certifikací Azure můžete zvýšit viditelnost produktu a spojit se se zákazníky, a to tak, že zařízení naplníte a ukážete, že splňuje konkrétní požadavky na zařízení IoT
+1.  **Tvůrci řešení**: zajímá, co jsou zařízení IoT, která jsou kvalifikována? Spolehlivě vyhledejte a zakupte zařízení IoT vytvořená pro běh v Azure a zjistěte, že splňují specifické požadavky IoT. Snadné vyhledávání a výběr správného certifikovaného zařízení pro řešení IoT v [katalogu zařízení s certifikací Azure](https://devicecatalog.azure.com/)
 
-## <a name="our-certification-programs"></a>Naše certifikační programy
+## <a name="our-certification-programs-and-iot-device-requirements"></a>Naše certifikační programy a požadavky na zařízení IoT.
 
-Nyní jsou k dispozici čtyři různé certifikace. Každá certifikace se zaměřuje na poskytování různých zákaznických hodnot. V závislosti na typu zařízení a cílové cílové skupiny si můžete vybrat, které certifikace je nejvhodnější pro použití pro. Chcete-li získat další informace o požadavcích programu, vyberte názvy jednotlivých programů.
+Nyní jsou k dispozici čtyři různé certifikace. Každá certifikace se zaměřuje na poskytování různých zákaznických hodnot. V závislosti na typu zařízení a cílové cílové skupiny si můžete vybrat, které certifikace je nejvhodnější pro použití pro. Chcete-li získat další informace o požadavcích programu a IoT, vyberte názvy jednotlivých programů.
 
 | Certifikační program         |  Přehled                      |
 ------------------------------|-------------------------------------------------|
@@ -50,21 +50,22 @@ Nyní jsou k dispozici čtyři různé certifikace. Každá certifikace se zamě
 
 ## <a name="how-to-certify-your-device"></a>Jak certifikovat vaše zařízení
 
-Certifikace zařízení zahrnuje čtyři hlavní kroky na [portálu zařízení s certifikací Azure](https://certify.azure.com):
+Certifikace zařízení zahrnuje několik hlavních kroků na [portálu zařízení s certifikací Azure](https://certify.azure.com):
 
-1. Vytváření projektu
-1. Poskytování informací o schopnostech hardwaru
-1. Ověřování funkcí zařízení
-1. Odeslání a dokončení procesu revize
+1. Vyberte správnou certifikaci pro vaše zařízení na základě požadavků zařízení IoT.
+1. Vytvořte svůj projekt na [portálu zařízení s certifikací Azure](https://certify.azure.com).
+1. Přidejte podrobnosti o zařízení včetně informací o schopnostech hardwaru a zahajte proces certifikace zařízení.
+1. Ověřit funkčnost zařízení
+1. Odeslat a dokončit proces kontroly
 
-Po certifikaci zařízení můžete volitelně vyplnit dvě z následujících aktivit: 
+Po certifikaci zařízení můžete volitelně vyplnit dvě z následujících aktivit:
 
 1. Publikování do katalogu zařízení s certifikací Azure (volitelné)
 1. Aktualizace projektu po jeho schválení nebo publikování (volitelné)
 
 ## <a name="next-steps"></a>Další kroky
 
-Jste připraveni začít s cestou k certifikaci? V níže uvedených zdrojích si můžete začít s certifikací zařízení.
+Jste připraveni začít s cestou k certifikaci? Prohlédněte si naše zdroje níže a spusťte proces certifikace zařízení.
 
 - [Spouští se proces certifikace.](tutorial-00-selecting-your-certification.md)
 - Pokud máte další dotazy nebo připomínky, obraťte [se na tým zařízení s certifikací Azure Certified](mailto:iotcert@microsoft.com).

@@ -2,13 +2,13 @@
 title: Vytvoření souboru parametrů
 description: Vytvoří soubor parametrů pro předávání hodnot během nasazování šablony Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: 2b6d942b21594fa608127bb8f403e72295671005
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: d557bcdfe246dc2c9bfccde17b7f9590c2686358
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89276639"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312038"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Vytvořit soubor Správce prostředků parametrů
 
@@ -210,6 +210,8 @@ Další informace najdete v tématu [nasazení prostředků pomocí šablon ARM 
 
 > [!NOTE]
 > Nemůžete použít soubor parametrů v okně vlastní šablony na portálu.
+
+Pokud používáte [projekt skupiny prostředků Azure v sadě Visual Studio](create-visual-studio-deployment-project.md), ujistěte se, že soubor parametrů má svou **akci sestavení** nastavenou na **obsah**.
 
 ## <a name="file-name"></a>Název souboru
 

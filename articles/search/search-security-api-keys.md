@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 8b2e85744923fb2e7e474e049df1536aebc56f3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: 6954ce289cb3cf219f8c4024a112411fd60d70e0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99536929"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310661"
 ---
-# <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Vytvoření a Správa klíčů rozhraní API pro službu Azure Kognitivní hledání
+# <a name="create-and-manage-api-keys-for-authentication-to-azure-cognitive-search"></a>Vytváření a Správa klíčů rozhraní API pro ověřování do Azure Kognitivní hledání
 
-Všechny požadavky na vyhledávací službu potřebují klíč rozhraní API jen pro čtení, který se vygeneroval speciálně pro vaši službu. Klíč rozhraní API je jediným mechanismem pro ověřování příchozích požadavků do koncového bodu služby Search a je vyžadován při každé žádosti. 
+Při připojování ke službě vyhledávání musí všechny požadavky zahrnovat klíč rozhraní API jen pro čtení, který byl vygenerován speciálně pro vaši službu. Klíč rozhraní API je jediným mechanismem pro ověřování příchozích požadavků do koncového bodu služby Search a je vyžadován při každé žádosti. 
 
 + V [řešeních REST](search-get-started-rest.md) `api-key` je obvykle zadaný v hlavičce požadavku.
 

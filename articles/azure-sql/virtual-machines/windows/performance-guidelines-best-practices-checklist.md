@@ -15,12 +15,12 @@ ms.date: 03/25/2021
 ms.author: mathoma
 ms.custom: contperf-fy21q3
 ms.reviewer: jroth
-ms.openlocfilehash: 0b88884576a47db871c78b874104d4973ee9ba9a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 84f2f4f679de80cd9b5fc986d40e084bae8a4cad
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572344"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313755"
 ---
 # <a name="checklist-performance-best-practices-for-sql-server-on-azure-vms"></a>Kontrolní seznam: osvědčené postupy výkonu pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,7 +40,7 @@ Mezi optimalizací a optimalizací výkonu je typicky kompromis. Tato řada osv�
 
 Následuje rychlý kontrolní seznam osvědčených postupů pro velikost virtuálního počítače pro spuštění SQL Server na VIRTUÁLNÍm počítači Azure: 
 
-- Používejte velikosti virtuálních počítačů 4 nebo více vCPU, jako je [Standard_M8-4ms](/../../virtual-machines/m-series), [E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)nebo [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) nebo vyšší. 
+- Používejte velikosti virtuálních počítačů 4 nebo více vCPU, jako je [Standard_M8-4ms](../../../virtual-machines/m-series.md), [E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)nebo [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) nebo vyšší. 
 - Využijte [paměťově optimalizované](../../../virtual-machines/sizes-memory.md) velikosti virtuálních počítačů pro dosažení optimálního výkonu SQL Server úloh. 
 - [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md), [Edsv4](../../../virtual-machines/edv4-edsv4-series.md) Series, [M-](../../../virtual-machines/m-series.md)a [Mv2-](../../../virtual-machines/mv2-series.md) Series nabízejí optimální poměr mezi pamětí a Vcore potřebný pro úlohy OLTP. Oba virtuální počítače řady M nabízejí nejvyšší poměr paměti k vCore, který je potřeba pro důležité úlohy, a je taky ideální pro úlohy datového skladu. 
 - Zvažte vyšší poměr paměti k vCore pro důležité úlohy a úlohy datového skladu. 

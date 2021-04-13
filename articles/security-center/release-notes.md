@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/06/2021
+ms.date: 04/11/2021
 ms.author: memildin
-ms.openlocfilehash: 81f741fd9b0e3d40eb0027a5cbe0ba4b7113bbea
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 3e4dddf61656ea38bac406366bf993788fd34943
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027614"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303147"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -28,26 +28,22 @@ Další informace o *plánovaných* změnách, které už brzy Security Center, 
 ## <a name="april-2021"></a>Duben 2021
 
 Aktualizace v dubnu zahrnují:
-- [Čtyři nová doporučení týkající se konfigurace hosta (Preview)](#four-new-recommendations-related-to-guest-configuration-preview)
+- [Nedávno načtené image registru kontejneru se teď prohledají týdně (všeobecně dostupné).](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
 - [Použití Azure Defenderu pro Kubernetes k ochraně hybridních a multi-cloudových nasazení Kubernetes (Preview)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [Čtyři nová doporučení týkající se konfigurace hosta (Preview)](#four-new-recommendations-related-to-guest-configuration-preview)
+- [Doporučení pro CMK se přesunula na kontrolu zabezpečení osvědčené postupy](#cmk-recommendations-moved-to-best-practices-security-control)
 - [11 upozornění služby Azure Defender jako zastaralé](#11-azure-defender-alerts-deprecated)
 - [Dvě doporučení pro řízení zabezpečení použít aktualizace systému se už nepoužívá.](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
 
-### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Čtyři nová doporučení týkající se konfigurace hosta (Preview)
+### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>Nedávno načtené image registru kontejneru se teď prohledají týdně (všeobecně dostupné).
 
-Sestavy [rozšíření konfigurace hosta](../governance/policy/concepts/guest-configuration.md) Azure se Security Center, které vám pomůžou zajistit posílení zabezpečení vašich virtuálních počítačů v nastavení hostů. Rozšíření není vyžadováno pro servery s podporou ARC, protože je zahrnuto v agentovi počítače připojeného k ARC. Rozšíření vyžaduje na počítači identitu spravovanou systémem.
+Azure Defender pro Registry kontejnerů obsahuje integrovaný skener ohrožení zabezpečení. Tento skener okamžitě prohledá všechny obrázky, které zadáte do registru, a všechny image za posledních 30 dní.
 
-Přidali jsme čtyři nová doporučení, která Security Center k tomu, aby tato rozšíření byla na maximum.
+Nové chyby zabezpečení se objevují každý den. V této aktualizaci se pro každý týden znovu **prohledají** image kontejnerů, které byly získány z vašich registrů za posledních 30 dnů. Tím se zajistí, že se nově zjištěná ohrožení zabezpečení identifikují ve vašich obrázcích.
 
-- Na základě dvou doporučení se zobrazí výzva k instalaci rozšíření a požadované systémové identity spravované systémem:
-    - **V počítačích by se mělo nainstalovat rozšíření konfigurace hosta.**
-    - **Rozšíření konfigurace hosta virtuálních počítačů by se mělo nasadit pomocí spravované identity přiřazené systémem.**
+Kontrola se účtuje na základě jednotlivých imagí, takže se za tato prověřování neúčtují žádné další poplatky.
 
-- Když je rozšíření nainstalované a spuštěné, zahájí auditování vašich počítačů a zobrazí se vám výzva k posílení nastavení, jako je konfigurace operačního systému a nastavení prostředí. Tato dvě doporučení vás vyzve k posílení zabezpečení počítačů se systémem Windows a Linux, jak je popsáno níže:
-    - **Na vašich počítačích by mělo být povolené ochrany před zneužitím v programu Windows Defender.**
-    - **Ověřování pro počítače se systémem Linux by mělo vyžadovat klíče SSH**
-
-Další informace najdete v [porozumět konfiguraci hosta Azure Policy](../governance/policy/concepts/guest-configuration.md).
+Přečtěte si další informace o tomto skeneru v [používání Azure Defenderu pro Registry kontejnerů pro kontrolu ohrožení zabezpečení imagí](defender-for-container-registries-usage.md).
 
 
 ### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview"></a>Použití Azure Defenderu pro Kubernetes k ochraně hybridních a multi-cloudových nasazení Kubernetes (Preview)
@@ -69,6 +65,40 @@ Tato integrace mezi Azure Security Center, Azure Defenderem a Kubernetesem s pov
 Další informace najdete v podrobnějších informacích o [používání Azure Defenderu pro Kubernetes s vašimi místními a Kubernetes clustery s více cloudy](defender-for-kubernetes-azure-arc.md).
 
 :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center doporučení pro nasazení rozšíření Azure Defenderu pro clustery s podporou Azure ARC s povoleným Kubernetes." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+
+### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Čtyři nová doporučení týkající se konfigurace hosta (Preview)
+
+Sestavy [rozšíření konfigurace hosta](../governance/policy/concepts/guest-configuration.md) Azure se Security Center, které vám pomůžou zajistit posílení zabezpečení vašich virtuálních počítačů v nastavení hostů. Rozšíření není vyžadováno pro servery s podporou ARC, protože je zahrnuto v agentovi počítače připojeného k ARC. Rozšíření vyžaduje na počítači identitu spravovanou systémem.
+
+Přidali jsme čtyři nová doporučení, která Security Center k tomu, aby tato rozšíření byla na maximum.
+
+- Na základě dvou doporučení se zobrazí výzva k instalaci rozšíření a požadované systémové identity spravované systémem:
+    - **V počítačích by se mělo nainstalovat rozšíření konfigurace hosta.**
+    - **Rozšíření konfigurace hosta virtuálních počítačů by se mělo nasadit pomocí spravované identity přiřazené systémem.**
+
+- Když je rozšíření nainstalované a spuštěné, zahájí auditování vašich počítačů a zobrazí se vám výzva k posílení nastavení, jako je konfigurace operačního systému a nastavení prostředí. Tato dvě doporučení vás vyzve k posílení zabezpečení počítačů se systémem Windows a Linux, jak je popsáno níže:
+    - **Na vašich počítačích by mělo být povolené ochrany před zneužitím v programu Windows Defender.**
+    - **Ověřování pro počítače se systémem Linux by mělo vyžadovat klíče SSH**
+
+Další informace najdete v [porozumět konfiguraci hosta Azure Policy](../governance/policy/concepts/guest-configuration.md).
+
+### <a name="cmk-recommendations-moved-to-best-practices-security-control"></a>Doporučení pro CMK se přesunula na kontrolu zabezpečení osvědčené postupy
+
+Bezpečnostní program všech organizací zahrnuje požadavky na šifrování dat. Ve výchozím nastavení jsou data zákazníků Azure v klidovém stavu zašifrovaná pomocí klíčů spravovaných službou. Klíče spravované zákazníkem (CMK) se obvykle vyžadují ke splnění standardů dodržování legislativních předpisů. CMKs vám umožní šifrovat data pomocí [Azure Key Vaultho](../key-vault/general/overview.md) klíče vytvořeného a vlastněného vámi. Získáte tak úplnou kontrolu a zodpovědnost za životní cyklus klíčů, včetně rotace a správy.
+
+Bezpečnostní ovládací prvky Azure Security Center jsou logické skupiny souvisejících doporučení zabezpečení a odrážejí zranitelné plochy pro útoky. Každý ovládací prvek má maximální počet bodů, které můžete přidat do zabezpečeného skóre, pokud opravíte všechna doporučení uvedená v ovládacím prvku pro všechny vaše prostředky. K implementaci řízení zabezpečení pro **osvědčené postupy zabezpečení** se počítá nula bodů. Takže doporučení v tomto ovládacím prvku nijak neovlivňují vaše zabezpečené skóre.
+
+Níže uvedená doporučení se přesunou na kontrolu zabezpečení **osvědčené postupy zabezpečení** , která vám umožní lépe odrážet jejich volitelnou povahu. Tento přesun zajistí, že tato doporučení jsou nejvhodnějším ovládacím prvkem, aby splnila svůj cíl.
+
+- Azure Cosmos DB účty by měly používat klíče spravované zákazníkem k šifrování neaktivních dat
+- Azure Machine Learning pracovní prostory by měly být zašifrované pomocí klíče spravovaného zákazníkem (CMK)
+- Cognitive Services účty by měly povolit šifrování dat pomocí klíče spravovaného zákazníkem (CMK).
+- Registry kontejneru by měly být zašifrované pomocí klíče spravovaného zákazníkem (CMK)
+- Spravované instance SQL by měly používat klíče spravované zákazníkem k šifrování neaktivních dat
+- SQL servery by se měly používat pro šifrování neaktivních dat pomocí klíčů spravovaných zákazníkem.
+- Účty úložiště by měly pro šifrování používat klíč spravovaný zákazníkem (CMK)
+
+Seznamte se s doporučeními v jednotlivých ovládacích [prvcích zabezpečení v ovládacích prvcích zabezpečení a jejich doporučeních](secure-score-security-controls.md#security-controls-and-their-recommendations).
 
 
 ### <a name="11-azure-defender-alerts-deprecated"></a>11 upozornění služby Azure Defender jako zastaralé

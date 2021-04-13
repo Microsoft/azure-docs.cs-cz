@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 38ba5679731b5e52eb06751a625aea9df69c76ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 14d9c762702648d25efcbcc7ac85824659e20f05
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643213"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304065"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure CLI a Pythonu
 
@@ -355,7 +355,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
 
    Vaše ID klienta Azure Resource Manager je pevně zakódováno. Ve výstupu `az login` příkazu, který jste provedli dříve, se nachází vaše Azure Resource Manager ID tenanta a ID Předplatného Azure Resource Manager. Azure Resource Manager tajný klíč klienta je Azure Resource Manager heslo, které jste nastavili.
 
-   Další informace najdete v tématu [Azure Resource Manager heslo](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password).
+   Další informace najdete v tématu [Azure Resource Manager heslo](/azure/databox-online/azure-stack-edge-gpu-set-azure-resource-manager-password).
 
 5. Změňte profil na verzi 2019-03-01 – Hybrid. Chcete-li změnit verzi profilu, spusťte následující příkaz:
 

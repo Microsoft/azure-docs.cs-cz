@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/22/2021
+ms.date: 04/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e8192c5c6734009f69e3f741531251dd85675b47
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 4130ed4bb690edb3c0c5d72d7d158262ed6ff39d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449445"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305595"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Kurz: vývoj a plánování zřizování pro koncový bod SCIM
 
@@ -62,7 +62,7 @@ Standard SCIM definuje schéma pro správu uživatelů a skupin.
 **Základní** schéma uživatele vyžaduje pouze tři atributy (všechny ostatní atributy jsou nepovinné):
 
 - `id`, definovaný identifikátor poskytovatele služby
-- `externalId`, definovaný identifikátor klienta
+- `userName`Jedinečný identifikátor pro uživatele (obvykle se mapuje na hlavní název uživatele Azure AD)
 - `meta`, metadata *jen pro čtení* udržovaná poskytovatelem služeb
 
 Kromě **základního** uživatelského schématu definuje SCIM Standard uživatelské rozšíření **organizace** s modelem pro rozšíření schématu uživatele, aby splňovalo potřeby vaší aplikace. 

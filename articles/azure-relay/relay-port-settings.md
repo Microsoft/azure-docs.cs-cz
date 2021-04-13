@@ -3,12 +3,12 @@ title: Nastavení portu Azure Relay | Microsoft Docs
 description: Tento článek obsahuje tabulku, která popisuje požadovanou konfiguraci pro hodnoty portů pro Azure Relay.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 97640debe81041ff7e2b082c6a9ac606d6088664
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81551055d967babaac6f12c3a23ce6b1e78afbd5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85314277"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314163"
 ---
 # <a name="azure-relay-port-settings"></a>Nastavení portu Azure Relay
 
@@ -42,4 +42,4 @@ Hybrid Connections používá objekty WebSockets na portu 443 s protokolem TLS j
 ## <a name="next-steps"></a>Další kroky
 Další informace o Azure Relay najdete na těchto odkazech:
 * [Co je Azure Relay?](relay-what-is-it.md)
-* [Přenos – nejčastější dotazy](relay-faq.md)
+* [Přenos – nejčastější dotazy](relay-faq.yml)

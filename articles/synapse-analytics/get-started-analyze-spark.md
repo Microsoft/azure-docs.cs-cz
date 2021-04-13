@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 5d08bc216157fce9ad81eaf3c0f540c7a4d8c3f2
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2b85fe21fee34a9bedab33f0d10756bbfe8dc88b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259825"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305204"
 ---
 # <a name="analyze-with-apache-spark"></a>Analýza pomocí Apache Spark
 
@@ -34,10 +34,10 @@ V tomto kurzu se seznámíte se základními kroky pro načtení a analýzu dat 
 
 Fond Spark bez serveru je způsob, jak určit, jak chce uživatel pracovat se Sparkem. Když začnete používat fond, v případě potřeby se vytvoří relace Spark. Fond řídí, kolik prostředků Sparku bude tato relace používat, a jak dlouho bude relace poslední, než se automaticky pozastaví. Platíte za prostředky Spark používané během této relace, nikoli pro samotný fond. Tímto způsobem fond Spark vám umožní pracovat se Sparkem, aniž by se museli starat o správu clusterů. To se podobá tomu, jak funguje fond SQL bez serveru.
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Analýza dat NYC taxislužby v BLOB Storage pomocí Sparku
+## <a name="analyze-nyc-taxi-data-with-a-spark-pool"></a>Analýza dat taxislužby NYC pomocí fondu Spark
 
 1. V synapse studiu přejdete do centra pro **vývoj** .
-2. Vytvoří nový Poznámkový blok s výchozí jazykovou sadou nastavenou na **PySpark (Python)**.
+2. Vytvoření nového poznámkového bloku
 3. Vytvořte novou buňku kódu a vložte do ní následující kód.
     ```py
     %%pyspark
@@ -49,22 +49,23 @@ Fond Spark bez serveru je způsob, jak určit, jak chce uživatel pracovat se Sp
 1. Pokud chcete pouze zobrazit schéma pro datový rámec, spusťte buňku s následujícím kódem:
 
     ```py
+    %%pyspark
     df.printSchema()
     ```
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>Načtení dat taxislužby NYC do databáze Spark nyctaxi
 
-Data jsou k dispozici prostřednictvím datového rámce s názvem **data**. Načtěte ho do databáze Spark s názvem **nyctaxi**.
+Data jsou k dispozici prostřednictvím datového rámce s názvem **DF**. Načtěte ho do databáze Spark s názvem **nyctaxi**.
 
 1. Do poznámkového bloku přidejte novou buňku kódu a pak zadejte následující kód:
 
     ```py
+    %%pyspark
     spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Analýza dat taxislužby NYC pomocí Sparku a poznámkových bloků
 
-1. Vraťte se do poznámkového bloku.
 1. Vytvořte novou buňku kódu a zadejte následující kód. 
 
    ```py

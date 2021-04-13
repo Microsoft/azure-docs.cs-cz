@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 49edab5ed20749cb705d160e5cdc46a16bdee951
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dadb23b9a8d00d484a9c42db9007d8c5b94b4c78
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258027"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306785"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurace vlastních domén s využitím proxy aplikací Azure AD
 
@@ -90,7 +90,7 @@ Publikování aplikace prostřednictvím proxy aplikací s vlastní doménou:
    
    ![Kliknutím Nahrajte certifikát.](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. Na stránce **certifikát SSL** vyhledejte a vyberte soubor certifikátu PFX. Zadejte heslo pro certifikát a vyberte **Odeslat certifikát**. Další informace o certifikátech najdete v části [certifikáty pro vlastní domény](#certificates-for-custom-domains) . Pokud certifikát není platný nebo došlo k potížím s heslem, zobrazí se chybová zpráva. [Nejčastější dotazy k proxy aplikacím](application-proxy-faq.md#application-configuration) obsahují některé kroky pro řešení potíží, které můžete vyzkoušet.
+7. Na stránce **certifikát SSL** vyhledejte a vyberte soubor certifikátu PFX. Zadejte heslo pro certifikát a vyberte **Odeslat certifikát**. Další informace o certifikátech najdete v části [certifikáty pro vlastní domény](#certificates-for-custom-domains) . Pokud certifikát není platný nebo došlo k potížím s heslem, zobrazí se chybová zpráva. [Nejčastější dotazy k proxy aplikacím](application-proxy-faq.yml#application-configuration) obsahují některé kroky pro řešení potíží, které můžete vyzkoušet.
    
    ![Nahrát certifikát](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    

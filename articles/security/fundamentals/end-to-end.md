@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/07/2021
 ms.author: terrylan
-ms.openlocfilehash: be270383b868abb7e2865920f4a3852e2f6210dc
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 3ea3c2bcb878dbd8a712e6076dda09853f55e297
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031366"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310338"
 ---
 # <a name="end-to-end-security-in-azure"></a>Komplexní zabezpečení v Azure
 Jedním z nejlepších důvodů použití Azure pro vaše aplikace a služby je využití nejrůznějších nástrojů a funkcí zabezpečení. Tyto nástroje a možnosti usnadňují vytváření zabezpečených řešení na zabezpečené platformě Azure. Microsoft Azure poskytuje důvěrnost, integritu a dostupnost zákaznických dat a zároveň umožňuje transparentní zodpovědnost.
@@ -63,8 +63,8 @@ Program [Azure Security test](../benchmarks/introduction.md) zahrnuje kolekci vy
 | [Azure DDoS Protection Standard](../../ddos-protection/ddos-protection-overview.md) | Poskytuje vylepšené funkce zmírnění DDoS proti útokům DDoS. Automaticky se vyladěna tak, aby chránila vaše konkrétní prostředky Azure ve virtuální síti. |
 | [Azure Front Door](../../frontdoor/front-door-overview.md) | Globální, škálovatelný vstupní bod, který využívá síť Microsoft Global Edge k vytváření rychlých, zabezpečených a široce škálovatelných webových aplikací. |
 | [Azure Firewall](../../firewall/overview.md) | Spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky Azure Virtual Network. Jedná se o plně stavovou bránu firewall jako službu s integrovanou vysokou dostupností a neomezenou škálovatelností v cloudu. |
-| [Azure Key Vault](../../key-vault/general/overview.md) | Spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky Azure Virtual Network. Jedná se o plně stavovou bránu firewall jako službu s integrovanou vysokou dostupností a neomezenou škálovatelností v cloudu. |
-| [Key Vault spravované HSDM (Preview)](../../key-vault/managed-hsm/overview.md) | Plně spravovaná cloudová služba vyhovující standardům pro jednoho tenanta, která umožňuje chránit kryptografické klíče pro vaše cloudové aplikace pomocí ověřené HSM úrovně 3 standardu FIPS 140-2. |
+| [Azure Key Vault](../../key-vault/general/overview.md) | Zabezpečené úložiště tajných kódů pro tokeny, hesla, certifikáty, klíče rozhraní API a další tajné kódy. Key Vault můžete použít také k vytvoření a řízení šifrovacích klíčů používaných k šifrování vašich dat. |
+| [Key Vault spravovaný HSM (Preview)](../../key-vault/managed-hsm/overview.md) | Plně spravovaná cloudová služba vyhovující standardům pro jednoho tenanta, která umožňuje chránit kryptografické klíče pro vaše cloudové aplikace pomocí ověřené HSM úrovně 3 standardu FIPS 140-2. |
 | [Azure Private Link](../../private-link/private-link-overview.md) | Umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a hostovaným/partnerským službám v Azure, které jsou ve vaší virtuální síti privátním koncovým bodem. |
 | [Azure Application Gateway](../../application-gateway/overview.md) | Pokročilý nástroj pro vyrovnávání zatížení webového provozu, který umožňuje spravovat provoz do webových aplikací. Application Gateway mohou provádět rozhodování o směrování na základě dalších atributů požadavku HTTP, například cesty k identifikátoru URI nebo hlaviček hostitele. |
 | [Azure Service Bus](../../service-bus-messaging/service-bus-messaging-overview.md) | Plně spravovaný zprostředkovatel podnikových zpráv s frontami zpráv a tématy pro publikování a odběr. Service Bus slouží k vzájemnému odvýšení aplikací a služeb. |

@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: bbe36e072d10b81c421331b2212d8b161afd2693
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fdc299ef1945e3ee0810f1c314fc07edfb4f4873
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87096937"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313296"
 ---
-# <a name="microsoftcommonarmapicontrol-ui-element"></a>Microsoft. Common. ArmApiControl – element uživatelského rozhraní
+# <a name="microsoftsolutionsarmapicontrol-ui-element"></a>Microsoft. Solutions. ArmApiControl – element uživatelského rozhraní
 
 ArmApiControl umožňuje získat výsledky z operace Azure Resource Manager API. Výsledky použijte k naplnění dynamického obsahu v jiných ovládacích prvcích.
 
@@ -46,7 +46,14 @@ Výstup ovládacího prvku se uživateli nezobrazí. Místo toho se výsledek op
 ## <a name="remarks"></a>Poznámky
 
 - `request.method`Vlastnost určuje metodu HTTP. `GET` `POST` Jsou povoleny pouze nebo.
-- `request.path`Vlastnost určuje relativní cestu adresy URL. Může se jednat o statickou cestu nebo může být dynamicky sestavena odkazem na výstupní hodnoty ostatních ovládacích prvků.
+- `request.path`Vlastnost určuje adresu URL, která musí být relativní cestou ke koncovému bodu ARM. Může se jednat o statickou cestu nebo může být dynamicky sestavena odkazem na výstupní hodnoty ostatních ovládacích prvků.
+
+  Například volání ARM do `Microsoft.Network/expressRouteCircuits` poskytovatele prostředků:
+
+  ```json
+  "path": "<subid>/resourceGroup/<resourceGroupName>/providers/Microsoft.Network/expressRouteCircuits/<routecircuitName>/?api-version=2020-05-01"
+  ```
+
 - `request.body`Vlastnost je nepovinná. Použijte ho k zadání těla JSON, které se odešle s požadavkem. Tělo může být statickým obsahem nebo dynamicky sestavené odkazem na výstupní hodnoty z jiných ovládacích prvků.
 
 ## <a name="example"></a>Příklad
@@ -81,5 +88,5 @@ Příklad použití ArmApiControl ke kontrole dostupnosti názvu prostředku nal
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).
+- Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+- Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).

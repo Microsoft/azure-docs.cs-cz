@@ -5,15 +5,15 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 04/09/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: d5a1d810c357aa83b8069023b00d76352da124df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9aca1e76c825de52744da817f6a0bf236eef617c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94844791"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313602"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps-preview"></a>Přístup k informacím o uživateli ve službě Azure static Web Apps Preview
 
@@ -25,12 +25,12 @@ Mnoho uživatelských rozhraní velmi spoléhá na data ověřování uživatel�
 
 Objekt objektu zabezpečení klienta zpřístupňuje vaší aplikaci uživatelsky identifikovatelné informace. V objektu zabezpečení klienta jsou doporučené tyto vlastnosti:
 
-| Vlastnost  | Popis |
-|-----------|---------|
-| `identityProvider` | Název [zprostředkovatele identity](authentication-authorization.md) |
-| `userId` | Jedinečný identifikátor pro uživatele, který je specifický pro službu Azure static Web Apps. <ul><li>Hodnota je jedinečná na základě jednotlivých aplikací. Stejný uživatel například vrací jinou `userId` hodnotu v jiném statickém Web Apps prostředku.<li>Hodnota přetrvává po dobu života uživatele. Pokud odstraníte a přidáte stejného uživatele zpátky do aplikace, `userId` vygeneruje se nový.</ul>|
-| `userDetails` | Uživatelské jméno nebo e-mailová adresa uživatele Někteří poskytovatelé vrátí [e-mailovou adresu uživatele](authentication-authorization.md), zatímco ostatní odešlou [popisovač uživatele](authentication-authorization.md). |
-| `userRoles`     | Pole [přiřazených rolí uživatele](authentication-authorization.md) |
+| Vlastnost           | Popis                                                                                                                                                                                                                                                                                                                                                        |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `identityProvider` | Název [zprostředkovatele identity](authentication-authorization.md)                                                                                                                                                                                                                                                                                              |
+| `userId`           | Jedinečný identifikátor pro uživatele, který je specifický pro službu Azure static Web Apps. <ul><li>Hodnota je jedinečná na základě jednotlivých aplikací. Stejný uživatel například vrací jinou `userId` hodnotu v jiném statickém Web Apps prostředku.<li>Hodnota přetrvává po dobu života uživatele. Pokud odstraníte a přidáte stejného uživatele zpátky do aplikace, `userId` vygeneruje se nový.</ul> |
+| `userDetails`      | Uživatelské jméno nebo e-mailová adresa uživatele Někteří poskytovatelé vrátí [e-mailovou adresu uživatele](authentication-authorization.md), zatímco ostatní odešlou [popisovač uživatele](authentication-authorization.md).                                                                                                                                                                    |
+| `userRoles`        | Pole [přiřazených rolí uživatele](authentication-authorization.md)                                                                                                                                                                                                                                                                                          |
 
 Následující příklad je ukázkový objekt objektu zabezpečení klienta:
 
@@ -39,7 +39,7 @@ Následující příklad je ukázkový objekt objektu zabezpečení klienta:
   "identityProvider": "facebook",
   "userId": "d75b260a64504067bfc5b2905e3b8182",
   "userDetails": "user@example.com",
-  "userRoles": [ "anonymous", "authenticated" ]
+  "userRoles": ["anonymous", "authenticated"]
 }
 ```
 
@@ -53,7 +53,7 @@ Pomocí rozhraní API pro [načtení](https://developer.mozilla.org/docs/Web/API
 
 ```javascript
 async function getUserInfo() {
-  const response = await fetch("/.auth/me");
+  const response = await fetch('/.auth/me');
   const payload = await response.json();
   const { clientPrincipal } = payload;
   return clientPrincipal;
@@ -64,7 +64,7 @@ console.log(getUserInfo());
 
 ## <a name="api-functions"></a>Funkce rozhraní API
 
-Funkce rozhraní API, které jsou k dispozici ve statických Web Apps přes Azure Functions back-end, mají přístup ke stejným uživatelským informacím jako klientská aplikace. I když rozhraní API obdrží uživatelsky identifikovatelné informace, neprovádí vlastní kontroly, pokud je uživatel ověřený nebo pokud se shodují s požadovanou rolí. V souboru jsou definovaná pravidla řízení přístupu [`routes.json`](routes.md) .
+Funkce rozhraní API, které jsou k dispozici ve statických Web Apps přes Azure Functions back-end, mají přístup ke stejným uživatelským informacím jako klientská aplikace. I když rozhraní API obdrží uživatelsky identifikovatelné informace, neprovádí vlastní kontroly, pokud je uživatel ověřený nebo pokud se shodují s požadovanou rolí. V souboru jsou definovaná pravidla řízení přístupu [`staticwebapp.config.json`](routes.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -74,14 +74,14 @@ Následující příklad funkce ukazuje, jak číst a vracet informace o uživat
 
 ```javascript
 module.exports = async function (context, req) {
-  const header = req.headers["x-ms-client-principal"];
-  const encoded = Buffer.from(header, "base64");
-  const decoded = encoded.toString("ascii");
+  const header = req.headers['x-ms-client-principal'];
+  const encoded = Buffer.from(header, 'base64');
+  const decoded = encoded.toString('ascii');
 
   context.res = {
     body: {
-      clientPrincipal: JSON.parse(decoded)
-    }
+      clientPrincipal: JSON.parse(decoded),
+    },
   };
 };
 ```
@@ -90,7 +90,7 @@ Za předpokladu, že je výše uvedená funkce pojmenována `user` , můžete po
 
 ```javascript
 async function getUser() {
-  const response = await fetch("/api/user");
+  const response = await fetch('/api/user');
   const payload = await response.json();
   const { clientPrincipal } = payload;
   return clientPrincipal;

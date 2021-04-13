@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 5820592bf06cc9427e12aa0cd79c54dc1f0156e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfaa04077a5148f19f06aa5e1257b986377ea8c0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101657991"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307125"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "101657991"
 
 ## <a name="wire-protocol-compatibility"></a>Kompatibilita přenosových protokolů
 
-Azure Cosmos DB implementuje přenosový protokol pro MongoDB. Tato implementace umožňuje transparentní kompatibilitu s nativními sadami SDK, ovladači a nástroji klienta MongoDB. Azure Cosmos DB hostuje databázový stroj MongoDB. Podrobnosti o podporovaných funkcích podle MongoDB najdete tady: 
+Azure Cosmos DB implementuje přenosový protokol pro MongoDB. Tato implementace umožňuje transparentní kompatibilitu s nativními sadami SDK, ovladači a nástroji klienta MongoDB. Azure Cosmos DB nehostuje databázový stroj MongoDB. Podrobnosti o podporovaných funkcích podle MongoDB najdete tady: 
 - [Rozhraní API pro Mongo DB verze 4,0 Azure Cosmos DB](mongodb-feature-support-40.md)
 - [Rozhraní API pro Mongo DB verze 3,6 Azure Cosmos DB](mongodb-feature-support-36.md)
 

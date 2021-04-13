@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 769ca4cf0ecbdba5fd80d977eb69c8a4f58df55f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 605f495fbc5913663499f5411abcaa531cea97ee
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98071183"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312208"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>Povolení funkcí synapse pracovního prostoru pro vyhrazený fond SQL (dřív SQL DW)
 
@@ -24,6 +24,7 @@ Všichni uživatelé SQL Data Warehouse teď můžou získat přístup k existuj
 ## <a name="prerequisites"></a>Požadavky
 Než povolíte funkce pracovního prostoru synapse v datovém skladu, musíte se ujistit, že máte následující.
 - Práva k vytváření a správě prostředků SQL hostovaných na logickém serveru SQL.
+- Oprávnění k zápisu na SQL Server hostitele. 
 - Práva k vytváření prostředků Azure synapse.
 - Azure Active Directory správce identifikovaný na logickém serveru
 

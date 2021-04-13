@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: ad6696fc4fe2af7047c25a3a9c260d3b12588ee2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 69dec2ce00b263f3536e30ba0a5376e6d922b79c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203296"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308349"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Vysoká dostupnost pro Azure cache pro Redis
 
@@ -21,9 +21,9 @@ Azure cache pro Redis implementuje vysokou dostupnost pomocí několika virtuál
 
 | Možnost | Popis | Dostupnost | Standard | Premium | Enterprise |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
-| [Standardní replikace](#standard-replication)| Konfigurace replikovaných dvou uzlů v jednom datovém centru s automatickým převzetím služeb při selhání | 99,9 % |✔|✔|-|
-| [Zónová redundance](#zone-redundancy) | Konfigurace replikovaného více uzlů v rámci AZs s automatickým převzetím služeb při selhání | 99,95% (úroveň Premium), 99,99% (úrovně Enterprise) |-|Preview|Preview|
-| [Geografická replikace](#geo-replication) | Propojené instance mezipaměti ve dvou oblastech s převzetím služeb při selhání řízených uživatelem | 99,999% (úroveň Enterprise) |-|✔|Preview|
+| [Standardní replikace](#standard-replication)| Konfigurace replikovaných dvou uzlů v jednom datovém centru s automatickým převzetím služeb při selhání | 99,9% (viz [Podrobnosti](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |✔|✔|-|
+| [Zónová redundance](#zone-redundancy) | Konfigurace replikovaného více uzlů v rámci AZs s automatickým převzetím služeb při selhání | Až 99,99% (viz [Podrobnosti](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |-|Preview|Preview|
+| [Geografická replikace](#geo-replication) | Propojené instance mezipaměti ve dvou oblastech s převzetím služeb při selhání řízených uživatelem | Až 99,999% (viz [Podrobnosti](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |-|✔|Preview|
 
 ## <a name="standard-replication"></a>Standardní replikace
 

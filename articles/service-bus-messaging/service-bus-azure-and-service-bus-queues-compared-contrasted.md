@@ -2,13 +2,13 @@
 title: Porovnání front služeb Azure Storage a Service Bus
 description: Analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Azure.
 ms.topic: article
-ms.date: 11/04/2020
-ms.openlocfilehash: 31992aa2012009c51cbeae78010ae8ced65fc872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 1c3b0fda12d5e301b17a342c5d5ed11ab76c76da
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928303"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304354"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty úložiště a fronty Service Bus – porovnání a kontrast
 Tento článek analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Microsoft Azure: fronty úložiště a fronty Service Bus. Pomocí těchto informací můžete učinit podrobnější rozhodnutí o tom, které řešení nejlépe vyhovuje vašim potřebám.
@@ -39,7 +39,7 @@ Jako architekt nebo vývojář řešení **byste měli zvážit použití Servic
 * Vaše řešení musí přijímat zprávy bez nutnosti cyklického dotazování fronty. Pomocí Service Bus můžete dosáhnout pomocí dlouhotrvajících protokolů založených na protokolu TCP, které Service Bus podporuje.
 * Vaše řešení vyžaduje, aby fronta poskytovala zaručené doručování FIFO (First-in-first-out).
 * Vaše řešení musí podporovat automatickou detekci duplicit.
-* Chcete, aby aplikace zpracovala zprávy jako paralelní dlouhodobé proudy (zprávy jsou přidruženy ke streamu pomocí vlastnosti [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) ve zprávě). V tomto modelu každý uzel v náročné aplikaci soutěží na datové proudy, nikoli na zprávy. Když je datový proud přidělen k náročnému uzlu, uzel může prošetřit stav stavu datového proudu aplikace pomocí transakcí.
+* Chcete, aby aplikace zpracovala zprávy jako paralelní dlouhodobé proudy (zprávy jsou přidruženy ke streamu pomocí vlastnosti **ID relace** ve zprávě). V tomto modelu každý uzel v náročné aplikaci soutěží na datové proudy, nikoli na zprávy. Když je datový proud přidělen k náročnému uzlu, uzel může prošetřit stav stavu datového proudu aplikace pomocí transakcí.
 * Vaše řešení vyžaduje transakční chování a nedělitelnost při odesílání nebo přijímání více zpráv z fronty.
 * Vaše aplikace zpracovává zprávy, které mohou překročit 64 KB, ale nezpůsobí přístup k limitu 256-KB.
 * Vyřešíte požadavek na poskytování modelu přístupu na základě role do front a různá práva a oprávnění pro odesílatele a příjemce. Další informace najdete v následujících článcích:
@@ -62,14 +62,14 @@ V této části jsou porovnávány některé základní možnosti služby Říze
 | Záruka řazení |**Ne** <br/><br>Další informace najdete v první poznámce v části [Další informace](#additional-information) .</br> | **Yes – first-in-first-out (FIFO)**<br/><br>(pomocí [relací zpráv](message-sessions.md)) |
 | Záruka na doručení |**Nejméně jednou** |Nejméně **jednou** (pomocí režimu příjmu PeekLock. Je to výchozí nastavení. <br/><br/>**Ve** více než jednou (pomocí režimu Receive ReceiveAndDelete) <br/> <br/> Další informace o různých [režimech příjmu](service-bus-queues-topics-subscriptions.md#receive-modes)  |
 | Podpora atomických operací |**Ne** |**Ano**<br/><br/> |
-| Chování při příjmu |**Bez blokování**<br/><br/>(hned se dokončí, pokud se nenalezne žádná nová zpráva.) |**Blokování s časovým limitem nebo bez něj**<br/><br/>(nabízí dlouhodobé cyklické dotazování nebo ["Comet techniku"](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Bez blokování**<br/><br/>(jenom prostřednictvím rozhraní API spravovaného rozhraním .NET) |
-| Rozhraní API pro vložení stylu |**Ne** |**Ano**<br/><br/>[QueueClient.-Message](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) a [MessageSessionHandler.-Message](/dotnet/api/microsoft.servicebus.messaging.messagesessionhandler.onmessage#Microsoft_ServiceBus_Messaging_MessageSessionHandler_OnMessage_Microsoft_ServiceBus_Messaging_MessageSession_Microsoft_ServiceBus_Messaging_BrokeredMessage__) Sessions rozhraní .NET API. |
+| Chování při příjmu |**Bez blokování**<br/><br/>(hned se dokončí, pokud se nenalezne žádná nová zpráva.) |**Blokování s časovým limitem nebo bez něj**<br/><br/>(nabízí dlouhodobé cyklické dotazování nebo ["Comet techniku"](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Bez blokování**<br/><br/>(jenom pomocí rozhraní API spravovaného rozhraním .NET) |
+| Rozhraní API pro vložení stylu |**Ne** |**Ano**<br/><br/>Naše sady SDK pro .NET, Java, JavaScript a na cestách poskytují API ve stylu nabízených oznámení. |
 | Režim příjmu |**Náhled & zapůjčení** |**Náhled & zámek**<br/><br/>**Přijmout & odstranění** |
 | Režim výhradního přístupu |**Na základě zapůjčení** |**Na základě zámku** |
-| Doba trvání zapůjčení/zámku |**30 sekund (výchozí)**<br/><br/>**7 dní (maximum)** (můžete obnovit nebo vydat zapůjčení zprávy pomocí rozhraní [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API.) |**60 sekund (výchozí)**<br/><br/>Zámek zprávy můžete obnovit pomocí rozhraní [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API. |
-| Přesnost zapůjčení nebo zámku |**Úroveň zprávy**<br/><br/>Každá zpráva může mít jinou hodnotu časového limitu, kterou pak můžete podle potřeby aktualizovat při zpracování zprávy pomocí rozhraní [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API. |**Úroveň fronty**<br/><br/>(u všech zpráv je použita přesnost zámku, ale můžete obnovit zámek pomocí rozhraní [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API.) |
-| Dávková příjem |**Ano**<br/><br/>(explicitní určení počtu zpráv při načítání zpráv, až do maximálního počtu zpráv 32) |**Ano**<br/><br/>(implicitně povolení předběžného načtení vlastnosti nebo explicitní prostřednictvím použití transakcí) |
-| Dávkové odeslání |**Ne** |**Ano**<br/><br/>(prostřednictvím použití transakcí nebo dávkování na straně klienta) |
+| Doba trvání zapůjčení/zámku |**30 sekund (výchozí)**<br/><br/>**7 dní (maximum)** (můžete obnovit nebo vydat zapůjčení zprávy pomocí rozhraní [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API.) |**30 sekund (výchozí)**<br/><br/>Zámek zprávy můžete pro jednu dobu trvání zámku prodloužit pokaždé ručně nebo použít funkci automatického obnovení zámku, kde klient spravuje obnovení zámků za vás. |
+| Přesnost zapůjčení nebo zámku |**Úroveň zprávy**<br/><br/>Každá zpráva může mít jinou hodnotu časového limitu, kterou pak můžete podle potřeby aktualizovat při zpracování zprávy pomocí rozhraní [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API. |**Úroveň fronty**<br/><br/>(u všech zpráv je použita přesnost zámku, ale zámek lze obnovit, jak je popsáno v předchozím řádku). |
+| Dávková příjem |**Ano**<br/><br/>(explicitní určení počtu zpráv při načítání zpráv, až do maximálního počtu zpráv 32) |**Ano**<br/><br/>(implicitní povolení předběžného načtení vlastnosti nebo explicitní použití transakcí) |
+| Dávkové odeslání |**Ne** |**Ano**<br/><br/>(pomocí transakcí nebo dávkování na straně klienta) |
 
 ### <a name="additional-information"></a>Další informace
 * Zprávy ve frontách úložiště jsou obvykle nejdříve první, ale někdy můžou být mimo pořadí. Například když vyprší doba trvání viditelnosti zprávy, protože při zpracování zprávy došlo k chybě v klientské aplikaci. Po vypršení časového limitu viditelnosti se zpráva znovu zobrazí ve frontě, aby ji jiný pracovní proces vyřadí do fronty. V tomto okamžiku je možné nově zobrazovanou zprávu umístit do fronty pro opětovné vyřazení z fronty.
@@ -78,12 +78,12 @@ V této části jsou porovnávány některé základní možnosti služby Říze
     - Oddělení součástí aplikace za účelem zvýšení škálovatelnosti a tolerance selhání
     - Vyrovnávání zatížení
     - Vytváření pracovních postupů procesu.
-* Nekonzistence s ohledem na zpracování zpráv v kontextu relací Service Bus lze zabránit pomocí stavu relace k uložení stavu aplikace relativně ke způsobu zpracování sekvence zpráv relace a pomocí transakcí týkajících se nedostatku přijatých zpráv a aktualizace stavu relace. Tento druh funkce konzistence je někdy označený *přesně po zpracování* v produktech jiných dodavatelů. Jakékoli chyby transakcí způsobí, že se zprávy znovu dostanou a že jsou důvody, proč se termín neshoduje.
+* Nekonzistence týkající se zpracování zpráv v kontextu Service Bus relací se mohou vyhnout pomocí stavu relace k uložení stavu aplikace relativně ke způsobu zpracování sekvence zpráv relace a pomocí transakcí týkajících se nedostatku přijatých zpráv a aktualizace stavu relace. Tento druh funkce konzistence je někdy označený *přesně po zpracování* v produktech jiných dodavatelů. Jakékoli chyby transakcí způsobí, že se zprávy znovu dostanou a že jsou důvody, proč se termín neshoduje.
 * Fronty úložiště poskytují jednotný a konzistentní programovací model napříč frontami, tabulkami a objekty blob – jak pro vývojáře, tak pro provozní týmy.
 * Fronty Service Bus poskytují podporu pro místní transakce v kontextu jedné fronty.
 * Režim **přijímání a odstraňování** podporovaný nástrojem Service Bus poskytuje možnost snížit počet operací zasílání zpráv (a související náklady) v systému Exchange pro zajištění nižšího objemu doručování.
 * Fronty úložiště poskytují zapůjčení možností rozšiřování zapůjčení pro zprávy. Tato funkce umožňuje pracovním procesům udržovat krátká zapůjčení zpráv. Pokud tedy dojde k selhání pracovního procesu, může být zpráva znovu zpracována jiným pracovním procesem. Pracovník může také prodloužit zapůjčení zprávy v případě, že je potřebuje zpracovat delší dobu, než je aktuální zapůjčení.
-* Fronty úložiště nabízejí časový limit viditelnosti, který můžete nastavit na enqueuing nebo v zařazování zpráv do fronty. Můžete také aktualizovat zprávu s různými hodnotami zapůjčení za běhu a aktualizovat různé hodnoty napříč zprávami ve stejné frontě. V metadatech fronty jsou definovány Service Bus vypršení časových limitů zámků. Můžete však obnovit zámek voláním metody [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) .
+* Fronty úložiště nabízejí časový limit viditelnosti, který můžete nastavit na enqueuing nebo v zařazování zpráv do fronty. Můžete také aktualizovat zprávu s různými hodnotami zapůjčení za běhu a aktualizovat různé hodnoty napříč zprávami ve stejné frontě. V metadatech fronty jsou definovány Service Bus vypršení časových limitů zámků. Zámek zprávy pro předem definovanou dobu trvání zámku ale můžete obnovit ručně nebo použít funkci automatického obnovení zámků, kde klient spravuje obnovení zámků za vás.
 * Maximální časový limit pro blokování operace přijímání v Service Bus frontách je 24 dní. Vypršení časového limitu založeného na REST ale mají maximální hodnotu 55 sekund.
 * Dávkování na straně klienta, které poskytuje Service Bus, umožňuje klientovi fronty dávkovat více zpráv do jediné operace odeslání. Dávkování je k dispozici pouze pro operace asynchronního odeslání.
 * V případě funkcí, jako je 200 až TB front úložiště (více při virtualizaci účtů) a neomezené fronty, je ideální platformou pro poskytovatele SaaS.
@@ -100,8 +100,8 @@ Tato část porovnává rozšířené možnosti poskytované frontami úložišt
 | Podpora nepoškozených zpráv |**Ano** |**Ano** |
 | Místní aktualizace |**Ano** |**Ano** |
 | Protokol transakcí na straně serveru |**Ano** |**Ne** |
-| Metriky úložiště |**Ano**<br/><br/>**Minutové metriky** poskytují metriky v reálném čase pro dostupnost, TPS, počty volání rozhraní API, počty chyb a další. Jsou všechny v reálném čase, agregované za minutu a nahlášeny během několika minut od toho, co se právě stalo v produkčním prostředí. Další informace najdete v tématu [o metrikách analýza úložiště](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Ano**<br/><br/>(hromadné dotazy voláním [Getqueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues)) |
-| Řízení stavu |**Ne** |**Ano**<br/><br/>[Microsoft. ServiceBus. Messaging. EntityStatus. Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
+| Metriky úložiště |**Ano**<br/><br/>**Minutové metriky** poskytují metriky v reálném čase pro dostupnost, TPS, počty volání rozhraní API, počty chyb a další. Jsou všechny v reálném čase, agregované za minutu a nahlášeny během několika minut od toho, co se právě stalo v produkčním prostředí. Další informace najdete v tématu [o metrikách analýza úložiště](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Ano**<br/><br/>Informace o metrikách podporovaných nástrojem Azure Service Bus najdete v tématu [metriky zpráv](service-bus-metrics-azure-monitor.md#message-metrics). |
+| Správa stavu |**Ne** |**Ano** (aktivní, zakázané, SendDisabled, ReceiveDisabled. Podrobnosti o těchto stavech najdete v tématu [Queue status](entity-suspend.md#queue-status)). |
 | Přeposílání zpráv |**Ne** |**Ano** |
 | Vyprázdnit funkci Queue |**Ano** |**Ne** |
 | Skupiny zpráv |**Ne** |**Ano**<br/><br/>(pomocí relací zasílání zpráv) |
@@ -113,14 +113,14 @@ Tato část porovnává rozšířené možnosti poskytované frontami úložišt
 ### <a name="additional-information"></a>Další informace
 * Obě technologie pro řízení front umožňují, aby byla zpráva naplánována na doručení později.
 * Při autopřesměrovávání do fronty je možné, že tisíce front mají na jednu frontu automatickou přeposílání zpráv do jediné fronty, ze které přijímající aplikace tuto zprávu spotřebovává. Tento mechanismus můžete použít k zajištění zabezpečení, řízení toku a izolace úložiště mezi jednotlivými vydavateli zpráv.
-* Fronty úložiště poskytují podporu pro aktualizaci obsahu zpráv. Tuto funkci můžete použít pro trvalé informace o stavu a přírůstkové aktualizace průběhu do zprávy tak, aby se mohly zpracovat z posledního známého kontrolního bodu, a ne od začátku. U Service Bus front můžete pomocí relací zpráv povolit stejný scénář. Relace umožňují uložit a načíst stav zpracování aplikace (pomocí [setstate](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) a [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState)).
+* Fronty úložiště poskytují podporu pro aktualizaci obsahu zpráv. Tuto funkci můžete použít pro trvalé informace o stavu a přírůstkové aktualizace průběhu do zprávy tak, aby se mohly zpracovat z posledního známého kontrolního bodu, a ne od začátku. U Service Busch front můžete pomocí relací zpráv povolit stejný scénář. Další informace najdete v tématu [stav relace zpráv](message-sessions.md#message-session-state).
 * Fronty Service Bus podporují [nedoručené dopisy](service-bus-dead-letter-queues.md). Může být užitečný pro izolaci zpráv, které splňují následující kritéria:
     - Zprávy nelze úspěšně zpracovat přijímající aplikací. 
     - Zprávy se nemohou dostat do svého cíle z důvodu vypršení platnosti vlastnosti TTL (Time to Live). Hodnota TTL určuje, jak dlouho zpráva zůstane ve frontě. Při Service Bus bude zpráva přesunuta do speciální fronty nazvané $DeadLetterQueue po vypršení časového limitu TTL.
 * Chcete-li najít "poškozené" zprávy ve frontách úložiště při vyřazení zprávy, aplikace ověří vlastnost [DequeueCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage.dequeuecount) zprávy. Pokud je **DequeueCount** větší než daná prahová hodnota, aplikace přesune zprávu do fronty nedoručených zpráv definované aplikací.
 * Fronty úložiště umožňují získat podrobný protokol všech transakcí provedených proti frontě a agregované metriky. Obě tyto možnosti jsou užitečné pro ladění a porozumění způsobu, jakým vaše aplikace používá fronty úložiště. Jsou také užitečné pro vyladění výkonu aplikace a snížení nákladů na používání front.
-* Relace zpráv podporované nástrojem Service Bus umožňují, aby byly zprávy patřící do logické skupiny přidružené k přijímači. Vytvoří spřažení podobné relaci mezi zprávami a jejich příslušnými přijímači. Tuto rozšířenou funkci můžete v Service Bus povolit nastavením vlastnosti [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) u zprávy. Přijímačé pak mohou naslouchat konkrétnímu ID relace a přijímat zprávy, které sdílejí zadaný identifikátor relace.
-* Funkce Detekce duplicitních dat ve frontách Service Bus automaticky odstraní duplicitní zprávy odeslané do fronty nebo tématu, a to na základě hodnoty vlastnosti [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) .
+* [Relace zpráv](message-sessions.md) podporované nástrojem Service Bus umožňují, aby byly zprávy patřící do logické skupiny přidružené k přijímači. Vytvoří spřažení podobné relaci mezi zprávami a jejich příslušnými přijímači. Tuto rozšířenou funkci můžete v Service Bus povolit nastavením vlastnosti ID relace ve zprávě. Přijímačé pak mohou naslouchat konkrétnímu ID relace a přijímat zprávy, které sdílejí zadaný identifikátor relace.
+* Funkce Detekce duplicitních dat ve frontách Service Bus automaticky odstraní duplicitní zprávy odeslané do fronty nebo tématu, a to na základě hodnoty vlastnosti ID zprávy.
 
 ## <a name="capacity-and-quotas"></a>Kapacita a kvóty
 V této části se porovnávají fronty úložiště a Service Bus fronty z perspektivy [kapacity a kvót](service-bus-quotas.md) , které mohou platit.
@@ -172,7 +172,7 @@ Tato část popisuje funkce pro ověřování a autorizaci podporované frontami
 | --- | --- | --- |
 | Authentication |**Symetrický klíč** |**Symetrický klíč** |
 | Model zabezpečení |Delegovaný přístup prostřednictvím tokenů SAS. |SAS |
-| Federace zprostředkovatele identity |**Ne** |**Ano** |
+| Federace zprostředkovatele identity |**Ano** |**Ano** |
 
 ### <a name="additional-information"></a>Další informace
 * Každý požadavek na jednu z technologií služby Řízení front zpráv musí být ověřen. Veřejné fronty s anonymním přístupem se nepodporují. Pomocí [SAS](service-bus-sas.md)můžete vyřešit tento scénář publikováním SAS pouze pro zápis, SAS jen pro čtení nebo i pomocí SAS s úplným přístupem.
@@ -187,7 +187,7 @@ Můžete chtít zvolit fronty úložiště z následujících důvodů:
 - Pokud požadujete základní komunikaci a zasílání zpráv mezi službami 
 - Potřebujete fronty, jejichž velikost může být větší než 80 GB.
 
-Fronty Service Bus poskytují řadu pokročilých funkcí, jako jsou následující. To může být Upřednostňovaná volba, pokud vytváříte hybridní aplikaci nebo pokud vaše aplikace jinak vyžaduje tyto funkce.
+Fronty Service Bus poskytují mnoho pokročilých funkcí, jako jsou následující. To může být Upřednostňovaná volba, pokud vytváříte hybridní aplikaci nebo pokud vaše aplikace jinak vyžaduje tyto funkce.
 
 - [Relace](message-sessions.md)
 - [Transakce](service-bus-transactions.md)
