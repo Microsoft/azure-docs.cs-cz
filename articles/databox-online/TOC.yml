@@ -260,6 +260,8 @@
               href: azure-stack-edge-gpu-manage-virtual-machine-tags-powershell.md
             - name: Vytvořit virtuální přepínač
               href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
+            - name: Zálohování disků virtuálních počítačů
+              href: azure-stack-edge-gpu-back-up-virtual-machine-disks.md
         - name: Správa certifikátů
           items:
             - name: Požadavky

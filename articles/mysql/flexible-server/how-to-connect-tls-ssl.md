@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 399cf8087d39f78184cfdae4b9f0e34efecaea66
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 6dbb1b46aef40986fc2d601aee152aed02591ac0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491581"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312599"
 ---
 # <a name="connect-to-azure-database-for-mysql---flexible-server-with-encrypted-connections"></a>Připojení k Azure Database for MySQL-flexibilnímu serveru pomocí šifrovaných připojení
 
@@ -26,7 +26,7 @@ V této části jsou k dispozici různé konfigurace nastavení SSL a TLS, kter�
 
 | Scenario   | Nastavení parametrů serveru      | Description                                    |
 |------------|--------------------------------|------------------------------------------------|
-|Zakázat protokol SSL (šifrovaná připojení) | require_secure_transport = vypnuto |Pokud vaše starší verze aplikace nepodporuje šifrovaná připojení k serveru MySQL, můžete zakázat vynucení šifrovaných připojení k flexibilnímu serveru nastavením require_secure_transport = OFF.|
+|Zakázat vynucení SSL | require_secure_transport = vypnuto |Pokud vaše starší verze aplikace nepodporuje šifrovaná připojení k serveru MySQL, můžete zakázat vynucení šifrovaných připojení k flexibilnímu serveru nastavením require_secure_transport = OFF.|
 |Vyvynuťte SSL pomocí TLS verze < 1,2 | require_secure_transport = ON a tls_version = TLSV1 nebo TLSV 1.1| Pokud vaše starší aplikace podporuje šifrovaná připojení, ale vyžaduje protokol TLS verze < 1,2, můžete povolit šifrovaná připojení, ale nakonfigurovat flexibilní server tak, aby povoloval připojení s verzí TLS (v 1.0 nebo v 1.1), která podporuje vaše aplikace.|
 |Vynutil protokol SSL pomocí TLS verze = 1.2 (výchozí konfigurace)|require_secure_transport = ON a tls_version = TLSV 1.2| Toto je doporučená a výchozí konfigurace flexibilního serveru.|
 |Vynutil protokol SSL pomocí TLS verze = 1.3 (podporováno s MySQL v 8.0 a novějším)| require_secure_transport = ON a tls_version = TLSV 1.3| To je užitečné a doporučuje se pro vývoj nových aplikací.|
@@ -44,7 +44,7 @@ V tomto článku se dozvíte, jak:
 * Ověření stavu šifrování pro připojení
 * Připojení k flexibilnímu serveru pomocí šifrovaných připojení pomocí různých aplikačních architektur
 
-## <a name="disable-ssl-on-your-flexible-server"></a>Zakázání SSL na flexibilním serveru
+## <a name="disable-ssl-enforcement-on-your-flexible-server"></a>Zakázání vynucení SSL na flexibilním serveru
 Pokud klientská aplikace nepodporuje šifrovaná připojení, budete muset Zakázat vynucení šifrovaných připojení na flexibilním serveru. Pokud chcete zakázat vynucení šifrovaných připojení, musíte nastavit require_secure_transport parametr serveru na vypnuto, jak je znázorněno na snímku obrazovky a uložit konfiguraci parametru serveru, aby se projevila. require_secure_transport je **parametr dynamického serveru** , který se projeví okamžitě a nepožaduje, aby se restart serveru projevil.
 
 > :::image type="content" source="./media/how-to-connect-tls-ssl/disable-ssl.png" alt-text="Snímek obrazovky ukazující, jak zakázat protokol SSL pomocí Azure Database for MySQL flexibilního serveru.":::

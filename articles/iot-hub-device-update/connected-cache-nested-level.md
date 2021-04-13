@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 7facb74cd407c576b2a7b119f19427dcd185f04e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e9749dfd7b28551a4fc2e7c6ba70ba9cce4e5a69
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568813"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307295"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>Ukázka scénáře nasazení ve verzi Preview služby Microsoft Connected cache: Azure IoT Edge brána se dvěma úrovněmi a odchozím neověřeným proxy serverem
 
@@ -70,7 +70,7 @@ Diagram níže popisuje situaci, kdy jedna Azure IoT Edge brána jako přímý p
 ## <a name="child-gateway-configuration"></a>Konfigurace podřízené brány
 
 >[!Note]
->Pokud jste replikované kontejnery používali v konfiguraci ve vlastním privátním registru, bude nutné provést úpravy nastavení config. toml a modulu runtime v nasazení modulu. Další informace najdete v tématu [kurz – vytvoření hierarchie IoT Edge zařízení – Azure IoT Edge](../iot-edge/tutorial-nested-iot-edge.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-the-lower-layer-device) další podrobnosti.
+>Pokud jste replikované kontejnery používali v konfiguraci ve vlastním privátním registru, bude nutné provést úpravy nastavení config. toml a modulu runtime v nasazení modulu. Další informace najdete v tématu [připojení k zařízením pro příjem IoT Edge – Azure IoT Edge](../iot-edge/how-to-connect-downstream-iot-edge-device.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-lower-layer-devices) další podrobnosti.
 
 1. Upravte cestu k bitové kopii pro agenta Edge, jak je znázorněno v následujícím příkladu:
 

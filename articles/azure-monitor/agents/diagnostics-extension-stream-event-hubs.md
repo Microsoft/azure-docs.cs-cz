@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 19c39632a1ed040636372d6bad53bf6859960b94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6aa960eb7aed7a579c3fc95748b6e32601201a61
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732033"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305119"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Odeslání dat z rozšíření Windows Azure Diagnostics do Azure Event Hubs
 Rozšíření Azure Diagnostics je agent v Azure Monitor, který shromažďuje data monitorování z hostovaného operačního systému a úloh virtuálních počítačů Azure a dalších výpočetních prostředků. Tento článek popisuje, jak odeslat data z diagnostického rozšíření Windows Azure (WAD) do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) , abyste mohli přesměrovat do umístění mimo Azure.
@@ -24,7 +24,7 @@ Data shromážděná z hostovaného operačního systému, který je možné ode
 * Protokoly událostí systému Windows, včetně protokolů aplikace v protokolu událostí systému Windows
 * Protokolů infrastruktury Azure Diagnostics
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Windows Diagnostics Extension 1,6 nebo vyšší. V tématu [Azure Diagnostics verze schématu konfigurace rozšíření a historie](diagnostics-extension-versions.md) Historie verzí a [Azure Diagnostics rozšíření](diagnostics-extension-overview.md) pro podporované prostředky.
 * Obor názvů Event Hubs musí být vždy zřízen. Podrobnosti najdete v tématu [Začínáme s Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) .
@@ -177,7 +177,7 @@ K ověření, že se data odesílají do centra událostí, můžete použít ce
 
 * [Přehled Event Hubs](../../event-hubs/event-hubs-about.md)
 * [Vytvoření centra událostí](../../event-hubs/event-hubs-create.md)
-* [Nejčastější dotazy k Event Hubs](../../event-hubs/event-hubs-faq.md)
+* [Nejčastější dotazy k Event Hubs](../../event-hubs/event-hubs-faq.yml)
 
 <!-- Images. -->
 [0]: ../../event-hubs/media/event-hubs-streaming-azure-diags-data/dashboard.png

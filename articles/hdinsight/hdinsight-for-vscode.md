@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d098af394906dc120a252bdcda65fb3af31e28c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d7e2bd2987e7eaf7798093f3918f72b7e09a3cb0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104865787"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313456"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Použití nástrojů pro podregistr Spark & pro Visual Studio Code
 
@@ -265,7 +265,7 @@ Nástroj také podporuje dotaz **Spark SQL** :
 
 > [!NOTE]
 >
-> ["MS-python >= verze 2020.5.78807 není v tomto rozšíření podporována."](#issues-changed) bylo vyřešeno. Aktualizujte prosím **Microsoft-Python** na **nejnovější verzi** hned teď.
+> [verze MS-toolsai. jupyter >2021.3.684299474 není v tomto rozšíření podporována](#known-issues) . Jedná se o známý problém. Pomocí synapse jádra Microsoft Jupyter 2021.3.684299474.
 
 ## <a name="submit-pyspark-batch-job"></a>Odeslat dávkovou úlohu PySpark
 
@@ -485,9 +485,19 @@ Odešlete úlohu do clusteru HDInsight pomocí Data Lake Storage Gen2. Pokud vá
 
 V řádku nabídek přejděte na **Zobrazit**  >  **paleta příkazů** a pak zadejte **Azure: odhlásit** se.
 
-## <a name="issues-changed"></a>Problémy změněny
+## <a name="known-issues"></a>Známé problémy 
 
-Pro tento problém se v tomto rozšíření nepodporuje verze MS-Python >= 2020.5.78807. Aktualizujte prosím **Microsoft-Python** na **nejnovější verzi** hned teď.
+ verze MS-toolsai. Jupyter >2021.3.684299474 není v tomto rozšíření podporovaná. k tomu prosím použijte jádro synapse, které dodáte Microsoftu Jupyter 2021.3.684299474.
+
+ 1. Zakáže rozšíření automatické aktualizace.
+
+      ![zakázat rozšíření automatické aktualizace](./media/hdinsight-for-vscode/disable-auto-updating-extension.png)
+
+2. Nainstalujte vybranou verzi Microsoft Jupyter.
+
+      ![vybraná verze Microsoft jupyteru](./media/hdinsight-for-vscode/selected-version-of-microsoft-jupyter.png)
+
+3. Nainstalovat Microsoft Jupyter verze 2021.3.684299474
 
 
 ## <a name="next-steps"></a>Další kroky

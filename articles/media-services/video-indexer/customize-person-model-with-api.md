@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: 09366dea1a0d77052b6f99e9f5ab52c270e341b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dced3cde1aae082bd64d785212b40e100013e0bf
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87047016"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312888"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Přizpůsobení modelu osoby pomocí rozhraní Video Indexer API
 
@@ -35,7 +35,7 @@ Každý účet má omezení 50 modelů osob. Pokud nepotřebujete podporu modelu
 
 ## <a name="create-a-new-person-model"></a>Vytvoření nového modelu osoby
 
-Pokud chcete v zadaném účtu vytvořit nový model osoby, použijte rozhraní API pro [Vytvoření modelu person](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?) .
+Pokud chcete v zadaném účtu vytvořit nový model osoby, použijte rozhraní API pro [Vytvoření modelu person](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Person-Model) .
 
 Odpověď poskytuje název a generovaný identifikátor ID modelu osoby, který jste právě vytvořili, podle formátu níže uvedeného příkladu.
 
@@ -46,11 +46,11 @@ Odpověď poskytuje název a generovaný identifikátor ID modelu osoby, který 
 }
 ```
 
-Pak použijete hodnotu **ID** parametru **personModelId** při [nahrávání videa k indexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) nebo [přeindexování videa](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+Pak použijete hodnotu **ID** parametru **personModelId** při [nahrávání videa k indexování](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) nebo [přeindexování videa](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video).
 
 ## <a name="delete-a-person-model"></a>Odstranění modelu osoby
 
-Pokud chcete odstranit vlastní pracovní model ze zadaného účtu, použijte rozhraní API pro [odstranění modelu person](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?) .
+Pokud chcete odstranit vlastní pracovní model ze zadaného účtu, použijte rozhraní API pro [odstranění modelu person](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Person-Model) .
 
 Po úspěšném odstranění modelu osoby se index vašich aktuálních videí, která používala odstraněný model, zůstane beze změny, dokud je znovu neindexujte. Po přeindexování nebude Video Indexer ve vašich aktuálních videích, které byly indexovány pomocí tohoto modelu, rozpoznány plošky, které byly pojmenovány v odstraněném modelu, ale plošky se budou i nadále detekovat. Vaše aktuální videa, která byla indexována pomocí odstraněného modelu, teď budou používat výchozí pracovní model vašeho účtu. Pokud se plošky z odstraněného modelu také pojmenují ve výchozím modelu vašeho účtu, budou tyto plošky i nadále rozpoznány ve videích.
 
@@ -58,7 +58,7 @@ Po úspěšném odstranění modelu osoby se nevrátí žádný obsah.
 
 ## <a name="get-all-person-models"></a>Získat modely všech osob
 
-Pokud chcete získat všechny modely osob v zadaném účtu, použijte rozhraní API pro [získání modelu person](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?) .
+Pokud chcete získat všechny modely osob v zadaném účtu, použijte rozhraní API pro [získání modelu person](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Person-Models) .
 
 Odpověď obsahuje seznam všech obchodních modelů v účtu (včetně výchozího modelu osoby v zadaném účtu) a každé z jejich názvů a ID podle formátu níže uvedeného příkladu.
 
@@ -75,7 +75,7 @@ Odpověď obsahuje seznam všech obchodních modelů v účtu (včetně výchoz�
 ]
 ```
 
-Můžete zvolit model, který chcete použít pro video, a to pomocí `id` hodnoty model osoby pro `personModelId` parametr při [nahrávání videa do indexu nebo při](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) [přeindexování videa](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+Můžete zvolit model, který chcete použít pro video, a to pomocí `id` hodnoty model osoby pro `personModelId` parametr při [nahrávání videa do indexu nebo při](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) [přeindexování videa](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video).
 
 ## <a name="update-a-face"></a>Aktualizovat obličej
 
@@ -85,7 +85,7 @@ Systém pak rozpoznává výskyty stejné plošky ve vašich dalších současn�
 
 Můžete aktualizovat obličej, který Video Indexer rozpoznat jako celebrit s novým názvem. Nový název, který udělíte, bude mít přednost před integrovaným rozpoznáváním celebrit.
 
-K aktualizaci obličeje použijte rozhraní API pro [video vzhled](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?) .
+K aktualizaci obličeje použijte rozhraní API pro [video vzhled](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Video-Face) .
 
 Názvy jsou pro pracovní modely jedinečné, takže pokud každému stejnému modelu udělíte dvě různé plošky, bude stejná `name` hodnota parametru video indexer zobrazení plošek jako stejná osoba a po přeindexaci videa je konvergovat.
 

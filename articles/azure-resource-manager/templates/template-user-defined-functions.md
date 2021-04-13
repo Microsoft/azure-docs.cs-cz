@@ -2,13 +2,13 @@
 title: Uživatelsky definované funkce v šablonách
 description: Popisuje, jak definovat a používat uživatelsky definované funkce v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 9c7480958e6315c8aea1fd8d12613bcf9d606723
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 802ac6e1c70db8caa58aecde3efe814430c79682
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379620"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307771"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>Uživatelsky definované funkce v šabloně ARM
 
@@ -107,6 +107,7 @@ Při definování uživatelské funkce existují určitá omezení:
 * Funkce může používat pouze parametry, které jsou definovány ve funkci. Použijete-li funkci [Parameters](template-functions-deployment.md#parameters) v rámci uživatelsky definované funkce, budete omezeni na parametry této funkce.
 * Funkce nemůže volat jiné uživatelsky definované funkce.
 * Funkce nemůže používat [odkazovou](template-functions-resource.md#reference) funkci ani žádnou z funkcí [seznamu](template-functions-resource.md#list) .
+* Funkce nemůže používat funkci [dateTimeAdd](template-functions-date.md#datetimeadd) .
 * Parametry pro funkci nemohou mít výchozí hodnoty.
 
 ## <a name="next-steps"></a>Další kroky

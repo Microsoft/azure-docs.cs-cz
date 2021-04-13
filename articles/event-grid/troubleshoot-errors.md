@@ -2,13 +2,13 @@
 title: Azure Event Grid – Průvodce odstraňováním potíží
 description: Tento článek uvádí seznam kódů chyb, chybové zprávy, popisy a doporučené akce.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 79533918ccc6995f459b39f058de9e01091c0958
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/09/2021
+ms.openlocfilehash: 4647039f67cf84a5471dc7b3f38ca754ca9eecb0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94592987"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310865"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Řešení chyb Azure Event Grid
 Tato příručka pro řešení potíží poskytuje následující informace: 
@@ -30,7 +30,7 @@ Tato příručka pro řešení potíží poskytuje následující informace:
 | ---------- | ------------- | ----------- | -------------- | 
 | HttpStatusCode. konflikt <br/>409 | Téma se zadaným názvem již existuje. Vyberte jiný název tématu.   | Název vlastního tématu by měl být jedinečný v jedné oblasti Azure, aby se zajistila správná operace publikování. Stejný název se dá použít v různých oblastech Azure. | Vyberte jiný název tématu. |
 | HttpStatusCode. konflikt <br/> 409 | Doména se zadaným parametrem již existuje. Vyberte jiný název domény. | Název domény by měl být jedinečný v jedné oblasti Azure, aby se zajistila správná operace publikování. Stejný název se dá použít v různých oblastech Azure. | Vyberte jiný název domény. |
-| HttpStatusCode. konflikt<br/>409 | Dosáhlo se limitu kvóty. Další informace o těchto omezeních najdete v tématu [omezení Azure Event Grid](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits).  | Každé předplatné Azure má omezení počtu Azure Event Grid prostředků, které může použít. Některá nebo všechna tato kvóta byla překročena a nebylo možné vytvořit žádné další prostředky. |    Projděte si aktuální využití prostředků a odstraňte všechny, které nepotřebujete. Pokud stále potřebujete zvýšit vaši kvótu, pošlete e-mail na [aeg@microsoft.com](mailto:aeg@microsoft.com) přesný počet potřebných prostředků. |
+| HttpStatusCode. konflikt<br/>409 | Dosáhlo se limitu kvóty. Další informace o těchto omezeních najdete v tématu [omezení Azure Event Grid](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits).  | Každé předplatné Azure má omezení počtu Azure Event Grid prostředků, které může použít. Některá nebo všechna tato kvóta byla překročena a nebylo možné vytvořit žádné další prostředky. | Projděte si aktuální využití prostředků a odstraňte všechny, které nepotřebujete. Pokud nemůžete odstranit žádné prostředky, vytvořte jiné předplatné Azure a vytvořte v tomto předplatném Event Grid prostředky. |
 
 ## <a name="error-code-403"></a>Kód chyby: 403
 

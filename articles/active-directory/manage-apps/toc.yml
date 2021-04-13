@@ -321,7 +321,7 @@
 - name: Referenční informace
   items:
     - name: Nejčastější dotazy k proxy aplikacím
-      href: application-proxy-faq.md
+      href: application-proxy-faq.yml
     - name: Nejčastější dotazy k certifikátům správy aplikací
       href: application-management-certs-faq.md
     - name: Historie verzí Proxy aplikací

@@ -126,8 +126,6 @@
       href: disaster-recovery.md
     - name: Nastavení proxy služby KDC
       href: key-distribution-center-proxy.md
-    - name: Nastavení role Brána VP
-      href: rd-gateway-role.md
     - name: Spustit virtuální počítač při připojení
       items:
         - name: Nastavení spuštění virtuálního počítače při připojení

@@ -3,12 +3,12 @@ title: Monitorování stavu v Service Fabric
 description: Úvod do modelu sledování stavu služby Azure Service Fabric, který poskytuje monitorování clusteru a jeho aplikací a služeb.
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.openlocfilehash: a1c545048739182e3baba3e3d94da1accca227d1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1fa000d46a6199fa23f07e5310eaca96b60a183f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627411"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311273"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Úvod do monitorování stavu Service Fabric
 Azure Service Fabric zavádí model stavu, který poskytuje bohatě, flexibilní a rozšiřitelné vyhodnocení stavu a vytváření sestav. Model umožňuje monitorovat stav clusteru a služby, které jsou v něm spuštěné, do téměř v reálném čase. Můžete snadno získat informace o stavu a opravit případné problémy, které se budou zastarat, a způsobit obrovské výpadky. V typickém modelu odesílají služby sestavy na základě místních zobrazení a tyto informace jsou agregované tak, aby poskytovaly celkové zobrazení na úrovni clusteru.
@@ -99,7 +99,7 @@ Zásada stavu clusteru obsahuje:
   </FabricSettings>
   ```
 
-* [NodeTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.nodetypehealthpolicymap). Mapování zásad stavu uzlu lze použít při vyhodnocení stavu clusteru k popisu speciálních typů uzlů. Typy uzlů jsou vyhodnocovány proti procentům přidruženým k názvu typu uzlu v mapě. Nastavení této hodnoty nemá žádný vliv na Globální fond uzlů používaných pro `MaxPercentUnhealthyNodes` . Cluster má například stovky uzlů různých typů a několik typů uzlů, které hostují důležitou práci. Žádný uzel v tomto typu by neměl být mimo provoz. Můžete zadat globální `MaxPercentUnhealthyNodes` až 20% pro tolerování některých selhání pro všechny uzly, ale pro typ uzlu nastavte na `SpecialNodeType` `MaxPercentUnhealthyNodes` 0. Tímto způsobem platí, že pokud některý z mnoha uzlů není v pořádku, ale pod globálním procentem není v pořádku, cluster se vyhodnotí jako ve stavu varování. Stav upozornění nebude mít vliv na upgrade clusteru ani na jiné monitorování aktivované chybovým stavem. Ale i jeden uzel typu `SpecialNodeType` v chybovém stavu způsobí, že cluster není v pořádku a může vrátit zpět nebo pozastavit upgrade clusteru v závislosti na konfiguraci upgradu. Naopak když nastavíte globální `MaxPercentUnhealthyNodes` omezení na 0 a nastavíte `SpecialNodeType` maximální procento uzlů, které nejsou v pořádku, na 100 s jedním uzlem typu `SpecialNodeType` v chybovém stavu, bude cluster stále v chybovém stavu, protože globální omezení je v tomto případě přísnější. 
+* `NodeTypeHealthPolicyMap`. Mapování zásad stavu uzlu lze použít při vyhodnocení stavu clusteru k popisu speciálních typů uzlů. Typy uzlů jsou vyhodnocovány proti procentům přidruženým k názvu typu uzlu v mapě. Nastavení této hodnoty nemá žádný vliv na Globální fond uzlů používaných pro `MaxPercentUnhealthyNodes` . Cluster má například stovky uzlů různých typů a několik typů uzlů, které hostují důležitou práci. Žádný uzel v tomto typu by neměl být mimo provoz. Můžete zadat globální `MaxPercentUnhealthyNodes` až 20% pro tolerování některých selhání pro všechny uzly, ale pro typ uzlu nastavte na `SpecialNodeType` `MaxPercentUnhealthyNodes` 0. Tímto způsobem platí, že pokud některý z mnoha uzlů není v pořádku, ale pod globálním procentem není v pořádku, cluster se vyhodnotí jako ve stavu varování. Stav upozornění nebude mít vliv na upgrade clusteru ani na jiné monitorování aktivované chybovým stavem. Ale i jeden uzel typu `SpecialNodeType` v chybovém stavu způsobí, že cluster není v pořádku a může vrátit zpět nebo pozastavit upgrade clusteru v závislosti na konfiguraci upgradu. Naopak když nastavíte globální `MaxPercentUnhealthyNodes` omezení na 0 a nastavíte `SpecialNodeType` maximální procento uzlů, které nejsou v pořádku, na 100 s jedním uzlem typu `SpecialNodeType` v chybovém stavu, bude cluster stále v chybovém stavu, protože globální omezení je v tomto případě přísnější. 
 
   Následující příklad je výňatek z manifestu clusteru. Chcete-li definovat položky v mapě typu uzlu, zadejte předponu názvu parametru pomocí "NodeTypeMaxPercentUnhealthyNodes-" a za ním název typu uzlu.
 

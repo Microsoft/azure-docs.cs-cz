@@ -4,12 +4,12 @@ description: Nezobrazuje se data v Azure Application Insights? Zkuste to prosím
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: fbf53f6d4a928215d25874f4e405147c73cbf81f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3b550e434db5b616ffedef7ebe9891b36fa431a2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056568"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311222"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
 
@@ -28,6 +28,10 @@ ms.locfileid: "106056568"
 *Došlo ke ztrátě dat v konzolové aplikaci nebo ve webové aplikaci, když se aplikace chystá zastavit.*
 
 * Kanál SDK udržuje telemetrii ve vyrovnávací paměti a odesílá je v dávkách. Pokud se aplikace vypíná, bude pravděpodobně nutné explicitně zavolat metodu [flush ()](api-custom-events-metrics.md#flushing-data). Chování `Flush()` závisí na samotném použitém [kanálu](telemetry-channels.md#built-in-telemetry-channels) .
+
+## <a name="request-count-collected-by-application-insights-sdk-does-not-match-the-iis-log-count-for-my-application"></a>Počet požadavků shromážděný sadou Application Insights SDK neodpovídá počtu protokolů služby IIS pro moji aplikaci.
+
+Služba Internetová informační služba (IIS) zaznamenává počty všech žádostí o službu IIS a v podstatě se může lišit od celkové žádosti, která se dostane do aplikace. Z tohoto důvodu není zaručeno, že počet požadavků shromažďovaných sady SDK bude odpovídat celkovému počtu protokolů služby IIS. 
 
 ## <a name="no-data-from-my-server"></a>Žádná data z mého serveru
 *Mám aplikaci nainstalovanou na mém webovém serveru a teď mi nevidím žádnou telemetrii. V mém vývojovém počítači se pracovalo v pořádku.*

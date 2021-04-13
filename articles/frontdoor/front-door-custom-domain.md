@@ -3,21 +3,21 @@ title: Kurz – přidání vlastní domény do konfigurace front-dveří Azure
 description: V tomto kurzu se dozvíte, jak ke službě Azure Front Door připojit vlastní doménu.
 services: frontdoor
 documentationcenter: ''
-author: duongau
+author: jessie-jyy
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2020
-ms.author: duau
-ms.openlocfilehash: e1540602bae0779d69c0cb4bb59e93b810b52904
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.date: 04/12/2021
+ms.author: yuajia
+ms.openlocfilehash: 7e2f05a7d911ce2b311a423994d2b459de0fa269
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550757"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308859"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Kurz: Přidání vlastní domény do služby Front Door
 
@@ -40,9 +40,9 @@ V tomto kurzu se naučíte:
 
 * Před dokončením kroků v tomto kurzu musíte nejprve vytvořit službu Front Door. Další informace najdete v tématu [Rychlý start: Vytvoření služby Front Door](quickstart-create-front-door.md).
 
-* Pokud ještě nemáte vlastní doménu, musíte ji nejprve zakoupit u poskytovatele domén. Příklad najdete v tématu [Nákup vlastního názvu domény](../app-service/manage-custom-dns-buy-domain.md).
+* Pokud ještě nemáte vlastní doménu, musíte ji nejdřív koupit se zprostředkovatelem domény. Příklad najdete v tématu [Nákup vlastního názvu domény](../app-service/manage-custom-dns-buy-domain.md).
 
-* Pokud k hostování [domén DNS](../dns/dns-overview.md) používáte Azure, musíte delegovat DNS (Domain Name System) poskytovatele domén na Azure DNS. Další informace najdete v tématu [delegování domény na Azure DNS](../dns/dns-delegate-domain-azure-dns.md). Jinak, pokud vaši doménu DNS spravuje poskytovatel domény, přejděte k části [Vytvoření záznamu DNS CNAME](#create-a-cname-dns-record).
+* Pokud k hostování [domén DNS](../dns/dns-overview.md)používáte Azure, musíte delegovat DNS (Domain Name System) poskytovatele domény na Azure DNS. Další informace najdete v tématu [delegování domény na Azure DNS](../dns/dns-delegate-domain-azure-dns.md). V opačném případě Pokud ke zpracování domény DNS používáte poskytovatele domény, pokračujte v [vytváření záznamu DNS CNAME](#create-a-cname-dns-record).
 
 
 ## <a name="create-a-cname-dns-record"></a>Vytvoření záznamu DNS CNAME
@@ -54,9 +54,9 @@ Vlastní doménu a její subdoménu lze současně přidružit pouze k jednomu p
 
 ## <a name="map-the-temporary-afdverify-subdomain"></a>Mapování dočasné subdomény afdverify
 
-Pokud mapujete existující doménu, která je v produkčním prostředí, je potřeba vzít v úvahu zvláštní požadavky. Během registrace vlastní domény na webu Azure Portal může dojít ke krátkému výpadku domény. Abyste se vyhnuli přerušení webového provozu, nejdřív namapujte svoji vlastní doménu na front-endové výchozí hostitele front-endu s poddoménou Azure afdverify a vytvořte dočasné mapování CNAME. Díky tomu mají uživatelé v průběhu mapování DNS přístup k vaší doméně bez přerušení.
+Pokud mapujete existující doménu, která je v produkčním prostředí, je potřeba vzít v úvahu zvláštní požadavky. Při registraci vlastní domény v Azure Portal může probíhat krátká doba výpadku domény. Abyste se vyhnuli přerušení webového provozu, nejdřív namapujte svoji vlastní doménu na front-endové výchozí hostitele front-endu s poddoménou Azure afdverify a vytvořte dočasné mapování CNAME. Díky tomu mají uživatelé v průběhu mapování DNS přístup k vaší doméně bez přerušení.
 
-Jinak, pokud používáte vlastní doménu poprvé a neprobíhá na ní žádný produkční provoz, můžete vlastní doménu namapovat přímo na službu Front Door. Pokračujte k části [Mapování trvalé vlastní domény](#map-the-permanent-custom-domain).
+V opačném případě, pokud používáte vlastní doménu poprvé a v ní není spuštěn žádný provozní provoz, můžete vlastní doménu namapovat přímo na vaše přední dveře. Pokračujte a [namapujte trvalou vlastní doménu](#map-the-permanent-custom-domain).
 
 Vytvoření záznamu CNAME se subdoménou afdverify:
 
@@ -70,7 +70,7 @@ Vytvoření záznamu CNAME se subdoménou afdverify:
     |---------------------------|-------|---------------------------------|
     | afdverify.www.contoso.com | CNAME | afdverify.contoso-frontend.azurefd.net |
 
-    - Zdroj: zadejte název vlastní domény včetně subdomény afdverify v následujícím formátu: afdverify. _&lt; vlastní název &gt; domény_. Například afdverify.www.contoso.com. Pokud provedete mapování domény se zástupnými znaky, jako je například \* . contoso.com, zdrojová hodnota je stejná, protože by to bylo bez zástupného znaku: afdverify.contoso.com.
+    - Zdroj: zadejte název vlastní domény včetně subdomény afdverify v následujícím formátu: afdverify. _&lt; vlastní název &gt; domény_. Například afdverify.www.contoso.com. Pokud provádíte mapování domény se zástupnými znaky, jako je například \* . contoso.com, zdrojová hodnota je stejná, protože by to bylo bez zástupného znaku: afdverify.contoso.com.
 
     - Typ: Zadejte *CNAME*.
 
@@ -109,7 +109,7 @@ Po zaregistrování vlastní domény ji můžete přidat do služby Front Door.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) a přejděte ke službě Front Door obsahující hostitele front-endu, kterého chcete namapovat na vlastní doménu.
     
-2. Na stránce **Návrhář služby Front Door** kliknutím na + přidejte vlastní doménu.
+2. Na stránce **Návrháře front dveří** vyberte + a přidejte vlastní doménu.
     
 3. Zadejte **vlastní doménu**. 
 
@@ -126,14 +126,14 @@ Po zaregistrování vlastní domény ji můžete přidat do služby Front Door.
 
 ## <a name="verify-the-custom-domain"></a>Ověření vlastní domény
 
-Po dokončení registrace vlastní domény ověřte, že odkazuje na výchozího hostitele front-endu služby Front Door.
+Po dokončení registrace vlastní domény ověřte, že vlastní doména odkazuje na výchozího hostitele front-endu front-endu.
  
 V prohlížeči přejděte na adresu souboru s použitím vlastní domény. Například pokud je vaše vlastní doména robotics.contoso.com, adresa URL souboru uloženého v mezipaměti by měla být podobná jako následující adresa URL: http:\//robotics.contoso.com/my-public-container/my-file.jpg. Ověřte, že výsledek je stejný jako při přístupu ke frontě na přední dveře přímo na *&lt; hostiteli &gt;*. azurefd.NET.
 
 
 ## <a name="map-the-permanent-custom-domain"></a>Mapování trvalé vlastní domény
 
-Pokud jste ověřili úspěšné namapování subdomény afdverify na službu Front Door (nebo pokud používáte novou vlastní doménu, která není v produkčním prostředí), můžete pak vlastní doménu namapovat přímo na výchozího hostitele front-endu služby Front Door.
+Pokud jste ověřili, že se subdoménou afdverify úspěšně namapovala na vaše přední dveře (nebo pokud používáte novou vlastní doménu, která není v produkčním prostředí), můžete vlastní doménu namapovat přímo na výchozího hostitele front-endu.
 
 Vytvoření záznamu CNAME pro vlastní doménu:
 
@@ -157,7 +157,7 @@ Vytvoření záznamu CNAME pro vlastní doménu:
 
 5. Pokud jste předtím vytvořili záznam CNAME dočasné subdomény afdverify, odstraňte ho. 
 
-6. Pokud tuto vlastní doménu používáte v produkčním prostředí poprvé, postupujte podle kroků v částech [Přidružení vlastní domény ke službě Front Door](#associate-the-custom-domain-with-your-front-door) a [Ověření vlastní domény](#verify-the-custom-domain).
+6. Pokud tuto vlastní doménu používáte v produkčním prostředí poprvé, postupujte podle kroků pro [přidružení vlastní domény k předním dvířkům](#associate-the-custom-domain-with-your-front-door) a [ověření vlastní domény](#verify-the-custom-domain).
 
 Například postup pro registrátora domén GoDaddy je následující:
 
@@ -187,17 +187,18 @@ Například postup pro registrátora domén GoDaddy je následující:
 
 8. Vyberte **Delete** (Odstranit) a odstraňte záznam CNAME.
 
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V předchozích krocích jste do služby Front Door přidali vlastní doménu. Pokud už nechcete mít ke službě Front Door přidruženou vlastní doménu, můžete vlastní doménu odebrat provedením následujících kroků:
+V předchozích krocích jste do služby Front Door přidali vlastní doménu. Pokud už nechcete přidružit vaše přední dveře k vlastní doméně, můžete vlastní doménu odebrat pomocí těchto kroků:
  
-1. V Návrháři služby Front Door vyberte vlastní doménu, kterou chcete odebrat.
+1. Přečtěte si svého poskytovatele DNS, odstraňte záznam CNAME pro vlastní doménu nebo aktualizujte záznam CNAME pro vlastní doménu na koncový bod mimo frontu dveří.
 
-2. V místní nabídce pro vlastní doménu klikněte na Odstranit.  
+    > [!Important]
+    > Aby se zabránilo záznamům DNS v dangling a bezpečnostním rizikům vytvořeným od 9. dubna 2021, vyžadují přední dveře Azure odebrání záznamů CNAME do koncových bodů před tím, než bude možné prostředky odstranit. Prostředky zahrnují vlastní domény front-Dvířk, koncové body front nebo skupiny prostředků Azure, které mají povolené vlastní domény front-dveří.
 
-   Zruší se přidružení vlastní domény ke koncovému bodu.
+2. V Návrháři služby Front Door vyberte vlastní doménu, kterou chcete odebrat.
 
+3. V místní nabídce pro vlastní doménu vyberte **Odstranit** . Vlastní doména teď ztratí přidružení ke svému koncovému bodu.
 
 ## <a name="next-steps"></a>Další kroky
 

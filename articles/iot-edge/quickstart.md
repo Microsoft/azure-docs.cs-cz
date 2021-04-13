@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 5444f6adb9d441cb6253c180cf2d079c1c36316c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: de24f6c8436b4537519f8cc65931325dd7d5f8d9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562677"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313347"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Rychlý Start: nasazení prvního modulu IoT Edge do zařízení s Windows (Preview)
 
@@ -58,11 +58,9 @@ Ujistěte se, že vaše zařízení IoT Edge splňuje následující požadavky:
     * Professional, Enterprise, IoT Enterprise
   * Windows Server 2019 Build 17763 nebo novější
 
-  
 * Požadavky na hardware
   * Minimální volná paměť: 2 GB
   * Minimální volné místo na disku: 10 GB
-
 
 >[!NOTE]
 >V tomto rychlém startu se pomocí centra pro správu Windows vytvoří nasazení IoT Edge pro Linux ve Windows. Můžete také použít PowerShell. Pokud chcete k vytvoření nasazení použít PowerShell, postupujte podle pokynů v příručce k [instalaci a zřízení Azure IoT Edge pro Linux na zařízení s Windows](how-to-install-iot-edge-on-windows.md).
@@ -185,7 +183,57 @@ Spravujte zařízení Azure IoT Edge z cloudu a nasaďte modul, který do IoT Hu
 
 ![Diagram, který ukazuje krok nasazení modulu.](./media/quickstart/deploy-module.png)
 
+<!--
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+
+Include content included below to support versioned steps in Linux quickstart. Can update include file once Windows quickstart supports v1.2
+-->
+
+Jednou z klíčových funkcí Azure IoT Edge je nasazování kódu do vašich IoT Edgech zařízení z cloudu. *Moduly IoT Edge* jsou spustitelné balíčky implementované jako kontejnery. V této části nasadíte předem sestavený modul z [oddílu IoT Edge modulů Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) přímo z Azure IoT Hub.
+
+Modul, který v této části nasadíte, simuluje senzor a odesílá vygenerovaná data. Tento modul je užitečným kódem, když začínáte s IoT Edge, protože můžete použít Simulovaná data pro vývoj a testování. Pokud chcete vidět přesně to, co tento modul dělá, můžete zobrazit [zdrojový kód simulovaného senzoru teploty](https://github.com/Azure/iotedge/blob/027a509549a248647ed41ca7fe1dc508771c8123/edge-modules/SimulatedTemperatureSensor/src/Program.cs).
+
+Pomocí těchto kroků nasadíte svůj první modul z Azure Marketplace.
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a pokračujte do služby IoT Hub.
+
+1. V nabídce na levé straně v části **Automatická správa zařízení** vyberte **IoT Edge**.
+
+1. V seznamu zařízení vyberte ID zařízení cílového zařízení.
+
+1. Na horním panelu vyberte možnost **nastavit moduly**.
+
+   ![Snímek obrazovky, který ukazuje, že se vyberou moduly set](./media/quickstart/select-set-modules.png)
+
+1. V části **IoT Edge moduly** otevřete rozevírací nabídku **Přidat** a pak vyberte **modul Marketplace**.
+
+   ![Snímek obrazovky, na kterém se zobrazuje rozevírací nabídka přidat](./media/quickstart/add-marketplace-module.png)
+
+1. V **tržišti IoT Edge modulu** vyhledejte a vyberte `Simulated Temperature Sensor` modul.
+
+   Modul se přidá do oddílu IoT Edge moduly s požadovaným stavem **spuštění** .
+
+1. Vyberte **Další: trasy** pro pokračování k dalšímu kroku průvodce.
+
+   ![Snímek obrazovky, který ukazuje pokračování dalšího kroku po přidání modulu.](./media/quickstart/view-temperature-sensor-next-routes.png)
+
+1. Na kartě **trasy** odeberte výchozí trasu, **Směrování** a potom vyberte **Další: zkontrolovat + vytvořit** a pokračujte dalším krokem průvodce.
+
+   >[!Note]
+   >Trasy jsou vytvořené pomocí párů název a hodnota. Na této stránce byste měli vidět dvě trasy. Výchozí trasa, **trasa**, odesílá všechny zprávy do IoT Hub (což se říká `$upstream` ). Druhá trasa **SimulatedTemperatureSensorToIoTHub** byla vytvořena automaticky při přidání modulu z Azure Marketplace. Tato trasa pošle všechny zprávy z modulu simulované teploty do IoT Hub. Výchozí trasu můžete odstranit, protože je v tomto případě redundantní.
+
+   ![Snímek obrazovky, který ukazuje odebrání výchozí trasy, přechod k dalšímu kroku.](./media/quickstart/delete-route-next-review-create.png)
+
+1. Zkontrolujte soubor JSON a pak vyberte **vytvořit**. Soubor JSON definuje všechny moduly, které nasadíte do zařízení IoT Edge. Zobrazí se modul **SimulatedTemperatureSensor** a dva běhové moduly, **edgeAgent** a **edgeHub**.
+
+   >[!Note]
+   >Když do zařízení IoT Edge odešlete nové nasazení, do zařízení se nic nevloží. Zařízení místo toho pravidelně odesílá do IoT Hubu dotazy týkající se nových pokynů. Pokud zařízení najde aktualizovaný manifest nasazení, použije informace o novém nasazení k vyžádání imagí modulu z cloudu a potom začne spouštět moduly místně. Tento proces může trvat několik minut.
+
+1. Po vytvoření podrobností nasazení modulu se Průvodce vrátí na stránku s podrobnostmi o zařízení. Zobrazte stav nasazení na kartě **moduly** .
+
+   Měli byste vidět tři moduly: **$edgeAgent**, **$edgeHub** a **SimulatedTemperatureSensor**. Pokud má jeden nebo více modulů **Ano** v rámci **zadání v části nasazení** , ale ne pod položkou **hlášené zařízením**, zařízení IoT Edge je stále spouští. Počkejte několik minut a poté stránku aktualizujte.
+
+   ![Snímek obrazovky, který zobrazuje senzor simulované teploty v seznamu nasazených modulů.](./media/quickstart/view-deployed-modules.png)
 
 ## <a name="view-the-generated-data"></a>Zobrazení vygenerovaných dat
 

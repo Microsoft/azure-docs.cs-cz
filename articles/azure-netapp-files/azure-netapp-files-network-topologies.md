@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 04/09/2021
 ms.author: ramakk
-ms.openlocfilehash: 96d8ba058a33d408ec2ee2a1adfba9011f393da9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d002932bca51300fa6a031ce7ab0d69186afe9c3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96184480"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311681"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Pokyny pro plánování sítě Azure NetApp Files
 
@@ -46,7 +46,7 @@ Následující funkce jsou aktuálně pro Azure NetApp Files nepodporované:
 
 Následující omezení sítě platí pro Azure NetApp Files:
 
-* Počet IP adres, které se používají ve virtuální síti s Azure NetApp Files (včetně partnerských virtuální sítě), nesmí překročit 1000. Pracujeme na zvýšení tohoto limitu, aby se splnily požadavky na škálování zákazníka. 
+* Počet IP adres používaných ve virtuální síti s Azure NetApp Files (včetně *okamžitě* rovnocenných virtuální sítě) nesmí překročit 1000. Pracujeme na zvýšení tohoto limitu, aby se splnily požadavky na škálování zákazníka. 
 * V každé službě Azure Virtual Network (VNet) je možné delegovat Azure NetApp Files jenom jednu podsíť.
 
 

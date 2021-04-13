@@ -3,12 +3,12 @@ title: Co je služba Azure Event Hubs? – Služba pro příjem velkých objemů
 description: Přečtěte si o Azure Event Hubs, což je streamovací služba pro velké objemy dat, která může ingestovat miliony událostí za sekundu.
 ms.topic: overview
 ms.date: 01/13/2021
-ms.openlocfilehash: 36eeb38d9ed1696c9524ae9b346065756ce49c46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35e89f60e93ec759d852641653ad138d7672cc37
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98195754"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303045"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – platforma pro zpracování velkých objemů dat a služba pro příjem událostí
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro příjem událostí. Dokáže přijímat a zpracovávat miliony událostí za sekundu. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání.
@@ -92,4 +92,4 @@ Pokud chcete začít používat Event Hubs, přečtěte si kurzy pro **události
 Další informace o službě Event Hubs najdete v následujících článcích:
 
 - [Přehled funkcí Event Hubs](event-hubs-features.md)
-- [Nejčastější dotazy](event-hubs-faq.md)
+- [Nejčastější dotazy](event-hubs-faq.yml)

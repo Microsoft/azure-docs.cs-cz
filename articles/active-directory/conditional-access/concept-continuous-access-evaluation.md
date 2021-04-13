@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ee161944a48135778d12942964a88455ab756e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: d707106d66c77ad1f3a1156906add8bb85fd0ce0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055769"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305969"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -142,7 +142,7 @@ Na této stránce můžete volitelně omezit uživatele a skupiny, které budou 
 V případě CAE máme přehledy o pojmenovaných umístěních založených na protokolu IP. Neposkytujeme žádné informace o dalších nastaveních umístění, jako jsou [důvěryhodné IP adresy MFA](../authentication/howto-mfa-mfasettings.md#trusted-ips) nebo umístění na bázi země. Když uživatel pochází z důvěryhodné IP adresy MFA nebo z důvěryhodných umístění, která zahrnují důvěryhodné IP adresy nebo umístění země, CAE se po přesunu uživatele do jiného umístění neuplatní. V těchto případech budeme vydávat 1 hodinový token CAE bez kontroly vynucení okamžité IP adresy.
 
 > [!IMPORTANT]
-> Při konfiguraci umístění pro vyhodnocení průběžného přístupu použijte jenom [podmínku umístění podmíněného přístupu na základě IP adresy](../conditional-access/location-condition.md#preview-features) a NAKONFIGURUJTE všechny IP adresy, **včetně IPv4 i IPv6**, které může vidět poskytovatel identity a poskytovatel prostředků. Nepoužívejte podmínky umístění země ani funkci důvěryhodných IP adres, která je k dispozici na stránce nastavení služby Azure AD Multi-Factor Authentication.
+> Při konfiguraci umístění pro vyhodnocení průběžného přístupu použijte jenom [podmínku umístění podmíněného přístupu na základě IP adresy](../conditional-access/location-condition.md) a NAKONFIGURUJTE všechny IP adresy, **včetně IPv4 i IPv6**, které může vidět poskytovatel identity a poskytovatel prostředků. Nepoužívejte podmínky umístění země ani funkci důvěryhodných IP adres, která je k dispozici na stránce nastavení služby Azure AD Multi-Factor Authentication.
 
 ### <a name="ip-address-configuration"></a>Konfiguraci IP adresy
 

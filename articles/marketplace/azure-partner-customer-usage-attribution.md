@@ -6,18 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: cpercy737
 ms.author: camper
-ms.date: 03/22/2021
+ms.date: 04/12/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 53edd3ec9a8d30d0c25f994db4a8b6f0199c2169
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7f09e744dfdd7be73c62c70bcfa91804f14aaa68
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558410"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313670"
 ---
 # <a name="azure-customer-usage-attribution"></a>Přidělení zákaznického využití Azure
 
-Využití zákazníka připadá na používání prostředků Azure v zákaznických předplatných vytvořených během nasazování vaší IP adresy jako partner. Vytváření těchto přidružení v interních systémech Microsoftu přináší větší přehled o službě Azure s nároky na provoz vašeho softwaru. [V případě nabídek aplikací Azure na komerčním tržišti](#commercial-marketplace-azure-apps)vám tato funkce sledování pomůže zarovnat se prodejními týmy Microsoftu a získat kredit pro Microsoft partnerická programu.
+Využití zákazníka připadá na používání prostředků Azure v zákaznických předplatných vytvořených během nasazování vaší IP adresy jako partner. Vytváření těchto přidružení v interních systémech Microsoftu přináší větší přehled o službě Azure s nároky na provoz vašeho softwaru. [V případě nabídek aplikací Azure na komerčním tržišti](#commercial-marketplace-azure-apps)vám tato funkce sledování pomůže zarovnat se prodejními týmy Microsoftu a získat kredit pro Microsoft partnerická programu. Označení zákaznického využití se nevztahuje na [nabídky virtuálních počítačů Azure na komerčním webu Marketplace](./azure-vm-create.md). Není k dispozici žádný Vydavatel v Marketplace, který by měl dělat pro virtuální počítače, aby se zajistilo, že jejich využití je sledováno v předplatných koncových zákazníků.
 
 Označení zákaznického využití podporuje tři možnosti nasazení:
 

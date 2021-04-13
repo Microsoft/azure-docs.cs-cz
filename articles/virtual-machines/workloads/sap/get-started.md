@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/17/2021
+ms.date: 04/12/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ab23b9c2ba4b4ef3c20188b2207d7718c30cfe6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99af5ff3add6d002f3a0e5efdb91215873b8d3c7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599880"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304218"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -82,6 +82,10 @@ V této části najdete dokumenty ke službě Microsoft Power BI Integration do 
 
 
 ## <a name="change-log"></a>Protokol změn
+- 04/12/2021: vydání služby [SAP HANA Scale-out HSR s Pacemaker na virtuálních počítačích Azure v](./sap-hana-high-availability-scale-out-hsr-suse.md) průvodci konfigurací SLES
+- 04/07/2021: vyjasněná podpora SQL Server více instancí a podpora více databází v [SQL Server nasazení Azure Virtual Machines DBMS pro SAP NetWeaver](./dbms_guide_sqlserver.md)
+- 04/07/2021: byly přidány informace související se sekundárními IP adresami v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver](./planning-guide.md)
+- 04/07/2021: Přidání podpory pro podporu Oracle DBMS na ANF v [Azure Storagech typech pro úlohy SAP](./planning-guide-storage.md)
 - 03/17/2021: Změna v [ha pro SAP HANA na virtuálních počítačích Azure v SLES](./sap-hana-high-availability.md), [ha pro SAP HANA na virtuálních počítačích Azure v RHEL](./sap-hana-high-availability-rhel.md) a [ha pro SAP HANA horizontálního NAvýšení kapacity s ANFem na RHEL](./sap-hana-high-availability-netapp-files-red-hat.md) za účelem přidání instrukcí pro replikaci systému Hana s povoleným aktivním/čtením v clusteru Pacemaker
 - 03/15/2021: změňte [instanci SAP ASCS/SCS se službou WSFC a sdílenou složkou](./sap-high-availability-guide-wsfc-file-share.md),[Nainstalujte instanci SAP ASCS/SCS s](./sap-high-availability-installation-wsfc-file-share.md) protokolem WSFC a sdílenou složkou a [SAP ASCS/SCS multi-SID s WSFC a sdílením souborů](./sap-ascs-ha-multi-sid-wsfc-file-share.md) a vyjasněte, že instance SAP ASCS/SCS a sdílená složka SOFS musí být nasazeny v samostatných clusterech.
 - 03/03/2021: Změna v [Průvodci ha pro SAP ASCS/SCS s WSFC a Azure NetApp Files (SMB)](./high-availability-guide-windows-netapp-files-smb.md) pro přidání příkazu postupovat opatrněji, který vyžaduje zvýšená oprávnění pro uživatele, který používá SWPM, během instalace systému SAP

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.author: kgremban
-ms.openlocfilehash: 7b4c2cb946017fd9871e2d99dbed8f841f025008
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 39e165d862d6e174f763cd58529727fd26b8bd46
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030521"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311069"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Instalace nebo odinstalace Azure IoT Edge pro Linux
 
@@ -146,7 +146,7 @@ Služba identity IoT byla představena společně s verzí 1,2 IoT Edge. Tato sl
 Postup v této části představuje typický proces instalace nejnovější verze do zařízení, které má připojení k Internetu. Pokud potřebujete nainstalovat určitou verzi, třeba předběžnou verzi, nebo potřebujete instalaci v režimu offline, postupujte podle pokynů k [instalaci offline nebo specifické verze](#offline-or-specific-version-installation-optional) dále v tomto článku.
 
 >[!NOTE]
->Postup v této části ukazuje, jak nainstalovat IoT Edge verze 1,2, která je aktuálně ve verzi Public Preview. Pokud hledáte kroky pro instalaci nejnovější dostupné verze IoT Edge, podívejte se na verzi [1,1 (LTS)](?view=iotedge-2018-06&preserve-view=true) tohoto článku.
+>Postup v této části ukazuje, jak nainstalovat IoT Edge verze 1,2.
 >
 >Pokud už máte IoT Edge zařízení se starší verzí a chcete upgradovat na 1,2, použijte postup v části [aktualizace IoT Edge démona zabezpečení a modulu runtime](how-to-update-iot-edge.md). Verze 1,2 je dostatečně odlišná od předchozích verzí IoT Edge, že konkrétní kroky jsou nezbytné k upgradu.
 
@@ -168,15 +168,11 @@ Chcete-li nainstalovat nejnovější verzi IoT Edge, použijte následující p�
    sudo apt-get install aziot-edge
    ```
 
-<!-- commenting out for public preview. reintroduce at GA
-
-Or, if you want to install a specific version of IoT Edge and the identity service, specify the versions from the apt list output. Specify the same versions for both services.. For example, the following command installs the most recent version of the 1.2 release:
+Nebo pokud chcete nainstalovat určitou verzi IoT Edge a službu identit, určete verze z výstupu seznamu apt. Zadejte pro obě služby stejné verze. Například následující příkaz nainstaluje nejnovější verzi 1,2 verze:
 
    ```bash
    sudo apt-get install aziot-edge=1.2* aziot-identity-service=1.2*
    ```
-
--->
 
 <!-- end 1.2 -->
 ::: moniker-end

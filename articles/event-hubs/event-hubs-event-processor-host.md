@@ -4,12 +4,12 @@ description: Tento článek popisuje hostitele procesoru událostí v Azure Even
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: de5d8f0f8bf9f64a473b18a50434cac83e8e38c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d97b446993d3f0a280c1f4fadb237726ac09228a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98622058"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313415"
 ---
 # <a name="event-processor-host"></a>EventProcessorHost
 > [!NOTE]
@@ -199,5 +199,5 @@ Teď, když jste obeznámeni s hostitelem procesoru událostí, přečtěte si n
     - [JavaScript](event-hubs-node-get-started-send.md)
 * [Průvodce programováním pro službu Event Hubs](event-hubs-programming-guide.md)
 * [Dostupnost a konzistence ve službě Event Hubs](event-hubs-availability-and-consistency.md)
-* [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
+* [Nejčastější dotazy k Event Hubs](event-hubs-faq.yml)
 * [Ukázky Event Hubs na GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples)

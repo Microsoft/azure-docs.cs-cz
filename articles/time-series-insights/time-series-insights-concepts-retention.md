@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26363031aea37c53cce098e2b6cbc2b4d93b918f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91535685"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307074"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Pochopení uchovávání dat v Azure Time Series Insights Gen1
 
@@ -85,7 +85,7 @@ V tuto chvíli prostředí zobrazuje stejnou datovou sadu, dokud se neobnoví ne
 Po obnovení příchozího přenosu dat:
 
 - Toky dat v pořadí, ve kterém byly přijaty zdrojem událostí
-- Události jsou indexovány na základě časového razítka, pokud jste nepřekročili zásady uchovávání informací ve zdroji událostí. Další informace o konfiguraci uchovávání informací o zdrojích událostí [Event Hubs Nejčastější dotazy](../event-hubs/event-hubs-faq.md)
+- Události jsou indexovány na základě časového razítka, pokud jste nepřekročili zásady uchovávání informací ve zdroji událostí. Další informace o konfiguraci uchovávání informací o zdrojích událostí [Event Hubs Nejčastější dotazy](../event-hubs/event-hubs-faq.yml)
 
 > [!IMPORTANT]
 > Měli byste nastavit výstrahy, které vám poskytnou informace, které vám pomůžou zabránit pozastavenému přenosu. Může dojít ke ztrátě dat, protože výchozí doba uchování je 1 den pro zdroje událostí Azure. Proto když je příchozí příjem pozastaven, pravděpodobně ztratíte nejaktuálnější data, pokud se neprovede žádná další akce. Abyste se vyhnuli potenciálním ztrátám dat, je nutné zvýšit kapacitu nebo přepnout chování, aby se **vymazala stará data** .

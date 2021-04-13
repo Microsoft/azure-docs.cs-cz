@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 937f0d1feb0c45c1c158b5e88daf268aeb383509
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e0eb976f655308082671afe2dc1923f082a3373b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034740"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303164"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>Technické specifikace a dodržování předpisů pro Azure Stack Edge pro pomocí GPU 
 
@@ -23,10 +23,14 @@ Hardwarové součásti vaší Azure Stack Edge pro s integrovaným grafickým pr
 
 Zařízení Azure Stack Edge pro má následující specifikace pro výpočetní výkon a paměť:
 
-| Specifikace           | Hodnota                  |
-|-------------------------|----------------------------|
-| Procesor                     | 2 X procesor Intel Xeon stříbrné 4214 (Cascade Lake) – procesor<br> 24 fyzických jader (12 na procesor)<br>48 logických jader (vCPU) (24 na procesor)       |
-| Memory (Paměť)                  | 128 (8x16 GB) GB RAM <br> Dell kompatibilní 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2 v ECC registrovaný RDIMM       |
+| Specifikace  | Hodnota                                                                       |
+|----------------|-----------------------------------------------------------------------------|
+| Typ procesoru       | Dvoujádrový procesor Intel Xeon stříbrné 4214 (Cascade Lake)                              |
+| Procesor: RAW       | 24 jader celkem, 48 celkem vCPU                                              |
+| Procesor: použitelné    | 40 vCPU                                                                    |
+| Typ paměti    | Dell kompatibilní 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2 v ECC registrovaný RDIMM |
+| Paměť: RAW    | 128 GB RAM (8 × 16 GB)                                                      |
+| Paměť: použitelné | 102 GB RAM                                                                  |
 
 
 ## <a name="compute-acceleration-specifications"></a>Specifikace zrychlení výpočtů
@@ -44,7 +48,7 @@ Zařízení Azure Stack Edge pro má dvě 100-240 V jednotkách napájení (PSUs
 
 | Specifikace           | 750 W PSU                  |
 |-------------------------|----------------------------|
-| Maximální výstupní výkon    | 750 W                     |
+| Maximální výstupní výkon    | 750 W                      |
 | Frekvence               | 50/60 Hz                   |
 | Výběr rozsahu napětí | Automatické rozsahy: 100-240 V AC |
 | Horká, připojitelná           | Yes                        |
@@ -56,11 +60,11 @@ Vaše zařízení Azure Stack Edge pro má šest síťových rozhraní PORT1-POR
 
 | Specifikace           | Description                 |
 |-------------------------|----------------------------|
-|  Síťová rozhraní    | **rozhraní 2 X 1 GbE** – 1 rozhraní pro správu se používá pro počáteční instalaci a ve výchozím nastavení je statický. Po dokončení počáteční instalace můžete použít rozhraní pro data s libovolnou IP adresou. Při resetování se ale rozhraní vrátí zpět na statickou IP adresu. <br>Druhý port rozhraní 2 je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>**4 X 25 rozhraní rozhraní** – tato datová rozhraní, port 3 až port 6, můžou být nakonfigurovaná uživatelem jako DHCP (výchozí) nebo static. Můžou také fungovat jako rozhraní 10 GbE.  | 
+|  Síťová rozhraní    | **rozhraní 2 X 1 GbE** – 1 rozhraní pro správu se používá pro počáteční instalaci a ve výchozím nastavení je statický. Po dokončení počáteční instalace můžete použít rozhraní pro data s libovolnou IP adresou. Při resetování se ale rozhraní vrátí zpět na statickou IP adresu. <br>Druhý port rozhraní 2 je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>**4 X 25 rozhraní** – tato datová rozhraní, port 3 až port 6, můžou být nakonfigurovaná uživatelem jako DHCP (výchozí) nebo static. Můžou také fungovat jako rozhraní s 10 GbEmi.  | 
 
 Vaše zařízení Azure Stack Edge pro má následující síťový hardware:
 
-* **Vlastní Microsoft QLogic Cavium 25G Norwegian Developers Conference Adapter** -port 1 až 4.
+* **Vlastní Microsoft `Qlogic` Cavium 25G NORWEGIAN Developers Conference Adapter** -port 1 až 4.
 * **Mellanox Dual Port 25G ConnectX-4 síťový adaptér kanálu** – port 5 a port 6.
 
 Tady jsou podrobnosti o kartě Mellanox:
@@ -74,7 +78,7 @@ Tady jsou podrobnosti o kartě Mellanox:
 
 Úplný seznam podporovaných kabelů, přepínačů a vysílačů pro tyto síťové karty najdete tady:
 
-- [Cavium 25G pro interoperabilitu adaptéru Norwegian Developers Conference pro adaptér QLogic](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
+- [ `Qlogic` Cavium 25G pro interoperabilitu adaptéru Norwegian Developers Conference](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
 - [Mellanox Dual Port 25G ConnectX-4 kompatibilní produkty síťového adaptéru sítě](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)VLAN.  
 
 ## <a name="storage-specifications"></a>Specifikace úložiště

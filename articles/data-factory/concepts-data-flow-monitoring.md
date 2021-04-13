@@ -3,17 +3,16 @@ title: Monitorování toků dat mapování
 description: Jak vizuálně monitorovat toky dat mapování v Azure Data Factory
 author: kromerm
 ms.author: makromer
-ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/22/2020
-ms.openlocfilehash: 9ca5ea5cdebe297af5081ae6e219935c56ba942e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/11/2021
+ms.openlocfilehash: 82aba428627cba1a3df26fc67c5da0cde52d368c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96004859"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309063"
 ---
 # <a name="monitor-data-flows"></a>Monitorování toků dat
 
@@ -77,9 +76,15 @@ Pokud v zobrazení monitorování kanálu ADF otevřete výstup JSON z aktivity 
 }
 ```
 
-### <a name="post-processing-time"></a>Čas po zpracování
+### <a name="sink-processing-time"></a>Doba zpracování jímky
 
 Když na mapě vyberete ikonu transformace jímky, v pravém dolním rohu se v panelu pro odesílání na pravé straně zobrazí další datový bod s názvem "doba zpracování". Toto je množství času stráveného prováděním úlohy v clusteru Spark *po* načtení dat, transformaci a zápis. Tento čas může zahrnovat uzavírání fondů připojení, vypnutí ovladače, odstraňování souborů, slučování souborů atd. Při provádění akcí ve vašem toku, jako je "přesunout soubory" a "výstup do jednoho souboru", se pravděpodobně zobrazí zvýšení hodnoty doba zpracování po zpracování.
+
+* Doba trvání fáze zápisu: čas pro zápis dat do pracovního umístění pro synapse SQL
+* Doba trvání operace SQL tabulky: čas strávený přesunutím dat z dočasných tabulek do cílové tabulky
+* Doba trvání předběžného SQL & po dobu trvání SQL: čas strávený spouštěním příkazů pro příkazy SQL před odesláním
+* Doba trvání příkazů & po dobu trvání příkazů pro odeslání: čas strávený spouštěním všech operací před/po pro zdroj nebo jímka založené na souboru. Můžete například přesunout nebo odstranit soubory po zpracování.
+* Doba trvání sloučení: čas strávený sloučením souboru, sloučení souborů se při zápisu do jediného souboru používá pro jímky založené na souborech, nebo když se použije název souboru jako data sloupce. Pokud se v této metrikě stráví značný čas, měli byste se vyhnout používání těchto možností.
   
 ## <a name="error-rows"></a>Řádky chyb
 

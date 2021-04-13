@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/01/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: dd000ca36bb0ad586b973b2bcdc638d8992b1a73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2610ed46d707af6acfb1b6004df4367add94391
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668635"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305153"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA systému škálování na více systémů na Red Hat Enterprise Linux 
 
@@ -215,7 +215,6 @@ Pro konfiguraci prezentovanou v tomto dokumentu nasaďte sedm virtuálních poč
       1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **Hana-kg**).
       1. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**, **Hana-back-endu** a **Hana-HP**).
       1. Vyberte **porty ha**.
-      1. Zvyšte **časový limit nečinnosti** na 30 minut.
       1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
       1. Vyberte **OK**.
 

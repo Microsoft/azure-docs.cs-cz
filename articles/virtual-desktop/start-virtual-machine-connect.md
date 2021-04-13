@@ -3,15 +3,15 @@ title: Spustit připojení k virtuálnímu počítači – Azure
 description: Postup konfigurace funkce spustit virtuální počítač při připojení
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 04/10/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d9ce9811cd660c9a9b1fcb6f9e24cadd65d3c2bc
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: d3ef8e3656051c4a99ab52a7b52a0d623fdf9ce2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445597"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303950"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>Spustit virtuální počítač na Connect (Preview)
 
@@ -35,8 +35,7 @@ Následující klienti vzdálené plochy podporují funkci spustit virtuální p
 
 Můžete si prohlédnout oznámení o aktualizacích a podpoře klientů na fóru pro pracovníky odborné [komunity](https://aka.ms/wvdtc).
 
->[!IMPORTANT]
->Funkce spustit virtuální počítač v Connect v současné době podporuje jenom PowerShell a REST API, ne Azure Portal. Další informace najdete v tématu [Vytvoření nebo aktualizace fondu hostitelů](/rest/api/desktopvirtualization/hostpools/createorupdate).
+Cloud Azure Government v současné době nepodporuje spuštění virtuálního počítače v Connect.
 
 ## <a name="create-a-custom-role-for-start-vm-on-connect"></a>Vytvoření vlastní role pro spuštění virtuálního počítače v Connect
 
@@ -115,6 +114,24 @@ Možnost spustit virtuální počítač v Connect je nastavení fondu hostitelů
 
 >[!IMPORTANT]
 > Tuto funkci můžete nakonfigurovat jenom v existujících fondech hostitelů. Tato funkce není k dispozici, když vytváříte nový fond hostitelů.
+
+### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
+
+Postup použití Azure Portal ke konfiguraci spuštění virtuálního počítače v Connect:
+
+1. Otevřete prohlížeč a pokračujte na [Azure Portal](https://portal.azure.com/?feature.startVMonConnect=true#home). Doporučujeme otevřít Azure Portal v okně InPrivate.
+
+2. V Azure Portal přejít na **virtuální plochu Windows**.
+
+3. Vyberte **fondy hostitelů** a pak najděte fond hostitelů, který obsahuje osobní plochy, ke kterým jste tuto roli přiřadili.
+
+   >[!NOTE]
+   > Fond hostitelů, ve kterém tuto funkci nakonfigurujete, musí mít osobní plochy s přiřazenými přímými rolemi. Pokud nejsou počítače v hostitelském fondu správně nakonfigurovány, proces konfigurace nebude fungovat.
+
+4. Ve fondu hostitelů vyberte možnost **vlastnosti**. V části **Spustit virtuální počítač v připojení** vyberte **Ano** a pak vyberte **Uložit** pro okamžité použití nastavení.
+
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky okno Vlastnosti. Možnost spustit virtuální počítač u připojení je zvýrazněná červenou.](media/properties-start-vm-on-connect.png)
 
 ### <a name="use-powershell"></a>Použití prostředí PowerShell
 

@@ -3,12 +3,12 @@ title: Azure Relay výjimky a jak je vyřešit | Microsoft Docs
 description: Seznam výjimek Azure Relay a navrhovaných akcí, které můžete provést, abyste je mohli vyřešit.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 44eeba6eb7b8cfd4e81a923c2d9a3155f1709f2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3f9fe2e8aac826bd63d9842bd3380be10e1b87e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625144"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313942"
 ---
 # <a name="azure-relay-exceptions"></a>Výjimky Azure Relay
 
@@ -80,7 +80,7 @@ Tato chyba má dvě obvyklé příčiny:
     V některých případech může služba předávání nastat při zpracování požadavků k prodlevám. K tomu může dojít například během období vysokého provozu. Pokud k tomu dojde, zkuste operaci zopakovat po prodlevě, dokud nebude operace úspěšná. Pokud se stejná operace po několika pokusech i nadále nezdařila, zkontrolujte [lokalitu stavu služby Azure](https://azure.microsoft.com/status/) a zjistěte, jestli nejsou známé výpadky služeb.
 
 ## <a name="next-steps"></a>Další kroky
-* [Nejčastější dotazy k Azure Relay](relay-faq.md)
+* [Nejčastější dotazy k Azure Relay](relay-faq.yml)
 * [Vytvoření oboru názvů Relay](relay-create-namespace-portal.md)
 * [Začínáme s Azure Relay a .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Začínáme s Azure Relay a uzlem](relay-hybrid-connections-node-get-started.md)

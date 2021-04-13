@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e778c7ee14d2115bf6d8cf7f12ceaa61e364a4a2
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: a5f4b23196a04d88e4329cb5ebf26d0b0a477444
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120166"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307262"
 ---
 # <a name="device-update-agent-provisioning"></a>Zřizování agenta aktualizace zařízení
 
@@ -81,8 +81,25 @@ Podle těchto pokynů můžete zřídit agenta aktualizace zařízení v [zaří
 
 1. Podle pokynů [nainstalujte a zřiďte modul runtime Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?view=iotedge-2020-11&preserve-view=true).
 
-1. Pak nainstalujte agenta aktualizace zařízení z [artefaktů](https://github.com/Azure/iot-hub-device-update/releases) a teď jste připraveni spustit agenta aktualizace zařízení na zařízení IoT Edge.
+1. Instalace agenta aktualizace image aktualizace zařízení
+    - Poskytujeme vzorové obrázky v [artefaktech](https://github.com/Azure/iot-hub-device-update/releases) , abyste se mohli pokusit aktualizovat image uvádění na různé verze pomocí základní Image (ADU-Base-image) a jedné aktualizační Image (ADU-Update-image). Podívejte se na příklad, [jak tento obrázek v zařízení s IoT Hub zablikat](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image).  
 
+1. Instalace agenta aktualizace balíčku aktualizace zařízení  
+    - Pro nejnovější verze agenta ze packages.miscrosoft.com: aktualizace seznamů balíčků na zařízení a instalace balíčku agenta aktualizací zařízení a jeho závislostí pomocí:   
+    ```shell
+    sudo apt-get update
+    ```
+    
+    ```shell
+    sudo apt-get install deviceupdate-agent deliveryoptimization-plugin-apt
+    ```
+    
+    - Pro nadcházející Release Candidate verze z [artefaktů](https://github.com/Azure/iot-hub-device-update/releases) : Stáhněte soubor. DEP do počítače, do kterého chcete nainstalovat agenta aktualizace zařízení, a pak:
+     ```shell
+    Sudo apt-get install -y ./"<PATH TO FILE>"/"<.DEP FILE NAME>"
+     ```
+    
+1. Nyní jste připraveni spustit agenta aktualizace zařízení na zařízení IoT Edge. 
 
 ### <a name="on-non-edge-iot-linux-devices"></a>Na zařízeních bez hraničních zařízení IoT Linux
 
@@ -130,14 +147,15 @@ Podle těchto pokynů můžete zřídit agenta aktualizace zařízení v zaříz
     sudo aziotctl config apply
     ```
     
-1.  Nakonec nainstalujte agenta aktualizace zařízení z [artefaktů](https://github.com/Azure/iot-hub-device-update/releases) a teď jste připraveni na zařízení IoT Edge spustit agenta aktualizace zařízení.
+1.  Nakonec nainstalujte agenta aktualizace zařízení. Poskytujeme vzorové obrázky v [artefaktech](https://github.com/Azure/iot-hub-device-update/releases) , abyste se mohli pokusit aktualizovat image uvádění na různé verze pomocí základní Image (ADU-Base-image) a jedné aktualizační Image (ADU-Update-image). Podívejte se na příklad, [jak tento obrázek v zařízení s IoT Hub zablikat](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image).
 
+1.  Nyní jste připraveni spustit agenta aktualizace zařízení na zařízení IoT. 
 
 ### <a name="other-iot-devices"></a>Jiná zařízení IoT
 
 Agenta aktualizace zařízení lze také nakonfigurovat bez služby IoT identity pro testování nebo na omezená zařízení. Pomocí níže uvedených kroků zřídíte agenta aktualizace zařízení pomocí připojovacího řetězce (z modulu nebo zařízení).
 
-1.  Nainstalujte agenta aktualizace zařízení z [artefaktů](https://github.com/Azure/iot-hub-device-update/releases).
+1.  Poskytujeme vzorové obrázky v [artefaktech](https://github.com/Azure/iot-hub-device-update/releases) , abyste se mohli pokusit aktualizovat image uvádění na různé verze pomocí základní Image (ADU-Base-image) a jedné aktualizační Image (ADU-Update-image). Podívejte se na příklad, [jak tento obrázek v zařízení s IoT Hub zablikat](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image).
 
 1.  Přihlaste se k počítači nebo zařízení IoT Edge nebo zařízení IoT.
     
@@ -150,16 +168,17 @@ Agenta aktualizace zařízení lze také nakonfigurovat bez služby IoT identity
        
     1. Mělo by se zobrazit okno otevřené s nějakým textem. Po prvním zřízení agenta aktualizace zařízení na zařízení IoT odstraňte celý řetězec následující po ' connection_String = '. Je místo toho jenom zástupný text.
     
-    1. V terminálu nahraďte <řetězec připojení> připojovacím řetězcem zařízení pro vaši instanci agenta aktualizace zařízení.
+    1. V terminálu nahraďte "<Your-Connection-String>" připojovacím řetězcem zařízení pro vaši instanci agenta aktualizace zařízení.
     
         > [!Important]
         > Nepřidávat uvozovky kolem připojovacího řetězce
-        
-        - connection_string =<> řetězce připojení
+        ```shell
+        - connection_string=<ADD CONNECTION STRING HERE>
+       ```
        
     1. Zadejte a uložte.
     
-1.  Teď jste připraveni spustit agenta aktualizace zařízení na zařízení IoT Edge. 
+1.  Teď jste připraveni spustit agenta aktualizace zařízení na zařízení IoT. 
 
 
 ## <a name="how-to-start-the-device-update-agent"></a>Jak spustit agenta aktualizace zařízení

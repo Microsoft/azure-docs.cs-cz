@@ -2,16 +2,16 @@
 title: Kurz – vytvoření & nasazení Azure Resource Manager souborů bicep
 description: Vytvořte svůj první soubor bicep pro nasazení prostředků Azure. V tomto kurzu se dozvíte o syntaxi souborů bicep a o tom, jak nasadit účet úložiště.
 author: mumian
-ms.date: 03/17/2021
+ms.date: 04/12/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 8979585d7ec0fa6eac1866375fe1e80214f2d2e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ffd8a97d797144d458e7ec5836042cc6d8d8193
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594270"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306670"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>Kurz: vytvoření a nasazení prvního souboru Azure Resource Manager bicep
 
@@ -57,7 +57,7 @@ V pořádku jste připraveni začít s bicep.
 
     ```bicep
     resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
-      name: '{provide-unique-name}'
+      name: '{provide-unique-name}'  // must be globally unique
       location: 'eastus'
       sku: {
         name: 'Standard_LRS'
@@ -85,6 +85,10 @@ V pořádku jste připraveni začít s bicep.
         Pokud si zobrazíte starší verzi rozhraní API, například [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts), uvidíte, že je k dispozici menší sada vlastností.
 
         Pokud se rozhodnete změnit verzi rozhraní API pro určitý prostředek, ujistěte se, že jste vyhodnotili vlastnosti této verze a odpovídajícím způsobem upravte soubor bicep.
+
+    Další informace najdete v tématu [Struktura bicep](./bicep-file.md).
+
+    Existuje komentář pro vlastnost Name.  Použití `//` pro komentáře na jednom řádku nebo `/* ... */` pro víceřádkové komentáře
 
 1. Nahraďte `{provide-unique-name}` včetně složených závorek `{}` jedinečným názvem účtu úložiště.
 

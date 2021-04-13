@@ -94,7 +94,7 @@
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
     - name: Nejčastější dotazy
-      href: relay-faq.md
+      href: relay-faq.yml
     - name: Blog
       href: /archive/blogs/servicebus/
     - name: Ceny

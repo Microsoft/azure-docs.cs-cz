@@ -3,12 +3,18 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Co je anomálie detektor?
+    - name: Co je detektor anomálií (lineární)?
+      href: overview-multivariate.md
+    - name: Co je detektor anomálií (univariate)?
       href: overview.md
     - name: Ceny a omezení
       href: 'https://aka.ms/adpricing'
-- name: Rychlý Start detektoru anomálií
-  href: ./quickstarts/client-libraries.md
+- name: Rychlé starty detektoru anomálií
+  items:
+    - name: Klientské knihovny lineární
+      href: ./quickstarts/client-libraries-multivariate.md
+    - name: Klientské knihovny Univariate
+      href: ./quickstarts/client-libraries.md
 - name: ukázky
   items:
     - name: Interaktivní ukázka
@@ -39,10 +45,18 @@
               href: how-to/deploy-anomaly-detection-on-container-instances.md
 - name: Koncepty
   items:
-    - name: Osvědčené postupy rozhraní API detektoru anomálií
+    - name: Osvědčené postupy rozhraní API detektoru anomálií (lineární)
+      href: concepts/best-practices-multivariate.md
+    - name: Osvědčené postupy rozhraní API detektoru anomálií (univariate)
       href: concepts/anomaly-detection-best-practices.md
+    - name: Architektura prediktivní údržby (lineární)
+      href: concepts/multivariate-architecture.md
+    - name: Řešení potíží s lineární
+      href: concepts/troubleshoot.md
     - name: Detekce anomálií pro spektrální zbytky (SR) a konvoluční neuronové NET (CNN)
       href: 'https://arxiv.org/abs/1906.03821'
+    - name: Detekce anomálií lineární časové řady prostřednictvím sítě s upozorněním na graf
+      href: 'https://arxiv.org/abs/2009.02040'
 - name: Kurzy
   items:
     - name: Vizualizace anomálií jako dávky s využitím Power BI

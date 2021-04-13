@@ -4,13 +4,13 @@ description: Tento článek popisuje, jak se můžete dotazovat na prostředky z
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/22/2020
-ms.openlocfilehash: 57ed43b25c9031138a91f0870d316e1ae7a07a5b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/11/2021
+ms.openlocfilehash: e007f5af214dcfa475eb59a5981bc580b9499915
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030962"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314231"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Provádění dotazů protokolu v Azure Monitor, které jsou rozloženy mezi pracovními prostory a aplikacemi
 
@@ -27,7 +27,7 @@ Existují dvě metody dotazování na data, která jsou uložená ve více praco
 ## <a name="cross-resource-query-limits"></a>Omezení dotazů mezi prostředky 
 
 * Počet Application Insightsch prostředků a Log Analytics pracovních prostorů, které můžete zahrnout do jednoho dotazu, je omezený na 100.
-* Dotaz mezi prostředky není v Návrháři zobrazení podporován. Dotaz můžete v Log Analytics vytvořit a připnout na řídicí panel Azure a [vizualizovat dotaz protokolu](../visualize/tutorial-logs-dashboards.md). 
+* Dotaz mezi prostředky není v Návrháři zobrazení podporován. Dotaz můžete vytvořit v Log Analytics a připnout ho na řídicí panel Azure pro [vizualizaci dotazu protokolu](../visualize/tutorial-logs-dashboards.md) nebo zahrnutí do [sešitů](../visualize/workbooks-overview.md).
 * Dotazy na více prostředků v upozorněních protokolu jsou podporovány pouze v aktuálním [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules). Pokud používáte starší rozhraní API pro výstrahy Log Analytics, budete muset [Přepnout na aktuální rozhraní API](../alerts/alerts-log-api-switch.md).
 
 
@@ -41,6 +41,9 @@ Určení pracovního prostoru lze provést jedním z několika způsobů:
 
 * Název prostředku – je popisný název pracovního prostoru, který se někdy označuje jako *název součásti*. 
 
+    >[!Note]
+    >Vzhledem k tomu, že názvy aplikací a pracovních prostorů nejsou jedinečné, může být tento identifikátor dvojznačný. Pokud existuje více instancí názvu prostředku, odkaz by měl odpovídat kvalifikovanému názvu, ID prostředku nebo ID prostředku Azure.
+
     `workspace("contosoretail-it").Update | count`
 
 * Kvalifikovaný název – je úplný název pracovního prostoru, který se skládá z názvu předplatného, skupiny prostředků a názvu komponenty v tomto formátu: název *předplatného/* skupina prostředků/název součásti. 
@@ -48,8 +51,7 @@ Určení pracovního prostoru lze provést jedním z několika způsobů:
     `workspace('contoso/contosoretail/contosoretail-it').Update | count`
 
     >[!NOTE]
-    >Vzhledem k tomu, že názvy předplatných Azure nejsou jedinečné, může být tento identifikátor dvojznačný. 
-    >
+    >Vzhledem k tomu, že názvy předplatných Azure nejsou jedinečné, může být tento identifikátor dvojznačný.
 
 * ID pracovního prostoru – ID pracovního prostoru je jedinečný a neměnný identifikátor přiřazený ke každému pracovnímu prostoru reprezentovanému jako globálně jedinečný identifikátor (GUID).
 

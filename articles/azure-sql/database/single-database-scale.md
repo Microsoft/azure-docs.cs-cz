@@ -10,19 +10,26 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 02/22/2021
-ms.openlocfilehash: c5b6509cabd743a01a085639a7b76d764555a9f8
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.date: 04/09/2021
+ms.openlocfilehash: 47686f457e2579ca8a643de6671c886effefa6f1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106649"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313517"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Škálování prostředků jednoúčelové databáze ve službě Azure SQL Database
 
 Tento článek popisuje, jak škálovat výpočetní prostředky a prostředky úložiště dostupné pro Azure SQL Database v zřízené výpočetní úrovni. [Výpočetní úroveň bez serveru](serverless-tier-overview.md) navíc poskytuje výpočetní automatické škálování a účtuje se za sekundu za použití výpočtů.
 
-Po počátečním výběru počtu virtuální jádra nebo DTU můžete dynamicky škálovat jednu databázi na základě aktuálního prostředí pomocí [Azure Portal](single-database-manage.md#the-azure-portal), [jazyka Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](/rest/api/sql/databases/update).
+Po počátečním výběru počtu virtuální jádra nebo DTU můžete dynamicky škálovat jednu databázi na základě aktuálního prostředí pomocí:
+
+* [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
+* [Azure Portal](single-database-manage.md#the-azure-portal)
+* [PowerShell](/powershell/module/az.sql/set-azsqldatabase)
+* [Azure CLI](/cli/azure/sql/db#az-sql-db-update)
+* [REST API](/rest/api/sql/databases/update)
+
 
 Následující video ukazuje dynamicky se měnící úroveň služby a výpočetní velikost, aby se zvýšila dostupnost DTU pro izolovanou databázi.
 
@@ -125,7 +132,7 @@ Fakturuje se vám každá hodina existence databáze na nejvyšší úrovni slu�
 
 ### <a name="vcore-based-purchasing-model"></a>Nákupní model založený na virtuálních jádrech
 
-- Úložiště se dá zřídit až do limitu maximální velikosti úložiště dat s použitím přírůstku o velikosti 1 GB. Minimální konfigurovatelné úložiště dat je 1 GB. Pro jednotlivé [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md) pro omezení maximální velikosti úložiště dat v každém cíli služby viz stránky dokumentace k omezením prostředků.
+- Úložiště se dá zřídit až do limitu maximální velikosti úložiště dat s použitím přírůstku o velikosti 1 GB. Minimální konfigurovatelné úložiště dat je 1 GB. Omezení maximální velikosti úložiště dat v jednotlivých účelech služby najdete v tématu věnovaném pracovním prostorům pro omezení prostředků pro [omezení prostředků pro jednotlivé databáze pomocí modelu nákupu Vcore](resource-limits-vcore-single-databases.md) a [omezení prostředků pro izolované databáze pomocí modelu nákupu DTU](resource-limits-dtu-single-databases.md).
 - Úložiště dat pro izolovanou databázi je možné zřídit zvýšením nebo snížením jeho maximální velikosti pomocí [Azure Portal](https://portal.azure.com), [jazyka Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](/rest/api/sql/databases/update). Pokud je hodnota maximální velikosti zadána v bajtech, musí být násobkem 1 GB (1073741824 bajtů).
 - Množství dat, které lze uložit v datových souborech databáze, je omezeno nakonfigurovanou maximální velikostí úložiště dat. Kromě tohoto úložiště Azure SQL Database automaticky přiděluje 30% větší úložiště, které se má použít pro transakční protokol.
 - Azure SQL Database pro databázi automaticky přiděluje 32 GB za vCore `tempdb` . `tempdb` se nachází v místním úložišti SSD ve všech úrovních služby.
