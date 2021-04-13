@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 550084ccbb1df24fe0cbc0a4630efe19e6685e5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2c0b82f14fd16ecb9eef163e7a263f4327cfc46
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709899"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364545"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -83,7 +83,7 @@ Výukové programy, jak ověřit Key Vault v aplikacích, najdete v tématech:
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Správa klíčů, certifikátů a tajných klíčů
 
-Přístup k klíčům, tajným klíčům a certifikátům je řízen rovinou dat. Řízení přístupu roviny dat se dá provést pomocí zásad přístupu k místnímu trezoru nebo Azure RBAC (Preview).
+Přístup k klíčům, tajným klíčům a certifikátům je řízen rovinou dat. Řízení přístupu roviny dat se dá provádět pomocí zásad přístupu k místnímu trezoru nebo Azure RBAC.
 
 **Rozhraní API pro klíče a sady SDK**
 
@@ -105,7 +105,7 @@ Přístup k klíčům, tajným klíčům a certifikátům je řízen rovinou dat
 
 Instalační balíčky a zdrojový kód najdete v tématu [klientské knihovny](client-libraries.md) .
 
-Další informace o Key Vault Zabezpečení roviny dat najdete v tématech [Key Vault rovina dat a zásady přístupu](./secure-your-key-vault.md#data-plane-and-access-policies) a [Key Vault rovině dat a Azure RBAC (Preview)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview) .
+Další informace o Key Vault Zabezpečení roviny dat najdete v tématech [Key Vault rovina dat a zásady přístupu](./secure-your-key-vault.md#data-plane-and-access-policies) a [Key Vault rovině dat a Azure RBAC](./secure-your-key-vault.md#data-plane-and-azure-rbac) .
 
 ### <a name="code-examples"></a>Příklady kódu
 

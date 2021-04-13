@@ -4,12 +4,12 @@ description: Přečtěte si o správě certifikátů v clusteru Service Fabric z
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: a8a7e8954f3c9d5b54c2e1ed9caa330ef92d4512
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7976d1419aeb0dda3ec2f94a32e9b185a6c14be7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100099502"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304864"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Správa certifikátů v Service Fabric clusterech
 
@@ -90,10 +90,10 @@ V tomto okamžiku existuje certifikát v trezoru, který je připravený pro pou
 ### <a name="certificate-provisioning"></a>Zřizování certifikátů
 Uvedli jsme "zřizovací agent", který je entita, která načte certifikát, včetně jeho privátního klíče, z trezoru a nainstaluje ho do každého hostitele clusteru. (Odvolání tohoto Service Fabric nezřizuje certifikáty.) V našem kontextu se cluster bude hostovat na kolekci virtuálních počítačů Azure a/nebo virtuálních počítačů s měřítkem. V Azure se dá zřízení certifikátu z trezoru na virtuální počítač nebo VMSS dosáhnout pomocí následujících mechanismů – za předpokladu, že agent zřizování předtím udělil oprávnění Get k trezoru vlastníkem trezoru: 
   - ad-hoc: operátor načte certifikát z trezoru (jako PFX/PKCS #12 nebo PEM) a nainstaluje ho do každého uzlu.
-  - jako klíčová sada pro škálování virtuálního počítače "tajné" při nasazení: služba COMPUTE načítá, používá ke své první straně identitu prvního subjektu, certifikát z trezoru s povoleným nasazením šablony a nainstaluje ho do každého uzlu sady škálování virtuálních počítačů ([např](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#certificates).). Všimněte si, že to umožňuje zřizování pouze tajných klíčů.
-  - pomocí [rozšíření virtuálního počítače Key Vault](../virtual-machines/extensions/key-vault-windows.md); To umožňuje zřizování certifikátů pomocí deklarací bez verzí s pravidelným obnovením pozorovaných certifikátů. V takovém případě se očekává, že virtuální počítač/VMSS bude mít [spravovanou identitu](../virtual-machines/security-policy.md#managed-identities-for-azure-resources), což byl udělen přístup k trezorům, které obsahují zjištěné certifikáty.
+  - jako klíčová sada pro škálování virtuálního počítače "tajné" při nasazení: služba COMPUTE načítá, používá ke své první straně identitu prvního subjektu, certifikát z trezoru s povoleným nasazením šablony a nainstaluje ho do každého uzlu sady škálování virtuálních počítačů ([např](/virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#certificates).). Všimněte si, že to umožňuje zřizování pouze tajných klíčů.
+  - pomocí [rozšíření virtuálního počítače Key Vault](../virtual-machines/extensions/key-vault-windows.md); To umožňuje zřizování certifikátů pomocí deklarací bez verzí s pravidelným obnovením pozorovaných certifikátů. V takovém případě se očekává, že virtuální počítač/VMSS bude mít [spravovanou identitu](/virtual-machines/security-policy.md#managed-identities-for-azure-resources), což byl udělen přístup k trezorům, které obsahují zjištěné certifikáty.
 
-Mechanismus ad-hoc se nedoporučuje z několika důvodů od zabezpečení po dostupnost a nezabývá se tady. Podrobnosti najdete [v tématu certifikáty ve Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#certificates).
+Mechanismus ad-hoc se nedoporučuje z několika důvodů od zabezpečení po dostupnost a nezabývá se tady. Podrobnosti najdete [v tématu certifikáty ve Virtual Machine Scale Sets](/virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#certificates).
 
 Zřizování VMSS-/COMPUTE-based představuje výhody zabezpečení a dostupnosti, ale také nabízí omezení. Vyžaduje – návrh – deklarace certifikátů jako tajných klíčů, která je vhodná jenom pro clustery zabezpečené pomocí certifikátů deklarovaných pomocí kryptografického otisku. Naproti tomu Key Vault zřizování na základě rozšíření virtuálních počítačů vždycky nainstaluje nejnovější verzi každého zjištěného certifikátu, který je vhodný jenom pro clustery zabezpečené pomocí certifikátů deklarovaných běžným názvem subjektu. Pro zdůraznění nepoužívejte mechanizmus zřizování AutoRefresh (například rozšíření KVVM) pro certifikáty deklarované instancí (to znamená podle kryptografického otisku) – riziko ztráty dostupnosti je značné.
 

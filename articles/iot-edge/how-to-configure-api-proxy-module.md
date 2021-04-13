@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1070a4c8daecfedae513f2fd8738c27abfb33078
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f55c3a1f699f8a087eb97eaba347a3f21c124cc9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200587"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307312"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>Konfigurace modulu API proxy pro scénář hierarchie brány (Preview)
 
@@ -34,7 +34,7 @@ Modul proxy serveru rozhraní API může povolit mnoho scénářů pro hierarchi
 
 ## <a name="deploy-the-proxy-module"></a>Nasazení modulu proxy
 
-Modul proxy serveru rozhraní API je k dispozici na webu Microsoft Container Registry (MCR): `mcr.microsoft.com/azureiotedge-api-proxy:latest` .
+Modul proxy serveru rozhraní API je k dispozici na webu Microsoft Container Registry (MCR): `mcr.microsoft.com/azureiotedge-api-proxy:1.0` .
 
 Modul API proxy můžete nasadit taky přímo z Azure Marketplace: [IoT Edge API proxy serveru](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.azureiotedge-api-proxy?tab=Overview).
 

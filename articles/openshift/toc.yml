@@ -26,6 +26,8 @@
           href: howto-create-private-cluster-4x.md
         - name: Konfigurace přesměrování DNS
           href: dns-forwarding.md
+        - name: Omezení odchozího provozu
+          href: howto-restrict-egress.md
     - name: Storage
       items:
         - name: Šifrování virtuálních okruhů pomocí klíče spravovaného zákazníkem (Preview)

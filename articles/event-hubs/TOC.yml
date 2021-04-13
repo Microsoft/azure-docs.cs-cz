@@ -206,7 +206,7 @@
         - name: Připojení Akka Streams k centru událostí
           href: event-hubs-kafka-akka-streams-tutorial.md
         - name: Nejčastější dotazy – Event Hubs pro Kafka
-          href: apache-kafka-frequently-asked-questions.md
+          href: apache-kafka-frequently-asked-questions.yml
     - name: Správa a monitorování
       items:
         - name: Monitorování Event Hubs s využitím Azure Monitoru
@@ -315,7 +315,7 @@
     - name: Získávání dovedností pomocí Microsoft Learn
       href: /learn/browse/?products=azure-event-hubs
     - name: Nejčastější dotazy
-      href: event-hubs-faq.md
+      href: event-hubs-faq.yml
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Ceny

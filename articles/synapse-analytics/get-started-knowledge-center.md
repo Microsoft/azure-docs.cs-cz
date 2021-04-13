@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: a26f46da7b392bd3b4a49aacb360a4c6147f8d2c
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 92d1534b5dd0233ce88b81d605c6502b67a121df
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382636"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307890"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Prozkoumejte centrum synapse Knowledge Center
 
 V tomto kurzu se naučíte používat centrum znalostí synapse Studio.
 
-## <a name="getting-to-the-knowledge-center"></a>Získání centra znalostí
+## <a name="introduction-to-the-knowledge-center"></a>Seznámení s centrem znalostí
 
 Existují dva způsoby, jak najít centrum znalostí v synapse studiu:
 
@@ -30,16 +30,19 @@ Existují dva způsoby, jak najít centrum znalostí v synapse studiu:
 
 Vyberte jednu z metod a otevřete **Centrum znalostí**.
 
-## <a name="overview"></a>Přehled
-
-**Centrum znalostí** vám umožňuje provádět tři věci:
+Jakmile se zobrazí, uvidíte, že **Centrum znalostí** vám umožní provádět tři věci:
 * **Používejte vzorky hned**. Pokud potřebujete rychlý příklad, jak synapse funguje, vyberte tuto možnost.
 * **Procházet galerii**. Tato možnost umožňuje propojit ukázkové sady dat a přidat vzorový kód ve formě skriptů SQL, poznámkových bloků a kanálů.
 * **Projděte si synapse Studio**. Tato možnost vás provede krátkou prohlídku základních částí synapse studia. To je užitečné, pokud jste ještě nikdy nepoužili synapse Studio.
 
-## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>Prozkoumávání služby Blob Storage s neserverovým fondem SQL
+## <a name="exploring-use-samples-immediately"></a>Prozkoumávání: použití vzorků hned
 
-1. Přejděte do **centra znalostí** a ihned klikněte na možnost **použít vzorky**.
+V této části jsou tři položky:
+* Prozkoumat ukázková data pomocí Sparku
+* Dotazování dat pomocí jazyka SQL
+* Vytvoření externí tabulky pomocí SQL
+
+1. V **centru znalostí** klikněte okamžitě na možnost **použít vzorky**.
 1. Vyberte **data dotazu pomocí SQL**.
 1. Klikněte na **použít ukázku**.
 1. Otevře se nový vzorový skript SQL.

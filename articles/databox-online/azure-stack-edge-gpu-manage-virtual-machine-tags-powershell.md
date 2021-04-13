@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 566ca1598857f67e25faea9f19d134c4a91bfb18
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: be4348359e6b53c3e7454e9ab7c1af8ce8a7020a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106556122"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305547"
 ---
 # <a name="manage-vm-tags-on-azure-stack-edge-via-azure-powershell"></a>Správa značek virtuálních počítačů na Azure Stack Edge přes Azure PowerShell
 
@@ -36,17 +36,7 @@ Než budete moct nasadit virtuální počítač do svého zařízení přes Powe
 
 ## <a name="verify-connection-to-local-azure-resource-manager"></a>Ověřit připojení k místnímu Azure Resource Manager
 
-Ujistěte se, že se k přístupu k zařízení z klienta dají použít následující kroky.
-
-Ověřte, že se váš klient může připojit k místnímu Azure Resource Manager. 
-
-1. Volat rozhraní API místních zařízení k ověření:
-
-    ```powershell
-    login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d  
-    ```
-
-1. Zadejte uživatelské jméno `EdgeArmUser` a heslo pro připojení prostřednictvím Azure Resource Manager. Pokud heslo nebudete volat, [resetujte heslo pro Azure Resource Manager](azure-stack-edge-gpu-set-azure-resource-manager-password.md) a použijte toto heslo pro přihlášení.
+[!INCLUDE [azure-stack-edge-gateway-verify-azure-resource-manager-connection](../../includes/azure-stack-edge-gateway-verify-azure-resource-manager-connection.md)]
 
 
 ## <a name="add-a-tag-to-a-vm"></a>Přidání značky k virtuálnímu počítači

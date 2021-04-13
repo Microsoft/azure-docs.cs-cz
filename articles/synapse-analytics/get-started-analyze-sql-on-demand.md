@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: c8a0ad3eb578280ea29d94dfbb5e74d873568541
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 7c228bfe5897b45e6345234f2ed8e0f5cfbec73a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259638"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312786"
 ---
 # <a name="analyze-data-with-a-serverless-sql-pool"></a>Analýza dat pomocí neserverového fondu SQL
 
@@ -27,9 +27,8 @@ Neserverové fondy SQL umožňují používat SQL bez nutnosti rezervovat kapaci
 
 Každý pracovní prostor obsahuje předem nakonfigurovaný fond SQL bez serveru s názvem **integrovaný**. 
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage-using-serverless-sql-pool"></a>Analýza dat NYC taxislužby v BLOB Storage s využitím fondu SQL bez serveru
+## <a name="analyze-nyc-taxi-data-with-a-serverless-sql-pool"></a>Analýza dat taxislužby NYC pomocí neserverového fondu SQL
 
-V této části použijete fond SQL bez serveru k analýze dat NYC taxislužby v účtu Azure Blob Storage.
 
 1. V synapse studiu přejdete do centra pro **vývoj** .
 1. Vytvořte nový skript SQL.

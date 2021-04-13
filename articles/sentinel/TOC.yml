@@ -35,6 +35,8 @@
           href: roles.md
         - name: Správa přístupu podle prostředku
           href: resource-context-rbac.md
+        - name: Ochrana duševního vlastnictví MSSP
+          href: mssp-protect-intellectual-property.md
     - name: Pokročilá detekce útoků s více fázemi
       href: fusion.md
     - name: Automatizace (společnosti)

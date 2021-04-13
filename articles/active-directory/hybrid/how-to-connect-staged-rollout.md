@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67018a2ec6b9239661a7022ad7fb9eeb6c9a5f64
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 756e5e96a8040fb3d93273a5521236d46879e60d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385577"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306377"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>Migrace na cloudové ověřování pomocí postupného uvedení
 
@@ -92,7 +92,7 @@ Následující scénáře nejsou podporovány pro fáze zavedení:
 - Hybridní připojení Windows 10 nebo získání primárního obnovovacího tokenu služby Azure AD JOIN pro všechny verze, když místní hlavní název uživatele (UPN) není směrovatelný. Tento scénář se vrátí do koncového bodu WS-Trust v režimu připraveného zavedení, ale přestane fungovat, když je dokončená migrace připravené a přihlášení uživatele se už nespoléhá na federační server.
 
   >[!NOTE]
-  >Ke konečnému přímou migraci je potřeba z federovaných na cloudové ověřování vytvořit pomocí Azure AD Connect nebo PowerShellu. Při přípravě na přípravu se nemění doména ze federované na spravovanou.  Další informace o přímou migraci domény najdete v článku [migrace z federace na synchronizaci hodnoty hash hesla](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) a [migrace z federace na předávací ověřování](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) .
+  >Ke konečnému přímou migraci je potřeba z federovaných na cloudové ověřování vytvořit pomocí Azure AD Connect nebo PowerShellu. Při přípravě na přípravu se nemění doména ze federované na spravovanou.  Další informace o přímou migraci domény najdete v článku [migrace z federace na synchronizaci hodnoty hash hesla](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) a [migrace z federace na předávací ověřování](plan-migrate-adfs-pass-through-authentication.md#step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso).
   
 ## <a name="get-started-with-staged-rollout"></a>Začínáme s fází uvedení do provozu
 

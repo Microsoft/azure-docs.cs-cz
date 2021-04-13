@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 02/12/2021
+ms.date: 04/12/2021
 tags: active-directory
 ms.author: mimart
 author: msmimart
@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60cd944ecb144a30e872259f6e959a11c3ea6319
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c38bab420618b04f8153a123ce9b988215c40e8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100365425"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304490"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s Azure Active Directory spolupráce B2B
 
@@ -74,6 +74,9 @@ Externí uživatele je možné přidat pouze do skupin přiřazených nebo zabez
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Můj externí uživatel nedostal e-mail k uplatnění.
 
 Pozvánka by měla zkontrolovat pomocí filtru poskytovatele internetových služeb nebo spamu, aby bylo zajištěno, že je povolena následující adresa: Invites@microsoft.com
+
+> [!NOTE]
+> Pro službu Azure provozovanou společností 21Vianet v Číně je adresa odesílatele Invites@oe.21vianet.com .
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Všimněte si, že vlastní zpráva nezahrnuje zprávy pozvánky v časech
 

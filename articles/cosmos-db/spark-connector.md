@@ -1,23 +1,23 @@
 ---
-title: Připojit Apache Spark k Azure Cosmos DB
-description: Seznamte se s Azure Cosmos DB konektor Spark, který umožňuje připojení Apache Spark k Azure Cosmos DB.
-author: tknandu
+title: Připojit Apache Spark 2 k Azure Cosmos DB
+description: Přečtěte si o konektoru Azure Cosmos DB Spark 2 OLTP, který umožňuje připojení Apache Spark k Azure Cosmos DB.
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/21/2019
-ms.author: ramkris
-ms.openlocfilehash: 06498a27b95a72148497efd2d1e600d802414359
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.author: anfeldma
+ms.openlocfilehash: 9d4a1a7d359bac83159d0e5ca4bddfc5935394a5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359553"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364256"
 ---
-# <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Urychlení analýz velkých objemů dat pomocí Apache Spark pro Azure Cosmos DB konektor
+# <a name="accelerate-big-data-analytics-by-using-the-apache-spark-v2-to-azure-cosmos-db-oltp-connector"></a>Urychlení analýz velkých objemů dat pomocí Apache Spark v2 pro Azure Cosmos DB konektor OLTP
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Můžete spouštět úlohy [Spark](https://spark.apache.org/) s daty uloženými v Azure Cosmos DB pomocí konektoru Cosmos DB Spark. Cosmos lze použít pro zpracování dávkových a datových proudů a jako vrstvu obsluhy pro přístup s nízkou latencí.
+Můžete spouštět úlohy [Spark v2](https://spark.apache.org/) s daty uloženými v Azure Cosmos DB pomocí konektoru Cosmos DB Spark 2 OLTP. Cosmos lze použít pro zpracování dávkových a datových proudů a jako vrstvu obsluhy pro přístup s nízkou latencí.
 
 Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/services/databricks) nebo [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/), který poskytuje spravované Clustery Spark v Azure. V následující tabulce jsou uvedeny podporované verze Sparku.
 
@@ -33,7 +33,7 @@ Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/serv
 > Pro Cosmos DB rozhraní API Cassandra použijte [konektor Cassandra Spark](https://github.com/datastax/spark-cassandra-connector).
 
 > [!IMPORTANT]
-> Konektor Azure Cosmos DB Spark se v současné době nepodporuje u účtů bez [serveru](serverless.md) . Bude se adresovat jako nabídka bez serveru bude obecně dostupná.
+> Konektor Azure Cosmos DB Spark OLTP se v současné době nepodporuje u účtů bez [serveru](serverless.md) . Bude se adresovat jako nabídka bez serveru bude obecně dostupná.
 
 ## <a name="quickstart"></a>Rychlé zprovoznění
 

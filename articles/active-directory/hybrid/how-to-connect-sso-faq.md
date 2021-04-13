@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52b450ecc8aff379dbdb8d58f9b7609cf730ad27
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 87b9371bfe3b0bd8ff8b3bd509cc1431f0c2e1c6
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731662"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305765"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: nejčastější dotazy
 
@@ -90,7 +90,7 @@ Na místním serveru, na kterém běží Azure AD Connect, postupujte podle těc
    **Krok 1. Získá seznam doménových struktur služby Active Directory, kde je povolené bezproblémové jednotné přihlašování.**
 
    1. Nejdřív si stáhněte a nainstalujte [Azure AD PowerShell](/powershell/azure/active-directory/overview).
-   2. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
+   2. Přejděte do složky `$env:programfiles\Microsoft Azure Active Directory Connect`.
    3. Pomocí tohoto příkazu Importujte modul prostředí PowerShell pro bezproblémové přihlašování: `Import-Module .\AzureADSSO.psd1` .
    4. Spusťte PowerShell jako správce. V prostředí PowerShell volejte `New-AzureADSSOAuthenticationContext` . Tento příkaz by vám měl poskytnout místní nabídku pro zadání přihlašovacích údajů globálního správce vašeho tenanta.
    5. Volání `Get-AzureADSSOStatus | ConvertFrom-Json` . Tento příkaz vám poskytne seznam doménových struktur AD (podívejte se na seznam domény), na kterém je tato funkce povolená.
@@ -135,7 +135,7 @@ Na místním serveru, na kterém běží Azure AD Connect, postupujte podle těc
    Na místním serveru, na kterém běží Azure AD Connect, spusťte následující kroky:
 
    1. Nejdřív si stáhněte a nainstalujte [Azure AD PowerShell](/powershell/azure/active-directory/overview).
-   2. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
+   2. Přejděte do složky `$env:ProgramFiles\Microsoft Azure Active Directory Connect`.
    3. Pomocí tohoto příkazu Importujte modul prostředí PowerShell pro bezproblémové přihlašování: `Import-Module .\AzureADSSO.psd1` .
    4. Spusťte PowerShell jako správce. V prostředí PowerShell volejte `New-AzureADSSOAuthenticationContext` . Tento příkaz by vám měl poskytnout místní nabídku pro zadání přihlašovacích údajů globálního správce vašeho tenanta.
    5. Volání `Enable-AzureADSSO -Enable $false` .
@@ -150,7 +150,7 @@ Na místním serveru, na kterém běží Azure AD Connect, postupujte podle těc
    Pokud jste zakázali bezproblémové jednotné přihlašování pomocí Azure AD Connect, postupujte podle kroků 1 až 4 níže. Pokud jste místo toho zakázali bezproblémové jednotné přihlašování pomocí PowerShellu, přejděte dopředu na úlohu 5 níže.
 
    1. Nejdřív si stáhněte a nainstalujte [Azure AD PowerShell](/powershell/azure/active-directory/overview).
-   2. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
+   2. Přejděte do složky `$env:ProgramFiles\Microsoft Azure Active Directory Connect`.
    3. Pomocí tohoto příkazu Importujte modul prostředí PowerShell pro bezproblémové přihlašování: `Import-Module .\AzureADSSO.psd1` .
    4. Spusťte PowerShell jako správce. V prostředí PowerShell volejte `New-AzureADSSOAuthenticationContext` . Tento příkaz by vám měl poskytnout místní nabídku pro zadání přihlašovacích údajů globálního správce vašeho tenanta.
    5. Volání `Get-AzureADSSOStatus | ConvertFrom-Json` . Tento příkaz vám poskytne seznam doménových struktur AD (podívejte se na seznam domény), na kterém je tato funkce povolená.

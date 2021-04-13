@@ -1,18 +1,21 @@
 ---
-title: Cluster s podporou převzetí služeb při selhání Windows serveru v Azure VMware Solution síti vSAN s nativními sdílenými disky
-description: Nastavte cluster systému Windows Server s podporou převzetí služeb při selhání (WSFC) na řešení Azure VMware a využijte výhod řešení, která vyžadují službu WSFC.
+title: Konfigurace clusteru s podporou převzetí služeb při selhání Windows serveru v Azure VMware Solution síti vSAN
+description: Nastavte cluster Windows Server failover cluster (WSFC) na Azure VMware Solution síti vSAN s nativními sdílenými disky.
 ms.topic: how-to
-ms.date: 03/09/2021
-ms.openlocfilehash: 8162e15675d8bbde9267126c785f152d1cb860bd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: f1bc8199eb0d3317e4b6e07a6a297b4ebfe95cc8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562235"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308675"
 ---
-# <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Cluster s podporou převzetí služeb při selhání Windows serveru v Azure VMware Solution síti vSAN s nativními sdílenými disky
+# <a name="configure-windows-server-failover-cluster-on-azure-vmware-solution-vsan"></a>Konfigurace clusteru s podporou převzetí služeb při selhání Windows serveru v Azure VMware Solution síti vSAN
 
-V tomto článku Vás provedeme procesem nastavení clusteru s podporou převzetí služeb při selhání Windows serveru v řešení VMware Azure. Implementace v tomto článku je určena pro účely testování konceptu a pilotního nasazení. K dispozici je doporučujeme použít konfiguraci CIB (cluster-in-the-box), dokud nebudou dostupné zásady umístění.
+V tomto článku se dozvíte, jak nastavit cluster s podporou převzetí služeb při selhání Windows serveru v Azure VMware Solution síti vSAN s nativními sdílenými disky. 
+
+>[!IMPORTANT]
+>Implementace v tomto článku je určena pro účely testování konceptu a pilotního nasazení. Doporučujeme použít konfiguraci CIB (cluster-in-the-box), dokud nebudou zásady umístění k dispozici.
 
 Cluster systému Windows Server s podporou převzetí služeb při selhání (WSFC), dříve označovaný jako služba Microsoft Service Cluster Service (MSCS), je funkcí operačního systému Windows Server (OS). WSFC je důležité obchodní funkce a pro mnoho aplikací se vyžaduje. Například WSFC je nutné pro následující konfigurace:
 
@@ -43,7 +46,7 @@ Musíte nejdřív [vytvořit WSFC](/windows-server/failover-clustering/create-fa
 
 Následující diagram znázorňuje architekturu virtuálních uzlů služby WSFC v privátním cloudu řešení Azure VMware. Zobrazuje, kde se řešení Azure VMware nachází, včetně virtuálních serverů služby WSFC (červené pole) ve vztahu k širší platformě Azure. Tento diagram znázorňuje typickou architekturu hvězdicové architektury, ale s využitím Azure Virtual WAN je možné použít podobný instalační program. Obě služby Azure nabízejí všechny další hodnoty.
 
-[![Diagram znázorňující architekturu virtuálních uzlů služby WSFC v privátním cloudu řešení Azure VMware.](media/windows-server-failover-cluster/windows-server-failover-architecture.png)](media/windows-server-failover-cluster/windows-server-failover-architecture.png#lightbox)
+:::image type="content" source="media/windows-server-failover-cluster/windows-server-failover-architecture.svg" alt-text="Diagram architektury virtuálních uzlů clusteru s podporou převzetí služeb při selhání ve Windows serveru v privátním cloudu řešení Azure VMware." border="false" lightbox="media/windows-server-failover-cluster/windows-server-failover-architecture.svg":::
 
 ## <a name="supported-configurations"></a>Podporované konfigurace
 

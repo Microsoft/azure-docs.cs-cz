@@ -8,12 +8,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 16433d5b148d7bc441e375591c64af497cd7b8de
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 90ee39039b0734bf434e7339a973358989c08175
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505328"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311358"
 ---
 # <a name="access-config-server-and-service-registry"></a>Přístup ke konfiguračnímu serveru a registru služby
 
@@ -47,15 +47,15 @@ Po přiřazení role čtečky dat cloudu Azure je možné, že zákazníci budou
     ```
 2. Vytvořte koncový bod. Podporujeme výchozí koncové body pro jarní cloudový konfigurační server a registr jarní cloudové služby, které spravuje Azure jaře Cloud. Další informace najdete v tématu [koncové body připravené pro produkční](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-endpoints)prostředí. Zákazníci můžou také získat úplný seznam podporovaných koncových bodů pro jarní cloudový konfigurační server a registr jarní cloudové služby, který spravuje Azure jaře Cloud, a to díky přístupu k koncovým bodům:
 
-    * *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/*
-    * *https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/* 
+    * *'https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/'*
+    * *'https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/'* 
 
 >[!NOTE]
 > Pokud používáte Azure Čína, nahraďte prosím `*.azuremicroservices.io` za `*.microservices.azure.cn` , [Další informace](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure).
 
 3. Přístup k složenému koncovému bodu pomocí přístupového tokenu. Pokud chcete zajistit autorizaci, vložte přístupový token do hlavičky.  Podporovaná je jenom metoda GET.
 
-    Můžete například získat přístup ke koncovému bodu, jako *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/health* je třeba zobrazení stavu Eureka.
+    Můžete například získat přístup ke koncovému bodu, jako je *' https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/health '* pro zobrazení stavu Eureka.
 
     Pokud je odpověď *401 neoprávněná*, zkontrolujte, jestli je role úspěšně přiřazená.  Bude to trvat několik minut, než se role projeví, nebo ověřit, že platnost přístupového tokenu nevypršela.
 

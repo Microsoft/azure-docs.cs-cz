@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 05/14/2018
-ms.openlocfilehash: 73d291fd76d9adbe2a095406b56bd879d497d3b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d432d20660cd1b7ee59c9ef72f9db04bc0009481
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98942653"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306581"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Publikování aplikace HDInsight v Azure Marketplace
 Aplikaci Azure HDInsight můžete nainstalovat na cluster HDInsight se systémem Linux. V tomto článku se dozvíte, jak publikovat aplikaci HDInsight v Azure Marketplace. Obecné informace o publikování v Azure Marketplace najdete v tématu [publikování nabídky v Azure Marketplace](../marketplace/overview.md).
@@ -83,7 +83,8 @@ Vytvořte soubor. zip, který obsahuje všechny soubory, které jsou nutné k in
 ## <a name="publish-the-application"></a>Publikování aplikace
 Publikování aplikace HDInsight:
 
-1. Přihlaste se k [publikování Azure](https://publish.windowsazure.com/).
+1. Přihlaste se k publikování Azure.
+
 2. V nabídce vlevo vyberte **šablony řešení**.
 3. Zadejte název a potom vyberte **vytvořit novou šablonu řešení**.
 4. Pokud jste svoji organizaci ještě nezaregistrovali, vyberte **vytvořit účet Dev Center a připojte se k programu Azure**.  Další informace najdete v tématu [Vytvoření účtu Microsoft Developer](../marketplace/overview.md).

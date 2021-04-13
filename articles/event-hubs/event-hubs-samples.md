@@ -4,12 +4,12 @@ description: Tento článek poskytuje seznam ukázek pro Azure Event Hubs, kter�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2e0f8026683302f6b54924625b132e79cb194bad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b7cd4a1ca08f359a2328d7a92239516c39d7e62
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87499416"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311596"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Úložiště Git s ukázkami pro Azure Event Hubs 
 Ukázky Event Hubs najdete na [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples). Tyto ukázky demonstrují klíčové funkce v [Azure Event Hubs](./index.yml). Tento článek obsahuje kategorizaci a popis dostupných ukázek s odkazy na jednotlivé.
@@ -60,4 +60,4 @@ Další informace o Event Hubs najdete v následujících článcích:
 
 - [Přehled Event Hubs](./event-hubs-about.md)
 - [Funkce Event Hubs](event-hubs-features.md)
-- [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
+- [Nejčastější dotazy k Event Hubs](event-hubs-faq.yml)

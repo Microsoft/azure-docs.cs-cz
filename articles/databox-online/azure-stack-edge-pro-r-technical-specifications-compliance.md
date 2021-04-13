@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/24/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: aa1b861555cff65c9e432ea711af3f7c6e410625
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3b323bf920bd884e821d03bf2def37471775e720
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109161"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312701"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge pro R – technické specifikace
 
@@ -24,41 +24,44 @@ Hardwarové součásti Azure Stack hraničního zařízení pro R vyhovují tech
 
 Zařízení Azure Stack Edge pro R má následující specifikace pro výpočetní výkon a paměť:
 
-| Specifikace       | Hodnota                  |
-|---------------------|------------------------|
-| Procesor    | 2 X procesor Intel Xeon stříbrné 4114<br>20 phsyical jader (10 na procesor)<br>40 logických jader (vCPU) (20 na procesor)  |
-| Memory (Paměť)              | 256 GB RAM (2666 MT/s)     |
-
+| Specifikace  | Hodnota                                             |
+|----------------|---------------------------------------------------|
+| Typ procesoru       | Dvoujádrový procesor Intel Xeon stříbrné 4114                   |
+| Procesor: RAW       | 20 celkem jader, 40 Total vCPU                    |
+| Procesor: použitelné    | 32 vCPU                                          |
+| Typ paměti    | Dell kompatibilní 16 GB RDIMM, 2666 MT/s, duální hodnocení |
+| Paměť: RAW    | 256 GB RAM (16 × 16 GB)                           |
+| Paměť: použitelné | 230 GB RAM                                        |
 
 ## <a name="compute-acceleration-specifications"></a>Specifikace zrychlení výpočtů
 
 Grafický procesor (GPU) je součástí každého zařízení, které umožňuje scénáře Kubernetes, hloubkového učení a strojového učení.
 
-| Specifikace           | Hodnota                  |
+| Specifikace           | Hodnota                      |
 |-------------------------|----------------------------|
-| GPU   | Jeden grafický procesor nVidia T4 <br> Další informace najdete v tématu [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/).| 
+| GPU   | Jeden grafický procesor nVidia T4 <br> Další informace najdete v tématu [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/). | 
 
 ## <a name="power-supply-unit-specifications"></a>Specifikace jednotek napájení
 
 Zařízení Azure Stack Edge pro R má dvě jednotky napájení 100-240 V (PSUs) s vysoce výkonnými ventilátory. Tato dvě PSUsa poskytují redundantní konfiguraci napájení. Pokud dojde k selhání PSU, zařízení bude nadále fungovat normálně na ostatních PSU, dokud se neúspěšně nenahradí modul. V následující tabulce jsou uvedeny technické specifikace PSUs.
 
-| Specifikace           | 550 W PSU                  |
-|-------------------------|----------------------------|
-| Maximální výstupní výkon    | 550 W                      |
-| Rozptyl tepla (maximum)                   | 2891 BTU/hod                |
-| Frekvence               | 50/60 Hz                   |
-| Výběr rozsahu napětí | Automatické rozsahy: 115-230 V AC |
-| Horká, připojitelná           | Yes                        |
+| Specifikace              | 550 W PSU                  |
+|----------------------------|----------------------------|
+| Maximální výstupní výkon       | 550 W                      |
+| Rozptyl tepla (maximum) | 2891 BTU/hod                |
+| Frekvence                  | 50/60 Hz                   |
+| Výběr rozsahu napětí    | Automatické rozsahy: 115-230 V AC |
+| Horká, připojitelná              | Yes                        |
 
 ## <a name="network-specifications"></a>Specifikace sítě
 
-Zařízení Azure Stack Edge pro R má čtyři síťová rozhraní PORT1-PORT4. 
+Zařízení Azure Stack Edge pro R má čtyři síťová rozhraní PORT1-PORT4.
 
 
-|Specifikace  |Description                              |
+|Specifikace         |Description                       |
 |----------------------|----------------------------------|
-|Síťová rozhraní    |**2 x 1 GbE RJ45** <br> PORT 1 se používá jako rozhraní pro správu pro počáteční instalaci a ve výchozím nastavení je statický. Po dokončení počáteční instalace můžete použít rozhraní pro data s libovolnou IP adresou. Při resetování se ale rozhraní vrátí zpět na statickou IP adresu. <br>Druhý PORT rozhraní 2 je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP.     |
-|Síťová rozhraní    |**2 × 25 GbE SFP28** <br> Tato datová rozhraní PORT 3 a PORT 4 je možné nakonfigurovat jako DHCP (výchozí) nebo static.            |
+|Síťová rozhraní    |**2 x 1 GbE RJ45** <br> PORT 1 se používá jako rozhraní pro správu pro počáteční instalaci a ve výchozím nastavení je statický. Po dokončení počáteční instalace můžete použít rozhraní pro data s libovolnou IP adresou. Při resetování se ale rozhraní vrátí na statickou IP adresu. <br>Druhé rozhraní, PORT 2, které je uživatelsky konfigurovatelné, lze použít pro přenos dat a je ve výchozím nastavení DHCP. |
+|Síťová rozhraní    |**2 × 25 GbE SFP28** <br> Tato datová rozhraní na portu 3 a portu 4 lze konfigurovat jako DHCP (výchozí) nebo static. |
 
 Zařízení Azure Stack Edge pro R má následující síťový hardware:
 
@@ -69,16 +72,16 @@ Zařízení Azure Stack Edge pro R má následující síťový hardware:
 | Parameter           | Description                 |
 |-------------------------|----------------------------|
 | Model    | ConnectX®-4 Lx EN network interface card                      |
-| Model Description               | 25GbE dual-port SFP28; PCIe3.0 x8; ROHS R6                    |
+| Model Description               | 25 GbE dual-port SFP28; PCIe3.0 x8; ROHS R6                    |
 | Device Part Number (XR2) | MCX4421A-ACAN  |
 | PSID (R640)           | MT_2420110034                         |-->
 <!-- confirm w/ Ravi what is this-->
 
-Úplný seznam podporovaných kabelů, přepínačů a vysílačů pro tyto síťové karty najdete v následujících [produktech: Mellanox Dual Port 25G ConnectX-4 kompatibilní produkty síťového adaptéru](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).
+Úplný seznam podporovaných kabelů, přepínačů a vysílačů pro tyto síťové karty najdete v [Mellanox kompatibilních produktech síťových adaptérů s duálním portem 25G ConnectX-4](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).
 
 ## <a name="storage-specifications"></a>Specifikace úložiště
 
-Zařízení Azure Stack Edge pro R mají 8 datových disků a 2 M. 2 disky SATA, které slouží jako disky s operačním systémem. Další informace najdete na [discích SATA. 2](https://en.wikipedia.org/wiki/M.2).
+Azure Stack hraničních zařízení pro R mají osm datových disků a dva disky SATA s příponou M. 2, které slouží jako disky s operačním systémem. Další informace najdete na [discích SATA. 2](https://en.wikipedia.org/wiki/M.2).
 
 #### <a name="storage-for-1-node-device"></a>Úložiště pro zařízení s jedním uzlem
 
@@ -89,7 +92,7 @@ Následující tabulka obsahuje podrobné informace o kapacitě úložiště za�
 |    Počet jednotek SSD (Solid-State Drive) (SSD)     |    8                  |
 |    Jedna kapacita SSD                     |    8 TB               |
 |    Celková kapacita                          |    64 TB              |
-|    Celková použitelná kapacita *                  |    ~ 42 TB          |
+|    Celková použitelná kapacita *                  |    ~ 42 TB            |
 
 **Místo pro interní použití je rezervované.*
 
@@ -148,7 +151,7 @@ Váha zařízení závisí na konfiguraci skříně.
 
 |     Skříně                                 |     Hmotnost          |
 |-----------------------------------------------|---------------------|
-|    Celková váha 1-Node zařízení + robustní případ s koncovými písmeny     |    ~ 114 kg.          |
+|    Celková váha 1-Node zařízení + robustní případ s koncovými písmeny     |    ~ 114 kg          |
 
 <!--#### For the 4-node system
 

@@ -5,13 +5,13 @@ author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
-ms.date: 08/11/2020
-ms.openlocfilehash: fca01c77a1ff47cbeee167eb408ed9f29a1307bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/06/2021
+ms.openlocfilehash: 35cbaf2b6d2618d116d2dd322ae5ac28f578cecc
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634324"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303538"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Podpora životního cyklu pro Azure Red Hat OpenShift 4
 
@@ -33,7 +33,7 @@ Každé číslo ve verzi označuje obecnou kompatibilitu s předchozí verzí:
 * **Dílčí verze**: vydaná přibližně každé tři měsíce. Inovace podverze můžou zahrnovat přidání funkcí, vylepšení, vyřazení, odebrání, opravy chyb, vylepšení zabezpečení a další vylepšení.
 * **Opravy**: obvykle jsou vydávány každý týden nebo podle potřeby. Upgrady verze opravy můžou zahrnovat opravy chyb, vylepšení zabezpečení a další vylepšení.
 
-Zákazníci by měli mít na úmysl spustit nejnovější dílčí verzi hlavní verze, kterou používají. Pokud je například váš provozní cluster na 4,4 a 4,5 je nejnovější všeobecně dostupná dílčí verze pro 4 řady, měli byste upgradovat na 4,5, jakmile budete moct.
+Zákazníci by měli mít na úmysl spustit nejnovější dílčí verzi hlavní verze, kterou používají. Pokud je například váš provozní cluster na 4,4 a 4,5 je nejnovější všeobecně dostupná dílčí verze pro 4 řady, měli byste upgradovat na 4,5, jakmile budete moct. 
 
 ### <a name="upgrade-channels"></a>Kanály upgradu
 
@@ -106,12 +106,16 @@ Další informace najdete v následující příručce k [historii verzí v minu
 
 **Co se stane, když uživatel upgraduje cluster OpenShift s menší verzí, která není podporovaná?**
 
-Pokud používáte verzi N-2 nebo starší, znamená to, že jste mimo podporu, a zobrazí se výzva k upgradu. Po úspěšném dokončení upgradu z verze N-2 na N-1 se vrátíte do našich zásad podpory. Například:
+Pokud používáte verzi N-2 nebo starší, znamená to, že jste mimo podporu, a zobrazí se výzva k upgradu, aby bylo možné pokračovat v přijímání podpory. Po úspěšném dokončení upgradu z verze N-2 na N-1 budete zpátky v rámci podpory. Upgrade z verze N-3 nebo starší na podporovanou verzi může být náročný a v některých případech není možné. Doporučujeme udržovat cluster na nejnovější verzi OpenShift, abyste se vyhnuli potenciálním problémům s upgradem. Například:
 * Pokud je nejstarší podporovaná verze Azure Red Hat OpenShift 4.4 4.4. z a jste na 4.3. z nebo starší, nejste mimo podporu.
-* Po úspěšném dokončení upgradu z 4.3. z na 4.4. z nebo vyšší se vrátíte do našich zásad podpory.
+* Po úspěšném dokončení upgradu z 4.3. z na 4.4. z nebo vyšší se vrátíte do našich zásad podpory. 
 
 Vrácení clusteru zpět na předchozí verzi, nebo vrácení zpět, se nepodporuje. Podporuje se jenom upgrade na novější verzi.
 
 **Co znamená "mimo podporu"?**
 
-"Mimo podporu" znamená, že verze, kterou používáte, je mimo seznam podporovaných verzí a při žádosti o podporu se může zobrazit výzva k upgradu clusteru na podporovanou verzi, pokud nejste v období odkladu po vyřazení verzí. Azure Red Hat OpenShift navíc neposkytuje žádné záruky za modul runtime ani SLA pro clustery mimo seznam podporovaných verzí na konci 30denní lhůty.
+Pokud má cluster ARO spuštěnou verzi OpenShift, která není v seznamu podporovaných verzí nebo používá [nepodporovanou konfiguraci clusteru](https://docs.microsoft.com/azure/openshift/support-policies-v4), je váš cluster mimo podporu. Výsledek:
+- Při otevření lístku podpory pro váš cluster budete požádáni o upgrade clusteru na podporovanou verzi. před přijetím podpory, pokud nejste součástí 30denní lhůty odkladu po ukončení podpory verzí. 
+- Jakékoli záruky za modul runtime nebo SLA pro clustery mimo podporu jsou neplatné.
+- Clustery mimo podporu se budou opravovat jenom na základě optimálního úsilí.
+- Clustery mimo podporu nebudou monitorovány.

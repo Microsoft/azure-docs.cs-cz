@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 9c8dd723c9cde5c0534d9fd5ca4084c7ed15d213
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 29821733b73717634aa8f0ab72270f058ffd3ddc
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218630"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309386"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Ověřování a autorizace pro službu Azure Static Web Apps ve verzi Preview
 
@@ -24,7 +24,7 @@ Služba Azure static Web Apps zjednodušuje možnosti ověřování tím, že sp
 - Google<sup>1</sup>
 - Twitter
 
-[Pozvánky](#invitations) specifické pro poskytovatele spojují uživatele s rolemi a autorizovanými uživateli je udělen přístup k [trasám](routes.md) podle pravidel definovaných v _routes.jsv_ souboru.
+[Pozvánky](#invitations) specifické pro poskytovatele spojují uživatele s rolemi a autorizovanými uživateli je udělen přístup k [trasám](routes.md) podle pravidel definovaných v _staticwebapp.config.jsv_ souboru.
 
 Všichni poskytovatelé ověřování jsou ve výchozím nastavení povoleni. Chcete-li zakázat poskytovatele ověřování, [Zablokujte přístup](#block-an-authorization-provider) pomocí vlastního pravidla směrování.
 
@@ -32,18 +32,18 @@ Témata týkající se ověřování a autorizace se významně překrývají s 
 
 ## <a name="roles"></a>Role
 
-Každý uživatel, který přistupuje ke statické webové aplikaci, patří k jedné nebo více rolím.  K dispozici jsou dvě předdefinované role, do kterých uživatelé můžou patřit:
+Každý uživatel, který přistupuje ke statické webové aplikaci, patří k jedné nebo více rolím. K dispozici jsou dvě předdefinované role, do kterých uživatelé můžou patřit:
 
 - **anonymní**: všichni uživatelé automaticky patří do _anonymní_ role.
 - **ověřeno**: všichni uživatelé, kteří se přihlásili, patří k _ověřené_ roli.
 
-Kromě předdefinovaných rolí můžete vytvořit nové role, přiřazovat je uživatelům přes pozvánky a odkazovat na ně v _routes.jsv_ souboru.
+Kromě předdefinovaných rolí můžete vytvořit nové role, přiřazovat je uživatelům přes pozvánky a odkazovat na ně v _staticwebapp.config.jsv_ souboru.
 
 ## <a name="role-management"></a>Správa rolí
 
 ### <a name="add-a-user-to-a-role"></a>Přidání uživatele k roli
 
-Chcete-li přidat uživatele na web, vygenerujete pozvánky, které vám umožní přidružit uživatele k určitým rolím. Role se definují a udržují v _routes.jsv_ souboru.
+Chcete-li přidat uživatele na web, vygenerujete pozvánky, které vám umožní přidružit uživatele k určitým rolím. Role se definují a udržují v _staticwebapp.config.jsv_ souboru.
 
 <a name="invitations" id="invitations"></a>
 
@@ -53,25 +53,25 @@ Pozvánky jsou specifické pro jednotlivé zprostředkovatele autorizace, takže
 
 <a name="provider-user-details" id="provider-user-details"></a>
 
-| Zprostředkovatel autorizace | Zpřístupňuje uživatele  |
-| ---------------------- | ----------------- |
-| Azure Active Directory | e-mailovou adresu     |
-| Facebook               | e-mailovou adresu     |
-| GitHubu                 | username          |
-| Google<sup>1</sup>     | e-mailovou adresu     |
-| Twitter                | username          |
+| Zprostředkovatel autorizace | Zpřístupňuje uživatele |
+| ---------------------- | ---------------- |
+| Azure Active Directory | e-mailovou adresu    |
+| Facebook               | e-mailovou adresu    |
+| GitHubu                 | username         |
+| Google<sup>1</sup>     | e-mailovou adresu    |
+| Twitter                | username         |
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na prostředek statického Web Apps.
 1. V části _Nastavení_ klikněte na **Správa rolí**.
 1. Klikněte na tlačítko **pozvat** .
 1. V seznamu možností vyberte _poskytovatele autorizace_ .
 1. Do pole s _podrobnostmi pozvánky_ přidejte buď uživatelské jméno nebo e-mailovou adresu příjemce.
-    - V případě GitHubu a Twitteru zadáte uživatelské jméno. Pro všechny ostatní zadejte e-mailovou adresu příjemce.
+   - V případě GitHubu a Twitteru zadáte uživatelské jméno. Pro všechny ostatní zadejte e-mailovou adresu příjemce.
 1. Z rozevíracího seznamu _doména_ vyberte doménu vaší statické lokality.
-    - Doména, kterou vyberete, je doména, která se zobrazí v pozvánce. Pokud máte k lokalitě přidruženou vlastní doménu, budete pravděpodobně chtít zvolit vlastní doménu.
+   - Doména, kterou vyberete, je doména, která se zobrazí v pozvánce. Pokud máte k lokalitě přidruženou vlastní doménu, budete pravděpodobně chtít zvolit vlastní doménu.
 1. Do pole _role_ přidejte čárkami oddělený seznam názvů rolí.
 1. Zadejte maximální počet hodin, po které má Pozvánka zůstat platná.
-    - Maximální možné omezení je 168 hodin, což je 7 dní.
+   - Maximální možné omezení je 168 hodin, což je 7 dní.
 1. Klikněte na tlačítko **Generate** (Vygenerovat).
 1. Zkopírujte odkaz z pole _pro pozvání k pozvání_ .
 1. Pošlete odkaz na pozvánku na osobu, které udělujete přístup k vaší aplikaci.

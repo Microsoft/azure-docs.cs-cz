@@ -7,16 +7,16 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Použití služby Azure RBAC pro kontroly autorizace u clusterů Kubernetes s povolenou službou Azure ARC
-ms.openlocfilehash: bd8029cb2772a6f6bd9821abe6acf69c9c08599d
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 0ee5f86ce12a39d86754d2e6e88263d8a03a012b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450969"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304201"
 ---
-# <a name="azure-rbac-for-azure-arc-enabled-kubernetes-clusters"></a>Azure RBAC pro Kubernetes clustery s podporou ARC Azure
+# <a name="integrate-azure-active-directory-with-azure-arc-enabled-kubernetes-clusters"></a>Integrace Azure Active Directory s povolenými clustery Kubernetes s podporou ARC Azure
 
-Kubernetes [ClusterRoleBinding a](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) typy objektů RoleBinding usnadňují definování autorizace v Kubernetes nativně. Pomocí služby Azure RBAC můžete pomocí Azure Active Directory a přiřazení rolí v Azure řídit kontroly autorizace v clusteru. To znamená, že teď můžete pomocí přiřazení rolí Azure přesně určovat, kdo může číst, zapisovat a odstraňovat Kubernetes objekty, jako je nasazení, pod a službu.
+Kubernetes [ClusterRoleBinding a](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) typy objektů RoleBinding usnadňují definování autorizace v Kubernetes nativně. Pomocí této funkce můžete v Azure použít Azure Active Directory a přiřazení rolí k řízení kontrol autorizace v clusteru. To znamená, že teď můžete pomocí přiřazení rolí Azure přesně určovat, kdo může číst, zapisovat a odstraňovat Kubernetes objekty, jako je nasazení, pod a službu.
 
 Koncepční přehled této funkce je k dispozici v článku [Azure RBAC – Azure ARC s povoleným Kubernetes](conceptual-azure-rbac.md) .
 
@@ -274,10 +274,10 @@ Vlastníci Kubernetes prostředku Azure ARC můžou použít předdefinované ro
 
 | Role | Popis |
 |---|---|
-| Prohlížeč Kubernetes pro Azure ARC | Povoluje přístup jen pro čtení k zobrazení většiny objektů v oboru názvů. Tato role nepovoluje zobrazení tajných kódů. Důvodem je to `read` , že oprávnění k tajným klíčům umožní přístup k `ServiceAccount` přihlašovacím údajům v oboru názvů, což by umožnilo povolit přístup k rozhraní API pomocí tohoto `ServiceAccount` (formu eskalace oprávnění). |
-| Zapisovač Azure ARC Kubernetes | Povoluje přístup pro čtení a zápis většiny objektů v oboru názvů. Tato role nepovoluje prohlížení a úpravy rolí nebo vazeb rolí. Tato role však umožňuje přístup k tajným klíčům a spouštění lusků `ServiceAccount` v oboru názvů, takže je možné ji použít k získání úrovní přístupu rozhraní API libovolného `ServiceAccount` v oboru názvů. |
-| Správce Azure ARC Kubernetes | Povoluje přístup správce. Má být uděleno v rámci oboru názvů pomocí RoleBinding. Při použití v RoleBinding umožňuje přístup pro čtení i zápis ke většině prostředků v oboru názvů, včetně možnosti vytvářet role a vazby rolí v rámci oboru názvů. Tato role nepovoluje přístup pro zápis k kvótě prostředků nebo samotnému oboru názvů. |
-| Správce clusteru Azure ARC Kubernetes | Umožňuje přístupu super uživatele ke spuštění jakékoli akce u libovolného prostředku. Při použití v ClusterRoleBinding poskytuje plnou kontrolu nad všemi prostředky v clusteru a ve všech oborech názvů. Při použití v RoleBinding poskytuje plnou kontrolu nad všemi prostředky v oboru názvů vazby role, včetně oboru názvů samotného.|
+| [Prohlížeč Kubernetes pro Azure ARC](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-viewer) | Povoluje přístup jen pro čtení k zobrazení většiny objektů v oboru názvů. Tato role nepovoluje zobrazení tajných kódů. Důvodem je to `read` , že oprávnění k tajným klíčům umožní přístup k `ServiceAccount` přihlašovacím údajům v oboru názvů, což by umožnilo povolit přístup k rozhraní API pomocí tohoto `ServiceAccount` (formu eskalace oprávnění). |
+| [Zapisovač Azure ARC Kubernetes](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-writer) | Povoluje přístup pro čtení a zápis většiny objektů v oboru názvů. Tato role nepovoluje prohlížení a úpravy rolí nebo vazeb rolí. Tato role však umožňuje přístup k tajným klíčům a spouštění lusků `ServiceAccount` v oboru názvů, takže je možné ji použít k získání úrovní přístupu rozhraní API libovolného `ServiceAccount` v oboru názvů. |
+| [Správce Azure ARC Kubernetes](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-admin) | Povoluje přístup správce. Má být uděleno v rámci oboru názvů pomocí RoleBinding. Při použití v RoleBinding umožňuje přístup pro čtení i zápis ke většině prostředků v oboru názvů, včetně možnosti vytvářet role a vazby rolí v rámci oboru názvů. Tato role nepovoluje přístup pro zápis k kvótě prostředků nebo samotnému oboru názvů. |
+| [Správce clusteru Azure ARC Kubernetes](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-cluster-admin) | Umožňuje přístupu super uživatele ke spuštění jakékoli akce u libovolného prostředku. Při použití v ClusterRoleBinding poskytuje plnou kontrolu nad všemi prostředky v clusteru a ve všech oborech názvů. Při použití v RoleBinding poskytuje plnou kontrolu nad všemi prostředky v oboru názvů vazby role, včetně oboru názvů samotného.|
 
 Přiřazení rolí můžete vytvořit v oboru Kubernetes clusteru s podporou ARC v okně `Access Control (IAM)` prostředku clusteru na Azure Portal. Můžete také použít příkazy rozhraní příkazového řádku Azure, jak je znázorněno níže:
 

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 729444b1d1ccf55f34e54a4b59508131458c472b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 693045d094ddbf5ad6df81eca8cd16d9cac62fe4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054800"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308604"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -42,7 +42,7 @@ Azure podporuje tři rozsahy pro správu prostředků. Každý rozsah podporuje 
 
 - [**Skupiny pro správu**](../../governance/management-groups/overview.md) – hierarchické kontejnery až v osmi úrovních k uspořádání předplatných Azure.
 
-    Typ prostředku: [Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
+    Typ prostředku: [Microsoft.Management/managementGroups](/rest/api/managementgroups/)
 
 - **Předplatná** – primární kontejnery pro prostředky Azure.
 
