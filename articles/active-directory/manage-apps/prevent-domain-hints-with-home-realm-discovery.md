@@ -2,23 +2,21 @@
 title: Zabránění automatické akceleraci přihlašování ve službě Azure AD pomocí zásad zjišťování domovské sféry
 description: Naučte se, jak zabránit domain_hint automatické akceleraci pro federované zprostředkovatelů identity.
 services: active-directory
-documentationcenter: ''
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.author: hirsin
-ms.openlocfilehash: 53dfdfaf37695059d6d52428c2ba109970d9f7f7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: iangithinji
+ms.reviewer: hirsin
+ms.openlocfilehash: b89e0e1c8bd8109fac8b4b7c05a845a3e234b617
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589374"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375546"
 ---
 # <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>Zakázat automatickou akceleraci pro federované IDP během přihlašování uživatelů pomocí zásad zjišťování domovské sféry
 

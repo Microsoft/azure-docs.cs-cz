@@ -6,12 +6,12 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.date: 08/17/2020
-ms.openlocfilehash: 02c0801aa0425db96a1e6f71f248c795e81b5ddf
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 096f0425a6893d68341b97c821481fa0adf2f95c
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554055"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375266"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Nasazení Azure Monitor pro řešení SAP pomocí Azure Portal
 
@@ -136,6 +136,32 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 4. Po dokončení vyberte **Přidat poskytovatele**. V případě potřeby pokračujte v přidávání dalších zprostředkovatelů nebo kliknutím na tlačítko **zkontrolovat + vytvořit** dokončete nasazení.
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="Image zobrazuje informace související s přidáním poskytovatele Microsoft SQL Server." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
+
+### <a name="sap-netweaver-provider"></a>Poskytovatel SAP NetWeaver
+
+#### <a name="pre-requisites-for-adding-netweaver-provider"></a>Předpoklady pro přidání poskytovatele NetWeaver
+
+Služba SAP Start Service poskytuje hostitele služeb, včetně monitorování systému SAP. Využíváme "SAPControl", což je rozhraní webové služby SOAP, které zpřístupňuje tyto možnosti. Toto rozhraní SAPControl WebService rozlišuje mezi [chráněnými a nechráněnými](https://wiki.scn.sap.com/wiki/display/SI/Protected+web+methods+of+sapstartsrv) metodami WebService. Aby bylo možné načíst konkrétní metriky, budete muset zrušit ochranu některých metod. Pokud chcete zrušit ochranu požadovaných metod pro aktuální vydání, postupujte prosím podle následujících kroků pro každý systém SAP:-
+
+1. Otevření připojení k serveru SAP v grafickém uživatelském rozhraní SAP
+2. Přihlášení pomocí účtu správce
+3. Spustit transakční RZ10
+4. Vyberte vhodný profil (výchozí. PFL)
+5. Vyberte rozšířená údržba a klikněte na změnit. 
+6. Upravte hodnotu ovlivněného parametru "Service/protectedwebmethods" na "SDEFAULT-GetQueueStatistic-ABAPGetWPTable-EnqGetStatistic-GetProcessList" na Doporučené nastavení a klikněte na tlačítko Kopírovat.
+7. Vraťte se zpátky a vyberte profil->Uložit.
+8. Restartujte systém, aby se projevil platný parametr.
+
+#### <a name="installing-netweaver-provider-on-the-azure-portal"></a>Instalace poskytovatele NetWeaver na Azure Portal
+1.  Ujistěte se, že byly dokončeny požadované kroky a server byl restartován.
+2.  V Azure Portal v části AMS vyberte Přidat poskytovatele a z rozevírací nabídky zvolte SAP NetWeaver.
+3.  Zadejte název hostitele systému SAP a subdomény (Pokud je k dispozici).
+4.  Zadejte číslo instance odpovídající zadanému názvu hostitele. 
+5.  Zadejte ID systému (SID).
+6.  Po dokončení vyberte Přidat poskytovatele.
+7.  V případě potřeby dál přidejte další poskytovatele nebo vyberte zkontrolovat + vytvořit a dokončete nasazení.
+
+![image](https://user-images.githubusercontent.com/75772258/114583569-5c777d80-9c9f-11eb-99a2-8c60987700c2.png)
 
 ## <a name="next-steps"></a>Další kroky
 

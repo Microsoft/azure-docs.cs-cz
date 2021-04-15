@@ -6,15 +6,15 @@ author: msmbaldwin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 07/20/2020
+ms.date: 03/17/2021
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: a56c08e5bf6054d24af3ade571ec625969286a77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: ce982b38faa72978e1b043d374a333b68aca80b6
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455640"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374739"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Kurz: použití Azure Key Vault s virtuálním počítačem v .NET
 
@@ -42,7 +42,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Pro Windows, Mac a Linux:
   * [Git](https://git-scm.com/downloads)
   * [.NET Core 3,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-  * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)
+  * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="create-resources-and-assign-permissions"></a>Vytváření prostředků a přiřazování oprávnění
 
@@ -50,11 +50,18 @@ Než začnete s psaním kódu, potřebujete vytvořit nějaké prostředky, vlo�
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Pokud se chcete přihlásit k Azure pomocí rozhraní příkazového řádku Azure, zadejte:
+Přihlaste se k Azure pomocí následujícího příkazu:
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az login
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Connect-AzAccount
+```
+---
 
 ## <a name="create-a-resource-group-and-key-vault"></a>Vytvoření skupiny prostředků a trezoru klíčů
 
@@ -74,13 +81,14 @@ Vytvořte virtuální počítač se systémem Windows nebo Linux pomocí jedné 
 | [Azure Portal](../../virtual-machines/windows/quick-create-portal.md) | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) |
 
 ## <a name="assign-an-identity-to-the-vm"></a>Přiřazení identity k virtuálnímu počítači
-Vytvořte pro virtuální počítač identitu přiřazenou systémem pomocí příkazu [AZ VM identity Assign](/cli/azure/vm/identity#az-vm-identity-assign) :
+Vytvořte identitu přiřazenou systémem pro virtuální počítač s následujícím příkladem:
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
-Poznamenejte si identitu přiřazenou systémem, která se zobrazí v následujícím kódu. Výstup předchozího příkazu by byl: 
+Poznamenejte si identitu přiřazenou systémem, která se zobrazí v následujícím kódu. Výstup předchozího příkazu by byl:
 
 ```output
 {
@@ -89,12 +97,36 @@ Poznamenejte si identitu přiřazenou systémem, která se zobrazí v následuj�
 }
 ```
 
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$vm = Get-AzVM -Name <NameOfYourVirtualMachine>
+Update-AzVM -ResourceGroupName <YourResourceGroupName> -VM $vm -IdentityType SystemAssigned
+```
+
+Všimněte si PrincipalId, který se zobrazuje v následujícím kódu. Výstup předchozího příkazu by byl: 
+
+
+```output
+PrincipalId          TenantId             Type             UserAssignedIdentities
+-----------          --------             ----             ----------------------
+xxxxxxxx-xx-xxxxxx   xxxxxxxx-xxxx-xxxx   SystemAssigned
+```
+---
+
 ## <a name="assign-permissions-to-the-vm-identity"></a>Přiřazení oprávnění k identitě virtuálního počítače
 Přiřaďte dříve vytvořená oprávnění identity k trezoru klíčů pomocí příkazu [AZ Key trezor set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) :
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
+az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions  get list set delete
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -ResourceGroupName <YourResourceGroupName> -VaultName '<your-unique-key-vault-name>' -ObjectId '<VMSystemAssignedIdentity>' -PermissionsToSecrets  get,list,set,delete
+```
+---
 
 ## <a name="sign-in-to-the-virtual-machine"></a>Přihlaste se k virtuálnímu počítači.
 
@@ -153,7 +185,7 @@ Přidejte tyto řádky a aktualizujte identifikátor URI tak, aby odrážely `va
         static void Main(string[] args)
         {
             string secretName = "mySecret";
-
+            string keyVaultName = "<your-key-vault-name>";
             var kvUri = "https://<your-key-vault-name>.vault.azure.net";
             SecretClientOptions options = new SecretClientOptions()
             {

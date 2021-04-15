@@ -2,21 +2,21 @@
 title: Správa souhlasu s aplikacemi a vyhodnocení žádostí o souhlas v Azure Active Directory
 description: Naučte se spravovat žádosti o souhlas, pokud je uživatel zakázaný nebo omezený, a jak vyhodnotit žádost o souhlas správce na úrovni tenanta pro aplikaci v Azure Active Directory.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: phsignor
-ms.openlocfilehash: c41543cdfff4e5ffaad614f6cb7a539d78a0bdae
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3405181f9bace023950e583dfe1a334216bf0aa0
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105557"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107373940"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Správa souhlasu s aplikacemi a vyhodnocení žádostí o souhlas
 

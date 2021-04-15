@@ -6,13 +6,13 @@ author: mksuni
 ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
-ms.custom: mvc
-ms.openlocfilehash: 71066fc2e2f87405455a059fe23c20277c4b09fb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: b79b470a25a63c0a46ddef94ee65f47f37c560cb
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726375"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477804"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>Kurz: nasazení aplikace Django v AKS s Azure Database for PostgreSQLm flexibilním serverem
 
@@ -128,22 +128,22 @@ Vytvořený server má následující atributy:
 Vytvořte novou [aplikaci Django](https://docs.djangoproject.com/en/3.1/intro/) nebo použijte existující projekt Django. Ujistěte se, že je váš kód v této struktuře složek.
 
 ```
-└───my-djangoapp
-    └───views.py
-    └───models.py
-    └───forms.py
-    ├───templates
+â””â”€â”€â”€my-djangoapp
+    â””â”€â”€â”€views.py
+    â””â”€â”€â”€models.py
+    â””â”€â”€â”€forms.py
+    â”œâ”€â”€â”€templates
           . . . . . . .
-    ├───static
+    â”œâ”€â”€â”€static
          . . . . . . .
-└───my-django-project
-    └───settings.py
-    └───urls.py
-    └───wsgi.py
+â””â”€â”€â”€my-django-project
+    â””â”€â”€â”€settings.py
+    â””â”€â”€â”€urls.py
+    â””â”€â”€â”€wsgi.py
         . . . . . . .
-    └─── Dockerfile
-    └─── requirements.txt
-    └─── manage.py
+    â””â”€â”€â”€ Dockerfile
+    â””â”€â”€â”€ requirements.txt
+    â””â”€â”€â”€ manage.py
     
 ```
 Aktualizujte v nástroji a ujistěte se, že ```ALLOWED_HOSTS``` ```settings.py``` aplikace Django používá externí IP adresu, která je přiřazená aplikaci Kubernetes.
