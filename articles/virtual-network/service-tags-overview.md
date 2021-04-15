@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2020
+ms.date: 4/14/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 2d14ca2423d34926a9e297823a6515c2c5dde06a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b5f6f06af3eecabe26f7b587a790912f99b006e4
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607112"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107496754"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě
 <a name="network-service-tags"></a>
@@ -138,8 +138,10 @@ Můžete programově načíst aktuální seznam značek služeb společně s pod
 - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 > [!NOTE]
-> I když je ve verzi Public Preview, rozhraní API pro zjišťování může vracet informace, které jsou méně aktuální než informace vrácené stahováním JSON. (Další informace najdete v další části.)
+> Pro rozšíření nových dat značek služby do výsledků rozhraní API trvá až 4 týdny. V případě, že dojde k tomu, bude zvětšeno číslo změny v metadatech odpovědi. V případě, že jsou zadány jiné hodnoty umístění, mohou nastat dočasné rozdíly ve výsledcích. Při použití výsledků k vytvoření pravidel NSG byste měli nastavit umístění parametr tak, aby odpovídalo oblasti NSG. 
 
+> [!NOTE]
+> Data rozhraní API budou představovat tyto značky, které lze použít s pravidly NSG, podmnožinou značek aktuálně v souboru JSON ke stažení. Ve verzi Public Preview nezaručujeme, že data zůstanou stejná jako u jedné aktualizace na další. 
 
 ### <a name="discover-service-tags-by-using-downloadable-json-files"></a>Zjišťování značek služeb pomocí souborů JSON ke stažení 
 Můžete stáhnout soubory JSON, které obsahují aktuální seznam značek služeb společně s podrobnostmi o rozsahu IP adres. Tyto seznamy se aktualizují a publikují týdně. Umístění pro každý Cloud:

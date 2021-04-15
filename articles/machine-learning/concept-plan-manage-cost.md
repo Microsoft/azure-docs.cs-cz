@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Plánování a Správa nákladů pro Azure Machine Learning s analýzou nákladů v Azure Portal. Přečtěte si další informace a tipy pro úspory nákladů, které vám umožní snížit náklady při sestavování modelů ML.
 author: sdgilley
 ms.author: sgilley
-ms.custom: subject-cost-optimization
+ms.custom: subject-cost-optimization, devx-track-azurecli
 ms.reviewer: nigup
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 6f4a8e4b8cbc35dca9f48bbec84e9023e82f6a84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39c649cccdf159810ad01c2312c4ea4837d9f4fc
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501631"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478637"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Plánování a Správa nákladů na Azure Machine Learning
 

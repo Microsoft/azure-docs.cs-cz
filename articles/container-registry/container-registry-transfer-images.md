@@ -4,12 +4,12 @@ description: Přenos kolekcí imagí nebo jiných artefaktů z jednoho registru 
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: 4fe36366011fb790d25419ac46a54c4bf5ad94bf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e921880eb0b8ae5a38e69c9c0045f6a26d84084d
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785814"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497978"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Přenos artefaktů do jiného registru
 
@@ -422,7 +422,7 @@ az resource delete \
   * Po úspěšném spuštění importu se nemusí odstranit objekt BLOB úložiště v cílovém účtu úložiště. Ověřte, že je v běhu importu nastavená možnost DeleteBlobOnSuccess a že token SAS má dostatečná oprávnění.
   * Objekt BLOB úložiště se nevytvořil nebo se odstranil. Potvrďte, že kontejner zadaný v běhu export nebo import existuje, nebo pokud pro ruční spuštění importu existuje zadaný objekt BLOB úložiště. 
 * **Problémy AzCopy**
-  * Přečtěte si téma [řešení potíží s AzCopy](../storage/common/storage-use-azcopy-configure.md#troubleshoot-issues).  
+  * Přečtěte si téma [řešení potíží s AzCopy](../storage/common/storage-use-azcopy-configure.md).  
 * **Problémy s přenosem artefaktů**
   * Ne všechny artefakty nebo žádné, jsou přeneseny. Potvrďte kontrolu pravopisu artefaktů při spuštění exportu a název objektu BLOB v běhůch exportu a importu. Potvrďte, že přenášíte maximálně 50 artefaktů.
   * Běh kanálu možná není dokončený. Spuštění exportu nebo importu může nějakou dobu trvat. 

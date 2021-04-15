@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 04/13/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18e504579c750caf452ef74844c4a388ec96448a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87516ddcce32ab205b13139c057a2ab999146b74
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97954481"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376354"
 ---
 # <a name="what-is-risk"></a>Co je riziko?
 
@@ -41,7 +41,7 @@ Riziko uživatele představuje pravděpodobnost zneužití dané identity nebo �
 
 Tato rizika se počítají v režimu offline pomocí interních a externích zdrojů informací o hrozbách Microsoftu, včetně výzkumných pracovníků v oblasti zabezpečení, odborníků na prosazování zákonů, týmů zabezpečení v Microsoftu a dalších důvěryhodných zdrojů.
 
-| Detekce rizik | Description |
+| Detekce rizik | Popis |
 | --- | --- |
 | Uniklé přihlašovací údaje | Tento typ detekce rizika označuje, že došlo k úniku platných přihlašovacích údajů uživatele. Pokud cybercriminals ohrozit platná hesla legitimních uživatelů, často tyto přihlašovací údaje sdílejí. Toto sdílení se obvykle provádí publikováním veřejně na tmavém webu, vložením webů nebo obchodováním a prodejem přihlašovacích údajů na černém trhu. Když služba nevrácených přihlašovacích údajů od Microsoftu Získá přihlašovací údaje uživatele z tmavého webu, vloží weby nebo jiné zdroje, vyhledá platné shody pomocí aktuálních platných přihlašovacích údajů uživatelů Azure AD. Další informace o nevrácených přihlašovacích údajích najdete v tématu [Nejčastější dotazy](#common-questions). |
 | Analýza hrozeb v Azure AD | Tento typ detekce rizika označuje aktivitu uživatele, která je pro daného uživatele neobvyklá nebo je konzistentní se známými vzorci útoku na základě interních a externích zdrojů analýzy hrozeb Microsoftu. |
@@ -52,7 +52,7 @@ Riziko přihlášení představuje pravděpodobnost, že daný požadavek na ov�
 
 Tato rizika se dají vypočítat v reálném čase nebo vypočítat v režimu offline pomocí interních a externích zdrojů informací o hrozbách Microsoftu, včetně bezpečnostních výzkumníků, profesionálů v oblasti vynucování zákonů, týmů zabezpečení v Microsoftu a dalších důvěryhodných zdrojů.
 
-| Detekce rizik | Typ detekce | Description |
+| Detekce rizik | Typ detekce | Popis |
 | --- | --- | --- |
 | Anonymní IP adresa | Reálný čas | Tento typ detekce rizika označuje přihlášení z anonymní IP adresy (například samoobslužný prohlížeč nebo anonymní síť VPN). Tyto IP adresy obvykle používají aktéri, kteří chtějí skrýt svou telemetrii přihlašování (IP adresa, umístění, zařízení atd.) pro potenciálně škodlivý záměr. |
 | Neobvyklá cesta | Offline | Tento typ detekce rizika identifikuje dvě přihlášení pocházející z geograficky vzdálených umístění, kde aspoň jedno z umístění může být pro uživatele neobvyklá, a to s ohledem na minulé chování. Kromě několika dalších faktorů tento algoritmus strojového učení bere v úvahu čas mezi dvěma přihlášeními a časem, kdy by uživatel musel cestovat z prvního umístění do druhé, což značí, že stejný přihlašovací údaj používá jiný uživatel. <br><br> Algoritmus ignoruje zjevné "falešně pozitivní", které přispívají k nemožným cestovním podmínkám, jako jsou sítě VPN a lokality pravidelně používané jinými uživateli v organizaci. Systém má počáteční období učení nejstarších 14 dní nebo 10 přihlášení, během kterých se učí chování přihlášení nového uživatele. |
@@ -69,7 +69,7 @@ Tato rizika se dají vypočítat v reálném čase nebo vypočítat v režimu of
 
 ### <a name="other-risk-detections"></a>Další detekce rizik
 
-| Detekce rizik | Typ detekce | Description |
+| Detekce rizik | Typ detekce | Popis |
 | --- | --- | --- |
 | Bylo zjištěno další riziko. | V reálném čase nebo offline | Toto zjištění indikuje, že bylo zjištěno jedno z výše uvedených detekcí Premium. Vzhledem k tomu, že zjišťování úrovně Premium je viditelné pouze pro zákazníky Azure AD Premium P2, jsou pro zákazníky s názvem "dodatečné riziko zjištěny" pro zákazníky bez licencí Azure AD Premium P2. |
 
@@ -83,7 +83,7 @@ Zatímco společnost Microsoft neposkytuje konkrétní informace o tom, jakým z
 
 ### <a name="password-hash-synchronization"></a>Synchronizace hodnot hash hesel
 
-Detekce rizik, jako jsou nevrácené přihlašovací údaje a sprej hesla, vyžadují přítomnost hodnot hash hesla, aby mohlo probíhat detekce. Další informace o synchronizaci hodnot hash hesel najdete v článku [implementace synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](../hybrid/how-to-connect-password-hash-synchronization.md).
+Detekce rizik, jako jsou nevrácené přihlašovací údaje, vyžadují přítomnost hodnot hash hesla, aby mohlo probíhat detekce. Další informace o synchronizaci hodnot hash hesel najdete v článku [implementace synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](../hybrid/how-to-connect-password-hash-synchronization.md).
 
 ### <a name="leaked-credentials"></a>Uniklé přihlašovací údaje
 

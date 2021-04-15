@@ -2,13 +2,13 @@
 title: Geografické zotavení po havárii – Azure Event Hubs | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Event Hubs
 ms.topic: article
-ms.date: 02/10/2021
-ms.openlocfilehash: 091c6c61b079ceb8f96f04e62fb772d91732eb2f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/14/2021
+ms.openlocfilehash: 504a83772c2ac8e3afc86465899357d0eda4eb92
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311205"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478654"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geografická zotavení po havárii 
 
@@ -194,19 +194,17 @@ Výhodou tohoto přístupu je, že k převzetí služeb při selhání může do
 > Pokyny pro obnovení geografických havárií virtuální sítě najdete v tématu [Virtual Network – provozní kontinuita](../virtual-network/virtual-network-disaster-recovery-guidance.md).
  
 ## <a name="next-steps"></a>Další kroky
-
-* [Ukázka na GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) vás provede jednoduchým pracovním postupem, který vytvoří geografickou spárování a zahájí převzetí služeb při selhání ve scénáři zotavení po havárii.
-* [Odkazy na REST API](/rest/api/eventhub/) popisují rozhraní API pro konfiguraci obnovení geografického zotavení po havárii.
-
-Další informace o službě Event Hubs naleznete pod těmito odkazy:
-
-- Začínáme se službou Event Hubs
-    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-    - [Java](event-hubs-java-get-started-send.md)
-    - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-node-get-started-send.md)
-* [Nejčastější dotazy k Event Hubs](event-hubs-faq.yml)
-* [Ukázkové aplikace, které používají službu Event Hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples)
+Přečtěte si následující ukázky nebo referenční dokumentaci. 
+- [Ukázka .NET GeoDR](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/DotNet/GeoDRClient) 
+- [Ukázka Java GeoDR](https://github.com/Azure-Samples/eventhub-java-manage-event-hub-geo-disaster-recovery)
+- [Ukázky .NET – Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
+- [Ukázky pro .NET – Microsoft. Azure. EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)
+- [Java – Azure-zasílání zpráv – ukázky eventhubs](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
+- [Ukázky pro Java – Azure – eventhubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java)
+- [Ukázky Pythonu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples)
+- [Ukázky JavaScriptu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/javascript)
+- [Ukázky TypeScriptu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/typescript)
+- [REST API – referenční informace](/rest/api/eventhub/)
 
 [1]: ./media/event-hubs-geo-dr/geo1.png
 [2]: ./media/event-hubs-geo-dr/geo2.png

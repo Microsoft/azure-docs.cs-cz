@@ -2,22 +2,22 @@
 title: Nakonfigurovat pracovní postup souhlasu správce – Azure Active Directory | Microsoft Docs
 description: Naučte se konfigurovat způsob, jak koncovým uživatelům požádat o přístup k aplikacím, které vyžadují souhlas správce.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/29/2019
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e01a3b1538c6bf3030e5c8f129606adaecffda60
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 9811c3d1833a02ad3cbaf22b9f0b31fd2da5bb6d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105319"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375181"
 ---
 # <a name="configure-the-admin-consent-workflow"></a>Konfigurace pracovního postupu pro vyjádření souhlasu správce
 

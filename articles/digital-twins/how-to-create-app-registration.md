@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/13/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: acb5457f10c54a741a738dd8a1008e703b0f23b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd45bb264f8e29a2aad870a7daff45fdd44e0d3c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102051017"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478807"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins"></a>Vytvoření registrace aplikace, která se má použít u digitálních vláken Azure
 
-Při práci s instancí digitálních vláken Azure je běžné pracovat s touto instancí prostřednictvím klientských aplikací, jako je například vlastní klientská aplikace nebo ukázka, jako je [Průzkumník digitálních vláken Azure](quickstart-adt-explorer.md). Tyto aplikace se musí ověřit u digitálních vláken Azure, aby s ní mohli pracovat, a některé [mechanismy ověřování](how-to-authenticate-client.md) , které můžou aplikace použít, zahrnují **registraci aplikace** [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) .
+Při práci s instancí digitálních vláken Azure je běžné pracovat s touto instancí prostřednictvím klientských aplikací, jako je například vlastní klientská aplikace nebo ukázka, jako je [Průzkumník digitálních vláken Azure](quickstart-azure-digital-twins-explorer.md). Tyto aplikace se musí ověřit u digitálních vláken Azure, aby s ní mohli pracovat, a některé [mechanismy ověřování](how-to-authenticate-client.md) , které můžou aplikace použít, zahrnují **registraci aplikace** [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) .
 
 To není vyžadováno pro všechny scénáře ověřování. Pokud ale používáte strategii ověřování nebo ukázku kódu, která vyžaduje registraci aplikace, včetně **ID klienta** a **ID tenanta**, Tento článek popisuje, jak ho nastavit.
 

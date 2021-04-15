@@ -2,20 +2,20 @@
 title: Řešení potíží s jednotným přihlašováním založeným na SAML v Azure Active Directory
 description: Řešení potíží s aplikací Azure AD, která je nakonfigurovaná pro jednotné přihlašování založené na SAML
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: kenwith
-ms.openlocfilehash: b169616042892c379196dd1d38c2343704aa1030
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: iangithinji
+ms.openlocfilehash: c4a4f7bfad4254e7c3fa5851e62532ed427ced8b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99257522"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376422"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Řešení potíží s jednotným přihlašováním založeným na SAML v Azure Active Directory
 Pokud narazíte na problém při konfiguraci aplikace. Ověřte, že jste postupovali podle všech kroků v kurzu pro aplikaci. V konfiguraci aplikace máte vloženou dokumentaci týkající se konfigurace aplikace. Můžete také získat přístup k [seznamu kurzů, jak integrovat aplikace SaaS s Azure Active Directory](../saas-apps/tutorial-list.md) pro podrobné pokyny.

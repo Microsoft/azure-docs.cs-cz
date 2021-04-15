@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Cloud Security
+summary: Ať už zvažujete přesun do cloudu nebo jste už migrovali do cloudu, najdete tady pokyny pro každou fázi vaší cesty ke cloudovým zabezpečením.
+metadata:
+  title: Dokumentace k bezpečnostním cestám Azure
+  description: Vyhledejte pokyny pro každou fázi cesty zabezpečení v Azure.
+  services: security
+  ms.service: security
+  ms.subservice: journey
+  ms.topic: landing-page
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 04/11/2021
+  ms.openlocfilehash: 624721931c459a164d4eae9957467c90d5845252
+  ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 04/13/2021
+  ms.locfileid: "107379893"
+landingContent:
+- title: Informace o zabezpečení Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Sdílená odpovědnost v cloudu
+      url: ../fundamentals/shared-responsibility.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Komplexní služby zabezpečení
+      url: ../fundamentals/end-to-end.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - linkListType: concept
+    links:
+    - text: Jak Microsoft zabezpečuje infrastrukturu Azure
+      url: ../fundamentals/infrastructure.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Zabezpečení a integrita platformy Azure
+      url: ../fundamentals/platform.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: Začínáme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Implementace zabezpečení napříč vaší firmou
+      url: /azure/cloud-adoption-framework/get-started/security?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - linkListType: concept
+    links:
+    - text: Návrh zabezpečené architektury
+      url: /azure/architecture/framework/security/security-principles?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Migrace zabezpečených úloh
+      url: /azure/cloud-adoption-framework/migrate/azure-migration-guide/?tabs=MigrationTools?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: Zabezpečení cloudových úloh
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Osvědčené postupy zabezpečení
+      url: ../fundamentals/best-practices-and-patterns.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Řídicí prvky zabezpečení a směrné plány
+      url: ../benchmarks/introduction.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - linkListType: concept
+    links:
+    - text: Správa identit
+      url: ../fundamentals/identity-management-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Zabezpečení sítě
+      url: ../fundamentals/network-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Zabezpečení a šifrování dat
+      url: ../fundamentals/encryption-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Antimalware od Microsoftu
+      url: ../fundamentals/antimalware.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Zabezpečení virtuálních počítačů
+      url: ../fundamentals/virtual-machines-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: Zmírnění hrozeb
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Ochrana před hrozbami
+      url: ../fundamentals/threat-detection.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Analýza hrozeb
+      url: /azure/architecture/framework/security/design-threat-model?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: Co se děje ve vašem prostředí
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Protokolování Azure
+      url: ../fundamentals/log-audit.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Kontrola a audit
+      url: /azure/architecture/framework/security/monitor-audit?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Rizika sítí a identit
+      url: /azure/architecture/framework/security/monitor-identity-network?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json

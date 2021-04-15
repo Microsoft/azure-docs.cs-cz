@@ -2,21 +2,21 @@
 title: Azure Active Directory nejčastějších dotazech k certifikátům správy aplikací
 description: Přečtěte si odpovědi na nejčastější dotazy týkající se správy certifikátů pro aplikace pomocí Azure Active Directory jako zprostředkovatele identity (IdP).
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/19/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: secherka, mifarca, shchaur, shravank, sureshja
-ms.openlocfilehash: 928bf02e2d628379738483b40631e36f0f929176
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0868c942a023662a1a6d3053477d85b0245fef4b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803662"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376235"
 ---
 # <a name="azure-active-directory-azure-ad-application-management-certificates-frequently-asked-questions"></a>Nejčastější dotazy k certifikátům správy aplikací pro Azure Active Directory (Azure AD)
 

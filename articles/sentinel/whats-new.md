@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/31/2021
-ms.openlocfilehash: 74cd5ce5912e5a656342a43b7c2b165fdf3c32d4
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.date: 04/08/2021
+ms.openlocfilehash: 7f9a8cb54458999d8f20a258bc36241dfdbd0de8
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490286"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376031"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Co je nového v Azure Sentinel
 
@@ -25,10 +25,28 @@ Vyznačené funkce jsou aktuálně ve verzi PREVIEW. [Doplňkové podmínky Azur
 
 
 > [!TIP]
-> Naši týmy pro lovecké hrozby napříč Microsoft Contribute dotazy, playbooky, sešity a poznámkové bloky do [komunity Sentinel Azure](https://github.com/Azure/Azure-Sentinel), včetně specifických [loveckých dotazů](https://github.com/Azure/Azure-Sentinel) , které vaše týmy můžou přizpůsobovat a používat. 
+> Naši týmy pro lovecké hrozby napříč Microsoft Contribute dotazy, playbooky, sešity a poznámkové bloky do [komunity Sentinel Azure](https://github.com/Azure/Azure-Sentinel), včetně specifických [loveckých dotazů](https://github.com/Azure/Azure-Sentinel) , které vaše týmy můžou přizpůsobovat a používat.
 >
 > Můžete také přispět. Připojte se k nám ve [komunitě Azure Sentinel Threat Hunters GitHub](https://github.com/Azure/Azure-Sentinel/wiki).
-> 
+>
+
+## <a name="april-2021"></a>Duben 2021
+
+- [Časová osa incidentu (verze Public Preview)](#incident-timeline-public-preview)
+
+### <a name="incident-timeline-public-preview"></a>Časová osa incidentu (verze Public Preview)
+
+První karta na stránce s podrobnostmi o incidentu je teď **Časová osa**, která zobrazuje časovou osu výstrah a záložek v incidentu. Časová osa incidentu vám pomůže pochopit incident lépe a znovu vytvořit časovou osu aktivity útočníka napříč souvisejícími výstrahami a záložkami.
+
+- Vyberte položku na časové ose, abyste zobrazili její podrobnosti, aniž byste museli opustit kontext incidentu.
+- Filtrovat obsah časové osy, aby se zobrazily výstrahy, jenom záložky nebo položky určité závažnosti nebo MITRE cílem
+- Kliknutím na odkaz **ID systémové výstrahy** můžete zobrazit celý záznam nebo odkaz **události** a zobrazit související události v oblasti **protokoly** .
+
+Například:
+
+:::image type="content" source="media/tutorial-investigate-cases/incident-timeline.png" alt-text="Karta Časová osa incidentu":::
+
+Další informace najdete v tématu [kurz: prozkoumání incidentů pomocí služby Azure Sentinel](tutorial-investigate-cases.md).
 
 ## <a name="march-2021"></a>Březen 2021
 
@@ -205,7 +223,7 @@ Stránky s podrobnostmi o entitě Azure Sentinel poskytují [podokno přehledy](
 
 Pokud jste [povolili UEBA](ueba-enrichments.md)a vybrali jste časový rámec alespoň čtyři dny, bude mít teď v tomto podokně přehledy taky následující nové oddíly pro UEBA Insights:
 
-|Sekce  |Description  |
+|Sekce  |Popis  |
 |---------|---------|
 |**UEBA přehledy**     | Shrnuje aktivity uživatelů neobvyklé: <br>– Napříč geografickými umístěními, zařízeními a prostředími<br>– Napříč časovými a frekvenčními horizonty ve srovnání s vlastní historií uživatele <br>– Porovnání s chováním partnerských vztahů <br>– Ve srovnání s chováním organizace     |
 |**Partnerské vztahy uživatele na základě členství ve skupině zabezpečení**     |   Vypíše partnerské vztahy uživatele založené na členství ve skupinách zabezpečení služby Azure AD a poskytnou týmům operací zabezpečení seznam dalších uživatelů, kteří sdílejí podobná oprávnění.  |
@@ -327,7 +345,7 @@ Tato aktualizace pro službu Azure Sentinel zahrnuje nové lovecké dotazy, kter
 - **Příkaz a ovládací prvek**
 - **Přístup k přihlašovacím údajům**
 - **Zjišťování**
-- **Realizaci**
+- **Spuštění**
 - **Exfiltrace**
 - **Dopad**
 - **Počáteční přístup**

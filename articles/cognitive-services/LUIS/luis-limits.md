@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: 41423ce34a62dfdbd5b9a60f683a2366a94d1bfd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f917087eb15d8c77356995299e27dfc1657cb5d
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97976788"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497196"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Omezení pro LUIS model a klíče
 LUIS má několik omezených oblastí. První je [limit modelu](#model-limits), který řídí záměry, entity a funkce v Luis. Druhá oblast má [omezení kvóty](#key-limits) na základě typu klíče. Třetí oblastí omezení je [kombinace kláves](#keyboard-controls) pro řízení webu Luis. Čtvrtá oblast je [mapování světové oblasti](luis-reference-regions.md) mezi vytvářením webu Luis a rozhraními API [koncového bodu](luis-glossary.md#endpoint) Luis.
@@ -30,7 +30,7 @@ Pokud vaše aplikace překračuje omezení modelu LUIS, zvažte použití aplika
 | Externí entity | žádná omezení |
 | [Záměry][intents]|500 na aplikaci: 499 vlastní záměry a požadovaný záměr _none_ .<br>Aplikace [založená na odesílání](https://aka.ms/dispatch-tool) má odpovídající 500 zdrojů odesílání.|
 | [Vytvoření seznamu entit](./luis-concept-entity-types.md) | Nadřazený objekt: 50, podřízené položky: 20 000. Kanonický název je * výchozí hodnota Maximum znaků. Hodnoty synonym nemají omezení délky. |
-| [entity strojového učení + role](./luis-concept-entity-types.md):<br> Náhled<br>pouh<br>role entity|Limit buď pro 100 nadřazených entit, nebo na 330 entit, podle toho, které uživatele omezují napřed. Role se počítá jako entita pro účely tohoto limitu. Příklad je složený s jednoduchou entitou, která má 2 role: 1 složený + 1 jednoduché + 2 role = 4 entit 330.<br>Subentity je možné vnořovat až o 5 úrovní s maximálně 10 podřízenými objekty na úrovni.|
+| [entity strojového učení + role](./luis-concept-entity-types.md):<br> Náhled<br>pouh<br>role entity|Limit buď pro 100 nadřazených entit, nebo na 330 entit, podle toho, které uživatele omezují napřed. Role se počítá jako entita pro účely tohoto limitu. Příklad je složený s jednoduchou entitou, která má 2 role: 1 složený + 1 jednoduché + 2 role = 4 entit 330.<br>Subentity je možné vnořovat až o 5 úrovní, maximálně 20 podřízených objektů na úroveň.|
 |Model jako funkce| Maximální počet modelů, které se dají použít jako funkce pro konkrétní model, je 10 modelů. Maximální počet seznamů frází použitých jako funkce pro určitý model má být 10 frázových seznamů.|
 | [Náhled – entity dynamického seznamu](./luis-migration-api-v3.md)|2 seznamy ~ 1 tisíc na požadavek koncového bodu předpovědi dotazu|
 | [Vzory](luis-concept-patterns.md)|500 vzorů na aplikaci<br>Maximální délka vzorku je 400 znaků.<br>3 vzor. jakékoli entity na vzor<br>Maximálně 2 vnořených volitelných textů ve vzoru|
@@ -108,7 +108,7 @@ Porozumění jazyku má samostatné prostředky, jeden typ pro vytváření obsa
 
 ## <a name="keyboard-controls"></a>Ovládací prvky klávesnice
 
-|Vstup z klávesnice | Description |
+|Vstup z klávesnice | Popis |
 |--|--|
 |CTRL + E|Přepíná mezi tokeny a entitami v seznamu projevy.|
 

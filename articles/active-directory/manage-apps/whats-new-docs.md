@@ -6,15 +6,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
-ms.author: kenwith
-author: kenwith
-manager: daveba
-ms.openlocfilehash: f83aa7368ec5ac06f2c5a5ebe121c7ce87f93bd1
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.author: iangithinji
+author: iantheninja
+manager: CelesteDG
+ms.openlocfilehash: 17dca502d3c65563cb9e4d2c382afb79f4d612e9
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304728"
+ms.locfileid: "107376048"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Správa aplikací: co je nového
 
@@ -42,7 +42,7 @@ Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V to
 - [Azure Active Directory Správa aplikací: co je nového](whats-new-docs.md)
 - [Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)](application-proxy-faq.yml)
 - [Řešení potíží s přihlášením k aplikaci z Azure AD moje aplikace](application-sign-in-other-problem-access-panel.md)
-- [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Kurz: Přidání možnosti vzdáleného přístupu k místní aplikaci prostřednictvím proxy aplikací v Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Optimalizujte tok provozu pomocí Proxy aplikací služby Azure Active Directory](application-proxy-network-topology.md)
 - [Azure Proxy aplikací služby AD: Historie verzí](application-proxy-release-version-history.md)
 - [Konfigurace chování přihlášení Azure Active Directory pro aplikace pomocí zásad zjišťování domovské sféry](configure-authentication-for-federated-users-portal.md)
@@ -61,7 +61,7 @@ Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V to
 - [Integrace se službou SharePoint (SAML)](application-proxy-integrate-with-sharepoint-server-saml.md)
 - [Udělení souhlasu správce v rámci celého tenanta aplikaci](grant-admin-consent.md)
 - [Přesun ověřování aplikací z Active Directory Federation Services (AD FS) do Azure Active Directory](migrate-adfs-apps-to-azure.md)
-- [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Kurz: Přidání možnosti vzdáleného přístupu k místní aplikaci prostřednictvím proxy aplikací v Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím](tenant-restrictions.md)
 
 ## <a name="january-2021"></a>Leden 2021
@@ -76,14 +76,14 @@ Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V to
 - [Průvodce integrací Azure Active Directory s aplikacemi Začínáme](plan-an-application-integration.md)
 - [Co je správa aplikací?](what-is-application-management.md)
 - [Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)](application-proxy-faq.yml)
-- [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Kurz: Přidání možnosti vzdáleného přístupu k místní aplikaci prostřednictvím proxy aplikací v Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
 - [Vývoj obchodních aplikací pro Azure Active Directory](../develop/v2-overview.md)
-- [Vysvětlení konektorů Azure Proxy aplikací služby AD](application-proxy-connectors.md)
+- [Principy konektorů proxy aplikací služby Azure AD](application-proxy-connectors.md)
 - [Principy propojených přihlášení](configure-linked-sign-on.md)
 - [Pochopení jednotného přihlašování založeného na heslech](configure-password-single-sign-on-non-gallery-applications.md)
 - [Pochopení jednotného přihlašování založeného na SAML](configure-saml-single-sign-on.md)
-- [Řešení běžných potíží při přidávání nebo odebírání aplikace k Azure Active Directory](troubleshoot-adding-apps.md)
+- [Řešení běžných potíží s přidáním aplikace do Azure Active Directory nebo jejím odebráním](troubleshoot-adding-apps.md)
 - [Zobrazení aplikací pomocí tenanta Azure AD pro správu identit](application-types.md)
 - [Pochopení způsobu přiřazování uživatelů k aplikacím v Azure Active Directory](ways-users-get-assigned-to-applications.md)
 - [Rychlý Start: odstranění aplikace z klienta služby Azure Active Directory (Azure AD)](delete-application-portal.md)
@@ -96,7 +96,7 @@ Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V to
 ### <a name="updated-articles"></a>Aktualizované články
 
 - [Rychlý Start: nastavení jednotného přihlašování (SSO) založeného na OIDC pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)](add-application-portal-setup-oidc-sso.md)
-- [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Kurz: Přidání možnosti vzdáleného přístupu k místní aplikaci prostřednictvím proxy aplikací v Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Pochopení jednotného přihlašování založeného na OIDC](configure-oidc-single-sign-on.md)
 - [Přesun ověřování aplikací z Active Directory Federation Services (AD FS) do Azure Active Directory](migrate-adfs-apps-to-azure.md)
 - [Práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
@@ -141,7 +141,7 @@ Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V to
 
 ### <a name="updated-articles"></a>Aktualizované články
 - [Rychlý Start: Přidání aplikace do tenanta Azure Active Directory (Azure AD)](add-application-portal.md)
-- [Řešení běžných potíží při přidávání nebo odebírání aplikace k Azure Active Directory](troubleshoot-adding-apps.md)
+- [Řešení běžných potíží s přidáním aplikace do Azure Active Directory nebo jejím odebráním](troubleshoot-adding-apps.md)
 - [Správa souhlasu s aplikacemi a vyhodnocení žádostí o souhlas](manage-consent-requests.md)
 - [Zobrazení aplikací pomocí tenanta Azure AD pro správu identit](application-types.md)
 - [Pochopení způsobu přiřazování uživatelů k aplikacím v Azure Active Directory](ways-users-get-assigned-to-applications.md)

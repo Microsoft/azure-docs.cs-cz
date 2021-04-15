@@ -3,12 +3,12 @@ title: Matice podpory pro zotavení po havárii virtuálního počítače Azure 
 description: Shrnuje podporu zotavení po havárii virtuálních počítačů Azure do sekundární oblasti pomocí Azure Site Recovery.
 ms.topic: article
 ms.date: 11/29/2020
-ms.openlocfilehash: 8e0d47395e4658d531ac6e9d31117edc062351c0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 02268471d58cbd473493b6001aa9f1df271077bb
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312293"
+ms.locfileid: "107376150"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -173,6 +173,8 @@ Debian 9,1 | [9,37](https://support.microsoft.com/help/4582666/) | 4.9.0-3-amd64
 Debian 10 | [9,41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533) | 4.19.0-5-amd64 až 4.19.0-14-amd64 </br> 4.19.0-6-Cloud-amd64 až 4.19.0-14-Cloud-amd64 </br> 5.8.0 -0. BPO. 2 – amd64 </br> 5.8.0 -0. BPO. 2 – Cloud – amd64 </br> 4.19.0-10-Cloud-AMD64, 4.19.0-16-AMD64, 4.19.0-16-Cloud-amd64 až 9,41 oprava hotfix patch * *
 Debian 10 | [9,40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.19.0-5-amd64 až 4.19.0-13-amd64 </br> 4.19.0-6-Cloud-amd64 až 4.19.0-13-Cloud-amd64 </br> 5.8.0 -0. BPO. 2 – amd64 </br> 5.8.0 -0. BPO. 2 – Cloud – amd64
 
+* * Poznámka: Pokud chcete, aby se nejnovější jádra pro Linux podporovala během 15 dnů od vydání, Azure Site Recovery na nejnovější verzi agenta mobility opravenou opravou hotfix. Tato oprava je zavedená v systému mezi dvěma verzemi hlavní verze. Pokud chcete aktualizovat na nejnovější verzi agenta mobility (včetně opravy hotfix hotfix), postupujte podle kroků uvedených v [tomto článku](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure). Tato oprava se v tuto chvíli zavedla pro agenty mobility používané ve scénáři zotavení po havárii v Azure.
+
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra SUSE Linux Enterprise Server 12 pro virtuální počítače Azure
 
 **Vydaná verze** | **Verze služby mobility** | **Verze jádra** |
@@ -193,6 +195,7 @@ SUSE Linux Enterprise Server 15, SP1, SP2 | [9,39](https://support.microsoft.com
 SUSE Linux Enterprise Server 15, SP1, SP2 | [9.38](https://support.microsoft.com/help/4590304/)  | Ve výchozím nastavení se podporují všechny [jádra SUSE 15, SP1 a SP2](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.12.14-5.5 – Azure na 4.12.14 – 5.47 – Azure </br></br> 4.12.14-8,5 – Azure na 4.12.14 – 8.44 – Azure </br> 5.3.18-16 – Azure </br> 5.3.18-18.5 – Azure do 5.3.18-18.18 – Azure </br> 4.12.14-8.47-Azure, 5.3.18-18.21-Azure až 9,38 oprava hotfix * *
 SUSE Linux Enterprise Server 15 a 15 SP1 | [9,37](https://support.microsoft.com/help/4582666/)  | Ve výchozím nastavení se podporují všechny [jádra SUSE 15, SP1 a SP2](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.12.14-5.5 – Azure na 4.12.14 – 5.47 – Azure </br></br> 4.12.14-8,5 – Azure na 4.12.14 – 8.38 – Azure </br> 4.12.14-8.41-Azure, 4.12.14-8.44-Azure až 9,37 oprava hotfix * *
 
+* * Poznámka: Pokud chcete, aby se nejnovější jádra pro Linux podporovala během 15 dnů od vydání, Azure Site Recovery na nejnovější verzi agenta mobility opravenou opravou hotfix. Tato oprava je zavedená v systému mezi dvěma verzemi hlavní verze. Pokud chcete aktualizovat na nejnovější verzi agenta mobility (včetně opravy hotfix hotfix), postupujte podle kroků uvedených v [tomto článku](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure). Tato oprava se v tuto chvíli zavedla pro agenty mobility používané ve scénáři zotavení po havárii v Azure.
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikované počítače – systém souborů Linux/úložiště hostů
 

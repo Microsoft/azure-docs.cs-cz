@@ -5,19 +5,19 @@ description: Skupiny s automatickým převzetím služeb při selhání umožňu
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
-ms.custom: sqldbrb=2, devx-track-azurecli
+ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/26/2021
-ms.openlocfilehash: 4d497adf5229819527608157a7a840d514f4292c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c0149dbb5f17af87229d951cf744c285e54835af
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732342"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375946"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -368,10 +368,10 @@ Při nastavování skupiny převzetí služeb při selhání mezi primárními a
 - Tyto dvě instance spravované instance SQL musí být v různých oblastech Azure.
 - Tyto dvě instance spravované instance SQL musí být stejné úrovně služby a musí mít stejnou velikost úložiště.
 - Vaše sekundární instance spravované instance SQL musí být prázdná (žádné uživatelské databáze).
-- Virtuální sítě používané instancemi spravované instance SQL musí být připojené prostřednictvím [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md). Pokud jsou tyto dvě virtuální sítě propojené prostřednictvím místní sítě, ujistěte se, že žádné pravidlo firewallu neblokuje porty 5022 a 11000–11999. Globální partnerský vztah virtuálních sítí se podporuje s omezením popsaným v níže uvedené poznámce.
+- Virtuální sítě používané instancemi spravované instance SQL musí být připojené prostřednictvím [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md). Pokud jsou tyto dvě virtuální sítě propojené prostřednictvím místní sítě, ujistěte se, že žádné pravidlo firewallu neblokuje porty 5022 a 11000–11999. Globální VNet Peering sice podporovaný je, ale s určitým omezením (viz poznámka níže).
 
    > [!IMPORTANT]
-   > [V 9/22/2020 jsme oznámili globální partnerské vztahy virtuálních sítí pro nově vytvořené virtuální clustery](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). To znamená, že globální partnerský vztah virtuálních sítí je podporován pro spravované instance SQL vytvořené v prázdných podsítích po datu oznámení a také pro všechny následné spravované instance vytvořené v těchto podsítích. Pro všechny ostatní podpory partnerského vztahu spravované instance SQL je omezená na sítě ve stejné oblasti v důsledku [omezení globálního partnerského vztahu virtuálních sítí](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Další podrobnosti najdete v článku o nejčastějších dotazech v příslušné části [Azure Virtual Networks](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
+   > [22. září 2020 jsme u nově vytvořených virtuálních clusterů oznámili globální peering virtuálních sítí.](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/) To znamená, že od tohoto data je globální peering virtuálních sítí podporovaný nejen pro službu SQL Managed Instances vytvořenou v prázdných podsítích, ale také pro všechny navazující spravované instance vytvořené v těchto podsítích. Pro všechny ostatní podpory partnerského vztahu spravované instance SQL je omezená na sítě ve stejné oblasti v důsledku [omezení globálního partnerského vztahu virtuálních sítí](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Další podrobnosti najdete v článku o nejčastějších dotazech v příslušné části [Azure Virtual Networks](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
 
 - Dvě spravované instance SQL virtuální sítě nemůžou mít překrývající se IP adresy.
 - Je potřeba nastavit skupiny zabezpečení sítě (NSG) tak, aby porty 5022 a 11000–12000 byly otevřené pro příchozí i odchozí připojení z podsítě druhé spravované instance. Důvodem je umožnit provoz replikace mezi instancemi.
