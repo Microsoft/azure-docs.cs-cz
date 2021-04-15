@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: ae40571b958897b5f06c4ae72a9049a585561872
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 494608f9dd8fbf986dcda6eeb782a64f6a2ca008
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064711"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378563"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Řešení potíží v případě nezobrazování dat ze zařízení v Azure IoT Central
 
@@ -130,7 +130,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Stav zřizování zařízení | Description | Možné zmírnění |
+| Stav zřizování zařízení | Popis | Možné zmírnění |
 | - | - | - |
 | Zřízené | Žádný okamžitě rozpoznatelný problém. | – |
 | Registrované | Zařízení ještě není připojené k IoT Central. | V protokolech zařízení ověřte problémy s připojením. |
@@ -150,7 +150,7 @@ V následujících tabulkách jsou uvedeny běžné kódy chyb a možné akce, k
 
 Pokud se vám zobrazují problémy související s vaším tokem ověřování:
 
-| Kód chyby | Description | Možné zmírnění |
+| Kód chyby | Popis | Možné zmírnění |
 | - | - | - |
 | 400 | Tělo požadavku není platné. Nelze jej například analyzovat nebo objekt nelze ověřit. | Ujistěte se, že posíláte správné tělo žádosti v rámci toku ověření identity, nebo použijete sadu SDK pro zařízení. |
 | 401 | Autorizační token se nedá ověřit. Například vypršela platnost nebo neplatí pro identifikátor URI žádosti. Tento kód chyby se také vrátí do zařízení jako součást toku ověření čipem TPM. | Ujistěte se, že má vaše zařízení správné přihlašovací údaje. |
@@ -158,6 +158,14 @@ Pokud se vám zobrazují problémy související s vaším tokem ověřování:
 | 412 | `ETag`V žádosti se neshoduje s `ETag` existujícím prostředkem, a to podle RFC7232. | [Zasouborte lístek s zákaznickou podporou](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
 | 429 | Služba omezuje operace. Omezení pro konkrétní služby najdete v tématu [omezení IoT Hub Device Provisioning Service](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | Snižte frekvenci zpráv, rozdělte zodpovědnosti mezi více zařízení. |
 | 500 | Došlo k vnitřní chybě. | Zadáte [lístek s zákaznickou podporou](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , abyste mohli zjistit, jestli vám může pomoci. |
+
+### <a name="file-upload-error-codes"></a>Kódy chyb při nahrávání souborů
+
+Tady je seznam běžných chybových kódů, které se můžou zobrazit, když se zařízení pokusí nahrát soubor do cloudu. Nezapomeňte, že předtím, než může vaše zařízení nahrávat soubor, musíte nakonfigurovat [nahrávání souborů zařízení](howto-configure-file-uploads.md) ve vaší aplikaci.
+
+| Kód chyby | Popis | Možné zmírnění |
+| - | - | - |
+| 403006  | Překročili jste počet souběžných operací odeslání souborů. Každý klient zařízení je omezený na 10 souběžných nahrávání souborů. | Ujistěte se, že zařízení upozorní IoT Central, že se operace nahrávání souborů dokončila. Pokud to nepomůže, zkuste omezit časový limit požadavku. |
 
 ## <a name="payload-shape-issues"></a>Problémy s tvarem datové části
 

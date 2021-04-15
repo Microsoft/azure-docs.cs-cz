@@ -8,6 +8,8 @@
       href: core/overview-iot-central-tour.md
     - name: Nejnovější aktualizace
       items:
+        - name: Nové a aktualizované funkce z března 2021
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-march-2021/'
         - name: Února 2021 nové a aktualizované funkce
           href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-february-2021/'
         - name: Ledna 2021 nové a aktualizované funkce

@@ -1,16 +1,16 @@
 ---
-title: Povolit SQL Insights
+title: Povolení služby SQL Insights
 description: Povolit SQL Insights v Azure Monitor
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: e8dd887d151eb553131048f232940555dbef324b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfcb34b731855fd26ddad191b819e308406117cb
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025029"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478331"
 ---
 # <a name="enable-sql-insights-preview"></a>Povolit SQL Insights (Náhled)
 Tento článek popisuje, jak povolit [SQL Insights](sql-insights-overview.md) pro monitorování vašich nasazení SQL. Monitorování se provádí z virtuálního počítače Azure, který vytváří připojení k vašim nasazením SQL a pomocí zobrazení dynamické správy (zobrazení dynamické správy) shromažďuje data monitorování. Můžete řídit, které datové sady jsou shromažďovány a četnost shromažďování pomocí profilu monitorování.
@@ -26,7 +26,7 @@ V Azure Portal otevřete Azure SQL Database pomocí [SQL Server Management Studi
 
 Spusťte následující skript, který vytvoří uživatele s požadovanými oprávněními. Nahraďte *uživatele uživatelským* jménem a *mystrongpassword* heslem.
 
-```
+```sql
 CREATE USER [user] WITH PASSWORD = N'mystrongpassword'; 
 GO 
 GRANT VIEW DATABASE STATE TO [user]; 
@@ -39,11 +39,23 @@ Ověřte, zda byl uživatel vytvořen.
 
 :::image type="content" source="media/sql-insights-enable/telegraf-user-database-verify.png" alt-text="Ověřte uživatelský skript telegraf." lightbox="media/sql-insights-enable/telegraf-user-database-verify.png":::
 
+```sql
+select name as username,
+       create_date,
+       modify_date,
+       type_desc as type,
+       authentication_type_desc as authentication_type
+from sys.database_principals
+where type not in ('A', 'G', 'R', 'X')
+       and sid is not null
+order by username
+```
+
 ### <a name="azure-sql-managed-instance"></a>Spravovaná instance Azure SQL
 Přihlaste se ke spravované instanci SQL Azure a pomocí [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) nebo podobného nástroje spusťte následující skript, který vytvoří uživatele monitorování s potřebnými oprávněními. Nahraďte *uživatele uživatelským* jménem a *mystrongpassword* heslem.
 
  
-```
+```sql
 USE master; 
 GO 
 CREATE LOGIN [user] WITH PASSWORD = N'mystrongpassword'; 
@@ -58,7 +70,7 @@ GO
 Přihlaste se k virtuálnímu počítači Azure se systémem SQL Server a pomocí [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) nebo podobného nástroje spusťte následující skript, který vytvoří uživatele monitorování s požadovanými oprávněními. Nahraďte *uživatele uživatelským* jménem a *mystrongpassword* heslem.
 
  
-```
+```sql
 USE master; 
 GO 
 CREATE LOGIN [user] WITH PASSWORD = N'mystrongpassword'; 
@@ -67,6 +79,19 @@ GRANT VIEW SERVER STATE TO [user];
 GO 
 GRANT VIEW ANY DEFINITION TO [user]; 
 GO
+```
+
+Ověřte, zda byl uživatel vytvořen.
+
+```sql
+select name as username,
+       create_date,
+       modify_date,
+       type_desc as type,
+from sys.server_principals
+where type not in ('A', 'G', 'R', 'X')
+       and sid is not null
+order by username
 ```
 
 ## <a name="create-azure-virtual-machine"></a>Vytvořit virtuální počítač Azure 
@@ -167,7 +192,7 @@ Zadejte připojovací řetězec ve tvaru:
 
 ```
 sqlAzureConnections": [ 
-   "Server=mysqlserver.database.windows.net;Port=1433;Database=mydatabase;User Id=$username;Password=$password;" 
+   "Server=mysqlserver.database.windows.net;Port=1433;Database=mydatabase;User Id=$username;Password=$password;" 
 }
 ```
 
@@ -175,7 +200,7 @@ Získejte podrobnosti z položky nabídky **připojovací řetězce** pro datab�
 
 :::image type="content" source="media/sql-insights-enable/connection-string-sql-database.png" alt-text="Připojovací řetězec databáze SQL" lightbox="media/sql-insights-enable/connection-string-sql-database.png":::
 
-Chcete-li monitorovat čitelnou sekundární, zahrňte do `ApplicationIntent=ReadOnly` připojovacího řetězce klíčovou hodnotu.
+Chcete-li monitorovat čitelnou sekundární, zahrňte do `ApplicationIntent=ReadOnly` připojovacího řetězce klíčovou hodnotu. SQL Insights podporuje monitorování jednoho sekundárního. Shromážděná data budou označena jako primární nebo sekundární. 
 
 
 #### <a name="azure-virtual-machines-running-sql-server"></a>Virtuální počítače Azure se systémem SQL Server 
@@ -183,7 +208,7 @@ Zadejte připojovací řetězec ve tvaru:
 
 ```
 "sqlVmConnections": [ 
-   "Server=MyServerIPAddress;Port=1433;User Id=$username;Password=$password;" 
+   "Server=MyServerIPAddress;Port=1433;User Id=$username;Password=$password;" 
 ] 
 ```
 
@@ -191,15 +216,13 @@ Pokud je váš virtuální počítač pro monitorování ve stejné virtuální 
 
 :::image type="content" source="media/sql-insights-enable/sql-vm-security.png" alt-text="Zabezpečení virtuálního počítače SQL" lightbox="media/sql-insights-enable/sql-vm-security.png":::
 
-Chcete-li monitorovat čitelnou sekundární, zahrňte do `ApplicationIntent=ReadOnly` připojovacího řetězce klíčovou hodnotu.
-
 
 ### <a name="azure-sql-managed-instances"></a>Azure SQL Managed Instances 
 Zadejte připojovací řetězec ve tvaru:
 
 ```
 "sqlManagedInstanceConnections": [ 
-      "Server= mysqlserver.database.windows.net;Port=1433;User Id=$username;Password=$password;", 
+      "Server= mysqlserver.database.windows.net;Port=1433;User Id=$username;Password=$password;", 
     ] 
 ```
 Získá podrobnosti z položky nabídky **připojovací řetězce** pro spravovanou instanci.
@@ -207,8 +230,7 @@ Získá podrobnosti z položky nabídky **připojovací řetězce** pro spravova
 
 :::image type="content" source="media/sql-insights-enable/connection-string-sql-managed-instance.png" alt-text="Připojovací řetězec spravované instance SQL" lightbox="media/sql-insights-enable/connection-string-sql-managed-instance.png":::
 
-Chcete-li monitorovat čitelnou sekundární, zahrňte do `ApplicationIntent=ReadOnly` připojovacího řetězce klíčovou hodnotu.
-
+Chcete-li monitorovat čitelnou sekundární, zahrňte do `ApplicationIntent=ReadOnly` připojovacího řetězce klíčovou hodnotu. SQL Insights podporuje monitorování jedné sekundární aplikace a shromážděná data budou označená jako primární nebo sekundární. 
 
 
 ## <a name="monitoring-profile-created"></a>Profil monitorování se vytvořil. 

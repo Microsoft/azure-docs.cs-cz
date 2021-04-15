@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: luquinta
 ms.reviewer: jrasnick
-ms.openlocfilehash: 895d766cc1e70e6a001904770d6f3ef12b6945cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d045c1ec96bb7b31a710a28e30e3d428922b65e
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018657"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378546"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Použití .NET pro Apache Spark se službou Azure Synapse Analytics
 
@@ -29,19 +29,10 @@ Data můžete analyzovat pomocí technologie .NET pro Apache Spark prostřednict
 V tomto kurzu se dozvíte, jak pomocí služby Azure synapse Analytics [vytvořit definice úloh Apache Spark pro fondy synapse Spark](apache-spark-job-definitions.md). Pokud jste aplikaci nevložili k odeslání do Azure synapse, proveďte následující kroky.
 
 1. Spusťte následující příkazy pro publikování aplikace. Nezapomeňte nahradit *mySparkApp* cestou k vaší aplikaci.
-
-   **Ve Windows:**
-
-   ```dotnetcli
-   cd mySparkApp
-   dotnet publish -c Release -f netcoreapp3.1 -r win-x64
-   ```
    
-   **V systému Linux:**
-
    ```dotnetcli
    cd mySparkApp
-   dotnet publish -c Release -f netcoreapp3.1 -r ubuntu.16.04-x64
+   dotnet publish -c Release -f netcoreapp3.1 -r ubuntu.18.04-x64
    ```
 
 2. Zip obsah složky pro publikování, `publish.zip` který byl vytvořen v důsledku kroku 1. Všechna sestavení by měla být v první vrstvě souboru ZIP a neměla by existovat žádná mezilehlá vrstva složky. To znamená, že při `publish.zip` deextrakci budou všechna sestavení extrahována do aktuálního pracovního adresáře.

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: e0912fb452a7f587fef19de835eea111b349a9a4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 500833d1bb4fc492942c08239bd488c2d2c16d30
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310015"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484315"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>Připojení zařízení IoT Edge pro příjem dat k bráně Azure IoT Edge
 
@@ -78,9 +78,9 @@ Můžete také vytvořit nebo spravovat vztahy nadřazenosti a podřízenosti pr
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Rozšíření [Azure Azure](/cli/azure/ext/azure-iot) pro Azure CLI nabízí příkazy pro správu prostředků IoT. Pokud vytváříte nové identity zařízení nebo upravujete stávající zařízení, můžete spravovat vztah nadřazenosti a podřízenosti zařízení IoT a IoT Edge.
+Rozšíření [Azure Azure](/cli/azure/iot) pro Azure CLI nabízí příkazy pro správu prostředků IoT. Pokud vytváříte nové identity zařízení nebo upravujete stávající zařízení, můžete spravovat vztah nadřazenosti a podřízenosti zařízení IoT a IoT Edge.
 
-Pomocí příkazu [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) Set of Commands můžete spravovat vztahy nadřazenosti a podřízenosti daného zařízení.
+Pomocí příkazu [AZ IoT Hub Device-identity](/cli/azure/iot/hub/device-identity) Set of Commands můžete spravovat vztahy nadřazenosti a podřízenosti daného zařízení.
 
 `create`Příkaz obsahuje parametry pro přidání podřízených zařízení a nastavení nadřazeného zařízení v době vytváření zařízení.
 

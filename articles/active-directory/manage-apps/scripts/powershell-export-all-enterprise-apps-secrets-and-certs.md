@@ -2,21 +2,21 @@
 title: Ukázka prostředí PowerShell – Export tajných kódů a certifikátů pro podnikové aplikace v Azure Active Directory tenanta
 description: Příklad PowerShellu, který exportuje všechny tajné klíče a certifikáty pro zadané podnikové aplikace ve vašem tenantovi Azure Active Directory.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 03/09/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: mifarca
-ms.openlocfilehash: 20caefe74a7c047fb8690bb1d9e6f4eb9da7e9b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 536197ebc5df94447f3937773e0447e47961bd92
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102635191"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378597"
 ---
 # <a name="export-secrets-and-certificates-for-enterprise-apps"></a>Export tajných klíčů a certifikátů pro podnikové aplikace
 Tento ukázkový skript PowerShellu exportuje všechny tajné klíče, certifikáty a vlastníky pro zadané podnikové aplikace z vašeho adresáře do souboru CSV.

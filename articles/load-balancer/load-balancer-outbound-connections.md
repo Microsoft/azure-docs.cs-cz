@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 99f15afdab917fe28e22df8cb0e372b6c30c8526
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3b92ef3ce195a2eee9bce53e08d977593a9f1fc2
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027325"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477702"
 ---
 # <a name="using-source-network-address-translation-snat-for-outbound-connections"></a>Použití překladu zdrojového síťového adres (SNAT) pro odchozí připojení
 
@@ -64,14 +64,16 @@ Aby bylo možné zachovat jedinečné toky, hostitel přepíše zdrojový port k
   * Virtuální počítač bez veřejné IP adresy
   * Virtuální počítač bez veřejné IP adresy a bez standardního nástroje pro vyrovnávání zatížení.
         
- ### <a name="scenario-1-virtual-machine-with-public-ip"></a><a name="scenario1"></a> Scénář 1: virtuální počítač s veřejnou IP adresou
+ ### <a name="scenario-1-virtual-machine-with-public-ip-either-with-or-without-a-load-balancer"></a><a name="scenario1"></a> Scénář 1: virtuální počítač s veřejnou IP adresou buď s nástrojem pro vyrovnávání zatížení, nebo bez něj.
 
  | Přidružení | Metoda | Protokoly IP |
  | ---------- | ------ | ------------ |
- | Veřejný Nástroj pro vyrovnávání zatížení nebo samostatný | [SNAT (zdrojový překlad adresy zdrojové sítě)](#snat) </br> nepoužívá se. | TCP (protokol řízení přenosů) </br> UDP (protokol datadatagram uživatele) </br> ICMP (Internet Control Message Protocol) </br> ESP (zapouzdření datové části zabezpečení) |
+ | Veřejný Nástroj pro vyrovnávání zatížení nebo samostatný | [SNAT (zdrojový překlad adresy zdrojové sítě)](#snat) </br> se nepoužívá. | TCP (protokol řízení přenosů) </br> UDP (protokol datadatagram uživatele) </br> ICMP (Internet Control Message Protocol) </br> ESP (zapouzdření datové části zabezpečení) |
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Popis
 
+ Veškerý provoz se vrátí do žádajícího klienta z veřejné IP adresy virtuálního počítače (IP adresa na úrovni instance).
+ 
  Azure používá veřejnou IP adresu přiřazenou ke konfiguraci protokolu IP síťové karty instance pro všechny odchozí toky. Instance má k dispozici všechny dočasné porty. Nezáleží na tom, jestli je virtuální počítač vyrovnaný k vyrovnávání zatížení. Tento scénář má přednost před ostatními. 
 
  Veřejná IP adresa přiřazená k virtuálnímu počítači je vztah 1:1 (nikoli 1: mnoho) a implementovaný jako bezstavové 1:1 NAT.
@@ -82,7 +84,7 @@ Aby bylo možné zachovat jedinečné toky, hostitel přepíše zdrojový port k
  | ------------ | ------ | ------------ |
  | Standardní veřejný Nástroj pro vyrovnávání zatížení | Použití IP adresy front-endu nástroje pro vyrovnávání zatížení pro [SNAT](#snat).| TCP </br> UDP |
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Popis
 
  Prostředek nástroje pro vyrovnávání zatížení je nakonfigurovaný pomocí odchozího pravidla nebo pravidla vyrovnávání zatížení, které umožňuje SNAT. Toto pravidlo slouží k vytvoření propojení mezi veřejnou IP frontou front-endu a back-end fondem. 
 
@@ -105,7 +107,7 @@ Aby bylo možné zachovat jedinečné toky, hostitel přepíše zdrojový port k
  | ------------ | ------ | ------------ |
  | Standardní interní nástroj pro vyrovnávání zatížení | Bez připojení k Internetu.| Žádné |
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Popis
  
 Při použití standardního interního nástroje pro vyrovnávání zatížení se nepoužívají dočasné IP adresy pro SNAT. Tato funkce ve výchozím nastavení podporuje zabezpečení. Tato funkce zajišťuje, že všechny IP adresy používané prostředky se dají konfigurovat a můžou být rezervované. 
 
@@ -122,7 +124,7 @@ Další možností je přidat back-end instance do standardního veřejného ná
  | ------------ | ------ | ------------ |
  |Žádné </br> Základní nástroj pro vyrovnávání zatížení | [SNAT](#snat) s dynamickou IP adresou na úrovni instance| TCP </br> UDP | 
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Popis
 
  Když virtuální počítač vytvoří odchozí tok, Azure přeloží zdrojovou IP adresu na dynamicky určenou veřejnou zdrojovou IP adresu. Tato veřejná IP adresa **není konfigurovatelná** a nedá se rezervovat. Tato adresa se nepočítá s omezením prostředků veřejné IP adresy předplatného. 
 
