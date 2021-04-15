@@ -2,13 +2,13 @@
 title: Typy prostředků rozšíření
 description: Obsahuje seznam typů prostředků Azure, pomocí kterých se rozšiřuje schopnost dalších typů prostředků.
 ms.topic: conceptual
-ms.date: 11/14/2020
-ms.openlocfilehash: 5561c480dd5a2849588ed2288eb5bcc35fc1446c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 7085c0894fbf3bd56b56e4187d56f9af54916962
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94658447"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363984"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Typy prostředků, které rozšiřuje možnosti jiných prostředků
 
@@ -33,8 +33,17 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. Authorization/policyExemptions
 - Microsoft. Authorization/policySetDefinitions
 - Microsoft. Authorization/privateLinkAssociations
+- Microsoft. Authorization/roleAssignmentApprovals
 - Microsoft. Authorization/roleAssignments
+- Microsoft. Authorization/roleAssignmentScheduleInstances
+- Microsoft. Authorization/roleAssignmentScheduleRequests
+- Microsoft. Authorization/roleAssignmentSchedules
 - Microsoft. Authorization/roleDefinitions
+- Microsoft. Authorization/roleEligibilityScheduleInstances
+- Microsoft. Authorization/roleEligibilityScheduleRequests
+- Microsoft. Authorization/roleEligibilitySchedules
+- Microsoft. Authorization/roleManagementPolicies
+- Microsoft. Authorization/roleManagementPolicyAssignments
 
 ## <a name="microsoftautomanage"></a>Microsoft. automanage
 
@@ -52,6 +61,14 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 
 - Microsoft. Details/blueprintAssignments
 - Microsoft. Details/modrotisky
+
+## <a name="microsoftcapacity"></a>Microsoft. Capacity
+
+- Microsoft. Capacity/listSkus
+
+## <a name="microsoftchangeanalysis"></a>Microsoft. ChangeAnalysis
+
+- Microsoft. ChangeAnalysis/změny
 
 ## <a name="microsoftconsumption"></a>Microsoft. spotřeba
 
@@ -81,19 +98,28 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 
 - Microsoft. CostManagement/Alerts
 - Microsoft. CostManagement/rozpočty
+- Microsoft. CostManagement/CheckNameAvailability
 - Microsoft. CostManagement/Dimensions
 - Microsoft. CostManagement/EXPORTS
 - Microsoft. CostManagement/ExternalSubscriptions
 - Microsoft. CostManagement/FORECAST
+- Microsoft. CostManagement/GenerateDetailedCostReport
 - Microsoft. CostManagement/Insights
+- Microsoft. CostManagement/OperationResults
+- Microsoft. CostManagement/stav operationstatus
 - Microsoft. CostManagement/dotaz
 - Microsoft. CostManagement/Reportconfigs
 - Microsoft. CostManagement/Reports
+- Microsoft. CostManagement/ScheduledActions
 - Microsoft. CostManagement/zobrazení
 
 ## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
 
 - Microsoft. CustomProviders/Associations
+
+## <a name="microsoftdatamigration"></a>Migrace Microsoft.
+
+- Migrace Microsoft. dataDatabaseMigrations/
 
 ## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
@@ -156,6 +182,7 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 ## <a name="microsoftpolicyinsights"></a>Microsoft. PolicyInsights
 
 - Microsoft. PolicyInsights/Attestation
+- Microsoft. PolicyInsights/eventGridFilters
 - Microsoft. PolicyInsights/policyEvents
 - Microsoft. PolicyInsights/policyStates
 - Microsoft. PolicyInsights/policyTrackedResources
@@ -171,7 +198,6 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. ResourceHealth/childResources
 - Microsoft. ResourceHealth/Events
 - Microsoft. ResourceHealth/impactedResources
-- Microsoft. ResourceHealth/oznámení
 
 ## <a name="microsoftresources"></a>Microsoft. Resources
 
@@ -189,7 +215,11 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. Security/Devices
 - Microsoft. Security/deviceSecurityGroups
 - Microsoft. Security/InformationProtectionPolicies
+- Microsoft. Security/Insights
+- Microsoft. Security/iotAlerts
+- Microsoft. Security/iotRecommendations
 - Microsoft. Security/iotSensors
+- Microsoft. Security/iotSites
 - Microsoft. Security/jitPolicies
 - Microsoft. Security/serverVulnerabilityAssessments
 - Microsoft. Security/sqlVulnerabilityAssessments
@@ -204,19 +234,29 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. SecurityInsights/případy
 - Microsoft. SecurityInsights/dataconnects
 - Microsoft. SecurityInsights/dataConnectorsCheckRequirements
+- Microsoft. SecurityInsights/obohacení
 - Microsoft. SecurityInsights/entity
+- Microsoft. SecurityInsights/entityQueryTemplates
 - Microsoft. SecurityInsights/incidenty
 - Microsoft. SecurityInsights/Settings
 - Microsoft. SecurityInsights/threatIntelligence
 - Microsoft. SecurityInsights/watchlists
 
-## <a name="microsoftserialconsoleppe"></a>Microsoft. SerialConsole. OOP
+## <a name="microsoftserialconsole"></a>Microsoft. SerialConsole
 
-- Microsoft. SerialConsole. OOP/serialPorts
+- Microsoft. SerialConsole/serialPorts
+
+## <a name="microsoftservicelinker"></a>Microsoft. ServiceLinker
+
+- Microsoft. ServiceLinker/propojování
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
 
 - Microsoft. SoftwarePlan/hybridUseBenefits
+
+## <a name="microsoftsubscription"></a>Microsoft. Subscription
+
+- Microsoft. Subscription/policies
 
 ## <a name="microsoftsupport"></a>Microsoft. support
 
@@ -224,10 +264,7 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft. monitor zátěže byl
 
-- Microsoft. monitor zátěže byl/– komponenty
-- Microsoft. monitor zátěže byl/monitorInstances
 - Microsoft. monitor zátěže byl/monitoruje
-- Microsoft. monitor zátěže byl/notificationSettings
 
 ## <a name="next-steps"></a>Další kroky
 

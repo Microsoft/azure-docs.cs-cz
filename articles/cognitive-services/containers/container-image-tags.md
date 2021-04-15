@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 03/25/2020
+ms.date: 04/12/2021
 ms.author: aahi
-ms.openlocfilehash: 3fecb84196ba736120273955b2c88af8cb4dadea
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 80b1af824f1c7bd47f16723f839141c4bed756df
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095811"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364987"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Značky imagí a poznámky k verzi služby Azure Cognitive Services Container
 
@@ -52,18 +52,24 @@ Tato image kontejneru má k dispozici následující značky. Můžete také naj
 
 # <a name="latest-version"></a>[Nejnovější verze](#tab/current)
 
+Poznámky k verzi pro `3.2` :
+
+* Čtení kontejneru OCR je teď všeobecně dostupné.
+
+| Značky obrázku                    | Poznámky |
+|-------------------------------|:------|
+| `3.2`                     |       |
+
+# <a name="previous-versions"></a>[Předchozí verze](#tab/previous)
+
+
 Poznámky k verzi pro `3.2-preview.2` :
+
 * Verze Distroless
 * ReadingOrder parametr, který se má zvolit mezi pořadím textu v odpovědi JSON
 * Rozšířené protokolování
 * Opravy hotfix na model CJK
-
-| Značky obrázku                    | Poznámky |
-|-------------------------------|:------|
-|3.2.2.014850001-49e0eac6-amd64-Preview                     |       |
-
-# <a name="previous-versions"></a>[Předchozí verze](#tab/previous)
-
+* 
 Poznámky k verzi pro `v2.0.013250001-amd64-preview` :
 
 * Další snížení využití paměti pro kontejner.
@@ -93,6 +99,7 @@ Poznámky k verzi pro `1.1.013050001-amd64-preview`
 
 | Značky obrázku                    | Poznámky |
 |-------------------------------|:------|
+| `3.2.2.014850001-49e0eac6-amd64-preview` |       |
 | `2.0.013250001-amd64-preview` |       |
 | `1.1.013050001-amd64-preview` |       |
 | `1.1.011580001-amd64-preview` |       |

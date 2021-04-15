@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: 01f43ceab36b519f3aafbbdc711df15c80481398
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75615b4bb8773d0c0b8f72278e5598462c779ceb
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104597432"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365225"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure SQL Database pomocí Azure Data Factory
 
@@ -76,7 +76,7 @@ Pro různé typy ověřování se podívejte na následující oddíly týkajíc
 - [Ověřování tokenu aplikací Azure AD: spravované identity pro prostředky Azure](#managed-identity)
 
 >[!TIP]
->Pokud dojde k chybě s kódem chyby "UserErrorFailedToConnectToSqlServer" a zprávou, jako je "omezení relace pro databázi je XXX a bylo dosaženo," přidejte `Pooling=false` do připojovacího řetězce a zkuste to znovu.
+>Pokud dojde k chybě s kódem chyby "UserErrorFailedToConnectToSqlServer" a zprávou, jako je "omezení relace pro databázi je XXX a bylo dosaženo," přidejte `Pooling=false` do připojovacího řetězce a zkuste to znovu. `Pooling=false` také se doporučuje pro instalaci propojené služby typu **SHIR (Autohosted Integration Runtime)** . Sdružování a další parametry připojení můžete přidat jako nové názvy parametrů a hodnoty v části **Další vlastnosti připojení** v rámci formuláře pro vytvoření propojené služby.
 
 ### <a name="sql-authentication"></a>Ověřování SQL
 

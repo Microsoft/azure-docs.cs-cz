@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 9a61f54530f25ac33c6ef097698198a11cf1275e
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 3baf44a4240b23b41ce2e80dc22dbda4c7d0672a
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581444"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363712"
 ---
 # <a name="assign-azure-roles-using-the-rest-api"></a>Přiřazení rolí Azure pomocí REST API
 
@@ -115,10 +115,10 @@ Následující příklad ukazuje příklad výstupu:
 
 Pokud vytvoříte nový instanční objekt a hned se pokusíte přiřadit roli k tomuto instančnímu objektu, toto přiřazení role může v některých případech selhat. Pokud třeba vytvoříte novou spravovanou identitu a pak se pokusíte k danému instančnímu objektu přiřadit roli, přiřazení role se nemusí zdařit. Důvodem této chyby je nejspíš zpoždění replikace. Instanční objekt se vytvoří v jedné oblasti. přiřazení role se ale může vyskytnout v jiné oblasti, která ještě nereplikoval instanční objekt.
 
-Pro vyřešení tohoto scénáře byste měli nastavit `principalType` vlastnost na `ServicePrincipal` při vytváření přiřazení role. Musíte také nastavit `apiVersion` přiřazení role na `2018-09-01-preview` nebo vyšší.
+Pro vyřešení tohoto scénáře použijte [přiřazení rolí – vytvořit](/rest/api/authorization/roleassignments/create) REST API a nastavte `principalType` vlastnost na `ServicePrincipal` . Musíte také nastavit `apiVersion` `2018-09-01-preview` nebo novější.
 
 ```http
-PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2018-09-01-preview
+PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2018-09-01-preview
 ```
 
 ```json
