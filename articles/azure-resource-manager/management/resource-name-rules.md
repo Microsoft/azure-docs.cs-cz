@@ -3,12 +3,12 @@ title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: a1dbe409eb5479c4027834cd33e095d12c31e238
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: e260c9055b26d82f2fd2f8458d287a35a838f40f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210189"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477787"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -169,7 +169,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | --- | --- | --- | --- |
 > | availabilitySets | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Konec s alfanumerickým nebo podtržítkem. |
 > | diskEncryptionSets | skupina prostředků | 1–80 | Alfanumerické znaky a podtržítka. |
-> | disků | skupina prostředků | 1–80 | Alfanumerické znaky a podtržítka. |
+> | disků | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka a spojovníky. |
 > | Galerie | skupina prostředků | 1–80 | Alfanumerické znaky a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
 > | Galerie/aplikace | galerie | 1–80 | Alfanumerické znaky, spojovníky a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
 > | Galerie/aplikace/verze | aplikace | 32-bitové celé číslo | Čísla a tečky. |
@@ -397,7 +397,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | --- | --- | --- | --- |
 > | úlohy | skupina prostředků | 2–64 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem. |
 
-## <a name="microsoftinsights"></a>Microsoft. Insights
+## <a name="microsoftinsights"></a>Microsoft.Insights
 
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |

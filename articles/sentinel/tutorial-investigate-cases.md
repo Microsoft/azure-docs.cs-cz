@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 04/08/2021
 ms.author: yelevin
-ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8980a8920b4f41f5a8e6afe106415032eef2055b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98790982"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375830"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Kurz: zkoumání incidentů pomocí služby Azure Sentinel
 
@@ -51,9 +51,15 @@ Incident může zahrnovat více výstrah. Jedná se o agregaci všech relevantn�
 
 1. Chcete-li zahájit šetření, vyberte konkrétní incident. Na pravé straně můžete zobrazit podrobné informace o incidentu, včetně jeho závažnosti, souhrnu počtu zúčastněných subjektů, nezpracovaných událostí, které aktivovaly tento incident, a jedinečného ID incidentu.
 
-1. Chcete-li zobrazit další podrobnosti o výstrahách a entitách v incidentu, vyberte možnost **Zobrazit úplné podrobnosti** na stránce incident a zkontrolujte příslušné karty, které shrnují informace o incidentu. Na kartě **výstrahy** si prohlédněte samotnou výstrahu. Zobrazí se všechny relevantní informace o výstraze – dotaz, který aktivoval výstrahu, počet vrácených výsledků na dotaz a možnost spustit playbooky na výstrahách. Chcete-li přejít k podrobnostem i dál k incidentu, vyberte počet **událostí**. Otevře se dotaz, který vygeneroval výsledky, a události, které vyvolaly výstrahu v Log Analytics. Na kartě **entity** můžete zobrazit všechny entity, které jste namapovali jako součást definice pravidla výstrahy.
+1. Chcete-li zobrazit další podrobnosti o výstrahách a entitách v incidentu, vyberte možnost **Zobrazit úplné podrobnosti** na stránce incident a zkontrolujte příslušné karty, které shrnují informace o incidentu. 
 
-    ![Zobrazit podrobnosti výstrahy](media/tutorial-investigate-cases/alert-details.png)
+    ![Zobrazit podrobnosti výstrahy](media/tutorial-investigate-cases/incident-timeline.png)
+
+    Například:
+
+    - Na kartě **Časová osa** si můžete prohlédnout časovou osu výstrah a záložek v incidentu, což vám umožní rekonstruovat časovou osu aktivity útočníka.
+    - Na kartě **výstrahy** si prohlédněte samotnou výstrahu. Zobrazí se všechny relevantní informace o výstraze – dotaz, který aktivoval výstrahu, počet vrácených výsledků na dotaz a možnost spustit playbooky na výstrahách. Chcete-li přejít k podrobnostem i dál k incidentu, vyberte počet **událostí**. Otevře se dotaz, který vygeneroval výsledky, a události, které vyvolaly výstrahu v Log Analytics. 
+    - Na kartě **entity** můžete zobrazit všechny entity, které jste namapovali jako součást definice pravidla výstrahy.
 
 1. Pokud aktivně zkoumáte incident, je vhodné nastavit stav incidentu na **probíhá** , dokud ho nezavřete.
 
