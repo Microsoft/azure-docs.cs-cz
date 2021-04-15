@@ -4,13 +4,13 @@ description: Jak nasadit a nakonfigurovat síť konsorcia prostředků infrastru
 ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: 42d16adbc5e6396c8d5d38176ac7681c712f4555
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: contperf-fy21q3, devx-track-azurecli
+ms.openlocfilehash: 03f19d1922c011c1b5304b66488e9fa8de703bf9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101099"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478297"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Nasazení konsorcia prostředků infrastruktury pro hlavní knihu v Azure Kubernetes Service
 
@@ -113,7 +113,7 @@ Pokud chcete po nasazení služby řazení a partnerských uzlů vytvořit block
 > Tento skript je k dispozici pouze v případě demonstračních, vývojových a testovacích scénářů. Kanál a konsorcium, které tento skript vytvoří, má základní zásady infrastruktury hlavní knihy pro zjednodušení scénářů pro ukázky, vývoj a testování. V případě produkčního nastavení doporučujeme, abyste aktualizovali zásady infrastruktury hlavního projektu kanálu/konsorcia v souladu s požadavky vaší organizace na dodržování předpisů pomocí nativních rozhraní API prostředků infrastruktury pro hlavní knihu.
 
 
-Pomocí rozhraní příkazového řádku (CLI) pro Azure bash se dají spouštět všechny příkazy ke spuštění skriptu infrastruktury Azure. K Azure Cloud Shell se můžete přihlásit pomocí ![ Možnosti šablony prostředků infrastruktury služby Azure Kubernetes v pravém ](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) horním rohu Azure Portal. Na příkazovém řádku zadejte `bash` a vyberte klávesu ENTER pro přepnutí na bash CLI nebo vyberte **bash** z panelu nástrojů Cloud Shell.
+Pomocí rozhraní příkazového řádku (CLI) pro Azure bash se dají spouštět všechny příkazy ke spuštění skriptu infrastruktury Azure. V pravém horním rohu Azure Portal se můžete přihlásit k Azure Cloud Shell throughâ ![ ve službě Azure Fabric v rámci šablony Azure Kubernetes ](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) . Na příkazovém řádku zadejte `bash` a vyberte klávesu ENTER pro přepnutí na bash CLI nebo vyberte **bash** z panelu nástrojů Cloud Shell.
 
 Další informace najdete v tématu [Azure Cloud Shell](../../cloud-shell/overview.md) .
 
@@ -124,7 +124,7 @@ Následující obrázek znázorňuje podrobný proces vytváření konsorcia mez
 
 ![Diagram procesu pro sestavení konsorcia](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
 
-Po dokončení počátečního nastavení použijte klientskou aplikaci k dosažení následujících operací:  
+Po dokončení počátečního nastavení použijte klientskou aplikaci k dosažení následujících operací: â € ̄
 
 - Správa kanálů
 - Správa konsorcia
@@ -293,15 +293,15 @@ Z klienta partnerské organizace spusťte příkaz pro nastavení partnerských 
 # Peer organization name where the chaincode operation will be performed
 ORGNAME=<PeerOrgName>
 USER_IDENTITY="admin.$ORGNAME"  
-# If you are using chaincode_example02 then set CC_NAME=“chaincode_example02”
+# If you are using chaincode_example02 then set CC_NAME=â€œchaincode_example02â€
 CC_NAME=<chaincodeName>  
-# If you are using chaincode_example02 then set CC_VERSION=“1” for validation
+# If you are using chaincode_example02 then set CC_VERSION=â€œ1â€ for validation
 CC_VERSION=<chaincodeVersion>
 # Language in which chaincode is written. Supported languages are 'node', 'golang', and 'java'  
 # Default value is 'golang'  
 CC_LANG=<chaincodeLanguage>  
 # CC_PATH contains the path where your chaincode is placed. This is the absolute path to the chaincode project root directory.
-# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go”
+# If you are using chaincode_example02 to validate then CC_PATH=â€œ/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/goâ€
 CC_PATH=<chaincodePath>  
 # Channel on which chaincode will be instantiated/invoked/queried  
 CHANNEL_NAME=<channelName>  
@@ -355,7 +355,7 @@ Z klienta partnerské organizace spusťte následující příkaz, který vyvol�
 ./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
-Předat název vyvolání funkce a seznam argumentů oddělených mezerami v  `<invokeFunction>`   a v  `<invokeFuncArgs>`   uvedeném pořadí. Pokračování s chaincode_example02. přejít chaincode, chcete-li provést operaci vyvolání, nastavte  `<invokeFunction>`   na  `invoke`   a  `<invokeFuncArgs>`   na `"a" "b" "10"` .  
+Předejte název vyvolání funkce a seznam argumentů oddělených mezerou inÂ € ̄ `<invokeFunction>` â € ̄andÂ € ̄ `<invokeFuncArgs>` â € ̄respectively. Pokud budete pokračovat s chaincode_example02. přejít chaincode, abyste mohli provést operaci vyvolání, setâ € ̄ `<invokeFunction>` â ̄toÂ € ̄ `invoke` â € ̄andÂ € ̄ `<invokeFuncArgs>` â € ̄to `"a" "b" "10"` .  
 
 >[!NOTE]
 > Spusťte příkaz jednou ze všech partnerských organizací v kanálu. Po úspěšném odeslání transakce do objednávky tento objednávka distribuuje tuto transakci do všech partnerských organizací v kanálu. Stav World se pak aktualizuje na všech partnerských uzlech všech partnerských organizací v kanálu.  
@@ -372,7 +372,7 @@ Přidávajícím partnerům jsou partnerské uzly, kde je nainstalovaný chainco
 
 Pokud používáte *azhlfTool* k instalaci chaincode, předejte všechny názvy partnerských uzlů jako hodnotu do argumentu pro potvrzení partnerského vztahu. Chaincode je nainstalovaný na všech partnerských uzlech této organizace. 
 
-Předejte název funkce dotazu a seznam argumentů oddělených mezerami v  `<queryFunction>`    `<queryFuncArgs>`   uvedeném pořadí. Opětovné přijetí chaincode_example02. Chcete-li zadat dotaz na hodnotu "a" ve stavu World, nastavte  `<queryFunction>`   na hodnotu  `query` a  `<queryArgs>` na `"a"` .  
+Předejte název funkce dotazu a seznam argumentů oddělených mezerou inÂ € ̄ `<queryFunction>` â € ̄andÂ € ̄ `<queryFuncArgs>` â € ̄respectively. Znovu takingÂ € ̄ chaincode_example02. goâ € ̄chaincode jako referenci pro dotazování hodnoty "a" ve světě World, setâ € ̄ `<queryFunction>` â € ̄toÂ € ̄ `query` andÂ € ̄ `<queryArgs>` na `"a"` .  
 
 ## <a name="troubleshoot"></a>Řešení potíží
 

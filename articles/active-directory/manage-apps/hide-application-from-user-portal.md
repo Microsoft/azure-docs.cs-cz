@@ -1,23 +1,23 @@
 ---
-title: Skrytí podnikové aplikace z uživatelského prostředí v Azure AD
+title: Skrytí podnikové aplikace z prostředí uživatele v Azure AD
 description: Jak skrýt podnikovou aplikaci před uživatelským prostředím v Azure Active Directory panelů přístupu nebo spouštěčích Microsoft 365.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8469b48b92f3f9a645a0c05441e6c1943b02e16f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a90f3e3aeb1d68c6c6e6eeea29c04ff7880dccd3
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258876"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374195"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Skrýt podnikové aplikace od koncových uživatelů v Azure Active Directory
 

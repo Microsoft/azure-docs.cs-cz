@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: e34e1f589442be41e2a4eac3ac893f377675e4b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2423d6bd29d893f9a27749dcc2b6d2af8a12e941
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379501"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478127"
 ---
 # <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>Spuštění Integration Runtime Self-Hosted v kontejneru Windows
 
@@ -24,7 +24,7 @@ Azure Data Factory přináší oficiální podporu kontejneru Windows Self-Hoste
 ## <a name="prerequisites"></a>Požadavky 
 - [Požadavky na kontejner Windows](/virtualization/windowscontainers/deploy-containers/system-requirements)
 - Docker verze 2,3 a novější 
-- Self-Hosted Integration Runtime verze 4.11.7512.1 a novější 
+- Self-Hosted Integration Runtime verze 5.2.7713.1 a novější 
 ## <a name="get-started"></a>Začínáme 
 1.  Nainstalovat Docker a povolit kontejner Windows 
 2.  Stáhněte zdrojový kód z adresy https://github.com/Azure/Azure-Data-Factory-Integration-Runtime-in-Windows-Container.
@@ -40,7 +40,7 @@ docker build . -t "yourDockerImageName" 
 ```
 6.  Spustit kontejner Docker: 
 ```console
-docker run -d -e NODE_NAME="irNodeName" -e AUTH_KEY="IR_AUTHENTICATION_KEY" -e ENABLE_HA=true HA_PORT=8060 "yourDockerImageName"    
+docker run -d -e NODE_NAME="irNodeName" -e AUTH_KEY="IR_AUTHENTICATION_KEY" -e ENABLE_HA=true -e HA_PORT=8060 "yourDockerImageName"    
 ```
 > [!NOTE]
 > AUTH_KEY je pro tento příkaz povinné. NODE_NAME ENABLE_HA a HA_PORT jsou volitelné. Pokud hodnotu nenastavíte, použije příkaz výchozí hodnoty. Výchozí hodnota ENABLE_HA je false a HA_PORT je 8060.
