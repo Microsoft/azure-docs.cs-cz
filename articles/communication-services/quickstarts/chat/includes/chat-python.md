@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: bcbf2137e578f703cf70b1b47952736aa50f7f17
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 31704e705b828cc0070e3b79f5d527cfa9deb0c3
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106178615"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386897"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
 
@@ -63,7 +63,7 @@ pip install azure-communication-chat
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Chat SDK pro Python.
 
-| Název                                  | Description                                                  |
+| Název                                  | Popis                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ChatClient | Tato třída je potřebná pro funkci chatu. Vytvoří se jeho instance s informacemi o předplatném a použije se k vytváření, získávání a odstraňování vláken. |
 | ChatThreadClient | Tato třída je potřebná pro funkci konverzačního vlákna. Získáte instanci prostřednictvím ChatClient a použijete ji k posílání, přijímání, aktualizaci a odstraňování zpráv, přidávání, odebírání a získávání uživatelů, posílání oznámení a čtení. |
@@ -90,13 +90,11 @@ chat_client = ChatClient(endpoint, CommunicationTokenCredential("<Access Token>"
 Použijte `create_chat_thread` metodu k vytvoření vlákna chatu.
 
 - Použijte `topic` k poskytnutí tématu vlákna; Téma lze aktualizovat poté, co je vlákno konverzace vytvořeno pomocí `update_thread` funkce.
-- Použijte `thread_participants` k vypsání seznamu, který se má `ChatThreadParticipant` Přidat do konverzačního vlákna, `ChatThreadParticipant` `CommunicationUserIdentifier` typ `user` , který je možné po vytvoření [vytvořit uživatelem](../../access-tokens.md#create-an-identity) .
+- Použijte `thread_participants` k vypsání seznamu, který se má `ChatParticipant` Přidat do konverzačního vlákna, `ChatParticipant` `CommunicationUserIdentifier` typ `user` , který je možné po vytvoření [vytvořit uživatelem](../../access-tokens.md#create-an-identity) .
 
 `CreateChatThreadResult` je výsledek vrácen z vytvoření vlákna, můžete jej použít k načtení `id` vlákna chatu, který byl vytvořen. `id`Pak lze použít k načtení `ChatThreadClient` objektu pomocí `get_chat_thread_client` metody. `ChatThreadClient` dá se použít k provádění dalších operací chatu do tohoto konverzačního vlákna.
 
 ```python
-from azure.communication.chat import ChatThreadParticipant
-
 topic="test topic"
 
 create_chat_thread_result = chat_client.create_chat_thread(topic)
@@ -208,11 +206,11 @@ Po vytvoření vlákna chatu můžete z něj přidat uživatele nebo je z něj o
 
 Jeden nebo více uživatelů lze do vlákna chatu přidat pomocí `add_participants` metody, pokud je k dispozici nový přístupový token a identifikace je k dispozici pro všechny uživatele.
 
-`list(tuple(ChatThreadParticipant, CommunicationError))`Je vrácen. Po úspěšném přidání účastníka se očekává prázdný seznam. V případě, že došlo k chybě při přidávání účastníka, seznam se naplní neúspěšnými účastníky spolu s chybou, ke které došlo.
+`list(tuple(ChatParticipant, CommunicationError))`Je vrácen. Po úspěšném přidání účastníka se očekává prázdný seznam. V případě, že došlo k chybě při přidávání účastníka, seznam se naplní neúspěšnými účastníky spolu s chybou, ke které došlo.
 
 ```python
 from azure.communication.identity import CommunicationIdentityClient
-from azure.communication.chat import ChatThreadParticipant
+from azure.communication.chat import ChatParticipant
 from datetime import datetime
 
 # create 2 users
@@ -225,14 +223,14 @@ new_users = [identity_client.create_user() for i in range(2)]
 # user_id = 'some user id'
 # user_display_name = "Wilma Flinstone"
 # new_user = CommunicationUserIdentifier(user_id)
-# participant = ChatThreadParticipant(
+# participant = ChatParticipant(
 #     user=new_user,
 #     display_name=user_display_name,
 #     share_history_time=datetime.utcnow())
 
 participants = []
 for _user in new_users:
-  chat_thread_participant = ChatThreadParticipant(
+  chat_thread_participant = ChatParticipant(
     user=_user,
     display_name='Fred Flinstone',
     share_history_time=datetime.utcnow()
@@ -263,13 +261,13 @@ Použijte `list_participants` k načtení účastníků vlákna.
 - Použijte `results_per_page` , volitelné, maximální počet účastníků, který se má vrátit na stránku.
 - Použijte `skip` volitelnou pro přeskočení účastníků až do zadané pozice v reakci.
 
-Iterátorem `[ChatThreadParticipant]` je odpověď vrácená z výpisu účastníků.
+Iterátorem `[ChatParticipant]` je odpověď vrácená z výpisu účastníků.
 
 ```python
 chat_thread_participants = chat_thread_client.list_participants()
 for chat_thread_participant_page in chat_thread_participants.by_page():
     for chat_thread_participant in chat_thread_participant_page:
-        print("ChatThreadParticipant: ", chat_thread_participant)
+        print("ChatParticipant: ", chat_thread_participant)
 ```
 
 ## <a name="run-the-code"></a>Spuštění kódu

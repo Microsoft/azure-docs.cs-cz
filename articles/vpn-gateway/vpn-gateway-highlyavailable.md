@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 48756b43e64576a5dd38467bb1dd97e91c168a06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d193850461eeaa5041e1cfd6d64def503ad676d4
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91360850"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374756"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Připojení s vysokou dostupností mezi jednotlivými místy a VNet-to-VNet
 Tento článek obsahuje přehled konfigurací s vysokou dostupností pro vaše propojení mezi jednotlivými místy a propojení VNet-to-VNet se službami Azure VPN Gateway.
 
 ## <a name="about-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>Redundance ve službě Azure VPN Gateway
-Každá Azure VPN Gateway se skládá ze dvou instancí v konfiguraci aktivní-pohotovostní. Při jakékoli plánované údržbě nebo neplánovaném přerušení, které vyřadí aktivní instanci, pohotovostní instance automaticky převezme službu (převzetí služeb při selhání) a obnoví spojení S2S VPN nebo VNet-to-VNet. Přepnutí způsobí jen velmi krátké přerušení služeb. Při plánované údržbě by se spojení mělo obnovit během 10 až 15 sekund. U neplánovaných problémů bude obnovení spojení trvat déle, v nejhorším případě minutu až minutu a půl. V případě připojení klienta P2S VPN k bráně budou spojení P2S odpojena a uživatelé se budou muset na klientských počítačích znovu připojit.
+Každá Azure VPN Gateway se skládá ze dvou instancí v konfiguraci aktivní-pohotovostní. Při jakékoli plánované údržbě nebo neplánovaném přerušení, které vyřadí aktivní instanci, pohotovostní instance automaticky převezme službu (převzetí služeb při selhání) a obnoví spojení S2S VPN nebo VNet-to-VNet. Přepnutí způsobí jen velmi krátké přerušení služeb. Při plánované údržbě by se spojení mělo obnovit během 10 až 15 sekund. V případě neplánovaných problémů bude obnovení připojení trvat déle, přibližně 1 až 3 minuty v nejhorším případě. V případě připojení klienta P2S VPN k bráně budou spojení P2S odpojena a uživatelé se budou muset na klientských počítačích znovu připojit.
 
 ![Diagram znázorňuje místní lokalitu s podsítěmi Private I P a místní V P N připojené k aktivní bráně Azure V P N pro připojení k podsítím hostovaným v Azure s dostupnou pohotovostní bránou.](./media/vpn-gateway-highlyavailable/active-standby.png)
 

@@ -2,13 +2,13 @@
 title: Domény událostí v Azure Event Grid
 description: Tento článek popisuje, jak pomocí domén událostí spravovat tok vlastních událostí v různých obchodních organizacích, zákaznících nebo aplikacích.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 46a50a8ecc50bd1b80efcba41228564df1c36c9f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/13/2021
+ms.openlocfilehash: 32c06ac55f667ec9807c7952127c2cf0f0384024
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198647"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374705"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Porozumění doménám událostí pro správu Event Grid témata
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak pomocí domén událostí spravovat tok vlastních 
 
 Doména události je nástroj pro správu velkého počtu Event Gridch témat týkajících se stejné aplikace. Můžete si ho představit jako meta téma, které může obsahovat tisíce jednotlivých témat.
 
-Domény událostí zpřístupňují stejnou architekturu, kterou používají služby Azure (například úložiště a IoT Hub) k publikování jejich událostí. Umožňují publikovat události do tisíců témat. Domény také poskytují autorizaci a kontrolu ověřování pro jednotlivá témata, abyste mohli rozdělit klienty na oddíly.
+Domény událostí poskytují stejnou architekturu, jakou používají služby Azure, jako je Storage a IoT Hub k publikování jejich událostí. Umožňují publikovat události do tisíců témat. Domény také poskytují autorizaci a kontrolu ověřování pro jednotlivá témata, abyste mohli rozdělit klienty na oddíly.
 
 ## <a name="example-use-case"></a>Příklad případu použití
 [!INCLUDE [event-grid-domain-example-use-case.md](../../includes/event-grid-domain-example-use-case.md)]
@@ -43,6 +43,9 @@ Informace o těchto rolích najdete v tématu [předdefinované role pro Event G
 ## <a name="subscribing-to-topics"></a>Přihlášení k odběru témat
 
 Přihlášení k odběru událostí v tématu v rámci domény události je stejné jako [Vytvoření odběru události pro vlastní téma](./custom-event-quickstart.md) nebo přihlášení k odběru události ze služby Azure.
+
+> [!IMPORTANT]
+> Téma domény se považuje za **automaticky spravovaný** prostředek v Event Grid. Odběr událostí můžete vytvořit v oboru tématu domény bez vytvoření tématu v doméně. V takovém případě Event Grid pro vás automaticky vytvořit téma domény. Můžete si samozřejmě i přesto zvolit, že budete chtít vytvořit téma domény ručně. Toto chování vám umožní zabývat se méně prostředky při práci s velkým počtem témat v doméně. Když se odstraní poslední předplatné k doméně, odstraní se i téma domény bez ohledu na to, jestli se ručně vytvořil nebo vytvořilo téma domény. 
 
 ### <a name="domain-scope-subscriptions"></a>Předplatné oboru domény
 
@@ -94,7 +97,7 @@ Tady jsou limity a kvóty související s doménami událostí:
 - 50 rozsahů doménových předplatných 
 - frekvence příjmu událostí 5 000 za sekundu (do domény)
 
-Pokud vám tato omezení neodpovídají, můžete se obrátit na produktového týmu otevřením lístku podpory nebo odesláním e-mailu na adresu [askgrid@microsoft.com](mailto:askgrid@microsoft.com) . 
+Pokud vám tato omezení neodpovídají, otevřete lístek podpory nebo odešlete e-mail na adresu [askgrid@microsoft.com](mailto:askgrid@microsoft.com) . 
 
 ## <a name="pricing"></a>Ceny
 Domény událostí používají stejné [ceny operací](https://azure.microsoft.com/pricing/details/event-grid/) jako u všech ostatních funkcí v Event Grid použít.

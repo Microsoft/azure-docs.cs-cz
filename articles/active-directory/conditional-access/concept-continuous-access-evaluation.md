@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d707106d66c77ad1f3a1156906add8bb85fd0ce0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 74009759bb9ca2a0516148fc1387b150b67452ab
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305969"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387900"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -53,7 +53,7 @@ Vyhodnocování průběžného přístupu se implementuje povolením služeb, ja
 Tento proces umožňuje situaci, kdy uživatelé ztratí přístup k souborům SharePointu Online, e-mailu, kalendáři nebo úlohám a týmům z Microsoft 365 klientských aplikací v minutách po jedné z těchto kritických událostí. 
 
 > [!NOTE] 
-> Týmy ještě nepodporují rizikové události uživatele.
+> Týmy a SharePoint Online ještě nepodporují rizikové události uživatele.
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>Vyhodnocení zásad podmíněného přístupu (Preview)
 
