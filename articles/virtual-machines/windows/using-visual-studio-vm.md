@@ -1,21 +1,21 @@
 ---
 title: Používání sady Visual Studio na virtuálním počítači Azure
 description: Použití sady Visual Studio na virtuálním počítači Azure.
-author: cathysull
-manager: cathys
+author: andysterland
+manager: andster
 ms.service: virtual-machines
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.author: cathys
+ms.author: andster
 keywords: visualstudio
-ms.openlocfilehash: a6acf27743f17941e14adc3f6deea903f4f5ca87
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f26bec64012e0b0909b7df5422c57ff2cb1c347e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562074"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478552"
 ---
 # <a name="visual-studio-images-on-azure"></a>Image sady Visual Studio v Azure
 Použití sady Visual Studio v předkonfigurovaném virtuálním počítači Azure je rychlý a snadný způsob, jak přejít z žádného nečinnosti do provozního vývojového prostředí. Systémové image s různými konfiguracemi sady Visual Studio jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).
@@ -44,7 +44,7 @@ Další informace najdete v tématu [zásady údržby sady Visual Studio](https:
 ## <a name="what-features-are-installed"></a>Jaké funkce jsou nainstalovány?
 Každý obrázek obsahuje doporučenou sadu funkcí pro tuto edici sady Visual Studio. Obecně platí, že instalace zahrnuje:
 
-* Všechny dostupné úlohy, včetně doporučených volitelných součástí jednotlivých úloh
+* Všechny dostupné úlohy, včetně doporučených volitelných součástí jednotlivých úloh. Další podrobnosti o úlohách, součástech a sadách SDK, které jsou součástí sady Visual Studio, najdete v dokumentaci k sadě [Visual Studio](https://docs.microsoft.com/visualstudio/install/workload-and-component-ids) .
 * .NET 4.6.2 a .NET 4,7 SDK, cílení na sady a Vývojářské nástroje
 * Visual F#
 * GitHub Extension for Visual Studio

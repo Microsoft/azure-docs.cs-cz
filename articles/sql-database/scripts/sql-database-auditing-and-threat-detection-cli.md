@@ -4,19 +4,19 @@ description: Ukázkový skript Azure CLI pro konfiguraci auditování a rozší�
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: security
+ms.custom: security, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/09/2021
-ms.openlocfilehash: 7450911dabe04ea04ba16ec5e648f09ecf4a616f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1af5c3ede32ab85652b7f35d53694a77a36947b8
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100095983"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478246"
 ---
 # <a name="use-cli-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>Konfigurace auditování SQL Database a rozšířené ochrany před internetovými útoky pomocí rozhraní příkazového řádku
 

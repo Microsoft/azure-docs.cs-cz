@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 76c6d7caf3c63779e12443304688192f7311720a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 43707a99792ae3c4d817f47d770629287b8a774b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594559"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374331"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
@@ -229,7 +229,7 @@ Omezení přístupu, jak je vysvětleno výše, se nevztahuje na Azure Resource 
 
 ### <a name="log-analytics-solution-packs-download"></a>Stažení balíčků řešení Log Analytics
 
-Pokud chcete, aby mohl agent Log Analytics stahovat balíčky řešení, přidejte příslušné plně kvalifikované názvy domény do seznamu povolených bran firewall. 
+Aby mohl agent Log Analytics stahovat balíčky řešení, přidejte příslušné plně kvalifikované názvy domény do brány firewall povolených. 
 
 
 | Cloudové prostředí | Prostředek agenta | Porty | Směr |
@@ -237,6 +237,10 @@ Pokud chcete, aby mohl agent Log Analytics stahovat balíčky řešení, přidej
 |Veřejný partnerský vztah Azure     | scadvisorcontent.blob.core.windows.net         | 443 | Odchozí
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Odchozí
 |Azure (Čína) 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Odchozí
+
+
+>[!NOTE]
+> Od 19. dubna 2021 se výše uvedené nastavení nebude vyžadovat a budete moct získat přístup k účtu úložiště pro balíčky řešení prostřednictvím privátního odkazu. Nová funkce vyžaduje opětovné vytvoření AMPLS (v dubnu 19, 2021 nebo novější) a připojeného privátního koncového bodu. Nebude platit pro stávající AMPLSs a privátní Endpints.
 
 ## <a name="configure-application-insights"></a>Konfigurace Application Insights
 
@@ -246,7 +250,7 @@ Přejděte na Azure Portal. V prostředku součásti Azure Monitor Application I
 
 Nejdřív můžete připojit tento prostředek Application Insights, abyste Azure Monitor obory privátních odkazů, ke kterým máte přístup. Vyberte **Přidat** a vyberte **Azure monitor obor privátních odkazů**. Pokud ho chcete připojit, vyberte použít. Na této obrazovce se zobrazí všechny připojené obory. Díky tomu může toto připojení umožňovat přístup k této komponentě v síťovém provozu propojených virtuálních sítí a má stejný účinek jako připojení k oboru, protože jsme provedli [připojení Azure Monitorch prostředků](#connect-azure-monitor-resources). 
 
-Za druhé můžete řídit, jak se tento prostředek dá oslovit mimo obory privátních odkazů (AMPLS) uvedené dříve. Pokud nastavíte možnost **umožní přístup k veřejné síti pro** ingestování na **ne**, počítače nebo sady SDK mimo připojené obory nemůžou do této součásti nahrávat data. Pokud nastavíte možnost **povolí přístup k veřejné síti pro dotazy** na **ne**, počítače mimo rozsah nebudou mít přístup k datům v tomto Application Insights prostředku. Tato data zahrnují přístup k protokolům APM, metrikám a živému streamu metrik a také k prostředí postaveným nahoře, jako jsou sešity, řídicí panely, prostředí klientů založené na rozhraní API, přehledy v Azure Portal a další. 
+Pak můžete řídit, jak se tento prostředek dá oslovit mimo obory privátních odkazů (AMPLS) uvedené dříve. Pokud nastavíte možnost **umožní přístup k veřejné síti pro** ingestování na **ne**, počítače nebo sady SDK mimo připojené obory nemůžou do této součásti nahrávat data. Pokud nastavíte možnost **povolí přístup k veřejné síti pro dotazy** na **ne**, počítače mimo rozsah nebudou mít přístup k datům v tomto Application Insights prostředku. Tato data zahrnují přístup k protokolům APM, metrikám a živému streamu metrik a také k prostředí postaveným nahoře, jako jsou sešity, řídicí panely, prostředí klientů založené na rozhraní API, přehledy v Azure Portal a další. 
 
 > [!NOTE]
 > V prostředích, které není na portálu, se musí také spouštět na virtuální síti propojené s privátní sítí, která obsahuje monitorovaná zatížení.

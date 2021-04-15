@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 0072e699107ea51764a728ce3e9987b86b2a6806
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 5bab4a7a90101d3749571e0f2d4179f0fce14296
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492320"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378631"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Správa zařízení v aplikaci Azure IoT Central
 
@@ -58,10 +58,12 @@ Postup přidání zařízení do aplikace Azure IoT Central:
 
 ## <a name="import-devices"></a>Importovat zařízení
 
-Pokud chcete k aplikaci připojit velký počet zařízení, můžete hromadně importovat zařízení ze souboru CSV. Soubor CSV by měl mít následující sloupce a hlavičky:
+Pokud chcete k aplikaci připojit velký počet zařízení, můžete hromadně importovat zařízení ze souboru CSV. Soubor CSV by měl mít následující záhlaví sloupců:
 
-* **IOTC_DeviceID** – ID zařízení může obsahovat písmena, číslice a `-` znak.
-* **IOTC_DeviceName** – tento sloupec je nepovinný.
+| Sloupec | Popis 
+| - | - | 
+| IOTC_DEVICEID | ID zařízení je jedinečné, identifikovalo se, že toto zařízení bude používat k připojení. ID zařízení může obsahovat písmena, číslice a `-` znak bez mezer. |
+| IOTC_DEVICENAME | Nepovinný parametr. Název zařízení je popisný název, který se zobrazí v celé aplikaci. Pokud tento parametr nezadáte, bude to stejné jako ID zařízení.   |
 
 Postup hromadné registrace zařízení v aplikaci:
 

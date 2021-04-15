@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/25/2018
+ms.date: 03/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 230f7fd9c62f657ce8ab893db2256808dce9a7ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af7d126bfdc9ff8edf6b498747fab9c7f497a0f4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92518360"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484842"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Kurz: Azure Active Directory integrací se službou Symantec Web Security Service (WSS)
 
@@ -30,15 +30,12 @@ Integrace služby WSS Web Security Service (WSS) se službou Azure AD poskytuje 
 
 - Povolte vynucování pravidel zásad uživatelů a úrovní skupin definovaných ve vašem účtu WSS.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
-
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD se službou Symantec Web Security Service (WSS) potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné s povoleným jednotným přihlašováním pro Symantec Web Security Service (WSS)
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné s povoleným jednotným přihlašováním (WSS) Symantec Web Security Service (WSS).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -46,63 +43,44 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Služba WSS (Symantec Web Security Service) podporuje jednotné přihlašování (SSO) **IDP** .
 
-## <a name="adding-symantec-web-security-service-wss-from-the-gallery"></a>Přidání služby WSS (Symantec Web Security Service) z Galerie
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+
+## <a name="add-symantec-web-security-service-wss-from-the-gallery"></a>Přidání služby WSS (Symantec Web Security Service) z Galerie
 
 Pokud chcete nakonfigurovat integraci služby WSS Web Security Service (WSS) od Symantec do Azure AD, musíte z Galerie přidat službu WSS Web Security Service (WSS) do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat službu WSS Web Security Service (WSS) z Galerie, proveďte následující kroky:**
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Symantec Web Security Service (WSS)** .
+1. Z panelu výsledků vyberte **Symantec Web Security Service (WSS)** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+## <a name="configure-and-test-azure-ad-sso-for-symantec-web-security-service-wss"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro Symantec Web Security Service (WSS)
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Symantec Web Security Service (WSS) pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem ve službě WSS (Symantec Web Security Service).
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby WSS (Symantec Web Security Service), proveďte následující kroky:
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[NAKONFIGURUJTE jednotné přihlašování (WSS) Symantec Web Security Service (WSS)](#configure-symantec-web-security-service-wss-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte testovacího uživatele služby WSS (Web Security Service)](#create-symantec-web-security-service-wss-test-user)** , abyste měli protějšek B. Simon ve službě WSS (Symantec Web Security Service), která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **Symantec Web Security Service (WSS)**, vyberte **Symantec Web Security Service (WSS)** z panelu výsledek a pak klikněte na **Přidat** tlačítko a přidejte aplikaci.
+1. V Azure Portal na stránce integrace aplikace **Web Security Service (WSS) pro Symantec** vyhledejte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-     ![Symantec Web Security Service (WSS) v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
-
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí služby WSS (Symantec Web Security Service) na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být navázán odkaz na propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem ve službě WSS (Web Security Service) společnosti Symantec.
-
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby WSS (Symantec Web Security Service), musíte dokončit tyto stavební bloky:
-
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **Nakonfigurujte jednotné přihlašování (WSS) Symantec Web Security Service (WSS)** a nakonfigurujte nastavení jednoho Sign-On na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořte testovacího uživatele služby WSS (Web Security Service)](#create-symantec-web-security-service-wss-test-user)** , abyste měli protějšek Britta Simon ve službě WSS (Symantec Web Security Service), který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
-
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
-
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby WSS (Symantec Web Security Service), proveďte následující kroky:
-
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **služby webu Symantec Web Security (WSS)** vyberte **jednotné přihlašování**.
-
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
-
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. V dialogovém okně **základní konfigurace SAML** proveďte následující kroky:
-
-    ![Informace o jednotném přihlašování v doméně a adresách URL společnosti Symantec Web Security Service (WSS)](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL: `https://saml.threatpulse.net:8443/saml/saml_realm`
 
@@ -115,60 +93,33 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby 
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-### <a name="configure-symantec-web-security-service-wss-single-sign-on"></a>Konfigurace jednoho Sign-On služby Symantec Web Security Service (WSS)
-
-Pokud chcete nakonfigurovat jednotné přihlašování na straně Symantec Web Security Service (WSS), přečtěte si dokumentaci k WSS online. Stažené **federační metadata XML** bude nutné importovat na portál WSS. Pokud potřebujete pomoc s konfigurací na portálu WSS, obraťte se na [tým podpory služby WSS Web Security (WSS) společnosti Symantec](https://www.symantec.com/contact-us) .
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
-
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel** .
-
-    ![Tlačítko pro nového uživatele](common/new-user.png)
-
-3. Ve vlastnostech uživatele proveďte následující kroky.
-
-    ![Uživatelský dialog](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon**.
-  
-    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
-    Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na **Vytvořit**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup ke službě Symantec Web Security Service (WSS).
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup ke službě Symantec Web Security Service (WSS).
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **Symantec Web Security Service (WSS)**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Symantec Web Security Service (WSS)**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Okno Podnikové aplikace](common/enterprise-applications.png)
+## <a name="configure-symantec-web-security-service-wss-sso"></a>Konfigurace jednotného přihlašování (WSS) Symantec Web Security Service (WSS)
 
-2. V seznamu aplikace zadejte a vyberte **Symantec Web Security Service (WSS)**.
-
-    ![Odkaz na službu webu Symantec Web Security (WSS) v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
-
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+Pokud chcete nakonfigurovat jednotné přihlašování na straně Symantec Web Security Service (WSS), přečtěte si dokumentaci k WSS online. Stažené **federační metadata XML** bude nutné importovat na portál WSS. Pokud potřebujete pomoc s konfigurací na portálu WSS, obraťte se na [tým podpory služby WSS Web Security (WSS) společnosti Symantec](https://www.symantec.com/contact-us) .
 
 ### <a name="create-symantec-web-security-service-wss-test-user"></a>Vytvořit testovacího uživatele pro službu Symantec Web Security Service (WSS)
 
@@ -177,16 +128,14 @@ V této části vytvoříte uživatele s názvem Britta Simon ve službě Symant
 > [!NOTE]
 > Pokud chcete získat veřejnou IP adresu vašeho počítače, klikněte prosím [sem](https://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1) .
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete funkci jednotného přihlašování teď, když jste nakonfigurovali účet WSS pro použití Azure AD pro ověřování SAML.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností.
 
-Po nakonfigurování webového prohlížeče na provoz proxy na WSS, když otevřete webový prohlížeč a zkusíte přejít na web, budete přesměrováni na přihlašovací stránku Azure. Zadejte přihlašovací údaje koncového uživatele testu, který byl zřízen ve službě Azure AD (tj. BrittaSimon) a přidruženém heslu. Po ověření budete moct přejít na web, který jste zvolili. Měli byste na straně WSS vytvořit pravidlo zásad, které zablokuje BrittaSimon k procházení na konkrétní lokalitu. při pokusu o přechod na tuto lokalitu jako uživatel BrittaSimon by se měla zobrazit stránka blok WSS.
+* Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni ke službě WSS Web Security Service (WSS), pro kterou jste nastavili jednotné přihlašování.
 
-## <a name="additional-resources"></a>Další materiály
+* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici služba WSS (Web Security Service) společnosti Symantec v okně moje aplikace byste měli být automaticky přihlášeni ke službě WSS Web Security Service (WSS), pro kterou jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+## <a name="next-steps"></a>Další kroky
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+Jakmile nakonfigurujete službu WSS (Symantec Web Security Service), můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

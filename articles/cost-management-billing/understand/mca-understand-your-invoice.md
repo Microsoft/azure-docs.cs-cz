@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 04/08/2021
 ms.author: banders
-ms.openlocfilehash: 996c974473c53833dd26abae2fb61585999f33b4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ff53131f3078b33b7e7d853c1fca891b0b86d792
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050439"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484590"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Výrazy na faktuře za smlouvu se zákazníkem Microsoftu
 
@@ -29,6 +29,18 @@ Podívejte se na video o [fakturaci zákaznické smlouvy Microsoftu](https://www
 ## <a name="billing-period"></a>Fakturační období
 
 Fakturace probíhá každý měsíc. To, který den v měsíci dostáváte faktury, zjistíte podle *data faktury* ve vlastnostech fakturačního profilu na webu [Azure Portal](https://portal.azure.com/). Poplatky, které se naúčtují mezi koncem fakturačního období a datem faktury, se zahrnou do faktury za další měsíc, protože spadají do dalšího fakturačního období. Počáteční a koncové datum fakturačního období pro každou fakturu najdete v souboru PDF faktury nad položkou **Souhrn fakturace**.
+
+Pokud migrujete z smlouvy EA na zákaznickou smlouvu Microsoftu, budete mít i nadále dostávat faktury za váš EA, dokud neproběhne datum migrace. Nová faktura pro vaši smlouvu o zákaznících Microsoftu se vygeneruje pátý den v měsíci po dokončení migrace. První faktura zobrazuje částečný poplatek od data migrace. Pozdější faktury se generují každý měsíc a zobrazují se všechny poplatky za každý měsíc.
+
+### <a name="changes-for-pay-as-you-go-subscriptions"></a>Změny předplatných s průběžnými platbami
+
+Když se předplatné převede, přenese nebo zruší, bude poslední vygenerovaná faktura obsahovat poplatky za předchozí fakturační cyklus a nový nedokončený fakturační cyklus.
+
+Například:
+
+Předpokládejme, že váš fakturační cyklus předplatného s průběžnými platbami je od dne 8 do 7. den v měsíci. Předplatné se od 16. listopadu přeneslo na zákaznickou smlouvu Microsoftu. Poslední faktura za průběžné platby zahrnuje poplatky za 8. října 2020 do 7. listopadu 2020. Obsahuje taky poplatky za nový částečný fakturační cyklus smlouvy o zákaznících Microsoftu od 8. listopadu 2020 do 16. listopadu 2020. Tady je ukázkový obrázek.
+
+:::image type="content" source="./media/mca-understand-your-invoice/last-invoice-billing-cycle.png" alt-text="Příklad obrázku faktury znázorňující poslední fakturační cyklus." lightbox="./media/mca-understand-your-invoice/last-invoice-billing-cycle.png" :::
 
 ## <a name="invoice-terms-and-descriptions"></a>Výrazy na faktuře a jejich popis
 

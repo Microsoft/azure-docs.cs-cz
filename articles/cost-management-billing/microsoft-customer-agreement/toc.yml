@@ -7,6 +7,10 @@
       href: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
 - name: Koncepty
   items:
+    - name: Kontrolní seznam po podepsání smlouvy
+      href: microsoft-customer-agreement-get-started.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Správa tenantů ve vaší smlouvě
+      href: manage-tenants.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - name: Pochopení využití a fakturačního cyklu
       href: ../understand/mca-understand-your-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - name: Údaje o využití a poplatkůch souborů
@@ -40,7 +44,7 @@
       href: ../manage/pay-by-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - name: Úhrada faktury
       href: ../understand/pay-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: Získat vlastnictví fakturace
+    - name: Převod vlastnictví fakturace
       href: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - name: Migrace EA na rozhraní API zákaznické smlouvy od Microsoftu
       href: ../costs/migrate-cost-management-api.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
@@ -50,3 +54,7 @@
       href: ../manage/ea-pricing.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - name: Úkoly EA v zákaznických smlouvách Microsoftu
       href: ../manage/mca-enterprise-operations.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Řešení potíží
+      items:
+        - name: Přístup k předplatnému
+          href: troubleshoot-subscription-access.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json

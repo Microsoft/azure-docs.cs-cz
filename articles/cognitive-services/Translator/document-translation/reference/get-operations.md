@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/25/2021
 ms.author: v-jansk
-ms.openlocfilehash: c42f3081a831c267c7bc605267b99e2a916ea3d8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fd7cee564aa3a00e21d1e707d08a18115d519925
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612991"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484672"
 ---
 # <a name="document-translation-get-operations"></a>Překlad dokumentů: načíst operace
 
@@ -59,7 +59,7 @@ Parametry žádosti předané řetězci dotazu jsou:
 
 Hlavičky požadavku jsou:
 
-|Hlavičky|Description|
+|Hlavičky|Popis|
 |--- |--- |
 |Ocp-Apim-Subscription-Key|Požadovaná hlavička žádosti|
 
@@ -67,7 +67,7 @@ Hlavičky požadavku jsou:
 
 Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
 
-|Stavový kód|Description|
+|Stavový kód|Popis|
 |--- |--- |
 |200|OK. Úspěšný požadavek a vrátí stav všech operací. HeadersRetry-After: integerETag: String|
 |400|Chybný požadavek. Neplatný požadavek Ověřte vstupní parametry.|
@@ -81,7 +81,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
 
 Následující informace jsou vráceny v úspěšné odpovědi.
 
-|Název|Typ|Description|
+|Název|Typ|Popis|
 |--- |--- |--- |
 |id|řetězec|ID operace|
 |createdDateTimeUtc|řetězec|Datum a čas vytvoření operace|
@@ -96,9 +96,9 @@ Následující informace jsou vráceny v úspěšné odpovědi.
 |Shrnutí. zrušeno|integer|Počet zrušených dokumentů|
 |Summary. totalCharacterCharged|integer|Celkový počet účtovaných znaků|
 
-###<a name="error-response"></a>Chybová odezva
+### <a name="error-response"></a>Chybová odezva
 
-|Název|Typ|Description|
+|Název|Typ|Popis|
 |--- |--- |--- |
 |kód|řetězec|Výčty obsahující chybové kódy vysoké úrovně. Možné hodnoty:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Neautorizováno</li></ul>|
 |zpráva|řetězec|Získá chybovou zprávu vysoké úrovně.|
