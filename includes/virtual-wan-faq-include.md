@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b7f79bebce5a086b268f4fc1080c33517555fb39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c1cf6e1d47f9bb78349e0846f624e1d6a484669
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102431532"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386813"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Je Azure Virtual WAN v GA?
 
@@ -276,6 +276,10 @@ Aktuální chování je preferovat cestu k okruhu ExpressRoute přes rozbočova�
 ### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>Můžou se centra vytvořit v jiné skupině prostředků ve virtuální síti WAN?
 
 Ano. Tato možnost je aktuálně dostupná jenom přes PowerShell. Virtuální portál sítě WAN vyžaduje, aby byly rozbočovače ve stejné skupině prostředků jako samotný prostředek virtuální sítě WAN.
+
+### <a name="what-is-the-recommended-hub-address-space-during-hub-creation"></a>Jaký je doporučený adresní prostor centra během vytváření centra?
+
+Doporučený adresní prostor pro virtuální síť WAN je/23. Virtuální síť WAN přiřadí podsítě různým branám (ExpressRoute, VPN typu Site-to-site, VPN typu Point-to-site, Azure Firewall, směrovač virtuálního rozbočovače). V případě scénářů, kde jsou síťová virtuální zařízení nasazeny uvnitř virtuálního rozbočovače, je pro instance síťové virtuální zařízení obvykle Carved za sekundu. Pokud by však uživatel mohl zřídit více síťová virtuální zařízení, může být přiřazena podsíť/27. Proto mějte na paměti, že pokud jsou virtuální sítě WAN nasazené s minimální velikostí/24, doporučuje se v době vytváření pro uživatele, který je na vstupu, zadat i v budoucí architektuře, je/23.
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Je podpora protokolu IPv6 ve virtuální síti WAN podporovaná?
 

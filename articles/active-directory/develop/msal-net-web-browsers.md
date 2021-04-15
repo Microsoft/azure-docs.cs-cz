@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 23ba50a6eca1e398b9d459153b84719909f2ecac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4121d4b9ac73ed18da7dce0e397fe919589ac6f0
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99583735"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478756"
 ---
 # <a name="using-web-browsers-msalnet"></a>Používání webových prohlížečů (MSAL.NET)
 
@@ -45,14 +45,14 @@ Obecně se doporučuje použít výchozí platformu a obvykle se jedná o systé
 
 ### <a name="at-a-glance"></a>Ve zkratce
 
-| Rozhraní .NET Framework        | Vložené | Systém | Výchozí |
+| Rozhraní .NET Framework        | Vložené | Systémový | Výchozí |
 | ------------- |-------------| -----| ----- |
 | .NET Classic     | Yes | Ano ^ | Vložené |
-| .NET Core     | No | Ano ^ | Systém |
-| .NET Standard | No | Ano ^ | Systém |
+| .NET Core     | No | Ano ^ | Systémový |
+| .NET Standard | No | Ano ^ | Systémový |
 | UWP | Yes | No | Vložené |
-| Xamarin.Android | Yes | Yes  | Systém |
-| Xamarin.iOS | Yes | Yes  | Systém |
+| Xamarin.Android | Yes | Yes  | Systémový |
+| Xamarin.iOS | Yes | Yes  | Systémový |
 | Xamarin.Mac| Yes | No | Vložené |
 
 ^ Vyžaduje " http://localhost " identifikátor URI přesměrování
@@ -63,11 +63,11 @@ Ve výchozím nastavení podporuje MSAL.NET webový prohlížeč systému na Xam
 
 Použití prohlížeče systému má významnou výhodu sdílení stavu jednotného přihlašování s jinými aplikacemi a webovými aplikacemi bez nutnosti zprostředkovatele (portál společnosti/ověřovatel). Ve výchozím nastavení se v systému MSAL.NET pro platformy Xamarin iOS a Xamarin Android používal webový prohlížeč, protože na těchto platformách zabírá systém webový prohlížeč celou obrazovku a činnost koncového uživatele je lepší. Webové zobrazení systému nelze odlišit od dialogu. V systému iOS může uživatel například udělit souhlas, že by prohlížeč mohl volat aplikaci zpátky, což může být nepříjemné.
 
-## <a name="system-browser-experience-on-net-core"></a>Prostředí prohlížeče systému v .NET Core
+## <a name="system-browser-experience-on-net"></a>Prostředí prohlížeče systému .NET 
 
 V .NET Core MSAL.NET spustí prohlížeč systému jako samostatný proces. MSAL.NET nemá kontrolu nad tímto prohlížečem, ale jakmile uživatel dokončí ověřování, Webová stránka se přesměruje takovým způsobem, že MSAL.NET může zachytit identifikátor URI.
 
-Můžete taky nakonfigurovat aplikace napsané pro .NET Classic tak, aby používaly tento prohlížeč, a to zadáním
+Můžete taky nakonfigurovat aplikace napsané pro .NET Classic nebo .NET 5 tak, aby používaly tento prohlížeč, a to zadáním:
 
 ```csharp
 await pca.AcquireTokenInteractive(s_scopes)

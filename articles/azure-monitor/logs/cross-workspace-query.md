@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/11/2021
-ms.openlocfilehash: e007f5af214dcfa475eb59a5981bc580b9499915
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 19cc85751fc5e4a165b646ac89d9d6b6e90c4408
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314231"
+ms.locfileid: "107379549"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Provádění dotazů protokolu v Azure Monitor, které jsou rozloženy mezi pracovními prostory a aplikacemi
 
@@ -41,8 +41,8 @@ Určení pracovního prostoru lze provést jedním z několika způsobů:
 
 * Název prostředku – je popisný název pracovního prostoru, který se někdy označuje jako *název součásti*. 
 
-    >[!Note]
-    >Vzhledem k tomu, že názvy aplikací a pracovních prostorů nejsou jedinečné, může být tento identifikátor dvojznačný. Pokud existuje více instancí názvu prostředku, odkaz by měl odpovídat kvalifikovanému názvu, ID prostředku nebo ID prostředku Azure.
+    >[!IMPORTANT]
+    >Vzhledem k tomu, že názvy aplikací a pracovních prostorů nejsou jedinečné, může být tento identifikátor dvojznačný. Doporučuje se, aby tento odkaz byl podle kvalifikovaného názvu, ID pracovního prostoru nebo ID prostředku Azure.
 
     `workspace("contosoretail-it").Update | count`
 

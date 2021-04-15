@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 1282d1916d669f1026707e15cc8d5437d885087f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93e97f1f04aea2a31b62b2014a88a5aaa998ed2d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669005"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376082"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Azure monitor pro poskytovatele řešení SAP (Preview)
 
@@ -25,6 +25,7 @@ Zákazníci si také můžou zvolit, že mají nakonfigurovat více poskytovatel
 - SAP HANA
 - Cluster s vysokou dostupností
 - Microsoft SQL Server
+- SAP NetWeaver
 
 ![Azure Monitor pro poskytovatele řešení SAP](./media/azure-monitor-sap/azure-monitor-providers.png)
 
@@ -108,6 +109,27 @@ Ve verzi Public Preview můžou zákazníci zobrazit následující data s posky
 Chcete-li nakonfigurovat poskytovatele Microsoft SQL Server, jsou požadovány identifikátory systému SAP, IP adresa hostitele, SQL Server číslo portu a SQL Server přihlašovací jméno a heslo.
 
 ![Azure Monitor pro poskytovatele řešení SAP – SQL](./media/azure-monitor-sap/azure-monitor-providers-sql.png)
+
+## <a name="provider-type-sap-netweaver"></a>Typ zprostředkovatele SAP NetWeaver
+
+Zákazníci mohou nakonfigurovat jednoho nebo více poskytovatelů typu SAP NetWeaver pro povolení shromažďování dat z vrstvy SAP NetWeaver. Zprostředkovatel AMS NetWeaver využívá existující rozhraní [SAPControl WebService](https://www.sap.com/documents/2016/09/0a40e60d-8b7c-0010-82c7-eda71af511fa.html) k načtení příslušných informací o telemetrie.
+
+Pro aktuální verzi níže jsou standardní předem připravené webové metody SOAP vyvolané AMS.
+|Webová metoda|    ABAP|   Kompilátor|   Metriky|
+|--|--|--|--|
+|GetSystemInstanceList| ×|  ×|  Dostupnost instance, server zpráv, brána, ICM, dostupnost ABAP|
+|GetProcessList|    ×|  ×|  Pokud je seznam instancí červený, můžeme získat, který proces způsobí, že tento server bude červený.|
+|GetQueueStatistic| ×|  ×|  Statistika fronty (DIA/BATCH/UPD)|
+|ABAPGetWPTable|    ×|   -| Využití pracovních procesů|
+|EnqGetStatistic|   ×   |×  |Zámky|
+
+Ve verzi Public Preview můžou zákazníci očekávat, že se zprostředkovatelem SAP NetWeaver zobrazí následující data: 
+- Dostupnost systému a instance
+- Využití pracovních procesů
+- Využití fronty
+- Zařadit do fronty statistiku zámku.
+
+![image](https://user-images.githubusercontent.com/75772258/114581825-a9f2eb00-9c9d-11eb-8e6f-79cee7c5093f.png)
 
 ## <a name="next-steps"></a>Další kroky
 

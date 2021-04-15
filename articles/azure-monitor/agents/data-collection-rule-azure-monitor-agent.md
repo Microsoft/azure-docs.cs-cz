@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
-ms.openlocfilehash: 8943986bf8e8c082889d3a0b18618ac54c75e6d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 884f048ac099cfc6b799fe266172a0eecef3db6f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022972"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478365"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurace shromažďování dat pro agenta Azure Monitorho (Preview)
 
@@ -89,7 +89,7 @@ Seznam omezení, která podporuje protokol událostí systému Windows, naleznet
 
 V následující tabulce jsou uvedeny příklady pro filtrování událostí pomocí vlastního XPath.
 
-| Description |  XPath |
+| Popis |  XPath |
 |:---|:---|
 | Shromažďovat pouze systémové události s ID události = 4648 |  `System!*[System[EventID=4648]]`
 | Shromažďovat pouze systémové události s ID události = 4648 a názvem procesu consent.exe | `Security!*[System[(EventID=4648)]] and *[EventData[Data[@Name='ProcessName']='C:\Windows\System32\consent.exe']]` |
@@ -110,7 +110,7 @@ Použijte následující postup k vytvoření pravidla shromažďování dat a p
 
 ## <a name="create-association-using-resource-manager-template"></a>Vytvoření asociace pomocí šablony Správce prostředků
 
-Pomocí šablony Správce prostředků nemůžete vytvořit pravidlo shromažďování dat, ale můžete vytvořit přidružení mezi virtuálním počítačem Azure nebo serverem s podporou ARC Azure pomocí šablony Správce prostředků. Ukázkové šablony najdete [v tématu Správce prostředků ukázek šablon pro pravidla shromažďování dat v Azure monitor](./resource-manager-data-collection-rules.md) .
+Pomocí šablony Správce prostředků můžete vytvořit přidružení mezi virtuálním počítačem Azure nebo serverem s povoleným ARC Azure. Ukázkové šablony najdete [v tématu Správce prostředků ukázek šablon pro pravidla shromažďování dat v Azure monitor](./resource-manager-data-collection-rules.md) .
 
 
 

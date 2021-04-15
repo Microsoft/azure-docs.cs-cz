@@ -3,13 +3,13 @@ title: 'Rychlý Start: nové přiřazení zásad pomocí Pythonu'
 description: V tomto rychlém startu pomocí Pythonu vytvoříte přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
 ms.date: 03/02/2021
 ms.topic: quickstart
-ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: e600f97dafdd1040c22b6e4d9e333f638334b663
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-python
+ms.openlocfilehash: 2c9a0d6bb00d82748505304264aeaefa409c4b06
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742326"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379395"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí Pythonu
 
@@ -17,7 +17,7 @@ Prvním krokem k porozumění dodržování předpisů v Azure je zjištění st
 
 Knihovna Pythonu se používá ke správě prostředků Azure z příkazového řádku nebo ve skriptech. V této příručce se dozvíte, jak pomocí knihovny Pythonu vytvořit přiřazení zásady.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

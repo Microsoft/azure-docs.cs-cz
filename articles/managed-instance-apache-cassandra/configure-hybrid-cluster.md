@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: b022bff9db87c248881cd18cc21569aaef8f404a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9f3ad2a5d5b275ff611653855eff73bd36afda9f
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562116"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379413"
 ---
 # <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>Rychlý Start: Konfigurace hybridního clusteru se spravovanou instancí Azure pro Apache Cassandra (Preview)
 
@@ -39,10 +39,19 @@ Tento rychlý Start ukazuje použití příkazů Azure CLI ke konfiguraci hybrid
    :::image type="content" source="./media/configure-hybrid-cluster/subnet.png" alt-text="Přidejte novou podsíť do svého Virtual Network." lightbox="./media/configure-hybrid-cluster/subnet.png" border="true":::
     <!-- ![image](./media/configure-hybrid-cluster/subnet.png) -->
 
-1. Teď budeme u virtuální sítě a podsítě, které Cassandra Managed instance vyžaduje, použít několik zvláštních oprávnění pomocí Azure CLI. Použijte `az role assignment create` příkaz, nahraďte `<subscription ID>` , `<resource group name>` , `<VNet name>` a `<subnet name>` s příslušnými hodnotami:
+    > [!NOTE]
+    > Nasazení spravované instance Azure pro Apache Cassandra vyžaduje přístup k Internetu. Nasazení se nezdařilo v prostředích, kde je omezen přístup k Internetu. Ujistěte se, že neblokujete přístup v rámci vaší virtuální sítě do následujících důležitých služeb Azure, které jsou nezbytné pro správné fungování spravovaných Cassandra:
+    > - Azure Storage
+    > - Azure KeyVault
+    > - Azure Virtual Machine Scale Sets
+    > - Monitorování Azure
+    > - Azure Active Directory
+    > - Zabezpečení Azure
+
+1. Teď budeme u virtuální sítě a podsítě, které Cassandra Managed instance vyžaduje, použít několik zvláštních oprávnění pomocí Azure CLI. Použijte `az role assignment create` příkaz, nahraďte `<subscription ID>` , `<resource group name>` a `<VNet name>` s příslušnými hodnotami:
 
    ```azurecli-interactive
-   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
+   az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>
    ```
 
    > [!NOTE]

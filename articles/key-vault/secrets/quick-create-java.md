@@ -2,18 +2,18 @@
 title: Rychlý Start-Azure Key Vault Klientská knihovna pro jazyk Java
 description: Poskytuje rychlý Start pro klientskou knihovnu Azure Key Vault tajných klíčů pro Java.
 author: msmbaldwin
-ms.custom: devx-track-java, devx-track-azurecli
+ms.custom: devx-track-java
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 95323ec513f1a3d00347da022f7c808b029bd44f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1a502722156bc010dab917afdbd1d49ae93681a
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934794"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375980"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Rychlý Start: Azure Key Vaulta tajná Klientská knihovna pro Java
 Začínáme s klientskou knihovnou Azure Key Vault tajných klíčů pro Java Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
