@@ -3,12 +3,12 @@ title: Služba zasílání zpráv Azure – Service Manager Správce prostředk�
 description: Tento článek popisuje mapování zastaralých rutin služby Azure Service Manager REST API & PowerShellu na Správce prostředků REST API rutiny PowerShellu.
 ms.topic: article
 ms.date: 04/13/2021
-ms.openlocfilehash: 48b073e0b2fa739fb2a92a2fc28a6c6aebe43c0c
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 41e5e22910a5f972be57185f112544c3cde21fb3
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499491"
+ms.locfileid: "107388240"
 ---
 # <a name="deprecation-of-azure-service-manager-support-for-azure-service-bus-relay-and-event-hubs"></a>Vyřazení podpory Azure Service Manager pro Azure Service Bus, předávání a Event Hubs
 
@@ -46,7 +46,7 @@ Service Bus/centrum událostí/Relay<br/>```PUT https://management.core.windows.
 | **EventHubsCrud-ListEventHubsAsync**<br/>[Seznam Event Hubs](/rest/api/eventhub/list-event-hubs)<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/eventhubs?$skip={skip}&$top={top}``` | &nbsp; | [list](/rest/api/servicebus/stable/eventhubs/listbynamespace) | &nbsp; | 
 | **EventHubsCrud-GetEventHubAsync**<br/>[Získat Event Hubs](/rest/api/eventhub/get-event-hub)<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/eventhubs/{eventHubPath}``` | &nbsp; | [Čtěte](/rest/api/eventhub/get-event-hub) | &nbsp; | 
 | **NamespaceAuthorizationRules-DeleteNamespaceAuthorizationRuleAsync**<br/>Service Bus/centrum událostí/Relay<br/>```DELETE https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/AuthorizationRules/{rule name}``` | [deleteauthorizationrule](/rest/api/servicebus/stable/namespaces%20-%20authorization%20rules/deleteauthorizationrule) | [deleteauthorizationrule](/rest/api/eventhub/stable/authorization%20rules%20-%20namespaces/deleteauthorizationrule) | [deleteauthorizationrule](/rest/api/relay/namespaces/deleteauthorizationrule) |
-| **NamespaceAuthorizationRules-GetNamespaceAuthorizationRulesAsync**<br/>Service Bus/EventHub/Relay<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/AuthorizationRules``` | [listauthorizationrules](/servicebus/stable/namespaces%20-%20authorization%20rules/listauthorizationrules) | [listauthorizationrules](/rest/api/eventhub/stable/authorization%20rules%20-%20namespaces/listauthorizationrules) | [listauthorizationrules](/rest/api/relay/namespaces/listauthorizationrules) |
+| **NamespaceAuthorizationRules-GetNamespaceAuthorizationRulesAsync**<br/>Service Bus/EventHub/Relay<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/AuthorizationRules``` | [listauthorizationrules](/rest/api/relay/namespaces/listauthorizationrules) | [listauthorizationrules](/rest/api/eventhub/stable/authorization%20rules%20-%20namespaces/listauthorizationrules) | [listauthorizationrules](/rest/api/relay/namespaces/listauthorizationrules) |
 | **NamespaceAvailability-IsNamespaceAvailable**<br/>[Dostupnost Service Busového oboru názvů](/rest/api/servicebus/check-namespace-availability)<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/CheckNamespaceAvailability/?namespace=<namespaceValue>``` | [checknameavailability](/rest/api/servicebus/stable/namespaces%20-%20checkname%20availability/checknameavailability) | [checknameavailability](/rest/api/eventhub/stable/check%20name%20availability%20-%20namespaces/checknameavailability) | [checknameavailability](/rest/api/relay/namespaces/checknameavailability) |
 | **Obory názvů – CreateOrUpdateNamespaceAsync**<br/>Service Bus/centrum událostí/Relay<br/>```PUT https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}``` | [createorupdate](/rest/api/servicebus/stable/namespaces/createorupdate) | [createorupdate](/rest/api/eventhub/stable/namespaces/createorupdate) | [createorupdate](/rest/api/relay/namespaces/createorupdate) | 
 | **Témata – GetTopicAsync**<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/topics/{topicPath}``` | [Čtěte](/rest/api/servicebus/stable/topics/get) | &nbsp; | &nbsp; |

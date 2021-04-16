@@ -62,9 +62,7 @@
               href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: Vývoj a spouštění aplikací
       items:
-        - name: Nasazení aplikace ze zdrojového kódu
-          href: howto-deploy-with-s2i.md
-        - name: Nasazení aplikace s využitím OpenShift bez serveru
+        - name: Nasazení aplikace do Azure Red Hat OpenShift pomocí OpenShift bez serveru
           href: howto-deploy-with-serverless.md
         - name: Nasazení aplikace Open Liberty / WebSphere Liberty
           href: howto-deploy-java-liberty-app.md
