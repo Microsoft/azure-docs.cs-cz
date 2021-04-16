@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 0720af0848aa8263587dfd9573d205abf73303d4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0f3638e7649fc02f050c575ee621ce9dc237c24f
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562320"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517262"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -212,4 +212,4 @@ Widgety v sestavě zálohování využívají dotazy Kusto, které se spouštěj
 
 ## <a name="next-steps"></a>Další kroky
 
-[Další informace o monitorování a vytváření sestav pomocí Azure Backup](./backup-azure-monitor-alert-faq.md)
+[Další informace o monitorování a vytváření sestav pomocí Azure Backup](./backup-azure-monitor-alert-faq.yml)

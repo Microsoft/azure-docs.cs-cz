@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: d75f184a324a9d418b0af2e3cf5790205af0fa42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5d761cfa947b3fd4e5f718e603219c650e8dd72
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200719"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481867"
 ---
 # <a name="register-an-iot-edge-device-in-iot-hub"></a>Registrace zařízení IoT Edge v IoT Hub
 
@@ -111,7 +111,7 @@ Na obrazovce výstup vidíte výsledek příkazu. Budou vytištěny informace o 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pomocí příkazu [AZ IoT Hub Device-identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) vytvořte novou identitu zařízení ve službě IoT Hub. Například:
+Pomocí příkazu [AZ IoT Hub Device-identity Create](/cli/azure/iot/hub/device-identity) vytvořte novou identitu zařízení ve službě IoT Hub. Například:
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled
@@ -185,7 +185,7 @@ Rozšíření Azure IoT pro Visual Studio Code v současné době nepodporuje re
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pomocí příkazu [AZ IoT Hub Device-identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) vytvořte novou identitu zařízení ve službě IoT Hub. Například:
+Pomocí příkazu [AZ IoT Hub Device-identity Create](/cli/azure/iot/hub/device-identity) vytvořte novou identitu zařízení ve službě IoT Hub. Například:
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled --auth-method x509_thumbprint --primary-thumbprint [SHA thumbprint] --secondary-thumbprint [SHA thumbprint]
@@ -249,7 +249,7 @@ Můžete také vybrat možnost **získat informace o zařízení** z nabídky kl
 
 ### <a name="view-iot-edge-devices-with-the-azure-cli"></a>Zobrazení IoT Edge zařízení pomocí Azure CLI
 
-Pomocí příkazu [AZ IoT Hub Device-identity list](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) zobrazíte všechna zařízení ve službě IoT Hub. Například:
+Pomocí příkazu [AZ IoT Hub Device-identity list](/cli/azure/iot/hub/device-identity) zobrazíte všechna zařízení ve službě IoT Hub. Například:
 
    ```azurecli
    az iot hub device-identity list --hub-name [hub name]
@@ -259,7 +259,7 @@ Všechna zařízení, která jsou zaregistrovaná jako zařízení IoT Edge, bud
 
 ### <a name="retrieve-the-connection-string-with-the-azure-cli"></a>Načtení připojovacího řetězce pomocí Azure CLI
 
-Až budete připraveni k nastavení zařízení, potřebujete připojovací řetězec, který propojuje vaše fyzické zařízení s jeho identitou ve službě IoT Hub. K vrácení připojovacího řetězce pro jedno zařízení použijte příkaz [AZ IoT Hub Device-identity Connection-String show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) :
+Až budete připraveni k nastavení zařízení, potřebujete připojovací řetězec, který propojuje vaše fyzické zařízení s jeho identitou ve službě IoT Hub. K vrácení připojovacího řetězce pro jedno zařízení použijte příkaz [AZ IoT Hub Device-identity Connection-String show](/cli/azure/iot/hub/device-identity/connection-string) :
 
    ```azurecli
    az iot hub device-identity connection-string show --device-id [device id] --hub-name [hub name]

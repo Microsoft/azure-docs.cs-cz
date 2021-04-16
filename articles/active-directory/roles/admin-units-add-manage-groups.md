@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f88a0818d93c33b6265cc8c695479d2a42678ada
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ad8cce8375ecd670a481541a091e36aacb41240
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103011030"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505288"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Přidávání a Správa skupin v jednotce pro správu v Azure Active Directory
 
@@ -68,7 +68,7 @@ V následujícím příkladu `Add-AzureADMSAdministrativeUnitMember` přidejte s
 ```powershell
 $adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
 $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
-Add-AzureADMSAdministrativeUnitMember -ObjectId $adminUnitObj.ObjectId -RefObjectId $GroupObj.ObjectId
+Add-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.Id -RefObjectId $GroupObj.ObjectId
 ```
 
 ### <a name="use-microsoft-graph"></a>Použít Microsoft Graph
@@ -115,13 +115,13 @@ Chcete-li zobrazit seznam všech členů jednotky pro správu, spusťte následu
 
 ```powershell
 $adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-Get-AzureADMSAdministrativeUnitMember -ObjectId $adminUnitObj.ObjectId
+Get-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.Id
 ```
 
 Chcete-li zobrazit všechny skupiny, které jsou členy jednotky pro správu, použijte následující fragment kódu:
 
 ```powershell
-foreach ($member in (Get-AzureADMSAdministrativeUnitMember -ObjectId $adminUnitObj.ObjectId)) 
+foreach ($member in (Get-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.Id)) 
 {
 if($member.ObjectType -eq "Group")
 {

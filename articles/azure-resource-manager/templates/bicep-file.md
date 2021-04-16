@@ -3,12 +3,12 @@ title: Struktura a syntaxe souborů bicep
 description: Popisuje strukturu a vlastnosti souboru bicep pomocí deklarativní syntaxe.
 ms.topic: conceptual
 ms.date: 03/31/2021
-ms.openlocfilehash: 09993ae9c08f53144de8e94e6555ad93bec681f6
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1b8eddd388878be8f653f963ef967cf2c0af685f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168684"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537853"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Pochopení struktury a syntaxe souborů bicep
 
@@ -146,7 +146,7 @@ param storageSKU string = 'Standard_LRS'
 
 V následující tabulce jsou popsány dostupné dekoratéry a jejich použití.
 
-| Dekoratér | Platí pro | Argument | Description |
+| Dekoratér | Platí pro | Argument | Popis |
 | --------- | ---- | ----------- | ------- |
 | povoleno | Vše | array | Povolené hodnoty pro parametr Pomocí tohoto dekoratéru zajistěte, aby uživatel poskytoval správné hodnoty. |
 | description | Vše | řetězec | Text, který vysvětluje, jak použít parametr Popis se uživatelům zobrazí prostřednictvím portálu. |
@@ -297,7 +297,7 @@ param existingKeyVaultName string
 
 ## <a name="multi-line-strings"></a>Víceřádkové řetězce
 
-Řetězec můžete rozdělit na více řádků. `'''`Ke spuštění a ukončení víceřádkového řetězce použijte tři jednoduché znaky. 
+Řetězec můžete rozdělit na více řádků. `'''`Ke spuštění a ukončení víceřádkového řetězce použijte tři jednoduché znaky.
 
 Znaky uvnitř víceřádkového řetězce jsou zpracovávány tak, jak jsou. Řídicí znaky jsou zbytečné. Nemůžete zahrnout `'''` do víceřádkového řetězce. Interpolace řetězců není aktuálně podporována.
 

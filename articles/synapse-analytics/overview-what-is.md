@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: bb09a25d7ea242dfafd7d853015ae8e127b13883
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 652f98659f96b36e3185432e50d9d36dc569bd43
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383401"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537948"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Co je Azure Synapse Analytics?
 
@@ -55,21 +55,14 @@ Azure synapse obsahuje stejný modul pro integraci dat a prostředí jako Azure 
 * Code-Free ETL s aktivitami toku dat
 * Orchestrace poznámkových bloků, úloh Sparku, uložených procedur, skriptů SQL a dalších
 
-## <a name="unified-management-monitoring-and-security"></a>Sjednocená Správa, monitorování a zabezpečení
+## <a name="unified-experience"></a>Jednotné prostředí 
 
-Azure synapse nabízí pro podniky jediný způsob, jak spravovat analytické prostředky, monitorovat využití a aktivity a vysazovat zabezpečení.
+**Synapse Studio** nabízí jeden způsob, jak podnikům vytvářet řešení, udržovat je a zabezpečit vše v jednom uživatelském prostředí.
 
-* Přiřazení uživatelů k roli pro zjednodušení přístupu k prostředkům analýzy
-* Jemně odstupňované řízení přístupu k datům a kódu
-* Jeden řídicí panel pro monitorování prostředků, využití a uživatelů napříč SQL a Spark
-
-## <a name="unified-experience"></a>Jednotné prostředí
-
-**Synapse Studio** je uživatelské prostředí, které spojuje všechno dohromady s datovými inženýry. Umožňuje jim provádět všechny úlohy, které potřebují k vytvoření kompletního analytického řešení.
-
-* Klíčové úlohy datových techniků na jednom místě: ingestování, prozkoumávání, příprava, orchestrace, vizualizace
-* Špičková produktivita pro psaní kódu SQL nebo Spark: vytváření, ladění a optimalizace výkonu
-* Integrace s procesem Enterprise CI/CD
+* Provádění klíčových úloh: ingestování, prozkoumávání, příprava, orchestrace, vizualizace
+* Monitorování prostředků, používání a uživatelů v SQL a Sparku
+* Zjednodušení přístupu k analytickým prostředkům pomocí řízení přístupu na základě role
+* Zápis kódu SQL nebo Sparku a integrace s procesy podnikového CI/CD
 
 ## <a name="engage-with-the-synapse-community"></a>Zapojení do komunity synapse
 

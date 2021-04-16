@@ -2,26 +2,22 @@
 title: Problémy s přihlášením k aplikaci Microsoftu | Microsoft Docs
 description: Řešení běžných problémů při přihlašování k aplikacím Microsoftu, které používají službu Azure AD (například Microsoft 365).
 services: active-directory
-documentationcenter: ''
-author: kenwith
-manager: daveba
-ms.assetid: ''
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/10/2018
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79c8d6d072379853d6eca561d372f61dbb8acc8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c56e356a9bacc6479d3a3a33be905457c26e732e
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99260007"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378172"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problémy s přihlášením k aplikaci Microsoftu
 

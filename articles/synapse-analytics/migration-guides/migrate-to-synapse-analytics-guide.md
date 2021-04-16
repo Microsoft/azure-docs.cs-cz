@@ -2,7 +2,7 @@
 title: 'Azure synapse Analytics: Průvodce migrací'
 description: Podle tohoto průvodce migrujte vaše databáze do vyhrazeného fondu SQL Azure synapse Analytics.
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: sql
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -10,12 +10,12 @@ author: julieMSFT
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
-ms.openlocfilehash: 8304064e62ea3996e2ee6be6e12885cb853c9375
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 704c30516e9daf047bf5837aa6e2ed08306193db
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278775"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565640"
 ---
 # <a name="migrate-a-data-warehouse-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Migrace datového skladu do vyhrazeného fondu SQL ve službě Azure synapse Analytics
 

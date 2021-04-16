@@ -11,12 +11,12 @@ metadata:
   ms.author: philmea
   manager: philmea
   ms.date: 2/17/2021
-  ms.openlocfilehash: 8943e22428d6f510b374ef31938257ec08a0dff6
-  ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+  ms.openlocfilehash: 9fd99eeefcae6667dfcc9a11c7d623f5d213ffac
+  ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 04/13/2021
-  ms.locfileid: "107312089"
+  ms.locfileid: "107377815"
 landingContent:
 - title: O aktualizaci zařízení
   linkLists:
@@ -30,7 +30,7 @@ landingContent:
     links:
     - text: Vytvoření účtu aktualizace zařízení
       url: create-device-update-account.md
-    - text: Zřizování aktualizace zařízení pro agenta Azure IoT Hub
+    - text: Zřizování agenta aktualizace zařízení
       url: device-update-agent-provisioning.md
     - text: Importovat aktualizaci
       url: import-update.md
@@ -70,7 +70,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: REST API
+    - text: Rozhraní REST API
       url: https://docs.microsoft.com/rest/api/deviceupdate/
   - linkListType: reference
     links:

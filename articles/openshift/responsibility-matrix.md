@@ -7,12 +7,12 @@ ms.date: 4/12/2021
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI, RACI, podpora
-ms.openlocfilehash: 364b0a04e3394efcacba00c538218ecee2355f89
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 4bb00cb533d0065a992831f09ed8280c96efcdee
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107495013"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537015"
 ---
 # <a name="overview-of-responsibilities-for-azure-red-hat-openshift"></a>Přehled odpovědností pro Azure Red Hat OpenShift
 
@@ -405,14 +405,14 @@ Správa identit a přístupu zahrnuje všechny zodpovědnosti za zajištění to
    <td>
 <ul>
 
-<li>Poskytněte nativní OpenShift RBAC a vyhrazené možnosti správce.
+<li>Poskytněte nativní možnosti RBAC OpenShift.
 </li>
 </ul>
    </td>
    <td>
 <ul>
 
-<li>Nakonfigurujte OpenShift vyhrazené správce a RBAC pro řízení přístupu ke konfiguraci směrování podle potřeby.
+<li>Nakonfigurujte OpenShift RBAC pro řízení přístupu ke konfiguraci směrování podle potřeby.
 </li>
 </ul>
    </td>
@@ -423,7 +423,7 @@ Správa identit a přístupu zahrnuje všechny zodpovědnosti za zajištění to
    <td>
 <ul>
 
-<li>Poskytněte nativní OpenShift RBAC a vyhrazené možnosti správce.
+<li>Poskytněte nativní možnosti RBAC OpenShift.
 </li>
 </ul>
    </td>
@@ -434,7 +434,7 @@ Správa identit a přístupu zahrnuje všechny zodpovědnosti za zajištění to
 
 <li>Spravovat správce organizace pro organizaci Red Hat pro udělení přístupu Správci clusteru OpenShift.
 
-<li>Nakonfigurujte OpenShift vyhrazené správce a RBAC pro řízení přístupu ke konfiguraci směrování podle potřeby.
+<li>Nakonfigurujte OpenShift RBAC pro řízení přístupu ke konfiguraci směrování podle potřeby.
 </li>
 </ul>
    </td>
@@ -583,7 +583,7 @@ Zákazník je zodpovědný za aplikace, úlohy a data, která nasazují do Azure
 
 <li>Pokud zákazník do clusteru přidá červené Hat, komunitu, třetí stranu, své vlastní nebo jiné služby, a to pomocí operátorů nebo externích imagí, je zákazník zodpovědný za tyto služby a pro práci s příslušným poskytovatelem (včetně Red Hat) při řešení problémů.
 
-<li>Pomocí poskytovaných nástrojů a funkcí <a href="https://docs.openshift.com/dedicated/4/architecture/understanding-development.html#application-types">proveďte konfiguraci a nasazení</a>; <a href="https://docs.openshift.com/dedicated/4/applications/deployments/deployment-strategies.html">Udržujte si aktuální data</a>; <a href="https://docs.openshift.com/dedicated/4/applications/working-with-quotas.html">nastavení požadavků a omezení prostředků</a>; <a href="https://docs.openshift.com/dedicated/4/getting_started/scaling-your-cluster.html">Velikost clusteru, aby měl dostatek prostředků ke spouštění aplikací</a>; <a href="https://docs.openshift.com/dedicated/4/administering_a_cluster/dedicated-admin-role.html#dedicated-admin-granting-permissions_dedicated-administrator">nastavit oprávnění</a>; integrace s jinými službami; <a href="https://docs.openshift.com/dedicated/4/openshift_images/images-understand.html">Spravujte všechny datové proudy nebo šablony imagí, které nasadí zákazník</a>; <a href="https://docs.openshift.com/dedicated/4/cloud_infrastructure_access/dedicated-aws-private-cluster.html">externě obsluhuje</a>; uložení, zálohování a obnovení dat; a jinak Spravujte své vysoce dostupné a odolné úlohy.
+<li>Pomocí poskytovaných nástrojů a funkcí <a href="https://docs.openshift.com/aro/4/architecture/understanding-development.html#application-types">proveďte konfiguraci a nasazení</a>; <a href="https://docs.openshift.com/aro/4/applications/deployments/deployment-strategies.html">Udržujte si aktuální data</a>; <a href="https://docs.openshift.com/aro/4/applications/working-with-quotas.html">nastavení požadavků a omezení prostředků</a>; <a href="https://docs.openshift.com/aro/4/getting_started/scaling-your-cluster.html">Velikost clusteru, aby měl dostatek prostředků ke spouštění aplikací</a>; <a href="https://docs.openshift.com/aro/4/administering_a_cluster/">nastavit oprávnění</a>; integrace s jinými službami; <a href="https://docs.openshift.com/aro/4/openshift_images/images-understand.html">Spravujte všechny datové proudy nebo šablony imagí, které nasadí zákazník</a>; <a href="https://docs.openshift.com/aro/4/cloud_infrastructure_access">externě obsluhuje</a>; uložení, zálohování a obnovení dat; a jinak Spravujte své vysoce dostupné a odolné úlohy.
 
 <li>Udržovat zodpovědnost za monitorování aplikací běžících na Azure Red Hat OpenShift; včetně instalace a operačního softwaru pro shromažďování metrik a vytváření výstrah.
 </li>

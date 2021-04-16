@@ -6,12 +6,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e5361b92c2080c724b872be2ad27bc5bd4554e8d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: af1794a2f9eeaa1b1de2c62d5131c722dfd152a5
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108169"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564429"
 ---
 V tomto rychlém startu se dozvíte, jak připojit týmy s využitím komunikačních služeb Azure, které volají sadu SDK pro Android.
 
@@ -253,8 +253,8 @@ public class MainActivity extends AppCompatActivity {
 
 ## <a name="get-the-teams-meeting-link"></a>Získat odkaz na schůzku týmů
 
-Odkaz na schůzku týmů lze načíst pomocí rozhraní Graph API. Tato část je podrobně popsána v [dokumentaci ke grafům](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
-Komunikační služby, které volá sadu SDK, přijímají úplný tým odkaz na schůzku. Tento odkaz se vrátí jako součást `onlineMeeting` prostředku, který je přístupný v rámci [ `joinWebUrl` vlastnosti](/graph/api/resources/onlinemeeting?view=graph-rest-beta). Požadované informace o schůzce můžete také získat z adresy URL **připojení ke schůzce** v rámci pozvánky na schůzku.
+Odkaz na schůzku týmů lze načíst pomocí rozhraní Graph API. Tato část je podrobně popsána v [dokumentaci ke grafům](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true).
+Komunikační služby, které volá sadu SDK, přijímají úplný tým odkaz na schůzku. Tento odkaz se vrátí jako součást `onlineMeeting` prostředku, který je přístupný v rámci [ `joinWebUrl` vlastnosti](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true). Požadované informace o schůzce můžete také získat z adresy URL **připojení ke schůzce** v rámci pozvánky na schůzku.
 
 ## <a name="launch-the-app-and-join-teams-meeting"></a>Spusťte aplikaci a připojte se k Teams Meeting.
 

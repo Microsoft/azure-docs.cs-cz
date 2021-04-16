@@ -8,12 +8,12 @@ ms.date: 03/08/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c676b92fd07c6e444aa22f25c48fdb1b1957ca7a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7c1e265f473c1c6fb70fd97416722e7b863c429b
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103493760"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503554"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -38,9 +38,9 @@ Další informace najdete v části Příklady tohoto článku.
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
 - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
+- [Kurz: migrace místních dat do cloudového úložiště pomocí AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 - [Přenos dat pomocí AzCopy a BLOB Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
-- [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="advanced"></a>Pokročilý
 

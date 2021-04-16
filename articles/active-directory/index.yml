@@ -4,303 +4,297 @@ summary: Azure Active Directory (Azure AD) je víceklientská cloudová služba 
 brand: azure
 metadata:
   title: Dokumentace k Azure Active Directory
-  description: Azure Active Directory (Azure AD) od Microsoftu je víceklientská cloudová adresářová služba a služba pro správu identit. V rámci jednoho řešení kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identity.
+  description: 'Azure Active Directory (Azure AD) od Microsoftu je víceklientská cloudová adresářová služba a služba pro správu identit. V rámci jednoho řešení kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identity.'
   ms.service: active-directory
   ms.topic: hub-page
   ms.collection: M365-identity-device-management
   author: mtillman
   ms.author: mtillman
   manager: daveba
-  ms.date: 12/01/2020
-  ms.openlocfilehash: de96c1ed6828a6933102755d6c020cf01c4c9c7b
-  ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
-  ms.translationtype: MT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/20/2021
-  ms.locfileid: "98611147"
+  ms.date: 04/14/2021
 highlightedContent:
   items:
-  - title: Co je Azure AD?
-    itemType: overview
-    url: ./fundamentals/active-directory-whatis.md
-  - title: Co je nového v Azure AD?
-    itemType: whats-new
-    url: ./fundamentals/whats-new.md
-  - title: Zabezpečení vzdálených pracovníků
-    itemType: get-started
-    url: /enterprise-mobility-security/remote-work/
-  - title: Přiřazení rolí uživatelům
-    itemType: how-to-guide
-    url: ./fundamentals/active-directory-users-assign-role-azure-portal.md
-  - title: Kontrolní seznam pro nasazení Azure AD
-    itemType: concept
-    url: ./fundamentals/active-directory-deployment-checklist-p2.md
-  - title: Zajištění odolnosti správy přístupu a identit s využitím Azure AD
-    itemType: overview
-    url: ./fundamentals/resilience-overview.md
+    - title: Co je Azure AD?
+      itemType: overview
+      url: ./fundamentals/active-directory-whatis.md
+    - title: Co je nového v Azure AD?
+      itemType: whats-new
+      url: ./fundamentals/whats-new.md
+    - title: Zabezpečení vzdálených pracovníků
+      itemType: get-started
+      url: /enterprise-mobility-security/remote-work/
+    - title: Co je ověřitelných přihlašovacích údajů (Preview)?
+      itemType: overview
+      url: ./verifiable-credentials/decentralized-identifier-overview.md
+    - title: Kontrolní seznam pro nasazení Azure AD
+      itemType: concept
+      url: ./fundamentals/active-directory-deployment-checklist-p2.md
+    - title: Zajištění odolnosti správy přístupu a identit s využitím Azure AD
+      itemType: overview
+      url: ./fundamentals/resilience-overview.md
 conceptualContent:
   items:
-  - title: Správa aplikací
-    links:
-    - url: ./manage-apps/what-is-application-management.md
-      itemType: overview
-      text: Co je správa aplikací?
-    - url: ./manage-apps/view-applications-portal.md
-      itemType: quickstart
-      text: Zobrazení aplikací, které používají vašeho tenanta pro správu identit
-    - url: ./manage-apps/add-application-portal-setup-sso.md
-      itemType: quickstart
-      text: Nastavení jednotného přihlašování založeného na SAML
-    footerLink:
-      url: ./manage-apps/index.yml
-      text: Další informace
-  - title: Zřizování aplikací a HR
-    links:
-    - url: ./app-provisioning/user-provisioning.md
-      itemType: overview
-      text: Co je zřizování aplikací?
-    - url: ./app-provisioning/how-provisioning-works.md
-      itemType: concept
-      text: Jak funguje zřizování aplikací
-    - url: ./app-provisioning/plan-cloud-hr-provision.md
-      itemType: how-to-guide
-      text: Plánování nasazení zřizování HR v cloudu
-    footerLink:
-      url: ./app-provisioning/index.yml
-      text: Další informace
-  - title: Authentication
-    links:
-    - url: ./authentication/overview-authentication.md
-      itemType: concept
-      text: Co je služba Azure AD Authentication?
-    - url: ./authentication/tutorial-enable-sspr.md
-      itemType: tutorial
-      text: Povolení samoobslužného resetování hesel
-    - url: ./authentication/tutorial-enable-azure-mfa.md
-      itemType: tutorial
-      text: Povolení vícefaktorového ověřování Azure AD
-    footerLink:
-      url: ./authentication/index.yml
-      text: Další informace
-  - title: Synchronizace cloudu
-    links:
-    - url: ./cloud-sync/what-is-cloud-sync.md
-      itemType: overview
-      text: Co je cloudová synchronizace?
-    - url: ./cloud-sync/tutorial-single-forest.md
-      itemType: tutorial
-      text: Integrace jedné doménové struktury s jedním tenantem Azure AD
-    - url: ./cloud-sync/how-to-install.md
-      itemType: how-to-guide
-      text: Instalace agenta pro zřizování Azure AD Connect
-    footerLink:
-      url: ./cloud-sync/index.yml
-      text: Další informace
-  - title: Podmíněný přístup
-    links:
-    - url: ./conditional-access/overview.md
-      itemType: overview
-      text: Co je podmíněný přístup?
-    - url: ./authentication/tutorial-enable-azure-mfa.md
-      itemType: quickstart
-      text: Vyžadování MFA pro specifické aplikace
-    - url: ./conditional-access/location-condition.md
-      itemType: concept
-      text: Podmínky založené na poloze
-    footerLink:
-      url: ./conditional-access/index.yml
-      text: Další informace
-  - title: Správa zařízení
-    links:
-    - url: ./devices/overview.md
-      itemType: overview
-      text: Co je správa zařízení?
-    - url: ./devices/hybrid-azuread-join-plan.md
-      itemType: how-to-guide
-      text: Plánování hybridního připojení k Azure AD
-    - url: ./devices/azureadjoin-plan.md
-      itemType: how-to-guide
-      text: Plánování připojení ke službě Azure AD
-    footerLink:
-      url: ./devices/index.yml
-      text: Další informace
-  - title: Doménové služby
-    links:
-    - url: ../active-directory-domain-services/overview.md
-      itemType: overview
-      text: Co je služba Azure Active Directory Domain Services?
-    - url: ../active-directory-domain-services/tutorial-create-instance.md
-      itemType: quickstart
-      text: Povolení služby Azure AD Domain Services
-    - url: ../active-directory-domain-services/manage-group-policy.md
-      itemType: how-to-guide
-      text: Správa zásad skupiny
-    footerLink:
-      url: ../active-directory-domain-services/index.yml
-      text: Další informace
-  - title: Podnikoví uživatelé
-    links:
-    - url: ./enterprise-users/groups-create-rule.md
-      itemType: how-to-guide
-      text: Vytvoření dynamické skupiny
-    - url: ./enterprise-users/groups-settings-v2-cmdlets.md
-      itemType: how-to-guide
-      text: PowerShell pro skupiny Azure AD
-    - url: ./enterprise-users/directory-service-limits-restrictions.md
-      itemType: reference
-      text: Omezení služby Azure AD
-    footerLink:
-      url: ./enterprise-users/index.yml
-      text: Další informace
-  - title: Externí identity
-    links:
-    - url: ./external-identities/compare-with-b2c.md
-      itemType: overview
-      text: Porovnání řešení pro externí uživatele
-    - url: ../active-directory-b2c/overview.md
-      itemType: overview
-      text: Škálování aplikací pro příjemce (B2C)
-    - url: ./external-identities/what-is-b2b.md
-      itemType: overview
-      text: Spolupráce s uživateli mimo vaši organizaci (B2B)
-    footerLink:
-      url: ./external-identities/index.yml
-      text: Další informace
-  - title: Hybridní identita
-    links:
-    - url: ./hybrid/whatis-hybrid-identity.md
-      itemType: overview
-      text: Co je hybridní identita?
-    - url: ./hybrid/how-to-connect-sso.md
-      itemType: how-to-guide
-      text: Jednotné přihlašování s využitím služby Azure AD Connect
-    - url: ./hybrid/how-to-connect-install-custom.md
-      itemType: how-to-guide
-      text: Vlastní instalace služby Azure AD Connect
-    footerLink:
-      url: ./hybrid/index.yml
-      text: Další informace
-  - title: Zásady správného řízení identit
-    links:
-    - url: ./governance/entitlement-management-access-package-first.md
-      itemType: how-to-guide
-      text: Vytvoření přístupového balíčku
-    - url: ./governance/create-access-review.md
-      itemType: how-to-guide
-      text: Vytvoření kontroly přístupu pro skupinu nebo aplikaci
-    - url: ./conditional-access/terms-of-use.md
-      itemType: how-to-guide
-      text: Vyžadování, aby uživatelé přijali podmínky použití
-    footerLink:
-      url: ./governance/index.yml
-      text: Další informace
-  - title: Ochrana identit
-    links:
-    - url: ./identity-protection/overview-identity-protection.md
-      itemType: overview
-      text: Co je ochrana identit?
-    - url: ./identity-protection/howto-identity-protection-configure-risk-policies.md
-      itemType: how-to-guide
-      text: Konfigurace zásady rizik
-    - url: ./identity-protection/howto-identity-protection-remediate-unblock.md
-      itemType: how-to-guide
-      text: Postup při odblokování uživatelů
-    footerLink:
-      url: ./identity-protection/index.yml
-      text: Další informace
-  - title: Spravované identity pro prostředky Azure
-    links:
-    - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
-      itemType: tutorial
-      text: Použití virtuálního počítače s Windows pro přístupu k Azure SQL
-    - url: ./managed-identities-azure-resources/how-to-use-vm-token.md
-      itemType: how-to-guide
-      text: Použití virtuálního počítače Azure pro získání tokenu
-    - url: ./managed-identities-azure-resources/services-support-managed-identities.md
-      itemType: concept
-      text: Služby, které podporují spravované identity
-    footerLink:
-      url: ./managed-identities-azure-resources/index.yml
-      text: Další informace
-  - title: Microsoft Identity Platform
-    links:
-    - url: ./develop/v2-overview.md
-      itemType: overview
-      text: O platformě Microsoft Identity Platform
-    - url: ./develop/v2-oauth2-auth-code-flow.md
-      itemType: concept
-      text: Udělení toku kódu OAuth 2.0
-    - url: ./develop/quickstart-register-app.md
-      itemType: quickstart
-      text: Registrace aplikace na platformě Microsoft Identity Platform
-    footerLink:
-      url: ./develop/index.yml
-      text: Další informace
-  - title: Privileged Identity Management (PIM)
-    links:
-    - url: ./privileged-identity-management/pim-getting-started.md
-      itemType: how-to-guide
-      text: Zahájení práce s využitím PIM
-    - url: ./privileged-identity-management/pim-how-to-activate-role.md
-      itemType: how-to-guide
-      text: Aktivace mých rolí adresáře
-    - url: ./privileged-identity-management/pim-how-to-add-role-to-user.md
-      itemType: how-to-guide
-      text: Přiřazení rolí adresáře
-    footerLink:
-      url: ./privileged-identity-management/index.yml
-      text: Další informace
-  - title: Sestavy a sledování
-    links:
-    - url: ./reports-monitoring/concept-audit-logs.md
-      itemType: concept
-      text: Protokoly auditu
-    - url: ./reports-monitoring/concept-sign-ins.md
-      itemType: concept
-      text: Protokoly přihlašování
-    - url: ./reports-monitoring/reference-sign-ins-error-codes.md
-      itemType: reference
-      text: Referenční informace ke kódům chyb přihlašování
-    footerLink:
-      url: ./reports-monitoring/index.yml
-      text: Další informace
-  - title: Role
-    links:
-    - url: ./roles/groups-assign-role.md
-      itemType: concept
-      text: Seznámení s rolemi Azure AD
-    - url: ./roles/concept-understand-roles.md
-      itemType: how-to-guide
-      text: Vytvoření vlastní role
-    - url: ./roles/groups-view-assignments.md
-      itemType: reference
-      text: Zobrazení rolí přiřazených ke skupině
-    footerLink:
-      url: ./roles/index.yml
-      text: Další informace
-  - title: Aplikace jiných výrobců
-    links:
-    - url: ./saas-apps/amazon-web-service-tutorial.md
-      itemType: tutorial
-      text: Integrace jednotného přihlašování Azure AD s Amazon Web Services
-    - url: ./saas-apps/workday-inbound-tutorial.md
-      itemType: tutorial
-      text: Konfigurace automatického zřizování uživatelů ve Workday
-    - url: ./develop/v2-howto-app-gallery-listing.md
-      itemType: get-started
-      text: Žádost o přidání vaší aplikace do galerie
-    footerLink:
-      url: ./saas-apps/tutorial-list.md
-      text: Zobrazení dalších aplikací
+    - title: Správa aplikací
+      links:
+        - url: ./manage-apps/what-is-application-management.md
+          itemType: overview
+          text: Co je správa aplikací?
+        - url: ./manage-apps/view-applications-portal.md
+          itemType: quickstart
+          text: 'Zobrazení aplikací, které používají vašeho tenanta pro správu identit'
+        - url: ./manage-apps/add-application-portal-setup-sso.md
+          itemType: quickstart
+          text: Nastavení jednotného přihlašování založeného na SAML
+      footerLink:
+        url: ./manage-apps/index.yml
+        text: Další informace
+    - title: Zřizování aplikací a HR
+      links:
+        - url: ./app-provisioning/user-provisioning.md
+          itemType: overview
+          text: Co je zřizování aplikací?
+        - url: ./app-provisioning/how-provisioning-works.md
+          itemType: concept
+          text: Jak funguje zřizování aplikací
+        - url: ./app-provisioning/plan-cloud-hr-provision.md
+          itemType: how-to-guide
+          text: Plánování nasazení zřizování HR v cloudu
+      footerLink:
+        url: ./app-provisioning/index.yml
+        text: Další informace
+    - title: Authentication
+      links:
+        - url: ./authentication/overview-authentication.md
+          itemType: concept
+          text: Co je služba Azure AD Authentication?
+        - url: ./authentication/tutorial-enable-sspr.md
+          itemType: tutorial
+          text: Povolení samoobslužného resetování hesel
+        - url: ./authentication/tutorial-enable-azure-mfa.md
+          itemType: tutorial
+          text: Povolení vícefaktorového ověřování Azure AD
+      footerLink:
+        url: ./authentication/index.yml
+        text: Další informace
+    - title: Synchronizace cloudu
+      links:
+        - url: ./cloud-sync/what-is-cloud-sync.md
+          itemType: overview
+          text: Co je cloudová synchronizace?
+        - url: ./cloud-sync/tutorial-single-forest.md
+          itemType: tutorial
+          text: Integrace jedné doménové struktury s jedním tenantem Azure AD
+        - url: ./cloud-sync/how-to-install.md
+          itemType: how-to-guide
+          text: Instalace agenta pro zřizování Azure AD Connect
+      footerLink:
+        url: ./cloud-sync/index.yml
+        text: Další informace
+    - title: Podmíněný přístup
+      links:
+        - url: ./conditional-access/overview.md
+          itemType: overview
+          text: Co je podmíněný přístup?
+        - url: ./authentication/tutorial-enable-azure-mfa.md
+          itemType: quickstart
+          text: Vyžadování MFA pro specifické aplikace
+        - url: ./conditional-access/location-condition.md
+          itemType: concept
+          text: Podmínky založené na poloze
+      footerLink:
+        url: ./conditional-access/index.yml
+        text: Další informace
+    - title: Správa zařízení
+      links:
+        - url: ./devices/overview.md
+          itemType: overview
+          text: Co je správa zařízení?
+        - url: ./devices/hybrid-azuread-join-plan.md
+          itemType: how-to-guide
+          text: Plánování hybridního připojení k Azure AD
+        - url: ./devices/azureadjoin-plan.md
+          itemType: how-to-guide
+          text: Plánování připojení ke službě Azure AD
+      footerLink:
+        url: ./devices/index.yml
+        text: Další informace
+    - title: Doménové služby
+      links:
+        - url: ../active-directory-domain-services/overview.md
+          itemType: overview
+          text: Co je služba Azure Active Directory Domain Services?
+        - url: ../active-directory-domain-services/tutorial-create-instance.md
+          itemType: quickstart
+          text: Povolení služby Azure AD Domain Services
+        - url: ../active-directory-domain-services/manage-group-policy.md
+          itemType: how-to-guide
+          text: Správa zásad skupiny
+      footerLink:
+        url: ../active-directory-domain-services/index.yml
+        text: Další informace
+    - title: Podnikoví uživatelé
+      links:
+        - url: ./enterprise-users/groups-create-rule.md
+          itemType: how-to-guide
+          text: Vytvoření dynamické skupiny
+        - url: ./enterprise-users/groups-settings-v2-cmdlets.md
+          itemType: how-to-guide
+          text: PowerShell pro skupiny Azure AD
+        - url: ./enterprise-users/directory-service-limits-restrictions.md
+          itemType: reference
+          text: Omezení služby Azure AD
+      footerLink:
+        url: ./enterprise-users/index.yml
+        text: Další informace
+    - title: Externí identity
+      links:
+        - url: ./external-identities/compare-with-b2c.md
+          itemType: overview
+          text: Porovnání řešení pro externí uživatele
+        - url: ../active-directory-b2c/overview.md
+          itemType: overview
+          text: Škálování aplikací pro příjemce (B2C)
+        - url: ./external-identities/what-is-b2b.md
+          itemType: overview
+          text: Spolupráce s uživateli mimo vaši organizaci (B2B)
+      footerLink:
+        url: ./external-identities/index.yml
+        text: Další informace
+    - title: Hybridní identita
+      links:
+        - url: ./hybrid/whatis-hybrid-identity.md
+          itemType: overview
+          text: Co je hybridní identita?
+        - url: ./hybrid/how-to-connect-sso.md
+          itemType: how-to-guide
+          text: Jednotné přihlašování s využitím služby Azure AD Connect
+        - url: ./hybrid/how-to-connect-install-custom.md
+          itemType: how-to-guide
+          text: Vlastní instalace služby Azure AD Connect
+      footerLink:
+        url: ./hybrid/index.yml
+        text: Další informace
+    - title: Zásady správného řízení identit
+      links:
+        - url: ./governance/entitlement-management-access-package-first.md
+          itemType: how-to-guide
+          text: Vytvoření přístupového balíčku
+        - url: ./governance/create-access-review.md
+          itemType: how-to-guide
+          text: Vytvoření kontroly přístupu pro skupinu nebo aplikaci
+        - url: ./conditional-access/terms-of-use.md
+          itemType: how-to-guide
+          text: 'Vyžadování, aby uživatelé přijali podmínky použití'
+      footerLink:
+        url: ./governance/index.yml
+        text: Další informace
+    - title: Ochrana identit
+      links:
+        - url: ./identity-protection/overview-identity-protection.md
+          itemType: overview
+          text: Co je ochrana identit?
+        - url: ./identity-protection/howto-identity-protection-configure-risk-policies.md
+          itemType: how-to-guide
+          text: Konfigurace zásady rizik
+        - url: ./identity-protection/howto-identity-protection-remediate-unblock.md
+          itemType: how-to-guide
+          text: Postup při odblokování uživatelů
+      footerLink:
+        url: ./identity-protection/index.yml
+        text: Další informace
+    - title: Spravované identity pro prostředky Azure
+      links:
+        - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
+          itemType: tutorial
+          text: Použití virtuálního počítače s Windows pro přístupu k Azure SQL
+        - url: ./managed-identities-azure-resources/how-to-use-vm-token.md
+          itemType: how-to-guide
+          text: Použití virtuálního počítače Azure pro získání tokenu
+        - url: ./managed-identities-azure-resources/services-support-managed-identities.md
+          itemType: concept
+          text: 'Služby, které podporují spravované identity'
+      footerLink:
+        url: ./managed-identities-azure-resources/index.yml
+        text: Další informace
+    - title: Microsoft Identity Platform
+      links:
+        - url: ./develop/v2-overview.md
+          itemType: overview
+          text: O platformě Microsoft Identity Platform
+        - url: ./develop/v2-oauth2-auth-code-flow.md
+          itemType: concept
+          text: Udělení toku kódu OAuth 2.0
+        - url: ./develop/quickstart-register-app.md
+          itemType: quickstart
+          text: Registrace aplikace na platformě Microsoft Identity Platform
+      footerLink:
+        url: ./develop/index.yml
+        text: Další informace
+    - title: Privileged Identity Management (PIM)
+      links:
+        - url: ./privileged-identity-management/pim-getting-started.md
+          itemType: how-to-guide
+          text: Zahájení práce s využitím PIM
+        - url: ./privileged-identity-management/pim-how-to-activate-role.md
+          itemType: how-to-guide
+          text: Aktivace mých rolí adresáře
+        - url: ./privileged-identity-management/pim-how-to-add-role-to-user.md
+          itemType: how-to-guide
+          text: Přiřazení rolí adresáře
+      footerLink:
+        url: ./privileged-identity-management/index.yml
+        text: Další informace
+    - title: Sestavy a sledování
+      links:
+        - url: ./reports-monitoring/concept-audit-logs.md
+          itemType: concept
+          text: Protokoly auditu
+        - url: ./reports-monitoring/concept-sign-ins.md
+          itemType: concept
+          text: Protokoly přihlašování
+        - url: ./reports-monitoring/reference-sign-ins-error-codes.md
+          itemType: reference
+          text: Referenční informace ke kódům chyb přihlašování
+      footerLink:
+        url: ./reports-monitoring/index.yml
+        text: Další informace
+    - title: Role
+      links:
+        - url: ./roles/groups-assign-role.md
+          itemType: concept
+          text: Seznámení s rolemi Azure AD
+        - url: ./roles/concept-understand-roles.md
+          itemType: how-to-guide
+          text: Vytvoření vlastní role
+        - url: ./roles/groups-view-assignments.md
+          itemType: reference
+          text: Zobrazení rolí přiřazených ke skupině
+      footerLink:
+        url: ./roles/index.yml
+        text: Další informace
+    - title: Aplikace jiných výrobců
+      links:
+        - url: ./saas-apps/amazon-web-service-tutorial.md
+          itemType: tutorial
+          text: Integrace jednotného přihlašování Azure AD s Amazon Web Services
+        - url: ./saas-apps/workday-inbound-tutorial.md
+          itemType: tutorial
+          text: Konfigurace automatického zřizování uživatelů ve Workday
+        - url: ./develop/v2-howto-app-gallery-listing.md
+          itemType: get-started
+          text: Žádost o přidání vaší aplikace do galerie
+      footerLink:
+        url: ./saas-apps/tutorial-list.md
+        text: Zobrazení dalších aplikací
 additionalContent:
   sections:
-  - items:
-    - title: Microsoft 365
-      summary: Prozkoumejte Microsoft 365, kompletní řešení zahrnující Azure AD.
-      url: /microsoft-365/
-    - title: Azure AD PowerShell
-      summary: Další informace o instalaci a použití modulu Azure AD PowerShell
-      url: /powershell/module/azuread/
-    - title: Příkazy Azure CLI pro Azure AD
-      summary: Příkazy Azure AD najdete v referenčních informacích k rozhraní příkazového řádku.
-      url: /cli/azure/ad
+    - items:
+        - title: Microsoft 365
+          summary: 'Prozkoumejte Microsoft 365, kompletní řešení zahrnující Azure AD.'
+          url: /microsoft-365/
+        - title: Azure AD PowerShell
+          summary: Další informace o instalaci a použití modulu Azure AD PowerShell
+          url: /powershell/module/azuread/
+        - title: Příkazy Azure CLI pro Azure AD
+          summary: Příkazy Azure AD najdete v referenčních informacích k rozhraní příkazového řádku.
+          url: /cli/azure/ad

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 5/11/2020
 ms.author: rogarana
-ms.custom: include file
-ms.openlocfilehash: b6f0f77da639bceaea680f015dad5c0d3d6dbda6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: e6cc45c3aedc013b63f9d7876b923e7db36ccd37
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84464972"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107510790"
 ---
 Pokud chcete pro svůj účet úložiště vytvořit privátní koncový bod, musíte nejdřív získat odkaz na svůj účet úložiště a podsíť virtuální sítě, ke které chcete privátní koncový bod přidat. Nahraďte,,, `<storage-account-resource-group-name>`  `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` a `<vnet-subnet-name>` níže:
 

@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: rozpoznávání obličeje, software pro rozpoznávání obličeje, analýza obličeje, shoda obličeje, aplikace pro rozpoznávání obličeje, hledání na základě obrázku, hledání ve formátu obličeje
-ms.openlocfilehash: 26076289d8c6659abdd55fa805c27b13690feccd
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: a999b2100dc57d7b623cebbbe261f821a80835e3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258737"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505118"
 ---
 # <a name="what-is-the-azure-face-service"></a>Co je služba Azure Face?
 
@@ -33,7 +33,7 @@ Tato dokumentace obsahuje následující typy článků:
 * [Rychlé starty](./Quickstarts/client-libraries.md) jsou podrobné pokyny, které vám umožní volat službu a získat výsledky v krátké době. 
 * [Příručky](./Face-API-How-to-Topics/HowtoDetectFacesinImage.md) návody obsahují pokyny k používání služby v konkrétnějším nebo přizpůsobeném způsobu.
 * [Koncepční články](./concepts/face-detection.md) poskytují podrobné vysvětlení funkcí a funkcí služby.
-* [Kurzy](./Tutorials/FaceAPIinCSharpTutorial.md) jsou delší než příručky, které ukazují, jak tuto službu používat jako součást v širších obchodních řešeních.
+* [Kurzy](./enrollment-overview.md) jsou delší než příručky, které ukazují, jak tuto službu používat jako součást v širších obchodních řešeních.
 
 ## <a name="face-detection"></a>Rozpoznávání tváře
 

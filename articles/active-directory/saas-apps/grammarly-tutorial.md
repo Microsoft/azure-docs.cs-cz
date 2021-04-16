@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 13b62646728eb03a7470d9bb57741bcb90cc24fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02fcd8fc14a300b7031677185a91d7e6c9aa3b09
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92447700"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518333"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s gramaticky
 
@@ -37,7 +37,7 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Gramatika podporuje **IDP** jednotné přihlašování.
+* Gramatika podporuje jednotné přihlašování (SSO) iniciované **IDP** .
 * Gramatika podporuje **jenom při** zřizování uživatelů.
 
 > [!NOTE]
@@ -53,7 +53,6 @@ Pokud chcete nakonfigurovat integraci gramaticky do Azure AD, je třeba do sezna
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **gramaticky** .
 1. Z panelu výsledků vyberte **gramaticky** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-grammarly"></a>Konfigurace a testování jednotného přihlašování Azure AD pro gramaticky
 
@@ -74,7 +73,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V Azure Portal na stránce **gramatická** integrace aplikací najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -131,12 +130,12 @@ V této části se v gramatice vytvoří uživatel nazvaný B. Simon. Gramatika 
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností.
 
-1. Kliknutím na **otestovat tuto aplikaci** v Azure Portal a automaticky se přihlásíte k gramatické přihlášení, pro které jste nastavili jednotné přihlašování. 
+* Klikněte na testovat tuto aplikaci v Azure Portal a měli byste být automaticky přihlášeni k gramaticky, pro kterou jste nastavili jednotné přihlašování.
 
-2. Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na gramaticky dlaždici, měli byste se automaticky přihlásit k gramatické přihlášení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na gramaticky dlaždici v okně moje aplikace, měli byste se automaticky přihlásit k gramatické přihlášení, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile gramaticky nakonfigurujete, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Jakmile gramaticky nakonfigurujete, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

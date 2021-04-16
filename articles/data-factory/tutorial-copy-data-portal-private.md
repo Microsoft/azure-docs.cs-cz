@@ -5,14 +5,14 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
+ms.date: 04/14/2021
 ms.author: jingwang
-ms.openlocfilehash: a3cc3686d4b256fc7b8702f34cdf393dc1b0e25f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 191ad61990e10fdb718eebf1a8f57d8edaadcf35
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740388"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515446"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Bezpečné kopírování dat z úložiště objektů BLOB v Azure do databáze SQL pomocí privátních koncových bodů
 
@@ -29,7 +29,7 @@ V tomto kurzu provedete následující kroky:
 * Vytvoření kanálu s aktivitou kopírování
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. Blob Storage použijete jako *zdrojové* úložiště dat. Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal), kde najdete postup jeho vytvoření. *Ujistěte se, že účet úložiště povoluje přístup jenom z vybraných sítí.* 
 * **Azure SQL Database**. Tuto databázi použijete jako úložiště dat *jímky*. Pokud službu Azure SQL Database nemáte, přečtěte si téma [Vytvoření databáze SQL](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření. *Ujistěte se, že účet SQL Database povoluje přístup pouze z vybraných sítí.* 

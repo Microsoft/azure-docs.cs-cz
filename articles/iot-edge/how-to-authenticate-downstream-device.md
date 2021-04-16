@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c799e38092c5983b4ad0e3daea6aae99934c7302
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4702682dcd6af68242fd5a34d1fb2e0a9273da36
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200886"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482020"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Ověření podřízeného zařízení pro Azure IoT Hub
 
@@ -76,7 +76,7 @@ Když vytváříte novou identitu zařízení, zadejte následující informace:
    >
    >Můžete nakonfigurovat centrum IoT Edge pro návrat k předchozímu chování nastavením proměnné prostředí **authenticationMode** na hodnotu **CloudAndScope**.
 
-K provedení stejné operace taky můžete použít [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . V následujícím příkladu se pomocí příkazu [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) vytvoří nové zařízení IoT s ověřováním pomocí symetrického klíče a přiřadí se nadřazené zařízení:
+K provedení stejné operace taky můžete použít [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . V následujícím příkladu se pomocí příkazu [AZ IoT Hub Device-identity](/cli/azure/iot/hub/device-identity) vytvoří nové zařízení IoT s ověřováním pomocí symetrického klíče a přiřadí se nadřazené zařízení:
 
 ```azurecli
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
@@ -131,7 +131,7 @@ Pro ověřování X. 509 podepsané svým držitelem, které se někdy označuje
    * Java: [SendEventX509. Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
    * Python: [send_message_x509. py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
-K dokončení stejné operace vytváření zařízení můžete použít také [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . V následujícím příkladu se pomocí příkazu [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) vytvoří nové zařízení IoT s ověřováním pomocí X. 509 podepsaného svým držitelem a přiřadí se nadřazené zařízení:
+K dokončení stejné operace vytváření zařízení můžete použít také [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . V následujícím příkladu se pomocí příkazu [AZ IoT Hub Device-identity](/cli/azure/iot/hub/device-identity) vytvoří nové zařízení IoT s ověřováním pomocí X. 509 podepsaného svým držitelem a přiřadí se nadřazené zařízení:
 
 ```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
@@ -175,7 +175,7 @@ Tato část je založená na pokynech, které jsou popsané v IoT Hub článku [
    * Java: [SendEventX509. Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
    * Python: [send_message_x509. py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
-K dokončení stejné operace vytváření zařízení můžete použít také [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . V následujícím příkladu se pomocí příkazu [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) vytvoří nové zařízení IoT s ověřováním CA X. 509 s podpisem a přiřadí nadřazené zařízení:
+K dokončení stejné operace vytváření zařízení můžete použít také [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . V následujícím příkladu se pomocí příkazu [AZ IoT Hub Device-identity](/cli/azure/iot/hub/device-identity) vytvoří nové zařízení IoT s ověřováním CA X. 509 s podpisem a přiřadí nadřazené zařízení:
 
 ```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca

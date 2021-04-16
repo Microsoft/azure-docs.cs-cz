@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: místní, Docker, kontejner
-ms.openlocfilehash: 1eb8e6d990b0b3e6212736036466be9f11d05b01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb99dc3c5e16ee117df46d7fda0caab9c57f0853
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102201120"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388087"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Instalace a spuštění kontejnerů Docker pro rozhraní API služby pro rozpoznávání řeči 
 
@@ -41,12 +41,12 @@ Kontejnery služby Speech umožňují zákazníkům vytvořit architekturu aplik
 
 | Kontejner | Funkce | Latest (Nejnovější) |
 |--|--|--|
-| Převod řeči na text | Analyzuje mínění a transcribes nepřetržité zvukové nahrávky v reálném čase s využitím mezilehlého výsledku.  | 2.10.0 |
-| Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.10.0 |
-| Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.12.0 |
-| Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.12.0 |
+| Převod řeči na text | Analyzuje mínění a transcribes nepřetržité zvukové nahrávky v reálném čase s využitím mezilehlého výsledku.  | 2.11.0 |
+| Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.11.0 |
+| Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.13.0 |
+| Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.13.0 |
 | Rozpoznávání jazyka řeči | Zjišťuje jazyk používaný v zvukových souborech. | 1.0 |
-| Neuronové převodu textu na řeč | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. | 1.4.0 |
+| Neuronové převodu textu na řeč | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. | 1.5.0 |
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 

@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 03/19/2021
+ms.date: 04/14/2021
 ms.custom: devx-track-java
 ms.author: lajanuar
-ms.openlocfilehash: a709f82b04ed5c1fe70f6927b33605cfff20ed6b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: cd5e6383e71e3f37a26b866156b64c86302f6990
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104761249"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516394"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -26,7 +26,7 @@ ms.locfileid: "104761249"
 
 [Referenční dokumentace](/java/api/overview/azure/ai-formrecognizer-readme)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -40,7 +40,7 @@ ms.locfileid: "104761249"
 
 ### <a name="create-a-new-gradle-project"></a>Vytvořit nový projekt Gradle
 
-V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. 
+V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj.
 
 ```console
 mkdir myapp && cd myapp
@@ -74,12 +74,12 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0-beta.1")
+    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0-beta.3")
 }
 ```
 
 > [!NOTE]
-> 3.1.0 SDK pro rozpoznávání formulářů zobrazuje _rozhraní API verze 2,1 Preview. 2_. Použijte prosím [**REST API**](../../quickstarts/client-library.md) pro _rozhraní API verze 2,1 Preview. 3_.
+> Nástroj pro rozpoznávání formulářů 3.1.0-beta. 3 SDK odráží _rozhraní API verze 2,1-Preview. 3_.
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 
@@ -95,12 +95,12 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
+    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0-beta.3")
 }
 ```
 
 > [!NOTE]
-> 3.0.0 SDK pro rozpoznávání formulářů odráží rozhraní API v 2.0
+> 3.0.0 SDK pro rozpoznávání formulářů odráží rozhraní API v 2.1-Preview. 3
 
 ---
 
@@ -126,14 +126,14 @@ V třídě **FormRecognizer** aplikace vytvořte proměnné pro klíč a koncov�
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Přejděte na Azure Portal. Pokud se prostředek pro rozpoznávání formulářů, který jste vytvořili v části **předpoklady** , nasadil úspěšně, klikněte na tlačítko **Přejít k prostředku** v části **Další kroky**. Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**. 
+> Přejděte na Azure Portal. Pokud se prostředek pro rozpoznávání formulářů, který jste vytvořili v části **předpoklady** , nasadil úspěšně, klikněte na tlačítko **Přejít k prostředku** v části **Další kroky**. Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**.
 >
 > Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](../../../cognitive-services-security.md) Cognitive Services.
 
 V metodě **Main** aplikace přidejte volání metod používaných v rámci tohoto rychlého startu. Později je budete definovat. Také budete muset přidat odkazy na adresy URL pro školení a testování dat.
 
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
-  
+
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="Načítání adresy URL SAS":::
 * Chcete-li získat adresu URL formuláře k otestování, můžete použít výše uvedené kroky a získat adresu URL SAS jednotlivého dokumentu v úložišti objektů BLOB. Nebo si Převezměte adresu URL dokumentu, který se nachází jinde.
 * K získání adresy URL obrázku účtenky použijte výše uvedenou metodu.
@@ -162,7 +162,7 @@ Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různ�
 
 * Rozpoznávání polí formuláře a obsahu pomocí vlastních modelů, které jsou vyškolené k analýze vlastních formulářů.  Tyto hodnoty jsou vráceny v kolekci `RecognizedForm` objektů. Viz příklad [analýzy vlastních formulářů](#analyze-forms-with-a-custom-model).
 * Rozpoznávání obsahu formuláře, včetně tabulek, řádků a slov, bez nutnosti vyškolit model.  Obsah formuláře se vrátí v kolekci `FormPage` objektů. Viz příklad [analýzy rozložení](#analyze-layout).
-* Rozpoznávání společných polí z příjmů spojených s námi pomocí předem připraveného modelu příjmu ve službě pro rozpoznávání formulářů.  Tato pole a meta data jsou vrácena v kolekci `RecognizedForm` objektů. Viz příklad [Analýza účtenek](#analyze-receipts).
+* Rozpoznávání společných polí z podnikových příjmů, vizitek, faktur a dokumentů identity s využitím předučeného modelu ve službě pro rozpoznávání formulářů.
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -187,6 +187,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 * [Analyzovat účtenky](#analyze-receipts)
 * [Analýza vizitek](#analyze-business-cards)
 * [Analyzovat faktury](#analyze-invoices)
+* [Analýza dokumentů identity](#analyze-identity-documents)
 * [Trénování vlastního modelu](#train-a-custom-model)
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
 * [Správa vlastních modelů](#manage-your-custom-models)
@@ -199,7 +200,6 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 * [Trénování vlastního modelu](#train-a-custom-model)
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
 * [Správa vlastních modelů](#manage-your-custom-models)
-
 
 ---
 
@@ -241,6 +241,65 @@ Cell has text 4/16/2018.
 Cell has text $89,024.34.
 Cell has text ET.
 ```
+## <a name="analyze-receipts"></a>Analyzovat účtenky
+
+V této části se dozvíte, jak pomocí předem připraveného příjmového modelu analyzovat a extrahovat běžná pole z příjmů spojených s námi. Další informace o analýze příjmů najdete v [koncepční příručce pro příjem](../../concept-receipts.md).
+
+K analýze potvrzení z identifikátoru URI použijte metodu **beginRecognizeReceiptsFromUrl** .
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
+
+> [!TIP]
+> Můžete také analyzovat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) , jako je například **beginRecognizeReceipts**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+
+Vrácená hodnota je kolekce objektů **RecognizedReceipt** : jedna pro každou stránku v odeslaném dokumentu. Další blok kódu prochází potvrzením a tiskne jejich podrobnosti do konzoly.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print)]
+
+Další blok kódu prochází jednotlivé položky zjištěné na účtence a tiskne jejich podrobnosti do konzoly.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print_items)]
+
+### <a name="output"></a>Výstup
+
+```console
+Analyze receipt...
+----------- Recognized Receipt page 0 -----------
+Merchant Name: Contoso Contoso, confidence: 0.62
+Merchant Address: 123 Main Street Redmond, WA 98052, confidence: 0.99
+Transaction Date: 2020-06-10, confidence: 0.90
+Receipt Items:
+Name: Cappuccino, confidence: 0.96s
+Quantity: null, confidence: 0.957s]
+Total Price: 2.200000, confidence: 0.95
+Name: BACON & EGGS, confidence: 0.94s
+Quantity: null, confidence: 0.927s]
+Total Price: null, confidence: 0.93
+```
+
+## <a name="analyze-business-cards"></a>Analýza vizitek
+
+#### <a name="v21-preview"></a>[verze 2.1 Preview](#tab/preview)
+
+Tato část ukazuje, jak pomocí předem připraveného modelu analyzovat a extrahovat běžná pole z anglických vizitek. Další informace o analýze vizitky najdete v tématu [koncepční příručka pro obchodní karty](../../concept-business-cards.md).
+
+K analýze obchodních karet z adresy URL použijte `beginRecognizeBusinessCardsFromUrl` metodu.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
+
+> [!TIP]
+> Můžete také analyzovat image místních obchodních karet. Podívejte se na metody [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) , jako je například **beginRecognizeBusinessCards**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+
+Vrácená hodnota je kolekce objektů **RecognizedForm** : jedna pro každou kartu v dokumentu. Následující kód zpracuje vizitku na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
+
+---
 
 ## <a name="analyze-invoices"></a>Analyzovat faktury
 
@@ -248,7 +307,7 @@ Cell has text ET.
 
 V této části se dozvíte, jak pomocí předem připraveného modelu analyzovat a extrahovat běžná pole z prodejních faktur. Další informace o analýze faktur najdete v [koncepční příručce pro fakturaci](../../concept-invoices.md).
 
-Chcete-li analyzovat faktury z adresy URL, použijte `beginRecognizeInvoicesFromUrl` metodu. 
+Chcete-li analyzovat faktury z adresy URL, použijte `beginRecognizeInvoicesFromUrl` metodu.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_call)]
 
@@ -258,6 +317,30 @@ Chcete-li analyzovat faktury z adresy URL, použijte `beginRecognizeInvoicesFrom
 Vrácená hodnota je kolekce objektů **RecognizedForm** : jedna pro každou fakturu v dokumentu. Následující kód zpracuje fakturu na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_print)]
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
+
+---
+
+## <a name="analyze-identity-documents"></a>Analýza dokumentů identity
+
+#### <a name="v21-preview"></a>[verze 2.1 Preview](#tab/preview)
+
+V této části se dozvíte, jak analyzovat a extrahovat informace o klíčích z identifikačních dokumentů vydaných vládou – celosvětově Passports a licence k ovladači USA – pomocí předdefinovaného modelu ID pro rozpoznávání formulářů. Další informace o analýze dokumentů identity najdete v našem [průvodci předem sestaveným identifikačním modelem](../../concept-identification-cards.md).
+
+K analýze dokumentů identity z identifikátoru URI použijte `beginRecognizeIdDocumentsFromUrl` metodu.
+
+:::code language="java" source="~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java" id="snippet_id_call":::
+
+> [!TIP]
+> Můžete také analyzovat místní image dokumentu identity. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) , jako je například **beginRecognizeIdDocuments**. Podívejte se také na ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) pro scénáře zahrnující místní image.
+
+Následující kód zpracuje dokument identity na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
+
+:::code language="java" source="~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java" id="snippet_id_print":::
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 
@@ -277,7 +360,7 @@ Tato část ukazuje, jak vytvořit model s vlastními daty. Vycvičený model m�
 
 Výukové vlastní modely vám umožní analyzovat všechna pole a hodnoty nalezené ve vlastních formulářích bez ručního označení školicích dokumentů.
 
-Následující metoda naplňuje model v dané sadě dokumentů a vytiskne stav modelu do konzoly. 
+Následující metoda naplňuje model v dané sadě dokumentů a vytiskne stav modelu do konzoly.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_train_call)]
 
@@ -288,7 +371,6 @@ Vrácený objekt **CustomFormModel** obsahuje informace o typech formulářů, k
 Nakonec tato metoda vrátí jedinečné ID modelu.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_train_return)]
-
 
 ### <a name="output"></a>Výstup
 
@@ -349,7 +431,7 @@ V této části se dozvíte, jak extrahovat informace o klíčích a hodnotách 
 > [!IMPORTANT]
 > Aby bylo možné tento scénář implementovat, je nutné již vyškolet model, abyste mohli předat jeho ID do níže uvedené metody. Viz část [výuka modelu](#train-a-model-without-labels) .
 
-Použijete metodu **beginRecognizeCustomFormsFromUrl** . 
+Použijete metodu **beginRecognizeCustomFormsFromUrl** .
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_analyze_call)]
 
@@ -376,65 +458,7 @@ Field 'field-5' has label 'Charges' with a confidence score of 1.00.
 Field 'field-6' has label 'VAT ID' with a confidence score of 1.00.
 ```
 
-## <a name="analyze-receipts"></a>Analyzovat účtenky
 
-V této části se dozvíte, jak pomocí předem připraveného příjmového modelu analyzovat a extrahovat běžná pole z příjmů spojených s námi. Další informace o analýze příjmů najdete v [koncepční příručce pro příjem](../../concept-receipts.md).
-
-K analýze potvrzení z identifikátoru URI použijte metodu **beginRecognizeReceiptsFromUrl** . 
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
-
-> [!TIP]
-> Můžete také analyzovat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) , jako je například **beginRecognizeReceipts**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) , kde najdete scénáře týkající se místních imagí.
-
-Vrácená hodnota je kolekce objektů **RecognizedReceipt** : jedna pro každou stránku v odeslaném dokumentu. Další blok kódu prochází potvrzením a tiskne jejich podrobnosti do konzoly.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print)]
-
-Další blok kódu prochází jednotlivé položky zjištěné na účtence a tiskne jejich podrobnosti do konzoly.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print_items)]
-
-### <a name="output"></a>Výstup 
-
-```console
-Analyze receipt...
------------ Recognized Receipt page 0 -----------
-Merchant Name: Contoso Contoso, confidence: 0.62
-Merchant Address: 123 Main Street Redmond, WA 98052, confidence: 0.99
-Transaction Date: 2020-06-10, confidence: 0.90
-Receipt Items:
-Name: Cappuccino, confidence: 0.96s
-Quantity: null, confidence: 0.957s]
-Total Price: 2.200000, confidence: 0.95
-Name: BACON & EGGS, confidence: 0.94s
-Quantity: null, confidence: 0.927s]
-Total Price: null, confidence: 0.93
-```
-
-## <a name="analyze-business-cards"></a>Analýza vizitek
-
-#### <a name="v21-preview"></a>[verze 2.1 Preview](#tab/preview)
-
-Tato část ukazuje, jak pomocí předem připraveného modelu analyzovat a extrahovat běžná pole z anglických vizitek. Další informace o analýze vizitky najdete v tématu [koncepční příručka pro obchodní karty](../../concept-business-cards.md).
-
-K analýze obchodních karet z adresy URL použijte `beginRecognizeBusinessCardsFromUrl` metodu. 
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
-
-> [!TIP]
-> Můžete také analyzovat image místních obchodních karet. Podívejte se na metody [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) , jako je například **beginRecognizeBusinessCards**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) , kde najdete scénáře týkající se místních imagí.
-
-Vrácená hodnota je kolekce objektů **RecognizedForm** : jedna pro každou kartu v dokumentu. Následující kód zpracuje vizitku na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
-
-#### <a name="v20"></a>[v2.0](#tab/ga)
-
-> [!IMPORTANT]
-> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
-
----
 
 ## <a name="manage-custom-models"></a>Správa vlastních modelů
 
@@ -450,7 +474,7 @@ Následující blok kódu kontroluje, kolik modelů jste uložili v účtu pro r
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_manage_count)]
 
 
-#### <a name="output"></a>Výstup 
+#### <a name="output"></a>Výstup
 
 ```console
 The account has 12 custom models, and we can have at most 250 custom models
@@ -463,7 +487,7 @@ Následující blok kódu uvádí aktuální modely v účtu a tiskne jejich pod
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_manage_list)]
 
 
-#### <a name="output"></a>Výstup 
+#### <a name="output"></a>Výstup
 
 Tato odpověď byla zkrácena z důvodu čitelnosti.
 
@@ -510,7 +534,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Od klientů pro rozpoznávání vyvolat `ErrorResponseException` výjimky. Pokud se například pokusíte zadat neplatnou adresu URL zdroje souboru, bude `ErrorResponseException` vyvolána chyba, která signalizuje chybu. V následujícím fragmentu kódu je chyba zpracována řádným zachycením výjimky a zobrazením dalších informací o chybě.
 

@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: b3435d1dabf604cf7a1394c14ee62d65b923714b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8def06990b72d6e08127e8c4f16e0dfd87905d4f
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565933"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565181"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Stažení virtuálního pevného disku se systémem Linux z Azure
 
@@ -21,7 +21,9 @@ V tomto článku se dozvíte, jak stáhnout soubor virtuálního pevného disku 
 
 ## <a name="stop-the-vm"></a>Zastavení virtuálního počítače
 
-Virtuální pevný disk se nedá stáhnout z Azure, pokud je připojený ke spuštěnému virtuálnímu počítači. Pro stažení virtuálního pevného disku je nutné zastavit virtuální počítač. 
+Virtuální pevný disk se nedá stáhnout z Azure, pokud je připojený ke spuštěnému virtuálnímu počítači. Pokud chcete, aby byl virtuální počítač spuštěný, můžete [vytvořit snímek a potom stáhnout snímek](#alternative-snapshot-the-vm-disk).
+
+Zastavení virtuálního počítače:
 
 1.  Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2.  V nabídce vlevo vyberte **Virtual Machines**.
@@ -29,6 +31,24 @@ Virtuální pevný disk se nedá stáhnout z Azure, pokud je připojený ke spu�
 4.  Na stránce pro virtuální počítač vyberte **zastavit**.
 
     :::image type="content" source="./media/download-vhd/export-stop.PNG" alt-text="Zobrazuje tlačítko nabídky k zastavení virtuálního počítače.":::
+
+### <a name="alternative-snapshot-the-vm-disk"></a>Alternativa: vytvoření snímku disku virtuálního počítače
+
+Pořídit snímek disku, který se má stáhnout.
+
+1. Vyberte virtuální počítač na [portálu](https://portal.azure.com).
+2. V nabídce vlevo vyberte **disky** a pak vyberte disk, který chcete snímek. Zobrazí se podrobnosti o disku.  
+3. V nabídce v horní části stránky vyberte **vytvořit snímek** . Otevře se stránka **vytvořit snímek** .
+4. Do pole **název** zadejte název snímku. 
+5. Jako **typ snímku** vyberte **úplné** nebo **přírůstkové**.
+6. Až budete hotovi, vyberte **zkontrolovat + vytvořit**.
+
+Vaše snímky se vytvoří krátce a pak se můžou použít ke stažení nebo vytvoření jiného virtuálního počítače z.
+
+> [!NOTE]
+> Pokud virtuální počítač nezastavíte jako první, snímek se nevyčistí. Snímek bude ve stejném stavu, jako kdyby byl virtuální počítač v době, kdy byl snímek vytvořen, v okamžiku, kdy došlo k jeho vypnutí, nebo došlo k chybě.  Obvykle to může způsobit problémy, pokud spuštěné aplikace spuštěné v daném čase nebyly odolné proti chybám.
+>  
+> Tato metoda se doporučuje jenom pro virtuální počítače s jedním diskem s operačním systémem. Před stažením nebo před vytvořením snímku pro disk s operačním systémem a každý datový disk je třeba zastavit virtuální počítače s jedním nebo více datovými disky.
 
 ## <a name="generate-sas-url"></a>Vygenerovat adresu URL SAS
 
