@@ -8,16 +8,16 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: dc3451a4b46a317dccda0e4292dcb1712b4171f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83d10a7a6e9eb14379d32cc88800a2c443feac60
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878303"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503044"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
-Replikuje zdrojové umístění do cílového umístění.
+Replikuje zdrojové umístění do cílového umístění. Tento článek poskytuje podrobné informace o příkazu AzCopy Sync. Další informace o synchronizaci objektů BLOB mezi zdrojovým a cílovým umístěním najdete v tématu [synchronizace s Azure Blob Storage pomocí AzCopy v10 za účelem](storage-use-azcopy-blobs-synchronize.md). Soubory Azure najdete v tématu [synchronizace souborů](storage-use-azcopy-files.md#synchronize-files).
 
 ## <a name="synopsis"></a>Stručný obsah
 
@@ -38,9 +38,9 @@ Příkaz synchronizovat se v několika ohledech liší od příkazu pro kopírov
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
 - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
+- [Kurz: migrace místních dat do cloudového úložiště pomocí AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 - [Přenos dat pomocí AzCopy a BLOB Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
-- [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
 ### <a name="advanced"></a>Pokročilý
 

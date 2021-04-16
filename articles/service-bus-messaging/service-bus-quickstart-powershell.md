@@ -2,17 +2,19 @@
 title: Vytvoření fronty Service Bus pomocí Azure PowerShell
 description: V tomto rychlém startu se dozvíte, jak vytvořit obor názvů Service Bus a frontu v oboru názvů pomocí Azure PowerShell.
 author: spelluru
-ms.devlang: dotnet
-ms.topic: quickstart
-ms.date: 08/12/2020
 ms.author: spelluru
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8cf024735c66e6bae9d334e3d8ce8d0a0eed1426
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2020
+ms.topic: quickstart
+ms.devlang: dotnet
+ms.custom:
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: f7bf9e5435b00ee3076422cccbe689038051499d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95799108"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537095"
 ---
 # <a name="use-azure-powershell-to-create-a-service-bus-namespace-and-a-queue"></a>Vytvoření oboru názvů Service Bus a fronty pomocí Azure PowerShell
 V tomto rychlém startu se dozvíte, jak vytvořit obor názvů Service Bus a frontu pomocí Azure PowerShell. Také se dozvíte, jak získat autorizační přihlašovací údaje, které může klientská aplikace použít k odesílání a přijímání zpráv do fronty. 
@@ -70,4 +72,3 @@ V tomto článku jste v oboru názvů vytvořili obor názvů Service Bus a fron
 - [Ruby](service-bus-ruby-how-to-use-queues.md)
 
 [bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-

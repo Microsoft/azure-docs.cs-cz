@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/07/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fcd194e2503610db314f6a975a4afb1d27962f8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a445e9869b0cd9928d95364f39e60fc892214b9a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028173"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532450"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Kurz: Používání rozhraní API Video Indexeru
 
@@ -88,7 +88,7 @@ Parametr Account ID (ID účtu) se vyžaduje u všech volání API operací. ID 
 
 * K získání ID účtu prostřednictvím programu použijte **Video Indexer Developer Portal**.
 
-    Použijte rozhraní [Get Account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?) API.
+    Použijte rozhraní [Get Account](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Account) API.
 
     > [!TIP]
     > Přístupové tokeny pro účty můžete vygenerovat tak, že definujete `generateAccessTokens=true`.

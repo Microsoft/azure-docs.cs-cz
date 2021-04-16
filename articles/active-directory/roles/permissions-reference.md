@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e356363d91c3aa429fd958c1dd3bc553e7a4d29
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 9266322d424d57ac847df85513db34d4a42e47e1
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030232"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389821"
 ---
 # <a name="azure-ad-built-in-roles"></a>Předdefinované role Azure AD
 
@@ -885,7 +885,7 @@ Uživatelé v této roli můžou číst nastavení a informace pro správu např
 > Role globálního čtecího modulu teď má v současné době několik omezení –
 >
 >- [Centrum pro správu OneDrivu](https://admin.onedrive.com/) – centrum pro správu OneDrive nepodporuje roli globálního čtecího modulu.
->- [Centrum pro správu M365](https://admin.microsoft.com/Adminportal/Home#/homepage) – globální Čtenář nemůže přečíst žádosti o bezpečnostní modul zákazníka. V levém podokně centra pro správu M365 nenajdete kartu **žádosti o bezpečnostní modul pro zákazníky** v části **Podpora** .
+>- [Centrum pro správu M365](https://admin.microsoft.com/Adminportal/Home#/homepage) – globální Čtenář nemůže číst integrované aplikace. V levém podokně centra pro správu M365 se v části **Nastavení** nezobrazí karta **integrované aplikace** .
 >- [Office Security & – centrum dodržování předpisů](https://sip.protection.office.com/homepage) – globální Čtenář nemůže číst protokoly auditu SCC, provádět hledání obsahu nebo se podívat na zabezpečené skóre.
 >- [Centrum pro správu týmů](https://admin.teams.microsoft.com) – globální Čtenář nemůže přečíst **životní cyklus týmů**, **analýzu & sestav**, **správu IP adres zařízení** a **Katalog aplikací**.
 >- [Privileged Access Management (pam)](/office365/securitycompliance/privileged-access-management-overview) nepodporuje roli globálního čtecího modulu.
@@ -1861,7 +1861,7 @@ Například:
 
 `microsoft.directory/applications/credentials/update`
 
-| Element oprávnění | Description |
+| Element oprávnění | Popis |
 | --- | --- |
 | namespace | Produkt nebo služba, které vystavují úkol a jsou součástí `microsoft` . Například všechny úlohy ve službě Azure AD používají `microsoft.directory` obor názvů. |
 | entita | Logická funkce nebo komponenta vystavené službou v Microsoft Graph. Například Azure AD zveřejňuje uživatele a skupiny, OneNote zpřístupňuje poznámky a Exchange zveřejňuje poštovní schránky a kalendáře. Existuje speciální `allEntities` klíčové slovo pro zadání všech entit v oboru názvů. Tato funkce se často používá v rolích, které udělují přístup k celému produktu. |

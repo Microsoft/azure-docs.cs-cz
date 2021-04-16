@@ -3,16 +3,18 @@ title: Rychlý Start – vytvoření privátní zóny DNS Azure pomocí Azure Po
 description: V tomto rychlém startu vytvoříte a otestujete privátní zónu a záznam DNS v Azure DNS. Toto je podrobný Průvodce vytvořením a správou první privátní zóny DNS a záznamu pomocí Azure Portal.
 services: dns
 author: rohinkoul
-ms.service: dns
-ms.topic: quickstart
-ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: d298dfd5f3ad0beb56a511c124bab056ca25fd27
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/20/2020
+ms.topic: quickstart
+ms.service: dns
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 2115062db8615ca782cb987903e5ebfc83400cd2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92310052"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535449"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Rychlý Start: Vytvoření privátní zóny DNS Azure pomocí Azure Portal
 
@@ -181,4 +183,3 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků **MyAzureResourceGr
 
 > [!div class="nextstepaction"]
 > [Scénáře privátních zón Azure DNS](private-dns-scenarios.md)
-

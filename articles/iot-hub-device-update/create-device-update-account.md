@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 5956b7b74d27a4f9a2b79ee3950c8ac765610c70
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d3f7f4e1cdd56675d6084448abc810c9a41992f9
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558478"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520135"
 ---
 # <a name="device-update-for-iot-hub-resource-management"></a>Aktualizace zařízení pro správu prostředků IoT Hubu
 
@@ -95,6 +95,9 @@ Konfigurace IoT Hub
    :::image type="content" source="media/create-device-update-account/instance-configure-selected.png" alt-text="Snímek obrazovky s souhlasem s konfigurací IoT Hub pro instanci" lightbox="media/create-device-update-account/instance-configure-selected.png":::
 
 3. Klikněte na aktualizovat.
+
+   > [!NOTE] 
+   > Pokud používáte bezplatnou úroveň Azure IoT Hub, je povolený počet tras zpráv omezený na 5. Aktualizace zařízení pro IoT Hub musí nakonfigurovat 4 trasy zpráv, aby fungovaly podle očekávání. 
 
 [Přečtěte si o nakonfigurovaných trasách zpráv.](device-update-resources.md) 
 

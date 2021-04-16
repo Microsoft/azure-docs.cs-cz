@@ -1,0 +1,14 @@
+- name: Co je BareMetal infrastruktura pro Oracle?
+  href: oracle-baremetal-overview.md
+- name: BareMetal SKU
+  href: oracle-baremetal-skus.md
+- name: Storage
+  href: oracle-baremetal-storage.md
+- name: Předpoklady pro opravy
+  href: oracle-baremetal-patching.md
+- name: Konfigurace sítě Ethernet
+  href: oracle-baremetal-ethernet.md
+- name: Architektura
+  href: oracle-baremetal-architecture.md
+- name: Zřídit
+  href: oracle-baremetal-provision.md

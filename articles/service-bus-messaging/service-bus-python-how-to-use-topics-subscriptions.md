@@ -3,17 +3,19 @@ title: Použití Azure Service Bus témata a předplatných s Pythonem Azure-Ser
 description: V tomto článku se dozvíte, jak používat Python k posílání zpráv do tématu a přijímání zpráv z předplatného.
 documentationcenter: python
 author: spelluru
-ms.devlang: python
-ms.topic: quickstart
-ms.date: 11/18/2020
 ms.author: spelluru
-ms.custom: devx-track-python
-ms.openlocfilehash: 4eba3ea055e78888d482927fa6eed5c7d41fa0ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/18/2020
+ms.topic: quickstart
+ms.devlang: python
+ms.custom:
+- devx-track-python
+- mode-api
+ms.openlocfilehash: 49e80e277c6df5372341293861d5bda0580f3e8c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98630043"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537168"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>Odeslání zpráv do Azure Service Bus tématu a příjem zpráv z předplatných do tématu (Python)
 V tomto článku se dozvíte, jak pomocí Pythonu odesílat zprávy Service Bus tématu a přijímat zprávy z odběru tématu. 

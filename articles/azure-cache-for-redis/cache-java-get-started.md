@@ -2,18 +2,23 @@
 title: 'Rychlý Start: použití mezipaměti Azure pro Redis v jazyce Java'
 description: V tomto rychlém startu vytvoříte novou aplikaci Java, která bude používat Azure cache pro Redis.
 author: yegu-ms
+ms.author: yegu
+ms.date: 05/22/2020
+ms.topic: quickstart
 ms.service: cache
 ms.devlang: java
-ms.topic: quickstart
-ms.date: 05/22/2020
-ms.author: yegu
-ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 856f33875316eca8b3c16f28c6c222f42e0a0be5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom:
+- mvc
+- seo-java-august2019
+- seo-java-september2019
+- devx-track-java
+- mode-api
+ms.openlocfilehash: 7128ff1e20439c57d3e6212f29e6f871997584c6
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121265"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538604"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-java"></a>Rychlý Start: použití mezipaměti Azure pro Redis v jazyce Java
 
@@ -23,7 +28,7 @@ V tomto rychlém startu zabezpečíte mezipaměť Azure pro Redis do aplikace Ja
 
 Pokud chcete přeskočit přímo na kód, přečtěte si [rychlý Start Java](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/java) na GitHubu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Apache Maven](https://maven.apache.org/download.cgi)

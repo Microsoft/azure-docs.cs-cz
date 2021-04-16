@@ -2,23 +2,29 @@
 title: Bicep operátory
 description: V této části najdete popis bicep operátorů dostupných pro nasazení Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 4bf1005a11b1dcfea9f4b28d6bd3fa7c33e3278f
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.date: 04/15/2021
+ms.openlocfilehash: 0838ebf6bc03f4237ef76e07f1eb6f25aa996fc0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107211296"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537821"
 ---
 # <a name="bicep-operators"></a>Bicep operátory
 
-Tento článek popisuje operátory bicep, které jsou k dispozici při vytváření šablony bicep a použití Azure Resource Manager k nasazení prostředků. Operátory slouží k výpočtu hodnot, porovnávání hodnot nebo vyhodnocení podmínek. Existují tři typy operátorů bicep: [porovnání](#comparison), [logické](#logical)a [číselné](#numeric).
+Tento článek popisuje operátory bicep, které jsou k dispozici při vytváření šablony bicep a použití Azure Resource Manager k nasazení prostředků. Operátory slouží k výpočtu hodnot, porovnávání hodnot nebo vyhodnocení podmínek. Existují tři typy operátorů bicep:
+
+- [porovnání](#comparison)
+- [biolog](#logical)
+- [číselné](#numeric)
+
+Uzavření výrazu mezi `(` a `)` umožňuje přepsat výchozí prioritu operátoru bicep. Například výraz x + y/z vyhodnocuje dělení jako první a pak přidání. Výraz (x + y)/z se však vyhodnocuje jako první a dělené druhé.
 
 ## <a name="comparison"></a>Porovnání
 
 Relační operátory porovnávají hodnoty a vracejí buď `true` nebo `false` .
 
-| Operátor | Název | Description |
+| Operátor | Název | Popis |
 | ---- | ---- | ---- |
 | `>=` | [Větší než nebo rovno](bicep-operators-comparison.md#greater-than-or-equal-) | Vyhodnotí, zda je první hodnota větší než nebo rovna druhé hodnotě. |
 | `>`  | [Větší než](bicep-operators-comparison.md#greater-than-) | Vyhodnotí, zda je první hodnota větší než druhá hodnota. |
@@ -33,7 +39,7 @@ Relační operátory porovnávají hodnoty a vracejí buď `true` nebo `false` .
 
 Logické operátory vyhodnocují logické hodnoty, vracejí hodnoty, které nejsou null, nebo vyhodnocují podmíněný výraz.
 
-| Operátor | Název | Description |
+| Operátor | Název | Popis |
 | ---- | ---- | ---- |
 | `&&` | [Ani](bicep-operators-logical.md#and-) | Vrátí `true` , zda jsou všechny hodnoty pravdivé. |
 | `||`| [Nebo](bicep-operators-logical.md#or-) | Vrátí `true` , zda má jedna z hodnot hodnotu true. |
@@ -45,7 +51,7 @@ Logické operátory vyhodnocují logické hodnoty, vracejí hodnoty, které nejs
 
 Číselné operátory používají celá čísla k provádění výpočtů a vracení celočíselných hodnot.
 
-| Operátor | Název | Description |
+| Operátor | Název | Popis |
 | ---- | ---- | ---- |
 | `*` | [Násobení](bicep-operators-numeric.md#multiply-) | Vynásobí dvě celá čísla. |
 | `/` | [Rozdělovací](bicep-operators-numeric.md#divide-) | Vydělí celé číslo na celé číslo. |

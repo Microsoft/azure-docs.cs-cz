@@ -36,16 +36,15 @@
     - name: Použití kontejneru Face
       items:
         - name: Dokumentace ke kontejnerům Cognitive Services
-          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
+          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/face/context/context
         - name: Přehled kontejnerů
-          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/computer-vision/context/context
+          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/face/context/context
         - name: Instalace a spuštění kontejnerů
           href: face-how-to-install-containers.md
         - name: Konfigurace kontejnerů
           href: face-resource-container-config.md
         - name: Použití instancí kontejneru
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
+          href: /azure/cognitive-services/containers/azure-container-instance-recipe?context=/azure/cognitive-services/face/context/context
 - name: Koncepty
   items:
     - name: Rozpoznávání tváře
@@ -54,8 +53,6 @@
       href: concepts/face-recognition.md
 - name: Kurzy
   items:
-    - name: Vytvoření aplikace pro rozpoznávání tváře
-      href: Tutorials/FaceAPIinCSharpTutorial.md
     - name: Přidání uživatelů do služby obličeje
       items:
         - name: Osvědčené postupy pro přidávání uživatelů

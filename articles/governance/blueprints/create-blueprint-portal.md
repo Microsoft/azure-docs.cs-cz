@@ -3,12 +3,14 @@ title: 'Rychlý Start: vytvoření podrobného plánu na portálu'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů prostřednictvím Azure Portal.
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 75a4e9deca4859ac8b9f302fcb62ecc1d12dd8c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 94555b1b73fdac7368c9ac96fa682fb09afc83eb
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98918326"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538962"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý Start: definování a přiřazení podrobného plánu na portálu
 

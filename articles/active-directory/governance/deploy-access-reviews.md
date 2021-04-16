@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3af783d7ff8be36c63af871ab4f2d214ca9f9405
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97932431"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532590"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Plánování nasazení kontrol přístupu Azure Active Directory
 
@@ -193,7 +193,7 @@ Administrativní role nutná k vytvoření, správě nebo čtení kontroly pří
 | Typ prostředku| Vytváření a Správa recenzí přístupu (tvůrci)| Čtení výsledků kontroly přístupu |
 | - | - | -|
 | Skupina nebo aplikace| Globální správce <p>Správce uživatelů| Tvůrci a správce zabezpečení |
-| Privilegované role v Azure AD| Globální správce <p>Správce privilegovaných rolí| Creators <p>Čtenář zabezpečení<p>Správce zabezpečení |
+| Privilegované role v Azure AD| Globální správce <p>Správce privilegovaných rolí| Creators <p>Čtecí modul zabezpečení<p>Správce zabezpečení |
 | Privilegované role v Azure (prostředky)| Globální správce<p>Správce uživatelů<p>Vlastník prostředku| Creators |
 | Přístup k balíčku| Globální správce<p>Tvůrce přístupového balíčku| Pouze globální správce |
 
@@ -244,7 +244,7 @@ Chcete-li vytvořit zásadu kontroly přístupu, je nutné mít následující i
 | Součást| Hodnota |
 | - | - |
 | **Prostředky ke kontrole**| Přístup k Microsoft Dynamics |
-| **Frekvence kontroly**| Měsíčně |
+| **Frekvence kontroly**| měsíčně |
 | **Kdo provádí kontrolu**| Správci programu Dynamics Business Group |
 | **Oznámení**| Před kontrolou aliasu Dynamics-Pms e-mailem 24 hodin<p>Zahrnutí vlastní zprávy do kontrolorů k zabezpečení jejich nákupu |
 | **Časová osa**| 48 hodin z oznámení |
@@ -419,7 +419,7 @@ Po přípravě strategie a plánu pro kontrolu přístupu k prostředkům integr
 
 Aby bylo možné snížit riziko zastaralého přístupu, můžou správci povolit pravidelné kontroly uživatelů, kteří mají aktivní přiřazení k balíčku přístupu. Postupujte podle pokynů v následujícím odkazu:
 
-| Články s návody| Description |
+| Články s návody| Popis |
 | - | - |
 | [Vytvořit kontroly přístupu](entitlement-management-access-reviews-create.md)| Povolit recenze balíčku přístupu |
 | [Provést kontroly přístupu](entitlement-management-access-reviews-review-access.md)| Provede kontroly přístupu pro ostatní uživatele, kteří jsou přiřazeni k balíčku přístupu. |
@@ -433,7 +433,7 @@ Aby bylo možné snížit riziko zastaralého přístupu, můžou správci povol
 
 Přístup k skupinám a aplikacím pro zaměstnance a hosty se nejspíš v průběhu času mění. Aby mohli správci snížit riziko související se zastaralými přiřazeními přístupu, můžou vytvořit kontroly přístupu pro členy skupiny nebo přístup k aplikacím. Postupujte podle pokynů v následujícím odkazu:
 
-| Články s návody| Description |
+| Články s návody| Popis |
 | - | - |
 | [Vytvořit kontroly přístupu](create-access-review.md)| Vytvořte jednu nebo více kontrol přístupu pro členy skupiny nebo přístup k aplikaci. |
 | [Provést kontroly přístupu](perform-access-review.md)| Provede kontrolu přístupu pro členy skupiny nebo uživatelů s přístupem k aplikaci. |
@@ -450,7 +450,7 @@ Pokud chcete snížit riziko související se zastaralými přiřazeními rolí,
 
 Postupujte podle pokynů na následujících odkazech:
 
-| Články s návody | Description |
+| Články s návody | Popis |
 | - | - |
  [Vytvořit kontroly přístupu](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Vytváření kontrol přístupu pro privilegované role Azure AD v PIM |
 | [Vlastní kontrola přístupu](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Pokud máte přiřazenou roli správce, schvalte nebo odepřete přístup k vaší roli. |
@@ -465,7 +465,7 @@ Pokud chcete snížit riziko související se zastaralými přiřazeními rolí,
 
 Postupujte podle pokynů na následujících odkazech:
 
-| Články s návody| Description |
+| Články s návody| Popis |
 | - | -|
 | [Vytvořit kontroly přístupu](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Vytváření kontrol přístupu pro privilegované role prostředků Azure v PIM |
 | [Vlastní kontrola přístupu](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Pokud máte přiřazenou roli správce, schvalte nebo odepřete přístup k vaší roli. |
@@ -474,7 +474,7 @@ Postupujte podle pokynů na následujících odkazech:
 
 ## <a name="use-the-access-reviews-api"></a>Použití rozhraní API kontroly přístupu
 
-V tématu [metody rozhraní Graph API](/graph/api/resources/accessreviews-root?view=graph-rest-beta) a [ověření autorizace rolí a aplikací](/graph/api/resources/accessreviews-root?view=graph-rest-beta) můžete pracovat s prostředky, které lze snadno zobrazit, a spravovat je. Metody kontroly přístupu v rozhraní Microsoft Graph API jsou k dispozici pro kontext aplikace i uživatele. Při spouštění skriptů v kontextu aplikace musí být účet použitý ke spuštění rozhraní API (princip služby) udělen oprávnění "AccessReview. Read. All" pro dotazování na informace o kontrolách přístupu.
+V tématu [metody rozhraní Graph API](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true) a [ověření autorizace rolí a aplikací](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true) můžete pracovat s prostředky, které lze snadno zobrazit, a spravovat je. Metody kontroly přístupu v rozhraní Microsoft Graph API jsou k dispozici pro kontext aplikace i uživatele. Při spouštění skriptů v kontextu aplikace musí být účet použitý ke spuštění rozhraní API (princip služby) udělen oprávnění "AccessReview. Read. All" pro dotazování na informace o kontrolách přístupu.
 
 Populární kontroly přístupu: úlohy pro automatizaci pomocí Graph API pro kontroly přístupu:
 

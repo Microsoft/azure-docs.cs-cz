@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 8701f7bcb2e7ff705e4f1d1b401f4eb3e680f28b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0be2bb59b46dc827001d89f8e0f1be23f35a714d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501035"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536096"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Konfigurace geografické replikace pro Redis instance Premium Azure cache
 
@@ -42,7 +42,7 @@ U geografické replikace nejsou podporované některé funkce:
 
 Po nakonfigurování geografické replikace platí následující omezení pro váš pár propojených mezipamětí:
 
-- Sekundární propojená mezipaměť je jen pro čtení; můžete z něj číst, ale do něj nemůžete zapisovat žádná data. 
+- Sekundární propojená mezipaměť je jen pro čtení; můžete z něj číst, ale do něj nemůžete zapisovat žádná data. Pokud se rozhodnete číst z instance Geo-Secondary, je důležité si uvědomit, že při každém spuštění celé synchronizace dat mezi Geo-Primary a Geo-Secondary (dojde k aktualizaci Geo-Primary nebo Geo-Secondary a u některých scénářů restartování), instance Geo-Secondary vyvolá erorrs (s oznámením, že probíhá Úplná synchronizace dat) na všech operacích Redis proti němu, dokud se nedokončí Úplná synchronizace dat mezi Geo-Primary a Geo-Secondary. Aplikace, které se čtou z Geo-Seocndary, by měly být sestaveny tak, aby se vrátily k Geo-Primary vždy, když Geo-Seocndary vyvolává takové chyby. 
 - Všechna data, která byla v sekundární odkazované mezipaměti před přidáním odkazu, budou odebrána. Pokud je geografická replikace později odebrána, replikovaná data zůstanou v sekundární odkazované mezipaměti.
 - Při propojení mezipamětí nelze [škálovat](cache-how-to-scale.md) buď mezipaměť.
 - Pokud je povolená podpora clusteringu, nemůžete [změnit počet horizontálních oddílů](cache-how-to-premium-clustering.md) .

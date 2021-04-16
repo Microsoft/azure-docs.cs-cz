@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 07af586bac71ee9b33ef314756454cb3c52ec912
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 8b46ca16fc32a7b96c071a745f49bf5d5557f34b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305918"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530236"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Použití podmínky umístění v zásadách podmíněného přístupu 
 
@@ -165,7 +165,7 @@ Pokud je cloudový proxy server, můžete použít zásadu, která vyžaduje, ab
 
 ### <a name="api-support-and-powershell"></a>Podpora rozhraní API a prostředí PowerShell
 
-K dispozici je verze Preview Graph API pro pojmenovaná umístění, další informace najdete v tématu [rozhraní API pro namedLocation](/graph/api/resources/namedlocation?view=graph-rest-beta).
+K dispozici je verze Preview Graph API pro pojmenovaná umístění, další informace najdete v tématu [rozhraní API pro namedLocation](/graph/api/resources/namedlocation).
 
 > [!NOTE]
 > Pojmenovaná umístění, která vytvoříte pomocí PowerShellu, se zobrazují jenom v pojmenovaných umístěních (Preview). Ve starém zobrazení se nedají zobrazit pojmenovaná umístění.  

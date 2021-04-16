@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: bc085163b4f738d022ab9771794ec85293de5ed8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 206bcfaeb5cb13d3ecf1e5f6335518c42df21eb8
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100521675"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535290"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do protokolování toků pro skupiny zabezpečení sítě
 
@@ -347,6 +347,18 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 - [Návodu Správa a analýza protokolů toku NSG pomocí Grafana](./network-watcher-nsg-grafana.md)
 - [Návodu Správa a analýza protokolů toku NSG pomocí Graylogu](./network-watcher-analyze-nsg-flow-logs-graylog.md)
 
+*Zakázat protokoly toků*
+
+Když je protokol toku zakázaný, zastaví se protokolování toku pro přidruženou NSG. Nicméně protokol toku jako prostředek stále existuje se všemi jeho nastaveními a přidruženími. Tato možnost může být povolena kdykoli k zahájení protokolování v nakonfigurovaném NSG. Postup pro zakázání nebo povolení protokolů toku najdete v [tomto](./network-watcher-nsg-flow-logging-powershell.md)postupu.  
+
+*Odstranit protokoly toku*
+
+Při odstranění protokolu toku se zastaví nejen protokolování toku pro související NSG, ale také se odstraní prostředek protokolu toku s jeho nastavením a přidruženími. Chcete-li znovu spustit protokolování toku, je nutné pro tento NSG vytvořit nový prostředek protokolu toku. Protokol toku se dá odstranit pomocí [PowerShellu](https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkwatcherflowlog), rozhraní příkazového [řádku](https://docs.microsoft.com/cli/azure/network/watcher/flow-log#az_network_watcher_flow_log_delete) nebo [REST API](https://docs.microsoft.com/rest/api/network-watcher/flowlogs/delete). Podpora pro mazání protokolů toků z Azure Portal je v kanálu.    
+
+Při odstranění NSG se ve výchozím nastavení odstraní přidružený prostředek protokolu toku.
+
+> [!NOTE]
+> Pokud chcete přesunout NSG do jiné skupiny prostředků nebo předplatného, musí se odstranit přidružené protokoly toku, protože jenom zakážete protokoly toků. Po migraci NSG je třeba znovu vytvořit protokoly toku, aby bylo možné protokolování toků povolit.  
 
 ## <a name="nsg-flow-logging-considerations"></a>NSG Flow – požadavky na protokolování
 
@@ -372,7 +384,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Povolit pro kritické virtuální sítě/podsítě**: protokoly toků by měly být povolené na všech kritických virtuální sítě/podsítích ve vašem předplatném jako osvědčený postup pro audit a zabezpečení. 
 
-**Povolit protokolování toku NSG na všech skupin zabezpečení sítě připojených k prostředku**: protokolování toků v Azure je nakonfigurované na prostředku NSG. Tok bude přidružen pouze k jednomu NSG pravidlu. Ve scénářích, kdy je využíváno více skupin zabezpečení sítě, doporučujeme povolit protokoly toku NSG na všech skupin zabezpečení sítě použitých v podsíti prostředku nebo síťovém rozhraní, aby se zajistilo, že bude zaznamenáván veškerý provoz. Další informace najdete v tématu [jak se vyhodnocuje provoz](../virtual-network/network-security-group-how-it-works.md) ve skupinách zabezpečení sítě. 
+**Povolit protokolování toku NSG na všech skupin zabezpečení sítě připojených k prostředku**: protokolování toků v Azure je nakonfigurované na prostředku NSG. Tok bude přidružen pouze k jednomu NSG pravidlu. Ve scénářích, ve kterých se využívá více skupin zabezpečení sítě, doporučujeme povolit protokoly toků NSG pro všechny skupiny zabezpečení sítě použité pro síťové rozhraní nebo podsíť prostředku, aby se zajistilo zaznamenávání veškerého provozu. Další informace najdete v tématu [jak se vyhodnocuje provoz](../virtual-network/network-security-group-how-it-works.md) ve skupinách zabezpečení sítě. 
 
 Několik běžných scénářů:
 1. **Více síťových adaptérů na** virtuálním počítači: Pokud jsou k virtuálnímu počítači připojené víc síťových adaptérů, musí se protokolování toku povolit na všech těchto počítačích.
@@ -402,7 +414,7 @@ Protokoly se někdy nezobrazí, protože vaše virtuální počítače nejsou ak
 
 **Chci automatizovat protokoly toku NSG**
 
-Protokoly toku NSG v současné době nepodporují automatizaci prostřednictvím šablon ARM. Další informace najdete v [oznámení o funkci](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/) .
+Protokoly toku NSG v současné době nepodporují automatizaci prostřednictvím šablon ARM. Další informace najdete v [oznámení funkce](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/).
 
 ## <a name="faq"></a>Časté otázky
 

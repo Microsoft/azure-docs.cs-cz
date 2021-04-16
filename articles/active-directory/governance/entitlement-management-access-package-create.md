@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3df08272b352ee789c9879b1118105c435cffbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb0312d905284f8c5a9817e9550d340bf6135032
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103011081"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532213"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Vytvoření nového balíčku pro přístup ve správě nároků Azure AD
 
@@ -138,11 +138,11 @@ Na kartě **Revize + vytvořit** můžete zkontrolovat nastavení a zkontrolovat
 
 Balíček pro přístup můžete také vytvořit pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API na
 
-1. [Seznamte se s accessPackageResources v katalogu](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta) a [vytvořte accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta) pro všechny prostředky, které ještě nejsou v katalogu.
-1. [Vypíše accessPackageResourceRoles](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) každého accessPackageResourceu v accessPackageCatalog. Tento seznam rolí se pak použije k výběru role při následném vytvoření accessPackageResourceRoleScope.
-1. [Vytvořte accessPackage](/graph/tutorial-access-package-api?view=graph-rest-beta).
-1. [Vytvořte accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta).
-1. [Vytvořte accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) pro každou roli prostředku potřebnou v balíčku pro přístup.
+1. [Seznamte se s accessPackageResources v katalogu](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta&preserve-view=true) a [vytvořte accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta&preserve-view=true) pro všechny prostředky, které ještě nejsou v katalogu.
+1. [Vypíše accessPackageResourceRoles](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta&preserve-view=true) každého accessPackageResourceu v accessPackageCatalog. Tento seznam rolí se pak použije k výběru role při následném vytvoření accessPackageResourceRoleScope.
+1. [Vytvořte accessPackage](/graph/tutorial-access-package-api&view=graph-rest-beta&preserve-view=true).
+1. [Vytvořte accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta&preserve-view=true).
+1. [Vytvořte accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta&preserve-view=true) pro každou roli prostředku potřebnou v balíčku pro přístup.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 051963060531283b868a5a20e13e871de1919ccb
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: e1fea64305d4735c5bf1bf59b86ae5283600e622
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256068"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502194"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Použití skupin cloudů ke správě přiřazení rolí v Azure Active Directory (Preview)
 
@@ -63,6 +63,7 @@ Následující scénáře se teď nepodporují:
 - Použijte nové [Centrum pro správu Exchange](https://admin.exchange.microsoft.com/) pro přiřazení rolí prostřednictvím členství ve skupině. Původní centrum pro správu Exchange tuto funkci ještě nepodporuje. Rutiny prostředí Exchange PowerShell budou fungovat podle očekávání.
 - Portál Azure Information Protection (portál Classic) nerozpozná členství v rolích prostřednictvím skupiny. Můžete [migrovat na sjednocenou platformu označování citlivostí](/azure/information-protection/configure-policy-migrate-labels) a potom použít Centrum kompatibility Office 365 Security & k použití přiřazení skupin pro správu rolí.
 - [Centrum pro správu aplikací](https://config.office.com/) tuto funkci ještě nepodporuje. Přiřaďte uživatele přímo k roli Správce aplikací Office.
+- [Centrum kompatibility M365](https://compliance.microsoft.com/) tuto funkci ještě nepodporuje. Pokud chcete používat tento portál, přiřaďte uživatele přímo k příslušným rolím Azure AD.
 
 Opravujeme tyto problémy.
 

@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/15/2021
 ms.author: jgao
-ms.openlocfilehash: 3240cce34a6fa645986a58ab43b28ad38485e97b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d35deb978b3b60b73ac393b241471cb528817d35
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308961"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536957"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Použití skriptů pro nasazení v šablonách ARM
 
@@ -136,7 +136,7 @@ Následující kód JSON je příklad. Další informace najdete v tématu nejno
 
 Podrobnosti hodnoty vlastnosti:
 
-- `identity`: Rozhraní API pro nasazení skriptů verze 2020-10-01 nebo novější je uživatelem přiřazená identita volitelná, pokud nepotřebujete ve skriptu provádět žádné akce specifické pro Azure.  Pro rozhraní API verze 2019-10-01-Preview je požadovaná spravovaná identita, protože služba skriptu nasazení ji používá ke spouštění skriptů. V současné době je podporována pouze spravovaná identita přiřazená uživatelem.
+- `identity`: Rozhraní API pro nasazení skriptů verze 2020-10-01 nebo novější je uživatelem přiřazená identita volitelná, pokud nepotřebujete ve skriptu provádět žádné akce specifické pro Azure.  Pro rozhraní API verze 2019-10-01-Preview je požadovaná spravovaná identita, protože služba skriptu nasazení ji používá ke spouštění skriptů. Je-li zadána vlastnost identity, služba skriptu před vyvoláním `Connect-AzAccount -Identity` skriptu uživatele zavolá. V současné době je podporována pouze spravovaná identita přiřazená uživatelem. Pokud se chcete přihlásit s jinou identitou, můžete ve skriptu volat [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
 - `kind`: Zadejte typ skriptu. V současné době jsou podporovány skripty Azure PowerShell a Azure CLI. Hodnoty jsou **AzurePowerShell** a **Azure CLI**.
 - `forceUpdateTag`: Změna této hodnoty mezi nasazeními šablon vynutí opětovné spuštění skriptu nasazení. Použijete-li `newGuid()` funkce nebo `utcNow()` , lze obě funkce použít pouze ve výchozí hodnotě parametru. Další informace najdete v tématu [spuštění skriptu více než jednou](#run-script-more-than-once).
 - `containerSettings`: Zadejte nastavení pro přizpůsobení instance kontejneru Azure. Skript nasazení vyžaduje novou instanci kontejneru Azure. Nemůžete zadat existující instanci kontejneru Azure. Název skupiny kontejnerů ale můžete přizpůsobit pomocí `containerGroupName` . Pokud není zadaný, název skupiny se automaticky vygeneruje.
@@ -250,7 +250,7 @@ reference('<ResourceName>').outputs.text
 
 ## <a name="work-with-outputs-from-cli-script"></a>Práce s výstupy ze skriptu CLI
 
-Liší se od skriptu nasazení prostředí PowerShell, Podpora CLI/bash nezveřejňuje společnou proměnnou pro ukládání výstupů skriptu, místo toho je k dispozici proměnná prostředí `AZ_SCRIPTS_OUTPUT_PATH` s názvem, která ukládá umístění, kde se nachází soubor výstupy skriptu. Pokud se skript nasazení spustí ze šablony Správce prostředků, tato proměnná prostředí se pro vás automaticky nastaví pomocí prostředí bash.
+Liší se od skriptu nasazení prostředí PowerShell, Podpora CLI/bash nezveřejňuje společnou proměnnou pro ukládání výstupů skriptu, místo toho je k dispozici proměnná prostředí `AZ_SCRIPTS_OUTPUT_PATH` s názvem, která ukládá umístění, kde se nachází soubor výstupy skriptu. Pokud se skript nasazení spustí ze šablony Správce prostředků, tato proměnná prostředí se pro vás automaticky nastaví pomocí prostředí bash. Hodnota `AZ_SCRIPTS_OUTPUT_PATH` je */mnt/azscripts/azscriptoutput/scriptoutputs.js*.
 
 Výstupy skriptu nasazení musí být uloženy v `AZ_SCRIPTS_OUTPUT_PATH` umístění a výstupy musí být platný objekt řetězce JSON. Obsah souboru musí být uložen jako dvojice klíč-hodnota. Například pole řetězců je uloženo jako `{ "MyResult": [ "foo", "bar"] }` .  Ukládání pouze výsledků pole `[ "foo", "bar" ]` je například neplatné.
 
@@ -310,6 +310,26 @@ Když se použije existující účet úložiště, služba skriptu vytvoří sd
 Způsob, jakým PowerShell odpoví na neukončující chyby, můžete řídit pomocí `$ErrorActionPreference` proměnné ve skriptu nasazení. Pokud tato proměnná není nastavená ve skriptu nasazení, služba skriptu použije výchozí hodnotu **pokračovat**.
 
 Služba skriptu nastaví stav zřizování prostředků na **neúspěšné** , pokud skript narazí na chybu navzdory nastavení `$ErrorActionPreference` .
+
+### <a name="use-environment-variables"></a>Použití proměnných prostředí
+
+Skript nasazení používá tyto proměnné prostředí:
+
+|Proměnná prostředí|Výchozí hodnota|Rezervováno systémem|
+|--------------------|-------------|---------------|
+|AZ_SCRIPTS_AZURE_ENVIRONMENT|AzureCloud|N|
+|AZ_SCRIPTS_CLEANUP_PREFERENCE|Doba platnosti|N|
+|AZ_SCRIPTS_OUTPUT_PATH|<AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY>/<AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME>|Y|
+|AZ_SCRIPTS_PATH_INPUT_DIRECTORY|/mnt/azscripts/azscriptinput|Y|
+|AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY|/mnt/azscripts/azscriptoutput|Y|
+|AZ_SCRIPTS_PATH_USER_SCRIPT_FILE_NAME|Azure PowerShell: userscript.ps1; Azure CLI: userscript.sh|Y|
+|AZ_SCRIPTS_PATH_PRIMARY_SCRIPT_URI_FILE_NAME|primaryscripturi.config|Y|
+|AZ_SCRIPTS_PATH_SUPPORTING_SCRIPT_URI_FILE_NAME|supportingscripturi.config|Y|
+|AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME|scriptoutputs.jsna|Y|
+|AZ_SCRIPTS_PATH_EXECUTION_RESULTS_FILE_NAME|executionresult.jsna|Y|
+|AZ_SCRIPTS_USER_ASSIGNED_IDENTITY|/Subscriptions/|N|
+
+Další informace o použití nástroje `AZ_SCRIPTS_OUTPUT_PATH` najdete v tématu [práce s výstupy ze skriptu CLI](#work-with-outputs-from-cli-script).
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Předání zabezpečených řetězců skriptu nasazení
 
@@ -566,7 +586,7 @@ Po úspěšném otestování skriptu ho můžete použít jako skript nasazení 
 
 ## <a name="deployment-script-error-codes"></a>Kódy chyb skriptu nasazení
 
-| Kód chyby | Description |
+| Kód chyby | Popis |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Definice prostředku skriptu nasazení v šabloně obsahuje neplatné názvy vlastností. |
 | DeploymentScriptResourceConflict | Nelze odstranit prostředek skriptu nasazení, který je v neterminálu, a provádění nepřekročilo 1 hodinu. Nebo nemůžete znovu spustit stejný skript nasazení se stejným identifikátorem prostředku (stejné předplatné, název skupiny prostředků a názvem prostředku), ale zároveň s jiným obsahem textu skriptu. |

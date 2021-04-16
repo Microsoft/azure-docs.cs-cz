@@ -12,12 +12,12 @@ ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 41336d59d51685d5daf78a1809ce6c0df2cd6124
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 884cb0c30bc754366fda79a4b54b977517fbadd3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781309"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530538"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Správa Azure AD B2C s využitím Microsoft Graph
 
@@ -140,7 +140,7 @@ Další informace o přístupu k protokolům auditu Azure AD B2C najdete v téma
 
 ## <a name="conditional-access"></a>Podmíněný přístup
 
-- [Seznam všech zásad podmíněného přístupu](/graph/api/conditionalaccessroot-list-policies?view=graph-rest-beta&tabs=http)
+- [Seznam všech zásad podmíněného přístupu](/graph/api/conditionalaccessroot-list-policies?tabs=http)
 - [Čtení vlastností a vztahů zásad podmíněného přístupu](/graph/api/conditionalaccesspolicy-get)
 - [Vytvořit nové zásady podmíněného přístupu](/graph/api/resources/application)
 - [Aktualizace zásad podmíněného přístupu](/graph/api/conditionalaccesspolicy-update)

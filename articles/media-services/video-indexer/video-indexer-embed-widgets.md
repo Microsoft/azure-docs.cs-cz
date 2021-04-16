@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: 56db88bff5b0e92a3819670e200177f10609aaa8
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 822d50bca6bc1139e9b5f0554bcf9a56a8fcbd74
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029722"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532888"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Vložení Video Indexer widgetů do aplikací
 
@@ -97,13 +97,13 @@ Můžete vložit Veřejná videa sestavení adresy URL následujícím způsobem
   
 #### <a name="private-videos"></a>Soukromá videa
 
-Pokud chcete vložit soukromé video, musíte předat přístupový token (použijte k [získání přístupového tokenu videa](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?) v `src` atributu prvku IFRAME:
+Pokud chcete vložit soukromé video, musíte předat přístupový token (použijte k [získání přístupového tokenu videa](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Access-Token) v `src` atributu prvku IFRAME:
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
   
 ### <a name="provide-editing-insights-capabilities"></a>Poskytněte možnosti pro úpravu přehledů
 
-Pokud chcete zajistit možnosti úprav v rámci vložené pomůcky, musíte předat přístupový token, který zahrnuje oprávnění k úpravám. Použijte k [získání přístupového tokenu videa](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) `&allowEdit=true` .
+Pokud chcete zajistit možnosti úprav v rámci vložené pomůcky, musíte předat přístupový token, který zahrnuje oprávnění k úpravám. Použijte k [získání přístupového tokenu videa](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Access-Token) `&allowEdit=true` .
 
 ## <a name="widgets-interaction"></a>Interakce widgetů
 
@@ -299,7 +299,7 @@ Ve výchozím nastavení se přehrávač začne přehrávat ve videu. Můžete s
 
 Podívejte se na úložiště [ukázek kódu](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) , které obsahuje ukázky pro video indexer rozhraní API a widgety:
 
-| Soubor nebo složka                       | Description                                |
+| Soubor nebo složka                       | Popis                                |
 |-----------------------------------|--------------------------------------------|
 | `azure-media-player`              | Načíst video indexerer ve vlastním Azure Media Player.                        |
 | `azure-media-player-vi-insights`  | Vložte VI přehledů s vlastní Azure Media Player.                             |

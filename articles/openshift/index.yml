@@ -9,12 +9,12 @@ metadata:
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: d6c9d2ae5a2f91cd0c9c5b0b902b254ffcd8c8f8
-  ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+  ms.openlocfilehash: 25c96daa5bdebb07eb868a5e2d5b574e14e38d96
+  ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/15/2021
-  ms.locfileid: "107517874"
+  ms.lasthandoff: 04/16/2021
+  ms.locfileid: "107535620"
 landingContent:
 - title: Informace o platformě Azure Red Hat OpenShift
   linkLists:
@@ -42,9 +42,11 @@ landingContent:
       url: dns-forwarding.md
     - text: Konfigurace integrovaného registru kontejnerů pro Azure Red Hat OpenShift
       url: built-in-container-registry.md
-    - text: Nasazení aplikace do Azure Red Hat OpenShift pomocí OpenShift bez serveru
+    - text: Nasazení aplikace ze zdroje
+      url: howto-deploy-with-s2i.md
+    - text: Nasazení aplikace s využitím OpenShift bez serveru
       url: howto-deploy-with-serverless.md
-    - text: Nasazení aplikace Open/WebSphere Liberty v clusteru platformy Azure Red Hat OpenShift 4
+    - text: Nasazení otevřené aplikace svobody/WebSphere svobody v clusteru Azure Red Hat OpenShift
       url: howto-deploy-java-liberty-app.md
 - title: Referenční informace
   linkLists:

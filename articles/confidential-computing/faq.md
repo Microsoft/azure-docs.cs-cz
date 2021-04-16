@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: a5ecd3827bbdc12b098684f1feda2df652f11940
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05c98102109d1925eb78d4558faf62b366801e77
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551908"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538991"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Nejčastější dotazy týkající se důvěrného výpočetního prostředí Azure
 
@@ -76,4 +76,3 @@ Pokyny k instalaci sady OE SDK na místní počítač Azure nebo v místním po�
 Můžete se také podívat na otevřený enklávy SDK GitHub pro pokyny k instalaci specifické pro konkrétní operační systém:
    - [Instalace rozhraní OE SDK ve Windows](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)
    - [Instalace sady OE SDK na Ubuntu 18,04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md)
-   - [Instalace sady OE SDK na Ubuntu 16,04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_16.04.md)

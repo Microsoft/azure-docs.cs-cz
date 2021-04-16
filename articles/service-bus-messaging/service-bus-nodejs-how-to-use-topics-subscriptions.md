@@ -2,17 +2,19 @@
 title: Použití náhledu JavaScriptu Azure/Service-Bus s tématy a předplatnými
 description: Naučte se psát program JavaScriptu, který používá nejnovější verzi Preview @azure/service-bus balíčku k odesílání zpráv do Service Bus tématu a příjem zpráv z odběru tématu.
 author: spelluru
-ms.devlang: nodejs
-ms.topic: quickstart
-ms.date: 11/09/2020
 ms.author: spelluru
-ms.custom: devx-track-js
-ms.openlocfilehash: a1afe4207ce3833f3bcb55bc7bc2e8e27f393f63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/09/2020
+ms.topic: quickstart
+ms.devlang: nodejs
+ms.custom:
+- devx-track-js
+- mode-api
+ms.openlocfilehash: 59f1bb29099f2b921e687ca9de46365bc34f1b91
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98179992"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537242"
 ---
 # <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>Rychlý Start: Service Bus témata a předplatná pomocí Node.js a balíčku Azure/Service-Bus verze Preview
 V tomto kurzu se naučíte používat [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) balíček v programu JavaScriptu k posílání zpráv do Service Busho tématu a přijímání zpráv z Service Bus předplatného do tohoto tématu.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: b94e1f82409da3329eb6d978fa2ae0222928cd97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b16a2d9f779232e59eb883f6a254be22990f5c78
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505932"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520016"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Průvodce nasazením platformy SAP BusinessObjects BI pro Linux v Azure
 
@@ -36,7 +36,7 @@ V tomto příkladu se používá verze produktu a rozložení systému souborů.
 - Azure Database for MySQL (verze: 8.0.15)
 - MySQL C API Connector – libmysqlclient (verze: 6.1.11)
 
-| Systém souborů        | Description                                                                                                               | Velikost (GB)             | Vlastník  | Group (Skupina)  | Storage                    |
+| Systém souborů        | Popis                                                                                                               | Velikost (GB)             | Vlastník  | Group (Skupina)  | Storage                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | Systém souborů pro instalaci instance SAP BOBI, výchozí webové aplikace Tomcat a ovladače databáze (v případě potřeby) | Pokyny pro určení velikosti SAP | bl1adm | sapsys | Spravovaný disk úrovně Premium – SSD |
 | /usr/sap/frsinput  | Adresář pro připojení je určený pro sdílené soubory ve všech hostitelích BOBI, které se použijí jako adresář úložiště vstupních souborů.  | Obchodní potřeby         | bl1adm | sapsys | Azure NetApp Files         |
@@ -560,7 +560,7 @@ V rámci procesu zálohování se snímek povede a data se přenesou do trezoru 
 
 Pro **Azure NetApp Files** můžete vytvořit snímky na vyžádání a naplánovat automatické snímky pomocí zásad snímků. Kopie snímků poskytují kopii ANF svazku v čase. Další informace najdete v tématu [Správa snímků pomocí Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md).
 
-Zálohování **souborů Azure** je integrované s nativní [Azure Backupovou](../../../backup/backup-overview.md) službou, která centralizovat funkci zálohování a obnovení společně s zálohováním virtuálních počítačů a zjednodušuje práci s operacemi. Další informace najdete v tématu [Zálohování sdílených složek Azure](../../../backup/azure-file-share-backup-overview.md) a [Nejčastější dotazy – zálohování souborů Azure](../../../backup/backup-azure-files-faq.md).
+Zálohování **souborů Azure** je integrované s nativní [Azure Backupovou](../../../backup/backup-overview.md) službou, která centralizovat funkci zálohování a obnovení společně s zálohováním virtuálních počítačů a zjednodušuje práci s operacemi. Další informace najdete v tématu [Zálohování sdílených složek Azure](../../../backup/azure-file-share-backup-overview.md) a [Nejčastější dotazy – zálohování souborů Azure](../../../backup/backup-azure-files-faq.yml).
 
 #### <a name="backup--restore-for-cms-database"></a>Zálohování & obnovení pro databázi CMS
 

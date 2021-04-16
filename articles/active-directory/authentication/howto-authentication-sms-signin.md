@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e9052502eba71f025bb6724278b7001173c5217
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b84d55e2d3a2f49a870c1e57eeed3c5c0caeba4a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491613"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530417"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Konfigurace a povolení ověřování založeného na SMS pomocí Azure Active Directory 
 
@@ -149,7 +149,7 @@ Pokud se při pokusu o nastavení telefonního čísla pro uživatelský účet 
 
 Další způsoby, jak se přihlásit ke službě Azure AD bez hesla, například Microsoft Authenticator aplikace nebo klíčů zabezpečení FIDO2, najdete v tématu [Možnosti ověřování bez hesla pro službu Azure AD][concepts-passwordless].
 
-K [Povolení][rest-enable] nebo [zakázání][rest-disable] přihlášení pomocí serveru SMS můžete také použít Microsoft Graph REST API beta.
+K [Povolení][rest-enable] nebo [zakázání][rest-disable] přihlášení pomocí serveru SMS můžete použít také REST API Microsoft Graph.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../fundamentals/sign-up-organization.md
@@ -157,8 +157,8 @@ K [Povolení][rest-enable] nebo [zakázání][rest-disable] přihlášení pomoc
 [concepts-passwordless]: concept-authentication-passwordless.md
 [tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
 [tutorial-sspr]: tutorial-enable-sspr.md
-[rest-enable]: /graph/api/phoneauthenticationmethod-enablesmssignin?view=graph-rest-beta&tabs=http
-[rest-disable]: /graph/api/phoneauthenticationmethod-disablesmssignin?view=graph-rest-beta&tabs=http
+[rest-enable]: /graph/api/phoneauthenticationmethod-enablesmssignin?tabs=http
+[rest-disable]: /graph/api/phoneauthenticationmethod-disablesmssignin?tabs=http
 
 <!-- EXTERNAL LINKS -->
 [azure-portal]: https://portal.azure.com

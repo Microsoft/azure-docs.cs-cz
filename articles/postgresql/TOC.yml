@@ -486,6 +486,16 @@
               displayName: 'monitor, server logs'
             - name: Protokoly auditu
               href: flexible-server/concepts-audit.md
+            - name: Inteligentní výkon
+              items:
+                - name: Přehled úložiště dotazů
+                  href: flexible-server/concepts-query-store.md
+                  displayName: 'performance, optimize, query store'
+                - name: Scénáře použití úložiště dotazů
+                  href: flexible-server/concepts-query-store-scenarios.md
+                  displayName: 'query store, performance, optimize'
+                - name: Osvědčené postupy pro úložiště dotazů
+                  href: flexible-server/concepts-query-store-best-practices.md
         - name: Replikace
           href: flexible-server/concepts-logical.md
           displayName: logical decoding

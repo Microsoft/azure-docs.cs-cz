@@ -3,17 +3,20 @@ title: 'Rychlý Start: vytvoření serveru-Azure PowerShell-Azure Database for M
 description: V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Database for MariaDB Server ve skupině prostředků Azure.
 author: savjani
 ms.author: pariks
+ms.date: 05/26/2020
+ms.topic: quickstart
 ms.service: mariadb
 ms.devlang: azurepowershell
-ms.topic: quickstart
-ms.date: 05/26/2020
-ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 05082ffa891b72b472ed5433282198c61080f073
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mvc
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: 7bfbd223cb337ff7d908032c769afbbf5cafa38f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664660"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531382"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>Rychlý Start: vytvoření serveru Azure Database for MariaDB pomocí prostředí PowerShell
 

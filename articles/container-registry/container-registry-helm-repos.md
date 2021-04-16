@@ -2,22 +2,19 @@
 title: Uložení Helm grafů
 description: Naučte se ukládat Helm grafy pro aplikace Kubernetes pomocí úložišť v Azure Container Registry
 ms.topic: article
-ms.date: 06/12/2020
-ms.openlocfilehash: 9897ed6e43813c16314076b0322cd263cd2ed150
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 04/15/2021
+ms.openlocfilehash: 6698eb8f5e18511717e44bf5dc06a51d8f3903b8
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223077"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537320"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Vložení a vyžádání Helm grafů do služby Azure Container Registry
 
 Pokud chcete rychle spravovat a nasazovat aplikace pro Kubernetes, můžete použít [Správce balíčků Open Source Helm][helm]. Pomocí Helm jsou balíčky aplikací definované jako [grafy](https://helm.sh/docs/topics/charts/), které se shromažďují a ukládají do [úložiště grafu Helm](https://helm.sh/docs/topics/chart_repository/).
 
 V tomto článku se dozvíte, jak hostovat úložiště Helm grafů v registru kontejnerů Azure pomocí příkazů Helm 3. V mnoha scénářích byste sestavili a nahráli vlastní grafy pro aplikace, které vyvíjíte. Další informace o tom, jak vytvářet vlastní grafy Helm, najdete v [příručce pro vývojáře šablony grafu][develop-helm-charts]. Existující graf Helm můžete také uložit z jiného úložiště Helm.
-
-> [!IMPORTANT]
-> Podpora Helm grafů v Azure Container Registry je v současnosti ve verzi Preview. Verze Preview jsou k dispozici na základě podmínky, že souhlasíte s doplňkovými [podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
 ## <a name="helm-3-or-helm-2"></a>Helm 3 nebo Helm 2?
 
@@ -26,7 +23,7 @@ K ukládání, správě a instalaci Helm grafů použijte klienta Helm a rozhran
 Helm 3 by se měly použít k hostování Helm grafů v Azure Container Registry. S Helm 3 jste:
 
 * Může vytvořit jedno nebo víc úložišť Helm ve službě Azure Container Registry.
-* Uložte Helm 3 grafy do registru jako [artefakty OCI](container-registry-image-formats.md#oci-artifacts). V současné době je podpora Helm 3 pro OCI *experimentální*.
+* Uložte Helm 3 grafy do registru jako [artefakty OCI](container-registry-image-formats.md#oci-artifacts). Azure Container Registry poskytuje podporu GA pro [artefakty OCI](container-registry-oci-artifacts.md), včetně grafů Helm.
 * Pomocí příkazu proveďte ověření pomocí vašeho registru `helm registry login` .
 * Použití `helm chart` příkazů v rozhraní příkazového řádku Helm k vložení, vyžádání a správě Helm grafů v registru
 * Použijte `helm install` k instalaci grafů do clusteru Kubernetes z místní mezipaměti úložiště.

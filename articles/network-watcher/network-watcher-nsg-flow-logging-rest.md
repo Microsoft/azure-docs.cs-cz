@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: ea24716dba5e4e824a4fa986602007035be8e365
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b45d066d0996aaba2a25500f8134085f5e9b6ffb
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018373"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535186"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurace protokolů toku skupiny zabezpečení sítě pomocí REST API
 
@@ -31,7 +31,7 @@ Protokoly toku skupin zabezpečení sítě jsou funkcí Network Watcher, která 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-ARMclient se používá k volání REST API s využitím PowerShellu. ARMClient se nachází v čokoládě na [ARMClient při čokoládě](https://chocolatey.org/packages/ARMClient) .
+ARMclient se používá k volání REST API s využitím PowerShellu. ARMClient se nachází v čokoládě při [čokoládě na ARMClient](https://chocolatey.org/packages/ARMClient). Podrobné specifikace protokolů toku NSG REST API najdete [tady](https://docs.microsoft.com/rest/api/network-watcher/flowlogs) . 
 
 V tomto scénáři se předpokládá, že už jste postupovali podle kroků v části [vytvoření Network Watcher](network-watcher-create.md) k vytvoření Network Watcher.
 

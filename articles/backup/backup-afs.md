@@ -3,12 +3,12 @@ title: Zálohování sdílených složek Azure v Azure Portal
 description: Naučte se používat Azure Portal k zálohování sdílených složek Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: ca49f1ad48ab0534b27b91ad6a5a50b393cda782
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7f44a71388468be432bdfcb0eb2bf67c0fcc8ef
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88890344"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519931"
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 
@@ -132,7 +132,7 @@ Následující postup vysvětluje, jak můžete nakonfigurovat zálohování pro
        ![Vytvořit nový trezor](./media/backup-afs/create-new-vault.png)
 
       >[!IMPORTANT]
-      >Pokud je účet úložiště zaregistrovaný v trezoru nebo pokud je v rámci účtu úložiště hostující sdílená složka, kterou chcete chránit, název Recovery Services trezoru bude předem vyplněný a nebudete ho moct upravit. [Další informace najdete tady](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share).
+      >Pokud je účet úložiště zaregistrovaný v trezoru nebo pokud je v rámci účtu úložiště hostující sdílená složka, kterou chcete chránit, název Recovery Services trezoru bude předem vyplněný a nebudete ho moct upravit. [Další informace najdete tady](backup-azure-files-faq.yml#why-can-t-i-change-the-vault-to-configure-backup-for-the-file-share-).
 
 1. Pro výběr **zásad zálohování** proveďte jednu z následujících akcí:
 

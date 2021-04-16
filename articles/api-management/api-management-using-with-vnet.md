@@ -2,22 +2,18 @@
 title: Použití služby Azure API Management s virtuálními sítěmi
 description: Naučte se, jak nastavit připojení k virtuální síti ve službě Azure API Management a přistupovat k webovým službám prostřednictvím ní.
 services: api-management
-documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
 ms.service: api-management
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 12/10/2020
+ms.topic: how-to
+ms.date: 04/12/2021
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: c63b71ad00a5621babe07597720a1e9ea87f1e4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5612da51c1896aaa40ff2a0fb90e3343f676de43
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99260244"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531644"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Použití služby Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -35,11 +31,13 @@ Službu Azure API Management lze nasadit v rámci virtuální sítě (VNET), aby
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
-+ Musíte mít aktivní předplatné Azure.
++ **Aktivní předplatné Azure.**
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ Instance APIM Další informace najdete v tématu [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
++ **Instance API Management.** Další informace najdete v tématu [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
+
+[!INCLUDE [api-management-public-ip-for-vnet](../../includes/api-management-public-ip-for-vnet.md)]
 
 ## <a name="enable-vnet-connection"></a><a name="enable-vpn"> </a>Povolit připojení k virtuální síti
 
@@ -47,14 +45,14 @@ K provedení kroků popsaných v tomto článku musíte mít:
 
 1. Pokud chcete najít instanci API Management, přejít na [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **API Management Services**.
 
-2. Vyberte instanci API Management.
+1. Vyberte instanci API Management.
 
-3. Vyberte **virtuální síť**.
-4. Nakonfigurujte instanci API Management, která se má nasadit v rámci virtuální sítě.
+1. Vyberte **virtuální síť**.
+1. Nakonfigurujte instanci API Management, která se má nasadit v rámci virtuální sítě.
 
     :::image type="content" source="media/api-management-using-with-vnet/api-management-menu-vnet.png" alt-text="V Azure Portal vyberte virtuální síť.":::
     
-5. Vyberte požadovaný typ přístupu:
+1. Vyberte požadovaný typ přístupu:
 
     * **Off**: Toto je výchozí nastavení. API Management není nasazený ve virtuální síti.
 
@@ -66,32 +64,46 @@ K provedení kroků popsaných v tomto článku musíte mít:
 
         ![Soukromý partnerský vztah][api-management-vnet-private]
 
-6. Pokud jste vybrali možnost **externí** nebo **interní**, zobrazí se seznam všech oblastí, ve kterých se služba API Management zřídí. Zvolte **umístění** a pak vyberte svou **virtuální síť** a **podsíť**. Seznam Virtual Network se naSprávce prostředků plní v rámci předplatného Azure, které jsou dostupné v předplatných Azure, které jsou nastavené v oblasti, kterou konfigurujete.
+1. Pokud jste vybrali možnost **externí** nebo **interní**, zobrazí se seznam všech umístění (oblastí), ve kterých se služba API Management zřídí. Zvolte **umístění** a pak vyberte svou **virtuální síť**, **podsíť** a **IP adresu**. Seznam Virtual Network se naplní Správce prostředkůmi virtuálními sítěmi dostupnými v předplatných Azure, která jsou nastavená v oblasti, kterou konfigurujete.
 
-    > [!IMPORTANT]
-    > Při nasazování instance Azure API Management do virtuální sítě Správce prostředků musí být služba ve vyhrazené podsíti, která neobsahuje žádné další prostředky s výjimkou instancí Azure API Management. Pokud se provede pokus o nasazení instance služby Azure API Management do podsítě Správce prostředků virtuální sítě, která obsahuje další prostředky, nasazení se nezdaří.
-
-    Pak vyberte **Použít**. Stránka **virtuální síť** vaší instance API Management se aktualizuje novými možnostmi virtuální sítě a podsítě.
 
     :::image type="content" source="media/api-management-using-with-vnet/api-management-using-vnet-select.png" alt-text="Nastavení virtuální sítě na portálu.":::
 
+    > [!IMPORTANT]
+    > * Když klient používá **rozhraní API verze 2020-12-01 nebo starší** k nasazení instance služby Azure API Management v Správce prostředků virtuální síti, musí být služba ve vyhrazené podsíti, která neobsahuje žádné prostředky kromě instancí Azure API Management. Pokud se provede pokus o nasazení instance služby Azure API Management do podsítě Správce prostředků virtuální sítě, která obsahuje další prostředky, nasazení se nezdaří.
+    > * Pokud klient používá **rozhraní API verze 2021-01-01-Preview nebo novější** k nasazení instance služby Azure API Management ve virtuální síti, je podporována pouze správce prostředků virtuální síť. Kromě toho by použitá podsíť mohla obsahovat další prostředky. Nemusíte používat podsíť vyhrazenou pro API Management instance. 
+
+1. Vyberte **Použít**. Stránka **virtuální síť** vaší instance API Management se aktualizuje novými možnostmi virtuální sítě a podsítě.
+
+1. Pokračujte v konfiguraci nastavení virtuální sítě pro zbývající umístění vaší instance API Management.
+
 7. V horním navigačním panelu vyberte **Uložit** a pak vyberte **použít konfiguraci sítě**.
 
+    Aktualizace instance API Management může trvat 15 až 45 minut.
+
 > [!NOTE]
-> Adresa VIP instance API Management se změní pokaždé, když je virtuální síť povolená nebo zakázaná.
-> Adresa VIP se také změní, když API Management přesunete z **externích** do **interního** nebo naopak.
->
+> S klienty, kteří používají rozhraní API verze 2020-12-01 a starší, se adresa VIP instance API Management změní pokaždé, když je virtuální síť povolená nebo zakázaná. Virtuální IP adresa se změní také při přesunu API Management z **externích** do **interní** virtuální sítě nebo naopak.
 
 > [!IMPORTANT]
 > Pokud API Management odeberete z virtuální sítě nebo změníte nasazení v nástroji, dříve použitá síť VNET může zůstat uzamčena po dobu až šesti hodin. Během této doby nebude možné virtuální síť odstranit ani do ní nasadit nový prostředek. Toto chování platí pro klienty, kteří používají rozhraní API verze 2018-01-01 a starší. Klienti používající rozhraní API verze 2019-01-01 a novější, virtuální síť se uvolní hned po odstranění přidružené API Management služby.
 
-## <a name="deploy-api-management-into-external-vnet"></a><a name="deploy-apim-external-vnet"> </a>Nasazení API Management do externí virtuální sítě
+### <a name="deploy-api-management-into-external-vnet"></a><a name="deploy-apim-external-vnet"> </a>Nasazení API Management do externí virtuální sítě
 
-[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-external-vnet%2Fazuredeploy.json)
+Připojení k virtuální síti můžete také povolit pomocí následujících metod.
 
-* **Vytvoření služby API Management v rámci virtuální** sítě: pomocí rutiny [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) vytvořte službu Azure API Management v rámci virtuální sítě.
+### <a name="api-version-2021-01-01-preview"></a>Rozhraní API verze 2021-01-01-Preview
 
-* **Nasazení existující služby API Management v rámci virtuální** sítě: pomocí rutiny [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) můžete přesunout existující službu Azure API Management do Virtual Network.
+* [Šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-management-create-with-external-vnet-publicip) Azure Resource Manager
+
+     [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-external-vnet-publicip%2Fazuredeploy.json)
+
+### <a name="api-version-2020-12-01"></a>Rozhraní API verze 2020-12-01
+
+* [Šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-management-create-with-external-vnet) Azure Resource Manager
+    
+     [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-external-vnet%2Fazuredeploy.json)
+
+* Rutiny Azure PowerShell – [Vytvoření](/powershell/module/az.apimanagement/new-azapimanagement) nebo [aktualizace](/powershell/module/az.apimanagement/update-azapimanagementregion) instance API Management ve virtuální síti
 
 ## <a name="connect-to-a-web-service-hosted-within-a-virtual-network"></a><a name="connect-vnet"> </a>Připojení k webové službě hostované ve virtuální síti
 Po připojení služby API Management k virtuální síti se přístup k back-endu službám v rámci této sítě neliší od přístupu k veřejným službám. Stačí zadat místní IP adresu nebo název hostitele (Pokud je server DNS nakonfigurovaný pro virtuální síť) webové služby na pole **Adresa URL webové služby** při vytváření nového rozhraní API nebo úpravou existujícího rozhraní API.
@@ -138,9 +150,9 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 
     | Prostředí Azure | Koncové body                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Veřejný partnerský vztah Azure      | <ul><li>gcs.prod.monitoring.core.windows.net (**nové**)</li><li>prod.warmpath.msftcloudes.com (**bude zastaralé**)</li><li>global.prod.microsoftmetrics.com (**nové**)</li><li>global.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-black.prod.microsoftmetrics.com (**nové**)</li><li>prod3-black.prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-red.prod.microsoftmetrics.com (**nové**)</li><li>prod3-red.prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>global.prod.microsoftmetrics.com (**nové**)</li><li>global.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
-    | Azure (Čína) 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com (**nové**)</li><li>global.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
+    | Veřejný partnerský vztah Azure      | <ul><li>gcs.prod.monitoring.core.windows.net (**nové**)</li><li>global.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**nové**)</li><li>prod3-black.prod.microsoftmetrics.com (**nové**)</li><li>prod3-red.prod.microsoftmetrics.com (**nové**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>global.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**nové**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
+    | Azure (Čína) 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**nové**)</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
   > Změna clusterů výše se zónou DNS **. nsatc.NET** na **. Microsoftmetrics.com** je většinou změnou DNS. IP adresa clusteru se nezmění.
@@ -209,7 +221,7 @@ Každá další jednotka API Management škálování vyžaduje dvě další IP 
 + Veřejnou IP adresu vyrovnávání zatížení najdete v okně Přehled/základní informace v Azure Portal.
 
 ## <a name="limitations"></a><a name="limitations"> </a>Omezení
-* Podsíť obsahující API Management Instances nemůže obsahovat žádné další typy prostředků Azure.
+* Pro klienty, kteří používají rozhraní API verze 2020-12-01 a starší, nemůže podsíť obsahující API Management instance obsahovat žádné další typy prostředků Azure.
 * Podsíť a služba API Management musí být ve stejném předplatném.
 * Podsíť obsahující API Management instance se nedá přesunout mezi předplatnými.
 * Pro API Management nasazení ve více oblastech, která jsou nakonfigurovaná v režimu interní virtuální sítě, se uživatelům zodpovídá za správu vyrovnávání zatížení napříč různými oblastmi, a to při vlastním směrování.

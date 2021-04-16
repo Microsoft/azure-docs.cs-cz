@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 62e2306abc2d3132651fb40aab8c2f5b4d5043f4
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 07611a3620a2fd8efe0da075b03b55a5be3a5be9
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105960873"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505373"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,10 +29,18 @@ Nejaktuálnější informace se budou udržovat v tabulce [IP adres Azure SQL Da
 ## <a name="status-updates"></a>Aktualizace stavu
 
 # <a name="in-progress"></a>[Rozpracované](#tab/in-progress-ip)
+## <a name="may-2021"></a>Květen 2021
+Nové brány SQL se přidávají do následujících oblastí:
+- Velká Británie – jih: 51.140.144.36, 51.105.72.32  
+- Středozápadní USA: 13.71.193.32, 13.71.193.33 
+
+Tato brána SQL zahájí přijímání zákaznických dat 17. května 2021.
 
 ## <a name="april-2021"></a>Duben 2021
 Nové brány SQL se přidávají do následujících oblastí:
-- Východní USA 2:40.70.144.193 tato brána SQL zahájí přijímání zákaznických dat na 30. dubna 2021.
+- Východní USA 2:40.70.144.193
+
+Tato brána SQL zahájí přijímání zákaznických dat na 30. dubna 2021.
 
 Nové brány SQL se přidávají do následujících oblastí:
 - Norsko – východ: 51.120.96.33
@@ -46,7 +54,6 @@ Tyto brány SQL začnou přijímat provoz zákazníků 5. dubna 2021.
 
 ## <a name="march-2021"></a>Březen 2021
 Probíhá deaktivace následujících bran SQL v několika oblastech:
-
 - Brazílie – jih: 104.41.11.5
 - Východní Asie: 191.234.2.139
 - Východní USA: 191.238.6.43
@@ -59,6 +66,9 @@ Probíhá deaktivace následujících bran SQL v několika oblastech:
 - Západní USA: 23.99.34.75
 
 Nepředpokládá se žádný dopad na zákazníky, protože tyto brány (spuštěné na starším hardwaru) nesměrují provoz zákazníků. Po 15. březnu 2021 se IP adresy těchto bran deaktivují.
+
+# <a name="completed"></a>[Dokončeno](#tab/completed-ip)
+Následující migrace brány jsou dokončené: 
 
 ## <a name="february-2021"></a>Únor 2021
 Nové brány SQL se přidávají do následujících oblastí:
@@ -83,8 +93,7 @@ Nové brány SQL se přidávají do následujících oblastí:
 
 Tyto brány SQL začnou přijímat provoz zákazníků 31. ledna 2021.
 
-# <a name="completed"></a>[Dokončeno](#tab/completed-ip)
-Následující migrace brány jsou dokončené: 
+
 
 ### <a name="october-2020"></a>Říjen 2020
 

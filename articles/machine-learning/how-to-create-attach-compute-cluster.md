@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 1e3549a6f5f4f9d7f6a6da574378c90c20e42dcf
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 2d23e073a43d61a501e93e0288f222ef26407744
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169568"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538237"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Vytvoření clusteru Azure Machine Learning COMPUTE
 
@@ -36,6 +36,14 @@ V tomto článku se dozvíte, jak:
 
 * [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)nebo [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
 
+* Pokud používáte sadu Python SDK, [nastavte vývojové prostředí pomocí pracovního prostoru](how-to-configure-environment.md).  Po nastavení prostředí se připojte k pracovnímu prostoru ve skriptu Pythonu:
+
+    ```python
+    from azureml.core import Workspace
+    
+    ws = Workspace.from_config() 
+    ```
+
 ## <a name="what-is-a-compute-cluster"></a>Co je výpočetní cluster?
 
 Výpočetní cluster Azure Machine Learning je spravovaná výpočetní infrastruktura, která umožňuje snadno vytvořit výpočetní prostředí s jedním uzlem nebo několika uzly. Výpočetní prostředí se vytvoří v rámci vaší oblasti pracovního prostoru jako prostředek, který se dá sdílet s ostatními uživateli v pracovním prostoru. Výpočetní výkon se při odeslání úlohy automaticky škáluje a dá se umístit do Azure Virtual Network. Výpočetní výkon se spouští v kontejnerovém prostředí a zabalí závislosti vašich modelů v [kontejneru Docker](https://www.docker.com/why-docker).
@@ -53,7 +61,7 @@ Výpočetní clustery můžou úlohy bezpečně spouštět ve [virtuálním sí�
 * Azure umožňuje umístit _zámky_ na prostředky, aby se nemohly odstranit nebo jsou jen pro čtení. __Neaplikujte zámky prostředků na skupinu prostředků, která obsahuje váš pracovní prostor__. Když použijete zámek pro skupinu prostředků, která obsahuje váš pracovní prostor, zabráníte operacím škálování pro výpočetní clustery Azure ML. Další informace o uzamykání prostředků najdete v tématu [uzamčení prostředků, aby nedocházelo k neočekávaným změnám](../azure-resource-manager/management/lock-resources.md).
 
 > [!TIP]
-> Clustery můžou obecně škálovat až 100 uzlů, pokud máte dostatečnou kvótu pro požadovaný počet jader. Ve výchozím nastavení jsou clustery nastavené s povolenou komunikací mezi uzly mezi uzly clusteru za účelem podpory MPI úloh. Můžete ale škálovat clustery na tisíce uzlů pouhým vyvoláním [lístku podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)a žádostí o povolení seznamu pro vaše předplatné nebo pracovní prostor nebo konkrétního clusteru pro zakázání komunikace mezi uzly. 
+> Clustery můžou obecně škálovat až 100 uzlů, pokud máte dostatečnou kvótu pro požadovaný počet jader. Ve výchozím nastavení jsou clustery nastavené s povolenou komunikací mezi uzly mezi uzly clusteru za účelem podpory MPI úloh. Můžete ale škálovat clustery na tisíce uzlů pouhým vyvoláním [lístku podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)a žádostí o povolení seznamu pro vaše předplatné nebo pracovní prostor nebo konkrétního clusteru pro zakázání komunikace mezi uzly.
 
 
 ## <a name="create"></a>Vytvořit
@@ -70,11 +78,11 @@ Výpočetní výkon se při použití vymění až na nula uzlů.   Vyhrazené v
     
 # <a name="python"></a>[Python](#tab/python)
 
-Pokud chcete v Pythonu vytvořit trvalý Azure Machine Learning výpočetní prostředek, zadejte vlastnosti **vm_size** a **max_nodes** . Azure Machine Learning pak pro ostatní vlastnosti používá inteligentní výchozí hodnoty. 
+
+Pokud chcete v Pythonu vytvořit trvalý Azure Machine Learning výpočetní prostředek, zadejte vlastnosti **vm_size** a **max_nodes** . Azure Machine Learning pak pro ostatní vlastnosti používá inteligentní výchozí hodnoty.
     
 * **vm_size**: rodina virtuálních počítačů uzlů vytvořená Azure Machine Learning Compute.
 * **max_nodes**: maximální počet uzlů pro automatické horizontální navýšení kapacity při spuštění úlohy v Azure Machine Learning Compute.
-
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
@@ -132,16 +140,18 @@ V nástroji Studio při vytváření virtuálního počítače vyberte možnost 
 
 * Konfigurace spravované identity v konfiguraci zřizování:  
 
-    * Spravovaná identita přiřazená systémem:
+    * Spravovaná identita přiřazená systémem vytvořená v pracovním prostoru s názvem `ws`
         ```python
         # configure cluster with a system-assigned managed identity
         compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
                                                                 max_nodes=5,
                                                                 identity_type="SystemAssigned",
                                                                 )
+        cpu_cluster_name = "cpu-cluster"
+        cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
         ```
     
-    * Spravovaná identita přiřazená uživatelem:
+    * Uživatelsky přiřazená spravovaná identita vytvořená v pracovním prostoru s názvem `ws`
     
         ```python
         # configure cluster with a user-assigned managed identity
@@ -154,7 +164,7 @@ V nástroji Studio při vytváření virtuálního počítače vyberte možnost 
         cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
         ```
 
-* Přidat spravovanou identitu do existujícího výpočetního clusteru 
+* Přidejte spravovanou identitu do existujícího výpočetního clusteru s názvem `cpu_cluster`
     
     * Spravovaná identita přiřazená systémem:
     

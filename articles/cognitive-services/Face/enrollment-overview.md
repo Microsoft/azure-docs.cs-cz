@@ -1,5 +1,5 @@
 ---
-title: Přehled registrace Face API
+title: Osvědčené postupy pro přidání uživatelů do služby obličeje
 titleSuffix: Azure Cognitive Services
 description: Přečtěte si o procesu registrace obličeje pro registraci uživatelů ve službě pro rozpoznávání obličeje.
 author: PatrickFarley
@@ -9,16 +9,16 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: ac5106aa661cb2baea31ee15d57e9c6fac8c7192
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e710771dd14b389e856e752b6587e2a76ad9d85b
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350326"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505067"
 ---
-# <a name="face-api-enrollment"></a>Registrace Face API
+# <a name="best-practices-for-adding-users-to-a-face-service"></a>Osvědčené postupy pro přidání uživatelů do služby obličeje
 
-Aby bylo možné používat Face API Cognitive Services pro ověřování nebo identifikaci obličeje, je nutné zaregistrovat obličeje do **LargePersonGroup**. Tato hluboká podrobně předvádí osvědčené postupy pro shromáždění smysluplného souhlasu uživatelů a také ukázkovou logiku pro vytváření vysoce kvalitních registrací, které optimalizují přesnost rozpoznávání.  
+Aby bylo možné používat rozhraní API pro rozpoznávání tváře Cognitive Services pro ověřování nebo identifikaci obličeje, je nutné zaregistrovat obličeje do **LargePersonGroup**. Tato hluboká podrobně předvádí osvědčené postupy pro shromáždění smysluplného souhlasu uživatelů a také ukázkovou logiku pro vytváření vysoce kvalitních registrací, které optimalizují přesnost rozpoznávání.  
 
 ## <a name="meaningful-consent"></a>Smysluplný souhlas 
 
@@ -31,7 +31,7 @@ V závislosti na výzkumu uživatelů Microsoftu, který je zodpovědný za syst
 * Volnost výběru: uživatelé by neměli mít možnost být při rozhodování o souhlasu a registraci v rozpoznávání obličeje zavázáni nebo manipulováni. 
 * Řízení: uživatelé by měli být schopni odvolat svůj souhlas a kdykoli odstranit svá data. 
 
-Tato část nabízí pokyny k vývoji registrační aplikace pro rozpoznávání obličeje. Tyto pokyny se vyvinuly na základě výzkumu uživatelů Microsoftu v souvislosti s registrací jednotlivců v oblasti rozpoznávání obličeje pro vytváření záznamů. Proto se tato doporučení nemusí vztahovat na všechna řešení pro rozpoznávání obličeje. Odpovědnost za použití Face API závisí na konkrétním kontextu, ve kterém je integrovaná, takže stanovení priorit a uplatnění těchto doporučení by se mělo přizpůsobit vašemu scénáři. 
+Tato část nabízí pokyny k vývoji registrační aplikace pro rozpoznávání obličeje. Tyto pokyny se vyvinuly na základě výzkumu uživatelů Microsoftu v souvislosti s registrací jednotlivců v oblasti rozpoznávání obličeje pro vytváření záznamů. Proto se tato doporučení nemusí vztahovat na všechna řešení pro rozpoznávání obličeje. Odpovědnost za použití rozhraní API pro rozpoznávání tváře závisí na konkrétním kontextu, ve kterém je integrovaná, takže stanovení priorit a uplatnění těchto doporučení by se mělo přizpůsobit vašemu scénáři. 
 
 > [!NOTE]
 > Vaše žádost o aplikaci pro registraci se dá v rámci své jurisdikce zarovnat s platnými zákonnými požadavky a přesně odrážet všechny postupy shromažďování a zpracování dat.
@@ -43,7 +43,7 @@ Než začnete navrhovat tok registrace, zamyslete se nad tím, jak aplikace, kte
 |Kategorie | Doporučení |
 |---|---|
 |Hardware | Vezměte v úvahu kvalitu kamery registračního zařízení. |
-|Doporučené funkce pro registraci | Zahrňte do aplikace Multi-Factor Authentication krok přihlášení.</br></br>Propojte informace o uživateli, jako je alias nebo identifikační číslo s ID šablony obličeje z Face API (označované jako ID osoby). Toto mapování je nezbytné pro načtení a správu registrace uživatele. Poznámka: ID osoby by mělo být v aplikaci považováno za tajné.</br></br>Nastavte automatizovaný proces odstraňování všech registračních dat, včetně profesionálových šablon a fotografií pro zápis uživatelů, kteří už nejsou uživateli techniky rozpoznávání obličeje, jako jsou bývalé zaměstnanci.</br></br>Vyhněte se automatické registraci, protože nedává uživateli informace o povědomí, porozumění, svobodě výběru nebo řízení, které se doporučuje pro získání souhlasu. </br></br>Požádejte uživatele o oprávnění k uložení imagí používaných k registraci. To je užitečné v případě, že dojde k aktualizaci modelu, protože nové fotografie registrace se budou muset v novém modelu znovu zaregistrovat každých 10 měsíců. Pokud se původní image neukládají, uživatelé budou muset projít procesem registrace od začátku.</br></br>Umožňuje uživatelům odhlásit se z ukládání fotek v systému. Chcete-li nastavit možnost Clear, můžete přidat druhou obrazovku žádosti o souhlas pro uložení fotografií zápisu. </br></br>Pokud jsou fotky uložené, vytvořte automatizovaný proces pro opětovné registraci všech uživatelů, když dojde k aktualizaci modelu. Ty, kteří si uložili své fotky k registraci, se nemusí znovu registrovat. </br></br>Vytvořte funkci aplikace, která umožňuje určeným správcům přepsat určité filtry kvality, pokud má uživatel potíže s registrací. |
+|Doporučené funkce pro registraci | Zahrňte do aplikace Multi-Factor Authentication krok přihlášení.</br></br>Propojte informace o uživateli, jako je alias nebo identifikační číslo s ID šablony obličeje z rozhraní API pro rozpoznávání tváře (označované jako ID osoby). Toto mapování je nezbytné pro načtení a správu registrace uživatele. Poznámka: ID osoby by mělo být v aplikaci považováno za tajné.</br></br>Nastavte automatizovaný proces odstraňování všech registračních dat, včetně profesionálových šablon a fotografií pro zápis uživatelů, kteří už nejsou uživateli techniky rozpoznávání obličeje, jako jsou bývalé zaměstnanci.</br></br>Vyhněte se automatické registraci, protože nedává uživateli informace o povědomí, porozumění, svobodě výběru nebo řízení, které se doporučuje pro získání souhlasu. </br></br>Požádejte uživatele o oprávnění k uložení imagí používaných k registraci. To je užitečné v případě, že dojde k aktualizaci modelu, protože nové fotografie registrace se budou muset v novém modelu znovu zaregistrovat každých 10 měsíců. Pokud se původní image neukládají, uživatelé budou muset projít procesem registrace od začátku.</br></br>Umožňuje uživatelům odhlásit se z ukládání fotek v systému. Chcete-li nastavit možnost Clear, můžete přidat druhou obrazovku žádosti o souhlas pro uložení fotografií zápisu. </br></br>Pokud jsou fotky uložené, vytvořte automatizovaný proces pro opětovné registraci všech uživatelů, když dojde k aktualizaci modelu. Ty, kteří si uložili své fotky k registraci, se nemusí znovu registrovat. </br></br>Vytvořte funkci aplikace, která umožňuje určeným správcům přepsat určité filtry kvality, pokud má uživatel potíže s registrací. |
 |Zabezpečení | Cognitive Services dodržujte [osvědčené postupy](../cognitive-services-virtual-networks.md?tabs=portal) pro šifrování neaktivních a přenosových dat uživatelů. Níže jsou uvedené další postupy, které vám pomůžou zajistit, aby se zabezpečení příslibů v průběhu registrace uživatelů. </br></br>Vezměte v úvahu bezpečnostní opatření, abyste zajistili, že nikdo nemá přístup k ID osoby v jakémkoli okamžiku při registraci. Poznámka: PersonID by měl být v systému zápisu považován za tajný klíč. </br></br>Použijte [řízení přístupu na základě role](../../role-based-access-control/overview.md) s Cognitive Services. </br></br>Pro přístup k prostředkům, jako jsou databáze, použijte ověřování založené na tokenech a/nebo sdílené přístupové podpisy (SAS) prostřednictvím klíčů a tajných klíčů. Pomocí tokenů Request nebo SAS můžete udělit omezený přístup k datům, aniž byste museli narušit klíče účtu, a můžete zadat čas vypršení platnosti tokenu. </br></br>Nikdy neukládejte do vaší aplikace žádné tajné klíče, klíče ani hesla. |
 |Ochrana osobních údajů uživatele |Poskytněte řadu možností registrace, které řeší různé úrovně otázek ochrany osobních údajů. Nepoužívejte žádné pověření, aby se uživatelé mohli zaregistrovat do systému pro rozpoznávání tváře, pomocí svých osobních zařízení. </br></br>Umožněte uživatelům, aby se znovu zaregistrovali, odvolali souhlas a odstranili data z aplikace pro zápis kdykoli a z jakéhokoli důvodu. |
 |Usnadnění |Sledujte standardy přístupnosti (například [Ada](https://www.ada.gov/regs2010/2010ADAStandards/2010ADAstandards.htm) nebo [W3C](https://www.w3.org/TR/WCAG21/)), abyste zajistili, že je aplikace použitelná pro lidi s mobilitou nebo zrakovým postižením. |
