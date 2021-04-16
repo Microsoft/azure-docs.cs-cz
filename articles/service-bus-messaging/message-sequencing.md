@@ -2,17 +2,17 @@
 title: Azure Service Bus sekvencování a časová razítka zpráv | Microsoft Docs
 description: Tento článek vysvětluje, jak zachovat sekvencování a řazení (s časovými razítky) Azure Service Busch zpráv.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: fdb18802e576ad114fd3f783d5efd7bb826a5f94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 3d5300568232afae1238445113d60eda8cdb2f1b
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85341165"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497093"
 ---
 # <a name="message-sequencing-and-timestamps"></a>Určování pořadí zpráv a časová razítka
 
-Sekvence a časová razítka jsou dvě funkce, které jsou vždycky povolené u všech Service Bus entit a ploch prostřednictvím vlastností [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) a [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) přijatých nebo procházených zpráv.
+Sekvence a časová razítka jsou dvě funkce, které jsou vždycky povolené na všech Service Bus entit a povrchu `SequenceNumber` prostřednictvím `EnqueuedTimeUtc` vlastností a přijatých nebo procházených zpráv.
 
 V případech, kdy je absolutní pořadí zpráv významné a/nebo kdy spotřebitel potřebuje důvěryhodný jedinečný identifikátor pro zprávy, zprostředkovatel označí zprávy s mezerou a zvyšuje pořadové číslo vzhledem k frontě nebo tématu. Pro dělené entity je číslo sekvence vystaveno relativně k oddílu.
 
@@ -30,7 +30,11 @@ Zprávy můžete odeslat do fronty nebo tématu pro zpožděné zpracování. M�
 
 Naplánované zprávy se ve frontě nevyhodnotit, dokud není definovaná doba zařazení do fronty. Před uplynutím této doby lze naplánované zprávy zrušit. Zrušení odstraní zprávu.
 
-Zprávy můžete naplánovat buď nastavením vlastnosti [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) při posílání zprávy prostřednictvím cesty pro normální odeslání, nebo explicitně pomocí rozhraní [ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) API. Druhá funkce okamžitě vrátí **SequenceNumber** naplánované zprávy, kterou můžete později použít k zrušení naplánované zprávy v případě potřeby. Naplánované zprávy a jejich pořadová čísla lze také zjistit pomocí [procházení zpráv](message-browsing.md).
+Pomocí kteréhokoli z našich klientů můžete naplánovat zprávy dvěma způsoby:
+- Použijte běžné rozhraní API pro odesílání, ale `ScheduledEnqueueTimeUtc` před odesláním nastavte vlastnost ve zprávě.
+- Použijte rozhraní API pro naplánování zpráv, předejte normální zprávu i naplánovaný čas. Tato akce vrátí **SequenceNumber** naplánované zprávy, kterou můžete později použít k zrušení naplánované zprávy v případě potřeby. 
+
+Naplánované zprávy a jejich pořadová čísla lze také zjistit pomocí [procházení zpráv](message-browsing.md).
 
 **SequenceNumber** pro naplánovanou zprávu je platná pouze v případě, že je zpráva v tomto stavu. Při přechodu na aktivní stav zprávy se zpráva připojí do fronty, jako kdyby byla zařazená do fronty v aktuálním okamžitém stavu, což zahrnuje přiřazení nové **SequenceNumber**.
 

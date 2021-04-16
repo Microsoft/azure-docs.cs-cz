@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3336a086fbe8f4291f752836a610cd80b773ec2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 41edef58910fe2b772831ef083e5aca8bb52a321
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98790812"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482264"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Vysoká dostupnost a zotavení po havárii pro digitální vlákna Azure
 
@@ -73,4 +73,4 @@ Osvědčené postupy týkající se HA/zotavení po havárii najdete v následuj
 Přečtěte si další informace o tom, jak začít s řešeními digitálních vláken Azure:
  
 * [*Co je služba Azure Digital Twins?*](overview.md)
-* [*Rychlý Start: Prozkoumejte vzorový scénář*](quickstart-adt-explorer.md)
+* [*Rychlý Start: Prozkoumejte vzorový scénář*](quickstart-azure-digital-twins-explorer.md)

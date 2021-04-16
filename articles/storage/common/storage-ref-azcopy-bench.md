@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c1028d0a4a458746c08fd6fa4f16aa952d9962a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e49e787854069c2fcea30df7a43c3aacdd21b9e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87282003"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502024"
 ---
 # <a name="azcopy-benchmark"></a>srovnávací AzCopy
 
@@ -38,6 +38,12 @@ Příkaz srovnávacího testu spouští stejný proces jako "Copy" s tím rozdí
 Režim srovnávacích testů automaticky provede ladění na počet paralelních připojení TCP, která poskytují maximální propustnost. Zobrazí se toto číslo na konci. Pokud chcete zabránit automatickému ladění, nastavte proměnnou prostředí AZCOPY_CONCURRENCY_VALUE na určitý počet připojení. 
 
 Podporují se všechny běžné typy ověřování. Nejpohodlnější přístup k nahrávání srovnávacích testů je ale obvykle vytvoření prázdného kontejneru s tokenem SAS a ověřováním pomocí SAS. (Režim stahování vyžaduje, aby byla v cílovém kontejneru přítomna sada testovacích dat.)
+
+## <a name="related-conceptual-articles"></a>Související koncepční články
+
+- [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
+- [Optimalizujte výkon AzCopy v10 za účelem pomocí Azure Storage](storage-use-azcopy-optimize.md)
+
 
 ## <a name="examples"></a>Příklady
 

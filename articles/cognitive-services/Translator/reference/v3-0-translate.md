@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: lajanuar
-ms.openlocfilehash: d46fef0159b983f2685be40e2a0ab5471b96883b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 148aa722515d9364ce5af85b3f7c3b39958c9c91
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98895437"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388376"
 ---
 # <a name="translator-30-translate"></a>Překladatel 3,0: překlad
 
@@ -54,12 +54,12 @@ Parametry žádosti předané řetězci dotazu jsou:
   <th width="20%">Parametr dotazu</th>
   <th>Popis</th>
   <tr>
-    <td>Výsledkem</td>
+    <td>z </td>
     <td><em>Volitelný parametr</em>.<br/>Určuje jazyk vstupního textu. Najděte jazyky, ze kterých jsou k dispozici pro překlad, vyhledáním <a href="./v3-0-languages.md">podporovaných jazyků</a> pomocí <code>translation</code> oboru. Pokud <code>from</code> parametr není zadán, použije se pro určení zdrojového jazyka automatické zjišování jazyka. <br/><br/><code>from</code>Při použití funkce <a href="/azure/cognitive-services/translator/dynamic-dictionary">dynamického slovníku</a> musíte použít parametr, nikoli funkci autodetection.</td>
   </tr>  
   <tr>
     <td>textType</td>
-    <td><em>Volitelný parametr</em>.<br/>Definuje, zda je převáděný text prostý text nebo text HTML. Libovolný kód HTML musí být dobře vytvořený, kompletní element. Možné hodnoty jsou: <code>plain</code> (výchozí) nebo <code>html</code>.</td>
+    <td><em>Volitelný parametr</em>.<br/>Definuje, zda je převáděný text prostý text nebo text HTML. Libovolný kód HTML musí být dobře vytvořený, kompletní element. Při překladu textu HTML má výstupní text v řídicím formátu následující speciální znaky: ' & ', ' < ' a ' > '. To je nezávisle na tom, zda vstupní text HTML má znaky řídící. Možné hodnoty jsou: <code>plain</code> (výchozí) nebo <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
@@ -104,7 +104,7 @@ Hlavičky požadavku zahrnují:
 
 <table width="100%">
   <th width="20%">Hlavičky</th>
-  <th>Description</th>
+  <th>Popis</th>
   <tr>
     <td>Ověřovací hlavičky (y)</td>
     <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
@@ -182,7 +182,7 @@ Příklad odpovědí JSON je uveden v části [Příklady](#examples) .
 
 <table width="100%">
   <th width="20%">Hlavičky</th>
-  <th>Description</th>
+  <th>Popis</th>
     <tr>
     <td>X-RequestId</td>
     <td>Hodnota, kterou služba vygenerovala k identifikaci požadavku. Používá se pro účely řešení potíží.</td>
@@ -199,7 +199,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
 
 <table width="100%">
   <th width="20%">Stavový kód</th>
-  <th>Description</th>
+  <th>Popis</th>
   <tr>
     <td>200</td>
     <td>Úspěch.</td>

@@ -8,16 +8,16 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: e31a1cef427062723adf4b45bd47cd8009630128
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b48963fa6cb28c836c57de8b46861ef83752231
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888806"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388550"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS
 
-V tomto článku se dozvíte, jak rychle nastavit Azure NetApp Files a vytvořit svazek.
+V tomto článku se dozvíte, jak rychle nastavit Azure NetApp Files a vytvořit svazek NFS. 
 
 V tomto rychlém startu vytvoříte následující položky:
 
@@ -27,6 +27,8 @@ V tomto rychlém startu vytvoříte následující položky:
 - Svazek NFS pro Azure NetApp Files
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+Pokud chcete zobrazit všechny funkce, které můžete povolit pro svazek se systémem souborů NFS, a související důležité informace, přečtěte si téma [vytvoření svazku NFS](azure-netapp-files-create-volumes.md). 
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -248,7 +250,7 @@ Následující fragment kódu ukazuje, jak vytvořit fond kapacit v šabloně Az
 
 ---
 
-## <a name="create-nfs-volume-for-azure-netapp-files"></a>Vytvořit svazek systému souborů NFS pro Azure NetApp Files
+## <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Vytvoření svazku NFS pro Azure NetApp Files
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 

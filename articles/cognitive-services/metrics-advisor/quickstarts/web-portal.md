@@ -4,18 +4,20 @@ titleSuffix: Azure Cognitive Services
 description: Naučte se, jak začít používat webový portál Advisor metriky.
 services: cognitive-services
 author: mrbullwinkle
+ms.author: mbullwin
 manager: nitinme
+ms.date: 09/30/2020
+ms.topic: quickstart
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
-ms.topic: quickstart
-ms.date: 09/30/2020
-ms.author: mbullwin
-ms.openlocfilehash: f853dca12b6a5855dc0603259ab534fa9933cd5b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.custom:
+- mode-portal
+ms.openlocfilehash: aaeaf92df140019db32c326199c9614fd8f5ae37
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102432294"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531809"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Rychlý Start: monitorování první metriky pomocí webového portálu
 
@@ -91,7 +93,7 @@ Po načtení schématu dat a zobrazení jako níže vyberte příslušná pole.
 
 |Výběr  |Popis  |Poznámky  |
 |---------|---------|---------|
-|**Časové razítko**     | Časové razítko datového bodu. Pokud tento parametr vynecháte, poradce metriky použije časové razítko, když se místo toho bude přijímat datový bod. U každého datového kanálu můžete zadat maximálně jeden sloupec jako časové razítko.        | Nepovinný parametr. By měl být zadaný s maximálně jedním sloupcem.       |
+|**Timestamp**     | Časové razítko datového bodu. Pokud tento parametr vynecháte, poradce metriky použije časové razítko, když se místo toho bude přijímat datový bod. U každého datového kanálu můžete zadat maximálně jeden sloupec jako časové razítko.        | Nepovinný parametr. By měl být zadaný s maximálně jedním sloupcem.       |
 |**Measure**     |  Číselné hodnoty v datovém kanálu. U každého datového kanálu můžete zadat více měr, ale jako míru by měl být vybrán alespoň jeden sloupec.        | By měla být zadána alespoň v jednom sloupci.        |
 |**Rozměr**     | Kategorií hodnoty. Kombinace různých hodnot identifikuje konkrétní časovou řadu s jednou dimenzí, například: Country (země), Language (tenant). Jako rozměry můžete vybrat žádný nebo libovolný počet sloupců. Poznámka: Pokud jako dimenzi vybíráte sloupec, který není typu řetězec, buďte opatrní při rozbalení dimenze. | Nepovinný parametr.        |
 |**Ohled**     | Ignoruje vybraný sloupec.        |         |

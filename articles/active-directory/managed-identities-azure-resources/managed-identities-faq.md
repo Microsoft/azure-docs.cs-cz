@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 04/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 3d3ab9859eb9f85d5ca7d0573fa79443ae9fe964
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 07b106630cffae75c5e4588d14de7ae938945614
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107250975"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534118"
 ---
 # <a name="managed-identities-for-azure-resources-frequently-asked-questions---azure-ad"></a>Spravované identity pro prostředky Azure – Nejčastější dotazy – Azure AD
 
@@ -139,11 +139,11 @@ No. Spravované identity v současné době nepodporují scénáře pro více ad
 Omezení spravovaných identit mají závislosti na omezeních služeb Azure, omezeních Azure Instance Metadata Service (IMDS) a omezení služby Azure Active Directory.
 
 - **Omezení služby Azure** definují počet operací vytvoření, které se dají provádět na úrovních tenanta a předplatného. Spravované identity přiřazené uživateli mají také [omezení](../../azure-resource-manager/management/azure-subscription-service-limits.md#managed-identity-limits) , jak mohou být pojmenovány.
-- **IMDS** Obecně platí, že požadavky na IMDS jsou omezeny na pět požadavků za sekundu. Žádosti překračující tuto prahovou hodnotu budou odmítnuty s 429 odpověďmi. Žádosti do kategorie spravované identity jsou omezené na 20 požadavků za sekundu a 5 souběžných požadavků. Další informace najdete v článku o [metadatech Azure instance manifestu (Windows)](../../virtual-machines/windows/instance-metadata-service.md?tabs=windows#managed-identity) .
+- **IMDS** Obecně platí, že požadavky na IMDS jsou omezeny na pět požadavků za sekundu. Žádosti překračující tuto prahovou hodnotu budou odmítnuty s 429 odpověďmi. Žádosti do kategorie spravované identity jsou omezené na 20 požadavků za sekundu a 5 souběžných požadavků. Další informace najdete v článku o [Azure instance metadata Service (Windows)](../../virtual-machines/windows/instance-metadata-service.md?tabs=windows#managed-identity) .
 - **Služba Azure Active Directory** Každá spravovaná identita se počítá s limitem kvóty objektu v tenantovi Azure AD, jak je popsáno v tématu [limity a omezení služby Azure AD](../enterprise-users/directory-service-limits-restrictions.md).
 
 
-## <a name="is-it-ok-to-move-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Je možné přesunout spravovanou identitu přiřazenou uživatelem do jiné skupiny prostředků nebo předplatného?
+### <a name="is-it-possible-to-move-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Je možné přesunout spravovanou identitu přiřazenou uživatelem do jiné skupiny prostředků nebo předplatného?
 
 Přesunutí spravované identity přiřazené uživatelem do jiné skupiny prostředků se nepodporuje.
 

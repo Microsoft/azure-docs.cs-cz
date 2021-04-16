@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: kumud
-ms.openlocfilehash: 9b608312d66e6a3e7455c4577ea4644b33e4e82e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: c98bdbb9fba2a6ba01e4ce590c36d57e68390f17
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106080161"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484791"
 ---
 # <a name="azure-networking-architecture-documentation"></a>Dokumentace k síťové architektuře Azure
 
@@ -51,6 +51,7 @@ Následující tabulka obsahuje články, které popisují, jak nasadit aplikace
 |[IaaS: webová aplikace s relační databází](/azure/architecture/high-availability/ref-arch-iaas-web-and-db)    |   Popisuje, jak používat prostředky rozdělené do několika zón, aby poskytovala architekturu vysoké dostupnosti pro hostování webové aplikace infrastruktury jako služby (IaaS) a databáze SQL Server.     |
 |[Sdílení umístění v reálném čase s využitím nízkonákladových bezserverových služeb Azure](/azure/architecture/example-scenario/signalr/#azure-front-door)       |   Používá přední dvířka Azure k zajištění vyšší dostupnosti pro vaše aplikace než nasazení do jedné oblasti. Pokud oblastní výpadek ovlivní primární oblast, můžete pomocí služby Front Door převzít služby při selhání sekundární oblastí.      |
 |[Vysoce dostupná virtuální síťová zařízení](/azure/architecture/reference-architectures/dmz/nva-ha)     | Ukazuje, jak nasadit sadu síťových virtuálních zařízení (síťová virtuální zařízení) pro zajištění vysoké dostupnosti v Azure.        |
+|[Vyrovnávání zatížení ve více oblastech pomocí Traffic Manager a Application Gateway](/azure/architecture/high-availability/reference-architecture-traffic-manager-application-gateway)     | Popisuje, jak nasadit odolné vícevrstvé aplikace v několika oblastech Azure, aby bylo možné dosáhnout dostupnosti a robustní infrastruktury pro zotavení po havárii.        |
 
 ## <a name="secure-your-network-resources"></a>Zabezpečení síťových prostředků
 

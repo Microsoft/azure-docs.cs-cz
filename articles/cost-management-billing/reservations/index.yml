@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 03/01/2021
-  ms.openlocfilehash: b25d522d5db9f513628e43724cb1abde9f55e99c
-  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.date: 04/15/2021
+  ms.openlocfilehash: c7c9a72e3954598e0cb3265e0533ccbd14b68e4b
+  ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102040817"
+  ms.lasthandoff: 04/16/2021
+  ms.locfileid: "107532651"
 landingContent:
 - title: Nákup rezervací
   linkLists:
@@ -24,6 +24,12 @@ landingContent:
     links:
     - text: Co jsou rezervace Azure?
       url: save-compute-costs-reservations.md
+    - text: Doporučení k nákupu rezervací
+      url: reserved-instance-purchase-recommendations.md
+    - text: Flexibilita velikosti instance
+      url: ../../virtual-machines/reserved-vm-instance-size-flexibility.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - text: Náklady na software Windows a SQL se účtují samostatně.
+      url: reserved-instance-windows-software-costs.md
   - linkListType: how-to-guide
     links:
     - text: Nákup rezervace
@@ -36,16 +42,24 @@ landingContent:
     links:
     - text: Jak se uplatňuje sleva za rezervaci
       url: reservation-discount-application.md
-- title: Správa rezervací
+- title: Správa rezervací po nákupu
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Správa rezervací
-      url: manage-reserved-vm-instance.md
-    - text: Zobrazit rezervace a spravovat oprávnění
+    - text: Oprávnění k zobrazení a správě rezervací
       url: view-reservations.md
+    - text: Změnit obor rezervace, rozdělit, sloučit
+      url: manage-reserved-vm-instance.md
     - text: Výměna a refundace rezervací
       url: exchange-and-refund-azure-reservations.md
+- title: Vykázat náklady po nákupu
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Zpětné vyúčtování na rezervace Azure
+      url: charge-back-usage.md
+    - text: Zobrazení nákupu rezervací a transakcí refundace
+      url: view-purchase-refunds.md
   - linkListType: reference
     links:
     - text: Rozhraní API pro rezervace

@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ad10cfc661b80eaac146087d85dc87002f6a455
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: b8cea26bcb0926cd3af360a6489377767d681079
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105960142"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532552"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Vytvoření a správa katalogu prostředků v Azure AD – Správa nároků
 
@@ -53,7 +53,7 @@ Katalog je kontejner prostředků a přístup k balíčkům. Katalog můžete vy
 
 ### <a name="creating-a-catalog-programmatically"></a>Programové vytvoření katalogu
 
-Katalog můžete vytvořit také pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API a [vytvořit accessPackageCatalog](/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
+Katalog můžete vytvořit také pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API a [vytvořit accessPackageCatalog](/graph/api/accesspackagecatalog-post?view=graph-rest-beta&preserve-view=true).
 
 ## <a name="add-resources-to-a-catalog"></a>Přidání prostředků do katalogu
 
@@ -91,7 +91,7 @@ Aby bylo možné zahrnout prostředky do balíčku pro přístup, musí tyto pro
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Programové přidání prostředku do katalogu
 
-Prostředek můžete také přidat do katalogu pomocí Microsoft Graph.  Uživatel v příslušné roli nebo v katalogu a vlastníka prostředků s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API a [vytvořit accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta).
+Prostředek můžete také přidat do katalogu pomocí Microsoft Graph.  Uživatel v příslušné roli nebo v katalogu a vlastníka prostředků s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API a [vytvořit accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta&preserve-view=true).
 
 ## <a name="remove-resources-from-a-catalog"></a>Odebrání prostředků z katalogu
 
@@ -164,7 +164,7 @@ Katalog můžete odstranit, ale pouze v případě, že nemá žádné balíčky
 
 ### <a name="deleting-a-catalog-programmatically"></a>Programové odstranění katalogu
 
-Katalog můžete také odstranit pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API a [Odstranit accessPackageCatalog](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
+Katalog můžete také odstranit pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API a [Odstranit accessPackageCatalog](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta&preserve-view=true).
 
 ## <a name="next-steps"></a>Další kroky
 

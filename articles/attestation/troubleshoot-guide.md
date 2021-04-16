@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3ae3e12c11f194b3efcc149382dc952bd74d38b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5eefcb55bb5447d557f097af872847576aa86eed
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97704312"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519302"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Microsoft Azure ověření identity
 
@@ -30,7 +30,6 @@ Níže jsou uvedeny některé příklady chyb vrácených ověřením identity A
 **Kód chyby** Přístupu
 
 **Příklady scénářů**
-  - Chyba ověření identity, pokud uživatel není přiřazený k roli čtenáře ověření identity
   - Nejde spravovat zásady ověření identity, protože uživatel není přiřazený k příslušným rolím.
   - Nejde spravovat podepsané zásady ověření identity, protože uživatel není přiřazený k příslušným rolím.
 
@@ -45,57 +44,27 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.SetAzureAttestationPolicy
   ```
 
-**Postup řešení potíží**
+**Postup při řešení potíží**
 
-Aby bylo možné zobrazit zásady ověření identity/podepsané zásady, uživatel Azure AD vyžaduje oprávnění pro akce:
+Aby bylo možné spravovat zásady, vyžaduje uživatel Azure AD následující oprávnění pro akce:
 - Microsoft. Attestation/attestationProviders/ověření/čtení
-
-  Toto oprávnění může být přiřazeno uživateli služby AD prostřednictvím role, jako je "vlastník" (oprávnění zástupných znaků) nebo "čtenář" (oprávnění zástupných znaků) nebo "čtenář" Reader "(specifická oprávnění pro Azure Attestation).
-
-Aby bylo možné přidat nebo odstranit podepsané zásady nebo nakonfigurovat zásady, vyžaduje uživatel Azure AD následující oprávnění pro akce:
 - Microsoft. Attestation/attestationProviders/Attestation/Write
 - Microsoft. Attestation/attestationProviders/Attestation/DELETE
 
-  Tato oprávnění je možné přiřadit uživateli služby AD prostřednictvím role, jako je "vlastník" (oprávnění zástupných znaků), přispěvatele (oprávnění zástupných znaků) nebo "Přispěvatela ověření" (specifická oprávnění pouze pro Azure Attestation).
+  Aby bylo možné provádět tyto akce, musí mít uživatel Azure AD roli "správce ověření" na poskytovateli ověření identity. Tato oprávnění je také možné dědit s rolemi, jako je vlastník (oprávnění zástupných znaků), přispěvatel (oprávnění zástupných znaků) u předplatného nebo skupiny prostředků.  
 
-Zákazníci se můžou rozhodnout použít výchozího poskytovatele pro ověření identity nebo vytvořit vlastní poskytovatele s vlastními zásadami. Aby bylo možné odesílat požadavky ověření identity vlastním zprostředkovatelům ověření identity, je pro uživatele vyžadována role "vlastník" (oprávnění zástupných znaků) nebo čtenář (oprávnění ke kterému se zástupným znakem) nebo "čtenář". Výchozí poskytovatelé jsou přístupná pro všechny uživatele Azure AD.
+Aby bylo možné číst zásady, vyžaduje uživatel Azure AD následující oprávnění pro akce:
+- Microsoft. Attestation/attestationProviders/ověření/čtení
 
-Pokud chcete ověřit role v PowerShellu, spusťte níže:
+  Aby bylo možné provést tuto akci, musí mít uživatel služby Azure AD na poskytovateli ověření roli "čtecí modul ověření". Oprávnění ke čtení je taky možné dědit s rolemi, jako je čtenář (oprávnění ke zástupným znakem) pro předplatné nebo skupinu prostředků.  
+
+Chcete-li ověřit role v prostředí PowerShell, spusťte následující kroky:
 
 a. Spusťte PowerShell a přihlaste se k Azure pomocí rutiny Connect-AzAccount.
 
-b. Ověření nastavení přiřazení role Azure
+b. Pokud chcete ověřit přiřazení role Azure u poskytovatele ověření identity, přečtěte si pokyny [zde](../role-based-access-control/role-assignments-list-powershell.md) .
 
-
-  ```powershell
-  $c = Get-AzContext
-  Get-AzRoleAssignment -ResourceGroupName $attestationResourceGroup -ResourceName $attestationProvider -ResourceType Microsoft.Attestation/attestationProviders -SignInName $c.Account.Id
-  ```
-
-  Měli byste vidět přibližně toto:
-
-  ```
-  RoleAssignmentId   :/subscriptions/subscriptionId/providers/Microsoft.Authorization/roleAssignments/roleAssignmentId
-  
-  Scope              : /subscriptions/subscriptionId
-  
-  DisplayName        : displayName
-  
-  SignInName         : signInName
-  
-  RoleDefinitionName : Reader
-  
-  RoleDefinitionId   : roleDefinitionId
-  
-  ObjectId           : objectid
-  
-  ObjectType         : User
-  
-  CanDelegate        : False
- 
-  ```
-
-c. Pokud v seznamu nenajdete odpovídající přiřazení role, postupujte podle pokynů v [tomto tématu](../role-based-access-control/role-assignments-powershell.md) .
+c. Pokud nenajdete příslušné přiřazení role, postupujte podle pokynů v [tomto tématu](../role-based-access-control/role-assignments-powershell.md) .
 
 ## <a name="2-http--400-errors"></a>2. chyby HTTP – 400
 
@@ -134,7 +103,7 @@ Viz [Příklady zásad ověřování identity](./policy-examples.md) .
 - Zadaná nabídka byla neplatná, protože zařízení, na kterém byla nabídka vygenerována, nesplňuje požadavky na směrný plán Azure.
 - Zadaná citace byla neplatná, protože TCBInfo nebo QEID, které poskytla PCK Cache Service, byly neplatné.
 
-**Postup řešení potíží**
+**Postup při řešení potíží**
 
 Microsoft Azure Attestation podporuje ověřování SGXch nabídek generovaných sadou Intel SDK a Open enklávy SDK.
 

@@ -2,17 +2,17 @@
 title: Azure Monitor metriky pro Application Gateway
 description: Naučte se používat metriky k monitorování výkonu služby Application Gateway.
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
-ms.author: surmb
-ms.openlocfilehash: 9faa3a284aa7151880526c1ee70cfadc3dbf3089
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: azhussai
+ms.openlocfilehash: 3baaf49cb3d1c8c5502d96974f9729d05996c75b
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576107"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519877"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
 
@@ -24,7 +24,7 @@ Application Gateway zveřejňuje datové body označované jako metriky, aby se 
 
 Application Gateway poskytuje několik vestavěných metrik časování vztahujících se k žádosti a odpovědi, které se měří v milisekundách. 
 
-![Diagram metrik časování pro Application Gateway.](./media/application-gateway-metrics/application-gateway-metrics.png)
+![Diagram metrik časování pro Application Gateway.](./media/application-gateway-metrics/application-gateway-metrics.jpg)
 
 > [!NOTE]
 >

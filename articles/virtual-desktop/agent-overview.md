@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 371cc78f3ebad638008f4195f164b66a64948c65
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 529a86712994aae91a554589d383cc748f79d07f
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504545"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520101"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Začínáme s agentem virtuálního počítače s Windows
 
@@ -32,17 +32,18 @@ Agent virtuálního počítače s Windows je zpočátku nainstalovaný jedním z
 
 ## <a name="agent-update-process"></a>Proces aktualizace agenta
 
-Služba Windows Virtual Desktop aktualizuje agenta vždy, když bude k dispozici aktualizace. Aktualizace agenta můžou zahrnovat nové funkce nebo opravy pro předchozí problémy. Po nainstalování počáteční verze agenta virtuálního počítače se systémem Windows Agent pravidelně dotazuje službu virtuální plochy systému Windows, aby zjistil, zda je k dispozici novější verze agenta, zásobníku nebo monitorovací součásti. Pokud již byla nasazena novější verze jakékoli součásti, je automaticky nainstalována aktualizovaná součást.
+Služba Windows Virtual Desktop aktualizuje agenta vždy, když bude k dispozici aktualizace. Aktualizace agenta můžou zahrnovat nové funkce nebo opravy pro předchozí problémy. Vždy je nutné mít nainstalovanou nejnovější stabilní verzi agenta, aby vaše virtuální počítače neztratily připojení nebo zabezpečení. Po nainstalování počáteční verze agenta virtuálního počítače se systémem Windows Agent pravidelně dotazuje službu virtuální plochy systému Windows, aby zjistil, zda je k dispozici novější verze agenta, zásobníku nebo monitorovací součásti. Pokud již byla nasazena novější verze jakékoli součásti, je aktualizovaná součást automaticky nainstalována systémem pro let.
 
 Nové verze agenta se nasazují v pravidelných intervalech v weeklong obdobích pro všechna předplatná Azure. Tato aktualizační období se nazývají "lety". Když dojde k letu, můžete vidět, že virtuální počítače ve fondu hostitelů obdrží aktualizaci agenta v různou dobu. Všechna agenti virtuálních počítačů ve všech předplatných budou aktualizována na konci období nasazení. Systém pro započet virtuálních počítačů s Windows vylepšuje spolehlivost služby tím, že zajišťuje stabilitu a kvalitu aktualizace agenta.
 
 
->[!NOTE]
->Vzhledem k tomu, že virtuální počítače ve fondu hostitelů mohou dostávat aktualizace agenta v různou dobu, budete muset být schopni určit rozdíl mezi problémy s lety a aktualizacemi agenta, které selhaly. Pokud přejdete na protokoly událostí pro váš virtuální počítač v **Prohlížeč událostí**  >  **Windows logs**  >  **aplikace** a zobrazí se událost s názvem ID 3277, která znamená, že aktualizace agenta nefungovala. Pokud tuto událost nevidíte, je virtuální počítač v jiném letu a později se aktualizuje.
->- Když Ženeva Monitoring Agent aktualizuje na nejnovější verzi, stará úloha GenevaTask se nachází a zakáže před vytvořením nové úlohy pro nového agenta monitorování. Starší verze agenta monitorování se neodstraní v případě, že nejnovější verze agenta monitorování má problém, který vyžaduje, aby se oprava vrátila do starší verze. Pokud má nejnovější verze nějaký problém, Starý agent monitorování se znovu povolí, aby pokračoval v doručování dat monitorování. Všechny verze monitorování, které jsou starší než poslední, který jste nainstalovali před aktualizací, se z virtuálního počítače odstraní.
->- Váš virtuální počítač udržuje v čase tři verze souběžného zásobníku. To umožňuje rychlé obnovení, pokud se s aktualizací něco nepovede. Nejstarší verze zásobníku se odebere z virtuálního počítače při každé aktualizaci zásobníku.
+Další důležité věci, které byste měli mít na paměti:
 
-Tato instalace aktualizace obvykle na novém virtuálním počítači trvá 2-3 minut a neměla by způsobit ztrátu připojení nebo vypnutí počítače. Tento proces aktualizace se vztahuje na virtuální plochu Windows (Classic) i na nejnovější verzi virtuálního klienta Windows s Azure Resource Manager.
+- Vzhledem k tomu, že virtuální počítače ve fondu hostitelů mohou dostávat aktualizace agenta v různou dobu, budete muset být schopni určit rozdíl mezi problémy s lety a aktualizacemi agenta, které selhaly. Pokud přejdete na protokoly událostí pro váš virtuální počítač v **Prohlížeč událostí**  >  **Windows logs**  >  **aplikace** a zobrazí se událost s názvem ID 3277, která znamená, že aktualizace agenta nefungovala. Pokud tuto událost nevidíte, je virtuální počítač v jiném letu a později se aktualizuje.
+- Když Ženeva Monitoring Agent aktualizuje na nejnovější verzi, stará úloha GenevaTask se nachází a zakáže před vytvořením nové úlohy pro nového agenta monitorování. Starší verze agenta monitorování se neodstraní v případě, že nejnovější verze agenta monitorování má problém, který vyžaduje, aby se oprava vrátila do starší verze. Pokud má nejnovější verze nějaký problém, Starý agent monitorování se znovu povolí, aby pokračoval v doručování dat monitorování. Všechny verze monitorování, které jsou starší než poslední, který jste nainstalovali před aktualizací, se z virtuálního počítače odstraní.
+- Váš virtuální počítač udržuje v čase tři verze souběžného zásobníku. To umožňuje rychlé obnovení, pokud se s aktualizací něco nepovede. Nejstarší verze zásobníku se odebere z virtuálního počítače při každé aktualizaci zásobníku.
+
+Aktualizace agenta obvykle trvá 2-3 minut na novém virtuálním počítači a neměla by způsobit ztrátu připojení nebo vypnutí počítače. Tento proces aktualizace se vztahuje na virtuální plochu Windows (Classic) i na nejnovější verzi virtuálního klienta Windows s Azure Resource Manager.
 
 ## <a name="next-steps"></a>Další kroky
 

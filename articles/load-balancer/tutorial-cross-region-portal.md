@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: 65d85f51afef36aa618868e2fda1d2bbf583ea21
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 16320021ede4a4e285c4e1973c166d2cdf643c4a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221122"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529523"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Kurz: vytvoření Azure Load Balancer mezi oblastmi pomocí Azure Portal
 
@@ -133,7 +133,6 @@ V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
     | Port | Zadejte **80**.|
     | Back-endový port | Zadejte **80**. |
     | Back-endový fond | Vyberte **myBackendPool**.|
-    | Sonda stavu | Vyberte **myHealthProbe**. |
     | Časový limit nečinnosti (minuty) | Přesuňte posuvník na **15**. |
     | Resetování protokolu TCP | Vyberte **Povoleno**. |
 

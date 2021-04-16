@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d34a6eaa653ad0d2f93db0dcd04eec0f5532a4c7
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 81a909d946b55ee8b06d68aa8bee53bc50d2190e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107023"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532302"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -210,7 +210,7 @@ Další informace o tom, jak lépe zabezpečit vaši organizaci pomocí automati
 **Kategorie služby:** MS Graph  
 **Schopnost produktu:** B2B/B2C
 
-K dispozici je služba [MS Graph API pro branding společnosti](https://docs.microsoft.com/graph/api/resources/organizationalbrandingproperties?view=graph-rest-1.0) , která umožňuje prostředí Azure AD nebo Microsoft 365 přihlášení, aby bylo možné programově spravovat parametry brandingu.
+K dispozici je služba [MS Graph API pro branding společnosti](https://docs.microsoft.com/graph/api/resources/organizationalbrandingproperties) , která umožňuje prostředí Azure AD nebo Microsoft 365 přihlášení, aby bylo možné programově spravovat parametry brandingu.
 
 ---
 
@@ -308,7 +308,7 @@ Zákazníci teď můžou znovu pozvat stávající externí uživatele typu Host
 **Kategorie služby:** Zřizování aplikací  
 **Schopnost produktu:** Správa životního cyklu identit
  
-Zákazníci teď můžou používat Application. ownedby jako oprávnění aplikace pro volání synchronizačních rozhraní API. Poznámka: Tato možnost se podporuje jenom pro zřizování z Azure AD na aplikace třetích stran (například AWS, datové cihly atd.). V současné době není podporována pro zřizování lidských zdrojů (Workday/SuccessFactors) ani pro cloudovou synchronizaci (AD do Azure AD). [Další informace](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta).
+Zákazníci teď můžou používat Application. ownedby jako oprávnění aplikace pro volání synchronizačních rozhraní API. Poznámka: Tato možnost se podporuje jenom pro zřizování z Azure AD na aplikace třetích stran (například AWS, datové cihly atd.). V současné době není podporována pro zřizování lidských zdrojů (Workday/SuccessFactors) ani pro cloudovou synchronizaci (AD do Azure AD). [Další informace](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta&preserve-view=true).
  
 ---
 
@@ -904,7 +904,7 @@ Agent zřizování cloudu byl vydán ve verzi Public Preview a je nyní k dispoz
  
 Dřív bylo možné obnovit klíče nástroje BitLocker prostřednictvím koncového bodu/BitLocker. Nakonec už tento koncový bod nebudeme používat a zákazníci by měli začít spotřebovávat rozhraní API, které teď spadá do/informationProtection.. 
 
-Změny v dokumentaci najdete v tématu [rozhraní API pro obnovení nástroje BitLocker](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) pro aktualizace dokumentace.
+Změny v dokumentaci najdete v tématu [rozhraní API pro obnovení nástroje BitLocker](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta&preserve-view=true) pro aktualizace dokumentace.
 
 ---
 
@@ -1072,7 +1072,7 @@ Prostředí Pomocník pro integraci (Preview) je teď k dispozici pro Azure AD B
 
 Teď si můžete zobrazit ID šablony každé role Azure AD v Azure Portal. V Azure AD vyberte  **Popis** vybrané role. 
 
-Doporučujeme, aby zákazníci používali ID šablon rolí ve svém skriptu PowerShellu a kódu místo zobrazovaného názvu. ID šablony role je podporované pro použití pro objekty [directoryRoles](/graph/api/resources/directoryrole) a [rutiny roledefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) . Další informace o ID šablon rolí najdete v tématu [předdefinované role Azure AD](../roles/permissions-reference.md).
+Doporučujeme, aby zákazníci používali ID šablon rolí ve svém skriptu PowerShellu a kódu místo zobrazovaného názvu. ID šablony role je podporované pro použití pro objekty [directoryRoles](/graph/api/resources/directoryrole) a [rutiny roledefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta&preserve-view=true) . Další informace o ID šablon rolí najdete v tématu [předdefinované role Azure AD](../roles/permissions-reference.md).
 
 ---
 

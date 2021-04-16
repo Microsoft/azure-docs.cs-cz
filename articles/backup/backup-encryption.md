@@ -4,12 +4,12 @@ description: Přečtěte si, jak funkce šifrování v Azure Backup pomůžou ch
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.custom: references_regions
-ms.openlocfilehash: c9b1b2782a34285ae194f2998a7cd053cf3c0c70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28d165ccc8a966091a96fc433660899d8eef1595
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96325670"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518469"
 ---
 # <a name="encryption-in-azure-backup"></a>Šifrování ve službě Azure Backup
 
@@ -32,4 +32,4 @@ Azure Backup zahrnuje šifrování na dvou úrovních:
 ## <a name="next-steps"></a>Další kroky
 
 - [Šifrování služby Azure Storage pro neaktivní uložená data](../storage/common/storage-service-encryption.md)
-- [Azure Backup Nejčastější dotazy](backup-azure-backup-faq.md#encryption) týkající se šifrování
+- [Azure Backup Nejčastější dotazy](/backup-azure-backup-faq.yml#encryption) týkající se šifrování

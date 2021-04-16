@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abc8badf261e631dd6ceb7af9a6a0cb3676ae25d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 445514297550210d80cd50895201d1129fac4f20
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96017589"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533715"
 ---
 # <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>Řešení chyb v rozhraní API pro vytváření sestav Azure Active Directory
 
@@ -50,5 +50,5 @@ Postupujte prosím podle kroků v části [požadavky pro přístup k rozhraní 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Použití referenčních informací](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
- rozhraní API pro audit [Použití referenčních informací k rozhraní API pro sestavu aktivit přihlašování](/graph/api/resources/signin?view=graph-rest-beta)
+[Použití referenčních informací](/graph/api/resources/directoryaudit) 
+ rozhraní API pro audit [Použití referenčních informací k rozhraní API pro sestavu aktivit přihlašování](/graph/api/resources/signin)

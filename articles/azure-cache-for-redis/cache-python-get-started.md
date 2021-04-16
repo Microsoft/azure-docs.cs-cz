@@ -3,20 +3,21 @@ title: 'Rychlý Start: použití mezipaměti Azure pro Redis v Pythonu'
 description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci v Pythonu, která používá Azure cache pro Redis.
 author: yegu-ms
 ms.author: yegu
+ms.date: 11/05/2019
+ms.topic: quickstart
 ms.service: cache
 ms.devlang: python
-ms.topic: quickstart
 ms.custom:
 - mvc
 - seo-python-october2019
 - devx-track-python
-ms.date: 11/05/2019
-ms.openlocfilehash: 048c31bedb56bdb66dc3b80d12c3014652e34625
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+- mode-api
+ms.openlocfilehash: 40990dfb651817cf52cd5b5a039566e3209d6ac7
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121146"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532041"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-python"></a>Rychlý Start: použití mezipaměti Azure pro Redis v Pythonu
 
@@ -26,7 +27,7 @@ V tomto článku zahrňte Azure cache pro Redis do aplikace v Pythonu, abyste m�
 
 Pokud chcete přeskočit přímo na kód, přečtěte si [rychlý Start Pythonu](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/python) na GitHubu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Python 2 nebo 3](https://www.python.org/downloads/)
@@ -113,4 +114,3 @@ Odstranění skupiny prostředků a její Redis Cache pro instanci Azure:
 
 > [!div class="nextstepaction"]
 > [Vytvořte jednoduchou webovou aplikaci v ASP.NET, která používá Azure cache pro Redis.](./cache-web-app-howto.md)
-

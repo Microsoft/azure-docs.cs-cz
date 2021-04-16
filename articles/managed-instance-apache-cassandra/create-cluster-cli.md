@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/15/2021
-ms.openlocfilehash: b719310a331044df363efcc6b79be323faf49247
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 53fe53e1406bfcde1f2d8c7b2a1ce8369303426f
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562099"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379362"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Rychlý Start: vytvoření spravované instance Azure pro cluster Apache Cassandra pomocí rozhraní příkazového řádku Azure (Preview)
 
@@ -48,11 +48,19 @@ Tento rychlý Start ukazuje, jak pomocí příkazů Azure CLI vytvořit cluster 
    ```azurecli-interactive
    az network vnet create -n <VNet_Name> -l eastus2 -g <Resource_Group_Name> --subnet-name <Subnet Name>
    ```
+    > [!NOTE]
+    > Nasazení spravované instance Azure pro Apache Cassandra vyžaduje přístup k Internetu. Nasazení se nezdařilo v prostředích, kde je omezen přístup k Internetu. Ujistěte se, že neblokujete přístup v rámci vaší virtuální sítě do následujících důležitých služeb Azure, které jsou nezbytné pro správné fungování spravovaných Cassandra:
+    > - Azure Storage
+    > - Azure KeyVault
+    > - Azure Virtual Machine Scale Sets
+    > - Monitorování Azure
+    > - Azure Active Directory
+    > - Zabezpečení Azure
 
-1. Použijte některá zvláštní oprávnění pro Virtual Network a podsíť, které vyžaduje spravovaná instance. Použijte `az role assignment create` příkaz, nahraďte `<subscription ID>` , `<resource group name>` , `<VNet name>` a `<subnet name>` s příslušnými hodnotami:
+1. Použijte některá zvláštní oprávnění pro Virtual Network, která jsou vyžadována spravovanou instancí. Použijte `az role assignment create` příkaz, nahraďte `<subscription ID>` , `<resource group name>` a `<VNet name>` s příslušnými hodnotami:
 
    ```azurecli-interactive
-   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
+   az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>
    ```
 
    > [!NOTE]

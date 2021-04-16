@@ -1,14 +1,14 @@
 ---
 title: Povolit rozšíření virtuálního počítače z Azure Portal
 description: Tento článek popisuje, jak nasadit rozšíření virtuálních počítačů na servery s podporou ARC Azure běžícími v hybridních cloudových prostředích z Azure Portal.
-ms.date: 01/22/2020
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: b0e114b314179d42ccd47b7d7bd534d3a824a411
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5b4ff79d68ec9ff0cc61b9dbb7d3c5d7fe93598
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587668"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388274"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Povolit rozšíření virtuálních počítačů Azure z Azure Portal
 
@@ -16,6 +16,9 @@ V tomto článku se dozvíte, jak nasadit a odinstalovat rozšíření virtuáln
 
 > [!NOTE]
 > Rozšíření virtuálního počítače Key Vault (Preview) nepodporuje nasazení z Azure Portal, jenom pomocí rozhraní příkazového řádku Azure, Azure PowerShell nebo pomocí šablony Azure Resource Manager.
+
+> [!NOTE]
+> Servery s podporou ARC Azure nepodporují nasazení a správu rozšíření virtuálních počítačů na virtuální počítače Azure. Informace o virtuálních počítačích Azure najdete v následujícím článku [Přehled rozšíření virtuálních počítačů](../../virtual-machines/extensions/overview.md) .
 
 ## <a name="enable-extensions-from-the-portal"></a>Povolení rozšíření z portálu
 

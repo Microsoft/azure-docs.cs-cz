@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 9eebc77c5b3d9402c766320fddfdaf05d50b574f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74e08cce381d173e0c5e1458ae99167a0c8c697f
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102485397"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107504506"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>Rozhraní API Azure Cosmos DB pro MongoDB (verze serveru 4,0): podporované funkce a syntaxe
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -143,7 +143,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 | $limit | Yes |
 | $listLocalSessions | No |
 | $listSessions | No |
-| $lookup | Yes |
+| $lookup | Částečné |
 | $match | Yes |
 | $out | Yes |
 | $project | Yes |
@@ -155,6 +155,9 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 | $sort | Yes |
 | $sortByCount | Yes |
 | $unwind | Yes |
+
+> [!NOTE]
+> `$lookup` zatím nepodporuje funkci [nekorelačních poddotazů](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#join-conditions-and-uncorrelated-sub-queries) , která byla představena na serveru verze 3,6. Zobrazí se chyba se zprávou, která obsahuje, `let is not supported` Pokud se pokusíte použít `$lookup` operátor s `let` poli a `pipeline` .
 
 ### <a name="boolean-expressions"></a>Logické výrazy
 

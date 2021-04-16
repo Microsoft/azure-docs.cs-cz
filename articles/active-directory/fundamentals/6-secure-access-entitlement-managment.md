@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f06a54f59405d9833194b2e7d4488bc93d2437ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89744b63a555cc02d35815b4066ce572b7f77e38
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98725174"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531898"
 ---
 # <a name="manage-external-access-with-entitlement-management"></a>Správa externího přístupu se správou oprávnění 
 
@@ -96,13 +96,13 @@ Další informace o kontrolách přístupu najdete v tématu [Plánování nasaz
 
 [Funkce správy nároků můžete provádět pomocí Microsoft Graph](/graph/tutorial-access-package-api), včetně
 
-* [Spravovat balíčky pro přístup](/graph/api/resources/accesspackage?view=graph-rest-beta)
+* [Spravovat balíčky pro přístup](/graph/api/resources/accesspackage?view=graph-rest-beta&preserve-view=true)
 
-* [Správa kontrol přístupu](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
+* [Správa kontrol přístupu](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)
 
-* [Správa připojených organizací](/graph/api/resources/connectedorganization?view=graph-rest-beta)
+* [Správa připojených organizací](/graph/api/resources/connectedorganization?view=graph-rest-beta&preserve-view=true)
 
-* [Spravovat nastavení správy nároků](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
+* [Spravovat nastavení správy nároků](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta&preserve-view=true)
 
 ## <a name="recommendations"></a>Doporučení 
 
@@ -112,7 +112,7 @@ Doporučujeme, abyste zvyklí řídit externí přístup se správou nároků.
 
 * Pokud již máte uživatele B2B v adresáři, můžete je také přímo přiřadit k příslušným balíčkům pro přístup.
 
-* Přístup můžete přiřadit v [Azure Portal](../governance/entitlement-management-access-package-assignments.md)nebo prostřednictvím [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta).
+* Přístup můžete přiřadit v [Azure Portal](../governance/entitlement-management-access-package-assignments.md)nebo prostřednictvím [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta&preserve-view=true).
 
 **Pomocí nastavení zásad správného řízení identity Odeberte uživatele z adresáře, když vyprší platnost jejich balíčků pro přístup**.
 

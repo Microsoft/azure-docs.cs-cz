@@ -77,25 +77,25 @@
     - name: Nejčastější dotazy
       items:
         - name: Nejčastější dotazy k trezorům služby Recovery Services
-          href: backup-azure-backup-faq.md
+          href: backup-azure-backup-faq.yml
         - name: Nejčastější dotazy k centru zálohování
           href: backup-center-faq.yml
         - name: Nejčastější dotazy k zálohování virtuálních počítačů Azure
           href: backup-azure-vm-backup-faq.yml
         - name: Nejčastější dotazy k agentům MARS
-          href: backup-azure-file-folder-backup-faq.md
+          href: backup-azure-file-folder-backup-faq.yml
         - name: Nejčastější dotazy k zálohování Azure Files
-          href: backup-azure-files-faq.md
+          href: backup-azure-files-faq.yml
         - name: Nejčastější dotazy k zálohování disků Azure
-          href: disk-backup-faq.md
+          href: disk-backup-faq.yml
         - name: Nejčastější dotazy k zálohování databází SQL Serveru na virtuálních počítačích Azure
-          href: faq-backup-sql-server.md
+          href: faq-backup-sql-server.yml
         - name: Nejčastější dotazy k zálohování databází SAP HANA na virtuálních počítačích Azure
-          href: sap-hana-faq-backup-azure-vm.md
+          href: sap-hana-faq-backup-azure-vm.yml
         - name: Nejčastější dotazy k Azure Backup Serveru a DPM
-          href: backup-azure-dpm-azure-server-faq.md
+          href: backup-azure-dpm-azure-server-faq.yml
         - name: Nejčastější dotazy k výstrahám monitorování Azure Backupu
-          href: backup-azure-monitor-alert-faq.md
+          href: backup-azure-monitor-alert-faq.yml
     - name: Architektura zálohování
       href: backup-architecture.md
     - name: Doprovodné materiály a osvědčené postupy

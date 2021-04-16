@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: 4e559ea1e531e2d472faeef60ebc6d528da0cfd0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c89e6ed98e0a71f530cefda4cc1f42a27996d805
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307924"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518503"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
@@ -225,7 +225,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | [Čtenář fakturace](#billing-reader) | Povolí přístup pro čtení k fakturačním údajům. | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | [Přispěvatel podrobného plánu](#blueprint-contributor) | Může spravovat definice podrobného plánu, ale nepřiřazovat je. | 41077137-e803-4205-871c-5a86e6a753b4 |
 > | [Operátor podrobného plánu](#blueprint-operator) | Může přiřadit existující publikované modrotisky, ale nemůže vytvářet nové plány. Všimněte si, že to funguje jenom v případě, že se přiřazení provádí pomocí uživatelem přiřazené spravované identity. | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
-> | [Přispěvatel Cost Management](#cost-management-contributor) | Umožňuje zobrazit náklady a spravovat konfiguraci nákladů (např. rozpočty, exporty). | 434105ed-43f6-45c7-a02f-909b2ba83430 |
+> | [Přispěvatel služby Cost Management](#cost-management-contributor) | Umožňuje zobrazit náklady a spravovat konfiguraci nákladů (např. rozpočty, exporty). | 434105ed-43f6-45c7-a02f-909b2ba83430 |
 > | [Čtecí modul Cost Management](#cost-management-reader) | Může zobrazit data a konfiguraci nákladů (např. rozpočty, exporty). | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
 > | [Správce nastavení hierarchie](#hierarchy-settings-administrator) | Umožňuje uživatelům upravovat a odstraňovat nastavení hierarchie. | 350f8d15-c687-4448-8ae1-157740a3936d |
 > | [Cluster Kubernetes – registrace k Azure ARC](#kubernetes-cluster---azure-arc-onboarding) | Definice role pro autorizaci libovolného uživatele nebo služby k vytvoření prostředku connectedClusters | 34e09817-6cbe-4d01-b1a2-e0eac5743d41 |
@@ -10261,7 +10261,7 @@ Může přiřadit existující publikované modrotisky, ale nemůže vytvářet 
 }
 ```
 
-### <a name="cost-management-contributor"></a>Přispěvatel Cost Management
+### <a name="cost-management-contributor"></a>Přispěvatel služby Cost Management
 
 Umožňuje zobrazit náklady a spravovat konfiguraci nákladů (např. rozpočty, exporty) [Další informace](../cost-management-billing/costs/understand-work-scopes.md) .
 
@@ -12144,7 +12144,7 @@ Přispěvatel pracovního prostoru virtualizace plochy [Další informace](../vi
 
 ### <a name="disk-backup-reader"></a>Čtečka zálohování disku
 
-Poskytuje oprávnění k trezoru záloh k provedení zálohy disku. [Další informace](../backup/disk-backup-faq.md)
+Poskytuje oprávnění k trezoru záloh k provedení zálohy disku. [Další informace](../backup/disk-backup-faq.yml)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |

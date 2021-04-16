@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18bc7ca9e108a35fd27f7b3155f186221a8caae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e00fe3761824462252ce4984beb754385f3eca9
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90980065"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532154"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Zobrazení, přidání a odebrání přiřazení balíčku pro přístup ve správě nároků Azure AD
 
@@ -58,7 +58,7 @@ Pokud chcete používat správu nároků Azure AD a přiřazovat uživatelům p�
 
 ### <a name="viewing-assignments-programmatically"></a>Zobrazení přiřazení prostřednictvím kódu programu
 
-Můžete také načíst přiřazení v balíčku přístupu pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API k [vypsání accessPackageAssignments](/graph/api/accesspackageassignment-list?view=graph-rest-beta).
+Můžete také načíst přiřazení v balíčku přístupu pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API k [vypsání accessPackageAssignments](/graph/api/accesspackageassignment-list?view=graph-rest-beta&preserve-view=true).
 
 ## <a name="directly-assign-a-user"></a>Přímo přiřadit uživatele
 
@@ -90,7 +90,7 @@ V některých případech můžete chtít přímo přiřadit konkrétní uživat
 
 ### <a name="directly-assigning-users-programmatically"></a>Přímé přiřazování uživatelů prostřednictvím kódu programu
 
-Můžete také přímo přiřadit uživatele k balíčku přístupu pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API a [vytvořit accessPackageAssignmentRequest](/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
+Můžete také přímo přiřadit uživatele k balíčku přístupu pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API a [vytvořit accessPackageAssignmentRequest](/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta&preserve-view=true).
 
 ## <a name="remove-an-assignment"></a>Odebrání přiřazení
 

@@ -3,17 +3,19 @@ title: Vytvoření vyhrazeného fondu SQL (dřív SQL DW) pomocí šablony Azure
 description: Naučte se vytvořit fond SQL Azure synapse Analytics pomocí šablony Azure Resource Manager.
 services: azure-resource-manager
 author: julieMSFT
-ms.service: azure-resource-manager
-ms.topic: quickstart
-ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 70adb7409c44a79345a192df173a1a073cc9b7dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: azure-resource-manager
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 3e05fda65e4383f66cf9553ee7e083c18367b937
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460733"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534284"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-dedicated-sql-pool-formerly-sql-dw-by-using-an-arm-template"></a>Rychlý Start: vytvoření vyhrazeného fondu SQL ve službě Azure synapse Analytics (dřív SQL DW) pomocí šablony ARM
 
@@ -37,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Šablona definuje jeden prostředek:
 
-- [Microsoft. SQL/servery](/azure/templates/microsoft.sql/servers)
+- [Microsoft.Sql/servers](/azure/templates/microsoft.sql/servers)
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 

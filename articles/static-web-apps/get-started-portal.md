@@ -3,16 +3,18 @@ title: 'Rychlý Start: Vytvoření první statické webové aplikace pomocí sta
 description: Naučte se nasadit statickou lokalitu do Azure static Web Apps s Azure Portal.
 services: static-web-apps
 author: craigshoemaker
-ms.service: static-web-apps
-ms.topic: quickstart
-ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: b19c37a45131e3689fdc9726d186f220ab5ba9fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/03/2020
+ms.topic: quickstart
+ms.service: static-web-apps
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 78af2290a2e71d349303d3913f8a40510eb9c6a0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149524"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531582"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Rychlý Start: vytvoření prvního statického webu v Azure Portal
 
@@ -31,7 +33,7 @@ Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](ht
 
 Teď, když je úložiště vytvořené, můžete z Azure Portal vytvořit statickou webovou aplikaci.
 
-1. Přejít na [Azure Portal](https://portal.azure.com)
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 1. Vyberte **vytvořit prostředek** .
 1. Vyhledejte **Static Web Apps**.
 1. Vybrat **statické Web Apps (Náhled)**

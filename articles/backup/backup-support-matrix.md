@@ -2,14 +2,14 @@
 title: Matice podpory pro Azure Backup
 description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Backup.
 ms.topic: conceptual
-ms.date: 02/17/2019
+ms.date: 04/14/2021
 ms.custom: references_regions
-ms.openlocfilehash: 349a48b6178d5e4618aa62d9f0c3a150fe561e05
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 5c74a34efe8075ab7a34fab4570d9513900b3f81
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284387"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517415"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -33,7 +33,7 @@ Následující tabulka popisuje funkce trezorů Recovery Services:
 --- | ---
 **Trezory v předplatném** | V jednom předplatném je až 500 Recovery Services trezory.
 **Počítače v trezoru** | Až 2000 zdrojů dat napříč všemi úlohami (jako jsou virtuální počítače Azure, SQL Server virtuální počítače, servery MABS a tak dále) se dají chránit v jednom trezoru.<br><br>Až 1 000 virtuálních počítačů Azure v jednom trezoru.<br/><br/> V jednom trezoru se dají zaregistrovat až 50 serverů MABS.
-**Zdroje dat** | Maximální velikost jednotlivého [zdroje dat](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined) je 54 400 GB. Toto omezení se nevztahuje na zálohy virtuálních počítačů Azure. Na celkové množství dat, která můžete zálohovat do trezoru, neplatí žádná omezení.
+**Zdroje dat** | Maximální velikost jednotlivého [zdroje dat](./backup-azure-backup-faq.yml#how-is-the-data-source-size-determined-) je 54 400 GB. Toto omezení se nevztahuje na zálohy virtuálních počítačů Azure. Na celkové množství dat, která můžete zálohovat do trezoru, neplatí žádná omezení.
 **Zálohy do trezoru** | **Virtuální počítače Azure:** Jednou denně.<br/><br/>**Počítače chráněné aplikací DPM/MABS:** Dvakrát denně.<br/><br/> **Počítače zálohované přímo pomocí agenta Mars:** Třikrát denně.
 **Zálohy mezi trezory** | Zálohování je v rámci jedné oblasti.<br/><br/> Potřebujete trezor v každé oblasti Azure, která obsahuje virtuální počítače, které chcete zálohovat. Nemůžete zálohovat do jiné oblasti.
 **Přesunout trezory** | [Trezory můžete přesouvat](./backup-azure-move-recovery-services-vault.md) mezi předplatnými nebo mezi skupinami prostředků ve stejném předplatném. Přesun trezorů mezi oblastmi se ale nepodporuje.
@@ -57,7 +57,7 @@ Co je se podporuje, pokud chcete zálohovat místní počítače:
 
 ### <a name="azure-vm-limits"></a>Omezení virtuálních počítačů Azure
 
-**Počtu** | **Podrobnosti**
+**Omezení** | **Podrobnosti**
 --- | ---
 **Datové disky virtuálních počítačů Azure** | Podívejte se na [podporu pro zálohování virtuálních počítačů Azure](./backup-support-matrix-iaas.md#vm-storage-support).
 **Velikost datového disku virtuálního počítače Azure** | Velikost jednotlivých disků může být až 32 TB a pro všechny disky ve virtuálním počítači je v kombinaci maximálně 256 TB.
@@ -151,7 +151,7 @@ Azure Backup přidal funkci obnovení mezi oblastmi k posílení dostupnosti dat
 
 | Typ správy zálohování | Podporováno                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Virtuální počítač Azure               | Podporováno pro virtuální počítače Azure se spravovanými i nespravovanými disky. Nepodporuje se u klasických virtuálních počítačů. | K dispozici ve všech veřejných oblastech Azure a oblastech svrchovaného případu s výjimkou Francie – střed, Austrálie – střed, Jižní Afrika – sever, Spojené arabské emiráty sever, Švýcarsko – sever, Německo – středozápad, Norsko – východ, g IOWA a g) – Virginia. <br>Informace o použití v těchto oblastech získáte od [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| Virtuální počítač Azure               | Podporováno pro virtuální počítače Azure (včetně šifrovaných virtuálních počítačů Azure) se spravovanými i nespravovanými disky. Nepodporuje se u klasických virtuálních počítačů. | K dispozici ve všech veřejných oblastech Azure a oblastech svrchovaného případu s výjimkou Francie – střed, Austrálie – střed, Jižní Afrika – sever, Spojené arabské emiráty sever, Švýcarsko – sever, Německo – středozápad, Norsko – východ, g IOWA a g) – Virginia. <br>Informace o použití v těchto oblastech získáte od [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
 | SQL/SAP HANA | Ve verzi Preview                                                      | K dispozici ve všech veřejných oblastech Azure a oblastech svrchovaného případu s výjimkou Francie – střed, Austrálie – střed, Jižní Afrika – sever, Spojené arabské emiráty sever, Švýcarsko – sever, Německo – středozápad, Norsko – východ, g IOWA a g) – Virginia. <br>Informace o použití v těchto oblastech získáte od [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
 | Agent MARS/místní  | No                                                           | –               |
 | AFS (sdílené složky Azure)                 | No                                                           | –               |
