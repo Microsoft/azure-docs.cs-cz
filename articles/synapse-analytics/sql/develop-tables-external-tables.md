@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1977663f4661fca316e4839671abd76e07b5acda
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0986a1d6a75f0d464eb405841af821c606c68200
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304796"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565317"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Použití externích tabulek s synapse SQL
 
@@ -339,7 +339,7 @@ Určuje složku, cestu k souboru a název souboru pro skutečná data v Azure Bl
 Pokud zadáte umístění složky, dotaz na fond SQL bez serveru se vybere z externí tabulky a načte soubory ze složky.
 
 > [!NOTE]
-> Na rozdíl od Hadoop a báze SQL bez serveru nevrátí podsložky, pokud nezadáte/* * na konci cesty.
+> Na rozdíl od Hadoop a báze SQL bez serveru nevrátí podsložky, pokud nezadáte/* * na konci cesty. Stejně jako Hadoop a základ nevrátí soubory, pro které název souboru začíná podtržítkem (_) nebo tečkou (.).
 
 V tomto příkladu, pokud LOCATION = '/WebData/', není dotaz na fond SQL bez serveru, bude vracet řádky z mydata.txt. Nevrátí mydata2.txt a mydata3.txt, protože jsou umístěné v podsložce.
 

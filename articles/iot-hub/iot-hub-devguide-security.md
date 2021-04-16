@@ -7,7 +7,7 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 04/15/2021
 ms.custom:
 - amqp
 - mqtt
@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: 3ddc8c78bac47ed85266037341328585e3c7cb1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e72af412f61f2084fb78907c15a92a22b9e3bc99
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97825118"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567175"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -385,7 +385,7 @@ Mezi podporované certifikáty patří:
 
 Zařízení může buď použít certifikát X. 509, nebo token zabezpečení pro ověřování, ale ne obojí. Při ověřování pomocí certifikátu X. 509 se ujistěte, že máte zavedenou strategii pro zpracování změny certifikátu, když vyprší platnost existujícího certifikátu.
 
-Pro zařízení, která používají ověřování CA X. 509, se nepodporuje následující funkce:
+Následující funkce pro zařízení, která používají ověřování pomocí certifikační autority X. 509, ještě nejsou všeobecně k dispozici, a je [nutné povolit režim náhledu](iot-hub-preview-mode.md):
 
 * Protokol HTTPS, MQTT přes objekty WebSockets a AMQP přes protokoly WebSockets.
 * Nahrávání souborů (všechny protokoly).

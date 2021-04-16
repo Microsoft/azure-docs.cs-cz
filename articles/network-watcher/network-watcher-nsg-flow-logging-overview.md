@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 206bcfaeb5cb13d3ecf1e5f6335518c42df21eb8
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f737be68a28f95ab5402ba5ea08e85fcf1b04d37
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535290"
+ms.locfileid: "107565895"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do protokolování toků pro skupiny zabezpečení sítě
 
@@ -93,10 +93,10 @@ Protokoly toků obsahují následující vlastnosti:
                     * **Tok přenosů** – směr toku přenosů. Platné hodnoty jsou pro **příchozí a výstupní** **hodnoty pro odchozí** .
                     * **Rozhodnutí o provozu** – zda byl provoz povolen nebo odepřen. Platné **hodnoty jsou pro** povolené a **D** pro zamítnutí.
                     * **Stav toku – pouze verze 2** – zachycuje stav toku. Možné stavy jsou při vytváření toku **B**: begin. Statistiky nejsou k dispozici. **C**: pokračuje se na průběžný tok. Statistika je k dispozici v intervalu 5 minut. **E**: end, když se ukončí tok. Statistiky jsou k dispozici.
-                    * **Pakety – zdrojová do cíle – jenom verze 2** Celkový počet paketů TCP nebo UDP odeslaných ze zdroje do cíle od poslední aktualizace.
-                    * **Odeslané bajty – pouze zdroj do cíle – verze 2** Celkový počet bajtů paketů TCP nebo UDP odeslaných ze zdroje do cíle od poslední aktualizace. Bajty paketů zahrnují hlavičku paketu a datovou část.
-                    * **Pakety – cíl až do source-verze 2** Celkový počet paketů TCP nebo UDP odeslaných z cíle do zdroje od poslední aktualizace.
-                    * **Odeslané bajty – cíl ke zdroji – verze 2** Celkový počet bajtů paketů TCP a UDP odeslaných z cíle do zdroje od poslední aktualizace. Bajty paketů zahrnují hlavičku paketu a datovou část.
+                    * **Pakety – zdrojová do cíle – jenom verze 2** Celkový počet paketů TCP odeslaných ze zdroje do cíle od poslední aktualizace.
+                    * **Odeslané bajty – pouze zdroj do cíle – verze 2** Celkový počet bajtů paketů TCP odeslaných ze zdroje do cíle od poslední aktualizace. Bajty paketů zahrnují hlavičku paketu a datovou část.
+                    * **Pakety – cíl až do source-verze 2** Celkový počet paketů TCP odeslaných z cíle do zdroje od poslední aktualizace.
+                    * **Odeslané bajty – cíl ke zdroji – verze 2** Celkový počet bajtů paketů TCP odeslaných z cíle do zdroje od poslední aktualizace. Bajty paketů zahrnují hlavičku paketu a datovou část.
 
 
 **Protokoly toku NSG verze 2 (vs verze 1)** 

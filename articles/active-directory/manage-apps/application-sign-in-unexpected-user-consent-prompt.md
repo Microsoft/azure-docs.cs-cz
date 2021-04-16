@@ -2,26 +2,22 @@
 title: Neočekávaná výzva k vyjádření souhlasu při přihlašování k aplikaci | Microsoft Docs
 description: Postup řešení potíží, když se uživateli zobrazí výzva k vyjádření souhlasu s aplikací, kterou jste v Azure AD zaznamenali, že jste neočekávali
 services: active-directory
-documentationcenter: ''
-author: kenwith
-manager: daveba
-ms.assetid: ''
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d97f6e158065fd8f5f8a377b4da17b7b0357b66e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 37e4384b5a1b400f11b7b7d6ab15beec4d2f8de9
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305391"
+ms.locfileid: "107378053"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Neočekávaná výzva k vyjádření souhlasu při přihlášení k aplikaci
 

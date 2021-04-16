@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 36d6af7fb42bc1b705b44bdae6f24b454bfd242f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: eeef454e4c5706b39d07261ade1c2f0ffbc942ad
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312429"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478892"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Otestování rozhraní portálu pro Azure Managed Applications
 
@@ -100,7 +100,7 @@ Pokud portál přestane reagovat na obrazovku souhrnu, může se jednat o chybu 
 
 ## <a name="test-your-solution-files"></a>Testování souborů řešení
 
-Teď, když jste ověřili, že rozhraní vašeho portálu pracuje podle očekávání, je čas ověřit, jestli je váš soubor createUiDefinition správně integrovaný s vaším mainTemplate.jsv souboru. Můžete spustit test ověřovacího skriptu a otestovat obsah souborů řešení, včetně souboru createUiDefinition. Skript ověřuje syntaxi JSON, kontroluje výrazy regulárních výrazů u textových polí a zajišťuje, aby výstupní hodnoty rozhraní portálu odpovídaly parametrům vaší šablony. Informace o spuštění tohoto skriptu najdete v tématu [spuštění kontroly statického ověřování pro šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/test).
+Teď, když jste ověřili, že rozhraní vašeho portálu pracuje podle očekávání, je čas ověřit, jestli je váš soubor createUiDefinition správně integrovaný s vaším mainTemplate.jsv souboru. Můžete spustit test ověřovacího skriptu a otestovat obsah souborů řešení, včetně souboru createUiDefinition. Skript ověřuje syntaxi JSON, kontroluje výrazy regulárních výrazů u textových polí a zajišťuje, aby výstupní hodnoty rozhraní portálu odpovídaly parametrům vaší šablony. Informace o spuštění tohoto skriptu najdete v tématu [spuštění kontroly statického ověřování pro šablony](https://aka.ms/arm-ttk).
 
 ## <a name="next-steps"></a>Další kroky
 

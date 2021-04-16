@@ -2,18 +2,18 @@
 title: Rychlý Start pro Azure Key Vault Klientská knihovna certifikátů – Java
 description: Přečtěte si informace o klientské knihovně Azure Key Vault certifikátů pro Java pomocí kroků v tomto rychlém startu.
 author: msmbaldwin
-ms.custom: devx-track-java, devx-track-azurecli
+ms.custom: devx-track-java
 ms.author: mbaldwin
 ms.date: 12/18/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 99b8c63060cebeffea0f3473e03b5f49a415230b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db69258a774343af18e683444d22530a32f85555
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936035"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374943"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>Rychlý Start: Azure Key Vault klientské knihovny certifikátů pro Java (certifikáty)
 Začínáme s klientskou knihovnou certifikátů Azure Key Vault pro Java Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.

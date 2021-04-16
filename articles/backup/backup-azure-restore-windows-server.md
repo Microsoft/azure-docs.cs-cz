@@ -3,12 +3,12 @@ title: Obnovení souborů na Windows serveru pomocí agenta MARS
 description: V tomto článku se dozvíte, jak obnovit data uložená v Azure do počítače s Windows serverem nebo Windows pomocí agenta Microsoft Azure Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 79a4d32d6dbca5ca5be5d46c6b44a07ef42de061
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ca0787ec38e1bc22b62e756c7ee56c5c9e93493
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91813249"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517330"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Obnovení souborů na Windows serveru pomocí agenta MARS
 
@@ -107,7 +107,7 @@ Tyto kroky zahrnují následující terminologii:
 
 5. Zadejte soubor s přihlašovacími údaji úložiště, který odpovídá trezoru ukázek, a vyberte **Další**.
 
-    Pokud je soubor přihlašovacích údajů trezoru neplatný (nebo vypršela jeho platnost), [Stáhněte si nový soubor s přihlašovacími údaji trezoru z trezoru ukázek](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) v Azure Portal. Po zadání platného pověření trezoru se zobrazí název odpovídajícího úložiště záloh.
+    Pokud je soubor přihlašovacích údajů trezoru neplatný (nebo vypršela jeho platnost), [Stáhněte si nový soubor s přihlašovacími údaji trezoru z trezoru ukázek](backup-azure-file-folder-backup-faq.yml#where-can-i-download-the-vault-credentials-file-) v Azure Portal. Po zadání platného pověření trezoru se zobrazí název odpovídajícího úložiště záloh.
 
 6. Na stránce **Vybrat záložní server** vyberte zdrojový počítač ze seznamu zobrazených počítačů a zadejte heslo. Pak vyberte **Další**.
 
@@ -145,4 +145,4 @@ Tyto kroky zahrnují následující terminologii:
 
 * Teď, když jste obnovili své soubory a složky, můžete [Spravovat zálohy](backup-azure-manage-windows-server.md).
 
-* Najděte [běžné otázky týkající se zálohování souborů a složek](backup-azure-file-folder-backup-faq.md).
+* Najděte [běžné otázky týkající se zálohování souborů a složek](backup-azure-file-folder-backup-faq.yml).

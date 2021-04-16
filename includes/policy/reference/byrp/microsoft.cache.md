@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b199ff879a407c14000ba256373bd5123ef8b092
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 65ee6afa702a020c240f68ccc5b8c5bc5c7f8e4c
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095287"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503915"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Azure cache pro Redis by měl zakázat přístup k veřejné síti.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F470baccb-7e51-4549-8b1a-3e5be069f663) |Zakázáním přístupu k veřejné síti se zlepší zabezpečení tím, že se zajistí, že se mezipaměť Azure pro Redis nezveřejňuje na veřejném Internetu. Můžete omezit vystavení mezipaměti Azure pro Redis vytvořením privátních koncových bodů. Další informace najdete tady: [https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link) . |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_PublicNetworkAccess_AuditDeny.json) |
 |[Mezipaměť Azure pro Redis by se měla nacházet v rámci virtuální sítě.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d092e0a-7acd-40d2-a975-dca21cae48c4) |Nasazení Azure Virtual Network poskytuje lepší zabezpečení a izolaci mezipaměti Azure pro Redis a podsítě, zásady řízení přístupu a další funkce pro další omezení přístupu. Když je u instance Azure cache for Redis nakonfigurovaná virtuální síť, není veřejně adresovatelná a je dostupná jenom z virtuálních počítačů a aplikací v rámci této virtuální sítě. |Audit, zamítnutí, zakázáno |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_CacheInVnet_Audit.json) |

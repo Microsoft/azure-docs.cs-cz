@@ -2,13 +2,13 @@
 title: AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs | Microsoft Docs
 description: Průvodce protokolem pro výrazy a popis AMQP 1,0 v Azure Service Bus a Event Hubs
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 8575e17cd06a4153928837e6990c764d7a29993f
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624485"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502058"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs
 
@@ -52,7 +52,7 @@ AMQP volá *kontejnery* komunikujících programů; Ty obsahují *uzly*, které 
 
 Síťové připojení je tedy ukotveno na kontejneru. Je iniciován kontejnerem v roli klienta, který vytváří odchozí připojení soketu TCP ke kontejneru v roli příjemce, který naslouchá a přijímá příchozí připojení TCP. Metoda handshake připojení zahrnuje vyjednávání verze protokolu, deklaraci nebo vyjednávání o použití TLS/SSL (Transport Level Security) a ověřovací/autorizační metody handshake v oboru připojení, který je založen na SASL.
 
-Azure Service Bus vyžaduje nepřetržité používání protokolu TLS. Podporuje připojení přes port TCP 5671, kdy se před vstupem metody handshake protokolu AMQP a připojení TCP nejprve překrývají s protokolem TLS, a podporuje také připojení přes port TCP 5672, kde server okamžitě nabízí povinný upgrade připojení k TLS pomocí modelu předepsaného AMQP. Vazba WebSockets AMQP vytvoří tunel přes port TCP 443, který je pak ekvivalentní připojení AMQP 5671.
+Azure Service Bus vyžaduje vždy použití TLS. Podporuje připojení přes port TCP 5671, kdy se před vstupem metody handshake protokolu AMQP a připojení TCP nejprve překrývají s protokolem TLS, a podporuje také připojení přes port TCP 5672, kde server okamžitě nabízí povinný upgrade připojení k TLS pomocí modelu předepsaného AMQP. Vazba WebSockets AMQP vytvoří tunel přes port TCP 443, který je pak ekvivalentní připojení AMQP 5671.
 
 Po nastavení připojení a TLS Service Bus nabízí dvě možnosti mechanismu SASL:
 
@@ -73,7 +73,7 @@ Připojení, kanály a relace jsou dočasné. Pokud se základní připojení sb
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP požadavky na Odchozí porty
 
-Klienti, kteří používají připojení AMQP přes protokol TCP, vyžadují, aby byly v místní bráně firewall otevřené porty 5671 a 5672. Spolu s těmito porty může být potřeba otevřít další porty, pokud je povolená funkce [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect) . `EnableLinkRedirect` je nová funkce zasílání zpráv, která pomáhá při přijímání zpráv přeskočit jedno směrování, což pomáhá zvýšit propustnost. Klient by začal komunikovat přímo s back-end službou přes rozsah portů 104XX, jak je znázorněno na následujícím obrázku. 
+Klienti, kteří používají připojení AMQP přes protokol TCP, vyžadují, aby byly v místní bráně firewall otevřené porty 5671 a 5672. Spolu s těmito porty může být potřeba otevřít porty navíc, pokud je povolená funkce [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect) . `EnableLinkRedirect` je nová funkce zasílání zpráv, která pomáhá při přijímání zpráv přeskočit jedno směrování, což pomáhá zvýšit propustnost. Klient by začal komunikovat přímo s back-end službou přes rozsah portů 104XX, jak je znázorněno na následujícím obrázku. 
 
 ![Seznam cílových portů][4]
 
@@ -106,7 +106,7 @@ V nejjednodušším případě se odesílatel může rozhodnout odeslat zprávy 
 
 Běžným případem je, že zprávy jsou odesílány neuhrazené a příjemce pak indikuje přijetí nebo odmítnutí pomocí performative *Disposition* . K zamítnutí dojde, když příjemce nemůže z nějakého důvodu zprávu přijmout a zpráva zamítnutí obsahuje informace o důvodu, což je struktura chyb definovaná pomocí AMQP. Pokud jsou zprávy odmítnuty z důvodu vnitřní chyby v Service Bus, služba vrátí další informace uvnitř této struktury, které se dají použít k poskytování pomocných parametrů pro podporu pracovníků, Pokud archivujete žádosti o podporu. Další podrobnosti o chybách najdete později.
 
-Speciální forma zamítnutí *je stav,* který indikuje, že příjemce nemá žádné technické objekty pro přenos, ale bez zájmu k vyrovnání přenosu. Tento případ existuje, například když se doručí zpráva Service Bus klientovi a klient se rozhodne "opustit" zprávu, protože nemůže provést práci, která je výsledkem zpracování zprávy. doručení samotné zprávy není při selhání. Variace tohoto stavu je *upravený* stav, který umožňuje změny zprávy při jejím vydání. Tento stav nepoužívá Service Bus v současnosti.
+Speciální forma zamítnutí *je stav,* který indikuje, že příjemce nemá žádné technické objekty pro přenos, ale bez zájmu k vyrovnání přenosu. Tento případ existuje, například když se doručí zpráva Service Bus klientovi a klient se rozhodne "opustit" zprávu, protože nemůže provést práci, která je výsledkem zpracování zprávy. doručení samotné zprávy není při selhání. Variace tohoto stavu je *upravený* stav, který umožňuje změny zprávy při jejím vydání. V současné době tento stav nepoužívá Service Bus at.
 
 Specifikace AMQP 1,0 definuje další stav dispozice s názvem *přijato*, který konkrétně pomáhá zvládnout obnovení propojení. Obnovení propojení umožňuje obnovit stav propojení a všech nevyřízených dodávek nad novým připojením a relací, pokud došlo ke ztrátě předchozího připojení a relace.
 
@@ -144,61 +144,61 @@ V následujících částech najdete informace o schématu toku performative bě
 
 | Klient | Service Bus |
 | --- | --- |
-| --> připojit (<br/>název = {Link Name};<br/>Handle = {číselný popisovač},<br/>role =**přijímač**,<br/>zdroj = {název entity},<br/>cíl = {ID odkazu na klienta}<br/>) |Klient se připojí k entitě jako příjemce. |
-| Service Bus odpovědi připojené ke konci odkazu |< – připojit (<br/>název = {Link Name};<br/>Handle = {číselný popisovač},<br/>role =**odesilatel**,<br/>zdroj = {název entity},<br/>cíl = {ID odkazu na klienta}<br/>) |
+| `--> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={entity name},<br/>target={client link ID}<br/>)` |Klient se připojí k entitě jako příjemce. |
+| Service Bus odpovědi připojené ke konci odkazu |`<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={entity name},<br/>target={client link ID}<br/>)` |
 
 #### <a name="create-message-sender"></a>Vytvořit odesílatele zprávy
 
 | Klient | Service Bus |
 | --- | --- |
-| --> připojit (<br/>název = {Link Name};<br/>Handle = {číselný popisovač},<br/>role =**odesilatel**,<br/>zdroj = {ID odkazu na klienta},<br/>cíl = {název entity}<br/>) |Žádná akce |
-| Žádná akce |< – připojit (<br/>název = {Link Name};<br/>Handle = {číselný popisovač},<br/>role =**přijímač**,<br/>zdroj = {ID odkazu na klienta},<br/>cíl = {název entity}<br/>) |
+| `--> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link ID},<br/>target={entity name}<br/>)` |Žádná akce |
+| Žádná akce |`<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={client link ID},<br/>target={entity name}<br/>)` |
 
 #### <a name="create-message-sender-error"></a>Vytvořit odesílatele zprávy (chyba)
 
 | Klient | Service Bus |
 | --- | --- |
-| --> připojit (<br/>název = {Link Name};<br/>Handle = {číselný popisovač},<br/>role =**odesilatel**,<br/>zdroj = {ID odkazu na klienta},<br/>cíl = {název entity}<br/>) |Žádná akce |
-| Žádná akce |< – připojit (<br/>název = {Link Name};<br/>Handle = {číselný popisovač},<br/>role =**přijímač**,<br/>zdroj = null,<br/>Target = null<br/>)<br/><br/><--detach (<br/>Handle = {číselný popisovač},<br/>uzavřeno =**true**,<br/>Chyba = {informace o chybě}<br/>) |
+| `--> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link ID},<br/>target={entity name}<br/>)` |Žádná akce |
+| Žádná akce |`<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numeric handle},<br/>closed=**true**,<br/>error={error info}<br/>)` |
 
 #### <a name="close-message-receiversender"></a>Zavřít příjemce nebo odesílatele zprávy
 
 | Klient | Service Bus |
 | --- | --- |
-| --> odpojit (<br/>Handle = {číselný popisovač},<br/>uzavřeno =**true**<br/>) |Žádná akce |
-| Žádná akce |<--detach (<br/>Handle = {číselný popisovač},<br/>uzavřeno =**true**<br/>) |
+| `--> detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>)` |Žádná akce |
+| Žádná akce |`<-- detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>)` |
 
 #### <a name="send-success"></a>Odeslat (úspěch)
 
 | Klient | Service Bus |
 | --- | --- |
-| --> přenos (<br/>Delivery-ID = {číselný popisovač},<br/>Značka doručení = {Binary popisovač},<br/>vyrovnané =**false**,, více =**false**,<br/>State =**null**,<br/>Resume =**false**<br/>) |Žádná akce |
-| Žádná akce |< – dispoziční (<br/>role = přijímač,<br/>First = {Delivery ID},<br/>Last = {Delivery ID},<br/>vyrovnané =**true**,<br/>stav =**přijato**<br/>) |
+| `--> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |Žádná akce |
+| Žádná akce |`<-- disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**accepted**<br/>)` |
 
 #### <a name="send-error"></a>Odeslat (chyba)
 
 | Klient | Service Bus |
 | --- | --- |
-| --> přenos (<br/>Delivery-ID = {číselný popisovač},<br/>Značka doručení = {Binary popisovač},<br/>vyrovnané =**false**,, více =**false**,<br/>State =**null**,<br/>Resume =**false**<br/>) |Žádná akce |
-| Žádná akce |< – dispoziční (<br/>role = přijímač,<br/>First = {Delivery ID},<br/>Last = {Delivery ID},<br/>vyrovnané =**true**,<br/>stav =**zamítnuto**(<br/>Chyba = {informace o chybě}<br/>)<br/>) |
+| `--> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |Žádná akce |
+| Žádná akce |`<-- disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={error info}<br/>)<br/>)` |
 
 #### <a name="receive"></a>Přijmout
 
 | Klient | Service Bus |
 | --- | --- |
-| --> tok (<br/>odkaz-kredit = 1<br/>) |Žádná akce |
-| Žádná akce |Přenos < (<br/>Delivery-ID = {číselný popisovač},<br/>Značka doručení = {Binary popisovač},<br/>vyrovnané =**false**,<br/>více =**false**,<br/>State =**null**,<br/>Resume =**false**<br/>) |
-| --> dispozice (<br/>role =**přijímač**,<br/>First = {Delivery ID},<br/>Last = {Delivery ID},<br/>vyrovnané =**true**,<br/>stav =**přijato**<br/>) |Žádná akce |
+| `--> flow(<br/>link-credit=1<br/>)` |Žádná akce |
+| Žádná akce |`< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |
+| `--> disposition(<br/>role=**receiver**,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**accepted**<br/>)` |Žádná akce |
 
 #### <a name="multi-message-receive"></a>Přijímání více zpráv
 
 | Klient | Service Bus |
 | --- | --- |
-| --> tok (<br/>odkaz-kredit = 3<br/>) |Žádná akce |
-| Žádná akce |Přenos < (<br/>Delivery-ID = {číselný popisovač},<br/>Značka doručení = {Binary popisovač},<br/>vyrovnané =**false**,<br/>více =**false**,<br/>State =**null**,<br/>Resume =**false**<br/>) |
-| Žádná akce |Přenos < (<br/>Delivery-ID = {číselný popisovač + 1},<br/>Značka doručení = {Binary popisovač},<br/>vyrovnané =**false**,<br/>více =**false**,<br/>State =**null**,<br/>Resume =**false**<br/>) |
-| Žádná akce |Přenos < (<br/>Delivery-ID = {číselný popisovač + 2},<br/>Značka doručení = {Binary popisovač},<br/>vyrovnané =**false**,<br/>více =**false**,<br/>State =**null**,<br/>Resume =**false**<br/>) |
-| --> dispozice (<br/>role = přijímač,<br/>First = {Delivery ID},<br/>Last = {Delivery ID + 2},<br/>vyrovnané =**true**,<br/>stav =**přijato**<br/>) |Žádná akce |
+| `--> flow(<br/>link-credit=3<br/>)` |Žádná akce |
+| Žádná akce |`< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |
+| Žádná akce |`< transfer(<br/>delivery-id={numeric handle+1},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |
+| Žádná akce |`< transfer(<br/>delivery-id={numeric handle+2},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |
+| `--> disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID+2},<br/>settled=**true**,<br/>state=**accepted**<br/>)` |Žádná akce |
 
 ### <a name="messages"></a>Zprávy
 
@@ -223,7 +223,7 @@ Jakákoli vlastnost, kterou musí aplikace definovat, by měla být namapována 
 | ID zprávy |Identifikátor volného formátu definovaného aplikací pro tuto zprávu. Používá se pro detekci duplicit. |[Parametr](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Identifikátor uživatele definovaný aplikací, není interpretován pomocí Service Bus. |Nedostupné prostřednictvím rozhraní Service Bus API. |
 | na |Identifikátor cíle definovaného aplikací, není interpretován pomocí Service Bus. |[Do](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| subject |Identifikátor účelu zprávy definované aplikací, není interpretován pomocí Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| subject |Identifikátor účelu zprávy definované aplikací, není interpretován pomocí Service Bus |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | odpovědět na |Indikátor odpovědi na cestu definovaný aplikací, není interpretován pomocí Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |Identifikátor korelace definovaný aplikací, není interpretován pomocí Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | typ obsahu |Indikátor typu obsahu definovaného aplikací pro tělo, které není interpretováno Service Bus. |[Třída](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -247,7 +247,7 @@ K dispozici je několik dalších vlastností zpráv Service Bus, které nejsou 
 | x-opt-Sequence-Number | Jedinečné číslo definované službou přiřazené zprávě | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) |
 | x – opt-offset | Pořadové číslo zprávy ve frontě definované službou | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber) |
 | x – výslovný souhlas – zamčené – až | Definováno službou. Datum a čas, kdy bude zpráva uzamčena ve frontě nebo předplatném. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc) |
-| x-opt-nedoručených zpráv – zdroj | Definováno službou. Pokud je zpráva přijata z fronty nedoručených zpráv, zdroji původní zprávy. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource) |
+| x-opt-nedoručených zpráv – zdroj | Definováno službou. Je-li zpráva přijata z fronty nedoručených zpráv, je zdrojem původní zprávy. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource) |
 
 ### <a name="transaction-capability"></a>Schopnost transakce
 
@@ -319,16 +319,16 @@ Tato část se věnuje pokročilým funkcím Azure Service Bus, které jsou zalo
 
 ### <a name="amqp-management"></a>Správa AMQP
 
-Specifikace správy AMQP je prvním z rozšíření konceptů popsaných v tomto článku. Tato specifikace definuje sadu protokolů nad protokolem AMQP, která umožňuje interakci správy s infrastrukturou zasílání zpráv přes AMQP. Specifikace definuje obecné operace, jako je *vytváření*, *čtení*, *aktualizace* a *odstranění* pro správu entit v infrastruktuře zasílání zpráv a sadu operací dotazů.
+Specifikace správy AMQP je prvním z rozšíření konceptů popsaných v tomto článku. Tato specifikace definuje sadu protokolů vrstev nad protokolem AMQP, která umožňuje interakci správy s infrastrukturou zasílání zpráv přes AMQP. Specifikace definuje obecné operace, jako je *vytváření*, *čtení*, *aktualizace* a *odstranění* pro správu entit v infrastruktuře zasílání zpráv a sadu operací dotazů.
 
 Všechna tato gesta vyžadují interakci mezi klientem a infrastrukturou zasílání zpráv, a proto specifikace definuje, jak modelovat tento vzor interakce na AMQP: klient se připojí k infrastruktuře zasílání zpráv, iniciuje relaci a pak vytvoří dvojici odkazů. Na jednom odkazu klient funguje jako odesílatel a druhý jeho činnost funguje jako příjemce, takže vytvoří dvojici odkazů, které mohou fungovat jako obousměrný kanál.
 
 | Logická operace | Klient | Service Bus |
 | --- | --- | --- |
-| Vytvořit cestu k žádosti o odpověď |--> připojit (<br/>název = {*Link Name*};<br/>Handle = {*číselný popisovač*},<br/>role =**odesilatel**,<br/>zdroj =**null**,<br/>target = "myentity/$management"<br/>) |Žádná akce |
-| Vytvořit cestu k žádosti o odpověď |Žádná akce |\<-- attach(<br/>název = {*Link Name*};<br/>Handle = {*číselný popisovač*},<br/>role =**přijímač**,<br/>zdroj = null,<br/>target = "myentity"<br/>) |
-| Vytvořit cestu k žádosti o odpověď |--> připojit (<br/>název = {*Link Name*};<br/>Handle = {*číselný popisovač*},<br/>role =**přijímač**,<br/>Source = "myentity/$management",<br/>target = "MyClient $ ID"<br/>) | |
-| Vytvořit cestu k žádosti o odpověď |Žádná akce |\<-- attach(<br/>název = {*Link Name*};<br/>Handle = {*číselný popisovač*},<br/>role =**odesilatel**,<br/>Source = "myentity",<br/>target = "MyClient $ ID"<br/>) |
+| Vytvořit cestu k žádosti o odpověď |`--> attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**sender**,<br/>source=**null**,<br/>target=”myentity/$management”<br/>)` |Žádná akce |
+| Vytvořit cestu k žádosti o odpověď |Žádná akce |`\<-- attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**receiver**,<br/>source=null,<br/>target=”myentity”<br/>)` |
+| Vytvořit cestu k žádosti o odpověď |`--> attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**receiver**,<br/>source=”myentity/$management”,<br/>target=”myclient$id”<br/>)` | |
+| Vytvořit cestu k žádosti o odpověď |Žádná akce |`\<-- attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**sender**,<br/>source=”myentity”,<br/>target=”myclient$id”<br/>)` |
 
 Díky tomu, že je tato dvojice odkazů zavedena, implementace žádosti a odpovědi je jednoduchá: požadavek je zpráva odeslaná entitě v infrastruktuře zasílání zpráv, která tento model zná. V tomto požadavku-zpráva je pole *Odpovědět* v oddílu *vlastnosti* nastaveno na *cílový* identifikátor odkazu, na který chcete odpověď poskytnout. Entita zpracování požadavek zpracuje a pak doručí odpověď přes odkaz, jehož *cílový* identifikátor odpovídá identifikátoru *odpovědi* .
 
@@ -368,11 +368,10 @@ Vlastnost *Name* určuje entitu, ke které je token přidružen. V Service Bus s
 
 | Typ tokenu | Popis tokenu | Typ textu | Poznámky |
 | --- | --- | --- | --- |
-| AMQP: JWT |JSON Web Token (JWT) |AMQP hodnota (String) |Ještě není k dispozici. |
-| AMQP: SWT |Jednoduchý webový token (SWT) |AMQP hodnota (String) |Podporuje se jenom pro tokeny SWT vydané AAD/ACS. |
-| ServiceBus. Windows. NET: sastoken |Service Bus token SAS |AMQP hodnota (String) |- |
+| `jwt` |JSON Web Token (JWT) |AMQP hodnota (String) |Ještě není k dispozici. |
+| `servicebus.windows.net:sastoken` |Service Bus token SAS |AMQP hodnota (String) |- |
 
-Tokeny udělují práva. Service Bus ví o třech základních právech: "Odeslat" umožňuje odesílání, "naslouchání" umožňuje příjem a "Správa" umožňuje manipulaci s entitami. SWT tokeny vydané AAD/ACS výslovně zahrnují tato práva jako deklarace identity. Service Bus tokeny SAS odkazují na pravidla konfigurovaná pro obor názvů nebo entitu a tato pravidla jsou nakonfigurovaná s právy. Podpis tokenu s klíčem přidruženým k tomuto pravidlu proto umožní tokenu vyjadřovat příslušná práva. Token přidružený k entitě s použitím *tokenu Put* umožňuje připojenému klientovi pracovat s entitou podle oprávnění tokenu. Odkaz, který klient převezme u role *Odesílatel* , vyžaduje oprávnění Odeslat. při převzetí u role *přijímače* je vyžadována možnost naslouchat.
+Tokeny udělují práva. Service Bus ví o třech základních právech: "Odeslat" umožňuje odesílání, "naslouchání" umožňuje příjem a "Správa" umožňuje manipulaci s entitami. Service Bus tokeny SAS odkazují na pravidla konfigurovaná pro obor názvů nebo entitu a tato pravidla jsou nakonfigurovaná s právy. Podpis tokenu s klíčem přidruženým k tomuto pravidlu proto umožní tokenu vyjadřovat příslušná práva. Token přidružený k entitě s použitím *tokenu Put* umožňuje připojenému klientovi pracovat s entitou podle oprávnění tokenu. Odkaz, který klient převezme u role *Odesílatel* , vyžaduje oprávnění Odeslat. při převzetí u role *přijímače* je vyžadována možnost naslouchat.
 
 Zpráva s odpovědí obsahuje následující hodnoty *vlastností aplikace* .
 
@@ -401,8 +400,8 @@ Pomocí této funkce vytvoříte odesílatele a vytvoříte odkaz na `via-entity
 
 | Klient | Směr | Service Bus |
 | :--- | :---: | :--- |
-| pojovat<br/>název = {Link Name};<br/>role = odesilatel,<br/>zdroj = {ID odkazu na klienta},<br/>Target =**{Via-entity}**,<br/>**Properties = map [( <br/> com. Microsoft: Transfer-Destination-address = <br/> {Destination-entity})]** ) | ------> | |
-| | <------ | pojovat<br/>název = {Link Name};<br/>role = přijímač,<br/>zdroj = {ID odkazu na klienta},<br/>Target = {Via-entity},<br/>Properties = map [(<br/>com. Microsoft: Transfer-cíl-adresa =<br/>{Destination-entity})] ) |
+| pojovat<br/>název = {Link Name};<br/>role = odesilatel,<br/>zdroj = {ID odkazu na klienta},<br/>Target =**{Via-entity}**,<br/>**Properties = map [( <br/> com. Microsoft: Transfer-Destination-address = <br/> {Destination-entity})]**) | ------> | |
+| | <------ | pojovat<br/>název = {Link Name};<br/>role = přijímač,<br/>zdroj = {ID odkazu na klienta},<br/>Target = {Via-entity},<br/>Properties = map [(<br/>com. Microsoft: Transfer-cíl-adresa =<br/>{Destination-entity})]) |
 
 ## <a name="next-steps"></a>Další kroky
 

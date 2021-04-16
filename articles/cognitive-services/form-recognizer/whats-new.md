@@ -7,65 +7,211 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 04/14/2021
 ms.author: lajanuar
-ms.openlocfilehash: 81115f5a9ed802f1d07c45ec928dc4b84ea2917b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e952d481daf53b1806dc3cfbb658c8c0c21f6984
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048744"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516293"
 ---
 <!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD036 -->
 # <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
 Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek vám umožní udržovat aktuální informace o vylepšeních, opravách a dokumentaci k funkcím.
+
+## <a name="april-2021"></a>Duben 2021
+<!-- markdownlint-disable MD029 -->
+
+### <a name="sdk-updates-api--version-21-preview3"></a>Aktualizace sady SDK (rozhraní API verze 2,1-Preview. 3)
+
+### <a name="c-version-310-beta4"></a>**Verze C# 3.1.0-beta. 4**
+
+* **Nové metody analýzy dat z identit dokumentů**:
+
+   **[StartRecognizeIdDocumentsFromUriAsync](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient.startrecognizeiddocumentsasync?view=azure-dotnet-preview&preserve-view=true)**
+
+   **[StartRecognizeIdDocumentsAsync](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient.startrecognizeiddocumentsasync?view=azure-dotnet-preview&preserve-view=true)**
+
+   Seznam hodnot polí _najdete v části_ [pole extrahovaná](concept-identification-cards.md#fields-extracted) v dokumentaci ke službě pro rozpoznávání formulářů.
+
+* Rozšířila se sada jazyků dokumentu, které lze poskytnout metodě **[StartRecognizeContent](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient.startrecognizecontent?view=azure-dotnet-preview&preserve-view=true)** .
+
+* **Nová vlastnost `Pages`  podporovaná následujícími třídami**:
+
+   **[RecognizeBusinessCardsOptions](/dotnet/api/azure.ai.formrecognizer.recognizebusinesscardsoptions?view=azure-dotnet-preview&preserve-view=true)**</br>
+   **[RecognizeCustomFormsOptions](/dotnet/api/azure.ai.formrecognizer.recognizecustomformsoptions?view=azure-dotnet-preview&preserve-view=true)**</br>
+   **[RecognizeInvoicesOptions](/dotnet/api/azure.ai.formrecognizer.recognizeinvoicesoptions?view=azure-dotnet-preview&preserve-view=true)**</br>
+   **[RecognizeReceiptsOptions](/dotnet/api/azure.ai.formrecognizer.recognizereceiptsoptions?view=azure-dotnet-preview&preserve-view=true)**</br>
+
+   `Pages`Vlastnost umožňuje vybrat jednotlivec nebo rozsah stránek pro dokumenty PDF a TIFF s více stránkami. Pro jednotlivé stránky zadejte číslo stránky, například `3` . Pro rozsah stránek (například stránky 2 a stránky 5-7) zadejte věkové číslo a rozsahy p oddělené čárkami: `2, 5-7` .    
+
+* **Nová vlastnost `ReadingOrder` podporovaná pro tuto třídu**:
+
+   **[RecognizeContentOptions](/dotnet/api/azure.ai.formrecognizer.recognizecontentoptions?view=azure-dotnet-preview&preserve-view=true)**
+
+  `ReadingOrder`Vlastnost je volitelný parametr, který umožňuje určit, který algoritmus pořadí čtení, `basic` nebo `natural` – by měl být použit pro objednání extrakce textových prvků. Pokud není zadaný, použije se výchozí hodnota `basic` .
+
+#### <a name="breaking-changes"></a>Změny způsobující chyby
+
+* Klient je ve výchozím nastavení nejnovější podporovanou verzí služby, která je aktuálně **2,1-Preview. 3**.
+
+* Metoda **[StartRecognizeCustomForms](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient.startrecognizecustomforms?view=azure-dotnet-preview&preserve-view=true#Azure_AI_FormRecognizer_FormRecognizerClient_StartRecognizeCustomForms_System_String_System_IO_Stream_Azure_AI_FormRecognizer_RecognizeCustomFormsOptions_System_Threading_CancellationToken_)** nyní vyvolá `RequestFailedException()` při předání neplatného souboru.
+
+### <a name="java-version-310-beta3"></a>**Java verze 3.1.0-beta. 3**
+
+* **Nové metody analýzy dat z identit dokumentů**:
+
+  **[beginRecognizeIdDocumentsFromUrl](/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizeiddocumentsfromurl?view=azure-java-preview&preserve-view=true)**
+
+  **[beginRecognizeIdDocuments](/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizeiddocuments?view=azure-java-preview&preserve-view=true)**
+
+   Seznam hodnot polí _najdete v části_ [pole extrahovaná](concept-identification-cards.md#fields-extracted) v dokumentaci ke službě pro rozpoznávání formulářů.
+
+* **Podpora souboru rastrového obrázku (. bmp) pro vlastní formuláře a školicí metody ve `FormContentType` výčtu**:
+
+* `image/bmp`
+
+* **Nová vlastnost `Pages`  podporovaná následujícími třídami**:
+
+   **[RecognizeBusinessCardsOptions](/java/api/com.azure.ai.formrecognizer.models.recognizebusinesscardsoptions?view=azure-java-preview&preserve-view=true)**</br>
+   **[RecognizeCustomFormOptions](/java/api/com.azure.ai.formrecognizer.models.recognizecustomformsoptions?view=azure-java-preview&preserve-view=true)**</br>
+   **[RecognizeInvoicesOptions](/java/api/com.azure.ai.formrecognizer.models.recognizeinvoicesoptions?view=azure-java-preview&preserve-view=true)**</br>
+   **[RecognizeReceiptsOptions](/java/api/com.azure.ai.formrecognizer.models.recognizereceiptsoptions?view=azure-java-preview&preserve-view=true)**</br>
+
+  `Pages`Vlastnost umožňuje vybrat jednotlivec nebo rozsah stránek pro dokumenty PDF a TIFF s více stránkami. Pro jednotlivé stránky zadejte číslo stránky, například `3` . Pro rozsah stránek (například stránky 2 a stránky 5-7) zadejte čísla a rozsahy stránek oddělené čárkami: `2, 5-7` .
+
+* **Podpora souboru rastrového obrázku (. bmp) pro vlastní formuláře a školicí metody v [FormContentType](/java/api/com.azure.ai.formrecognizer.models.formcontenttype?view=azure-java-preview&preserve-view=true#fields) polích**:
+
+  `image/bmp`
+
+* **Nový argument klíčového slova `ReadingOrder` je podporován pro následující metody**:
+
+* **[beginRecognizeContent](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizecontent?view=azure-java-preview&preserve-view=true)**</br>
+**[beginRecognizeContentFromUrl](/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizecontentfromurl?view=azure-java-preview&preserve-view=true)**</br>
+
+   `ReadingOrder`Argument klíčové slovo je volitelný parametr, který umožňuje určit, který algoritmus pořadí čtení, `basic` nebo `natural` by měl být použit pro objednání extrakce textových prvků. Pokud není zadaný, použije se výchozí hodnota `basic` .
+
+* Klient je ve výchozím nastavení nejnovější podporovanou verzí služby, která je aktuálně **2,1-Preview. 3**.
+
+### <a name="javascript-version-310-beta3"></a>**JavaScript verze 3.1.0-beta. 3**
+
+* **Nové metody analýzy dat z identit dokumentů**:
+
+    **[beginRecognizeIdDocumentsFromUrl](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-preview&preserve-view=true&branch=main#beginRecognizeIdDocumentsFromUrl_string__BeginRecognizeIdDocumentsOptions_)**
+
+    **[beginRecognizeIdDocuments](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-preview&preserve-view=true&branch=main#beginRecognizeIdDocuments_FormRecognizerRequestBody__BeginRecognizeIdDocumentsOptions_)**
+
+    Seznam hodnot polí _najdete v části_ [pole extrahovaná](concept-identification-cards.md#fields-extracted) v dokumentaci ke službě pro rozpoznávání formulářů.
+
+* **Nové hodnoty polí přidané do rozhraní hodnotapole**:
+
+    `gender`– možné hodnoty jsou `M` `F` nebo `X` .</br>
+   `country`– možné hodnoty následují za řetězec [ISO Alpha-3](https://www.iso.org/obp/ui/#search) tři písmena kódu země.
+
+* * * Nová možnost `pages` podporovaná všemi metodami rozpoznávání formulářů (vlastní formuláře a všechny předem sestavené modely). Argument umožňuje vybrat jednotlivec nebo rozsah stránek pro dokumenty PDF a TIFF s více stránkami. Pro jednotlivé stránky zadejte číslo stránky, například `3` . Pro rozsah stránek (například stránky 2 a stránky 5-7) zadejte čísla a rozsahy stránek oddělené čárkami: `2, 5-7` .
+
+* Do metod rozpoznávání obsahu byla přidána podpora pro **[ReadingOrder](/javascript/api/@azure/ai-form-recognizer/readingorder?view=azure-node-preview&preserve-view=true)** typ. Tato možnost umožňuje řídit algoritmus, který služba používá k určení, jak by měly být seřazené řádky textu seřazeny. Můžete určit, který algoritmus pořadí čtení, `basic` nebo `natural` by měl být použit pro objednání extrakce textových prvků. Pokud není zadaný, použije se výchozí hodnota `basic` .
+
+* Rozdělit **[vlastnost FormField](/javascript/api/@azure/ai-form-recognizer/formfield?view=azure-node-preview&preserve-view=true)** typ do několika různých rozhraní. To by nemělo způsobovat žádné problémy s kompatibilitou rozhraní API s výjimkou určitých okrajových případů (nedefinované valueType).
+
+* Migrováno do koncového bodu služby pro rozpoznávání formulářů **2,1-Preview. 3** pro všechna volání REST API.
+
+### <a name="python-version--310b4"></a>**Python verze 3.1.0 B4**
+
+* **Nové metody analýzy dat z identit dokumentů**:
+
+  **[begin_recognize_id_documents_from_url](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true)**
+
+  **[begin_recognize_id_documents](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true)**
+
+  Seznam hodnot polí _najdete v části_ [pole extrahovaná](concept-identification-cards.md#fields-extracted) v dokumentaci ke službě pro rozpoznávání formulářů.
+
+* **Nové hodnoty polí přidané do výčtu [FieldValueType](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.fieldvaluetype?view=azure-python-preview&preserve-view=true)**:
+
+   pohlaví – možné hodnoty jsou `M` `F` nebo `X` .
+
+  země – možné hodnoty následují za [kódy zemí ISO alfa-3](https://www.iso.org/obp/ui/#search).
+
+* **Podpora souboru rastrového obrázku (. bmp) pro vlastní formuláře a školicí metody ve výčtu [FormContentType](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formcontenttype?view=azure-python-preview&preserve-view=true)**:
+
+    image/bmp
+
+* **Nový argument klíčového slova `pages`  podporovaný následujícími metodami**:
+
+    **[begin_recognize_receipts](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true&branch=main#begin-recognize-receipts-receipt----kwargs-)**
+
+    **[begin_recognize_receipts_from_url](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-receipts-from-url-receipt-url----kwargs-)**
+
+   **[begin_recognize_business_cards](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-business-cards-business-card----kwargs-)**
+
+   **[begin_recognize_business_cards_from_url](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-business-cards-from-url-business-card-url----kwargs-)**
+
+   **[begin_recognize_invoices](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-invoices-invoice----kwargs-)**
+
+   **[begin_recognize_invoices_from_url](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-invoices-from-url-invoice-url----kwargs-)**
+
+   **[begin_recognize_content](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-content-form----kwargs-)**
+
+  **[begin_recognize_content_from_url](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-content-from-url-form-url----kwargs-)**
+
+   `pages`Argument klíčového slova umožňuje vybrat jednotlivec nebo rozsah stránek pro dokumenty PDF a TIFF s více stránkami. Pro jednotlivé stránky zadejte číslo stránky, například `3` . Pro rozsah stránek (například stránky 2 a stránky 5-7) zadejte čísla a rozsahy stránek oddělené čárkami: `2, 5-7` .
+
+* **Nový argument klíčového slova `readingOrder` je podporován pro následující metody**:
+
+   **[begin_recognize_content](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-content-form----kwargs-)**
+
+   **[begin_recognize_content_from_url](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-content-from-url-form-url----kwargs-)**
+
+   `readingOrder`Argument klíčové slovo je volitelný parametr, který umožňuje určit, který algoritmus pořadí čtení, `basic` nebo `natural` by měl být použit pro objednání extrakce textových prvků. Pokud není zadaný, použije se výchozí hodnota `basic` .
 
 ## <a name="march-2021"></a>Březen 2021
 
 **Nástroj pro rozpoznávání formulářů verze 2.1 Public Preview 3 je nyní k dispozici.** verze 2.1-Preview. 3 byla vydaná, včetně následujících funkcí:
 
-- **Nový předem sestavený model ID** Nový předem sestavený model ID umožňuje zákazníkům přijímat ID a vracet strukturovaná data pro automatizaci zpracování. Kombinuje naše výkonné funkce optického rozpoznávání znaků (OCR) s ID porozumění modelům pro extrakci klíčových informací z cestovních pasů a licencí na ovladače USA, jako je jméno, datum narození, datum vydání, datum vypršení platnosti a další.
+* **Nový předem sestavený model ID** Nový předem sestavený model ID umožňuje zákazníkům přijímat ID a vracet strukturovaná data pro automatizaci zpracování. Kombinuje naše výkonné funkce optického rozpoznávání znaků (OCR) s ID porozumění modelům pro extrakci klíčových informací z cestovních pasů a licencí na ovladače USA, jako je jméno, datum narození, datum vydání, datum vypršení platnosti a další.
 
   [Další informace o předem připraveném modelu ID](concept-identification-cards.md)
 
    :::image type="content" source="./media/id-canada-passport-example.png" alt-text="Příklad služby Passport" lightbox="./media/id-canada-passport-example.png":::
 
-- **Extrakce položek řádků pro předem sestavený model faktury** : předem sestavený model faktury teď podporuje extrakci položek řádků; nyní extrahuje celé položky a jejich části Popis, množství, množství, ID produktu, datum a další. Pomocí jednoduchého volání rozhraní API nebo sady SDK můžete extrahovat užitečná data z vašich faktur – text, tabulka, páry klíč-hodnota a položky řádku.
+* **Extrakce položek řádků pro předem sestavený model faktury** : předem sestavený model faktury teď podporuje extrakci položek řádků; nyní extrahuje celé položky a jejich části Popis, množství, množství, ID produktu, datum a další. Pomocí jednoduchého volání rozhraní API nebo sady SDK můžete extrahovat užitečná data z vašich faktur – text, tabulka, páry klíč-hodnota a položky řádku.
 
    [Další informace o předem vytvořeném modelu faktury](concept-invoices.md)
 
-- **Pod dohledem a přípravou a školením v tabulce,** kromě [funkcí pro automatické extrakci](https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011)formulářů pro rozpoznávání formulářů, je teď možné, že zákazníci můžou označovat tabulky popisků a vlaků. Tato nová verze zahrnuje možnost popisků a vlaků v řádkových položkách/tabulkách (dynamické a pevné) a výuku vlastního modelu pro extrakci párů klíč-hodnota a položek řádků. Po vyškolení modelu model extrahuje položky řádku jako součást výstupu JSON v oddílu documentResults.
+* **Pod dohledem a přípravou a školením v tabulce,** kromě [funkcí pro automatické extrakci](https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011)formulářů pro rozpoznávání formulářů, je teď možné, že zákazníci můžou označovat tabulky popisků a vlaků. Tato nová verze zahrnuje možnost popisků a vlaků v řádkových položkách/tabulkách (dynamické a pevné) a výuku vlastního modelu pro extrakci párů klíč-hodnota a položek řádků. Po vyškolení modelu model extrahuje položky řádku jako součást výstupu JSON v oddílu documentResults.
 
     :::image type="content" source="./media/table-labeling.png" alt-text="Popis tabulky" lightbox="./media/table-labeling.png":::
 
-    Kromě popisků tabulek teď vy a popisek prázdné hodnoty a oblasti. Pokud některé dokumenty v sadě školení neobsahují hodnoty pro určitá pole, můžete je použít, aby váš model věděl, že hodnoty budou z analyzovaných dokumentů správně extrahovány.
+    Kromě popisků tabulek teď můžete označovat prázdné hodnoty a oblasti. Pokud některé dokumenty v sadě školení neobsahují hodnoty pro určitá pole, můžete je označit tak, aby váš model věděl, že hodnoty budou z analyzovaných dokumentů správně extrahovány.
 
-- **Podpora pro 66 nové jazyky** – rozhraní API pro rozložení a vlastní modely pro rozpoznávání formulářů teď podporuje 73 jazyků.
+* **Podpora pro 66 nové jazyky** – rozhraní API pro rozložení a vlastní modely pro rozpoznávání formulářů teď podporuje 73 jazyků.
 
   [Další informace o podpoře jazyka pro rozpoznávání formulářů](language-support.md)
 
-- **Přirozené pořadí čtení, klasifikace rukopisu a výběr stránky** – pomocí této aktualizace se můžete rozhodnout, že se mají načíst výstupy textových řádků v přirozeném pořadí čtení namísto výchozího řazení zleva doprava a shora dolů. Použijte nový parametr dotazu readingOrder a nastavte jej na "přirozený" hodnotu pro přesnější výstup pořadí čtení. Pro jazyky v latince navíc Nástroj pro rozpoznávání formulářů klasifikuje textové řádky jako ručně psaný styl, nikoli a poskytuje hodnocení spolehlivosti.
+* **Přirozené pořadí čtení, klasifikace rukopisu a výběr stránky** – pomocí této aktualizace se můžete rozhodnout, že se mají načíst výstupy textových řádků v přirozeném pořadí čtení namísto výchozího řazení zleva doprava a shora dolů. Použijte nový parametr dotazu readingOrder a nastavte jej na "přirozený" hodnotu pro přesnější výstup pořadí čtení. Pro jazyky v latince navíc Nástroj pro rozpoznávání formulářů klasifikuje textové řádky jako ručně psaný styl, nikoli a poskytuje hodnocení spolehlivosti.
 
-- **Předem připravená vylepšení kvality modelu příjmu** Tato aktualizace zahrnuje řadu vylepšení kvality pro předem sestavený model příjmu, zejména kolem extrakce položky řádku.
+* **Předem připravená vylepšení kvality modelu příjmu** Tato aktualizace zahrnuje mnoho vylepšení kvality pro předem sestavený model příjmu, zejména kolem extrakce položky řádku.
 
 ## <a name="november-2020"></a>Listopad 2020
 
 ### <a name="new-features"></a>Nové funkce
 
-**Nástroj pro rozpoznávání formulářů v 2.1 Public Preview 2 je nyní k dispozici.** verze 2.1-Preview. 2 byla vydaná, včetně následujících funkcí: 
+**Nástroj pro rozpoznávání formulářů v 2.1 Public Preview 2 je nyní k dispozici.** verze 2.1-Preview. 2 byla vydaná, včetně následujících funkcí:
 
-- **Nový předem sestavený model faktury** – nový předem sestavený model faktury umožňuje zákazníkům přebírat faktury v nejrůznějších formátech a vracet strukturovaná data pro automatizaci zpracování faktury. Kombinuje naše výkonné funkce optického rozpoznávání znaků (OCR) s fakturací s porozuměním modelem obsáhlého učení pro extrakci klíčových informací z faktur v angličtině. Extrahuje text, tabulky a informace, jako je například zákazník, dodavatel, ID faktury, datum splatnosti faktury, celková částka, splatnost, částka daně, částka pro odeslání, fakturaci a další.
+- **Nový předem sestavený model faktury** – nový předem sestavený model faktury zákazníkům umožňuje přebírat faktury v různých formátech a vracet strukturovaná data pro automatizaci zpracování faktury. Kombinuje naše výkonné funkce optického rozpoznávání znaků (OCR) s fakturací s porozuměním modelem obsáhlého učení pro extrakci klíčových informací z faktur v angličtině. Extrahuje text, tabulky a informace o klíčovém textu, jako je například zákazník, dodavatel, ID faktury, datum splatnosti faktury, celková částka, splatné částky, částka daně, odeslání do a Fakturovatelné.
 
   > [Další informace o předem vytvořeném modelu faktury](concept-invoices.md)
 
   :::image type="content" source="./media/invoice-example.jpg" alt-text="Příklad faktury" lightbox="./media/invoice-example.jpg":::
 
-- **Vylepšená extrakce tabulky** – Nástroj pro rozpoznávání formulářů teď nabízí rozšířenou extrakci tabulky, která kombinuje naše výkonné funkce optického rozpoznávání znaků (OCR) s modelem extrakce tabulky hloubkového učení. Nástroj pro rozpoznávání formulářů může extrahovat data z tabulek, včetně složitých tabulek se sloučenými sloupci, řádky, bez ohraničení a další. 
- 
+- **Vylepšená extrakce tabulky** – Nástroj pro rozpoznávání formulářů teď nabízí rozšířenou extrakci tabulky, která kombinuje naše výkonné funkce optického rozpoznávání znaků (OCR) s modelem extrakce tabulky hloubkového učení. Nástroj pro rozpoznávání formulářů může extrahovat data z tabulek, včetně složitých tabulek se sloučenými sloupci, řádky, bez ohraničení a další.
+
   :::image type="content" source="./media/tables-example.jpg" alt-text="Příklad tabulek" lightbox="./media/tables-example.jpg":::
 
- 
+
   > [Další informace o extrakci rozložení](concept-layout.md)
 
 - **Aktualizace klientské knihovny** – nejnovější verze [klientských knihoven](quickstarts/client-library.md) pro .NET, Python, Java a JavaScript podporují rozhraní API pro rozpoznávání formulářů 2,1.
@@ -77,7 +223,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
   > [Vyzkoušejte si vzorový Nástroj pro rozpoznávání formulářů](https://fott-preview.azurewebsites.net/)
 
   ![Příklad FOTT](./media/ui-preview.jpg)
-  
+
 - **Smyčka zpětné vazby** – při analýze souborů prostřednictvím nástroje pro označování ukázek se teď můžete přidat i do sady školení a v případě potřeby upravit štítky a vytvořit výuku pro zlepšení modelu.
 - **Automatické označování dokumentů** – automaticky označí další dokumenty na základě předchozích označených dokumentů v projektu.
 
@@ -85,13 +231,13 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 
 ### <a name="new-features"></a>Nové funkce
 
-**Verze Public Preview pro rozpoznávání formulářů v 2.1 je nyní k dispozici.** Verze 2.1-Preview. 1 byla uvolněna, včetně následujících funkcí: 
+**Verze Public Preview pro rozpoznávání formulářů v 2.1 je nyní k dispozici.** Verze 2.1-Preview. 1 byla uvolněna, včetně následujících funkcí:
 
 
-- **Odkaz na REST API je k dispozici** – Podívejte se na [odkaz v 2.1-Preview. 1.](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 
+- **Odkaz na REST API je k dispozici** – Podívejte se na [odkaz v 2.1-Preview. 1.](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
 - **Nové jazyky podporované kromě angličtiny** jsou teď podporované tyto [jazyky](language-support.md) : pro `Layout` a `Train Custom Model` : angličtina ( `en` ), čínština (zjednodušená) ( `zh-Hans` ), holandština ( `nl` ), francouzština (), `fr` němčina (), `de` italština () `it` , portugalština () `pt` a španělština ( `es` ).
-- **Detekce značek zaškrtnutí nebo výběru** – Nástroj pro rozpoznávání formulářů podporuje detekci a extrakci značek výběru, jako jsou zaškrtávací políčka a přepínače. Značky výběru jsou extrahovány v `Layout` a nyní můžete také označovat popisky a vlaky v `Train Custom Model`  -  _vlakech pomocí popisků_ pro extrakci párů klíč-hodnota pro značky výběru. 
-- **Vytváření modelů** – umožňuje sestavit více modelů a volat je pomocí jediného ID modelu. Při odeslání dokumentu, který má být analyzován pomocí ID složeného modelu, je nejprve proveden krok klasifikace, který bude směrován do správného vlastního modelu. Vytváření modelů je k dispozici pro `Train Custom Model`  -  _vlaky s popisky_.
+- **Detekce značek zaškrtnutí nebo výběru** – Nástroj pro rozpoznávání formulářů podporuje detekci a extrakci značek výběru, jako jsou zaškrtávací políčka a přepínače. Značky výběru jsou extrahovány v `Layout` a nyní můžete také označovat popisky a vlaky v `Train Custom Model`  -  _vlakech pomocí popisků_ pro extrakci párů klíč-hodnota pro značky výběru.
+- **Vytváření modelů** – umožňuje sestavit více modelů a volat je pomocí jediného ID modelu. Při odeslání dokumentu, který má být analyzován pomocí složeného ID modelu, je nejprve proveden krok klasifikace, který bude směrován do správného vlastního modelu. Vytváření modelů je k dispozici pro `Train Custom Model`  -  _vlaky s popisky_.
 - **Název modelu** – přidejte do vlastních modelů popisný název pro snazší správu a sledování.
 - **[Nový předem sestavený model pro vizitky](concept-business-cards.md)** pro extrakci společných polí v angličtině, jazykových obchodních karet.
 - **[Nové národní prostředí pro předem připravené příjmy](concept-receipts.md)** kromě en-US je teď k dispozici pro en-au, en-CA, en-GB, EN-in.
@@ -99,12 +245,12 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 
 **v 2.0** zahrnuje následující aktualizaci:
 
-- [Klientské knihovny](quickstarts/client-library.md) pro NET, Python, Java a JavaScript vstoupily do všeobecné dostupnosti. 
+- [Klientské knihovny](quickstarts/client-library.md) pro NET, Python, Java a JavaScript vstoupily do všeobecné dostupnosti.
 
-**Nové ukázky** jsou k dispozici na GitHubu. 
+**Nové ukázky** jsou k dispozici na GitHubu.
 
-- [Recepty pro extrakci znalostní báze – Forms PlayBook](https://github.com/microsoft/knowledge-extraction-recipes-forms) shromažďuje osvědčené postupy z reálných zákaznických zapojení pro rozpoznávání a poskytuje použitelné ukázky kódu, kontrolní seznamy a ukázkové kanály používané při vývoji těchto projektů. 
-- [Nástroj pro označování ukázek](https://github.com/microsoft/OCR-Form-Tools) byl aktualizován tak, aby podporoval nové funkce v 2.1. V tomto [rychlém](quickstarts/label-tool.md) startu najdete informace o tom, jak začít s nástrojem. 
+- [Recepty pro extrakci znalostní báze – Forms PlayBook](https://github.com/microsoft/knowledge-extraction-recipes-forms) shromažďuje osvědčené postupy z reálných zákaznických zapojení pro rozpoznávání a poskytuje použitelné ukázky kódu, kontrolní seznamy a ukázkové kanály používané při vývoji těchto projektů.
+- [Nástroj pro označování ukázek](https://github.com/microsoft/OCR-Form-Tools) byl aktualizován tak, aby podporoval nové funkce v 2.1. V tomto [rychlém](quickstarts/label-tool.md) startu najdete informace o tom, jak začít s nástrojem.
 - Ukázka rozpoznávání formuláře [inteligentního veřejného terminálu](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) ukazuje, jak integrovat `Analyze Receipt` a `Train Custom Model`  -  _vyškolit bez popisků_.
 
 ## <a name="july-2020"></a>Červenec 2020
@@ -112,13 +258,13 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 ### <a name="new-features"></a>Nové funkce
 <!-- markdownlint-disable MD004 -->
 * **dostupné reference v 2.0** – Podívejte se na [Reference k rozhraní API v 2.0](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) a aktualizované sady SDK pro [.NET](/dotnet/api/overview/azure/ai.formrecognizer-readme), [Python](/python/api/overview/azure/), [Java](/java/api/overview/azure/ai-formrecognizer-readme)a [JavaScript](/javascript/api/overview/azure/).
-* Vylepšení **tabulek a vylepšení extrakce** – obsahuje vylepšení přesnosti a vylepšení extrahování tabulek, konkrétně možnost učit se záhlaví a struktury tabulek ve _vlastním vlaku bez popisků_. 
+* Vylepšení **tabulek a vylepšení extrakce** – obsahuje vylepšení přesnosti a vylepšení extrahování tabulek, konkrétně možnost učit se záhlaví a struktury tabulek ve _vlastním vlaku bez popisků_.
 
 * **Podpora měny** – detekce a extrakce globálních symbolů měn.
 * **Azure gov** – Nástroj pro rozpoznávání formulářů je teď dostupný i v Azure gov.
-* **Rozšířené funkce zabezpečení**: 
-  * **Přineste si vlastní** Nástroj pro rozpoznávání vlastního klíče, který vaše data automaticky šifruje, když jsou trvale chráněná v cloudu, a pomůžou vám splnit závazky zabezpečení a dodržování předpisů vaší organizace. Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. Vaše předplatné teď můžete spravovat i s vlastními šifrovacími klíči. [Klíče spravované zákazníkem, označované také jako Přineste si vlastní klíč (BYOK)](./encrypt-data-at-rest.md), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Šifrovací klíče sloužící k ochraně vašich dat můžete také auditovat.  
-  * **Soukromé koncové body** – umožňují vám používat virtuální síť (VNET) pro [zabezpečený přístup k datům prostřednictvím privátního propojení.](../../private-link/private-link-overview.md)
+* **Rozšířené funkce zabezpečení**:
+  * **Přineste si vlastní** Nástroj pro rozpoznávání vlastního klíče, který vaše data automaticky šifruje, když jsou trvale chráněná v cloudu, a pomůžou vám splnit závazky zabezpečení a dodržování předpisů vaší organizace. Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. Vaše předplatné teď můžete spravovat i s vlastními šifrovacími klíči. [Klíče spravované zákazníkem, označované také jako Přineste si vlastní klíč (BYOK)](./encrypt-data-at-rest.md), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Šifrovací klíče sloužící k ochraně vašich dat můžete také auditovat.
+  * **Soukromé koncové body** – umožňují vám ve virtuální síti [zabezpečený přístup k datům prostřednictvím privátního propojení.](../../private-link/private-link-overview.md)
 
 ## <a name="june-2020"></a>Červen 2020
 
@@ -126,7 +272,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 
 * **Rozhraní API CopyModel bylo přidáno do klientských sad SDK** – nyní můžete použít klientské sady SDK ke kopírování modelů z jednoho předplatného do jiného. Obecné informace o této funkci najdete v tématu [zálohování a obnovení modelů](./disaster-recovery.md) .
 * **Azure Active Directory Integration** – nyní můžete použít přihlašovací údaje služby Azure AD k ověřování objektů klienta pro rozpoznávání ve formuláři v sadách SDK.
-* **Změny specifické pro sadu SDK** – to zahrnuje i drobné dodatečné funkce a zásadní změny. Další informace najdete v tématu Protokol změn sady SDK.
+* **Změny specifické pro sadu SDK** – Tato změna zahrnuje i drobné doplňování funkcí i zásadní změny. Další informace najdete v tématu Protokol změn sady SDK.
   * [Protokol změn sady C# SDK Preview 3](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
   * [Protokol změn sady Python SDK verze 3](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
   * [Java SDK Preview 3 – protokol změn](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
@@ -136,7 +282,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 
 ### <a name="new-features"></a>Nové funkce
 
-* **Podpora sady SDK pro rozhraní API pro rozpoznávání formulářů v 2.0 Public Preview** – tento měsíc rozšířili jsme podporu naší služby tak, aby ZAHRNOVALA sadu SDK verze Preview pro vydaný formulář pro rozpoznávání formulářů v 2.0 (Preview). Pomocí odkazů níže můžete začít s jazykem, který si vyberete: 
+* **Podpora sady SDK pro rozhraní API pro rozpoznávání formulářů v 2.0 Public Preview** – tento měsíc rozšířili jsme podporu naší služby tak, aby ZAHRNOVALA sadu SDK verze Preview pro vydaný formulář pro rozpoznávání formulářů v 2.0 (Preview). Pomocí odkazů níže můžete začít s jazykem, který si vyberete:
   * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme)
   * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme)
   * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme)
@@ -147,7 +293,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 * **Kopírovat vlastní model** Nyní můžete kopírovat modely mezi oblastmi a odběry pomocí funkce nový vlastní model kopírování. Před vyvoláním rozhraní API pro kopírování vlastního modelu je nutné nejprve získat autorizaci pro kopírování do cílového prostředku voláním operace kopírování do cílového koncového bodu prostředku.
 
   * [Vygenerovat autorizaci kopírování](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization) REST API
-  * [Zkopírování vlastního modelu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) REST API 
+  * [Zkopírování vlastního modelu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) REST API
 
 ### <a name="security-improvements"></a>Vylepšení zabezpečení
 
@@ -163,7 +309,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
     * výchozí, `no-whitespaces` , `alphanumeric`
   * `number`
     * výchozí `currency`
-  * `date` 
+  * `date`
     * výchozí, `dmy` , `mdy` , `ymd`
   * `time`
   * `integer`
@@ -185,8 +331,8 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 
 ### <a name="extraction-enhancements"></a>Vylepšení extrakce
 
-Tato verze zahrnuje vylepšení a vylepšení přesnosti extrakce, konkrétně možnost označovat a extrahovat více párů klíč/hodnota na stejném řádku textu. 
- 
+Tato verze zahrnuje vylepšení a vylepšení přesnosti extrakce, konkrétně možnost označovat a extrahovat více párů klíč/hodnota na stejném řádku textu.
+
 ### <a name="sample-labeling-tool-is-now-open-source"></a>Ukázka labeling Tool je teď Open-Source.
 
 Nástroj pro vyznačení ukázky pro rozpoznávání formulářů je teď dostupný jako open source projekt. Můžete ji integrovat v rámci svých řešení a provádět změny specifické pro konkrétní zákazníky, které odpovídají vašim potřebám.
@@ -199,7 +345,7 @@ Pro všechny požadavky HTTP na tuto službu se teď vynutilo TLS 1,2. Další i
 
 ## <a name="january-2020"></a>Leden 2020
 
-Tato verze zavádí nástroj pro rozpoznávání formulářů 2,0 (Preview). V následujících částech najdete další informace o nových funkcích, vylepšeních a změnách. 
+Tato verze zavádí nástroj pro rozpoznávání formulářů 2,0 (Preview). V následujících částech najdete další informace o nových funkcích, vylepšeních a změnách.
 
 ### <a name="new-features"></a>Nové funkce
 

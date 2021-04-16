@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 84bbc8d093a7eefc8186f18b942b0e89522d3f5f
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: fe218a8a9859aeea23c03f6c10633073527e5cde
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106089439"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501381"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Služba signalizace Azure by měla zakázat přístup k veřejné síti.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F21a9766a-82a5-4747-abb5-650b6dbba6d0) |Aby bylo možné zvýšit zabezpečení prostředku služby signalizace Azure, ujistěte se, že není vystaveno veřejnému Internetu a je přístupný pouze z privátního koncového bodu. Zakažte vlastnost přístup k veřejné síti, jak je popsáno v tématu [https://aka.ms/asrs/networkacls](https://aka.ms/asrs/networkacls) . Tato možnost zakáže přístup ze všech veřejných adresních prostorů mimo rozsah IP adres Azure a odepře všechna přihlášení, která odpovídají pravidlům brány firewall na základě IP adresy nebo virtuální sítě. Tím se snižuje riziko úniku dat. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PublicNetworkAccessDisabled_AuditDeny.json) |
 |[Služba signalizace Azure by měla používat SKU s povoleným privátním propojením.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F464a1620-21b5-448d-8ce6-d4ac6d1bc49a) |Privátní odkaz Azure umožňuje připojit virtuální síť ke službám Azure bez veřejné IP adresy ve zdroji nebo cíli, který chrání vaše prostředky před riziky úniku veřejných dat. Zásady omezují skladové položky s povoleným privátním propojením pro službu Azure Signal Service. Další informace o privátním odkazu najdete na adrese: [https://aka.ms/asrs/privatelink](https://aka.ms/asrs/privatelink) . |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_AllowedSKU_AuditDeny.json) |

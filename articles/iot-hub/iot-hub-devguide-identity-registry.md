@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 2d9b0d97fa1823314f5109a1c7fc79054806c148
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42def04db63d81bdb3eff8098daa8c75924bffec
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93146922"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502075"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT Hub
 
@@ -106,7 +106,7 @@ Složitější implementace by mohla zahrnovat informace z [Azure monitor](../az
 
 ## <a name="device-and-module-lifecycle-notifications"></a>Oznámení o životním cyklu zařízení a modulů
 
-IoT Hub může upozornění na vaše řešení IoT při vytvoření nebo odstranění identity odesláním oznámení životního cyklu. K tomu je potřeba, aby vaše řešení IoT vytvořilo trasu a nastavilo zdroj dat na hodnotu *DeviceLifecycleEvents* nebo *ModuleLifecycleEvents*. Ve výchozím nastavení se neodesílají žádná oznámení o životním cyklu, to znamená, že žádné takové trasy již neexistují. Zpráva s oznámením obsahuje vlastnosti a text.
+IoT Hub můžou vaše řešení IoT informovat, když se vytvoří nebo odstraní identita zařízení odesláním oznámení o životním cyklu. K tomu je potřeba, aby vaše řešení IoT vytvořilo trasu a nastavilo zdroj dat na hodnotu *DeviceLifecycleEvents*. Ve výchozím nastavení se neodesílají žádná oznámení o životním cyklu, to znamená, že žádné takové trasy již neexistují. Vytvořením trasy se zdrojem dat, která se rovná *DeviceLifecycleEvents*, se budou posílat události životního cyklu pro identitu zařízení i pro identitu modulů. obsah zprávy se ale bude lišit v závislosti na tom, jestli jsou události generované pro identity modulů nebo identity zařízení.  Je potřeba poznamenat, že u IoT Edgech modulů se tok vytvoření identity modulu liší od pro jiné moduly. v důsledku IoT Edgech modulů se oznámení o vytvoření posílá jenom v případě, že je spuštěná odpovídající IoT Edge zařízení pro aktualizovanou identitu modulu IoT Edge. Pro všechny ostatní moduly se oznámení o životním cyklu odesílají pokaždé, když se identita modulu aktualizuje na straně IoT Hub.  Zpráva s oznámením obsahuje vlastnosti a text.
 
 Vlastnosti: vlastnosti systému zprávy jsou předpony s `$` symbolem.
 
@@ -188,7 +188,7 @@ Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identi
 
 Identity zařízení se reprezentují jako dokumenty JSON s následujícími vlastnostmi:
 
-| Vlastnost | Možnosti | Description |
+| Vlastnost | Možnosti | Popis |
 | --- | --- | --- |
 | deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |požadováno, jen pro čtení |Řetězec s rozlišováním velikosti písmen, který je v IoT Hub generovaný, je dlouhý až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejným **deviceId**, kdy byly odstraněny a znovu vytvořeny. |
@@ -212,7 +212,7 @@ Identity zařízení se reprezentují jako dokumenty JSON s následujícími vla
 
 Identity modulů jsou reprezentovány jako dokumenty JSON s následujícími vlastnostmi:
 
-| Vlastnost | Možnosti | Description |
+| Vlastnost | Možnosti | Popis |
 | --- | --- | --- |
 | deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |

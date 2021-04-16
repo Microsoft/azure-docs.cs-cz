@@ -3,12 +3,12 @@ title: O agentovi MARS
 description: Zjistěte, jak agent MARS podporuje scénáře zálohování.
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 8e4ace0c17dbe75e989981db56583ed9477b3716
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e01694aca386482f9ff7ba52593c88326ba3d62
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87562595"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517738"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>O agentovi Microsoft Azure Recovery Services (MARS)
 
@@ -68,4 +68,4 @@ Agent MARS podporuje následující scénáře obnovení:
 
 [Matice podpory pro agenty MARS](./backup-support-matrix-mars-agent.md)
 
-[Nejčastější dotazy k agentovi MARS](./backup-azure-file-folder-backup-faq.md)
+[Nejčastější dotazy k agentovi MARS](./backup-azure-file-folder-backup-faq.yml)

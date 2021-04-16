@@ -4,16 +4,17 @@ description: Přečtěte si, jak se možnosti integrace dat služby Azure synaps
 services: synapse-analytics
 author: kromerm
 ms.service: synapse-analytics
+ms.subservice: pipeline
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cd3fc9353c684ec6617761616b958477ca83ee3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 144bdf5e94f753090dd73e5839b6c1fd25f11811
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183637"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567634"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Integrace dat ve službě Azure synapse Analytics versus Azure Data Factory
 

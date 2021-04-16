@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ad1351b7c9a649a553ce54422b99a13c286437d6
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 2ee2aad290c03743d8a2627922446b8167f3ffee
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107291"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480362"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Automatická správa zařízení v digitálních prostředcích Azure pomocí služby Device Provisioning (DPS)
 
@@ -29,7 +29,11 @@ Než budete moct nastavit zřizování, musíte nastavit následující:
 * **Centrum IoT**. Pokyny najdete v části *vytvoření IoT Hub* tohoto [IoT Hub rychlé](../iot-hub/quickstart-send-telemetry-cli.md)spuštění.
 * [**funkce Azure**](../azure-functions/functions-overview.md) , která aktualizuje digitální informace na základě IoT Hub dat. Postupujte podle pokynů v tématu [*How to:*](how-to-ingest-iot-hub-data.md) ingestování dat služby IoT Hub a vytvoření této funkce Azure Functions. Shromážděte **_název_** funkce pro použití v tomto článku.
 
-Tato ukázka také používá **simulátor zařízení** , který zahrnuje zřizování pomocí služby Device Provisioning. Simulátor zařízení je umístěný tady: [Ukázka digitálních vláken Azure a IoT Hub Integration Sample](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Získejte vzorový projekt na vašem počítači tak, že přejdete na vzorový odkaz a vyberete tlačítko *Stáhnout ZIP* pod nadpisem. Vyextrahování stažené složky.
+Tato ukázka také používá **simulátor zařízení** , který zahrnuje zřizování pomocí služby Device Provisioning. Simulátor zařízení je umístěný tady: [Ukázka digitálních vláken Azure a IoT Hub Integration Sample](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Získejte vzorový projekt na vašem počítači tak, že přejdete na vzorový odkaz a na pod nadpisem vyberete tlačítko **Procházet kód** . Tím přejdete do úložiště GitHub pro ukázku, kterou si můžete stáhnout jako *. Soubor ZIP* výběrem tlačítka **Code (kód** ) a stažením souboru **zip**. 
+
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/download-repo-zip.png" alt-text="Snímek obrazovky s digitálním zdvojeným úložištěm – iothub-Integration na GitHubu. Je vybráno tlačítko kód a vytvoří se malé dialogové okno, ve kterém je zvýrazněno tlačítko Stáhnout ZIP." lightbox="media/how-to-provision-using-device-provisioning-service/download-repo-zip.png":::
+
+Vyextrahování stažené složky.
 
 Budete potřebovat [**Node.js**](https://nodejs.org/download) nainstalovanou na svém počítači. Simulátor zařízení je založený na **Node.js**, verzi 10.0. x nebo novější.
 
@@ -37,7 +41,7 @@ Budete potřebovat [**Node.js**](https://nodejs.org/download) nainstalovanou na 
 
 Následující obrázek znázorňuje architekturu tohoto řešení pomocí digitálních vláken Azure se službou Device Provisioning. Zobrazuje jak zřizování zařízení, tak i jejich vyřazení.
 
-:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="Diagram zařízení a několik služeb Azure v uceleném scénáři. Data se převedou mezi zařízením termostata a DPS. Data také přecházejí z DPS do IoT Hub a do digitálních vláken Azure pomocí funkce Azure s označením &quot;přidělení&quot;. Data z manuální akce odstranit zařízení přecházejí do IoT Hub > Event Hubs > Azure Functions digitálních vláken Azure." lightbox="media/how-to-provision-using-dps/flows.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/flows.png" alt-text="Diagram zařízení a několik služeb Azure v uceleném scénáři. Data se převedou mezi zařízením termostata a DPS. Data také přecházejí z DPS do IoT Hub a do digitálních vláken Azure pomocí funkce Azure s označením &quot;přidělení&quot;. Data z manuální akce odstranit zařízení přecházejí do IoT Hub > Event Hubs > Azure Functions digitálních vláken Azure." lightbox="media/how-to-provision-using-device-provisioning-service/flows.png":::
 
 Tento článek je rozdělen do dvou částí:
 * [*Automatické zřizování zařízení pomocí služby Device Provisioning Service*](#auto-provision-device-using-device-provisioning-service)
@@ -49,7 +53,7 @@ Podrobnější vysvětlení jednotlivých kroků v architektuře najdete v jejic
 
 V této části budete připojovat službu Device Provisioning k digitálním Vlákenám Azure k automatickému zřizování zařízení přes níže uvedenou cestu. Toto je výňatek z plné architektury uvedené [výše](#solution-architecture).
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Diagram zřizovacího toku – výňatek diagramu architektury řešení, s čísly, která se přidávají k označení částí toku. Data se převedou mezi zařízeními termostata a DPS (1 pro zařízení > DPS a 5 pro zařízení DPS >). Data také přecházejí z DPS do IoT Hub (4) a do digitálních vláken Azure (3) prostřednictvím funkce Azure s označením &quot;přidělení&quot; (2)." lightbox="media/how-to-provision-using-dps/provision.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/provision.png" alt-text="Diagram zřizovacího toku – výňatek diagramu architektury řešení, s čísly, která se přidávají k označení částí toku. Data se převedou mezi zařízeními termostata a DPS (1 pro zařízení > DPS a 5 pro zařízení DPS >). Data také přecházejí z DPS do IoT Hub (4) a do digitálních vláken Azure (3) prostřednictvím funkce Azure s označením &quot;přidělení&quot; (2)." lightbox="media/how-to-provision-using-device-provisioning-service/provision.png":::
 
 Tady je popis toku procesu:
 1. Zařízení kontaktuje koncový bod DPS a předává identifikační informace, aby prokázal svoji identitu.
@@ -83,7 +87,7 @@ Začněte tím, že otevřete projekt Function App v aplikaci Visual Studio na s
 
 Přidejte novou funkci typu *http-Trigger* do projektu Function App v aplikaci Visual Studio.
 
-:::image type="content" source="media/how-to-provision-using-dps/add-http-trigger-function-visual-studio.png" alt-text="Snímek obrazovky se zobrazením sady Visual Studio pro přidání funkce Azure typu Trigger http do projektu Function App." lightbox="media/how-to-provision-using-dps/add-http-trigger-function-visual-studio.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-http-trigger-function-visual-studio.png" alt-text="Snímek obrazovky se zobrazením sady Visual Studio pro přidání funkce Azure typu Trigger http do projektu Function App." lightbox="media/how-to-provision-using-device-provisioning-service/add-http-trigger-function-visual-studio.png":::
 
 #### <a name="step-2-fill-in-function-code"></a>Krok 2: vyplnění kódu funkce
 
@@ -116,13 +120,13 @@ Pak klikněte na tlačítko *vybrat novou funkci* a propojte aplikaci Function A
 
 Uložte si podrobnosti.                  
 
-:::image type="content" source="media/how-to-provision-using-dps/link-enrollment-group-to-iot-hub-and-function-app.png" alt-text="Snímek obrazovky s oknem podrobností skupiny pro zápis k výběru vlastní (použijte funkci Azure) a název centra IoT v oddílech vyberte, jak chcete přiřadit zařízení k rozbočovačům a vybrat centra IoT, ke kterým se dá tato skupina přiřadit. Také v rozevíracím seznamu vyberte své předplatné, aplikace Function App a nezapomeňte vybrat DpsAdtAllocationFunc." lightbox="media/how-to-provision-using-dps/link-enrollment-group-to-iot-hub-and-function-app.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/link-enrollment-group-to-iot-hub-and-function-app.png" alt-text="Snímek obrazovky s oknem podrobností skupiny pro zápis k výběru vlastní (použijte funkci Azure) a název centra IoT v oddílech vyberte, jak chcete přiřadit zařízení k rozbočovačům a vybrat centra IoT, ke kterým se dá tato skupina přiřadit. Také v rozevíracím seznamu vyberte své předplatné, aplikace Function App a nezapomeňte vybrat DpsAdtAllocationFunc." lightbox="media/how-to-provision-using-device-provisioning-service/link-enrollment-group-to-iot-hub-and-function-app.png":::
 
 Po vytvoření registrace se **primární klíč** pro registraci použije později ke konfiguraci simulátoru zařízení pro tento článek.
 
 ### <a name="set-up-the-device-simulator"></a>Nastavení simulátoru zařízení
 
-Tato ukázka používá simulátor zařízení, který zahrnuje zřizování pomocí služby Device Provisioning. Simulátor zařízení je umístěný tady: [Ukázka digitálních vláken Azure a IoT Hub Integration Sample](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Pokud jste už ukázku nestáhli, Získejte ji hned tak, že přejdete na vzorový odkaz a v nadpisu vyberete tlačítko *Stáhnout ZIP* . Vyextrahování stažené složky.
+Tato ukázka používá simulátor zařízení, který zahrnuje zřizování pomocí služby Device Provisioning. Simulátor zařízení je umístěný v [ukázce Azure Digital autovlákna a IoT Hub Integration Sample](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/) , kterou jste si stáhli v části [požadavky](#prerequisites) .
 
 #### <a name="upload-the-model"></a>Nahrání modelu
 
@@ -144,13 +148,13 @@ Potom v adresáři simulátoru zařízení zkopírujte soubor. env. template do 
 
 * PROVISIONING_IDSCOPE: tuto hodnotu získáte tak, že v [Azure Portal](https://portal.azure.com/)přejdete do vaší služby Device Provisioning, potom v nabídce Možnosti vyberete *Přehled* a vyhledáte *Rozsah ID* pole.
 
-    :::image type="content" source="media/how-to-provision-using-dps/id-scope.png" alt-text="Snímek obrazovky Azure Portal zobrazení stránky s přehledem zřizování zařízení pro zkopírování hodnoty rozsahu ID." lightbox="media/how-to-provision-using-dps/id-scope.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/id-scope.png" alt-text="Snímek obrazovky Azure Portal zobrazení stránky s přehledem zřizování zařízení pro zkopírování hodnoty rozsahu ID." lightbox="media/how-to-provision-using-device-provisioning-service/id-scope.png":::
 
 * PROVISIONING_REGISTRATION_ID: můžete si vybrat ID registrace pro vaše zařízení.
 * ADT_MODEL_ID: `dtmi:contosocom:DigitalTwins:Thermostat;1`
 * PROVISIONING_SYMMETRIC_KEY: Jedná se o primární klíč pro registraci, kterou jste nastavili dříve. Pokud chcete tuto hodnotu znovu získat, přejděte do vaší služby Device Provisioning v Azure Portal, vyberte *spravovat registrace* a pak vyberte skupinu registrací, kterou jste vytvořili dříve, a zkopírujte *primární klíč*.
 
-    :::image type="content" source="media/how-to-provision-using-dps/sas-primary-key.png" alt-text="Snímek obrazovky Azure Portal zobrazení služby Device Provisioning pro správu registrací a zkopírováním hodnoty primárního klíče SAS" lightbox="media/how-to-provision-using-dps/sas-primary-key.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/sas-primary-key.png" alt-text="Snímek obrazovky Azure Portal zobrazení služby Device Provisioning pro správu registrací a zkopírováním hodnoty primárního klíče SAS" lightbox="media/how-to-provision-using-device-provisioning-service/sas-primary-key.png":::
 
 Teď pomocí výše uvedených hodnot aktualizujte nastavení souboru. env.
 
@@ -173,7 +177,7 @@ node .\adt_custom_register.js
 ```
 
 Mělo by se zobrazit, že zařízení je registrované a připojené k IoT Hub, a pak začít odesílat zprávy.
-:::image type="content" source="media/how-to-provision-using-dps/output.png" alt-text="Snímek obrazovky okno Příkaz zobrazující registraci zařízení a odesílání zpráv" lightbox="media/how-to-provision-using-dps/output.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/output.png" alt-text="Snímek obrazovky okno Příkaz zobrazující registraci zařízení a odesílání zpráv" lightbox="media/how-to-provision-using-device-provisioning-service/output.png":::
 
 ### <a name="validate"></a>Ověření
 
@@ -184,13 +188,13 @@ az dt twin show -n <Digital Twins instance name> --twin-id "<Device Registration
 ```
 
 Mělo by se zobrazit nevláken zařízení, které se nachází v instanci digitálních vláken Azure.
-:::image type="content" source="media/how-to-provision-using-dps/show-provisioned-twin.png" alt-text="Snímek obrazovky okno Příkaz znázorňující nově vytvořené vlákna." lightbox="media/how-to-provision-using-dps/show-provisioned-twin.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/show-provisioned-twin.png" alt-text="Snímek obrazovky okno Příkaz znázorňující nově vytvořené vlákna." lightbox="media/how-to-provision-using-device-provisioning-service/show-provisioned-twin.png":::
 
 ## <a name="auto-retire-device-using-iot-hub-lifecycle-events"></a>Automatické vyřazení zařízení pomocí IoT Hub událostí životního cyklu
 
 V této části budete připojovat IoT Hub události životního cyklu do digitálních vláken Azure k automatickému vyřazení zařízení pomocí níže uvedené cesty. Toto je výňatek z plné architektury uvedené [výše](#solution-architecture).
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Diagram toku zařízení vyřazení – ukázka diagramu architektury řešení, s čísly, která se přiřadí k oddílům toku. Zařízení termostatu se zobrazí bez připojení ke službám Azure v diagramu. Data z manuální akce odstranit zařízení nacházejí do IoT Hub (1) > Event Hubs (2) > Azure Functions > digitálních vláken Azure (3)." lightbox="media/how-to-provision-using-dps/retire.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/retire.png" alt-text="Diagram toku zařízení vyřazení – ukázka diagramu architektury řešení, s čísly, která se přiřadí k oddílům toku. Zařízení termostatu se zobrazí bez připojení ke službám Azure v diagramu. Data z manuální akce odstranit zařízení nacházejí do IoT Hub (1) > Event Hubs (2) > Azure Functions > digitálních vláken Azure (3)." lightbox="media/how-to-provision-using-device-provisioning-service/retire.png":::
 
 Tady je popis toku procesu:
 1. Externí nebo ruční proces aktivuje odstranění zařízení v IoT Hub.
@@ -206,7 +210,7 @@ V dalším kroku vytvoříte [centrum událostí](../event-hubs/event-hubs-about
 Postupujte podle kroků popsaných v rychlém startu [*vytvoření centra událostí*](../event-hubs/event-hubs-create.md) . Pojmenujte centrum událostí *lifecycleevents*. Tento název centra událostí použijete při nastavování IoT Hub trasy a funkci Azure Functions v dalších částech.
 
 Níže uvedený snímek obrazovky ukazuje vytvoření centra událostí.
-:::image type="content" source="media/how-to-provision-using-dps/create-event-hub-lifecycle-events.png" alt-text="Snímek obrazovky okna Azure Portal pro vytvoření centra událostí s názvem lifecycleevents." lightbox="media/how-to-provision-using-dps/create-event-hub-lifecycle-events.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/create-event-hub-lifecycle-events.png" alt-text="Snímek obrazovky okna Azure Portal pro vytvoření centra událostí s názvem lifecycleevents." lightbox="media/how-to-provision-using-device-provisioning-service/create-event-hub-lifecycle-events.png":::
 
 #### <a name="create-sas-policy-for-your-event-hub"></a>Vytvoření zásad SAS pro centrum událostí
 
@@ -216,7 +220,7 @@ K tomu je potřeba
 2. Vyberte **Přidat**. V okně *Přidat zásady SAS* , které se otevře, zadejte název zásady podle svého výběru a zaškrtněte políčko *poslech* .
 3. Vyberte **Vytvořit**.
     
-:::image type="content" source="media/how-to-provision-using-dps/add-event-hub-sas-policy.png" alt-text="Snímek obrazovky Azure Portal, do kterého se mají přidat zásady SAS centra událostí" lightbox="media/how-to-provision-using-dps/add-event-hub-sas-policy.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-event-hub-sas-policy.png" alt-text="Snímek obrazovky Azure Portal, do kterého se mají přidat zásady SAS centra událostí" lightbox="media/how-to-provision-using-device-provisioning-service/add-event-hub-sas-policy.png":::
 
 #### <a name="configure-event-hub-with-function-app"></a>Konfigurace centra událostí pomocí aplikace Function App
 
@@ -224,7 +228,7 @@ Dále nakonfigurujte aplikaci funkce Azure Functions, kterou jste nastavili v č
 
 1. Otevřete zásadu, kterou jste právě vytvořili, a zkopírujte hodnotu **připojovací řetězec – primární klíč** .
 
-    :::image type="content" source="media/how-to-provision-using-dps/event-hub-sas-policy-connection-string.png" alt-text="Snímek obrazovky Azure Portal ke zkopírování připojovacího řetězce – primární klíč" lightbox="media/how-to-provision-using-dps/event-hub-sas-policy-connection-string.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/event-hub-sas-policy-connection-string.png" alt-text="Snímek obrazovky Azure Portal ke zkopírování připojovacího řetězce – primární klíč" lightbox="media/how-to-provision-using-device-provisioning-service/event-hub-sas-policy-connection-string.png":::
 
 2. Připojovací řetězec přidejte jako proměnnou v nastavení aplikace Functions pomocí následujícího příkazu Azure CLI. Příkaz se dá spustit v [Cloud Shell](https://shell.azure.com)nebo lokálně, pokud máte [na svém počítači nainstalované](/cli/azure/install-azure-cli)rozhraní příkazového řádku Azure.
 
@@ -244,7 +248,7 @@ Začněte tím, že otevřete projekt Function App v aplikaci Visual Studio na s
      
 Přidejte do projektu Function App v aplikaci Visual Studio novou funkci *aktivační události centra událostí* .
 
-:::image type="content" source="media/how-to-provision-using-dps/create-event-hub-trigger-function.png" alt-text="Snímek obrazovky okna sady Visual Studio, ve kterém se do projektu Function App přidá funkce Azure typu Trigger centra událostí" lightbox="media/how-to-provision-using-dps/create-event-hub-trigger-function.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/create-event-hub-trigger-function.png" alt-text="Snímek obrazovky okna sady Visual Studio, ve kterém se do projektu Function App přidá funkce Azure typu Trigger centra událostí" lightbox="media/how-to-provision-using-device-provisioning-service/create-event-hub-trigger-function.png":::
 
 #### <a name="step-2-fill-in-function-code"></a>Krok 2: vyplnění kódu funkce
 
@@ -269,7 +273,7 @@ Pomocí těchto kroků vytvořte koncový bod centra událostí:
 2. Vyberte kartu **vlastní koncové body** .
 3. Vyberte **+ Přidat** a zvolte **centra událostí** a přidejte koncový bod typu centra událostí.
 
-    :::image type="content" source="media/how-to-provision-using-dps/event-hub-custom-endpoint.png" alt-text="Snímek obrazovky okna sady Visual Studio pro přidání vlastního koncového bodu centra událostí" lightbox="media/how-to-provision-using-dps/event-hub-custom-endpoint.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/event-hub-custom-endpoint.png" alt-text="Snímek obrazovky okna sady Visual Studio pro přidání vlastního koncového bodu centra událostí" lightbox="media/how-to-provision-using-device-provisioning-service/event-hub-custom-endpoint.png":::
 
 4. V okně *přidat koncový bod centra událostí* , který se otevře, vyberte následující hodnoty:
     * **Název koncového bodu**: vyberte název koncového bodu.
@@ -277,13 +281,13 @@ Pomocí těchto kroků vytvořte koncový bod centra událostí:
     * **Instance centra událostí**: vyberte název centra událostí, který jste vytvořili v předchozím kroku.
 5. Vyberte **Vytvořit**. Nechejte toto okno otevřené a přidejte trasu do dalšího kroku.
 
-    :::image type="content" source="media/how-to-provision-using-dps/add-event-hub-endpoint.png" alt-text="Snímek obrazovky okna sady Visual Studio pro přidání koncového bodu centra událostí" lightbox="media/how-to-provision-using-dps/add-event-hub-endpoint.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-event-hub-endpoint.png" alt-text="Snímek obrazovky okna sady Visual Studio pro přidání koncového bodu centra událostí" lightbox="media/how-to-provision-using-device-provisioning-service/add-event-hub-endpoint.png":::
 
 Dále přidáte trasu, která se připojí ke koncovému bodu, který jste vytvořili v předchozím kroku, s dotazem směrování, který odesílá události odstranění. Pomocí těchto kroků vytvořte trasu:
 
 1. Přejděte na kartu *trasy* a výběrem **Přidat** přidejte trasu.
 
-    :::image type="content" source="media/how-to-provision-using-dps/add-message-route.png" alt-text="Snímek obrazovky okna sady Visual Studio, ve kterém můžete přidat trasu pro odesílání událostí." lightbox="media/how-to-provision-using-dps/add-message-route.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-message-route.png" alt-text="Snímek obrazovky okna sady Visual Studio, ve kterém můžete přidat trasu pro odesílání událostí." lightbox="media/how-to-provision-using-device-provisioning-service/add-message-route.png":::
 
 2. Na stránce *Přidat trasu* , která se otevře, vyberte následující hodnoty:
 
@@ -294,7 +298,7 @@ Dále přidáte trasu, která se připojí ke koncovému bodu, který jste vytvo
 
 3. Vyberte **Uložit**.
 
-    :::image type="content" source="media/how-to-provision-using-dps/lifecycle-route.png" alt-text="Snímek obrazovky okna Azure Portal pro přidání trasy k odeslání událostí životního cyklu" lightbox="media/how-to-provision-using-dps/lifecycle-route.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/lifecycle-route.png" alt-text="Snímek obrazovky okna Azure Portal pro přidání trasy k odeslání událostí životního cyklu" lightbox="media/how-to-provision-using-device-provisioning-service/lifecycle-route.png":::
 
 Jakmile projdete tento tok, vše je nastaveno na kompletní vyřazení zařízení do konce.
 
@@ -308,7 +312,7 @@ Můžete to provést pomocí příkazu rozhraní [příkazového řádku Azure](
 2. Zobrazí se zařízení s ID registrace zařízení, které jste zvolili v [první polovině tohoto článku](#auto-provision-device-using-device-provisioning-service). Alternativně můžete zvolit jakékoli jiné zařízení, které se má odstranit, pokud má v digitálních proobjektech Azure dvojitou hodnotu, abyste mohli ověřit, že se po odstranění zařízení vytvoří dvojitá vlákna automaticky.
 3. Vyberte zařízení a zvolte **Odstranit**.
 
-:::image type="content" source="media/how-to-provision-using-dps/delete-device-twin.png" alt-text="Snímek obrazovky Azure Portal pro odstranění vlákna ze zařízení IoT." lightbox="media/how-to-provision-using-dps/delete-device-twin.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/delete-device-twin.png" alt-text="Snímek obrazovky Azure Portal pro odstranění vlákna ze zařízení IoT." lightbox="media/how-to-provision-using-device-provisioning-service/delete-device-twin.png":::
 
 Zobrazení změn v rámci digitálních vláken Azure může trvat několik minut.
 
@@ -320,7 +324,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id "<Device Registration
 
 Měli byste vidět, že se vlákna zařízení v instanci digitálních vláken Azure už nenašly.
 
-:::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="Snímek obrazovky okno Příkaz znázorňující nenalezené vlákna." lightbox="media/how-to-provision-using-dps/show-retired-twin.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/show-retired-twin.png" alt-text="Snímek obrazovky okno Příkaz znázorňující nenalezené vlákna." lightbox="media/how-to-provision-using-device-provisioning-service/show-retired-twin.png":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
