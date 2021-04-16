@@ -6,13 +6,13 @@ ms.author: tcare
 ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
-ms.custom: template-tutorial
-ms.openlocfilehash: a94784f2f3fc622e0232033d63bc957279a7d34c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.custom: template-tutorial, devx-track-azurecli
+ms.openlocfilehash: 6fb8802dd92e6f9bd55a96772abe3cef5150ac30
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076288"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478382"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Kurz: implementace CI/CD pomocí GitOps s využitím clusterů Kubernetes s podporou ARC Azure
 
@@ -28,7 +28,7 @@ V tomto kurzu nastavíte řešení CI/CD pomocí GitOps s povolenými clustery K
 > * Nasaďte `dev` `stage` prostředí a.
 > * Otestujte prostředí aplikace.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nepodporují™ t, abyste měli předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -119,7 +119,7 @@ Teď, když jste prosynchronizoval připojení GitOps, budete muset importovat k
 
 Úložiště aplikace obsahuje `.pipeline` složku s kanály, které budete používat pro PR, CI a CD. Importujte a přejmenujte tři kanály poskytované v ukázkovém úložišti:
 
-| Název souboru kanálu | Description |
+| Název souboru kanálu | Popis |
 | ------------- | ------------- |
 | [`.pipelines/az-vote-pr-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-pr-pipeline.yaml)  | Kanál PR aplikace s názvem **oblouk-cicd-demo-src PR** |
 | [`.pipelines/az-vote-ci-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-ci-pipeline.yaml) | Kanál CI aplikace s názvem **oblouk-cicd-demo-src CI** |

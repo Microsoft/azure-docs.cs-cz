@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Přehled moderního čtecího zařízení
+    - name: Co je Asistivní čtečka?
       href: Overview.md
     - name: Podpora jazyků
       href: language-support.md
@@ -10,7 +10,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/'
     - name: "Poznámky k\_verzi"
       href: release-notes.md
-- name: Rychlý Start pro moderní čtečku
+- name: Rychlé zprovoznění
   href: ./quickstarts/client-libraries.md
 - name: Postupy
   items:
@@ -36,14 +36,24 @@
       href: how-to-store-user-preferences.md
     - name: Použití několika prostředků Asistivní čtečky
       href: how-to-multiple-resources.md
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Nastavení virtuálních sítí
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/immersive-reader/context/context
+        - name: Použití ověřování Azure AD
+          href: ../authentication.md?context=/azure/cognitive-services/immersive-reader/context/context
 - name: Referenční informace
   items:
     - name: JavaScript SDK
       href: reference.md
 - name: Zdroje a prostředky
   items:
-    - name: Místní podpora
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Podpora oblastí
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Dodržování předpisů a certifikace
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
     - name: Aktualizace Azure

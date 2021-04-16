@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: automatic-os-upgrade
 ms.date: 06/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 9194ab70e37c0659e77cbe9c10ffca10e1a76de8
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.custom: avverma
+ms.openlocfilehash: 1e32ff4bc1c39e8a3385f8037f88cedbdc17d3a6
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011864"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375742"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady imagí operačních systémů škálovacích sad virtuálních počítačů
 
@@ -103,7 +103,7 @@ Automatický upgrade image operačního systému se podporuje pro vlastní image
 ## <a name="configure-automatic-os-image-upgrade"></a>Konfigurace automatického upgradu image operačního systému
 Pokud chcete nakonfigurovat automatický upgrade operačního systému, zajistěte, aby byla vlastnost *automaticOSUpgradePolicy. enableAutomaticOSUpgrade* v definici modelu sady škálování nastavená na *hodnotu true* .
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 Následující příklad popisuje, jak nastavit automatické upgrady operačního systému na modelu sady škálování:
 
 ```
@@ -185,7 +185,7 @@ Rozšíření stavu aplikace můžete do sady škálování nasadit několika zp
 ## <a name="get-the-history-of-automatic-os-image-upgrades"></a>Získat historii automatických upgradů imagí operačního systému
 Historii nejnovějšího upgradu operačního systému, který se provádí v sadě škálování, můžete ověřit pomocí Azure PowerShell, Azure CLI 2,0 nebo rozhraní REST API. V posledních dvou měsících můžete získat historii za posledních pět pokusů o upgrade operačního systému.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 Následující příklad používá [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) ke kontrole stavu sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```
@@ -270,7 +270,7 @@ Pro konkrétní případy, kdy nechcete čekat, až nástroj Orchestrator použi
 > [!NOTE]
 > Ruční aktivační událost pro upgrady bitových kopií operačního systému neposkytuje funkce automatického vrácení zpět. Pokud instance po operaci upgradu neobnoví svůj stav, nebude možné obnovit předchozí disk s operačním systémem.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 Pomocí volání rozhraní API [Spustit upgrade operačního systému](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) můžete spustit postupný upgrade, abyste přesunuli všechny instance sady škálování virtuálních počítačů na nejnovější dostupnou verzi operačního systému image. Instance, ve kterých je již spuštěna nejnovější dostupná verze operačního systému, nebudou ovlivněny. Následující příklad podrobně popisuje, jak můžete spustit upgrade operačního systému v rámci sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```

@@ -132,6 +132,8 @@
           href: start-virtual-machine-connect.md
         - name: Nejčastější dotazy ke spuštění virtuálního počítače
           href: start-virtual-machine-connect-faq.md
+    - name: Nastavit režim vyprázdnění
+      href: drain-mode.md
 - name: Koncepty
   items:
     - name: Vestavěné role

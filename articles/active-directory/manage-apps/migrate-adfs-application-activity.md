@@ -2,23 +2,21 @@
 title: Pomocí sestavy aktivita můžete přesunout AD FS aplikace do Azure Active Directory | Microsoft Docs
 description: Sestava aktivity aplikace Active Directory Federation Services (AD FS) (AD FS) umožňuje rychle migrovat aplikace z AD FS na Azure Active Directory (Azure AD). Tento nástroj pro migraci pro AD FS identifikuje kompatibilitu s Azure AD a poskytuje pokyny k migraci.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 01/14/2019
-ms.author: kenwith
+ms.author: iangithinji
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88a4d0f108d4e3c27ce17aaa83aafca38063c9ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b9265a61b0879078332b8ccc2d10e711b4ac8f1
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589459"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377416"
 ---
 # <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>Použití sestavy aktivity aplikace AD FS k migraci aplikací do Azure AD
 
@@ -78,7 +76,7 @@ Sestava aktivity aplikace AD FS je k dispozici v Azure Portal v části Azure AD
 
 V následující tabulce jsou uvedeny všechny testy konfigurace, které se provádí v AD FSch aplikacích.
 
-|Výsledek  |Úspěch/upozornění/selhání  |Description  |
+|Výsledek  |Úspěch/upozornění/selhání  |Popis  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> Pro AdditionalAuthentication se zjistilo aspoň jedno pravidlo, které není migrovat.       | Úspěch/upozornění          | Předávající strana obsahuje pravidla pro dotazování služby Multi-Factor Authentication (MFA). Pokud se chcete přesunout do služby Azure AD, přeložte tato pravidla na zásady podmíněného přístupu. Pokud používáte místní MFA, doporučujeme přejít na Azure AD MFA. [Přečtěte si další informace o podmíněném přístupu](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Předávající strana má AdditionalWSFedEndpoint nastavenou na hodnotu true.       | Úspěch/neúspěch          | Předávající strana v AD FS umožňuje více koncových bodů kontrolního výrazu pro WS-Fed.V současné době Azure AD podporuje jenom jeden.Pokud máte scénář, kde tento výsledek blokuje migraci, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |

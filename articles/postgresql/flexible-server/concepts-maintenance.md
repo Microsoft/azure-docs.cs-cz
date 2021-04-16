@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ffee15776a48b6495f78b6becf81c620e1dc4d69
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50ef040f1cb7d8c533ec5ee31e9bffa2e6dca2f5
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91336305"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478008"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-postgresql--flexible-server"></a>Plánovaná údržba na flexibilním serveru Azure Database for PostgreSQL
  
@@ -39,9 +39,16 @@ Při zadávání předvoleb pro plán údržby můžete vybrat den v týdnu a č
 >
 > V případě důležité nouzové aktualizace, například kvůli vážnému ohrožení zabezpečení, však můžete oznámení obdržet méně než pět dnů předem. Důležitá aktualizace se na váš server může nainstalovat i v případě, že během posledních 30 dnů úspěšně proběhla plánovaná údržba.
 
-Nastavení plánování můžete kdykoli aktualizovat. Pokud je naplánovaná údržba pro váš flexibilní Server a aktualizujete Předvolby plánování, aktuální událost bude pokračovat podle plánu a změna nastavení plánování vstoupí v platnost po úspěšném dokončení. 
+Nastavení plánování můžete kdykoli aktualizovat. Pokud je u flexibilního serveru naplánovaná údržba a aktualizujete Předvolby plánování, aktuální zavedení bude pokračovat podle plánu a změna nastavení plánování vstoupí v platnost po úspěšném dokončení další naplánované údržby.
 
-Pokud systém zruší událost údržby nebo se nepodaří úspěšně dokončit, systém vytvoří oznámení o události zrušení nebo selhání údržby v uvedeném pořadí. Další pokus o provedení údržby bude naplánován podle aktuálního nastavení plánování a oznámení se vám bude nacházet za pět dní předem.
+U každého flexibilního serveru v předplatném Azure můžete definovat plán spravovaný systémem nebo vlastní plán.  
+* Pomocí vlastního plánu můžete pro server určit okno údržby, a to výběrem dne v týdnu a časového intervalu v jednom hodině.  
+* V rámci plánu spravovaného systémem vybere systém v časovém rámci vašeho serveru v jednom hodinovém okně mezi 23:00 a 7am.  
+
+V rámci provádění změn se tyto aktualizace aplikují na servery nakonfigurované s plánem spravovaným systémem, a to jako servery s vlastním plánem po minimálním rozpětí 7 dnů v dané oblasti. Pokud máte v úmyslu dostávat na loďstva serverů pro vývoj a testování nějaké prvotní aktualizace, doporučujeme pro servery používané ve vývojovém a testovacím prostředí nakonfigurovat plán spravovaný systémem. To vám umožní získat nejnovější aktualizaci jako první v prostředí pro vývoj/testování pro testování a vyhodnocení pro ověřování. Pokud narazíte na jakékoli chování nebo zásadní změny, budete je muset vyřešit ještě před tím, než bude stejná aktualizace nasazená na produkčních serverech s vlastním plánem spravovaným pomocí vlastního plánu. Aktualizace začne zavádět na vlastní a flexibilní servery, které jsou po 7 dnech a aplikovány na váš server v definovaném časovém období údržby. V současné době neexistuje možnost odložení aktualizace po odeslání oznámení. Vlastní plán se doporučuje jenom pro produkční prostředí. 
+
+Ve výjimečných případech může být událost údržby zrušena systémem nebo se její úspěšné dokončení může selhat. Pokud se aktualizace nezdaří, aktualizace se vrátí a předchozí verze binárních souborů se obnoví. V takových neúspěšných scénářích aktualizace můžete během časového období údržby stále docházet k restartování serveru. Pokud je aktualizace zrušená nebo se nezdařila, systém vytvoří oznámení o události zrušení nebo selhání údržby, která vás upozorní. Další pokus o provedení údržby bude naplánován podle aktuálního nastavení plánování a oznámení se vám bude nacházet za pět dní předem. 
+
  
 ## <a name="next-steps"></a>Další kroky
  

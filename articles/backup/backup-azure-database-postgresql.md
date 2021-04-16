@@ -2,14 +2,14 @@
 title: Zálohování Azure Database for PostgreSQL
 description: Přečtěte si o Azure Database for PostgreSQL zálohování s dlouhodobou uchováváním (Preview).
 ms.topic: conceptual
-ms.date: 04/06/2021
-ms.custom: references_regions
-ms.openlocfilehash: 5eba9d78dda45197c0d1e92195980f3d731734a8
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 04/12/2021
+ms.custom: references_regions , devx-track-azurecli
+ms.openlocfilehash: 8fd69e016c7f0b175ef49b98add5692743858f62
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011700"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480065"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL zálohování s dlouhodobou dobou uchovávání (Preview)
 
@@ -214,7 +214,7 @@ Pomocí tohoto podrobného průvodce můžete spustit obnovení:
 
 ## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>Požadovaná oprávnění pro konfiguraci zálohování a obnovení
 
-Azure Backup tyto přísné bezpečnostní pokyny. I když se jedná o nativní službu Azure, nepředpokládá se oprávnění prostředku a uživatel ho musí explicitně udělit.  Podobně se přihlašovací údaje pro připojení k databázi neukládají. To je důležité pro ochranu vašich dat. Místo toho používáme Azure Active Directory ověřování.
+Azure Backup tyto přísné bezpečnostní pokyny. I když týká €™ s nativní službou Azure, nepředpokládá se oprávnění k prostředku a uživatel ho musí explicitně udělit.  Podobně se přihlašovací údaje pro připojení k databázi neukládají. To je důležité pro ochranu vašich dat. Místo toho používáme Azure Active Directory ověřování.
 
 [Stáhněte si tento dokument](https://download.microsoft.com/download/7/4/d/74d689aa-909d-4d3e-9b18-f8e465a7ebf5/OSSbkpprep_automated.docx) a získejte automatizovaný skript a související pokyny. Pro účely zálohování a obnovení udělí serveru Azure PostgreSQL odpovídající sadu oprávnění.
 
@@ -255,7 +255,7 @@ V této části najdete informace o řešení potíží při zálohování datab
 
 ### <a name="usererrormsimissingpermissions"></a>UserErrorMSIMissingPermissions
 
-Poskytněte záložnímu úložišti MSI přístup **pro čtení** na serveru PG, který chcete zálohovat nebo obnovit:
+Poskytněte záložnímu úložišti MSI přístup **pro čtení** na serveru PG, který chcete zálohovat nebo obnovit.
 
 K navázání zabezpečeného připojení k databázi PostgreSQL používá Azure Backup model ověřování [Identita spravované služby (MSI)](../active-directory/managed-identities-azure-resources/overview.md) . To znamená, že úložiště záloh bude mít přístup jenom k prostředkům, kterým uživatel výslovně udělil oprávnění.
 
@@ -267,21 +267,17 @@ Kroky:
 
     ![Access Control podokno](./media/backup-azure-database-postgresql/access-control-pane.png)
 
-1. Vyberte **Přidat přiřazení role**.
+1. Vyberte **Přidat přiřazení rolí**.
 
     ![Přidat přiřazení role](./media/backup-azure-database-postgresql/add-role-assignment.png)
 
 1. V pravém podokně v kontextu, které se otevře, zadejte následující:<br>
 
-    **Role:** Modulu<br>
-    **Přiřaďte přístup k:** Zvolit **úložiště záloh**<br>
-    Pokud v rozevíracím seznamu nemůžete najít možnost **trezoru záloh** , vyberte **možnost uživatel, skupina nebo objekt služby Azure AD** .<br>
+   - **Role:** V rozevíracím seznamu vyberte roli **Čtenář** .<br>
+   - **Přiřaďte přístup k:** V rozevíracím seznamu vyberte možnost **uživatel, skupina nebo instanční objekt** .<br>
+   - **Vyberte:** Zadejte název trezoru záloh, do kterého chcete zálohovat tento server a jeho databáze.<br>
 
-    ![Vybrat roli](./media/backup-azure-database-postgresql/select-role.png)
-
-    **Vyberte:** Zadejte název trezoru záloh, do kterého chcete zálohovat tento server a jeho databáze.<br>
-
-    ![Zadejte název trezoru záloh.](./media/backup-azure-database-postgresql/enter-backup-vault-name.png)
+    ![Vybrat roli](./media/backup-azure-database-postgresql/select-role-and-enter-backup-vault-name.png)
 
 ### <a name="usererrorbackupuserauthfailed"></a>UserErrorBackupUserAuthFailed
 
