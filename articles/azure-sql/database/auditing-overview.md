@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/17/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bc7ac6b97d10e5941e46b8be3e12baff32bded4a
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577628"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483057"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Auditování pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -100,7 +100,7 @@ V následující části je popsána konfigurace auditování pomocí Azure Port
 
   > [!NOTE]
   > - Povolení auditování u pozastaveného vyhrazeného fondu SQL není možné. Chcete-li povolit auditování, zrušte pozastavení vyhrazeného fondu SQL. Přečtěte si další informace o [vyhrazeném fondu SQL](../..//synapse-analytics/sql/best-practices-dedicated-sql-pool.md).
-  > - Pokud je auditování nakonfigurované na Log Analytics pracovní prostor nebo do cílového umístění centra pomocí rutiny Azure Portal nebo PowerShellu, vytvoří se pro [nastavení diagnostiky](../../azure-monitor/essentials/diagnostic-settings.md) povolená kategorie SQLSecurityAuditEvents.
+  > - Pokud je auditování nakonfigurované na Log Analytics pracovní prostor nebo do cílového umístění centra událostí pomocí rutiny Azure Portal nebo PowerShellu, vytvoří se pro [nastavení diagnostiky](../../azure-monitor/essentials/diagnostic-settings.md) povolená kategorie SQLSecurityAuditEvents.
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. V záhlaví zabezpečení v podokně **SQL Database** nebo **SQL serveru** přejděte na **audit** .

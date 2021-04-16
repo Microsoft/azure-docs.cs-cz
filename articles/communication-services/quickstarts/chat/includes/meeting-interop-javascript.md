@@ -5,12 +5,12 @@ ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 773bca81694534346019e30e9d55190af6f51e74
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 49f9bac40ae803f980a22c19fd5d44d85fa99e9e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106785"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564713"
 ---
 ## <a name="joining-the-meeting-chat"></a>Spojení s chatem na schůzce 
 
@@ -286,7 +286,7 @@ sendMessageButton.addEventListener("click", async () =>
 
 ## <a name="get-a-teams-meeting-chat-thread-for-a-communication-services-user"></a>Získání týmů pro uživatele komunikačních služeb v rámci konverzačního vlákna
 
-Propojení týmů a chat můžete načíst pomocí rozhraní Graph API, které jsou podrobně popsané v [dokumentaci ke grafům](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta). Komunikační služby, které volá sadu SDK, přijímají úplný tým odkaz na schůzku. Tento odkaz se vrátí jako součást `onlineMeeting` prostředku, který je přístupný v rámci [ `joinWebUrl` vlastnosti](/graph/api/resources/onlinemeeting?view=graph-rest-beta) s [rozhraními API graphu](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta). můžete také získat `threadId` . Odpověď bude mít `chatInfo` objekt, který obsahuje `threadID` . 
+Propojení týmů a chat můžete načíst pomocí rozhraní Graph API, které jsou podrobně popsané v [dokumentaci ke grafům](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true). Komunikační služby, které volá sadu SDK, přijímají úplný tým odkaz na schůzku. Tento odkaz se vrátí jako součást `onlineMeeting` prostředku, který je přístupný v rámci [ `joinWebUrl` vlastnosti](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) s [rozhraními API graphu](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true). můžete také získat `threadId` . Odpověď bude mít `chatInfo` objekt, který obsahuje `threadID` . 
 
 Požadované informace o schůzce a ID vlákna můžete také získat z adresy URL **připojení ke schůzce** v rámci pozvánky na schůzku v týmu.
 Odkaz na schůzku týmu vypadá takto: `https://teams.microsoft.com/l/meetup-join/meeting_chat_thread_id/1606337455313?context=some_context_here` . `threadId`Odkaz bude na místo, kde `meeting_chat_thread_id` se nachází v odkazu. Před použitím zajistěte, aby `meeting_chat_thread_id` byl neřídicí znak. Měl by být v následujícím formátu: `19:meeting_ZWRhZDY4ZGUtYmRlNS00OWZaLTlkZTgtZWRiYjIxOWI2NTQ4@thread.v2`

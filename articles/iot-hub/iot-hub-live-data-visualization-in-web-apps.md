@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 53b5add7526b0c20487e8fe3adb0b8ebe207a2ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4f2f0678b421ac6965b2848cc25564b4e95c7c6b
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200042"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567043"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Vizualizace dat snímačů v reálném čase z Azure IoT Hub ve webové aplikaci
 
@@ -25,23 +25,11 @@ ms.locfileid: "102200042"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-## <a name="what-you-learn"></a>Co se naučíte
+V tomto článku se dozvíte, jak vizualizovat data senzorů v reálném čase, která vaše centrum IoT obdrží, pomocí node.js webové aplikace spuštěné v místním počítači. Po místní instalaci webové aplikace můžete podle pokynů použít postup hostování webové aplikace v Azure App Service. Pokud se chcete pokusit vizualizovat data ve službě IoT Hub pomocí Power BI, přečtěte si téma [použití Power BI k vizualizaci dat snímačů v reálném čase z Azure IoT Hub](iot-hub-live-data-visualization-in-power-bi.md).
 
-V tomto kurzu se naučíte vizualizovat data ze senzorů v reálném čase, která vaše centrum IoT obdrží, pomocí node.js webové aplikace spuštěné v místním počítači. Po místní instalaci webové aplikace můžete podle pokynů použít postup hostování webové aplikace v Azure App Service. Pokud se chcete pokusit vizualizovat data ve službě IoT Hub pomocí Power BI, přečtěte si téma [použití Power BI k vizualizaci dat snímačů v reálném čase z Azure IoT Hub](iot-hub-live-data-visualization-in-power-bi.md).
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="what-you-do"></a>Co dělat
-
-* Přidejte skupinu příjemců do služby IoT Hub, kterou bude webová aplikace používat ke čtení dat senzorů.
-* Stažení kódu webové aplikace z GitHubu
-* Projděte si kód webové aplikace.
-* Nakonfigurujte proměnné prostředí tak, aby obsahovaly IoT Hub artefaktů, které vaše webová aplikace potřebuje.
-* Spuštění webové aplikace na vývojovém počítači
-* Otevřete webovou stránku pro zobrazení teploty a dat vlhkosti v reálném čase ze služby IoT Hub.
-* Volitelné Použití Azure CLI k hostování vaší webové aplikace v Azure App Service
-
-## <a name="what-you-need"></a>Co budete potřebovat
-
-* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto požadavky se týkají následujících požadavků:
+* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení. Například můžete přejít na [malinu Pi pomocí node.js](iot-hub-raspberry-pi-kit-node-get-started.md) nebo do jednoho z rychlých startů pro [odeslání telemetrie](quickstart-send-telemetry-dotnet.md) . Tyto články se týkají následujících požadavků:
 
   * Aktivní předplatné Azure
   * Centrum IoT v rámci vašeho předplatného
@@ -227,7 +215,7 @@ V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kó
 
 11. V prohlížeči přejděte na `https://<your web app name>.azurewebsites.net`. Webová stránka podobná té, kterou jste viděli při zobrazení webové aplikace v místním prostředí. Za předpokladu, že vaše zařízení běží a odesílá data, měl by se zobrazit běžící vykreslení 50 nejnovější teploty a čtení vlhkosti odesílané zařízením.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud v této ukázce provedete všechny problémy, zkuste postup v následujících částech. Pokud stále máte problémy, pošlete nám svůj názor na konci tohoto tématu.
 

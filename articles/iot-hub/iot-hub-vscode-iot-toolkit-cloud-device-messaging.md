@@ -10,32 +10,24 @@ ms.date: 01/18/2019
 ms.author: junhan
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: b9d8f0c2a573ba1749b414a389cd7181ddd5f95a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c4a840233e576c528e9c58d57eca0b3d524bf4d
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87321679"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566924"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Použití nástrojů Azure IoT pro Visual Studio Code k posílání a přijímání zpráv mezi zařízením a IoT Hub
 
 ![Komplexní diagram](./media/iot-hub-vscode-iot-toolkit-cloud-device-messaging/e-to-e-diagram.png)
 
+V tomto článku se dozvíte, jak používat nástroje Azure IoT pro Visual Studio Code k monitorování zpráv ze zařízení do cloudu a k posílání zpráv z cloudu na zařízení. Zprávy ze zařízení do cloudu můžou být senzorem dat, která vaše zařízení shromažďuje a odesílá do služby IoT Hub. Zprávy z cloudu na zařízení můžou být příkazy, které vaše centrum IoT odesílá do vašeho zařízení, aby se mohl rozsvítit indikátor, který je připojený k vašemu zařízení.
+
 [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) jsou užitečnou příponou Visual Studio Code, která usnadňuje vývoj IoT Hub a správu aplikací IoT. Tento článek se zaměřuje na použití nástrojů Azure IoT pro Visual Studio Code k posílání a přijímání zpráv mezi zařízením a službou IoT Hub.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="what-you-will-learn"></a>Co se naučíte
-
-Naučíte se používat nástroje Azure IoT pro Visual Studio Code k monitorování zpráv ze zařízení do cloudu a k posílání zpráv z cloudu na zařízení. Zprávy ze zařízení do cloudu můžou být senzorem dat, která vaše zařízení shromažďuje a odesílá do služby IoT Hub. Zprávy z cloudu na zařízení můžou být příkazy, které vaše centrum IoT odesílá do vašeho zařízení, aby se mohl rozsvítit indikátor, který je připojený k vašemu zařízení.
-
-## <a name="what-you-will-do"></a>Co budete dělat
-
-* Pomocí nástrojů Azure IoT pro Visual Studio Code můžete monitorovat zprávy ze zařízení do cloudu.
-
-* Použití nástrojů Azure IoT pro Visual Studio Code k posílání zpráv z cloudu na zařízení.
-
-## <a name="what-you-need"></a>Co budete potřebovat
+## <a name="prerequisites"></a>Požadavky
 
 * Musíte mít aktivní předplatné Azure.
 

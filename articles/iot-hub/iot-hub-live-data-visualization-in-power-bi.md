@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: 82caf13618fe8483ab8d3a622c6c0d51ab05a206
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0b099f4ce91fd24e8d7baec054bcfc5a6cf0b032
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102177330"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567105"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Vizualizace dat ze senzorů v reálném čase z Azure IoT Hub pomocí Power BI
 
@@ -22,21 +22,11 @@ ms.locfileid: "102177330"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-## <a name="what-you-learn"></a>Co se naučíte
+V tomto článku se dozvíte, jak vizualizovat data senzorů v reálném čase, která vaše služba Azure IoT Hub přijímá pomocí Power BI. Pokud se chcete pokusit vizualizovat data ve službě IoT Hub pomocí webové aplikace, přečtěte si téma [použití webové aplikace k vizualizaci dat snímačů v reálném čase z Azure IoT Hub](iot-hub-live-data-visualization-in-web-apps.md).
 
-Naučíte se vizualizovat data ze senzorů v reálném čase, která služba Azure IoT Hub přijímá pomocí Power BI. Pokud se chcete pokusit vizualizovat data ve službě IoT Hub pomocí webové aplikace, přečtěte si téma [použití webové aplikace k vizualizaci dat snímačů v reálném čase z Azure IoT Hub](iot-hub-live-data-visualization-in-web-apps.md).
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="what-you-do"></a>Co dělat
-
-* Přidejte skupinu příjemců a připravte si tak přístup k datům do služby IoT Hub.
-
-* Vytvořte, nakonfigurujte a spusťte úlohu Stream Analytics pro přenos dat ze služby IoT Hub do svého účtu Power BI.
-
-* Vytvořte a publikujte sestavu Power BI k vizualizaci dat.
-
-## <a name="what-you-need"></a>Co budete potřebovat
-
-* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto články se týkají následujících požadavků:
+* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení. Například můžete přejít na [malinu Pi pomocí node.js](iot-hub-raspberry-pi-kit-node-get-started.md) nebo do jednoho z rychlých startů pro [odeslání telemetrie](quickstart-send-telemetry-dotnet.md) . Tyto články se týkají následujících požadavků:
   
   * Musíte mít aktivní předplatné Azure.
   * Azure IoT Hub v rámci vašeho předplatného.

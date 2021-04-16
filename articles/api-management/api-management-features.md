@@ -4,20 +4,16 @@ description: Porovnejte API Management vrstev na základě funkcí, které nabí
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: gwallace
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 04/13/2021
 ms.author: apimpm
-ms.openlocfilehash: eec913237ba978e52bb64fbd4c1f043a9214ffc8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f111729d7d7707ed4f40ce8f89ce76975fb47400
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92077843"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536444"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Porovnání na základě funkcí API Management vrstev Azure
 
@@ -31,6 +27,7 @@ Každá API Management [cenová úroveň](https://aka.ms/apimpricing) nabízí s
 | Integrace Azure AD<sup>1</sup>                                                             | No          | Yes       | No    | Yes      | Yes     |
 | Podpora Virtual Network (VNet)                                                               | No          | Yes       | No    | No       | Yes     |
 | Nasazení ve více oblastech                                                                      | No          | No        | No    | No       | Yes     |
+| Zóny dostupnosti                                                                           | No          | No        | No    | No       | Yes     |
 | Několik vlastních názvů domén                                                                 | No          | Yes        | No    | No       | Yes     |
 | Portál pro vývojáře<sup>2</sup>                                                                 | No          | Yes       | Yes   | Yes      | Yes     |
 | Integrovaná mezipaměť                                                                               | No          | Yes       | Yes   | Yes      | Yes     |
@@ -42,7 +39,7 @@ Každá API Management [cenová úroveň](https://aka.ms/apimpricing) nabízí s
 | [Zálohování a obnovení](api-management-howto-disaster-recovery-backup-restore.md)               | No          | Yes       | Yes   | Yes      | Yes     |
 | [Správa přes Git](api-management-configuration-repository-git.md)                        | No          | Yes       | Yes   | Yes      | Yes     |
 | Rozhraní API pro přímé řízení                                                                        | No          | Yes       | Yes   | Yes      | Yes     |
-| Protokoly Azure Monitor a metriky                                                               | Yes         | Yes       | Yes   | Yes      | Yes     |
+| Protokoly Azure Monitor a metriky                                                               | No          | Yes       | Yes   | Yes      | Yes     |
 | Statická IP adresa                                                                                    | No          | Yes       | Yes   | Yes      | Yes     |
 
 <sup>1</sup> povoluje použití Azure AD (a Azure AD B2C) jako zprostředkovatele identity pro přihlášení uživatele na portálu pro vývojáře.<br/>

@@ -3,12 +3,12 @@ title: Vytvořit nový prostředek služby Azure Application Insights | Microsof
 description: Ručně nastavte Application Insights monitorování pro novou živou aplikaci.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 459f61d9e13a2098403f3e78c7a529e49bf65e59
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6158b5604046897e20053c67321f26d650c21b7f
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100929"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566218"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
@@ -32,7 +32,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek 
    | **Název**      | `Unique value` | Název, který identifikuje monitorovanou aplikaci. |
    | **Skupina prostředků**     | `myResourceGroup`      | Název nové nebo existující skupiny prostředků pro hostování dat App Insights |
    | **Oblast** | `East US` | Vyberte umístění poblíž vaší aplikace nebo poblíž místa, kde je vaše aplikace hostovaná. |
-   | **Režim prostředků** | `Classic` nebo `Workspace-based` | Prostředky založené na pracovních prostorech jsou momentálně ve verzi Public Preview a umožňují vám odeslat Application Insights telemetrii do společného pracovního prostoru Log Analytics. Další informace najdete v [článku o prostředcích založených na pracovních prostorech](create-workspace-resource.md).
+   | **Režim prostředků** | `Classic` nebo `Workspace-based` | Prostředky založené na pracovních prostorech umožňují odeslat telemetrii Application Insights do společného pracovního prostoru Log Analytics. Další informace najdete v [článku o prostředcích založených na pracovních prostorech](create-workspace-resource.md).
 
 > [!NOTE]
 > I když můžete použít stejný název prostředku v různých skupinách prostředků, může být výhodné použít globálně jedinečný název. To může být užitečné v případě, že plánujete [provádění dotazů mezi prostředky](../logs/cross-workspace-query.md#identifying-an-application) , protože je zjednodušená požadovaná syntaxe.

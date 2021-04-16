@@ -1,15 +1,17 @@
 ---
 title: Rychlý Start k vytvoření trezoru služby Azure Recovery Services pomocí šablony Azure Resource Manager
 description: V tomto rychlém startu se dozvíte, jak vytvořit trezor služby Azure Recovery Services pomocí šablony Azure Resource Manager (šablona ARM).
-ms.topic: quickstart
-ms.custom: subject-armqs
 ms.date: 04/29/2020
-ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 11a88b5485ad970802a65af31daccdb30a1c86df
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92745883"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533246"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Rychlý Start: vytvoření trezoru Recovery Services pomocí šablony ARM
 

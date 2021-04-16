@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: cd14ff0688f4230aeedac748ca4b32609bdd2938
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74724357dea9cd6c8c89a11a9eeb3d1b2933b790
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92490318"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564930"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Vzdálené monitorování a oznámení IoT pomocí Azure Logic Apps připojení ke službě IoT Hub a poštovní schránce
 
@@ -24,11 +24,7 @@ ms.locfileid: "92490318"
 
 [Azure Logic Apps](../logic-apps/index.yml) vám může pomáhat při organizování pracovních postupů v místních i cloudových službách, v jednom nebo několika podnicích a v různých protokolech. Aplikace logiky začíná triggerem, který potom následuje jednou nebo více akcí, které lze sekvencovat pomocí integrovaných ovládacích prvků, jako jsou podmínky a iterátory. Tato flexibilita přináší Logic Apps ideální řešení IoT pro scénáře monitorování IoT. Například doručení dat telemetrie ze zařízení do IoT Hubho koncového bodu může iniciovat pracovní postupy Logic Apps, které skladují data v objektu blob Azure Storage, odesílají e-mailové výstrahy, které upozorňují na anomálie v datech, naplánování technici, pokud zařízení hlásí chybu, a tak dále.
 
-## <a name="what-you-learn"></a>Co se naučíte
-
-Naučíte se, jak vytvořit aplikaci logiky, která připojuje vaše centrum IoT a vaši poštovní schránku k monitorování a upozorňování na teplotu.
-
-Klientský kód spuštěný v zařízení nastaví vlastnost aplikace, `temperatureAlert` v každé zprávě telemetrie, kterou odesílá do služby IoT Hub. Když kód klienta detekuje teplotu nad 30 C, nastaví tuto vlastnost na `true` ; v opačném případě nastaví vlastnost na `false` .
+V tomto článku se naučíte, jak vytvořit aplikaci logiky, která připojuje vaše centrum IoT a vaši poštovní schránku k monitorování a upozorňování na teplotu. Klientský kód spuštěný v zařízení nastaví vlastnost aplikace, `temperatureAlert` v každé zprávě telemetrie, kterou odesílá do služby IoT Hub. Když kód klienta detekuje teplotu nad 30 C, nastaví tuto vlastnost na `true` ; v opačném případě nastaví vlastnost na `false` .
 
 Zprávy přicházející ve službě IoT Hub vypadají podobně jako v následujícím příkladu s daty telemetrie obsaženými v těle a `temperatureAlert` vlastností obsaženými ve vlastnostech aplikace (systémové vlastnosti nejsou zobrazeny):
 
@@ -50,15 +46,9 @@ Další informace o formátu zpráv IoT Hub najdete v tématu [Vytvoření a čt
 
 V tomto tématu nastavíte směrování ve službě IoT Hub pro odesílání zpráv, ve kterých `temperatureAlert` je vlastnost `true` do Service Busho koncového bodu. Pak nastavíte aplikaci logiky, která se spustí na zprávách přicházejících do Service Busho koncového bodu, a pošle vám e-mailové oznámení.
 
-## <a name="what-you-do"></a>Co dělat
+## <a name="prerequisites"></a>Požadavky
 
-* Vytvořte obor názvů Service Bus a přidejte do něj frontu Service Bus.
-* Přidejte vlastní koncový bod a pravidlo směrování do služby IoT Hub, abyste mohli směrovat zprávy, které obsahují upozornění na teplotu Service Bus fronty.
-* Vytvoření, konfigurace a otestování aplikace logiky pro využívání zpráv z fronty Service Bus a odesílání e-mailů s oznámením požadovanému příjemci.
-
-## <a name="what-you-need"></a>Co budete potřebovat
-
-* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto požadavky se týkají následujících požadavků:
+* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení. Například můžete přejít na [malinu Pi pomocí node.js](iot-hub-raspberry-pi-kit-node-get-started.md) nebo do jednoho z rychlých startů pro [odeslání telemetrie](quickstart-send-telemetry-dotnet.md) . Tyto články se týkají následujících požadavků:
 
   * Musíte mít aktivní předplatné Azure.
   * Azure IoT Hub v rámci vašeho předplatného.

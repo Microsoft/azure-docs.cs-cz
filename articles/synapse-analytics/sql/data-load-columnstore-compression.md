@@ -2,21 +2,21 @@
 title: Zvýšení výkonu indexu columnstore
 description: Snížením požadavků na paměť nebo zvýšením dostupné paměti maximalizujete počet řádků, které index columnstore komprimuje do každého skupiny řádků.
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 2cbf38808f69ed2c1f76196fc7580a8ad3dae56a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a452808b1c349e2aec91759675e269e3680f0598
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602073"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567957"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Maximalizace kvality skupiny řádků pro výkon indexu columnstore
 

@@ -6,13 +6,13 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/14/2021
-ms.openlocfilehash: d3924c38f760a9698735a2757bdad2af5beb0e24
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 04/16/2021
+ms.openlocfilehash: 392b1a1650ab40951704d003f2a5e5337cf3c0f5
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518732"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566680"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Integrace dat pomocí Azure Data Factory a sdílení dat Azure
 
@@ -100,7 +100,7 @@ Pokud chcete zapnout ladění, klikněte na horním panelu plátna toku dat nebo
 
 ![Portál konfigurovat 10](media/lab-data-flow-data-share/configure10.png)
 
-![Portál – konfigurace 11](media/lab-data-flow-data-share/configure11.png)
+![Snímek obrazovky, který ukazuje, kde je jezdec ladění toku dat.](media/lab-data-flow-data-share/configure-11.png)
 
 ## <a name="ingest-data-using-the-copy-activity"></a>Ingestování dat pomocí aktivity kopírování
 

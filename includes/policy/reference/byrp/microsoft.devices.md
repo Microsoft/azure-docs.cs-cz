@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 03796ba26e8c54ea78aee5219e535543334c3e1d
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: c071f73bcdb8fba26cbb714cca312e91689eb9ca
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093247"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501279"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Azure IoT Hub by měl používat klíč spravovaný zákazníkem k šifrování dat v klidovém provozu.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d7e144b-159c-44fc-95c1-ac3dbf5e6e54) |Šifrování neaktivních dat v IoT Hub s klíčem spravovaným zákazníkem se na základě výchozích klíčů spravovaných službou přidá druhá vrstva šifrování, která umožňuje zákazníkům používat klíče, vlastní zásady střídání a schopnost spravovat přístup k datům prostřednictvím řízení přístupu k klíčům. Klíče spravované zákazníkem musí být konfigurovány během vytváření IoT Hub. Další informace o konfiguraci klíčů spravovaných zákazníkem najdete v tématu [https://aka.ms/iotcmk](https://aka.ms/iotcmk) . |Audit, zamítnutí, zakázáno |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IotHub_CMKEncryptionEnabled.json) |
 |[Nakonfigurujte IoT Hub instance služby Device Provisioning, abyste zakázali přístup k veřejné síti.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F859dfc91-ea35-43a6-8256-31271c363794) |Zakažte přístup k veřejné síti pro vaši instanci zřizování IoT Hub zařízení, aby nebyla přístupná přes veřejný Internet. To může snížit riziko úniku dat. Další informace najdete tady: [https://aka.ms/iotdpsvnet](https://aka.ms/iotdpsvnet) . |Upravit, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DisablePublicNetworkAccess_Modify.json) |

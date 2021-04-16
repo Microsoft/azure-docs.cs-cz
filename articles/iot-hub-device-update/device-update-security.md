@@ -3,29 +3,31 @@ title: Zabezpečení aktualizace zařízení pro Azure IoT Hub | Microsoft Docs
 description: Pochopte, jak IoT Hub aktualizace zařízení zajišťuje zabezpečené aktualizace zařízení.
 author: lichris
 ms.author: lichris
-ms.date: 2/11/2021
+ms.date: 4/15/2021
 ms.topic: conceptual
 ms.service: iot-hub
-ms.openlocfilehash: 86b2dbe6a28d1440f93788eb40e133d9b62d3f0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b10049e03e26cfe8da2bd57cc9f69dd933af706b
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489425"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567294"
 ---
 # <a name="device-update-security-model"></a>Model zabezpečení aktualizace zařízení
 
 Aktualizace zařízení pro IoT Hub nabízí zabezpečenou metodu nasazení aktualizací pro firmware zařízení, obrázky a aplikace do zařízení IoT. Pracovní postup poskytuje kompletní zabezpečený kanál s úplným modelem, který může zařízení použít k prokázání, že je aktualizace důvěryhodná, nezměněná a úmyslné.
 
-Každý krok v pracovním postupu aktualizace zařízení je chráněn různými funkcemi zabezpečení a procesy, aby se zajistilo, že každý krok v kanálu provede zabezpečený předání do dalšího. Klient aktualizace zařízení identifikuje a správně spravuje všechny žádosti o aktualizaci illegitimate. Klient také kontroluje všechny soubory ke stažení, aby bylo zajištěno, že obsah je důvěryhodný, nezměněný a je úmyslné.
+Každý krok v pracovním postupu aktualizace zařízení je chráněn různými funkcemi zabezpečení a procesy, aby se zajistilo, že každý krok v kanálu provede zabezpečený předání do dalšího. Klient aktualizace zařízení identifikuje a správně spravuje všechny žádosti o aktualizaci illegitimate. Klient také kontroluje všechny soubory ke stažení, aby bylo zajištěno, že obsah je důvěryhodný, nezměněný a úmyslné.
 
 ## <a name="for-solution-operators"></a>Pro operátory řešení
 
 Protože operátory řešení importují aktualizace do své instance aktualizace zařízení, služba odesílá a kontroluje binární soubory aktualizace, aby bylo zajištěno, že nebyly změněny ani nahrazeny uživatelem se zlými úmysly. Po ověření služba aktualizace zařízení generuje [manifest interní aktualizace](./update-manifest.md) s hodnotami hash souborů z manifestu importu a dalších metadat. Tento manifest aktualizace je pak podepsaný službou aktualizace zařízení.
 
+Po ingestování do služby a uložených v Azure jsou binární soubory aktualizace a přidružená metadata zákazníka automaticky šifrována službou Azure Storage. Služba aktualizace zařízení automaticky neposkytuje žádné další šifrování, ale umožňuje vývojářům Šifrovat obsah sami předtím, než obsah dosáhne služby aktualizace zařízení.
+
 Když operátor řešení požaduje aktualizaci zařízení, pošle se na zařízení podepsaná zpráva s podpisem IoT Hub. Signatura žádosti je ověřena agentem aktualizace zařízení zařízení jako platná. 
 
-Výsledný binární soubor ke stažení je zabezpečený pomocí ověřování signatury manifestu aktualizace. Manifest aktualizace obsahuje hodnoty hash binárního souboru, takže jakmile je manifest důvěryhodný, agent aktualizace zařízení důvěřuje hodnoty hash a porovná je s binárními soubory. Po stažení a ověření binárního souboru aktualizace je tato služba předána instalačnímu programu na zařízení.
+Výsledný binární soubor ke stažení je zabezpečený pomocí ověřování signatury manifestu aktualizace. Manifest aktualizace obsahuje hodnoty hash binárního souboru, takže jakmile je manifest důvěryhodný, agent aktualizace zařízení důvěřuje hodnoty hash a porovná je s binárními soubory. Po stažení a ověření binárního souboru aktualizace je možné ji bezpečně předat instalačnímu programu na zařízení.
 
 ## <a name="for-device-builders"></a>Pro sestavovatele zařízení
 

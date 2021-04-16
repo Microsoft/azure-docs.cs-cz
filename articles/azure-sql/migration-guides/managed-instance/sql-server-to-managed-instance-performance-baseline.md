@@ -1,23 +1,23 @@
 ---
-title: 'SQL Server ke spravované instanci Azure SQL: Analýza výkonu'
+title: 'SQL Server ke spravované instanci Azure SQL: směrný plán výkonu'
 description: Naučte se vytvářet a porovnávat základní údaje o výkonu při migraci SQL Serverch databází do spravované instance Azure SQL.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: a97dabe36efb252b04c1b5c8fa741d33a6c92703
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a47684bf29f1f34b8c9c59c04b7d33d234505cc2
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023669"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389702"
 ---
-# <a name="migration-performance-sql-server-to--azure-sql-managed-instance-performance-analysis"></a>Výkon migrace: SQL Server pro analýzu výkonu spravované instance Azure SQL
+# <a name="migration-performance-sql-server-to--azure-sql-managed-instance-performance-baseline"></a>Výkon migrace: SQL Server do směrného plánu výkonu spravované instance SQL Azure
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 Vytvořte základní úroveň výkonu pro porovnání výkonu vašich úloh na spravované instanci SQL s původní úlohou běžící na SQL Server. 

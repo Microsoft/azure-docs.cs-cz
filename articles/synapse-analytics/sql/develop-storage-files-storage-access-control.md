@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: acfaa780f21f5264b546f97e9a3792aa43e9c30b
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 266a6c27261107b883fdc0c1cdd274e6345de6db
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029739"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483448"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Řízení přístupu k účtu úložiště pro fond SQL bez serveru ve službě Azure synapse Analytics
 
@@ -86,7 +86,7 @@ V následující tabulce najdete dostupné typy autorizace:
 | ------------------------------------- | ------------- | -----------    |
 | [Identita uživatele](?tabs=user-identity#supported-storage-authorization-types)       | Nepodporováno | Podporováno      |
 | [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | Podporováno     | Podporováno      |
-| [Spravovaná identita](?tabs=managed-identity#supported-storage-authorization-types) | Nepodporováno | Podporováno      |
+| [Spravovaná identita](?tabs=managed-identity#supported-storage-authorization-types) | Podporováno | Podporováno      |
 
 ### <a name="supported-storages-and-authorization-types"></a>Podporované typy úložišť a autorizace
 

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 41b3552a633c9cebce1138fa042dbd154eee0cb5
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: da4ada8b505c747d24738e175a1701b5ea73b4e4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314112"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536734"
 ---
 # <a name="what-is-optical-character-recognition"></a>Co je optické rozpoznávání znaků?
 
@@ -42,7 +42,6 @@ Volání **pro čtení** bere jako vstup obrázky a dokumenty. Mají následují
 * Podporované formáty souborů: JPEG, PNG, BMP, PDF a TIFF
 * Pro soubory PDF a TIFF se zpracují až 2000 stránek (jenom první dvě stránky pro bezplatnou úroveň).
 * Velikost souboru musí být menší než 50 MB (4 MB pro úroveň Free) a rozměry aspoň 50 x 50 pixelů a maximálně 10000 x 10000 pixelů. 
-* Rozměry PDF musí být maximálně 17 × 17 palců, které odpovídají právním nebo a3 velikosti papíru a menšímu.
 
 ## <a name="read-api"></a>Rozhraní API pro čtení 
 
@@ -50,6 +49,21 @@ Volání **pro čtení** bere jako vstup obrázky a dokumenty. Mají následují
 
 ![Jak optické rozpoznávání znaků převede obrázky a dokumenty na strukturovaný výstup s extrahovaným textem](./Images/how-ocr-works.svg)
 
+### <a name="key-features"></a>Klíčové funkce
+
+Rozhraní API pro čtení obsahuje následující funkce. 
+
+* Tisk extrakce textu v jazycích 73
+* Extrakce rukou psaného textu v angličtině
+* Textové řádky a slova s výsledky umístění a spolehlivosti
+* Nepožaduje se žádná identifikace jazyka.
+* Podpora pro smíšené jazyky, smíšený režim (tisk a rukopis)
+* Výběr stránek a rozsahů stránek z rozsáhlých vícestránkovéch dokumentů
+* Přirozené pořadí čtení pro textové řádky
+* Klasifikace rukopisu pro textové řádky
+* K dispozici jako kontejner Docker Distroless pro místní nasazení
+
+Naučte se [používat funkce optického rozpoznávání znaků](./vision-api-how-to-topics/call-read-api.md).
 
 ## <a name="use-the-cloud-api-or-deploy-on-premise"></a>Použití cloudového rozhraní API nebo nasazení v místním systému
 Cloudová rozhraní API pro čtení 3. x jsou upřednostňovanou možností pro většinu zákazníků kvůli snadné integraci a rychlé produktivitě mimo pole. Azure a služba Počítačové zpracování obrazu obsluhují požadavky na škálování, výkon, zabezpečení dat a dodržování předpisů a přitom se soustředit na splnění potřeb vašich zákazníků.

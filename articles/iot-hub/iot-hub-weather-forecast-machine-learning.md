@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: ab9e122ba0b2b50203a2d66ae14f03f3b6300f96
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 455d78ed21403952046448dd4447b5ec54f77c00
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96452339"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566975"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Předpověď počasí s využitím dat ze senzorů ze služby IoT Hub v Azure Machine Learning Studio (Classic)
 
@@ -23,25 +23,11 @@ ms.locfileid: "96452339"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-Machine Learning je technika datové vědy, která pomáhá počítačům učit se z existujících dat a předpovídat budoucí chování, výsledky a trendy. Azure Machine Learning Studio (Classic) je cloudová služba pro prediktivní analýzu, která umožňuje rychle vytvářet a nasazovat prediktivní modely jako Analytická řešení.
+Machine Learning je technika datové vědy, která pomáhá počítačům učit se z existujících dat a předpovídat budoucí chování, výsledky a trendy. Azure Machine Learning Studio (Classic) je cloudová služba pro prediktivní analýzu, která umožňuje rychle vytvářet a nasazovat prediktivní modely jako Analytická řešení. V tomto článku se naučíte, jak používat Azure Machine Learning Studio (Classic) k tomu, aby se předpověď počasí s využitím dat teploty a vlhkosti v Azure IoT Hub používala. Šance na deště je výstupem připraveného modelu předpovědi počasí. Model je vytvořen na základě historických dat, aby se mohla odhadnout pravděpodobnost srážky na základě teploty a vlhkosti.
 
-## <a name="what-you-learn"></a>Co se naučíte
+## <a name="prerequisites"></a>Požadavky
 
-Naučíte se, jak pomocí Azure Machine Learning Studio (Classic) provádět předpověď počasí s využitím dat o teplotě a vlhkosti z Azure IoT Hub. Šance na deště je výstupem připraveného modelu předpovědi počasí. Model je vytvořen na základě historických dat, aby se mohla odhadnout pravděpodobnost srážky na základě teploty a vlhkosti.
-
-## <a name="what-you-do"></a>Co dělat
-
-- Nasaďte model předpovědi počasí jako webovou službu.
-- Přidejte skupinu příjemců a připravte si tak přístup k datům do služby IoT Hub.
-- Vytvořte úlohu Stream Analytics a nakonfigurujte úlohu na:
-  - Načte data o teplotě a vlhkosti ze služby IoT Hub.
-  - Zavolejte webovou službu, abyste získali možnost deště.
-  - Výsledek uložte do úložiště objektů BLOB v Azure.
-- K zobrazení předpovědi počasí použijte Průzkumník služby Microsoft Azure Storage.
-
-## <a name="what-you-need"></a>Co budete potřebovat
-
-- Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto požadavky se týkají následujících požadavků:
+- Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení. Například můžete přejít na [malinu Pi pomocí node.js](iot-hub-raspberry-pi-kit-node-get-started.md) nebo do jednoho z rychlých startů pro [odeslání telemetrie](quickstart-send-telemetry-dotnet.md) . Tyto články se týkají následujících požadavků:
   - Musíte mít aktivní předplatné Azure.
   - Azure IoT Hub v rámci vašeho předplatného.
   - Klientská aplikace, která odesílá zprávy do služby Azure IoT Hub.

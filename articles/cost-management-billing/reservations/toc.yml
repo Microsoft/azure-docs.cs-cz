@@ -102,7 +102,7 @@
           href: ../../azure-sql/database/reserved-capacity-overview.md?toc=%2fazure%2fcost-management-billing%2freservations%2ftoc.json
         - name: Virtuální počítače
           href: ../../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fcost-management-billing%2freservations%2ftoc.json
-    - name: 'Zobrazení, správa a optimalizace po nákupu'
+    - name: 'Oprávnění, zobrazení a Správa'
       items:
         - name: Oprávnění k zobrazení a správě
           href: view-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
@@ -112,14 +112,18 @@
           href: manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Změna nastavení optimalizace
           href: manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances
-        - name: Výměna a refundace rezervací
-          href: exchange-and-refund-azure-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: Vytvoření sestavy nákladů
+    - name: Sestavy využití a nákladů
       items:
+        - name: Zobrazit využití rezervace
+          href: reservation-utilization.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Zobrazení transakcí rezervací
           href: view-purchase-refunds.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Zpětné vyúčtování nákladů na rezervace
           href: charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Výměna a refundace
+      items:
+        - name: Výměna a refundace rezervací
+          href: exchange-and-refund-azure-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Obnovení rezervací
       items:
         - name: Obnovení rezervace

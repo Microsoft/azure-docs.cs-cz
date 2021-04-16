@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2021
 ms.author: duau
-ms.openlocfilehash: d2c8d4179dbaa44929031ce7e14b597b145ed72a
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4291a7d46c723f799cf9d09ca0e7a3f6d614971f
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067601"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389736"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Front Dooru
 
@@ -70,9 +70,8 @@ Pokud chcete povolit HTTPS pro vlastní doménu, postupujte následovně:
 5. Pokračujte [v ověřování domény](#validate-the-domain).
 
 > [!NOTE]
-> U spravovaných certifikátů AFD se vynutilo omezení počtu znaků DigiCert 64. Pokud dojde k překročení tohoto limitu, ověření se nezdaří.
-
-! ZNAČTE Povolení protokolu HTTPS prostřednictvím spravovaného certifikátu přes dvířka se nepodporuje pro domény vrcholů a kořenových domén (například: contoso.com). Pro tento scénář můžete použít vlastní certifikát.  Pokud chcete zobrazit další podrobnosti, pokračujte prosím na možnost 2.
+> * U spravovaných certifikátů AFD se vynutilo omezení počtu znaků DigiCert 64. Pokud dojde k překročení tohoto limitu, ověření se nezdaří.
+> * Povolení protokolu HTTPS prostřednictvím spravovaného certifikátu přes dvířka se nepodporuje pro domény vrcholů a kořenových domén (například: contoso.com). Pro tento scénář můžete použít vlastní certifikát.  Pokud chcete zobrazit další podrobnosti, pokračujte prosím na možnost 2.
 
 ### <a name="option-2-use-your-own-certificate"></a>Možnost 2: Použití vlastního certifikátu
 

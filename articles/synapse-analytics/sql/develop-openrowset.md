@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c37f6d89d5ebd3e18177db8add048739a62c883f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 28c54865ab9c2876d998896f5f536a11088962f8
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307941"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566422"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Použití funkce OPENROWSET s použitím fondu SQL bez serveru ve službě Azure synapse Analytics
 
@@ -138,7 +138,7 @@ Pokud zadáte unstructured_data_path jako složku, dotaz na fond SQL bez serveru
 SQL fondu bez serveru můžete dát pokyn k procházení složek zadáním/* na konci cesty jako v příkladu: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> Na rozdíl od Hadoop a báze SQL bez serveru nevrátí podsložky, pokud nezadáte/* * na konci cesty.
+> Na rozdíl od Hadoop a báze SQL bez serveru nevrátí podsložky, pokud nezadáte/* * na konci cesty. Stejně jako Hadoop a základ nevrátí soubory, pro které název souboru začíná podtržítkem (_) nebo tečkou (.).
 
 V následujícím příkladu, pokud unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , dotaz fondu SQL bez serveru vrátí řádky z mydata.txt. Nevrátí mydata2.txt a mydata3.txt, protože jsou umístěné v podsložce.
 

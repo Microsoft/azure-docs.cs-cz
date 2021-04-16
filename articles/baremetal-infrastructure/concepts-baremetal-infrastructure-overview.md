@@ -1,16 +1,16 @@
 ---
-title: Přehled infrastruktury BareMetal v Azure
+title: Co je BareMetal infrastruktura v Azure?
 description: Poskytuje přehled infrastruktury BareMetal v Azure.
 ms.custom: references_regions
 ms.topic: conceptual
 ms.subservice: workloads
-ms.date: 04/08/2021
-ms.openlocfilehash: 7a4998a096a5c5d9e793c34d5046dce59262a2ae
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.date: 04/14/2021
+ms.openlocfilehash: c0fd250a63ce93d3f8b62dfe76fe753c928801ce
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257564"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536884"
 ---
 #  <a name="what-is-baremetal-infrastructure-on-azure"></a>Co je BareMetal infrastruktura v Azure?
 
@@ -47,6 +47,22 @@ BareMetal infrastruktura nabízí tyto výhody:
 - Snímky s podporou aplikací, archivace, zrcadlení a klonování
 
 
+## <a name="baremetal-benefits"></a>Výhody BareMetal  
+
+Infrastruktura BareMetal je určená pro klíčové úlohy, které vyžadují certifikaci pro spouštění podnikových aplikací. Instance BareMetal jsou vyhrazené jenom pro vás a vy budete mít úplný přístup (root Access) k operačnímu systému (OS). Instalaci operačního systému a aplikace můžete spravovat podle svých potřeb. Z důvodu zabezpečení jsou instance zřízené v rámci Azure Virtual Network (VNet) bez připojení k Internetu. S vašimi BareMetal instancemi můžou komunikovat jenom služby, které běží na virtuálních počítačích a dalších službách Azure ve stejné síti úrovně 2.  
+
+BareMetal infrastruktura nabízí tyto výhody: 
+
+- Certifikovaný hardware pro specializované úlohy
+- SAP (viz [Poznámka k sap #1928533](https://launchpad.support.sap.com/#/notes/1928533))
+- Oracle (viz [ID dokumentu oracle #948372.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=52088246571495&id=948372.1&_adf.ctrl-state=kwnkj1hzm_52))
+- Hypervised BareMetal instance, vlastnictví jednoho tenanta
+- Nízká latence mezi virtuálními počítači hostované aplikace Azure a instancemi BareMetal (0,35 MS)
+- Všechna podpora flash SSD a NVMe
+- Databáze až 1 PB/tenant 
+- IOPS až do 1,2 milionů/tenantů 
+- 50-GB šířky pásma sítě 
+
 ## <a name="sku-availability-in-azure-regions"></a>Dostupnost skladové položky v oblastech Azure
 
 Infrastruktura BareMetal nabízí několik SKU certifikovaných pro specializované úlohy. Použijte skladové jednotky specifické pro úlohy, které vyhovují vašim potřebám.
@@ -69,11 +85,11 @@ BareMetal infrastruktura pro specializované úlohy je k dispozici v následují
 
 ## <a name="managing-baremetal-instances-in-azure"></a>Správa instancí BareMetal v Azure 
 
-V závislosti na vašich potřebách může být topologie aplikací infrastruktury BareMetal složitá. Můžete nasadit více instancí v jednom nebo více umístěních se sdíleným nebo vyhrazeným úložištěm a specializovanými připojeními k síti LAN a WAN. V případě infrastruktury BareMetal nabízí Azure konzultační zachycení těchto informací pomocí CSA/GBB v poli na portálu zřizování. 
+V závislosti na vašich potřebách může být topologie aplikací infrastruktury BareMetal složitá. V jednom nebo více umístěních můžete nasadit více instancí se sdíleným nebo vyhrazeným úložištěm a specializovanými připojeními LAN a WAN. V případě infrastruktury BareMetal nabízí Azure konzultační zachycení těchto informací pomocí CSA/GBB v poli na portálu zřizování. 
 
 V době, kdy se zřídí infrastruktura BareMetal, operační systém, sítě, svazky úložiště, umístění v zónách a oblastech a připojení WAN mezi umístěními jsou už předem nakonfigurovaná. Nastavili jste registraci licencí pro operační systém (BYOL), konfigurace operačního systému a instalaci aplikační vrstvy.
 
-V Azure Portal budete moci zobrazit všechny prostředky infrastruktury BareMetal a jejich stav a atributy. Můžete také provozovat instance a žádosti o otevření služby a z ní lístky podpory. 
+V Azure Portal budete moci zobrazit všechny prostředky v BareMetal a jejich stav a atributy. Můžete také provozovat instance a žádosti o otevření služby a z ní lístky podpory. 
 
 ## <a name="operational-model"></a>Provozní model
 Infrastruktura BareMetal je ISO 27001, ISO 27017, SOC 1 a SOC 2 vyhovující. Používá také model BYOL (Přineste si vlastní licenci): operační systém, specializované úlohy a aplikace třetích stran.  

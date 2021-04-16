@@ -1,7 +1,6 @@
 ---
 title: Vytvoření uživatelem definovaného bodu obnovení pro vyhrazený fond SQL
 description: Naučte se používat Azure Portal k vytvoření bodu obnovení definovaného uživatelem pro vyhrazený fond SQL ve službě Azure synapse Analytics.
-services: synapse-analytics
 author: joannapea
 manager: igorstan
 ms.service: synapse-analytics
@@ -11,12 +10,12 @@ ms.date: 10/29/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 21fd20100095040fda9f72b00e17147ff560fbca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b695f6c7aabc21541fcc48efed54bbecd022f65a
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94579534"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567923"
 ---
 # <a name="user-defined-restore-points"></a>Uživatelem definované body obnovení
 
