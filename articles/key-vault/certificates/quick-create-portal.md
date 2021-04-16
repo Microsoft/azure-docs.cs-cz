@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e55c0832638105ad681f74cbeb6429a6704b7fb2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a35f83286abe5ae33f6d3c44ee7b05faf692512
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935134"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479215"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Rychlý Start: nastavení a načtení certifikátu z Azure Key Vault pomocí Azure Portal
 
@@ -61,7 +61,8 @@ Pokud chcete do trezoru přidat certifikát, stačí provést několik dalších
     - **Metoda vytvoření certifikátu**: generovat.
     - **Název certifikátu**: ExampleCertificate.
     - **Předmět**: CN = ExampleDomain
-    - U ostatních hodnot ponechte jejich výchozí nastavení. Klikněte na **Vytvořit**.
+    - U ostatních hodnot ponechte jejich výchozí nastavení. (Ve výchozím nastavení platí, že pokud v pokročilých zásadách neurčíte nic speciálního, bude použitelný jako certifikát ověřování klienta.)
+ 4. Klikněte na **Vytvořit**.
 
 Jakmile se zobrazí zpráva o úspěšném vytvoření certifikátu, můžete na něj kliknout na seznamu. Zobrazí se několik jeho vlastností. Pokud kliknete na aktuální verzi, zobrazí se hodnota, kterou jste zadali v předchozím kroku.
 

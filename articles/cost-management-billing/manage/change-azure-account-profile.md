@@ -1,21 +1,21 @@
 ---
 title: Změna kontaktních informací pro fakturační účet Azure
 description: Popisuje, jak změnit kontaktní informace pro fakturační účet Azure.
-author: genlin
-ms.reviewer: dcscontentpm
+author: bandersmsft
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 04/08/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 776c207387ee55b998615131baf77e6c13655b49
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: f394b6b44b2030253f7b78ec68459819c82c3c27
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033933"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480898"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>Změna kontaktních informací pro fakturační účet Azure
 
@@ -64,6 +64,21 @@ Pokud chcete aktualizovat informace o svém profilu uživatele Azure Active Dire
     ![Snímek obrazovky znázorňující, kde aktualizovat adresu](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
 1. Zadejte novou adresu a potom vyberte **Uložit**.  
     ![Snímek obrazovky znázorňující aktualizaci adresy](./media/change-azure-account-profile/update-bill-to-save-mca.png)
+
+## <a name="update-a-po-number"></a>Aktualizovat číslo objednávky
+
+Ve výchozím nastavení nemá faktura pro fakturační profil přidružené číslo No. Po přidání čísla objednávky pro fakturační profil se tato položka zobrazí na fakturách pro fakturační profil.
+
+Chcete-li přidat nebo změnit číslo objednávky pro fakturační profil, postupujte podle následujících kroků.
+
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Vyhledejte **cost management + fakturace** a pak vyberte **fakturační obory**.
+1. Vyberte svůj obor fakturace.
+1. V nabídce vlevo v části **fakturace** vyberte **profily fakturace**.
+1. Vyberte odpovídající profil fakturace.
+1. V nabídce vlevo v části **Nastavení** vyberte **vlastnosti**.
+1. Vyberte **Aktualizovat číslo nákupní objednávky**.
+1. Zadejte číslo objednávky a pak vyberte **aktualizovat**.
 
 ## <a name="service-and-marketing-emails"></a>Oznámení služeb a marketingové e-maily
 

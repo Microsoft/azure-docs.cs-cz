@@ -4,20 +4,16 @@ description: Naučte se, jak načíst IP adresy služby Azure API Management, a 
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 04/13/2021
 ms.author: apimpm
-ms.openlocfilehash: 45501fee9ae6ff47643a1ed197a07c4ba598e981
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5939292b6e810634723fada17521bb227764b989
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80047745"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534040"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP adresy API Management Azure
 
@@ -106,4 +102,4 @@ V API Management úrovně pro vývojáře, Basic, Standard a Premium jsou veřej
 * Služba Azure Virtual Network je do služby přidána nebo odebrána.
 * Služba API Management se přepnula mezi režimem nasazení externí a interní virtuální sítě.
 
-Při [nasazení s více oblastmi](api-management-howto-deploy-multi-region.md)se místní IP adresa změní, pokud je oblast uvolněné a pak se znovu obnoví.
+Při [nasazení s více oblastmi](api-management-howto-deploy-multi-region.md)se místní IP adresa změní, pokud je oblast uvolněné a pak se znovu obnoví. Místní IP adresa se také změní při povolování, přidávání a odebírání [zón dostupnosti](zone-redundancy.md).

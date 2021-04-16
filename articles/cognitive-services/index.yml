@@ -1,10 +1,10 @@
 ### YamlMime:Hub
 title: Dokumentace k Azure Cognitive Services
-summary: Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní a podporované algoritmy, které jim umožní vidět a slyšet vaše uživatele, mluvit s nimi, porozumět jejich požadavkům a interpretovat je.
+summary: 'Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní a podporované algoritmy, které jim umožní vidět a slyšet vaše uživatele, mluvit s nimi, porozumět jejich požadavkům a interpretovat je.'
 brand: azure
 metadata:
   title: Dokumentace k Azure Cognitive Services
-  description: Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní a podporované algoritmy, které jim umožní vidět a slyšet vaše uživatele, mluvit s nimi, porozumět jejich požadavkům a interpretovat je.
+  description: 'Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní a podporované algoritmy, které jim umožní vidět a slyšet vaše uživatele, mluvit s nimi, porozumět jejich požadavkům a interpretovat je.'
   ms.service: cognitive-services
   ms.topic: hub-page
   author: nitinme
@@ -12,179 +12,173 @@ metadata:
   manager: nitinme
   ms.custom: custom-portals-hub
   ms.date: 08/28/2020
-  ms.openlocfilehash: 70e2e77e008738ff7c2ed0981de5ee915614ab8d
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
-  ms.translationtype: MT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102504112"
 highlightedContent:
   items:
-  - title: Co jsou služby Cognitive Services?
-    itemType: overview
-    url: ./what-are-cognitive-services.md
-  - title: Novinky v dokumentaci
-    itemType: whats-new
-    url: whats-new-docs.md
-  - title: Možnosti vývoje
-    itemType: concept
-    url: ./cognitive-services-development-options.md
-  - title: Cognitive Services a strojové učení
-    itemType: concept
-    url: ./cognitive-services-and-machine-learning.md
-  - title: Místní kontejnery Cognitive Services
-    itemType: concept
-    url: ./containers/index.yml
-  - title: Cognitive Services s databázemi
-    itemType: concept
-    url: ./big-data/cognitive-services-for-big-data.md
-  - title: Podpora jazyků
-    itemType: reference
-    url: ./language-support.md
-  - title: Možnosti pomoci a podpory
-    itemType: reference
-    url: ./cognitive-services-support-options.md
+    - title: Co jsou služby Cognitive Services?
+      itemType: overview
+      url: ./what-are-cognitive-services.md
+    - title: Novinky v dokumentaci
+      itemType: whats-new
+      url: whats-new-docs.md
+    - title: Možnosti vývoje
+      itemType: concept
+      url: ./cognitive-services-development-options.md
+    - title: Cognitive Services a strojové učení
+      itemType: concept
+      url: ./cognitive-services-and-machine-learning.md
+    - title: Místní kontejnery Cognitive Services
+      itemType: concept
+      url: ./containers/index.yml
+    - title: Cognitive Services s databázemi
+      itemType: concept
+      url: ./big-data/cognitive-services-for-big-data.md
+    - title: Podpora jazyků
+      itemType: reference
+      url: ./language-support.md
+    - title: Možnosti pomoci a podpory
+      itemType: reference
+      url: ./cognitive-services-support-options.md
 conceptualContent:
   items:
-  - title: Obraz
-    summary: Využijte možnost rozpoznávat, identifikovat, indexovat a moderovat vaše obrázky, videa a obsah digitálního rukopisu a opatřovat je titulky.
-    links:
-    - url: ./computer-vision/index.yml
-      itemType: overview
-      text: Computer Vision
-    - url: ./custom-vision-service/index.yml
-      itemType: overview
-      text: Custom Vision
-    - url: ./face/index.yml
-      itemType: overview
-      text: Tvář
-    - url: ./form-recognizer/index.yml
-      itemType: overview
-      text: Rozpoznávání formulářů
-    - url: ../media-services/video-indexer/index.yml
-      itemType: overview
-      text: Video Indexer
-  - title: Jazyk
-    summary: Umožněte svým aplikacím, aby zpracovávaly přirozený jazyk s využitím předem sestavených skriptů, vyhodnocovaly subjektivní hodnocení a naučily se rozpoznávat, co uživatelé chtějí.
-    links:
-    - url: ./immersive-reader/index.yml
-      itemType: overview
-      text: Asistivní čtečka
-    - url: ./luis/index.yml
-      itemType: overview
-      text: Language Understanding (LUIS)
-    - url: ./qnamaker/index.yml
-      itemType: overview
-      text: QnA Maker
-    - url: ./text-analytics/index.yml
-      itemType: overview
-      text: Analýza textu
-    - url: ./translator/index.yml
-      itemType: overview
-      text: Překladač
-  - title: Řeč
-    summary: Převádějte řeč na text a text na přirozeně znějící řeč. Překládejte z jednoho jazyka do druhého a používejte možnost ověření a rozpoznání mluvčího.
-    links:
-    - url: ./speech-service/index.yml
-      itemType: overview
-      text: Služba Speech
-    - url: https://speech.microsoft.com/
-      itemType: overview
-      text: Přizpůsobení s využitím sady Speech Studio
-  - title: Rozhodnutí
-    summary: Sestavujte aplikace, které zveřejňují doporučení pro informované a efektivní rozhodování.
-    links:
-    - url: ./anomaly-detector/index.yml
-      itemType: overview
-      text: Detektor anomálií
-    - url: ./content-moderator/index.yml
-      itemType: overview
-      text: Content Moderator
-    - url: ./metrics-advisor/index.yml
-      itemType: overview
-      text: Metrics Advisor (Preview)
-    - url: ./personalizer/index.yml
-      itemType: overview
-      text: Personalizace
-  - title: Search
-    summary: Přidejte do svých aplikací rozhraní API pro Vyhledávání Bingu a využijte možnosti pročesávat miliardy webů, obrázků, videí a novinek pomocí jediného volání rozhraní API.
-    links:
-    - url: ./Bing-web-search/index.yml
-      itemType: overview
-      text: Stránka centra rozhraní API pro vyhledávání Bingu
-  - title: Kontejnery služby Cognitive Service
-    summary: Podpora kontejnerů v Azure Cognitive Services umožňuje vývojářům používat tatáž bohatá rozhraní API, která jsou k dispozici v Azure, a nabízí flexibilitu v tom, kde nasadit a hostovat služby, které se dodávají s kontejnery Docker.
-    links:
-    - url: ./containers/index.yml
-      itemType: overview
-      text: Dokumentace ke kontejnerům Cognitive Services
-    - url: ./cognitive-services-container-support.md
-      itemType: overview
-      text: Co jsou kontejnery Cognitive Services?
-    - url: ./containers/container-reuse-recipe.md
-      itemType: learn
-      text: Vytváření kontejnerů pro opakované použití
-    - url: ./containers/azure-container-instance-recipe.md
-      itemType: how-to-guide
-      text: Nasazení a spuštění kontejneru v instanci kontejneru Azure
-    - url: ./containers/azure-kubernetes-recipe.md
-      itemType: deploy
-      text: Nasazení do Azure Kubernetes Service
-    - url: ./containers/docker-compose-recipe.md
-      itemType: get-started
-      text: Použití nástroje Docker Compose k nasazení několika kontejnerů
-    - url: ./containers/container-faq.yml
-      itemType: reference
-      text: Nejčastější dotazy ke kontejnerům Cognitive Services
-  - title: Cognitive Services pro velký objem dat
-    summary: Služba Cognitive Services pro velký objem dat umožňuje vývojářům využívat kognitivní služby v databázích k aplikaci inteligentních algoritmů pro velké datové sady.
-    links:
-    - url: ./big-data/cognitive-services-for-big-data.md
-      itemType: overview
-      text: Cognitive Services pro velký objem dat
-    - url: ./big-data/getting-started.md
-      itemType: get-started
-      text: Využití Cognitive Services v rámci Azure Databricks a Azure Synapse Analytics
-    - url: ./big-data/samples-python.md
-      itemType: reference
-      text: Ukázky v Pythonu
+    - title: Obraz
+      summary: 'Využijte možnost rozpoznávat, identifikovat, indexovat a moderovat vaše obrázky, videa a obsah digitálního rukopisu a opatřovat je titulky.'
+      links:
+        - url: ./computer-vision/index.yml
+          itemType: overview
+          text: Computer Vision
+        - url: ./custom-vision-service/index.yml
+          itemType: overview
+          text: Custom Vision
+        - url: ./face/index.yml
+          itemType: overview
+          text: Tvář
+        - url: ./form-recognizer/index.yml
+          itemType: overview
+          text: Rozpoznávání formulářů
+        - url: ../media-services/video-indexer/index.yml
+          itemType: overview
+          text: Video Indexer
+    - title: Jazyk
+      summary: 'Umožněte svým aplikacím, aby zpracovávaly přirozený jazyk s využitím předem sestavených skriptů, vyhodnocovaly subjektivní hodnocení a naučily se rozpoznávat, co uživatelé chtějí.'
+      links:
+        - url: ./immersive-reader/index.yml
+          itemType: overview
+          text: Asistivní čtečka
+        - url: ./luis/index.yml
+          itemType: overview
+          text: Language Understanding (LUIS)
+        - url: ./qnamaker/index.yml
+          itemType: overview
+          text: QnA Maker
+        - url: ./text-analytics/index.yml
+          itemType: overview
+          text: Analýza textu
+        - url: ./translator/index.yml
+          itemType: overview
+          text: Překladač
+    - title: Řeč
+      summary: Převádějte řeč na text a text na přirozeně znějící řeč. Překládejte z jednoho jazyka do druhého a používejte možnost ověření a rozpoznání mluvčího.
+      links:
+        - url: ./speech-service/index.yml
+          itemType: overview
+          text: Služba Speech
+        - url: 'https://speech.microsoft.com/'
+          itemType: overview
+          text: Přizpůsobení s využitím sady Speech Studio
+    - title: Rozhodnutí
+      summary: 'Sestavujte aplikace, které zveřejňují doporučení pro informované a efektivní rozhodování.'
+      links:
+        - url: ./anomaly-detector/index.yml
+          itemType: overview
+          text: Detektor anomálií
+        - url: ./content-moderator/index.yml
+          itemType: overview
+          text: Content Moderator
+        - url: ./metrics-advisor/index.yml
+          itemType: overview
+          text: Metrics Advisor (Preview)
+        - url: ./personalizer/index.yml
+          itemType: overview
+          text: Personalizace
+    - title: Search
+      summary: 'Přidejte do svých aplikací rozhraní API pro Vyhledávání Bingu a využijte možnosti pročesávat miliardy webů, obrázků, videí a novinek pomocí jediného volání rozhraní API.'
+      links:
+        - url: ./Bing-web-search/index.yml
+          itemType: overview
+          text: Stránka centra rozhraní API pro vyhledávání Bingu
+    - title: Kontejnery služby Cognitive Service
+      summary: 'Podpora kontejnerů v Azure Cognitive Services umožňuje vývojářům používat tatáž bohatá rozhraní API, která jsou k dispozici v Azure, a nabízí flexibilitu v tom, kde nasadit a hostovat služby, které se dodávají s kontejnery Docker.'
+      links:
+        - url: ./containers/index.yml
+          itemType: overview
+          text: Dokumentace ke kontejnerům Cognitive Services
+        - url: ./cognitive-services-container-support.md
+          itemType: overview
+          text: Co jsou kontejnery Cognitive Services?
+        - url: ./containers/container-reuse-recipe.md
+          itemType: learn
+          text: Vytváření kontejnerů pro opakované použití
+        - url: ./containers/azure-container-instance-recipe.md
+          itemType: how-to-guide
+          text: Nasazení a spuštění kontejneru v instanci kontejneru Azure
+        - url: ./containers/azure-kubernetes-recipe.md
+          itemType: deploy
+          text: Nasazení do Azure Kubernetes Service
+        - url: ./containers/docker-compose-recipe.md
+          itemType: get-started
+          text: Použití nástroje Docker Compose k nasazení několika kontejnerů
+        - url: ./containers/container-faq.yml
+          itemType: reference
+          text: Nejčastější dotazy ke kontejnerům Cognitive Services
+    - title: Cognitive Services pro velký objem dat
+      summary: Služba Cognitive Services pro velký objem dat umožňuje vývojářům využívat kognitivní služby v databázích k aplikaci inteligentních algoritmů pro velké datové sady.
+      links:
+        - url: ./big-data/cognitive-services-for-big-data.md
+          itemType: overview
+          text: Cognitive Services pro velký objem dat
+        - url: ./big-data/getting-started.md
+          itemType: get-started
+          text: Využití Cognitive Services v rámci Azure Databricks a Azure Synapse Analytics
+        - url: ./big-data/samples-python.md
+          itemType: reference
+          text: Ukázky v Pythonu
 additionalContent:
   sections:
-  - title: Další zdroje informací
-    items:
-    - title: Portály pro přizpůsobení
-      links:
-      - text: Custom Translator
-        url: https://portal.customtranslator.azure.ai/
-      - text: Custom Vision
-        url: https://www.customvision.ai/
-      - text: Language Understanding (LUIS)
-        url: https://luis.ai
-      - text: QnA Maker
-        url: https://www.qnamaker.ai/
-      - text: Speech Studio
-        url: https://speech.microsoft.com/
-    - title: Sady SDK a rozhraní REST API
-      links:
-      - text: C#
-        url: /dotnet/api/overview/azure/cognitiveservices/client
-      - text: Přejít
-        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices
-      - text: Java
-        url: /java/api/overview/azure/cognitiveservices/client
-      - text: JavaScript
-        url: /javascript/api/overview/azure/cognitive-services
-      - text: Python
-        url: /python/api/overview/azure/cognitive-services
-      - text: R
-        url: https://github.com/Azure/AzureCognitive
-      - text: Apache Spark a databáze
-        url: ./big-data/cognitive-services-for-big-data.md
-      - text: Rozhraní REST API správy služeb Cognitive Services
-        url: /rest/api/cognitiveservices/
-    - title: nástroje
-      links:
-      - text: Azure CLI
-        url: /cli/azure/cognitiveservices
-      - text: PowerShell
-        url: /powershell/module/az.cognitiveservices/#cognitive_services
+    - title: Další zdroje informací
+      items:
+        - title: Portály pro přizpůsobení
+          links:
+            - text: Custom Translator
+              url: 'https://portal.customtranslator.azure.ai/'
+            - text: Custom Vision
+              url: 'https://www.customvision.ai/'
+            - text: Language Understanding (LUIS)
+              url: 'https://luis.ai'
+            - text: QnA Maker
+              url: 'https://www.qnamaker.ai/'
+            - text: Speech Studio
+              url: 'https://speech.microsoft.com/'
+        - title: Sady SDK a rozhraní REST API
+          links:
+            - text: C#
+              url: /dotnet/api/overview/azure/cognitiveservices/client
+            - text: Přejít
+              url: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices'
+            - text: Java
+              url: /java/api/overview/azure/cognitiveservices/client
+            - text: JavaScript
+              url: /javascript/api/overview/azure/cognitive-services
+            - text: Python
+              url: /python/api/overview/azure/cognitive-services
+            - text: R
+              url: 'https://github.com/Azure/AzureCognitive'
+            - text: Apache Spark a databáze
+              url: ./big-data/cognitive-services-for-big-data.md
+            - text: Rozhraní REST API správy služeb Cognitive Services
+              url: /rest/api/cognitiveservices/
+        - title: nástroje
+          links:
+            - text: Azure CLI
+              url: /cli/azure/cognitiveservices
+            - text: PowerShell
+              url: /powershell/module/az.cognitiveservices/#cognitive_services

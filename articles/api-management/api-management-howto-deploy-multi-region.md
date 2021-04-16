@@ -2,23 +2,17 @@
 title: Nasazení služby Azure API Management Services do několika oblastí Azure
 titleSuffix: Azure API Management
 description: Naučte se, jak nasadit instanci služby Azure API Management Service do několika oblastí Azure.
-services: api-management
-documentationcenter: ''
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 04/20/2020
+ms.topic: how-to
+ms.date: 04/13/2021
 ms.author: apimpm
-ms.openlocfilehash: 427ebfe865002612be2f9aeb9db416f5c2f41e52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9546813173e72b1f264c3668ee889bbeea07ce7f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88065450"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534081"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Postup při nasazení instance služby Azure API Management do několika oblastí Azure
 
@@ -27,24 +21,30 @@ Azure API Management podporuje nasazení ve více oblastech, což umožňuje vyd
 Nová služba Azure API Management zpočátku obsahuje jenom jednu [jednotku][unit] v jedné oblasti Azure, primární oblasti. Další jednotky lze přidat do primární nebo sekundární oblasti. Komponenta API Management Gateway je nasazená do všech vybraných primárních a sekundárních oblastí. Příchozí požadavky rozhraní API se automaticky přesměrují do nejbližší oblasti. Pokud se oblast přepne do režimu offline, požadavky rozhraní API se automaticky přesměrují kolem neúspěšné oblasti do nejbližší nejbližší brány.
 
 > [!NOTE]
-> Do všech oblastí je nasazená jenom součást brány API Management. Komponenta správy služby a portál pro vývojáře se hostují jenom v primární oblasti. Proto se v případě výpadku primární oblasti přístup k portálu pro vývojáře a možnosti změny konfigurace (např. Přidání rozhraní API, použití zásad) ztratí, dokud se primární oblast znovu nevrátí do režimu online. I když je primární oblast offline dostupná, sekundární oblasti budou dál obsluhovat přenosy rozhraní API, a to pomocí nejnovější konfigurace, která je pro ně dostupná.
+> Do všech oblastí je nasazená jenom součást brány API Management. Komponenta správy služby a portál pro vývojáře se hostují jenom v primární oblasti. Proto se v případě výpadku primární oblasti přístup k portálu pro vývojáře a možnosti změny konfigurace (např. Přidání rozhraní API, použití zásad) ztratí, dokud se primární oblast znovu nevrátí do režimu online. I když je primární oblast offline, dostupné sekundární oblasti budou dál obsluhovat přenosy rozhraní API, a to pomocí nejnovější konfigurace, která je k dispozici. Volitelně můžete povolit [zónu redundacy](zone-redundancy.md) a zlepšit dostupnost a odolnost primárních nebo sekundárních oblastí.
 
 >[!IMPORTANT]
 > Funkce pro ukládání zákaznických dat v jedné oblasti je v tuto chvíli dostupná jenom v oblasti jihovýchodní Asie (Singapur) Asie a Tichomoří geografické oblasti. Pro všechny ostatní oblasti jsou zákaznická data uložená v geograficky.
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="deploy-api-management-service-to-a-new-region"></a><a name="add-region"> </a>Nasazení služby API Management Service do nové oblasti
 
-> [!NOTE]
-> Pokud jste ještě nevytvořili instanci služby API Management, přečtěte si téma [vytvoření instance služby API Management][create an api management service instance].
+## <a name="prerequisites"></a>Požadavky
 
-1. V Azure Portal přejděte do služby API Management a v nabídce klikněte na položku **umístění** .
-2. Klikněte na tlačítko **+ Přidat** v horním panelu.
-3. V rozevíracím seznamu vyberte umístění a nastavte počet jednotek pomocí posuvníku.
-4. Potvrďte kliknutím na tlačítko **Přidat** .
-5. Tento postup opakujte, dokud nebudete konfigurovat všechna umístění.
-6. Kliknutím na **Uložit** na horním panelu spusťte proces nasazení.
+* Pokud jste ještě nevytvořili instanci služby API Management, přečtěte si téma [vytvoření instance služby API Management](get-started-create-service-instance.md). Vyberte úroveň služby Premium.
+* Pokud je vaše instance API Management nasazená ve [virtuální síti](api-management-using-with-vnet.md), ujistěte se, že jste nastavili virtuální síť, podsíť a veřejnou IP adresu v umístění, které hodláte přidat.
+
+## <a name="deploy-api-management-service-to-an-additional-location"></a><a name="add-region"> </a>Nasazení služby API Management do dalšího umístění
+
+1. V Azure Portal přejděte do služby API Management a v nabídce vyberte **umístění** .
+1. V horním panelu vyberte **+ Přidat** .
+1. V rozevíracím seznamu vyberte umístění.
+1. Vyberte počet **[jednotek](upgrade-and-scale.md)** škálování v umístění.
+1. Volitelně můžete povolit [**zóny dostupnosti**](zone-redundancy.md).
+1. Pokud je instance API Management nasazena ve [virtuální síti](api-management-using-with-vnet.md), nakonfigurujte nastavení virtuální sítě v umístění. Vyberte existující virtuální síť, podsíť a veřejnou IP adresu, která je k dispozici v umístění.
+1. Kliknutím na tlačítko **Přidat** potvrďte.
+1. Tento postup opakujte, dokud nebudete konfigurovat všechna umístění.
+1. Vyberte **Uložit** na horním panelu a spusťte proces nasazení.
 
 ## <a name="delete-an-api-management-service-location"></a><a name="remove-region"> </a>Odstranění umístění služby API Management
 

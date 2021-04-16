@@ -6,21 +6,21 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: 2f15b397fbceb9e097d94080ba03fba50a96ed06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fd0b3ada5fec283562cee9727e3f805a7d34c532
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048501"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479045"
 ---
-# <a name="configure-private-endpoints-for-azure-cosmos-db-analytical-store"></a>Konfigurace privátních koncových bodů pro Azure Cosmos DB analytické úložiště
+# <a name="configure-azure-private-link-for-azure-cosmos-db-analytical-store"></a>Konfigurace privátního odkazu Azure pro Azure Cosmos DB analytické úložiště
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-V tomto článku se dozvíte, jak nastavit spravované privátní koncové body pro Azure Cosmos DB analytické úložiště. Pokud používáte transakční úložiště, přečtěte si část [soukromé koncové body článku o transakčním úložišti](how-to-configure-private-endpoints.md) . Pomocí spravovaných privátních koncových bodů můžete omezit přístup k síti Azure Cosmos DBho analytického úložiště do Azure synapse spravované virtuální sítě. Spravované soukromé koncové body vytvoří privátní odkaz na analytické úložiště.
+V tomto článku se dozvíte, jak nastavit spravované privátní koncové body pro Azure Cosmos DB analytické úložiště. Pokud používáte transakční úložiště, přečtěte si část [soukromé koncové body článku o transakčním úložišti](how-to-configure-private-endpoints.md) . Pomocí [spravovaných privátních koncových bodů](../synapse-analytics/security/synapse-workspace-managed-private-endpoints.md)můžete omezit síťový přístup k vašemu Azure Cosmos DB analytickému úložišti na spravovaný Virtual Network přidružený k vašemu pracovnímu prostoru Azure synapse. Spravované soukromé koncové body vytvoří privátní odkaz na analytické úložiště.
 
-## <a name="enable-private-endpoint-for-the-analytical-store"></a>Povolit privátní koncový bod pro analytické úložiště
+## <a name="enable-a-private-endpoint-for-the-analytical-store"></a>Povolení privátního koncového bodu pro analytické úložiště
 
-### <a name="set-up-an-azure-synapse-analytics-workspace-with-a-managed-virtual-network"></a>Nastavení pracovního prostoru Azure synapse Analytics se spravovanou virtuální sítí
+### <a name="set-up-azure-synapse-analytics-workspace-with-a-managed-virtual-network"></a>Nastavení pracovního prostoru Azure synapse Analytics pomocí spravované virtuální sítě
 
 [Umožňuje vytvořit pracovní prostor ve službě Azure synapse Analytics se zapnutou datovou exfiltrace.](../synapse-analytics/security/how-to-create-a-workspace-with-data-exfiltration-protection.md) Pomocí [ochrany dat exfiltrace](../synapse-analytics/security/workspace-data-exfiltration-protection.md)můžete zajistit, aby uživatelé se zlými úmysly nemohli kopírovat ani přenášet data z prostředků Azure do umístění mimo rozsah vaší organizace.
 

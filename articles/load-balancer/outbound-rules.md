@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 2fc703e0532c86bfc0874c8dccbb17c6142aeed0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 339bbd7edf48737113de360812165dc8148c5b93
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590207"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375861"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Odchozí pravidla Azure Load Balancer
 
@@ -135,7 +135,7 @@ Použití jiné veřejné IP adresy nebo předpony, než kterou používá pravi
 5. Nakonfigurujte odchozí pravidlo na veřejném nástroji pro vyrovnávání zatížení, abyste povolili odchozí překlad adres (NAT) pro virtuální počítače pomocí front-endu. Nedoporučujeme používat pro odchozí připojení pravidlo vyrovnávání zatížení, zakázat odchozí SNAT na základě pravidla vyrovnávání zatížení.
 
 
-### <a name="scenario-2-modify-snatport-allocation"></a><a name="scenario2out"></a>Scénář 2: Úprava přidělení portu [SNAT](load-balancer-outbound-connections.md)
+### <a name="scenario-2-modify-snat-port-allocation"></a><a name="scenario2out"></a>Scénář 2: Úprava přidělení portu [SNAT](load-balancer-outbound-connections.md)
 
 
 #### <a name="details"></a>Podrobnosti
@@ -144,19 +144,19 @@ Použití jiné veřejné IP adresy nebo předpony, než kterou používá pravi
 Pomocí odchozích pravidel můžete vyladit [automatické přidělování portů SNAT na základě velikosti fondu back-endu](load-balancer-outbound-connections.md#preallocatedports). 
 
 
-Pokud se setkáte s vyčerpáním SNAT, zvyšte počet portů [SNAT](load-balancer-outbound-connections.md)předaných z výchozí hodnoty 1024. 
+Pokud se setkáte s vyčerpáním SNAT, zvyšte počet portů [SNAT](load-balancer-outbound-connections.md) předaných z výchozí hodnoty 1024. 
 
 
-Každá veřejná IP adresa přispívá až do 64 000 dočasných portů. Počet virtuálních počítačů v back-end fondu určuje počet portů distribuovaných do každého virtuálního počítače. Jeden virtuální počítač ve fondu back-end má přístup k maximálnímu počtu portů 64 000. U dvou virtuálních počítačů se dá určit maximálně 32 000 portů [SNAT](load-balancer-outbound-connections.md)s odchozím pravidlem (2x 32 000 = 64 000). 
+Každá veřejná IP adresa přispívá až do 64 000 dočasných portů. Počet virtuálních počítačů v back-end fondu určuje počet portů distribuovaných do každého virtuálního počítače. Jeden virtuální počítač ve fondu back-end má přístup k maximálnímu počtu portů 64 000. U dvou virtuálních počítačů se dá určit maximálně 32 000 portů [SNAT](load-balancer-outbound-connections.md) s odchozím pravidlem (2x 32 000 = 64 000). 
 
 
-Pomocí odchozích pravidel můžete vyladit porty SNAT zadané ve výchozím nastavení. Poskytnete více nebo méně, než je výchozí přidělení portu [SNAT](load-balancer-outbound-connections.md). Každá veřejná IP adresa z front-endu odchozího pravidla přispívá až 64 000 dočasných portů, které se použijí jako porty [SNAT](load-balancer-outbound-connections.md). 
+Pomocí odchozích pravidel můžete vyladit porty SNAT zadané ve výchozím nastavení. Poskytnete více nebo méně, než je výchozí přidělení portu [SNAT](load-balancer-outbound-connections.md) . Každá veřejná IP adresa z front-endu odchozího pravidla přispívá až 64 000 dočasných portů, které se použijí jako porty [SNAT](load-balancer-outbound-connections.md) . 
 
 
-Nástroj pro vyrovnávání zatížení poskytuje porty [SNAT](load-balancer-outbound-connections.md)v násobcích 8. Pokud zadáte hodnotu, která není dělitelná 8, operace konfigurace se odmítne. Každé pravidlo vyrovnávání zatížení a pravidlo příchozího překladu adres (NAT) budou využívat rozsah 8 portů. Pokud pravidlo vyrovnávání zatížení nebo příchozího překladu adres (NAT) sdílí stejný rozsah 8 jako jiný, nepoužijí se žádné další porty.
+Nástroj pro vyrovnávání zatížení poskytuje porty [SNAT](load-balancer-outbound-connections.md) v násobcích 8. Pokud zadáte hodnotu, která není dělitelná 8, operace konfigurace se odmítne. Každé pravidlo vyrovnávání zatížení a pravidlo příchozího překladu adres (NAT) budou využívat rozsah 8 portů. Pokud pravidlo vyrovnávání zatížení nebo příchozího překladu adres (NAT) sdílí stejný rozsah 8 jako jiný, nepoužijí se žádné další porty.
 
 
-Pokud se pokusíte zadat více portů [SNAT](load-balancer-outbound-connections.md), než je k dispozici na základě počtu veřejných IP adres, je operace konfigurace odmítnuta. Pokud například udělíte porty 10 000 pro každý virtuální počítač a sedm virtuálních počítačů v back-endovém fondu, sdílí jednu veřejnou IP adresu, konfigurace se odmítne. 7 vynásobené 10 000 překračuje limit portu 64 000. Přidejte další veřejné IP adresy do front-endu odchozího pravidla, aby se tento scénář povolil. 
+Pokud se pokusíte zadat více portů [SNAT](load-balancer-outbound-connections.md) , než je k dispozici na základě počtu veřejných IP adres, je operace konfigurace odmítnuta. Pokud například udělíte porty 10 000 pro každý virtuální počítač a sedm virtuálních počítačů v back-endovém fondu, sdílí jednu veřejnou IP adresu, konfigurace se odmítne. 7 vynásobené 10 000 překračuje limit portu 64 000. Přidejte další veřejné IP adresy do front-endu odchozího pravidla, aby se tento scénář povolil. 
 
 
 Vraťte se k [výchozímu přidělení portu](load-balancer-outbound-connections.md#preallocatedports) zadáním 0 pro počet portů. První instance virtuálních počítačů 50 získají 1024 portů, 51-100 instancí virtuálních počítačů bude až do maximálního počtu instancí 512. Další informace o výchozím přidělování portů SNAT najdete v tématu [tabulka přidělení portů SNAT](./load-balancer-outbound-connections.md#preallocatedports).
@@ -195,7 +195,7 @@ Pro tento scénář: Azure Load Balancer odchozí pravidla a Virtual Network př
 
 
 
-Pro škálování portů [SNAT](load-balancer-outbound-connections.md)použijte předponu nebo veřejnou IP adresu. Přidejte zdroj odchozích připojení do seznamu povolených nebo odepřených připojení.
+Pro škálování portů [SNAT](load-balancer-outbound-connections.md) použijte předponu nebo veřejnou IP adresu. Přidejte zdroj odchozích připojení do seznamu povolených nebo odepřených připojení.
 
 
 
@@ -225,7 +225,7 @@ Další informace najdete v tématu [Konfigurace nástroje pro vyrovnávání za
 Při použití veřejného nástroje pro vyrovnávání zatížení se zadané automatické odchozí NAT shoduje s transportním protokolem pravidla vyrovnávání zatížení. 
 
 
-1. Zakažte odchozí [SNAT](load-balancer-outbound-connections.md)na pravidlo vyrovnávání zatížení. 
+1. Zakažte odchozí [SNAT](load-balancer-outbound-connections.md) na pravidlo vyrovnávání zatížení. 
 2. Nakonfigurujte odchozí pravidlo pro stejný nástroj pro vyrovnávání zatížení.
 3. Znovu použijte back-end fond, který už používá vaše virtuální počítače. 
 4. Jako součást odchozího pravidla zadejte "protokol": "vše". 

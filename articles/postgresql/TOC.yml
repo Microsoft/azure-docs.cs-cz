@@ -684,6 +684,10 @@
             - name: Přístup k protokolům databáze
               href: howto-hyperscale-logging.md
               displayName: 'log, hyperscale'
+        - name: Obnovit skupinu serverů
+          items:
+            - name: portál Azure
+              href: howto-hyperscale-restore-portal.md
         - name: Upgrady hlavní verze
           href: howto-hyperscale-upgrade.md
         - name: Řešení potíží

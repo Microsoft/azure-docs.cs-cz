@@ -4,13 +4,13 @@ description: Extrahovat data z utterance textu s záměry a entitami. Zjistěte,
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: e6f01354bb5aa2b78d3c9962bac49be39dd2c81f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: dd7d113b1c23a0afec82a346e0f7baa1254ebbed
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95025989"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500137"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrakce dat z utterance textu s využitím záměrů a entit
 LUIS poskytuje možnost získávat informace z přirozeného jazyka projevy uživatele. Informace jsou extrahovány způsobem, který může být použit programem, aplikací nebo robotem chatu k provedení akce. V následujících částech se dozvíte, jaká data se vracejí z záměrů a entit s příklady JSON.
@@ -242,7 +242,7 @@ Názvy umístění se nastavují a označují jako města, okresy, stavy, provin
 
 ### <a name="new-and-emerging-names"></a>Nové a vycházející názvy
 
-Některé aplikace musí být schopné najít nové a nově vznikající názvy, jako jsou produkty nebo společnosti. Tyto typy názvů jsou nejobtížnějším typem extrakce dat. Začněte **[jednoduchou entitou](luis-concept-entity-types.md#simple-entity)** a přidejte [seznam frází](luis-concept-feature.md). Pravidelně [kontrolujte](./luis-how-to-review-endpoint-utterances.md) koncový bod projevy, abyste mohli popsat všechny názvy, které nebyly předpovídat správně.
+Některé aplikace musí být schopné najít nové a nově vznikající názvy, jako jsou produkty nebo společnosti. Tyto typy názvů jsou nejobtížnějším typem extrakce dat. Začněte **[jednoduchou entitou](luis-concept-entity-types.md)** a přidejte [seznam frází](luis-concept-feature.md). Pravidelně [kontrolujte](./luis-how-to-review-endpoint-utterances.md) koncový bod projevy, abyste mohli popsat všechny názvy, které nebyly předpovídat správně.
 
 ## <a name="patternany-entity-data"></a>Vzor. libovolná data entity
 

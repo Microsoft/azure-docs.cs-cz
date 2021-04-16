@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e5973f58887b212919ad739232faafddcf9e735c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b38b4910773c433ed63fd2082c5cbefce81e0e9e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100561396"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480198"
 ---
 # <a name="extending-ontologies"></a>Rozšíření ontologie 
 
@@ -28,7 +28,7 @@ V RealEstateCore Ontology založeném na DTDL se k definování různých druhů
 
 Část hierarchie vypadá podobně jako v diagramu níže. 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-original.png" alt-text="Diagram toku ilustruje část hierarchie RealEstateCore prostoru. Na nejvyšší úrovni se nachází element s názvem Space; je propojena se šipkou &quot;rozšiřuje&quot; o úroveň místnosti; Místnost je propojená dvěma šipkami &quot;rozšiřuje&quot; o úroveň až na ConferenceRoom a Office."::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-original.png" alt-text="Diagram toku ilustruje část hierarchie RealEstateCore prostoru. Na nejvyšší úrovni se nachází element s názvem Space; je propojena se šipkou &quot;rozšiřuje&quot; o úroveň místnosti; Místnost je propojená dvěma šipkami &quot;rozšiřuje&quot; o úroveň až na ConferenceRoom a Office."::: 
 
 Další informace o RealEstateCore Ontology najdete v tématu [*Koncepty: přijetí oboru standardní ontologie*](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology).
 
@@ -51,7 +51,7 @@ K rozšíření oboru Ontology pomocí tohoto nového konceptu vytvořte nové r
 
 Po přidání rozhraní pro výběrovou místnost se v rozšířené hierarchii zobrazí nový typ místnosti. 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-extended-1.png" alt-text="Vývojový diagram ilustruje hierarchii prostoru RealEstateCore od výše, s novým přídavkem. Na nejnižší úrovni s ConferenceRoom a Office je k dispozici nový element s názvem FocusRoom (také připojený pomocí šipky extends z místnosti)."::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-1.png" alt-text="Vývojový diagram ilustruje hierarchii prostoru RealEstateCore od výše, s novým přídavkem. Na nejnižší úrovni s ConferenceRoom a Office je k dispozici nový element s názvem FocusRoom (také připojený pomocí šipky extends z místnosti)."::: 
 
 ### <a name="add-additional-capabilities-to-existing-interfaces"></a>Přidání dalších funkcí do stávajících rozhraní 
 
@@ -69,7 +69,7 @@ Chcete-li rozšířit oborovou Ontology, můžete vytvořit vlastní rozhraní, 
 
 Po rozšíření části výše uvedené hierarchie vypadá rozšířená hierarchie jako diagram níže. Rozhraní Extended Space přidá `drawingId` vlastnost, která bude obsahovat ID, které přidružuje digitální vystavení s 3D vykreslováním. Rozhraní ConferenceRoom navíc přidá vlastnost "online", která bude obsahovat online stav konferenční místnosti. Prostřednictvím dědičnosti rozhraní ConferenceRoom obsahuje všechny funkce z rozhraní RealEstateCore ConferenceRoom a také všechny funkce z rozhraní Extended Space. 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-extended-2.png" alt-text="Vývojový diagram ilustruje rozšířenou hierarchii RealEstateCore prostoru shora od výše, s dalšími novými doplňky. Místnost teď sdílí svou úroveň s prostorovým prvkem, který se připojí pomocí šipky extends na nový prvek místnosti vedle ConferenceRoom a Office.  Nové prvky jsou připojeny ke stávajícímu Ontology s větším poměrem &quot;rozšíření&quot;."::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-2.png" alt-text="Vývojový diagram ilustruje rozšířenou hierarchii RealEstateCore prostoru shora od výše, s dalšími novými doplňky. Místnost teď sdílí svou úroveň s prostorovým prvkem, který se připojí pomocí šipky extends na nový prvek místnosti vedle ConferenceRoom a Office.  Nové prvky jsou připojeny ke stávajícímu Ontology s větším poměrem &quot;rozšíření&quot;."::: 
 
 ## <a name="using-the-extended-space-hierarchy"></a>Použití rozšířené hierarchie prostorů 
 
@@ -77,7 +77,7 @@ Když vytváříte digitální vlákna pomocí rozšířené hierarchie prostor�
 
 Každý model digitálního vlákna bude rozhraní z rozšířené hierarchie zobrazené v diagramu níže. 
  
-:::image type="content" source="media/concepts-extending-ontologies/ontology-with-models.png" alt-text="Výpis z rozšířené hierarchie RealEstateCore prostoru, včetně prostoru (nejvyšší úrovně), jedné místnosti (střední úrovně) a ConferenceRoom, Office a FocusRoom (nižší úroveň). Názvy modelů jsou připojeny ke každému prvku (například místnost je připojena k modelu s názvem Room101)."::: 
+:::image type="content" source="media/concepts-ontologies-extend/ontology-with-models.png" alt-text="Výpis z rozšířené hierarchie RealEstateCore prostoru, včetně prostoru (nejvyšší úrovně), jedné místnosti (střední úrovně) a ConferenceRoom, Office a FocusRoom (nižší úroveň). Názvy modelů jsou připojeny ke každému prvku (například místnost je připojena k modelu s názvem Room101)."::: 
 
 Při dotazování na digitální vlákna pomocí ID modelu ( `IS_OF_MODEL` operátor) by měla být použita ID modelu z rozšířené hierarchie. Například, `SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:com:example:Office;1')`. 
 

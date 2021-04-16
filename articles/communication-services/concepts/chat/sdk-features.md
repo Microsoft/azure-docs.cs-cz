@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 520dc611e49675f35b8ba0330448438192770773
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 561855704d157f9ad826b5db83600a79d9437fc6
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168871"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500681"
 ---
 # <a name="chat-sdk-overview"></a>Přehled sady Chat SDK 
 
@@ -43,7 +43,7 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 |                   | Dostávat oznámení, když účastníci aktivně zadávají zprávu ve vlákně chatu                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
 |                   | Získá všechny zprávy ve vlákně chatu.                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
 |                   | Odeslat Unicode Emoji jako součást obsahu zprávy                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|Oznámení v reálném čase (s povoleným proprietárním balíčkem pro signalizaci * * *)|  Klienti chatu se můžou přihlásit k odběru a získávat aktualizace příchozích zpráv v reálném čase a další operace, ke kterým dochází ve vlákně chatu. Seznam podporovaných aktualizací pro oznámení v reálném čase najdete v tématu [Koncepty chatu](concepts.md#real-time-notifications) .                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  | 
+|Oznámení v reálném čase (s povoleným proprietárním balíčkem pro signalizaci * * *)|  Klienti chatu se můžou přihlásit k odběru a získávat aktualizace příchozích zpráv v reálném čase a další operace, ke kterým dochází ve vlákně chatu. Seznam podporovaných aktualizací pro oznámení v reálném čase najdete v tématu [Koncepty chatu](concepts.md#real-time-notifications) .                                     | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
 | Integrace s Azure Event Grid             | Použijte události chatu dostupné v Azure Event Grid k připojení vlastních služeb oznámení nebo k odeslání této události Webhooku za účelem provedení obchodní logiky, jako je aktualizace záznamů CRM po dokončení chatu.   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
 | Vytváření sestav </br>(Tato informace je k dispozici na kartě monitorování pro prostředek komunikačních služeb na Azure Portal)      | Pochopení provozu rozhraní API z aplikace chatu sledováním publikovaných metrik v Azure Průzkumník metrik a nastavením výstrah pro detekci anomálií     | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
 |                   | Monitorování a ladění řešení komunikačních služeb povolením diagnostického protokolování pro váš prostředek    | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   

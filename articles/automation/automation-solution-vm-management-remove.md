@@ -3,14 +3,14 @@ title: Přehled odebrání Azure Automation Start/Stop VMs during off-hours
 description: Tento článek popisuje, jak odebrat funkci Start/Stop VMs during off-hours a zrušit propojení účtu Automation s pracovním prostorem Log Analytics.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/04/2021
+ms.date: 04/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0bab5d8e82ce432e9b3834fe4c003316545eb338
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9ec76197bfde6bb679f70c44ab01712f9f52bfd2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122081"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533955"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>Odebrat Start/Stop VMs during off-hours z účtu Automation
 
@@ -21,6 +21,9 @@ Po povolení funkce Start/Stop VMs during off-hours pro správu stavu spuštěn�
 * Odstraňte tuto funkci z účtu Automation a propojeného pracovního prostoru, který podporuje další cíle správy a monitorování.
 
 Odstraněním této funkce se odeberou jenom přidružené Runbooky, neodstraní se plány nebo proměnné, které se vytvořily během nasazování, nebo žádné vlastní definované.
+
+> [!NOTE]
+> Než budete pokračovat, ověřte, že v předplatném, skupině prostředků nebo prostředku nejsou použité žádné [Správce prostředků zámky](../azure-resource-manager/management/lock-resources.md) , které zabrání nechtěnému odstranění nebo změně důležitých prostředků. Když nasadíte řešení Start/Stop VMs during off-hours, nastaví úroveň zámku tak, aby se **CanNotDelete** na několik závislých prostředků v účtu Automation (konkrétně v sadách Runbook a proměnné). Než budete moct účet Automation odstranit, musíte odebrat všechny zámky.
 
 ## <a name="delete-the-dedicated-resource-group"></a>Odstranit vyhrazenou skupinu prostředků
 
