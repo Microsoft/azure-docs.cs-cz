@@ -3,12 +3,12 @@ title: Řešení potíží s agentem Azure Backup
 description: V tomto článku se dozvíte, jak řešit potíže s instalací a registrací agenta Azure Backup.
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 3203d5604f1bd5db9cf579af01b2ae6f34032d89
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c662bf8c8d9490691f45254bef01618f17bd6e2a
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467608"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518180"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -21,7 +21,7 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
 - [Ujistěte se, že je agent Mars aktuální](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409).
 - [Ujistěte se, že máte síťové připojení mezi agentem Mars a Azure](#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup).
 - Ujistěte se, že je Služba MARS spuštěná (v konzole služby). Pokud potřebujete, restartujte operaci a zkuste operaci zopakovat.
-- [Zajistěte, aby v umístění pomocné složky bylo k dispozici 5 až 10% volného místa na disku](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder).
+- [Zajistěte, aby v umístění pomocné složky bylo k dispozici 5 až 10% volného místa na disku](./backup-azure-file-folder-backup-faq.yml#what-s-the-minimum-size-requirement-for-the-cache-folder-).
 - [Zkontrolujte, jestli službě Azure Backup nepřekáží jiný proces nebo antivirový software](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup).
 - Pokud se úloha zálohování dokončí s upozorněními, přečtěte si téma [úlohy zálohování dokončené s upozorněním](#backup-jobs-completed-with-warning) .
 - Pokud se naplánované zálohování nepovede, ale ruční zálohování funguje, přečtěte si téma [zálohování neběží podle plánu](#backups-dont-run-according-to-schedule).
@@ -41,7 +41,7 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
 
 | Příčina | Doporučené akce |
 | ---     | ---    |
-| **Přihlašovací údaje trezoru nejsou platné.** <br/> <br/> Soubory s přihlašovacími údaji trezoru můžou být poškozené, možná vypršela platnost nebo mají jinou příponu souboru než *. vaultCredentials*. (Například je možné, že byly staženy více než 10 dní před registrací.)| [Stáhněte si nové přihlašovací údaje](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) z trezoru Recovery Services na Azure Portal. Pak podle potřeby proveďte tyto kroky: <ul><li> Pokud jste již nainstalovali a zaregistrovali MARS, otevřete konzolu konzoly MMC Microsoft Azure Backup agenta. Pak v podokně **Akce** vyberte **Registrovat Server** a dokončete registraci s novými přihlašovacími údaji. <br/> <li> Pokud se nová instalace nezdařila, zkuste ji znovu nainstalovat pomocí nových přihlašovacích údajů.</ul> **Poznámka**: Pokud se stáhlo více souborů přihlašovacích údajů úložiště, bude platný jenom poslední soubor v příštích 10 dnech. Doporučujeme, abyste si stáhli nový soubor s přihlašovacími údaji úložiště.
+| **Přihlašovací údaje trezoru nejsou platné.** <br/> <br/> Soubory s přihlašovacími údaji trezoru můžou být poškozené, možná vypršela platnost nebo mají jinou příponu souboru než *. vaultCredentials*. (Například je možné, že byly staženy více než 10 dní před registrací.)| [Stáhněte si nové přihlašovací údaje](backup-azure-file-folder-backup-faq.yml#where-can-i-download-the-vault-credentials-file-) z trezoru Recovery Services na Azure Portal. Pak podle potřeby proveďte tyto kroky: <ul><li> Pokud jste již nainstalovali a zaregistrovali MARS, otevřete konzolu konzoly MMC Microsoft Azure Backup agenta. Pak v podokně **Akce** vyberte **Registrovat Server** a dokončete registraci s novými přihlašovacími údaji. <br/> <li> Pokud se nová instalace nezdařila, zkuste ji znovu nainstalovat pomocí nových přihlašovacích údajů.</ul> **Poznámka**: Pokud se stáhlo více souborů přihlašovacích údajů úložiště, bude platný jenom poslední soubor v příštích 10 dnech. Doporučujeme, abyste si stáhli nový soubor s přihlašovacími údaji úložiště.
 | **Proxy server/Brána firewall blokuje registraci** <br/>nebo <br/>**Bez připojení k Internetu** <br/><br/> Pokud má váš počítač nebo proxy server omezené připojení k Internetu a nezajistíte přístup k potřebným adresám URL, registrace se nezdaří.| Proveďte tyto kroky:<br/> <ul><li> Spolupracujte s vaším IT týmem a ujistěte se, že je systém připojen k Internetu.<li> Pokud nemáte proxy server, zajistěte, aby při registraci agenta nebyla vybraná možnost proxy. [Ověřte nastavení proxy serveru](#verifying-proxy-settings-for-windows).<li> Pokud máte bránu firewall nebo proxy server, pracujte s týmem sítě, abyste zajistili přístup k těmto adresám URL a IP adresám:<br/> <br> **Adresy URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>**IP adresy**<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/></ul></ul>Zkuste provést registraci znovu po dokončení předchozích kroků pro řešení potíží.<br></br> Pokud je vaše připojení prostřednictvím Azure ExpressRoute, ujistěte se, že nastavení jsou nakonfigurovaná podle pokynů v tématu [Podpora Azure ExpressRoute](backup-support-matrix-mars-agent.md#azure-expressroute-support).
 | **Antivirový software blokuje registraci** | Pokud máte na serveru nainstalovaný antivirový software, přidejte potřebná pravidla vyloučení do kontroly antivirového programu pro tyto soubory a složky: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> Pomocná složka Výchozí umístění je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> Složka Bin v adresáři C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
@@ -99,7 +99,7 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
   | Kód chyby             | Hlediska                                             | Doporučení                                              |
   | ---------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
   | 0x80070570             | Soubor nebo adresář jsou poškozené a nečitelný. | Na zdrojovém svazku spusťte **Nástroj Chkdsk** .                             |
-  | 0x80070002, 0x80070003 | Systém nemůže najít zadaný soubor.         | [Ujistěte se, že pomocná složka není plná.](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder)  <br><br>  Ověřte, jestli svazek, na kterém je nakonfigurované pomocné místo, existuje (neodstraněno).  <br><br>   [Zajistěte, aby byl agent MARS vyloučený z antivirového programu nainstalovaného v počítači.](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
+  | 0x80070002, 0x80070003 | Systém nemůže najít zadaný soubor.         | [Ujistěte se, že pomocná složka není plná.](/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder)  <br><br>  Ověřte, jestli svazek, na kterém je nakonfigurované pomocné místo, existuje (neodstraněno).  <br><br>   [Zajistěte, aby byl agent MARS vyloučený z antivirového programu nainstalovaného v počítači.](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
   | 0x80070005             | Přístup byl odepřen.                                    | [Zjistit, jestli antivirový software nebo jiný software třetí strany blokuje přístup](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)     |
   | 0x8007018b             | Přístup k souboru v cloudu byl odepřen.                | Soubory OneDrive, soubory Git nebo jakékoli jiné soubory, které můžou být ve stavu offline v počítači |
 
@@ -117,13 +117,13 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
 
 | Chyba  | Možné příčiny | Doporučené akce |
 |---------|---------|---------|
-|<br />Aktivace nebyla úspěšně dokončena. Aktuální operace selhala kvůli vnitřní chybě služby [0x1FC07]. Po nějaké době zkuste operaci zopakovat. Pokud problém přetrvá, obraťte se na podporu Microsoftu.     | <li> Pomocná složka se nachází na svazku, který nemá dost místa. <li> Pomocná složka byla nesprávně přesunuta. <li> Chybí soubor OnlineBackup. KEK.         | <li>Upgradujte na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta Mars.<li>Přesuňte pomocné složky nebo umístění mezipaměti do svazku s volným místem, které je mezi 5% a 10% celkové velikosti zálohovaných dat. Pro správné přesunutí umístění mezipaměti použijte postup v tématu [běžné otázky k zálohování souborů a složek](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder).<li> Zajistěte, aby byl k dispozici soubor OnlineBackup. KEK. <br>*Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
+|<br />Aktivace nebyla úspěšně dokončena. Aktuální operace selhala kvůli vnitřní chybě služby [0x1FC07]. Po nějaké době zkuste operaci zopakovat. Pokud problém přetrvá, obraťte se na podporu Microsoftu.     | <li> Pomocná složka se nachází na svazku, který nemá dost místa. <li> Pomocná složka byla nesprávně přesunuta. <li> Chybí soubor OnlineBackup. KEK.         | <li>Upgradujte na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta Mars.<li>Přesuňte pomocné složky nebo umístění mezipaměti do svazku s volným místem, které je mezi 5% a 10% celkové velikosti zálohovaných dat. Pro správné přesunutí umístění mezipaměti použijte postup v tématu [běžné otázky k zálohování souborů a složek](/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder).<li> Zajistěte, aby byl k dispozici soubor OnlineBackup. KEK. <br>*Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>Šifrovací heslo není správně nakonfigurované
 
 | Chyba  | Možné příčiny | Doporučené akce |
 |---------|---------|---------|
-| <br />Chyba 34506. Šifrovací heslo uložené na tomto počítači není správně nakonfigurováno.    | <li> Pomocná složka se nachází na svazku, který nemá dost místa. <li> Pomocná složka byla nesprávně přesunuta. <li> Chybí soubor OnlineBackup. KEK.        | <li>Upgradujte na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta Mars.<li>Přesuňte pomocné složky nebo umístění mezipaměti do svazku s volným místem, které je mezi 5% a 10% celkové velikosti zálohovaných dat. Pro správné přesunutí umístění mezipaměti použijte postup v tématu [běžné otázky k zálohování souborů a složek](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder).<li> Zajistěte, aby byl k dispozici soubor OnlineBackup. KEK. <br>*Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
+| <br />Chyba 34506. Šifrovací heslo uložené na tomto počítači není správně nakonfigurováno.    | <li> Pomocná složka se nachází na svazku, který nemá dost místa. <li> Pomocná složka byla nesprávně přesunuta. <li> Chybí soubor OnlineBackup. KEK.        | <li>Upgradujte na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta Mars.<li>Přesuňte pomocné složky nebo umístění mezipaměti do svazku s volným místem, které je mezi 5% a 10% celkové velikosti zálohovaných dat. Pro správné přesunutí umístění mezipaměti použijte postup v tématu [běžné otázky k zálohování souborů a složek](/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder).<li> Zajistěte, aby byl k dispozici soubor OnlineBackup. KEK. <br>*Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
 
 ## <a name="backups-dont-run-according-to-schedule"></a>Zálohování se nespouští podle plánu
 
@@ -226,9 +226,9 @@ Operace zálohování může selhat, pokud je složka mezipaměti (také označo
 
 Aby operace agenta MARS uspěly ve složce mezipaměti, musí splňovat následující požadavky:
 
-- [Zajistěte, aby v umístění pomocné složky bylo k dispozici 5 až 10% volného místa na disku.](backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
-- [Zajistěte, aby bylo umístění pomocné složky platné a dostupné.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
-- [Zajistěte, aby byly podporovány atributy souborů ve složce mezipaměti.](backup-azure-file-folder-backup-faq.md#are-there-any-attributes-of-the-cache-folder-that-arent-supported)
+- [Zajistěte, aby v umístění pomocné složky bylo k dispozici 5 až 10% volného místa na disku.](backup-azure-file-folder-backup-faq.yml#what-s-the-minimum-size-requirement-for-the-cache-folder-)
+- [Zajistěte, aby bylo umístění pomocné složky platné a dostupné.](backup-azure-file-folder-backup-faq.yml#how-to-check-if-scratch-folder-is-valid-and-accessible-)
+- [Zajistěte, aby byly podporovány atributy souborů ve složce mezipaměti.](backup-azure-file-folder-backup-faq.yml#are-there-any-attributes-of-the-cache-folder-that-aren-t-supported-)
 - [Zajistěte, aby byl přidělený úložný prostor stínové kopie pro proces zálohování dostatečný.](#increase-shadow-copy-storage)
 - [Zajistěte, aby nedocházelo k žádným jiným procesům (např. antivirový software), který omezuje přístup ke složce mezipaměti.](#another-process-or-antivirus-software-blocking-access-to-cache-folder)
 
@@ -258,13 +258,13 @@ Tato část se zabývá běžnými chybami, ke kterým dojde při použití agen
 
 Chybová zpráva | Doporučená akce
 --|--
-Agentovi Microsoft Azure Recovery Services se nepodařilo získat přístup ke kontrolnímu součtu zálohování uloženému na pomocném místě. | Pokud chcete tento problém vyřešit, proveďte následující kroky a restartujte server. <br/> - [Ověřte, jestli existuje antivirový nebo jiný proces, který by uzamknul soubory s pomocným umístěním.](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Zkontroluje, jestli je pomocné umístění platné a dostupné pro agenta MARS.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+Agentovi Microsoft Azure Recovery Services se nepodařilo získat přístup ke kontrolnímu součtu zálohování uloženému na pomocném místě. | Pokud chcete tento problém vyřešit, proveďte následující kroky a restartujte server. <br/> - [Ověřte, jestli existuje antivirový nebo jiný proces, který by uzamknul soubory s pomocným umístěním.](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Zkontroluje, jestli je pomocné umístění platné a dostupné pro agenta MARS.](backup-azure-file-folder-backup-faq.yml#how-to-check-if-scratch-folder-is-valid-and-accessible-)
 
 ### <a name="salvhdinitializationerror"></a>SalVhdInitializationError
 
 Chybová zpráva | Doporučená akce
 --|--
-Agentovi Microsoft Azure Recovery Services se nepodařilo získat přístup k pomocnému místu za účelem inicializace virtuálního pevného disku. | Pokud chcete tento problém vyřešit, proveďte následující kroky a restartujte server. <br/> - [Zjistit, jestli antivirová nebo jiné procesy uzamyká soubory s pomocným umístěním](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Zkontroluje, jestli je pomocné umístění platné a dostupné pro agenta MARS.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+Agentovi Microsoft Azure Recovery Services se nepodařilo získat přístup k pomocnému místu za účelem inicializace virtuálního pevného disku. | Pokud chcete tento problém vyřešit, proveďte následující kroky a restartujte server. <br/> - [Zjistit, jestli antivirová nebo jiné procesy uzamyká soubory s pomocným umístěním](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Zkontroluje, jestli je pomocné umístění platné a dostupné pro agenta MARS.](backup-azure-file-folder-backup-faq.yml#how-to-check-if-scratch-folder-is-valid-and-accessible-)
 
 ### <a name="sallowdiskspace"></a>SalLowDiskSpace
 

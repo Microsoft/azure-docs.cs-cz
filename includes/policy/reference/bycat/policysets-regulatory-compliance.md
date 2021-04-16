@@ -2,23 +2,23 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 7b618a19f6e6a3510b3d587970124e5a7c12b309
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d6a2d97e7ea91710075d2e00cd5f57e6f174a031
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090089"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107504851"
 ---
-|Název |Description |Zásady |Verze |
+|Název |Popis |Zásady |Verze |
 |---|---|---|---|
 |[\[Preview: inverze pro \] australský státní správu ISM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRAP_Audit.json) |Tato iniciativa zahrnuje zásady pro nasazování auditu a rozšíření virtuálních počítačů, které řeší podmnožinu australských ovládacích prvků (ISM) pro státní správu zabezpečení informací. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/AustralianGovernmentISM-blueprint](https://aka.ms/AustralianGovernmentISM-blueprint) . |61 |4.0.1 – Preview |
 |[Canada Federal PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu federálních PBMMch ovládacích prvků Kanady. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) . |59 |5.0.0 |
 |[Srovnávací test CIS Microsoft Azure Foundations v1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0.json) |V této iniciativě jsou uvedeny zásady, které řeší podmnožinu referenčních doporučení pro CIS Microsoft Azurech základů. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/cisazure110-initiative](https://aka.ms/cisazure110-initiative) . |99 |10.0.0 |
 |[\[Preview \] : CIS Microsoft Azure Foundation – srovnávací testy v 1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_3_0.json) |V této iniciativě jsou uvedeny zásady, které řeší podmnožinu referenčních doporučení pro CIS Microsoft Azurech základů. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/cisazure130-initiative](https://aka.ms/cisazure130-initiative) . |104 |1.0.1 – Preview |
-|[\[Verze Preview \] : CMMC úrovně 3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json) |Tato iniciativa zahrnuje zásady, které řeší podmnožinu požadavků na kyberbezpečnosti (CMMC) () úrovně 3. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/cmmc-initiative](https://aka.ms/cmmc-initiative) . |183 |3.0.0 – Preview |
+|[\[Verze Preview \] : CMMC úrovně 3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json) |Tato iniciativa zahrnuje zásady, které řeší podmnožinu požadavků na kyberbezpečnosti (CMMC) () úrovně 3. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/cmmc-initiative](https://aka.ms/cmmc-initiative) . |183 |3.1.0 – Preview |
 |[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu ovládacích prvků FedRAMP H. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/fedramph-blueprint](https://aka.ms/fedramph-blueprint) . |71 |4.0.1 |
 |[FedRAMP Moderate](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu ovládacích prvků FedRAMP M. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/fedrampm-blueprint](https://aka.ms/fedrampm-blueprint) . |62 |4.0.1 |
 |[HITRUST/HIPAA](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu ovládacích prvků HITRUST/HIPAA. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/hipaa-blueprint](https://aka.ms/hipaa-blueprint) . |122 |5.1.0 |

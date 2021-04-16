@@ -8,12 +8,12 @@ author: v-amallick
 ms.author: v-amallick
 ms.collection: windows
 ms.date: 07/05/2019
-ms.openlocfilehash: 171a438b8ac2a74437c15a749d6974945877a1ee
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: c10be941206dd60887c9d82025506d1ea15c51a2
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293749"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517245"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup pro SQL Server běžící na virtuálním počítači Azure
 
@@ -114,4 +114,4 @@ Příkaz vrátí **kontejner zálohování** tohoto prostředku a stav bude **za
 ## <a name="next-steps"></a>Další kroky
 
 - [Další informace](../../backup/backup-sql-server-azure-troubleshoot.md) o pokynech pro řešení potíží se ZÁLOHOVÁNÍM virtuálních počítačů Azure SQL Server
-- [Běžné dotazy](../../backup/faq-backup-sql-server.md) týkající se zálohování SQL Server databází, které běží na virtuálních počítačích Azure a využívají službu Azure Backup.
+- [Běžné dotazy](../../backup/faq-backup-sql-server.yml) týkající se zálohování SQL Server databází, které běží na virtuálních počítačích Azure a využívají službu Azure Backup.

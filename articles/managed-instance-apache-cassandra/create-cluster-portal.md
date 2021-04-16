@@ -6,13 +6,13 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.custom: references_regions
-ms.openlocfilehash: cb555eefb19b5db7ed7eb0792a813c295a4bf38b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: e42f85bb79dcb1bfe14cacbbfda3576888b841c9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588609"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481324"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>Rychlý Start: vytvoření spravované instance Azure pro cluster Apache Cassandra z Azure Portal (Preview)
  
@@ -63,10 +63,19 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
    :::image type="content" source="./media/create-cluster-portal/networking.png" alt-text="Nakonfigurujte podrobnosti o síti." lightbox="./media/create-cluster-portal/networking.png" border="true":::
 
-1. Pokud jste v posledním kroku vytvořili novou virtuální síť, přejděte ke kroku 8. Pokud jste před vytvořením clusteru vybrali existující virtuální síť, musíte použít některá zvláštní oprávnění pro Virtual Network a podsíť. K tomu použijte `az role assignment create` příkaz, nahraďte,, `<subscription ID>` `<resource group name>` `<VNet name>` a `<subnet name>` s příslušnými hodnotami:
+    > [!NOTE]
+    > Nasazení spravované instance Azure pro Apache Cassandra vyžaduje přístup k Internetu. Nasazení se nezdařilo v prostředích, kde je omezen přístup k Internetu. Ujistěte se, že neblokujete přístup v rámci vaší virtuální sítě do následujících důležitých služeb Azure, které jsou nezbytné pro správné fungování spravovaných Cassandra:
+    > - Azure Storage
+    > - Azure KeyVault
+    > - Azure Virtual Machine Scale Sets
+    > - Monitorování Azure
+    > - Azure Active Directory
+    > - Zabezpečení Azure
+
+1. Pokud jste v posledním kroku vytvořili novou virtuální síť, přejděte ke kroku 8. Pokud jste před vytvořením clusteru vybrali existující virtuální síť, musíte použít některá zvláštní oprávnění pro Virtual Network a podsíť. K tomu použijte `az role assignment create` příkaz, nahraďte `<subscription ID>` , `<resource group name>` a `<VNet name>` s příslušnými hodnotami:
 
    ```azurecli-interactive
-   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
+   az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>
    ```
 
    > [!NOTE]

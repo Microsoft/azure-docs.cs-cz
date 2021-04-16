@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 771b4ce2999357d729c3ffe557b778cf62a5c0f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29340852cabcc77b7488f734a4677697b4a9b972
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98010978"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535226"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Konfigurace protokolů toku skupiny zabezpečení sítě pomocí PowerShellu
 
@@ -28,6 +28,8 @@ ms.locfileid: "98010978"
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
 Protokoly toku skupin zabezpečení sítě jsou funkcí Network Watcher, která vám umožní zobrazit informace o příchozím a odchozím provozu IP přes skupinu zabezpečení sítě. Tyto protokoly toků jsou napsané ve formátu JSON a zobrazují odchozí a příchozí toky na základě jednotlivých pravidel. síťové rozhraní, ke kterému se tok vztahuje, je 5 – informace o toku (zdrojová nebo cílová IP adresa, zdrojový/cílový port, protokol) a pokud byl provoz povolený nebo zakázaný.
+
+Podrobná specifikace všech příkazů protokolů toku NSG pro různé verze AzPowerShell najdete [tady](https://docs.microsoft.com/powershell/module/az.network/#network-watcher) .
 
 ## <a name="register-insights-provider"></a>Registrace poskytovatele Insights
 

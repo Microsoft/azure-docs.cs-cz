@@ -4,12 +4,12 @@ description: Řešení potíží s instalací, registrací Azure Backup Server a
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 09e5fe5da7e316257cbbdcb89074fe8a4bc692c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 644946ca90c2893ba3d87f9d2ff8bfd8325f4715
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91403003"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514746"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
@@ -22,7 +22,7 @@ Před zahájením řešení potíží s Microsoft Azure Backup serverem (MABS) d
 - [Zajistěte, aby byl agent Microsoft Azure Recovery Services (MARS) aktuální.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Zajistěte, aby mezi agentem MARS a Azure bylo síťové připojení.](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Ujistěte se, že je spuštěná služba Microsoft Azure Recovery Services (v konzole služby). V případě potřeby restartujte operaci a operaci opakujte.
-- [Zajistěte, aby v umístění pomocné složky bylo k dispozici 5-10% volného místa na disku](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Ujistěte se, že je v umístění pomocné složky k dispozici 5 až 10 % volného místa.](./backup-azure-file-folder-backup-faq.yml#what-s-the-minimum-size-requirement-for-the-cache-folder-)
 - Pokud se registrace nedaří, ujistěte se, že server, na který se pokoušíte nainstalovat Azure Backup Server, už není zaregistrovaný v jiném trezoru.
 - Pokud nabízená instalace selže, zkontrolujte, jestli už agent DPM neexistuje. Pokud agent existuje, odinstalujte ho a pak instalaci opakujte.
 - [Zajištění, aby službě Azure Backup nepřekáží jiný proces nebo antivirový software](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>

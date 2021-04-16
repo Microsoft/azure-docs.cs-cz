@@ -4,12 +4,12 @@ description: Pokud chcete spustit úlohu Azure Container Registry, nastavte v re
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 8b1f077d6216443ad267f8620f87882439cb355c
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 21db066b3f18106938d11fbd8e2cfe688c1ef276
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284137"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389549"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>Spuštění úlohy ACR ve vyhrazeném fondu agentů
 
@@ -31,7 +31,7 @@ Tato funkce je k dispozici na úrovni služby Registry kontejneru **Premium** . 
 ## <a name="preview-limitations"></a>Omezení verze Preview
 
 - Fondy agenta úloh aktuálně podporují uzly Linux. Uzly systému Windows nejsou aktuálně podporovány.
-- Fondy agenta úloh jsou dostupné ve verzi Preview v těchto oblastech: Západní USA 2, Střed USA – jih, Východní USA 2, Východní USA, Střed USA, Západní Evropa, Kanada – střed, USGov Arizona, USGov Texas a USGov) – Virginia.
+- Fondy agentů úloh jsou dostupné ve verzi Preview v těchto oblastech: Západní USA 2, Střed USA – jih, Východní USA 2, Východní USA, Střed USA, Západní Evropa, Severní Evropa, Kanada – střed, USGov Arizona, USGov Texas a USGov) – Virginia.
 - Pro každý registr je výchozí celková kvóta vCPU (jádro) 16 pro všechny standardní fondy agentů a pro izolované fondy agentů je 0. Otevřete [žádost o podporu][open-support-ticket] pro další přidělení.
 - V tuto chvíli nemůžete zrušit běh úlohy ve fondu agentů.
 

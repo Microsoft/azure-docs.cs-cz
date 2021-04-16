@@ -1,14 +1,14 @@
 ---
 title: Správa rozšíření virtuálních počítačů pomocí serverů s podporou ARC Azure
 description: Servery s podporou ARC Azure můžou spravovat nasazení rozšíření virtuálních počítačů, která poskytují konfiguraci po nasazení a úlohy automatizace s virtuálními počítači mimo Azure.
-ms.date: 03/22/2021
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9af2700f036352188e646188485285482ee70c69
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 67f1b5b3db6ef446342e8381d54d487af1f3426a
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799577"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389787"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Správa rozšíření virtuálních počítačů pomocí serverů s podporou Azure Arc
 
@@ -20,6 +20,9 @@ Servery s podporou ARC Azure umožňují nasadit rozšíření virtuálních po�
 - Rozhraní příkazového [řádku Azure](manage-vm-extensions-cli.md)
 - [Azure PowerShell](manage-vm-extensions-powershell.md)
 - [Šablony Azure správce prostředků](manage-vm-extensions-template.md)
+
+> [!NOTE]
+> Servery s podporou ARC Azure nepodporují nasazení a správu rozšíření virtuálních počítačů na virtuální počítače Azure. Informace o virtuálních počítačích Azure najdete v následujícím článku [Přehled rozšíření virtuálních počítačů](../../virtual-machines/extensions/overview.md) .
 
 ## <a name="key-benefits"></a>Klíčové výhody
 

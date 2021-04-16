@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti struktury přiřazení zásad
 description: Popisuje definici přiřazení zásad, kterou používá Azure Policy k přidružení definic a parametrů zásad k prostředkům pro vyhodnocení.
-ms.date: 03/17/2021
+ms.date: 04/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 909c1c361e092c512a73854a40e22a67efe5f2f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9de210b17264330e79ab5978a449e7a494054be2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604861"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535880"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura přiřazení Azure Policy
 
@@ -61,13 +61,37 @@ Všechny ukázky Azure Policy jsou na [Azure Policy Samples](../samples/index.md
 
 K identifikaci přiřazení zásad a zadání kontextu pro jeho použití s konkrétní sadou prostředků použijte **DisplayName** a **Description** . hodnota **DisplayName** má maximální délku _128_ znaků a **popis** nesmí být delší než _512_ znaků.
 
+## <a name="metadata"></a>Metadata
+
+Volitelná `metadata` vlastnost ukládá informace o přiřazení zásady. Zákazníci mohou definovat libovolné vlastnosti a hodnoty, které jsou užitečné pro jejich organizaci v `metadata` . Existují však některé _běžné_ vlastnosti, které používá Azure Policy. Každá `metadata` vlastnost má limit 1024 znaků.
+
+### <a name="common-metadata-properties"></a>Vlastnosti běžných metadat
+
+- `assignedBy` (String): popisný název objektu zabezpečení, který vytvořil přiřazení.
+- `createdBy` (String): identifikátor GUID objektu zabezpečení, který vytvořil přiřazení.
+- `createdOn` (String): Formát DateTime Universal ISO 8601 pro čas vytvoření přiřazení.
+- `parameterScopes` (Object): kolekce párů klíč-hodnota, kde klíč odpovídá [strongType](./definition-structure.md#strongtype) nakonfigurovanému názvu parametru a hodnota definuje obor prostředků používaný na portálu k poskytnutí seznamu dostupných prostředků podle odpovídajících _strongType_. Portál tuto hodnotu nastaví, pokud se rozsah liší od rozsahu přiřazení. Pokud je tato hodnota nastavena, úprava přiřazení zásady na portálu automaticky nastaví obor pro parametr na tuto hodnotu. Rozsah ale není pevně spojený s hodnotou a může být změněn na jiný obor.
+
+  Následující příklad `parameterScopes` je pro parametr _strongType_ s názvem **backupPolicyId** , který nastaví obor pro výběr prostředku při úpravách přiřazení na portálu.
+
+  ```json
+  "metadata": {
+      "parameterScopes": {
+          "backupPolicyId": "/subscriptions/{SubscriptionID}/resourcegroups/{ResourceGroupName}"
+      }
+  }
+  ```
+
+- `updatedBy` (String): popisný název objektu zabezpečení, který aktualizoval přiřazení, pokud existuje.
+- `updatedOn` (String): formát formátu data a času Universal ISO 8601 pro čas aktualizace přiřazení, pokud existuje.
+
 ## <a name="enforcement-mode"></a>Režim vynucení
 
 Vlastnost **enforcementMode** poskytuje zákazníkům možnost Testovat výsledek zásad u existujících prostředků bez zahájení platnosti zásad nebo aktivace záznamů v [protokolu aktivit Azure](../../../azure-monitor/essentials/platform-logs-overview.md). Tento scénář se běžně označuje jako "What If" a je v souladu s postupy bezpečného nasazení. **enforcementMode** se liší od [zakázaného](./effects.md#disabled) efektu, protože to zabrání v tom, aby vyhodnocování prostředků probíhají vůbec.
 
 Tato vlastnost má následující hodnoty:
 
-|Režim |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Description |
+|Režim |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Popis |
 |-|-|-|-|-|-|
 |Povoleno |Výchozí |řetězec |Yes |Yes |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
 |Zakázáno |DoNotEnforce |řetězec |Yes |No | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |

@@ -7,15 +7,15 @@ metadata:
   services: baremetal-infrastructure
   ms.service: baremetal-infrastructure
   ms.topic: landing-page
-  author: shortpatti
-  ms.author: v-patsho
-  ms.date: 03/19/2021
-  ms.openlocfilehash: 89bd62f1462f4b3a20b1fdb9469ccb75de93ce78
-  ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+  author: Ajayan1008
+  ms.author: v-hborys
+  ms.date: 04/14/2021
+  ms.openlocfilehash: 52e70d842f8e8237f1eee3446a8b70f867224be1
+  ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/24/2021
-  ms.locfileid: "104951602"
+  ms.lasthandoff: 04/16/2021
+  ms.locfileid: "107536845"
 landingContent:
 - title: Informace o službě BareMetal Infrastructure
   linkLists:
@@ -25,10 +25,26 @@ landingContent:
       url: concepts-baremetal-infrastructure-overview.md
     - text: Seznámení s podmínkami
       url: know-baremetal-terms.md
-    - text: Typy úloh služby BareMetal
-      url: /azure/virtual-machines/workloads/sap/get-started?context=/azure/baremetal-infrastructure/workloads/sap/context/context
-    - text: Připojit jednotky instance BareMetal v Azure
+    - text: Připojení instancí BareMetal v Azure
       url: connect-baremetal-infrastructure.md
+- title: BareMetal infrastruktura pro Oracle
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je BareMetal infrastruktura pro Oracle?
+      url: workloads/oracle/oracle-baremetal-overview.md
+    - text: BareMetal SKU pro úlohy Oracle
+      url: workloads/oracle/oracle-baremetal-skus.md
+    - text: Storage v BareMetal pro Oracle
+      url: workloads/oracle/oracle-baremetal-storage.md
+    - text: Předpoklady pro opravy
+      url: workloads/oracle/oracle-baremetal-patching.md
+    - text: Konfigurace sítě Ethernet
+      url: workloads/oracle/oracle-baremetal-ethernet.md
+    - text: Architektura BareMetal pro Oracle
+      url: workloads/oracle/oracle-baremetal-architecture.md
+    - text: Zřídit BareMetal pro Oracle
+      url: workloads/oracle/oracle-baremetal-provision.md
 - title: SAP HANA v Azure (velké instance)
   linkLists:
   - linkListType: overview

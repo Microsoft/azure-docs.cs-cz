@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 4bf792dd02e7cddcc40ef868e4a602fdb03ab3c6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 513f262f5d09cf56c4506a4f20c9aa41507c2abd
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052275"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515273"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co je monitorované pomocí Azure Monitor?
 Tento článek popisuje různé aplikace a služby, které jsou monitorované pomocí Azure Monitor. 
@@ -22,7 +22,7 @@ Core Insights a řešení se považují za součást Azure Monitor a dodržují 
 
 Přehledy poskytují přizpůsobené možnosti monitorování pro konkrétní aplikace a služby. Shromažďují a analyzují protokoly a metriky.
 
-| Přehled | Description |
+| Přehled | Popis |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | Rozšiřitelná služba pro správu výkonu aplikací (APM) pro monitorování živé webové aplikace na libovolné platformě. |
 | [Přehledy kontejnerů](containers/container-insights-overview.md) | Monitoruje výkon úloh kontejneru nasazených pro Azure Container Instances nebo spravované clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS). |
@@ -39,7 +39,7 @@ Přehledy poskytují přizpůsobené možnosti monitorování pro konkrétní ap
 
 Řešení jsou založená na dotazech a zobrazeních protokolu přizpůsobených pro určitou aplikaci nebo službu. Shromažďují a analyzují jenom protokoly a v průběhu času se neúčtují za využití přehledů.
 
-| Řešení | Description |
+| Řešení | Popis |
 |:---|:---|
 | [Stav agenta](insights/solution-agenthealth.md) | Analyzujte stav a konfiguraci Log Analyticsch agentů. |
 | [Správa výstrah](insights/alert-management-solution.md) | Analyzujte výstrahy shromážděné z System Center Operations Manager, Nagios nebo Zabbix. |
@@ -167,7 +167,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Virtual Network | Yes | Yes | [Ano](insights/network-insights-overview.md) |  |
 |Protokoly toku Virtual Network – NSG | No | Yes | No |  |
 |VPN Gateway | Yes | Yes | No |  |
-|Windows Virtual Desktop | No | No | No |  |
+|Windows Virtual Desktop | No | Yes | No |  |
 
 ## <a name="virtual-machine-agents"></a>Agenti virtuálních počítačů
 Následující tabulka uvádí agenty, které mohou shromažďovat data z hostovaného operačního systému virtuálních počítačů a odesílat data do monitorování. Každý agent může shromažďovat různá data a odesílat je do těchto metrik nebo protokolů v Azure Monitor. 
@@ -186,7 +186,7 @@ Podrobnosti o datech, která může každý Agent shromažďovat, najdete v tém
 ## <a name="product-integrations"></a>Integrace produktů
 Služby a řešení v následující tabulce ukládají svá data do Log Analyticsho pracovního prostoru, aby je bylo možné analyzovat pomocí dalších dat protokolů shromážděných Azure Monitor.
 
-| Produkt/služba | Description |
+| Produkt/služba | Popis |
 |:---|:---|
 | [Azure Automation](../automation/index.yml) | Spravujte aktualizace operačního systému a sledujte změny v počítačích s Windows a Linux. Viz [Change Tracking](../automation/change-tracking/overview.md) a [Update Management](../automation/update-management/overview.md). |
 | [Azure Information Protection ](/azure/information-protection/) | Klasifikace a volitelně ochrana dokumentů a e-mailů. Přečtěte si téma [centrální vytváření sestav pro Azure Information Protection](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
@@ -207,7 +207,7 @@ Služby a řešení v následující tabulce ukládají svá data do Log Analyti
 ## <a name="other-solutions"></a>Další řešení
 Další řešení jsou k dispozici pro monitorování různých aplikací a služeb, ale aktivní vývoj se zastavil a nemusí být k dispozici ve všech oblastech. Jsou pokryté smlouvou o úrovni služeb Azure Log Analytics ingestování dat.
 
-| Řešení | Description |
+| Řešení | Popis |
 |:---|:---|
 | [Kontroly stavu služby Active Directory](insights/ad-assessment.md) | Posuzuje rizika a stav prostředí Active Directory. |
 | [Stav replikace služby Active Directory](insights/ad-replication-status.md) | Pravidelně monitoruje prostředí Active Directory pro případ selhání replikace. |
@@ -221,7 +221,7 @@ Další řešení jsou k dispozici pro monitorování různých aplikací a slu�
 
 ## <a name="third-party-integration"></a>Integrace třetích stran
 
-| Řešení | Description |
+| Řešení | Popis |
 |:---|:---|
 | [ITSM](alerts/itsmc-overview.md) | ITSM konektor (ITSMC) umožňuje propojit Azure s podporovaným produktem nebo službou správy IT služeb (ITSM).  |
 

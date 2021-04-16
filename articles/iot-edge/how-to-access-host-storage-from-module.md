@@ -8,12 +8,12 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d88d35eece698c7d0079221ae3c76058d1877948
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 78752d4da42fe07461ae0e82b10343dc7219ad91
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200480"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482054"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Udělení přístupu k místnímu úložišti zařízení pro moduly
 
@@ -87,7 +87,7 @@ Další podrobnosti o možnostech vytváření najdete v dokumentaci k [Docker](
 
 ## <a name="encrypted-data-in-module-storage"></a>Šifrovaná data v modulu úložiště modulů
 
-Když moduly aktivují rozhraní API úlohy démona IoT Edge k šifrování dat, je šifrovací klíč odvozený pomocí identifikátoru generování ID modulu a modulu. ID generování se používá k ochraně tajných kódů, pokud je modul odebraný z nasazení a potom se později do stejného zařízení nasadí jiný modul se stejným ID modulu. ID generování modulu můžete zobrazit pomocí příkazu Azure CLI [AZ IoT Hub Module-identity show](/cli/azure/ext/azure-iot/iot/hub/module-identity).
+Když moduly aktivují rozhraní API úlohy démona IoT Edge k šifrování dat, je šifrovací klíč odvozený pomocí identifikátoru generování ID modulu a modulu. ID generování se používá k ochraně tajných kódů, pokud je modul odebraný z nasazení a potom se později do stejného zařízení nasadí jiný modul se stejným ID modulu. ID generování modulu můžete zobrazit pomocí příkazu Azure CLI [AZ IoT Hub Module-identity show](/cli/azure/iot/hub/module-identity).
 
 Pokud chcete sdílet soubory mezi moduly v rámci generací, nesmí obsahovat žádné tajné kódy, jinak je nepůjde dešifrovat.
 

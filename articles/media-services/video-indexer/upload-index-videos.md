@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3cc9051190bd314ac93e3de2689a6aa0ec2b6235
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 90fca4342b1fe04adef97a1a4c1c2166ca7ec51e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108077"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532483"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -62,11 +62,11 @@ Seznam formátů souborů, které můžete použít s Video Indexer, najdete v �
 
 ## <a name="upload-and-index-with-api"></a>Nahrání a indexování pomocí rozhraní API
 
-Pomocí rozhraní API pro [nahrání videa](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) můžete nahrávat a indexovat videa na základě adresy URL. Následující ukázka kódu obsahuje komentovaný kód, který ukazuje, jak nahrát pole bajtů. 
+Pomocí rozhraní API pro [nahrání videa](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) můžete nahrávat a indexovat videa na základě adresy URL. Následující ukázka kódu obsahuje komentovaný kód, který ukazuje, jak nahrát pole bajtů. 
 
 ### <a name="configurations-and-params"></a>Konfigurace a parametry
 
-Tato část popisuje některé volitelné parametry a kdy je vhodné je nastavit. Nejaktuálnější informace o parametrech najdete v tématu [nahrání](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) rozhraní API pro video.
+Tato část popisuje některé volitelné parametry a kdy je vhodné je nastavit. Nejaktuálnější informace o parametrech najdete v tématu [nahrání](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) rozhraní API pro video.
 
 #### <a name="externalid"></a>externalID 
 
@@ -110,7 +110,7 @@ Parametr **priority** se podporuje jenom pro placené účty.
 
 Po nahrání videa na server ho Video Indexer volitelně zakóduje. Pak bude pokračovat k indexování a analýze videa. Když Video Indexer dokončí analýzu, dostanete oznámení s ID videa.  
 
-Při použití API [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) (Nahrát video) nebo [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (Znovu indexovat video) je jedním z volitelných parametrů `streamingPreset`. Pokud nastavíte `streamingPreset` na `Default`, `SingleBitrate` nebo `AdaptiveBitrate`, aktivuje se proces kódování. Po dokončení úloh indexování a kódování se video publikuje, takže ho můžete také streamovat. Koncový bod streamování, ze kterého chcete video streamovat, musí být ve stavu **Spuštěno**.
+Při použití API [Upload video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) (Nahrát video) nebo [Re-Index Video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video) (Znovu indexovat video) je jedním z volitelných parametrů `streamingPreset`. Pokud nastavíte `streamingPreset` na `Default`, `SingleBitrate` nebo `AdaptiveBitrate`, aktivuje se proces kódování. Po dokončení úloh indexování a kódování se video publikuje, takže ho můžete také streamovat. Koncový bod streamování, ze kterého chcete video streamovat, musí být ve stavu **Spuštěno**.
 
 V případě SingleBitrate se náklady na kodér budou vztahovat na výstup. Pokud je výška videa větší nebo rovna 720, Video Indexer ji kódovat jako 1280 × 720. Jinak jako 640x468.
 Výchozím nastavením je [kódování zohledňující obsah](../latest/encode-content-aware-concept.md).
@@ -321,7 +321,7 @@ public class AccountContractSlim
 
 Operace Upload může vrátit kódy stavu uvedené v následující tabulce.
 
-|Stavový kód|ErrorType (v textu odpovědi)|Description|
+|Stavový kód|ErrorType (v textu odpovědi)|Popis|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|V daném účtu už probíhá zpracování stejného videa.|
 |400|VIDEO_ALREADY_FAILED|V daném účtu se méně než před 2 hodinami nepodařilo zpracovat stejné video. Klienti rozhraní API by měli před dalším nahráním videa vyčkat minimálně 2 hodiny.|

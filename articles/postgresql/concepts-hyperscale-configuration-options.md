@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 04/07/2021
-ms.openlocfilehash: ae416c9acd03b3ee239a858aae550fb87293465a
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 1dd0666c2946896ed324fb3986bb7946890b73de
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012781"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388699"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL – možnosti konfigurace Citus (AutoScale)
 
@@ -109,7 +109,8 @@ Celková velikost úložiště, kterou zřizujete, také definuje kapacitu v/v k
 ## <a name="regions"></a>Oblasti
 Skupiny serverů Citus () jsou k dispozici v následujících oblastech Azure:
 
-* Jižní
+* Amerika: 
+    * Brazílie – jih
     * Střední Kanada
     * USA – střed
     * Východní USA *
@@ -118,10 +119,11 @@ Skupiny serverů Citus () jsou k dispozici v následujících oblastech Azure:
     * Západní USA 2
 * Asie a Tichomoří:
     * Austrálie – východ
-    * Japan East
+    * Japonsko – východ
     * Jižní Korea – střed
     * Southeast Asia
 * Evropským
+    * Francie – střed
     * Severní Evropa
     * Spojené království – jih
     * West Europe

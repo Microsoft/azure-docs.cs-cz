@@ -3,13 +3,13 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Přehled služby obličeje
+    - name: Co je služba obličeje
       href: Overview.md
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: Co je nového
       href: releasenotes.md
-- name: Rychlý Start obličeje
+- name: Rychlé zprovoznění
   href: Quickstarts/client-libraries.md
 - name: ukázky
   href: /samples/browse/?products=azure&term=face
@@ -45,6 +45,14 @@
           href: face-resource-container-config.md
         - name: Použití instancí kontejneru
           href: /azure/cognitive-services/containers/azure-container-instance-recipe?context=/azure/cognitive-services/face/context/context
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Nastavení virtuálních sítí
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/face/context/context
+        - name: Použití klíčů spravovaných zákazníkem
+          href: encrypt-data-at-rest.md
+        - name: Použití ověřování Azure AD
+          href: ../authentication.md?context=/azure/cognitive-services/face/context/context
 - name: Koncepty
   items:
     - name: Rozpoznávání tváře
@@ -75,15 +83,15 @@
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
 - name: Zdroje informací
   items:
-    - name: Podpora oblastí
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Podpora oblastí
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Dodržování předpisů a certifikace
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Naučit se moduly
       href: 'https://docs.microsoft.com/learn/modules/detect-analyze-faces/'
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
-    - name: Dodržování předpisů
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Šifrování
-      href: encrypt-data-at-rest.md
     - name: Aktualizace Azure
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

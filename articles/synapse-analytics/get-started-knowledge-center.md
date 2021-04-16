@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: 92d1534b5dd0233ce88b81d605c6502b67a121df
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: f4cc631bd3ff05dc63566677ec96ef0360d362c9
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307890"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517347"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Prozkoumejte centrum synapse Knowledge Center
 
 V tomto kurzu se naučíte používat centrum znalostí synapse Studio.
 
-## <a name="introduction-to-the-knowledge-center"></a>Seznámení s centrem znalostí
+## <a name="finding-to-the-knowledge-center"></a>Hledání do centra znalostí
 
 Existují dva způsoby, jak najít centrum znalostí v synapse studiu:
 
@@ -30,12 +30,14 @@ Existují dva způsoby, jak najít centrum znalostí v synapse studiu:
 
 Vyberte jednu z metod a otevřete **Centrum znalostí**.
 
+## <a name="exploring-the-knowledge-center"></a>Prozkoumání centra znalostí
+
 Jakmile se zobrazí, uvidíte, že **Centrum znalostí** vám umožní provádět tři věci:
 * **Používejte vzorky hned**. Pokud potřebujete rychlý příklad, jak synapse funguje, vyberte tuto možnost.
 * **Procházet galerii**. Tato možnost umožňuje propojit ukázkové sady dat a přidat vzorový kód ve formě skriptů SQL, poznámkových bloků a kanálů.
 * **Projděte si synapse Studio**. Tato možnost vás provede krátkou prohlídku základních částí synapse studia. To je užitečné, pokud jste ještě nikdy nepoužili synapse Studio.
 
-## <a name="exploring-use-samples-immediately"></a>Prozkoumávání: použití vzorků hned
+## <a name="use-samples-immediately-three-samples-to-help-you-get-started-fast"></a>Použijte vzorky hned: tři ukázky, které vám pomůžou rychle začít.
 
 V této části jsou tři položky:
 * Prozkoumat ukázková data pomocí Sparku
@@ -49,7 +51,7 @@ V této části jsou tři položky:
 1. Posuňte se na první dotaz (řádky 28 až 32) a vyberte text dotazu.
 1. Klikněte na Spustit. Spustí se jenom kód, který jste vybrali.
 
-## <a name="loading-more-nyc-taxi-data"></a>Načítají se další data taxislužby NYC.
+## <a name="gallery-a-collectiopn-of-sample-data-sets-and-sample-code"></a>Galerie: collectiopn ukázkových datových sad a ukázkový kód
 
 1. Přejděte do **centra znalostí** a klikněte na **Procházet galerii**.
 1. V horní části vyberte kartu **skripty SQL** .

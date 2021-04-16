@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 426e28048ae370919529ea710717a3a3867d999d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4b2ac36ad1140968fd17db0bed0b60a8aca6a02
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97746248"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532682"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Pomocí kontrol přístupu Azure AD Spravujte uživatele vyloučené ze zásad podmíněného přístupu.
 
@@ -144,7 +144,7 @@ Podíváme se na dva příklady, kde můžete pomocí kontrol přístupu spravov
     ![Vytvoření podokna kontroly přístupu například 2](./media/conditional-access-exclusion/create-access-review-2.png)
 
 >[!IMPORTANT] 
->Pokud máte mnoho skupin vyloučení a proto potřebujete vytvořit více kontrol přístupu, teď máme v koncovém bodu Microsoft Graph beta rozhraní API, které umožňuje jejich vytváření a správu prostřednictvím kódu programu. Informace o tom, jak začít, najdete v [referenčních informacích k rozhraní API kontroly přístupu Azure AD](/graph/api/resources/accessreviews-root?view=graph-rest-beta) a [příklad načítání kontrol přístupu služby azure AD prostřednictvím Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
+>Pokud máte mnoho skupin vyloučení a proto potřebujete vytvořit více kontrol přístupu, teď máme v koncovém bodu Microsoft Graph beta rozhraní API, které umožňuje jejich vytváření a správu prostřednictvím kódu programu. Informace o tom, jak začít, najdete v [referenčních informacích k rozhraní API kontroly přístupu Azure AD](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true) a [příklad načítání kontrol přístupu služby azure AD prostřednictvím Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
 
 ## <a name="access-review-results-and-audit-logs"></a>Výsledky kontroly přístupu a protokoly auditu
 

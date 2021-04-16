@@ -1,26 +1,28 @@
 ---
 title: Verze Azure Service Fabric
 description: Poznámky k verzi pro Azure Service Fabric. Obsahuje informace o nejnovějších funkcích a vylepšeních v Service Fabric.
-ms.date: 06/10/2019
+ms.date: 04/13/2021
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: f7e929000b85462e7fabf6d717c52abc454b47ad
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2a035f531e03dc42e8be4f3dab403406eb7c8f14
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313330"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518622"
 ---
 # <a name="service-fabric-releases"></a>Verze Service Fabric
 
+V tomto článku najdete další informace o nejnovějších vydáních a aktualizacích Service Fabric runtime a sadách SDK.
+
+K dispozici jsou také tyto prostředky:
 - <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">Průvodci odstraňováním potíží</a> 
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">Sledování problémů</a> 
 - <a href="/azure/service-fabric/service-fabric-support" target="blank">Možnosti podpory</a> 
 - <a href="/azure/service-fabric/service-fabric-versions" target="blank">Podporované verze</a> 
 - <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Vzorky kódu</a>
 
-V tomto článku najdete další informace o nejnovějších vydáních a aktualizacích Service Fabric runtime a sadách SDK.
 
 ## <a name="service-fabric-80"></a>Service Fabric 8,0
 
@@ -88,7 +90,7 @@ Z důvodu aktuální COVID krize a zvážení výzev, které čelí naši zákaz
 Pomocí [Azure Portal](./service-fabric-cluster-upgrade-version-azure.md#manual-upgrades-with-azure-portal) nebo prostřednictvím [Azure Resource Manager nasazení](./service-fabric-cluster-upgrade-version-azure.md#resource-manager-template)budete moct aktualizovat na 7,1.
 
 Service Fabric clusterů s povolenými automatickými upgrady začnou aktualizace 7,1 automaticky dostávat po obnovení standardního postupu zavedení. Před zahájením standardního zavedení na [webu Service Fabric odborné komunity](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)budeme poskytovat další oznámení.
-Také jsme publikovali aktualizace na konci data podpory pro hlavní verze od 6,5 [do 7,1.](./service-fabric-versions.md#supported-versions) 
+Také jsme publikovali aktualizace na konci data podpory pro hlavní verze od 6,5 [do 7,1.](./service-fabric-versions.md) 
 
 #### <a name="key-announcements"></a>Oznámení klíčů
 

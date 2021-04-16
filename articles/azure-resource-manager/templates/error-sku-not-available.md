@@ -2,19 +2,17 @@
 title: Chyby SKU nejsou k dispozici
 description: Popisuje, jak vyřešit chybu SKU, která není k dispozici při nasazování prostředků pomocí Azure Resource Manager.
 ms.topic: troubleshooting
-ms.date: 02/18/2020
-ms.openlocfilehash: 5b0bbd653907c109eca526af86979013b3137cfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 3baedf6a5c9f2dbfd3ddf666b458fac649fce2ac
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737146"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503894"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Řešení chyb kvůli nedostupné skladové položce
 
 Tento článek popisuje, jak vyřešit chybu **SkuNotAvailable** . Pokud nemůžete najít vhodnou skladovou jednotku v této oblasti nebo zóně nebo v alternativní oblasti nebo zóně, která vyhovuje vašim obchodním potřebám, odešlete [požadavek na SKU](/troubleshoot/azure/general/region-access-request-process) do podpory Azure.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Příznak
 
@@ -30,7 +28,7 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 Tato chyba se zobrazí, pokud pro vybrané umístění není k dispozici SKU prostředků (například velikost virtuálního počítače).
 
-Pokud nasazujete instanci virtuálního počítače se službou Azure nebo virtuální počítač se škálováním na více instancí, nemusíte mít v tomto umístění žádnou kapacitu pro Azure na místě. Další informace najdete v tématu [chybové zprávy na místě](../../virtual-machines/error-codes-spot.md).
+Pokud nasazujete instanci virtuálního počítače se službou Azure nebo virtuální počítač se škálováním na více instancí, nemusíte mít v tomto umístění žádnou kapacitu pro Azure. Další informace najdete v tématu [chybové zprávy na místě](../../virtual-machines/error-codes-spot.md).
 
 ## <a name="solution-1---powershell"></a>Řešení 1 – PowerShell
 
@@ -51,31 +49,67 @@ virtualMachines       Standard_A2    centralus             NotAvailableForSubscr
 virtualMachines       Standard_D1_v2 centralus   {2, 1, 3}                                  MaxResourceVolumeMB
 ```
 
-Některé další vzorky:
+Chcete-li filtrovat podle umístění a SKU, použijte:
 
 ```azurepowershell-interactive
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
-```
+$SubId = (Get-AzContext).Subscription.Id
 
-Připojení "FC" na konci vrátí další podrobnosti.
+$Region = "centralus" # change region here
+$VMSku = "Standard_M" # change VM SKU here
 
-## <a name="solution-2---azure-cli"></a>Řešení 2 – Azure CLI
+$VMSKUs = Get-AzComputeResourceSku | where {$_.Locations.Contains($Region) -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains($VMSku)}
 
-K určení, které SKU jsou k dispozici v určité oblasti, použijte `az vm list-skus` příkaz. Použijte `--location` parametr k filtrování výstupu do umístění, které používáte. Použijte `--size` parametr pro hledání podle názvu částečné velikosti.
+$OutTable = @()
 
-```azurecli-interactive
-az vm list-skus --location southcentralus --size Standard_F --output table
+foreach ($SkuName in $VMSKUs.Name)
+        {
+            $LocRestriction = if ((($VMSKUs | where Name -EQ $SkuName).Restrictions.Type | Out-String).Contains("Location")){"NotAvavalableInRegion"}else{"Available - No region restrictions applied" }
+            $ZoneRestriction = if ((($VMSKUs | where Name -EQ $SkuName).Restrictions.Type | Out-String).Contains("Zone")){"NotAvavalableInZone: "+(((($VMSKUs | where Name -EQ $SkuName).Restrictions.RestrictionInfo.Zones)| Where-Object {$_}) -join ",")}else{"Available - No zone restrictions applied"}
+            
+            
+            $OutTable += New-Object PSObject -Property @{
+                                                         "Name" = $SkuName
+                                                         "Location" = $Region
+                                                         "Applies to SubscriptionID" = $SubId
+                                                         "Subscription Restriction" = $LocRestriction
+                                                         "Zone Restriction" = $ZoneRestriction
+                                                         }
+         }
+
+$OutTable | select Name, Location, "Applies to SubscriptionID", "Region Restriction", "Zone Restriction" | Sort-Object -Property Name | FT
 ```
 
 Příkaz vrátí výsledky jako:
 
 ```output
-ResourceType     Locations       Name              Zones    Capabilities    Restrictions
----------------  --------------  ----------------  -------  --------------  --------------
-virtualMachines  southcentralus  Standard_F1                ...             None
-virtualMachines  southcentralus  Standard_F2                ...             None
-virtualMachines  southcentralus  Standard_F4                ...             None
+Name                   Location  Applies to SubscriptionID            Region Restriction                         Zone Restriction                        
+----                   --------  -------------------------            ------------------------                   ----------------     
+Standard_M128          centralus xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Available - No region restrictions applied Available - No zone restrictions applied
+Standard_M128-32ms     centralus xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Available - No region restrictions applied Available - No zone restrictions applied
+Standard_M128-64ms     centralus xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Available - No region restrictions applied Available - No zone restrictions applied
+Standard_M128dms_v2    centralus xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx NotAvavalableInRegion                      NotAvavalableInZone: 1,2,3
+```
+
+## <a name="solution-2---azure-cli"></a>Řešení 2 – Azure CLI
+
+K určení, které skladové jednotky jsou k dispozici v určité oblasti, použijte příkaz [AZ VM list-SKU](/cli/azure/vm#az_vm_list_skus) . Pomocí `--location` parametru můžete filtrovat výstup podle umístění. Použijte `--size` parametr pro hledání podle názvu částečné velikosti. Pomocí `--all` parametru můžete zobrazit všechny informace, včetně velikostí, které nejsou dostupné pro aktuální předplatné.
+
+Musíte mít Azure CLI verze 2.15.0 nebo novější. K ověření verze použijte `az --version` . V případě potřeby [aktualizujte svou instalaci](/cli/azure/update-azure-cli).
+
+```azurecli-interactive
+az vm list-skus --location southcentralus --size Standard_F --all --output table
+```
+
+Příkaz vrátí výsledky jako:
+
+```output
+ResourceType     Locations       Name              Zones    Restrictions
+---------------  --------------  ----------------  -------  --------------
+virtualMachines  southcentralus  Standard_F1       1,2,3    None
+virtualMachines  southcentralus  Standard_F2       1,2,3    None
+virtualMachines  southcentralus  Standard_F4       1,2,3    None
+...
+virtualMachines  southcentralus  Standard_F72s_v2  1,2,3    NotAvailableForSubscription, type: Zone, locations: southcentralus, zones: 1,2,3
 ...
 ```
 

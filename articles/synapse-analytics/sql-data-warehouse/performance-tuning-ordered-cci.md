@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 09/05/2019
+ms.date: 04/13/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: afb6efcee2ad4f5cf25a411eed353ff2fc27d75c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3245f560d9a5afb1f9cf8824eeaa3bc681706794
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460786"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389668"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu s využitím uspořádaného clusterovaného indexu columnstore  
 
@@ -133,6 +133,11 @@ Vytvoření seřazené konzulární instrukce je offline operace.  Pro tabulky, 
 4.    Spusťte příkaz ALTER INDEX <Ordered_CCI_Index> na <Table_B> znovu sestavit oddíl = <Partition_ID> v tabulce B pro opětovné sestavení přepnutého oddílu.  
 5.    Zopakujte kroky 3 a 4 pro každý oddíl v Table_A.
 6.    Po přepnutí všech oddílů z Table_A na Table_B a jejich opětovné vytvoření, vyřazení Table_A a přejmenování Table_B na Table_A. 
+
+>[!TIP]
+> U vyhrazené tabulky fondu SQL s uspořádanou INSTRUKCí upraví opětovné sestavení indexu znovu seřadí data v databázi tempdb. Monitoruje databázi tempdb během operací opětovného sestavení. Pokud potřebujete více místa v databázi tempdb, naplánujte horizontální navýšení kapacity fondu. Po dokončení opětovného sestavení indexu se horizontální navýšení kapacity znovu zvětší.
+>
+> U vyhrazené tabulky fondu SQL s uspořádanou INSTRUKCí změna uspořádání indexu data znovu neřadí. Pokud chcete data použít, použijte příkaz ALTER INDEX Rebuild.
 
 ## <a name="examples"></a>Příklady
 

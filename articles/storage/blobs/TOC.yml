@@ -469,20 +469,22 @@
                   href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Autorizace s využitím Azure AD
                   href: ../common/storage-use-azcopy-authorize-azure-active-directory.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Optimalizace výkonu
+                  href: ../common/storage-use-azcopy-optimize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Použití protokolů k vyhledání chyb a obnovení úloh
+                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Příklady: Odeslat'
                   href: ../common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Příklady: Stáhnout'
                   href: ../common/storage-use-azcopy-blobs-download.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Příklady: Synchronizace'
-                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Příklady: Kopírování mezi účty'
                   href: ../common/storage-use-azcopy-blobs-copy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Příklady: Synchronizace'
+                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Příklady: Kbelíky Amazon S3'
                   href: ../common/storage-use-azcopy-s3.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Příklady: bloky úložiště Google Cloud'
                   href: ../common/storage-use-azcopy-google-cloud.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Konfigurace, optimalizace, řešení potíží'
-                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Připojení úložiště pomocí systému souborů NFS
@@ -519,6 +521,8 @@
           href: ../blobs/reference.md
         - name: AzCopy v10
           items:
+            - name: Nastavení konfigurace
+              href: ../common/storage-ref-azcopy-configuration-settings.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy
               href: ../common/storage-ref-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy bench
@@ -741,18 +745,24 @@
               items:
                 - name: Začínáme
                   href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Autorizace s využitím Azure AD
+                  href: ../common/storage-use-azcopy-authorize-azure-active-directory.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Optimalizace výkonu
+                  href: ../common/storage-use-azcopy-optimize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Použití protokolů k vyhledání chyb a obnovení úloh
+                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Příklady: Odeslat'
                   href: ../common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Příklady: Stáhnout'
                   href: ../common/storage-use-azcopy-blobs-download.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Příklady: Synchronizace'
-                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Příklady: Kopírování mezi účty'
                   href: ../common/storage-use-azcopy-blobs-copy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Příklady: Synchronizace'
+                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Příklady: Kbelíky Amazon S3'
                   href: ../common/storage-use-azcopy-s3.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Konfigurace, optimalizace a řešení potíží'
-                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Příklady: bloky úložiště Google Cloud'
+                  href: ../common/storage-use-azcopy-google-cloud.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
               href: ../../data-factory/connector-azure-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Přenos dat pomocí nástroje DistCp

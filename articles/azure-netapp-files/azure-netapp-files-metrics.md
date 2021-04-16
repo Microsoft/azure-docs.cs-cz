@@ -12,18 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 04/12/2021
 ms.author: b-juche
-ms.openlocfilehash: a17e6cc0479cf8ff2306736994a369d9e44dfdda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b581470a886ff73739edfee7f45c64295eeeb1f0
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745940"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388600"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriky pro Azure NetApp Files
 
 Azure NetApp Files poskytuje metriky přiděleného úložiště, skutečné využití úložiště, Volume IOPS a latenci. Díky analýze těchto metrik můžete získat lepší informace o způsobu využití a výkonu svých účtů NetApp.  
+
+Metriky pro fond kapacity nebo svazek můžete najít tak, že vyberete **fond kapacity** nebo **svazek**.  Pak kliknutím na **metrika** zobrazte dostupné metriky: 
+
+[![Snímek, který ukazuje, jak přejít na vyžádání metriky. ](../media/azure-netapp-files/metrics-navigate-volume.png)](../media/azure-netapp-files/metrics-navigate-volume.png#lightbox)
 
 ## <a name="usage-metrics-for-capacity-pools"></a><a name="capacity_pools"></a>Metriky využití pro fondy kapacit
 

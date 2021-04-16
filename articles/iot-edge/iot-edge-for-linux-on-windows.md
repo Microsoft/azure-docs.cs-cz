@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 330eaf5c12372347917e9f3a4aeafb6a2088c592
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c7fd6c842d465dd5af5257628044666f10f2ece
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492570"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538205"
 ---
 # <a name="what-is-azure-iot-edge-for-linux-on-windows-preview"></a>Co je Azure IoT Edge pro Linux ve Windows (Preview)
 
@@ -48,7 +48,7 @@ Obousměrná komunikace mezi procesem Windows a virtuálním počítačem se sys
 
 IoT Edge pro Linux ve Windows zvýrazňuje interoperabilitu mezi součástmi systému Linux a Windows.
 
-Ukázky, které ukazují komunikaci mezi aplikacemi Windows a IoT Edge moduly, najdete v tématu [ukázky pro Windows 10 IoT](https://github.com/microsoft/Windows-IoT-Samples).
+Ukázky, které demonstrují komunikaci mezi aplikacemi Windows a IoT Edge moduly, najdete v tématu [EFLOW & Windows 10 IoT Samples](https://aka.ms/AzEFLOW-Samples).
 
 ## <a name="public-preview"></a>Verze Public Preview
 
@@ -58,7 +58,7 @@ IoT Edge pro Linux ve Windows je momentálně ve [verzi Public Preview](https://
 
 Použijte kanály podpory a zpětné vazby IoT Edge k získání pomoci s IoT Edge pro Linux ve Windows.
 
-**Hlášení chyb** – chyby mohou být hlášeny na [stránce problémy](https://github.com/azure/iotedge/issues) v IoT Edge open source projektu. Chyby související s Azure IoT Edge pro Linux ve Windows se dají ohlásit na [stránce problémů iotedge-eFlow](https://github.com/azure/iotedge-eflow/issues).
+**Hlášení chyb** – chyby mohou být hlášeny na [stránce problémy](https://github.com/azure/iotedge/issues) v IoT Edge open source projektu. Chyby související s Azure IoT Edge pro Linux ve Windows se dají ohlásit na [stránce problémů iotedge-eFlow](https://aka.ms/AzEFLOW-Issues).
 
 **Tým zákaznické podpory Microsoftu** – uživatelé, kteří mají [plán podpory](https://azure.microsoft.com/support/plans/) , můžou tým podpory zákazníků společnosti Microsoft zahájit vytvořením lístku podpory přímo z [Azure Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac).
 

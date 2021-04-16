@@ -2,14 +2,14 @@
 title: Vytvoření a konfigurace trezorů Recovery Services
 description: V tomto článku se dozvíte, jak vytvořit a nakonfigurovat trezory Recovery Services, které ukládají zálohy a body obnovení. Naučte se používat obnovení mezi oblastmi k obnovení v sekundární oblasti.
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 04/14/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1a20cd2b1245febea5fd18a9f6fe6e7a7bb6f04b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e2983e473fac72d02f0fdbc8c307e96326ac0a6
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101716750"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518571"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Vytvoření a konfigurace trezoru Recovery Services
 
@@ -69,7 +69,7 @@ Vzhledem k tomu, že tento proces je na úrovni úložiště, jsou k dispozici [
 >- Obnovení mezi oblastmi pro SQL a SAP HANA databáze je ve verzi Preview ve všech veřejných oblastech Azure.
 >- CRR je funkce výslovných přihlášení na úrovni trezoru pro libovolný trezor GRS (ve výchozím nastavení vypnutý).
 >- Po odsouhlasení může trvat až 48 hodin, než se zálohované položky zpřístupní v sekundárních oblastech.
->- V současné době se CRR pro virtuální počítače Azure podporují jenom pro virtuální počítače Azure Resource Manageru Azure. Klasické virtuální počítače Azure se nepodporují.  Když další typy správy podporují CRR, pak se **automaticky** zaregistrují.
+>- V současné době se CRR pro virtuální počítače Azure podporuje Azure Resource Manager virtuálních počítačů Azure a šifrovaných virtuálních počítačů Azure. Klasické virtuální počítače Azure se nepodporují. Když další typy správy podporují CRR, pak se **automaticky** zaregistrují.
 >- Obnovení mezi oblastmi se v tuto **chvíli nedá vrátit zpátky** na GRS nebo LRS, jakmile se ochrana poprvé iniciuje.
 >- V současné době je bod [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) sekundární oblasti v primární oblasti v rozmezí až 12 hodin, i když replikace [geograficky redundantního úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) je 15 minut.
 

@@ -11,26 +11,31 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c84636ea86b3b640aef365c1c5d8e634b9a1f48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fe220cf7b5cb8b67e5ab7ded221494e89a28aa5
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99593156"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530258"
 ---
 # <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>Jak programově nakonfigurovat synchronizaci cloudu pomocí MS Graph API
 
 Následující dokument popisuje, jak replikovat synchronizační profil od začátku pomocí pouze rozhraní MSGraph API.  
 Struktura toho, jak se to provede, se skládá z následujících kroků.  Jsou to tyto:
 
-- [Základní nastavení](#basic-setup)
-- [Vytvoření instančních objektů](#create-service-principals)
-- [Vytvořit úlohu synchronizace](#create-sync-job)
-- [Aktualizovat cílovou doménu](#update-targeted-domain)
-- [Povolit synchronizaci hodnot hash hesel](#enable-sync-password-hashes-on-configuration-blade)
-- [Náhodné odstranění](#accidental-deletes)
-- [Spustit úlohu synchronizace](#start-sync-job)
-- [Stav kontroly](#review-status)
+- [Jak programově nakonfigurovat synchronizaci cloudu pomocí MS Graph API](#how-to-programmatically-configure-cloud-sync-using-ms-graph-api)
+  - [Základní nastavení](#basic-setup)
+    - [Povolit příznaky tenanta](#enable-tenant-flags)
+  - [Vytvoření instančních objektů](#create-service-principals)
+  - [Vytvořit úlohu synchronizace](#create-sync-job)
+  - [Aktualizovat cílovou doménu](#update-targeted-domain)
+  - [Povolit synchronizaci hodnot hash hesel v okně Konfigurace](#enable-sync-password-hashes-on-configuration-blade)
+  - [Náhodné odstranění](#accidental-deletes)
+    - [Povolení a nastavení prahové hodnoty](#enabling-and-setting-the-threshold)
+    - [Povolení odstranění](#allowing-deletes)
+  - [Spustit úlohu synchronizace](#start-sync-job)
+  - [Stav kontroly](#review-status)
+  - [Další kroky](#next-steps)
 
 Pomocí těchto příkazů [modul Microsoft Azure Active Directory pro Windows PowerShell](/powershell/module/msonline/) můžete povolit synchronizaci pro produkčního tenanta, což je nezbytný předpoklad pro volání webové služby správy pro tohoto tenanta.
 
@@ -45,7 +50,7 @@ Pomocí těchto příkazů [modul Microsoft Azure Active Directory pro Windows P
 První z těchto dvou příkazů vyžaduje Azure Active Directory přihlašovací údaje. Tyto rutin implicitně identifikují tenanta a povolují synchronizaci.
 
 ## <a name="create-service-principals"></a>Vytvoření instančních objektů
-Dál je potřeba vytvořit [AD2AAD aplikaci nebo instanční objekt](/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http) .
+Dál je potřeba vytvořit [AD2AAD aplikaci nebo instanční objekt](/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http&preserve-view=true) .
 
 Je nutné použít toto ID aplikace 1a4721b3-e57f-4451-ae87-ef078703ec94. DisplayName je adresa URL domény služby Active Directory, pokud se používá na portálu (například contoso.com), ale může mít název něco jiného.
 
@@ -61,7 +66,7 @@ Je nutné použít toto ID aplikace 1a4721b3-e57f-4451-ae87-ef078703ec94. Displa
 ## <a name="create-sync-job"></a>Vytvořit úlohu synchronizace
 Výstup výše uvedeného příkazu vrátí objectId objektu služby, který byl vytvořen. V tomto příkladu je identifikátor objectId 614ac0e9-a59b-481f-bd8f-79a73d167e1c.  Pomocí Microsoft Graph přidejte k objektu služby synchronizationJob.  
 
-Dokumentaci k vytvoření úlohy synchronizace najdete [tady](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta).
+Dokumentaci k vytvoření úlohy synchronizace najdete [tady](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta&preserve-view=true).
 
 Pokud jste výše uvedené ID nezaregistrovali, můžete instanční objekt najít spuštěním následujícího volání MS graphu. K provedení tohoto volání budete potřebovat Directory. Read. All oprávnění:
  
@@ -282,11 +287,11 @@ Request Body:
 
  `GET https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs/ ` 
 
-Dokumentaci k načítání úloh najdete [tady](/graph/api/synchronization-synchronizationjob-list?tabs=http&view=graph-rest-beta). 
+Dokumentaci k načítání úloh najdete [tady](/graph/api/synchronization-synchronizationjob-list?tabs=http&view=graph-rest-beta&preserve-view=true). 
  
 Chcete-li spustit úlohu, vydejte tento požadavek pomocí identifikátoru objektu služby vytvořeného v prvním kroku a identifikátor úlohy vrácený z požadavku, který úlohu vytvořil.
 
-Dokumentaci, jak spustit úlohu, najdete [tady](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta). 
+Dokumentaci, jak spustit úlohu, najdete [tady](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta&preserve-view=true). 
 
  ```
  POST  https://graph.microsoft.com/beta/servicePrincipals/8895955e-2e6c-4d79-8943-4d72ca36878f/synchronization/jobs/AD2AADProvisioning.fc96887f36da47508c935c28a0c0b6da/start
@@ -294,7 +299,7 @@ Dokumentaci, jak spustit úlohu, najdete [tady](/graph/api/synchronization-synch
 
 Očekávaná odpověď je... HTTP 204/žádný obsah.
 
-[Tady](/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta)jsou popsané další příkazy pro řízení úlohy.
+[Tady](/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta&preserve-view=true)jsou popsané další příkazy pro řízení úlohy.
  
 Aby bylo možné úlohu restartovat, bude použita jedna z těchto...
 
@@ -320,4 +325,4 @@ V části stav návratového objektu vyhledejte relevantní podrobnosti.
 
 - [Co je Azure AD Connect synchronizace cloudu?](what-is-cloud-sync.md)
 - [Transformace](how-to-transformation.md)
-- [Rozhraní API pro synchronizaci Azure AD](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Rozhraní API pro synchronizaci Azure AD](/graph/api/resources/synchronization-overview?view=graph-rest-beta&preserve-view=true)

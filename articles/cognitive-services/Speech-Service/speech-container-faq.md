@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16158b4ecfb46ea9092fe9eeb31cc4dee259b1ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28a044f42d0774d940521964b68b38a0f35bcdbb
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573740"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387951"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy ke kontejnerům služby Speech Service (FAQ)
 
@@ -290,7 +290,7 @@ Uhlík byl opraven na verzi 1,8.
 
 Mohli byste vám pomáhat s plněním následujících metrik testu, včetně toho, které funkce testovat a jak testovat sadu SDK a rozhraní REST API? Obzvláště rozdíly v "interaktivních" a "konverzacích", které jsem nevidí od existující dokumentace/ukázky.
 
-| Koncový bod                                                | Funkční test                                                   | Sada SDK | REST API |
+| Koncový bod                                                | Funkční test                                                   | Sada SDK | Rozhraní REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
 | `/speech/synthesize/cognitiveservices/v1`               | Text z syntezátoru (převod textu na řeč)                                  |     | Yes      |
 | `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services koncový bod protokolu WebSocket pro diktování Prem v1        | Yes | No       |
@@ -536,76 +536,6 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 ```
 
  `SetSpeechSynthesisVoiceName`Funkce je volána, protože kontejnery s aktualizovaným modulem pro převod textu na řeč vyžadují hlasový název.
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>Jak můžu použít sadu Speech SDK v 1.7 pomocí kontejneru řeči?</b>
-</summary>
-
-**Odpověď:** Existují tři koncové body kontejneru řeči pro různá použití, jsou definovány jako režimy řeči – viz níže:
-
-## <a name="speech-modes"></a>Režimy řeči
-
-[!INCLUDE [speech-modes](includes/speech-modes.md)]
-
-Jsou určené pro různé účely a jsou používány odlišně.
-
-[Ukázky](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py)Pythonu:
-- Pro jednoduché rozpoznávání (interaktivní režim) s vlastním koncovým bodem (tj. `SpeechConfig` s parametrem koncového bodu) naleznete v tématu `speech_recognize_once_from_file_with_custom_endpoint_parameters()` .
-- V případě nepřetržitého rozpoznávání (režimu konverzace) a pouhým úpravou použití vlastního koncového bodu, který je uveden výše, přečtěte si téma `speech_recognize_continuous_from_file()` .
-- Chcete-li povolit diktování v ukázkách, jako jsou výše (pouze pokud to opravdu potřebujete), hned po vytvoření `speech_config` přidejte kód `speech_config.enable_dictation()` .
-
-V jazyce C# Chcete-li povolit diktování, volejte `SpeechConfig.EnableDictation()` funkci.
-
-### <a name="fromendpoint-apis"></a>`FromEndpoint` Třídy
-| Jazyk | Podrobnosti rozhraní API |
-|----------|:------------|
-| C++ | <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Objective-C | <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithendpoint" target="_blank">`SPXSpeechConfiguration:initWithEndpoint;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| JavaScript | V současné době není podporována, ani není plánována. |
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>Jak můžu použít sadu Speech SDK pro sadu Speech v kontejneru řeči?</b>
-</summary>
-
-**Odpověď:** Existuje nové `FromHost` rozhraní API. Nenahrazuje ani nemění žádná existující rozhraní API. Jenom přidá alternativní způsob, jak vytvořit konfiguraci řeči pomocí vlastního hostitele.
-
-### <a name="fromhost-apis"></a>`FromHost` Třídy
-
-| Jazyk | Podrobnosti rozhraní API |
-|--|:-|
-| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| C++ | <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#fromhost" target="_blank">`SpeechConfig::FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.fromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Objective-C | <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithhost" target="_blank">`SPXSpeechConfiguration:initWithHost;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| JavaScript | Aktuálně se nepodporuje. |
-
-> Parametry: hostitel (povinný), klíč předplatného (volitelné, pokud můžete službu použít bez ní).
-
-Formát pro hostitele je `protocol://hostname:port` `:port` volitelné (viz níže):
-- Pokud je kontejner spuštěn místně, název hostitele je `localhost` .
-- Pokud je kontejner spuštěn na vzdáleném serveru, použijte název hostitele nebo adresu IPv4 tohoto serveru.
-
-Příklady parametrů hostitele pro převod řeči na text:
-- `ws://localhost:5000` – nezabezpečené připojení k místnímu kontejneru pomocí portu 5000
-- `ws://some.host.com:5000` – nezabezpečené připojení k kontejneru běžícímu na vzdáleném serveru
-
-Ukázky Pythonu výše, ale použijte `host` parametr místo `endpoint` :
-
-```python
-speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")
-```
 
 <br>
 </details>

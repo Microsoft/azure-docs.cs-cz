@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: eaf6fc789020553b80967341cc9219a30ffce749
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: db1ac3f5de507a5cfdbfec7216afea9a0f4ac541
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446107"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515035"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Přidání jazykových sad do bitové kopie Windows 10 s více relacemi
 
@@ -55,6 +55,7 @@ Abyste mohli přidat několik jazyků, budete potřebovat následující věci, 
           - [Windows 10, verze 2004 nebo 20H2 **11c** lxp ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
           - [Windows 10, verze 2004 nebo 20H2 **1C** lxp ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
           - [Windows 10, verze 2004 nebo 20H2 **2C** lxp ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2102C.iso)
+          - [Windows 10, verze 2004 nebo 20H2 **3C** lxp ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2103C.iso)
 
 - Sdílená složka služby soubory Azure nebo sdílená složka na virtuálním počítači souborového serveru systému Windows
 

@@ -3,13 +3,13 @@ title: Obnovení virtuálních počítačů pomocí Azure Portal
 description: Obnovte virtuální počítač Azure z bodu obnovení pomocí Azure Portal, včetně funkce pro obnovení mezi oblastmi.
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 08/02/2020
-ms.openlocfilehash: 83681d2bb3622857fb9141a3cec79d92d278a814
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/14/2021
+ms.openlocfilehash: 452ca5e1b1c6554a2ae1651068eae06ad9a6b232
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568745"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515222"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -150,7 +150,7 @@ Pokud je povolená možnost CRR, můžete zobrazit zálohované položky v sekun
 1. Vyberte **Sekundární oblast** pro zobrazení položek v sekundární oblasti.
 
 >[!NOTE]
->V seznamu se zobrazí pouze typy správy zálohování podporující funkci CRR. V současné době je povolena pouze podpora obnovení dat sekundární oblasti do sekundární oblasti.
+>V seznamu se zobrazí pouze typy správy zálohování podporující funkci CRR. V současné době je povolena pouze podpora obnovení dat sekundární oblasti do sekundární oblasti.<br></br>CRR pro virtuální počítače Azure se podporují pro virtuální počítače spravované Azure (včetně šifrovaných virtuálních počítačů Azure).
 
 ![Virtuální počítače v sekundární oblasti](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
 

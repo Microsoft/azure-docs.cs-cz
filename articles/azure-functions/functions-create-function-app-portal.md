@@ -4,12 +4,12 @@ description: Naučíte se postup vytvoření první funkce Azure Function pro pr
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: ea5b6a9e51b6982a33dc748f72557ed539b8e2e0
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 336e531f4ec64141770fc26d7e6eea9ebfedf922
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385985"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517130"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Vytvoření první funkce na webu Azure Portal
 
@@ -64,9 +64,9 @@ Dále vytvořte funkci v nové aplikaci Function App.
 
     Pokud adresa URL žádosti obsahovala [přístupový klíč](functions-bindings-http-webhook-trigger.md#authorization-keys) ( `?code=...` ), znamená to, že při vytváření funkce namísto úrovně **anonymního** přístupu zvolíte **funkci** . V takovém případě byste měli místo toho připojit `&name=<your_name>` .
 
-1. Při spuštění funkce se do protokolů zaznamenávají informace o trasování. Chcete-li zobrazit výstup trasování, vraťte se na stránku **Code + test** na portálu a rozbalte šipku **protokoly** v dolní části stránky.
+1. Při spuštění funkce se do protokolů zaznamenávají informace o trasování. Chcete-li zobrazit výstup trasování, vraťte se na stránku **Code + test** na portálu a rozbalte šipku **protokoly** v dolní části stránky. Zavolejte funkci znovu, abyste viděli výstup trasování zapsaný do protokolů. 
 
-   ![Prohlížeč protokolu funkcí na webu Azure Portal.](./media/functions-create-first-azure-function/function-view-logs.png)
+    :::image type="content" source="media/functions-create-first-azure-function/function-view-logs.png" alt-text="Prohlížeč protokolu funkcí v Azure Portal":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

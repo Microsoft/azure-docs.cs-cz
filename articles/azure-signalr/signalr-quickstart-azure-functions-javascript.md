@@ -2,18 +2,20 @@
 title: Vytvoření chatovací místnosti s Azure Functions a službou Signal pomocí JavaScriptu
 description: Rychlý Start pro použití služby signalizace Azure a Azure Functions k vytvoření chatovací místnosti pomocí JavaScriptu.
 author: sffamily
+ms.author: zhshang
+ms.date: 12/14/2019
+ms.topic: quickstart
 ms.service: signalr
 ms.devlang: javascript
-ms.topic: quickstart
-ms.date: 12/14/2019
-ms.author: zhshang
-ms.custom: devx-track-js
-ms.openlocfilehash: 061dce01d2437d04d371ac65c115a1d95136fb5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- devx-track-js
+- mode-api
+ms.openlocfilehash: 5e2c9dcd1efc85e1ea3fe6381cbfbff0c5e62fc5
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94874691"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533219"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Rychlý Start: použití JavaScriptu k vytvoření chatovací místnosti s Azure Functions a službou signalizace
 
@@ -95,4 +97,3 @@ V tomto rychlém startu jste v VS Code vytvořili a spustili aplikaci bez server
 
 > [!div class="nextstepaction"]
 > [Nasazení Azure Functions přes VS Code](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
-

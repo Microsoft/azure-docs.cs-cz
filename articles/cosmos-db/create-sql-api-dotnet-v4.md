@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/07/2021
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: 559ace3e9cb9f6daeb6dc3da581bb99d3ff9145e
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.custom: devx-track-dotnet, devx-track-azurecli
+ms.openlocfilehash: 495191dfcdfd7a4d318bef508878e951d88b3ae6
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365157"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483873"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-preview-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Rychlý Start: Sestavte konzolovou aplikaci pomocí sady .NET V4 SDK (Preview), která umožňuje spravovat Azure Cosmos DB prostředky účtu rozhraní SQL API.
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,7 +36,7 @@ Začínáme s klientskou knihovnou Azure Cosmos DB SQL API pro .NET Postupujte p
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure Cosmos DB je databáze Microsoftu pro rychlé NoSQL s otevřenými rozhraními API pro jakékoli škálování. Azure Cosmos DB můžete použít k rychlému vytvoření a dotazování databáze klíčů/hodnot, dokumentů a grafů. Použijte klientskou knihovnu Azure Cosmos DB SQL API pro .NET pro:
+Azure Cosmos DB je™ Microsoftâ NoSQL s rychlá databáze s otevřenými rozhraními API pro jakékoli škálování. Azure Cosmos DB můžete použít k rychlému vytvoření a dotazování databáze klíčů/hodnot, dokumentů a grafů. Použijte klientskou knihovnu Azure Cosmos DB SQL API pro .NET pro:
 
 * Vytvoření databáze Azure Cosmos a kontejneru
 * Přidání ukázkových dat do kontejneru
@@ -96,7 +96,7 @@ Vytvoření účtu Azure Cosmos trvá chvilku, jakmile bude operace úspěšná,
 Vytvořte novou aplikaci .NET v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE). Otevřete příkazový řádek systému Windows nebo okno terminálu z místního počítače. Všechny příkazy v dalších částech budete spouštět z příkazového řádku nebo terminálu.  Spusťte následující příkaz dotnet New a vytvořte novou aplikaci s názvem `todo` . Parametr--langversion – nastaví vlastnost langversion – v souboru vytvořeného projektu.
 
    ```bash
-   dotnet new console –langVersion:8 -n todo
+   dotnet new console â€“langVersion:8 -n todo
    ```
 
 Změňte adresář na nově vytvořenou složku aplikace. Aplikaci můžete vytvořit pomocí:

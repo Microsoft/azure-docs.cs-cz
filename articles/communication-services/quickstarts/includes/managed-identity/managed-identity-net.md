@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 424e70f4f3656be2196f4dbdfbddb852846b6897
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
-ms.translationtype: MT
+ms.openlocfilehash: a055cc1b715f93830647c9b13793a59d09db605c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307430"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107513300"
 ---
 ## <a name="setting-up"></a>Nastavení
 
@@ -165,7 +165,7 @@ class Program
     }
 ```
 
-## <a name="run-the-program"></a>Spustit program
+## <a name="run-the-program"></a>Spuštění programu
 
 Nyní byste měli být schopni aplikaci spustit pomocí `dotnet run` ze složky aplikace. Výstup by měl vypadat takto:
 ```

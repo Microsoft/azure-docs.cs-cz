@@ -3,12 +3,12 @@ title: Zálohování SQL Server databází do Azure
 description: Tento článek vysvětluje, jak zálohovat SQL Server do Azure. Článek také vysvětluje SQL Server obnovení.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 510d9637031928e31abaa5f82a5bf58c6ef44719
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6daf631248958948e799b20284d84a1e59e5dfe
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91316833"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518860"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -41,7 +41,7 @@ Než začnete, ověřte následující požadavky:
 
 1. Ujistěte se, že máte spuštěnou instanci SQL Server v Azure. Na webu Marketplace můžete [rychle vytvořit instanci SQL Server](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md) .
 2. Seznamte se s [požadavky na funkce](sql-support-matrix.md#feature-considerations-and-limitations) a s [podporou scénářů](sql-support-matrix.md#scenario-support).
-3. [Přečtěte si běžné otázky](faq-backup-sql-server.md) k tomuto scénáři.
+3. [Přečtěte si běžné otázky](faq-backup-sql-server.yml) k tomuto scénáři.
 
 ## <a name="set-vm-permissions"></a>Nastavení oprávnění virtuálního počítače
 

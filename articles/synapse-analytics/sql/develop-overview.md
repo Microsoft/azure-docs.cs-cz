@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d47b4847a12b63532e44a8a1a47101dd065f811b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d842414d3046692c982ca3203957a96f8a01b37
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96446603"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377326"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Rozhodnutí o návrhu a techniky kódování pro funkce synapse SQL ve službě Azure synapse Analytics
 V tomto článku najdete seznam prostředků pro vyhrazený fond SQL a funkce fondu SQL bez serveru synapse SQL. Doporučené články jsou rozdělené do dvou částí: klíčová rozhodnutí pro návrh a techniky vývoje a kódování.
@@ -46,7 +46,7 @@ Níže najdete základní články, které zdůrazňují konkrétní techniky k�
 
 | Článek | vyhrazený fond SQL | Bezserverový fond SQL |
 | ------- | -------- | ------------- |
-| [Uložené procedury](develop-stored-procedures.md)  | Yes                | No                      |
+| [Uložené procedury](develop-stored-procedures.md)  | Yes                | Yes                      |
 | [Popisky](develop-label.md)                           | Yes                | No                      |
 | [Zobrazení](develop-views.md)                             | Yes                | Yes                     |
 | [Dočasné tabulky](develop-tables-temporary.md)       | Yes                | Yes                     |

@@ -3,12 +3,12 @@ title: Přehled trezorů služby Recovery Services
 description: Přehled trezorů Recovery Services.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 0ed37446e1ccf0780f924143c8f063964adf0004
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f2018f0f3d3135d632418c2e591e6ad938d62d2
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98755112"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517447"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezorů služby Recovery Services
 
@@ -57,7 +57,7 @@ Azure Advisor poskytuje hodinová [doporučení](../advisor/advisor-high-availab
 ## <a name="additional-resources"></a>Další zdroje informací
 
 - [Úložiště – podporované a nepodporované scénáře](backup-support-matrix.md#vault-support)
-- [Nejčastější dotazy k trezoru](backup-azure-backup-faq.md)
+- [Nejčastější dotazy k trezoru](backup-azure-backup-faq.yml)
 
 ## <a name="next-steps"></a>Další kroky
 

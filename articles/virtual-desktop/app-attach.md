@@ -6,19 +6,16 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 143f0a9d23cdc70425147faa95258ec753b92691
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: d1ca4a843c6731cde7ed70d65fc230a21ef6e7c4
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365376"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389430"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach"></a>Vytváření skriptů PowerShellu pro připojení aplikace MSIX
 
 Toto téma vás seznámí s postupem nastavení skriptů PowerShellu pro připojení aplikace MSIX.
-
->[!IMPORTANT]
->Než začnete, nezapomeňte vyplnit a odeslat [Tento formulář](https://aka.ms/enablemsixappattach) , aby bylo možné ve svém předplatném připojit aplikaci MSIX. Pokud nemáte schválenou žádost, připojení aplikace MSIX nebude fungovat. Schvalování žádostí může během pracovních dnů trvat až 24 hodin. Po přijetí a dokončení vaší žádosti obdržíte e-mail.
 
 ## <a name="install-certificates"></a>Instalace certifikátů
 

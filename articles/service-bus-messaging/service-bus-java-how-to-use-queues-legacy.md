@@ -1,16 +1,21 @@
 ---
 title: Použití Azure Service Bus front s Java
 description: V tomto kurzu se naučíte vytvářet aplikace v jazyce Java pro posílání zpráv a příjem zpráv z fronty Azure Service Bus.
-ms.devlang: Java
-ms.topic: quickstart
 ms.date: 06/23/2020
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 1f7c5f71e75a1b683433531a9d95905e9a7d81cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.topic: quickstart
+ms.devlang: Java
+ms.custom:
+- seo-java-july2019
+- seo-java-august2019
+- seo-java-september2019
+- devx-track-java
+- mode-api
+ms.openlocfilehash: 38657f333fea4ca18fb76eb5832649067bfd01b4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729721"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538257"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Rychlý Start: použití Azure Service Bus front s jazykem Java k posílání a přijímání zpráv
 
@@ -21,7 +26,7 @@ V tomto kurzu se naučíte vytvářet aplikace v jazyce Java pro posílání zpr
 >  V tomto rychlém startu se používají staré `azure-servicebus` balíčky. Rychlý Start, který používá nejnovější `azure-messaging-servicebus` balíček, najdete v tématu [posílání a přijímání `azure-messaging-servicebus` zpráv pomocí ](service-bus-java-how-to-use-queues.md). 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) .
     1. Přečtěte si rychlý **přehled** Service Busch **front**. 

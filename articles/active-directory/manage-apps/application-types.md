@@ -2,20 +2,20 @@
 title: Zobrazení aplikací pomocí klienta Azure Active Directory pro správu identit
 description: Seznamte se s tím, jak zobrazit všechny aplikace pomocí klienta Azure Active Directory pro správu identit.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/07/2021
-ms.author: kenwith
-ms.openlocfilehash: 443e8c83ec29f9f0478e3881b9e6d6a8eb0bf403
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: iangithinji
+ms.openlocfilehash: b11f2dab97b3c45502c6050e06f0f39312f8c3c0
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99259782"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378069"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Zobrazení aplikací pomocí tenanta Azure AD pro správu identit
 Základní informace [o řadě rychlý Start při správě aplikací](view-applications-portal.md) vás seznámí se základy. V takovém případě se dozvíte, jak zobrazit všechny aplikace pomocí tenanta Azure AD pro správu identit. Tento článek komentáře trochu hlubších typů aplikací, které najdete.

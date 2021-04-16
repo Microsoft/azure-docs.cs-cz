@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 842ab27fe02501efbbc6c06c3d36d2218c3c17b9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eb469c757e2898a9925dd7d3358cfe95734cb2e9
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799237"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537721"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-account-access"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s přístupem k Single-Account AWS
 
@@ -401,11 +401,11 @@ K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Mi
  
 * V části **zřizování** se v podčásti **mapování** zobrazuje "načítání...". zpráva a nikdy nezobrazuje mapování atributů. Jediným podporovaným pracovním postupem zřizování je import rolí z AWS do služby Azure AD pro výběr během přiřazení uživatele nebo skupiny. Mapování atributů pro tuto vlastnost jsou předem určena a nelze je konfigurovat.
 
-* Oddíl **zřizování** podporuje jenom zadání jedné sady přihlašovacích údajů pro jednoho klienta AWS ve chvíli. Všechny importované role se zapisují do `appRoles` vlastnosti [ `servicePrincipal` objektu](/graph/api/resources/serviceprincipal?view=graph-rest-beta) Azure AD pro tenanta AWS.
+* Oddíl **zřizování** podporuje jenom zadání jedné sady přihlašovacích údajů pro jednoho klienta AWS ve chvíli. Všechny importované role se zapisují do `appRoles` vlastnosti [ `servicePrincipal` objektu](/graph/api/resources/serviceprincipal) Azure AD pro tenanta AWS.
 
   `servicePrincipals`Do Azure AD se dá přidat víc TENANTŮ AWS (reprezentovaný) z galerie pro zřizování. K dispozici je ale známý problém s tím, že není možné automaticky zapisovat všechny importované role z několika AWS `servicePrincipals` používaných k zřizování do jediného `servicePrincipal` používaného pro jednotné přihlašování.
 
-  Jako alternativní řešení můžete použít [rozhraní Microsoft Graph API](/graph/api/resources/serviceprincipal?view=graph-rest-beta) k extrakci všech `appRoles` importovaných do každého AWS `servicePrincipal` , kde je zřizování nakonfigurované. Následně můžete přidat tyto řetězce rolí do AWS, `servicePrincipal` kde je nakonfigurované jednotné přihlašování.
+  Jako alternativní řešení můžete použít [rozhraní Microsoft Graph API](/graph/api/resources/serviceprincipal) k extrakci všech `appRoles` importovaných do každého AWS `servicePrincipal` , kde je zřizování nakonfigurované. Následně můžete přidat tyto řetězce rolí do AWS, `servicePrincipal` kde je nakonfigurované jednotné přihlašování.
 
 * Role musí splňovat následující požadavky, aby měly nárok na Import z AWS do služby Azure AD:
 

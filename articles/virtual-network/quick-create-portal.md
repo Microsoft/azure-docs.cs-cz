@@ -3,20 +3,23 @@ title: 'Rychlý Start: vytvoření virtuální sítě – Azure Portal'
 titleSuffix: Azure Virtual Network
 description: V tomto rychlém startu se dozvíte, jak vytvořit virtuální síť pomocí Azure Portal.
 author: KumudD
-tags: azure-resource-manager
-ms.service: virtual-network
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: virtual-network
-ms.workload: infrastructure
-ms.date: 03/17/2021
 ms.author: kumud
-ms.openlocfilehash: 8af5b302e3ec790b6ee9356aca0699d0edcd284e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/17/2021
+ms.topic: quickstart
+ms.service: virtual-network
+ms.workload: infrastructure
+ms.tgt_pltfrm: virtual-network
+ms.devlang: na
+tags:
+- azure-resource-manager
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 43c45b43084656a45d2509ee2c7a4376cdc7c052
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606057"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531183"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Rychlý start: Vytvoření virtuální sítě pomocí webu Azure Portal
 
@@ -162,6 +165,8 @@ Vytvořte ve virtuální síti dva virtuální počítače:
 5. Vyberte kartu **Revize + vytvořit** nebo v dolní části stránky vyberte tlačítko modrá **recenze + vytvořit** .
   
 6. Zkontrolujte nastavení a pak vyberte **vytvořit**.
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="connect-to-myvm1"></a>Připojení k myVM1
 
