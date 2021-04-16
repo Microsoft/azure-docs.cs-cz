@@ -11,12 +11,12 @@ ms.custom: references_regions
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: juliako
-ms.openlocfilehash: 29dbdb896d1a6063fec277afa33327c84cb2f0cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e80699a043d4c18a1bc7ba75ce58c6972fae0fad
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880923"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531559"
 ---
 # <a name="use-the-animated-character-detection-preview-with-portal-and-api"></a>Použití animovaného rozpoznávání znaků (Preview) s portálem a rozhraním API 
 
@@ -59,7 +59,7 @@ Pomocí těchto kroků se připojíte Custom Vision účtu k Video Indexer nebo 
 1. Vyberte **připojit Custom Vision účet (Preview)** a klikněte na **vyzkoušet**.
 1. Vyplňte požadovaná pole i přístupového tokenu a klikněte na **Odeslat**. 
 
-    Další informace o tom, jak získat přístupový token Video Indexer přejděte na portál pro [vývojáře](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)a podívejte se na [příslušnou dokumentaci](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api).  
+    Další informace o tom, jak získat přístupový token Video Indexer přejděte na portál pro [vývojáře](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Account-Access-Token)a podívejte se na [příslušnou dokumentaci](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api).  
 1. Jakmile volání vrátí odpověď 200 OK, váš účet je připojený.
 1. Připojení můžete ověřit tak, že přejdete na portál [video indexer](https://vi.microsoft.com/)):
 1. Klikněte na tlačítko **Přizpůsobení modelu obsahu** v pravém horním rohu.
@@ -154,16 +154,16 @@ Indexer a model, nevytvářejte model na webu Custom Vision (placené účty maj
     Pokud vlastníte Video Indexer placený účet, musíte nejdřív připojit účet Custom Vision. <br/>
     Pokud účet Custom Vision ještě nemáte, vytvořte ho prosím. Další informace najdete v tématu [Custom Vision](../../cognitive-services/custom-vision-service/overview.md).
 
-    [Připojte účet Custom Vision pomocí rozhraní API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag).
+    [Připojte účet Custom Vision pomocí rozhraní API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Connect-Custom-Vision-Account).
 1. Vytvořte animovaný znakový model.
 
-    Použijte rozhraní API pro [Vytvoření modelu animace](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Animation-Model?&groupBy=tag) .
+    Použijte rozhraní API pro [Vytvoření modelu animace](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Animation-Model) .
 1. Indexuje nebo znovu indexuje video.
 
-    Použijte rozhraní API pro [opakované indexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) . 
+    Použijte rozhraní API pro [opakované indexování](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video) . 
 1. Přizpůsobení animovaných modelů znaků.
 
-    Použijte rozhraní API pro [model animace vlaku](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Train-Animation-Model?&groupBy=tag) .
+    Použijte rozhraní API pro [model animace vlaku](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Train-Animation-Model) .
 
 ### <a name="view-the-output"></a>Zobrazit výstup
 

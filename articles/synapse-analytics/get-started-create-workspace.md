@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: b22954edf4f3a5a935c470326aa43bd24ee2d708
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 61fcbfa9d40ebb26485ce8160fa3b011935ab4d6
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366058"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536306"
 ---
 # <a name="creating-a-synapse-workspace"></a>Vytváření pracovního prostoru synapse
 
@@ -43,7 +43,10 @@ Vyplňte následující pole:
 Vyplňte následující pole:
 
 1. **Název pracovního prostoru** – vyberte libovolný globálně jedinečný název. V tomto kurzu použijeme **MyWorkspace**.
-1. **Oblast** – vyberte libovolnou oblast.
+1. **Oblast** – vyberte oblast, do které jste umístili klientské aplikace/služby (například virtuální počítač Azure, Power BI, Azure Analysis Service), a úložiště obsahující data (například úložiště Azure Data Lake, Azure Cosmos DB analytické úložiště).
+
+> [!NOTE]
+> Pracovní prostor, který není umístěn společně s klientskými aplikacemi nebo úložištěm, může být hlavní příčinou mnoha problémů s výkonem. Pokud jsou data nebo klienti umístěni v několika oblastech, můžete vytvořit samostatné pracovní prostory v různých oblastech, které jsou umístěny v rámci vašich dat a klientů.
 
 V části **vybrat data Lake Storage Gen 2**:
 
@@ -71,7 +74,7 @@ Pro mnoho příkladů v této příručce Začínáme budeme 100 používat dato
 * Stáhněte si tento soubor do počítače: https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet 
 * V synapse studiu přejděte do centra dat. 
 * Vyberte **propojeno**.
-* V kategorii **Azure Data Lake Storae Gen2** uvidíte položku s názvem jako **MyWorkspace (primární-contosolake)**.
+* V kategorii **Azure Data Lake Storage Gen2** uvidíte položku s názvem, jako je **MyWorkspace (Primary-contosolake)**.
 * Vyberte kontejner s názvem **Uživatelé (primární)**.
 * Vyberte **nahrát** a vyberte `NYCTripSmall.parquet` soubor, který jste stáhli.
 

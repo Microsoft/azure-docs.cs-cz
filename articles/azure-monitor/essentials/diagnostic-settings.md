@@ -6,12 +6,12 @@ ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 254d403adc687074eae772bcdcc55793bb25b336
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 32cb1a54e8d3b4cca942616bb249968c4ed9e50c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048909"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477838"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Vytvoření nastavení diagnostiky pro odesílání metrik a protokolů platformy do různých cílů
 [Protokoly platforem](./platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. [Metriky platformy](./data-platform-metrics.md) se ve výchozím nastavení shromažďují a obvykle se ukládají do databáze Azure monitor metrik. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání metrik platforem a protokolů platforem do různých umístění.
@@ -42,7 +42,7 @@ Následující video vás provede protokoly platformy směrování s nastavením
 ## <a name="destinations"></a>Cíle
 Protokoly a metriky platformy je možné odeslat do cílových umístění v následující tabulce. 
 
-| Cíl | Description |
+| Cíl | Popis |
 |:---|:---|
 | [Pracovní prostor Log Analytics](../logs/design-logs-deployment.md) | Odesílání protokolů a metrik do Log Analyticsového pracovního prostoru vám umožní je analyzovat s dalšími daty monitorování shromážděnými pomocí Azure Monitor pomocí výkonných dotazů protokolu a také využívat jiné Azure Monitor funkce, jako jsou výstrahy a vizualizace. |
 | [Centrum událostí](../../event-hubs/index.yml) | Odesílání protokolů a metrik do Event Hubs umožňuje streamování dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics.  |
@@ -153,8 +153,31 @@ Pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/dia
 > [!IMPORTANT]
 > Tuto metodu nelze použít pro protokol aktivit Azure. Místo toho použijte možnost [vytvořit nastavení diagnostiky v Azure monitor pomocí šablony Správce prostředků](./resource-manager-diagnostic-settings.md) k vytvoření šablony Správce prostředků a nasaďte ji pomocí rozhraní příkazového řádku.
 
-Následuje příklad příkazu CLI pro vytvoření nastavení diagnostiky pomocí všech tří cílů.
+Následuje příklad příkazu CLI pro vytvoření nastavení diagnostiky pomocí všech tří cílů. Syntaxe je mírně rozdíl v závislosti na vašem klientovi.
 
+# <a name="cmd"></a>[PŘEPSAT](#tab/CMD)
+```azurecli
+az monitor diagnostic-settings create  ^
+--name KeyVault-Diagnostics ^
+--resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault ^
+--logs    "[{""category"": ""AuditEvent"",""enabled"": true}]" ^
+--metrics "[{""category"": ""AllMetrics"",""enabled"": true}]" ^
+--storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount ^
+--workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/microsoft.operationalinsights/workspaces/myworkspace ^
+--event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
+```
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+```azurecli
+az monitor diagnostic-settings create  `
+--name KeyVault-Diagnostics `
+--resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault `
+--logs    '[{""category"": ""AuditEvent"",""enabled"": true}]' `
+--metrics '[{""category"": ""AllMetrics"",""enabled"": true}]' `
+--storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount `
+--workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/microsoft.operationalinsights/workspaces/myworkspace `
+--event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
+```
+# <a name="bash"></a>[Bash](#tab/Bash)
 ```azurecli
 az monitor diagnostic-settings create  \
 --name KeyVault-Diagnostics \
@@ -162,9 +185,10 @@ az monitor diagnostic-settings create  \
 --logs    '[{"category": "AuditEvent","enabled": true}]' \
 --metrics '[{"category": "AllMetrics","enabled": true}]' \
 --storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount \
---workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace \
+--workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/microsoft.operationalinsights/workspaces/myworkspace \
 --event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
+---
 
 ## <a name="create-using-resource-manager-template"></a>Vytvoření pomocí šablony Správce prostředků
 V tématu [Správce prostředků ukázek šablon pro nastavení diagnostiky v Azure monitor](./resource-manager-diagnostic-settings.md) můžete vytvořit nebo aktualizovat nastavení diagnostiky se šablonou správce prostředků.

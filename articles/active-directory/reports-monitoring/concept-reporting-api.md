@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6ef122cd36c3d4e9135876647075f22158df0d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e5a095c87e46839c7c120bdd6d8db1595164e57
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653231"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532525"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Začínáme s rozhraním API pro vytváření sestav Azure Active Directory
 
@@ -49,9 +49,9 @@ Podrobné pokyny najdete v tématu [požadavky pro přístup k rozhraní API pro
 
 Koncový bod rozhraní API Microsoft Graph pro protokoly auditu je `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits` a koncovým bodem rozhraní Microsoft Graph API pro přihlášení je `https://graph.microsoft.com/v1.0/auditLogs/signIns` . Další informace najdete v referenční příručce rozhraní API pro [audit](/graph/api/resources/directoryaudit) a Reference k [rozhraní API pro přihlašování](/graph/api/resources/signIn).
 
-Pomocí [rozhraní API detekce rizik v rámci Identity Protection](/graph/api/resources/identityriskevent?view=graph-rest-beta) můžete získat programový přístup k detekcím zabezpečení pomocí Microsoft Graph. Další informace najdete v tématu [Začínáme s Azure Active Directory Identity Protection a Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md). 
+Pomocí [rozhraní API detekce rizik v rámci Identity Protection](/graph/api/resources/identityriskevent?view=graph-rest-beta&preserve-view=true) můžete získat programový přístup k detekcím zabezpečení pomocí Microsoft Graph. Další informace najdete v tématu [Začínáme s Azure Active Directory Identity Protection a Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md). 
   
-K získání přístupových práv k zřizování událostí ve vašem tenantovi můžete použít taky [rozhraní API pro zřizování protokolů](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) . 
+K získání přístupových práv k zřizování událostí ve vašem tenantovi můžete použít taky [rozhraní API pro zřizování protokolů](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta&preserve-view=true) . 
 
 ## <a name="apis-with-microsoft-graph-explorer"></a>Rozhraní API s Microsoft Graph Explorer
 

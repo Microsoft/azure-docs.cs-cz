@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: references_regions
 ms.date: 03/30/2021
 ms.author: juliako
-ms.openlocfilehash: c2465d845da9dd9c2c1690c39a8f1d1c7e86899f
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: b3602d421718cbd1de3509751491ec6db65b1b01
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075708"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532897"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -164,7 +164,7 @@ Postranní panel se používá také pro uživatelské preference a nápovědu.
 
 Teď můžete pomocí rozhraní API pro hledání vyhledat videa s konkrétními tématy (jenom rozhraní API).
 
-Témata jsou přidána jako součást `textScope` (volitelný parametr). Podrobnosti najdete v tématu [rozhraní API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) .  
+Témata jsou přidána jako součást `textScope` (volitelný parametr). Podrobnosti najdete v tématu [rozhraní API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Search-Videos) .  
 
 ### <a name="labels-enhancement"></a>Vylepšení popisků
 
@@ -202,10 +202,10 @@ Nový vzhled přehrávače spuštěný s aktualizovaným návrhem
 
 * V dnešní době následující rozhraní API vrací objekt účtu:
 
-    * [Vytvořit účet s placeným účtem](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account)
-    * [Získat účet](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account)
-    * [Získání účtů – autorizace](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-Authorization)
-    * [Získání účtů s tokenem](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-With-Token)
+    * [Vytvořit účet s placeným účtem](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Paid-Account)
+    * [Získat účet](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Account)
+    * [Získání účtů – autorizace](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Accounts-Authorization)
+    * [Získání účtů s tokenem](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Accounts-With-Token)
  
     Objekt Account obsahuje `Url` pole odkazující na umístění [webu video indexer](https://www.videoindexer.ai/).
 U placených účtů `Url` pole aktuálně odkazuje na interní adresu URL místo na veřejném webu.
@@ -216,7 +216,7 @@ V nadcházejících týdnech ji změníme a vrátíme adresu URL [video indexer 
 
    Můžete to udělat buď pomocí:
 
-    * Nahrazení adresy URL adresou URL odkazující na rozhraní API widgetů Video Indexer (například [pomůcka Insights](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
+    * Nahrazení adresy URL adresou URL odkazující na rozhraní API widgetů Video Indexer (například [pomůcka Insights](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Insights-Widget))
     * Pomocí webu Video Indexer Vygenerujte novou vloženou adresu URL:
          
          Stisknutím tlačítka **Přehrát** přejděte na stránku videa – > klikněte na tlačítko pro **&lt; / &gt; vložení** – > zkopírujte adresu URL do vaší aplikace:
@@ -239,13 +239,13 @@ K dispozici je teď nový Video Indexer GitHub s různými projekty, příručky
  
 ### <a name="swagger-update"></a>Aktualizace Swagger
 
-Video Indexer sjednocené **ověřování** a **operace** do jedné [specifikace video indexer openapi (Swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson). Vývojáři můžou najít rozhraní API na [portálu pro vývojáře v video indexer](https://api-portal.videoindexer.ai/).
+Video Indexer sjednocené **ověřování** a **operace** do jedné [specifikace video indexer openapi (Swagger)](https://api-portal.videoindexer.ai/api-details#api=Operations&operation). Vývojáři můžou najít rozhraní API na [portálu pro vývojáře v video indexer](https://api-portal.videoindexer.ai/).
 
 ## <a name="december-2019"></a>Prosinec 2019
 
 ### <a name="update-transcript-with-the-new-api"></a>Aktualizace přepisu pomocí nového rozhraní API
 
-Aktualizujte konkrétní oddíl v přepisu pomocí rozhraní API [Update-video-index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update) .
+Aktualizujte konkrétní oddíl v přepisu pomocí rozhraní API [Update-video-index](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Video-Index) .
 
 ### <a name="fix-account-configuration-from-the-video-indexer-portal"></a>Oprava konfigurace účtu z Video Indexerového portálu
 
@@ -275,7 +275,7 @@ Pokud je koncový bod streamování zakázaný, Video Indexer se na stránce Pla
 
 ### <a name="error-handling-improvement"></a>Vylepšení zpracování chyb
 
-Stavový kód 409 se teď vrátí z [přeindexování videa](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) a aktualizuje rozhraní API pro [video index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) pro případ, že se video aktivně indexuje, aby se zabránilo přepsání aktuálních změn v indexu omylem.
+Stavový kód 409 se teď vrátí z [přeindexování videa](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video) a aktualizuje rozhraní API pro [video index](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Video-Index) pro případ, že se video aktivně indexuje, aby se zabránilo přepsání aktuálních změn v indexu omylem.
 
 ## <a name="november-2019"></a>Listopad 2019
  
@@ -369,7 +369,7 @@ Nyní můžete vytvořit placený účet Video Indexer v oblasti Japonsko – v�
 
 ### <a name="create-and-repair-account-api-preview"></a>Vytvoření a oprava rozhraní API pro účty (Preview)
 
-Přidalo se nové rozhraní API, které umožňuje [aktualizovat koncový bod nebo klíč připojení Azure Media Service](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Paid-Account-Azure-Media-Services?&groupBy=tag).
+Přidalo se nové rozhraní API, které umožňuje [aktualizovat koncový bod nebo klíč připojení Azure Media Service](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Paid-Account-Azure-Media-Services).
 
 ### <a name="improve-error-handling-on-upload"></a>Zlepšení zpracování chyb při nahrávání 
 
@@ -387,9 +387,9 @@ Teď si můžete zobrazit náhled všech přehledů, které jsou vybrané jako v
 
 ### <a name="update-custom-language-model-from-closed-caption-file"></a>Aktualizace vlastního jazykového modelu z zavřeného souboru titulků
 
-[Vytvoření vlastního jazykového modelu](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?&groupBy=tag) a aktualizace rozhraní API pro [vlastní jazykové modely](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Language-Model?&groupBy=tag) teď podporují formáty souborů vtt, SRT aplikace a TTML jako vstup pro jazykové modely.
+[Vytvoření vlastního jazykového modelu](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Language-Model) a aktualizace rozhraní API pro [vlastní jazykové modely](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Language-Model) teď podporují formáty souborů vtt, SRT aplikace a TTML jako vstup pro jazykové modely.
 
-Při volání [rozhraní API pro přepis aktualizace videa](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Transcript?&pattern=transcript)se přepis přidá automaticky. Školicí model přidružený k videu se také aktualizuje automaticky. Informace o tom, jak přizpůsobit a naučit jazykové modely, najdete v tématu [přizpůsobení jazykového modelu pomocí video indexer](customize-language-model-overview.md).
+Při volání [rozhraní API pro přepis aktualizace videa](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Video-Transcript)se přepis přidá automaticky. Školicí model přidružený k videu se také aktualizuje automaticky. Informace o tom, jak přizpůsobit a naučit jazykové modely, najdete v tématu [přizpůsobení jazykového modelu pomocí video indexer](customize-language-model-overview.md).
 
 ### <a name="new-download-transcript-formats--txt-and-csv"></a>Nové formáty přepisů ke stažení – TXT a CSV
 

@@ -4,14 +4,14 @@ description: Tento článek popisuje, jak odstranit váš účet Automation v r�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-ms.date: 03/18/2021
+ms.date: 04/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: c3a514aa507fcf069671f987e175b7ae5be59d10
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d088f3adc391068de5e337c10ab52dc3d3a2dd07
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105735069"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535552"
 ---
 # <a name="how-to-delete-your-azure-automation-account"></a>Jak odstranit účet Azure Automation
 
@@ -28,7 +28,10 @@ Odebrání účtu Automation se dá udělat pomocí jedné z následujících me
 * Odpojte pracovní prostor Log Analytics z účtu Automation a odstraňte účet Automation.
 * Odstraňte tuto funkci z připojeného pracovního prostoru, odpojte účet z pracovního prostoru a potom účet Automation odstraňte.
 
-V tomto článku se dozvíte, jak úplně odebrat účet Automation prostřednictvím Azure Portal, PowerShellu, rozhraní příkazového řádku Azure nebo REST API.
+V tomto článku se dozvíte, jak úplně odebrat účet Automation prostřednictvím Azure Portal, pomocí Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API.
+
+> [!NOTE]
+> Než budete pokračovat, ověřte, že v předplatném, skupině prostředků nebo prostředku nejsou použité žádné [Správce prostředků zámky](../azure-resource-manager/management/lock-resources.md) , které zabrání nechtěnému odstranění nebo změně důležitých prostředků. Pokud jste nasadili Start/Stop VMs during off-hours řešení, nastaví úroveň zámku tak, aby se **CanNotDelete** na několik závislých prostředků v účtu Automation (konkrétně v sadách Runbook a proměnné). Než budete moct účet Automation odstranit, musíte odebrat všechny zámky.
 
 ## <a name="delete-the-dedicated-resource-group"></a>Odstranit vyhrazenou skupinu prostředků
 

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 2498c656b75ac8b9b651f4a7ce83b74d3542c841
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 630b8d9a965f4b34e7b14b5b1d80fe74b0cc31c3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090786"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498555"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[\[Verze Preview \] : Azure IoT Hub by měl používat klíč spravovaný zákazníkem k šifrování dat v klidovém umístění.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d7e144b-159c-44fc-95c1-ac3dbf5e6e54) |Šifrování neaktivních dat v IoT Hub s klíčem spravovaným zákazníkem se na základě výchozích klíčů spravovaných službou přidá druhá vrstva šifrování, která umožňuje zákazníkům používat klíče, vlastní zásady střídání a schopnost spravovat přístup k datům prostřednictvím řízení přístupu k klíčům. Klíče spravované zákazníkem musí být konfigurovány během vytváření IoT Hub. Další informace o konfiguraci klíčů spravovaných zákazníkem najdete v tématu [https://aka.ms/iotcmk](https://aka.ms/iotcmk) . |Audit, zamítnutí, zakázáno |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IotHub_CMKEncryptionEnabled.json) |
 |[Konfigurace IoT Hub instancí zřizování zařízení pro použití privátních zón DNS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faaa64d2d-2fa3-45e5-b332-0b031b9b30e8) |Pomocí privátních zón DNS přepište překlad DNS pro privátní koncový bod. Privátní zóna DNS odkazuje na vaši virtuální síť, aby se přeložila na instanci služby IoT Hub Device Provisioning. Další informace najdete tady: [https://aka.ms/iotdpsvnet](https://aka.ms/iotdpsvnet) . |DeployIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DeployPrivateDnsZoneForPrivateEndpoint_Deploy.json) |

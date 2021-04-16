@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f416a23dbb47660097c41ada09c8c135434bcb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b8a84da331568d36b6f6910054fdb2aea76f490
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96743645"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530336"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Jak funguje zpětný zápis hesla samoobslužné služby pro resetování hesla v Azure Active Directory?
 
@@ -140,7 +140,7 @@ Hesla se zapisují zpátky do všech těchto situací:
    * Jakákoli operace změny hesla samoobslužného hesla pro správce, například vypršení platnosti hesla.
    * Jakékoli Samoobslužné resetování hesla, které pochází z portálu pro [resetování hesla](https://passwordreset.microsoftonline.com).
    * Jakékoli resetování hesla koncového uživatele iniciované správcem z [Azure Portal](https://portal.azure.com).
-   * Všichni správci iniciovali resetování hesla koncových uživatelů z [rozhraní Microsoft Graph API beta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta).
+   * Jakékoli resetování hesla koncových uživatelů iniciované správcem z [rozhraní Microsoft Graph API](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http).
 
 ## <a name="unsupported-writeback-operations"></a>Nepodporované operace zpětného zápisu
 
@@ -149,7 +149,7 @@ Hesla se nezapisují zpátky v následujících situacích:
 * **Nepodporované operace koncového uživatele**
    * Libovolný koncový uživatel resetuje vlastní heslo pomocí prostředí PowerShell verze 1, verze 2 nebo rozhraní Microsoft Graph API.
 * **Nepodporované operace Správce**
-   * Jakékoli resetování hesla koncového uživatele iniciované správcem z PowerShellu verze 1, verze 2 nebo rozhraní Microsoft Graph API (podporuje se [Microsoft Graph API beta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta) ).
+   * Jakékoli resetování hesla koncového uživatele iniciované správcem z PowerShellu verze 1, verze 2 nebo rozhraní Microsoft Graph API (rozhraní [Microsoft Graph API](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http) se podporuje).
    * Jakékoli resetování hesla koncového uživatele iniciované správcem v [centru pro správu Microsoft 365](https://admin.microsoft.com).
    * Žádný správce nemůže použít nástroj pro resetování hesla k resetování vlastního hesla pro zpětný zápis hesla.
 

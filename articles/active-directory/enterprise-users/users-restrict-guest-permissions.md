@@ -13,22 +13,22 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2d0d3335468147575eb53a99940866baa18375
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df4cb32720d80dd23289be7e760c9934e9a8db8a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222517"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501497"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Omezení oprávnění k přístupu hosta (Preview) v Azure Active Directory
 
 Azure Active Directory (Azure AD) umožňuje omezit, co můžou externí uživatelé typu Host vidět ve svých organizacích ve službě Azure AD. Uživatelé typu Host jsou ve výchozím nastavení ve službě Azure AD nastavené na úroveň omezeného oprávnění, zatímco výchozí nastavení pro členské uživatele je úplná sada výchozích oprávnění uživatele. Toto je verze Preview nové úrovně oprávnění uživatele hosta v nastavení externích spolupráci vaší organizace Azure AD pro ještě více omezený přístup, takže vaše možnosti přístupu k hostům teď jsou:
 
-Úroveň oprávnění         | Úroveň přístupu
-----------------         | ------------
-Stejné jako členské uživatele     | Hosté mají stejný přístup k prostředkům Azure AD jako členské uživatele.
-Omezený přístup (výchozí) | Hosté můžou zobrazit členství všech neskrytých skupin.
-**Omezený přístup (nový)**  | **Hosté nemůžou zobrazit členství v žádné skupině.**
+Úroveň oprávnění         | Úroveň přístupu | Hodnota
+----------------         | ------------ | -----
+Stejné jako členské uživatele     | Hosté mají stejný přístup k prostředkům Azure AD jako členské uživatele. | a0b1b346-4d3e-4e8b-98f8-753987be4970
+Omezený přístup (výchozí) | Hosté můžou zobrazit členství všech neskrytých skupin. | 10dae51f-b6af-4016-8d66-8c2a99b929b3
+**Omezený přístup (nový)**  | **Hosté nemůžou zobrazit členství v žádné skupině.** | **2af84b1e-32c8-42b7-82bc-daa82404023b**
 
 Když je přístup hosta omezený, můžou hosté zobrazit jenom svůj vlastní profil uživatele. Oprávnění k zobrazení jiných uživatelů není povoleno ani v případě, že host hledá hlavní název uživatele nebo identifikátor objectId. Omezený přístup taky omezuje uživatelům typu Host, aby viděli členství ve skupinách, ve kterých se nachází. Další informace o celkových výchozích uživatelských oprávněních, včetně uživatelských oprávnění typu Host, najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?](../fundamentals/users-default-permissions.md).
 

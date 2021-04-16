@@ -8,12 +8,12 @@ ms.date: 03/15/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: ce321574ce2878f51864f55bf5618df2c96d1068
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa60b6f002e49babc1e1f014bcb941e7953a43a8
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589884"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484774"
 ---
 # <a name="backup-to-azure-with-commvault"></a>Zálohování do Azure pomocí CommVault
 
@@ -224,7 +224,7 @@ V [Azure Portal](https://portal.azure.com) vyhledejte **podporu** na panelu hled
 Další podrobnosti najdete v následující dokumentaci k CommVault:
 
 - [Uživatelská příručka k CommVault](https://documentation.commvault.com/commvault/v11/article?p=37684_1.htm)
-- [Průvodce architekturou Azure CommVault](https://www.commvault.com/resources/public-cloud-architecture-guide-for-microsoft-azure-v11-sp16)
+- [Průvodce architekturou Azure CommVault](https://documentation.commvault.com/commvault/v11/others/pdf/public-cloud-architecture-guide-for-microsoft-azure11-19.pdf)
 
 ### <a name="marketplace-offerings"></a>Nabídky Marketplace
 

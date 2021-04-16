@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fef59ef1088582b4ebb29131bd48337e9e0bd406
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: ca7fda6345356568d512b396c412603cf7d837f7
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107091"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532396"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -79,7 +79,7 @@ Azure AD Connect aktualizace cloudového zřizování ve verzi Public Preview dv
  
 Když správci IT nebo koncoví uživatelé čtou klíče pro obnovení nástroje BitLocker, ke kterým mají přístup, Azure Active Directory nyní vygeneruje protokol auditu, který zachycuje přístup k obnovovacímu klíči. Stejný audit poskytuje podrobnosti o zařízení, ke kterému byl klíč BitLocker přidružený.
 
-Koncoví uživatelé mají [přístup ke svým klíčům pro obnovení prostřednictvím svého účtu](../user-help/my-account-portal-devices-page.md#view-a-bitlocker-key). Správci IT můžou získat přístup k klíčům pro obnovení prostřednictvím [rozhraní API pro obnovení pomocí obnovovacího klíče BitLockeru ve verzi beta](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) nebo prostřednictvím portálu Azure AD. Další informace najdete v tématu [zobrazení nebo kopírování klíčů nástroje BitLocker na portálu Azure AD](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys).
+Koncoví uživatelé mají [přístup ke svým klíčům pro obnovení prostřednictvím svého účtu](../user-help/my-account-portal-devices-page.md#view-a-bitlocker-key). Správci IT můžou získat přístup k klíčům pro obnovení prostřednictvím [rozhraní API pro obnovení pomocí obnovovacího klíče BitLockeru ve verzi beta](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta&preserve-view=true) nebo prostřednictvím portálu Azure AD. Další informace najdete v tématu [zobrazení nebo kopírování klíčů nástroje BitLocker na portálu Azure AD](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys).
 
 ---
 
@@ -343,7 +343,7 @@ Další informace o tom, jak nakonfigurovat příchozí zřizování SAP Success
 **Kategorie služby:** B2C – Správa identit uživatelů  
 **Schopnost produktu:** B2B/B2C
  
-Dřív se vlastní Open ID Connect Provider mohl přidat nebo spravovat jenom prostřednictvím Azure Portal. Nyní mohou zákazníci Azure AD B2C přidávat a spravovat prostřednictvím rozhraní API beta verze Microsoft Graph. Informace o tom, jak nakonfigurovat tento prostředek pomocí rozhraní API, najdete v tématu [identityProvider Resource Type](/graph/api/resources/identityprovider?view=graph-rest-beta).
+Dřív se vlastní Open ID Connect Provider mohl přidat nebo spravovat jenom prostřednictvím Azure Portal. Nyní mohou zákazníci Azure AD B2C přidávat a spravovat prostřednictvím rozhraní API beta verze Microsoft Graph. Informace o tom, jak nakonfigurovat tento prostředek pomocí rozhraní API, najdete v tématu [identityProvider Resource Type](/graph/api/resources/identityprovider?view=graph-rest-beta&preserve-view=true).
  
 ---
 
@@ -383,7 +383,7 @@ Uživatelé v roli správce Insights mají přístup k plné sadě možností sp
 **Kategorie služby:** Role Azure AD  
 **Schopnost produktu:** Access Control
  
-Dříve mohl [vlastnost Extension](/graph/api/application-post-extensionproperty?view=graph-rest-beta&tabs=http)spravovat jenom globální správce. Nyní tuto funkci povolujeme také pro Správce aplikací a správce cloudových aplikací.
+Dříve mohl [vlastnost Extension](/graph/api/application-post-extensionproperty?view=graph-rest-beta&tabs=http&preserve-view=true)spravovat jenom globální správce. Nyní tuto funkci povolujeme také pro Správce aplikací a správce cloudových aplikací.
  
 ---
 
@@ -3376,7 +3376,7 @@ Ve schématu auditu se mění následující pole:
 |Název pole|Co se změnilo|Staré hodnoty|Nové hodnoty|
 |----------|------------|----------|----------|
 |Kategorie|Toto bylo pole **název služby** . Teď je to pole **kategorie auditu** . **Název služby** byl přejmenován na pole **loggedByService** .|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|<ul><li>Správa uživatelů</li><li>Správa skupin</li><li>Správa aplikací</li></ul>|
-|targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásady</li><li>Aplikace</li><li>User</li><li>Group (Skupina)</li></ul>|
+|targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásady</li><li>Aplikace</li><li>Uživatel</li><li>Group (Skupina)</li></ul>|
 |loggedByService|Poskytuje název služby, která vygenerovala protokol auditu.|Null|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|
 |Výsledek|Poskytuje výsledek protokolů auditu. Dřív byl tento výčet vyhodnocený, ale nyní zobrazujeme skutečnou hodnotu.|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>Selhání</li></ul>|
 

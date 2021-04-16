@@ -2,15 +2,17 @@
 title: Pomocí Azure Portal můžete vytvářet Service Bus témata a předplatná.
 description: 'Rychlý Start: v tomto rychlém startu se dozvíte, jak vytvořit Service Bus téma a odběry k tomuto tématu pomocí Azure Portal.'
 author: spelluru
-ms.topic: quickstart
-ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 749ba3d2947dfd7defdf2549305f2a61c16ba713
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2020
+ms.topic: quickstart
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 25b0579f05c1f7669a8dfc1df02e9a1f575ea066
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95803289"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537150"
 ---
 # <a name="use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Použití webu Azure Portal k vytvoření témamu služby Service Bus a odběrů k tomuto tématu
 V tomto rychlém startu použijete Azure Portal k vytvoření Service Bus tématu a pak vytvoříte odběry k tomuto tématu. 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: aa4dde51c077152dd5c8a938ad64ad0a051f89ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22b41fce59bf7dbe9db1186036c5ed44f07a4aad
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100561502"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484471"
 ---
 # <a name="convert-industry-standard-ontologies-to-dtdl-for-azure-digital-twins"></a>Převod oboru standardních ontologie na DTDL pro digitální vlákna Azure
 
@@ -49,7 +49,9 @@ Ukázka je aplikace příkazového řádku .NET Core s názvem **RdfToDtdlConver
 
 Ukázku můžete získat tady: [**RdfToDtdlConverter**](/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/). 
 
-Pokud chcete stáhnout kód do počítače, stiskněte tlačítko *Stáhnout ZIP* pod nadpisem na vzorové cílové stránce. Tím se stáhne soubor *zip* pod názvem *RdfToDtdlConverter_sample_application_to_convert_RDF_to_DTDL.zip*, který pak můžete rozbalit a prozkoumat.
+Chcete-li stáhnout kód do počítače, vyberte tlačítko **Procházet kód** pod nadpisem na stránce ukázka, které vás přesměruje do úložiště GitHub pro ukázku. Vyberte tlačítko **kód** a Stáhněte si soubor **zip** a stáhněte ukázku jako *. Soubor ZIP* s názvem *RdfToDtdlConverter-main.zip*. Pak můžete soubor rozbalit a prozkoumat kód.
+
+:::image type="content" source="media/concepts-ontologies-convert/download-repo-zip.png" alt-text="Snímek obrazovky úložiště RdfToDtdlConverter na GitHubu. Je vybráno tlačítko kód a vytvoří se malé dialogové okno, ve kterém je zvýrazněno tlačítko Stáhnout ZIP." lightbox="media/concepts-ontologies-convert/download-repo-zip.png":::
 
 Tuto ukázku můžete použít k zobrazení vzorů převodu v kontextu a k tomu, aby jako stavební blok pro vlastní aplikace prováděl převody modelu podle vašich konkrétních potřeb.
 

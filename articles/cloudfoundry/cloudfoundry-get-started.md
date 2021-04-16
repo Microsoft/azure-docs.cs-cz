@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: d3b13dffcf251f79a04182d32f23fd40e6ed6044
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f80f07cad0e82ee35fe71223e1282ea24f791bb
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562890"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530931"
 ---
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry v Azure
 
@@ -39,7 +39,7 @@ Microsoft poskytuje nejlepší podporu pro OSS CF prostřednictvím následujíc
 
 Pivoting Cloud Foundry zahrnuje stejnou základní platformu jako distribuci OSS, spolu se sadou proprietárních nástrojů pro správu a podnikovou podporou. Pokud chcete spustit PCF v Azure, musíte získat licenci od pivotu. Nabídka PCF z webu Azure Marketplace zahrnuje zkušební licenci 90.
 
-Mezi tyto nástroje patří [pivoting Operations Manager](https://docs.pivotal.io/pivotalcf/customizing/), Webová aplikace, která zjednodušuje nasazování a správu Cloud Foundry Foundation a [správce pivoted Apps](https://docs.pivotal.io/pivotalcf/console/), webovou aplikaci pro správu uživatelů a aplikací.
+Mezi tyto nástroje patří [pivoting Operations Manager](https://docs.pivotal.io/ops-manager/2-10/install/), Webová aplikace, která zjednodušuje nasazování a správu Cloud Foundry Foundation a [správce pivoted Apps](https://docs.pivotal.io/pivotalcf/console/), webovou aplikaci pro správu uživatelů a aplikací.
 
 Kromě kanálů podpory uvedených pro OSS CF výše vám licence PCF opravňuje k tomu, abyste se obrátili na podporu. Microsoft a Pivoted také povolily pracovní postupy podpory, které vám umožňují požádat o pomoc obě strany a podle toho, kde se problém týká, je váš dotaz správně směrován.
 

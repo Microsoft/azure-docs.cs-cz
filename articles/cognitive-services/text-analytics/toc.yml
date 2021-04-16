@@ -13,7 +13,7 @@
       href: whats-new.md
     - name: Nejčastější dotazy k Analýza textu
       href: text-analytics-resource-faq.md
-- name: Rychlý Start Analýza textu
+- name: Rychlé zprovoznění
   href: quickstarts/client-libraries-rest-api.md
 - name: ukázky
   items:
@@ -71,21 +71,25 @@
       displayName: 'NER, Named entity recognition, PII, redaction'
     - name: Analýza textu pro zdravotnictví
       href: How-tos/text-analytics-for-health.md
-    - name: Nasazení Analýza textu
+    - name: Použití kontejnerů
       items:
-        - name: Kontejnery
-          items:
-            - name: Instalace a spuštění kontejnerů
-              href: how-tos/text-analytics-how-to-install-containers.md
-            - name: Konfigurace kontejnerů
-              href: text-analytics-resource-container-config.md
-            - name: Použití instancí kontejneru
-              maintainContext: true
-              href: ../containers/azure-container-instance-recipe.md
-            - name: Použití služby Kubernetes (AKS)
-              href: how-tos/text-analytics-how-to-use-kubernetes-service.md
-            - name: Dokumentace ke kontejnerům Cognitive Services
-              href: ../containers/index.yml
+        - name: Instalace a spuštění kontejnerů
+          href: how-tos/text-analytics-how-to-install-containers.md
+        - name: Konfigurace kontejnerů
+          href: text-analytics-resource-container-config.md
+        - name: Použití instancí kontejneru
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
+        - name: Použití služby Kubernetes (AKS)
+          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+        - name: Dokumentace ke kontejnerům Cognitive Services
+          href: ../containers/index.yml
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Nastavení virtuálních sítí
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/text-analytics/context/context
+        - name: Použití ověřování Azure AD
+          href: ../authentication.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: Migrace na verzi 3 rozhraní API
       href: migration-guide.md
 - name: Koncepty
@@ -164,13 +168,13 @@
       href: /powershell/module/azurerm.cognitiveservices/
 - name: Zdroje a prostředky
   items:
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Podpora oblastí
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Dodržování předpisů a certifikace
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: Externí obsah a obsah komunity
       href: text-analytics-resource-external-community.md
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Dodržování předpisů
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Vyzkoušejte si to!
-      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: cefb347c49e86f32a71ea900756ae9aaa969d39f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 392697978041cdab50f45e22a73acbadb9122546
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92454163"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519408"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egress"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s odchozím výstupem
 
@@ -25,8 +25,6 @@ V tomto kurzu se dozvíte, jak integrovat výstup pomocí Azure Active Directory
 * Řízení ve službě Azure AD, která má přístup k odchozímu přenosu.
 * Umožněte uživatelům, aby se automaticky přihlásili k odchozímu přenosu pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
-
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,27 +37,28 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Výstup podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování
-* Odchozí přenos dat podporuje **jenom v čase** zřizování uživatelů.
-* Po nakonfigurování odchozího přenosu dat můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Výstup podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
+* Odchozí přenos dat podporuje **jenom v době** zřizování uživatelů.
 
-## <a name="adding-egress-from-the-gallery"></a>Přidávání výstupů z Galerie
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+
+## <a name="add-egress-from-the-gallery"></a>Přidat výstup z Galerie
 
 Pokud chcete nakonfigurovat integraci odchozího přenosu do Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat výstup z galerie.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **výstup** .
 1. Na panelu výsledků vyberte **výstup** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-egress"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro odchozí přenosy
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD s odchozím použitím pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v odchozím přenosu.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s odchozím výstupem, dokončete následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí odchozího přenosu dat, proveďte následující kroky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
@@ -72,9 +71,9 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s od
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací pro **výstup** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikací pro **výstup** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -82,7 +81,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://switch.egress.com/ui/`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://switch.egress.com/ui/`
 
 1. Klikněte na **Uložit**.
 
@@ -109,15 +108,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte možnost **odchozí**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-egress-sso"></a>Konfigurace odchozího přihlašování
@@ -154,20 +147,20 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když kliknete na dlaždici výstup na přístupovém panelu, měli byste se automaticky přihlásit k odchozímu přenosu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>Zahájena SP:
 
-## <a name="additional-resources"></a>Další zdroje informací
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro odchozí přihlášení, kde můžete spustit tok přihlášení.  
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
+* Přejít na adresu URL pro přihlášení k odchozímu přenosu přímo a zahájit tok přihlášení.
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>Iniciované IDP:
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k odchozímu přenosu, pro který jste nastavili jednotné přihlašování. 
 
-- [Vyzkoušejte si výstup pomocí Azure AD](https://aad.portal.azure.com/)
+K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici výstup v nabídce Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k odchozímu přenosu, pro který jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Další kroky
 
-- [Jak chránit výstup pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)
+Po nakonfigurování odchozího přenosu dat můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 03/10/2021
 ms.author: banders
-ms.openlocfilehash: 4fb15a7e677d566454d5d487c1cf69767d7f3a30
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4059318e6b8052f3b0221c87e8a357cfc8679e44
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368740"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532754"
 ---
 # <a name="charge-back-azure-reservation-costs"></a>Zpětné vyúčtování na rezervace Azure
 
@@ -22,8 +22,8 @@ Uživatelé s individuálním předplatným mohou údaje o amortizovaných nákl
 
 ## <a name="see-reservation-usage-data-for-show-back-and-charge-back"></a>Viz data o využití rezervace pro zobrazení zpět a vrácení zpět.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Přejít na **cost management a fakturace** 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Přejděte do části **Cost Management a fakturace**. 
 3. Vybrat **analýzu nákladů** z levého navigačního panelu 
 4. V části **Skutečné náklady** vyberte metriku **Amortizované náklady**.
 5. Pokud chcete zjistit, které prostředky využily konkrétní rezervace, použijte filtr pro **rezervace** a potom vyberte příslušné rezervace.
@@ -33,13 +33,13 @@ Uživatelé s individuálním předplatným mohou údaje o amortizovaných nákl
 
 [![Příklad ukazující náklady na prostředky, které se dají použít pro zpětné vyúčtování](./media/charge-back-usage/amortized-reservation-costs.png)](./media/charge-back-usage/amortized-reservation-costs.png#lightbox)
 
-Tady je video, které ukazuje, jak zobrazit náklady na využití rezervací na webu Azure Portal.
+Tady je video, které ukazuje, jak zobrazit náklady na používání rezervací na úrovni předplatného, skupiny prostředků a prostředků v Azure Portal.
 
  > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4sQOw] 
 
 ## <a name="get-the-data-for-show-back-and-charge-back"></a>Získat data pro vrácení zpět a vrácení zpět
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
-2. Přejít na **cost management a fakturace** 
+2. Přejděte do části **Cost Management a fakturace**. 
 3. Vybrat **Export** z levé navigační části 
 4. Klikněte na tlačítko **Přidat** .
 5. Vyberte náklady na amortizaci jako tlačítko metriky a nastavte svůj export.

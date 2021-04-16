@@ -2,22 +2,22 @@
 title: Konfigurace souhlasu vlastníka skupiny u aplikací, které přistupují k datům skupiny pomocí Azure AD
 description: Naučte se spravovat, jestli můžou vlastníci skupiny a týmu souhlasit s aplikacemi, které budou mít přístup k datům skupiny nebo týmu.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8d8604a1dd54ed819bb9e27c46d61a46466bf3da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be28148aacf270f2f3cfabad4cbd5f03afa05d3b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548797"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374416"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Konfigurace souhlasu vlastníka skupiny u aplikací, které přistupují k datům skupiny
 
@@ -74,7 +74,7 @@ Pomocí modulu Azure AD PowerShell Preview, [AzureADPreview](/powershell/module/
 
 1. Pochopení hodnot nastavení. K dispozici jsou dvě hodnoty nastavení, které definují, kteří uživatelé budou moci aplikaci umožnit přístup k datům svých skupin:
 
-    | Nastavení       | Typ         | Description  |
+    | Nastavení       | Typ         | Popis  |
     | ------------- | ------------ | ------------ |
     | _EnableGroupSpecificConsent_   | Logická hodnota | Příznak označující, zda mohou vlastníci skupiny udělit oprávnění pro konkrétní skupinu. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Identifikátor GUID | Pokud je _EnableGroupSpecificConsent_ nastavené na hodnotu "true" a tato hodnota je nastavená na ID objektu skupiny, budou se členové identifikované skupiny oprávněni udělit skupinám, které vlastní, oprávnění pro skupiny, které vlastní. |
