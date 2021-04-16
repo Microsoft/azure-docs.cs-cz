@@ -1,18 +1,21 @@
 ---
 title: Povolení rozšíření virtuálních počítačů pomocí Azure PowerShell
 description: Tento článek popisuje, jak nasadit rozšíření virtuálních počítačů na servery s podporou ARC Azure běžícími v hybridních cloudových prostředích pomocí Azure PowerShell.
-ms.date: 01/05/2021
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9b1f83ad976aa3471430a912280fac25dc5c5c0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cb854c9745e8bd7eef35c6f6467c284a6327349
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97916180"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388580"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Povolení rozšíření virtuálních počítačů Azure pomocí Azure PowerShell
 
 V tomto článku se dozvíte, jak nasadit a odinstalovat rozšíření virtuálních počítačů Azure, které podporují servery s podporou ARC Azure, na hybridní počítač se systémem Linux nebo Windows pomocí Azure PowerShell.
+
+> [!NOTE]
+> Servery s podporou ARC Azure nepodporují nasazení a správu rozšíření virtuálních počítačů na virtuální počítače Azure. Informace o virtuálních počítačích Azure najdete v následujícím článku [Přehled rozšíření virtuálních počítačů](../../virtual-machines/extensions/overview.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 

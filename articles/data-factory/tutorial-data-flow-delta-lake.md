@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2021
-ms.date: 04/14/2021
-ms.openlocfilehash: a0fb3488aec6761764e30b4cf8556b71e5edda15
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 04/16/2021
+ms.openlocfilehash: 4a88ed2df74d3eebb96c42e2cdc87b14153419cd
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515395"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565368"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>Transformace dat v rozdílových Lake pomocí mapování toků dat
 
@@ -66,7 +66,7 @@ V tomto kroku vytvoříte kanál, který obsahuje aktivitu toku dat.
     ![Snímek obrazovky, který ukazuje, kde se má tok dat pojmenovat při vytváření nového toku dat.](media/tutorial-data-flow/activity2.png)
 1. V horním panelu plátna kanálu posunutí posuvníku **ladění toku dat** zapnuto. Režim ladění umožňuje interaktivní testování logiky transformace proti clusteru Live Spark. Clustery toku dat zabírají 5-7 minut a uživatelům se doporučuje zapnout ladění jako první, pokud chtějí provádět vývoj toku dat. Další informace naleznete v tématu [režim ladění](concepts-data-flow-debug-mode.md).
 
-    ![Aktivita toku dat](media/tutorial-data-flow/dataflow1.png)
+    ![Snímek obrazovky, který ukazuje, kde je jezdec ladění toku dat.](media/tutorial-data-flow/dataflow1.png)
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>Sestavení logiky transformace v plátně toku dat
 

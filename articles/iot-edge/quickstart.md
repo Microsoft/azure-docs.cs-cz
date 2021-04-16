@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: de24f6c8436b4537519f8cc65931325dd7d5f8d9
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9f0562d4471ac1129bf9bc7ecfee058cddac7c61
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313347"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533134"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Rychlý Start: nasazení prvního modulu IoT Edge do zařízení s Windows (Preview)
 
@@ -59,7 +59,7 @@ Ujistěte se, že vaše zařízení IoT Edge splňuje následující požadavky:
   * Windows Server 2019 Build 17763 nebo novější
 
 * Požadavky na hardware
-  * Minimální volná paměť: 2 GB
+  * Minimální volná paměť: 1 GB
   * Minimální volné místo na disku: 10 GB
 
 >[!NOTE]

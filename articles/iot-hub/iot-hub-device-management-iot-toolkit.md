@@ -7,18 +7,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b48def283ea27fdd0eaa3230a2eb9a8327461ff1
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81688095"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567009"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Použití nástrojů Azure IoT pro Visual Studio Code pro správu zařízení Azure IoT Hub
 
 ![Komplexní diagram](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) jsou užitečnou příponou Visual Studio Code, která usnadňuje vývoj IoT Hub a správu aplikací IoT. Obsahuje možnosti správy, které můžete použít k provádění různých úloh.
+V tomto článku se dozvíte, jak používat nástroje Azure IoT pro Visual Studio Code s různými možnostmi správy ve vývojovém počítači. [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) jsou užitečnou příponou Visual Studio Code, která usnadňuje vývoj IoT Hub a správu aplikací IoT. Obsahuje možnosti správy, které můžete použít k provádění různých úloh.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -35,15 +35,7 @@ Dvojčata zařízení jsou dokumenty JSON, které obsahují informace o stavu za
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="what-you-learn"></a>Co se naučíte
-
-Naučíte se používat nástroje Azure IoT pro Visual Studio Code s různými možnostmi správy ve vývojovém počítači.
-
-## <a name="what-you-do"></a>Co dělat
-
-Spusťte nástroje Azure IoT Tools pro Visual Studio Code s různými možnostmi správy.
-
-## <a name="what-you-need"></a>Co budete potřebovat
+## <a name="prerequisites"></a>Požadavky
 
 * Musíte mít aktivní předplatné Azure.
 * Azure IoT Hub v rámci vašeho předplatného.

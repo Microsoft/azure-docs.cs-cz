@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: e268cca87479625af023b5970bb27c56721f6d39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62db56ac9791cea7d6f1a40f794241ed68fa90fa
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102049844"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483566"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Přesunutí instance digitálních vláken Azure do jiné oblasti Azure
 
@@ -81,9 +81,13 @@ Pokud ukázka nedokáže zpracovat velikost grafu, můžete ho exportovat a impo
 
 Pokud chcete pokračovat v Průzkumníkovi digitálních vláken Azure, nejdřív Stáhněte ukázkový kód aplikace a nastavte ho tak, aby běžel na vašem počítači.
 
-Ukázku získáte v tématu [Průzkumník digitálních vláken Azure](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Vyberte tlačítko **Stáhnout ZIP** a Stáhněte si soubor. zip tohoto ukázkového kódu do počítače jako **Azure_Digital_Twins__ADT__explorer.zip**. Rozbalte ho.
+Ukázku získáte tak, že přejdete na [Průzkumník digitálních vláken Azure](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Vyberte tlačítko Procházet kód pod nadpisem, které vás **přesměruje** do úložiště GitHub pro ukázku. Vyberte tlačítko **kód** a Stáhněte si soubor **zip** a stáhněte ukázku jako *. Soubor ZIP* pro váš počítač.
 
-Dále nastavte a nakonfigurujte oprávnění pro Průzkumníka digitálních vláken Azure. Postupujte podle pokynů v části [Nastavení digitálních vláken Azure a Průzkumníka digitálních vláken Azure](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-azure-digital-twins-explorer) v rychlém startu digitálních vláken Azure. Tato část vás provede následujícími kroky:
+:::image type="content" source="media/how-to-move-regions/download-repo-zip.png" alt-text="Snímek obrazovky s úložištěm Digital-zdvojené – Průzkumník na GitHubu Je vybráno tlačítko kód a vytvoří se malé dialogové okno, ve kterém je zvýrazněno tlačítko Stáhnout ZIP." lightbox="media/how-to-move-regions/download-repo-zip.png":::
+
+Rozbalte ho.
+
+Dále nastavte a nakonfigurujte oprávnění pro Průzkumníka digitálních vláken Azure. Postupujte podle pokynů v části [Nastavení digitálních vláken Azure a Průzkumníka digitálních vláken Azure](quickstart-azure-digital-twins-explorer.md#set-up-azure-digital-twins-and-azure-digital-twins-explorer) v rychlém startu digitálních vláken Azure. Tato část vás provede následujícími kroky:
 
 1. Nastavte instanci digitálních vláken Azure. Tuto část můžete přeskočit, protože již máte instanci.
 1. Nastavte místní přihlašovací údaje Azure pro poskytnutí přístupu k vaší instanci.

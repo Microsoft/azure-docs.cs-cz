@@ -3,18 +3,18 @@ title: Migrace databází do spravované instance SQL pomocí služby pro opěto
 description: Naučte se migrovat databáze z SQL Server do spravované instance SQL pomocí služby log Replay.
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli
 ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/31/2021
-ms.openlocfilehash: 8e78db5b9d496c2ac13c9f1214b386770c11e21e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 522f4ec2f28f9d8975a8a7a7b10e435f602af855
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075879"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484026"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Migrace databází z SQL Server do spravované instance SQL pomocí služby log Replay (Preview)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -400,9 +400,9 @@ Funkční omezení LRS jsou:
 Po spuštění LRS se podívejte na stav operace pomocí rutiny Monitoring ( `get-azsqlinstancedatabaselogreplay` nebo `az_sql_midb_log_replay_show` ). Pokud se LRS po nějaké době nepovede spustit a zobrazí se chyba, podívejte se na nejčastější problémy:
 
 - Má existující databáze na spravované instanci SQL stejný název jako ten, který se pokoušíte migrovat z SQL Server? Tento konflikt vyřešte přejmenováním jedné z databází.
-- Bylo zálohování databáze v SQL Server provedeno prostřednictvím `CHECKSUM` Možnosti?
-- Mají oprávnění k tokenu SAS jenom čtení a seznam pro LRS?
-- Zkopírovali jste token SAS pro LRS po otazníku ( `?` ) s obsahem, který začíná takto: `sv=2020-02-10...` ? 
+- Vytvořila se záloha databáze v SQL Server prostřednictvím `CHECKSUM` Možnosti theÂ?
+- Mají oprávnění k tokenÂu SAS jenom číst a seznamovat pro LRS?
+- Zkopírovali jste token SAS pro LRS po otazníku ( `?` ) s obsahem, který začíná takto: `sv=2020-02-10...` ? Â 
 - Platí doba platnosti tokenu SAS pro časové období spuštění a dokončení migrace? Může se jednat o neshody z důvodu různých časových pásem používaných pro spravovanou instanci SQL a tokenu SAS. Zkuste znovu vygenerovat token SAS a prodloužit platnost tokenu v časovém intervalu před a po aktuálním datu.
 - Je název databáze, název skupiny prostředků a název spravované instance napsán správně?
 - Pokud jste začali LRS v režimu automatického dokončování, byl pro poslední zadaný soubor zálohy platný název souboru?

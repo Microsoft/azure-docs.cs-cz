@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ca618dc234ff4383083ff5eb21299fb1e3e7128
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00c519ef06637c5193b347f0bbc906c6232a7ca8
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96348734"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532534"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Požadavky pro přístup k rozhraní API pro vytváření sestav Azure Active Directory
 
@@ -42,7 +42,7 @@ K přípravě přístupu k rozhraní API pro vytváření sestav potřebujete:
 
 Chcete-li získat přístup k datům sestav prostřednictvím rozhraní API, je nutné mít přiřazenou jednu z následujících rolí:
 
-- Čtenář zabezpečení
+- Čtecí modul zabezpečení
 
 - Správce zabezpečení
 
@@ -224,5 +224,5 @@ Postupujte podle kroků v části [požadavky pro přístup k rozhraní API pro 
 ## <a name="next-steps"></a>Další kroky
 
 * [Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty](tutorial-access-api-with-certificates.md)
-* [Reference k rozhraní API auditu](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
-* [Reference k rozhraní API sestav aktivit přihlašování](/graph/api/resources/signin?view=graph-rest-beta)
+* [Reference k rozhraní API auditu](/graph/api/resources/directoryaudit) 
+* [Reference k rozhraní API sestav aktivit přihlašování](/graph/api/resources/signin)

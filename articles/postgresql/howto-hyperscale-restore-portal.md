@@ -6,17 +6,17 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 04/13/2021
-ms.openlocfilehash: aebfeed055fad7c1108620ab494236640285aa1e
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.date: 04/14/2021
+ms.openlocfilehash: 99e507fed35e5b74aa44bc2713550f7cf9d7b2e5
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107495024"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518877"
 ---
 # <a name="point-in-time-restore-of-a-hyperscale-citus-server-group"></a>Obnovení skupiny serverů Citus () na základě bodu v čase
 
-Tento článek poskytuje podrobné postupy pro provádění [obnovy v určitém časovém intervalu](concepts-hyperscale-backup.md#point-in-time-restore-pitr) pro skupinu serverů Citus () pomocí záloh. V rámci doby uchování můžete obnovit buď na nejstarší zálohu, nebo na vlastní bod obnovení.
+Tento článek poskytuje podrobné postupy pro provádění [obnovy v určitém časovém intervalu](concepts-hyperscale-backup.md#restore) pro skupinu serverů Citus () pomocí záloh. V rámci doby uchování můžete obnovit buď na nejstarší zálohu, nebo na vlastní bod obnovení.
 
 ## <a name="restoring-to-the-earliest-restore-point"></a>Obnovení na nejstarší bod obnovení
 

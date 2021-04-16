@@ -1,19 +1,19 @@
 ---
-title: Obnovení-Azure Portal-Azure Database for MySQL-flexibilní Server
-description: Tento článek popisuje, jak provádět operace obnovení v Azure Database for MySQL prostřednictvím Azure Portal.
+title: Obnovte Azure Database for MySQL flexibilního serveru pomocí Azure Portal.
+description: Tento článek popisuje, jak provádět operace obnovení v Azure Database for MySQL flexibilním serveru prostřednictvím Azure Portal
 author: mksuni
 ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
-ms.date: 09/21/2020
-ms.openlocfilehash: 062d53fcb122ebacd004d7dca5e11f5a883354cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/01/2021
+ms.openlocfilehash: 962a2cbdbcc238517616c9ade235eed9b8cae6f7
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93241952"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502041"
 ---
-# <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview"></a>Obnovení k určitému bodu v čase Azure Database for MySQL-flexibilního serveru (Preview)
+# <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>Obnovení k určitému bodu v čase Azure Database for MySQL-flexibilního serveru (Preview) pomocí Azure Portal
 
 
 > [!IMPORTANT]
@@ -37,12 +37,9 @@ Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší
 
 3.  Na stránce Přehled klikněte na tlačítko **obnovit**.
 
-    Symbolu
-
 4.  Příkaz Restore Page se zobrazí s možností výběru mezi **posledním bodem obnovení** a vlastním bodem obnovení.
 
 5.  Vyberte **nejnovější bod obnovení**.
-
 
 6.  V poli **obnovit do nového serveru** zadejte nový název serveru.
 
@@ -60,8 +57,6 @@ Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší
 
 2.  Na stránce Přehled klikněte na tlačítko **obnovit**.
 
-    Symbolu
-
 3.  Příkaz Restore Page se zobrazí s možností výběru mezi nejstarším bodem obnovení a vlastním bodem obnovení.
 
 4.  Vyberte možnost **vlastní bod obnovení**.
@@ -70,14 +65,23 @@ Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší
 
 6.  V poli **obnovit do nového serveru** zadejte nový název serveru.
 
-6.  V poli **obnovit do nového serveru** zadejte nový název serveru. 
-   
+6.  V poli **obnovit do nového serveru** zadejte nový název serveru.
+
     :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="Přehled zobrazení":::
- 
+
 7.  Klikněte na **OK**.
 
 8.  Zobrazí se oznámení o zahájení operace obnovení.
 
-## <a name="next-steps"></a>Další kroky
 
-Zástupný symbol
+## <a name="perform-post-restore-tasks"></a>Provádění úloh po obnovení
+Po dokončení obnovení byste měli provést následující úlohy, aby se uživatelé a aplikace mohli zálohovat a spustit:
+
+- Pokud by nový server chtěl nahradit původní server, přesměrujte klienty a klientské aplikace na nový server.
+- Aby se uživatelé mohli připojit, zajistěte, aby byla k dismístě vhodná pravidla VNet. Tato pravidla se nekopírují z původního serveru.
+- Zajistěte, aby byla zavedena příslušná přihlášení a oprávnění na úrovni databáze.
+- Nakonfigurujte výstrahy podle potřeby pro nově obnovený server.
+
+
+## <a name="next-steps"></a>Další kroky
+Další informace o [kontinuitě podnikových aplikací](concepts-business-continuity.md)

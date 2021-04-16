@@ -2,18 +2,21 @@
 title: Rychlý Start – vytvoření Azure Analysis Services pomocí prostředí PowerShell Azure Analysis Services | Microsoft Docs
 description: V tomto rychlém startu se dozvíte, jak vytvořit Azure Analysis Services Server pomocí PowerShellu.
 author: minewiskan
-ms.service: azure-analysis-services
-ms.topic: quickstart
-ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.custom: references_regions , devx-track-azurepowershell
-ms.openlocfilehash: 737649538aaf82352e27aec6220b13ba355a7a82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/31/2020
+ms.topic: quickstart
+ms.service: azure-analysis-services
+ms.custom:
+- references_regions
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: eb76925e695f92da973fef9cb86d4e936a766587
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89229323"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531488"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Rychlý start: Vytvoření serveru – PowerShell
 

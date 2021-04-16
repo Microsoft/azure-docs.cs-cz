@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb4ebbd0b1715d9de3905060952a35ad42060119
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 2ea62a8d602cc472269b52c230529aa3f9b86ed4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167545"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535097"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Postupy: Správa neaktivních uživatelských účtů v Azure AD
 
@@ -57,7 +57,7 @@ V této části jsou uvedeny informace o tom, co potřebujete znát o vlastnosti
 
 ### <a name="how-can-i-access-this-property"></a>Jak se dá získat přístup k této vlastnosti?
 
-Vlastnost **lastSignInDateTime** je vystavena [typem prostředku signInActivity](/graph/api/resources/signinactivity?view=graph-rest-beta) [REST API Microsoft Graph](/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph).   
+Vlastnost **lastSignInDateTime** je vystavena [typem prostředku signInActivity](/graph/api/resources/signinactivity?view=graph-rest-beta&preserve-view=true) [REST API Microsoft Graph](/graph/overview#whats-in-microsoft-graph).   
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Je k dispozici vlastnost lastSignInDateTime prostřednictvím rutiny Get-AzureAdUser?
 
@@ -90,5 +90,5 @@ Pokud chcete vygenerovat lastSignInDateTime časové razítko, budete potřebova
 ## <a name="next-steps"></a>Další kroky
 
 * [Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty](tutorial-access-api-with-certificates.md)
-* [Reference k rozhraní API auditu](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
-* [Reference k rozhraní API sestav aktivit přihlašování](/graph/api/resources/signin?view=graph-rest-beta)
+* [Reference k rozhraní API auditu](/graph/api/resources/directoryaudit) 
+* [Reference k rozhraní API sestav aktivit přihlašování](/graph/api/resources/signin)

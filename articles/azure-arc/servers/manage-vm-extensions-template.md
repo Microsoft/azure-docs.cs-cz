@@ -1,14 +1,14 @@
 ---
 title: Povolení rozšíření virtuálního počítače pomocí šablony Azure Resource Manager
 description: Tento článek popisuje, jak nasadit rozšíření virtuálních počítačů na servery s podporou ARC Azure běžícími v hybridních cloudových prostředích pomocí šablony Azure Resource Manager.
-ms.date: 03/01/2021
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 88296cd4f410defcaf7db15507ddac42e80cba2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 095f95192a2054d34e438d8683ac9c2e20a824f1
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688259"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389634"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Povolení rozšíření virtuálních počítačů Azure pomocí šablony ARM
 
@@ -18,6 +18,9 @@ Rozšíření virtuálních počítačů lze přidat do šablony Azure Resource 
 
 >[!NOTE]
 >I když je možné dávkovat více rozšíření a zpracovat je, nainstalují se sériově. Po dokončení první instalace rozšíření dojde k pokusu o instalaci dalšího rozšíření.
+
+> [!NOTE]
+> Servery s podporou ARC Azure nepodporují nasazení a správu rozšíření virtuálních počítačů na virtuální počítače Azure. Informace o virtuálních počítačích Azure najdete v následujícím článku [Přehled rozšíření virtuálních počítačů](../../virtual-machines/extensions/overview.md) .
 
 ## <a name="deploy-the-log-analytics-vm-extension"></a>Nasazení rozšíření Log Analytics VM
 

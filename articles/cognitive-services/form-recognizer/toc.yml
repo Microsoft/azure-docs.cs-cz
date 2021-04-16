@@ -7,7 +7,7 @@
       href: overview.md
     - name: Podpora jazyků
       href: language-support.md
-    - name: Ceny a omezení
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Co je nového
       href: whats-new.md
@@ -27,8 +27,6 @@
       href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
     - name: Sada SDK klientské knihovny pro rozpoznávání formulářů JavaScriptu
       href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
-    - name: REST API a kudrlinkou
-      href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer'
 - name: Návody
   items:
     - name: Vytvoření trénovací sady dat
@@ -52,6 +50,14 @@
           href: ../containers/index.yml
     - name: Modely zálohování a obnovení
       href: disaster-recovery.md
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Nastavení virtuálních sítí
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/form-recognizer/context/context
+        - name: Použití klíčů spravovaných zákazníkem
+          href: encrypt-data-at-rest.md
+        - name: Použití ověřování Azure AD
+          href: ../authentication.md?context=/azure/cognitive-services/form-recognizer/context/context
 - name: Koncepty
   items:
     - name: Rozhraní API pro rozložení
@@ -97,15 +103,15 @@
           href: /javascript/api/overview/azure/ai-form-recognizer-readme
 - name: Zdroje a prostředky
   items:
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Podpora oblastí
+          href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+        - name: Dodržování předpisů a certifikace
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Regionální dostupnost
-      href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
-    - name: Dodržování předpisů
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Šifrování
-      href: encrypt-data-at-rest.md
     - name: Ochrana osobních údajů a soubory cookie
       href: 'https://privacy.microsoft.com/en-US/privacystatement'

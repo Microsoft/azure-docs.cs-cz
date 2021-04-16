@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 0d425111e151d60ab38a60e38cd1805cef39f606
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 26b5331aa9242978f0f097c8e90bc807fc65f745
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641774"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531949"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenční příručka operací správy ověřování Azure Active Directory
 
@@ -365,8 +365,8 @@ Přístup k aktivitě přihlašování, auditům a rizikovým událostem pro Azu
 
 #### <a name="logs-recommended-reading"></a>Protokoly doporučené čtení
 
-- [Referenční informace k rozhraní API pro audit Azure Active Directory](/graph/api/resources/directoryaudit?view=graph-rest-beta)
-- [Referenční informace k rozhraní API sestav aktivity přihlašování Azure Active Directory](/graph/api/resources/signin?view=graph-rest-beta)
+- [Referenční informace k rozhraní API pro audit Azure Active Directory](/graph/api/resources/directoryaudit)
+- [Referenční informace k rozhraní API sestav aktivity přihlašování Azure Active Directory](/graph/api/resources/signin)
 - [Získání dat pomocí rozhraní API pro generování sestav Azure AD s certifikáty](../reports-monitoring/tutorial-access-api-with-certificates.md)
 - [Microsoft Graph pro Azure Active Directory Identity Protection](../identity-protection/howto-identity-protection-graph-api.md)
 - [Reference k rozhraní API aktivity správy Office 365](/office/office-365-management-api/office-365-management-activity-api-reference)

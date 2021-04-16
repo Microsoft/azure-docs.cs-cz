@@ -7,18 +7,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96f93325e0f17daaaf2bad91123fea81531ca152
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "73953183"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566958"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Použití Průzkumníka cloudu pro Visual Studio pro správu zařízení IoT Hub Azure
 
 ![Komplexní diagram](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
 
-[Průzkumník cloudu](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) je užitečnou příponou sady Visual Studio, která umožňuje zobrazit prostředky Azure, kontrolovat jejich vlastnosti a provádět klíčové vývojářské akce v rámci sady Visual Studio. Obsahuje možnosti správy, které můžete použít k provádění různých úloh.
+V tomto článku se dozvíte, jak používat Průzkumníka cloudu pro Visual Studio s různými možnostmi správy ve vývojovém počítači. [Průzkumník cloudu](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) je užitečnou příponou sady Visual Studio, která umožňuje zobrazit prostředky Azure, kontrolovat jejich vlastnosti a provádět klíčové vývojářské akce v rámci sady Visual Studio. Obsahuje možnosti správy, které můžete použít k provádění různých úloh.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -33,17 +33,7 @@ Podrobnější vysvětlení rozdílů a pokynů k používání těchto možnost
 
 Dvojčata zařízení jsou dokumenty JSON s uloženými informacemi o stavu zařízení, včetně metadat, konfigurací a podmínek. IoT Hub přetrvává pro každé zařízení, které se k němu připojuje. Další informace o nevlákenách zařízení najdete v tématu [Začínáme s dvojitými zprávami](iot-hub-node-node-twin-getstarted.md)o zařízení.
 
-## <a name="what-you-learn"></a>Co se naučíte
-
-V tomto článku se dozvíte, jak používat Průzkumníka cloudu pro Visual Studio s různými možnostmi správy ve vývojovém počítači.
-
-## <a name="what-you-do"></a>Co dělat
-
-V tomto článku spusťte Průzkumníka cloudu pro Visual Studio s různými možnostmi správy.
-
-## <a name="what-you-need"></a>Co budete potřebovat
-
-Potřebujete následující požadavky:
+## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít aktivní předplatné Azure.
 
@@ -51,7 +41,7 @@ Potřebujete následující požadavky:
 
 - Microsoft Visual Studio 2017 Update 9 nebo novější. V tomto článku se používá [Visual studio 2017 nebo Visual studio 2019](https://www.visualstudio.com/vs/).
 
-- Součást Průzkumníka cloudu z Instalační program pro Visual Studio, která je standardně vybraná s úlohou Azure.
+- Součást Průzkumníka cloudu z Instalační program pro Visual Studio, která je ve výchozím nastavení vybrána s úlohou Azure.
 
 ## <a name="update-cloud-explorer-to-latest-version"></a>Aktualizovat Průzkumníka cloudu na nejnovější verzi
 

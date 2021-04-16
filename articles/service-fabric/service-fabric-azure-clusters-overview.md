@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: bbfdc0a30aa673e8602ec9233fde4236c99ef5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4aed4ab38db9f8d8b95647b6662245c93778afed
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97882207"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520152"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Přehled clusterů Service Fabric v Azure
 Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se označuje jako uzel clusteru. Clustery se můžou škálovat na tisíce uzlů. Pokud do clusteru přidáte nové uzly, Service Fabric rebilance repliky oddílů služby a instance napříč rostoucím počtem uzlů. Celkový výkon aplikace vylepšuje a kolizí pro přístup k snížení velikosti paměti. Pokud se uzly v clusteru nepoužívají efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu vyrovnává repliky oddílů a instance napříč sníženým počtem uzlů, aby bylo možné lépe využívat hardware na jednotlivých uzlech.
@@ -92,25 +92,7 @@ Cluster Azure Service Fabric je prostředek, který vlastníte, ale částečně
 Další informace najdete v článku [upgrade clusterů](service-fabric-cluster-upgrade.md).
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
-Můžete vytvářet clustery na virtuálních počítačích, na kterých běží tyto operační systémy:
-
-| Operační systém | Nejstarší podporovaná verze Service Fabric | Poslední podporovaná verze Service Fabric |
-| --- | --- | --- | 
-| Windows Server 2019 | 6.4.654.9590 | – |
-| Windows Server 2016 | Všechny verze | – |
-| 20H2 Windows serveru | 7.2.445.9590 | – |
-| Windows Server 1809 | 6.4.654.9590 | 7.2.445.9590 |
-| Windows Server 1803 | 6.4 | 7.2.445.9590 |
-| Windows Server 1709 | 6.0 | 7.2.445.9590 |
-| Windows Server 2012 | Všechny verze | – | 
-| Linux Ubuntu 16,04 | 6.0 | – |
-| Linux Ubuntu 18,04 | 7.1 | – |
-
-Další informace najdete v tématu [podporované verze clusteru v Azure](./service-fabric-versions.md#supported-operating-systems) .
-
-> [!NOTE]
-> Pokud se rozhodnete nasadit Service Fabric v systému Windows Server 1709, Upozorňujeme, že (1) Tato větev není dlouhodobá obsluha, takže možná budete muset přesunout verze v budoucnu a (2) Pokud nasazujete kontejnery, kontejnery postavené na Windows serveru 2016 nefungují na Windows serveru 1709 a naopak (při jejich nasazení je budete muset znovu sestavit).
->
+Další informace najdete [v tématu podporované verze v Azure](./service-fabric-versions.md) .
 
 
 ## <a name="next-steps"></a>Další kroky

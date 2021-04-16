@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 46f378baad51e959f8b3c074cc24e5bbdfdd95d4
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 15c76bc042cb66dafbdeebac2951f5cb68310aa4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389600"
+ms.locfileid: "107482787"
 ---
 # <a name="azure-digital-twins-service-limits"></a>Omezení služby digitálních vláken Azure
 
@@ -29,7 +29,7 @@ Toto jsou omezení služby digitálních vláken Azure.
 
 ## <a name="working-with-limits"></a>Práce s omezeními
 
-Po dosažení limitu služba omezuje další požadavky. Výsledkem bude chybná odpověď 404 od těchto požadavků.
+Po dosažení limitu služba omezuje další požadavky. Výsledkem bude chybná odpověď 429 od těchto požadavků.
 
 Pokud to chcete spravovat, tady je několik doporučení pro práci s omezeními.
 * **Použijte logiku opakování.** Sady [SDK digitálních vláken v Azure](how-to-use-apis-sdks.md) implementují logiku opakování pro neúspěšné žádosti, takže pokud pracujete s poskytnutou sadou SDK, je tato operace už integrovaná. V opačném případě zvažte implementaci logiky opakování ve vaší vlastní aplikaci. Služba pošle zpět `Retry-After` hlavičku v reakci na selhání, kterou můžete použít k určení, jak dlouho se má čekat před opakováním.

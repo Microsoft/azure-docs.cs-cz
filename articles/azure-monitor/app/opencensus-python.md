@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: 69472da4f774a1dfae86e1891255907ad711175a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 92d954a865a2d4a8c55177b132139dcd7d0444ef
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047418"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515919"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Nastavení Azure Monitor pro aplikaci Python
 
@@ -19,7 +19,7 @@ Azure Monitor podporuje distribuované trasování, shromažďování metrik a p
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
-- Instalace Pythonu Tento článek používá [Python 3.7.0](https://www.python.org/downloads/release/python-370/), i když jiné verze budou nejspíš fungovat s menšími změnami. Sada SDK podporuje pouze Python verze 2,7 a 3.6 +.
+- Instalace Pythonu Tento článek používá [Python 3.7.0](https://www.python.org/downloads/release/python-370/), i když jiné verze budou nejspíš fungovat s menšími změnami. Sada SDK podporuje pouze Python v 2.7 a v 3.4-v 3.7.
 - Vytvořte [prostředek](./create-new-resource.md)Application Insights. K vašemu prostředku budete mít přiřazený vlastní klíč instrumentace (ikey).
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Instrumentace se sadou OpenCensus Python SDK pro Azure Monitor
@@ -330,6 +330,54 @@ OpenCensus. stats podporuje 4 agregační metody, ale poskytuje částečnou pod
     ```
 
 1. Exportér posílá data metriky Azure Monitor v pevném intervalu. Výchozí hodnota je každých 15 sekund. Sledujeme jednu metriku, takže tato data metriky s libovolným hodnotou a časovým razítkem, které obsahuje, se odesílají každý interval. Hodnota je kumulativní, může se zvýšit a nastavit na hodnotu 0 při restartu. Data můžete najít v části `customMetrics` , ale `customMetrics` vlastnosti ValueCount, ValueSum, ValueMin, ValueMax a valueStdDev se nepoužívají efektivně.
+
+### <a name="setting-custom-dimensions-in-metrics"></a>Nastavení vlastních dimenzí v metrikách
+
+Opencensus Python SDK umožňuje přidání vlastních dimenzí do telemetrie metriky způsobem `tags` , který je v podstatě slovníkem párů klíč/hodnota. 
+
+1. Vložte značky, které chcete použít, do mapy značek. Mapa značek funguje jako řazení "fondu" všech dostupných značek, které můžete použít.
+
+```python
+...
+tmap = tag_map_module.TagMap()
+tmap.insert("url", "http://example.com")
+...
+```
+
+1. Pro konkrétní `View` Určete značky, které chcete použít při nahrávání metrik s tímto zobrazením prostřednictvím klíče značky.
+
+```python
+...
+prompt_view = view_module.View("prompt view",
+                               "number of prompts",
+                               ["url"], # <-- A sequence of tag keys used to specify which tag key/value to use from the tag map
+                               prompt_measure,
+                               aggregation_module.CountAggregation())
+...
+```
+
+1. Nezapomeňte použít mapu značek při nahrávání na mapě měření. Klíče značek, které jsou zadány v rozhraní, `View` musí být nalezeny v mapě značek, která se používá k záznamu.
+
+```python
+...
+mmap = stats_recorder.new_measurement_map()
+mmap.measure_int_put(prompt_measure, 1)
+mmap.record(tmap) # <-- pass the tag map in here
+...
+```
+
+1. V rámci `customMetrics` tabulky budou všechny záznamy metrik vygenerované pomocí nástroje `prompt_view` mít vlastní dimenze `{"url":"http://example.com"}` .
+
+1. Chcete-li vytvořit značky s různými hodnotami pomocí stejných klíčů, vytvořte pro ně nové mapy značek.
+
+```python
+...
+tmap = tag_map_module.TagMap()
+tmap2 = tag_map_module.TagMap()
+tmap.insert("url", "http://example.com")
+tmap2.insert("url", "https://www.wikipedia.org/wiki/")
+...
+```
 
 #### <a name="performance-counters"></a>Čítače výkonu
 

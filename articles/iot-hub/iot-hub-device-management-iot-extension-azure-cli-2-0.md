@@ -10,24 +10,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 499c0c065cb38313c98ed9412ab1f08d70dbc654
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a5bc7e195efd62f430fdf2aa0cb606dbcff79528
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199522"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567192"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Použití rozšíření IoT pro Azure CLI pro správu zařízení IoT Hub Azure
 
 ![Komplexní diagram](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
-
-[Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) je open source rozšíření IoT, které přináší možnosti [Azure CLI](/cli/azure/overview). Rozhraní příkazového řádku Azure CLI obsahuje příkazy pro komunikaci s koncovými body Azure Resource Manager a správy. Pomocí Azure CLI můžete například vytvořit virtuální počítač Azure nebo centrum IoT. Rozšíření CLI umožňuje službě Azure rozšířit Azure CLI a získat tak přístup k dalším funkcím specifickým pro službu. Rozšíření IoT poskytuje vývojářům IoT přístup k funkcím příkazového řádku pro všechny funkce IoT Hub, IoT Edge a IoT Hub Device Provisioning Service.
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+V tomto článku se dozvíte, jak používat rozšíření IoT pro Azure CLI s různými možnostmi správy ve vývojovém počítači. [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) je open source rozšíření IoT, které přináší možnosti [Azure CLI](/cli/azure/overview). Rozhraní příkazového řádku Azure CLI obsahuje příkazy pro komunikaci s koncovými body Azure Resource Manager a správy. Pomocí Azure CLI můžete například vytvořit virtuální počítač Azure nebo centrum IoT. Rozšíření CLI umožňuje službě Azure rozšířit Azure CLI a získat tak přístup k dalším funkcím specifickým pro službu. Rozšíření IoT poskytuje vývojářům IoT přístup k funkcím příkazového řádku pro všechny funkce IoT Hub, IoT Edge a IoT Hub Device Provisioning Service.
 
 | Možnost správy          | Úkol  |
 |----------------------------|-----------|
@@ -41,21 +35,19 @@ Podrobnější vysvětlení rozdílů a pokynů k používání těchto možnost
 
 Dvojčata zařízení jsou dokumenty JSON, které obsahují informace o stavu zařízení (metadata, konfigurace a podmínky). IoT Hub přetrvává pro každé zařízení, které se k němu připojuje. Další informace o nevlákenách zařízení najdete v tématu [Začínáme s dvojitými zprávami](iot-hub-node-node-twin-getstarted.md)o zařízení.
 
-## <a name="what-you-learn"></a>Co se naučíte
+[!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-Naučíte se používat rozšíření IoT pro Azure CLI s různými možnostmi správy ve vývojovém počítači.
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="what-you-do"></a>Co dělat
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Spusťte Azure CLI a rozšíření IoT pro Azure CLI s různými možnostmi správy.
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="what-you-need"></a>Co budete potřebovat
+* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení. Například můžete přejít na [malinu Pi pomocí node.js](iot-hub-raspberry-pi-kit-node-get-started.md) nebo do jednoho z rychlých startů pro [odeslání telemetrie](quickstart-send-telemetry-dotnet.md) . Tyto články se týkají následujících požadavků:
 
-* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto položky se týkají následujících požadavků:
-
-  - Musíte mít aktivní předplatné Azure.
-  - Azure IoT Hub v rámci vašeho předplatného.
-  - Klientská aplikace, která odesílá zprávy do služby Azure IoT Hub.
+  * Musíte mít aktivní předplatné Azure.
+  * Azure IoT Hub v rámci vašeho předplatného.
+  * Klientská aplikace, která odesílá zprávy do služby Azure IoT Hub.
 
 * Ujistěte se, že vaše zařízení je spuštěné pomocí klientské aplikace v průběhu tohoto kurzu.
 

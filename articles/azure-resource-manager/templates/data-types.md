@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: tomfitz
 author: tfitzmac
 ms.date: 03/04/2021
-ms.openlocfilehash: 7d3f15c8852e6e25c621baad9bc6f20c303ffdb9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d6c8306b3dbdfe895055dc008d81cc0d85d8d6c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102125083"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538058"
 ---
 # <a name="data-types-in-arm-templates"></a>Datové typy v šablonách ARM
 
@@ -143,11 +143,9 @@ Pro celá čísla předaná jako vložené parametry může být rozsah hodnot o
 
 Objekty začínají levou závorkou ( `{` ) a končí pravou závorkou ( `}` ). Každá vlastnost v objektu se skládá z klíče a hodnoty. Klíč a hodnota jsou oddělené dvojtečkou ( `:` ).
 
-Ve formátu JSON je klíč uzavřený v dvojitých uvozovkách. Každá vlastnost je oddělená čárkou.
-
-V bicep klíč není uzavřen do uvozovek. Mezi vlastnostmi nepoužívejte čárky.
-
 # <a name="json"></a>[JSON](#tab/json)
+
+Ve formátu JSON je klíč uzavřený v dvojitých uvozovkách. Každá vlastnost je oddělená čárkou.
 
 ```json
 "parameters": {
@@ -165,6 +163,8 @@ V bicep klíč není uzavřen do uvozovek. Mezi vlastnostmi nepoužívejte čár
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
+V bicep klíč není uzavřen do uvozovek. Mezi vlastnostmi nepoužívejte čárky.
+
 ```bicep
 param exampleObject object = {
   name: 'test name'
@@ -173,6 +173,22 @@ param exampleObject object = {
   tier: 1
 }
 ```
+
+Přistupující objekty vlastnosti se používají pro přístup k vlastnostem objektu. Jsou vytvořené pomocí `.` operátoru. Například:
+
+```bicep
+var x = {
+  y: {
+    z: 'Hello`
+    a: true
+  }
+  q: 42
+}
+```
+
+S ohledem na předchozí deklaraci se výraz x. y. z vyhodnocuje na literální řetězec Hello. Podobně výraz x. q se vyhodnotí na celočíselný literál 42.
+
+Přistupující objekty vlastnosti lze použít s libovolným objektem. To zahrnuje parametry a proměnné typů objektů a literálů objektů. Použití přístupového objektu vlastnosti u výrazu neobjektového typu je chyba.
 
 ---
 

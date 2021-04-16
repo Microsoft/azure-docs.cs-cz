@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ff8e03b813e2cb890192667e3466d920eaabc72c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c8ea1580047910cb2d6634aad885d61e99113f3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98756092"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529964"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform a OAuth 2,0 s tokem za chodu
 
@@ -191,6 +191,49 @@ Toto je nestandardní rozšíření pro tok OAuth 2,0, který umožňuje aplikac
 
 > [!TIP]
 > Když zavoláte webovou službu chráněnou SAML z front-endové webové aplikace, můžete jednoduše zavolat rozhraní API a zahájit normální tok interaktivního ověřování s existující relací uživatele. Tok OBO je potřeba použít jenom v případě, že volání služba-služba vyžaduje, aby token SAML poskytoval kontext uživatele.
+ 
+ ### <a name="obtain-a-saml-token-by-using-an-obo-request-with-a-shared-secret"></a>Získání tokenu SAML pomocí žádosti OBO se sdíleným tajným klíčem
+
+Požadavek služby na službu pro kontrolní výraz SAML obsahuje následující parametry:
+
+| Parametr | Typ | Popis |
+| --- | --- | --- |
+| grant_type |vyžadováno | Typ požadavku tokenu Pro požadavek, který používá JWT, musí být hodnota **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
+| Neplatný |vyžadováno | Hodnota přístupového tokenu použitého v žádosti|
+| client_id |vyžadováno | ID aplikace přiřazené volající službě během registrace ve službě Azure AD. Chcete-li najít ID aplikace v Azure Portal, vyberte možnost **Active Directory**, zvolte adresář a pak vyberte název aplikace. |
+| client_secret |vyžadováno | Klíč zaregistrovaný pro volající službu ve službě Azure AD. Tato hodnota by se měla poznamenat v době registrace. |
+| prostředek |vyžadováno | Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) Toto je prostředek, který bude cílovou skupinou tokenu SAML. Identifikátor URI ID aplikace v Azure Portal najdete tak, že vyberete **Active Directory** a zvolíte adresář. Vyberte název aplikace, zvolte **všechna nastavení** a pak vyberte **vlastnosti**. |
+| requested_token_use |vyžadováno | Určuje, jak se má požadavek zpracovat. V toku musí být hodnota **on_behalf_of**. |
+| requested_token_type | vyžadováno | Určuje typ požadovaného tokenu. Hodnota může být **urn: IETF: params: OAuth: token-Type: typu Saml2** nebo **urn: IETF: parametr: OAuth: token-Type: saml1** v závislosti na požadavcích na prostředek, který je k dispozici. |
+
+Odpověď obsahuje token SAML kódovaný v UTF8 a Base64url.
+
+- **SubjectConfirmationData pro vyhodnocení výrazu SAML ze volání OBO**: Pokud cílová aplikace vyžaduje hodnotu příjemce v **SubjectConfirmationData**, musí být v konfiguraci aplikace prostředků adresa URL odpovědi bez zástupných znaků.
+- **Uzel SubjectConfirmationData**: uzel nemůže obsahovat atribut **InResponseTo** , protože není součástí odpovědi SAML. Aplikace, která přijímá token SAML, musí být schopna přijmout kontrolní výraz SAML bez atributu **InResponseTo** .
+
+- **Souhlas**: souhlas se musí udělit pro příjem tokenu SAML obsahujícího uživatelská data v toku OAuth. Informace o oprávněních a získání souhlasu správce najdete [v tématu oprávnění a souhlas v koncovém bodu Azure Active Directory v 1.0](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent).
+
+### <a name="response-with-saml-assertion"></a>Odpověď s kontrolním výrazem SAML
+
+| Parametr | Popis |
+| --- | --- |
+| token_type |Určuje hodnotu typu tokenu. Jediným typem, který podporuje Azure AD, je **nosič**. Další informace o tokenech nosiče najdete v tématu [autorizační rozhraní OAuth 2,0: použití nosných tokenů (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| scope |Rozsah přístupu uděleného v tokenu. |
+| expires_in |Délka doby platnosti přístupového tokenu (v sekundách). |
+| expires_on |Čas vypršení platnosti přístupového tokenu. Datum se reprezentuje jako počet sekund od roku 1970-01-01T0:0: 0Z UTC až do doby vypršení platnosti. Tato hodnota se používá k určení doby života tokenů uložených v mezipaměti. |
+| prostředek |Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) |
+| access_token |Parametr, který vrací kontrolní výraz SAML. |
+| refresh_token |Obnovovací token Volající služba může tento token použít k vyžádání jiného přístupového tokenu po vypršení platnosti aktuálního kontrolního výrazu SAML. |
+
+- token_type: nosič
+- expires_in: 3296
+- ext_expires_in: 0
+- expires_on: 1529627844
+- partner `https://api.contoso.com`
+- access_token: \<SAML assertion\>
+- issued_token_type: urn: IETF: param: OAuth: typ tokenu: typu Saml2
+- refresh_token: \<Refresh token\>
+
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Získání souhlasu pro aplikaci střední vrstvy
 

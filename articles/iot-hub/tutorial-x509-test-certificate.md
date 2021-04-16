@@ -12,13 +12,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-- devx-track-azurecli
-ms.openlocfilehash: 91eea344914120a396ba9465ec504a37f5844d4e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7d1900782fce6b84ed79014e985393f3626d171b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630657"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379430"
 ---
 # <a name="tutorial-testing-certificate-authentication"></a>Kurz: testování ověřování certifikátů
 

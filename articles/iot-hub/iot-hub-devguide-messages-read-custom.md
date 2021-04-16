@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 8aebb5b6f6a3ac53bc49fd1d2f75de88667865fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ad57473e0950f031fbeadee2302f85557ed526f
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147643"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388257"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Použití směrování zpráv a vlastních koncových bodů pro zprávy ze zařízení do cloudu
 
@@ -32,13 +32,14 @@ Jedna zpráva se může shodovat s podmínkou pro více směrovacích dotazů. v
 
 ## <a name="endpoints-and-routing"></a>Koncové body a směrování
 
-Služba IoT Hub má výchozí [integrovaný koncový bod](iot-hub-devguide-messages-read-builtin.md). Můžete vytvořit vlastní koncové body, na které se budou směrovat zprávy propojením dalších služeb ve vašem předplatném do centra. IoT Hub aktuálně podporuje kontejnery Azure Storage, Event Hubs, Service Bus fronty a Service Bus témata jako vlastní koncové body.
+Služba IoT Hub má výchozí [integrovaný koncový bod](iot-hub-devguide-messages-read-builtin.md). Můžete vytvořit vlastní koncové body, na které budou směrovat zprávy propojením dalších služeb v předplatných, která vlastníte v centru. IoT Hub aktuálně podporuje kontejnery Azure Storage, Event Hubs, Service Bus fronty a Service Bus témata jako vlastní koncové body.
 
 Když použijete směrování a vlastní koncové body, zprávy se doručí pouze do předdefinovaného koncového bodu, pokud se neshodují s žádným dotazem. Chcete-li doručovat zprávy na integrovaný koncový bod i na vlastní koncový bod, přidejte trasu, která odesílá zprávy do koncového bodu integrovaných **událostí** .
 
 > [!NOTE]
 > * IoT Hub podporuje jenom zápis dat do kontejnerů Azure Storage jako objekty blob.
 > * Service Bus fronty a témata s **relacemi** nebo s povoleným **vyhledáváním duplicit** nejsou podporovány jako vlastní koncové body.
+> * V Azure Portal můžete vytvořit vlastní koncové body směrování jenom pro prostředky Azure, které jsou ve stejném předplatném jako vaše centrum. Můžete vytvořit vlastní koncové body pro prostředky v jiných předplatných, které vlastníte, ale vlastní koncové body musí být nakonfigurovány pomocí jiné metody než Azure Portal.
 
 Další informace o vytváření vlastních koncových bodů v IoT Hub najdete v tématu [IoT Hub koncových bodů](iot-hub-devguide-endpoints.md).
 

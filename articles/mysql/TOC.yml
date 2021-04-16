@@ -466,6 +466,8 @@
           href: flexible-server/how-to-stop-start-server-portal.md
         - name: Restartujte server pomocí Azure Portal
           href: flexible-server/how-to-restart-server-portal.md
+        - name: Spuštění/zastavení/restartování pomocí Azure CLI
+          href: flexible-server/how-to-restart-stop-start-server-cli.md
     - name: Sítě
       items:
         - name: Koncepty
@@ -497,6 +499,8 @@
           href: flexible-server/concepts-high-availability.md
         - name: Konfigurace vysoké dostupnosti pomocí Azure Portal
           href: flexible-server/how-to-configure-high-availability.md
+        - name: Konfigurace vysoké dostupnosti pomocí Azure CLI
+          href: flexible-server/how-to-configure-high-availability-cli.md
     - name: Monitorování a protokoly
       items:
         - name: Koncepty
@@ -507,12 +511,16 @@
               href: flexible-server/concepts-slow-query-logs.md
             - name: Konfigurace pomalých protokolů dotazů pomocí Azure Portal
               href: flexible-server/how-to-configure-slow-query-logs-portal.md
+            - name: Konfigurace pomalých protokolů dotazů pomocí Azure CLI
+              href: flexible-server/how-to-configure-slow-query-log-cli.md
         - name: Protokoly auditu
           items:
             - name: Koncepty
               href: flexible-server/concepts-audit-logs.md
             - name: Konfigurovat protokoly auditu
               href: flexible-server/how-to-configure-audit-logs-portal.md
+            - name: Konfigurace protokolů auditu pomocí Azure CLI
+              href: flexible-server/how-to-configure-audit-log-cli.md
     - name: Replikace
       items:
         - name: Čtení replik
@@ -529,6 +537,8 @@
           href: flexible-server/concepts-backup-restore.md
         - name: Obnovení serveru s využitím webu Azure Portal
           href: flexible-server/how-to-restore-server-portal.md
+        - name: Obnovení serveru s využitím Azure CLI
+          href: flexible-server/how-to-restore-server-cli.md
     - name: Řešení potíží
       items:
         - name: Řešení chyb připojení

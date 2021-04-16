@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: d9bbe40e35bdad6fac5c5ccb0b15b909e77b938c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35346836767bc1da8c498e23fd3b42afe7a9c350
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564012"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531202"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>Kopírování obrázku z jiné galerie pomocí PowerShellu
 
@@ -123,7 +123,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 ## <a name="create-the-image-version"></a>Vytvoření verze image
 
-Vytvořte verzi Image pomocí [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion). V `--managed-image` parametru pro vytvoření verze image v cílové galerii budete muset předat ID zdrojového obrázku. 
+Vytvořte verzi Image pomocí [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion). V `-Source` parametru pro vytvoření verze image v cílové galerii budete muset předat ID zdrojového obrázku. 
 
 Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32 celé číslo. Formát: *MajorVersion*. *Podverze.* *Oprava*.
 

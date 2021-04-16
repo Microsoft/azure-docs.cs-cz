@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 35ed677c3176fb990f752f3204a1ae11bf39896c
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 49e59c43e9eaedf770b1a8e052dd73aa331d31ce
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121689"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389566"
 ---
 # <a name="azure-database-for-mysql-version-support-policy"></a>Zásady podpory pro Azure Database for MySQL verze
 
@@ -24,7 +24,7 @@ Azure Database for MySQL bylo vyvinuto z [verze MySQL Community Edition](https:/
 
 Azure Database for MySQL aktuálně podporuje následující hlavní a dílčí verze MySQL:
 
-| Verze | [Jeden server](overview.md) <br/> Aktuální dílčí verze |[Flexibilní server (Preview)](/../flexible-server/overview.md) <br/> Aktuální dílčí verze  |
+| Verze | [Jeden server](overview.md) <br/> Aktuální dílčí verze |[Flexibilní server (Preview)](/azure/mysql/flexible-server/overview) <br/> Aktuální dílčí verze  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL verze 5,6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html)(vyřazeno) | Nepodporováno|
 |MySQL verze 5,7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|

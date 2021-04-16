@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: f4f2f8522f6d3d1039673803d946323deb485db9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39e7bb5c151d490e79ef111589f52f260c3e6c7a
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200252"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483159"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Monitorování nasazení IoT Edge
 
@@ -27,7 +27,7 @@ Zařízení i moduly mají podobná data, například připojení, takže se hod
 
 Služba IoT Hub shromažďuje data hlášená nevlákenou zařízení a modulu a poskytuje počty různých stavů, které zařízení mohou mít. Služba IoT Hub uspořádá tato data do čtyř skupin metrik:
 
-| Typ | Description |
+| Typ | Popis |
 | --- | ---|
 | Targeted | Zobrazuje IoT Edge zařízení, která se shodují s podmínkou cílení nasazení. |
 | Použito | Zobrazuje cílené IoT Edge zařízení, na která necílí jiné nasazení s vyšší prioritou. |
@@ -69,7 +69,7 @@ Chcete-li provést změny v nasazení, přečtěte si téma [Změna nasazení](h
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>Monitorování nasazení pomocí Azure CLI
 
-Podrobnosti o jednom nasazení zobrazíte pomocí příkazu [az IoT Edge Deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) :
+Pomocí příkazu [AZ IoT Edge Deployment show](/cli/azure/iot/edge/deployment) zobrazíte podrobnosti o jednom nasazení:
 
 ```azurecli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
@@ -87,7 +87,7 @@ Prozkoumejte nasazení v příkazovém okně. Vlastnost **metriky** uvádí poč
 * **reportedSuccessfulCount** – metrika zařízení, která určuje počet IoT Edge zařízení v rámci generování sestav nasazení v IoT Edge modulu runtime klienta.
 * **reportedFailedCount** – metrika zařízení, která určuje počet IoT Edge zařízení v hlášení nasazení, které se nezdařily z modulu runtime klienta IoT Edge.
 
-Pomocí příkazu [az IoT Edge Deployment show-metric](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) můžete zobrazit seznam ID zařízení nebo objektů pro každou z těchto metrik:
+Seznam ID zařízení nebo objektů pro každou metriku můžete zobrazit pomocí příkazu [AZ IoT Edge Deployment show-metric](/cli/azure/iot/edge/deployment) :
 
 ```azurecli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]

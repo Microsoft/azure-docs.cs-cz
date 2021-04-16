@@ -3,12 +3,14 @@ title: 'Rychlý Start: Vytvoření skupiny pro správu pomocí portálu'
 description: V tomto rychlém startu použijete Azure Portal k vytvoření skupiny pro správu, která slouží k uspořádání prostředků do hierarchie prostředků.
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: 2fa9b667079104fe9728ab41ecd87685c35de1b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 1b0f7b0d98b2cde1343325d5e4a2979e3e663b68
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024680"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535911"
 ---
 # <a name="quickstart-create-a-management-group"></a>Rychlý Start: Vytvoření skupiny pro správu
 
@@ -24,7 +26,7 @@ První skupina pro správu vytvořená v adresáři může trvat až 15 minut, n
 
 ### <a name="create-in-portal"></a>Vytvořit na portálu
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **všechny služby**  >  **Správa a zásady správného řízení**.
 

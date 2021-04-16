@@ -15,12 +15,12 @@ ms.date: 3/3/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7143c3f9786d41c32ae954ab219197a9cfaa1050
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f4d6502ffdd13272d396852b11a11d13f929b11b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176871"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532264"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access
 
@@ -32,7 +32,7 @@ Můžete se podívat na rychlé video s přehledem o povolení kontrol přístup
 
 Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro členy skupiny nebo přístup k aplikaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure AD Premium P2
 - Globální správce nebo Správce uživatelů
@@ -159,7 +159,7 @@ Pokud jste přidělili hosty jako kontroloři a nepřijali pozvánku, neobdrží
 
 ## <a name="create-reviews-via-apis"></a>Vytváření recenzí prostřednictvím rozhraní API
 
-Můžete také vytvořit kontroly přístupu pomocí rozhraní API. K tomu, jak spravovat kontroly přístupu skupin a uživatelů aplikací v Azure Portal lze také použít rozhraní API Microsoft Graph. Další informace najdete v referenčních informacích k [rozhraní API kontroly přístupu Azure AD](/graph/api/resources/accessreviews-root?view=graph-rest-beta). Ukázku kódu najdete v tématu [příklad načtení kontrol přístupu služby Azure AD prostřednictvím Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
+Můžete také vytvořit kontroly přístupu pomocí rozhraní API. K tomu, jak spravovat kontroly přístupu skupin a uživatelů aplikací v Azure Portal lze také použít rozhraní API Microsoft Graph. Další informace najdete v referenčních informacích k [rozhraní API kontroly přístupu Azure AD](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true). Ukázku kódu najdete v tématu [příklad načtení kontrol přístupu služby Azure AD prostřednictvím Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
 
 ## <a name="next-steps"></a>Další kroky
 

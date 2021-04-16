@@ -3,12 +3,12 @@ title: Správa a sledování SQL Server databáze na virtuálním počítači Az
 description: Tento článek popisuje, jak spravovat a monitorovat databáze SQL Server, které běží na virtuálním počítači Azure.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: e37e6fc211b34b7e427b66db374a705faafd25f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3938e26e134f7d823d8a6f6fac631ebf4442e6ab
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97858724"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519132"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a monitorování zálohovaných databází SQL Serveru
 
@@ -79,8 +79,8 @@ Zastavení ochrany databáze:
 >
 >Další informace o možnosti odstranit data najdete v následujících nejčastějších dotazech:
 >
->- [Když z automaticky chráněné instance odstraním databázi, co se stane se zálohami?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
->- [Když zabráním operaci zálohování funkce autoprotected Database, která bude její chování?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>- [Když z automaticky chráněné instance odstraním databázi, co se stane se zálohami?](faq-backup-sql-server.yml#if-i-delete-a-database-from-an-autoprotected-instance--what-will-happen-to-the-backups-)
+>- [Když zabráním operaci zálohování funkce autoprotected Database, která bude její chování?](faq-backup-sql-server.yml#if-i-change-the-name-of-the-database-after-it-has-been-protected--what-will-be-the-behavior-)
 >
 >
 

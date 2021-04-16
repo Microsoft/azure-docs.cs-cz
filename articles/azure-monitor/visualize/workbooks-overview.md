@@ -5,12 +5,12 @@ services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: a02e5fced0a9e338a32d8d8beaa9e4b5fca994e8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 3d75d7605ba082aac84973aef247de79d55b4c9c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309469"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482768"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor sešity
 
@@ -50,13 +50,24 @@ Pracovní sešity poskytují bohatou sadu funkcí pro vizualizaci vašich dat. P
 
 :::image type="content" source="./media/workbooks-overview/visualizations.png" alt-text="Příklad vizualizací sešitu" border="false" lightbox="./media/workbooks-overview/visualizations.png":::
 
+### <a name="pinning-visualizations"></a>Připnutí vizualizací
+
+Kroky pro text, dotazy a metriky v sešitě lze připnout pomocí tlačítka připnout na tyto položky, když je sešit v režimu připnutí, nebo pokud autor sešitu povolil nastavení pro tento prvek, aby ikona kódu PIN byla viditelná.
+
+Chcete-li získat přístup k režimu připnutí, klikněte na tlačítko **Upravit** a zadejte režim úprav a v horním panelu vyberte ikonu modrý kód PIN. Na pravé straně obrazovky se pak zobrazí ikona jednotlivého kódu PIN nad každým odpovídajícím polem pro *úpravu* příslušné části sešitu.
+
+:::image type="content" source="./media/workbooks-overview/pin-experience.png" alt-text="Snímek obrazovky s možností připnutí" border="false":::
+
+> [!NOTE]
+> Stav sešitu se uloží v době kódu PIN a připojené sešity na řídicím panelu se neaktualizují, pokud je upravený příslušný sešit. Aby bylo možné aktualizovat připnuté součásti sešitu, je nutné tuto část odstranit a znovu připnout.
+
 ## <a name="getting-started"></a>Začínáme
 
 Chcete-li prozkoumat prostředí sešitů, nejprve přejděte do služby Azure Monitor. To se dá udělat tak, že do vyhledávacího pole v Azure Portal zadáte **monitor** .
 
 Pak vyberte **sešity**.
 
-:::image type="content" source="./media/workbooks-overview/workbooks.png" alt-text="Snímek obrazovky se zvýrazněným tlačítkem sešity v červeném poli" border="false":::
+:::image type="content" source="./media/workbooks-overview/workbooks.png" alt-text="Snímek obrazovky se zvýrazněným tlačítkem sešity v červeném poli." border="false":::
 
 ### <a name="gallery"></a>Galerie
 
@@ -68,7 +79,7 @@ Galerie usnadňuje uspořádání, řazení a správu sešitů všech typů.
 
 V galerii jsou čtyři karty, které vám pomůžou organizovat typy sešitů.
 
-| Karta              | Description                                       |
+| Karta              | Popis                                       |
 |------------------|---------------------------------------------------|
 | Vše | Zobrazuje horní čtyři položky pro každý typ – sešity, veřejné šablony a moje šablony. Sešity jsou seřazené podle data změny, takže se zobrazí poslední osm upravených sešitů.|
 | Workbooks | Zobrazuje seznam všech dostupných sešitů, které jste vytvořili nebo jsou s vámi sdíleny. |
@@ -97,7 +108,7 @@ V digestoři se šablony také liší od uložených sešitů. Při uložení se
 
 Vyberte možnost **Analýza selhání aplikace** , aby se zobrazila jedna z výchozích šablon sešitu aplikace.
 
-:::image type="content" source="./media/workbooks-overview/failure-analysis.png" alt-text="Snímek šablony analýzy selhání aplikace" border="false" lightbox="./media/workbooks-overview/failure-analysis.png":::
+:::image type="content" source="./media/workbooks-overview/failure-analysis.png" alt-text="Snímek obrazovky s šablonou analýzy selhání aplikace" border="false" lightbox="./media/workbooks-overview/failure-analysis.png":::
 
 Jak bylo uvedeno dříve, otevřením šablony se vytvoří dočasný sešit, ve kterém budete moci pracovat. Ve výchozím nastavení se sešit otevře v režimu čtení, který zobrazí jenom informace pro zamýšlené prostředí analýzy, které vytvořil původní autor šablony.
 
@@ -115,23 +126,11 @@ Po přepnutí do režimu úprav si všimněte, že se vpravo v jednotlivých asp
 
 Když v mřížce dat požadavku vybereme tlačítko Upravit hned, uvidíme, že tato část sešitu se skládá z Kusto dotazu na data z prostředku Application Insights.
 
-:::image type="content" source="./media/workbooks-overview/kusto.png" alt-text="Snímek obrazovky základního dotazu Kusto" border="false" lightbox="./media/workbooks-overview/kusto.png":::
+:::image type="content" source="./media/workbooks-overview/kusto.png" alt-text="Snímek obrazovky s podkladovým dotazem Kusto" border="false" lightbox="./media/workbooks-overview/kusto.png":::
 
-
-Kliknutím na další tlačítka pro **Úpravy** na pravé straně se zobrazí řada základních komponent, které tvoří sešity, jako jsou [textová pole](../visualize/workbooks-text-visualizations.md)založená na Markdownu, prvky uživatelského rozhraní pro [Výběr parametrů](../visualize/workbooks-parameters.md) a další [typy grafů a vizualizací](#visualizations).
+Výběrem dalších tlačítek pro **Úpravy** na pravé straně se zobrazí řada základních komponent, které tvoří sešity, jako jsou [textová pole](../visualize/workbooks-text-visualizations.md)založená na Markdownu, prvky uživatelského rozhraní pro [Výběr parametrů](../visualize/workbooks-parameters.md) a další [typy grafů a vizualizací](#visualizations).
 
 Seznamte se s předem vytvořenými šablonami v režimu úprav a pak je upravte tak, aby vyhovovaly vašim potřebám, a uložte si vlastní sešit je skvělým způsobem, jak se naučit, co je možné u Azure Monitorch sešitů.
-
-## <a name="pinning-visualizations"></a>Připnutí vizualizací
-
-Kroky pro text, dotazy a metriky v sešitě lze připnout pomocí tlačítka připnout na tyto položky, když je sešit v režimu připnutí, nebo pokud autor sešitu povolil nastavení pro tento prvek, aby ikona kódu PIN byla viditelná.
-
-Chcete-li získat přístup k režimu připnutí, klikněte na tlačítko **Upravit** a zadejte režim úprav a v horním panelu vyberte ikonu modrý kód PIN. Na pravé straně obrazovky se pak zobrazí ikona jednotlivého kódu PIN nad každým odpovídajícím polem pro *úpravu* příslušné části sešitu.
-
-:::image type="content" source="./media/workbooks-overview/pin-experience.png" alt-text="Snímek obrazovky s možností připnutí" border="false":::
-
-> [!NOTE]
-> Stav sešitu se uloží v době kódu PIN a připojené sešity na řídicím panelu se neaktualizují, pokud je upravený příslušný sešit. Aby bylo možné aktualizovat připnuté součásti sešitu, je nutné tuto část odstranit a znovu připnout.
 
 ## <a name="dashboard-time-ranges"></a>Časové rozsahy řídicího panelu
 

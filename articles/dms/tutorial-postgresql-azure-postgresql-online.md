@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: bb4dd08b4f30982ec4572fd4e130a89112578175
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 37f33a217467619240d3339363c6a2fcd8800a12
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203551"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505543"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Kurz: migrace PostgreSQL do Azure DB pro PostgreSQL online pomocí DMS přes Azure CLI
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 > [!IMPORTANT]
 > Pro optimální prostředí migrace doporučuje Microsoft vytvořit instanci Azure Database Migration Service ve stejné oblasti Azure jako cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -155,7 +155,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
 6. Pokud v některých tabulkách existují datový typ ENUM, doporučujeme ji dočasně aktualizovat na datový typ "Character varyed" v cílové tabulce. Po dokončení replikace dat vraťte datový typ na ENUM.
 
-## <a name="provisioning-an-instance-of-dms-using-the-cli"></a>Zřízení instance DMS pomocí rozhraní příkazového řádku
+## <a name="provisioning-an-instance-of-dms-using-the-azure-cli"></a>Zřizování instance DMS pomocí Azure CLI
 
 1. Nainstalujte rozšíření synchronizace dms:
    * K Azure se přihlásíte spuštěním následujícího příkazu:

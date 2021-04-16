@@ -10,17 +10,72 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/28/2021
+ms.date: 4/15/2021
 ms.author: gunnarc
-ms.openlocfilehash: c9a4a5229629b2a65b167a80fce8e502612dcf3c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d537e2ec04189b24adf51285bd40adb39483b93f
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709901"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565810"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
+
+## <a name="april-2021-guest-os"></a>Hostovaný operační systém od dubna 2021
+
+>[!NOTE] 
+
+>Hostovaný operační systém v dubnu se v tuto chvíli zavádí na virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. Následující opravy jsou součástí hostovaného operačního systému v dubnu. Tento seznam se může změnit. 
+
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| --- | --- | --- | --- | --- |
+|  Rel. 21-04 |  [5001342]  |  Nejnovější kumulativní aktualizace (LCU) | 6,30 | Duben 13, 2021 |
+|  Rel. 21-04 |  [4580325]  |  Aktualizace pro Flash | 3,96, 4,89, 5,54, 6,30 | 13. října 2020 |
+|  Rel. 21-04 |  [5000800]  |  Kumulativní aktualizace IE | 2,109, 3,96, 4,89 | 9. března 2021 |
+|  Rel. 21-04 |  [5001347]  |  Nejnovější kumulativní aktualizace (LCU) | 5,54 | Duben 13, 2021 |
+|  Rel. 21-04 |  [4578952]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5  | 2,109 | 13. října 2020 |
+|  Rel. 21-04 |  [4578955]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2  | 2,109 | 13. října 2020 |
+|  Rel. 21-04 |  [4578953]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5  | 4,89 | 13. října 2020 |
+|  Rel. 21-04 |  [4578956]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2  | 4,89 | 13. října 2020 |
+|  Rel. 21-04 |  [4578950]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5  | 3,96 | 13. října 2020 |
+|  Rel. 21-04 |  [4578954]  |  . .NET Framework 4.5.2 – Shrnutí zabezpečení a kvality  | 3,96 | 13. října 2020 |
+|  Rel. 21-04 |  [4601060]  |  . .NET Framework 3,5 a kumulativní aktualizace 4.7.2  | 6,30 | 9. února 2021 |
+|  Rel. 21-04 |  [5001335]  |  Měsíční souhrn  | 2,109 | 9. března 2021 |
+|  Rel. 21-04 |  [5001387]  |  Měsíční souhrn  | 3,96 | Duben 13, 2021 |
+|  Rel. 21-04 |  [5001382]  |  Měsíční souhrn  | 4,89 | Duben 13, 2021 |
+|  Rel. 21-04 |  [5001401]  |  Aktualizace servisního zásobníku  | 3,96 | Duben 13, 2021 |
+|  Rel. 21-04 |  [5001403]  |  Aktualizace servisního zásobníku  | 4,89 | Duben 13, 2021 |
+|  Rel. 21-04 OOB |  [4578013]  |  Samostatná aktualizace zabezpečení  | 4,89 | 19. srpna 2020 |
+|  Rel. 21-04 |  [5001402]  |  Aktualizace servisního zásobníku  | 5,54 | Duben 13, 2021 |
+|  Rel. 21-04 |  [4592510]  |  Aktualizace servisního zásobníku  | 2,109 | 8. prosince 2020 |
+|  Rel. 21-04 |  [5001404]  |  Aktualizace servisního zásobníku  | 6,30 | Duben 13, 2021 |
+|  Rel. 21-04 |  [4494175]  |  Vyžádal povolení mikrokódu  | 5,54 | Od 1. září 2020 |
+|  Rel. 21-04 |  [4494174]  |  Vyžádal povolení mikrokódu  | 6,30 | Od 1. září 2020 |
+
+[5001342]: https://support.microsoft.com/kb/5001342
+[4580325]: https://support.microsoft.com/kb/4580325
+[5000800]: https://support.microsoft.com/kb/5000800
+[5001347]: https://support.microsoft.com/kb/5001347
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4601060]: https://support.microsoft.com/kb/4601060
+[5001335]: https://support.microsoft.com/kb/5001335
+[5001387]: https://support.microsoft.com/kb/5001387
+[5001382]: https://support.microsoft.com/kb/5001382
+[5001401]: https://support.microsoft.com/kb/5001401
+[5001403]: https://support.microsoft.com/kb/5001403
+[4578013]: https://support.microsoft.com/kb/4578013
+[5001402]: https://support.microsoft.com/kb/5001402
+[4592510]: https://support.microsoft.com/kb/4592510
+[5001404]: https://support.microsoft.com/kb/5001404
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
 
 ## <a name="march-2021-guest-os"></a>Hostovaný operační systém od března 2021
 

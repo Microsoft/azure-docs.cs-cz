@@ -2,19 +2,19 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/29/2021
+ms.date: 04/13/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 164c5e199bcb17dfe7a8ce92b169b26ecd389703
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d2ae849616946169911468bb43e190c7ff8a4ec8
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105957994"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386825"
 ---
 V této kategorii jsou uvedená doporučení **65** .
 
-|Doporučení |Description |Závažnost |
+|Doporučení |Popis |Závažnost |
 |---|---|---|
 |V rozšířených nastaveních zabezpečení dat spravované instance SQL by se měly povolit všechny rozšířené typy ochrany před hrozbami. |Doporučuje se povolit všechny rozšířené typy ochrany před internetovými útoky na spravovaných instancích SQL. Povolení všech typů chrání proti injektáže SQL, ohrožením zabezpečení databáze a dalším aktivitám neobvyklé.<br />(Žádné související zásady) |Střední |
 |V rozšířených nastaveních zabezpečení dat SQL serveru by se měly povolit všechny rozšířené typy ochrany před hrozbami. |Doporučuje se na vašich serverech SQL povolit všechny rozšířené typy ochrany před internetovými útoky. Povolení všech typů chrání proti injektáže SQL, ohrožením zabezpečení databáze a dalším aktivitám neobvyklé.<br />(Žádné související zásady) |Střední |
@@ -74,7 +74,7 @@ V této kategorii jsou uvedená doporučení **65** .
 |Účty úložiště by měly pro šifrování používat klíč spravovaný zákazníkem (CMK) |Zabezpečte svůj účet úložiště větší flexibilitou pomocí klíčů spravovaných zákazníkem (CMKs). Když zadáte CMK, tento klíč se použije k ochraně a řízení přístupu ke klíči, který šifruje vaše data. Použití CMKs poskytuje další funkce pro řízení rotace klíčového šifrovacího klíče nebo kryptograficky mazání dat.<br />(Související zásady: [účty úložiště by měly pro šifrování používat klíč spravovaný zákazníkem (CMK)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6fac406b-40ca-413b-bf8e-0bf964659c25)) |Střední |
 |Odběry by měly mít kontaktní e-mailovou adresu pro problémy se zabezpečením. |Pokud chcete zajistit, aby se vaši uživatelé ve vaší organizaci dostali v případě potenciálního narušení zabezpečení v jednom z vašich předplatných, nastavte u kontaktu zabezpečení příjem e-mailových oznámení od Security Center.<br />(Související zásady: [odběry by měly mít kontaktní e-mailovou adresu pro problémy se zabezpečením](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7)) |Nízká |
 |Je třeba povolit transparentní šifrování dat databází SQL. |Povolení transparentního šifrování dat pro ochranu neaktivních dat a splnění požadavků na dodržování předpisů<br />(Související zásady: [transparentní šifrování dat pro databáze SQL by měly být povolené](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f17k78e20-9358-41c9-923c-fb736d382a12)) |Nízká |
-|Šablony pro tvůrce imagí virtuálních počítačů by měly používat privátní odkaz |Auditovat šablony tvůrce imagí virtuálních počítačů, které nemají nakonfigurovanou virtuální síť Pokud není virtuální síť nakonfigurovaná, vytvoří se místo toho veřejná IP adresa, která může přímo vystavit prostředky na internetu a zvýšit potenciální plochu pro útok.<br />(Související zásady: [šablony tvůrce imagí virtuálních počítačů by měly používat privátní odkaz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2154edb9-244f-4741-9970-660785bccdaa)) |Střední |
+|Šablony pro tvůrce imagí virtuálních počítačů by měly používat privátní odkaz |Auditovat šablony tvůrce imagí virtuálních počítačů, které nemají nakonfigurovanou virtuální síť Pokud není virtuální síť nakonfigurovaná, vytvoří se a místo ní veřejná IP adresa, která může přímo vystavit prostředky na internetu a zvýšit potenciální plochu pro útok.<br />(Související zásady: [šablony tvůrce imagí virtuálních počítačů by měly používat privátní odkaz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2154edb9-244f-4741-9970-660785bccdaa)) |Střední |
 |U vašich databází SQL by se měly opravit výsledky posouzení ohrožení zabezpečení. |Posouzení ohrožení zabezpečení SQL prohledává chyby zabezpečení v databázi a zpřístupňuje jakékoli odchylky od osvědčených postupů, jako jsou například chyby konfigurace, nadměrné oprávnění a nechráněná citlivá data. Řešení zjištěných slabých míst může významně zlepšit stav zabezpečení databáze. <a href='https://aka.ms/SQL-Vulnerability-Assessment/'>Další informace</a><br />(Související zásady: [ohrožení zabezpečení vašich databází SQL by měla být opravená](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2ffeedbf84-6b99-488c-acc2-71c829aa5ffc).) |Vysoká |
 |Na počítačích s SQL serverem by se měly opravit výsledky posouzení ohrožení zabezpečení. |Posouzení ohrožení zabezpečení SQL prohledává chyby zabezpečení v databázi a zpřístupňuje jakékoli odchylky od osvědčených postupů, jako jsou například chyby konfigurace, nadměrné oprávnění a nechráněná citlivá data. Řešení zjištěných slabých míst může významně zlepšit stav zabezpečení databáze. <a href='https://aka.ms/explore-vulnerability-assessment-reports/'>Další informace</a><br />(Související zásady: opravy [chyb na serverech SQL na počítači by měly být opraveny](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f6ba6d016-e7c3-4842-b8f2-4992ebc0d72d)) |Vysoká |
 |Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení |Posouzení ohrožení zabezpečení může zjišťovat, sledovat a pomáhat při nápravě potenciálních ohrožení zabezpečení databáze.<br />(Související zásady: [posouzení ohrožení zabezpečení by mělo být povolené na spravované instanci SQL](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1b7aa243-30e4-4c9e-bca8-d0d3022b634a).) |Vysoká |

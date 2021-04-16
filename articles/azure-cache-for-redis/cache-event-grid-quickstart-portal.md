@@ -1,17 +1,19 @@
 ---
 title: 'Rychlý Start: směrování mezipaměti Azure pro události Redis do webového koncového bodu pomocí Azure Portal'
 description: Použití Azure Event Grid k přihlášení k odběru mezipaměti Azure pro události Redis, odesílání událostí Webhooku a zpracování událostí ve webové aplikaci
+author: curib
+ms.author: cauribeg
 ms.date: 1/5/2021
 ms.topic: quickstart
 ms.service: cache
-author: curib
-ms.author: cauribeg
-ms.openlocfilehash: 5bdd6b0e6f97f7e5a738ab17d68282cf402004b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: e021f386f255f1cef61e28cbd4fd6116fc2aa727
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99055525"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529302"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-the-azure-portal"></a>Rychlý Start: směrování mezipaměti Azure pro události Redis do webového koncového bodu pomocí Azure Portal
 
@@ -123,4 +125,3 @@ Když teď víte, jak vytvářet vlastní témata a odběry událostí, zjistět
 
 - [Reakce na události Redis v mezipaměti Azure](cache-event-grid.md)
 - [Informace o službě Event Grid](../event-grid/overview.md)
-

@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 357223751112af03bf797ae9a0e6352a10132ab9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3da4f8f946b11985d93be35fa2748e7f25015a71
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103464958"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564554"
 ---
 Služba Azure Instance Metadata Service (IMDS) poskytuje informace o aktuálně spuštěných instancích virtuálních počítačů. Můžete ji použít ke správě a konfiguraci virtuálních počítačů.
 Tyto informace zahrnují SKU, úložiště, konfigurace sítě a nadcházející události údržby. Úplný seznam dostupných dat najdete v části [Souhrn kategorií koncových bodů](#endpoint-categories).
@@ -247,6 +247,7 @@ Pokud neurčíte verzi, zobrazí se chyba se seznamem nejnovějších podporovan
 - 2020-09-01
 - 2020-10-01
 - 2020-12-01
+- 2021-01-01
 
 ### <a name="swagger"></a>Swagger
 
@@ -332,7 +333,7 @@ Rozpis schématu:
 | Data | Description | Představená verze |
 |------|-------------|--------------------|
 | `azEnvironment` | Prostředí Azure, ve kterém je spuštěný virtuální počítač | 2018-10-01
-| `customData` | Tato funkce je momentálně zakázaná. Tuto dokumentaci budeme aktualizovat, jakmile bude k dispozici. | 2019-02-01
+| `customData` | Tato funkce je zastaralá a zakázaná. Byl nahrazen `userData` | 2019-02-01
 | `evictionPolicy` | Nastaví, jak bude [virtuální počítač s přímým](../articles/virtual-machines/spot-vms.md) vyřazením. | 2020-12-01
 | `isHostCompatibilityLayerVm` | Určuje, jestli se virtuální počítač spouští na vrstvě kompatibility hostitele. | 2020-06-01
 | `licenseType` | Typ licence pro [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit). Tato možnost je k dispozici pouze pro virtuální počítače s podporou AHB. | 2020-09-01
@@ -360,6 +361,7 @@ Rozpis schématu:
 | `subscriptionId` | Předplatné Azure pro virtuální počítač | 2017-08-01
 | `tags` | [Značky](../articles/azure-resource-manager/management/tag-resources.md) pro virtuální počítač  | 2017-08-01
 | `tagsList` | Značky formátované jako pole JSON pro snazší programovou analýzu  | 2019-06-04
+| `userData` | Sada dat zadaná při vytvoření virtuálního počítače pro použití během zřizování nebo po jeho zřízení (s kódováním base64)  | 2021-01-01
 | `version` | Verze image virtuálního počítače | 2017-04-02
 | `vmId` | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač | 2017-04-02
 | `vmScaleSetName` | [Název sady škálování virtuálního počítače](../articles/virtual-machine-scale-sets/overview.md) pro sadu škálování virtuálního počítače | 2017-12-01
@@ -421,6 +423,31 @@ Data | Description |
 | `subnet.prefix` | Předpona podsítě, příklad 24 | 2017-04-02
 | `ipv6.ipAddress` | Místní IPv6 adresa virtuálního počítače | 2017-04-02
 | `macAddress` | Adresa MAC virtuálního počítače | 2017-04-02
+
+### <a name="get-user-data"></a>Získání uživatelských dat
+
+Při vytváření nového virtuálního počítače můžete zadat sadu dat, která se mají použít během nebo po zřízení virtuálního počítače, a načíst je prostřednictvím IMDS. Pokud chcete nastavit uživatelská data, využijte [tu](https://aka.ms/ImdsUserDataArmTemplate)šablonu pro rychlý Start. Následující ukázka ukazuje, jak načíst tato data prostřednictvím IMDS.
+
+> [!NOTE]
+> Tato funkce je vydaná s verzí `2021-01-01` a závisí na aktualizaci platformy Azure, která se v tuto chvíli zavádí a která ještě nemusí být dostupná v každé oblasti.
+
+> [!NOTE]
+> Bezpečnostní upozornění: IMDS je otevřen pro všechny aplikace na virtuálním počítači, citlivá data by neměla být umístěna v uživatelských datech.
+
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```powershell
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text" | base64 --decode
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```bash
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text" | base64 --decode
+```
+
+---
 
 
 #### <a name="sample-1-tracking-vm-running-on-azure"></a>Ukázka 1: sledování virtuálního počítače běžícího na Azure
@@ -1148,6 +1175,9 @@ Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Meta
 
 - V tuto chvíli jsem virtuální počítač vytvořil před Azure Resource Manager. Proč se mi nezobrazuje informace o metadatech COMPUTE?
   - Pokud jste virtuální počítač vytvořili po září 2016, přidejte [značku](../articles/azure-resource-manager/management/tag-resources.md) , která začne zobrazovat výpočetní metadata. Pokud jste virtuální počítač vytvořili před září 2016, přidejte nebo odeberte rozšíření nebo datové disky do instance virtuálního počítače, aby se metadata aktualizovala.
+
+- Jsou uživatelská data stejná jako vlastní data?
+  - Uživatelská data nabízí podobnou funkci pro vlastní data, což vám umožní předat do instance virtuálního počítače vlastní metadata. Rozdílem je, že data uživatelů se načítají prostřednictvím IMDS a jsou trvalá během celé životnosti instance virtuálního počítače. Existující funkce vlastních dat bude i nadále fungovat, jak je popsáno v [tomto článku](https://docs.microsoft.com/azure/virtual-machines/custom-data). Vlastní data ale můžete načíst jenom prostřednictvím složky místní systém, ne přes IMDS.
 
 - Proč se mi nezobrazují všechna data naplněná z nové verze?
   - Pokud jste virtuální počítač vytvořili po září 2016, přidejte [značku](../articles/azure-resource-manager/management/tag-resources.md) , která začne zobrazovat výpočetní metadata. Pokud jste virtuální počítač vytvořili před září 2016, přidejte nebo odeberte rozšíření nebo datové disky do instance virtuálního počítače, aby se metadata aktualizovala.

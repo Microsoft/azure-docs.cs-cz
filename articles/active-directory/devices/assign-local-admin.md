@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d482f21955b76e6b90523afe3b4933378c91d36e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56e0f92593d185890e34a1a5120093d68cf45484
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98107357"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388411"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD
 
@@ -68,11 +68,7 @@ Správci zařízení mají přiřazená všechna zařízení připojená k Azure
 
 ## <a name="manage-administrator-privileges-using-azure-ad-groups-preview"></a>Správa oprávnění správce pomocí skupin Azure AD (Preview)
 
->[!NOTE]
-> Tato funkce je aktuálně ve verzi Preview.
-
-
-Počínaje aktualizací Windows 10 2004 můžete pomocí skupin Azure AD spravovat oprávnění správce na zařízeních připojených k Azure AD pomocí zásad [skupiny s omezeným přístupem](/windows/client-management/mdm/policy-csp-restrictedgroups) (MDM). Tato zásada vám umožní přiřadit jednotlivé uživatele nebo skupiny Azure AD k místní skupině Administrators na zařízení připojeném k Azure AD a poskytnout tak členitost pro konfiguraci samostatných správců pro různé skupiny zařízení. 
+Od verze 2004 Windows 10 můžete pomocí skupin Azure AD spravovat oprávnění správce na zařízeních připojených k Azure AD pomocí zásad [skupiny pro omezení](/windows/client-management/mdm/policy-csp-restrictedgroups) MDM. Tato zásada vám umožní přiřadit jednotlivé uživatele nebo skupiny Azure AD k místní skupině Administrators na zařízení připojeném k Azure AD a poskytnout tak členitost pro konfiguraci samostatných správců pro různé skupiny zařízení. 
 
 >[!NOTE]
 > Spouští se aktualizace Windows 10 20H2, doporučujeme místo zásad skupin s omezenými oprávněními používat zásady [místních uživatelů a skupin](/windows/client-management/mdm/policy-csp-localusersandgroups) .
@@ -84,7 +80,7 @@ V současné době není v Intune žádné uživatelské rozhraní pro správu t
 - Když se vynutila zásada skupin s omezeným přístupem, všechny aktuální členy skupiny, které nejsou v seznamu členů, se odeberou. Aby tyto zásady vynutily nové členy nebo skupiny, odstraní stávající správce konkrétně uživatele, který se připojil k zařízení, roli Správce zařízení a roli globálního správce ze zařízení. Chcete-li se vyhnout odebrání stávajících členů, je třeba je nakonfigurovat jako součást seznamu členů v zásadě skupiny s omezeným přístupem. Toto omezení se řeší, pokud používáte zásady místních uživatelů a skupin, které umožňují přírůstkové aktualizace členství ve skupinách.
 - Oprávnění správce pomocí obou zásad se vyhodnocují jenom pro následující známé skupiny na zařízeních s Windows 10 – správci, uživatelé, hosty, Power Users, Uživatelé vzdálené plochy a uživatelé vzdálené správy. 
 - Správa místních správců pomocí skupin Azure AD není platná pro připojení k hybridní službě Azure AD nebo zařízením registrovaným v Azure AD.
-- Zásady skupin s omezeným přístupem existovaly před aktualizací Windows 10 2004, ale nepodporují skupiny Azure AD jako členy místní skupiny správců zařízení. 
+- Přestože zásady skupin s omezením existovaly před Windows 10 verze 2004, nepodporují skupiny Azure AD jako členy místní skupiny správců zařízení. 
 
 ## <a name="manage-regular-users"></a>Správa běžných uživatelů
 

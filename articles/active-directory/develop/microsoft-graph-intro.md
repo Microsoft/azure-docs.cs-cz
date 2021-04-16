@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: a799d7c32ad632303931adf838ca8e2e715b2adc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e689e620a5aeb7c5028f1a1b30dd6def8e447ab
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96860180"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529991"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
@@ -32,9 +32,9 @@ Microsoft Graph zpřístupňuje rozhraní REST API a klientské knihovny pro př
 
 Microsoft Graph aktuálně podporuje dvě verze: v 1.0 a beta. Verze v 1.0 zahrnuje všeobecně dostupná rozhraní API. Pro všechny produkční aplikace použijte verzi v 1.0. Beta verze obsahuje rozhraní API, která jsou momentálně ve verzi Preview. Vzhledem k tomu, že můžeme zavést zásadní změny v našich rozhraních API beta verze, doporučujeme, abyste používali beta verzi pouze pro testovací aplikace, které jsou ve vývoji. Nepoužívejte beta rozhraní API v produkčních aplikacích. Další informace najdete v tématu [Správa verzí, podpora a přerušující zásady změny pro Microsoft Graph](/graph/versioning-and-support).
 
-Pokud chcete začít používat beta rozhraní API, přečtěte si téma [referenční informace o Microsoft Graph beta verzi](/graph/api/overview?view=graph-rest-beta)
+Pokud chcete začít používat beta rozhraní API, přečtěte si téma [referenční informace o Microsoft Graph beta verzi](/graph/api/overview?view=graph-rest-beta&preserve-view=true)
 
-Pokud chcete začít používat rozhraní API v 1.0, přečtěte si referenční informace o [Microsoft Graph REST API v 1.0](/graph/api/overview) .
+Pokud chcete začít používat rozhraní API v 1.0, přečtěte si referenční informace o [Microsoft Graph REST API v 1.0](/graph/api/overview?view=graph-rest-1.0&preserve-view=true) .
 
 ## <a name="get-started"></a>Začínáme
 
@@ -57,4 +57,4 @@ Po dokončení rychlého startu máte aplikaci, která je připravená ke spušt
 
 Microsoft Graph Explorer je webový nástroj, který můžete použít k sestavování a testování požadavků pomocí rozhraní Microsoft Graph API. K aplikaci Microsoft Graph Explorer máte přístup v umístění: `https://developer.microsoft.com/graph/graph-explorer` .
 
-Metoda post je nástroj, který můžete použít také k sestavení a testování požadavků pomocí Microsoft Graph rozhraní API. Můžete si stáhnout tento příspěvek v: `https://www.getpostman.com/` . Pokud chcete pracovat s Microsoft Graph v nástroji post, použijete Microsoft Graph kolekci v poli post. Další informace najdete v tématu [použití metody post s rozhraním Microsoft Graph API](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).
+Metoda post je nástroj, který můžete použít také k sestavení a testování požadavků pomocí Microsoft Graph rozhraní API. Můžete si stáhnout tento příspěvek v: `https://www.getpostman.com/` . Pokud chcete pracovat s Microsoft Graph v nástroji post, použijete Microsoft Graph kolekci v poli post. Další informace najdete v tématu [použití metody post s rozhraním Microsoft Graph API](/graph/use-postman).

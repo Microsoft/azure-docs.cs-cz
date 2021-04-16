@@ -120,6 +120,8 @@
               href: connect-windows-firewall.md
             - name: Události zabezpečení systému Windows
               href: connect-windows-security-events.md
+            - name: Windows Virtual Desktop
+              href: connect-windows-virtual-desktop.md
         - name: Připojení externích řešení
           items:
             - name: Antivirová ochrana proti útokům phishing a ochrana značky

@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e33c87d53580d96363ba15bccbc889370f2479d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3175b1292a7e69506b9193d1182e184e257ebda3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212905"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530500"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Metody ověřování v aplikaci Azure Active Directory-Microsoft Authenticator
 
@@ -62,4 +62,4 @@ Uživatelé můžou mít kombinaci až pěti hardwarových tokenů OATH nebo ov�
 
 Pokud chcete začít přihlašovat bez hesla, přečtěte si téma [Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator](howto-authentication-passwordless-phone.md).
 
-Přečtěte si další informace o konfiguraci metod ověřování pomocí [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
+Přečtěte si další informace o konfiguraci metod ověřování pomocí [REST API Microsoft Graph](/graph/api/resources/authenticationmethods-overview).

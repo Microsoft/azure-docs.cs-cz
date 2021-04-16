@@ -9,99 +9,76 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/08/2019
+ms.date: 04/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 1312a995589b0408edc56a0883cc9fd899fc9e6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b75e2cbffaaf05dc0f5ca30497c165b91adf6d1
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92515436"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515341"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-powerschool-performance-matters"></a>Kurz: Azure Active Directory integrace s Powerschoolmi otázkami o výkonu
 
-V tomto kurzu se seznámíte s integrací Powerschoolch aspektů výkonu s Azure Active Directory (Azure AD).
-Integrace Powerschoolch aspektů výkonu s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat PowerSchool výkon pomocí Azure Active Directory (Azure AD). Při integraci Powerschoolch aspektů výkonu s Azure AD můžete:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k Powerschoolům výkonu.
-* Uživatelům můžete povolit, aby se automaticky přihlásili k Powerschoolm aspektům výkonu (jednotné přihlašování) s účty Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
-
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
+* Řízení ve službě Azure AD, která má přístup k Powerschoolm aspektům výkonu.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Powerschoolm aspektům výkonu pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s PowerSchool výkonem potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné Powerschool Performance s povoleným jednotným přihlašováním
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* PowerSchool výkon s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Otázky týkající se výkonu PowerSchool podporují jednotné přihlašování **SP** iniciované
+* Otázky týkající se výkonu PowerSchool podporují jednotné přihlašování s využitím **SP** .
 
-## <a name="adding-powerschool-performance-matters-from-the-gallery"></a>Přidání aspektů výkonu PowerSchool z Galerie
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+
+## <a name="add-powerschool-performance-matters-from-the-gallery"></a>Přidání aspektů výkonu PowerSchool z Galerie
 
 Pokud chcete nakonfigurovat integraci Powerschoolch aspektů výkonu do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat PowerSchool otázky výkonu z galerie.
 
-**Pokud chcete přidat otázky týkající se výkonu PowerSchool z Galerie, proveďte následující kroky:**
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **PowerSchool Performance** .
+1. Z panelu výsledků vyberte **PowerSchool výkonnostní otázky** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+## <a name="configure-and-test-azure-ad-sso-for-powerschool-performance-matters"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Powerschoolé otázky týkající se výkonu
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Form.com pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Form.com.
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+K nakonfigurování a testování jednotného přihlašování Azure AD pomocí Form.com postupujte takto:
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurovat](#configure-powerschool-performance-matters-sso)** jednotné přihlašování PowerSchool v otázkách – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
+    1. **[Vytvořte si testovacího uživatele v oblasti výkonu PowerSchool](#create-powerschool-performance-matters-test-user)** , abyste měli protějšek B. Simon v otázkách výkonu PowerSchool, které jsou propojené s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **PowerSchool výkon**, vyberte **PowerSchool otázky výkonu** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+1. V Azure Portal na stránce **PowerSchool Performance** Application Integration, najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-    ![PowerSchool výkonnostní otázky v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
-
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Powerschoolch otázek výkonu na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, je potřeba zřídit odkaz na propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v oblasti výkonu PowerSchool.
-
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Powerschoolch aspektů výkonu, je nutné dokončit následující stavební bloky:
-
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurovat jednotné přihlašování pro PowerSchool výkon v oblasti výkonu](#configure-powerschool-performance-matters-single-sign-on)** a nakonfigurovat nastavení jednoho Sign-On na straně aplikace
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvářejte PowerSchool výkonné otázky týkající se testování výkonu](#create-powerschool-performance-matters-test-user)** , abyste měli protějšek Britta Simon v oblasti výkonu PowerSchool, která je propojená s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
-
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
-
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Powerschoolch otázek výkonu, proveďte následující kroky:
-
-1. V [Azure Portal](https://portal.azure.com/)na stránce **PowerSchool Performance** Application Integration (otázky výkonu aplikace) vyberte **jednotné přihlašování**.
-
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
-
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. V části **základní konfigurace SAML** proveďte následující krok:
 
-    ![[Název aplikace] Informace o jednotném přihlašování domény a adresy URL](common/sp-signonurl.png)
-
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí jednoho z následujících vzorů:
     
     ```https
         https://ola.performancematters.com/ola/?clientcode=<Client Code>
@@ -119,81 +96,48 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Powersch
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Odhlašovací adresa URL
-
-### <a name="configure-powerschool-performance-matters-single-sign-on"></a>Konfigurace Powerschoolch otázek výkonu na jednom Sign-On
-
-Chcete-li nakonfigurovat jednotné přihlašování na straně **PowerSchool výkonu** , je třeba odeslat stažená **metadata federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory v oblasti výkonu PowerSchool](mailto:pmsupport@powerschoo.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
-
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel** .
-
-    ![Tlačítko pro nového uživatele](common/new-user.png)
-
-3. Ve vlastnostech uživatele proveďte následující kroky.
-
-    ![Uživatelský dialog](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon**.
-  
-    b. Do pole **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na **Vytvořit**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k otázkám s PowerSchool výkonem.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k otázkám týkajícím se výkonu PowerSchool.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **důležité otázky týkající se PowerSchool výkonu**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **PowerSchool výkonnostní otázky**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Okno Podnikové aplikace](common/enterprise-applications.png)
+## <a name="configure-powerschool-performance-matters-sso"></a>Konfigurace PowerSchool v oblasti výkonu pro jednotné přihlašování
 
-2. V seznamu aplikace vyberte **PowerSchool výkonnostní otázky**.
-
-    ![Odkaz na otázky týkající se výkonu PowerSchool v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
-
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu Uživatelé položku **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+Chcete-li nakonfigurovat jednotné přihlašování na straně **PowerSchool výkonu** , je třeba odeslat stažená **metadata federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory v oblasti výkonu PowerSchool](mailto:pmsupport@powerschoo.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-powerschool-performance-matters-test-user"></a>Vytvoření testovacího uživatele v oblasti výkonu PowerSchool
 
 V této části vytvoříte v otázkách výkonu PowerSchool uživatele s názvem Britta Simon. Pracujte s [PowerSchool výkonem podpory v oblasti výkonu](mailto:pmsupport@powerschoo.com) , abyste mohli přidávat uživatele na platformě Powerschoolch věcí pro výkon. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+## <a name="test-sso"></a>Test SSO
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když na přístupovém panelu kliknete na dlaždici otázky výkonu PowerSchool, měli byste se automaticky přihlásit k otázkám výkonu PowerSchool, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na PowerSchool výkonové přihlašovací adresy URL, kde můžete spustit tok přihlášení. 
 
-## <a name="additional-resources"></a>Další materiály
+* Přejít na adresu URL pro přihlášení přímo a zahájit tok přihlášení.
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici PowerSchool výkon v nabídce Moje aplikace, přesměruje se na adresu URL týkající se přihlašování Powerschoolch otázek výkonu. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Další kroky
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+Jakmile nakonfigurujete otázky týkající se výkonu PowerSchool, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

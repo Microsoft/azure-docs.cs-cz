@@ -5,7 +5,7 @@
   items:
     - name: Podpora jazyků
       href: language-support.md
-    - name: Ceny a omezení
+    - name: Ceny
       href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/translator'
 - name: Překlad textu
   expanded: true
@@ -162,14 +162,24 @@
           href: document-translation/reference/get-operations.md
         - name: Zrušit operaci
           href: document-translation/reference/cancel-operation.md
-- name: Zdroje a prostředky
+- name: Návody
   items:
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Nastavení virtuálních sítí
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/translator/context/context
+        - name: Použití klíčů spravovaných zákazníkem
+          href: encrypt-data-at-rest.md
+- name: Zdroje informací
+  items:
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Podpora oblastí
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Dodržování předpisů a certifikace
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
-    - name: Dodržování předpisů
-      href: 'https://azure.microsoft.com/en-us/support/legal/cognitive-services-compliance-and-privacy'
-    - name: Šifrování
-      href: encrypt-data-at-rest.md
     - name: Vzorový kód na GitHubu
       href: 'https://aka.ms/TranslatorGitHub'
     - name: Ochrana osobních údajů a soubory cookie

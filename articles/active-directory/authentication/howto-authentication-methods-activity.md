@@ -11,12 +11,12 @@ author: sopand
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a1cb71917fdb30ffccda21bedffe1c7f2a428c1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 699ff88e4181dada5eacaa3f13469722cdf7ceaa
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557951"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530441"
 ---
 # <a name="authentication-methods-activity"></a>Aktivita Metody ověřování 
 
@@ -34,7 +34,7 @@ Integrované a vlastní role s následujícími oprávněními mají přístup k
 Požadovaná oprávnění jsou k dispozici v následujících rolích:
 
 - Čtečka sestav
-- Čtenář zabezpečení
+- Čtecí modul zabezpečení
 - Globální čtenář
 - Operátor zabezpečení
 - Správce zabezpečení
@@ -123,7 +123,7 @@ Sestava Podrobnosti o registraci zobrazuje pro každého uživatele následujíc
 
 - Date (Datum)
 - Uživatelské jméno
-- User 
+- Uživatel 
 - Funkce (registrace, resetování)
 - Použitá metoda (oznámení aplikace, kód aplikace, telefonní hovor, volání Office, alternativní mobilní volání, SMS, E-mail, bezpečnostní otázky)
 - Stav (úspěch, selhání)
@@ -139,6 +139,6 @@ Sestava Podrobnosti o registraci zobrazuje pro každého uživatele následujíc
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Práce s rozhraním API pro sestavy využití metod ověřování](/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Práce s rozhraním API pro sestavy využití metod ověřování](/graph/api/resources/authenticationmethods-usage-insights-overview)
 - [Výběr metod ověřování pro vaši organizaci](concept-authentication-methods.md)
 - [Prostředí kombinované registrace](concept-registration-mfa-sspr-combined.md)

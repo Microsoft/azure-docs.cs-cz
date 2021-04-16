@@ -2,13 +2,13 @@
 title: Zjišťování duplicitních zpráv Azure Service Bus | Microsoft Docs
 description: Tento článek vysvětluje, jak můžete zjišťovat duplicity v Azure Service Busch zprávách. Duplicitní zprávu lze ignorovat a vyřadit.
 ms.topic: article
-ms.date: 01/13/2021
-ms.openlocfilehash: 527c2dea34b02733907372b6e75a40a5ef5fc289
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: a9ca9de988f5a3db15da773a870e2d929ab938c8
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711921"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499474"
 ---
 # <a name="duplicate-detection"></a>Vyhledávání duplicit
 
@@ -39,24 +39,34 @@ Parametr *MessageID* může mít vždy nějaký identifikátor GUID, ale ukotven
 
 ## <a name="enable-duplicate-detection"></a>Povolit detekci duplicit
 
-Tato funkce je v portálu při vytváření entit zapnutá pomocí zaškrtávacího políčka **Povolit detekci duplicit** , která je ve výchozím nastavení vypnutá. Nastavení pro vytváření nových témat je ekvivalentní.
+Kromě toho, že stačí pouze povolit detekci duplicit, můžete také nakonfigurovat velikost časového intervalu historie vyhledávání duplicit, během kterého se uchovávají ID zpráv.
+Tato hodnota je standardně 10 minut pro fronty a témata, přičemž minimální hodnota je 20 sekund až do maximální hodnoty 7 dní.
+
+Povolení Detekce duplicitních dat a velikosti okna má přímý vliv na propustnost fronty (a tématu), protože všechna zaznamenaná ID zpráv musí odpovídat nově zadanému identifikátoru zprávy.
+
+Udržování malého okna znamená, že se musí uchovávat a odpovídat méně identifikátorů zpráv a propustnost má dopad na míň. U entit s vysokou propustností, které vyžadují detekci duplicit, byste měli okno ponechat co nejmenší.
+
+### <a name="using-the-portal"></a>Použití portálu
+
+V portálu je při tvorbě entit zapnutá funkce Detekce duplicitních dat pomocí zaškrtávacího políčka **Povolit detekci duplicit** , která je ve výchozím nastavení vypnutá. Nastavení pro vytváření nových témat je ekvivalentní.
 
 ![Snímek obrazovky dialogového okna vytvořit front s vybranou možností povolit detekci duplicit a popsaný červeně][1]
 
 > [!IMPORTANT]
 > Po vytvoření fronty nelze povolit nebo zakázat detekci duplicit. Tuto možnost můžete provést pouze v době vytváření fronty. 
 
-Prostřednictvím kódu programu nastavíte příznak s vlastností [QueueDescription. requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) v plném rozhraní API .NET Framework. V rozhraní Azure Resource Manager API je hodnota nastavena pomocí vlastnosti [queueProperties. requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) .
-
-Časová historie vyhledávání duplicit ve výchozím nastavení je 10 minut pro fronty a témata, přičemž minimální hodnota je 20 sekund až do maximální hodnoty 7 dní. Toto nastavení můžete změnit v okně fronta a vlastnosti tématu v Azure Portal.
+Časové období historie vyhledávání duplicit lze změnit v okně vlastnosti fronty a tématu v Azure Portal.
 
 ![Snímek obrazovky funkce Service Bus s zvýrazněným nastavením vlastností a možností historie vyhledávání duplicit zobrazený červeně][2]
 
-Prostřednictvím kódu programu můžete nakonfigurovat velikost okna zjišťování duplicitních dat, během kterého se uchovávají ID zpráv, pomocí vlastnosti [QueueDescription. DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) s úplným .NET Framework API. V rozhraní Azure Resource Manager API je hodnota nastavena pomocí vlastnosti [queueProperties. duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) .
+### <a name="using-sdks"></a>S využitím sad SDK
 
-Povolení Detekce duplicitních dat a velikosti okna má přímý vliv na propustnost fronty (a tématu), protože všechna zaznamenaná ID zpráv musí odpovídat nově zadanému identifikátoru zprávy.
+Můžete použít kteroukoli z našich sad SDK napříč platformami .NET, Java, JavaScript, Python a přejít na povolení funkce zjišťování duplicitních dat při vytváření front a témat. Můžete také změnit časový interval historie vyhledávání duplicit.
+K tomu, jaké vlastnosti se mají aktualizovat při vytváření front a témat k dosažení těchto akcí patří:
+- `RequiresDuplicateDetection`
+- `DuplicateDetectionHistoryTimeWindow`
 
-Udržování malého okna znamená, že se musí uchovávat a odpovídat méně identifikátorů zpráv a propustnost má dopad na míň. U entit s vysokou propustností, které vyžadují detekci duplicit, byste měli okno ponechat co nejmenší.
+Všimněte si, že i když jsou názvy vlastností k dispozici v jazyce Pascal, jazyk JavaScript a sady SDK Pythonu budou používat ve stylu CamelCase velká a Snake velká písmena v uvedeném pořadí.
 
 ## <a name="next-steps"></a>Další kroky
 
