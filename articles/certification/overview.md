@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 04/09/2021
 ms.custom: template-overview
 ms.service: certification
-ms.openlocfilehash: b9d599542a53e3d809748b72028512c66409b4ec
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e7cd664e9eb61cae4f1888e4c94f02f19301e9e5
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307703"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502092"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>Co je program zařízení s certifikací Azure?
 
-Děkujeme za váš zájem o program zařízení s certifikací Azure. Tento program vám umožní snadno odlišit, propagovat a vyhledávat zařízení IoT vytvořená v Azure. Díky tomuto rozšířenému programu pro certifikaci zařízení IoT pomáhají tvůrci zařízení zlepšit viditelnost produktů a ušetřit čas při sestavování řešení od inteligentních fotoaparátů po připojené senzory k hraniční infrastruktuře.
+Děkujeme za váš zájem o program zařízení s certifikací Azure. Zařízení s certifikací Azure je bezplatný program, který umožňuje odlišit, certifikovat a propagovat vaše zařízení IoT vytvořená pro běh v Azure. Díky tomuto rozšířenému programu pro certifikaci zařízení IoT pomáhají tvůrci zařízení zlepšit viditelnost produktů a ušetřit čas při sestavování řešení od inteligentních fotoaparátů po připojené senzory k hraniční infrastruktuře.
 
 ## <a name="our-certification-promise"></a>Náš příslib certifikace
 
@@ -58,7 +58,10 @@ Certifikace zařízení zahrnuje několik hlavních kroků na [portálu zaříze
 1. Ověřit funkčnost zařízení
 1. Odeslat a dokončit proces kontroly
 
-Po certifikaci zařízení můžete volitelně vyplnit dvě z následujících aktivit:
+> [!Note]
+> Dokončení procesu revize může trvat až týden, i když někdy to může trvat delší dobu.
+
+Po certifikaci zařízení můžete volitelně vyplnit dvě z následujících aktivit: 
 
 1. Publikování do katalogu zařízení s certifikací Azure (volitelné)
 1. Aktualizace projektu po jeho schválení nebo publikování (volitelné)

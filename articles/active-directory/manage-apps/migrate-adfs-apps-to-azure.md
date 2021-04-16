@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/01/2021
 ms.author: iangithinji
 ms.reviewer: baselden
-ms.openlocfilehash: 83e506c0a3d0b9718f94d48ea8e6b23f43e811f3
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: b0fd3dae2ff9c6de39462d19dc41a32ba51171e0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377934"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534875"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Přesun ověřování aplikací z Active Directory Federation Services (AD FS) do Azure Active Directory
 
@@ -177,7 +177,7 @@ Aplikace, které vyžadují následující možnosti protokolu, se nedají migro
 
 Aplikace, které vyžadují následující deklarace identity v rámci tokenů, se nedají migrovat ještě dnes.
 
-* Deklarace identity z jiných úložišť atributů než do adresáře služby Azure AD, pokud tato data nejsou synchronizovaná v Azure AD. Další informace najdete v tématu [Přehled rozhraní API pro synchronizaci Azure AD](/graph/api/resources/synchronization-overview?view=graph-rest-beta).
+* Deklarace identity z jiných úložišť atributů než do adresáře služby Azure AD, pokud tato data nejsou synchronizovaná v Azure AD. Další informace najdete v tématu [Přehled rozhraní API pro synchronizaci Azure AD](/graph/api/resources/synchronization-overview).
 * Vystavování atributů s více hodnotami adresáře. V tuto chvíli nemůžete například vystavovat deklaraci deklarace identity pro proxy adresy.
 
 ## <a name="map-app-settings-from-ad-fs-to-azure-ad"></a>Mapování nastavení aplikace z AD FS do služby Azure AD

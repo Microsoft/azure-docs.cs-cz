@@ -2,14 +2,14 @@
 title: Vytvoření řídicího panelu Azure Portal pomocí Azure CLI
 description: 'Rychlý Start: Naučte se vytvořit řídicí panel v Azure Portal pomocí rozhraní příkazového řádku Azure CLI. Řídicí panel je cílené a uspořádané zobrazení vašich cloudových prostředků.'
 ms.topic: quickstart
-ms.custom: devx-track-azurepowershell
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.date: 12/4/2020
-ms.openlocfilehash: ddfee1932c6887c6ca7593ca7a28c03e68e09899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d951c692c7d3c282ae68c5f9b53e9cda5407df10
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104613183"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481017"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>Rychlý Start: Vytvoření řídicího panelu Azure Portal pomocí Azure CLI
 

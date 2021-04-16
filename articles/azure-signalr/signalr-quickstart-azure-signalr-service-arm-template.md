@@ -2,17 +2,20 @@
 title: 'Rychlý Start: Vytvoření šablony služby signalizace Azure – ARM'
 description: V tomto rychlém startu se dozvíte, jak vytvořit službu Azure Signal Service pomocí šablony Azure Resource Manager (šablona ARM).
 author: sffamily
-ms.service: signalr
-ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli
 ms.author: zhshang
 ms.date: 10/02/2020
-ms.openlocfilehash: 4ab029048b37a4dcb44ef405249dcb9e20de70cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: signalr
+ms.custom:
+- subject-armqs
+- devx-track-azurecli
+- mode-arm
+ms.openlocfilehash: 075915f2a06e29eb5b80425913c6e7a2c476ff99
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94841611"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536526"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Rychlý Start: použití šablony ARM k nasazení služby signalizace Azure
 

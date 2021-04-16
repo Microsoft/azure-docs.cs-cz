@@ -2,22 +2,22 @@
 title: Správa zásad pro vyjádření souhlasu s aplikacemi ve službě Azure AD
 description: Naučte se spravovat předdefinované a vlastní zásady pro vyjádření souhlasu s aplikacemi, které určují, kdy je možné udělit souhlas.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/01/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9c269e2ab37a08e48eedd3ee468080a382f9a8e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44299fadd17d1acfa292dd88bd57c8be4a44be36
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558725"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375691"
 ---
 # <a name="manage-app-consent-policies"></a>Správa zásad souhlasu pro aplikace
 
@@ -130,7 +130,7 @@ Po vytvoření zásady pro vyjádření souhlasu s aplikací můžete této zás
 
 Následující tabulka uvádí seznam podporovaných podmínek pro zásady pro vyjádření souhlasu s aplikacemi.
 
-| Podmínka | Description|
+| Podmínka | Popis|
 |:---------------|:----------|
 | PermissionClassification | [Klasifikace oprávnění](configure-permission-classifications.md) pro udělená oprávnění nebo "vše", aby odpovídala libovolné klasifikaci oprávnění (včetně oprávnění, která nejsou klasifikována). Výchozí hodnota je All (vše). |
 | PermissionType | Typ oprávnění uděleného oprávnění Pro delegovaná oprávnění použijte "Application" pro oprávnění aplikací (např. role aplikace) nebo delegovaný. <br><br>**Poznámka**: hodnota "delegatedUserConsentable" označuje delegovaná oprávnění, která nenakonfiguroval Vydavatel rozhraní API, aby vyžadovala souhlas správce. Tato hodnota se dá použít v předdefinovaných zásadách udělení oprávnění, ale nedá se použít v zásadách udělení vlastních oprávnění. Povinná hodnota. |

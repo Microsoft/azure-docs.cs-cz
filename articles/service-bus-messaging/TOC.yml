@@ -92,22 +92,34 @@
   items:
     - name: 'Fronty, témata a odběry'
       href: service-bus-queues-topics-subscriptions.md
-    - name: Relace zpráv
-      href: message-sessions.md
-    - name: Akce a filtry témat
-      href: topic-filters.md
     - name: Zasílání zpráv úrovně Premium
       href: service-bus-premium-messaging.md
     - name: Srovnání front Azure a front Service Bus
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
-    - name: 'Přenosy zpráv, zámky a vyrovnání'
-      href: message-transfers-locks-settlement.md
-    - name: Fronty nedoručených zpráv
-      href: service-bus-dead-letter-queues.md
-    - name: Čítače zpráv
-      href: message-counters.md
-    - name: Optimalizace výkonu
-      href: service-bus-performance-improvements.md
+    - name: Pokročilé funkce
+      items:
+        - name: Relace zpráv
+          href: message-sessions.md
+        - name: Akce a filtry témat
+          href: topic-filters.md
+        - name: Procházení zpráv
+          href: message-browsing.md
+        - name: 'Přenosy zpráv, zámky a vyrovnání'
+          href: message-transfers-locks-settlement.md
+        - name: Fronty nedoručených zpráv
+          href: service-bus-dead-letter-queues.md
+        - name: Čítače zpráv
+          href: message-counters.md
+        - name: Optimalizace výkonu
+          href: service-bus-performance-improvements.md
+        - name: Geografické zotavení po havárii a geografická replikace
+          href: service-bus-geo-dr.md
+        - name: "Asynchronní zasílání zpráv a\_vysoká dostupnost"
+          href: service-bus-async-messaging.md
+        - name: Zvládání výpadků a havárií
+          href: service-bus-outages-disasters.md
+        - name: Throttling
+          href: service-bus-throttling.md
     - name: metadata
       items:
         - name: Replikace zpráv a federace mezi oblastmi
@@ -124,14 +136,6 @@
           href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
         - name: Získávání zpráv ze služby Event Hubs
           href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
-    - name: Geografické zotavení po havárii a geografická replikace
-      href: service-bus-geo-dr.md
-    - name: "Asynchronní zasílání zpráv a\_vysoká dostupnost"
-      href: service-bus-async-messaging.md
-    - name: Zvládání výpadků a havárií
-      href: service-bus-outages-disasters.md
-    - name: Throttling
-      href: service-bus-throttling.md
     - name: Zabezpečení
       items:
         - name: Standardní hodnoty zabezpečení
@@ -206,8 +210,6 @@
               href: duplicate-detection.md
             - name: Odložení zpráv
               href: message-deferral.md
-            - name: Procházení zpráv
-              href: message-browsing.md
             - name: Spojení entit s automatickým přeposíláním
               href: service-bus-auto-forwarding.md
             - name: Zpracování transakcí

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.author: Zhchia
-ms.openlocfilehash: f6ef2f91d178db01e618c19df55705bc9c1209e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8513f62b6f181a1490d136062c5de81db847ba7
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104583747"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533384"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů
 
@@ -273,7 +273,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 * 10/17/2020 – byla přidána podpora dalších atributů uživatelů a skupin v sadě G Suite.
 * 10/17/2020 – aktualizované názvy atributů cíle G Suite budou odpovídat hodnotám, které jsou [zde](https://developers.google.com/admin-sdk/directory)definovány.
 * 10/17/2020 – aktualizované výchozí mapování atributů.
-* 03/18/2021 – e-mail správce se teď synchronizuje namísto ID pro všechny nové uživatele. Pro všechny existující uživatele, kteří byli zřízeni s manažerem jako ID, můžete provést restart prostřednictvím [Microsoft Graph](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) s rozsahem "úplné", aby se zajistilo zřízení e-mailu. Tato změna ovlivní jenom úlohu zřizování GSuite a ne starší úlohu probisioning začínající na Goov2OutDelta. Poznámka: e-mail manažera se zřídí při prvním vytvoření uživatele nebo při změně správce. Pokud správce změní svou e-mailovou adresu, nezřídí se e-mail správce. 
+* 03/18/2021 – e-mail správce se teď synchronizuje namísto ID pro všechny nové uživatele. Pro všechny existující uživatele, kteří byli zřízeni s manažerem jako ID, můžete provést restart prostřednictvím [Microsoft Graph](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http&preserve-view=true) s rozsahem "úplné", aby se zajistilo zřízení e-mailu. Tato změna ovlivní jenom úlohu zřizování GSuite a ne starší úlohu zřizování začínající na Goov2OutDelta. Poznámka: e-mail manažera se zřídí při prvním vytvoření uživatele nebo při změně správce. Pokud správce změní svou e-mailovou adresu, nezřídí se e-mail správce. 
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

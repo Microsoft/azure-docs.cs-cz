@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2960726cf687908e8e4aed9333fce490dd7ff006
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd82caab0babbc4803dd54926dafcba98370fa03
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98788733"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567277"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Kurz: použití spravované identity pro připojení Key Vault k webové aplikaci Azure v .NET
 
@@ -34,7 +34,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 * Předplatné Azure. [Vytvořte si ho zdarma.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Sada .NET Core 3,1 SDK (nebo novější)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-* Instalace [Gitu](https://www.git-scm.com/downloads) .
+* Instalace [Gitu](https://www.git-scm.com/downloads) verze 2.28.0 nebo novější.
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/).
 * [Azure Key Vault.](./overview.md) Trezor klíčů můžete vytvořit pomocí [Azure Portal](quick-create-portal.md), rozhraní příkazového [řádku Azure](quick-create-cli.md)nebo [Azure PowerShell](quick-create-powershell.md).
 * Key Vault [tajný klíč](../secrets/about-secrets.md). Tajný klíč můžete vytvořit pomocí [Azure Portal](../secrets/quick-create-portal.md), [PowerShellu](../secrets/quick-create-powershell.md)nebo rozhraní příkazového [řádku Azure CLI](../secrets/quick-create-cli.md).
@@ -78,7 +78,7 @@ V tomto kroku nasadíte aplikaci .NET Core pro Azure App Service pomocí místn�
 V okně terminálu vyberte **CTRL + C** a zavřete tak webový server.  Inicializujte úložiště Git pro projekt .NET Core:
 
 ```bash
-git init
+git init --initial-branch=main
 git add .
 git commit -m "first commit"
 ```
@@ -167,8 +167,13 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;your-webapp-na
 }
 </pre>
 
-
 Adresa URL vzdáleného úložiště Git se zobrazí ve `deploymentLocalGitUrl` vlastnosti ve formátu `https://<username>@<your-webapp-name>.scm.azurewebsites.net/<your-webapp-name>.git` . Uložte tuto adresu URL. Budete ho potřebovat později.
+
+Teď nakonfigurujte webovou aplikaci tak, aby se nasadila z `main` větve:
+
+```azurecli-interactive
+ az webapp config appsettings set -g MyResourceGroup -name "<your-webapp-name>"--settings deployment_branch=main
+```
 
 Pomocí následujícího příkazu přejdete k nové aplikaci. Nahraďte `<your-webapp-name>` názvem vaší aplikace.
 

@@ -5,13 +5,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 04/11/2021
-ms.openlocfilehash: 3e48eee5bf36732edc4f897103cb72bbbe75a5c3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/14/2021
+ms.openlocfilehash: b0d42b42ab44b51294833e40b7fa0174256c655a
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306309"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517164"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat v Azure Data Factory
 
@@ -125,7 +125,7 @@ Pokud použijete automatické řešení Azure Integration runtime a zadáte hodn
 
 Chcete-li spustit ladicí kanál spuštěný s aktivitou toku dat, je nutné přepnout na režim ladění toku dat prostřednictvím posuvníku **ladění toku dat** na horním panelu. Režim ladění umožňuje spustit tok dat proti aktivnímu clusteru Spark. Další informace naleznete v tématu [režim ladění](concepts-data-flow-debug-mode.md).
 
-![Tlačítko ladit](media/data-flow/debugbutton.png "Tlačítko ladit")
+![Tlačítko ladit](media/data-flow/debug-button-3.png "Tlačítko ladit")
 
 Ladicí kanál běží na aktivním ladicím clusteru, nikoli v prostředí Integration runtime zadaném v nastavení aktivity toku dat. Můžete zvolit prostředí ladění COMPUTE při spuštění režimu ladění.
 

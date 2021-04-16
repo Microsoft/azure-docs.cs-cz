@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 19d20caf71ddd09b7a537b4214d339dbff125e98
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 8d4f02aa2f358d63a96855a31bc53c63307a933a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090801"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498562"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Azure Key Vault spravovaný modul HSM by měl mít povolenou ochranu vyprázdnění](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc39ba22d-4428-4149-b981-70acb31fc383) |Zlomyslné odstranění Azure Key Vault spravovaného HSM může vést k trvalé ztrátě dat. Škodlivý program Insider ve vaší organizaci může potenciálně odstranit a vymazat Azure Key Vault spravovaný modul HSM. Vyčištění ochrany chrání vás před útoky z programu Insider tím, že vynucuje povinnou dobu uchování, která je pro částečný odstraněný Azure Key Vault spravovaný modul HSM. Nikdo v rámci vaší organizace ani Microsoft nebude moci vyprázdnit Azure Key Vault spravovaný modul HSM během doby uchování obnovitelného odstranění. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_Recoverable_Audit.json) |
 |[\[Verze Preview \] : certifikáty by měly být vydány zadanou integrovanou certifikační autoritou](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e826246-c976-48f6-b03e-619bb92b3d82) |Spravujte požadavky na dodržování předpisů vaší organizace zadáním integrovaných certifikačních autorit Azure, které můžou vystavovat certifikáty ve vašem trezoru klíčů, jako je DigiCert nebo GlobalSign. |audit, zamítnutí, zakázáno |[2.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_SupportedCAs.json) |

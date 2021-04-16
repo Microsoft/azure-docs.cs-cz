@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 50ecf6e394d5d19d09033554272023bd6796851b
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 295579d17f3b24adcf43f6907cc4b1aca01dcae2
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581189"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565912"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Nasazení virtuálního počítače s povoleným důvěryhodným spouštěním (Preview)
 
@@ -41,22 +41,20 @@ Vytvořte virtuální počítač s povoleným důvěryhodným spuštěním.
 5. V části **Project Details (podrobnosti projektu**) Zkontrolujte, že je vybrané správné předplatné.
 6. V části **Skupina prostředků** vyberte **vytvořit novou** a zadejte název skupiny prostředků nebo vyberte existující skupinu prostředků z rozevíracího seznamu.
 7. V části **Podrobnosti instance** zadejte název pro název virtuálního počítače a vyberte oblast, která podporuje [důvěryhodné spuštění](trusted-launch.md#public-preview-limitations).
-8. V části **Obrázek** vyberte obrázek Gen 2 [, který podporuje důvěryhodné spuštění](trusted-launch.md#public-preview-limitations). 
+8. V části **Obrázek** vyberte obrázek Gen 2 [, který podporuje důvěryhodné spuštění](trusted-launch.md#public-preview-limitations). Ujistěte se, že se zobrazí následující zpráva: **Tento obrázek podporuje důvěryhodné spuštění verze Preview. Nakonfigurujte na kartě Upřesnit**.
    > [!TIP]
    > Pokud se v rozevíracím seznamu nezobrazí požadovaná verze Gen 2, vyberte **Zobrazit všechny image** a pak změňte filtr **generování virtuálního počítače** tak, aby zobrazoval pouze image 2. generace. Vyhledejte obrázek v seznamu a pak použijte rozevírací seznam **Vybrat** a vyberte verzi 2. generace.
- 
+
+    :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="Snímek obrazovky s potvrzením, že se jedná o Gen2 obrázek, který podporuje důvěryhodné spuštění":::
+
+13. Vyberte velikost virtuálního počítače, která podporuje důvěryhodné spuštění. Podívejte se na seznam [podporovaných velikostí](trusted-launch.md#public-preview-limitations).
+14. Vyplňte informace o **účtu správce** a pak nastavte **pravidla portů pro příchozí spojení**. 
 1. Přepněte na kartu **Upřesnit** tím, že ji vyberete v horní části stránky.
 1. Posuňte se dolů k části **generování virtuálního počítače** . Ujistěte se, že je vybraná možnost **Obecné 2** .
 1. Pořád na kartě **Upřesnit** se posuňte dolů na **důvěryhodné spuštění** a pak zaškrtněte políčko pro **důvěryhodné spuštění** . Tím se zobrazí dvě další možnosti – zabezpečené spouštění a vTPM. Vyberte vhodné možnosti pro vaše nasazení.
 
     :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="Snímek obrazovky znázorňující možnosti pro důvěryhodné spuštění":::
 
-12. Vraťte se na kartu **základy** v části **Image** a ujistěte se, že se zobrazí následující zpráva: **Tento obrázek podporuje důvěryhodné spuštění verze Preview. Nakonfigurujte na kartě Upřesnit**. Nyní by se měla vybrat obrázek 2. generace.
-
-    :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="Snímek obrazovky s potvrzením, že se jedná o Gen2 obrázek, který podporuje důvěryhodné spuštění":::
-
-13. Vyberte velikost virtuálního počítače, která podporuje důvěryhodné spuštění. Podívejte se na seznam [podporovaných velikostí](trusted-launch.md#public-preview-limitations).
-14. Vyplňte informace o **účtu správce** a pak nastavte **pravidla portů pro příchozí spojení**.
 15. V dolní části stránky vyberte **zkontrolovat + vytvořit** .
 16. Na stránce **vytvořit virtuální počítač** můžete zobrazit podrobnosti o virtuálním počítači, který se chystáte nasadit. Až budete připraveni, vyberte **Vytvořit**.
 

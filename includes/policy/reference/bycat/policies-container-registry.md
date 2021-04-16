@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: e41666a420229932a94327e214227f477f4e79a6
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 1329914e108d62e62c75bc1a09dbb008987dda5b
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090627"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498535"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Konfigurace registrů kontejnerů pro zakázání přístupu k veřejné síti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa3701552-92ea-433e-9d17-33b7f1208fc9) |Zakažte přístup k veřejné síti pro prostředek Container Registry tak, aby nebyl přístupný prostřednictvím veřejného Internetu. To může snížit riziko úniku dat. Další informace najdete na adrese [https://aka.ms/acr/portal/public-network](https://aka.ms/acr/portal/public-network) a [https://aka.ms/acr/private-link](https://aka.ms/acr/private-link) . |Upravit, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PublicNetworkAccess_Modify.json) |
 |[Konfigurace registrů kontejnerů pro použití privátních zón DNS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe9585a95-5b8c-4d03-b193-dc7eb5ac4c32) |Pomocí privátních zón DNS přepište překlad DNS pro privátní koncový bod. Privátní zóna DNS odkazuje na vaši virtuální síť, která se bude překládat na vaše Container Registry. Další informace najdete na adrese: [https://aka.ms/privatednszone](https://aka.ms/privatednszone) a [https://aka.ms/acr/private-link](https://aka.ms/acr/private-link) . |DeployIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PrivateDNSZone_DeployIfNotExists.json) |

@@ -1,5 +1,5 @@
 ---
-title: Jak označit virtuální počítač Azure pomocí rozhraní příkazového řádku
+title: Jak označit virtuální počítač Azure pomocí rozhraní příkazového řádku Azure
 description: Přečtěte si informace o označení virtuálního počítače pomocí rozhraní příkazového řádku Azure CLI.
 author: cynthn
 ms.service: virtual-machines
@@ -8,14 +8,14 @@ ms.workload: infrastructure-services
 ms.date: 11/11/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 32d15730557c96362602b5e324254c76637ecb55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20bb4ab622a01646bcc61d0f691c514a25a06edc
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98897438"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502602"
 ---
-# <a name="how-to-tag-a-vm-using-the-cli"></a>Označení virtuálního počítače pomocí rozhraní příkazového řádku
+# <a name="how-to-tag-a-vm-using-the-azure-cli"></a>Označení virtuálního počítače pomocí rozhraní příkazového řádku Azure
 
 Tento článek popisuje, jak označit virtuální počítač pomocí Azure CLI. Značky jsou páry klíč/hodnota definované uživatelem, které lze umístit přímo do prostředku nebo skupiny prostředků. Azure v současné době podporuje až 50 značek na jeden prostředek a skupinu prostředků. Značky lze umístit na prostředek v době vytvoření nebo přidání do existujícího prostředku. Můžete také označit virtuální počítač pomocí [prostředí Azure PowerShell](tag-powershell.md).
 

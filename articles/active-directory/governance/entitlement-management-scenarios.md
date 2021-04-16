@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0f45a1481661aa350815560d795ab7411f99545
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28c16e4d73fc2379806e1a2bce2fa5dbb3247fed
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92317845"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531961"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Běžné scénáře správy nároků ve službě Azure AD
 
@@ -154,7 +154,7 @@ Existuje několik způsobů, jak můžete nakonfigurovat správu nároků pro va
 
 ## <a name="programmatic-administration"></a>Programová správa
 
-Pomocí Microsoft Graph můžete také spravovat balíčky přístupu, katalogy, zásady, požadavky a přiřazení.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat [rozhraní API pro správu nároků](/graph/tutorial-access-package-api?view=graph-rest-beta).
+Pomocí Microsoft Graph můžete také spravovat balíčky přístupu, katalogy, zásady, požadavky a přiřazení.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat [rozhraní API pro správu nároků](/graph/tutorial-access-package-api).
 
 ## <a name="next-steps"></a>Další kroky
 

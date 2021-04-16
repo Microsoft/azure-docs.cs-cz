@@ -1,10 +1,10 @@
 ### YamlMime:Hub
 title: Dokumentace k zabezpečení Azure
-summary: Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečné výhody zabezpečení vycházející z inteligentních funkcí globálního zabezpečení, propracovaných ovládacích prvků pro uživatele a infrastruktury s posíleným zabezpečením. Tato účinná kombinace pomáhá chránit vaše aplikace a data, podporuje snahu o dodržování předpisů a poskytuje nákladově efektivní zabezpečení pro organizace všech velikostí.
+summary: 'Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečné výhody zabezpečení vycházející z inteligentních funkcí globálního zabezpečení, propracovaných ovládacích prvků pro uživatele a infrastruktury s posíleným zabezpečením. Tato účinná kombinace pomáhá chránit vaše aplikace a data, podporuje snahu o dodržování předpisů a poskytuje nákladově efektivní zabezpečení pro organizace všech velikostí.'
 brand: azure
 metadata:
   title: Dokumentace k zabezpečení Azure
-  description: Přečtěte si víc o zabezpečení v Azure. Projděte si informace o základech zabezpečení, osvědčených postupech a vzorech a službě Azure Security Center.
+  description: 'Přečtěte si víc o zabezpečení v Azure. Projděte si informace o základech zabezpečení, osvědčených postupech a vzorech a službě Azure Security Center.'
   services: security
   ms.service: security
   ms.subservice: na
@@ -14,228 +14,225 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 02/05/2021
-  ms.openlocfilehash: 368cd62109d1d5d74d26b22d9384cb4bf56a7944
-  ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
-  ms.translationtype: MT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/24/2021
-  ms.locfileid: "105044681"
 highlightedContent:
   items:
-  - title: Seznámení se zabezpečením Azure
-    itemType: overview
-    url: ./fundamentals/overview.md
-  - title: Osvědčené postupy a vzory zabezpečení
-    itemType: concept
-    url: ./fundamentals/best-practices-and-patterns.md
-  - title: Co je Azure Security Center?
-    itemType: overview
-    url: ../security-center/security-center-introduction.md
+    - title: Zahájení cesty zabezpečení
+      itemType: get-started
+      url: ./journey/index.yml
+    - title: Vyhledání služeb zabezpečení pro vaše obchodní potřeby
+      itemType: overview
+      url: ./fundamentals/end-to-end.md
+    - title: Používejte osvědčené postupy a doporučení pro zabezpečení cloudových nasazení
+      itemType: concept
+      url: ./benchmarks/introduction.md
 conceptualContent:
   items:
-  - title: Základy
-    links:
-    - url: ./fundamentals/technical-capabilities.md
-      itemType: overview
-      text: Technické možnosti zabezpečení Azure
-    - url: https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91
-      itemType: concept
-      text: Sdílené odpovědnosti pro cloud computing
-    - url: ./benchmarks/index.yml
-      itemType: concept
-      text: Řízení zabezpečení pro služby Azure
-    footerLink:
-      url: ./fundamentals/index.yml
-      text: Další informace
-  - title: Vývojáři
-    links:
-    - url: ./develop/secure-dev-overview.md
-      itemType: overview
-      text: Osvědčené postupy zabezpečeného vývoje
-    - url: ./develop/secure-develop.md
-      itemType: tutorial
-      text: Vývoj zabezpečených aplikací
-    - url: ./develop/threat-modeling-tool.md
-      itemType: concept
-      text: Nástroj Microsoftu pro modelování hrozeb
-    footerLink:
-      url: ./develop/index.yml
-      text: Další informace
-  - title: Srovnávací testy a doporučení
-    links:
-    - url: ./benchmarks/introduction.md
-      itemType: download
-      text: Srovnávací test cloudového zabezpečení Azure
-    - url: ../security-center/security-center-remediate-recommendations.md
-      itemType: overview
-      text: Doporučení služby Azure Security Center
-    footerLink:
-      url: ./benchmarks/index.yml
-      text: Další informace
-  - title: Tajné kódy a klíče
-    links:
-    - url: ../key-vault/general/overview.md
-      itemType: overview
-      text: Co je Azure Key Vault?
-    - url: ../key-vault/secrets/quick-create-cli.md
-      itemType: quickstart
-      text: Nastavení a načtení tajného kódu
-    - url: ../dedicated-hsm/overview.md
-      itemType: overview
-      text: Co je Azure Dedicated HSM?
-    footerLink:
-      url: ../key-vault/index.yml
-      text: Další informace
-  - title: Ochrana dat
-    links:
-    - url: ./fundamentals/encryption-atrest.md
-      itemType: concept
-      text: Šifrování neaktivních dat
-    - url: ./fundamentals/data-encryption-best-practices.md
-      itemType: concept
-      text: Osvědčené postupy šifrování a zabezpečení dat
-    - url: ../storage/blobs/security-recommendations.md
-      itemType: concept
-      text: Zabezpečení úložiště
-    footerLink:
-      url: ./fundamentals/encryption-overview.md
-      text: Další informace
-  - title: Správa identit
-    links:
-    - url: ../active-directory/hybrid/choose-ad-authn.md
-      itemType: concept
-      text: Volba vhodné metody ověřování
-    - url: ./fundamentals/steps-secure-identity.md
-      itemType: concept
-      text: Zabezpečení infrastruktury identit
-    - url: ./fundamentals/identity-management-best-practices.md
-      itemType: concept
-      text: Osvědčené postupy zabezpečení
-    footerLink:
-      url: ./fundamentals/identity-management-overview.md
-      text: Další informace
-  - title: Monitorování zabezpečení
-    links:
-    - url: ../security-center/security-center-get-started.md
-      itemType: quickstart
-      text: Nasazení předplatného do služby Security Center
-    - url: ../security-center/security-center-just-in-time.md
-      itemType: how-to-guide
-      text: Přístup k virtuálním počítačům podle potřeby
-    - url: ../security-center/tutorial-security-policy.md
-      itemType: how-to-guide
-      text: Práce se zásadami zabezpečení
-    footerLink:
-      url: ../security-center/index.yml
-      text: Další informace
-  - title: Monitorování zabezpečení IoT
-    links:
-    - url: ../defender-for-iot/overview.md
-      itemType: overview
-      text: Představujeme Azure Security Center pro IoT
-    - url: ../defender-for-iot/architecture.md
-      itemType: how-to-guide
-      text: Architektura služby Azure Security Center pro IoT
-    - url: ../defender-for-iot/getting-started.md
-      itemType: how-to-guide
-      text: Začínáme se službou Azure Security Center pro IoT
-    footerLink:
-      url: /azure/asc-for-iot/
-      text: Další informace
-  - title: Analytika zabezpečení
-    links:
-    - url: ../sentinel/overview.md
-      itemType: overview
-      text: Co je verze Preview Azure Sentinelu?
-    - url: ../sentinel/quickstart-onboard.md
-      itemType: quickstart
-      text: Nasazení verze Preview Azure Sentinelu
-    - url: ../sentinel/quickstart-get-visibility.md
-      itemType: quickstart
-      text: Začínáme s verzí Preview Azure Sentinelu
-    footerLink:
-      url: ../sentinel/index.yml
-      text: Další informace
-  - title: Ochrana před hrozbami
-    links:
-    - url: ../security-center/security-center-alerts-overview.md
-      itemType: concept
-      text: Výstrahy zabezpečení ve službě Azure Security Center
-    - url: ../storage/common/azure-defender-storage-configure.md
-      itemType: concept
-      text: Azure Defender pro úložiště
-    - url: ../azure-sql/database/threat-detection-overview.md
-      itemType: concept
-      text: Azure Defender pro SQL
-    footerLink:
-      url: ./fundamentals/threat-detection.md
-      text: Další informace
-  - title: Protokolování a auditování
-    links:
-    - url: ./fundamentals/log-audit.md
-      itemType: concept
-      text: Protokolování a auditování Azure
-    - url: ./fundamentals/management-monitoring-overview.md
-      itemType: overview
-      text: Přehled správy a monitorování
-    footerLink:
-      url: /search/?category=Documentation&scope=azure&search=security%2baudit%2blog
-      text: Hledání dalších položek
-  - title: Zabezpečení sítě
-    links:
-    - url: ./fundamentals/network-overview.md
-      itemType: overview
-      text: Přehled zabezpečení
-    - url: ./fundamentals/network-best-practices.md
-      itemType: concept
-      text: Osvědčené postupy zabezpečení
-    - url: ../ddos-protection/fundamental-best-practices.md
-      itemType: concept
-      text: DDoS Protection
-  - title: Zabezpečení infrastruktury
-    links:
-    - url: ./fundamentals/physical-security.md
-      itemType: concept
-      text: Zabezpečení místního prostředí a zařízení Azure a fyzické zabezpečení
-    - url: ./fundamentals/infrastructure-network.md
-      itemType: concept
-      text: Architektura sítě
-    - url: ./fundamentals/protection-customer-data.md
-      itemType: concept
-      text: Ochrana zákaznických dat
-    footerLink:
-      url: ./fundamentals/infrastructure.md
-      text: Další informace
-  - title: Zabezpečení virtuálních počítačů
-    links:
-    - url: ./fundamentals/virtual-machines-overview.md
-      itemType: overview
-      text: Přehled zabezpečení
-    - url: ./fundamentals/iaas.md
-      itemType: concept
-      text: Osvědčené postupy pro úlohy IaaS
-    - url: ./fundamentals/azure-marketplace-images.md
-      itemType: concept
-      text: Doporučení pro konfiguraci zabezpečení
-  - title: Zabezpečení databází
-    links:
-    - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
-      itemType: overview
-      text: Zabezpečení dat
-    - url: ./fundamentals/paas-applications-using-sql.md
-      itemType: concept
-      text: Osvědčené postupy databáze PaaS
-    - url: ./fundamentals/database-security-checklist.md
-      itemType: concept
-      text: Kontrolní seznam zabezpečení
-  - title: Zásady správného řízení a dodržování předpisů
-    links:
-    - url: ../governance/policy/overview.md
-      itemType: overview
-      text: Služba Azure Policy
-    - url: ../governance/blueprints/overview.md
-      itemType: overview
-      text: Služba Azure Blueprints
-    footerLink:
-      url: ../governance/index.yml
-      text: Další informace
+    - title: Základy
+      links:
+        - url: ./fundamentals/overview.md
+          itemType: overview
+          text: Seznámení se zabezpečením Azure
+        - url: 'https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91'
+          itemType: concept
+          text: Sdílené odpovědnosti pro cloud computing
+        - url: ./benchmarks/index.yml
+          itemType: concept
+          text: Řízení zabezpečení pro služby Azure
+      footerLink:
+        url: ./fundamentals/index.yml
+        text: Další informace
+    - title: Vývojáři
+      links:
+        - url: ./develop/secure-dev-overview.md
+          itemType: overview
+          text: Osvědčené postupy zabezpečeného vývoje
+        - url: ./develop/secure-develop.md
+          itemType: tutorial
+          text: Vývoj zabezpečených aplikací
+        - url: ./develop/threat-modeling-tool.md
+          itemType: concept
+          text: Nástroj Microsoftu pro modelování hrozeb
+      footerLink:
+        url: ./develop/index.yml
+        text: Další informace
+    - title: Osvědčené postupy a vzory zabezpečení
+      links:
+        - url: ./fundamentals/identity-management-best-practices.md
+          itemType: concept
+          text: Správa identit
+        - url: ./fundamentals/network-best-practices.md
+          itemType: concept
+          text: Zabezpečení sítě
+        - url: ./fundamentals/paas-deployments.md
+          itemType: concept
+          text: Zabezpečení nasazení PaaS
+      footerLink:
+        url: ./fundamentals/best-practices-and-patterns.md
+        text: Další informace
+    - title: Tajné kódy a klíče
+      links:
+        - url: ../key-vault/general/overview.md
+          itemType: overview
+          text: Co je Azure Key Vault?
+        - url: ../key-vault/secrets/quick-create-cli.md
+          itemType: quickstart
+          text: Nastavení a načtení tajného kódu
+        - url: ../dedicated-hsm/overview.md
+          itemType: overview
+          text: Co je Azure Dedicated HSM?
+      footerLink:
+        url: ../key-vault/index.yml
+        text: Další informace
+    - title: Ochrana dat
+      links:
+        - url: ./fundamentals/encryption-atrest.md
+          itemType: concept
+          text: Šifrování neaktivních dat
+        - url: ./fundamentals/data-encryption-best-practices.md
+          itemType: concept
+          text: Osvědčené postupy šifrování a zabezpečení dat
+        - url: ../storage/blobs/security-recommendations.md
+          itemType: concept
+          text: Zabezpečení úložiště
+      footerLink:
+        url: ./fundamentals/encryption-overview.md
+        text: Další informace
+    - title: Správa identit
+      links:
+        - url: ../active-directory/hybrid/choose-ad-authn.md
+          itemType: concept
+          text: Volba vhodné metody ověřování
+        - url: ./fundamentals/steps-secure-identity.md
+          itemType: concept
+          text: Zabezpečení infrastruktury identit
+        - url: ./fundamentals/identity-management-best-practices.md
+          itemType: concept
+          text: Osvědčené postupy zabezpečení
+      footerLink:
+        url: ./fundamentals/identity-management-overview.md
+        text: Další informace
+    - title: Monitorování zabezpečení
+      links:
+        - url: ../security-center/security-center-get-started.md
+          itemType: quickstart
+          text: Nasazení předplatného do služby Security Center
+        - url: ../security-center/security-center-just-in-time.md
+          itemType: how-to-guide
+          text: Přístup k virtuálním počítačům podle potřeby
+        - url: ../security-center/tutorial-security-policy.md
+          itemType: how-to-guide
+          text: Práce se zásadami zabezpečení
+      footerLink:
+        url: ../security-center/index.yml
+        text: Další informace
+    - title: Monitorování zabezpečení IoT
+      links:
+        - url: ../defender-for-iot/overview.md
+          itemType: overview
+          text: Představujeme Azure Security Center pro IoT
+        - url: ../defender-for-iot/architecture.md
+          itemType: how-to-guide
+          text: Architektura služby Azure Security Center pro IoT
+        - url: ../defender-for-iot/getting-started.md
+          itemType: how-to-guide
+          text: Začínáme se službou Azure Security Center pro IoT
+      footerLink:
+        url: /azure/asc-for-iot/
+        text: Další informace
+    - title: Analytika zabezpečení
+      links:
+        - url: ../sentinel/overview.md
+          itemType: overview
+          text: Co je verze Preview Azure Sentinelu?
+        - url: ../sentinel/quickstart-onboard.md
+          itemType: quickstart
+          text: Nasazení verze Preview Azure Sentinelu
+        - url: ../sentinel/quickstart-get-visibility.md
+          itemType: quickstart
+          text: Začínáme s verzí Preview Azure Sentinelu
+      footerLink:
+        url: ../sentinel/index.yml
+        text: Další informace
+    - title: Ochrana před hrozbami
+      links:
+        - url: ../security-center/security-center-alerts-overview.md
+          itemType: concept
+          text: Výstrahy zabezpečení ve službě Azure Security Center
+        - url: ../storage/common/azure-defender-storage-configure.md
+          itemType: concept
+          text: Azure Defender pro úložiště
+        - url: ../azure-sql/database/threat-detection-overview.md
+          itemType: concept
+          text: Azure Defender pro SQL
+      footerLink:
+        url: ./fundamentals/threat-detection.md
+        text: Další informace
+    - title: Protokolování a auditování
+      links:
+        - url: ./fundamentals/log-audit.md
+          itemType: concept
+          text: Protokolování a auditování Azure
+        - url: ./fundamentals/management-monitoring-overview.md
+          itemType: overview
+          text: Přehled správy a monitorování
+      footerLink:
+        url: /search/?category=Documentation&scope=azure&search=security%2baudit%2blog
+        text: Hledání dalších položek
+    - title: Zabezpečení sítě
+      links:
+        - url: ./fundamentals/network-overview.md
+          itemType: overview
+          text: Přehled zabezpečení
+        - url: ./fundamentals/network-best-practices.md
+          itemType: concept
+          text: Osvědčené postupy zabezpečení
+        - url: ../ddos-protection/fundamental-best-practices.md
+          itemType: concept
+          text: DDoS Protection
+    - title: Zabezpečení infrastruktury
+      links:
+        - url: ./fundamentals/physical-security.md
+          itemType: concept
+          text: Zabezpečení místního prostředí a zařízení Azure a fyzické zabezpečení
+        - url: ./fundamentals/infrastructure-network.md
+          itemType: concept
+          text: Architektura sítě
+        - url: ./fundamentals/protection-customer-data.md
+          itemType: concept
+          text: Ochrana zákaznických dat
+      footerLink:
+        url: ./fundamentals/infrastructure.md
+        text: Další informace
+    - title: Zabezpečení virtuálních počítačů
+      links:
+        - url: ./fundamentals/virtual-machines-overview.md
+          itemType: overview
+          text: Přehled zabezpečení
+        - url: ./fundamentals/iaas.md
+          itemType: concept
+          text: Osvědčené postupy pro úlohy IaaS
+        - url: ./fundamentals/azure-marketplace-images.md
+          itemType: concept
+          text: Doporučení pro konfiguraci zabezpečení
+    - title: Zabezpečení databází
+      links:
+        - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
+          itemType: overview
+          text: Zabezpečení dat
+        - url: ./fundamentals/paas-applications-using-sql.md
+          itemType: concept
+          text: Osvědčené postupy databáze PaaS
+        - url: ./fundamentals/database-security-checklist.md
+          itemType: concept
+          text: Kontrolní seznam zabezpečení
+    - title: Zásady správného řízení a dodržování předpisů
+      links:
+        - url: ../governance/policy/overview.md
+          itemType: overview
+          text: Služba Azure Policy
+        - url: ../governance/blueprints/overview.md
+          itemType: overview
+          text: Služba Azure Blueprints
+      footerLink:
+        url: ../governance/index.yml
+        text: Další informace

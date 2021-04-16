@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 04/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a76e2d37e9dcdd285a8608fdbfd715bfb834eb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7c04afe76ced0abf40abf8e30362005fb269172
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467744"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534722"
 ---
 # <a name="create-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Vytváření vlastních rolí pro správu podnikových aplikací v Azure Active Directory
 
@@ -112,7 +112,7 @@ $displayName = "Can manage user and group assignments for Applications"
 $templateId = (New-Guid).Guid
 
 # Set of permissions to grant
-$allowedResourceAction =@( "microsoft.directory/servicePrincipals/appRoleAssignedTo/update")
+$allowedResourceAction = @("microsoft.directory/servicePrincipals/appRoleAssignedTo/update")
 $resourceActions = @{'allowedResourceActions'= $allowedResourceAction}
 $rolePermission = @{'resourceActions' = $resourceActions}
 $rolePermissions = $rolePermission
@@ -126,24 +126,16 @@ $customRole = New-AzureADMSRoleDefinition -RolePermissions $rolePermissions -Dis
 Přiřaďte roli pomocí tohoto skriptu PowerShellu.
 
 ```powershell
-PowerShell
-# Basic role information
+# Get the user and role definition you want to link
+$user = Get-AzureADUser -Filter "userPrincipalName eq 'chandra@example.com'"
+$roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Manage user and group assignments'"
 
-$description = "Manage user and group assignments"
-$displayName = "Can manage user and group assignments for Applications"
-$templateId = (New-Guid).Guid
+# Get app registration and construct resource scope for assignment.
+$appRegistration = Get-AzureADApplication -Filter "displayName eq 'My Filter Photos'"
+$resourceScope = '/' + $appRegistration.objectId
 
-# Set of permissions to grant
-$allowedResourceAction =
-@(
-    "microsoft.directory/servicePrincipals/appRoleAssignedTo/update"
-)
-$resourceActions = @{'allowedResourceActions'= $allowedResourceAction}
-$rolePermission = @{'resourceActions' = $resourceActions}
-$rolePermissions = $rolePermission
-
-# Create new custom role
-$customRole = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
+# Create a scoped role assignment
+$roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
 ## <a name="use-the-microsoft-graph-api"></a>Použití rozhraní Microsoft Graph API

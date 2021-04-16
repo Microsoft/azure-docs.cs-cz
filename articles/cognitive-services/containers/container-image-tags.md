@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/12/2021
 ms.author: aahi
-ms.openlocfilehash: 80b1af824f1c7bd47f16723f839141c4bed756df
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: aeb5ba4145409db5b2884102d7e886222a37de7a
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364987"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388359"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Značky imagí a poznámky k verzi služby Azure Cognitive Services Container
 
@@ -161,20 +161,24 @@ Obrázek kontejneru [Custom Speech-to-text][sp-cstt] najdete v části `mcr.micr
 
 # <a name="latest-version"></a>[Nejnovější verze](#tab/current)
 
-Poznámka k verzi pro `2.10.0-amd64` :
+Poznámka k verzi pro `2.11.0-amd64` :
 
-**Funkce**
-* Upgradujte na nejnovější modely.
+**Řeší**
+* Ponechejte vstupy uživatele na velká a malá písmena.
 
-Všimněte si, že vzhledem k uvedeným seznamům frází se velikost této image kontejneru zvýšila.
+Všimněte si, že vzhledem k funkci seznam frází se velikost této image kontejneru zvýšila.
 
 | Značky obrázku                    | Poznámky | Otisk                                                                   |
 |-------------------------------|:------|:-------------------------------------------------------------------------|
-| `latest`                      |       | `sha256:944f051e3b90aa8eb8a37a4d4a18d4e13dbb49f9fe6d5ced61a0f99b3b3e312c`|
-| `2.10.0-amd64`                |       | `sha256:944f051e3b90aa8eb8a37a4d4a18d4e13dbb49f9fe6d5ced61a0f99b3b3e312c`|
+| `latest`                      |       | `sha256:bbf23ded55bf61421f673bffa7d97aca5724f782328a80efe43020c9979cd069`|
+| `2.11.0-amd64`                |       | `sha256:bbf23ded55bf61421f673bffa7d97aca5724f782328a80efe43020c9979cd069`|
 
 
 # <a name="previous-version"></a>[Předchozí verze](#tab/previous)
+
+Poznámka k verzi pro `2.10.0-amd64` :
+
+Pravidelná měsíční verze
 
 Poznámka k verzi pro `2.9.0-amd64` :
 
@@ -221,6 +225,7 @@ Poznámka k verzi pro `2.5.0-amd64` :
 
 | Značky obrázku                    | Poznámky               |
 |-------------------------------|:--------------------|
+| `2.10.0-amd64`                |                     |
 | `2.9.0-amd64`                 |                     |
 | `2.7.0-amd64`                 |                     |
 | `2.6.0-amd64`                 |                     |
@@ -235,18 +240,22 @@ Vlastní image kontejneru [pro převod textu na mluvené slovo][sp-ctts] se dá 
 
 # <a name="latest-version"></a>[Nejnovější verze](#tab/current)
 
-Poznámka k verzi pro `1.12.0-amd64` :
+Poznámka k verzi pro `1.13.0-amd64` :
 
-**Funkce**
-* Upgradujte na nejnovější modely.
+**Řeší**
+* Ponechejte vstupy uživatele na velká a malá písmena.
 
 | Značky obrázku                    | Poznámky | Otisk                                                                   |
 |-------------------------------|:------|:-------------------------------------------------------------------------|
-| `latest`                      |       | `sha256:82806245b8ccce808523c4276d8f447c8429db8b04ff26bdbc4d36ba6a704db4` |
-| `1.12.0-amd64`                |       | `sha256:82806245b8ccce808523c4276d8f447c8429db8b04ff26bdbc4d36ba6a704db4` |
+| `latest`                      |       | `sha256:390ff9e4981c798058058e7825cd1e6d173d9d54d66d8fdc450d157cf393aaec` |
+| `1.13.0-amd64`                |       | `sha256:390ff9e4981c798058058e7825cd1e6d173d9d54d66d8fdc450d157cf393aaec` |
 
 
 # <a name="previous-version"></a>[Předchozí verze](#tab/previous)
+
+Poznámka k verzi pro `1.12.0-amd64` :
+
+Pravidelná měsíční verze
 
 Poznámka k verzi pro `1.11.0-amd64` :
 
@@ -269,6 +278,7 @@ Poznámka k verzi pro `1.7.0-amd64` :
 
 | Značky obrázku                    | Poznámky               |
 |-------------------------------|:--------------------|
+| `1.12.0-amd64`                |                     |
 | `1.11.0-amd64`                |                     |
 | `1.9.0-amd64`                 |                     |
 | `1.8.0-amd64`                 |                     |
@@ -284,17 +294,182 @@ Vzhledem k tomu, že je převod řeči na text v 2.5.0, jsou obrázky podporovan
 
 # <a name="latest-version"></a>[Nejnovější verze](#tab/current)
 
+Poznámka k verzi pro `2.11.0-amd64-<locale>` :
+
+**Funkce**
+* Upgradujte na nejnovější modely.
+
+**Řeší**
+* Ponechejte vstupy uživatele na velká a malá písmena.
+
+Všimněte si, že vzhledem k funkci seznam frází se velikost této image kontejneru zvýšila. 
+
+| Značky obrázku                    | Poznámky                                                                                                |
+|-------------------------------|:-----------------------------------------------------------------------------------------------------|
+| `latest`                      | Obrázek kontejneru s `en-US` národním prostředím                                                             |
+| `2.11.0-amd64-<locale>`       | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `2.11.0-amd64-en-us`.|
+
+Pro tento kontejner jsou k dispozici následující místní prostředí.
+
+| Národní prostředí pro 2.11.0          | Poznámky                                    | Otisk                                                                    |
+|-----------------------------|:-----------------------------------------|:--------------------------------------------------------------------------|
+| `ar-ae`                     | Obrázek kontejneru s `ar-AE` národním prostředím | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-bh`                     | Obrázek kontejneru s `ar-BH` národním prostředím | `sha256:a6af48cdaf9f7562bfaced449016106dbde5c678fdd4c69985d166959a38b146` |
+| `ar-eg`                     | Obrázek kontejneru s `ar-EG` národním prostředím | `sha256:43cec166dcde9dc7cd535228440d11d396518fcfb14d9fa617e6e26f5156dc84` |
+| `ar-iq`                     | Obrázek kontejneru s `ar-IQ` národním prostředím | `sha256:b55095b27e8eef60dfe9657735a425b9ca1fe3c29ce4ff1f3d67bf7b2ac77bb1` |
+| `ar-jo`                     | Obrázek kontejneru s `ar-JO` národním prostředím | `sha256:7cc4ad997a76844414a982982251653525f27dc396db44f23b7f012d20f53677` |
+| `ar-kw`                     | Obrázek kontejneru s `ar-KW` národním prostředím | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-lb`                     | Obrázek kontejneru s `ar-LB` národním prostředím | `sha256:5d3b402f41f616ee792a5e7e3f41b4ec5638dc8ad60a3c133ec588e07b09d581` |
+| `ar-om`                     | Obrázek kontejneru s `ar-OM` národním prostředím | `sha256:c4f88fdaec73ebe241d6c94695b20eb2c792a9fd77dbb51f24fc7807dfd0dc61` |
+| `ar-qa`                     | Obrázek kontejneru s `ar-QA` národním prostředím | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-sa`                     | Obrázek kontejneru s `ar-SA` národním prostředím | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-sy`                     | Obrázek kontejneru s `ar-SY` národním prostředím | `sha256:a42b6f63a16313f280088bd47978e177bc2f1bf2d392a070cf5c6a06d9f7a62c` |
+| `bg-bg`                     | Obrázek kontejneru s `bg-BG` národním prostředím | `sha256:21425557e62d71326e9eb614c535878f981a914bf66d9dd883221656ca891858` |
+| `ca-es`                     | Obrázek kontejneru s `ca-ES` národním prostředím | `sha256:682e8a8ad5f2582f25a18b0518f9fba9b3849b72eb5dab5454586724272c52de` |
+| `cs-cz`                     | Obrázek kontejneru s `cs-CZ` národním prostředím | `sha256:1d0661ae5920f82e607c72ae7d6eee917c190d80c3d13403d770947c67a4294e` |
+| `da-dk`                     | Obrázek kontejneru s `da-DK` národním prostředím | `sha256:8d5257d6c326e4d96ba395faa0c717f48c4d437866f8dc1e1252c5e983b3008f` |
+| `de-de`                     | Obrázek kontejneru s `de-DE` národním prostředím | `sha256:086a4e33f746868fc1865322f1d7dfb5c1c3af64bdbd369804155f18710ad96e` |
+| `el-gr`                     | Obrázek kontejneru s `el-GR` národním prostředím | `sha256:0e2c7d5337f953d45fc7594317e6eab5eecec44a1c15fba51a128fc510519c3f` |
+| `en-au`                     | Obrázek kontejneru s `en-AU` národním prostředím | `sha256:dcfe3fc95b895d0205a7b72368595e98dfdcb4b6398522e7daa2fbbe2b087ef6` |
+| `en-ca`                     | Obrázek kontejneru s `en-CA` národním prostředím | `sha256:f04cedb6b50560f0584cb3634cbfee5e9c147d60fc044cbd0df10fc28f04ed98` |
+| `en-gb`                     | Obrázek kontejneru s `en-GB` národním prostředím | `sha256:9692c45c6b5b8716f99852a2ddf4b7fd1e2c00ea29f9a20da68e899cf3064fa1` |
+| `en-hk`                     | Obrázek kontejneru s `en-HK` národním prostředím | `sha256:97106aa991b4ef5b0f1859ae7a7df3c6e22dd009123281a7458d336a78ebd854` |
+| `en-ie`                     | Obrázek kontejneru s `en-IE` národním prostředím | `sha256:da2bc14cd86f200a439b3ce708c6643d507d482daabae87c351bee4c10efa60b` |
+| `en-in`                     | Obrázek kontejneru s `en-IN` národním prostředím | `sha256:f8fc43e5d20afe8108b6f35c3e09d403557f150413672d45322421be1fddff20` |
+| `en-nz`                     | Obrázek kontejneru s `en-NZ` národním prostředím | `sha256:abb8ca669c806a71af88d3643694252e1833ca99aacbd739a3962ec00c3cdb61` |
+| `en-ph`                     | Obrázek kontejneru s `en-PH` národním prostředím | `sha256:13bc7717dd73f4323956a3f7441b24dd2f86c13d41adc709e3f6f26266cacd91` |
+| `en-sg`                     | Obrázek kontejneru s `en-SG` národním prostředím | `sha256:b7f44d7cf4bbe4d89729207a38e91726c321ea03a66c5e5624b27ae9913fdafa` |
+| `en-us`                     | Obrázek kontejneru s `en-US` národním prostředím | `sha256:d81ee15821646607aec9fa46223c9197f74675a89070912ca892ad5adfcab6f9` |
+| `en-za`                     | Obrázek kontejneru s `en-ZA` národním prostředím | `sha256:2e2f9102c9f6fba0736fb01d745d35b677bf92750eed5cad245ee089998f66f2` |
+| `es-ar`                     | Obrázek kontejneru s `es-AR` národním prostředím | `sha256:dd962ec3f32b8fdeb15f7ab18ea9d19e7c93baf4c801fac59d44f5cf845e9935` |
+| `es-bo`                     | Obrázek kontejneru s `es-BO` národním prostředím | `sha256:f89c0e513f43800e1d19177384b815c1a04f5b07ccba8fd9c80aa5ebf5c71648` |
+| `es-cl`                     | Obrázek kontejneru s `es-CL` národním prostředím | `sha256:3ebc64dceb1b7fbef716de3736a020b23e8fb4e9aceb183524863681e0b278fe` |
+| `es-co`                     | Obrázek kontejneru s `es-CO` národním prostředím | `sha256:ba05465c312acf6b9a1a1866c81c795027470e8bda8389dd0fcb641c9f1af592` |
+| `es-cr`                     | Obrázek kontejneru s `es-CR` národním prostředím | `sha256:51d49d90f600ae971019974a6a38c71b3bf01a84301ee6e8604c3f424bc6773f` |
+| `es-cu`                     | Obrázek kontejneru s `es-CU` národním prostředím | `sha256:a19f0ab805d0268c06a0e83aad2dcab458638e8c2f7869f5b2315695ae2ea4d8` |
+| `es-do`                     | Obrázek kontejneru s `es-DO` národním prostředím | `sha256:a9539f091ec3feef34511ce9d337436151980eda69c7f8c8f2493e8d1be81e66` |
+| `es-ec`                     | Obrázek kontejneru s `es-EC` národním prostředím | `sha256:a0f5c19a683b92566747db79e30ac7ad09cde07bcb15451166b5257d036a86bc` |
+| `es-es`                     | Obrázek kontejneru s `es-ES` národním prostředím | `sha256:2aa5e82c726a8771c706a2de38bed09ca9c8298bb166c49fa227b8966011efa4` |
+| `es-gt`                     | Obrázek kontejneru s `es-GT` národním prostředím | `sha256:60361c1a305d0fef3deb0e4886c4044aebcf41878a748bc0615b94fcf9489cf9` |
+| `es-hn`                     | Obrázek kontejneru s `es-HN` národním prostředím | `sha256:d628b894966988880bb11f1ec1380702077bd45c2a83b912ae3e7451d8fd90cb` |
+| `es-mx`                     | Obrázek kontejneru s `es-MX` národním prostředím | `sha256:2bd901c320237e041ecca1ea34c359cf847cf8dacecfcb0e1ed8fd1794463fe5` |
+| `es-ni`                     | Obrázek kontejneru s `es-NI` národním prostředím | `sha256:099d21e5e5816d5d7e0965cda5878bfe78f5447e4994957dcc45ae40223b14b1` |
+| `es-pa`                     | Obrázek kontejneru s `es-PA` národním prostředím | `sha256:af6c258b7e984ee17d32b9dfc49969cfc1d7ee33aa2485017fab191d8d574e92` |
+| `es-pe`                     | Obrázek kontejneru s `es-PE` národním prostředím | `sha256:7d0e03c7f44f61b4632b730c2cf8e3d7c584a869bb5d53b9e5021549d1d500a8` |
+| `es-pr`                     | Obrázek kontejneru s `es-PR` národním prostředím | `sha256:ad580c1ac73d919434387869803d9fabec24e19afd6b4cc5aa7e809fb93dc908` |
+| `es-py`                     | Obrázek kontejneru s `es-PY` národním prostředím | `sha256:2e85df2af0003c0a41752c6e989ed8b724a22958e7ed3cbf67e54ca621bb5975` |
+| `es-sv`                     | Obrázek kontejneru s `es-SV` národním prostředím | `sha256:bae49ae543878096c1dd0c77a8f83a30ba1416605efa58dad59ca3577f7006ea` |
+| `es-us`                     | Obrázek kontejneru s `es-US` národním prostředím | `sha256:fd9deebe4e5a4466af439a8e40a1a39261a7b0228a4ed979b8086e1c65c60e26` |
+| `es-uy`                     | Obrázek kontejneru s `es-UY` národním prostředím | `sha256:0e69fc4689dafad97e00bed7c4eb7ca44b94e3a3d9357d6d36bed8135963e9e4` |
+| `es-ve`                     | Obrázek kontejneru s `es-VE` národním prostředím | `sha256:37ebac38fac4306668858140736d83e008ae0756f8e1fe5ed6386780bc9796ba` |
+| `et-ee`                     | Obrázek kontejneru s `et-EE` národním prostředím | `sha256:223d494cf64cdceaabe6e9bae82d378d7ea53eb8c01d58bdbd2e1ed360aaa34b` |
+| `fi-fi`                     | Obrázek kontejneru s `fi-FI` národním prostředím | `sha256:378e5735198e38d6bed8c87a59ed69f8c3bd57ac8a462332d74dd8495cb07ed2` |
+| `fr-ca`                     | Obrázek kontejneru s `fr-CA` národním prostředím | `sha256:d92f672c2a61a67db43d9884bc2692c304b3c2c5446bed2d315892876270366b` |
+| `fr-fr`                     | Obrázek kontejneru s `fr-FR` národním prostředím | `sha256:11dc172c7ae91b6cba7fb4ab1a61e48b27b193bf434a68827eb197c0ba05d6fb` |
+| `ga-ie`                     | Obrázek kontejneru s `ga-IE` národním prostředím | `sha256:3057eaaf8e0403690c0223c0db3a392b05f2ec45e53511327b8447912e32b8b4` |
+| `gu-in`                     | Obrázek kontejneru s `gu-IN` národním prostředím | `sha256:37062edf6805dce30309e4615c2947dded730b5b5be7e3bcd85bb93e38b08f31` |
+| `hi-in`                     | Obrázek kontejneru s `hi-IN` národním prostředím | `sha256:9f1bf1901a6b0e2caf4c9ff30e0b6bb3f1f4f814ad86fc62a471d4fe1fe4c101` |
+| `hr-hr`                     | Obrázek kontejneru s `hr-HR` národním prostředím | `sha256:095b40ad1afeebd932c299410a4732fd64da2251230aa044ca2c43b4d0bb6791` |
+| `hu-hu`                     | Obrázek kontejneru s `hu-HU` národním prostředím | `sha256:60e9257735cee7dc6cde1b5725588b1c1ea84f852220f1f4f3e873177a24fc5c` |
+| `it-it`                     | Obrázek kontejneru s `it-IT` národním prostředím | `sha256:71c5e3a9196155678a6ad9cd62b812386579521ac410b40e3526dee153d749e1` |
+| `ja-jp`                     | Obrázek kontejneru s `ja-JP` národním prostředím | `sha256:fce7d215575d2a94cdb4818bb1525f6448f5f881fc3e7f04274c64978bd6aaa7` |
+| `ko-kr`                     | Obrázek kontejneru s `ko-KR` národním prostředím | `sha256:d71d8e1e3692bb0781e98b984dea79950a8009a6fa03e729325c338ca5c09a98` |
+| `lt-lt`                     | Obrázek kontejneru s `lt-LT` národním prostředím | `sha256:dc2e35e158c09fd793b180050a0100df4a3716da4d0a7a528dc3ea65b6ecf21b` |
+| `lv-lv`                     | Obrázek kontejneru s `lv-LV` národním prostředím | `sha256:e6ab373eb9477d90d44175fffb646298d403405633e0a61ccf20f9e7381243b8` |
+| `mr-in`                     | Obrázek kontejneru s `mr-IN` národním prostředím | `sha256:0ce15c2d14bba49639adea30c91df1ac47e7b2a7796be551276bad8ec8312ed4` |
+| `mt-mt`                     | Obrázek kontejneru s `mt-MT` národním prostředím | `sha256:bbe958ff9c7c51efc6521866173b26ac2cfe682d114ce3ed6b1f6b8e9b3a7327` |
+| `nb-no`                     | Obrázek kontejneru s `nb-NO` národním prostředím | `sha256:4e4d890605e09717ef88982f586611c605342465a8ef81f2280f665ad1378522` |
+| `nl-nl`                     | Obrázek kontejneru s `nl-NL` národním prostředím | `sha256:60bd2d1f817019e6626876b15f5697be07c3b2b368e4cc7e3c3871c3e9181052` |
+| `pl-pl`                     | Obrázek kontejneru s `pl-PL` národním prostředím | `sha256:c8520e7155ef176fb9fea48c541acae995a6a80ba6913ac4289786ee55062ce6` |
+| `pt-br`                     | Obrázek kontejneru s `pt-BR` národním prostředím | `sha256:c8440308a5cb77791f33ae458c49abc084a1be8c418df9feeda9a4aa917a59bc` |
+| `pt-pt`                     | Obrázek kontejneru s `pt-PT` národním prostředím | `sha256:a66739b36a410c181ccd2205c59fee2726b3905d1c5ba4531909be96cf85a55c` |
+| `ro-ro`                     | Obrázek kontejneru s `ro-RO` národním prostředím | `sha256:c4ba7ff5c11d4243a3e128aca1f8110e62df82d956706c97c237016a94cb485f` |
+| `ru-ru`                     | Obrázek kontejneru s `ru-RU` národním prostředím | `sha256:c3fc4117598c0dcea0fd5e6f19adf7763e42732e32e3ac93ff74795fdc167e67` |
+| `sk-sk`                     | Obrázek kontejneru s `sk-SK` národním prostředím | `sha256:78bcfa610f645c113134cc24c8af8dd3c630065c1b009fb5e36dfab4999c16fb` |
+| `sl-si`                     | Obrázek kontejneru s `sl-SI` národním prostředím | `sha256:134eb68c900787bae3a98a2bdf192f2a5460fb96b92590d65765d982245a7ccf` |
+| `sv-se`                     | Obrázek kontejneru s `sv-SE` národním prostředím | `sha256:d194aaefe82a5f91df9e01beec271ad9565c4d36cb0539421e947b5c8e67228d` |
+| `ta-in`                     | Obrázek kontejneru s `ta-IN` národním prostředím | `sha256:cf272b112b10587c034f00f7df2bfcdefbf542859fa089c15581040db99ed383` |
+| `te-in`                     | Obrázek kontejneru s `te-IN` národním prostředím | `sha256:7364a1068f9940e9bb6ea5476b0a007a37d42b899dc4ba56be833e4d2b8d359d` |
+| `th-th`                     | Obrázek kontejneru s `th-TH` národním prostředím | `sha256:21ce33714fa37bfede60560a7a24c17c88566c767b76c58c877a48c51811c9ac` |
+| `tr-tr`                     | Obrázek kontejneru s `tr-TR` národním prostředím | `sha256:b97035a4f0334f890ff3630a2de249b72a879de3c7d4fcc849c3d76aa97f4d2e` |
+| `zh-cn`                     | Obrázek kontejneru s `zh-CN` národním prostředím | `sha256:ae4a89a26768c978d91ed797e9ecb8035fdb61f12c1b1124c86939c79ddcb38e` |
+| `zh-hk`                     | Obrázek kontejneru s `zh-HK` národním prostředím | `sha256:41bc980abe79cd69034a8ade2be203478b531a00f5e74b1f7b8f9c5267700261` |
+| `zh-tw`                     | Obrázek kontejneru s `zh-TW` národním prostředím | `sha256:51a50a7fcd5a9db6422235a2df0e8fba360efcd3cefee9abe44ab2cdce62088f` |
+
+
+# <a name="previous-version"></a>[Předchozí verze](#tab/previous)
+
 Poznámka k verzi pro `2.10.0-amd64-<locale>` :
 
 **Funkce**
 * Upgradujte na nejnovější modely.
 
+Poznámka k verzi pro `2.9.0-amd64-<locale>` :
+
+**Funkce**
+* Další podrobnosti o chybě pro problémy při načítání vlastních modelů podle ID.
+* Ve výchozím nastavení je ve výsledcích konverzace podporována hypotéza.
+
+Poznámka k verzi pro `2.7.0-amd64-<locale>` :
+
+**Funkce**
+* Podpora následujících nových národních prostředí:
+    * ar-BH, ar-sweetiq, ar-Jo, ar-9,1, ar-OM, ar-sy
+    * bg-bg
+    * el-gr
+    * EN-HK, EN-IE, EN-pH, EN-SG, EN-za
+    * ES-ar, ES-Bo, ES-CL, ES-co, ES-CR, ES-CU, ES-do, ES, ES, ES-, ES, gt, ES-PA, ES-PE, ES-PR, ES-py, ES-sv, ES-US, ES-uy, ES-ve
+    * et-ee
+    * GA – IE
+    * hr-hr
+    * hu-hu
+    * lt – lt
+    * lv-lv
+    * MT-MT
+    * ro-ro
+    * sk-sk
+    * SL-SL
+* Ve výchozím nastavení je interpunkce povolena.
+
 Všimněte si, že vzhledem k uvedeným seznamům frází se velikost této image kontejneru zvýšila. 
 
-| Značky obrázku                    | Poznámky                                                                                                |
-|-------------------------------|:-----------------------------------------------------------------------------------------------------|
-| `latest`                      | Obrázek kontejneru s `en-US` národním prostředím                                                             |
-| `2.10.0-amd64-<locale>`       | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `2.10.0-amd64-en-us`.|
+Poznámka k verzi pro `2.6.0-amd64-<locale>` :
+
+**Funkce**
+* Upgrade na nejnovější modely a úplná migrace na .NET 3,1
+* Podpora pro PhraseList v2
+* Seznamy frází jsou podporovány v následujících národních prostředích:
+    * EN-au
+    * en-CA
+    * en-GB
+    * EN-in
+    * cs-cz
+    * zh-cn
+* Podpora nového národního prostředí `cs-CZ` 
+    * Malá a velká písmena nejsou v současné době podporována.
+
+**Řeší**
+* Opravuje problém s přesností na 1 v režimu Diarization
+* Migrace pomocí rozhraní TextAnalytics 3,0 API
+
+Všimněte si, že vzhledem k uvedeným seznamům frází se velikost této image kontejneru zvýšila. 
+
+Poznámka k verzi pro `2.5.0-amd64-<locale>` :
+
+**Funkce**
+* Podpora cloudu Azure USA pro státní správu
+
+**Řeší**
+* Opravuje problém, který se spouští jako nerootový uživatel v režimu Diarization.
+
+| Značky obrázku                  | Poznámky                                    |
+|-----------------------------|:-----------------------------------------|
+| `2.10.0-amd64-<locale>`     | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `2.10.0-amd64-en-us`.|
+| `2.9.0-amd64-<locale>`      | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `2.9.0-amd64-en-us`. |
+| `2.7.0-amd64-<locale>`      | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `2.7.0-amd64-en-us`. |
+| `2.6.0-amd64-<locale>`      | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `2.6.0-amd64-en-us`. |
+| `2.5.0-amd64-<locale>`      | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `2.5.0-amd64-en-us`. |
+
 
 Pro tento kontejner jsou k dispozici následující místní prostředí.
 
@@ -382,77 +557,6 @@ Pro tento kontejner jsou k dispozici následující místní prostředí.
 | `zh-cn`                     | Obrázek kontejneru s `zh-CN` národním prostředím | `sha256:9087a08cc455772515f5775a788cdde35d7f5bbe3aa3ba34ae99573fd87b29a1` |
 | `zh-hk`                     | Obrázek kontejneru s `zh-HK` národním prostředím | `sha256:372e1c256520e9ee84c4c400eae935c1d6b1d59adb2be4c4dbc56439db069ba0` |
 | `zh-tw`                     | Obrázek kontejneru s `zh-TW` národním prostředím | `sha256:8406a3be34530c7d654d1dfa1c593dd51b8946b480fe80a100e599e86385dc2b` |
-
-
-# <a name="previous-version"></a>[Předchozí verze](#tab/previous)
-
-Poznámka k verzi pro `2.9.0-amd64-<locale>` :
-
-**Funkce**
-* Další podrobnosti o chybě pro problémy při načítání vlastních modelů podle ID.
-* Ve výchozím nastavení je ve výsledcích konverzace podporována hypotéza.
-
-Poznámka k verzi pro `2.7.0-amd64-<locale>` :
-
-**Funkce**
-* Podpora následujících nových národních prostředí:
-    * ar-BH, ar-sweetiq, ar-Jo, ar-9,1, ar-OM, ar-sy
-    * bg-bg
-    * el-gr
-    * EN-HK, EN-IE, EN-pH, EN-SG, EN-za
-    * ES-ar, ES-Bo, ES-CL, ES-co, ES-CR, ES-CU, ES-do, ES, ES, ES-, ES, gt, ES-PA, ES-PE, ES-PR, ES-py, ES-sv, ES-US, ES-uy, ES-ve
-    * et-ee
-    * GA – IE
-    * hr-hr
-    * hu-hu
-    * lt – lt
-    * lv-lv
-    * MT-MT
-    * ro-ro
-    * sk-sk
-    * SL-SL
-* Ve výchozím nastavení je interpunkce povolena.
-
-Všimněte si, že vzhledem k uvedeným seznamům frází se velikost této image kontejneru zvýšila. 
-
-Poznámka k verzi pro `2.6.0-amd64-<locale>` :
-
-**Funkce**
-* Upgrade na nejnovější modely a úplná migrace na .NET 3,1
-* Podpora pro PhraseList v2
-* Seznamy frází jsou podporovány v následujících národních prostředích:
-    * EN-au
-    * en-CA
-    * en-GB
-    * EN-in
-    * cs-cz
-    * zh-cn
-* Podpora nového národního prostředí `cs-CZ` 
-    * Malá a velká písmena nejsou v současné době podporována.
-
-**Řeší**
-* Opravuje problém s přesností na 1 v režimu Diarization
-* Migrace pomocí rozhraní TextAnalytics 3,0 API
-
-Všimněte si, že vzhledem k uvedeným seznamům frází se velikost této image kontejneru zvýšila. 
-
-Poznámka k verzi pro `2.5.0-amd64-<locale>` :
-
-**Funkce**
-* Podpora cloudu Azure USA pro státní správu
-
-**Řeší**
-* Opravuje problém, který se spouští jako nerootový uživatel v režimu Diarization.
-
-| Značky obrázku                  | Poznámky                                    |
-|-----------------------------|:-----------------------------------------|
-| `2.9.0-amd64-<locale>`      | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `2.9.0-amd64-en-us`. |
-| `2.7.0-amd64-<locale>`      | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `2.7.0-amd64-en-us`. |
-| `2.6.0-amd64-<locale>`      | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `2.6.0-amd64-en-us`. |
-| `2.5.0-amd64-<locale>`      | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `2.5.0-amd64-en-us`. |
-
-
-Pro tento kontejner jsou k dispozici následující místní prostředí.
 
 | Národní prostředí pro 2.9.0           | Poznámky                                    | Otisk                                                                    |
 |-----------------------------|:-----------------------------------------|:--------------------------------------------------------------------------|
@@ -720,7 +824,7 @@ Tato image kontejneru má k dispozici následující značky. Můžete také naj
 
 # <a name="latest-version"></a>[Nejnovější verze](#tab/current)
 
-Poznámka k verzi pro `1.12.0-amd64-<locale-and-voice>` :
+Poznámka k verzi pro `1.13.0-amd64-<locale-and-voice>` :
 
 **Funkce**
 * Upgradujte na nejnovější modely.
@@ -728,7 +832,128 @@ Poznámka k verzi pro `1.12.0-amd64-<locale-and-voice>` :
 | Značky obrázku                                  | Poznámky                                                                                                         |
 |---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
 | `latest`                                    | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaRUS` hlasem                                            | 
+| `1.13.0-amd64-<locale-and-voice>`           | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.13.0-amd64-en-us-ariarus`. |
+
+| Národní prostředí pro v 1.13.0                         | Poznámky                                                                      | Otisk                         |
+|---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
+| `ar-eg-hoda`                                | Obrázek kontejneru s `ar-EG` národním prostředím a `ar-EG-Hoda` hlasem            | `sha256:8ff6360ba584d81b987582ce1c2cb6bb624cf68e4d71544805b9afc0401542dd` |
+| `ar-sa-naayf`                               | Obrázek kontejneru s `ar-SA` národním prostředím a `ar-SA-Naayf` hlasem           | `sha256:da5037de95c00362cb1871374735778c3eb68640ae4cb6a260659e7e0a67c37e` |
+| `bg-bg-ivan`                                | Obrázek kontejneru s `bg-BG` národním prostředím a `bg-BG-Ivan` hlasem            | `sha256:871140e57c126ac79c92c69572b86587150d1f14447c91152de3d4b10b3ef9f6` |
+| `ca-es-herenarus`                           | Obrázek kontejneru s `ca-ES` národním prostředím a `ca-ES-HerenaRUS` hlasem       | `sha256:7291ca9c579b1967cca941ce11321daa06ed6a9a1f0922d425d39f70a4aa8acd` |
+| `cs-cz-jakub`                               | Obrázek kontejneru s `cs-CZ` národním prostředím a `cs-CZ-Jakub` hlasem           | `sha256:c8f34c3a7fc5af5141da5439b520614e039d133b6180e8157f12ec7279e9163a` |
+| `da-dk-hellerus`                            | Obrázek kontejneru s `da-DK` národním prostředím a `da-DK-HelleRUS` hlasem        | `sha256:694eb294595700266355f8d57530ec3cccd4e04aa74dd630b96558bf2b481e71` |
+| `de-at-michael`                             | Obrázek kontejneru s `de-AT` národním prostředím a `de-AT-Michael` hlasem         | `sha256:f875435d8fadb56df2123d5aa1ceca34990d00f4c75678eb2526b83058972717` |
+| `de-ch-karsten`                             | Obrázek kontejneru s `de-CH` národním prostředím a `de-CH-Karsten` hlasem         | `sha256:c58359bd6e6676e23dda181a86caee1771366b0329a44fae0f363bbd381058ad` |
+| `de-de-heddarus`                            | Obrázek kontejneru s `de-DE` národním prostředím a `de-DE-Hedda` hlasem           | `sha256:c8e615d40c6e96216b90e329bf7185060de646db1e92fd1fdcd344a52bd86b55` |
+| `de-de-hedda`                               | Obrázek kontejneru s `de-DE` národním prostředím a `de-DE-Hedda` hlasem           | `sha256:c8e615d40c6e96216b90e329bf7185060de646db1e92fd1fdcd344a52bd86b55` |
+| `de-de-stefan-apollo`                       | Obrázek kontejneru s `de-DE` národním prostředím a `de-DE-Stefan-Apollo` hlasem   | `sha256:e8e3f04f0ee74d4247ffb7c69e54559f0cc6db66a121406e06ceb9dcdc3c4379` |
+| `el-gr-stefanos`                            | Obrázek kontejneru s `el-GR` národním prostředím a `el-GR-Stefanos` hlasem        | `sha256:15112a55bc7ccb6c29ee0a1de464fa6352a0e9953399032e5c8a0d29ec064af0` |
+| `en-au-catherine`                           | Obrázek kontejneru s `en-AU` národním prostředím a `en-AU-Catherine` hlasem       | `sha256:9a77bb5451889f62b8a146bfcc4a412c1cef95fd2102650528ccee84a08b25b8` |
+| `en-au-hayleyrus`                           | Obrázek kontejneru s `en-AU` národním prostředím a `en-AU-HayleyRUS` hlasem       | `sha256:90ee1094fbb8e739788545b3b9f4fabad5b4dffb5b7087cfd01c3b21ba1b2473` |
+| `en-ca-heatherrus`                          | Obrázek kontejneru s `en-CA` národním prostředím a `en-CA-HeatherRUS` hlasem      | `sha256:43b7d3c87162129253fd5c150307a5d9dc6ea28b8fa19776b66f4aa7a546f43b` |
+| `en-ca-linda`                               | Obrázek kontejneru s `en-CA` národním prostředím a `en-CA-Linda` hlasem           | `sha256:75a4423d5b24136efdc5de28a7a5b50a3a09b65b3824f86dd50a95eefea7ead6` |
+| `en-gb-george-apollo`                       | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-George-Apollo` hlasem   | `sha256:87e926f7db4a27870c735c80ad801bc5480fb2665594727ae760c8c287677088` |
+| `en-gb-hazelrus`                            | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-HazelRUS` hlasem        | `sha256:3fbd6a824831f158762036aa41c0397f7c1148150a4dc045db5f19ba840e74b6` |
+| `en-gb-susan-apollo`                        | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-Susan-Apollo` hlasem    | `sha256:646810c4129f8919ff56d91701b488e229bd12b3dd9c89a1635868f9340e00b8` |
+| `en-ie-sean`                                | Obrázek kontejneru s `en-IE` národním prostředím a `en-IE-Sean` hlasem            | `sha256:641abfa96380f142d4b2f9145cd02886d44f01bce68614094b48c1e01b50ed59` |
+| `en-in-heera-apollo`                        | Obrázek kontejneru s `en-IN` národním prostředím a `en-IN-Heera-Apollo` hlasem    | `sha256:c0acfffceae9c1ff5ad305d8b98929d9c65eca25f49ddcb8999d7de6118392d2` |
+| `en-in-priyarus`                            | Obrázek kontejneru s `en-IN` národním prostředím a `en-IN-PriyaRUS` hlasem        | `sha256:fbdc9ef0b4308ffce87d6ff6854814804b3cafacad6c4dc5cdac6a47c6de7975` |
+| `en-in-ravi-apollo`                         | Obrázek kontejneru s `en-IN` národním prostředím a `en-IN-Ravi-Apollo` hlasem     | `sha256:f31c40c9db2f1e826686649e748d0b2be0c00abcac62c2aae5b8981b0d8c681d` |
+| `en-us-aria24krus`                          | Obrázek kontejneru s `en-US` národním prostředím a `en-US-Aria24kRUS` hlasem      | `sha256:1232b798aae3ce68d1e555a5b35142bde5b4c871488f8c82c3d7c0767925afd8` |
+| `en-us-ariarus`                             | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaRUS` hlasem         | `sha256:1232b798aae3ce68d1e555a5b35142bde5b4c871488f8c82c3d7c0767925afd8` |
+| `en-us-benjaminrus`                         | Obrázek kontejneru s `en-US` národním prostředím a `en-US-BenjaminRUS` hlasem     | `sha256:5fd7e9fbcc84ab467d04e95b18f5411579ce2d9a153b7f6e396f2412d08898dc` |
+| `en-us-guy24krus`                           | Obrázek kontejneru s `en-US` národním prostředím a `en-US-Guy24kRUS` hlasem       | `sha256:5fbbd16ab58b7f2440778b258bb0cd966286de0dbb3ce7f5e54d0f244f63dd3f` |
+| `en-us-zirarus`                             | Obrázek kontejneru s `en-US` národním prostředím a `en-US-ZiraRUS` hlasem         | `sha256:806b92916b2fe1e7855023a009742033a48cb7eddde84ddf7c93be93b9621026` |
+| `es-es-helenarus`                           | Obrázek kontejneru s `es-ES` národním prostředím a `es-ES-HelenaRUS` hlasem       | `sha256:507d9f40dcb846a5d1511a5e9e1cf94b360b1d9922f4b1143c3146d1b3bc69a2` |
+| `es-es-laura-apollo`                        | Obrázek kontejneru s `es-ES` národním prostředím a `es-ES-Laura-Apollo` hlasem    | `sha256:594add691d03d02fa5925f817e6a25c091fac1a924e0ea4b626e0fce858a78cb` |
+| `es-es-pablo-apollo`                        | Obrázek kontejneru s `es-ES` národním prostředím a `es-ES-Pablo-Apollo` hlasem    | `sha256:09d288b58fea080689471618227d1cb3ccc467f2edc9477eaaffffb09b3d6d8b` |
+| `es-mx-hildarus`                            | Obrázek kontejneru s `es-MX` národním prostředím a `es-MX-HildaRUS` hlasem        | `sha256:7019c80c88444a60bf1016eb66284745dc8184b051685df4a1b3c40d32c8ad7f` |
+| `es-mx-raul-apollo`                         | Obrázek kontejneru s `es-MX` národním prostředím a `es-MX-Raul-Apollo` hlasem     | `sha256:eed46588733b884c330fff1ff7f4e3e3fd6416cb340ebd80e44c4b3d1e085e55` |
+| `fi-fi-heidirus`                            | Obrázek kontejneru s `fi-FI` národním prostředím a `fi-FI-HeidiRUS` hlasem        | `sha256:00f7a854c4a01bdbef88e0b138c97f732f1c6008a8b2c1722fc8da3a91fa79a4` |
+| `fr-ca-caroline`                            | Obrázek kontejneru s `fr-CA` národním prostředím a `fr-CA-Caroline` hlasem        | `sha256:5f32e838a0925c560d2961a42487b99dd7e79e04661a7711f905d36c55973fd6` |
+| `fr-ca-harmonierus`                         | Obrázek kontejneru s `fr-CA` národním prostředím a `fr-CA-HarmonieRUS` hlasem     | `sha256:6f3d3237c990f8f04d4c8f488746f74fa94edd2c5f1def758af90b2be251900e` |
+| `fr-ch-guillaume`                           | Obrázek kontejneru s `fr-CH` národním prostředím a `fr-CH-Guillaume` hlasem       | `sha256:282e2e48c1147b74d927e801534be52b1301a081ff881994e85bb9d85b6e85fb` |
+| `fr-fr-hortenserus`                         | Obrázek kontejneru s `fr-FR` národním prostředím a `fr-FR-HortenseRUS` hlasem     | `sha256:16370c22530c93fc6c5ebeaf10663de7c3d45db58eccc716abd5274b5bee56d3` |
+| `fr-fr-julie-apollo`                        | Obrázek kontejneru s `fr-FR` národním prostředím a `fr-FR-Julie-Apollo` hlasem    | `sha256:e6541e82b8555f748f1feb5eef1c0ebf884245c5448f0ced46e6f25dabb925a2` |
+| `fr-fr-paul-apollo`                         | Obrázek kontejneru s `fr-FR` národním prostředím a `fr-FR-Paul-Apollo` hlasem     | `sha256:a4cf0bab208a31da3e796bf353969dfd98184b30e0cf713df49cb4fb07ff568b` |
+| `he-il-asaf`                                | Obrázek kontejneru s `he-IL` národním prostředím a `he-IL-Asaf` hlasem            | `sha256:4417d0a14098b564eb4ba91772eb7ad5976ac52b0b59ae484fc3a88017e0776b` |
+| `hi-in-hemant`                              | Obrázek kontejneru s `hi-IN` národním prostředím a `hi-IN-Hemant` hlasem          | `sha256:da086a3e2bc3e17f4e44165055fc61679e9356688d3735ee8cfd81e6265b8622` |
+| `hi-in-kalpana-apollo`                      | Obrázek kontejneru s `hi-IN` národním prostředím a `hi-IN-Kalpana-Apollo` hlasem  | `sha256:0c9915bf34e3045e39aa245c597aa7223fbf6100d7e20cbcc1bf131f89ee785e` |
+| `hi-in-kalpana`                             | Obrázek kontejneru s `hi-IN` národním prostředím a `hi-IN-Kalpana` hlasem         | `sha256:0c9915bf34e3045e39aa245c597aa7223fbf6100d7e20cbcc1bf131f89ee785e` |
+| `hr-hr-matej`                               | Obrázek kontejneru s `hr-HR` národním prostředím a `hr-HR-Matej` hlasem           | `sha256:fc08c968efe882ed11ad0ee0755a9d43eff88b96da8ec19e7a5c071810c84d8c` |
+| `hu-hu-szabolcs`                            | Obrázek kontejneru s `hu-HU` národním prostředím a `hu-HU-Szabolcs` hlasem        | `sha256:b6ad73f07efd1576e166b4d7e54a4ff419bfedc513a175fbb968389eb289a4ee` |
+| `id-id-andika`                              | Obrázek kontejneru s `id-ID` národním prostředím a `id-ID-Andika` hlasem          | `sha256:3aad5ccf0c155593934c29a3e50502bc80b0370fa29626e67cda141d4bf5ac89` |
+| `it-it-cosimo-apollo`                       | Obrázek kontejneru s `it-IT` národním prostředím a `it-IT-Cosimo-Apollo` hlasem   | `sha256:01502f274bad378e6e99bed5f80fdb476880ce04e8775ca56d338de2f2d43e8c` |
+| `it-it-luciarus`                            | Obrázek kontejneru s `it-IT` národním prostředím a `it-IT-LuciaRUS` hlasem        | `sha256:fdc20724194612d99e8339d25c72c7fe937ad741abe46d86def6c62880913c2a` |
+| `ja-jp-ayumi-apollo`                        | Obrázek kontejneru s `ja-JP` národním prostředím a `ja-JP-Ayumi-Apollo` hlasem    | `sha256:abf0e442ec972e25743a8af55da49a6fd5bf2ffd6ca09619d68e4dc9f9db779a` |
+| `ja-jp-harukarus`                           | Obrázek kontejneru s `ja-JP` národním prostředím a `ja-JP-HarukaRUS` hlasem       | `sha256:9eff152cd4bea6f9de3b101c0704f37c8a061e060287e3f9f8fc2eb28d7dcec7` |
+| `ja-jp-ichiro-apollo`                       | Obrázek kontejneru s `ja-JP` národním prostředím a `ja-JP-Ichiro-Apollo` hlasem   | `sha256:83aa3c569f7598843d4957f075915ac2635d3aaf577ac1158c12a1238dd7e148` |
+| `ko-kr-heamirus`                            | Obrázek kontejneru s `ko-KR` národním prostředím a `ko-KR-HeamiRUS` hlasem        | `sha256:ea404c7857f9df0a23cbf3fac12ae00f11c32a6822d91078a321302f09f01082` |
+| `ms-my-rizwan`                              | Obrázek kontejneru s `ms-MY` národním prostředím a `ms-MY-Rizwan` hlasem          | `sha256:d4c15f7da8e03650395489b6cb6975d59322b1bbd2c59957617f0c0a297409ee` |
+| `nb-no-huldarus`                            | Obrázek kontejneru s `nb-NO` národním prostředím a `nb-NO-HuldaRUS` hlasem        | `sha256:cb2c0fb57513c66e00bd6b8cbb44882d5bb7d483c19784d2b1e09511d58842bc` |
+| `nl-nl-hannarus`                            | Obrázek kontejneru s `nl-NL` národním prostředím a `nl-NL-HannaRUS` hlasem        | `sha256:7b9a92ab8a9856f422e65b428b845571a059c0923dc1c348134f271ed7a4abe0` |
+| `pl-pl-paulinarus`                          | Obrázek kontejneru s `pl-PL` národním prostředím a `pl-PL-PaulinaRUS` hlasem      | `sha256:cface74973368a78d75a2a079214aa748574c5f037b0c4189888269b6016f230` |
+| `pt-br-daniel-apollo`                       | Obrázek kontejneru s `pt-BR` národním prostředím a `pt-BR-Daniel-Apollo` hlasem   | `sha256:cc3e74228002b8d4e7dc487ff6f930316ac5d7a93f97937942a23f41b484ba8c` |
+| `pt-br-heloisarus`                          | Obrázek kontejneru s `pt-BR` národním prostředím a `pt-BR-HeloisaRUS` hlasem      | `sha256:dca613867e2f559d9485f9ba553ecea3de6d4b2779d4eed0ce1e53e7f7939773` |
+| `pt-pt-heliarus`                            | Obrázek kontejneru s `pt-PT` národním prostředím a `pt-PT-HeliaRUS` hlasem        | `sha256:791ac2b3100725f909cfeceb17fc0d5fd1022242db45ba455d7ea088d76ac033` |
+| `ro-ro-andrei`                              | Obrázek kontejneru s `ro-RO` národním prostředím a `ro-RO-Andrei` hlasem          | `sha256:3b93df188bcbdf9416d203a7e30ade8908728316666cd3451a5f0320cdf219a9` |
+| `ru-ru-ekaterinarus`                        | Obrázek kontejneru s `ru-RU` národním prostředím a `ru-RU-EkaterinaRUS` hlasem    | `sha256:d2f636e35e67be196a4ad79f168e4df74d2f00d5b5c6123bd61f9aec72bfd1a7` |
+| `ru-ru-irina-apollo`                        | Obrázek kontejneru s `ru-RU` národním prostředím a `ru-RU-Irina-Apollo` hlasem    | `sha256:247a4c6025faced1be1738d816c1bb74b23bbc5d49458f9afe95dc32ab3ea71c` |
+| `ru-ru-pavel-apollo`                        | Obrázek kontejneru s `ru-RU` národním prostředím a `ru-RU-Pavel-Apollo` hlasem    | `sha256:355c3a0f64f003d0a041a757b8ddcdea8130b6a56a7c4003a68ba0412400c446` |
+| `sk-sk-filip`                               | Obrázek kontejneru s `sk-SK` národním prostředím a `sk-SK-Filip` hlasem           | `sha256:55fff1cde012a7791c756104ba68a360e609a765bd776024a9f5f00199f568e5` |
+| `sl-si-lado`                                | Obrázek kontejneru s `sl-SI` národním prostředím a `sl-SI-Lado` hlasem            | `sha256:7f80965dde85e3a5aae9f69561c296d073289f0b6aa37e95ff0aa5192a5b7f90` |
+| `sv-se-hedvigrus`                           | Obrázek kontejneru s `sv-SE` národním prostředím a `sv-SE-HedvigRUS` hlasem       | `sha256:1bd43f513a5b2752c44a107e1898459cdda5d7267ec21f379679d411700e5189` |
+| `ta-in-valluvar`                            | Obrázek kontejneru s `ta-IN` národním prostředím a `ta-IN-Valluvar` hlasem        | `sha256:8062e2479a6a3dc17b8342c07a94a39dd1e1f788c1def0a1ab55a885b491bbab` |
+| `te-in-chitra`                              | Obrázek kontejneru s `te-IN` národním prostředím a `te-IN-Chitra` hlasem          | `sha256:6ce345df654bd1db213c16c866b608037dcefb1d056fc14727db3b9e21437762` |
+| `th-th-pattara`                             | Obrázek kontejneru s `th-TH` národním prostředím a `th-TH-Pattara` hlasem         | `sha256:9b9c8ad7f8621f887f3e9fda26f43995855dba76831fdf2598ef383cf3d20f39` |
+| `tr-tr-sedarus`                             | Obrázek kontejneru s `tr-TR` národním prostředím a `tr-TR-SedaRUS` hlasem         | `sha256:2e45f019df702d8788c1d9c20ff75cfd94aecaaf6facb9f41b642ef1bfe7d318` |
+| `vi-vn-an`                                  | Obrázek kontejneru s `vi-VN` národním prostředím a `vi-VN-An` hlasem              | `sha256:3b142a414ff9f30ebef144e22bf979589600f226442d2f882384695795739178` |
+| `zh-cn-huihuirus`                           | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-HuihuiRUS` hlasem       | `sha256:23b76501492c9b60e8888eda2f6b0258859f68ed6ff7fb49bacbb18cd5f542ed` |
+| `zh-cn-kangkang-apollo`                     | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-Kangkang-Apollo` hlasem | `sha256:e9acc58168f6800d9dd11cbc569c9d279ecf28f3d17c702528d25f67edd447c9` |
+| `zh-cn-yaoyao-apollo`                       | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-Yaoyao-Apollo` hlasem   | `sha256:85e7d7ae77d41195de5102b772621ef34564d40fad224a0ed21a8fe8daf98b0f` |
+| `zh-hk-danny-apollo`                        | Obrázek kontejneru s `zh-HK` národním prostředím a `zh-HK-Danny-Apollo` hlasem    | `sha256:1fcba05138c0e5bf36447530311800e2d4044824b5d893439a12f3ebc6380135` |
+| `zh-hk-tracy-apollo`                        | Obrázek kontejneru s `zh-HK` národním prostředím a `zh-HK-Tracy-Apollo` hlasem    | `sha256:d02bd8759e085abbc95725aa4f70f124c4505aa0856a17696a1555b2cf64512e` |
+| `zh-hk-tracyrus`                            | Obrázek kontejneru s `zh-HK` národním prostředím a `zh-HK-TracyRUS` hlasem        | `sha256:d02bd8759e085abbc95725aa4f70f124c4505aa0856a17696a1555b2cf64512e` |
+| `zh-tw-hanhanrus`                           | Obrázek kontejneru s `zh-TW` národním prostředím a `zh-TW-HanHanRUS` hlasem       | `sha256:a3f68538088b5b07f4dc27239fa3a6308d949c2643638634c74f3ee132bca911` |
+| `zh-tw-yating-apollo`                       | Obrázek kontejneru s `zh-TW` národním prostředím a `zh-TW-Yating-Apollo` hlasem   | `sha256:bb0696685f3a90fe6898ff1487cb0c5957e02f3c63cdb7d02394b5c061339bf3` |
+| `zh-tw-zhiwei-apollo`                       | Obrázek kontejneru s `zh-TW` národním prostředím a `zh-TW-Zhiwei-Apollo` hlasem   | `sha256:1772b3bc8b166f429356b00d07ca438202c75d578b6d1655351b9c1e06ae1424` |
+
+
+# <a name="previous-version"></a>[Předchozí verze](#tab/previous)
+
+Poznámka k verzi pro `1.12.0-amd64-<locale-and-voice>` :
+
+**Funkce**
+* Upgradujte na nejnovější modely.
+
+Poznámka k verzi pro `1.11.0-amd64-<locale-and-voice>` :
+
+**Funkce**
+* Další podrobnosti o chybě pro problémy při načítání vlastních modelů podle ID.
+
+Poznámka k verzi pro `1.9.0-amd64-<locale-and-voice>` :
+
+* Pravidelná měsíční verze
+
+Poznámka k verzi pro `1.8.0-amd64-<locale-and-voice>` :
+
+**Funkce**
+
+* Úplná migrace do .NET 3,1
+
+Poznámka k verzi pro `1.7.0-amd64-<locale-and-voice>` :
+
+**Funkce**
+
+* Upgradované komponenty na .NET 3,1
+
+| Značky obrázku                                  | Poznámky                                                                                                         |
+|---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
 | `1.12.0-amd64-<locale-and-voice>`           | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.12.0-amd64-en-us-ariarus`. |
+| `1.11.0-amd64-<locale-and-voice>`           | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.11.0-amd64-en-us-ariarus`. |
+| `1.9.0-amd64-<locale-and-voice>`            | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.9.0-amd64-en-us-ariarus`.  |
+| `1.8.0-amd64-<locale-and-voice>`            | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.8.0-amd64-en-us-ariarus`.  |
+| `1.7.0-amd64-<locale-and-voice>`            | první verze GA Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.7.0-amd64-en-us-ariarus`.  |
 
 | Národní prostředí pro v 1.12.0                         | Poznámky                                                                      | Otisk                         |
 |---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
@@ -813,37 +1038,6 @@ Poznámka k verzi pro `1.12.0-amd64-<locale-and-voice>` :
 | `zh-tw-hanhanrus`                           | Obrázek kontejneru s `zh-TW` národním prostředím a `zh-TW-HanHanRUS` hlasem       | `sha256:9802fc4a9656063cb9f215ca757db5289960d323244272ce280db0395ddd46ac` |
 | `zh-tw-yating-apollo`                       | Obrázek kontejneru s `zh-TW` národním prostředím a `zh-TW-Yating-Apollo` hlasem   | `sha256:05f50dffbeb17e4215a5a53cc0791d825b63bc1e2b007b00797e5d0e1b1d6d1e` |
 | `zh-tw-zhiwei-apollo`                       | Obrázek kontejneru s `zh-TW` národním prostředím a `zh-TW-Zhiwei-Apollo` hlasem   | `sha256:e96f4aecba6e3c0741218f3e1aec35e53147b12543be9fdcd76ff98d4c34cf84` |
-
-
-# <a name="previous-version"></a>[Předchozí verze](#tab/previous)
-
-Poznámka k verzi pro `1.11.0-amd64-<locale-and-voice>` :
-
-**Funkce**
-* Další podrobnosti o chybě pro problémy při načítání vlastních modelů podle ID.
-
-Poznámka k verzi pro `1.9.0-amd64-<locale-and-voice>` :
-
-* Pravidelná měsíční verze
-
-Poznámka k verzi pro `1.8.0-amd64-<locale-and-voice>` :
-
-**Funkce**
-
-* Úplná migrace do .NET 3,1
-
-Poznámka k verzi pro `1.7.0-amd64-<locale-and-voice>` :
-
-**Funkce**
-
-* Upgradované komponenty na .NET 3,1
-
-| Značky obrázku                                  | Poznámky                                                                                                         |
-|---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
-| `1.11.0-amd64-<locale-and-voice>`           | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.11.0-amd64-en-us-ariarus`. |
-| `1.9.0-amd64-<locale-and-voice>`            | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.9.0-amd64-en-us-ariarus`.  |
-| `1.8.0-amd64-<locale-and-voice>`            | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.8.0-amd64-en-us-ariarus`.  |
-| `1.7.0-amd64-<locale-and-voice>`            | první verze GA Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.7.0-amd64-en-us-ariarus`.  |
 
 | Národní prostředí pro v 1.11.0                         | Poznámky                                                                      | Otisk                         |
 |---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
@@ -1192,16 +1386,72 @@ Tato image kontejneru má k dispozici následující značky. Můžete také naj
 
 # <a name="latest-version"></a>[Nejnovější verze](#tab/current)
 
+Poznámky k verzi pro `v1.5.0` :
+* Upgrade na nejnovější modely s vylepšeními kvality a opravami chyb
+* Podpora až 38 neuronové hlasů
+
+| Značky obrázku                                  | Poznámky                                                                      |
+|---------------------------------------------|:---------------------------------------------------------------------------|
+| `latest`                                    | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaNeural` hlasem      |
+| `1.5.0-amd64-<locale-and-voice>`            | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.5.0-amd64-en-us-arianeural`. |
+
+
+| Národní prostředí a hlasy v 1.5.0           | Poznámky                                                                      |
+|-------------------------------------|:---------------------------------------------------------------------------|
+| `de-de-conradneural`                | Obrázek kontejneru s `de-DE` národním prostředím a `de-DE-ConradNeural` hlasem    |
+| `de-de-katjaneural`                 | Obrázek kontejneru s `de-DE` národním prostředím a `de-DE-KatjaNeural` hlasem     |
+| `en-au-natashaneural`               | Obrázek kontejneru s `en-AU` národním prostředím a `en-AU-NatashaNeural` hlasem   |
+| `en-au-williamneural`               | Obrázek kontejneru s `en-AU` národním prostředím a `en-AU-WilliamNeural` hlasem   |
+| `en-ca-claraneural`                 | Obrázek kontejneru s `en-CA` národním prostředím a `en-CA-ClaraNeural` hlasem     |
+| `en-ca-liamneural`                  | Obrázek kontejneru s `en-CA` národním prostředím a `en-CA-LiamNeural` hlasem      |
+| `en-gb-libbyneural`                 | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-LibbyNeural` hlasem     |
+| `en-gb-mianeural`                   | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-MiaNeural` hlasem       |
+| `en-gb-ryanneural`                  | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-RyanNeural` hlasem      |
+| `en-us-arianeural`                  | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaNeural` hlasem      |
+| `en-us-guyneural`                   | Obrázek kontejneru s `en-US` národním prostředím a `en-US-GuyNeural` hlasem       |
+| `en-us-jennyneural`                 | Obrázek kontejneru s `en-US` národním prostředím a `en-US-JennyNeural` hlasem     |
+| `es-es-alvaroneural`                | Obrázek kontejneru s `es-ES` národním prostředím a `es-ES-AlvaroNeural` hlasem    |
+| `es-es-elviraneural`                | Obrázek kontejneru s `es-ES` národním prostředím a `es-ES-ElviraNeural` hlasem    |
+| `es-mx-dalianeural`                 | Obrázek kontejneru s `es-MX` národním prostředím a `es-MX-DaliaNeural` hlasem     |
+| `es-mx-jorgeneural`                 | Obrázek kontejneru s `es-MX` národním prostředím a `es-MX-JorgeNeural` hlasem     |
+| `fr-ca-antoineneural`               | Obrázek kontejneru s `fr-CA` národním prostředím a `fr-CA-AntoineNeural` hlasem   |
+| `fr-ca-jeanneural`                  | Obrázek kontejneru s `fr-CA` národním prostředím a `fr-CA-JeanNeural` hlasem      |
+| `fr-ca-sylvieneural`                | Obrázek kontejneru s `fr-CA` národním prostředím a `fr-CA-SylvieNeural` hlasem    |
+| `fr-fr-deniseneural`                | Obrázek kontejneru s `fr-FR` národním prostředím a `fr-FR-DeniseNeural` hlasem    |
+| `fr-fr-henrineural`                 | Obrázek kontejneru s `fr-FR` národním prostředím a `fr-FR-HenriNeural` hlasem     |
+| `hi-in-madhurneural`                | Obrázek kontejneru s `hi-IN` národním prostředím a `hi-IN-MadhurNeural` hlasem    |
+| `hi-in-swaraneural`                 | Obrázek kontejneru s `hi-IN` národním prostředím a `hi-IN-Swaraneural` hlasem     |
+| `it-it-diegoneural`                 | Obrázek kontejneru s `it-IT` národním prostředím a `it-IT-DiegoNeural` hlasem     |
+| `it-it-elsaneural`                  | Obrázek kontejneru s `it-IT` národním prostředím a `it-IT-ElsaNeural` hlasem      |
+| `it-it-isabellaneural`              | Obrázek kontejneru s `it-IT` národním prostředím a `it-IT-IsabellaNeural` hlasem  |
+| `ja-jp-keitaneural`                 | Obrázek kontejneru s `ja-JP` národním prostředím a `ja-JP-KeitaNeural` hlasem     |
+| `ja-jp-nanamineural`                | Obrázek kontejneru s `ja-JP` národním prostředím a `ja-JP-NanamiNeural` hlasem    |
+| `ko-kr-injoonneural`                | Obrázek kontejneru s `ko-KR` národním prostředím a `ko-KR-InJoonNeural` hlasem    |
+| `ko-kr-sunhineural`                 | Obrázek kontejneru s `ko-KR` národním prostředím a `ko-KR-SunHiNeural` hlasem     |
+| `pt-br-antonioneural`               | Obrázek kontejneru s `pt-BR` národním prostředím a `pt-BR-AntonioNeural` hlasem   |
+| `pt-br-franciscaneural`             | Obrázek kontejneru s `pt-BR` národním prostředím a `pt-BR-FranciscaNeural` hlasem |
+| `tr-tr-ahmetneural`                 | Obrázek kontejneru s `tr-TR` národním prostředím a `tr-TR-AhmetNeural` hlasem     |
+| `tr-tr-emelneural`                  | Obrázek kontejneru s `tr-TR` národním prostředím a `tr-TR-EmelNeural` hlasem      |
+| `zh-cn-xiaoxiaoneural`              | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-XiaoxiaoNeural` hlasem  |
+| `zh-cn-xiaoyouneural`               | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-XiaoYouNeural` hlasem   |
+| `zh-cn-yunyangneural`               | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-YunYangNeural` hlasem   |
+| `zh-cn-yunyeneural`                 | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-YunYeNeural` hlasem     |
+
+# <a name="previous-version"></a>[Předchozí verze](#tab/previous)
+
 Poznámky k verzi pro `v1.4.0` :
 * Upgradujte na nejnovější modely. 
 * Náklady na procesor a latenci byly sníženy.
 * Lepší podpora ladění Prosody se značkami SSML (např. obrysový profil rozteč).
 
+Poznámky k verzi pro `v1.3.0` :
+* Kontejner textu na řeč neuronové je teď všeobecně dostupný. 
+
 | Značky obrázku                                  | Poznámky                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
-| `latest`                                    | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaNeural` hlasem      |
-| `1.4.0-amd64-<locale-and-voice>`    | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.4.0-amd64-en-us-arianeural`. |
-
+| `1.4.0-amd64-<locale-and-voice>`            | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.4.0-amd64-en-us-arianeural`. |
+| `1.3.0-amd64-<locale-and-voice>-preview`    | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.3.0-amd64-en-us-arianeural-preview`. |
+| `1.2.0-amd64-<locale-and-voice>-preview`    | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.2.0-amd64-en-us-arianeural-preview`. |
 
 | Národní prostředí a hlasy v 1.4.0           | Poznámky                                                                      |
 |-------------------------------------|:---------------------------------------------------------------------------|
@@ -1217,7 +1467,7 @@ Poznámky k verzi pro `v1.4.0` :
 | `es-mx-dalianeural`                 | Obrázek kontejneru s `es-MX` národním prostředím a `es-MX-DaliaNeural` hlasem     |
 | `fr-ca-sylvieneural`                | Obrázek kontejneru s `fr-CA` národním prostředím a `fr-CA-SylvieNeural` hlasem    |
 | `fr-fr-deniseneural`                | Obrázek kontejneru s `fr-FR` národním prostředím a `fr-FR-DeniseNeural` hlasem    |
-| `hi-in-swaracpuneural`              | Obrázek kontejneru s `hi-IN` národním prostředím a `hi-IN-Swaraneural` hlasem     |
+| `hi-in-swaraneural`                 | Obrázek kontejneru s `hi-IN` národním prostředím a `hi-IN-Swaraneural` hlasem     |
 | `it-it-elsaneural`                  | Obrázek kontejneru s `it-IT` národním prostředím a `it-IT-ElsaNeural` hlasem      |
 | `ja-jp-nanamineural`                | Obrázek kontejneru s `ja-JP` národním prostředím a `ja-JP-NanamiNeural` hlasem    |
 | `ko-kr-sunhineural`                 | Obrázek kontejneru s `ko-KR` národním prostředím a `ko-KR-SunHiNeural` hlasem     |
@@ -1226,17 +1476,6 @@ Poznámky k verzi pro `v1.4.0` :
 | `zh-cn-xiaoyouneural`               | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-XiaoYouNeural` hlasem   |
 | `zh-cn-yunyangneural`               | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-YunYangNeural` hlasem   |
 | `zh-cn-yunyeneural`                 | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-YunYeNeural` hlasem     |
-
-# <a name="previous-version"></a>[Předchozí verze](#tab/previous)
-
-Poznámky k verzi pro `v1.3.0` :
-* Kontejner textu na řeč neuronové je teď všeobecně dostupný. 
-
-| Značky obrázku                                  | Poznámky                                                                      |
-|---------------------------------------------|:---------------------------------------------------------------------------|
-| `latest`                                    | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaNeural` hlasem      |
-| `1.3.0-amd64-<locale-and-voice>-preview`    | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.3.0-amd64-en-us-arianeural-preview`. |
-| `1.2.0-amd64-<locale-and-voice>-preview`    | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.2.0-amd64-en-us-arianeural-preview`. |
 
 | Národní prostředí a hlasy v 1.3.0           | Poznámky                                                                      |
 |-------------------------------------|:---------------------------------------------------------------------------|
@@ -1252,7 +1491,7 @@ Poznámky k verzi pro `v1.3.0` :
 | `es-mx-dalianeural`                 | Obrázek kontejneru s `es-MX` národním prostředím a `es-MX-DaliaNeural` hlasem     |
 | `fr-ca-sylvieneural`                | Obrázek kontejneru s `fr-CA` národním prostředím a `fr-CA-SylvieNeural` hlasem    |
 | `fr-fr-deniseneural`                | Obrázek kontejneru s `fr-FR` národním prostředím a `fr-FR-DeniseNeural` hlasem    |
-| `hi-in/swaracpuneural`              | Obrázek kontejneru s `hi-IN` národním prostředím a `hi-IN-Swaraneural` hlasem     |
+| `hi-in-swaraneural`                 | Obrázek kontejneru s `hi-IN` národním prostředím a `hi-IN-Swaraneural` hlasem     |
 | `it-it-elsaneural`                  | Obrázek kontejneru s `it-IT` národním prostředím a `it-IT-ElsaNeural` hlasem      |
 | `ja-jp-nanamineural`                | Obrázek kontejneru s `ja-JP` národním prostředím a `ja-JP-NanamiNeural` hlasem    |
 | `ko-kr-sunhineural`                 | Obrázek kontejneru s `ko-KR` národním prostředím a `ko-KR-SunHiNeural` hlasem     |

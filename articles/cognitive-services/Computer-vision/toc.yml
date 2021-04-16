@@ -3,11 +3,11 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Přehled Počítačové zpracování obrazu
+    - name: Co je počítačové zpracování obrazu?
       href: overview.md
     - name: Podpora jazyků
       href: language-support.md
-    - name: Ceny a omezení
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
     - name: Novinky
       href: whats-new.md
@@ -180,21 +180,23 @@
               href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
 - name: Návody
   items:
-    - name: Konfigurace virtuálních sítí
-      href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
-    - name: Jak nakonfigurovat ověřování AAD
-      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
-    - name: Jak používat spravované klíče zákazníka
-      href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Nastavení virtuálních sítí
+          href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
+        - name: Použití ověřování Azure AD
+          href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
 - name: Zdroje informací
   items:
-    - name: Podpora oblastí
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: NAUČIT se moduly
-      href: /learn/paths/explore-computer-vision-microsoft-azure/
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Podpora oblastí
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Dodržování předpisů a certifikace
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
-    - name: Dodržování předpisů
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Moduly Microsoft Learn
+      href: /learn/paths/explore-computer-vision-microsoft-azure/
     - name: Aktualizace Azure
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

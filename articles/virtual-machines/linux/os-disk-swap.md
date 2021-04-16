@@ -1,6 +1,6 @@
 ---
-title: Prohození mezi disky s operačním systémem pomocí rozhraní příkazového řádku
-description: Změna disku operačního systému používaného virtuálním počítačem Azure pomocí rozhraní příkazového řádku
+title: Prohození mezi disky s operačním systémem pomocí Azure CLI
+description: Změna disku operačního systému používaného virtuálním počítačem Azure pomocí rozhraní příkazového řádku Azure
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: disks
@@ -8,14 +8,15 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 24cd71cafa9dc0bd9131255caf50841f6d5909d1
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0c9b0c1948dc4ecef74cd78ec1736803a0c0b4bc
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311239"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497366"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Změna disku operačního systému používaného virtuálním počítačem Azure pomocí rozhraní příkazového řádku
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-azure-cli"></a>Změna disku s operačním systémem používaného virtuálním počítačem Azure pomocí Azure CLI
 
 
 Pokud máte existující virtuální počítač, ale chcete disk zaměnit na záložní disk nebo jiný disk s operačním systémem, můžete použít rozhraní příkazového řádku Azure pro prohození disků s operačním systémem. Nemusíte odstranit a znovu vytvořit virtuální počítač. Můžete dokonce použít spravovaný disk v jiné skupině prostředků, pokud se ještě nepoužívá.

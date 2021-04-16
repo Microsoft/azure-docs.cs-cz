@@ -3,12 +3,12 @@ title: Co je nového Poznámky k verzi – Azure Event Grid
 description: Přečtěte si, co je nového v Azure Event Grid, jako jsou například nejnovější poznámky k verzi, známé problémy, opravy chyb, zastaralé funkce a nadcházející změny.
 ms.topic: overview
 ms.date: 07/23/2020
-ms.openlocfilehash: da0b26e4f163f428e6955a37636ceb19bb34abc5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f135b25f28002c037dd24fa0cb3bb7476a06309f
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107529"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389583"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Co je nového v Azure Event Grid?
 
@@ -21,6 +21,24 @@ Azure Event Grid průběžně přijímá vylepšení. V tomto článku najdete i
 - Opravy chyb
 - Zastaralé funkce
 - Plánuje změny
+
+## <a name="610-preview-2020-10"></a>6.1.0-Preview (2020-10)
+- [Spravované identity pro systémová témata](enable-identity-system-topics.md)
+- [Vlastní vlastnosti doručování](delivery-properties.md)
+- [Fronta úložiště – hodnota TTL (Time to Live) pro zprávu](delivery-properties.md#configure-time-to-live-on-outgoing-events-to-azure-storage-queues)
+- [Vylepšení rozšířeného filtrování](event-filtering.md#advanced-filtering)
+    - Podpora filtrování dat polí v příchozích událostech
+    - Povolí filtrování atributů kontextu rozšíření CloudEvents.
+    - Nové operátory
+        - StringNotContains
+        - StringNotBeginsWith
+        - StringNotEndsWith
+        - NumberInRange
+        - NumberNotInRange
+        - IsNull
+        - IsNotNull
+- [Povolení Event Grid schématu pro 1,0 CloudEventsí transformací schémat pro vlastní témata a domény](cloudevents-schema.md#configure-event-grid-for-cloudevents)
+        
 
 ## <a name="600-2020-06"></a>6.0.0 (2020-06)
 - Přidání podpory k novému všeobecně dostupnému rozhraní API služby (GA) verze 2020-06-01.
