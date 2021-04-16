@@ -2,21 +2,21 @@
 title: Správa přiřazení uživatelů pro aplikaci v Azure Active Directory
 description: Naučte se, jak přiřadit a zrušit přiřazení uživatelů a skupin pro aplikaci, která používá Azure Active Directory pro správu identit.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 02/21/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: luleon
-ms.openlocfilehash: 50dcde478b708cd53d8229d70a9ddf4b1ff271be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 097bf55cc7e5372749240c19afb09ba374d437af
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99259730"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377968"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Správa přiřazení uživatelů pro aplikaci v Azure Active Directory
 
@@ -155,5 +155,5 @@ Tento příklad přiřadí uživatele Britta Simon k aplikaci [Microsoft Workpla
 
 - [Zobrazit všechny moje skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [Odebrání přiřazení uživatele nebo skupiny z podnikové aplikace]()
-- [Zakázání přihlášení uživatelů pro podnikovou aplikaci](disable-user-sign-in-portal.md)
+- [Zákaz přihlašování uživatelů do podnikové aplikace](disable-user-sign-in-portal.md)
 - [Změna názvu nebo loga podnikové aplikace](./add-application-portal-configure.md)

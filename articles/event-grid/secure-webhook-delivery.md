@@ -2,18 +2,21 @@
 title: Zabezpečené doručování webhooků pomocí Azure AD v Azure Event Grid
 description: Popisuje, jak doručovat události do koncových bodů HTTPS chráněných pomocí Azure Active Directory pomocí Azure Event Grid
 ms.topic: how-to
-ms.date: 03/20/2021
-ms.openlocfilehash: 1298910db78ba468dd9744e84ee4629161e0a776
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 04/13/2021
+ms.openlocfilehash: 4238087d977fa1102d1dd31d0cc9080d6308c175
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076032"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389685"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Publikování událostí do chráněných koncových bodů Azure Active Directory
 Tento článek popisuje, jak pomocí Azure Active Directory (Azure AD) zabezpečit připojení mezi **odběrem událostí** a vaším **koncovým bodem Webhooku**. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](../active-directory/develop/v2-overview.md).
 
 Tento článek používá Azure Portal k ukázce, ale funkci lze také povolit pomocí rozhraní příkazového řádku, PowerShellu nebo sad SDK.
+
+> [!IMPORTANT]
+> Do 30. března 2021 se zavedla další kontroly přístupu v rámci vytváření nebo aktualizace předplatného pro události, které řeší chybu zabezpečení. Instanční objekt klienta předplatitele musí být buď vlastníkem, nebo musí mít přiřazenou roli pro cílový instanční objekt aplikační služby. Proveďte prosím novou konfiguraci aplikace AAD podle následujících pokynů.
 
 
 ## <a name="create-an-azure-ad-application"></a>Vytvoření aplikace Azure AD
@@ -107,10 +110,13 @@ Write-Host $myAppRoles
 
 ```
 
-### <a name="create-a-role-assignment"></a>Vytvoření přiřazení role
+### <a name="create-role-assignment-for-the-client-creating-event-subscription"></a>Vytvořit přiřazení role pro klienta, který vytváří odběr události
 Přiřazení role by se mělo vytvořit v Aplikace Azure AD Webhooku pro aplikaci AAD nebo uživatele AAD, který vytváří odběr události. Použijte jeden z následujících skriptů v závislosti na tom, jestli aplikace AAD nebo uživatel AAD vytváří odběr událostí.
 
-#### <a name="option-a-create-a-role-assignment-for-event-subscription-aad-app"></a>Možnost A. vytvoření přiřazení role pro aplikaci AAD pro odběr událostí 
+> [!IMPORTANT]
+> Do 30. března 2021 se zavedla další kontroly přístupu v rámci vytváření nebo aktualizace předplatného pro události, které řeší chybu zabezpečení. Instanční objekt klienta předplatitele musí být buď vlastníkem, nebo musí mít přiřazenou roli pro cílový instanční objekt aplikační služby. Proveďte prosím novou konfiguraci aplikace AAD podle následujících pokynů.
+
+#### <a name="create-role-assignment-for-an-event-subscription-aad-app"></a>Vytvoření přiřazení role pro aplikaci AAD odběru události 
 
 ```powershell
 # This is the app id of the application which will create event subscription. Set to $null if you are not assigning the role to app.
@@ -125,10 +131,11 @@ if ($eventSubscriptionWriterSP -eq $null)
 }
 
 Write-Host "Creating the Azure Ad App Role assignment for application: " $eventSubscriptionWriterAppId
-New-AzureADServiceAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterSP.ObjectId -PrincipalId $eventSubscriptionWriterSP.ObjectId
+$eventGridAppRole = $myApp.AppRoles | Where-Object -Property "DisplayName" -eq -Value $eventGridRoleName
+New-AzureADServiceAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterSP.ObjectId -PrincipalId $eventSubscriptionWriterSP.ObjectId
 ```
 
-#### <a name="option-b-create-a-role-assignment-for-event-subscription-aad-user"></a>Možnost B. vytvoření přiřazení role pro uživatele AAD pro odběr událostí 
+#### <a name="create-role-assignment-for-an-event-subscription-aad-user"></a>Vytvoření přiřazení role pro uživatele AAD pro odběr událostí 
 
 ```powershell
 # This is the user principal name of the user who will create event subscription. Set to $null if you are not assigning the role to user.
@@ -138,14 +145,16 @@ $myServicePrincipal = Get-AzureADServicePrincipal -Filter ("appId eq '" + $myApp
     
 Write-Host "Creating the Azure Ad App Role assignment for user: " $eventSubscriptionWriterUserPrincipalName
 $eventSubscriptionWriterUser = Get-AzureAdUser -ObjectId $eventSubscriptionWriterUserPrincipalName
-New-AzureADUserAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterUser.ObjectId -PrincipalId $eventSubscriptionWriterUser.ObjectId
+$eventGridAppRole = $myApp.AppRoles | Where-Object -Property "DisplayName" -eq -Value $eventGridRoleName
+New-AzureADUserAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterUser.ObjectId -PrincipalId $eventSubscriptionWriterUser.ObjectId
 ```
 
-### <a name="add-event-grid-service-principal-to-the-role"></a>Přidat Event Grid instančního objektu do role
+### <a name="create-role-assignment-for-event-grid-service-principal"></a>Vytvoří přiřazení role pro Event Grid instančního objektu.
 Spusťte příkaz New-AzureADServiceAppRoleAssignment pro přiřazení Event Grid instančního objektu k roli, kterou jste vytvořili v předchozím kroku.
 
 ```powershell
-New-AzureADServiceAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventGridSP.ObjectId -PrincipalId $eventGridSP.ObjectId
+$eventGridAppRole = $myApp.AppRoles | Where-Object -Property "DisplayName" -eq -Value $eventGridRoleName
+New-AzureADServiceAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myServicePrincipal.ObjectId -ObjectId -PrincipalId $eventGridSP.ObjectId
 ```
 
 Pro výstup informací, které budete používat později, spusťte následující příkazy.
@@ -168,7 +177,7 @@ Při vytváření odběru událostí použijte následující postup:
 1. Na kartě **Další funkce** proveďte tyto kroky:
     1. Vyberte **použít ověřování AAD** a nakonfigurujte ID TENANTA a ID aplikace:
     1. Zkopírujte ID tenanta Azure AD z výstupu skriptu a zadejte ho do pole **ID tenanta AAD** .
-    1. Zkopírujte ID aplikace Azure AD z výstupu skriptu a zadejte ho do pole **ID aplikace AAD** .
+    1. Zkopírujte ID aplikace Azure AD z výstupu skriptu a zadejte ho do pole **ID aplikace AAD** . Alternativně můžete použít identifikátor URI ID aplikace AAD. Další informace o identifikátoru URI ID aplikace najdete v [tomto článku](../app-service/configure-authentication-provider-aad.md).
 
         ![Akce zabezpečení Webhooku](./media/secure-webhook-delivery/aad-configuration.png)
 

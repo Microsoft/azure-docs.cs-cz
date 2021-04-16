@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 12/02/2020
-ms.openlocfilehash: 65df5f178ce0ec845fca6343c51049b6bf426e18
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 001f7453c29e7a8525fb88a96dd9a867468460e3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106033"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501429"
 ---
 # <a name="create-a-dynamics-365-for-business-central-offer"></a>Vytvoření nabídky Dynamics 365 for Business Central
 
@@ -33,7 +33,7 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 
 ## <a name="new-offer"></a>Nová nabídka
 
-Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
+Zadejte **ID nabídky**. Tato hodnota je jedinečný identifikátor pro každou nabídku ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
 - ID nabídky v kombinaci s ID vydavatele musí být kratší než 40 znaků.
@@ -118,11 +118,11 @@ Tato stránka umožňuje definovat nabídky, jako je název nabídky, popis, odk
 > [!NOTE]
 > Poskytují podrobnosti o seznamech nabídek jenom v jednom jazyku. Není nutné, aby byla v angličtině, pokud popis nabídky začíná frází "Tato aplikace je dostupná pouze v [jazykovém jazyce, který není v angličtině]." Je také přijatelné poskytnout *užitečnou adresu URL pro odkaz* k poskytnutí obsahu v jiném jazyce, než který je použit v obsahu nabídky.
 
-Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSource (uvedené ceny jsou například jenom pro účely a nejsou určené k tomu, aby odrážely skutečné náklady):
-<!-- update screen? -->
+Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSource (uvedené ceny jsou jenom příklady a nejsou určené k tomu, aby odrážely skutečné náklady):
+
 :::image type="content" source="media/example-d365-business-central.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Microsoft AppSource.":::
 
-#### <a name="call-out-descriptions"></a>Popisy volání
+### <a name="call-out-descriptions"></a>Popisy volání
 
 1. Logo
 2. Produkty
@@ -132,7 +132,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 6. Zásady ochrany osobních údajů
 7. Název nabídky
 8. Souhrn
-9. Description
+9. Popis
 10. Snímky obrazovky a videa
 
 ### <a name="marketplace-details"></a>Podrobnosti Marketplace
@@ -174,11 +174,11 @@ Poskytněte loga a obrázky, které se použijí při zobrazování vaší nabí
 [!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
->Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
+>Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje `https://upload.xboxlive.com` službu používanou partnerským centrem.
 
 #### <a name="logos"></a>Značk
 
-Zadejte soubor PNG pro logo **velké** velikosti. Partnerské centrum použije k vytvoření dalších požadovaných velikostí. Volitelně můžete tuto položku nahradit jinou imagí později.
+Zadejte soubor PNG pro logo **velké** velikosti. Partnerské centrum použije tento úvodní soubor k vytvoření dalších požadovaných velikostí. Případně můžete změnit velikost obrázku s vlastní imagí později.
 
 Tato loga se používají na různých místech v seznamu:
 
@@ -225,6 +225,8 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 
 Tato stránka definuje technické podrobnosti používané pro připojení k vaší nabídce. Toto připojení nám umožňuje zřídit vaši nabídku pro koncového zákazníka, pokud se k tomu rozhodne získat.
 
+Rozšíření odeslaná pro vaši nabídku musí splňovat požadavky uvedené v [technickém kontrolním seznamu ověření](/dynamics365/business-central/dev-itpro/developer/devenv-checklist-submission).
+
 ### <a name="file-upload"></a>Nahrání souboru
 
 Pokud jste dříve vybrali možnost **Přidat do**, kam nahrajete soubor balíčku nabídky společně se soubory balíčku pro jakékoli rozšíření, na kterém má závislosti.
@@ -242,14 +244,6 @@ Vyžaduje se, pokud se vaše nabídka musí nainstalovat spolu s jinou přípono
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
-<!-- ## Test drive technical configuration
-
-This page lets you set up a demonstration ("test drive") that allows customers to try your offer before purchasing it. Learn more in [What is test drive](../what-is-test-drive.md).
-
-To enable a test drive, select the **Enable a test drive** check box on the [Offer setup](#test-drive) tab. To remove test drive from your offer, clear this check box.
-
-When you've finished setting up your test drive, select **Save draft** before continuing.
--->
 ## <a name="supplemental-content"></a>Doplňkový obsah
 
 Tato stránka vám umožní zadat další informace, které nám pomůžou vaši nabídku ověřit. Tyto informace se zákazníkům nezobrazují ani nepublikují na webu Marketplace.
@@ -285,9 +279,9 @@ Po dokončení všech požadovaných oddílů nabídky vyberte v pravém horním
 Pokud tuto nabídku publikujete poprvé, můžete:
 
 - Podívejte se na téma stav dokončení pro jednotlivé části nabídky.
-    - **Nezahájeno** – oddíl se nedotkl a musí se dokončit.
-    - **Neúplný** – oddíl obsahuje chyby, které je třeba opravit, nebo vyžaduje více informací. Vraťte se k oddílům a aktualizujte je.
-    - **Dokončeno** – oddíl byl dokončen, byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky v úplném stavu.
+  - **Nezahájeno** – oddíl se nedotkl a musí se dokončit.
+  - **Neúplný** – oddíl obsahuje chyby, které je třeba opravit, nebo vyžaduje více informací. Vraťte se k oddílům a aktualizujte je.
+  - **Dokončeno** – oddíl byl dokončen, byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky v úplném stavu.
 - V části **poznámky k certifikaci** poskytněte certifikačnímu týmu pokyny k testování, aby se zajistilo správné testování vaší aplikace, a to spolu s případnými doplňkovými poznámkami, které jsou užitečné pro porozumění vaší aplikaci.
 - Kliknutím na **Odeslat** nabídku pro publikování odešlete. Až bude verze Preview dostupná ke kontrole a schválení, pošleme vám e-mail. Vraťte se do partnerského centra a výběrem možnosti **Přejít do provozu** publikujte vaši nabídku na veřejném.
 

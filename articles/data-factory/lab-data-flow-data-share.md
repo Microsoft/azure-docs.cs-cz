@@ -6,13 +6,13 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: d3924c38f760a9698735a2757bdad2af5beb0e24
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006139"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518732"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Integrace dat pomocí Azure Data Factory a sdílení dat Azure
 
@@ -64,12 +64,9 @@ V Azure Data Factory propojené služby definují informace o připojení k exte
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database
 
-1. Stránka pro vytváření obsahu je místo, kde můžete vytvářet prostředky služby Data Factory, jako jsou kanály, datové sady, toky dat, triggery a propojené služby. Pokud chcete vytvořit propojenou službu, klikněte na tlačítko **připojení** v pravém dolním rohu.
+1. Pokud chcete vytvořit propojenou službu, vyberte **Spravovat** centrum v levém bočním panelu, v podokně **připojení** vyberte **propojené služby** a pak výběrem možnosti **nové** přidejte novou propojenou službu.
 
     ![Portál – konfigurace 2](media/lab-data-flow-data-share/configure2.png)
-1. Na kartě připojení kliknutím na **Nový** přidejte novou propojenou službu.
-
-    ![Portál – konfigurace 3](media/lab-data-flow-data-share/configure3.png)
 1. První propojená služba, kterou nakonfigurujete, je databáze SQL Azure. Seznam úložišť dat můžete filtrovat pomocí panelu hledání. Klikněte na dlaždici **Azure SQL Database** a potom klikněte na pokračovat.
 
     ![Portál – konfigurace 4](media/lab-data-flow-data-share/configure-4.png)
@@ -99,9 +96,11 @@ V Azure Data Factory propojené služby definují informace o připojení k exte
 
 V části *transformuje data pomocí mapování toku dat* budete sestavovat toky dat s mapováním. Osvědčeným postupem při sestavování toků mapování dat je zapnout režim ladění, který vám umožní testovat logiku transformace v sekundách v aktivním clusteru Spark.
 
-Pokud chcete zapnout ladění, klikněte na posuvník pro **ladění toku dat** na horním panelu pro vytváření. Po zobrazení dialogového okna pro potvrzení klikněte na OK. Spuštění clusteru bude trvat přibližně 5-7 minut. Pokračujte k ingestování *dat ze služby Azure SQL DB do adls Gen2 pomocí aktivity kopírování* během inicializace.
+Pokud chcete zapnout ladění, klikněte na horním panelu plátna toku dat nebo plátna kanálu na tlačítko **ladění toku dat** , když máte aktivity **toku dat** . Po zobrazení dialogového okna pro potvrzení klikněte na OK. Spuštění clusteru bude trvat přibližně 5-7 minut. Pokračujte k ingestování *dat ze služby Azure SQL DB do adls Gen2 pomocí aktivity kopírování* během inicializace.
 
 ![Portál konfigurovat 10](media/lab-data-flow-data-share/configure10.png)
+
+![Portál – konfigurace 11](media/lab-data-flow-data-share/configure11.png)
 
 ## <a name="ingest-data-using-the-copy-activity"></a>Ingestování dat pomocí aktivity kopírování
 

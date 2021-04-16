@@ -6,12 +6,12 @@ author: dlepow
 ms.author: apimpm
 ms.topic: tutorial
 ms.date: 12/10/2020
-ms.openlocfilehash: 0dea8e43d5f09b84c5795bc257cf3331ad919fcb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0090d981e93cee12f2feaaf7d2c12f341564f6ec
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649542"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482326"
 ---
 # <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>Kurz: použití rozšíření API Management pro Visual Studio Code k importu a správě rozhraní API
 
@@ -101,7 +101,7 @@ K otestování importovaného rozhraní API, které jste naimportovali, a zásad
 ### <a name="test-an-api-operation"></a>Testování operace rozhraní API
 
 1. V podokně Průzkumník rozbalte uzel **Operations** v části *demo-konferenční rozhraní API* , které jste naimportovali.
-1. Vyberte operaci, například *Getspeakers*.
+1. Vyberte operaci, jako například *Getspeakers*, a potom klikněte pravým tlačítkem na operaci a vyberte **testovací operaci**.
 1. V okně editoru vedle klíče **OCP-APIM-Subscription-Key** nahraďte `{{SubscriptionKey}}` klíč předplatného, který jste zkopírovali.
 1. Vyberte **Odeslat žádost**. 
 

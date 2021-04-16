@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/29/2020
-ms.openlocfilehash: b297330f3562babf9e83d36934827f7b92d5ea35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: 9fe4f21a5c9e9e26a2f94b8a60cba47916842fe3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98787008"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501786"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Dávkové testování se sadou příkladů projevy
 
@@ -208,7 +208,7 @@ ID verze aplikace
 
 Odeslání dávkového souboru projevy, který se označuje jako *datová sada*, pro dávkové testování. Datová sada je soubor ve formátu JSON, který obsahuje maximálně 1 000 označených projevy. V aplikaci můžete testovat až 10 datových sad. Pokud potřebujete vyzkoušet víc, odstraňte datovou sadu a pak přidejte novou. Všechny vlastní entity v modelu se zobrazí v rámci filtru entity testu dávky i v případě, že v datech dávkového souboru nejsou žádné odpovídající entity.
 
-Dávkový soubor se skládá z projevy. Každý utterance musí mít očekávanou předpověď záměru spolu se všemi [entitami strojového učení](luis-concept-entity-types.md#types-of-entities) , které se mají zjistit.
+Dávkový soubor se skládá z projevy. Každý utterance musí mít očekávanou předpověď záměru spolu se všemi [entitami strojového učení](luis-concept-entity-types.md#machine-learned-ml-entity) , které se mají zjistit.
 
 ### <a name="batch-syntax-template-for-intents-with-entities"></a>Šablona syntaxe služby Batch pro záměry s entitami
 

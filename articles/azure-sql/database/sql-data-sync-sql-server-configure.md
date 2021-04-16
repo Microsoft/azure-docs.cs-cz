@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 6b7ead2e54889327bfbea188ad464012c3861556
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 75de7b122bff75ea13e3b66bb0b79452142dc36c
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968607"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500086"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Kurz: nastavení Synchronizace dat SQL mezi databázemi v Azure SQL Database a SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -236,6 +236,11 @@ Nejčastější dotazy týkající se klientského agenta najdete v tématu Nej�
 **Je nutné před zahájením používání privátního propojení ručně schválit?**
 
 Ano, na stránce připojení privátního koncového bodu Azure Portal během nasazování skupiny synchronizace nebo pomocí prostředí PowerShell musíte ručně schválit soukromý koncový bod spravované službou.
+
+**Proč se při zřizování úlohy synchronizace s Azure Database zobrazí chyba brány firewall?**
+
+K tomu může dojít, protože prostředky Azure nemají povolený přístup k vašemu serveru. Zajistěte, aby brána firewall v Azure Database má nastavení "Povolte službám a prostředkům Azure přístup k tomuto serveru" nastavené na hodnotu "Ano".
+
 
 ## <a name="next-steps"></a>Další kroky
 

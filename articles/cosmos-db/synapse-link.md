@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2020
 ms.reviewer: sngun
 ms.custom: synapse-cosmos-db
-ms.openlocfilehash: c22a4030bb44c1499995071849ca8942ae2110c3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 123c443e1afaf8eaded7021b963b68b3d8a8f554
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864342"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483754"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>Co je Azure Synapse Link pro Azure Cosmos DB?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -99,20 +99,6 @@ Tato integrace umožňuje pro různé uživatele následující scénáře HTAP:
 
 Další informace o podpoře Azure synapse Analytics runtime pro Azure Cosmos DB najdete v tématu [Azure synapse Analytics pro Cosmos DB podporu](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md).
 
-## <a name="security"></a>Zabezpečení
-
-Synapse Link vám umožní spouštět analýzy téměř v reálném čase v rámci důležitých dat v Azure Cosmos DB. Je důležité zajistit, aby byla důležitá obchodní data bezpečně ukládána napříč transakčními i analytickými obchody. Odkaz na službu Azure synapse pro Azure Cosmos DB je navržený tak, aby splňoval tyto požadavky na zabezpečení prostřednictvím následujících funkcí:
-
-* **Izolace sítě pomocí soukromých koncových bodů** – k datům v transakčních a analytických úložištích můžete řídit síťový přístup nezávisle. Izolace sítě se provádí pomocí samostatných spravovaných privátních koncových bodů pro každé úložiště v rámci spravovaných virtuálních sítí v pracovních prostorech Azure synapse. Další informace najdete v článku postup [Konfigurace privátních koncových bodů pro analytické úložiště](analytical-store-private-endpoints.md) .
-
-* **Šifrování dat pomocí klíčů spravovaných zákazníkem** – data můžete bez problémů šifrovat napříč transakčními a analytickými úložišti, a to pomocí automatického a transparentního klíče spravovaného zákazníky. Další informace najdete v článku postup [konfigurace klíčů spravovaných zákazníkem](how-to-setup-cmk.md) .
-
-* **Zabezpečená správa klíčů** – přístup k datům v analytickém úložišti z synapse a synapse serverů SQL bez serveru vyžaduje správu Azure Cosmos DB klíčů v rámci pracovních prostorů synapse Analytics. Místo používání Azure Cosmos DB klíčů účtu, které jsou vložené v úlohách Sparku nebo ve skriptech SQL, poskytuje propojení Azure synapse bezpečnější možnosti.
-
-  * Pokud používáte synapse fondy SQL serverů bez serveru, můžete dotazovat se na Azure Cosmos DB analytické úložiště pomocí předběžného Vytváření přihlašovacích údajů SQL, který ukládá klíče účtu a odkazuje na ně ve `OPENROWSET` funkci. Další informace najdete v článku [dotazování s fondem SQL bez serveru v článku s odkazem na Azure synapse](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) .
-
-  * Při použití synapse Spark můžete ukládat klíče účtu v propojených objektech služby, které ukazují na databázi Azure Cosmos DB a odkazovat na ně v konfiguraci Sparku za běhu. Další informace najdete v tématu [kopírování dat do vyhrazeného fondu SQL pomocí Apache Spark](../synapse-analytics/synapse-link/how-to-copy-to-sql-pool.md) článku.
-
 ## <a name="when-to-use-azure-synapse-link-for-azure-cosmos-db"></a>Kdy použít pro Azure Cosmos DB odkaz na Azure synapse?
 
 Odkaz na synapse se doporučuje v následujících případech:
@@ -136,6 +122,21 @@ Odkaz synapse se nedoporučuje, pokud hledáte tradiční požadavky na datový 
 * U kontejnerů se zapnutým analytickým úložištěm se v současnosti nepodporuje automatické zálohování a obnovování vašich dat v analytickém úložišti. Když je na databázovém účtu povoleno propojení synapse, Azure Cosmos DB bude pokračovat v automatickém ukládání [záloh](./online-backup-and-restore.md) vašich dat do transakčního úložiště (pouze) kontejnerů v naplánovaných intervalech zálohování, jako vždycky. Je důležité si uvědomit, že když se na nový účet obnoví kontejner se zapnutým analytickým úložištěm, kontejner se obnoví jenom v transakčním úložišti a není povolený žádný analytický obchod.
 
 * Přístup k úložišti Azure Cosmos DB Analytics s zřízeným synapse SQL není momentálně k dispozici.
+
+## <a name="security"></a>Zabezpečení
+
+Synapse Link vám umožní spouštět analýzy téměř v reálném čase v rámci důležitých dat v Azure Cosmos DB. Je důležité zajistit, aby byla důležitá obchodní data bezpečně ukládána napříč transakčními i analytickými obchody. Odkaz na službu Azure synapse pro Azure Cosmos DB je navržený tak, aby splňoval tyto požadavky na zabezpečení prostřednictvím následujících funkcí:
+
+* **Izolace sítě pomocí soukromých koncových bodů** – k datům v transakčních a analytických úložištích můžete řídit síťový přístup nezávisle. Izolace sítě se provádí pomocí samostatných spravovaných privátních koncových bodů pro každé úložiště v rámci spravovaných virtuálních sítí v pracovních prostorech Azure synapse. Další informace najdete v článku postup [Konfigurace privátních koncových bodů pro analytické úložiště](analytical-store-private-endpoints.md) .
+
+* **Šifrování dat pomocí klíčů spravovaných zákazníkem** – data můžete bez problémů šifrovat napříč transakčními a analytickými úložišti, a to pomocí automatického a transparentního klíče spravovaného zákazníky. Další informace najdete v článku postup [konfigurace klíčů spravovaných zákazníkem](how-to-setup-cmk.md) .
+
+* **Zabezpečená správa klíčů** – přístup k datům v analytickém úložišti z synapse a synapse serverů SQL bez serveru vyžaduje správu Azure Cosmos DB klíčů v rámci pracovních prostorů synapse Analytics. Místo používání Azure Cosmos DB klíčů účtu, které jsou vložené v úlohách Sparku nebo ve skriptech SQL, poskytuje propojení Azure synapse bezpečnější možnosti.
+
+  * Pokud používáte synapse fondy SQL serverů bez serveru, můžete dotazovat se na Azure Cosmos DB analytické úložiště pomocí předběžného Vytváření přihlašovacích údajů SQL, který ukládá klíče účtu a odkazuje na ně ve `OPENROWSET` funkci. Další informace najdete v článku [dotazování s fondem SQL bez serveru v článku s odkazem na Azure synapse](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) .
+
+  * Při použití synapse Spark můžete ukládat klíče účtu v propojených objektech služby, které ukazují na databázi Azure Cosmos DB a odkazovat na ně v konfiguraci Sparku za běhu. Další informace najdete v tématu [kopírování dat do vyhrazeného fondu SQL pomocí Apache Spark](../synapse-analytics/synapse-link/how-to-copy-to-sql-pool.md) článku.
+
 
 ## <a name="pricing"></a>Ceny
 

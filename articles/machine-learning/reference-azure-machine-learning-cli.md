@@ -9,12 +9,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 9a22700782c584015add2c83ecc96ccc610b8509
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 8e912e141ab769f3121fcccdecb9c3952920572f
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219616"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516208"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Nainstalovat & použít rozšíření CLI pro Azure Machine Learning
 
@@ -39,7 +39,7 @@ Rozhraní příkazového řádku není náhradou za sadu Azure Machine Learning 
 
 ## <a name="full-reference-docs"></a>Úplné referenční dokumentace
 
-Najděte [kompletní referenční dokumentaci pro rozšíření Azure CLI Azure CLI](/cli/azure/ext/azure-cli-ml/).
+Najděte [kompletní referenční dokumentaci pro rozšíření Azure CLI Azure CLI](/cli/azure/ml/).
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>Připojení rozhraní příkazového řádku k předplatnému Azure
 
@@ -392,7 +392,7 @@ Pokud jste použili `az ml environment scaffold` příkaz, vygeneruje `azureml_e
 
 Následující tabulka podrobně popisuje každé pole nejvyšší úrovně v souboru JSON, jeho typ a popis. Pokud je typ objektu propojený se třídou ze sady Python SDK, je mezi jednotlivými poli JSON a názvem veřejné proměnné ve třídě Pythonu volná 1:1. V některých případech může být pole namapováno na argument konstruktoru, nikoli na proměnnou třídy. Například `environmentVariables` pole je mapováno na `environment_variables` proměnnou ve [`Environment`](/python/api/azureml-core/azureml.core.environment%28class%29) třídě.
 
-| Pole JSON | Typ | Description |
+| Pole JSON | Typ | Popis |
 |---|---|---|
 | `name` | `string` | Název prostředí. Nespouštějte jméno pomocí **Microsoft** nebo **AzureML**. |
 | `version` | `string` | Verze prostředí. |

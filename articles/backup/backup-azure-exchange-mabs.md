@@ -4,12 +4,12 @@ description: Naučte se, jak zálohovat Exchange Server pro Azure Backup pomocí
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 86389ef89ced74905db0fc8bfeaabcea6140762a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3a7fae5a1f5ec933c015546ddf2bdb2898e3904
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91262990"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515494"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Zálohování serveru Exchange do Azure pomocí Azure Backup Server
 
@@ -107,4 +107,4 @@ Pro body obnovení online existuje pět typů obnovení:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nejčastější dotazy k Azure Backup](backup-azure-backup-faq.md)
+* [Nejčastější dotazy k Azure Backup](backup-azure-backup-faq.yml)

@@ -3,12 +3,12 @@ title: Řešení potíží s pomalým zálohováním souborů a složek
 description: Poskytuje pokyny k odstraňování potíží, které vám pomůžou diagnostikovat příčinu potíží s výkonem Azure Backup.
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: b3f2ac343ef4a703f347ec8a57f242a636bb32d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 791f0edf5f50d27147e402f09e7a3e4c2ea7ca43
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88824011"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518520"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Řešení potíží s pomalým zálohováním souborů a složek ve službě Azure Backup
 
@@ -21,7 +21,7 @@ Tento článek poskytuje pokyny k odstraňování potíží, které vám pomůž
 
 Než začnete řešit problémy, doporučujeme si stáhnout a nainstalovat [nejnovější verzi agenta Azure Backup](https://aka.ms/azurebackup_agent). Častým aktualizacím agenta zálohování je řešení různých problémů, přidávání funkcí a zlepšení výkonu.
 
-Důrazně doporučujeme, abyste si přesvědčili, že [služba Azure Backup Service na nejčastější dotazy](backup-azure-backup-faq.md) , abyste se ujistili, že nedošlo k žádným běžným problémům s konfigurací.
+Důrazně doporučujeme, abyste si přesvědčili, že [služba Azure Backup Service na nejčastější dotazy](backup-azure-backup-faq.yml) , abyste se ujistili, že nedošlo k žádným běžným problémům s konfigurací.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -99,4 +99,4 @@ Při pokusu o zálohování velkých disků se doporučuje použít [Azure Data 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Běžné dotazy týkající se zálohování souborů a složek](backup-azure-file-folder-backup-faq.md)
+* [Běžné dotazy týkající se zálohování souborů a složek](backup-azure-file-folder-backup-faq.yml)

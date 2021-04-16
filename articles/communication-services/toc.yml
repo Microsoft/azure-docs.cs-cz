@@ -112,17 +112,6 @@
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: Možnosti architektury uživatelského rozhraní
           href: concepts/ui-framework/ui-sdk-features.md
-    - name: Data a operace
-      items:
-        - name: Události služby (EventGrid)
-          href: ../event-grid/event-schema-communication-services.md
-          maintainContext: true
-        - name: Protokolování a diagnostika
-          href: concepts/logging-and-diagnostics.md
-        - name: Metriky
-          href: concepts/metrics.md
-        - name: Řešení potíží
-          href: concepts/troubleshooting-info.md
     - name: Sady SDK a rozhraní REST API
       href: concepts/sdk-options.md
     - name: Klientská a serverová architektura
@@ -139,7 +128,16 @@
       href: concepts/notifications.md
     - name: Interoperabilita Teams
       href: concepts/teams-interop.md
-- name: ukázky
+    - name: Události služby (EventGrid)
+      href: ../event-grid/event-schema-communication-services.md
+      maintainContext: true
+    - name: Protokolování a diagnostika
+      href: concepts/logging-and-diagnostics.md
+    - name: Metriky
+      href: concepts/metrics.md
+    - name: Řešení potíží
+      href: concepts/troubleshooting-info.md
+- name: Ukázky
   items:
     - name: Přehled
       href: samples/overview.md

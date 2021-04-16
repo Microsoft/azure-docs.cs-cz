@@ -121,6 +121,8 @@
       href: support-policies-v4.md
     - name: Životní cyklus podpory pro ARO 4
       href: support-lifecycle.md
+    - name: Matice odpovědnosti
+      href: responsibility-matrix.md
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Dokumentace k Red Hat OpenShiftu 4

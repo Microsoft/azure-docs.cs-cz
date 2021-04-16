@@ -6,24 +6,24 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/21/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 82dcd8c59c55a2866b51fd6dee896ea1298b6cf6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: b0ea5728618c7b69403fcc4c0a3575b70fac6038
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877839"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482598"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Nasazení jarního cloudu Azure ve virtuální síti
 
-**Tento článek se týká:** ✔️ Java ✔️ C #
+**Tento článek se týká:** Âœ "ï ̧ Java Âœ" ï ̧ C #
 
 V tomto kurzu se dozvíte, jak nasadit instanci cloudu Azure ve vaší virtuální síti. Toto nasazení se někdy nazývá vkládání virtuální sítě.
 
 Nasazení umožňuje:
 
-* Izolace aplikací Azure jaře Cloud a modulu runtime služby z Internetu ve vaší podnikové síti.
-* Interakce s jarním cloudem v Azure se systémy v místních datových centrech nebo službách Azure v jiných virtuálních sítích.
+* Izolace Azure jarních cloudových aplikací a běhového prostředí služby z internetâ ve vaší společnosti na Networkâ.
+* Interakce jarního cloudu Azure se systémy v systému â ‹ místní datová centra a služby Azure v jiných virtuálních sítích.
 * Umožňuje zákazníkům řídit příchozí a odchozí síťovou komunikaci pro jarní cloud Azure.
 
 > [!Note]

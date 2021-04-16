@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: d1302d44a4cb5b09f6dc3b1bf0cb08a12a932c87
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: a12f0c2e8ff5987a14b56ef12d49b8350cc1b3aa
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029399"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501769"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je privátní koncový bod Azure?
 
@@ -57,8 +57,8 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |---------|---------|---------|
 |**Služba privátního propojení** (vaše vlastní služba)   |  Microsoft. Network/privateLinkServices       | empty |
 |**Azure Automation** |  Microsoft. Automation/automationAccounts | Webhook, DSCAndHybridWorker |
-|**Azure SQL Database** | Microsoft. SQL/servery    |  SQL Server (sqlServer)        |
-|**Azure Synapse Analytics** | Microsoft. SQL/servery    |  SQL Server (sqlServer)        | 
+|**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
+|**Azure Synapse Analytics** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        | 
 |**Azure Storage**  | Microsoft. Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)<BR> Tabulka (tabulka, table_secondary)<BR> Queue (Queue, queue_secondary)<BR> Soubor (soubor, file_secondary)<BR> Web (web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft. Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)<BR> Data Lake Gen2 systému souborů (DFS, dfs_secondary)       |
 |**Azure Cosmos DB** | Microsoft. AzureCosmosDB/databaseAccounts    | SQL, MongoDB, Cassandra, Gremlin, tabulka|
@@ -78,6 +78,7 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |**Azure Event Grid** | Microsoft. EventGrid/témata    | téma |
 |**Azure Event Grid** | Microsoft. EventGrid/domény    | doména |
 |**Azure App Service** | Microsoft. Web/weby    | místa |
+|**Sloty Azure App Service** | Microsoft. Web/weby    | místa`<slot name>` |
 |**Azure Machine Learning** | Microsoft. MachineLearningServices/pracovní prostory    | amlworkspace |
 |**SignalR** | Microsoft. SignalRService/Signaler    | signalR |
 |**Azure Monitor** | Microsoft. Insights/privateLinkScopes    | azuremonitor |

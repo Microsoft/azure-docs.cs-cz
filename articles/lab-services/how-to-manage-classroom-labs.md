@@ -3,12 +3,12 @@ title: Správa Labs v Azure Lab Services | Microsoft Docs
 description: Naučte se vytvářet a konfigurovat prostředí učebny, zobrazovat všechny laboratoře, sdílet odkaz na registraci s uživatelem testovacího prostředí nebo odstranit testovací prostředí.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: db7a2f58f99252a7e5076dd86c37b65bbe8ea37a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6acb9609abac15b9ff92250e3d5d44c585881cc
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96434205"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481799"
 ---
 # <a name="manage-labs-in-azure-lab-services"></a>Správa Labs v Azure Lab Services 
 Tento článek popisuje, jak vytvořit a odstranit testovací prostředí pro učebnu. Také se dozvíte, jak zobrazit všechny laboratoře v účtu testovacího prostředí. 
@@ -18,7 +18,7 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
 ## <a name="create-a-classroom-lab"></a>Vytvoření testovacího prostředí v učebně
 
-1. Přejděte na [web Azure Lab Services](https://labs.azure.com). Aplikace Internet Explorer 11 není zatím podporována. 
+1. Přejděte na [web Azure Lab Services](https://labs.azure.com).
 1. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Vyberte nebo zadejte **ID uživatele** , který je členem role **testovacího prostředí** v účtu testovacího prostředí, a zadejte heslo. Azure Lab Services podporuje účty organizací a účty Microsoft. 
 1. Vyberte **nové testovací prostředí**. 
     
@@ -89,7 +89,7 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
 ### <a name="vm-sizes"></a>Velikost virtuálních počítačů  
 
-| Velikost | Cores | Paměť RAM | Description | 
+| Velikost | Cores | Paměť RAM | Popis | 
 | ---- | ----- | --- | ----------- | 
 | Malá | 2 | 3,5 GB | Tato velikost je nejvhodnější pro příkazový řádek, otevírá webový prohlížeč, webové servery s nízkým provozem, malé až střední databáze. |
 | Střední | 4 | 7 GB | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. | 

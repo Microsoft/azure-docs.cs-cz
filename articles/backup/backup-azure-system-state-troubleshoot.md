@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit problémy v zálohování
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07e101fe87fb3f5db0bb716f0bc9ea6f8773aa3e
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89376277"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518554"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Řešení potíží se zálohováním stavu systému
 
@@ -22,12 +22,12 @@ Než začnete s odstraňováním potíží se zálohováním stavu systému, dop
 - [Zajistěte, aby byl agent Microsoft Azure Recovery Services (MARS) aktuální.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Zajistěte, aby mezi agentem MARS a Azure bylo síťové připojení.](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Ujistěte se, že je spuštěná služba Microsoft Azure Recovery Services (v konzole služby). V případě potřeby restartujte operaci a operaci opakujte.
-- [Zajistěte, aby v umístění pomocné složky bylo k dispozici 5-10% volného místa na disku](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Ujistěte se, že je v umístění pomocné složky k dispozici 5 až 10 % volného místa.](./backup-azure-file-folder-backup-faq.yml#what-s-the-minimum-size-requirement-for-the-cache-folder-)
 - [Zkontrolujte, jestli službě Azure Backup nepřekáží jiný proces nebo antivirový software.](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
 - [Plánované zálohování se nedaří, ale ruční zálohování funguje](./backup-azure-mars-troubleshoot.md#backups-dont-run-according-to-schedule)
 - Ujistěte se, že má váš operační systém nainstalované nejnovější aktualizace.
 - [Zajistěte, aby nepodporované jednotky a soubory s nepodporovanými atributy byly ze zálohy vyloučen](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
-- Zajistěte, aby byly **systémové hodiny** v chráněném systému nakonfigurované na správné časové pásmo. <br>
+- Ujistěte se, že **systémové hodiny** v chráněném systému jsou nakonfigurované na správné časové pásmo. <br>
 - [Ujistěte se, že má server minimálně rozhraní .Net Framework verze 4.5.2 nebo novější](https://www.microsoft.com/download/details.aspx?id=30653)<br>
 - Pokud se pokoušíte znovu **zaregistrovat server** do trezoru, pak: <br>
   - Ujistěte se, že je agent na serveru odinstalován a že je odstraněný z portálu. <br>

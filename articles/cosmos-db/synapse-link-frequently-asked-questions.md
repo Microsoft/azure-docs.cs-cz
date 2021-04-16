@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: synapse-cosmos-db
-ms.openlocfilehash: d871a33b6d8adbae179e592122878eee5db1c0b5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 906651f8c48824e391879e0a579c6587231e7dfd
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868998"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483822"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -73,15 +73,15 @@ Ano, analytické úložiště je možné povolit u kontejnerů s zřízenou prop
 
 Azure Cosmos DB garantuje izolaci výkonu mezi transakčními a analytickými úlohami. Povolení analytického úložiště na kontejneru nebude mít vliv na RU/s zřízené v Azure Cosmos DB transakčním úložišti. Transakce (čtení & zápisu) a náklady na úložiště pro analytické úložiště se účtují samostatně. Další podrobnosti najdete v tématu [ceny za Azure Cosmos DB analytické úložiště](analytical-store-introduction.md#analytical-store-pricing) .
 
-### <a name="can-i-restrict-access-to-azure-cosmos-db-analytical-store"></a>Můžu omezit přístup k Azure Cosmos DB analytickému obchodu?
+### <a name="can-i-restrict-network-access-to-azure-cosmos-db-analytical-store"></a>Můžu omezit přístup k síti na Azure Cosmos DB analytické úložiště?
 
-Ano, můžete nakonfigurovat [spravovaný privátní koncový bod](analytical-store-private-endpoints.md) a omezit přístup k síti z analytického úložiště do Azure synapse spravované virtuální sítě. Spravované soukromé koncové body vytvoří privátní odkaz na analytické úložiště. Tento soukromý koncový bod taky omezí přístup k zápisu do transakčního úložiště, a to mezi další datové služby Azure.
+Ano, můžete nakonfigurovat [spravovaný privátní koncový bod](analytical-store-private-endpoints.md) a omezit přístup k síti z analytického úložiště do Azure synapse spravované virtuální sítě. Spravované soukromé koncové body vytvoří privátní odkaz na analytické úložiště. 
 
-Do stejného Azure Cosmos DB účtu v pracovním prostoru Azure synapse Analytics můžete přidat jak transakční, tak i i analytické úložiště. Pokud chcete pouze spustit analytické dotazy, budete pravděpodobně chtít mapovat pouze privátní koncový bod analýzy.
+Do stejného Azure Cosmos DB účtu v pracovním prostoru Azure synapse Analytics můžete přidat jak transakční, tak i i analytické úložiště. Pokud chcete pouze spouštět analytické dotazy, můžete v pracovním prostoru synapse Analytics povolit pouze analytický privátní koncový bod.
 
 ### <a name="can-i-use-customer-managed-keys-with-the-azure-cosmos-db-analytical-store"></a>Můžu pomocí Azure Cosmos DB analytického úložiště použít klíče spravované zákazníky?
 
-Data můžete v různých transakčních a analytických úložištích hladce snadno šifrovat pomocí stejných klíčů spravovaných zákazníkem automaticky a transparentním způsobem. Použití klíčů spravovaných zákazníkem s Azure Cosmos DB analytické úložiště aktuálně vyžaduje další konfiguraci na vašem účtu. Podrobnosti vám poskytne [tým Azure Cosmos DB](mailto:azurecosmosdbcmk@service.microsoft.com)  .
+Data můžete v různých transakčních a analytických úložištích hladce snadno šifrovat pomocí stejných klíčů spravovaných zákazníkem automaticky a transparentním způsobem. Pokud chcete používat klíče spravované zákazníkem v analytickém úložišti, musíte ve svých zásadách Azure Key Vault přístupu použít spravovanou identitu vaší Azure Cosmos DB účtu. To je popsáno [zde](how-to-setup-cmk.md#using-managed-identity). Ve svém účtu byste pak měli být schopni povolit analytické úložiště.
 
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>Projeví se operace odstranění a aktualizace v transakčním úložišti v analytickém úložišti?
 
@@ -152,6 +152,8 @@ Model fakturace propojení Azure synapse zahrnuje náklady vzniklé pomocí Azur
 ### <a name="what-are-the-ways-to-authenticate-with-the-analytical-store"></a>Jaké jsou způsoby ověřování pomocí analytického úložiště?
 
 Ověřování pomocí analytického úložiště je stejné jako transakční úložiště. Pro danou databázi se můžete ověřit pomocí primárního klíče nebo klíče jen pro čtení. V Azure synapse studiu můžete využít propojenou službu k tomu, aby se zabránilo vkládání klíčů Azure Cosmos DB do notebooků Spark. Přístup k této propojené službě je k dispozici všem uživatelům, kteří mají přístup k pracovnímu prostoru.
+
+Pokud používáte synapse fondy SQL serverů bez serveru, můžete dotazovat se na Azure Cosmos DB analytické úložiště pomocí předběžného Vytváření přihlašovacích údajů SQL, který ukládá klíče účtu a odkazuje na ně ve funkci OPENROWSET. Další informace najdete v článku [dotazování s fondem SQL bez serveru v článku s odkazem na Azure synapse](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) .
 
 ## <a name="synapse-run-times"></a>Synapse doby běhu
 

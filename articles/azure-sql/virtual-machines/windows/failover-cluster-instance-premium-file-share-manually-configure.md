@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 80fe9f03f2c57eab8527e553153f3e65315a54bf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ddd25c605ef159bddfb8a9c7cb4d02ac7094c511
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034842"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482190"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Vytvoření FCI se souborovou sdílenou složkou Premium (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +30,7 @@ Soubory úrovně Premium jsou Prostory úložiště s přímým přístupem (SSD
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech pro clustery](hadr-cluster-best-practices.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
@@ -214,6 +214,7 @@ Další podrobnosti o možnostech připojení clusteru najdete v tématu [Směro
 - Microsoft DTC (Distributed Transaction Coordinator) (MSDTC) není podporován na Windows serveru 2016 a starších verzích. 
 - FILESTREAM není podporován pro cluster s podporou převzetí služeb při selhání se sdílenou složkou Premium. Pokud chcete použít FILESTREAM, nasaďte cluster místo toho pomocí [prostory úložiště s přímým přístupem](failover-cluster-instance-storage-spaces-direct-manually-configure.md) nebo [sdílených disků Azure](failover-cluster-instance-azure-shared-disks-manually-configure.md) .
 - Podporuje se jenom registrování s rozšířením agenta SQL IaaS v [režimu zjednodušené správy](sql-server-iaas-agent-extension-automate-management.md#management-modes) . 
+- [Pro soubory Azure se v důsledku omezení zhuštěných souborů](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)aktuálně nepodporují snímky databáze.  
 
 ## <a name="next-steps"></a>Další kroky
 

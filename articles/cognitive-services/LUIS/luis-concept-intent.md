@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.openlocfilehash: bf5ab7361c84fb787366c7c361829e52362fe427
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: 8e76e3e7683d43a7a39bc0c168a29016a988c705
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95025904"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499406"
 ---
 # <a name="intents-in-your-luis-app"></a>Záměry v aplikaci LUIS
 
@@ -74,7 +74,7 @@ Chcete-li určit negativní a pozitivní záměry, například **"Chci auto** " 
 
 ## <a name="intents-and-patterns"></a>Záměry a vzory
 
-Pokud máte příklad projevy, který lze definovat jako součást nebo celý jako regulární výraz, zvažte použití [entity regulárního výrazu](luis-concept-entity-types.md#regular-expression-entity) spárovaného se [vzorem](luis-concept-patterns.md).
+Pokud máte příklad projevy, který lze definovat jako součást nebo celý jako regulární výraz, zvažte použití [entity regulárního výrazu](luis-concept-entity-types.md#regex-entity) spárovaného se [vzorem](luis-concept-patterns.md).
 
 Použití entity regulárního výrazu garantuje extrakci dat, aby byl vzor porovnán. Porovnávání vzorů zaručuje, že se vrátí přesný záměr.
 

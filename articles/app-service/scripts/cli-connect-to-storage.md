@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 508fef1a7467af6874271b5ef37c30a9a16dec95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: bc0dc403e6987743c97982924348cbe345d15c48
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006308"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482300"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account-using-cli"></a>Připojení aplikace App Service k účtu úložiště pomocí rozhraní příkazového řádku
 

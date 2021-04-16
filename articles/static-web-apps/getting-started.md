@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 335f78bba24947b1b6c3d6132bc38f237b3298b9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: fb874c25ab688cc5e6723d1023157b8acd9478b9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449138"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483835"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Rychlý Start: Vytvoření první statické lokality pomocí statického Web Apps Azure
 
@@ -58,21 +58,35 @@ Pak otevřete Visual Studio Code a přejít na **soubor > otevřít složku** a 
     # <a name="no-framework"></a>[Žádná architektura](#tab/vanilla-javascript)
     :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="Přednastavení aplikace: žádné rozhraní":::
 
-    Zadejte **./** jako umístění souborů aplikace
+    Jako umístění souborů aplikace zadejte **./** .
 
     :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Umístění souborů aplikace":::
 
-    Jako umístění pro rozhraní Azure Functions API vyberte **Přeskočit?**
+    Jako umístění pro rozhraní Azure Functions API vyberte **Přeskočit nyní** .
 
     :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="Umístění rozhraní API":::
 
-    Zadejte **./** jako výstupní umístění sestavení
+    Jako výstupní umístění sestavení zadejte **./.**
 
     :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="Umístění výstupu sestavení aplikace":::
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    :::image type="content" source="media/getting-started/extension-presets-angular.png" alt-text="Přednastavení aplikací: úhlová":::
+    I když je k dispozici úhlová předvolba, vyberte možnost **vlastní** , abyste pro tuto aplikaci mohli zadat vhodné umístění výstupu.
+
+    :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="Přednastavení aplikací: úhlová":::
+
+    Jako umístění souborů aplikace zadejte **./** .
+
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Umístění souborů aplikace: úhlové":::
+
+    Jako umístění pro rozhraní Azure Functions API vyberte **Přeskočit nyní** .
+
+    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="Umístění rozhraní API: úhlová":::
+
+    Jako výstupní umístění sestavení zadejte **DIST/úhlové základní** umístění.
+
+    :::image type="content" source="media/getting-started/extension-angular.png" alt-text="Umístění výstupu sestavení aplikace: úhlová":::
 
     # <a name="react"></a>[React](#tab/react)
 

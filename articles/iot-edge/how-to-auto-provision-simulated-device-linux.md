@@ -8,12 +8,12 @@ ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ca16099cffc22a19c2ee35b00ae6f1bcbe2977a7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 79fe8acd06084c58b0cf9b47bf93e933c648510c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312395"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481986"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Vytvoření a zřízení zařízení IoT Edge s čipem TPM v systému Linux
 
@@ -149,7 +149,7 @@ Načtěte informace o zřizování z virtuálního počítače a pomocí tohoto 
 Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav** dopředných zařízení. V případě zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
 
 > [!TIP]
-> V rozhraní příkazového řádku Azure můžete vytvořit [registraci](/cli/azure/ext/azure-iot/iot/dps/enrollment) a pomocí příznaku s **povoleným okrajem** určit, že se jedná o zařízení IoT Edge.
+> V rozhraní příkazového řádku Azure můžete vytvořit [registraci](/cli/azure/iot/dps/enrollment) a pomocí příznaku s **povoleným okrajem** určit, že se jedná o zařízení IoT Edge.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do vaší instance IoT Hub Device Provisioning Service.
 

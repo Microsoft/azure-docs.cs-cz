@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 03/31/2021
 ms.author: kenwith
-ms.openlocfilehash: 102c0f7363b8d4f635762a33b82825e9ae71dfc6
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: f7a2429161cebe867d844b4ca7aa08ec3613edcd
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120788"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388206"
 ---
 # <a name="syncing-extension-attributes-for-app-provisioning"></a>Synchronizují se atributy rozšíření pro zřizování aplikací.
 
@@ -28,10 +28,10 @@ Pro uživatele v místní službě Active Directory je nutné synchronizovat už
 ## <a name="create-an-extension-attribute-on-a-cloud-only-user"></a>Vytvoření atributu rozšíření v rámci jenom cloudového uživatele
 K rozšiřování schématu uživatele pro uživatele v Azure AD můžete použít Microsoft Graph a PowerShell. Tyto atributy rozšíření jsou ve většině případů automaticky zjišťovány.
 
-Pokud máte více než 1000 instančních objektů, můžete najít rozšíření chybějící v seznamu zdrojového atributu. Pokud se atribut, který jste vytvořili, automaticky nezobrazí, ověřte, že byl atribut vytvořen, a přidejte jej do schématu ručně. K ověření, že byla vytvořena, použijte Microsoft Graph a [Průzkumník grafů](/graph/graph-explorer/graph-explorer-overview.md). Chcete-li jej přidat do schématu ručně, přečtěte si téma [úpravy seznamu podporovaných atributů](customize-application-attributes.md#editing-the-list-of-supported-attributes).
+Pokud máte více než 1000 instančních objektů, můžete najít rozšíření chybějící v seznamu zdrojového atributu. Pokud se atribut, který jste vytvořili, automaticky nezobrazí, ověřte, že byl atribut vytvořen, a přidejte jej do schématu ručně. K ověření, že byla vytvořena, použijte Microsoft Graph a [Průzkumník grafů](/graph/graph-explorer/graph-explorer-overview). Chcete-li jej přidat do schématu ručně, přečtěte si téma [úpravy seznamu podporovaných atributů](customize-application-attributes.md#editing-the-list-of-supported-attributes).
 
 ### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-microsoft-graph"></a>Vytvoření atributu rozšíření v cloudu jen pro uživatele pomocí Microsoft Graph
-Schéma uživatelů Azure AD můžete roztáhnout pomocí [Microsoft Graph](/graph/overview.md). 
+Schéma uživatelů Azure AD můžete roztáhnout pomocí [Microsoft Graph](/graph/overview). 
 
 Nejdřív Seznamte aplikace ve vašem tenantovi, abyste získali ID aplikace, na které právě pracujete. Další informace najdete v tématu [seznam extensionProperties](/graph/api/application-list-extensionproperty?view=graph-rest-1.0&tabs=http&preserve-view=true).
 
@@ -54,7 +54,7 @@ Content-type: application/json
 }
 ```
 
-Předchozí požadavek vytvořil atribut rozšíření ve formátu `extension_appID_extensionName` . Nyní můžete aktualizovat uživatele pomocí tohoto atributu rozšíření. Další informace najdete v tématu [aktualizace uživatele](/graph/api/user-update.md?view=graph-rest-1.0&tabs=http&preserve-view=true).
+Předchozí požadavek vytvořil atribut rozšíření ve formátu `extension_appID_extensionName` . Nyní můžete aktualizovat uživatele pomocí tohoto atributu rozšíření. Další informace najdete v tématu [aktualizace uživatele](/graph/api/user-update?view=graph-rest-1.0&tabs=http&preserve-view=true).
 ```json
 PATCH https://graph.microsoft.com/v1.0/users/{id}
 Content-type: application/json
@@ -63,7 +63,7 @@ Content-type: application/json
   "extension_inputAppId_extensionName": "extensionValue"
 }
 ```
-Nakonec ověřte atribut pro uživatele. Další informace najdete v tématu [získání uživatele](/graph/api/user-get.md?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select&preserve-view=true).
+Nakonec ověřte atribut pro uživatele. Další informace najdete v tématu [získání uživatele](/graph/api/user-get?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select&preserve-view=true).
 
 ```json
 GET https://graph.microsoft.com/v1.0/users/{id}?$select=displayName,extension_inputAppId_extensionName

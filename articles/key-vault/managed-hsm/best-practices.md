@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 7a30a7ab6689b602bc9ad4f696a6fe54c80f2151
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ef3b19e5064c8a88bf80eebf57539be72747fe4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90995362"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482513"
 ---
 # <a name="best-practices-when-using-managed-hsm"></a>Osvědčené postupy při použití spravovaného HSM
 
@@ -23,8 +23,10 @@ ms.locfileid: "90995362"
 Spravovaný modul HSM je cloudová služba, která chrání šifrovací klíče. Vzhledem k tomu, že jsou tyto klíče citlivé a důležité pro podnikání, nezapomeňte zabezpečit přístup ke spravovaným HSM tím, že povolíte jenom autorizované aplikace a uživatele. Tento [článek](access-control.md) poskytuje přehled modelu přístupu. Vysvětluje ověřování a autorizaci a řízení přístupu na základě rolí.
 - Vytvořte [Azure Active Directory skupinu zabezpečení](../../active-directory/fundamentals/active-directory-manage-groups.md) pro správce HSM (místo přiřazování role správce jednotlivcům). V případě odstranění jednotlivého účtu to zabrání možnosti "zámek správy".
 - Uzamčení přístupu ke skupinám pro správu, předplatným, skupinám prostředků a spravovaným HSM – používání služby Azure RBAC k řízení přístupu ke skupinám pro správu, předplatným a skupinám prostředků
-- Vytvoření přiřazení rolí podle klíčů pomocí [spravované místní RBAC (HSM](access-control.md#data-plane-and-managed-hsm-local-rbac) )
-- K přiřazení rolí použijte alespoň přístupový objekt zabezpečení s oprávněními.
+- Vytvořte přiřazení rolí podle klíčů pomocí [spravované místní RBAC](access-control.md#data-plane-and-managed-hsm-local-rbac).
+- Aby se zachovalo oddělení cel, nepřiřazují více rolí stejným objektům zabezpečení. 
+- K přiřazení rolí použijte přístup k objektům s nejnižšími oprávněními.
+- Vytvořte vlastní definici role s přesnou sadou oprávnění.
 
 ## <a name="choose-regions-that-support-availability-zones"></a>Výběr oblastí, které podporují zóny dostupnosti
 

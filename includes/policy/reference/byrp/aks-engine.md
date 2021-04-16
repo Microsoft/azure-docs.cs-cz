@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 2907b732b0d3bf548386e5d5299966c113c20c2f
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d421cc34af7663e5399ecf7747fcbfabe3766017
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090258"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500470"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Omezení prostředků procesoru a paměti v kontejnerech Kubernetes nesmí překročit zadaná omezení.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345eecc-fa47-480f-9e88-67dcc122b164) |Vyvynuťte omezení prostředků procesoru a paměti kontejneru, aby nedocházelo k útokům na vyčerpání prostředků v clusteru Kubernetes. Tato zásada je všeobecně dostupná pro Kubernetes službu (AKS) a verzi Preview pro modul AKS a Azure ARC s povoleným Kubernetes. Další informace najdete na webu [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc). |audit, zamítnutí, zakázáno |[6.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerResourceLimits.json) |
 |[Kontejnery clusteru Kubernetes by neměly sdílet ID hostitelského procesu ani obor názvů hostitele IPC.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8) |Kontejnery pod zablokují sdílení oboru názvů hostitelského procesu a oboru názvů hostitele IPC v clusteru Kubernetes. Toto doporučení je součástí CIS v 5.2.2 a CIS 5.2.3, který má za cíl zlepšit zabezpečení prostředí Kubernetes. Tato zásada je všeobecně dostupná pro Kubernetes službu (AKS) a verzi Preview pro modul AKS a Azure ARC s povoleným Kubernetes. Další informace najdete na webu [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc). |audit, zamítnutí, zakázáno |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockHostNamespace.json) |

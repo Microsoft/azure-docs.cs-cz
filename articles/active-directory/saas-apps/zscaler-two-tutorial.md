@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 8c3d76f24cce860538dc3bd5dcf29b59708bdb5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4d39492a05ee90c0ba2e081336d7b04579a5c43
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98726211"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519031"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Kurz: Azure Active Directory integrace s Zscaler dvě
 
@@ -37,11 +37,14 @@ Ke konfiguraci integrace služby Azure AD pomocí Zscaler dvou budete potřebova
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Zscaler 2 podporuje jednotné přihlašování s podporou **SP**
+* Zscaler **Two podporuje jednotné** přihlašování (SSO).
 
-* Zscaler dva podporují zřizování uživatelů **jenom v čase**
+* Zscaler dvě podporují zřizování uživatelů **jenom v čase** .
 
-## <a name="adding-zscaler-two-from-the-gallery"></a>Přidání Zscaler 2 z Galerie
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+
+## <a name="add-zscaler-two-from-the-gallery"></a>Přidání Zscaler 2 z Galerie
 
 Pokud chcete nakonfigurovat integraci Zscalerch dvou do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Zscaler dvě z galerie.
 
@@ -69,7 +72,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V Azure Portal na stránce integrace **tří aplikací Zscaler** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace **dvou aplikací Zscaler** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
@@ -134,23 +137,15 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Zscaler dvěma.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Zscaler dvěma.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **Zscaler 2**.
-2. V seznamu aplikace vyberte **Zscaler dvě**.
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatele, jako je **Britta Simon** , a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-    ![Snímek obrazovky se zobrazí v dialogovém okně Uživatelé a skupiny, kde můžete vybrat uživatele.](./media/zscaler-two-tutorial/tutorial_zscalertwo_users.png)
-
-6. V dialogu **Vybrat roli** vyberte příslušnou roli uživatele v seznamu a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-    ![Snímek obrazovky se zobrazí dialogové okno vybrat roli, kde můžete zvolit roli uživatele.](./media/zscaler-two-tutorial/tutorial_zscalertwo_roles.png)
-
-7. V dialogovém okně **Přidat přiřazení** vyberte tlačítko **přiřadit** .
-
-    ![Snímek obrazovky se zobrazí dialogové okno Přidat přiřazení, kde můžete vybrat přiřadit.](./media/zscaler-two-tutorial/tutorial_zscalertwo_assign.png)
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Zscaler dvě**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-zscaler-two-sso"></a>Konfigurace Zscaler dvou jednotného přihlašování
 
@@ -166,7 +161,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 4. V části **správa > ověřování > nastavení ověřování** a proveďte následující kroky:
    
-    ![Snímek obrazovky ukazuje Zscaler jednu lokalitu podle postupu popsaného v tématu.](./media/zscaler-two-tutorial/ic800206.png "Správa")
+    ![Snímek obrazovky ukazuje Zscaler jednu lokalitu podle postupu popsaného v tématu.](./media/zscaler-two-tutorial/administrator.png "Správa")
 
     a. V části typ ověřování vyberte **SAML**.
 
@@ -174,7 +169,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 5. V okně **Upravit SAML** proveďte následující kroky: a klikněte na Uložit.  
             
-    ![Správa uživatelů & ověřování](./media/zscaler-two-tutorial/ic800208.png "Správa uživatelů & ověřování")
+    ![Správa uživatelů & ověřování](./media/zscaler-two-tutorial/authentication.png "Správa uživatelů & ověřování")
     
     a. Do textového pole **Adresa URL portálu SAML** vložte **přihlašovací adresu URL** , kterou jste zkopírovali z Azure Portal.
 
@@ -194,20 +189,21 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 6. Na stránce **Konfigurovat ověření uživatele** proveďte následující kroky:
 
-    ![Snímek obrazovky se zobrazí dialogové okno Konfigurovat ověření uživatele s vybraným polem aktivovat.](./media/zscaler-two-tutorial/ic800207.png)
+    ![Snímek obrazovky se zobrazí dialogové okno Konfigurovat ověření uživatele s vybraným polem aktivovat.](./media/zscaler-two-tutorial/activation.png)
 
     a. Najeďte myší na nabídku **Aktivace** v blízkosti levého dolního rohu.
 
     b. Klikněte na tlačítko **aktivovat**.
 
 ## <a name="configuring-proxy-settings&quot;></a>Konfigurace nastavení proxy serveru
+
 ### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>Konfigurace nastavení proxy serveru v Internet Exploreru
 
 1. Spusťte **aplikaci Internet Explorer**.
 
 2. V nabídce **nástroje** vyberte **Možnosti Internetu** . otevře se dialogové okno **Možnosti Internetu** .   
     
-     ![Možnosti Internetu](./media/zscaler-two-tutorial/ic769492.png &quot;Možnosti Internetu")
+     ![Možnosti Internetu](./media/zscaler-two-tutorial/internet.png &quot;Možnosti Internetu")
 
 3. Klikněte na kartu **připojení** .   
   
@@ -217,7 +213,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 5. V části proxy server proveďte následující kroky:   
    
-    ![Proxy server](./media/zscaler-two-tutorial/ic769494.png "Proxy server")
+    ![Proxy server](./media/zscaler-two-tutorial/proxy.png "Proxy server")
 
     a. Vyberte **použít proxy server pro vaši síť LAN**.
 
@@ -239,7 +235,7 @@ V této části se v Zscaler 2 vytvoří uživatel s názvem Britta Simon. Zscal
 >[!Note]
 >Pokud potřebujete ručně vytvořit uživatele, kontaktujte [Zscaler dva týmy podpory](https://www.zscaler.com/company/contact).
 
-### <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
@@ -248,7 +244,6 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 * Přejít na Zscaler dvě přihlašovací adresa URL přímo a zahajte tok přihlášení.
 
 * Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Zscaler dvě v části Moje aplikace, přesměruje se na Zscaler dvě přihlašovací adresa URL. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
-
 
 ## <a name="next-steps"></a>Další kroky
 

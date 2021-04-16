@@ -3,12 +3,12 @@ title: Zálohování počítačů s Windows pomocí agenta MARS
 description: K zálohování počítačů s Windows použijte agenta Microsoft Azure Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 54932192d61633da55657e2ba57adf4e30c4fbc7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 54628c15ffb51c7157132c9a91f41c16873df340
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98702764"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519166"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Zálohování souborů a složek Windows serveru do Azure
 
@@ -158,4 +158,4 @@ Další informace najdete v tématu [Vytvoření zásady zálohování](#create-
 ## <a name="next-steps"></a>Další kroky
 
 * Naučte se, jak [obnovit soubory v Azure](backup-azure-restore-windows-server.md).
-* Vyhledání [běžných dotazů týkajících se zálohování souborů a složek](backup-azure-file-folder-backup-faq.md)
+* Vyhledání [běžných dotazů týkajících se zálohování souborů a složek](backup-azure-file-folder-backup-faq.yml)

@@ -3,12 +3,12 @@ title: Řešení potíží s chybami zálohování SAP HANAových databází
 description: Popisuje, jak řešit běžné chyby, ke kterým může dojít při použití Azure Backup k zálohování databází SAP HANA.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 22800adc323bda8a60278160f24bc559103fb57e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdf4c26aa32d65ec63ec84d85e454adaaf2ece8d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101713333"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517228"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Řešení potíží se zálohováním databází SAP HANA v Azure
 
@@ -197,4 +197,4 @@ V předchozích scénářích doporučujeme, abyste na virtuálním počítači 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si [Nejčastější dotazy](./sap-hana-faq-backup-azure-vm.md) týkající se zálohování SAP HANA databází na virtuálních počítačích Azure.
+- Přečtěte si [Nejčastější dotazy](./sap-hana-faq-backup-azure-vm.yml) týkající se zálohování SAP HANA databází na virtuálních počítačích Azure.

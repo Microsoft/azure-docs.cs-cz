@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 01/11/2021
+ms.date: 04/14/2021
 ms.author: victorh
-ms.openlocfilehash: c425afc314435c38d15d53ab0c38dcd48e35a40b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91d4d631376c03b668128936f3840ce1119f9b6f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508924"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482737"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Rozsahy privátních IP adres Azure Firewall SNAT
 
@@ -32,13 +32,28 @@ Pokud vaše organizace používá pro privátní sítě rozsah veřejných IP ad
 > [!IMPORTANT]
 > Pokud chcete zadat vlastní rozsahy privátních IP adres a zachovat výchozí rozsahy adres RFC 1918, ujistěte se, že vlastní seznam stále obsahuje rozsah RFC 1918 pro IANA. 
 
+Privátní IP adresy SNAT můžete nakonfigurovat pomocí následujících metod. Privátní adresy SNAT musíte nakonfigurovat pomocí metody vhodné pro vaši konfiguraci. Brány firewall přidružené k zásadám brány firewall musí určovat rozsah zásad a nepoužívat je `AdditionalProperties` .
+
+
+|Metoda            |Použití klasických pravidel  |Použití zásad brány firewall  |
+|---------|---------|---------|
+|portál Azure     | [doložen](#classic-rules-3)| [doložen](#firewall-policy-1)|
+|Azure PowerShell     |[Konfigurace `PrivateRange`](#classic-rules)|aktuálně nepodporováno|
+|Azure CLI|[Konfigurace `--private-ranges`](#classic-rules-1)|aktuálně nepodporováno|
+|Šablona ARM     |[`AdditionalProperties`vlastnost konfigurovat v bráně firewall](#classic-rules-2)|[konfigurace `snat/privateRanges` v zásadách brány firewall](#firewall-policy)|
+
+
 ## <a name="configure-snat-private-ip-address-ranges---azure-powershell"></a>Nakonfigurujte rozsahy privátních IP adres SNAT – Azure PowerShell
+### <a name="classic-rules"></a>Klasická pravidla
 
 Pomocí Azure PowerShell můžete zadat rozsahy privátních IP adres pro bránu firewall.
 
-### <a name="new-firewall"></a>Nová brána firewall
+> [!NOTE]
+> Vlastnost brány firewall `PrivateRange` je ignorována pro brány firewall přidružené k zásadám brány firewall. Je nutné použít `SNAT` vlastnost v, `firewallPolicies` jak je popsáno v tématu [Konfigurace rozsahů privátních IP adres SNAT – šablona ARM](#firewall-policy).
 
-V případě nové brány firewall je rutina Azure PowerShell:
+#### <a name="new-firewall"></a>Nová brána firewall
+
+Pro novou bránu firewall s použitím klasických pravidel je rutina Azure PowerShell:
 
 ```azurepowershell
 $azFw = @{
@@ -60,9 +75,9 @@ New-AzFirewall @azFw
 
 Další informace najdete v tématu [New-AzFirewall](/powershell/module/az.network/new-azfirewall).
 
-### <a name="existing-firewall"></a>Existující brána firewall
+#### <a name="existing-firewall"></a>Existující brána firewall
 
-Ke konfiguraci existující brány firewall použijte následující rutiny Azure PowerShell:
+Pokud chcete nakonfigurovat existující bránu firewall pomocí klasických pravidel, použijte následující rutiny Azure PowerShell:
 
 ```azurepowershell
 $azfw = Get-AzFirewall -Name '<fw-name>' -ResourceGroupName '<resourcegroup-name>'
@@ -71,12 +86,13 @@ Set-AzFirewall -AzureFirewall $azfw
 ```
 
 ## <a name="configure-snat-private-ip-address-ranges---azure-cli"></a>Konfigurace rozsahů privátních IP adres SNAT – Azure CLI
+### <a name="classic-rules"></a>Klasická pravidla
 
-Pomocí Azure CLI můžete zadat rozsahy privátních IP adres pro bránu firewall.
+Pomocí Azure CLI můžete zadat rozsahy privátních IP adres pro bránu firewall s použitím klasických pravidel. 
 
-### <a name="new-firewall"></a>Nová brána firewall
+#### <a name="new-firewall"></a>Nová brána firewall
 
-V případě nové brány firewall je příkaz Azure CLI:
+Pro novou bránu firewall s použitím klasických pravidel je příkaz Azure CLI:
 
 ```azurecli-interactive
 az network firewall create \
@@ -89,11 +105,11 @@ az network firewall create \
 > Nasazení Azure Firewall pomocí příkazu rozhraní příkazového řádku Azure `az network firewall create` vyžaduje další kroky konfigurace pro vytvoření veřejných IP adres a konfigurace protokolu IP. Úplný Průvodce nasazením najdete v tématu [nasazení a konfigurace Azure firewall pomocí](deploy-cli.md) rozhraní příkazového řádku Azure.
 
 > [!NOTE]
-> IANAPrivateRanges se rozšíří na aktuální výchozí hodnoty na Azure Firewall, zatímco se do nich přidají jiné rozsahy. Chcete-li zachovat výchozí IANAPrivateRanges ve specifikaci privátního rozsahu, musí zůstat ve vaší `PrivateRange` specifikaci, jak je znázorněno v následujících příkladech.
+> IANAPrivateRanges se rozšíří na aktuální výchozí hodnoty na Azure Firewall, zatímco se do nich přidají jiné rozsahy. Chcete-li zachovat výchozí IANAPrivateRanges ve specifikaci privátního rozsahu, musí zůstat ve vaší `private-ranges` specifikaci, jak je znázorněno v následujících příkladech.
 
-### <a name="existing-firewall"></a>Existující brána firewall
+#### <a name="existing-firewall"></a>Existující brána firewall
 
-K nakonfigurování existující brány firewall je příkaz Azure CLI:
+Pokud chcete konfigurovat existující bránu firewall pomocí klasických pravidel, použijte příkaz Azure CLI:
 
 ```azurecli-interactive
 az network firewall update \
@@ -103,6 +119,7 @@ az network firewall update \
 ```
 
 ## <a name="configure-snat-private-ip-address-ranges---arm-template"></a>Konfigurace rozsahů privátních IP adres SNAT – šablona ARM
+### <a name="classic-rules"></a>Klasická pravidla
 
 Pokud chcete konfigurovat SNAT během Template deployment ARM, můžete do vlastnosti přidat následující `additionalProperties` :
 
@@ -111,8 +128,29 @@ Pokud chcete konfigurovat SNAT během Template deployment ARM, můžete do vlast
    "Network.SNAT.PrivateRanges": "IANAPrivateRanges , IPRange1, IPRange2"
 },
 ```
+### <a name="firewall-policy"></a>Zásady brány firewall
+
+Brány firewall Azure přidružené k zásadám brány firewall podporovaly soukromé rozsahy SNAT od verze 2020-11-01 API. V současné době můžete pomocí šablony aktualizovat privátní rozsah SNAT v zásadách brány firewall. Následující ukázka nakonfiguruje bránu firewall tak, aby **vždy** SNAT síťový provoz:
+
+```json
+{ 
+
+            "type": "Microsoft.Network/firewallPolicies", 
+            "apiVersion": "2020-11-01", 
+            "name": "[parameters('firewallPolicies_DatabasePolicy_name')]", 
+            "location": "eastus", 
+            "properties": { 
+                "sku": { 
+                    "tier": "Standard" 
+                }, 
+                "snat": { 
+                    "privateRanges": [255.255.255.255/32] 
+                } 
+            } 
+```
 
 ## <a name="configure-snat-private-ip-address-ranges---azure-portal"></a>Nakonfigurujte rozsahy privátních IP adres SNAT – Azure Portal
+### <a name="classic-rules"></a>Klasická pravidla
 
 Pomocí Azure Portal můžete pro bránu firewall zadat rozsahy privátních IP adres.
 
@@ -125,6 +163,18 @@ Pomocí Azure Portal můžete pro bránu firewall zadat rozsahy privátních IP 
 
 1. Ve výchozím nastavení je **IANAPrivateRanges** nakonfigurovaný.
 2. Upravte rozsahy privátních IP adres pro vaše prostředí a pak vyberte **Uložit**.
+
+### <a name="firewall-policy"></a>Zásady brány firewall
+
+1.  Vyberte skupinu prostředků a potom vyberte zásady brány firewall.
+2.  Ve sloupci **Nastavení** vyberte možnost **rozsahy privátních IP adres (SNAT)** .
+
+    Ve výchozím nastavení se vybere **výchozí chování zásad Azure firewall SNAT** . 
+3. Chcete-li upravit konfiguraci SNAT, zrušte zaškrtnutí políčka a v části **provést SNAT** vyberte podmínky pro provedení SNAT pro vaše prostředí.
+      :::image type="content" source="media/snat-private-range/private-ip-ranges-snat.png" alt-text="Rozsahy privátních IP adres (SNAT)":::
+
+
+4.   Vyberte **Použít**.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 25d4774144ff4ea601badb1fb71b51c8142def26
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 1c4760362e7c2b3965638b3213910b5b8cd6f079
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304102"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516174"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge-preview"></a>Publikování a přihlášení k odběru pomocí Azure IoT Edge (Preview)
 
@@ -94,7 +94,7 @@ Moduly nasazené pomocí IoT Edge používají [ověřování symetrických klí
 Jakmile je klient MQTT ověřený pro IoT Edge centra, musí mít oprávnění k připojení. Po připojení je potřeba mít oprávnění k publikování nebo přihlášení k odběru určitých témat. Tato autorizace jsou udělována službou IoT Edge hub na základě zásad autorizace. Zásady autorizace jsou sady příkazů vyjádřené jako struktura JSON, která se odesílá do centra IoT Edge prostřednictvím jeho vlákna. Pokud chcete nakonfigurovat zásady autorizace, upravte stav vlákna IoT Edge hub.
 
 > [!NOTE]
-> V rámci verze Public Preview jsou úpravy zásad autorizace zprostředkovatele MQTT k dispozici pouze prostřednictvím sady Visual Studio, Visual Studio Code nebo rozhraní příkazového řádku Azure CLI. Azure Portal v současné době nepodporuje úpravu vláken centra IoT Edge a zásady autorizace.
+> Ve verzi Public Preview podporuje jenom nasazení Azure CLI, která obsahují zásady autorizace MQTT Broker. Azure Portal v současné době nepodporuje úpravu vláken centra IoT Edge a zásady autorizace.
 
 Každý příkaz zásad autorizace se skládá z kombinace `identities` efektů, `allow` `deny` `operations` a `resources` :
 
@@ -170,10 +170,11 @@ Při psaní zásad autorizace je potřeba mít na paměti několik věcí:
 - Ve výchozím nastavení jsou všechny operace odepřeny.
 - Příkazy autorizace jsou vyhodnocovány v pořadí, v jakém jsou uvedeny v definici JSON. Začne tím `identities` , že prohlíží a pak vybere první příkazy Allow nebo Deny, které odpovídají žádosti. V případě konfliktů mezi příkazy povolit a odepřít se jedná o příkaz Deny.
 - V zásadách autorizace se dá použít několik proměnných (například náhrady):
-    - `{{iot:identity}}` představuje identitu aktuálně připojeného klienta. Například identitu zařízení jako `myDevice` nebo identitu modulu `myEdgeDevice/SampleModule` , například.
-    - `{{iot:device_id}}` představuje identitu aktuálně připojeného zařízení. Například identitu zařízení jako `myDevice` nebo identitu zařízení, na které se modul spouští `myEdgeDevice` .
-    - `{{iot:module_id}}` představuje identitu aktuálně připojeného modulu. Tato proměnná je prázdná pro připojená zařízení nebo identitu modulu, jako je `SampleModule` .
-    - `{{iot:this_device_id}}` představuje identitu zařízení IoT Edge, na kterém je spuštěná zásada autorizace. Například, `myIoTEdgeDevice`.
+
+  - `{{iot:identity}}` představuje identitu aktuálně připojeného klienta. Například identitu zařízení jako `myDevice` nebo identitu modulu `myEdgeDevice/SampleModule` , například.
+  - `{{iot:device_id}}` představuje identitu aktuálně připojeného zařízení. Například identitu zařízení jako `myDevice` nebo identitu zařízení, na které se modul spouští `myEdgeDevice` .
+  - `{{iot:module_id}}` představuje identitu aktuálně připojeného modulu. Tato proměnná je prázdná pro připojená zařízení nebo identitu modulu, jako je `SampleModule` .
+  - `{{iot:this_device_id}}` představuje identitu zařízení IoT Edge, na kterém je spuštěná zásada autorizace. Například, `myIoTEdgeDevice`.
 
 Ověřování pro témata služby IoT Hub se zpracovává trochu jinak než uživatelsky definovaná témata. Tady jsou klíčové body, které si zapamatujete:
 
@@ -220,40 +221,43 @@ V IoT Hub vytvořte dvě zařízení IoT a získejte jejich hesla. Použití Azu
 
 1. V IoT Hub vytvořte dvě zařízení IoT, která jsou nadřazená vašim zařízením IoT Edge:
 
-    ```azurecli-interactive
-    az iot hub device-identity create --device-id  sub_client --hub-name <iot_hub_name> --pd <edge_device_id>
-    az iot hub device-identity create --device-id  pub_client --hub-name <iot_hub_name> --pd <edge_device_id>
-    ```
+   ```azurecli-interactive
+   az iot hub device-identity create --device-id  sub_client --hub-name <iot_hub_name> --pd <edge_device_id>
+   az iot hub device-identity create --device-id  pub_client --hub-name <iot_hub_name> --pd <edge_device_id>
+   ```
 
 2. Získejte hesla vygenerováním tokenu SAS:
 
-    - Pro zařízení:
-    
-       ```azurecli-interactive
-       az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> --key-type primary --du 3600
-       ```
-    
-       kde 3600 je doba trvání tokenu SAS v sekundách (například 3600 = 1 hodina).
-    
-    - Pro modul:
-    
-       ```azurecli-interactive
-       az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> -m <module_name> --key-type primary --du 3600
-       ```
-    
-       kde 3600 je doba trvání tokenu SAS v sekundách (například 3600 = 1 hodina).
+   - Pro zařízení:
+
+     ```azurecli-interactive
+     az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> --key-type primary --du 3600
+     ```
+
+     kde 3600 je doba trvání tokenu SAS v sekundách (například 3600 = 1 hodina).
+
+   - Pro modul:
+
+     ```azurecli-interactive
+     az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> -m <module_name> --key-type primary --du 3600
+     ```
+
+     kde 3600 je doba trvání tokenu SAS v sekundách (například 3600 = 1 hodina).
 
 3. Zkopírujte token SAS, což je hodnota odpovídající klíči "SAS" z výstupu. Tady je příklad výstupu z příkazu Azure CLI výše:
 
-    ```
-    {
-       "sas": "SharedAccessSignature sr=example.azure-devices.net%2Fdevices%2Fdevice_1%2Fmodules%2Fmodule_a&sig=H5iMq8ZPJBkH3aBWCs0khoTPdFytHXk8VAxrthqIQS0%3D&se=1596249190"
-    }
-    ```
+   ```output
+   {
+      "sas": "SharedAccessSignature sr=example.azure-devices.net%2Fdevices%2Fdevice_1%2Fmodules%2Fmodule_a&sig=H5iMq8ZPJBkH3aBWCs0khoTPdFytHXk8VAxrthqIQS0%3D&se=1596249190"
+   }
+   ```
 
 ### <a name="authorize-publisher-and-subscriber-clients"></a>Autorizovat klienty vydavatelů a odběratelů
 
-Pokud chcete autorizovat vydavatele a předplatitele, upravte IoT Edge centra vytvořením nasazení IoT Edge prostřednictvím rozhraní příkazového řádku Azure CLI, sady Visual Studio nebo Visual Studio Code, abyste zahrnuli následující zásady autorizace:
+Pokud chcete autorizovat vydavatele a předplatitele, upravte v nasazení IoT Edge vlákna IoT Edge centra, které obsahuje následující zásady autorizace.
+
+>[!NOTE]
+>V současné době se nasazení obsahující vlastnosti autorizace MQTT dá použít jenom pro zařízení IoT Edge pomocí rozhraní příkazového řádku Azure CLI.
 
 ```json
 {
@@ -377,13 +381,13 @@ Navíc můžete vytvořit trasu, například `FROM /messages/* INTO $upstream` k
 
 Získání nevlákenných zařízení/modulu není typický vzor MQTT. Klient musí vystavit požadavek na vlákna, které IoT Hub bude sloužit.
 
-Aby bylo možné přijímat vlákna, musí se klient přihlásit k odběru IoT Hub konkrétnímu tématu `$iothub/twin/res/#` . Název tohoto tématu se dědí z IoT Hub a všichni klienti se musí přihlásit k odběru stejného tématu. Neznamená to, že zařízení nebo moduly dostanou vlákna navzájem. Centrum IoT Hub a IoT Edge ví, která vlákna by měla být doručena tam, kde, i když všechna zařízení naslouchají stejnému názvu tématu. 
+Aby bylo možné přijímat vlákna, musí se klient přihlásit k odběru IoT Hub konkrétnímu tématu `$iothub/twin/res/#` . Název tohoto tématu se dědí z IoT Hub a všichni klienti se musí přihlásit k odběru stejného tématu. Neznamená to, že zařízení nebo moduly dostanou vlákna navzájem. Centrum IoT Hub a IoT Edge ví, která vlákna by měla být doručena tam, kde, i když všechna zařízení naslouchají stejnému názvu tématu.
 
 Po vytvoření předplatného musí klient požádat o vyzdvojení publikováním zprávy do IoT Hub konkrétního tématu, `$iothub/twin/GET/?rid=<request_id>/#` kde  `<request_id>` je libovolný identifikátor. Služba IoT Hub pak pošle odpověď s požadovanými daty v tématu `$iothub/twin/res/200/?rid=<request_id>` , ke kterému se klient přihlašuje. V takovém případě může klient spárovat své žádosti s odpověďmi.
 
 ### <a name="receive-twin-patches"></a>Příjem dvojitých oprav
 
-Aby bylo možné přijímat zdvojené opravy, je nutné, aby se klient přihlásil k odběru speciálního tématu IoTHub `$iothub/twin/PATCH/properties/desired/#` . Po vytvoření předplatného obdrží klient dopředné opravy odesílané IoT Hub v tomto tématu. 
+Aby bylo možné přijímat zdvojené opravy, je nutné, aby se klient přihlásil k odběru speciálního tématu IoTHub `$iothub/twin/PATCH/properties/desired/#` . Po vytvoření předplatného obdrží klient dopředné opravy odesílané IoT Hub v tomto tématu.
 
 ### <a name="receive-direct-methods"></a>Příjem přímých metod
 
@@ -398,23 +402,23 @@ Odeslání přímé metody je volání HTTP, a proto neprojde zprostředkovatele
 Pro připojení dvou zprostředkovatelů MQTT zahrnuje centrum IoT Edge most MQTT. Most MQTT se běžně používá k připojení zprostředkovatele MQTT spuštěného k jinému zprostředkovateli MQTT. Pouze podmnožinu místních přenosů je obvykle vložena do jiného zprostředkovatele.
 
 > [!NOTE]
-> Most centra IoT Edge se dá v současné době použít jenom mezi vnořenými IoT Edge zařízeními. Nedá se použít k posílání dat do služby IoT Hub, protože IoT Hub není plnohodnotným MQTT brokerem. Další informace o podpoře funkcí zprostředkovatele služby IoT Hub MQTT najdete v tématu [komunikace se službou IoT Hub pomocí protokolu MQTT](../iot-hub/iot-hub-mqtt-support.md). Další informace o vnořování IoT Edge zařízení najdete v tématu [připojení zařízení IoT Edge pro Azure IoT Edge k bráně](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices) . 
+> Most centra IoT Edge se dá v současné době použít jenom mezi vnořenými IoT Edge zařízeními. Nedá se použít k posílání dat do služby IoT Hub, protože IoT Hub není plnohodnotným MQTT brokerem. Další informace o podpoře funkcí zprostředkovatele služby IoT Hub MQTT najdete v tématu [komunikace se službou IoT Hub pomocí protokolu MQTT](../iot-hub/iot-hub-mqtt-support.md). Další informace o vnořování IoT Edge zařízení najdete v tématu [připojení zařízení IoT Edge pro Azure IoT Edge k bráně](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices).
 
 V rámci vnořené Konfigurace přemostění služby IoT Edge hub MQTT funguje jako klient nadřazeného zprostředkovatele MQTT. proto musí být autorizační pravidla nastavena v nadřazeném EdgeHub, aby bylo možné podřízené EdgeHub publikovat a přihlásit se k odběru konkrétních uživatelsky definovaných témat, pro která je most nakonfigurovaný.
 
 Most IoT Edge MQTT je nakonfigurován prostřednictvím struktury JSON, která se odesílá do centra IoT Edge prostřednictvím jeho vlákna. Pokud chcete nakonfigurovat svůj MQTT most, upravte dvojitou událost centra IoT Edge.
 
 > [!NOTE]
-> V rámci verze Public Preview je konfigurace mostu MQTT k dispozici pouze prostřednictvím sady Visual Studio, Visual Studio Code nebo rozhraní příkazového řádku Azure CLI. Azure Portal v současné době nepodporuje úpravu vláken centra IoT Edge a jeho konfigurace mostu MQTT.
+> Verze Public Preview podporuje nasazení, která obsahují konfigurace mostu MQTT, jenom v Azure CLI. Azure Portal v současné době nepodporuje úpravu vláken centra IoT Edge a jeho konfigurace mostu MQTT.
 
 Most MQTT je možné nakonfigurovat tak, aby se připojil k několika externím zprostředkovatelům IoT Edge prostřednictvím služby MQTT hub. U každého externího zprostředkovatele se vyžadují následující nastavení:
 
 - `endpoint` je adresa vzdáleného zprostředkovatele MQTT, ke kterému se má připojit. V současné době jsou podporovány pouze nadřazené IoT Edge zařízení a jsou definovány proměnnou `$upstream` .
 - `settings` definuje témata, která se mají Přemostit pro koncový bod. U každého koncového bodu může být víc nastavení a pro jeho konfiguraci se použijí tyto hodnoty:
-    - `direction`: buď `in` k přihlášení k odběru témat vzdáleného zprostředkovatele nebo `out` k publikování do témat vzdáleného zprostředkovatele
-    - `topic`: model základního tématu, který se má shodovat. K definování tohoto vzoru lze použít [zástupné znaky MQTT](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107) . Pro tento vzor tématu můžete použít jiné předpony na místním zprostředkovateli a vzdáleném zprostředkovateli.
-    - `outPrefix`: Předpona, která se aplikuje na `topic` vzor na vzdáleném zprostředkovateli.
-    - `inPrefix`: Předpona, která se aplikuje na `topic` vzor na místním zprostředkovateli.
+  - `direction`: buď `in` k přihlášení k odběru témat vzdáleného zprostředkovatele nebo `out` k publikování do témat vzdáleného zprostředkovatele
+  - `topic`: model základního tématu, který se má shodovat. K definování tohoto vzoru lze použít [zástupné znaky MQTT](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107) . Pro tento vzor tématu můžete použít jiné předpony na místním zprostředkovateli a vzdáleném zprostředkovateli.
+  - `outPrefix`: Předpona, která se aplikuje na `topic` vzor na vzdáleném zprostředkovateli.
+  - `inPrefix`: Předpona, která se aplikuje na `topic` vzor na místním zprostředkovateli.
 
 Níže je uveden příklad konfigurace mostu IoT Edge MQTT, která znovu publikuje všechny zprávy přijaté v tématech `alerts/#` nadřazeného IoT Edge zařízení do podřízeného IoT Edge zařízení ve stejných tématech a znovu publikuje všechny zprávy odeslané v tématech `/local/telemetry/#` podřízeného IoT Edge zařízení do nadřazeného IoT Edge zařízení v tématech `/remote/messages/#` .
 

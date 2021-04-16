@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 76aadd667691e12c61e0e5e13c13ca0241a9f0ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 40c5e0ff2c2301607f5a548ff05c742c5c5a948d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045497"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517058"
 ---
 # <a name="register-and-scan-oracle-source-preview"></a>Registrace a kontrola zdrojového kódu Oracle (Preview)
 
@@ -38,9 +38,7 @@ Zdroj Oracle podporuje **úplnou kontrolu** pro extrakci metadat z databáze Ora
 
 5.  Podporované verze databáze Oracle jsou 6i na 19c.
 
-6.  Oprávnění uživatele: aby se zajistilo úspěšné prohledávání poprvé, vyžaduje se plné oprávnění typu sys admin.
-
-    Pro následné kontroly je vyžadováno oprávnění jen pro čtení k systémovým tabulkám. Uživatel by měl mít oprávnění k vytvoření relace a také přiřazení role katalog vybrat \_ roli \_ . Případně může uživatel mít udělené oprávnění vybrat pro každou systémovou tabulku, ze které tento konektor dotazuje metadata:
+6.  Oprávnění uživatele: je vyžadován přístup jen pro čtení k systémovým tabulkám. Uživatel by měl mít oprávnění k vytvoření relace a také přiřazení role katalog vybrat \_ roli \_ . Případně může uživatel mít udělené oprávnění vybrat pro každou systémovou tabulku, ze které tento konektor dotazuje metadata:
        > udělit uživateli relaci Create \[ \] ; \
         udělit uživateli možnost vybrat na všech uživatelích \_ \[ \] ; \
         udělit uživateli možnost vybrat u \_ objektu \[ DBA \] ; \

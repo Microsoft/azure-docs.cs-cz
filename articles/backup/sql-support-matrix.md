@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování S
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: d7038b47bd4aba8f7747eef455f1e8dd3c77a695
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: bcbac4f6a91ad77d21eb6274aa03d251b8fbfe7c
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257339"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515052"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Matice podpory pro zálohování SQL Server ve virtuálních počítačích Azure
 
@@ -99,7 +99,7 @@ Azure Backup podporuje konzistentní rychlost přenosu dat 200 MB/s pro úplné 
 
 - Základní virtuální počítač (obsahující instanci SQL Server, která je hostitelem databáze), je nakonfigurován s požadovanou propustností sítě. Pokud je maximální propustnost virtuálního počítače menší než 200 MB/s, Azure Backup nemůže přenášet data při optimální rychlosti.<br></br>Také disk, který obsahuje soubory databáze, musí mít zřízenou dostatečnou propustnost. [Přečtěte si další informace](../virtual-machines/disks-performance.md) o propustnosti a výkonu disku ve virtuálních počítačích Azure. 
 - Procesy, které běží na virtuálním počítači, nespotřebovávají šířku pásma virtuálních počítačů. 
-- Plány zálohování jsou rozloženy mezi podmnožinou databází. Více záloh spuštěných současně na virtuálním počítači sdílí míru spotřeby sítě mezi zálohami. [Přečtěte si další informace](faq-backup-sql-server.md#can-i-control-how-many-concurrent-backups-run-on-the-sql-server) o tom, jak řídit počet souběžných záloh.
+- Plány zálohování jsou rozloženy mezi podmnožinou databází. Více záloh spuštěných současně na virtuálním počítači sdílí míru spotřeby sítě mezi zálohami. [Přečtěte si další informace](faq-backup-sql-server.yml#can-i-control-how-many-concurrent-backups-run-on-the-sql-server-) o tom, jak řídit počet souběžných záloh.
 
 >[!NOTE]
 > [Stáhněte si podrobný Plánovač prostředků](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) a vypočítejte přibližný počet chráněných databází doporučených pro jednotlivé servery na základě prostředků virtuálních počítačů, šířky pásma a zásad zálohování.

@@ -1,19 +1,22 @@
 ---
 title: Povolení rozšíření virtuálního počítače pomocí rozhraní příkazového řádku Azure
 description: Tento článek popisuje, jak nasadit rozšíření virtuálních počítačů na servery s podporou ARC Azure běžícími v hybridních cloudových prostředích pomocí Azure CLI.
-ms.date: 01/05/2021
+ms.date: 04/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6edb7d55e542f963c75693d535fa3b50dc5b827b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 25e75ede30139201789cd86e6ebddda09a664eb4
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97916197"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388733"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Povolení rozšíření virtuálních počítačů Azure pomocí Azure CLI
 
 V tomto článku se dozvíte, jak nasadit a odinstalovat rozšíření virtuálního počítače, které podporují servery s podporou ARC Azure, na hybridní počítač se systémem Linux nebo Windows pomocí Azure CLI.
+
+> [!NOTE]
+> Servery s podporou ARC Azure nepodporují nasazení a správu rozšíření virtuálních počítačů na virtuální počítače Azure. Informace o virtuálních počítačích Azure najdete v následujícím článku [Přehled rozšíření virtuálních počítačů](../../virtual-machines/extensions/overview.md) .
 
 [!INCLUDE [Azure CLI Prepare your environment](../../../includes/azure-cli-prepare-your-environment.md)]
 

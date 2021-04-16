@@ -3,12 +3,12 @@ title: Zálohování farmy služby SharePoint do Azure pomocí DPM
 description: Tento článek poskytuje přehled ochrany DPM/Azure Backup serveru SharePointové farmy do Azure.
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 7661d64e487c8b8badca240852d17bcf736ba8cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3524107b545c151fcf931b89c629a61d83f47ace
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91254427"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515154"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>Zálohování farmy služby SharePoint do Azure pomocí DPM
 
@@ -75,5 +75,5 @@ Pokud máte více než jeden front-end webový server a chcete přepnout Server,
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Azure Backup Server a DPM – Nejčastější dotazy](backup-azure-dpm-azure-server-faq.md)
+* [Azure Backup Server a DPM – Nejčastější dotazy](backup-azure-dpm-azure-server-faq.yml)
 * [Řešení potíží se System Center Data Protection Managerem](backup-azure-scdpm-troubleshooting.md)

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cbc415411e05d6fdecee1acf2fbc02b3c170b9d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80f0efe0894c54d1499bbfdce2317a38dff9299d
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501120"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481612"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Rychlý Start: nastavení ověření Azure pomocí Azure PowerShell
 
@@ -170,12 +170,12 @@ Aby bylo možné spravovat zásady, vyžaduje uživatel Azure AD následující 
 - Microsoft. Attestation/attestationProviders/Attestation/Write
 - Microsoft. Attestation/attestationProviders/Attestation/DELETE
 
-Tato oprávnění je možné přiřadit uživateli služby AD prostřednictvím role, jako je "vlastník" (oprávnění zástupných znaků), přispěvatele (oprávnění zástupných znaků) nebo "Přispěvatela ověření" (specifická oprávnění pouze pro Azure Attestation).  
+Aby bylo možné provádět tyto akce, musí mít uživatel Azure AD roli "správce ověření" na poskytovateli ověření identity. Tato oprávnění je také možné dědit s rolemi, jako je vlastník (oprávnění zástupných znaků), přispěvatel (oprávnění zástupných znaků) na úrovni předplatného nebo skupiny prostředků.  
 
 Aby bylo možné číst zásady, vyžaduje uživatel Azure AD následující oprávnění pro akce:
 - Microsoft. Attestation/attestationProviders/ověření/čtení
 
-Toto oprávnění může být přiřazeno uživateli služby AD prostřednictvím role, jako je například čtenář (oprávnění ke zástupným znakem) nebo "čtecí modul", "oprávnění pro Azure".
+Aby bylo možné provést tuto akci, musí mít uživatel služby Azure AD na poskytovateli ověření roli "čtecí modul ověření". Oprávnění ke čtení je také možné dědit s rolemi, jako je čtenář (oprávnění ke zástupným znakem) na úrovni předplatného nebo skupiny prostředků.  
 
 Níže uvedené rutiny prostředí PowerShell poskytují správu zásad pro poskytovatele ověření identity (jeden TEE v jednom okamžiku).
 

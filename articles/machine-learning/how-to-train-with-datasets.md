@@ -12,18 +12,18 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8b984a17c8c10c3dff7c57b7d0223ba8b4197012
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: edb7ebc94d2706d1bf20db8ed9a869107163ff8d
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640120"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387985"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Výuka modelů s Azure Machine Learningmi datovými sadami 
 
 V tomto článku se dozvíte, jak pracovat s [Azure Machine Learningmi datovými sadami](/python/api/azureml-core/azureml.core.dataset%28class%29) a naučit modely strojového učení.  V místním nebo vzdáleném výpočetním cíli můžete použít datové sady, aniž byste se museli starat o připojovací řetězce nebo cesty k datům. 
 
-Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure Machine Learning školicími funkcemi, jako jsou [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig), [Hyperdrive](/python/api/azureml-train-core/azureml.train.hyperdrive) a [Azure Machine Learning kanály](./how-to-create-machine-learning-pipelines.md).
+Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure Machine Learning školicími funkcemi, jako jsou [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig), [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive)a [kanály Azure Machine Learning](./how-to-create-machine-learning-pipelines.md).
 
 Pokud nejste připraveni k zpřístupnění dat pro školení modelů, ale chcete načíst data do poznámkového bloku pro zkoumání dat, přečtěte si téma Jak [Prozkoumat data v datové sadě](how-to-create-register-datasets.md#explore-data). 
 
@@ -44,7 +44,7 @@ K vytváření a školení s datovými sadami potřebujete:
 
 Pokud máte strukturovaná data, která ještě nejsou registrovaná jako datová sada, vytvořte TabularDataset a použijte ji přímo ve školicím skriptu pro svůj místní nebo vzdálený experiment.
 
-V tomto příkladu vytvoříte neregistrovanou [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) a zadáte ho jako argument skriptu v objektu ScriptRunConfig pro školení. Pokud chcete tento TabularDataset znovu použít s dalšími experimenty v pracovním prostoru, přečtěte si téma [jak zaregistrovat datové sady do pracovního prostoru](how-to-create-register-datasets.md#register-datasets).
+V tomto příkladu vytvoříte neregistrovanou [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) a zadáte ho jako argument skriptu v objektu [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) pro školení. Pokud chcete tento TabularDataset znovu použít s dalšími experimenty v pracovním prostoru, přečtěte si téma [jak zaregistrovat datové sady do pracovního prostoru](how-to-create-register-datasets.md#register-datasets).
 
 ### <a name="create-a-tabulardataset"></a>Vytvoření TabularDataset
 
@@ -119,16 +119,25 @@ run.wait_for_completion(show_output=True)
 
 Pokud máte nestrukturovaná data, vytvořte [datovou sadu](/python/api/azureml-core/azureml.data.filedataset) souborů a buď připojte nebo Stáhněte své datové soubory, aby byly k dispozici pro váš vzdálený výpočetní cíl pro školení. Další informace o tom, kdy se ke vzdáleným pokusům školení používat [připojení vs. ke stažení](#mount-vs-download) 
 
-Následující příklad vytvoří datovou sadu a připojí datovou sadu k cíli služby COMPUTE předáním jako argumentu do školicího skriptu. 
+Následující příklad: 
+
+* Vytvoří vstupní datovou sadu `mnist_ds` pro vaše školicí údaje.
+* Určuje, kam se mají zapsat výsledky školení, a na to, jak tyto výsledky povýšit jako datovou sadu.
+* Připojí vstupní datovou sadu k cíli výpočtů.
 
 > [!Note]
 > Pokud používáte vlastní image Docker Base, budete ji muset nainstalovat přes `apt-get install -y fuse` jako závislost pro připojení k datové sadě, aby fungovala. Naučte se [vytvořit vlastní image sestavení](how-to-deploy-custom-docker-image.md#build-a-custom-base-image).
 
+Příklad poznámkového bloku najdete v tématu [Postup konfigurace školicího běhu s datovým vstupem a výstupem](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb).
+
 ### <a name="create-a-filedataset"></a>Vytvoření datové sady
 
-Následující příklad vytvoří neregistrovanou datovou sadu z adres URL webu. Přečtěte si další informace o [tom, jak vytvořit datové sady](how-to-create-register-datasets.md) z jiných zdrojů.
+Následující příklad vytvoří neregistrovanou datovou sadu, `mnist_data` z webových adres URL. Tato datová sada je vstupní data pro váš školicí běh.
+
+Přečtěte si další informace o [tom, jak vytvořit datové sady](how-to-create-register-datasets.md) z jiných zdrojů.
 
 ```Python
+
 from azureml.core.dataset import Dataset
 
 web_paths = [
@@ -137,22 +146,49 @@ web_paths = [
             'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
             'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
             ]
+
 mnist_ds = Dataset.File.from_files(path = web_paths)
+
+```
+### <a name="where-to-write-training-output"></a>Kam zapsat školicí výstup
+
+Můžete zadat, kam chcete zapisovat výsledky školení s [objektem OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig). 
+
+OutputFileDatasetConfig objekty umožňují: 
+
+* Připojte nebo nahrajte výstup spuštění do cloudového úložiště, které zadáte.
+* Uložte výstup jako datovou sadu do těchto podporovaných typů úložiště:
+    * Objekt blob Azure
+    * Sdílená složka Azure
+    * Azure Data Lake Storage generace 1 a 2
+* Umožňuje sledovat datovou řadu mezi běžícími cvičeními.
+
+Následující kód určuje, že výsledky školení by měly být uloženy jako datová sada ve `outputdataset` složce ve výchozím úložišti objektů BLOB `def_blob_store` . 
+
+```python
+from azureml.core import Workspace
+from azureml.data import OutputFileDatasetConfig
+
+ws = Workspace.from_config()
+
+def_blob_store = ws.get_default_datastore()
+output = OutputFileDatasetConfig(destination=(def_blob_store, 'sample/outputdataset'))
 ```
 
 ### <a name="configure-the-training-run"></a>Konfigurace spuštění školení
 
-Při připojování prostřednictvím parametru konstruktoru doporučujeme předat datovou sadu jako argument `arguments` `ScriptRunConfig` . Tím se v školicím skriptu dostanete pomocí argumentů cestu k datům (bod připojení). Tímto způsobem budete moct použít stejný školicí skript pro místní ladění a vzdálené školení na jakékoli cloudové platformě.
+Při připojování prostřednictvím parametru konstruktoru doporučujeme předat datovou sadu jako argument `arguments` `ScriptRunConfig` . Díky tomu získáte cestu k datům (bod připojení) ve školicím skriptu pomocí argumentů. Tímto způsobem můžete použít stejný školicí skript pro místní ladění a vzdálené školení na jakékoli cloudové platformě.
 
-Následující příklad vytvoří ScriptRunConfig, který předává do objektu DataSet prostřednictvím `arguments` . Po odeslání běhu budou datové soubory odkazované datovou sadou `mnist_ds` připojeny k cíli výpočtů.
+Následující příklad vytvoří ScriptRunConfig, který předává do objektu DataSet prostřednictvím `arguments` . Po odeslání běhu jsou datové soubory, na které se odkazuje datová sada, `mnist_ds` připojené k cíli výpočtů a výsledky školení se uloží do zadané `outputdataset` složky ve výchozím úložišti dat.
 
 ```python
 from azureml.core import ScriptRunConfig
 
+input_data= mnist_ds.as_named_input('input').as_mount()# the dataset will be mounted on the remote compute 
+
 src = ScriptRunConfig(source_directory=script_folder,
-                      script='train_mnist.py',
-                      # the dataset will be mounted on the remote compute and the mounted path passed as an argument to the script
-                      arguments=['--data-folder', mnist_ds.as_mount(), '--regularization', 0.5],
+                      script='dummy_train.py',
+                      arguments=[input_data, output],
                       compute_target=compute_target,
                       environment=myenv)
 
@@ -161,40 +197,31 @@ run = experiment.submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
-### <a name="retrieve-data-in-your-training-script"></a>Načtení dat ve školicím skriptu
+### <a name="simple-training-script"></a>Jednoduchý školicí skript
 
-Následující kód ukazuje, jak načíst data ve skriptu.
+Následující skript se odešle přes ScriptRunConfig. Přečte `mnist_ds ` datovou sadu jako vstup a zapíše soubor do `outputdataset` složky ve výchozím úložišti dat objektu BLOB `def_blob_store` .
 
 ```Python
-%%writefile $script_folder/train_mnist.py
+%%writefile $source_directory/dummy_train.py
 
-import argparse
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
+import sys
 import os
-import numpy as np
-import glob
 
-from utils import load_data
+print("*********************************************************")
+print("Hello Azure ML!")
 
-# retrieve the 2 arguments configured through `arguments` in the ScriptRunConfig
-parser = argparse.ArgumentParser()
-parser.add_argument('--data-folder', type=str, dest='data_folder', help='data folder mounting point')
-parser.add_argument('--regularization', type=float, dest='reg', default=0.01, help='regularization rate')
-args = parser.parse_args()
+mounted_input_path = sys.argv[1]
+mounted_output_path = sys.argv[2]
 
-data_folder = args.data_folder
-print('Data folder:', data_folder)
-
-# get the file paths on the compute
-X_train_path = glob.glob(os.path.join(data_folder, '**/train-images-idx3-ubyte.gz'), recursive=True)[0]
-X_test_path = glob.glob(os.path.join(data_folder, '**/t10k-images-idx3-ubyte.gz'), recursive=True)[0]
-y_train_path = glob.glob(os.path.join(data_folder, '**/train-labels-idx1-ubyte.gz'), recursive=True)[0]
-y_test = glob.glob(os.path.join(data_folder, '**/t10k-labels-idx1-ubyte.gz'), recursive=True)[0]
-
-# load train and test set into numpy arrays
-X_train = load_data(X_train_path, False) / 255.0
-X_test = load_data(X_test_path, False) / 255.0
-y_train = load_data(y_train_path, True).reshape(-1)
-y_test = load_data(y_test, True).reshape(-1)
+print("Argument 1: %s" % mounted_input_path)
+print("Argument 2: %s" % mounted_output_path)
+    
+with open(mounted_input_path, 'r') as f:
+    content = f.read()
+    with open(os.path.join(mounted_output_path, 'output.csv'), 'w') as fw:
+        fw.write(content)
 ```
 
 ## <a name="mount-vs-download"></a>Připojit ke stažení vs
@@ -257,7 +284,7 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="notebook-examples"></a>Příklady poznámkových bloků
 
-+ [Poznámkové bloky datové sady](https://aka.ms/dataset-tutorial) ukazují a rozšiřují koncepty v tomto článku.
++ Další příklady a koncepty datových sad najdete v [poznámkových blocích datových sad](https://aka.ms/dataset-tutorial).
 + Podívejte se, jak [parametrize datové sady v kanálech ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb).
 
 ## <a name="troubleshooting"></a>Řešení potíží

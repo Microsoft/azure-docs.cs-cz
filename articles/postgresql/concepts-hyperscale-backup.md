@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 90b2a39b9a5f3b4d011ff1a1ef3651dff75a1cf6
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 8dfc82ce79f33553be5220b52a1e415d99c26518
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968301"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483907"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Zálohování a obnovení v Azure Database for PostgreSQL – Citus (škálování)
 
@@ -48,22 +48,9 @@ Obnovení k bodu v čase je užitečné ve více scénářích. Například kdy�
 
 Proces obnovení vytvoří nový cluster ve stejné oblasti Azure, předplatném a skupině prostředků jako původní. Cluster má původní konfiguraci: stejný počet uzlů, počet virtuální jádra, velikost úložiště, uživatelské role, verze PostgreSQL a verze rozšíření Citus.
 
-Nastavení brány firewall a parametry serveru PostgreSQL nejsou zachované z původní skupiny serverů, obnoví se výchozí hodnoty. Brána firewall zabrání všem připojením. Tato nastavení budete muset po obnovení upravit ručně.
-
-> [!IMPORTANT]
-> Budete muset otevřít žádost o podporu, abyste provedli obnovení vašeho clusteru Citus (Time-in-time).
-
-### <a name="post-restore-tasks"></a>Post-restore tasks
-
-Po obnovení z některého mechanismu obnovení byste měli provést následující kroky, aby se uživatelé a aplikace mohli zálohovat a spustit:
-
-* Pokud má nový server nahradit původní server, přesměrujte klienty a klientské aplikace na nový server.
-* Zajistěte, aby se uživatelé mohli připojit ke správné bráně firewall na úrovni serveru. Tato pravidla se nekopírují z původní skupiny serverů.
-* Podle potřeby upravte parametry serveru PostgreSQL. Parametry se nekopírují z původní skupiny serverů.
-* Zajistěte, aby byla zajištěna příslušná přihlášení a oprávnění na úrovni databáze.
-* Podle potřeby nakonfigurujte výstrahy.
+Nastavení brány firewall a parametry serveru PostgreSQL nejsou zachované z původní skupiny serverů, obnoví se výchozí hodnoty. Brána firewall zabrání všem připojením. Tato nastavení budete muset po obnovení upravit ručně. Obecné informace najdete v našem seznamu navrhovaných [úloh po obnovení](howto-hyperscale-restore-portal.md#post-restore-tasks).
 
 ## <a name="next-steps"></a>Další kroky
 
+* Přečtěte si postup [obnovení skupiny serverů](howto-hyperscale-restore-portal.md) v Azure Portal.
 * Přečtěte si o [zónách dostupnosti Azure](../availability-zones/az-overview.md).
-* Nastavte [navrhované výstrahy](./howto-hyperscale-alert-on-metric.md#suggested-alerts) na skupiny serverů Citus ().

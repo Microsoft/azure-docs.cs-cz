@@ -2,21 +2,21 @@
 title: Přesunutí ověřování aplikace z AD FS na Azure Active Directory
 description: Naučte se používat Azure Active Directory k nahrazení Active Directory Federation Services (AD FS) (AD FS) a poskytování jednotného přihlašování uživatelů ke všem jejich aplikacím.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 03/01/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: baselden
-ms.openlocfilehash: ee1d863ccb974b30213179a1aba9e27d5a3a2bda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83e506c0a3d0b9718f94d48ea8e6b23f43e811f3
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103418294"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377934"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Přesun ověřování aplikací z Active Directory Federation Services (AD FS) do Azure Active Directory
 

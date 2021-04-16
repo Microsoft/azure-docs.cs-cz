@@ -7,22 +7,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 03/19/2021
+ms.date: 04/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: e37ff8a003bc10d69fd32794f26acfa8f5326423
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 606755333856f6dd97ab6c5158ac67f122a1237d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073446"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516430"
 ---
-<!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
 >
-> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Další informace najdete v referenční dokumentaci níže. 
+> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Další informace najdete v referenční dokumentaci níže.
 
 [Referenční dokumentace](/python/api/azure-ai-formrecognizer)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Balíček (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
@@ -49,7 +48,7 @@ pip install azure-ai-formrecognizer --pre
 ```
 
 > [!NOTE]
-> 3.1.0 SDK pro rozpoznávání formulářů zobrazuje _rozhraní API verze 2,1 Preview. 2_. Použijte prosím [**REST API**](../../quickstarts/client-library.md) pro _rozhraní API verze 2,1 Preview. 3_.
+> 3.1.0 B4 je nejnovější verze Preview sady SDK a odráží _rozhraní API verze 2,1 Preview. 3_.
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 
@@ -71,7 +70,7 @@ Vytvořte novou aplikaci v Pythonu v upřednostňovaném editoru nebo integrovan
 > [!TIP]
 > Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py), který obsahuje příklady kódu v tomto rychlém startu.
 
-Vytvořte proměnné pro koncový bod a klíč Azure prostředku. 
+Vytvořte proměnné pro koncový bod a klíč Azure prostředku.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_creds)]
 
@@ -111,8 +110,9 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 * [Analyzovat účtenky](#analyze-receipts)
 * [Analýza vizitek](#analyze-business-cards)
 * [Analyzovat faktury](#analyze-invoices)
-* [Trénování vlastního modelu](#train-a-custom-model)
+* [Analýza dokumentů identity](#analyze-identity-documents)
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
+* [Trénování vlastního modelu](#train-a-custom-model)
 * [Správa vlastních modelů](#manage-your-custom-models)
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
@@ -137,8 +137,9 @@ Tady ověříte dva klientské objekty pomocí proměnných předplatného, kter
 Budete muset přidat odkazy na adresy URL pro školení a testování dat.
 
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
-  
+
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="Načítání adresy URL SAS":::
+
 * Použijte ukázkový formulář a obrázky příjmu obsažené v níže uvedených ukázkách (k dispozici také na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) nebo můžete použít výše uvedené kroky a získat adresu URL SAS jednotlivého dokumentu v úložišti objektů BLOB. 
 
 > [!NOTE]
@@ -178,16 +179,89 @@ Confidence score: 1.0
 
 ```
 
+## <a name="analyze-receipts"></a>Analyzovat účtenky
+
+V této části se dozvíte, jak pomocí předem připraveného příjmového modelu analyzovat a extrahovat běžná pole z příjmů spojených s námi. Další informace o analýze příjmů najdete v [koncepční příručce pro příjem](../../concept-receipts.md). K analýze potvrzení z adresy URL použijte `begin_recognize_receipts_from_url` metodu.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
+
+> [!TIP]
+> Můžete také analyzovat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) , jako je například `begin_recognize_receipts` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
+
+### <a name="output"></a>Výstup
+
+```console
+ReceiptType: Itemized has confidence 0.659
+MerchantName: Contoso Contoso has confidence 0.516
+MerchantAddress: 123 Main Street Redmond, WA 98052 has confidence 0.986
+MerchantPhoneNumber: None has confidence 0.99
+TransactionDate: 2019-06-10 has confidence 0.985
+TransactionTime: 13:59:00 has confidence 0.968
+Receipt Items:
+...Item #1
+......Name: 8GB RAM (Black) has confidence 0.916
+......TotalPrice: 999.0 has confidence 0.559
+...Item #2
+......Quantity: None has confidence 0.858
+......Name: SurfacePen has confidence 0.858
+......TotalPrice: 99.99 has confidence 0.386
+Subtotal: 1098.99 has confidence 0.964
+Tax: 104.4 has confidence 0.713
+Total: 1203.39 has confidence 0.774
+```
+
+## <a name="analyze-business-cards"></a>Analýza vizitek
+
+#### <a name="v21-preview"></a>[verze 2.1 Preview](#tab/preview)
+
+Tato část ukazuje, jak pomocí předem připraveného modelu analyzovat a extrahovat běžná pole z anglických vizitek. Další informace o analýze vizitky najdete v tématu [koncepční příručka pro obchodní karty](../../concept-business-cards.md). 
+
+K analýze obchodních karet z adresy URL použijte `begin_recognize_business_cards_from_url` metodu.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
+
+> [!TIP]
+> Můžete také analyzovat image místních obchodních karet. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) , jako je například `begin_recognize_business_cards` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
+
+---
+
 ## <a name="analyze-invoices"></a>Analyzovat faktury
 
 #### <a name="v21-preview"></a>[verze 2.1 Preview](#tab/preview)
 
-V této části se dozvíte, jak pomocí předem připraveného modelu analyzovat a extrahovat běžná pole z prodejních faktur. Další informace o analýze faktur najdete v [koncepční příručce pro fakturaci](../../concept-invoices.md). Chcete-li analyzovat faktury z adresy URL, použijte `begin_recognize_invoices_from_url` metodu. 
+V této části se dozvíte, jak pomocí předem připraveného modelu analyzovat a extrahovat běžná pole z prodejních faktur. Další informace o analýze faktur najdete v [koncepční příručce pro fakturaci](../../concept-invoices.md). 
+
+Chcete-li analyzovat faktury z adresy URL, použijte `begin_recognize_invoices_from_url` metodu.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
 > Můžete také analyzovat místní obrázky faktury. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) , jako je například `begin_recognize_invoices` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
+
+---
+
+## <a name="analyze-identity-documents"></a>Analýza dokumentů identity
+
+#### <a name="v21-preview"></a>[verze 2.1 Preview](#tab/preview)
+
+V této části se dozvíte, jak analyzovat a extrahovat informace o klíčích z identifikačních dokumentů vydaných vládou – celosvětově Passports a licence k ovladači USA – pomocí předdefinovaného modelu ID pro rozpoznávání formulářů. Další informace o analýze faktur najdete v našem [průvodci předem sestaveným identifikačním modelem](../../concept-identification-cards.md).
+
+K analýze dokumentů identity z adresy URL použijte `begin_recognize_id_documents_from_url` metodu.
+
+:::code language="python" source="~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py" id="snippet_id":::
+
+> [!TIP]
+> Můžete také analyzovat image dokumentů identity. _Podívejte_ se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true#methods) , jako je například `begin_recognize_id_documents` . Příklady scénářů týkajících se místních imagí _najdete v tématu_ ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) .
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 
@@ -210,7 +284,6 @@ Výukové vlastní modely vám umožní analyzovat všechna pole a hodnoty nalez
 Následující kód používá školicího klienta s `begin_training` funkcí k výuce modelu v dané sadě dokumentů. Vrácený `CustomFormModel` objekt obsahuje informace o typech formulářů, které může model analyzovat, a pole, která může extrahovat z každého typu formuláře. Následující blok kódu vytiskne tyto informace do konzoly nástroje.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_train)]
-
 
 ### <a name="output"></a>Výstup
 
@@ -304,7 +377,6 @@ Použijete `begin_recognize_custom_forms_from_url` metodu. Vrácená hodnota je 
 > [!TIP]
 > Můžete také analyzovat místní image. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) , jako je například `begin_recognize_custom_forms` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
-
 ### <a name="output"></a>Výstup
 
 Pomocí modelu z předchozího příkladu je k dispozici následující výstup.
@@ -328,58 +400,10 @@ Field 'Tax' has label 'Tax' with value 'None' and a confidence score of None
 Field 'Total' has label 'Total' with value 'None' and a confidence score of None
 ```
 
-## <a name="analyze-receipts"></a>Analyzovat účtenky
-
-V této části se dozvíte, jak pomocí předem připraveného příjmového modelu analyzovat a extrahovat běžná pole z příjmů spojených s námi. Další informace o analýze příjmů najdete v [koncepční příručce pro příjem](../../concept-receipts.md). K analýze potvrzení z adresy URL použijte `begin_recognize_receipts_from_url` metodu. 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
-
-> [!TIP]
-> Můžete také analyzovat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) , jako je například `begin_recognize_receipts` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
-
-### <a name="output"></a>Výstup
-
-```console
-ReceiptType: Itemized has confidence 0.659
-MerchantName: Contoso Contoso has confidence 0.516
-MerchantAddress: 123 Main Street Redmond, WA 98052 has confidence 0.986
-MerchantPhoneNumber: None has confidence 0.99
-TransactionDate: 2019-06-10 has confidence 0.985
-TransactionTime: 13:59:00 has confidence 0.968
-Receipt Items:
-...Item #1
-......Name: 8GB RAM (Black) has confidence 0.916
-......TotalPrice: 999.0 has confidence 0.559
-...Item #2
-......Quantity: None has confidence 0.858
-......Name: SurfacePen has confidence 0.858
-......TotalPrice: 99.99 has confidence 0.386
-Subtotal: 1098.99 has confidence 0.964
-Tax: 104.4 has confidence 0.713
-Total: 1203.39 has confidence 0.774
-```
-
-## <a name="analyze-business-cards"></a>Analýza vizitek
-
-#### <a name="v21-preview"></a>[verze 2.1 Preview](#tab/preview)
-
-Tato část ukazuje, jak pomocí předem připraveného modelu analyzovat a extrahovat běžná pole z anglických vizitek. Další informace o analýze vizitky najdete v tématu [koncepční příručka pro obchodní karty](../../concept-business-cards.md). K analýze obchodních karet z adresy URL použijte `begin_recognize_business_cards_from_url` metodu. 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
-
-> [!TIP]
-> Můžete také analyzovat image místních obchodních karet. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) , jako je například `begin_recognize_business_cards` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
-
-#### <a name="v20"></a>[v2.0](#tab/ga)
-
-> [!IMPORTANT]
-> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
-
----
 
 ## <a name="manage-your-custom-models"></a>Správa vlastních modelů
 
-Tato část ukazuje, jak spravovat vlastní modely uložené ve vašem účtu. 
+Tato část ukazuje, jak spravovat vlastní modely uložené ve vašem účtu.
 
 ### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>Ověřte počet modelů v účtu FormRecognizer prostředků.
 
