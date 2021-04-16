@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 695409740348e78ae51b263b44d9ed1cbadc1054
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562055"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531932"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
 
@@ -151,6 +151,7 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 - Pokud jsou tabulky se stejným názvem, ale s jiným schématem (například dbo. Customers and Sales. Customers), je možné přidat do synchronizace pouze jednu z tabulek.
 - Sloupce s datovými typy User-Defined se nepodporují.
 - Přesun serverů mezi různými předplatnými není podporován. 
+- Pokud se dva primární klíče liší pouze v případě (např. foo a foo), synchronizace dat nebude tento scénář podporovat.
 
 #### <a name="unsupported-data-types"></a>Nepodporované datové typy
 
@@ -168,7 +169,7 @@ Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení an
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>Omezení pro služby a dimenze databáze
 
-| **Dimenze**                                                  | **Počtu**              | **Alternativní řešení**              |
+| **Dimenze**                                                  | **Omezení**              | **Alternativní řešení**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Maximální počet skupin synchronizace, ke kterým může patřit žádná databáze.       | 5                      |                             |
 | Maximální počet koncových bodů v jedné skupině synchronizace              | 30                     |                             |

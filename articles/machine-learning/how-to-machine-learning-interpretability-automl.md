@@ -10,20 +10,20 @@ ms.custom: how-to, automl, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 535ff489060c8099ba3c695f2b615f3c38309698
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 3258a1d53c4aa5010758bcd93ef32c53611f4684
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167936"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576461"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretovatelnost: Vysvětlení modelů v rámci automatizovaného strojového učení (Preview)
 
 
-
-V tomto článku se dozvíte, jak získat vysvětlení automatizovaného strojového učení (AutoML) v Azure Machine Learning. AutoML pomáhá pochopit důležitost funkcí modelů, které jsou vygenerovány. 
+V tomto článku se dozvíte, jak získat vysvětlení automatizovaného strojového učení (automatizovaného ML) v Azure Machine Learning pomocí sady Python SDK. Automatizovaná ML vám pomůže pochopit důležitost funkcí modelů, které se generují. 
 
 Všechny verze sady SDK po 1.0.85 `model_explainability=True` výchozím nastavení. V sadě SDK verze 1.0.85 a starších verzích je potřeba nastavit `model_explainability=True` v objektu, aby `AutoMLConfig` bylo možné použít interpretaci modelu. 
+
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -34,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 ## <a name="prerequisites"></a>Požadavky
 
 - Funkce pro vyhodnocení. `pip install azureml-interpret`Pro získání potřebného balíčku spusťte příkaz.
-- Znalosti o sestavování AutoML experimentů. Další informace o tom, jak používat sadu Azure Machine Learning SDK, získáte v tomto [kurzu regresní model](tutorial-auto-train-models.md) nebo v tématu Jak [nakonfigurovat experimenty AutoML](how-to-configure-auto-train.md).
+- Znalosti o sestavování automatizovaných experimentů ML. Další informace o tom, jak používat sadu Azure Machine Learning SDK, získáte v tomto [kurzu regresní model](tutorial-auto-train-models.md) nebo v tématu Jak [Konfigurovat automatizované experimenty ml](how-to-configure-auto-train.md).
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>Možnost interpretace během školení pro nejlepší model
 
@@ -105,11 +105,11 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 
 ### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>Inicializovat vysvětlující podobnou funkci pro důležitost funkcí
 
-K vygenerování vysvětlení pro modely AutoML použijte `MimicWrapper` třídu. MimicWrapper můžete inicializovat pomocí těchto parametrů:
+K vygenerování vysvětlení pro automatizované modely ML použijte `MimicWrapper` třídu. MimicWrapper můžete inicializovat pomocí těchto parametrů:
 
 - Objekt nastavení pro vysvětlení
 - Váš pracovní prostor
-- Náhradní model pro vysvětlení `fitted_model` modelu AutoML
+- Náhradní model vysvětlující `fitted_model` model automatizovaného ml
 
 MimicWrapper také převezme `automl_run` objekt, do kterého se nahrají inženýrská vysvětlení.
 
@@ -128,7 +128,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 
 ### <a name="use-mimic-explainer-for-computing-and-visualizing-engineered-feature-importance"></a>Vysvětlete nepodobující se výpočetní výkon a vizualizace důležitosti funkcí v inženýrech
 
-Můžete zavolat `explain()` metodu v MimicWrapper pomocí transformovaných ukázek testů, abyste získali důležitost funkce pro vygenerované funkce v vygenerovaných analýzách. Můžete se také přihlásit k [Azure Machine Learning Studio](https://ml.azure.com/) , abyste zobrazili vizualizaci řídicích panelů hodnot pro vygenerované inženýrské funkce podle AutoML featurizers.
+Můžete zavolat `explain()` metodu v MimicWrapper pomocí transformovaných ukázek testů, abyste získali důležitost funkce pro vygenerované funkce v vygenerovaných analýzách. Můžete se také přihlásit k nástroji [Azure Machine Learning Studio](https://ml.azure.com/) a zobrazit vizualizaci řídicího panelu pro hodnoty důležitosti funkcí vygenerovaných v rámci automatizovaného ml featurizers.
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
@@ -172,7 +172,7 @@ ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipelin
 
 ### <a name="use-mimic-explainer-for-computing-and-visualizing-raw-feature-importance"></a>Použití napodobování vysvětlení a vizualizace nezpracované důležité funkce
 
-Můžete zavolat `explain()` metodu v MimicWrapper pomocí transformovaných ukázek testů, abyste získali důležitost funkcí pro nezpracované funkce. V [Machine Learning Studio](https://ml.azure.com/)můžete zobrazit vizualizaci řídicích panelů pro hodnoty důležitosti funkcí nezpracovaných funkcí.
+Můžete zavolat `explain()` metodu v MimicWrapper pomocí transformovaných ukázek testů, abyste získali důležitost funkcí pro nezpracované funkce. V [Machine Learning Studiu](https://ml.azure.com/)můžete zobrazit vizualizaci řídicích panelů pro hodnoty důležitosti funkcí v nezpracovaných funkcích.
 
 ```python
 raw_explanations = explainer.explain(['local', 'global'], get_raw=True,
@@ -184,7 +184,7 @@ print(raw_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-inference"></a>Výklad při odvozování
 
-V této části se dozvíte, jak zprovoznění model AutoML pomocí vysvětlujícího objektu, který se použil k výpočtu vysvětlení v předchozí části.
+V této části se dozvíte, jak zprovoznění model automatizovaného ML s vysvětlením, který se použil k výpočtu vysvětlení v předchozí části.
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>Zaregistrujte model a vysvětlující hodnocení.
 
@@ -321,9 +321,9 @@ if service.state == 'Healthy':
     print('raw_local_importance_values:\n{}\n'.format(output['raw_local_importance_values']))
 ```
 
-### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Vizualizace pro zjišťování vzorů v datech a vysvětlení v době školení
+## <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Vizualizace pro zjišťování vzorů v datech a vysvětlení v době školení
 
-Graf důležitost funkcí můžete vizualizovat v pracovním prostoru v [Machine Learning Studio](https://ml.azure.com). Po dokončení spuštění AutoML vyberte **Zobrazit podrobnosti o modelu** pro zobrazení konkrétního běhu. Vyberte kartu **vysvětlení** a zobrazte řídicí panel vizualizace vysvětlení.
+Graf důležitost funkcí můžete vizualizovat v pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com). Po dokončení spuštění AutoML vyberte **Zobrazit podrobnosti o modelu** pro zobrazení konkrétního běhu. Vyberte kartu **vysvětlení** a zobrazte vizualizace na řídicím panelu vysvětlení.
 
 [![Machine Learning architektura pro interpretaci](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png)](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png#lightbox)
 

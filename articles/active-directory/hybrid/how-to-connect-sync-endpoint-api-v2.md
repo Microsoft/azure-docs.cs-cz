@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ecfd277f2cc86102d59b201e7b43fa8519bdd3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4434b59044aed8c9814431864e5c3c9b7d98254c
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98937600"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575713"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Rozhraní API koncového bodu synchronizace služby Azure AD Connect v2 
 Společnost Microsoft nasadila nový koncový bod (rozhraní API) pro Azure AD Connect, který vylepšuje výkon operací synchronizační služby Azure Active Directory. Díky použití nového koncového bodu v2 budete mít při exportu a importu do Azure AD patrné zvýšení výkonu. Tento nový koncový bod podporuje následující:
@@ -27,6 +27,12 @@ Společnost Microsoft nasadila nový koncový bod (rozhraní API) pro Azure AD C
  
 > [!NOTE]
 > V současné době nový koncový bod nemá nakonfigurovanou omezení velikosti skupiny pro Microsoft 365 skupiny, které jsou zapsány zpět. To může mít vliv na latenci služby Active Directory a synchronizaci cyklů. Doporučuje se postupně zvyšovat velikosti skupin.  
+
+>[!NOTE]
+> Rozhraní API koncového bodu služby Azure AD Connect Sync v2 je teď dostupné jenom v těchto prostředích Azure:
+> - Komerční Azure
+> - Cloud Azure Čína
+> - Cloud Azure pro státní správu USA nebude k dispozici v cloudu Azure německy
 
 ## <a name="prerequisites"></a>Požadavky  
 Aby bylo možné použít nový koncový bod v2, budete muset použít [Azure AD Connect verze 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) nebo novější a postupovat podle níže uvedených kroků nasazení a povolit koncový bod v2 pro váš Azure AD Connect Server.   

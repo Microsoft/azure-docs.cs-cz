@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f49e15984b7a673de1e7d1607f4802c17ebef4e2
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a4ffcad6f6be16ba7ac3674d710dd543f729f0c3
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531837"
+ms.locfileid: "107575407"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Přiřazení rolí správců a uživatelů bez oprávnění správce k Azure Active Directory
 
@@ -29,8 +29,6 @@ Další informace o dostupných rolích služby Azure AD najdete v tématu [při
 ## <a name="assign-roles"></a>Přiřazení rolí
 
 Běžný způsob, jak přiřadit role Azure AD uživateli, je na stránce **přiřazené role** pro uživatele. Můžete taky nakonfigurovat, aby se způsobila možnost zvýšení úrovně oprávnění uživatele na roli pomocí Privileged Identity Management (PIM). Další informace o tom, jak používat PIM, najdete v tématu [Privileged Identity Management](../privileged-identity-management/index.yml).
-
-Pokud je role adresáře přiřazena uživateli typu Host, bude se uživateli typu Host udělena další oprávnění, která jsou součástí role, včetně základních oprávnění ke čtení. Viz [předdefinované role Azure AD](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference).
 
 > [!Note]
 > Pokud máte plán licencí Azure AD Premium P2 a už používáte PIM, provedou se všechny úlohy správy rolí v [prostředí Privileged Identity Management](../roles/manage-roles-portal.md). Tato funkce je v současné době omezená na přiřazení pouze jedné role. Aktuálně nemůžete vybrat více rolí a přiřadit je uživateli najednou.

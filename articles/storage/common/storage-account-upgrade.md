@@ -1,5 +1,5 @@
 ---
-title: Upgrade na účet úložiště pro obecné účely verze 2
+title: Upgrade na účet úložiště pro obecné účely v2
 titleSuffix: Azure Storage
 description: Upgradujte účty úložiště pro obecné účely v2 pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure. Zadejte úroveň přístupu pro data objektu BLOB.
 services: storage
@@ -8,15 +8,15 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: tamram
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 30c73849d07c1495251c17510ea71f29c674c618
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: d6d94efea52d920b8bfe69be2ee07c8b829792d8
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967485"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484078"
 ---
-# <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade na účet úložiště pro obecné účely verze 2
+# <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade na účet úložiště pro obecné účely v2
 
 Účty úložiště pro obecné účely v2 podporují nejnovější funkce Azure Storage a zahrnují všechny funkce účtů pro obecné účely V1 a BLOB Storage. Pro většinu scénářů úložišť se doporučuje používat účty pro obecné účely v2. Účty pro obecné účely v2 poskytují nejnižší cenu za GB pro Azure Storage a také ceny za transakce z odvětví konkurenčních produktů. Účty pro obecné účely v2 podporují úrovně přístupu na úrovni Standard, horké nebo studené a převrstvení objektů BLOB mezi horkou, studenou nebo archivní.
 

@@ -242,8 +242,10 @@
               href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: Vytvoření image virtuálního počítače
               href: azure-stack-edge-gpu-create-virtual-machine-image.md
-            - name: Použít zobecněnou bitovou kopii systému Windows
+            - name: Příprava generalizované image Windows z VHD
               href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
+            - name: Příprava generalizované Image pomocí ISO
+              href: azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md
             - name: Použití specializované image Windows
               href: azure-stack-edge-gpu-deploy-vm-specialized-image-powershell.md
             - name: Podporované typy a velikosti virtuálních počítačů

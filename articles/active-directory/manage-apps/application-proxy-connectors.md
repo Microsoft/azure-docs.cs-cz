@@ -12,14 +12,14 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f57d390ed71cb4e0e76972e02170afde7b13e4ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b54e3cb3b4ce7eb8f541755df75e8d6a22eb7c2
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99253455"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575305"
 ---
-# <a name="understand-azure-ad-application-proxy-connectors"></a>Vysvětlení konektorů Azure Proxy aplikací služby AD
+# <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů proxy aplikací služby Azure AD
 
 Konektory jsou to, co umožňuje Azure Proxy aplikací služby AD. Jsou jednoduché a snadno se nasazují a udržují a velmi výkonné. Tento článek popisuje, co jsou konektory, jak fungují, a některé návrhy, jak optimalizovat nasazení.
 
@@ -65,7 +65,7 @@ Nemusíte ručně odstraňovat nepoužité konektory. Když je konektor spuště
 
 ## <a name="automatic-updates"></a>Automatické aktualizace
 
-Azure AD poskytuje automatické aktualizace pro všechny nasazené konektory. Pokud je spuštěná služba proxy aplikací Aktualizátor konektorů, konektory se automaticky aktualizují. Pokud se služba Aktualizátor konektorů na serveru nezobrazuje, je nutné [přeinstalovat konektor](application-proxy-add-on-premises-application.md) , aby se získaly nějaké aktualizace.
+Azure AD poskytuje automatické aktualizace pro všechny nasazené konektory. Dokud je služba proxy aplikace Aktualizátor konektorů spuštěná, konektory se automaticky [aktualizují s nejnovějším vydáním](application-proxy-faq.yml#why-is-my-connector-still-using-an-older-version-and-not-auto-upgraded-to-latest-version-) . Pokud se služba Aktualizátor konektorů na serveru nezobrazuje, je nutné [přeinstalovat konektor](application-proxy-add-on-premises-application.md) , aby se získaly nějaké aktualizace.
 
 Pokud nechcete čekat na připojení automatické aktualizace k vašemu konektoru, můžete provést ruční upgrade. Na serveru, kde se nachází váš konektor, na [stránce pro stažení konektoru](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) klikněte na **Stáhnout**. Tento proces zahájí upgrade místního konektoru.
 

@@ -3,14 +3,14 @@ title: Nasadit pouze stavové uzly v clusteru Service Fabric
 description: Naučte se vytvářet a nasazovat bezstavové typy uzlů v clusteru Azure Service Fabric.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 04/16/2021
 ms.author: pepogors
-ms.openlocfilehash: 74680f7b56ad98851e2839b53c1f9e92b6c6c23a
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 68c617b6e9345910bfd913e61e227a8e6c401bbc
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030003"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576036"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>Nasazení clusteru Azure Service Fabric s bezstavovým typem uzlu
 Typy uzlů Service Fabric přicházejí s podstatou předpokladem, že v některých časových okamžikech mohou být stavové služby umístěny na uzlech. Bezstavové typy uzlů rozšiřují tento předpoklad pro typ uzlu, což umožňuje, aby typ uzlu používal jiné funkce, jako je rychlejší operace škálování, podpora automatických upgradů operačního systému při bronzové odolnosti a škálování na více než 100 uzlů v jedné sadě škálování virtuálního počítače.

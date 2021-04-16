@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26c56940e95fe32b709aa01fbaa9e567e797197
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: f67bc46b4f612d3d2f377070d5d8280512e0e3df
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074535"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576359"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -59,6 +59,12 @@ Další informace o [automatickém upgradu](how-to-connect-install-automatic-upg
 
 ## <a name="1640"></a>1.6.4.0
 
+>[!NOTE]
+> Rozhraní API koncového bodu služby Azure AD Connect Sync v2 je teď k dispozici v těchto prostředích Azure:
+> - Komerční Azure
+> - Cloud Azure Čína
+> - Cloud Azure pro státní správu USA nebude k dispozici v cloudu Azure německy
+
 ### <a name="release-status"></a>Stav verze
 3/31/2021: vydáno pouze pro stažení, není k dispozici pro automatický upgrade
 
@@ -73,7 +79,7 @@ Další informace o [automatickém upgradu](how-to-connect-install-automatic-upg
 >[!NOTE]
 > - Tato verze bude dostupná jenom pro stažení.
 > - Upgrade na tuto verzi bude vyžadovat úplnou synchronizaci z důvodu změn pravidel synchronizace.
-> - Tato verze vyhodnotí server AADConnect do nového koncového bodu v2. Všimněte si, že tento koncový bod není podporovaný v německém národním cloudu, v rámci čínského národního cloudu a v cloudu pro státní správu USA, a pokud potřebujete nasadit tuto verzi v těchto cloudech, musíte podle [těchto pokynů](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback) přejít zpátky na koncový bod v1. V důsledku tohoto selhání dojde k chybám při synchronizaci.
+> - Tato verze vyhodnotí server AADConnect do nového koncového bodu v2. Všimněte si, že tento koncový bod není podporovaný v německém národním cloudu a pokud potřebujete nasadit tuto verzi v tomto prostředí, musíte podle [těchto pokynů](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback) přepnout zpátky na koncový bod v1. V důsledku tohoto selhání dojde k chybám při synchronizaci.
 
 ### <a name="release-status"></a>Stav verze
 3/19/2021: vydáno ke stažení, není k dispozici pro automatický upgrade

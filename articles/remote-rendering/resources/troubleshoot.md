@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 4990f0d0a10709f2c1c5a17806020cd685f999fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f0fb9ab5c53c3fd1bfb32ac7b112a116301cba7
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99593329"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575339"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -249,6 +249,39 @@ Coplanar povrchy můžou mít řadu různých příčin:
 
 V některých případech vlastní nativní aplikace C++, které používají režim vícenásobného vykreslování stereo pro místní obsah (vykreslování vlevo a vpravo v samostatných průchodech) po volání [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) , mohou aktivovat chybu ovladače. Výsledkem chyby je nedeterministické rastrové histogramu, což způsobí, že jednotlivé trojúhelníky nebo části trojúhelníků místního obsahu budou náhodně zmizet. Z důvodů výkonu je vhodné vykreslovat místní obsah s pokročilejší technikou pro vykreslování v jednom průchodu, například pomocí **SV_RenderTargetArrayIndex**.
 
+## <a name="conversion-file-download-errors"></a>Chyby při stahování souboru převodu
+
+Služba konverze může zaznamenat chyby při stahování souborů ze služby Blob Storage z důvodu omezení délky cest, které jsou uloženy v systému Windows a službě. Cesty k souborům a názvy souborů v úložišti objektů BLOB nesmí překročit 178 znaků. Například v případě, `blobPrefix` že `models/Assets` je to 13 znaků:
+
+`models/Assets/<any file or folder path greater than 164 characters will fail the conversion>`
+
+Služba konverze stáhne všechny soubory zadané v rámci `blobPrefix` , nikoli pouze soubory použité v převodu. Soubory nebo složky, které způsobují problémy, můžou být v těchto případech méně zřejmé, takže je důležité kontrolovat všechno, co se nachází v účtu úložiště `blobPrefix` . Informace o tom, co se stáhne, najdete v následujících ukázkových vstupech.
+``` json
+{
+  "settings": {
+    "inputLocation": {
+      "storageContainerUri": "https://contosostorage01.blob.core.windows.net/arrInput",
+      "blobPrefix": "models/Assets",
+      "relativeInputAssetPath": "myAsset.fbx"
+    ...
+  }
+}
+```
+
+```
+models
+├───Assets
+│   │   myAsset.fbx                 <- Asset
+│   │
+│   └───Textures
+│   |       myTexture.png           <- Used in conversion
+│   |
+|   └───MyFiles
+|          myOtherFile.txt          <- File also downloaded under blobPrefix      
+|           
+└───OtherFiles
+        myReallyLongFileName.txt    <- Ignores files not under blobPrefix             
+```
 ## <a name="next-steps"></a>Další kroky
 
 * [Požadavky na systém](../overview/system-requirements.md)

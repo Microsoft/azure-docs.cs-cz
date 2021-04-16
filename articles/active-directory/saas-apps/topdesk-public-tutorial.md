@@ -9,93 +9,69 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/02/2019
+ms.date: 04/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 3688dc2db67c0c1343a74be4652cb52466ef762e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d16fd87b01db69d3f55e22aad573b7847b9048c
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92520434"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518025"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Kurz: Azure Active Directory integrace s TOPdesk – Public
 
-V tomto kurzu se naučíte integrovat TOPdesk-Public s Azure Active Directory (Azure AD).
-Integrace TOPdesk-Public s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat TOPdesk-Public s Azure Active Directory (Azure AD). Když integrujete TOPdesk-Public s Azure AD, můžete:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k TOPdesk veřejnosti.
-* Uživatelům můžete povolit, aby se automaticky přihlásili k TOPdesk (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
-
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
+* Řízení ve službě Azure AD, která má přístup k TOPdesk veřejnosti.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k TOPdesk svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete nakonfigurovat integraci Azure AD s TOPdesk-Public, budete potřebovat tyto položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* TOPdesk – veřejné předplatné s povolenou podporou jednotného přihlašování
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* TOPdesk – veřejné předplatné s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* TOPdesk – Public podporuje jednotné přihlašování iniciované v **SP**
+* TOPdesk – Public podporuje jednotné přihlašování iniciované v **SP** .
 
-## <a name="adding-topdesk---public-from-the-gallery"></a>Přidání TOPdesk-Public z Galerie
+## <a name="add-topdesk---public-from-the-gallery"></a>Přidání TOPdesk-Public z Galerie
 
 Pokud chcete nakonfigurovat integraci TOPdesk-Public do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat TOPdesk – Public z galerie.
 
-**Pokud chcete přidat TOPdesk-Public z Galerie, proveďte následující kroky:**
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **TopDesk-Public** .
+1. Z panelu výsledků vyberte **TopDesk-Public** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+## <a name="configure-and-test-azure-ad-sso-for-topdesk---public"></a>Konfigurace a testování jednotného přihlašování Azure AD pro TOPdesk – Public
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí TOPdesk-Public pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v TOPdesk – Public.
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí TOPdesk-Public, proveďte následující kroky:
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Konfigurace jednotného přihlašování TopDesk](#configure-topdesk---public-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+    1. **[Vytvořte TopDesk-Public Test User](#create-topdesk---public-test-user)** -to, abyste měli protějšek B. Simon v TopDesk – Public, který je propojený s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **TopDesk-Public**, vyberte **TopDesk-Public** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+1. V Azure Portal na stránce integrace aplikací **TopDesk** vyhledejte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-     ![TOPdesk – veřejný v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
-
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí TOPdesk – Public na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v TOPdesk-Public.
-
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí TOPdesk-Public, musíte dokončit tyto stavební bloky:
-
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování TopDesk](#configure-topdesk---public-single-sign-on)** – pro konfiguraci nastavení jediného Sign-On na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořte TopDesk-Public Test User](#create-topdesk---public-test-user)** -to, abyste měli protějšek Britta Simon v TopDesk-Public, který je propojený s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
-
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
-
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TOPdesk-Public, proveďte následující kroky:
-
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **TopDesk** vyberte **jednotné přihlašování**.
-
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
-
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4.  Pokud máte **soubor metadat poskytovatele služeb** v **základní části Konfigurace SAML** , proveďte následující kroky:
 
@@ -111,8 +87,6 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TOPdesk-
     ![zvolit soubor metadat](common/browse-upload-metadata.png)
 
     c. Po úspěšném nahrání souboru metadat se hodnoty **adresy URL** pro **identifikátor** a odpověď získají automaticky v základní části Konfigurace SAML.
-
-    ![TOPdesk – informace jednotného přihlašování pro veřejné domény a adresy URL](common/sp-identifier-reply.png)
 
     d. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.topdesk.net`
 
@@ -131,43 +105,61 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TOPdesk-
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+### <a name="create-an-azure-ad-test-user&quot;></a>Vytvoření testovacího uživatele Azure AD 
 
-    b. Identifikátor Azure AD
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    c. Odhlašovací adresa URL
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### <a name="configure-topdesk---public-single-sign-on&quot;></a>Konfigurace TOPdesk – Public Single Sign-On
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Přiřazení testovacího uživatele Azure AD
+
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k TOPdesk – Public.
+
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **TopDesk-Public**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+## <a name=&quot;configure-topdesk---public-sso&quot;></a>Konfigurace jednotného přihlašování TOPdesk
 
 1. Přihlaste se k vaší veřejné firemní síti **TopDesk** jako správce.
 
 2. V nabídce **TopDesk** klikněte na **Nastavení**.
    
-    ![Nastavení](./media/topdesk-public-tutorial/ic790598.png &quot;Nastavení")
+    ![Nastavení](./media/topdesk-public-tutorial/menu.png &quot;Nastavení")
 
 3. Klikněte na tlačítko **Nastavení přihlášení**.
    
-    ![Nastavení přihlášení](./media/topdesk-public-tutorial/ic790599.png "Nastavení přihlášení")
+    ![Nastavení přihlášení](./media/topdesk-public-tutorial/login.png "Nastavení přihlášení")
 
 4. Rozbalte nabídku **Nastavení přihlášení** a pak klikněte na **Obecné**.
    
-    ![Obecné](./media/topdesk-public-tutorial/ic790600.png "Obecné")
+    ![Obecné nastavení](./media/topdesk-public-tutorial/general.png "Obecná nastavení")
 
 5. V části **Public** v části konfigurace **přihlášení SAML** proveďte následující kroky:
    
-    ![Technické nastavení](./media/topdesk-public-tutorial/ic790601.png "Technické nastavení")
+    ![Technické nastavení](./media/topdesk-public-tutorial/public.png "Technické nastavení")
    
     a. Klikněte na tlačítko **Stáhnout** a Stáhněte si soubor veřejné metadat a uložte ho místně na svém počítači.
    
     b. Otevřete stažený soubor metadat a vyhledejte uzel **AssertionConsumerService** .
 
-    ![AssertionConsumerService](./media/topdesk-public-tutorial/ic790619.png "AssertionConsumerService")
+    ![AssertionConsumerService](./media/topdesk-public-tutorial/service.png "AssertionConsumerService")
    
     c. Zkopírujte hodnotu **AssertionConsumerService** a vložte tuto hodnotu do textového pole **Adresa URL odpovědi** v **základní části Konfigurace SAML** .      
    
 6. Chcete-li vytvořit soubor certifikátu, proveďte následující kroky:
     
-    ![Certifikát](./media/topdesk-public-tutorial/ic790606.png "Certifikát")
+    ![Certifikát](./media/topdesk-public-tutorial/certificate-file.png "Certifikát")
     
     a. Otevřete stažený soubor metadat z Azure Portal.
     
@@ -179,11 +171,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TOPdesk-
 
 7. V části **Public** klikněte na **Přidat**.
     
-    ![Přihlášení SAML](./media/topdesk-public-tutorial/ic790625.png "Přihlášení SAML")
+    ![Přihlášení SAML](./media/topdesk-public-tutorial/add.png "Přihlášení SAML")
 
 8. Na stránce **Průvodce konfigurací SAML** proveďte následující kroky:
     
-    ![Pomocník pro konfiguraci SAML](./media/topdesk-public-tutorial/ic790608.png "Pomocník pro konfiguraci SAML")
+    ![Pomocník pro konfiguraci SAML](./media/topdesk-public-tutorial/configuration.png "Pomocník pro konfiguraci SAML")
     
     a. Pokud chcete nahrát stažený soubor metadat z Azure Portal, klikněte v části **federační metadata** na **Procházet**.
 
@@ -197,56 +189,6 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TOPdesk-
 
     f. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
-
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
-
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
-
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel** .
-
-    ![Tlačítko pro nového uživatele](common/new-user.png)
-
-3. Ve vlastnostech uživatele proveďte následující kroky.
-
-    ![Uživatelský dialog](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon**.
-  
-    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension . Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k TOPdesk veřejnému.
-
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **TopDesk-Public**.
-
-    ![Okno Podnikové aplikace](common/enterprise-applications.png)
-
-2. V seznamu aplikace vyberte **TopDesk-Public**.
-
-    ![Odkaz TOPdesk-Public v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
-
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
-
 ### <a name="create-topdesk---public-test-user"></a>Vytvořit TOPdesk – veřejný testovací uživatel
 
 Aby se uživatelé Azure AD mohli přihlašovat k TOPdesk veřejnému, musí se zřídit v TOPdesk – Public. V případě TOPdesk-Public je zřizování ručním úkolem.
@@ -257,11 +199,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k TOPdesk veřejnému, musí se 
 
 2. V nabídce v horní části klikněte na **TopDesk \> nové \> soubory podpory \> osoba**.
    
-    ![Person (Osoba)](./media/topdesk-public-tutorial/ic790628.png "Person (Osoba)")
+    ![Person (Osoba)](./media/topdesk-public-tutorial/files.png "Person (Osoba)")
 
 3. V dialogovém okně Nová osoba proveďte následující kroky:
    
-    ![Nová osoba](./media/topdesk-public-tutorial/ic790629.png "Nová osoba")
+    ![Nová osoba](./media/topdesk-public-tutorial/new.png "Nová osoba")
    
     a. Klikněte na kartu Obecné.
 
@@ -274,16 +216,16 @@ Aby se uživatelé Azure AD mohli přihlašovat k TOPdesk veřejnému, musí se 
 > [!NOTE]
 > K zřizování uživatelských účtů Azure AD můžete použít jakékoli jiné TOPdesk nástroje pro vytváření veřejných uživatelských účtů nebo rozhraní API poskytovaná TOPdesk-Public.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když kliknete na dlaždici TOPdesk-Public na přístupovém panelu, měli byste se automaticky přihlásit k TOPdesk – veřejnému, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlašování TOPdesk, kde můžete spustit tok přihlášení. 
 
-## <a name="additional-resources"></a>Další materiály
+* Přejít na adresu URL pro veřejné přihlašování (TOPdesk) přímo a zahájit tok přihlášení.
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici TOPdesk-Public v části Moje aplikace, přesměruje se na přihlašovací adresu URL pro veřejné přihlašování TOPdesk. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Další kroky
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+Po nakonfigurování TOPdesk můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

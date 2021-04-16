@@ -3,16 +3,16 @@ title: Azure IoT Hub Device Provisioning Service – koncepty zařízení
 description: Popisuje koncepty opětovného zřízení zařízení pro Azure IoT Hub Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 04/16/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 9653a584382584d982c55008a6e8547de28691b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbc83ec62c10fae00e371cd9ad95cf2860495fad
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91842848"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575764"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>Koncepce opětovného zřizování zařízení IoT Hub
 
@@ -62,6 +62,9 @@ V závislosti na scénáři zařízení obvykle odesílá požadavek na instanci
 
 * **Nikdy nezřizování**: zařízení se nikdy znovu nepřiřazuje k jinému centru. Tato zásada je k dispozici pro správu zpětné kompatibility.
 
+> [!NOTE]
+> DPS vždy zavolá vlastní Webhook přidělení bez ohledu na zásadu opětovného zřizování pro případ, že je pro zařízení k dispozici nový [ReturnData](how-to-send-additional-data.md) . Pokud se zásada opětovného zřizování nastaví na **nikdy znovu zřídit**, Webhook se zavolá, ale zařízení nezmění přiřazené centrum.
+
 ### <a name="managing-backwards-compatibility"></a>Správa zpětné kompatibility
 
 V průběhu září 2018 mělo přiřazení zařízení do centra IoT rychlé chování. Když se zařízení během procesu zřizování převedlo, dá se přiřadit zpátky ke stejné službě IoT Hub.
@@ -80,7 +83,7 @@ Následující vývojový diagram pomáhá Ukázat, kdy je chování k dispozici
 
 V následující tabulce jsou uvedené verze rozhraní API před tím, než bude dostupná podpora nativního opětovného zajišťování ve službě Device Provisioning:
 
-| REST API | SADA C SDK | Python SDK |  Node SDK | Java SDK | .NET SDK |
+| Rozhraní REST API | SADA C SDK | Python SDK |  Node SDK | Java SDK | .NET SDK |
 | -------- | ----- | ---------- | --------- | -------- | -------- |
 | [2018-04-01 a starší](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 a starší](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 a starší](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 nebo starší](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 nebo starší](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 nebo starší](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
 

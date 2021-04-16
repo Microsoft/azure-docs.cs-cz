@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, synapse-azureml
-ms.openlocfilehash: b03915608c6143a9e205ba1a1e08e411b8aa9093
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2c69ec853cdeeed6f9e28fb9f2884053580ce08e
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868643"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576376"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>Jak používat Apache Spark (s technologií Azure synapse Analytics) v kanálu Machine Learning (Preview)
 
@@ -199,7 +199,7 @@ Tento skript pro přípravu dat neprovádí žádnou skutečnou transformaci dat
 
 ## <a name="use-the-synapsesparkstep-in-a-pipeline"></a>Použití `SynapseSparkStep` v kanálu
 
-Další kroky v kanálu můžou mít vlastní jedinečná prostředí a můžou běžet na různých výpočetních prostředcích, které jsou vhodné pro daný úkol. Vzorový Poznámkový blok spouští "krok školení" na malém clusteru s malým PROCESORem:
+Následující příklad používá výstup z `SynapseSparkStep` vytvořeného v [předchozí části](#create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool). Další kroky v kanálu můžou mít vlastní jedinečná prostředí a můžou běžet na různých výpočetních prostředcích, které jsou vhodné pro daný úkol. Vzorový Poznámkový blok spouští "krok školení" na malém clusteru s malým PROCESORem:
 
 ```python
 from azureml.core.compute import AmlCompute

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/25/2020
+ms.date: 04/14/2021
 ms.author: victorh
-ms.openlocfilehash: 3b8fbc47b46f8be6e4ad7636a1d7552445501f0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e14a8afe27fc9dd9ca40730dd7e681c3093e0b50
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94653160"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505900"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integrace Azure Firewallu s využitím služby Azure Standard Load Balancer
 
@@ -65,8 +65,7 @@ V tomto scénáři neexistuje žádný problém s asymetrickým směrováním. P
 
 Proto můžete tento scénář nasadit podobně jako veřejný scénář nástroje pro vyrovnávání zatížení, ale bez nutnosti trasy hostitele veřejné IP adresy brány firewall.
 
->[!NOTE]
->Virtuální počítače ve fondu back-end nebudou mít odchozí připojení k Internetu s touto konfigurací. </br> Další informace o poskytování odchozího připojení najdete v těchto tématech: </br> **[Odchozí připojení v Azure](../load-balancer/load-balancer-outbound-connections.md)**</br> Možnosti pro poskytování připojení: </br> **[Konfigurace nástroje pro vyrovnávání zatížení – pouze odchozí](../load-balancer/egress-only.md)** </br> [**Co je Virtual Network NAT?**](../virtual-network/nat-overview.md)
+Virtuální počítače ve fondu back-endu můžou mít odchozí připojení k Internetu prostřednictvím Azure Firewall. Nastavte trasu definovanou uživatelem v podsíti virtuálního počítače s bránou firewall jako další segment směrování.
 
 
 ## <a name="additional-security"></a>Dodatečné zabezpečení

@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 02/25/2021
-ms.openlocfilehash: 44ccf6b6d2459b87040fcac7d9cdcd336cc7b82f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c517cf2fc8491d62cf2379c87acd2eaadde8fe15
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102522032"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576427"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Interpretace modelu v Azure Machine Learning (Náhled)
 
@@ -104,5 +104,6 @@ Vysvětlení můžete spustit vzdáleně na Azure Machine Learning COMPUTE a pro
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si téma [postup](how-to-machine-learning-interpretability-aml.md) pro povolení interpretace u modelů v místním prostředí i na Azure Machine Learning vzdálených výpočetních prostředků. 
+- Naučte se, jak povolit [interpretaci pro automatizované modely strojového učení](how-to-machine-learning-interpretability-automl.md).
 - Další scénáře najdete v [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) . 
 - Pokud se zajímáte o výklad pro textové scénáře, přečtěte si téma [interpretace textu](https://github.com/interpretml/interpret-text), související Open Source úložiště pro [interpretaci komunit](https://github.com/interpretml/interpret-community/)pro techniky interpretace pro NLP. `azureml.interpret` balíček v současné době nepodporuje tyto techniky, ale můžete začít s [ukázkovým poznámkovým blokem při klasifikaci textu](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb).

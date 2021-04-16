@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 4/15/2021
-ms.openlocfilehash: ea9d5a5c39bf73ede2391c586f09dd95ff79b63c
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.date: 4/16/2021
+ms.openlocfilehash: 7dcbcddc5062470cc3d44fa55ea2591dd989d22d
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531979"
+ms.locfileid: "107576393"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -266,7 +266,7 @@ Prostředky databáze bez serveru jsou zapouzdřeny pomocí balíčku aplikace, 
 
 #### <a name="app-package"></a>Balíček aplikace
 
-Balíček aplikace je vnější největší hranice správy prostředků pro databázi bez ohledu na to, jestli je databáze v neserverové nebo zřízené výpočetní úrovni. Balíček aplikace obsahuje instanci SQL a externí služby, které společně připadají do oboru všechny uživatelské a systémové prostředky používané databází v SQL Database. Příklady externích služeb zahrnují R a fulltextové vyhledávání. Instance SQL všeobecně rozchází z celkového využití prostředků napříč balíčkem aplikace.
+Balíček aplikace je vnější největší hranice správy prostředků pro databázi bez ohledu na to, jestli je databáze v neserverové nebo zřízené výpočetní úrovni. Balíček aplikace obsahuje instanci SQL a externí služby, jako je fulltextové vyhledávání, které vše společně stanoví rozsah všech uživatelských a systémových prostředků používaných databází v SQL Database. Instance SQL všeobecně rozchází z celkového využití prostředků napříč balíčkem aplikace.
 
 #### <a name="user-resource-pool"></a>Fond zdrojů uživatele
 

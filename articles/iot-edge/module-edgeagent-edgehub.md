@@ -4,16 +4,16 @@ description: Zkontrolujte konkrétní vlastnosti a jejich hodnoty pro vlákna mo
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/31/2020
+ms.date: 04/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 951111b217b7ace3f12676edf6febfa7266094df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29ec958764f4a464d51f29f4b9c8223d5d7a1760
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489942"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576002"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Vlastnosti IoT Edge agenta a modulu IoT Edge centra pro vlákna
 
@@ -84,7 +84,6 @@ Následující tabulka neobsahuje informace, které jsou zkopírovány z požado
 | lastDesiredVersion | Toto celé číslo odkazuje na poslední verzi požadovaných vlastností zpracovaných agentem IoT Edge. |
 | lastDesiredStatus. Code | Tento stavový kód odkazuje na poslední požadované vlastnosti, které uvidí agent IoT Edge. Povolené hodnoty: `200` úspěch, `400` neplatná konfigurace, `412` neplatná verze schématu, `417` požadované vlastnosti jsou prázdné, `500` selhaly. |
 | lastDesiredStatus. Description | Textový popis stavu |
-| Přidružený | `healthy` Pokud je běhový stav všech modulů buď `running` nebo `stopped` , `unhealthy` jinak |
 | configurationHealth. stav: {deploymentId}. | `healthy` Pokud je stav modulu runtime pro všechny moduly nastavené nasazením {deploymentId} buď `running` nebo `stopped` , `unhealthy` jinak |
 | Runtime. Platform. OS | Hlášení operačního systému běžícího na zařízení |
 | Runtime. Platform. Architecture | Vytváření sestav architektury procesoru v zařízení |

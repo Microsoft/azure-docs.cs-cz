@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d3570a22fdd935237e673ea3e43ab5e463b66456
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8942262c2e02670d57b1db324eb154dcc38f00f8
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590530"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575390"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Principy modelů dvojčat v Azure Digital Twins
 
@@ -32,10 +32,18 @@ DTDL vychází z jazyka JSON-LD a je nezávislý na programovacích jazycích. D
 
 Zbývající část tohoto článku shrnuje, jak se jazyk používá v digitálních Vlákenách Azure.
 
-> [!NOTE] 
-> Ne všechny služby, které používají DTDL, implementují přesně stejné funkce DTDL. Například IoT technologie Plug and Play nepoužívá funkce DTDL, které jsou pro grafy, zatímco digitální vlákna Azure v současné době neimplementují příkazy DTDL.
->
-> Další informace o funkcích DTDL, které jsou specifické pro funkce digitálních vláken Azure, najdete v části dále v tomto článku týkajícími se [specifických implementací Azure pro digitální vlákna DTDL](#azure-digital-twins-dtdl-implementation-specifics).
+### <a name="azure-digital-twins-dtdl-implementation-specifics"></a>Azure Digital DTDLs – specifické implementace
+
+Ne všechny služby, které používají DTDL, implementují přesně stejné funkce DTDL. Například IoT technologie Plug and Play nepoužívá funkce DTDL, které jsou pro grafy, zatímco digitální vlákna Azure v současné době neimplementují příkazy DTDL. 
+
+Aby byl model DTDL kompatibilní s digitálními ovládacími vlákna Azure, musí splňovat tyto požadavky:
+
+* Všechny elementy DTDL nejvyšší úrovně v modelu musí být typu *Interface*. Důvodem je to, že rozhraní API modelu digitálních vláken Azure může přijímat objekty JSON, které reprezentují rozhraní nebo pole rozhraní. V důsledku toho nejsou na nejvyšší úrovni povoleny žádné další typy elementů DTDL.
+* DTDL pro digitální vlákna Azure nesmí definovat žádné *příkazy*.
+* Funkce digitálních vláken Azure umožňuje pouze jednu úroveň vnoření komponent. To znamená, že rozhraní, které se používá jako součást, nemůže mít samotné součásti. 
+* Rozhraní nelze definovat vloženou v jiných rozhraních DTDL; musí být definované jako samostatné entity nejvyšší úrovně s jejich vlastními identifikátory. Až pak jiné rozhraní chce toto rozhraní zahrnout jako komponentu nebo prostřednictvím dědičnosti, může odkazovat na jeho ID.
+
+Digitální vlákna Azure také nezohledňují `writable` atribut u vlastností nebo relací. I když se to dá nastavit podle specifikací DTDL, hodnota se nepoužívá u digitálních vláken Azure. Místo toho se tyto služby vždycky zpracovávají jako zapisovatelné pro externí klienty, kteří mají obecná oprávnění k zápisu do služby Azure Digital probíhají.
 
 ## <a name="elements-of-a-model"></a>Prvky modelu
 
@@ -73,20 +81,36 @@ Telemetrii a vlastnosti často spolupracují na zpracování dat ze zařízení.
 
 Můžete také publikovat událost telemetrie z rozhraní API digitálních vláken Azure. Stejně jako u jiné telemetrie, jedná se o krátkodobou událost, která vyžaduje, aby naslouchací proces zpracoval.
 
-### <a name="azure-digital-twins-dtdl-implementation-specifics"></a>Azure Digital DTDLs – specifické implementace
+## <a name="model-inheritance"></a>Dědičnost modelů
 
-Aby byl model DTDL kompatibilní s digitálními ovládacími vlákna Azure, musí tyto požadavky splňovat.
+V některých případech můžete chtít model specializovat. Může být například užitečné mít obecnou *místnost* modelu a specializované varianty *ConferenceRoom* a *posilovně*. Pro expresní specializaci DTDL podporuje dědičnost: rozhraní můžou dědit z jednoho nebo více jiných rozhraní. 
 
-* Všechny elementy DTDL nejvyšší úrovně v modelu musí být typu *Interface*. Důvodem je to, že rozhraní API modelu digitálních vláken Azure může přijímat objekty JSON, které reprezentují rozhraní nebo pole rozhraní. V důsledku toho nejsou na nejvyšší úrovni povoleny žádné další typy elementů DTDL.
-* DTDL pro digitální vlákna Azure nesmí definovat žádné *příkazy*.
-* Funkce digitálních vláken Azure umožňuje pouze jednu úroveň vnoření komponent. To znamená, že rozhraní, které se používá jako součást, nemůže mít samotné součásti. 
-* Rozhraní nelze definovat vloženou v jiných rozhraních DTDL; musí být definované jako samostatné entity nejvyšší úrovně s jejich vlastními identifikátory. Až pak jiné rozhraní chce toto rozhraní zahrnout jako komponentu nebo prostřednictvím dědičnosti, může odkazovat na jeho ID.
+Následující příklad znovu představí model *globálním* z předchozího příkladu DTDL jako podtyp většího modelu *CelestialBody* . Jako první se definuje "nadřazený" model a pak se na něj vytvoří podřízený model pomocí pole `extends` .
 
-Digitální vlákna Azure také nezohledňují `writable` atribut u vlastností nebo relací. I když se to dá nastavit podle specifikací DTDL, hodnota se nepoužívá u digitálních vláken Azure. Místo toho se tyto služby vždycky zpracovávají jako zapisovatelné pro externí klienty, kteří mají obecná oprávnění k zápisu do služby Azure Digital probíhají.
+:::code language="json" source="~/digital-twins-docs-samples/models/CelestialBody-Planet-Crater.json":::
 
-## <a name="example-model-code"></a>Příklad kódu modelu
+V tomto příkladu *CelestialBody* přispívá název, hmotnost a teplotu do *globálním*. `extends`Oddíl je název rozhraní nebo pole názvů rozhraní (což umožňuje rozšířit rozhraní, pokud je požadováno, zdědit z více nadřazených modelů).
+
+Po použití dědičnosti zpřístupňuje rozhraní rozšíření všechny vlastnosti z celého řetězce dědičnosti.
+
+Rozhraní rozšíření nemůže změnit žádnou z definic nadřazených rozhraní; dá se do nich přidávat jenom. Také nemůže předefinovat schopnost, která je již definována v některém z jeho nadřazených rozhraní (i v případě, že jsou možnosti definovány jako stejné). Například Pokud nadřazené rozhraní definuje `double` *hmotnost* vlastnosti, rozhraní rozšíření nemůže obsahovat deklaraci *hmotnosti*, a to i v případě, že je také `double` .
+
+## <a name="model-code"></a>Kód modelu
 
 Modely s dvojitým typem lze zapsat v libovolném textovém editoru. Jazyk DTDL se řídí syntaxí JSON, takže byste měli ukládat modely s příponou *. JSON*. Použití rozšíření JSON umožní mnoha programovým textovým editorům poskytnout základní kontrolu syntaxe a zvýrazňování pro dokumenty DTDL. K dispozici je také [rozšíření DTDL](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl) pro [Visual Studio Code](https://code.visualstudio.com/).
+
+### <a name="possible-schemas"></a>Možná schémata
+
+Jak na DTDL, schéma pro atributy *vlastností* a *telemetrie* může být standardní primitivní typy –,, `integer` `double` a, `string` `Boolean` a další typy, jako jsou `DateTime` a `Duration` . 
+
+Kromě primitivních typů mohou mít pole *vlastností* a *telemetrie* tyto komplexní typy:
+* `Object`
+* `Map`
+* `Enum`
+
+ Podporují také pole telemetrie `Array` .
+
+### <a name="example-model"></a>Ukázkový model
 
 Tato část obsahuje příklad typického modelu, který je napsán jako rozhraní DTDL. Model popisuje **Planet**, každý s názvem, hmotností a teplotu.
  
@@ -106,31 +130,6 @@ Pole modelu jsou:
 
 > [!NOTE]
 > Všimněte si, že rozhraní komponenty (*Crater* v tomto příkladu) je definováno ve stejném poli jako rozhraní, které ho používá (*globálním*). Komponenty musí být tímto způsobem definovány v volání rozhraní API, aby bylo rozhraní nalezeno.
-
-### <a name="possible-schemas"></a>Možná schémata
-
-Jak na DTDL, schéma pro atributy *vlastností* a *telemetrie* může být standardní primitivní typy –,, `integer` `double` a, `string` `Boolean` a další typy, jako jsou `DateTime` a `Duration` . 
-
-Kromě primitivních typů mohou mít pole *vlastností* a *telemetrie* tyto komplexní typy:
-* `Object`
-* `Map`
-* `Enum`
-
- Podporují také pole telemetrie `Array` .
-
-### <a name="model-inheritance"></a>Dědičnost modelů
-
-V některých případech můžete chtít model specializovat. Může být například užitečné mít obecnou *místnost* modelu a specializované varianty *ConferenceRoom* a *posilovně*. Pro expresní specializaci DTDL podporuje dědičnost: rozhraní můžou dědit z jednoho nebo více jiných rozhraní. 
-
-Následující příklad znovu představí model *globálním* z předchozího příkladu DTDL jako podtyp většího modelu *CelestialBody* . Jako první se definuje "nadřazený" model a pak se na něj vytvoří podřízený model pomocí pole `extends` .
-
-:::code language="json" source="~/digital-twins-docs-samples/models/CelestialBody-Planet-Crater.json":::
-
-V tomto příkladu *CelestialBody* přispívá název, hmotnost a teplotu do *globálním*. `extends`Oddíl je název rozhraní nebo pole názvů rozhraní (což umožňuje rozšířit rozhraní, pokud je požadováno, zdědit z více nadřazených modelů).
-
-Po použití dědičnosti zpřístupňuje rozhraní rozšíření všechny vlastnosti z celého řetězce dědičnosti.
-
-Rozhraní rozšíření nemůže změnit žádnou z definic nadřazených rozhraní; dá se do nich přidávat jenom. Také nemůže předefinovat schopnost, která je již definována v některém z jeho nadřazených rozhraní (i v případě, že jsou možnosti definovány jako stejné). Například Pokud nadřazené rozhraní definuje `double` *hmotnost* vlastnosti, rozhraní rozšíření nemůže obsahovat deklaraci *hmotnosti*, a to i v případě, že je také `double` .
 
 ## <a name="best-practices-for-designing-models"></a>Osvědčené postupy pro navrhování modelů
 

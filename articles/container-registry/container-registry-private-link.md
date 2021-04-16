@@ -1,14 +1,14 @@
 ---
-title: Nastavit privátní odkaz
+title: Nastavení privátního koncového bodu pomocí privátního odkazu
 description: Nastavte privátní koncový bod v registru kontejneru a povolte přístup přes privátní odkaz v místní virtuální síti. Přístup k privátním linkám je funkce úrovně Premium Service.
 ms.topic: article
-ms.date: 10/01/2020
-ms.openlocfilehash: 3193c65a2021d29f03bd9ae6cbc00fd6c349d9bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/31/2021
+ms.openlocfilehash: c47eb535163a1a584bc3892da61543bdf2b0f798
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93342296"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481408"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Připojení soukromě ke službě Azure Container Registry pomocí privátního odkazu Azure
 
@@ -79,7 +79,7 @@ az network vnet subnet update \
 
 ### <a name="configure-the-private-dns-zone"></a>Konfigurace privátní zóny DNS
 
-Vytvořte [privátní zónu DNS](../dns/private-dns-privatednszone.md) pro privátní doménu služby Azure Container Registry. V pozdějších krocích vytvoříte záznamy DNS pro doménu registru v této zóně DNS.
+Vytvořte [privátní zónu Azure DNS](../dns/private-dns-privatednszone.md) pro privátní doménu služby Azure Container Registry. V pozdějších krocích vytvoříte záznamy DNS pro doménu registru v této zóně DNS. Další informace najdete v části [Možnosti konfigurace DNS](#dns-configuration-options)dále v tomto článku.
 
 Pokud chcete použít privátní zónu k přepsání výchozího překladu DNS pro službu Azure Container Registry, musí mít zóna název **privatelink.azurecr.IO**. Pro vytvoření privátní zóny spusťte následující příkaz [AZ Network Private-DNS Zone Create][az-network-private-dns-zone-create] :
 
@@ -126,9 +126,11 @@ az network private-endpoint create \
     --connection-name myConnection
 ```
 
-### <a name="get-private-ip-addresses"></a>Získání privátních IP adres
+### <a name="get-endpoint-ip-configuration"></a>Získat konfiguraci IP adresy koncového bodu
 
-Spuštění [AZ Network Private-Endpoint show][az-network-private-endpoint-show] pro dotazování koncového bodu pro ID síťového rozhraní:
+Pokud chcete nakonfigurovat záznamy DNS, Získejte konfiguraci protokolu IP privátního koncového bodu. Přidružená k síťovému rozhraní privátního koncového bodu v tomto příkladu jsou dvě privátní IP adresy pro registr kontejneru: jeden pro samotný registr a druhý pro datový koncový bod registru. 
+
+Nejdřív spusťte [AZ Network Private-Endpoint show][az-network-private-endpoint-show] pro dotazování privátního koncového bodu pro ID síťového rozhraní:
 
 ```azurecli
 NETWORK_INTERFACE_ID=$(az network private-endpoint show \
@@ -138,19 +140,29 @@ NETWORK_INTERFACE_ID=$(az network private-endpoint show \
   --output tsv)
 ```
 
-Přidruženo k síťovému rozhraní v tomto příkladu jsou dvě privátní IP adresy pro registr kontejneru: jeden pro samotný registr a druhý pro datový koncový bod registru. Následující příkaz [AZ Resource show][az-resource-show] Commands získá privátní IP adresy pro registr kontejnerů a datový koncový bod registru:
+Následující [AZ Network nic show][az-network-nic-show] Commands získá privátní IP adresy pro registr kontejnerů a datový koncový bod registru:
 
 ```azurecli
-PRIVATE_IP=$(az resource show \
+REGISTRY_PRIVATE_IP=$(az network nic show \
   --ids $NETWORK_INTERFACE_ID \
-  --api-version 2019-04-01 \
-  --query 'properties.ipConfigurations[1].properties.privateIPAddress' \
+  --query "ipConfigurations[?privateLinkConnectionProperties.requiredMemberName=='registry'].privateIpAddress" \
   --output tsv)
 
-DATA_ENDPOINT_PRIVATE_IP=$(az resource show \
+DATA_ENDPOINT_PRIVATE_IP=$(az network nic show \
   --ids $NETWORK_INTERFACE_ID \
-  --api-version 2019-04-01 \
-  --query 'properties.ipConfigurations[0].properties.privateIPAddress' \
+  --query "ipConfigurations[?privateLinkConnectionProperties.requiredMemberName=='registry_data_$REGISTRY_LOCATION'].privateIpAddress" \
+  --output tsv)
+
+# An FQDN is associated with each IP address in the IP configurations
+
+REGISTRY_FQDN=$(az network nic show \
+  --ids $NETWORK_INTERFACE_ID \
+  --query "ipConfigurations[?privateLinkConnectionProperties.requiredMemberName=='registry'].privateLinkConnectionProperties.fqdns" \
+  --output tsv)
+
+DATA_ENDPOINT_FQDN=$(az network nic show \
+  --ids $NETWORK_INTERFACE_ID \
+  --query "ipConfigurations[?privateLinkConnectionProperties.requiredMemberName=='registry_data_$REGISTRY_LOCATION'].privateLinkConnectionProperties.fqdns" \
   --output tsv)
 ```
 
@@ -186,7 +198,7 @@ az network private-dns record-set a add-record \
   --record-set-name $REGISTRY_NAME \
   --zone-name privatelink.azurecr.io \
   --resource-group $RESOURCE_GROUP \
-  --ipv4-address $PRIVATE_IP
+  --ipv4-address $REGISTRY_PRIVATE_IP
 
 # Specify registry region in data endpoint name
 az network private-dns record-set a add-record \
@@ -377,15 +389,12 @@ az acr private-endpoint-connection list \
 
 Když nastavíte připojení privátního koncového bodu pomocí kroků v tomto článku, registr automaticky akceptuje připojení z klientů a služeb, které mají oprávnění Azure RBAC v registru. Koncový bod můžete nastavit tak, aby vyžadoval ruční schválení připojení. Informace o tom, jak schvalovat a odmítat připojení privátních koncových bodů, najdete v tématu [Správa připojení privátního koncového bodu](../private-link/manage-private-endpoint.md).
 
-## <a name="add-zone-records-for-replicas"></a>Přidání záznamů zóny pro repliky
-
-Jak je uvedeno v tomto článku, když přidáte připojení privátního koncového bodu k registru, vytvoříte záznamy DNS v `privatelink.azurecr.io` zóně registru a jeho koncových bodů v oblastech, kde je registr [replikován](container-registry-geo-replication.md). 
-
-Pokud později přidáte novou repliku, budete muset ručně přidat záznam nové zóny pro koncový bod dat v této oblasti. Například pokud vytvoříte repliku *myregistry* v umístění *northeurope* , přidejte záznam zóny pro `myregistry.northeurope.data.azurecr.io` . Postup najdete v tématu [Vytvoření záznamů DNS v privátní zóně](#create-dns-records-in-the-private-zone) v tomto článku.
+> [!IMPORTANT]
+> Pokud v současné době odstraníte privátní koncový bod z registru, může být také nutné odstranit odkaz virtuální sítě na soukromou zónu. Pokud se propojení neodstraní, může se zobrazit chyba podobná této `unresolvable host` .
 
 ## <a name="dns-configuration-options"></a>Možnosti konfigurace DNS
 
-Privátní koncový bod v tomto příkladu se integruje s privátní zónou DNS přidruženou k základní virtuální síti. Tento instalační program používá přímo Azure poskytovanou službu DNS k překladu veřejného plně kvalifikovaného názvu domény registru na jeho privátní IP adresu ve virtuální síti. 
+Privátní koncový bod v tomto příkladu se integruje s privátní zónou DNS přidruženou k základní virtuální síti. Tento instalační program používá přímo Azure poskytovanou službu DNS k překladu veřejného plně kvalifikovaného názvu domény registru na jeho privátní IP adresy ve virtuální síti. 
 
 Privátní propojení podporuje další scénáře konfigurace služby DNS, které používají privátní zónu, včetně vlastních řešení DNS. Můžete mít například vlastní řešení DNS nasazené ve virtuální síti nebo v místním prostředí v síti, ke které se připojujete pomocí brány VPN nebo Azure ExpressRoute. 
 
@@ -393,6 +402,21 @@ Pokud chcete v těchto scénářích přeložit veřejný plně kvalifikovaný n
 
 > [!IMPORTANT]
 > Pokud máte vysokou dostupnost, kterou jste vytvořili privátní koncové body v několika oblastech, doporučujeme použít v každé oblasti samostatnou skupinu prostředků a umístit virtuální síť a přidruženou privátní zónu DNS. Tato konfigurace také zabraňuje nepředvídatelnému rozlišení DNS způsobenému sdílením stejné privátní zóny DNS.
+
+### <a name="manually-configure-dns-records"></a>Ruční konfigurace záznamů DNS
+
+V některých případech může být potřeba ručně nakonfigurovat záznamy DNS v privátní zóně místo používání privátní zóny poskytované Azure. Nezapomeňte vytvořit záznamy pro každý z následujících koncových bodů: koncový bod registru, koncový bod dat registru a koncový bod dat pro všechny další místní repliky. Pokud nejsou všechny záznamy nakonfigurované, může být registr nedosažitelný.
+
+> [!IMPORTANT]
+> Pokud později přidáte novou repliku, budete muset ručně přidat nový záznam DNS pro koncový bod dat v této oblasti. Například pokud vytvoříte repliku *myregistry* v umístění northeurope, přidejte záznam pro `myregistry.northeurope.data.azurecr.io` .
+
+Plně kvalifikované názvy domény a privátní IP adresy, které potřebujete k vytvoření záznamů DNS, jsou přidružené k síťovému rozhraní privátního koncového bodu. Tyto informace můžete získat pomocí Azure CLI nebo z portálu:
+
+* Pomocí Azure CLI spusťte příkaz [AZ Network nic show][az-network-nic-show] . Příklady příkazů najdete v části [získání konfigurace IP adresy koncového bodu](#get-endpoint-ip-configuration)výše v tomto článku.
+
+* Na portálu přejděte do svého privátního koncového bodu a vyberte **Konfigurace DNS**.
+
+Po vytvoření záznamů DNS zajistěte, aby plně kvalifikované názvy domén registru byly správně přeloženy na odpovídající privátní IP adresy.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -407,7 +431,10 @@ Pokud chcete prostředky vyčistit na portálu, přejděte do skupiny prostředk
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o privátních odkazech najdete v dokumentaci k [privátním odkazům Azure](../private-link/private-link-overview.md) .
+
 * Pokud potřebujete nastavit pravidla přístupu k registru z za bránou firewall klienta, přečtěte si téma [Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall](container-registry-firewall-access-rules.md).
+
+* [Řešení potíží s připojením k privátnímu koncovému bodu Azure](../private-link/troubleshoot-private-endpoint-connectivity.md)
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -440,7 +467,7 @@ Pokud chcete prostředky vyčistit na portálu, přejděte do skupiny prostředk
 [az-network-private-dns-link-vnet-create]: /cli/azure/network/private-dns/link/vnet#az-network-private-dns-link-vnet-create
 [az-network-private-dns-record-set-a-create]: /cli/azure/network/private-dns/record-set/a#az-network-private-dns-record-set-a-create
 [az-network-private-dns-record-set-a-add-record]: /cli/azure/network/private-dns/record-set/a#az-network-private-dns-record-set-a-add-record
-[az-resource-show]: /cli/azure/resource#az-resource-show
+[az-network-nic-show]: /cli/azure/network/nic#az-network-nic-show
 [quickstart-portal]: container-registry-get-started-portal.md
 [quickstart-cli]: container-registry-get-started-azure-cli.md
 [azure-portal]: https://portal.azure.com

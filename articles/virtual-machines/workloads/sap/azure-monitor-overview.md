@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: c561a9a786765ccfdaf00abf4e0d9c8cc550cb9a
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 45085c910974402a968075a66087a04fb30e8bd9
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377204"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576199"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>Řešení Azure monitor pro SAP (Preview)
 
@@ -87,7 +87,7 @@ Důrazně doporučujeme, aby zákazníci povolili sdílení dat, protože poskyt
 
 Následující diagram vysvětluje, jak Azure Monitor pro řešení SAP shromažďuje telemetrii z databáze SAP HANA. Architektura je nezávisláá na to, jestli je SAP HANA nasazená v Azure Virtual Machines nebo ve velkých instancích Azure.
 
-![Azure Monitor pro architekturu řešení SAP](./media/azure-monitor-sap/azure-monitor-architecture.png)
+![Azure Monitor pro architekturu řešení SAP](https://user-images.githubusercontent.com/75772258/115046700-62ff3280-9ef5-11eb-8d0d-cfcda526aeeb.png)
 
 Klíčové součásti architektury jsou:
 - Azure Portal – výchozí bod pro zákazníky. Zákazníci můžou přejít na web Marketplace v rámci Azure Portal a vyhledat Azure Monitor řešení SAP.

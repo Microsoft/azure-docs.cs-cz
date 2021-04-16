@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: how-to
 ms.date: 11/13/2020
 ms.author: juliako
-ms.openlocfilehash: b955c0f494b757fd29c400194ef8b11314a89a03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f941d81df670f017d24a7c5011c55fcc4f082605
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96483606"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531563"
 ---
 # <a name="things-to-consider-when-using-video-indexer-at-scale"></a>Co je potřeba zvážit při použití Video Indexer ve velkém měřítku
 
@@ -45,7 +45,7 @@ Za druhé zvažte jenom některé z problémů, které mohou ovlivnit váš výk
 
 :::image type="content" source="./media/considerations-when-use-at-scale/first-consideration.png" alt-text="První aspekt použití Video Indexer se škálováním":::
 
-Když odesíláte videa pomocí adresy URL, stačí zadat cestu k umístění mediálního souboru a Video Indexer se postará o zbytek (viz `videoUrl` pole v rozhraní [nahrávat video](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?&pattern=upload) API).
+Když odesíláte videa pomocí adresy URL, stačí zadat cestu k umístění mediálního souboru a Video Indexer se postará o zbytek (viz `videoUrl` pole v rozhraní [nahrávat video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) API).
 
 > [!TIP]
 > Použijte `videoUrl` volitelný parametr rozhraní API pro nahrání videa.
@@ -58,7 +58,7 @@ Ve fázi ověření konceptu se obvykle používá Video Indexer nepotřebujete 
 
 Pokud chcete zvýšit výpočetní výkon a paralelismu, musíte v Azure Media Services věnovat pozornost [jednotkám rezervovaným](../latest/concept-media-reserved-units.md)pro média (ru). Ru jsou výpočetní jednotky, které určují parametry pro úlohy zpracování multimédií. Počet ru má vliv na počet úloh médií, které mohou být souběžně zpracovány v každém účtu, a jejich typ určuje rychlost zpracování a jedno video může vyžadovat více než jedno RU, pokud je jeho indexování složité. Když je váš ru zaneprázdněný, budou se ve frontě uchovávat nové úlohy, dokud nebude k dispozici jiný prostředek.
 
-K efektivnímu fungování a k tomu, aby nedocházelo k nečinným prostředkům, Video Indexer nabízí systém automatického škálování, který se ru dolů, když je potřeba méně zpracování, a ru nahoru, když jste ve svých nespěcháte hodinách (abyste mohli plně využívat všechna vaše ru). Tuto funkci můžete povolit [zapnutím automatického škálování](manage-account-connected-to-azure.md#autoscale-reserved-units) v nastavení účtu nebo pomocí služby [Azure-Place-Account rozhraní API Azure-Media-Services](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Paid-Account-Azure-Media-Services?&pattern=update).
+K efektivnímu fungování a k tomu, aby nedocházelo k nečinným prostředkům, Video Indexer nabízí systém automatického škálování, který se ru dolů, když je potřeba méně zpracování, a ru nahoru, když jste ve svých nespěcháte hodinách (abyste mohli plně využívat všechna vaše ru). Tuto funkci můžete povolit [zapnutím automatického škálování](manage-account-connected-to-azure.md#autoscale-reserved-units) v nastavení účtu nebo pomocí služby [Azure-Place-Account rozhraní API Azure-Media-Services](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Paid-Account-Azure-Media-Services).
 
 :::image type="content" source="./media/considerations-when-use-at-scale/second-consideration.jpg" alt-text="Druhé zvážení při použití Video Indexer se škálováním":::
 
@@ -76,7 +76,7 @@ Video Indexer je navržená tak, aby se zabývat škálováním ve velkém měř
 
 Doporučujeme, abyste nemuseli dotazovat stav vaší žádosti nepřetržitě od druhé odeslané žádosti o nahrání, můžete přidat [adresu URL zpětného volání](upload-index-videos.md#callbackurl)a počkat na video indexer, abyste si ji mohli aktualizovat. Jakmile v žádosti o nahrání dojde ke změně stavu, dostanete oznámení příspěvku na zadanou adresu URL.
 
-Adresu URL zpětného volání můžete přidat jako jeden z parametrů [rozhraní API pro nahrání videa](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?&pattern=upload). Podívejte se na ukázky kódu v [úložišti GitHub](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/). 
+Adresu URL zpětného volání můžete přidat jako jeden z parametrů [rozhraní API pro nahrání videa](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video). Podívejte se na ukázky kódu v [úložišti GitHub](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/). 
 
 Pro adresu URL zpětného volání můžete také použít Azure Functions platformou řízenou událostmi, která se dá aktivovat protokolem HTTP a implementovat následující tok.
 

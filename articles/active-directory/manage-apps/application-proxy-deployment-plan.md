@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 6da003612d98d107390c9f20a5172786c30665a6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b0a3653d2cc840d745b1bb5788406b8d374c76d0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709748"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533785"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Naplánování nasazení proxy aplikací služby Azure AD
 
@@ -292,7 +292,7 @@ Azure AD poskytuje další přehledy o využití aplikací a provozním stavu va
 
 #### <a name="application-audit-logs"></a>Protokoly auditu aplikací
 
-Tyto protokoly poskytují podrobné informace o přihlášení k aplikacím nakonfigurovaným pomocí proxy aplikací a zařízení a uživatele, který přistupuje k aplikaci. [Protokoly auditu](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) se nacházejí v Azure Portal a v [rozhraní audit API](/graph/api/resources/directoryaudit?view=graph-rest-beta) pro export. Navíc jsou k dispozici také [sestavy využití a přehled](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) pro vaši aplikaci.
+Tyto protokoly poskytují podrobné informace o přihlášení k aplikacím nakonfigurovaným pomocí proxy aplikací a zařízení a uživatele, který přistupuje k aplikaci. [Protokoly auditu](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) se nacházejí v Azure Portal a v [rozhraní audit API](/graph/api/resources/directoryaudit) pro export. Navíc jsou k dispozici také [sestavy využití a přehled](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) pro vaši aplikaci.
 
 #### <a name="application-proxy-connector-monitoring"></a>Monitorování konektoru proxy aplikací
 

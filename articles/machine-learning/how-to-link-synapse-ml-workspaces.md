@@ -11,18 +11,18 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 511ee1aa5f5036f5ca5450def0e4481c0608db33
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 23184eee67013e39400446db5f744dd0ddb7bc50
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227343"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575731"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Propojení Azure synapse Analytics a Azure Machine Learning pracovních prostorů (Preview)
 
 V tomto článku se naučíte, jak vytvořit propojenou službu, která propojuje váš pracovní prostor [Azure synapse Analytics](/azure/synapse-analytics/overview-what-is) a [pracovní prostor Azure Machine Learning](concept-workspace.md).
 
-S vaším pracovním prostorem Azure Machine Learning propojeným s vaším pracovním prostorem Azure synapse můžete připojit fond Apache Spark jako vyhrazený výpočetní výkon pro data tahání ve velkém měřítku a provádět školení modelu ze stejného poznámkového bloku.
+S vaším pracovním prostorem Azure Machine Learning propojeným s vaším pracovním prostorem Azure synapse můžete připojit fond Apache Spark jako vyhrazený výpočetní výkon pro data tahání ve velkém měřítku nebo provádět školení modelu vše ze stejného poznámkového bloku Pythonu.
 
 Pracovní prostor ML a pracovní prostor synapse můžete propojit pomocí [sady Python SDK](#link-sdk) nebo [Azure Machine Learning Studio](#link-studio).
 

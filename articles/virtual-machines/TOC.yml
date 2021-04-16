@@ -1786,6 +1786,8 @@
       href: /azure/cloud-adoption-framework/get-started/
     - name: Centrum architektury
       href: /azure/architecture/
+    - name: Nástroje pro migraci
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/migrate/azure-migration-guide/?tabs=MigrationTools'
     - name: Microsoft Q&A
       href: /answers/topics/azure-virtual-machines.html
     - name: Šablony Azure pro rychlé zprovoznění

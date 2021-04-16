@@ -9,12 +9,12 @@ metadata:
   author: v-amallick
   ms.author: v-amallick
   ms.date: 12/01/2019
-  ms.openlocfilehash: 0ad0f1aec1ce4e0718952d82d08672df42924f51
-  ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+  ms.openlocfilehash: bb23dc8b692bfbbad6d44fb0dc78929da4485b63
+  ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/04/2021
-  ms.locfileid: "106293613"
+  ms.lasthandoff: 04/15/2021
+  ms.locfileid: "107518983"
 landingContent:
 - title: Přečtěte si o službě Azure Backup
   linkLists:
@@ -95,7 +95,7 @@ landingContent:
     - text: Zálohování Azure Managed Disks
       url: backup-managed-disks.md
     - text: Nejčastější dotazy – Azure Managed Disks
-      url: disk-backup-faq.md
+      url: disk-backup-faq.yml
     - text: Řešení potíží se službou Azure Managed Disks Backup
       url: disk-backup-troubleshoot.md
 - title: Zálohování SQL Serveru na virtuálních počítačích Azure
@@ -105,7 +105,7 @@ landingContent:
     - text: Informace o SQL Serveru v zálohách virtuálních počítačů Azure
       url: backup-azure-sql-database.md
     - text: Nejčastější dotazy – SQL Server v zálohách virtuálních počítačů Azure
-      url: faq-backup-sql-server.md
+      url: faq-backup-sql-server.yml
     - text: Zálohování databází SQL Serveru ve virtuálních počítačích Azure
       url: backup-sql-server-database-azure-vms.md
     - text: Správa a monitorování zálohovaných databází SQL Serveru
@@ -119,7 +119,7 @@ landingContent:
     - text: Správa a monitorování zálohovaných databází SAP HANA
       url: sap-hana-db-manage.md
     - text: Nejčastější dotazy – zálohování databází SAP HANA na virtuálních počítačích Azure
-      url: sap-hana-faq-backup-azure-vm.md
+      url: sap-hana-faq-backup-azure-vm.yml
     - text: Matice podpory pro zálohování databází SAP HANA na virtuálních počítačích Azure
       url: sap-hana-backup-support-matrix.md
 - title: Zálohování sdílených složek Azure Files
@@ -129,7 +129,7 @@ landingContent:
     - text: Zálohování a obnovení sdílených složek Azure
       url: backup-afs.md
     - text: Nejčastější dotazy – zálohování Azure Files
-      url: backup-azure-files-faq.md
+      url: backup-azure-files-faq.yml
 - title: Zálohování s využitím agenta Microsoft Azure Recovery Services (MARS)
   linkLists:
   - linkListType: concept
@@ -141,7 +141,7 @@ landingContent:
     - text: Matice podpory pro agenty MARS
       url: backup-support-matrix-mars-agent.md
     - text: Nejčastější dotazy – agent Mars
-      url: backup-azure-file-folder-backup-faq.md
+      url: backup-azure-file-folder-backup-faq.yml
 - title: Zálohování s využitím Microsoft Azure Backup Serveru (MABS) a DPM
   linkLists:
   - linkListType: concept
@@ -151,7 +151,7 @@ landingContent:
     - text: Matice podpory MABS/DPM
       url: backup-support-matrix-mabs-dpm.md
     - text: Nejčastější dotazy – MABS a DPM
-      url: backup-azure-dpm-azure-server-faq.md
+      url: backup-azure-dpm-azure-server-faq.yml
     - text: Instalace a upgrade MABS
       url: backup-azure-microsoft-azure-backup.md
 - title: Správa ve velkém měřítku

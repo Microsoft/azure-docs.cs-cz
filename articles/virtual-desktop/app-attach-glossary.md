@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: deb02c161dfe41bf79b7905fde23678425aaf55f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: c5c596735ad91f38d5ba4217135a9373d2856182
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448368"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538452"
 ---
 # <a name="msix-app-attach-glossary"></a>Glosář připojení aplikace MSIX
 
@@ -33,7 +33,7 @@ Balíček MSIX je soubor nebo aplikace MSIX.
 
 ## <a name="msix-share"></a>MSIX sdílená složka
 
-Sdílená složka MSIX je sdílená síťová složka, která obsahuje rozšířené balíčky MSIX. Sdílené složky MSIX podporují protokol SMB 3 nebo novější. Aplikace se připravené z této sdílené složky MSIX bez nutnosti přesunout soubory aplikace na systémovou jednotku.
+Sdílená složka MSIX je sdílená síťová složka, která obsahuje rozšířené balíčky MSIX. Sdílené složky MSIX musí podporovat protokol SMB 3 nebo novější. Sdílené složky musí být také přístupné pro Virtual Machines (virtuální počítač) v účtu systému fondu hostitelů. Balíčky MSIX se připravují ze sdílené složky MSIX, aniž by bylo nutné přesunout soubory aplikace na systémovou jednotku. 
 
 ## <a name="msix-image"></a>Obrázek MSIX
 

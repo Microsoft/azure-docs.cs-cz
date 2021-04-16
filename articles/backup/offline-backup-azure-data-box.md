@@ -3,12 +3,12 @@ title: Offline zálohování pomocí Azure Data Box
 description: Naučte se, jak můžete použít Azure Data Box k osazení velkých počátečních zálohovaných dat offline od agenta MARS do trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e789b6c9f4ff2e8cd168e6b5c138d423911d4743
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78adc479ce5733e208d2334d30d7b88e4edf8d6b
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96752579"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576087"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Backup offline zálohování pomocí Azure Data Box
 
@@ -292,7 +292,7 @@ Pokud na žádném jiném serveru není nakonfigurované počáteční nastavov�
 
 Ze serveru, který se pokoušíte nakonfigurovat pro offline zálohování, proveďte následující akce.
 
-1. Přejít na kartu **Správa počítačového certifikátu**  >  **osobní** a vyhledejte certifikát s názvem `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
+1. Přejít na kartu **Správa počítačového certifikátu**  >  **osobní** a vyhledejte certifikát s názvem `CB_AzureADCertforOfflineSeeding_<Timestamp>` .
 
 2. Vyberte certifikát, klikněte pravým tlačítkem na **všechny úlohy** a vyberte **exportovat** bez privátního klíče ve formátu. cer.
 

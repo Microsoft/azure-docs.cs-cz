@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 3/17/2021
-ms.openlocfilehash: b626012ad825b263e4f837159a067ed1d817d93a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/15/2021
+ms.openlocfilehash: dcb77e45f5e1469363eb279626a866c7f719de40
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104609117"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537530"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Přehled společného prodeje s prodejními týmy a partnery Microsoftu
 
@@ -80,7 +80,7 @@ Nabídky, které dosahují _společného prodeje Azure IP motivovaní_ , získaj
 - Poplatek za službu Marketplace se snižuje z 20% na 10%. Tato sleva se vztahuje na řešení vaší infrastruktury jako služby (IaaS) nebo softwaru jako služby (SaaS) prodávaného prostřednictvím komerčního tržiště. Další informace najdete v tématu [poplatky za služby komerčního tržiště](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
 - Partneři poskytovatele Cloud Solution Provider (CSP) obdrží 10% pobídky k prodeji vašeho řešení IaaS nebo nabídky SaaS. Další informace o programu CSP najdete v tématu [program Cloud Solution Provider](cloud-solution-providers.md).
 - Prodej vaší nabídky prostřednictvím Azure Marketplace přispěje ke svým závazkům za využití Azure pro zákazníky. Způsobilí zákazníci uvidí nabídku označenou jako **zvýhodněné zvýhodnění Azure s nárokem** v Azure Portal. Další informace najdete v tématu [zvýhodnění závazků za využití Azure](azure-consumption-commitment-benefit.md).
-- Nabídky, které dostávají stav motivovaní v rámci _společného prodeje Azure IP_ nebo jsou zaregistrované v [programu Microsoft Business Applications ISV Connect](business-applications-isv-program.md) se stavem připraveného pro společný prodej, obdrží na stránce seznam nabídek v online obchodech **upřednostňovaná řešení Microsoftu** . Visačka podporuje kvalitu, výkon a možnost řešení potřeb zákazníků v určité odvětví vertikální nebo oblasti řešení.
+- Nabídky, které přinášejí stav _motivovaní (Azure IP prodal_ ) nebo jsou zaregistrované v [programu Microsoft Business Applications ISV Connect](business-applications-isv-program.md) se stavem připraveného pro společný prodej, obdrží na stránce se seznamem nabídek v online obchodech **upřednostňovaná řešení Microsoftu** : [Azure Marketplace](https://azuremarketplace.microsoft.com/) a [AppSource](https://appsource.microsoft.com/).  Jakmile nabídka dosáhne příslušného stavu, může trvat až 30 dní, než se upřednostňovaná oznámení o řešení zobrazí v online obchodu. Visačka podporuje kvalitu, výkon a možnost řešení potřeb zákazníků v určité odvětví vertikální nebo oblasti řešení.
 
 Další informace o tom, jak dosáhnout společného prodejního stavu motivovaní, najdete v tématu věnovaném předprodejní [požadavkům a spoluprodeji motivovaní požadavků](co-sell-requirements.md).
 

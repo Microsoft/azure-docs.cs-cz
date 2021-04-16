@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 54ce9ca0ddffe074f5a343d192b4599b3449a855
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: fe8ac81a8b04aa88ce91a978c2bc9b979a065370
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538737"
+ms.locfileid: "107576155"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Azure monitor pro poskytovatele řešení SAP (Preview)
 
@@ -28,7 +28,7 @@ Zákazníci si také můžou zvolit, že mají nakonfigurovat více poskytovatel
 - Cluster s vysokou dostupností
 - Operační systém
 
-![Azure Monitor pro poskytovatele řešení SAP](./media/azure-monitor-sap/azure-monitor-providers.png)
+![Azure Monitor pro poskytovatele řešení SAP](https://user-images.githubusercontent.com/75772258/115047655-5a5b2c00-9ef6-11eb-9e0c-073e5e1fcd0e.png)
 
 Zákazníkům se doporučuje nakonfigurovat alespoň jednoho poskytovatele z dostupných typů poskytovatele v době nasazení prostředku sledování SAP. Když zákazníci nakonfigurují poskytovatele, zahájí shromažďování dat z odpovídající komponenty, pro kterou je poskytovatel nakonfigurovaný.   
 

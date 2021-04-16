@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 2ecc5df9db51bb6c923b9e0f47163e492bd76cfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6646f131488a5ae4aa9b20fe614d7ebb46133444
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101695736"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538866"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrace a kontrola klienta Power BIu (Preview)
 
@@ -69,8 +69,6 @@ Pokud chcete nastavit ověřování, vytvořte skupinu zabezpečení a přidejte
 ## <a name="register-your-power-bi-and-set-up-a-scan"></a>Zaregistrujte Power BI a nastavte kontrolu.
 
 Teď, když jste udělili oprávnění ke spravovaným identitám dosah pro připojení k rozhraní API pro správu vašeho tenanta Power BI, můžete si nastavit kontrolu z Azure dosah studia.
-
-Nejdřív přidejte příznak speciální funkce na adresu URL dosah. 
 
 1. Vyberte ikonu **centra pro správu** .
 

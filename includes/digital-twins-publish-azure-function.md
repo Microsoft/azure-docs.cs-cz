@@ -5,56 +5,58 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/21/2021
 ms.author: baanders
-ms.openlocfilehash: 9f8ca9ab6dc184abb8d9dcd25ebe87cbd7761722
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddc56ab05a087c9e86d67a13aebcfb8e65fbd78f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102630254"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480721"
 ---
-Pokud chcete projekt publikovat do aplikace Function App v Azure, klikněte pravým tlačítkem na projekt v *Průzkumník řešení* a zvolte **publikovat**.
+Pokud chcete projekt publikovat do aplikace Function App v Azure, začněte v Průzkumník řešení. Klikněte pravým tlačítkem na projekt a pak zvolte **publikovat**.
 
 > [!IMPORTANT] 
 > Publikování do aplikace Function App v Azure má za následek další poplatky za vaše předplatné bez ohledu na digitální vlákna Azure.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Snímek obrazovky sady Visual Studio se zobrazením nabídky řešení vpravo vyberte. Publikování je zvýrazněno v nabídce.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Snímek obrazovky sady Visual Studio se zobrazeným kliknutím pravým tlačítkem myši na nabídku řešení. V nabídce je publikace zvýrazněna.":::
 
-Na následující stránce *publikování* ponechte výchozí cílový výběr **Azure** a vyberte *Další*. 
+Na stránce **publikovat** , která se otevře, ponechte výchozí cílový výběr **Azure**. Pak vyberte **Další**. 
 
-V případě konkrétního cíle zvolte **Azure Function App (Windows)** a klikněte na *Další*.
+Pro konkrétní cíl zvolte **Azure Function App (Windows)** a pak vyberte **Další**.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="Snímek obrazovky sady Visual Studio v dialogovém okně Publikovat Azure Functions. Na stránce konkrétní cíl je vybraná možnost Azure Function App (Windows).":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="Snímek obrazovky sady Visual Studio se zobrazením dialogového okna publikovat Azure Functions. Na stránce konkrétní cíl je výběr Azure Function App (Windows).":::
 
-Na stránce *funkce instance* vyberte své předplatné. Pak vyberte *+* ikonu pro vytvoření nové funkce Azure Functions.
+Na kartě **instance funkcí** vyberte své předplatné. Pak vyberte ikonu Plus (+) a vytvořte novou funkci.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Snímek obrazovky sady Visual Studio v dialogovém okně Publikovat Azure Functions. Tlačítko + pro vytvoření nové funkce je na stránce instance Functions zvýrazněno.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Snímek obrazovky sady Visual Studio se zobrazením dialogového okna publikovat Azure Functions. Ikona Plus je zvýrazněna.":::
 
-V *Function App (Windows) – vytvořit nové* okno vyplňte pole následujícím způsobem:
-* **Název** je název plánu spotřeby, který Azure použije k hostování vaší Azure Functions aplikace. Tím se také stane název aplikace Function App, která obsahuje vaši skutečnou funkci. Můžete zvolit vlastní jedinečnou hodnotu nebo ponechat výchozí návrh.
+V okně **Function App (Windows) – vytvořit nové** zadejte následující pole:
+* **Název** je název plánu spotřeby, který Azure použije k hostování vaší Azure Functions aplikace. Tento název se použije taky pro aplikaci Function App, která obsahuje vaši skutečnou funkci. Můžete zvolit jedinečnou hodnotu nebo ponechat výchozí návrh.
 * Ujistěte se, že **předplatné** odpovídá předplatnému, které chcete použít. 
-* Ujistěte se, že **Skupina prostředků** má skupinu prostředků, kterou chcete použít.
-* Ponechat **typ plánu** jako *spotřebu*
-* Vyberte **umístění** , které odpovídá umístění vaší skupiny prostředků.
-* Vytvořte nový prostředek **Azure Storage** pomocí odkazu *New...* . Nastavte umístění tak, aby odpovídalo vaší skupině prostředků, použijte jiné výchozí hodnoty a vyberte OK.
+* Ujistěte se, že **Skupina prostředků** je ta, kterou chcete použít.
+* Ponechte výběr **typu plánu** jako **spotřebu**.
+* Vyberte **umístění** skupiny prostředků.
+* Vytvořte nový prostředek **Azure Storage** tak, že vyberete **Nový** odkaz. Nastavte umístění tak, aby odpovídalo vaší skupině prostředků, použijte jiné výchozí hodnoty a pak vyberte **OK**.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Snímek obrazovky sady Visual Studio v dialogovém okně Publikovat Azure Functions. Jsou vyplněny podrobnosti nové aplikace Function App, včetně názvu, předplatného, skupiny prostředků, typu plánu, umístění a Azure Storage.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Snímek obrazovky sady Visual Studio se zobrazením dialogového okna publikovat Azure Functions. Jsou vyplněny podrobnosti nové aplikace Function App, včetně názvu, předplatného, skupiny prostředků, typu plánu, umístění a Azure Storage.":::
 
 Potom vyberte **Vytvořit**.
 
-Po krátkém čekání na vytvoření služby App Service by se mělo dialogové okno vrátit na stránku *instance* Functions. vaše nová aplikace Function App se zobrazí v oblasti **aplikace Functions** vnořené pod vaší skupinou prostředků. Vyberte *Dokončit*.
+Po vytvoření služby App Service se otevře karta **instance Functions** . Vaše nová aplikace Function App se zobrazí v oblasti **aplikace Functions** pod vaší skupinou prostředků. Vyberte **Dokončit**.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Publikování funkce Azure Functions v aplikaci Visual Studio: instance Functions (po aplikaci Function App)":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Snímek obrazovky sady Visual Studio se zobrazením dialogového okna publikovat Azure Functions. Je vybraná karta instance Functions. Nová aplikace Functions se zobrazí ve skupině prostředků.":::
 
-V podokně *publikovat* , které se otevře zpátky v hlavním okně sady Visual Studio, zaškrtněte políčko všechny informace vypadají správně a vyberte **publikovat**.
+V podokně **publikovat** , které se otevře v hlavním okně sady Visual Studio, ověřte, zda všechny informace vypadají správně. Potom vyberte **Publikovat**.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Snímek obrazovky sady Visual Studio v dialogovém okně Publikovat Azure Functions. Nová aplikace Function App se zobrazí v seznamu aplikací funkcí a existuje tlačítko pro dokončení.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Snímek obrazovky sady Visual Studio zobrazující podokno publikování. Tlačítko publikovat je zvýrazněné.":::
 
 > [!NOTE]
-> Pokud se zobrazí automaticky otevírané okno s :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="názvem obrazovky pro místní okno sady Visual Studio nazvané přihlašovací údaje pro publikování. Obsahuje pole pro uživatelské jméno a heslo a tlačítko k pokusu o načtení přihlašovacích údajů z Azure." border="false":::
-> Vyberte **pokus o načtení přihlašovacích údajů z Azure** a **uložte** ji.
+> Pokud se zobrazí automaticky otevírané okno jako v následujícím příkladu, vyberte **pokus o načtení přihlašovacích údajů z Azure** a pak vyberte **Uložit**.
+> :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Snímek obrazovky sady Visual Studio se zobrazeným překryvném oknem s názvem přihlašovací údaje pro publikování. Obsahuje pole pro uživatelské jméno a heslo. Obsahuje taky tlačítko pro pokus o načtení přihlašovacích údajů z Azure." border="false":::
 >
-> Pokud se zobrazí upozornění na *Upgrade verze funkcí v Azure* nebo že *vaše verze modulu runtime Functions neodpovídá verzi běžící v Azure*:
+> Pokud se zobrazí některá z následujících upozornění, postupujte podle pokynů pro upgrade na nejnovější verzi modulu runtime Azure Functions:
+> * "Verze funkcí upgradu v Azure."
+> * "Vaše verze modulu runtime Functions neodpovídá verzi běžící v Azure."
 >
-> Postupujte podle pokynů a upgradujte na nejnovější verzi modulu runtime Azure Functions. K tomuto problému může dojít, pokud používáte starší verzi sady Visual Studio.
+> Tato upozornění se mohou zobrazit, pokud používáte starou verzi sady Visual Studio.
 
 Vaše aplikace Function App je teď publikovaná v Azure.

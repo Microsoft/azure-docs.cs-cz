@@ -4,12 +4,12 @@ description: Pokyny, jak přesunout Recovery Services trezor mezi předplatnými
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4f75bec533181b29625fb0a10cc26d03f2875036
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49d6782af5a9c946eaf92147dab22e4605195d89
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466367"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514763"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesunutí trezoru Recovery Services napříč předplatnými Azure a skupinami prostředků
 
@@ -23,7 +23,7 @@ Podporují se všechny veřejné regiony a oblasti svrchovaného centra, s výji
 
 - Při přesunu trezoru mezi skupinami prostředků jsou zdrojové i cílové skupiny prostředků zamčené, aby se zabránilo operacím zápisu a odstranění. Další informace najdete v tomto [článku](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - Pouze předplatné správce má oprávnění k přesunu trezoru.
-- Pro přesun trezorů mezi předplatnými se musí cílové předplatné nacházet ve stejném tenantovi jako zdrojové předplatné a jeho stav musí být povolený. Pokud chcete přesunout trezor do jiného adresáře služby Azure AD, přečtěte si článek [přenos předplatného do jiného adresáře](../role-based-access-control/transfer-subscription.md) a [Nejčastější dotazy k trezoru služby Recovery Services](backup-azure-backup-faq.md#recovery-services-vault).
+- Pro přesun trezorů mezi předplatnými se musí cílové předplatné nacházet ve stejném tenantovi jako zdrojové předplatné a jeho stav musí být povolený. Pokud chcete přesunout trezor do jiného adresáře služby Azure AD, přečtěte si článek [přenos předplatného do jiného adresáře](../role-based-access-control/transfer-subscription.md) a [Nejčastější dotazy k trezoru služby Recovery Services](/backup-azure-backup-faq.yml#recovery-services-vault).
 - Musíte mít oprávnění k provádění operací zápisu v cílové skupině prostředků.
 - Přesun trezoru mění jenom skupinu prostředků. Trezor Recovery Services se bude nacházet ve stejném umístění a nedá se změnit.
 - V jednom okamžiku můžete přesunout jenom jeden Recovery Services trezor pro oblast.
@@ -134,7 +134,7 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
 
 Pokud chcete přejít k novému předplatnému, zadejte `--destination-subscription-id` parametr.
 
-## <a name="post-migration"></a>Po dokončení migrace
+## <a name="post-migration"></a>Po migraci
 
 1. Nastaví nebo ověří řízení přístupu pro skupiny prostředků.  
 2. Po dokončení přesunu je třeba pro trezor znovu nakonfigurovat funkci vytváření sestav a monitorování zálohování. Předchozí konfigurace bude ztracena během operace přesunutí.

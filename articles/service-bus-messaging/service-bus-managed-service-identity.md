@@ -3,12 +3,12 @@ title: Spravované identity pro prostředky Azure s Service Bus
 description: Tento článek popisuje, jak používat spravované identity pro přístup k Azure Service Bus entit (fronty, témata a předplatná).
 ms.topic: article
 ms.date: 01/21/2021
-ms.openlocfilehash: bd985acd9b775d6baef0abf488952e28c17aef2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cac254ef6b57f1878620b1e3ca30e757d7f39a88
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98954306"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529469"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus
 [Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) je funkce mezi Azure, která umožňuje vytvořit zabezpečenou identitu přidruženou k nasazení, ve kterém se spouští kód aplikace. Tuto identitu pak můžete přidružit k rolím řízení přístupu, které udělují vlastní oprávnění pro přístup ke konkrétním prostředkům Azure, které vaše aplikace potřebuje.
@@ -92,7 +92,7 @@ Po vytvoření aplikace proveďte tyto kroky:
 Po povolení tohoto nastavení se v Azure Active Directory (Azure AD) vytvoří nová identita služby a nakonfiguruje se na hostitele App Service.
 
 > [!NOTE]
-> Při použití spravované identity by měl být připojovací řetězec ve formátu: `Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=Managed Identity` .
+> Při použití spravované identity by měl být připojovací řetězec ve formátu: `Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=ManagedIdentity` .
 
 Teď tuto identitu služby přiřaďte roli v požadovaném oboru ve vašich Service Busch prostředcích.
 

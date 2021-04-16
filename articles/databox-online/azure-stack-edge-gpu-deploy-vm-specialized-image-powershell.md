@@ -6,45 +6,36 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: d03aeb9759fb321b580fa65e06dc09ccde4a44a0
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6bfa42e99f295b429eba40a27eb59becb8aa80a1
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106556078"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575938"
 ---
-# <a name="deploy-a-vm-from-a-specialized-image-on-your-azure-stack-edge-pro-device-via-azure-powershell"></a>Nasazení virtuálního počítače z specializované image na zařízení Azure Stack Edge pro prostřednictvím Azure PowerShell 
+# <a name="deploy-a-vm-from-a-specialized-image-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Nasazení virtuálního počítače z specializované image na zařízení GPU Azure Stack Edge pro pomocí Azure PowerShell 
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Tento článek popisuje kroky potřebné k nasazení virtuálního počítače na zařízení Azure Stack Edge pro z specializované image. 
+Tento článek popisuje kroky potřebné k nasazení virtuálního počítače na zařízení GPU Azure Stack Edge pro z specializované image. 
 
-## <a name="about-specialized-images"></a>O specializovaných obrázcích
+Pokud chcete připravit zobecněnou image pro nasazení virtuálních počítačů v grafickém procesoru Azure Stack Edge pro, přečtěte si téma [Příprava generalizované image z VHD s Windows](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md) nebo [Příprava generalizované image z ISO](azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md).
+
+## <a name="about-vm-images"></a>O imagí virtuálních počítačů
 
 K vytvoření *specializované* Image nebo *generalizované* image se dá použít soubor VHD nebo VHDX Windows. Následující tabulka shrnuje hlavní rozdíly mezi *specializovanými* a *zobecněnými* obrázky.
 
+[!INCLUDE [about-vm-images-for-azure-stack-edge](../../includes/azure-stack-edge-about-vm-images.md)]
 
-|Typ image  |Generalizovaná  |Specializovaná  |
-|---------|---------|---------|
-|Cíl     |Nasazeno v jakémkoli systému         | Cílem konkrétního systému        |
-|Nastavit po spuštění     | Při prvním spuštění virtuálního počítače se vyžaduje Instalační program.          | Instalace není nutná. <br> Platforma se na virtuálním počítači zapne.        |
-|Konfigurace     |Vyžaduje se název hostitele, správce a další nastavení specifické pro virtuální počítač.         |Předem nakonfigurovaná.         |
-|Používá se pro     |Vytvoří několik nových virtuálních počítačů ze stejné image.         |Migrujte konkrétní počítač nebo obnovte virtuální počítač z předchozí zálohy.         |
-
-
-Tento článek popisuje kroky potřebné k nasazení z specializované image. Pokud chcete nasadit z generalizované image, přečtěte si téma [použití zobecněného virtuálního pevného disku s Windows](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md) pro vaše zařízení.
-
-
-## <a name="vm-image-workflow"></a>Pracovní postup image virtuálního počítače
+## <a name="workflow"></a>Pracovní postup
 
 Pracovní postup vysoké úrovně pro nasazení virtuálního počítače z specializované Image je:
 
 1. Zkopírujte virtuální pevný disk do místního účtu úložiště na zařízení GPU Azure Stack Edge pro.
 1. Vytvořte nový spravovaný disk z virtuálního pevného disku.
 1. Vytvořte nový virtuální počítač ze spravovaného disku a připojte spravovaný disk.
-
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -65,7 +56,6 @@ Ověřte, že se váš klient může připojit k místnímu Azure Resource Manag
     ```
 
 2. Zadejte uživatelské jméno `EdgeArmUser` a heslo pro připojení prostřednictvím Azure Resource Manager. Pokud heslo nebudete volat, [resetujte heslo pro Azure Resource Manager](azure-stack-edge-gpu-set-azure-resource-manager-password.md) a použijte toto heslo pro přihlášení.
- 
 
 ## <a name="deploy-vm-from-specialized-image"></a>Nasazení virtuálního počítače z specializované image
 
@@ -75,10 +65,10 @@ Následující oddíly obsahují podrobné pokyny k nasazení virtuálního poč
 
 Pomocí těchto kroků zkopírujte virtuální pevný disk do místního účtu úložiště:
 
-1. Zkopírujte zdrojový virtuální pevný disk do místního účtu služby Blob Storage na Azure Stack Edge. 
+1. Zkopírujte zdrojový virtuální pevný disk do místního účtu služby Blob Storage na Azure Stack Edge.
 
 1. Poznamenejte si výsledný identifikátor URI. Tento identifikátor URI použijete v pozdějším kroku.
-    
+
     Informace o vytvoření a přístup k účtu místního úložiště najdete v částech [Vytvoření účtu úložiště](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#create-a-storage-account) prostřednictvím [nahrání VHD](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#upload-a-vhd) v článku [nasazení virtuálních počítačů na zařízení Azure Stack Edge přes Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md). 
 
 ## <a name="create-a-managed-disk-from-vhd"></a>Vytvoření spravovaného disku z VHD
@@ -301,7 +291,5 @@ Tento článek používá jenom jednu skupinu prostředků k vytvoření všech 
 
 ## <a name="next-steps"></a>Další kroky
 
-V závislosti na povaze nasazení můžete zvolit jeden z následujících postupů.
-
-- [Nasazení virtuálního počítače z generalizované Image pomocí Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)  
-- [Nasazení virtuálního počítače pomocí Azure Portal](azure-stack-edge-gpu-deploy-virtual-machine-portal.md)
+- [Příprava generalizované image z VHD s Windows k nasazení virtuálních počítačů na procesorovém GPU Azure Stack Edge pro](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md)
+- [Příprava generalizované image z ISO na nasazení virtuálních počítačů v grafickém procesoru Azure Stack Edge pro](azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md)

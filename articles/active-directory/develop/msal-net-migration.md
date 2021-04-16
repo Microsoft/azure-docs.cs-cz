@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 64107c3f667dd7e59fcf6d191e83457029b3a277
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49b5da2da72e78226db19f5d8881073577aee5b0
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100546342"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575512"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrace aplikací do MSAL.NET
 
@@ -29,9 +29,17 @@ K ověřování entit Azure AD a žádosti o tokeny od Azure AD se používají 
 - vaše aplikace může povolit postupný souhlas a podpora podmíněného přístupu je jednodušší.
 - přináší vám výhody inovace.
 
-**MSAL.NET je teď doporučovanou knihovnou ověřování, která se má použít s platformou Microsoft Identity**. V ADAL.NET se neimplementují žádné nové funkce. Úsilí se zaměřuje na zlepšení MSAL.
+**MSAL.NET nebo Microsoft. identity. Web jsou teď Doporučené knihovny pro ověřování, které se mají používat s platformou Microsoft Identity**. V ADAL.NET se neimplementují žádné nové funkce. Úsilí se zaměřuje na zlepšení MSAL.
 
 Tento článek popisuje rozdíly mezi knihovnou Microsoft Authentication Library for .NET (MSAL.NET) a knihovnou ověřování Azure AD pro .NET (ADAL.NET) a pomáhá migrovat na MSAL.
+
+## <a name="should-you-migrate-to-msalnet-or-to-microsoftidentityweb"></a>Měli byste migrovat na MSAL.NET nebo na Microsoft. identity. Web.
+
+Před prozkoumá v podrobnostech MSAL.NET vs ADAL.NET můžete chtít zjistit, jestli chcete použít MSAL.NET nebo abstrakci vyšší úrovně, jako je [Microsoft. identity. Web.](microsoft-identity-web.md)
+
+Podrobnosti o rozhodovacím stromu níže najdete v článku [Jak používat jenom MSAL.NET? nebo abstrakce vyšší úrovně?](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Is-MSAL.NET-right-for-me%3F)
+
+:::image type="content" source="media/msal-net-migration/decision-diagram.png" alt-text="Blokový diagram vysvětlující, jak zvolit, jestli při migraci z ADAL.NET potřebujete použít MSAL.NET a Microsoft. identity. Web nebo obojí":::
 
 ## <a name="differences-between-adal-and-msal-apps"></a>Rozdíly mezi aplikacemi ADAL a MSAL
 
@@ -51,7 +59,7 @@ Pokud chcete použít MSAL.NET, budete muset přidat balíček NuGet [Microsoft.
 
 ### <a name="scopes-not-resources"></a>Obory nejsou prostředky
 
-ADAL.NET získá tokeny pro *prostředky*, ale MSAL.NET získá tokeny pro *rozsahy*. Řada MSAL.NETch přepsání AcquireToken vyžaduje parametr nazvaný scopes ( `IEnumerable<string> scopes` ). Tento parametr je jednoduchý seznam řetězců, který deklaruje požadovaná oprávnění a požadované prostředky. Mezi známé obory patří i [obory Microsoft Graph](/graph/permissions-reference).
+ADAL.NET získá tokeny pro *prostředky*, ale MSAL.NET získá tokeny pro *rozsahy*. Řada MSAL.NETch přepsání AcquireToken vyžaduje parametr nazvaný scopes ( `IEnumerable<string> scopes` ). Tento parametr je jednoduchý seznam řetězců, který deklaruje požadovaná oprávnění a požadované prostředky. Známé obory jsou [obory Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference).
 
 V MSAL.NET je také možné získat přístup k prostředkům v 1.0. Podívejte se na podrobnosti v [oborech pro aplikaci v 1.0](#scopes-for-a-web-api-accepting-v10-tokens).
 

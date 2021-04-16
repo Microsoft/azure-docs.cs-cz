@@ -4,12 +4,12 @@ description: Poznejte pojem infrastruktura Azure BareMetal.
 ms.topic: conceptual
 ms.subservice: workloads
 ms.date: 04/06/2021
-ms.openlocfilehash: 53a601cc4556198479d8ca5d7495942d4dc2762c
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: aa7d9693b3417ff0bb6c6a61800aee72cd416c48
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580136"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536781"
 ---
 # <a name="know-the-terms-for-baremetal-infrastructure"></a>Znát pojem BareMetal Infrastructure
 
@@ -24,6 +24,7 @@ V tomto článku se podíváme na některé důležité výrazy, které se týka
 - **Tenant**: zákazník, který nasazuje razítko instance BareMetal, se jako tenant izoluje *.* Tenant je izolovaný v síti, úložišti a výpočetní vrstvě z jiných tenantů. Úložiště a výpočetní jednotky přiřazené různým klientům se nemůžou vzájemně zobrazit ani vzájemně komunikovat na úrovni razítek instance BareMetal. Zákazník se může rozhodnout, že mají nasazení v různých klientech. I potom neexistuje žádná komunikace mezi klienty na úrovni razítka instance BareMetal.
 
 ## <a name="next-steps"></a>Další kroky
+
 Teď, když jste se seznámili s důležitou terminologií infrastruktury BareMetal, můžete chtít získat další informace:
 - Další podrobnosti o [infrastruktuře BareMetal](concepts-baremetal-infrastructure-overview.md)
 - Postup [propojení instancí infrastruktury BareMetal v Azure](connect-baremetal-infrastructure.md)

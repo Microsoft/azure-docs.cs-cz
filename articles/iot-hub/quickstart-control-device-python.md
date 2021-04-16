@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ms.date: 09/14/2020
-ms.openlocfilehash: d252aa15fef29f7c22e224fd7b6021a469530287
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2ecc1ceb624f2f98bca47d4d1331f67c52fa54b4
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067737"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566907"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (Python)
 
@@ -33,7 +33,7 @@ V tomto rychlém startu použijete přímou metodu k řízení simulovaného za�
 
 * [Python 3.7 +](https://www.python.org/downloads/). Další podporované verze Pythonu najdete v tématu [funkce zařízení Azure IoT](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features).
 
-* [Vzorový projekt v Pythonu](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip)
+* [Vzorový projekt v Pythonu](https://github.com/Azure-Samples/azure-iot-samples-python/) z GitHubu. Stáhněte nebo naklonujte ukázky pomocí tlačítka **Code (kód** ) v úložišti GitHub.
 
 * Port 8883 otevřete v bráně firewall. Ukázka zařízení v tomto rychlém startu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 

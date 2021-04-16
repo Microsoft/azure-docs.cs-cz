@@ -3,12 +3,12 @@ title: Přehled architektury
 description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 1e5a61bd4e3287c1100ff1f54fda797c1add438b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ecf01838b8fe3104626f8ada5f832c3f52dc378
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466407"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515902"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -56,7 +56,7 @@ Recovery Services trezory mají následující další funkce:
 
 Azure Backup poskytuje různé agenty zálohování v závislosti na tom, jaký typ počítače se zálohuje:
 
-**Agenta** | **Podrobnosti**
+**Agent** | **Podrobnosti**
 --- | ---
 **Agent MARS** | <ul><li>Spouští se na jednotlivých místních počítačích Windows serveru pro zálohování souborů, složek a stavu systému.</li> <li>Spouští se na virtuálních počítačích Azure pro zálohování souborů, složek a stavu systému.</li> <li>Spouští na serverech DPM nebo MABS k zálohování místního úložiště aplikace DPM/MABS do Azure.</li></ul>
 **Rozšíření virtuálního počítače Azure** | Spustí se na virtuálních počítačích Azure, které je zálohují do trezoru.
@@ -137,8 +137,8 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
 - Sdílená složka Azure: jak [vytvářet](./backup-afs.md) a [upravovat](./manage-afs-backup.md#modify-policy) zásady.
 - SAP HANA: jak [vytvářet](./backup-azure-sap-hana-database.md#create-a-backup-policy) a [upravovat](./sap-hana-db-manage.md#change-policy) zásady.
 - MARS: jak [vytvářet](./backup-windows-with-mars-agent.md#create-a-backup-policy) a [upravovat](./backup-azure-manage-mars.md#modify-a-backup-policy) zásady.
-- [Existují nějaká omezení pro plánování zálohování na základě typu úlohy?](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
-- [Co se stane s existujícími body obnovení, když změním zásady uchovávání informací?](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
+- [Existují nějaká omezení pro plánování zálohování na základě typu úlohy?](./backup-azure-backup-faq.yml#are-there-limits-on-backup-scheduling-)
+- [Co se stane s existujícími body obnovení, když změním zásady uchovávání informací?](./backup-azure-backup-faq.yml#what-happens-when-i-change-my-backup-policy-)
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architektura: Integrovaná záloha virtuálního počítače Azure
 

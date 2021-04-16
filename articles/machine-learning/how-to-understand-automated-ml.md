@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: b60e5f656b675a1382b8b4776975723a437183bc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 71d8d577bdfd8b359ce872f3489b60dca0b462b2
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773109"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575628"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Vyhodnotit automatizované výsledky experimentování ve strojovém učení
 
@@ -234,18 +234,9 @@ V tomto příkladu si všimněte, že lepší model má předpokládaný vs. tru
 
 ## <a name="model-explanations-and-feature-importances"></a>Vysvětlení modelů a důležitost funkcí
 
-Zatímco metriky vyhodnocení modelu a grafy jsou vhodné pro měření obecné kvality modelu, zkontrolujte, které funkce DataSet mají model používaný k tomu, aby jeho předpovědi byl při vyzkoušení zodpovědného AI nezbytný. To je důvod, proč automatizované ML poskytuje řídicí panel pro vyhodnocení modelu, který umožňuje měřit a hlásit relativní příspěvky funkcí datové sady.
+Zatímco metriky vyhodnocení modelu a grafy jsou vhodné pro měření obecné kvality modelu, zkontrolujte, které funkce DataSet mají model používaný k tomu, aby jeho předpovědi byl při vyzkoušení zodpovědného AI nezbytný. To je důvod, proč automatizované ML poskytuje řídicí panel pro vysvětlení modelu, který umožňuje měřit a hlásit relativní příspěvky funkcí datové sady. Viz jak [zobrazit řídicí panel vysvětlení v Azure Machine Learning Studiu](how-to-use-automated-ml-for-ml-models.md#model-explanations-preview).
 
-Zobrazení řídicího panelu pro výklad v studiu:
-1. [Přihlaste se ke studiu](https://ml.azure.com/) a přejděte k pracovnímu prostoru.
-2. V nabídce vlevo vyberte **experimenty** .
-3. Výběr experimentu ze seznamu experimentů
-4. V tabulce v dolní části stránky vyberte AutoML spuštění.
-5. Na kartě **modely** vyberte **název algoritmu** pro model, který chcete vysvětlit.
-6. Na kartě **vysvětlení** se může zobrazit vysvětlení již vytvořené, pokud byl model nejlepší
-7. Pokud chcete vytvořit nové vysvětlení, vyberte **vysvětlit model** a vyberte vzdálené výpočty, se kterými se mají vypočítat vysvětlení.
-
-[Přečtěte si další informace o vysvětlení modelů v automatizované ml](how-to-machine-learning-interpretability-automl.md).
+Pro první prostředí kódu si přečtěte téma jak nastavit [vysvětlení modelu pro automatizované experimenty ml pomocí Azure Machine Learning Python SDK](how-to-machine-learning-interpretability-automl.md).
 
 > [!NOTE]
 > Model ForecastTCN se v současné době nepodporují pomocí automatizovaných vysvětlení ML a jiné modely prognózy můžou mít omezený přístup k nástrojům pro vyhodnocení.

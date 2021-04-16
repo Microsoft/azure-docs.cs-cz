@@ -11,16 +11,14 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: fda1bc2ef0a112a8a32ba7c4caebf29028c8cdd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d60c6dbedb24847b95ce268bedafcb073421319
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98222747"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576512"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Vysvětlení modelů ML & předpovědi v Pythonu (Preview) pomocí balíčku pro interpretaci
-
-
 
 V tomto průvodci se naučíte používat balíček pro interpretaci sady Azure Machine Learning Python SDK k provádění následujících úloh:
 
@@ -296,7 +294,7 @@ Následující příklad ukazuje, jak lze použít `ExplanationClient` třídu p
 
 ## <a name="visualizations"></a>Vizualizace
 
-Po stažení vysvětlení v místní Jupyter Notebook můžete k pochopení a interpretaci modelu použít řídicí panel vizualizace. Pokud chcete do Jupyter Notebook načíst widget řídicího panelu vizualizace, použijte následující kód:
+Po stažení vysvětlení v místní Jupyter Notebook můžete použít vizualizace na řídicím panelu vysvětlení a pochopit a interpretovat model. Chcete-li načíst widget řídicího panelu vysvětlení v Jupyter Notebook, použijte následující kód:
 
 ```python
 from interpret_community.widget import ExplanationDashboard
@@ -304,7 +302,7 @@ from interpret_community.widget import ExplanationDashboard
 ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
-Tato vizualizace podporuje vysvětlení na základě inženýrů a nezpracovaných funkcí. Nehrubá vysvětlení jsou založená na funkcích z původní datové sady a popsaných vysvětlení jsou založená na funkcích z datové sady s použitou technikou funkcí.
+Vizualizace podporují vysvětlení pro inženýrské i nezpracované funkce. Nehrubá vysvětlení jsou založená na funkcích z původní datové sady a popsaných vysvětlení jsou založená na funkcích z datové sady s použitou technikou funkcí.
 
 Při pokusu o interpretaci modelu s ohledem na původní datovou sadu se doporučuje použít nezpracované vysvětlení, protože každá důležitost funkcí bude odpovídat sloupci z původní datové sady. Jedním z situací, kdy může být užitečné vysvětlivek, je zkoumání vlivu jednotlivých kategorií na funkci kategorií. Pokud se pro funkci kategorií použije kódování s jedním horkou, budou výsledná navržená vysvětlení zahrnovat jinou hodnotu důležitosti na kategorii, jednu na jednu, inženýrskou funkci. To může být užitečné při zúžení, které části datové sady jsou pro model nejvíc informativní.
 
@@ -353,11 +351,11 @@ Prozkoumejte důležité funkce, které mají vliv na celkový předpovědi mode
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Vizualizace v Azure Machine Learning Studiu
 
-Pokud dokončíte kroky [vzdáleného výkladu](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) (nahrajete vygenerované vysvětlení pro Azure Machine Learning historii spuštění), můžete zobrazit řídicí panel vizualizace v [Azure Machine Learning Studiu](https://ml.azure.com). Tento řídicí panel je jednodušší verze řídicího panelu vizualizace, která je vysvětlena výše. Generace What-If DataPoint a operace ICE jsou zakázané, protože v Azure Machine Learning Studiu nejsou žádné aktivní výpočetní prostředky, které můžou provádět výpočty v reálném čase.
+Pokud dokončíte kroky [vzdáleného výkladu](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) (odesláním vygenerovaných vysvětlení do historie spuštění Azure Machine Learning), můžete zobrazit vizualizace na řídicím panelu vysvětlení v [Azure Machine Learning Studiu](https://ml.azure.com). Tento řídicí panel je jednodušší verze pomůcky řídicího panelu, která je vygenerovaná v rámci vašeho poznámkového bloku Jupyter. Generace What-If DataPoint a operace ICE jsou zakázané, protože v Azure Machine Learning Studiu nejsou žádné aktivní výpočetní prostředky, které můžou provádět výpočty v reálném čase.
 
 Pokud jsou k dispozici datové sady, globální a místní vysvětlení, naplní data všechny karty. Pokud je k dispozici pouze globální vysvětlení, karta důležitost jednotlivých funkcí bude zakázána.
 
-Použijte jednu z těchto cest pro přístup k řídicímu panelu vizualizace v Azure Machine Learning Studiu:
+Použijte jednu z těchto cest pro přístup k řídicímu panelu vysvětlení v aplikaci Azure Machine Learning Studio:
 
 * Podokno **experimentů** (Preview)
   1. V levém podokně vyberte **experimenty** a zobrazí se seznam experimentů, které jste spustili v Azure Machine Learning.
@@ -368,7 +366,7 @@ Použijte jednu z těchto cest pro přístup k řídicímu panelu vizualizace v 
 
 * Podokno **modely**
   1. Pokud jste svůj původní model zaregistrovali pomocí postupu v části [nasazení modelů pomocí Azure Machine Learning](./how-to-deploy-and-where.md), můžete v levém podokně vybrat **modely** a zobrazit je.
-  1. Vyberte model a pak kartu **vysvětlení** pro zobrazení řídicího panelu vizualizace.
+  1. Vyberte model a pak kartu **vysvětlení** pro zobrazení řídicího panelu vysvětlení.
 
 ## <a name="interpretability-at-inference-time"></a>Výklad v době odvození
 

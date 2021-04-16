@@ -2,13 +2,13 @@
 title: Úplné odstranění režimu
 description: Ukazuje, jak typy prostředků zpracovávají úplné odstraňování režimu v Azure Resource Manager šablonách.
 ms.topic: conceptual
-ms.date: 04/08/2021
-ms.openlocfilehash: 9b1c12c061149d60f1e279c78c141cd8b245218c
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.date: 04/16/2021
+ms.openlocfilehash: 6986f600274beaaa67f2f6ce64cbc3d0ceaf322e
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228023"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576055"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Odstranění prostředků Azure pro nasazení v úplném režimu
 
@@ -916,8 +916,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Galerie | Yes |
 > | Galerie/aplikace | No |
 > | Galerie/aplikace/verze | No |
-> | Galerie/image | No |
-> | Galerie/image/verze | No |
+> | Galerie/image | Yes |
+> | Galerie/image/verze | Yes |
 > | hostGroups | Yes |
 > | hostGroups/hostitelé | Yes |
 > | images | Yes |
