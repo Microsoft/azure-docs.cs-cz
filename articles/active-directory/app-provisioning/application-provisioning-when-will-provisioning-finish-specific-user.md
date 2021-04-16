@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 890c4a8a5aec3b15b150908c64bb114bd85a61a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9835ba2b6db2d71d0ff5825f2eb1996133e75537
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256758"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530817"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Ověřit stav zřizování uživatelů
 
@@ -30,7 +30,7 @@ Při první konfiguraci automatického zřizování se v části **aktuální st
 - Typ cyklu zřizování (počáteční nebo přírůstkové), který aktuálně běží nebo byl naposledy dokončen.
 - Indikátor **průběhu** znázorňující procento dokončeného cyklu zřizování. Procento odráží počet zřízených stránek. Všimněte si, že každá stránka může obsahovat více uživatelů nebo skupin, takže procento přímo nekoreluje s počtem uživatelů, skupin nebo zřízených rolí.
 - Tlačítko pro **obnovení** , které můžete použít k udržení aktualizovaného zobrazení.
-- Počet **uživatelů** a **skupin** v úložišti dat konektoru. Počet se zvyšuje, kdykoli se do oboru zřizování přidá objekt. Pokud je uživatel bez potíží nebo odstraněn z úložiště dat konektoru, počet se neukončí. Počet se přepočítá při první synchronizaci po [resetování](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta) disků CD. 
+- Počet **uživatelů** a **skupin** v úložišti dat konektoru. Počet se zvyšuje, kdykoli se do oboru zřizování přidá objekt. Pokud je uživatel bez potíží nebo odstraněn z úložiště dat konektoru, počet se neukončí. Počet se přepočítá při první synchronizaci po [resetování](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true) disků CD. 
 - Odkaz **Zobrazit protokoly auditu** , ve kterém se otevře protokol zřizování Azure AD, který obsahuje podrobnosti o všech operacích spuštěných službou zřizování uživatelů, včetně stavu zřizování pro jednotlivé uživatele (viz část [použití protokolů zřizování](#use-provisioning-logs-to-check-a-users-provisioning-status) níže).
 
 Po dokončení cyklu zřizování se v části **Statistika k datu** zobrazuje kumulativní počet uživatelů a skupin, které byly zřízeny do data, spolu s datem dokončení a dobou trvání posledního cyklu. **ID aktivity** jednoznačně identifikuje nejnovější cyklus zřizování. **ID úlohy** je jedinečný identifikátor pro úlohu zřizování a je specifický pro aplikaci ve vašem tenantovi.

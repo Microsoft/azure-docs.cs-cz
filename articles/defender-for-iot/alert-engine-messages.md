@@ -1,18 +1,14 @@
 ---
 title: Typy a popisy výstrah
 description: Popisy výstrah IoT najdete v Defenderu.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 4/8/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 9ef7aa388d0f25adcafec1cb4a5b38dcfb8597a1
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 483563b53a5849b0354986269568bc42b9124cc2
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210461"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477991"
 ---
 # <a name="alert-types-and-descriptions"></a>Typy a popisy výstrah
 
@@ -20,7 +16,7 @@ Tento článek popisuje všechny typy výstrah, které mohou být vygenerovány 
 
 ## <a name="policy-engine-alerts"></a>Výstrahy modulu zásad
 
-Výstrahy modulu zásad popisují odchylky od zjištěného chování sítě v základní síti.
+Výstrahy modulu zásad popisují zjištěné odchylky od zjištěného chování standardních hodnot.
 
 | Nadpis  | Popis | Závažnost |
 |--|--|--|
@@ -122,6 +118,8 @@ Výstrahy modulu zásad popisují odchylky od zjištěného chování sítě v z
 
 ## <a name="anomaly-engine-alerts"></a>Výstrahy modulu anomálií
 
+Výstrahy modulu anomálií popisují zjištěné anomálie v aktivitě sítě.
+
 | Nadpis | Popis | Závažnost |
 |--|--|--|
 | Neobvyklý vzor výjimky na podřízeném | Na zdrojovém zařízení bylo zjištěno nadměrné množství chyb. To může být výsledkem provozního problému. | Vedlejší |
@@ -150,6 +148,8 @@ Výstrahy modulu zásad popisují odchylky od zjištěného chování sítě v z
 | Neočekávaný provoz pro standardní port | V zařízení se zjistil provoz s použitím portu rezervovaného pro jiný protokol. | Hlavní |
 
 ## <a name="protocol-violation-engine-alerts"></a>Výstrahy modulu porušení protokolu
+
+Výstrahy modulu protokolu popisují zjištěné odchylky ve struktuře paketů nebo hodnoty polí v porovnání se specifikacemi protokolu.
 
 | Nadpis | Popis | Závažnost |
 |--|--|--|
@@ -181,6 +181,8 @@ Výstrahy modulu zásad popisují odchylky od zjištěného chování sítě v z
 
 ## <a name="malware-engine-alerts"></a>Výstrahy malwarového modulu
 
+Výstrahy malwarového modulu popisují zjištěnou aktivitu škodlivé sítě.
+
 | Nadpis | Popis| Závažnost |
 |--|--|--|
 | Pokus o připojení ke známému škodlivému IP adrese | Zjistila se podezřelá síťová aktivita. Tato aktivita může být přidružená k útoku zneužijecí metodu používanou známým malwarem. | Hlavní |
@@ -210,6 +212,8 @@ Výstrahy modulu zásad popisují odchylky od zjištěného chování sítě v z
 | Zjištěn podezřelý provoz | Zjistila se podezřelá síťová aktivita. Tato aktivita může být přidružená k útoku zneužijecí metodu používanou známým malwarem. | Kritické |
 
 ## <a name="operational-engine-alerts"></a>Výstrahy provozního modulu
+
+Výstrahy provozního modulu popisují zjištěné provozní incidenty nebo nefunkční entity.
 
 | Nadpis | Popis | Závažnost |
 |--|--|--|

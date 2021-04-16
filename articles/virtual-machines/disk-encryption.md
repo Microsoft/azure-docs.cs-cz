@@ -2,18 +2,18 @@
 title: Šifrování na straně serveru Azure Managed disks
 description: Azure Storage chrání vaše data tím, že je před tím, než je zachová v clusterech úložiště, v klidovém prostředí. Pomocí klíčů spravovaných zákazníkem můžete spravovat šifrování pomocí vlastních klíčů, nebo můžete spoléhat na klíče spravované Microsoftem pro šifrování svých spravovaných disků.
 author: roygara
-ms.date: 03/11/2021
+ms.date: 04/15/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 786ecef5d62c7dd18e3992fa0b233b27a80d762b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4607778c78b8b062b265a5754337c09c41ba83f1
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721847"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531518"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Šifrování na straně serveru Azure Disk Storage
 
@@ -60,7 +60,7 @@ Automatické střídání klíčů je ve verzi Preview a je dostupné jenom v n�
 - USA – západ
 - Západní USA 2
 - Severní Evropa
-- Západní Evropa
+- West Europe
 - Francie – střed
 
 > [!IMPORTANT]
@@ -81,6 +81,8 @@ Dočasné disky a dočasné disky s operačním systémem jsou v klidovém stavu
 #### <a name="supported-vm-sizes"></a>Podporované velikosti virtuálních počítačů
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
+
+Velikosti virtuálních počítačů můžete zjistit také programově. Informace o tom, jak je načíst programově, najdete v části hledání podporovaných velikostí virtuálních počítačů v [modulu Azure PowerShell](windows/disks-enable-host-based-encryption-powershell.md#finding-supported-vm-sizes) nebo v článcích rozhraní příkazového [řádku Azure CLI](linux/disks-enable-host-based-encryption-cli.md#finding-supported-vm-sizes) .
 
 Pokud chcete povolit kompletní šifrování pomocí šifrování na hostiteli, přečtěte si naše články, které vám pokrývají, jak je povolit, pomocí [modulu Azure PowerShell](windows/disks-enable-host-based-encryption-powershell.md), rozhraní příkazového [řádku Azure](linux/disks-enable-host-based-encryption-cli.md)nebo [Azure Portal](disks-enable-host-based-encryption-portal.md).
 

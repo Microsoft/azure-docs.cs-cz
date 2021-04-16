@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 0a5d84585f28f6d13cbceb1fec41d6cdabf6d08c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87df7efcbab89c87a42e611f5fc1219239de6873
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99255623"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530513"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Použití SCIM a Microsoft Graph společně ke zřízení uživatelů a rozšíření vaší aplikace s potřebnými daty
 
@@ -117,5 +117,5 @@ Moje aplikace vytvoří informace o uživateli, který potřebují v Azure AD. M
 
 ## <a name="related-articles"></a>Související články
 
-- [Projděte si dokumentaci Microsoft Graph synchronizace.](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Projděte si dokumentaci Microsoft Graph synchronizace.](/graph/api/resources/synchronization-overview)
 - [Integrace vlastní aplikace v SCIM s Azure AD](use-scim-to-provision-users-and-groups.md)

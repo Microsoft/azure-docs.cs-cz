@@ -5,14 +5,14 @@ ms.subservice: ''
 ms.topic: overview
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/23/2021
+ms.date: 04/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 899249c98c3ce0fdf061b1e689182f71c120aa13
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f8b4d6965a8a1f046fd2459ce9fe5cce8ea45443
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729386"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531073"
 ---
 # <a name="whats-new-in-azure-automation"></a>Co je nového v Azure Automation?
 
@@ -23,6 +23,70 @@ Azure Automation průběžně přijímá vylepšení. V tomto článku najdete i
 - Opravy chyb
 
 Tato stránka se aktualizuje měsíčně, takže ji můžete pravidelně znovu navštěvovat.
+
+## <a name="march-2021"></a>Březen 2021
+
+### <a name="new-azure-automation-built-in-policies"></a>Nové Azure Automation předdefinované zásady
+
+**Zadejte:** Nová funkce
+
+Azure Automation přidal 5 nových předdefinovaných zásad:
+
+- Účty služby Automation by měly zakázat přístup k veřejné síti,
+- Azure Automation účty by měly používat klíče spravované zákazníkem k šifrování neaktivních dat
+- Konfigurace Azure Automation účtů pro zakázání přístupu k veřejné síti
+- Konfigurace připojení privátního koncového bodu u Azure Automation účtů
+- Měla by být povolená připojení privátního koncového bodu na účtech Automation.
+
+Další podrobnosti najdete v článku informace o [zásadách](./policy-reference.md) .
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-south-india"></a>Podpora pro automatizaci a konfiguraci stavu s deklarací GA v Jižní Indie
+
+**Zadejte:** Nová funkce
+
+Využijte možnosti automatizace procesů a konfigurace stavu v Jižní Indie. Další informace najdete v [oznámení](https://azure.microsoft.com/updates/azure-automation-in-south-india-region/) .
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-uk-west"></a>Podpora pro automatizaci a konfiguraci stavu s deklarací GA v Velká Británie – západ
+
+**Zadejte:** Nová funkce
+
+Využijte možnosti automatizace procesů a konfigurace stavu v Velká Británie – západ. Další informace najdete v tématu [oznámení](https://azure.microsoft.com/updates/azure-automation-in-uk-west-region/).
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-uae-central"></a>Podpora pro automatizaci a konfiguraci stavu s deklarací GA v Spojené arabské emiráty Central
+
+**Zadejte:** Nová funkce
+
+Využijte možnosti automatizace procesů a konfigurace stavu v Spojené arabské emiráty Central. Další informace najdete v [oznámení](https://azure.microsoft.com/updates/azure-automation-in-uae-central-region/) .
+
+### <a name="support-for-automation-and-state-configuration-available-in-australia-central-2--norway-west-and-france-south"></a>Podpora pro automatizaci a konfiguraci stavu dostupná v Austrálii – střed 2, Norsko – západ a Francie – jih
+
+**Zadejte:** Nová funkce
+
+Další informace na stránce zaregistrování [dat](https://azure.microsoft.com/global-infrastructure/data-residency/) získáte výběrem geografické oblasti pro každou oblast.
+
+### <a name="new-scripts-added-for-installing-hybrid-worker-on-windows-and-linux"></a>Přidaly se nové skripty pro instalaci hybridního pracovního procesu v systému Windows a Linux.
+
+**Zadejte:** Nová funkce
+
+Do Azure Automationého [úložiště GitHub](https://github.com/azureautomation) byly přidány dva nové skripty, které řeší jeden z klíčových scénářů Azure Automation nastavení Hybrid Runbook Worker na počítači s Windows nebo Linux. Skript vytvoří nový virtuální počítač nebo použije stávající. v případě potřeby vytvoří pracovní prostor Log Analytics, nainstaluje agenta Log Analytics pro Windows nebo agenta Log Analytics pro Linux a zaregistruje počítač do Log Analytics pracovního prostoru. Skript Windows se jmenuje **vytvořit Automation Windows HybridWorker** a skript Linux **vytvoří Automation Linux HybridWorker**.
+
+### <a name="invoke-runbook-through-an-azure-resource-manager-template-webhook"></a>Vyvolat Runbook pomocí Webhooku šablony Azure Resource Manager
+
+**Zadejte:** Nová funkce
+
+Další podrobnosti najdete v tématu [použití Webhooku ze šablony ARM](./automation-webhooks.md#use-a-webhook-from-an-arm-template) .
+
+### <a name="azure-update-management-now-supports-centos-8x-red-hat-enterprise-linux-server-8x-and-suse-linux-enterprise-server-15"></a>Azure Update Management teď podporuje CentOS 8. x, Red Hat Enterprise Linux Server 8. x a SUSE Linux Enterprise Server 15.
+
+**Zadejte:** Nová funkce
+
+Další podrobnosti najdete v [úplném seznamu](./update-management/overview.md#supported-operating-systems) podporovaných operačních systémů Linux.
+
+### <a name="in-region-data-residency-support-for-brazil-south-and-south-east-asia"></a>Podpora zaregistrování dat ve vaší oblasti pro oblast Brazílie – jih a Jižní Východní Asie 
+
+**Zadejte:** Nová funkce
+
+Ve všech oblastech s výjimkou Brazílie – jih a jihovýchodní Asie se Azure Automation data ukládají v jiné oblasti (v spárované oblasti Azure), která zajišťuje provozní kontinuitu a zotavení po havárii (BCDR). Pro oblasti Brazílie a jihovýchodní Asie teď ukládáme Azure Automation data ve stejné oblasti, abyste se dokryli požadavky na umístění dat pro tyto oblasti. Další podrobnosti najdete [v tématu geografická replikace v Azure Automation](./automation-managing-data.md#geo-replication-in-azure-automation) .
 
 ## <a name="february-2021"></a>Únor 2021
 
@@ -62,17 +126,17 @@ Skript je k dispozici ke stažení z našeho [úložiště GitHub](https://githu
 
 **Textový.** Nová funkce
 
-Funkce Hybrid Runbook Worker podporuje distribuce CentOS 8. x, REHL 8. x a SLES 15 jenom pro automatizaci procesů na hybridních pracovních procesech Runbooku.  V části [podporované operační systémy](automation-linux-hrw-install.md#supported-linux-operating-systems) najdete aktualizace dokumentace, aby odrážely tyto změny.
+Funkce Hybrid Runbook Worker podporuje distribuce CentOS 8. x, REHL 8. x a SLES 15 jenom pro automatizaci procesů na hybridních pracovních procesech Runbooku. V části [podporované operační systémy](automation-linux-hrw-install.md#supported-linux-operating-systems) najdete aktualizace dokumentace, aby odrážely tyto změny.
 
-### <a name="update-management--change-tracking-availability-in-australia-east-east-asia-west-us--central-us-regions"></a>Update Management & Change Tracking dostupnosti v oblastech Austrálie – východ, Východní Asie, Západní USA & střed USA oblasti
+### <a name="update-management-and-change-tracking-availability-in-australia-east-east-asia-west-us-and-central-us-regions"></a>Dostupnost Update Management a Change Tracking v oblastech Austrálie – východ, Východní Asie, Západní USA a Střed USA
 
 **Zadejte:** Nová funkce
 
-Účet služby Automation, Change Tracking a inventář a Update Management jsou k dispozici v oblastech Austrálie – východ, Východní Asie Západní USA & Střed USA oblasti. 
+Účet služby Automation, Change Tracking a inventář a Update Management jsou k dispozici v oblastech Austrálie – východ, Východní Asie, Západní USA a Střed USA. 
 
 ### <a name="introduced-public-preview-of-python-3-runbooks-in-us-government-cloud"></a>Představená verze Public Preview sad Runbook Python 3 v cloudu pro státní správu USA
 
-**Zadejte:** Nová funkce Azure Automation zavádí podporu cloudového a hybridního spuštění Runbooku v Pythonu ve verzi Public Preview v oblastech cloudu USA.  Další informace najdete v [oznámení](https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/).
+**Zadejte:** Nová funkce Azure Automation zavádí podporu cloudového a hybridního spuštění Runbooku v Pythonu ve verzi Public Preview v oblastech cloudu USA. Další informace najdete v [oznámení](https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/).
 
 ### <a name="azure-automation-runbooks-moved-from-technet-script-center-to-github"></a>Azure Automation Runbooky přesunuté z centra skriptů TechNet do GitHubu
 
@@ -116,7 +180,7 @@ Správa počítačů s Oracle Linux 6 a 7 s konfigurací stavu automatizace V č
 
 **Zadejte:** Nová funkce
 
-Azure Automation teď podporuje cloudovou &ovou službu Python 3 ve verzi Public Preview ve všech oblastech globálního cloudu Azure. Další podrobnosti najdete v článku [oznámení] (( https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/) .
+Azure Automation teď podporuje službu Python 3 Cloud a hybridní spuštění Runbooku ve verzi Public Preview ve všech oblastech v globálním cloudu Azure. Další podrobnosti najdete v článku [oznámení] (( https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/) .
 
 ## <a name="november-2020"></a>Listopad 2020
 
@@ -222,11 +286,11 @@ Mapování Azure Automation oblasti bylo aktualizováno na podporu Update Manage
 
 Azure Automation záznamů DNS byly aktualizovány pro podporu privátních odkazů. Pro další informace si přečtěte [oznámení](https://azure.microsoft.com/updates/azure-automation-updateddns-records/).
 
-### <a name="added-capability-to-keep-automation-runbooks--dsc-scripts-encrypted-by-default"></a>Přidaná schopnost, aby Runbooky Automation & ve výchozím nastavení šifrované skripty DSC
+### <a name="added-capability-to-keep-automation-runbooks-and-dsc-scripts-encrypted-by-default"></a>Přidání možnosti, která ve výchozím nastavení udržuje Runbooky Automation a skripty DSC šifrované
 
 **Zadejte:** Nová funkce
 
-Kromě zlepšení zabezpečení prostředků se také šifrují Runbooky & skripty DSC, aby se zvýšilo zabezpečení Azure Automation.
+Kromě zlepšení zabezpečení prostředků jsou taky zašifrované Runbooky a skripty DSC, aby se zvýšila Azure Automation zabezpečení.
 
 ## <a name="april-2020"></a>Duben 2020
 
@@ -250,7 +314,7 @@ Hybrid Runbook Worker Azure Automation lze v Azure Government použít k podpoř
 
 **Zadejte:** Nová funkce
 
-Podpora automatizace značek služeb povoluje nebo zakazuje přenos pro službu Automation pro podmnožinu scénářů. Další informace najdete v [dokumentaci](automation-hybrid-runbook-worker.md#service-tags).
+Podpora automatizace značek služeb povoluje nebo zakazuje provoz služby Automation pro podmnožinu scénářů. Další informace najdete v [dokumentaci](automation-hybrid-runbook-worker.md#service-tags).
 
 ### <a name="enable-tls-12-support-for-azure-automation-service"></a>Povolit podporu TLS 1,2 pro službu Azure Automation
 

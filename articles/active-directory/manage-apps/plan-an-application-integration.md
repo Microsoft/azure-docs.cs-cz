@@ -2,21 +2,21 @@
 title: Začínáme s integrací Azure Active Directory s aplikacemi
 description: Tento článek je úvodní příručka pro integraci Azure Active Directory (AD) s místními aplikacemi a cloudových aplikací.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/05/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: asteen
-ms.openlocfilehash: 2873f3946b5b3c7eed5a3ba1cde702670040c41a
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 37916e5e356e7c5ad6e685ac0838363fe2579496
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443453"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374977"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Průvodce integrací Azure Active Directory s aplikacemi Začínáme
 

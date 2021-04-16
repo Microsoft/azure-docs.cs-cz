@@ -2,25 +2,21 @@
 title: Jak nakonfigurovat přiřazení samoobslužné aplikace | Microsoft Docs
 description: Povolit Samoobslužný přístup k aplikacím povolit uživatelům hledání vlastních aplikací
 services: active-directory
-documentationcenter: ''
-author: kenwith
-manager: daveba
-ms.assetid: ''
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9742a21cf00733607237c0eaf548f96b434abb33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29c3043cc38c8ab3d3387b171ea6f3793d485730
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99260210"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107373957"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Postup konfigurace přiřazení samoobslužné aplikace
 

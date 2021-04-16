@@ -3,17 +3,16 @@ title: Toky dat mapování
 description: Přehled toků mapování dat v Azure Data Factory
 author: kromerm
 ms.author: makromer
-ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 04/11/2021
-ms.openlocfilehash: 53f300adb57eb17e704e7e3323b9829c485bb87a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 26d119fb6880f4c539e0064db424699bc5d22f96
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308978"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478671"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Mapování toků dat v Azure Data Factory
 
@@ -82,6 +81,10 @@ Horní panel obsahuje akce, které ovlivňují celý tok dat, jako je ukládán�
 ## <a name="available-transformations"></a>Dostupné transformace
 
 Seznam dostupných transformací najdete v [přehledu transformace toku dat mapování](data-flow-transformation-overview.md) .
+
+## <a name="data-flow-data-types"></a>Datové typy toku dat
+
+binární logická hodnota desetinného čísla desítkového data typu pole Integer dlouhé celé číslo v podobě krátkého řetězce
 
 ## <a name="data-flow-activity"></a>Aktivita toku dat
 

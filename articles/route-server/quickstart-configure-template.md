@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/05/2021
 ms.author: duau
-ms.openlocfilehash: 6f56b9fb1f6a1f5a1fe0811617fb20412c52fd72
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3476e5fa2c274f0fc2c180711480375b0ebefaf2
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106452189"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388036"
 ---
 # <a name="quickstart-create-an-azure-route-server-using-an-arm-template"></a>Rychlý Start: vytvoření směrovacího serveru Azure pomocí šablony ARM
 
@@ -41,9 +41,9 @@ V šabloně bylo definováno více prostředků Azure:
 
 * [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks)
 * [**Microsoft. Network/virtualNetworks/podsítí**](/azure/templates/microsoft.network/virtualNetworks/subnets) (dvě podsítě, jedna s názvem `routeserversubnet` )
-* [**Microsoft. Network/virtualHubs**](/azure.templates/microsoft.network/virtualhubs) (nasazení serveru tras)
-* [**Microsoft. Network/virtualHubs/IPConfiguration**](/azure.templates/microsoft.network/virtualhubs/ipConfigurations)
-* [**Microsoft. Network/virtualHubs/bgpConnections**](/azure.templates/microsoft.network/virtualhubs/bgpConnections) (konfigurace partnerského ASN a partnerského protokolu IP)
+* [**Microsoft. Network/virtualHubs**](/azure/templates/microsoft.network/virtualhubs) (nasazení serveru tras)
+* [**Microsoft. Network/virtualHubs/IPConfiguration**](/azure/templates/microsoft.network/virtualhubs/ipConfigurations)
+* [**Microsoft. Network/virtualHubs/bgpConnections**](/azure/templates/microsoft.network/virtualhubs/bgpconnections) (konfigurace partnerského ASN a partnerského protokolu IP)
 
 
 Další šablony, které souvisejí s ExpressRoute, najdete v tématu [šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).

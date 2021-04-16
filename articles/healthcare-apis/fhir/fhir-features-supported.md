@@ -6,14 +6,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/30/2021
+ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: 9bd61d65d6d64dac6081d3491deb8a15efc4a45b
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 56e3ba46ffb43aec907d729a2e74cdf6f7a62c32
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048415"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530630"
 ---
 # <a name="features"></a>Funkce
 
@@ -25,7 +25,7 @@ Nejnovější verze je podporována: `4.0.1`
 
 Předchozí verze, které jsou aktuálně podporované, zahrnují: `3.0.2`
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
 | Rozhraní API                            | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář                                             |
 |--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
@@ -41,8 +41,8 @@ Předchozí verze, které jsou aktuálně podporované, zahrnují: `3.0.2`
 | vytvoření                         | Yes       | Yes       | Yes       | Podpora pro POST/PUT                               |
 | vytvořit (podmíněné)           | Yes       | Yes       | Yes       | Problém [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | search                         | Částečné   | Částečné   | Částečné   | Viz část Hledat níže.                           |
-| zřetězené hledání                 | Yes       | Yes       | Částečné   | Viz Poznámka 2 níže.                                   |
-| zpětné zřetězené hledání         | Yes       | Yes       | Částečné   | Viz Poznámka 2 níže.                                   |
+| zřetězené hledání                 | Částečné       | Yes       | Částečné   | Viz Poznámka 2 níže.                                   |
+| zpětné zřetězené hledání         | Částečné       | Yes       | Částečné   | Viz Poznámka 2 níže.                                   |
 | možnosti                   | Yes       | Yes       | Yes       |                                                     |
 | dávka                          | Yes       | Yes       | Yes       |                                                     |
 | transakce                    | No        | Yes       | No        |                                                     |
@@ -146,7 +146,7 @@ V současné době se povolené akce pro danou roli aplikují *globálně* na ro
 
 ## <a name="service-limits"></a>Omezení služby
 
-* [**Jednotky žádosti (ru)**](../../cosmos-db/concepts-limits.md) – na portálu Azure API pro FHIR můžete nakonfigurovat až 10 000 ru. Budete potřebovat minimálně 400 ru nebo 10 ru/GB, podle toho, co je větší. Pokud potřebujete více než 10 000 ru, můžete umístit do lístku podpory, aby se to zvýšilo. Maximální dostupná hodnota je 1 000 000.
+* [**Jednotky žádosti (ru)**](../../cosmos-db/concepts-limits.md) – na portálu Azure API pro FHIR můžete nakonfigurovat až 10 000 ru. Budete potřebovat minimálně 400 ru nebo 40 ru/GB, podle toho, co je větší. Pokud potřebujete více než 10 000 ru, můžete umístit do lístku podpory, aby se to zvýšilo. Maximální dostupná hodnota je 1 000 000.
 
 * **Souběžná připojení** a **instance** – ve výchozím nastavení máte pět souběžných připojení ke dvěma instancím v clusteru (celkem 10 souběžných požadavků). Pokud se domníváte, že potřebujete víc souběžných žádostí, otevřete lístek podpory s podrobnostmi o vašich potřebách.
 
@@ -160,12 +160,12 @@ Výkon systému závisí na počtu ru, souběžných připojeních a typu operac
 
 | počet ru | Prostředky/s |    Maximální velikost úložiště (GB) *    |
 |----------|---------------|--------|                 
-| 400      | 5-10          |     40   |
-| 1 000    | 100-150       |      100  |
-| 10 000   | 225-400       |      1 000  |
-| 100 000  | 2 500 – 4000   |      10 000  |
+| 400      | 5-10          |     10   |
+| 1 000    | 100-150       |      25  |
+| 10 000   | 225-400       |      250  |
+| 100 000  | 2 500 – 4000   |      2,500  |
 
-Poznámka: požadavek na Cosmos DB vyžaduje minimální propustnost 10 RU/s za GB úložiště. Další informace najdete v [Cosmos DB kvótách služeb](../../cosmos-db/concepts-limits.md).
+Poznámka: požadavek na Cosmos DB vyžaduje minimální propustnost 40 RU/s za GB úložiště. 
 
 ## <a name="next-steps"></a>Další kroky
 

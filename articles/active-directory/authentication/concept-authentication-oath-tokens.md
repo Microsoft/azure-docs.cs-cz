@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44016d81b18e8df7b6e2ed7c14559cf19ac0c07d
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 99d0dd081e3e1a681ba55e3457b79a548d6b2bb7
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106632"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530387"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Metody ověřování ve Azure Active Directory – tokeny OATH 
 
@@ -61,4 +61,4 @@ Uživatelé můžou mít kombinaci až pěti hardwarových tokenů OATH nebo ov�
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o konfiguraci metod ověřování pomocí [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
+Přečtěte si další informace o konfiguraci metod ověřování pomocí [REST API Microsoft Graph](/graph/api/resources/authenticationmethods-overview).

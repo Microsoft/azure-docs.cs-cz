@@ -3,7 +3,7 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Přehled přizpůsobení
+    - name: Co je služba Personalizace?
       href: what-is-personalizer.md
     - name: Ceny
       href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
@@ -11,7 +11,7 @@
     - name: Novinky
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: Rychlý Start přizpůsobeného přizpůsobování
+- name: Rychlé zprovoznění
   href: ./quickstart-personalizer-sdk.md
 - name: ukázky
   href: 'https://github.com/Azure-Samples/cognitive-services-personalizer-samples'
@@ -32,6 +32,12 @@
       href: how-to-manage-model.md
     - name: Analýza s využitím offline vyhodnocení
       href: how-to-offline-evaluation.md
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Nastavení virtuálních sítí
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/personalizer/context/context
+        - name: Použití klíčů spravovaných zákazníkem
+          href: encrypt-data-at-rest.md
 - name: Koncepty
   items:
     - name: Jak služba Personalizace funguje
@@ -107,17 +113,17 @@
           href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: Zdroje a prostředky
   items:
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Podpora oblastí
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Dodržování předpisů a certifikace
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Moduly Microsoft Learn
+      href: 'https://docs.microsoft.com/learn/browse/?terms=personalizer'
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/personalizer/context/context
     - name: Řešení potíží
       href: troubleshooting.md
-    - name: Naučit se moduly
-      href: 'https://docs.microsoft.com/learn/browse/?terms=personalizer'
-    - name: Podpora oblastí
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Dodržování předpisů
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Šifrování
-      href: encrypt-data-at-rest.md
     - name: Aktualizace Azure
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
