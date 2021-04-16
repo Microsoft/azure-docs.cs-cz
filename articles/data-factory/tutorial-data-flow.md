@@ -7,13 +7,13 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2021
-ms.openlocfilehash: 2363afc4c84ee7606410ceecd6819c12d0333dbb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/14/2021
+ms.openlocfilehash: 0842dad0e0ea6f9987727e8abf3d0eaf8a59e821
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563289"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517506"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformace dat s využitím mapování toků dat
 
@@ -78,15 +78,15 @@ V tomto kroku vytvoříte kanál, který obsahuje aktivitu toku dat.
    ![Vytvoření kanálu](./media/doc-common-process/get-started-page.png)
 
 1. Na kartě **Obecné** pro kanál zadejte **TransformMovies** pro **název** kanálu.
-1. V horním panelu pro vytváření snímků nastavte posuvník **ladění toku dat** . Režim ladění umožňuje interaktivní testování logiky transformace proti clusteru Live Spark. Clustery toku dat zabírají 5-7 minut a uživatelům se doporučuje zapnout ladění jako první, pokud chtějí provádět vývoj toku dat. Další informace naleznete v tématu [režim ladění](concepts-data-flow-debug-mode.md).
-
-    ![Aktivita toku dat](media/tutorial-data-flow/dataflow1.png)
 1. V podokně **aktivity** rozbalte možnost **přesunout a transformovat** . Přetáhněte aktivitu **toku dat** z podokna na plátno kanálu.
 
     ![Snímek obrazovky zobrazující plátno kanálu, ve kterém můžete aktivitu toku dat vyřadit.](media/tutorial-data-flow/activity1.png)
 1. V rozbalovacím seznamu **Přidat tok dat** vyberte **vytvořit nový tok dat** a potom pojmenujte svůj datový tok **TransformMovies**. Po dokončení klikněte na Dokončit.
 
     ![Snímek obrazovky, který ukazuje, kde se má tok dat pojmenovat při vytváření nového toku dat.](media/tutorial-data-flow/activity2.png)
+1. V horním panelu plátna kanálu posunutí posuvníku **ladění toku dat** zapnuto. Režim ladění umožňuje interaktivní testování logiky transformace proti clusteru Live Spark. Clustery toku dat zabírají 5-7 minut a uživatelům se doporučuje zapnout ladění jako první, pokud chtějí provádět vývoj toku dat. Další informace naleznete v tématu [režim ladění](concepts-data-flow-debug-mode.md).
+
+    ![Aktivita toku dat](media/tutorial-data-flow/dataflow1.png)
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Sestavení logiky transformace v plátně toku dat
 

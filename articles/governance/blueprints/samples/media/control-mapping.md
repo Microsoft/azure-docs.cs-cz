@@ -1,18 +1,18 @@
 ---
 title: Ukázkové ovládací prvky pro Media details
 description: Mapování ovládacího prvku ukázek pro Media details Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
-ms.date: 04/02/2021
+ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: b489111010c9a4fcb112428ae642332980302849
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 4c04c661d7dd8b2b07a05c20524258d6bb887e62
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386394"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376694"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>Mapování ovládacího prvku ukázka pro Media details
 
-Následující článek podrobně popisuje, jak se vzorová ukázka Azure modrotisky Media Details mapuje na ovládací prvky multimédií. Další informace o ovládacích prvcích naleznete v tématu [Media](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
+Následující článek podrobně popisuje, jak se vzorová ukázka Azure modrotisky Media Details mapuje na ovládací prvky multimédií. Další informace o ovládacích prvcích naleznete v tématu [Media](https://www.motionpictures.org/best-practices).
 
 Následující mapování jsou k ovládacím prvkům **média** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ve **\[ verzi Preview \] : audit Media Controls** (předdefinovaná iniciativa zásad).
 

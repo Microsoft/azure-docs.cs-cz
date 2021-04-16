@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: ee10aa7c461aca65f385c735f6e9aaa28af7f9e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4d69157f4544daad962cca15e53802e7b912399
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471697"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530436"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Jaké metody ověřování jsou k dispozici v Azure Active Directory?
 
@@ -74,7 +74,7 @@ Následující tabulka popisuje, kdy lze použít metodu ověřování během ud
 | Hlasový hovor                     | No                     | MFA a SSPR              |
 | Heslo                       | Yes                    |                           |
 
-Všechny tyto metody ověřování se dají nakonfigurovat v Azure Portal a stále používají [Microsoft Graph REST API beta verzi](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
+Všechny tyto metody ověřování se dají nakonfigurovat v Azure Portal a stále používají [Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview).
 
 Další informace o tom, jak každá metoda ověřování funguje, najdete v následujících samostatných koncepčních článcích:
 
@@ -104,7 +104,7 @@ Další informace o konceptech SSPR najdete v tématu [Jak funguje Samoobslužn�
 
 Další informace o principech vícefaktorového ověřování najdete v tématu [Jak funguje Azure AD Multi-Factor Authentication][concept-mfa].
 
-Přečtěte si další informace o konfiguraci metod ověřování pomocí [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
+Přečtěte si další informace o konfiguraci metod ověřování pomocí [REST API Microsoft Graph](/graph/api/resources/authenticationmethods-overview).
 
 Pokud chcete zjistit, jaké metody ověřování se používají, přečtěte si téma [Analýza metody ověřování Azure AD Multi-Factor Authentication pomocí PowerShellu](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/).
 

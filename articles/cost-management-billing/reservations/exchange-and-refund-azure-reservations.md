@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 04/14/2021
 ms.author: banders
-ms.openlocfilehash: bd16bbbe33876a3c44b20c5d1756b83814f9b17d
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 3e8f50efd04364483c32ecb8ef5020bdd053e55b
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601946"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515477"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a vrácení peněz za rezervace Azure
 
@@ -27,8 +27,6 @@ Při výměně rezervovaného kurzu můžete změnit svůj termín na tři roky 
 Rezervace se dají také refundovat, ale celkový objem zrušených rezervací ve vašem rozsahu fakturace (jako je EA, Smlouva s partnerem Microsoftu a Smlouva se zákazníkem Microsoftu) nesmí za průběžné období 12 měsíců překročit 50 000 USD.
 
 Refundovat se nedá rezervovaná kapacita Azure Databricks, rezervace Řešení Azure VMware od CloudSimple, rezervace Azure Red Hat Open Shiftu, plány pro Red Hat a plány pro SUSE Linux.
-
-Možnost samoobslužné výměny nebo zrušení není k dispozici pro zákazníky s předplatným US Government se smlouvou Enterprise. Podporují se i ostatní typy předplatného US Government, včetně předplatného s průběžnými platbami a CSP (Cloud Solution Provider).
 
 > [!NOTE]
 > - **Pokud chcete vyměnit stávající rezervaci nebo za ni vrátit peníze, musíte k příslušné objednávce rezervace mít přístup vlastníka.** Můžete [přidat nebo změnit uživatelů, kteří mohou spravovat rezervaci](./manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).

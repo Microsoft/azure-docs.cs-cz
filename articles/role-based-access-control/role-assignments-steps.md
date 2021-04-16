@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/15/2021
+ms.date: 04/14/2021
 ms.author: rolyon
-ms.openlocfilehash: 081335779ffc4b3a6ddf09e56b773c6d34b210be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 40a17da6383fb1f368c74a82fefa71991cdc1b19
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556032"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517670"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>Postup přiřazení role Azure
 
@@ -78,6 +78,8 @@ Chcete-li přiřadit role, musíte být přihlášeni pomocí uživatele, které
 - `Microsoft.Authorization/roleAssignments/delete`
 
 Pokud váš uživatelský účet nemá oprávnění k přiřazení role v rámci vašeho předplatného, zobrazí se chybová zpráva, že váš účet nemá oprávnění k provedení akce Microsoft. Authorization/roleAssignments/Write. V takovém případě kontaktujte správce předplatného, aby k němu mohli přiřazovat oprávnění vaším jménem.
+
+Pokud k přiřazení rolí používáte instanční objekt, může se zobrazit chyba "nedostatečná oprávnění k dokončení operace". Tato chyba je pravděpodobně způsobena tím, že se Azure pokouší vyhledat identitu pověřenou v Azure Active Directory (Azure AD) a instanční objekt ve výchozím nastavení nemůže službu Azure AD přečíst. V takovém případě je potřeba udělit instančnímu objektu oprávnění ke čtení dat v adresáři. Případně, pokud používáte rozhraní příkazového řádku Azure CLI, můžete vytvořit přiřazení role pomocí ID objektu zmocnění pro přeskočení vyhledávání Azure AD. Další informace najdete v tématu [řešení potíží s Azure RBAC](troubleshooting.md).
 
 ## <a name="step-5-assign-role"></a>Krok 5. Přiřazení role
 

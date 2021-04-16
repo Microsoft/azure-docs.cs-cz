@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0d7598e332539b8203d55bbcb1cf497811c32540
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 21dbab6c8d4fb12fe79434a6994dd7f5b8a49190
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366551"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502704"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Nastavení připojení aplikace MSIX s využitím webu Azure Portal
 
@@ -19,14 +19,10 @@ Tento článek vás provede postupem nastavení připojení aplikace MSIX v pros
 
 ## <a name="requirements"></a>Požadavky
 
->[!IMPORTANT]
->Než začnete, nezapomeňte vyplnit a odeslat [Tento formulář](https://aka.ms/enablemsixappattach) , aby bylo možné ve svém předplatném připojit aplikaci MSIX. Pokud nemáte schválenou žádost, připojení aplikace MSIX nebude fungovat. Schvalování žádostí může během pracovních dnů trvat až 24 hodin. Po přijetí a dokončení vaší žádosti obdržíte e-mail.
-
 Tady je postup, co je potřeba ke konfiguraci připojení aplikace MSIX:
 
 - Funkční nasazení virtuálních počítačů s Windows. Informace o tom, jak nasadit virtuální plochu Windows (Classic), najdete v tématu [Vytvoření tenanta ve virtuálním počítači s Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informace o tom, jak nasadit virtuální plochu Windows s Azure Resource Manager integrací, najdete v tématu [Vytvoření fondu hostitelů pomocí Azure Portal](./create-host-pools-azure-marketplace.md).
 - Fond hostitelů virtuálních počítačů s Windows s aspoň jedním aktivním hostitelem relace.
-- Tento fond hostitelů musí být v prostředí ověřování. 
 - Nástroj pro vytváření balíčků MSIX
 - MSIX zabalená aplikace se rozšířila na obrázek MSIX, který se nahraje do sdílené složky.
 - Sdílená složka v rámci nasazení virtuálního počítače s Windows, kde bude uložený balíček MSIX.

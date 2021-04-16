@@ -25,6 +25,10 @@
       href: /samples/azure/azure-sdk-for-java/formrecognizer-java-samples
     - name: 'Python: sada SDK klientské knihovny pro rozpoznávání formulářů'
       href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
+    - name: Sada SDK klientské knihovny pro rozpoznávání formulářů JavaScriptu
+      href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
+    - name: REST API a kudrlinkou
+      href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer'
 - name: Návody
   items:
     - name: Vytvoření trénovací sady dat
@@ -63,7 +67,7 @@
       href: concept-business-cards.md
     - name: Faktury
       href: concept-invoices.md
-    - name: Identifikační karty
+    - name: Dokumenty identity
       href: concept-identification-cards.md
 - name: Kurzy
   items:

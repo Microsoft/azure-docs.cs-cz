@@ -62,6 +62,8 @@
           href: hana-concept-preparation.md
         - name: Postup převzetí služeb při selhání pro zotavení po havárii
           href: hana-failover-procedure.md
+        - name: Velké instance HA pro SAP v RHEL
+          href: large-instance-high-availability-rhel.md
     - name: Řešení potíží a monitorování
       items:
         - name: Sledování HLI
@@ -135,7 +137,7 @@
         - name: Matice podpory pro zálohování databází SAP HANA
           href: ../../../backup/sap-hana-backup-support-matrix.md
         - name: Nejčastější dotazy – zálohování SAP HANA databází na virtuálních počítačích Azure
-          href: ../../../backup/sap-hana-faq-backup-azure-vm.md
+          href: ../../../backup/sap-hana-faq-backup-azure-vm.yml
         - name: Řešení potíží se zálohováním databází SAP HANA v Azure
           href: ../../../backup/backup-azure-sap-hana-database-troubleshoot.md
         - name: Kurz – zálohování SAP HANA databází ve virtuálním počítači Azure
@@ -213,8 +215,6 @@
               href: high-availability-guide-rhel.md
             - name: HA v Red Hat Enterprise Linuxu pro instanci (A)SCS s využitím Azure NetApp Files
               href: high-availability-guide-rhel-netapp-files.md
-            - name: Velké instance HA pro SAP v RHEL
-              href: large-instance-high-availability-rhel.md
         - name: Příprava infrastruktury Azure
           items:
             - name: Windows se sdíleným diskem pro instanci (A)SCS

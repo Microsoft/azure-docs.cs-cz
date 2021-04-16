@@ -4,13 +4,13 @@ description: V tomto kurzu Azure Kubernetes Service (AKS) se dozvíte, jak upgra
 services: container-service
 ms.topic: tutorial
 ms.date: 01/12/2021
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8efb381562a5c55fa2c29b8379312dc41ef6a046
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc
+ms.openlocfilehash: baf82ee1393214f96f11de8f6d838c41222fa359
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251331"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377187"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Kurz: Upgrade Kubernetes ve službě Azure Kubernetes Service (AKS)
 

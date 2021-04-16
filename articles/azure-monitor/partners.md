@@ -1,14 +1,16 @@
 ---
 title: Partneři, kteří integrují Azure Monitor
 description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete získat přístup k dokumentaci pro integraci s nimi.
+author: rboucher
+ms.author: robb
 ms.topic: conceptual
-ms.date: 02/19/2021
-ms.openlocfilehash: ca58023510eb9329bc8ddf1339df4d8c27aae5e6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/14/2021
+ms.openlocfilehash: c10e11fe547f643e04b5dbdeaf9e233b7105ce9a
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101014"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517470"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integrace partnerů ve službě Azure Monitor
 
@@ -297,6 +299,14 @@ Díky Site24x7 Azure Monitoring budete moci:
 
 [Dokumentace k SolarWinds](https://www.solarwinds.com/topics/azure-monitoring)
 
+## <a name="speartip"></a>SpearTip
+
+![Logo SpearTip](./media/partners/speartip.png)
+
+Provozní centrum zabezpečení SpearTip 24/7 nepřetržitě monitoruje prostředí Azure pro počítačové hrozby. Díky integraci ShadowSpear s Azure Monitor se události zabezpečení shromažďují a analyzují kvůli pokročilým hrozbám, zatímco SpearTip technici procházejí a reagují na zastavení aktérů hrozeb ve svých stopách. Integrace je bezproblémová a poskytuje okamžitou hodnotu po nasazení integrace.
+
+[Dokumentace k SpearTip](https://www.speartip.com/identify/)
+
 ## <a name="splunk"></a>Splunk
 
 ![Logo Splunk](./media/partners/splunk.png)
@@ -333,7 +343,7 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy tím, že součas
 
 Použití Azure Monitor ke směrování dat monitorování do centra událostí Azure vám umožní snadnou integraci s některými externími nástroji pro SIEM a monitorování. Na následujících partnerech se říká integrace prostřednictvím centra událostí. 
 
-| Nástroj | Hostovaná v Azure | Description |
+| Nástroj | Hostovaná v Azure | Popis |
 |:---|:---| :---|
 |  IBM QRadar | No | Protokol Microsoft Azure DSM a Microsoft Azure centra událostí je k dispozici ke stažení na [webu podpory IBM](https://www.ibm.com/support). Další informace o integraci s Azure najdete v části [QRADAR DSM Configuration](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
 | Splunk | No | [Microsoft Azure Add-On pro Splunk](https://splunkbase.splunk.com/app/3757/) je open source projekt dostupný v Splunkbase. <br><br> Pokud do instance Splunk nemůžete nainstalovat doplněk, pokud například používáte proxy server nebo běží v cloudu Splunk, můžete tyto události pře do kolektoru událostí Splunk HTTP pomocí [funkce Azure Functions pro Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), která se aktivuje novými zprávami v centru událostí. |

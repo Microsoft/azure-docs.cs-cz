@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: c937f9d75613b6550a2f05dd63a8b31dd83fe0b7
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 00ae761af44b9e6537149c96607c0ba00e6439c8
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445717"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514973"
 ---
 # <a name="required-url-list"></a>Seznam požadovaných adres URL
 
@@ -19,6 +19,52 @@ Aby bylo možné nasadit a používat virtuální počítač s Windows, musíte 
 
 >[!IMPORTANT]
 >Virtuální počítač s Windows nepodporuje nasazení, která blokují adresy URL uvedené v tomto článku.
+
+## <a name="required-url-check-tool"></a>Požadovaný nástroj pro kontrolu adresy URL
+
+Požadovaný nástroj pro kontrolu adresy URL ověří adresy URL a zobrazí, jestli jsou dostupné adresy URL, které musí virtuální počítač fungovat. V takovém případě nástroj zobrazí seznam nepřístupných adres URL, takže v případě potřeby je můžete odblokovat.
+
+Je důležité mít na paměti následující skutečnosti:
+
+- Pro nasazení v komerčních cloudech můžete použít jenom nástroj pro kontrolu požadované adresy URL.
+- Požadovaný nástroj pro kontrolu adresy URL nemůže zkontrolovat adresy URL se zástupnými znaky, proto je třeba nejprve tyto adresy URL odblokovat.
+
+### <a name="requirements"></a>Požadavky
+
+K použití nástroje pro kontrolu požadované adresy URL potřebujete následující věci:
+
+- Váš virtuální počítač musí mít rozhraní .NET 4.6.2 Framework.
+- RDAgent verze 1.0.2944.400 nebo vyšší
+- Soubor WVDAgentUrlTool.exe musí být ve stejné složce jako WVDAgentUrlTool.config soubor.
+
+### <a name="how-to-use-the-required-url-check-tool"></a>Jak používat nástroj pro kontrolu požadované adresy URL
+
+Použití nástroje pro kontrolu požadované adresy URL:
+
+1. Na svém VIRTUÁLNÍm počítači otevřete příkazový řádek jako správce.
+2. Spuštěním následujícího příkazu změňte adresář na stejnou složku jako agent sestavení:
+
+    ```console
+    cd C:\Program Files\Microsoft RDInfra\RDAgent_1.0.2944.1200
+    ```
+
+3. Spusťte následující příkaz:
+
+    ```console
+    WVDAgentUrlTool.exe
+    ```
+ 
+4. Po spuštění souboru se zobrazí seznam dostupných a nepřístupných adres URL.
+
+    Například na následujícím snímku obrazovky vidíte situaci, kdy potřebujete odblokovat dvě požadované adresy URL, které se nepoužívají jako zástupné znaky:
+
+    > [!div class="mx-imgBorder"]
+    > ![Snímek výstupu nepřístupných adres URL.](media/noaccess.png)
+    
+    V takovém případě by měl výstup vypadat jako po odblokování všech vyžadovaných adres URL, které nepoužívají zástupné znaky:
+
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky s přístupným výstupem adres URL](media/access.png)
 
 ## <a name="virtual-machines"></a>Virtuální počítače
 

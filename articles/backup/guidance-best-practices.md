@@ -3,12 +3,12 @@ title: Doprovodné materiály a osvědčené postupy
 description: Seznamte se s osvědčenými postupy a pokyny pro zálohování cloudových a místních úloh do cloudu.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 0b3f70061be4d158ae717a97779d6ab0445f5858
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14476533cf896434182e1d63f89c6a1279b36362
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100593347"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519059"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Zálohování cloudových a místních úloh do cloudu
 
@@ -261,4 +261,4 @@ Jako uživatel, který má záložního uživatele nebo správce, byste měli b�
 Doporučujeme, abyste si následující články přečetli jako výchozí body pro použití Azure Backup:
 
 * [Přehled Azure Backup](backup-overview.md)
-* [Nejčastější dotazy](backup-azure-backup-faq.md)
+* [Nejčastější dotazy](backup-azure-backup-faq.yml)

@@ -11,12 +11,12 @@ ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: f2473955db5439911280360b169f469b8c93eb93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4b35cfeded13a50e5e27c240b0826f1d108ff7eb
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043593"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529449"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Přehled uživatelských účtů v Azure Active Directory B2C
 
@@ -74,7 +74,7 @@ Externí uživatele můžete pozvat do svého tenanta jako uživatel typu Host. 
 
 Při pozvání uživatele typu Host k vašemu tenantovi zadáte e-mailovou adresu příjemce a zprávu popisující pozvánku. Odkaz na pozvánku převezme uživatele na stránku souhlasu. Pokud Doručená pošta není připojená k e-mailové adrese, může uživatel přejít na stránku s souhlasem na stránce Microsoftu pomocí pozvaných přihlašovacích údajů. Uživatel pak nuceně uplatňuje pozvánku stejným způsobem jako při kliknutí na odkaz v e-mailu. Příklad: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
-K pozvání uživatele typu Host můžete použít taky [rozhraní Microsoft Graph API](/graph/api/invitation-post?view=graph-rest-beta) .
+K pozvání uživatele typu Host můžete použít taky [rozhraní Microsoft Graph API](/graph/api/invitation-post) .
 
 ## <a name="consumer-user"></a>Uživatel příjemce
 

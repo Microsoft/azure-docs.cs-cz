@@ -3,7 +3,7 @@ title: Dokumentace ke službě Language Understanding (LUIS)
 summary: Zjistěte, jak využít službu Language Understanding k tomu, aby pomohla vaší aplikaci pochopit, co lidé vlastními slovy chtějí.
 metadata:
   ms.topic: landing-page
-  ms.date: 06/15/2020
+  ms.date: 04/13/2021
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: Dokumentace ke službě Language Understanding (LUIS)
   titleSuffix: Azure Cognitive Services
   description: Služba Language Understanding (LUIS) umožňuje vaší aplikaci pochopit, co lidé vlastními slovy chtějí. Služba LUIS využívá strojové učení a umožňuje vývojářům sestavovat aplikace, které dokážou přijmout uživatelský vstup v přirozeném jazyce a extrahovat jeho význam.
-  ms.openlocfilehash: ca9209295d8265eeac5545091e4d4c5c9678e994
-  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  ms.openlocfilehash: 793638552b35dd6dc65395e9c568c55a8ef9f946
+  ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/23/2021
-  ms.locfileid: "98738063"
+  ms.lasthandoff: 04/14/2021
+  ms.locfileid: "107497043"
 landingContent:
 - title: Informace o službě Language Understanding (LUIS)
   linkLists:
@@ -130,7 +130,7 @@ landingContent:
     - text: Předem připravené entity
       url: luis-reference-prebuilt-entities.md
     - text: Vlastní entity
-      url: luis-concept-entity-types.md#types-of-entities
+      url: reference-entity-machine-learned-entity.md
     - text: Předem připravené domény
       url: luis-reference-prebuilt-domains.md
 - title: Nápověda a zpětná vazba

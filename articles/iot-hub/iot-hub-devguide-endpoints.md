@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: a58e141c6232db08b125b265e3d4ad74c784ba24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2b9ea2e075ddcf20860ccb9ab1f2eff654993ad
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92152175"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499372"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odkazy-IoT Hub koncové body
 
@@ -76,7 +76,7 @@ Všechny koncové body IoT Hub používají protokol [TLS](https://tools.ietf.or
 
 ## <a name="custom-endpoints"></a>Vlastní koncové body
 
-Existující služby Azure v rámci vašeho předplatného můžete propojit se službou IoT Hub, aby fungovaly jako koncové body pro směrování zpráv. Tyto koncové body slouží jako koncové body služby a slouží jako jímky pro trasy zpráv. Zařízení nemůžou zapisovat přímo do dalších koncových bodů. Přečtěte si další informace o [směrování zpráv](../iot-hub/iot-hub-devguide-messages-d2c.md).
+Existující služby Azure v předplatných Azure můžete propojit se službou IoT Hub, aby fungovaly jako koncové body pro směrování zpráv. Tyto koncové body slouží jako koncové body služby a slouží jako jímky pro trasy zpráv. Zařízení nemůžou zapisovat přímo do dalších koncových bodů. Přečtěte si další informace o [směrování zpráv](../iot-hub/iot-hub-devguide-messages-d2c.md).
 
 IoT Hub aktuálně podporuje následující služby Azure jako další koncové body:
 

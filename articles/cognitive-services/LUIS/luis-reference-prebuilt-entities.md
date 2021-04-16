@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/20/2020
-ms.openlocfilehash: cb3c74a2176ee7fcac53afb5185e8c62e66f4dfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: 7155a829655645e13e0485ed7d51305ec50e5b0a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798795"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502755"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entity na jazykovou verzi v modelu LUIS
 
@@ -23,7 +23,7 @@ Language Understanding (LUIS) poskytuje předem připravené entity.
 ## <a name="entity-resolution"></a>Řešení entit
 Když je do vaší aplikace zahrnutá předem sestavená entita, LUIS zahrnuje odpovídající řešení entity v odpovědi koncového bodu. Všechny příklady projevy jsou také označeny entitou.
 
-Chování předem sestavených entit se nedá změnit, ale pokud chcete řešení zlepšit, [přidejte předem vytvořenou entitu jako funkci do entity strojového učení nebo subentity](luis-concept-entity-types.md#effective-prebuilt-entities).
+Chování předem sestavených entit se nedá změnit, ale pokud chcete řešení zlepšit, [přidejte předem vytvořenou entitu jako funkci do entity strojového učení nebo subentity](luis-concept-entity-types.md#prebuilt-entity).
 
 ## <a name="availability"></a>Dostupnost
 Není-li uvedeno jinak, jsou předem připravené entity k dispozici ve všech národních prostředích aplikace LUIS (kultury). V následující tabulce jsou uvedeny předem připravené entity, které jsou podporovány pro každou jazykovou verzi.

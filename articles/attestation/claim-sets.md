@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0d6d5a08ea85ebb666acc0336f1e1d7ec5e097da
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e82e9fc93bf8c816fcbfd5869156745dea630313
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044664"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517551"
 ---
 # <a name="claim-sets"></a>Sady deklarací identity
 
@@ -30,11 +30,66 @@ Deklarace identity vygenerované v procesu ověřování enclaves pomocí Micros
 
 Deklarace identity, které budou používat autoři zásad k definování autorizačních pravidel v zásadách ověřování SGX:
 
-- **x-MS-SGX-je-laditelné**: logická hodnota, která označuje, jestli má enklávy povolený ladění nebo ne.
-- **x-MS-SGX-Product-ID**: hodnota ID produktu SGX enklávy 
-- **x-MS-SGX-mrsigner**: hodnota zakódovaná v poli "mrsigner" v uvozovkách
-- **x-MS-SGX-mrenclave**: hodnota zakódovaná v poli "mrenclave" v uvozovkách
-- **x-MS-SGX-SVN**: číslo verze zabezpečení kódované v uvozovkách 
+- **x-MS-SGX-je-laditelné**: logická hodnota, která indikuje, jestli je povolené ladění enklávy, nebo ne.
+  
+  SGX enclaves lze načíst s vypnutým nebo povoleným laděním. Pokud je příznak nastaven na hodnotu true v enklávy, povolí funkce ladění pro kód enklávy. To zahrnuje možnost přístupu k paměti enklávy. Proto se doporučuje nastavit příznak na hodnotu true pouze pro účely vývoje. Pokud je tato možnost povolená v produkčním prostředí, záruky zabezpečení SGX se nezachovají.
+  
+  Uživatelé Azure Attestation můžou pomocí zásad ověření identity ověřit, jestli je ladění pro SGX enklávy zakázané. Po přidání pravidla zásad se ověření identity nezdaří, pokud uživatel se zlými úmysly zapne podporu ladění, aby získal přístup k enklávy obsahu.
+
+- **x-MS-SGX-Product-ID**: celočíselná hodnota, která označuje ID produktu SGX enklávy.
+
+  Enklávy autor přiřadí každému enklávyu ID produktu. ID produktu umožňuje, aby autor enklávy segment enclaves podepsaný pomocí stejné MRSIGNER. Když v zásadách ověření identity přidáte ověřovací pravidlo, můžou si zákazníci ověřit, jestli používají zamýšlenou enclaves. Ověření identity se nezdaří, pokud ID produktu enklávy neodpovídá hodnotě publikované autorem enklávy.
+
+- **x-MS-SGX-mrsigner**: řetězcová hodnota, která IDENTIFIKUJE autora SGX enklávy.
+
+  MRSIGNER je hodnota hash veřejného klíče autora enklávy, který se používá k podepsání binárního souboru enklávy. Když zákazníci ověřují MRSIGNER prostřednictvím zásad ověřování identity, můžou ověřit, jestli jsou v enklávy spuštěné důvěryhodné binární soubory. Pokud deklarace identity zásady neodpovídá MRSIGNER autora enklávy, znamená to, že binární soubor enklávy není podepsán důvěryhodným zdrojem a ověření identity se nezdařilo.
+  
+  Když autor enklávy preferuje MRSIGNER z bezpečnostních důvodů, je nutné aktualizovat zásady ověření Azure tak, aby podporovaly nové a staré hodnoty MRSIGNER před aktualizací binárních souborů. V opačném případě se kontroly autorizace nezdaří v důsledku selhání ověřování identity.
+  
+  Zásady ověření identity je potřeba aktualizovat pomocí níže uvedeného formátu. 
+ 
+  #### <a name="before-key-rotation"></a>Před otočením klíče
+ 
+   ```
+    version= 1.0;
+    authorizationrules 
+    {
+    [ type=="x-ms-sgx-is-debuggable", value==false]&&
+    [ type=="x-ms-sgx-mrsigner", value=="mrsigner1"] => permit(); 
+    };
+  ```
+
+   #### <a name="during-key-rotation"></a>Během střídání klíčů
+
+    ```
+      version= 1.0;
+      authorizationrules 
+      {
+      [ type=="x-ms-sgx-is-debuggable", value==false]&&
+      [ type=="x-ms-sgx-mrsigner", value=="mrsigner1"] => permit(); 
+      [ type=="x-ms-sgx-is-debuggable", value==false ]&& 
+      [ type=="x-ms-sgx-mrsigner", value=="mrsigner2"] => permit(); 
+      };
+    ```
+
+   #### <a name="after-key-rotation"></a>Po otočení klíče
+
+    ```
+      version= 1.0;
+      authorizationrules 
+      { 
+      [ type=="x-ms-sgx-is-debuggable", value==false]&& 
+      [ type=="x-ms-sgx-mrsigner", value=="mrsigner2"] => permit(); 
+      };
+    ```
+
+- **x-MS-SGX-mrenclave**: řetězcová hodnota, která identifikuje kód a data načtená v enklávy paměti. 
+
+  MRENCLAVE je jedno z enklávy měření, které lze použít k ověření binárních souborů enklávy. Je to hodnota hash kódu běžícího uvnitř enklávy. Měření se mění při každé změně binárního kódu enklávy. Když zákazníci ověřují MRENCLAVE prostřednictvím zásad ověřování identity, můžou ověřit, jestli jsou v enklávy spuštěné zamýšlené binární soubory. Nicméně vzhledem k tomu, že MRENCLAVE se očekává, že se často mění jakákoli triviální Úprava stávajícího kódu, doporučuje se ověřit binární soubory enklávy pomocí ověřování MRSIGNER v zásadách ověření identity.
+
+- **x-MS-SGX-SVN**: celočíselná hodnota, která označuje číslo verze zabezpečení SGX enklávy
+
+  Enklávy autor přiřadí každé verzi SGX enklávy číslo verze zabezpečení (SVN). Když se v kódu enklávy zjistí problém se zabezpečením, enklávy autor zvýší hodnotu chyby zabezpečení post SVN. Aby se zabránilo interakci s nezabezpečeným enklávy kódem, můžou zákazníci přidat ověřovací pravidlo do zásad ověřování identity. Pokud SVN kódu enklávy neodpovídá verzi Doporučené autorem enklávy, ověření identity se nezdaří.
 
 Níže jsou deklarace, které se považují za zastaralé, ale jsou plně podporované a budou i nadále zahrnuty do budoucna. Doporučuje se používat nepoužívané názvy deklarací identity.
 

@@ -4,12 +4,12 @@ description: Naučte se spravovat a monitorovat zálohy agenta Microsoft Azure R
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 25f0c41b535f9403d0a7027687cc5261cd437275
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4306f01d608542f7453b32b32a1a6894c2379159
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97368592"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515018"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agenta Microsoft Azure Recovery Services (MARS) pomocí služby Azure Backup
 
@@ -196,7 +196,7 @@ Pro antivirový software doporučujeme následující konfiguraci, aby nedocház
 
 1. **Přidat vyloučení cest**: Chcete-li se vyhnout snížení výkonu a možných konfliktů, vylučte následující cesty z monitorování v reálném čase antivirového softwaru:
     1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent` a podsložky
-    1. **Pomocná složka**: Pokud složka pomocné složky není ve standardním umístění, přidejte ji také k vyloučení.  Postup určení umístění pomocné složky [najdete tady](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible) .
+    1. **Pomocná složka**: Pokud složka pomocné složky není ve standardním umístění, přidejte ji také k vyloučení.  Postup určení umístění pomocné složky [najdete tady](backup-azure-file-folder-backup-faq.yml#how-to-check-if-scratch-folder-is-valid-and-accessible-) .
 1. **Přidat binární vyloučení**: aby se zabránilo snížení výkonu aktivit zálohování a konzoly, vylučte procesy pro následující binární soubory ze sledování v reálném čase pomocí antivirového softwaru:
     1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\cbengine.exe`
 
@@ -207,4 +207,4 @@ Pro antivirový software doporučujeme následující konfiguraci, aby nedocház
 
 - Informace o podporovaných scénářích a omezeních najdete v tématu [matice podpory pro agenta Mars](./backup-support-matrix-mars-agent.md).
 - Přečtěte si další informace o [chování uchovávání zásad zálohování na vyžádání](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior).
-- Nejčastější dotazy najdete v tématu [Nejčastější dotazy k agentovi Mars](backup-azure-file-folder-backup-faq.md).
+- Nejčastější dotazy najdete v tématu [Nejčastější dotazy k agentovi Mars](backup-azure-file-folder-backup-faq.yml).

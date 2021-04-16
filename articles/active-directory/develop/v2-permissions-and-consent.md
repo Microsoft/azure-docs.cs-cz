@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 04/14/2021
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: bdcfb0adf2c92fa6e084c2efbc2e5c066a3e3ede
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2a975a0aba06ecfd010fe328ef6c8cda75290f2b
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305850"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515579"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Oprávnění a souhlas na platformě Microsoft identity
 
@@ -43,11 +43,7 @@ Vzhledem k těmto typům definicí oprávnění má prostředek jemně odstupňo
 
 Když je funkce prostředku narozdělená do malých sad oprávnění, dají se aplikace třetích stran sestavit tak, aby požadovaly jenom ta oprávnění, která potřebují k provádění svých funkcí. Uživatelé a správci můžou zjistit, k jakým datům může aplikace přistupovat. A můžou být větší jistotu, že se aplikace nechová se škodlivým záměrem. Vývojáři by měli vždy dodržovat princip nejnižších oprávnění a vyžadovat pouze oprávnění, která potřebují k fungování svých aplikací.
 
-V případě OAuth 2,0 se tyto typy sad oprávnění nazývají *obory*. Jsou také často označována jako *oprávnění*. Na platformě Microsoft identity je oprávnění reprezentované jako řetězcová hodnota. V příkladu Microsoft Graph tady je hodnota řetězce pro každé oprávnění:
-
-* Čtení kalendáře uživatele pomocí `Calendars.Read`
-* Zápis do kalendáře uživatele pomocí `Calendars.ReadWrite`
-* Odeslat e-mail jako uživatel pomocí `Mail.Send`
+V případě OAuth 2,0 se tyto typy sad oprávnění nazývají *obory*. Jsou také často označována jako *oprávnění*. Na platformě Microsoft identity je oprávnění reprezentované jako řetězcová hodnota. Aplikace požaduje oprávnění, která potřebuje, zadáním oprávnění v `scope` parametru dotazu. Platforma identity podporuje několik dobře definovaných [oborů OpenID připojení](#openid-connect-scopes) i oprávnění na základě prostředků (každé oprávnění je určeno připojením hodnoty oprávnění k identifikátoru prostředku nebo identifikátoru URI ID aplikace). Například řetězec oprávnění `https://graph.microsoft.com/Calendars.Read` se používá k vyžádání oprávnění ke čtení kalendářů uživatelů v Microsoft Graph.
 
 Aplikace tyto oprávnění nejčastěji vyžádá zadáním oborů v požadavcích na koncový bod autorizace platformy Microsoft Identity Platform. Některá oprávnění s vysokou úrovní oprávnění je ale možné udělit jenom prostřednictvím souhlasu správce. Mohou být vyžádány nebo uděleny pomocí [koncového bodu souhlasu správce](#admin-restricted-permissions). Pokračujte ve čtení a získejte další informace.
 

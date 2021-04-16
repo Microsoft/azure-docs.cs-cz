@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30f22282b00a7ead2e19805f32d78338126e8087
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 3b4089559b341dd268928b1f150b6fc173869ead
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552746"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529913"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-mailové ověřování heslem jednorázového hesla
 
@@ -114,7 +114,7 @@ Pokud byste ale chtěli tuto funkci odhlásit a povolit její automatické povol
 
 ## <a name="note-for-azure-us-government-customers"></a>Poznámka pro zákazníky Azure pro státní správu USA
 
-Funkce pro jednorázové e-mailové heslo je ve výchozím nastavení v cloudu pro státní správu Azure USA zakázaná.  
+Funkce pro jednorázové e-mailové heslo je ve výchozím nastavení v cloudu pro státní správu Azure USA zakázaná. Pokud tuto funkci nepovolíte, nebudou se vaši partneři moci přihlásit. Na rozdíl od veřejného cloudu Azure Azure pro státní správu USA nepodporuje uplatnění pozvánky s využitím účtů samoobslužných služeb Azure Active Directory.
 
  ![Heslo jednorázového e-mailu je zakázané](media/one-time-passcode/enable-email-otp-disabled.png)
 
@@ -122,7 +122,7 @@ Povolení funkce jednorázového hesla e-mailu v cloudu pro státní správu Azu
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce Azure AD.
 2. V navigačním podokně vyberte **Azure Active Directory**.
-3. Vyberte **Nastavení organizačních vztahů**   >  ****.
+3. Vyberte **organizační vztahy**   >  **všech zprostředkovatelů identity**.
 
    > [!NOTE]
    > - Pokud nevidíte **vztahy organizace**, vyhledejte v horní části panelu hledání "externí identity".

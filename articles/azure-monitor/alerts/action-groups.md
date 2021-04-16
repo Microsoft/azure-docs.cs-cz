@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: dukek
-ms.openlocfilehash: 7010e20b65142cf0ab85c29d6b22c925c977f1f8
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 1486415c5d225163dd2b2c7e79cd008ad0a76588
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107104979"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514865"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. 
@@ -147,6 +147,13 @@ Pokud nepřijímáte oznámení v *primárním e-mailu*, můžete zkusit provés
   :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Příklad přidání primárního e-mailu" border="true":::
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./alerts-rate-limiting.md) .
+
+Při nastavování *role ARM e-mailu* je potřeba zajistit, aby byly splněné tři podmínky:
+
+1. Typ entity, která je přiřazena k roli, musí být **"uživatel"**.
+2. Přiřazení je nutné provést na úrovni **předplatného** .
+3. Uživatel musí mít v **profilu AAD** nakonfigurovaný e-mail. 
+
 
 ### <a name="function"></a>Funkce
 Zavolá existující koncový bod HTTP triggeru v [Azure Functions](../../azure-functions/functions-get-started.md). Aby bylo možné zpracovat žádost, musí koncový bod zpracovat operaci HTTP POST.

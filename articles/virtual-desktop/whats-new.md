@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 710f33ada7a64248f0371a3e8c39e085d3f0834c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 242dd2476783a3d1db6b74452d35e87c5cd189b6
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107053"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516548"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -42,11 +42,19 @@ Agent virtuálních klientů Windows se aktualizuje aspoň jednou měsíčně.
 
 Co je se změnil v agentu virtuálních počítačů Windows:
 
-- Verze 1.0.2866.1500: Tato aktualizace byla vydána 26. března 2021 a vyřešila problém s kontrolou stavu zásobníku.
+- Verze 1.0.2990.800: Tato aktualizace byla vydána v dubnu 13 2021 a obsahuje následující změny:
+    - Aktualizované chybové zprávy agenta.
+    - Přidá výjimku, která vám znemožní instalovat agenty jiného typu než Windows 7 na virtuální počítače s Windows 7.
+    - Má aktualizovanou logiku služby prezenčního signálu.
+- Verze 1.0.2944.1400: Tato aktualizace byla vydána 7. dubna 2021 a obsahuje následující změny:
+    - Odkazy na Průvodce odstraňováním potíží agenta virtuálního počítače se systémem Windows v protokolech prohlížeče událostí pro chyby agenta.
+    - Přidání další výjimky pro lepší zpracování chyb.
+    - Přidání WVDAgentUrlTool.exe, která umožňuje zákazníkům kontrolovat, které požadované adresy URL mají přístup.
+- Verze 1.0.2866.1500: Tato aktualizace byla vydána 26. března 2021 a opravuje problém s kontrolou stavu zásobníku.
 - Verze 1.0.2800.2802: Tato aktualizace byla vydána 10. března 2021 a má Obecná vylepšení a opravy chyb.
-- Verze 1.0.2800.2800: Tato aktualizace byla vydána 2. března 2021 a opravila problém se zpětným připojením.
+- Verze 1.0.2800.2800: Tato aktualizace byla vydána 2. března 2021 a opravuje problém se zpětným připojením.
 - Verze 1.0.2800.2700: Tato aktualizace byla vydána 10. února 2021 a má Obecná vylepšení a opravy chyb.
-- Verze 1.0.2800.2700: Tato aktualizace byla vydána 4. února 2021 a vyřešila problém orchestrace odepření přístupu.
+- Verze 1.0.2800.2700: Tato aktualizace byla vydána 4. února 2021 a opravuje problém orchestrace odepření přístupu.
 
 ## <a name="fslogix-updates"></a>FSLogix aktualizace
 

@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 0e07839c3c5ce542335eeadc92e6a3c98fe87856
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 418c8f0844bf2336ce0d4a681071f237d81877ca
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606976"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505713"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Co je Azure Dedicated HSM?
 
@@ -32,7 +32,7 @@ Po zřízení se zařízení HSM připojí přímo k virtuální síti zákazní
 
 ### <a name="fips-140-2-level-3-compliance"></a>Dodržování předpisů FIPS 140-2 úrovně 3
 
-Mnoho organizací má přísné oborové předpisy, které určují, že kryptografické klíče musí být uložené ve [standardu FIPS 140-2 Level-3](https://csrc.nist.gov/publications/detail/fips/140/2/final) ověřený HSM. Vyhrazený modul HSM v Azure a nová nabídka pro jednoho tenanta, [Azure Key Vault spravovaný HSM (Preview)](https://docs.microsoft.com/azure/key-vault/managed-hsm), zákazníkům s různými obory, jako jsou finanční služby, státními úřady a ostatními, splňují požadavky standardu FIPS 140-2 úrovně 3. Zatímco služba víceklientské [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) Microsoftu v současnosti používá HSM ověřený na úrovni FIPS 140-2 úrovně 2. 
+Mnoho organizací má přísné oborové předpisy, které určují, že kryptografické klíče musí být uložené ve [standardu FIPS 140-2 Level-3](https://csrc.nist.gov/publications/detail/fips/140/2/final) ověřený HSM. Vyhrazený modul HARDWAROVÉho zabezpečení Azure a nová nabídka pro jednoho tenanta, [Azure Key Vault spravovaný HSM](https://docs.microsoft.com/azure/key-vault/managed-hsm), můžou zákazníkům z různých průmyslových segmentů, jako jsou finanční služby, státní úřady a další, plnit požadavky standardu FIPS 140-2 úrovně 3. Zatímco služba víceklientské [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) Microsoftu v současnosti používá HSM ověřený na úrovni FIPS 140-2 úrovně 2. 
 
 ### <a name="single-tenant-devices"></a>Zařízení s jedním klientem
 
@@ -72,7 +72,7 @@ Vyhrazený modul HARDWAROVÉho zabezpečení Azure není vhodný pro následují
 
 ### <a name="it-depends"></a>To záleží...
 
-To, jestli bude vyhrazený modul HSM pro Azure fungovat, závisí na potenciálně složité kombinaci požadavků a ohrožení zabezpečení, které můžete nebo nemůžete dělat. Příkladem je požadavek FIPS 140-2 úrovně 3. Tento požadavek je běžný a vyhrazený modul HSM Azure a nová nabídka pro jednoho tenanta, [Azure Key Vault spravovaný HSM (Preview)](https://docs.microsoft.com/azure/key-vault/managed-hsm) , jsou aktuálně jedinou možností pro jejich setkání. Pokud tyto požadavky nejsou relevantní, je často to volba mezi Azure Key Vault a vyhrazeným modulem HSM v Azure. Před provedením rozhodnutí vyhodnoťte vaše požadavky.
+To, jestli bude vyhrazený modul HSM pro Azure fungovat, závisí na potenciálně složité kombinaci požadavků a ohrožení zabezpečení, které můžete nebo nemůžete dělat. Příkladem je požadavek FIPS 140-2 úrovně 3. Tento požadavek je běžný a vyhrazený modul HSM Azure a nová nabídka pro jednoho tenanta, [Azure Key Vault spravovaný modul hardwarového](https://docs.microsoft.com/azure/key-vault/managed-hsm) zabezpečení (HSM), jsou aktuálně jedinou možností pro jejich setkání. Pokud tyto požadavky nejsou relevantní, je často to volba mezi Azure Key Vault a vyhrazeným modulem HSM v Azure. Před provedením rozhodnutí vyhodnoťte vaše požadavky.
 
 Mezi situace, ve kterých budete muset zvážit tyto možnosti, patří: 
 

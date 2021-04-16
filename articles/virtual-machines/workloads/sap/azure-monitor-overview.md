@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: a88ad3930e114bdf9f3c3c340f92f164215d59c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c561a9a786765ccfdaf00abf4e0d9c8cc550cb9a
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101671990"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377204"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>Řešení Azure monitor pro SAP (Preview)
 
@@ -22,7 +22,7 @@ Díky Azure Monitor pro řešení SAP můžou zákazníci shromažďovat data te
 
 K dispozici jsou Azure Monitor pro řešení SAP prostřednictvím Azure Marketplace. Nabízí jednoduché a intuitivní prostředí pro instalaci a k nasazení prostředku pro Azure Monitor pro řešení SAP (označované jako **prostředek sledování SAP**) stačí jenom několik kliknutí.
 
-Zákazníci mohou monitorovat různé součásti technologie SAP na šířku, jako je například Azure Virtual Machines, cluster s vysokou dostupností, databáze SAP HANA atd., a to přidáním odpovídajícího **poskytovatele** pro danou součást.
+Zákazníci můžou monitorovat různé komponenty na platformě SAP, jako je Azure Virtual Machines, cluster s vysokou dostupností, SAP HANA Database, SAP NetWeaver atd., a to přidáním odpovídajícího **poskytovatele** pro danou součást.
 
 Podporovaná infrastruktura:
 
@@ -70,6 +70,13 @@ Telemetrie operačního systému (Linux)
 - Průběžný počet vstupů a výstupů, trvalá paměť pro čtení a zápis. 
 - Příchozí/odchozí síťové pakety, bajtů v/v sítě 
 
+Telemetrie SAP NetWeaver:
+
+- Dostupnost systému SAP a aplikačního serveru, včetně procesu instance, který je součástí dostupnosti dispečera, ICM, brány, serveru zpráv, serveru fronty, sledovacího zařízení IGS
+- Statistiky a trendy využití pracovních procesů
+- Statistika a trendy zámku zařazování do fronty
+- Statistika využití fronty a trendy
+
 ## <a name="data-sharing-with-microsoft"></a>Sdílení dat s Microsoftem
 
 Azure Monitor pro řešení SAP shromažďuje systémová metadata, která poskytují vylepšenou podporu pro naše SAP na zákaznících Azure. Neshromažďují se žádné PII/EUII.
@@ -102,8 +109,8 @@ Klíčové součásti architektury jsou:
 ### <a name="architecture-highlights"></a>Nejdůležitější architektura
 
 V této části najdete hlavní nejdůležitější funkce architektury:
- - **Více instancí** – zákazníci mohou vytvořit monitorování pro více instancí daného typu komponenty (například databáze Hana, cluster s vysokou dostupností, Microsoft SQL Server) v rámci více identifikátorů SID SAP v rámci virtuální sítě s jedním prostředkem Azure monitor pro řešení SAP.
- - **Vícenásobný zprostředkovatel** – na výše uvedeném diagramu architektury se jako příklad zobrazuje poskytovatel SAP HANA. Podobně zákazníci můžou nakonfigurovat další poskytovatele pro odpovídající komponenty (například databáze HANA, cluster s vysokou dostupností, Microsoft SQL Server) a shromažďovat data z těchto součástí.
+ - **Více instancí** – zákazníci mohou vytvořit monitorování pro více instancí daného typu komponenty (například databáze Hana, cluster s vysokou dostupností, Microsoft SQL Server, SAP NetWeaver) napříč několika identifikátory SID SAP v rámci virtuální sítě s jedním prostředkem Azure monitor pro řešení SAP.
+ - **Vícenásobný zprostředkovatel** – na výše uvedeném diagramu architektury se jako příklad zobrazuje poskytovatel SAP HANA. Podobně zákazníci můžou nakonfigurovat další poskytovatele pro odpovídající komponenty (například databáze HANA, cluster s vysokou dostupností, Microsoft SQL Server, SAP NetWeaver) a shromažďovat data z těchto součástí.
  - **Open Source** – zdrojový kód Azure monitor pro řešení SAP je k dispozici na [GitHubu](https://github.com/Azure/AzureMonitorForSAPSolutions). Zákazníci mohou odkazovat na kód poskytovatele a získat další informace o produktu, přispívání nebo sdílení zpětné vazby.
  - **Rozšiřitelná architektura dotazů** – dotazy SQL pro shromažďování dat telemetrie jsou zapisovány ve formátu [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json). Další dotazy SQL na shromažďování dalších dat telemetrie lze snadno přidat. Zákazníci můžou požádat o konkrétní data telemetrie, která se mají přidat do Azure Monitor pro řešení SAP, a to tak, že na konci tohoto dokumentu přejdou zpětnou vazbu prostřednictvím odkazu nebo se obrátí na svůj obchodní tým.
 

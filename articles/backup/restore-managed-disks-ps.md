@@ -3,12 +3,12 @@ title: Obnovení Azure Managed Disks přes Azure PowerShell
 description: Naučte se, jak obnovit Managed Disks Azure pomocí Azure PowerShell.
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.openlocfilehash: 0ddf552947c39692ea01d0dea7e67f147d754fcc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c6625b43c313d45d4b295dd406e29a2b1d85b387
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630347"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520033"
 ---
 # <a name="restore-azure-managed-disks-using-azure-powershell"></a>Obnovení Azure Managed Disks pomocí Azure PowerShell
 
@@ -92,4 +92,4 @@ $job = Search-AzDataProtectionJobInAzGraph -Subscription $sub -ResourceGroupName
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nejčastější dotazy k Azure disk Backup](disk-backup-faq.md)
+- [Nejčastější dotazy k Azure disk Backup](disk-backup-faq.yml)

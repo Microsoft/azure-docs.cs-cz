@@ -182,3 +182,11 @@ items:
         href: supported-classifications.md
       - name: Průvodce nasazením funkce ABAP
         href: abap-functions-deployment-guide.md
+  - name: Zdroje informací
+    items:
+      - name: Váš názor na funkce (uživatelský hlas)
+        href: 'https://feedback.azure.com/forums/932437-azure-purview'
+      - name: Cenová kalkulačka
+        href: 'https://azure.microsoft.com/pricing/details/azure-purview/'
+      - name: Fórum Microsoft Q&
+        href: 'https://docs.microsoft.com/answers/topics/azure-purview.html'

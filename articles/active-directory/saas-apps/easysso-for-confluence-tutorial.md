@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/24/2020
+ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 325f6ad7d9685fac17e17b28c4ffbe31b1245cca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef121112bb4ff3ff6a297677a5c713f642cb3b78
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98734525"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519519"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-confluence"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s EasySSO pro Confluence
 
@@ -37,10 +37,10 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* EasySSO for Confluence podporuje **SP a IDP** inicioval jednotné přihlašování.
-* EasySSO for Confluence podporuje zřizování uživatelů **jenom v čase**
+* EasySSO for Confluence podporuje **SP a IDP** iniciaci SSO.
+* EasySSO for Confluence podporuje zřizování uživatelů **jenom v čase** .
 
-## <a name="adding-easysso-for-confluence-from-the-gallery"></a>Přidání EasySSO pro Confluence z Galerie
+## <a name="add-easysso-for-confluence-from-the-gallery"></a>Přidání EasySSO pro Confluence z Galerie
 
 Pokud chcete nakonfigurovat integraci EasySSO pro Confluence do služby Azure AD, musíte přidat EasySSO pro Confluence z Galerie do svého seznamu spravovaných aplikací SaaS.
 
@@ -50,7 +50,6 @@ Pokud chcete nakonfigurovat integraci EasySSO pro Confluence do služby Azure AD
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **EasySSO for Confluence** .
 1. Z panelu výsledků vyberte **EasySSO for Confluence** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-easysso-for-confluence"></a>Konfigurace a testování jednotného přihlašování Azure AD pro EasySSO pro Confluence
 
@@ -71,7 +70,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V Azure Portal na stránce Application Integration **EasySSO for Confluence** vyhledejte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -129,9 +128,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte možnost **EasySSO pro Confluence**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .

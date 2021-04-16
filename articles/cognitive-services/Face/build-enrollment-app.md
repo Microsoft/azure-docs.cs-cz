@@ -1,7 +1,7 @@
 ---
-title: Sestavení registrační aplikace pro Android s použitím reakce
+title: Sestavení aplikace s Reakcim pro přidání uživatelů do služby obličeje
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak nastavit vývojové prostředí a nasadit aplikaci pro registraci obličeje, abyste získali souhlas od zákazníků.
+description: Naučte se, jak nastavit vývojové prostředí a nasadit aplikaci pro obličeje, abyste získali souhlas od zákazníků.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,20 +9,20 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 218579176b807bbdae85646f27eaa7f301d4b9a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39a74c7f3d5fb8f8b60a66947fcce9837ed6ee13
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102428265"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505101"
 ---
-# <a name="build-an-enrollment-app-for-android-with-react"></a>Sestavení registrační aplikace pro Android s použitím reakce
+# <a name="build-a-react-app-to-add-users-to-a-face-service"></a>Sestavení aplikace s Reakcim pro přidání uživatelů do služby obličeje
 
-V této příručce se dozvíte, jak začít s ukázkovou aplikací pro registraci obličeje. Tato aplikace předvádí osvědčené postupy pro získání smysluplného souhlasu k registraci uživatelů do služby pro rozpoznávání obličeje a získání dat s vysokou přesností. Integrovaný systém může použít registrační aplikaci, jako je to, aby poskytoval bez dotykového řízení přístupu, ověření identity, sledování docházky, veřejného terminálu a ověření identity, a to na základě jejich dat na tvář.
+V této příručce se dozvíte, jak začít s ukázkovou aplikací pro registraci obličeje. Tato aplikace předvádí osvědčené postupy pro získání smysluplného souhlasu s cílem přidat uživatele do služby pro rozpoznávání obličeje a získat data s vysokou přesností. Integrovaný systém může použít aplikaci, jako je to, aby poskytoval bez dotykového řízení přístupu, ověření identity, sledování docházky, veřejného terminálu a ověření identity, a to na základě dat jejich obličeje.
 
 Když se spustí aplikace, zobrazí se uživatelům podrobná obrazovka pro vyjádření souhlasu. Pokud uživatel udělí souhlas, aplikace se vyzve k zadání uživatelského jména a hesla a potom zachytí vysoce kvalitní image s použitím kamery zařízení.
 
-Ukázková registrační aplikace je napsaná pomocí JavaScriptu a nativního rozhraní reakce. Teď se dá nasadit na zařízení s Androidem; Další možnosti nasazení přicházejí v budoucnu.
+Ukázková aplikace je napsaná pomocí JavaScriptu a nativního rozhraní reakce. Teď se dá nasadit na zařízení s Androidem; Další možnosti nasazení přicházejí v budoucnu.
 
 ## <a name="prerequisites"></a>Požadavky 
 
@@ -36,22 +36,22 @@ Ukázková registrační aplikace je napsaná pomocí JavaScriptu a nativního r
 
 ## <a name="set-up-the-development-environment"></a>Nastavení vývojového prostředí
 
-1. Naklonujte úložiště Git pro [ukázkovou registrační aplikaci](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample).
+1. Naklonujte úložiště Git pro [ukázkovou aplikaci](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample).
 1. Chcete-li nastavit vývojové prostředí, použijte nativní dokumentaci reagující na <a href="https://reactnative.dev/docs/environment-setup"  title=" reakci nativní dokumentace "  target="_blank"> </a> . Jako vývojový operační systém vyberte možnost **reagovat nativním rychlým startem CLI** a jako cílový operační systém vyberte **Android** . Dokončete části **instalace závislostí** a **vývojového prostředí Android**.
 1. Otevřete env.jsv souboru v upřednostňovaném textovém editoru, jako je například [Visual Studio Code](https://code.visualstudio.com/), a přidejte svůj koncový bod a klíč. Svůj koncový bod a klíč můžete získat na Azure Portal na kartě **Přehled** daného prostředku. Tento krok je jenom pro účely místního testování &mdash; . váš rozhraní API pro rozpoznávání tváře klíč nevraťte se do vzdáleného úložiště.
 1. Spusťte aplikaci pomocí emulátoru virtuálního zařízení s Androidem z Android Studio nebo vlastního zařízení s Androidem. Chcete-li otestovat aplikaci na fyzickém zařízení, postupujte podle příslušné <a href="https://reactnative.dev/docs/running-on-device"  title=" reakce nativní dokumentace k reakci v dokumentaci "  target="_blank"> </a> .  
 
 
-## <a name="create-an-enrollment-experience"></a>Vytvoření prostředí pro registraci  
+## <a name="create-a-user-add-experience"></a>Vytvoření uživatelského prostředí pro přidání  
 
-Teď, když jste si nastavili ukázkovou registrační aplikaci, můžete ji přizpůsobit vlastním potřebám při registraci.
+Teď, když jste nastavili ukázkovou aplikaci, ji můžete přizpůsobit podle svých potřeb.
 
 Například můžete chtít přidat informace specifické pro konkrétní situaci na stránce s vaším souhlasem:
 
 > [!div class="mx-imgBorder"]
 > ![Stránka pro vyjádření souhlasu aplikace](./media/enrollment-app/1-consent-1.jpg)
 
-Služba poskytuje kontroly kvality obrazu, které vám pomůžou vybrat, jestli má image dostatečnou kvalitu k registraci zákazníka nebo pokusu o rozpoznávání obličeje. Tato aplikace ukazuje, jak získat přístup k snímkům z kamery zařízení, vybrat nejvyšší kvalitu snímků a zaregistrovat zjištěnou plochu do služby rozhraní API pro rozpoznávání tváře. 
+Služba poskytuje kontroly kvality obrazu, které vám pomůžou vybrat, jestli má image dostatečnou kvalitu pro přidání zákazníka nebo pokus o rozpoznávání obličeje. Tato aplikace ukazuje, jak získat přístup k snímkům z kamery zařízení, vybrat nejvyšší kvalitu snímků a přidat zjištěnou obličej do služby rozhraní API pro rozpoznávání tváře. 
 
 Mnoho problémů s rozpoznáváním tváře je způsobeno nekvalitními referenčními obrázky. Mezi faktory, které můžou snížit výkon modelu, patří:
 * Velikost obličeje (plošky, které jsou od kamery vzdálená)
@@ -63,14 +63,14 @@ Mnoho problémů s rozpoznáváním tváře je způsobeno nekvalitními referen�
 > [!div class="mx-imgBorder"]
 > ![Stránka instrukcí pro zachycení image aplikace](./media/enrollment-app/4-instruction.jpg)
 
-Všimněte si, že aplikace také nabízí funkce pro odstranění registrace uživatele a možnost nového zápisu.
+Všimněte si, že aplikace také nabízí funkce pro odstranění informací o uživateli a možnost opětovného přidání.
 
 > [!div class="mx-imgBorder"]
 > ![Stránka Správa profilů](./media/enrollment-app/10-manage-2.jpg)
 
-Pokud chcete rozšířenou funkci aplikace tak, aby pokryla úplné možnosti registrace, přečtěte si [Přehled](enrollment-overview.md) dalších funkcí k implementaci a osvědčeným postupům.
+Pokud chcete rozšířenou funkci aplikace tak, aby pokryla všechny možnosti, přečtěte si [Přehled](enrollment-overview.md) dalších funkcí k implementaci a osvědčeným postupům.
 
-## <a name="deploy-the-enrollment-app"></a>Nasazení registrační aplikace
+## <a name="deploy-the-app"></a>Nasazení aplikace
 
 ### <a name="android"></a>Android
 
@@ -84,4 +84,4 @@ Po vytvoření podepsaného APK si přečtěte dokumentaci k publikování vaš�
 
 ## <a name="next-steps"></a>Další kroky  
 
-V této příručce jste zjistili, jak nastavit vývojové prostředí a začít s ukázkovou registrační aplikací. Pokud s dalšími možnostmi reagujete na nativní, můžete si přečíst svoje [dokumenty Začínáme](https://reactnative.dev/docs/getting-started) a získat další informace na pozadí. Také může být užitečné se seznámit s [rozhraní API pro rozpoznávání tváře](Overview.md). Než začnete s vývojem, přečtěte si další části v dokumentaci k aplikaci pro registraci.
+V této příručce jste zjistili, jak nastavit vývojové prostředí a začít s ukázkovou aplikací. Pokud s dalšími možnostmi reagujete na nativní, můžete si přečíst svoje [dokumenty Začínáme](https://reactnative.dev/docs/getting-started) a získat další informace na pozadí. Také může být užitečné se seznámit s [rozhraní API pro rozpoznávání tváře](Overview.md). Než začnete s vývojem, přečtěte si další části týkající se přidání uživatelů.

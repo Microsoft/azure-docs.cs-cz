@@ -4,16 +4,16 @@ description: Tento článek poskytuje přehled ověřování účtu Azure Automa
 keywords: automation security, secure automation; automation authentication
 services: automation
 ms.subservice: process-automation
-ms.date: 02/26/2021
+ms.date: 04/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: c559a81b17b92f48b2d51b7c2d26325d6a1b1cca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b52fa3083dc5c42fa71e720e9a3991cb7aa5afec
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708896"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501565"
 ---
-# <a name="automation-account-authentication-overview"></a>Přehled ověřování účtů služby Automation
+# <a name="azure-automation-account-authentication-overview"></a>Přehled ověřování účtu Azure Automation
 
 Azure Automation umožňuje automatizovat úlohy s prostředky v Azure, místně a u jiných poskytovatelů cloudu, například Amazon Web Services (AWS). Sady Runbook můžete použít k automatizaci úkolů nebo Hybrid Runbook Worker, pokud máte obchodní nebo provozní procesy pro správu mimo Azure. Práce v jednom z těchto prostředí vyžaduje oprávnění k zabezpečenému přístupu k prostředkům s minimálními nároky na požadavky.
 
@@ -30,6 +30,31 @@ Při prvním spuštění služby Azure Automation vytvořte alespoň jeden úče
 Prostředky automatizace pro každý účet Automation jsou přidružené k jedné oblasti Azure, ale účet může spravovat všechny prostředky ve vašem předplatném Azure. Hlavním důvodem pro vytváření účtů Automation v různých oblastech je, že máte zásady, které vyžadují izolaci dat a prostředků do konkrétní oblasti.
 
 Všechny úlohy, které vytvoříte na prostředky pomocí Azure Resource Manager a rutiny prostředí PowerShell v Azure Automation, se musí ověřit v Azure pomocí ověřování na základě přihlašovacích údajů organizační identity v Azure Active Directory (Azure AD).
+
+## <a name="managed-identities-preview"></a>Spravované identity (Preview)
+
+Spravovaná identita z Azure Active Directory (Azure AD) umožňuje sadě Runbook snadný přístup k dalším prostředkům chráněným službou Azure AD. Identita je spravovaná platformou Azure a nevyžaduje zřízení ani otočení jakýchkoli tajných klíčů. Další informace o spravovaných identitách v Azure AD najdete v tématu [spravované identity pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/overview).
+
+Zde jsou některé výhody použití spravovaných identit:
+
+- Spravované identity můžete použít k ověření pro libovolnou službu Azure, která podporuje ověřování Azure AD.
+
+- Spravované identity lze použít bez jakýchkoli dalších nákladů.
+
+- Nemusíte obnovovat certifikát používaný účtem Automation spustit jako.
+
+- V kódu Runbooku nemusíte určovat objekt připojení spustit jako. K prostředkům můžete přistupovat pomocí spravované identity účtu Automation z Runbooku bez vytváření certifikátů, připojení, účtů spustit jako atd.
+
+Účtu Automation se dají udělit dva typy identit:
+
+- Identita přiřazená systémem je svázána s vaší aplikací a je odstraněna, pokud je vaše aplikace odstraněna. Aplikace může mít jenom jednu identitu přiřazenou systémem.
+
+- Uživatelsky přiřazená identita je samostatný prostředek Azure, který je možné přiřadit k vaší aplikaci. Aplikace může mít více uživatelsky přiřazených identit.
+
+>[!NOTE]
+> Identity přiřazené uživateli ještě nejsou podporované.
+
+Podrobnosti o používání spravovaných identit najdete v tématu [Povolení spravované identity pro Azure Automation (Preview)](enable-managed-identity-for-automation.md).
 
 ## <a name="run-as-accounts"></a>Účty Spustit jako
 
@@ -120,3 +145,4 @@ Pro Runbooky, které používají hybridní pracovní procesy Runbooku na virtu�
 * Pokud chcete vytvořit účet Automation z Azure Portal, přečtěte si téma [vytvoření samostatného účtu Azure Automation](automation-create-standalone-account.md).
 * Pokud dáváte přednost vytvoření účtu pomocí šablony, přečtěte si téma [Vytvoření účtu Automation pomocí šablony Azure Resource Manager](quickstart-create-automation-account-template.md).
 * Ověřování pomocí Amazon Web Services najdete v tématu [ověřování runbooků pomocí Amazon Web Services](automation-config-aws-account.md).
+* Seznam služeb Azure, které podporují funkci spravovaných identit prostředků Azure, najdete v článku o [službách podporujících spravované identity prostředků Azure](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).

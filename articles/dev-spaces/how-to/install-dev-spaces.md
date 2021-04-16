@@ -4,13 +4,14 @@ services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
 description: Naučte se, jak povolit Azure Dev Spaces v clusteru AKS a nainstalovat nástroje na straně klienta.
+ms.custom: devx-track-azurecli
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: 177496a53d204306b2b655b8736ce063dedf0f61
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 079a9e1b28b315457ac20d3aa9e7d29ce28fa077
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202242"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505356"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Povolení Azure Dev Spaces v clusteru AKS a instalace nástrojů na straně klienta
 
@@ -18,7 +19,7 @@ ms.locfileid: "102202242"
 
 Tento článek ukazuje několik způsobů povolení Azure Dev Spaces v clusteru AKS a instalaci nástrojů na straně klienta.
 
-## <a name="enable-azure-dev-spaces-using-the-cli"></a>Povolení Azure Dev Spaces pomocí rozhraní příkazového řádku
+## <a name="enable-azure-dev-spaces-using-the-azure-cli"></a>Povolení Azure Dev Spaces pomocí Azure CLI
 
 Než budete moci povolit vývojové prostory pomocí rozhraní příkazového řádku, budete potřebovat:
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][az-portal-create-account].
@@ -59,7 +60,7 @@ Pomocí Azure Dev Spaces nástrojů na straně klienta můžete pracovat s vývo
 * V [aplikaci Visual Studio 2019][visual-studio]nainstalujte úlohu vývoj pro Azure.
 * Stáhněte a nainstalujte rozhraní příkazového řádku pro [Windows][cli-win], [Mac][cli-mac]nebo [Linux][cli-linux] .
 
-## <a name="remove-azure-dev-spaces-using-the-cli"></a>Odebrání Azure Dev Spaces pomocí rozhraní příkazového řádku
+## <a name="remove-azure-dev-spaces-using-the-azure-cli"></a>Odebrání Azure Dev Spaces pomocí Azure CLI
 
 K odebrání Azure Dev Spaces z clusteru AKS použijte `azds remove` příkaz.
 

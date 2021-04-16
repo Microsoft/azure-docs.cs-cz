@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 315519472baa672e802855b5ab21b8bae8f51935
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d03a4865c8db52f74f4130c458fec3028f5b95a4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109845"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481663"
 ---
 # <a name="what-is-azure-digital-twins"></a>Co je služba Azure Digital Twins?
 
@@ -102,6 +102,6 @@ Seznam **běžných termínů IoT** a jejich použití můžete zobrazit v rámc
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobně se na práci s digitálními podmnožinami Azure v rychlém startu: [*rychlý Start: Prozkoumejte ukázkový scénář*](quickstart-adt-explorer.md).
+* Podrobně se na práci s digitálními podmnožinami Azure v rychlém startu: [*rychlý Start: Prozkoumejte ukázkový scénář*](quickstart-azure-digital-twins-explorer.md).
 
 * Nebo začněte číst informace o konceptech digitálních vláken Azure s [*Koncepty: vlastní modely*](concepts-models.md).
