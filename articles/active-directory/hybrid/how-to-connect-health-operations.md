@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37e41a00c1489d5b7b4822fec8bb4da35e917826
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 836c7bf9aefd4b2cb7d52c66bbd37e7ba38a467c
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101686457"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377306"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health operace
 V tomto tématu najdete popis různých operací, které můžete provádět pomocí služby Azure Active Directory (Azure AD) Connect Health.
@@ -35,12 +35,13 @@ Službu Azure AD Connect Health můžete nakonfigurovat tak, aby odesílala e-ma
 >
 
 ### <a name="to-enable-azure-ad-connect-health-email-notifications"></a>Povolení Azure AD Connect Health e-mailových oznámení
-1. Otevřete okno **výstrahy** pro službu, pro kterou chcete dostávat e-mailová oznámení.
-2. Na panelu akcí klikněte na **Nastavení oznámení**.
-3. V přepínači e-mailových oznámení vyberte **zapnuto**.
-4. Zaškrtněte políčko, pokud chcete, aby všichni globální správci dostávali e-mailová oznámení.
-5. Pokud chcete dostávat e-mailová oznámení na jakékoli jiné e-mailové adresy, zadejte je do pole **Další příjemci e-mailu** . Chcete-li odebrat e-mailovou adresu z tohoto seznamu, klikněte na položku pravým tlačítkem myši a vyberte možnost **Odstranit**.
-6. Změny dokončíte kliknutím na **Uložit**. Změny se projeví až po uložení.
+1. Na webu Azure Portal vyhledejte Azure AD Connect Health
+2. Vybrat **chyby synchronizace**
+3. Vyberte **Nastavení oznámení**.
+5. V přepínači e-mailových oznámení vyberte **zapnuto**.
+6. Zaškrtněte políčko, pokud chcete, aby všichni globální správci dostávali e-mailová oznámení.
+7. Pokud chcete dostávat e-mailová oznámení na jakékoli jiné e-mailové adresy, zadejte je do pole **Další příjemci e-mailu** . Chcete-li odebrat e-mailovou adresu z tohoto seznamu, klikněte na položku pravým tlačítkem myši a vyberte možnost **Odstranit**.
+8. Změny dokončíte kliknutím na **Uložit**. Změny se projeví až po uložení.
 
 >[!NOTE] 
 > Pokud dojde k problémům se zpracováním požadavků na synchronizaci v naší back-end službě, tato služba pošle e-mailovou zprávu s podrobnostmi o této chybě do kontaktní e-mailové adresy (ES) pro správu vašeho tenanta. Slyšeli jsme od zákazníků zpětnou vazbu, že v některých případech je objem těchto zpráv zakazují velký, takže měníme způsob, jakým tyto zprávy posíláme. 

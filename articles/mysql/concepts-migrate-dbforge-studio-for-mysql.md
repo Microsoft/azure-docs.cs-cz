@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 1c85a07a3d61c80f3871f04c399263a8e210254e
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 942651aadf4113c1aca32e4e1d2c558b0d764421
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010787"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377221"
 ---
 # <a name="connect-to-azure-database-for-mysql-using-dbforge-studio-for-mysql"></a>Připojení k Azure Database for MySQL pomocí dbForge studia pro MySQL
 
@@ -93,7 +93,7 @@ Zobrazí se Průvodce vytvořením nového schématu porovnání.
 
     :::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/schema-sync-wizard.png" alt-text="Průvodce synchronizací schématu":::
 
-### <a name="data-comparison"></a>Porovnání dat
+### <a name="step-3-data-comparison"></a>Krok 3. Porovnání dat
 
 1. V nabídce porovnání vyberte nové porovnání dat. Zobrazí se Průvodce vytvořením nového porovnání dat.
 

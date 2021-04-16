@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 42d079a2aa98549b12aafecdd8d58f3361db8b4d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 3fcfb364ebffdd3643e803922cbe4f3dd0d87935
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307429"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107510991"
 ---
 ## <a name="setting-up"></a>Nastavení
 
@@ -45,7 +45,7 @@ Budeme používat [DefaultAzureCredential](/python/api/azure-identity/azure.iden
      credential = DefaultAzureCredential()
 ```
 
-## <a name="create-an-identity-and-issue-a-token-with-managed-identities"></a>Vytvořte identitu a vydejte token se spravovanými identitami.
+## <a name="create-an-identity-and-issue-a-token-with-managed-identities"></a>Vytvoření identity a vydání tokenu se spravovanými identitami
 
 Nyní přidáme kód, který používá vytvořené přihlašovací údaje, k vydání přístupového tokenu VoIP. Tento kód budeme volat později:
 
@@ -138,7 +138,7 @@ sms_result = send_sms(endpoint, "<FROM_NUMBER>", "<TO_NUMBER>", "Hello from Mana
 print(f'SMS ID: {sms_result[0].message_id}');
 print(f'Send Result Successful: {sms_result[0].successful}');
 ```
-## <a name="run-the-program"></a>Spustit program
+## <a name="run-the-program"></a>Spuštění programu
 
 Vše, co je všechno hotové, můžete soubor spustit tak, že zadáte `python managed-identity.py` z adresáře projektu. V případě, že vše se dobře zvýšilo, měli byste vidět něco podobného jako následující.
 

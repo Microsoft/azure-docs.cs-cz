@@ -4,12 +4,12 @@ description: Application Insights komplexní diagnostiku transakcí
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 7623b7131e6344a67c468d0436884ebfef9b0058
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60365079c295e154ff0a38277c9ccdec35157e6e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746093"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481391"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Sjednocená Diagnostika transakcí mezi komponentami
 
@@ -94,3 +94,6 @@ V tuto chvíli se zobrazuje volání odchozí závislosti oddělené od přícho
 
 Toto chování je úmyslné. Všechny související položky napříč všemi komponentami jsou již na levé straně (v horních a dolních částech) k dispozici. Nové prostředí obsahuje dvě související položky, které levá strana nepokrývá: všechny telemetrie od pěti minut před a po této události a časovou osu uživatele.
 
+*V prostředí diagnostiky transakcí se při použití Application Insights JavaScript SDK zobrazuje více událostí, než se očekávalo. Existuje způsob, jak zobrazit méně událostí na transakci?*
+
+Prostředí pro diagnostiku transakcí zobrazuje veškerou telemetrii v rámci [jedné operace](correlation.md#data-model-for-telemetry-correlation) , která sdílí [ID operace](data-model-context.md#operation-id). Ve výchozím nastavení Application Insights SDK pro JavaScript vytvoří novou operaci pro každé jedinečné zobrazení stránky. V aplikaci s jednou stránkou (SPA) bude vygenerována pouze jedna událost zobrazení stránky a pro všechny generované telemetrie bude použito ID jediné operace, což může způsobit, že bude mnoho událostí koreluje se stejnou operací. V těchto scénářích můžete pomocí automatického sledování směrování automaticky vytvořit nové operace pro navigaci v aplikaci s jednou stránkou. Je nutné zapnout [enableAutoRouteTracking](javascript.md#single-page-applications) , aby zobrazení stránky bylo vygenerováno při každé aktualizaci trasy adresy URL (zobrazení logických stránek). Pokud chcete ručně aktualizovat ID operace, můžete to provést voláním `appInsights.properties.context.telemetryTrace.traceID = Microsoft.ApplicationInsights.Telemetry.Util.generateW3CId()` . Ruční aktivací události PageView dojde také k resetování ID operace.

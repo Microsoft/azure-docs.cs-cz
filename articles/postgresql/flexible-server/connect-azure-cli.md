@@ -4,15 +4,15 @@ description: V tomto rychlém startu najdete několik způsobů, jak se pomocí 
 author: mksuni
 ms.author: sumuth
 ms.service: postgresql
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/06/2021
-ms.openlocfilehash: f4eec89aadee1966271286b9280916af973e4b1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7526644e02b0ed4d0522ad00a27b691ece98754a
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614339"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479232"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-postgresql---flexible-server"></a>Rychlý Start: připojení a dotazování pomocí Azure CLI pomocí Azure Database for PostgreSQL-flexibilního serveru
 

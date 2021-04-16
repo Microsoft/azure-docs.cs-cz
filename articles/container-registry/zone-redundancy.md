@@ -3,13 +3,13 @@ title: Registr redundantního registru pro vysokou dostupnost
 description: Seznamte se s povolením redundance zóny v Azure Container Registry. Vytvořte registr kontejnerů nebo replikaci v zóně dostupnosti Azure. Redundance zóny je funkcí úrovně Premium Service.
 ms.topic: article
 ms.date: 02/23/2021
-ms.custom: references_regions
-ms.openlocfilehash: a190ea68f41196fb11c20259b9953f516d6f5370
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 8c1ab42aa505448bd81ff42eba54727b24773c60
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203857"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479011"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>Povolit redundanci zóny v Azure Container Registry pro odolnost a vysokou dostupnost
 

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d70514e81bc838b4193862e66b0c03440d006128
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ce29158c2a44f01fa06649e4b4497bf5c5076866
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307428"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107510748"
 ---
 ## <a name="setting-up"></a>Nastavení
 
@@ -82,7 +82,7 @@ async function sendSms(resourceEndpoint, fromNumber, toNumber, message) {
 }
 ```
 
-## <a name="write-the-main-method"></a>Zápis metody Main
+## <a name="write-the-main-function"></a>Zápis funkce main
 
 Díky našim vytvořeným funkcím teď můžeme napsat hlavní funkci, která je volá a ukáže použití spravovaných identit:
 ```JavaScript
@@ -154,7 +154,7 @@ async function main() {
 main();
 ```
 
-## <a name="run-the-program"></a>Spustit program
+## <a name="run-the-program"></a>Spuštění programu
 
 Vše, co je všechno hotové, můžete soubor spustit tak, že zadáte `node index.js` z adresáře projektu. V případě, že vše se dobře zvýšilo, měli byste vidět něco podobného jako následující.
 

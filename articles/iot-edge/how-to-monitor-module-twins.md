@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0b7013979199eefa873a651d99e87dc8b2c47856
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5a31e15c88cef588c93f44c8fe5303d930b5b2c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201604"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479368"
 ---
 # <a name="monitor-module-twins"></a>Monitorování dvojčat modulu
 
@@ -215,7 +215,7 @@ Pokud provedete změny, vyberte možnost **aktualizovat modul s dvojitým** kód
 
 Pokud chcete zjistit, jestli je IoT Edge spuštěná, použijte příkaz [AZ IoT Hub Invoke-Module-Method](how-to-edgeagent-direct-method.md#ping) k otestování agenta IoT Edge.
 
-[Modul AZ IoT Hub Module-zdvojená](/cli/azure/ext/azure-iot/iot/hub/module-twin) struktura poskytuje tyto příkazy:
+[Modul AZ IoT Hub Module-zdvojená](/cli/azure/iot/hub/module-twin) struktura poskytuje tyto příkazy:
 
 * **AZ IoT Hub Module-zdvojené zobrazení** -zobrazení definice vlákna v modulu
 * **AZ IoT Hub Module-zdvojená aktualizace** – aktualizuje definici s dvojím načtením.

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: rogara
-ms.custom: include file
-ms.openlocfilehash: 4773446ec0007ffbed99bc01939d1f92f5823d99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 200bf290543747cf9abab6113b8013e2eec852a8
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95560221"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107510590"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>Přiřazení přístupových oprávnění k identitě
 
@@ -93,7 +93,7 @@ V kořenovém adresáři sdílené složky jsou podporovány následující sady
 
 ### <a name="mount-a-file-share-from-the-command-prompt"></a>Připojení sdílení souborů z příkazového řádku
 
-Sdílenou složku Azure připojíte pomocí příkazu Windows **net use** . Nezapomeňte nahradit zástupné hodnoty v následujícím příkladu vlastními hodnotami. Další informace o připojení sdílených složek najdete v tématu [použití sdílené složky Azure v systému Windows](../articles/storage/files/storage-how-to-use-files-windows.md). 
+Sdílenou složku Azure připojíte pomocí příkazu Windows **net use** . Nezapomeňte replaceÂ hodnoty zástupných symbolů v následujících exampleÂ s vlastními hodnotami. Další informace o připojení sdílených složek najdete v tématu [použití sdílené složky Azure v systému Windows](../articles/storage/files/storage-how-to-use-files-windows.md). 
 
 ```
 $connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
@@ -126,7 +126,7 @@ Pomocí Průzkumníka souborů Windows udělte úplným oprávněním všem adre
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>Konfigurace oprávnění systému souborů NTFS pomocí icacls
 
-K udělení úplných oprávnění všem adresářům a souborům ve sdílené složce, včetně kořenového adresáře, použijte následující příkaz Windows. Nezapomeňte nahradit hodnoty zástupných symbolů v příkladu vlastními hodnotami.
+K udělení úplných oprávnění všem adresářům a souborům ve sdílené složce, včetně kořenového adresáře, použijte následující příkaz Windows. Nezapomeňte replaceÂ hodnoty zástupných symbolů v příkladu vlastními hodnotami.
 
 ```
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
@@ -142,7 +142,7 @@ Přihlaste se k virtuálnímu počítači pomocí identity Azure AD, ke které j
 
 ![Snímek obrazovky zobrazující přihlašovací obrazovku Azure AD pro ověřování uživatelů](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-Sdílenou složku Azure připojíte pomocí následujícího příkazu. Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami. Vzhledem k tomu, že jste ověření, nemusíte zadávat klíč účtu úložiště, místní služba AD DS přihlašovací údaje ani přihlašovací údaje Azure služba AD DS. Možnosti jednotného přihlašování se podporují pro ověřování pomocí místních služba AD DS nebo Azure služba AD DS. Pokud narazíte na problémy s připojením k služba AD DS přihlašovací údaje, přečtěte si téma řešení potíží se [soubory Azure v systému Windows](../articles/storage/files/storage-troubleshoot-windows-file-connection-problems.md) , kde najdete pokyny.
+Sdílenou složku Azure připojíte pomocí následujícího příkazu. Nezapomeňte replaceÂ hodnoty zástupných symbolů vlastními hodnotami. Vzhledem k tomu, že jste ověření, nemusíte zadávat klíč účtu úložiště, místní služba AD DS přihlašovací údaje ani přihlašovací údaje Azure služba AD DS. Možnosti jednotného přihlašování se podporují pro ověřování pomocí místních služba AD DS nebo Azure služba AD DS. Pokud narazíte na problémy s připojením k služba AD DS přihlašovací údaje, přečtěte si téma řešení potíží se [soubory Azure v systému Windows](../articles/storage/files/storage-troubleshoot-windows-file-connection-problems.md) , kde najdete pokyny.
 
 ```
 $connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445

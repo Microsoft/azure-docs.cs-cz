@@ -10,13 +10,13 @@ author: gvashishtha
 ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
-ms.custom: deploy
-ms.openlocfilehash: 0bb17ded6822c477fe2107c66711af5e2dc384d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: deploy, devx-track-azurecli
+ms.openlocfilehash: 8775696a35bfccc363aa2c6ec06c6c44115916b9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107835"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479266"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Vysoce výkonná obsluha s odvozeným serverem Triton (Preview) 
 
@@ -121,7 +121,7 @@ Další informace o nástroji `az ml model register` najdete v [referenční dok
 Při registraci modelu v Azure Machine Learning hodnota `--model-path  -p` parametru musí být název nadřazené složky Triton.  
 V předchozím příkladu je to  `--model-path` ' modely '.
 
-Hodnota `--name  -n` parametru, ' my_triton_model ' v příkladu, bude název modelu, který je známý jako pracovní prostor Azure Machine Learning. 
+Hodnota `--name  -n` parametru, â € ̃ my_triton_modelâ €™ v příkladu, bude názvem modelu, který je známý jako pracovní prostor Azure Machine Learning. 
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -376,7 +376,7 @@ local_service.delete()
 
 * [Řešení potíží s neúspěšným nasazením](how-to-troubleshoot-deployment.md), zjistěte, jak řešit a řešit běžné chyby, ke kterým může dojít při nasazování modelu.
 
-* Pokud se v protokolech nasazení ukáže, že **se TritonServer nepovedlo spustit**, přečtěte si [dokumentaci k open source na NVIDIA.](https://github.com/triton-inference-server/server)
+* Pokud se v protokolech nasazení ukáže, že **se TritonServer nepovedlo spustit**, přečtěte si [dokumentaci k open source v nVidiaâ™ s.](https://github.com/triton-inference-server/server)
 
 ## <a name="next-steps"></a>Další kroky
 

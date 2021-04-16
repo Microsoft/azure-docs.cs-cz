@@ -5,17 +5,17 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 10/29/2020
 ms.author: baanders
-ms.openlocfilehash: 3f46f7131d5465ec6542d9212e310c04a656f50c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 270be8a38a0419527622ffbdaa1874dfdc5d694c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774062"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480720"
 ---
-Pokud chcete pracovat s digitálními úkoly Azure v tomto článku, musíte nejdřív **nastavit instanci digitálních vláken Azure** a požadovaná oprávnění k jejímu použití. Pokud už máte instanci digitálních vláken Azure nastavenou na předchozí práci, můžete tuto instanci použít.
+Pokud chcete pracovat s digitálními úkoly Azure v tomto článku, musíte nejdřív *nastavit instanci digitálních vláken Azure*. K jejímu používání potřebujete také požadovaná oprávnění. Pokud už máte vytvořenou instanci digitálních vláken Azure, můžete ji místo toho použít.
 
-Jinak postupujte podle pokynů v tématu [*Postupy: nastavení instance a ověřování*](../articles/digital-twins/how-to-set-up-instance-portal.md). Pokyny také obsahují kroky k ověření, že jste dokončili každý krok úspěšně a že jste připraveni na přechod k používání nové instance.
+Jinak postupujte podle pokynů v části [Nastavení instance a ověřování](../articles/digital-twins/how-to-set-up-instance-portal.md). Pokyny obsahují informace, které vám pomůžou ověřit, že jste úspěšně dokončili každý krok.
 
-Po nastavení instance digitálního vlákna Azure si poznamenejte následující hodnoty, které budete muset později připojit k instanci:
-* **název hostitele** instance. Tuto hodnotu najdete v Azure Portal ([pokyny](../articles/digital-twins/how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
-* **předplatné Azure** , které jste použili k vytvoření instance (bude fungovat buď jeho název, nebo ID). To, jaké Předplatné je instance digitálního vlákna Azure, se zobrazí na stejné stránce *Přehled* pro vaši instanci v [Azure Portal](https://portal.azure.com).
+Po nastavení instance si poznamenejte následující hodnoty. Tyto hodnoty budete potřebovat pro připojení k instanci později:
+* *Název hostitele* instance. [Název hostitele najdete v Azure Portal](../articles/digital-twins/how-to-set-up-instance-portal.md#verify-success-and-collect-important-values).
+* *Předplatné Azure* , které jste použili k vytvoření instance. Bude fungovat buď jeho název, nebo jeho ID. Předplatné najdete na stránce s **přehledem** vaší instance v [Azure Portal](https://portal.azure.com).
