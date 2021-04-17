@@ -13,27 +13,25 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/16/2021
+ms.date: 04/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17e7f34da1428eec219a393417b0a2a7b461078
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 781cafd9b382868d0aa4f6b77ff7338c4ee15ed2
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552729"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589639"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Sestavy aktivit přihlašování Azure Active Directory – Preview
 
-Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) se skládá z následujících součástí:
+Portál Azure Active Directory umožňuje přístup k třem protokolům aktivit:
 
-- **Aktivita** 
-    - **Přihlášení** – informace o tom, kdy se uživatelé, aplikace a spravované prostředky přihlásí ke službě Azure AD a přístup k prostředkům.
-    - **Protokoly auditu**  -  [Protokoly auditu](concept-audit-logs.md) poskytují informace o aktivitě systému o uživatelích a správě skupin, spravovaných aplikacích a aktivitách adresářů.
-- **Zabezpečení** 
-    - **Riziková přihlášení** – [rizikové přihlášení](../identity-protection/overview-identity-protection.md) je indikátorem pokusu o přihlášení někoho, kdo není legitimním vlastníkem uživatelského účtu.
-    - **Uživatelé označení příznakem rizika** – [rizikové uživatel](../identity-protection/overview-identity-protection.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
+- **Přihlášení** – informace o přihlášeních a o tom, jak vaše prostředky používají vaši uživatelé.
+- **[Audit](concept-audit-logs.md)** – informace o změnách použitých pro vašeho tenanta, jako jsou uživatelé a Správa skupin nebo aktualizace, které se vztahují na prostředky vašeho tenanta.
+- **[Zřizování](concept-provisioning-logs.md)** – aktivity prováděné službou zřizování, například vytvoření skupiny v ServiceNow nebo uživatel importovaný z pracovního dne.
+
 
 Sestava klasického přihlášení v Azure Active Directory poskytuje přehled interaktivních přihlášení uživatelů. Kromě toho máte nyní přístup k třem dalším sestavám přihlašování, které jsou nyní ve verzi Preview:
 
@@ -130,7 +128,8 @@ Přihlášení interaktivního uživatele jsou přihlášení, kde uživatel pos
 
 
 
-Poznámka: sestava interaktivních uživatelů, která se používá k zahrnutí některých neinteraktivních přihlášení od klientů Microsoft Exchange. I když tato přihlášení nejsou interaktivní, byly do sestavy přihlášení interaktivního uživatele zahrnuty pro další viditelnost. Po zadání sestavy neinteraktivních uživatelských přihlášení do verze Public Preview v listopadu 2020 se tyto protokoly událostí neinteraktivního přihlašování přesunuly do sestavy přihlášení neinteraktivního uživatele, aby se zvýšila přesnost. 
+> [!NOTE] 
+> Sestava interaktivních uživatelů, která se používá k zahrnutí některých neinteraktivních přihlášení od klientů Microsoft Exchange. I když tato přihlášení nejsou interaktivní, byly do sestavy přihlášení interaktivního uživatele zahrnuty pro další viditelnost. Po zadání sestavy neinteraktivních uživatelských přihlášení do verze Public Preview v listopadu 2020 se tyto protokoly událostí neinteraktivního přihlašování přesunuly do sestavy přihlášení neinteraktivního uživatele, aby se zvýšila přesnost. 
 
 
 **Velikost sestavy:** malá <br> 
@@ -326,6 +325,18 @@ Aby bylo snazší data vyhlašovat, spravované identity pro přihlašovací pro
 Vyberte položku v zobrazení seznamu, abyste zobrazili všechna přihlášení, která jsou seskupena pod uzlem.
 
 Vyberte seskupenou položku, chcete-li zobrazit všechny podrobnosti o přihlášení. 
+
+
+## <a name="sign-in-error-code"></a>Kód chyby přihlášení
+
+Pokud se nezdařilo přihlášení, můžete získat další informace o příčině v části **základní informace** o související položce protokolu. 
+
+![Snímek obrazovky ukazuje podrobné zobrazení informací.](./media/concept-all-sign-ins/error-code.png)
+ 
+I když položka protokolu poskytuje důvod selhání, existují případy, kdy můžete získat další informace pomocí [Nástroje pro vyhledávání chyb při přihlašování](https://login.microsoftonline.com/error). Pokud je k dispozici například, tento nástroj poskytuje kroky odstranění problému.  
+
+![Nástroj pro vyhledávání kódů chyb](./media/concept-all-sign-ins/error-code-lookup-tool.png)
+
 
 
 ## <a name="filter-sign-in-activities"></a>Filtrování aktivit přihlašování

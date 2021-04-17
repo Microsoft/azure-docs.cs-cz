@@ -1,6 +1,6 @@
 ---
 title: Azure COMPUTE – diagnostické rozšíření Linux 3,0
-description: Jak nakonfigurovat diagnostické rozšíření Azure Linux (LAD) 3,0 pro shromažďování metrik a protokolování událostí z virtuálních počítačů se systémem Linux spuštěných v Azure.
+description: Jak nakonfigurovat diagnostické rozšíření Azure Linux (LAD) 3,0 pro shromažďování metrik a protokolování událostí z virtuálních počítačů se systémem Linux, které jsou spuštěny v Azure.
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: extensions
@@ -8,54 +8,56 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 12/13/2018
-ms.openlocfilehash: d063aec3b093f00640d909a6ce3c2cde6d2d2420
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe03bbfb33f3637eecc4e68f24846c929dad5fa4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547420"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479249"
 ---
 # <a name="use-linux-diagnostic-extension-30-to-monitor-metrics-and-logs"></a>Monitorování metrik a protokolů pomocí diagnostického rozšíření Linux 3,0
 
-Tento dokument popisuje verzi 3,0 a novější diagnostické rozšíření pro Linux.
+Tento dokument popisuje verzi 3,0 a novější rozšíření pro diagnostiku Linux (LAD).
 
 > [!IMPORTANT]
-> Informace o verzi 2,3 a starší najdete v [tomto dokumentu](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
+> Informace o verzi 2,3 a starších verzích najdete v tématu [monitorování výkonu a diagnostických dat virtuálního počítače se systémem Linux](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
 
 ## <a name="introduction"></a>Úvod
 
-Diagnostické rozšíření pro Linux pomáhá uživateli monitorovat stav virtuálního počítače se systémem Linux běžícího na Microsoft Azure. Má následující možnosti:
+Diagnostické rozšíření pro Linux pomáhá uživateli monitorovat stav virtuálního počítače se systémem Linux, který běží na Microsoft Azure. Má následující možnosti:
 
 * Shromažďuje z virtuálního počítače metriky výkonu systému a ukládá je do konkrétní tabulky v určeném účtu úložiště.
 * Načte události protokolu z syslog a uloží je do konkrétní tabulky v určeném účtu úložiště.
 * Umožňuje uživatelům přizpůsobit metriky dat, které se shromáždí a nahrají.
 * Umožňuje uživatelům přizpůsobit zařízení syslog a úrovně závažnosti shromažďovaných a odesílaných událostí.
 * Umožňuje uživatelům odeslat zadané soubory protokolu do určené tabulky úložiště.
-* Podporuje odesílání metrik a protokolování událostí do libovolných koncových bodů EventHub a objektů BLOB ve formátu JSON v určeném účtu úložiště.
+* Podporuje odesílání metrik a protokolování událostí do libovolných koncových bodů Azure Event Hubs a objektů BLOB ve formátu JSON v určeném účtu úložiště.
 
 Toto rozšíření funguje v obou modelech nasazení Azure.
 
-## <a name="installing-the-extension-in-your-vm"></a>Instalace rozšíření na virtuálním počítači
+## <a name="install-the-extension-on-a-vm"></a>Instalace rozšíření na virtuální počítač
 
-Toto rozšíření můžete povolit pomocí rutin Azure PowerShell, skriptů Azure CLI, šablon ARM nebo Azure Portal. Další informace najdete v tématu [funkce rozšíření](features-linux.md).
+Rozšíření můžete povolit pomocí rutin Azure PowerShell, skriptů Azure CLI, šablon Azure Sledování prostředků (šablon ARM) nebo Azure Portal. Další informace najdete v tématu [funkce rozšíření](features-linux.md).
 
 >[!NOTE]
->Některé komponenty rozšíření virtuálního počítače diagnostiky se také dodávají v [rozšíření Log Analytics VM](./oms-linux.md). Z důvodu této architektury mohou konflikty nastat, pokud jsou obě rozšíření vytvořena ve stejné šabloně ARM. Aby se tyto konflikty při instalaci nezobrazovaly, použijte [ `dependsOn` direktivu](../../azure-resource-manager/templates/define-resource-dependency.md#dependson) , abyste zajistili, že se rozšíření nainstalují sekvenčně. Rozšíření lze instalovat v libovolném pořadí.
+>Některé součásti rozšíření virtuálního počítače LAD jsou také dodány v [rozšíření Log Analytics VM](./oms-linux.md). Z důvodu této architektury mohou konflikty nastat, pokud jsou obě rozšíření vytvořena ve stejné šabloně ARM. 
+>
+>Aby nedocházelo ke konfliktům při instalaci, použijte [ `dependsOn` direktivu](../../azure-resource-manager/templates/define-resource-dependency.md#dependson) , abyste zajistili, že se rozšíření nainstalují sekvenčně. Rozšíření lze instalovat v libovolném pořadí.
 
-Tyto pokyny k instalaci a [Ukázková konfigurace ke stažení](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) nakonfigurují lad 3,0 na:
+Tyto pokyny k instalaci a [Ukázková konfigurace ke stažení](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) umožňují nakonfigurovat lad 3,0 na:
 
-* Zachyťte a uložte stejné metriky, které poskytla služba LAD 2,3;
-* zachytit užitečnou sadu metrik systému souborů, která je novinkou LAD 3,0;
-* zachytit výchozí kolekci syslog povolenou LAD 2,3;
+* Zachyťte a uložte stejné metriky jako v LAD 2,3.
+* Zachytit užitečnou sadu metrik systému souborů. Tato funkce je v LAD 3,0 novinkou.
+* Zachyťte výchozí kolekci syslog, kterou povoluje LAD 2,3.
 * Umožněte Azure Portal prostředí pro vytváření grafů a upozorňování na metriky virtuálních počítačů.
 
-Konfigurace ke stažení je pouze příklad. upravte ji tak, aby vyhovovala vašim potřebám.
+Konfigurace ke stažení je pouze příklad. Upravte ji tak, aby vyhovovala vašim potřebám.
 
 ### <a name="supported-linux-distributions"></a>Podporované distribuce systému Linux
 
-Diagnostické rozšíření pro Linux podporuje následující distribuce a verze. Seznam distribucí a verzí se týká jenom imagí dodavatele systému Linux schváleného systémem. Image BYOL a BYOS třetích stran, jako jsou zařízení, se obecně nepodporují pro diagnostické rozšíření Linux.
+LAD podporuje následující distribuce a verze. Seznam distribucí a verzí se týká jenom imagí dodavatele systému Linux schváleného systémem. Toto rozšíření obecně nepodporuje Image BYOL a BYOS třetích stran, jako jsou zařízení.
 
-Distribuce, která obsahuje pouze hlavní verze, například Debian 7, je podporována také pro všechny podverze. Pokud je zadána konkrétní podverze, je podporována pouze tato konkrétní verze. Pokud je připojen znak "+", jsou podporovány menší verze, které jsou větší nebo rovny zadané verzi.
+Distribuce, která obsahuje pouze hlavní verze, například Debian 7, je podporována také pro všechny podverze. Pokud je zadána dílčí verze, je podporována pouze tato verze. Pokud je připojeno znaménko plus (+), jsou podporovány nižší verze, které jsou stejné nebo vyšší než zadaná verze.
 
 Podporované distribuce a verze:
 
@@ -65,25 +67,26 @@ Podporované distribuce a verze:
 - OpenSUSE 13.1 +
 - SUSE Linux Enterprise Server 12
 - Debian 9, 8, 7
-- RHEL 7, 6.7 +
+- Red Hat Enterprise Linux (RHEL) 7, 6.7 +
 
 ### <a name="prerequisites"></a>Požadavky
 
-* **Agent Azure Linux verze 2.2.0 nebo novější**. Většina imagí z Galerie virtuálních počítačů Azure pro Linux zahrnuje verzi 2.2.7 nebo novější. Spusťte `/usr/sbin/waagent -version` a potvrďte verzi nainstalovanou na virtuálním počítači. Pokud na virtuálním počítači běží starší verze agenta hosta, aktualizujte ho podle [těchto pokynů](./update-linux-agent.md) .
-* Rozhraní příkazového **řádku Azure** Nastavte na svém počítači prostředí [Azure CLI](/cli/azure/install-azure-cli) .
-* Příkaz wget, pokud ho ještě nemáte: Spusťte `sudo apt-get install wget` .
-* Existující předplatné Azure a existující účet úložiště pro obecné účely, ve kterém se budou ukládat data.  Účty úložiště pro obecné účely podporují úložiště tabulek, které je povinné.  Účet Blob Storage nebude fungovat.
-* Python 2
+* **Agent Azure Linux verze 2.2.0 nebo novější**. Většina imagí z Galerie virtuálních počítačů Azure pro Linux zahrnuje verzi 2.2.7 nebo novější. Spusťte `/usr/sbin/waagent -version` a potvrďte verzi nainstalovanou na virtuálním počítači. Pokud na virtuálním počítači běží starší verze, [aktualizujte agenta hosta](./update-linux-agent.md).
+* Rozhraní příkazového **řádku Azure** V případě potřeby nastavte na svém počítači prostředí [Azure CLI](/cli/azure/install-azure-cli) .
+* **Příkaz wget** Pokud ho ještě nemáte, spusťte příkaz `sudo apt-get install wget` .
+* Existující **předplatné Azure**. 
+* Existující **účet úložiště pro obecné účely** pro ukládání dat. Účty úložiště pro obecné účely musí podporovat úložiště tabulek. Účet úložiště BLOB nebude fungovat.
+* **Python 2**.
 
 ### <a name="python-requirement"></a>Požadavek Pythonu
 
-Diagnostické rozšíření pro Linux vyžaduje Python 2. Pokud váš virtuální počítač používá distribuce, který ve výchozím nastavení neobsahuje Python 2, musíte ho nainstalovat. Následující vzorové příkazy instalují Python 2 v různých distribuce.    
+Diagnostické rozšíření pro Linux vyžaduje Python 2. Pokud váš virtuální počítač používá distribuci, která ve výchozím nastavení neobsahuje Python 2, musíte ho nainstalovat. Následující vzorové příkazy instalují Python 2 v různých distribucích:   
 
- - Red Hat, CentOS, Oracle: `yum install -y python2`
- - Ubuntu, Debian: `apt-get install -y python2`
- - SUSE `zypper install -y python2`
+- Red Hat, CentOS, Oracle: `yum install -y python2`
+- Ubuntu, Debian: `apt-get install -y python2`
+- SUSE `zypper install -y python2`
 
-Spustitelný soubor python2 musí mít alias na *Python*. Následuje jedna metoda, kterou můžete použít k nastavení tohoto aliasu:
+`python2`Spustitelný soubor musí mít alias na *Python*. Tady je jedna metoda pro nastavení tohoto aliasu:
 
 1. Spuštěním následujícího příkazu odeberte všechny existující aliasy.
  
@@ -99,67 +102,68 @@ Spustitelný soubor python2 musí mít alias na *Python*. Následuje jedna metod
 
 ### <a name="sample-installation"></a>Ukázková instalace
 
+Ukázková konfigurace stažená v následujících příkladech shromažďuje sadu standardních dat a odesílá je do tabulkového úložiště. Adresa URL pro ukázkovou konfiguraci a její obsah se může změnit. 
+
+Ve většině případů byste si měli stáhnout kopii souboru JSON s nastavením portálu a přizpůsobit ho podle svých potřeb. Pak použijte šablony nebo vlastní automatizaci k použití přizpůsobené verze konfiguračního souboru místo stahování z adresy URL pokaždé, když.
+
 > [!NOTE]
-> U některé z ukázek Vyplňte správné hodnoty proměnných v první části před spuštěním. 
-
-Ukázková konfigurace stažená v těchto příkladech shromažďuje sadu standardních dat a odesílá je do úložiště tabulek. Adresa URL pro ukázkovou konfiguraci a její obsah se může změnit. Ve většině případů byste si měli stáhnout kopii souboru JSON s nastavením portálu a přizpůsobit ho vašim potřebám, potom budete mít všechny šablony nebo automatizace, které vytvoříte, místo stažení této adresy URL použili vlastní verzi konfiguračního souboru.
-
+> V následujících ukázkách Vyplňte správné hodnoty proměnných v první části před spuštěním kódu. 
 #### <a name="azure-cli-sample"></a>Ukázka Azure CLI
 
 ```azurecli
-# Set your Azure VM diagnostic variables correctly below
+# Set your Azure VM diagnostic variables.
 my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 my_linux_vm=<your_azure_linux_vm_name>
 my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
 
-# Should login to Azure first before anything else
+# Login to Azure before you do anything else.
 az login
 
-# Select the subscription containing the storage account
+# Select the subscription that contains the storage account.
 az account set --subscription <your_azure_subscription_id>
 
-# Download the sample Public settings. (You could also use curl or any web browser)
+# Download the sample public settings. (You could also use curl or any web browser.)
 wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
 
-# Build the VM resource ID. Replace storage account name and resource ID in the public settings.
+# Build the VM resource ID. Replace the storage account name and resource ID in the public settings.
 my_vm_resource_id=$(az vm show -g $my_resource_group -n $my_linux_vm --query "id" -o tsv)
 sed -i "s#__DIAGNOSTIC_STORAGE_ACCOUNT__#$my_diagnostic_storage_account#g" portal_public_settings.json
 sed -i "s#__VM_RESOURCE_ID__#$my_vm_resource_id#g" portal_public_settings.json
 
-# Build the protected settings (storage account SAS token)
+# Build the protected settings (storage account SAS token).
 my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
 my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
 
-# Finally tell Azure to install and enable the extension
+# Finally, tell Azure to install and enable the extension.
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
-#### <a name="azure-cli-sample-for-installing-lad-30-extension-on-the-virtual-machine-scale-set-instance"></a>Ukázka Azure CLI pro instalaci rozšíření LAD 3,0 na instanci sady škálování virtuálního počítače
+#### <a name="azure-cli-sample-to-install-lad-30-on-the-virtual-machine-scale-set-instance"></a>Ukázka Azure CLI pro instalaci LAD 3,0 na instanci sady škálování virtuálního počítače
 
 ```azurecli
-#Set your Azure VMSS diagnostic variables correctly below
+#Set your Azure Virtual Machine Scale Sets diagnostic variables.
 $my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 $my_linux_vmss=<your_azure_linux_vmss_name>
 $my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
 
-# Should login to Azure first before anything else
+# Login to Azure before you do anything else.
 az login
 
-# Select the subscription containing the storage account
+# Select the subscription that contains the storage account.
 az account set --subscription <your_azure_subscription_id>
 
-# Download the sample Public settings. (You could also use curl or any web browser)
+# Download the sample public settings. (You could also use curl or any web browser.)
 wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
 
-# Build the VMSS resource ID. Replace storage account name and resource ID in the public settings.
+# Build the virtual machine scale set resource ID. Replace the storage account name and resource ID in the public settings.
 $my_vmss_resource_id=$(az vmss show -g $my_resource_group -n $my_linux_vmss --query "id" -o tsv)
 sed -i "s#__DIAGNOSTIC_STORAGE_ACCOUNT__#$my_diagnostic_storage_account#g" portal_public_settings.json
 sed -i "s#__VM_RESOURCE_ID__#$my_vmss_resource_id#g" portal_public_settings.json
 
-# Build the protected settings (storage account SAS token)
+# Build the protected settings (storage account SAS token).
 $my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
 $my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
 
-# Finally tell Azure to install and enable the extension
+# Finally, tell Azure to install and enable the extension.
 az vmss extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vmss-name $my_linux_vmss --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
@@ -179,7 +183,7 @@ $publicSettings = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/Azur
 $publicSettings = $publicSettings.Replace('__DIAGNOSTIC_STORAGE_ACCOUNT__', $storageAccountName)
 $publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
 
-# If you have your own customized public settings, you can inline those rather than using the template above: $publicSettings = '{"ladCfg":  { ... },}'
+# If you have customized public settings, you can inline those rather than using the preceding template: $publicSettings = '{"ladCfg":  { ... },}'
 
 # Generate a SAS token for the agent to use to authenticate with the storage account
 $sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context -ExpiryTime $([System.DateTime]::Now.AddYears(10))
@@ -187,35 +191,35 @@ $sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Servi
 # Build the protected settings (storage account SAS token)
 $protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
 
-# Finally install the extension with the settings built above
+# Finally, install the extension with the settings you built
 Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0 
 ```
 
-### <a name="updating-the-extension-settings"></a>Aktualizace nastavení rozšíření
+### <a name="update-the-extension-settings"></a>Aktualizace nastavení rozšíření
 
-Po změně chráněných nebo veřejných nastavení je můžete nasadit do virtuálního počítače spuštěním stejného příkazu. Pokud se v nastavení změní nějaké změny, do rozšíření se pošle aktualizované nastavení. LAD znovu načte konfiguraci a sám se restartuje.
+Když změníte chráněné nebo veřejné nastavení, nasaďte je do virtuálního počítače spuštěním stejného příkazu. V případě změny nastavení se aktualizace odesílají do rozšíření. LAD znovu načte konfiguraci a sám se restartuje.
 
-### <a name="migration-from-previous-versions-of-the-extension"></a>Migrace z předchozích verzí rozšíření
+### <a name="migrate-from-previous-versions-of-the-extension"></a>Migrace z předchozích verzí rozšíření
 
-Nejnovější verze rozšíření je **3,0**. **Všechny staré verze (2. x) jsou zastaralé a mohou být publikovány od 31. července 2018 nebo po ní**.
+Nejnovější verze rozšíření je *4,0*. 
 
 > [!IMPORTANT]
-> Toto rozšíření přináší zásadní změny v konfiguraci rozšíření. Tato změna byla provedena za účelem zlepšení zabezpečení rozšíření. v důsledku toho nelze zachovat zpětnou kompatibilitu s 2. x. Také Vydavatel rozšíření pro toto rozšíření je jiný než Vydavatel pro verze 2. x.
+> Toto rozšíření přináší zásadní změny konfigurace. Tato změna vylepšuje zabezpečení rozšíření, takže zpětná kompatibilita se 2. x se nedá zachovat. Navíc se Vydavatel rozšíření pro toto rozšíření liší od vydavatele pro verze 2. x.
 >
-> Chcete-li provést migraci z 2. x na tuto novou verzi rozšíření, je nutné odinstalovat starou příponu (pod starým názvem vydavatele) a pak nainstalovat verzi 3 rozšíření.
+> Pokud chcete provést migraci z 2. x na novou verzi, nejdřív Odinstalujte starou příponu (pod starým názvem vydavatele). Pak nainstalujte verzi 3.
 
-Doporučení:
+Doporučit
 
 * Nainstalujte rozšíření s povoleným automatickým upgradem dílčí verze.
-  * V případě virtuálních počítačů modelu nasazení Classic zadejte jako verzi hodnotu 3. *, pokud chcete rozšíření instalovat prostřednictvím Azure XPLAT CLI nebo PowerShellu.
-  * V Azure Resource Manager virtuálních počítačů modelu nasazení přidejte do šablony nasazení virtuálního počítače "" autoUpgradeMinorVersion ": true.
-* Pro LAD 3,0 použijte nový nebo jiný účet úložiště. Mezi LAD 2,3 a LAD 3,0 dochází k několika malým nekompatibilitám, které sdílejí účet komplikované:
-  * LAD 3,0 ukládá události syslog do tabulky s jiným názvem.
-  * Řetězce counterSpecifier pro `builtin` metriky se liší v LAD 3,0.
+  * V případě virtuálních počítačů modelu nasazení Classic zadejte verzi, `3.*` Pokud instalujete rozšíření prostřednictvím rozhraní příkazového řádku Azure XPLAT CLI nebo PowerShellu.
+  * Na Azure Resource Manager virtuálních počítačů modelu nasazení zahrňte `"autoUpgradeMinorVersion": true` do šablony nasazení virtuálních počítačů.
+* Pro LAD 3,0 použijte nový nebo jiný účet úložiště. LAD 2,3 a LAD 3,0 mají několik malých nekompatibilit, které umožňují sdílení účtu komplikované:
+  * LAD 3,0 ukládá události syslog v tabulce, která má jiný název.
+  * `counterSpecifier`Řetězce pro `builtin` metriky se v lad 3,0 liší.
 
 ## <a name="protected-settings"></a>Chráněná nastavení
 
-Tato sada informací o konfiguraci obsahuje citlivé informace, které by měly být chráněny před veřejným zobrazením, například přihlašovací údaje úložiště. Tato nastavení se přenášejí do a ukládají rozšíření v šifrované podobě.
+Tato sada informací o konfiguraci obsahuje citlivé informace, které by měly být chráněny před veřejným zobrazením. Obsahuje například přihlašovací údaje úložiště. Tato nastavení se přenášejí do a ukládají rozšíření v šifrované podobě.
 
 ```json
 {
@@ -230,23 +234,23 @@ Tato sada informací o konfiguraci obsahuje citlivé informace, které by měly 
 Name | Hodnota
 ---- | -----
 storageAccountName | Název účtu úložiště, ve kterém se má rozšíření zapsat data
-storageAccountEndPoint | volitelné Koncový bod identifikující Cloud, ve kterém existuje účet úložiště. Pokud toto nastavení chybí, LAD se výchozí nastavení pro veřejný cloud Azure, `https://core.windows.net` . Pokud chcete použít účet úložiště v Azure Německo, Azure Government nebo Azure Čína, nastavte tuto hodnotu odpovídajícím způsobem.
-storageAccountSasToken | [Token SAS účtu](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) pro služby BLOB a Table Services ( `ss='bt'` ), který se vztahuje na kontejnery a objekty () `srt='co'` , což uděluje oprávnění k přidávání, vytváření, výpisům, aktualizaci a zápisu ( `sp='acluw'` ). Nezahrnujte *úvodní* otazník (?).
-mdsdHttpProxy | volitelné Informace o proxy serveru HTTP potřebné k povolení rozšíření pro připojení k zadanému účtu úložiště a koncovému bodu
-sinksConfig | volitelné Podrobnosti o alternativních umístěních, na které se dají doručovat metriky a události Konkrétní podrobnosti o jednotlivých datových jímkach podporovaných rozšířením jsou uvedené v následujících oddílech.
+storageAccountEndPoint | Volitelné Koncový bod, který identifikuje Cloud, ve kterém existuje účet úložiště. Pokud toto nastavení chybí, LAD výchozím nastavením je veřejný cloud Azure, `https://core.windows.net` . Pokud chcete použít účet úložiště v Azure Německo, Azure Government nebo Azure Čína 21Vianet, nastavte tuto hodnotu podle potřeby.
+storageAccountSasToken | [Token SAS účtu](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) pro objekty BLOB a Table Services ( `ss='bt'` ). Vztahuje se na kontejnery a objekty ( `srt='co'` ). Uděluje oprávnění přidat, vytvořit, zobrazit, aktualizovat a zapsat ( `sp='acluw'` ). Nezahrnujte *úvodní* otazník (?).
+mdsdHttpProxy | Volitelné Informace o proxy serveru HTTP, které rozšíření potřebuje k připojení k zadanému účtu úložiště a koncovému bodu
+sinksConfig | Volitelné Podrobnosti o alternativních umístěních, na které se dají doručovat metriky a události Následující části obsahují podrobnosti o jednotlivých datových jímkach podporovaných rozšířením.
 
-K získání tokenu SAS v rámci šablony Správce prostředků použijte funkci **listAccountSas** . Příklad šablony naleznete v tématu [Příklad funkce list](../../azure-resource-manager/templates/template-functions-resource.md#list-example).
+K získání tokenu SAS v rámci šablony ARM použijte `listAccountSas` funkci. Příklad šablony naleznete v tématu [Příklad funkce list](../../azure-resource-manager/templates/template-functions-resource.md#list-example).
 
-Požadovaný token SAS můžete snadno vytvořit prostřednictvím Azure Portal.
+Požadovaný token SAS můžete vytvořit prostřednictvím Azure Portal:
 
 1. Vyberte účet úložiště pro obecné účely, na který chcete rozšíření zapisovat.
-1. V části nastavení v nabídce vlevo vyberte Shared Access Signature (sdílený přístupový podpis).
-1. Proveďte příslušné oddíly, jak je popsáno výše.
-1. Klikněte na tlačítko generovat SAS.
+1. V nabídce na levé straně v části **Nastavení** vyberte **podpis sdíleného přístupu**.
+1. Proveďte výběr podle výše popsaného postupu.
+1. Vyberte **Generovat SAS**.
 
-:::image type="content" source="./media/diagnostics-linux/make_sas.png" alt-text="Snímek obrazovky se stránkou sdíleného přístupového podpisu s generovat S A S.":::
+:::image type="content" source="./media/diagnostics-linux/make_sas.png" alt-text="Snímek obrazovky se stránkou sdíleného přístupového podpisu zobrazí tlačítko generovat S A S.":::
 
-Zkopírujte vygenerované SAS do pole storageAccountSasToken; Odeberte úvodní otazník (?).
+Zkopírujte vygenerované SAS do `storageAccountSasToken` pole. Odeberte úvodní otazník (?).
 
 ### <a name="sinksconfig"></a>sinksConfig
 
@@ -263,16 +267,16 @@ Zkopírujte vygenerované SAS do pole storageAccountSasToken; Odeberte úvodní 
 },
 ```
 
-Tento volitelný oddíl definuje další cíle, do kterých rozšíření odesílá informace, které shromažďuje. Pole "jímka" obsahuje objekt pro každou další datovou jímku. Atribut Type určuje ostatní atributy v objektu.
+`sinksConfig`Volitelný oddíl definuje více umístění, do kterých rozšíření odesílá informace, které shromažďuje. `sink`Pole obsahuje objekt pro každou další datovou jímku. `type`Atribut určuje ostatní atributy v objektu.
 
 Prvek | Hodnota
 ------- | -----
-name | Řetězec, který se používá k odkazování na tuto jímku na jiné místo v konfiguraci rozšíření.
+name | Řetězec, který odkazuje na tuto jímka jinde v konfiguraci rozšíření.
 typ | Typ definované jímky. Určuje další hodnoty (pokud existují) v instancích tohoto typu.
 
-Diagnostické rozšíření pro Linux verze 3,0 podporuje dva typy jímky: EventHub a JsonBlob.
+LAD verze 3,0 podporuje dva typy jímky: `EventHub` a `JsonBlob` .
 
-#### <a name="the-eventhub-sink"></a>Jímka EventHub
+#### <a name="eventhub-sink"></a>Jímka EventHub
 
 ```json
 "sink": [
@@ -285,21 +289,23 @@ Diagnostické rozšíření pro Linux verze 3,0 podporuje dva typy jímky: Event
 ]
 ```
 
-Položka "sasURL" obsahuje úplnou adresu URL, včetně tokenu SAS, pro centrum událostí, do kterého se mají data publikovat. LAD vyžaduje, aby pojmenování SAS vyžadovalo zásadu, která povoluje nárok na odeslání. Příklad:
+`"sasURL"`Položka obsahuje úplnou adresu URL, včetně tokenu SAS, pro centrum událostí, na které se mají data publikovat. LAD vyžaduje SAS pro pojmenování zásady, která povoluje deklaraci identity Send. 
 
-* Vytvořte obor názvů Event Hubs s názvem. `contosohub`
-* Vytvořte centrum událostí v oboru názvů s názvem. `syslogmsgs`
-* Vytvořte zásadu sdíleného přístupu v centru událostí s názvem `writer` , která umožňuje odeslat deklaraci identity.
+Například:
 
-Pokud jste vytvořili SAS vhodným až do půlnoci UTC od 1. ledna 2018, může být sasURL hodnota:
+* Vytvořte obor názvů Azure Event Hubs s názvem `contosohub` .
+* Vytvořte centrum událostí v oboru názvů s názvem `syslogmsgs` .
+* Vytvořte zásadu sdíleného přístupu v centru událostí, která umožňuje odeslat deklaraci identity. Pojmenujte zásadu `writer` .
+
+Pokud je vaše SAS vhodné do půlnoci od 1. ledna 2018, hodnota sasURL může být podobný jako v tomto příkladu:
 
 ```https
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-Další informace o generování a načítání informací o tokenech SAS pro Event Hubs naleznete na [této webové stránce](/rest/api/eventhub/generate-sas-token#powershell).
+Další informace o generování a načítání informací o tokenech SAS pro Event Hubs najdete v tématu [generování tokenu SAS](/rest/api/eventhub/generate-sas-token#powershell).
 
-#### <a name="the-jsonblob-sink"></a>Jímka JsonBlob
+#### <a name="jsonblob-sink"></a>Jímka JsonBlob
 
 ```json
 "sink": [
@@ -311,11 +317,13 @@ Další informace o generování a načítání informací o tokenech SAS pro Ev
 ]
 ```
 
-Data směrované do jímky JsonBlob se ukládají v objektech blob ve službě Azure Storage. Každá instance LAD vytváří objekt BLOB každou hodinu pro každý název jímky. Každý objekt BLOB vždy obsahuje syntakticky platné pole JSON objektu. Nové položky jsou atomicky přidány do pole. Objekty blob jsou uloženy v kontejneru se stejným názvem, jako má jímka. Pravidla úložiště Azure pro názvy kontejnerů objektů BLOB se vztahují na názvy jímky JsonBlob: mezi 3 a 63 malými alfanumerickými znaky ASCII nebo pomlčkami.
+Data, která se přesměrují do `JsonBlob` jímky, se ukládají v objektech blob v Azure Storage. Každá instance LAD vytváří objekt BLOB každou hodinu pro každý název jímky. Každý objekt BLOB vždy obsahuje syntakticky platné pole JSON objektů. Nové položky jsou atomicky přidány do pole. 
+
+Objekty blob jsou uloženy v kontejneru, který má stejný název jako jímka. Pravidla Azure Storage pro názvy kontejnerů objektů BLOB se vztahují na názvy `JsonBlob` umyvadel. Název musí mít 3 až 63 malých alfanumerických znaků ASCII nebo pomlčky.
 
 ## <a name="public-settings"></a>Veřejné nastavení
 
-Tato struktura obsahuje různé bloky nastavení, které řídí informace shromažďované rozšířením. Každé nastavení je volitelné. Pokud zadáte `ladCfg` , je nutné zadat také `StorageAccount` .
+Struktura veřejných nastavení obsahuje různé bloky nastavení, které řídí informace, které rozšíření shromažďuje. Každé nastavení je volitelné. Pokud zadáte `ladCfg` , je nutné zadat také `StorageAccount` .
 
 ```json
 {
@@ -329,10 +337,10 @@ Tato struktura obsahuje různé bloky nastavení, které řídí informace shrom
 
 Prvek | Hodnota
 ------- | -----
-StorageAccount | Název účtu úložiště, ve kterém se má rozšíření zapsat data Musí se jednat o stejný název, jako je zadaný v [Nastavení Protected](#protected-settings).
-mdsdHttpProxy | volitelné Stejné jako v [chráněných nastaveních](#protected-settings). Veřejná hodnota je přepsána soukromou hodnotou, pokud je nastavena. V [chráněných nastaveních](#protected-settings)umístěte nastavení proxy serveru, jako je třeba heslo.
+StorageAccount | Název účtu úložiště, ve kterém se má rozšíření zapsat data Musí se jednat o název zadaný v [Nastavení Protected](#protected-settings).
+mdsdHttpProxy | Volitelné Stejné jako v [chráněných nastaveních](#protected-settings). Veřejná hodnota je přepsána soukromou hodnotou, pokud je nastavena. V [chráněných nastaveních](#protected-settings)umístěte nastavení proxy serveru, jako je třeba heslo.
 
-Zbývající prvky jsou podrobně popsány v následujících oddílech.
+Následující části obsahují podrobnosti o zbývajících prvcích.
 
 ### <a name="ladcfg"></a>ladCfg
 
@@ -348,12 +356,15 @@ Zbývající prvky jsou podrobně popsány v následujících oddílech.
 }
 ```
 
-Tato volitelná struktura ovládá shromažďování metrik a protokolů pro doručování do služby Azure metrik a dalších datových jímka. Je nutné zadat buď `performanceCounters` nebo `syslogEvents` nebo obojí. Je nutné zadat `metrics` strukturu.
+`ladCfg`Struktura je volitelná. Řídí shromažďování metrik a protokolů dodaných službě Azure Monitor metriky a dalším datovým jímkam. Je nutné zadat:
+
+* Buď `performanceCounters` nebo `syslogEvents` obojí. 
+* `metrics`Struktura.
 
 Prvek | Hodnota
 ------- | -----
-eventVolume | volitelné Určuje počet oddílů vytvořených v rámci tabulky úložiště. Musí být jedna z `"Large"` , `"Medium"` nebo `"Small"` . Pokud není zadaný, použije se výchozí hodnota `"Medium"` .
-sampleRateInSeconds | volitelné Výchozí interval mezi kolekcemi nezpracovaných (neagregovaných) metrik. Nejmenší podporovaná vzorkovací frekvence je 15 sekund. Pokud není zadaný, použije se výchozí hodnota `15` .
+eventVolume | Volitelné Určuje počet oddílů vytvořených v rámci tabulky úložiště. Musí to být `"Large"` , `"Medium"` , nebo `"Small"` . Pokud hodnota není zadaná, výchozí hodnota je `"Medium"` .
+sampleRateInSeconds | Volitelné Výchozí interval mezi kolekcemi nezpracovaných (neagregovaných) metrik. Nejmenší podporovaná vzorkovací frekvence je 15 sekund. Pokud hodnota není zadaná, je výchozí hodnota `15` .
 
 #### <a name="metrics"></a>metriky
 
@@ -369,10 +380,10 @@ sampleRateInSeconds | volitelné Výchozí interval mezi kolekcemi nezpracovaný
 
 Prvek | Hodnota
 ------- | -----
-resourceId | ID prostředku Azure Resource Manager virtuálního počítače nebo sady škálování virtuálního počítače, do které virtuální počítač patří. Toto nastavení musí být zadáno také v případě, že se v konfiguraci používá jakákoli jímka JsonBlob.
-scheduledTransferPeriod | Frekvence, s jakou se mají vypočítat agregované metriky a jejich přenos do metrik Azure, vyjádřené jako časový interval 8601. Nejmenší perioda přenosu je 60 sekund, tj. PT1M. Je nutné zadat alespoň jeden scheduledTransferPeriod.
+resourceId | ID prostředku Azure Resource Manager virtuálního počítače nebo sady škálování, ke které patří virtuální počítač. Toto nastavení musí být zadáno také v případě, že `JsonBlob` se v konfiguraci používá nějaká jímka.
+scheduledTransferPeriod | Frekvence, s níž jsou počítány agregované metriky a přeneseny do Azure Monitor metriky. Frekvence se vyjadřuje jako časový interval 8601. Nejmenší perioda přenosu je 60 sekund, tj. PT1M. Zadejte aspoň jednu `scheduledTransferPeriod` .
 
-Ukázky metrik zadané v části čítače výkonu se shromažďují každých 15 sekund nebo vzorkovací frekvence, která je explicitně definovaná pro čítač. Pokud se zobrazí více scheduledTransferPeriod frekvencí (jako v příkladu), každá agregace je vypočítána nezávisle.
+Ukázky metriky uvedené v `performanceCounters` oddílu se shromažďují každých 15 sekund nebo v vzorkovací frekvenci, která je pro čítač explicitně definovaná. Pokud `scheduledTransferPeriod` se zobrazí více frekvencí, jako v příkladu, je každá agregace vypočítána nezávisle.
 
 #### <a name="performancecounters"></a>Čítače výkonu
 
@@ -399,38 +410,48 @@ Ukázky metrik zadané v části čítače výkonu se shromažďují každých 1
 }
 ```
 
-Tento volitelný oddíl řídí kolekci metrik. Nezpracované vzorky jsou agregované pro každý [scheduledTransferPeriod](#metrics) , aby se vytvořily tyto hodnoty:
+`performanceCounters`Volitelný oddíl řídí kolekci metrik. Nezpracované vzorky jsou agregované pro každý [`scheduledTransferPeriod`](#metrics) , aby se vytvořily tyto hodnoty:
 
-* mean
+* Mean
 * Minimum
 * Maximum
 * Poslední shromážděná hodnota
-* počet nezpracovaných vzorků používaných k výpočtu agregace
+* Počet nezpracovaných vzorků používaných k výpočtu agregace
 
 Prvek | Hodnota
 ------- | -----
-jímky | volitelné Čárkami oddělený seznam názvů umyvadel, na které LAD odesílá agregované výsledky metriky. Všechny agregované metriky jsou publikovány v každé uvedené jímky. Viz [sinksConfig](#sinksconfig). Příklad: `"EHsink1, myjsonsink"`.
+jímky | Volitelné Čárkami oddělený seznam názvů umyvadel, na které LAD odesílá agregované výsledky metriky. Všechny agregované metriky jsou publikovány v každé uvedené jímky. Příklad: `"EHsink1, myjsonsink"`. Další informace najdete na webu [`sinksConfig`](#sinksconfig).
 typ | Určuje skutečného poskytovatele metriky.
-class | Společně s "čítač" identifikuje konkrétní metriku v oboru názvů poskytovatele.
-counter | Společně s "Class" identifikuje konkrétní metriku v oboru názvů poskytovatele.
-counterSpecifier | Identifikuje konkrétní metriku v oboru názvů metrik Azure.
-pomocné | volitelné Vybere konkrétní instanci objektu, na kterou metrika aplikuje, nebo vybere agregaci napříč všemi instancemi daného objektu. Další informace najdete v tématu `builtin` definice metrik.
-sampleRate | JE 8601 interval, který nastavuje rychlost shromažďování nezpracovaných vzorků pro tuto metriku. Pokud není nastaven, interval shromažďování je nastaven hodnotou [sampleRateInSeconds](#ladcfg). Nejkratší podporovaná vzorkovací frekvence je 15 sekund (PT15S).
-unit | Mělo by se jednat o jeden z těchto řetězců: "Count", "bytes", "Seconds", "PERCENT", "CountPerSecond", "BytesPerSecond", "milisekund". Definuje jednotku pro metriku. Spotřebitelé shromážděných dat očekávají, že hodnoty shromážděných dat odpovídají této jednotce. LAD ignoruje toto pole.
-displayName | Popisek (v jazyce určeném pomocí přidruženého nastavení národního prostředí), který se má připojit k těmto datům v Azure metrik. LAD ignoruje toto pole.
+class | Společně s `"counter"` identifikuje konkrétní metriku v oboru názvů poskytovatele.
+counter | Společně s `"class"` identifikuje konkrétní metriku v oboru názvů poskytovatele.
+counterSpecifier | Určuje specifickou metriku v oboru názvů Azure Monitorch metrik.
+pomocné | Volitelné Vybere konkrétní instanci objektu, na kterou se metrika vztahuje. Nebo vybírá agregaci napříč všemi instancemi daného objektu. 
+sampleRate | Interval je 8601, který nastavuje rychlost shromažďování nezpracovaných vzorků pro tuto metriku. Pokud hodnota není nastavena, interval shromažďování je nastaven hodnotou [`sampleRateInSeconds`](#ladcfg) . Nejkratší podporovaná vzorkovací frekvence je 15 sekund (PT15S).
+unit | Definuje jednotku pro metriku. By měl být jeden z těchto řetězců: `"Count"` , `"Bytes"` , `"Seconds"` , `"Percent"` , `"CountPerSecond"` , `"BytesPerSecond"` , `"Millisecond"` . Spotřebitelé shromážděných dat očekávají, že hodnoty shromážděných dat odpovídají této jednotce. LAD ignoruje toto pole.
+displayName | Popisek, který se má připojit k datům v Azure Monitor metriky. Tento popisek je v jazyce určeném pomocí přidruženého nastavení národního prostředí. LAD ignoruje toto pole.
 
-CounterSpecifier je libovolný identifikátor. Příjemci metrik, jako je například funkce Azure Portaling a upozorňování, používají counterSpecifier jako klíč, který identifikuje metriku nebo instanci metriky. Pro `builtin` metriky doporučujeme používat counterSpecifier hodnoty, které začínají na `/builtin/` . Pokud shromažďujete konkrétní instanci metriky, doporučujeme připojit identifikátor instance k hodnotě counterSpecifier. Několik příkladů:
+`counterSpecifier`Je libovolný identifikátor. Příjemci metrik, jako Azure Portal je například funkce pro vytváření grafů a upozorňování, slouží `counterSpecifier` jako "klíč", který identifikuje metriku nebo instanci metriky. 
+
+Pro `builtin` metriky doporučujeme `counterSpecifier` hodnoty, které začínají na `/builtin/` . Pokud shromažďujete konkrétní instanci metriky, doporučujeme připojit identifikátor instance k `counterSpecifier` hodnotě. 
+
+Tady je několik příkladů:
 
 * `/builtin/Processor/PercentIdleTime` -Průměrná doba nečinnosti napříč všemi vCPU
-* `/builtin/Disk/FreeSpace(/mnt)` – Volné místo pro systém souborů/mnt
+* `/builtin/Disk/FreeSpace(/mnt)` – Volné místo pro `/mnt` systém souborů
 * `/builtin/Disk/FreeSpace` – Průměrné místo v rámci všech připojených systémů souborů
 
-LAD ani Azure Portal neočekává, že counterSpecifier hodnota odpovídá jakémukoli vzoru. Být konzistentní při sestavování hodnot counterSpecifier.
+LAD a Azure Portal neočekávají, že `counterSpecifier` hodnota odpovídá jakémukoli vzoru. Být konzistentní při sestavování `counterSpecifier` hodnot.
 
-Když zadáte `performanceCounters` , lad vždy zapisuje data do tabulky ve službě Azure Storage. Můžete mít stejná data zapsaná do objektů BLOB JSON nebo Event Hubs, ale nemůžete zakázat ukládání dat do tabulky. Všechny instance diagnostického rozšíření nakonfigurovaného tak, aby používaly stejný název a koncový bod účtu úložiště, přidají ke stejné tabulce své metriky a protokoly. Pokud je do stejného oddílu tabulky zapisováno příliš mnoho virtuálních počítačů, může Azure omezit zápisy do tohoto oddílu. Nastavení eventVolume způsobí, že položky budou rozloženy mezi 1 (malá), 10 (střední) nebo 100 (velké) různé oddíly. Obvykle je "střední" dostačující, aby se zajistilo, že provoz není omezený. Funkce metrik Azure v Azure Portal používá data v této tabulce k tvorbě grafů nebo k aktivaci výstrah. Název tabulky je zřetězení těchto řetězců:
+Když zadáte `performanceCounters` , lad vždy zapisuje data do tabulky v Azure Storage. Stejná data lze zapsat do objektů BLOB JSON nebo Event Hubs nebo obojího. Nemůžete ale zakázat ukládání dat do tabulky. 
+
+Všechny instance LAD, které používají stejný název a koncový bod účtu úložiště, přidají ke stejné tabulce své metriky a protokoly. Pokud se do stejného oddílu tabulky zapisuje příliš mnoho virtuálních počítačů, může Azure omezit zápisy do tohoto oddílu. 
+
+`eventVolume`Nastavení způsobí, že položky budou rozloženy mezi 1 (malý), 10 (střední) nebo 100 (velké) oddíly. Obvykle jsou střední oddíly dostačující k zamezení omezení provozu. 
+
+Funkce metrik Azure Monitor Azure Portal používá data v této tabulce k vytváření grafů nebo k aktivaci výstrah. Název tabulky je zřetězení těchto řetězců:
 
 * `WADMetrics`
-* "ScheduledTransferPeriod" pro agregované hodnoty uložené v tabulce
+* `"scheduledTransferPeriod"`Pro agregované hodnoty uložené v tabulce
 * `P10DV2S`
 * Datum ve formátu "RRRRMMDD", které se mění každých 10 dní
 
@@ -449,17 +470,19 @@ Příklady zahrnují `WADMetricsPT1HP10DV2S20170410` a `WADMetricsPT1MP10DV2S201
 }
 ```
 
-Tento volitelný oddíl řídí shromažďování událostí protokolu z syslog. Pokud je oddíl vynechán, události syslog nejsou zachyceny vůbec.
+`syslogEvents`Volitelný oddíl řídí shromažďování událostí protokolu z syslog. Pokud je oddíl vynechán, události syslog nejsou zachyceny vůbec.
 
-Kolekce syslogEventConfiguration má jednu položku pro každé zařízení syslog, které vás zajímá. Pokud minSeverity je "NONE" pro konkrétní zařízení, nebo pokud se toto zařízení nezobrazí v prvku vůbec, nebudou zachyceny žádné události z tohoto zařízení.
+`syslogEventConfiguration`Kolekce má jednu položku pro každé zařízení syslog, které vás zajímá. Pokud `minSeverity` je `"NONE"` pro konkrétní zařízení, nebo pokud se toto zařízení v prvku vůbec neobjeví, nebudou zachyceny žádné události z tohoto zařízení.
 
 Prvek | Hodnota
 ------- | -----
-jímky | Čárkami oddělený seznam názvů umyvadel, na které se jednotlivé události protokolu publikují. Všechny události protokolu, které odpovídají omezením v syslogEventConfiguration, se publikují do každé uvedené jímky. Příklad: "EHforsyslog"
-facilityName | Název zařízení syslog (například "PROTOKOLovat \_ uživatele" nebo "log \_ local0"). Úplný seznam najdete v části "zařízení" na [stránce zachycení služby SYSLOG](http://man7.org/linux/man-pages/man3/syslog.3.html) .
-minSeverity | Úroveň závažnosti syslog (například LOG \_ Err nebo log \_ info) Úplný seznam najdete v části "úroveň" [stránky zachycení služby SYSLOG](http://man7.org/linux/man-pages/man3/syslog.3.html) . Rozšíření zachytí události odesílané do zařízení na zadané úrovni nebo nad ní.
+jímky | Čárkami oddělený seznam názvů umyvadel, na které se jednotlivé události protokolu publikují. Všechny události protokolu, které odpovídají omezením v, `syslogEventConfiguration` se publikují do každé uvedené jímky. Příklad: `"EHforsyslog"`
+facilityName | Název zařízení syslog, například `"LOG_USER"` nebo `"LOG\LOCAL0"` . Další informace najdete v části "zařízení" na [stránce zachycení služby SYSLOG](http://man7.org/linux/man-pages/man3/syslog.3.html).
+minSeverity | Úroveň závažnosti syslog, například `"LOG_ERR"` nebo `"LOG_INFO"` . Další informace najdete v části "úroveň" [stránky zachycení služby SYSLOG](http://man7.org/linux/man-pages/man3/syslog.3.html). Rozšíření zachytí události odesílané do zařízení na zadané úrovni nebo nad ní.
 
-Když zadáte `syslogEvents` , lad vždy zapisuje data do tabulky ve službě Azure Storage. Můžete mít stejná data zapsaná do objektů BLOB JSON nebo Event Hubs, ale nemůžete zakázat ukládání dat do tabulky. Chování dělení této tabulky je stejné, jak je popsáno v `performanceCounters` . Název tabulky je zřetězení těchto řetězců:
+Když zadáte `syslogEvents` , lad vždy zapisuje data do tabulky v Azure Storage. Stejná data lze zapsat do objektů BLOB JSON nebo Event Hubs nebo obojího. Nemůžete ale zakázat ukládání dat do tabulky. 
+
+Chování dělení tabulky je stejné, jak je popsáno v `performanceCounters` . Název tabulky je zřetězení těchto řetězců:
 
 * `LinuxSyslog`
 * Datum ve formátu "RRRRMMDD", které se mění každých 10 dní
@@ -468,7 +491,7 @@ Příklady zahrnují `LinuxSyslog20170410` a `LinuxSyslog20170609` .
 
 ### <a name="perfcfg"></a>perfCfg
 
-Tento volitelný oddíl řídí provádění libovolných dotazů [OMI](https://github.com/Microsoft/omi) .
+`perfCfg`Oddíl je nepovinný. Řídí spouštění libovolných dotazů [OMI (Open Management Infrastructure)](https://github.com/Microsoft/omi) .
 
 ```json
 "perfCfg": [
@@ -484,20 +507,20 @@ Tento volitelný oddíl řídí provádění libovolných dotazů [OMI](https://
 
 Prvek | Hodnota
 ------- | -----
-namespace | volitelné Obor názvů OMI, ve kterém má být dotaz proveden. Je-li tento parametr zadán, je použita výchozí hodnota "root/SCX", kterou implementuje [poskytovatelé služeb System Center pro různé platformy](https://github.com/Microsoft/SCXcore).
+namespace | Volitelné Obor názvů OMI, ve kterém se má dotaz spustit Je-li tento parametr zadán, je použita výchozí hodnota `"root/scx"` . Je implementována [poskytovateli pro různé platformy pro System Center](https://github.com/Microsoft/SCXcore).
 query | Dotaz OMI, který se má spustit.
-tabulka | volitelné Tabulka úložiště Azure v určeném účtu úložiště (viz [Nastavení chráněná](#protected-settings)).
-frequency | volitelné Počet sekund mezi provedením dotazu. Výchozí hodnota je 300 (5 minut); minimální hodnota je 15 sekund.
-jímky | volitelné Čárkami oddělený seznam názvů dalších umyvadel, na které by měly být publikovány nezpracované ukázkové výsledky metriky. Žádná agregace těchto nezpracovaných vzorků se počítá rozšířením nebo metrikami Azure.
+tabulka | Volitelné Tabulka Azure Storage v určeném účtu úložiště Další informace najdete v tématu [chráněná nastavení](#protected-settings).
+frequency | Volitelné Počet sekund mezi spuštěním dotazu. Výchozí hodnota je 300 (5 minut). Minimální hodnota je 15 sekund.
+jímky | Volitelné Čárkami oddělený seznam názvů více umyvadel, na které by měly být publikovány nezpracované ukázkové výsledky metriky. Žádná agregace těchto nezpracovaných vzorků není vypočítána rozšířením nebo Azure Monitormi metrikami.
 
-Je třeba zadat buď Table, nebo "jímky", nebo obojí.
+`"table"` `"sinks"` Musí být zadán buď nebo obojí.
 
 ### <a name="filelogs"></a>Protokoly
 
-Řídí zachycení souborů protokolu. LAD zachycuje nové textové řádky při zápisu do souboru a zapisuje je do řádků tabulky nebo do všech zadaných umyvadel (JsonBlob nebo EventHub).
+`fileLogs`Oddíl řídí zachycení souborů protokolu. LAD zachycuje nové textové řádky při jejich zápisu do souboru. Zapisuje je do řádků tabulky nebo do všech zadaných umyvadel ( `JsonBlob` nebo `EventHub` ).
 
 > [!NOTE]
-> Protokoly LAD jsou zachyceny podkomponentou s názvem `omsagent` . Aby bylo možné shromažďovat protokoly souborů, musíte zajistit, aby `omsagent` měl uživatel oprávnění ke čtení pro zadané soubory, a také oprávnění ke spouštění na všech adresářích v cestě k tomuto souboru. Tuto kontrolu můžete spustit `sudo su omsagent -c 'cat /path/to/file'` po instalaci lad.
+> `fileLogs`Jsou zachyceny dílčí komponentou lad s názvem `omsagent` . Aby bylo možné shromáždit `fileLogs` informace, ujistěte se, že `omsagent` uživatel má oprávnění ke čtení pro soubory, které zadáte. Uživatel musí mít také oprávnění EXECUTE pro všechny adresáře v cestě k tomuto souboru. Po instalaci nástroje LAD můžete kontrolovat oprávnění spuštěním `sudo su omsagent -c 'cat /path/to/file'` .
 
 ```json
 "fileLogs": [
@@ -511,65 +534,69 @@ Je třeba zadat buď Table, nebo "jímky", nebo obojí.
 
 Prvek | Hodnota
 ------- | -----
- – soubor | Úplná cesta k souboru protokolu, který má být sledován a zachycen. Cesta musí pojmenovat jeden soubor. nemůže obsahovat název adresáře ani zástupné znaky. Uživatelský účet omsagent musí mít k této cestě k souboru přístup pro čtení.
-tabulka | volitelné Tabulka úložiště Azure v určeném účtu úložiště (jak je uvedeno v chráněných konfiguracích), do kterého se zapisují nové řádky z "koncového" souboru.
-jímky | volitelné Čárkami oddělený seznam názvů dalších umyvadel, na které se odesílají řádky protokolu.
+ – soubor | Úplný název cesty k souboru protokolu, který se má sledovat a zachytit. Název cesty musí pojmenovat jeden soubor. Nemůže obsahovat název adresáře ani zástupné znaky. `omsagent`Uživatelský účet musí mít k této cestě k souboru přístup pro čtení.
+tabulka | Volitelné Tabulka Azure Storage, do které se zapisují nové řádky ze "konce" souboru. Tabulka musí být v určeném účtu úložiště, jak je uvedeno v části chráněná konfigurace. 
+jímky | Volitelné Čárkami oddělený seznam názvů dalších umyvadel, na které se odesílají řádky protokolu.
 
-Je třeba zadat buď Table, nebo "jímky", nebo obojí.
+`"table"` `"sinks"` Musí být zadán buď nebo, nebo obojí.
 
 ## <a name="metrics-supported-by-the-builtin-provider"></a>Metriky podporované zprostředkovatelem Builtin
 
-Předdefinovaná zprostředkovatel metriky je zdrojem metrik, které jsou zajímavé pro širokou škálu uživatelů. Tyto metriky spadají do pěti širších tříd:
+`builtin`Zprostředkovatel metriky je zdrojem metrik, které jsou pro širokou škálu uživatelů nejzajímavější. Tyto metriky spadají do pěti širších tříd:
 
 * Procesor
 * Memory (Paměť)
 * Síť
-* Filesystem
+* Systém souborů
 * Disk
 
 ### <a name="builtin-metrics-for-the-processor-class"></a>předdefinované metriky pro třídu procesoru
 
-Třída procesoru metrik nabízí informace o využití procesoru ve virtuálním počítači. Při agregaci procent je výsledkem průměr ve všech procesorech. V případě vCPU virtuálního počítače, pokud byl jeden vCPU 100% zaneprázdněný a druhý byl 100% nečinný, nahlášený PercentIdleTime by byl 50. Pokud by každý vCPU byl 50% zaneprázdněný pro stejné období, nahlášený výsledek by byl také 50. Ve vCPUm virtuálním počítači, který má zaneprázdněný vCPU 100% a jiné nečinné, nahlášený PercentIdleTime by byl 75.
+Třída procesoru metrik nabízí informace o využití procesoru ve virtuálním počítači. V případě agregace procent je výsledkem průměr ve všech procesorech. 
 
-counter | Význam
+Pokud je v vCPUm virtuálním počítači jeden 100 vCPU zaneprázdněný a druhý je 100% nečinný, nahlášený `PercentIdleTime` je 50. Pokud 50 je každý vCPU zaneprázdněný pro stejné období, nahlášený výsledek je také 50. Pokud 100 je v vCPU virtuálním počítači vCPU a jiné nečinné, je nahlášená hodnota `PercentIdleTime` 75.
+
+Čítač | Význam
 ------- | -------
-PercentIdleTime | Procento času během okna agregace, které procesory prováděly nečinný cyklus jádra
+PercentIdleTime | Procentuální podíl času během okna agregace, po kterém procesor spustil smyčku nečinného jádra
 PercentProcessorTime | Procento času spuštění vlákna, které není nečinné
 PercentIOWaitTime | Procento času čekání na dokončení vstupně-výstupních operací
-PercentInterruptTime | Procento času provádění hardwarových a softwarových přerušení a DPC (odložená volání procedur)
-PercentUserTime | Doba nečinnosti v průběhu okna agregace, procento času stráveného uživatelem s normální prioritou
+PercentInterruptTime | Procento času spuštění hardwarového nebo softwarového přerušení a DPC (odložená volání procedur)
+PercentUserTime | V době nečinnosti během okna agregace je procento času stráveného v uživatelském režimu s normální prioritou.
 PercentNiceTime | Nečinný čas, procento strávené za sníženou prioritou (Nice)
 PercentPrivilegedTime | Nečinný čas, procento strávené v privilegovaném režimu (kernel)
 
-První čtyři čítače by měly být v součtu 100%. Poslední tři čítače jsou také celkem 100%; rozdělují součet hodnot PercentProcessorTime, PercentIOWaitTime a PercentInterruptTime.
+První čtyři čítače by měly být součtem 100 procent. Poslední tři čítače jsou také součtem 100 procent. Tyto tři čítače rozdělují součet hodnot `PercentProcessorTime` , `PercentIOWaitTime` a `PercentInterruptTime` .
 
-Pro získání jedné metriky agregované napříč všemi procesory nastavte `"condition": "IsAggregate=TRUE"` . Pokud chcete získat metriku pro konkrétní procesor, jako je druhý logický procesor se čtyřmi vCPU virtuálními počítači, nastavte `"condition": "Name=\\"1\\""` . Čísla logických procesorů jsou v rozsahu `[0..n-1]` .
+Pro agregaci jedné metriky napříč všemi procesory nastavte `"condition": "IsAggregate=TRUE"` . Pokud chcete získat metriku pro konkrétní procesor, jako je druhý logický procesor se čtyřmi vCPU virtuálními počítači, nastavte `"condition": "Name=\\"1\\""` . Čísla logických procesorů jsou v rozsahu `[0..n-1]` .
 
 ### <a name="builtin-metrics-for-the-memory-class"></a>předdefinované metriky pro třídu paměti
 
 Třída Memory metriky poskytuje informace o využití paměti, stránkování a prohození.
 
-counter | Význam
+Čítač | Význam
 ------- | -------
 AvailableMemory | Dostupná fyzická paměť v databázi MiB
 PercentAvailableMemory | Dostupná fyzická paměť jako procento z celkové paměti
 UsedMemory | Využití fyzické paměti (MiB)
 PercentUsedMemory | Použít fyzickou paměť jako procento z celkové paměti
 PagesPerSec | Celkový počet stránkování (čtení a zápis)
-PagesReadPerSec | Stránky čtené ze záložního úložiště (odkládací soubor, soubor programu, mapovaný soubor atd.)
-PagesWrittenPerSec | Stránky zapsané do záložního úložiště (odkládací soubor, mapovaný soubor atd.)
+PagesReadPerSec | Stránky čtené ze záložního úložiště, například odkládací soubor, soubor programu a mapovaný soubor
+PagesWrittenPerSec | Stránky zapsané do záložního úložiště, jako je například odkládací soubor a mapovaný soubor
 AvailableSwap | Nevyužité místo odkládacího souboru (MiB)
 PercentAvailableSwap | Nevyužité místo odkládacího souboru jako procento z celkového zahození
 UsedSwap | Odkládací místo (MiB) v aplikaci
 PercentUsedSwap | Použít místo odkládacího souboru jako procento z celkového zahození
 
-Tato třída metrik má pouze jednu instanci. Atribut Condition nemá žádná užitečná nastavení a měla by být vynechána.
+Tato třída metrik má pouze jednu instanci. `"condition"`Atribut nemá žádná užitečná nastavení a měla by být vynechán.
 
 ### <a name="builtin-metrics-for-the-network-class"></a>předdefinované metriky pro třídu sítě
 
-Třída Network metriky poskytuje informace o aktivitě sítě v jednotlivých síťových rozhraních od spuštění. LAD nevystavuje metriky šířky pásma, které se dají načíst z metrik hostitelů.
+Třída Network metriky poskytuje informace o aktivitě sítě v jednotlivých síťových rozhraních od spuštění. 
 
-counter | Význam
+LAD nevystavuje metriky šířky pásma. Tyto metriky můžete získat z metrik hostitele.
+
+Čítač | Význam
 ------- | -------
 BytesTransmitted | Celkový počet odeslaných bajtů od spuštění
 BytesReceived | Celkový počet přijatých bajtů od spuštění
@@ -577,23 +604,23 @@ BytesTotal | Celkový počet odeslaných nebo přijatých bajtů od spuštění
 PacketsTransmitted | Celkový počet odeslaných paketů od spuštění
 PacketsReceived | Celkový počet přijatých paketů od spuštění
 TotalRxErrors | Počet chyb přijetí od spuštění
-TotalTxErrors | Počet chyb při odesílání od spuštění
+TotalTxErrors | Počet chyb odeslání od spuštění
 TotalCollisions | Počet kolizí hlášených síťovými porty od spuštění
 
- I když je tato třída instance, LAD nepodporuje zachycení síťových metrik agregovaných napříč všemi síťovými zařízeními. Chcete-li získat metriky pro určité rozhraní, například eth0, nastavte `"condition": "InstanceID=\\"eth0\\""` .
+I když je třída sítě instance, LAD nepodporuje zachycení síťových metrik agregovaných napříč všemi síťovými zařízeními. Chcete-li získat metriky pro určité rozhraní, například eth0, nastavte `"condition": "InstanceID=\\"eth0\\""` .
 
-### <a name="builtin-metrics-for-the-filesystem-class"></a>předdefinované metriky pro třídu FileSystem
+### <a name="builtin-metrics-for-the-file-system-class"></a>předdefinované metriky pro třídu systému souborů
 
-Třída FileSystem metrik poskytuje informace o využití systému souborů. Absolutní a procentuální hodnoty jsou hlášeny tak, jak by se zobrazily běžnému uživateli (ne root).
+Třída systému souborů metrik nabízí informace o využití systému souborů. Absolutní a procentuální hodnoty jsou hlášeny tak, jak by se zobrazily běžnému uživateli (ne kořenovému).
 
-counter | Význam
+Čítač | Význam
 ------- | -------
 FreeSpace | Volné místo na disku v bajtech
 UsedSpace | Využité místo na disku v bajtech
 PercentFreeSpace | Procento volného místa
 PercentUsedSpace | Procento využitého místa
-PercentFreeInodes | Procento nepoužívaných uzlů inode
-PercentUsedInodes | Procentuální podíl přiděleného (používaného) uzlů inode ve všech systémech souborů
+PercentFreeInodes | Procento nepoužívaných indexovaných uzlů (uzlů inode)
+PercentUsedInodes | Procento přiděleného (používaného) uzlů inode v rámci všech systémů souborů
 BytesReadPerSecond | Přečtené bajty za sekundu
 BytesWrittenPerSecond | Zapsané bajty za sekundu
 BytesPerSecond | Přečtené nebo zapsané bajty za sekundu
@@ -601,16 +628,18 @@ ReadsPerSecond | Operace čtení za sekundu
 WritesPerSecond | Operace zápisu za sekundu
 TransfersPerSecond | Operace čtení nebo zápisu za sekundu
 
-Agregované hodnoty napříč všemi systémy souborů lze získat nastavením `"condition": "IsAggregate=True"` . Hodnoty pro konkrétní připojený systém souborů, jako je například "/mnt", lze získat nastavením `"condition": 'Name="/mnt"'` . 
+Agregované hodnoty můžete získat napříč všemi systémy souborů nastavením `"condition": "IsAggregate=True"` . Získejte hodnoty pro určitý připojený systém souborů, jako je například `"/mnt"` , nastavením `"condition": 'Name="/mnt"'` . 
 
 > [!NOTE]
-> Pokud místo JSON použijete Azure Portal, je ve správném formuláři pole podmínka název = '/mnt '.
+> Pokud pracujete v Azure Portal místo JSON, formulář pole podmínka je `Name='/mnt'` .
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>předdefinované metriky pro třídu disku
 
-Disková třída metrik nabízí informace o využití diskového zařízení. Tyto statistiky se vztahují na celou jednotku. V případě, že je v zařízení více systémů souborů, jsou čítače pro toto zařízení efektivně agregované napříč všemi.
+Disková třída metrik nabízí informace o využití diskového zařízení. Tyto statistiky se vztahují na celou jednotku. 
 
-counter | Význam
+Pokud má zařízení více systémů souborů, jsou čítače pro toto zařízení efektivně agregované napříč všemi systémy souborů.
+
+Čítač | Význam
 ------- | -------
 ReadsPerSecond | Operace čtení za sekundu
 WritesPerSecond | Operace zápisu za sekundu
@@ -623,42 +652,47 @@ ReadBytesPerSecond | Počet přečtených bajtů za sekundu
 WriteBytesPerSecond | Počet zapsaných bajtů za sekundu
 BytesPerSecond | Počet přečtených nebo zapsaných bajtů za sekundu
 
-Agregované hodnoty ve všech discích lze získat nastavením `"condition": "IsAggregate=True"` . Chcete-li získat informace pro konkrétní zařízení (například/dev/sdf1), nastavte `"condition": "Name=\\"/dev/sdf1\\""` .
+Agregované hodnoty můžete získat u všech disků nastavením `"condition": "IsAggregate=True"` . Chcete-li získat informace o konkrétním zařízení (například `/dev/sdf1` ), nastavte `"condition": "Name=\\"/dev/sdf1\\""` .
 
-## <a name="installing-and-configuring-lad-30"></a>Instalace a konfigurace LAD 3,0
+## <a name="install-and-configure-lad-30"></a>Instalace a konfigurace LAD 3,0
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Za předpokladu, že vaše chráněná nastavení jsou v souboru ProtectedSettings.jsna a informace o vaší veřejné konfiguraci jsou PublicSettings.jsna, spusťte tento příkaz:
+Pokud jsou vaše chráněná nastavení v souboru *ProtectedSettings.jsna* a informace o vaší veřejné konfiguraci jsou v *PublicSettings.jsna*, spusťte následující příkaz.
 
 ```azurecli
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-Příkaz předpokládá, že používáte režim správy prostředků Azure Azure CLI. Pokud chcete nakonfigurovat LAD pro virtuální počítače s modelem nasazení Classic, přepněte do režimu ASM ( `azure config mode asm` ) a vynechejte název skupiny prostředků v příkazu. Další informace najdete v dokumentaci k rozhraní příkazového [řádku pro více platforem](/cli/azure/authenticate-azure-cli).
+Příkaz předpokládá, že používáte režim Azure Resource Manager rozhraní příkazového řádku Azure CLI. Pokud chcete nakonfigurovat LAD pro virtuální počítače modelu nasazení Classic, přepněte do režimu ASM ( `azure config mode asm` ) a vynechejte název skupiny prostředků v příkazu. 
+
+Další informace najdete v dokumentaci k rozhraní příkazového [řádku pro více platforem](/cli/azure/authenticate-azure-cli).
 
 ### <a name="powershell"></a>PowerShell
 
-Za předpokladu, že vaše chráněná nastavení jsou v `$protectedSettings` proměnné a informace o vaší veřejné konfiguraci jsou v `$publicSettings` proměnné, spusťte tento příkaz:
+Pokud jsou vaše chráněná nastavení v `$protectedSettings` proměnné a informace o veřejné konfiguraci jsou v `$publicSettings` proměnné, spusťte tento příkaz:
 
 ```powershell
 Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0
 ```
 
-## <a name="an-example-lad-30-configuration"></a>Příklad konfigurace LAD 3,0
+## <a name="example-lad-30-configuration"></a>Příklad konfigurace LAD 3,0
 
-V závislosti na předchozích definicích najdete ukázkovou konfiguraci rozšíření LAD 3,0 s některými vysvětleními. Pokud chcete tuto ukázku použít pro váš případ, měli byste použít vlastní název účtu úložiště, token SAS účtu a EventHubs tokeny SAS.
+V závislosti na předchozích definicích poskytuje tato část ukázkovou konfiguraci rozšíření LAD 3,0 a některé vysvětlení. Pokud chcete tuto ukázku použít pro váš případ, použijte vlastní název účtu úložiště, token SAS účtu a Event Hubs tokeny SAS.
 
 > [!NOTE]
-> V závislosti na tom, jestli k instalaci LAD použijete rozhraní příkazového řádku Azure CLI nebo PowerShell, se metoda pro zajištění veřejného a chráněného nastavení bude lišit. Pokud používáte rozhraní příkazového řádku Azure CLI, uložte následující nastavení, abyste ProtectedSettings.jsv a PublicSettings.jsna použití s výše uvedeným vzorovým příkazem. Pokud používáte PowerShell, uložte nastavení do `$protectedSettings` a `$publicSettings` spuštěním `$protectedSettings = '{ ... }'` .
+> V závislosti na tom, jestli k instalaci LAD používáte Azure CLI nebo PowerShell, se metoda pro zajištění veřejného a chráněného nastavení liší: 
+>
+> * Pokud používáte rozhraní příkazového řádku Azure CLI, uložte následující nastavení, abyste *ProtectedSettings.jsi na* a *PublicSettings.jsna* používání předchozího ukázkového příkazu. 
+> * Pokud používáte PowerShell, uložte následující nastavení do `$protectedSettings` a a `$publicSettings` Spusťte `$protectedSettings = '{ ... }'` .
 
 ### <a name="protected-settings"></a>Chráněná nastavení
 
-Tato chráněná nastavení se konfigurují:
+Konfigurace chráněných nastavení:
 
-* účet úložiště
-* token SAS odpovídajícího účtu
-* několik umyvadel (JsonBlob nebo EventHubs s tokeny SAS)
+* Účet úložiště.
+* Token SAS odpovídajícího účtu.
+* Několik umyvadel ( `JsonBlob` nebo `EventHub` s tokeny SAS).
 
 ```json
 {
@@ -704,17 +738,17 @@ Tato chráněná nastavení se konfigurují:
 
 ### <a name="public-settings"></a>Veřejné nastavení
 
-Tato veřejná nastavení způsobí, že LAD:
+Veřejné nastavení způsobí, že LAD:
 
-* Odeslat metriku procenta – čas procesoru a využité místo na disku pro `WADMetrics*` tabulku
-* Nahrajte do tabulky zprávy ze zařízení syslog "User" a závažnost "info". `LinuxSyslog*`
-* Nahrání nezpracovaných výsledků dotazu OMI (PercentProcessorTime a PercentIdleTime) do pojmenované `LinuxCPU` tabulky
-* Nahrát připojené řádky do souboru `/var/log/myladtestlog` do `MyLadTestLog` tabulky
+* Nahrajte metriky v procentech času procesoru a využité místo na disku v `WADMetrics*` tabulce.
+* Nahrajte zprávy ze zařízení syslog `"user"` a závažnost `"info"` do `LinuxSyslog*` tabulky.
+* Nahrání nezpracovaných výsledků dotazu OMI ( `PercentProcessorTime` a `PercentIdleTime` ) do pojmenované `LinuxCPU` tabulky
+* Nahrajte připojené řádky do souboru `/var/log/myladtestlog` do `MyLadTestLog` tabulky.
 
 V každém případě se data nahrají taky do:
 
-* Úložiště objektů BLOB v Azure (název kontejneru je definovaný v jímky JsonBlob)
-* Koncový bod EventHubs (zadaný v jímky EventHubs)
+* Blob Storage Azure. Název kontejneru je definovaný v `JsonBlob` jímky.
+* Koncový bod Event Hubs, jak je uvedeno v `EventHub` jímky.
 
 ```json
 {
@@ -795,34 +829,34 @@ V každém případě se data nahrají taky do:
 
 `resourceId`V konfiguraci se musí shodovat s konfigurací virtuálního počítače nebo sady škálování virtuálních počítačů.
 
-* Grafy metrik a výstrahy na platformě Azure ví o resourceId virtuálního počítače, na kterém právě pracujete. Očekává, že se data pro virtuální počítač vyhledají pomocí vyhledávacího klíče resourceId.
-* Pokud používáte automatické škálování Azure, musí resourceId v konfiguraci automatického škálování odpovídat ID resourceId, které používá LAD.
-* ResourceId je integrováno do názvů JsonBlobs zapsaných pomocí LAD.
+* Grafy metrik a výstrahy na platformě Azure ví `resourceId` o virtuálním počítači, na kterém pracujete. Očekává, že se data pro váš virtuální počítač vyhledají pomocí `resourceId` vyhledávacího klíče.
+* Pokud používáte automatické škálování Azure, musí se `resourceId` v konfiguraci automatického škálování shodovat s tím `resourceId` , který lad používá.
+* `resourceId`Je integrován do názvů objektů BLOB JSON zapsaných pomocí lad.
 
 ## <a name="view-your-data"></a>Zobrazení dat
 
-Pomocí Azure Portal zobrazte data výkonu nebo nastavte výstrahy:
+Použijte Azure Portal k zobrazení dat výkonu nebo k nastavení výstrah:
 
-:::image type="content" source="./media/diagnostics-linux/graph_metrics.png" alt-text="Snímek obrazovky zobrazuje Azure Portal s využitým místem na disku u vybrané metriky a výsledným grafem.":::
+:::image type="content" source="./media/diagnostics-linux/graph_metrics.png" alt-text="Snímek obrazovky ukazuje Azure Portal. Vybralo se využité místo na disku v metrikě. Zobrazí se výsledný graf.":::
 
 `performanceCounters`Data jsou vždy uložena v Azure Storage tabulce. Rozhraní API pro Azure Storage jsou k dispozici pro mnoho jazyků a platforem.
 
-Data odesílaná do jímky JsonBlob se ukládají v objektech blob v účtu úložiště s názvem v části [chráněná nastavení](#protected-settings). Data objektů blob můžete využívat pomocí libovolných rozhraní API Azure Blob Storage.
+Data odesílaná do `JsonBlob` jímky se ukládají v objektech blob v účtu úložiště s názvem v části [chráněná nastavení](#protected-settings). Data objektů blob můžete využívat pomocí libovolných rozhraní API služby Azure Blob Storage.
 
-Kromě toho můžete použít tyto nástroje uživatelského rozhraní pro přístup k datům v Azure Storage:
+K přístupu k datům v Azure Storage můžete použít také tyto nástroje uživatelského rozhraní:
 
-* Průzkumník serveru sady Visual Studio.
-* [Snímek obrazovky ukazuje kontejnery a tabulky v Průzkumník služby Azure Storage.](https://azurestorageexplorer.codeplex.com/ "Průzkumník služby Azure Storage").
+* Průzkumník serveru sady Visual Studio
+* [Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/)
 
-Tento snímek relace Průzkumník služby Microsoft Azure Storage zobrazuje vygenerované Azure Storage tabulky a kontejnery ze správně nakonfigurovaného rozšíření LAD 3,0 na testovacím virtuálním počítači. Obrázek se přesně neshoduje s [ukázkovou konfigurací LAD 3,0](#an-example-lad-30-configuration).
+Následující snímek obrazovky Průzkumník služby Azure Storage relace zobrazuje vygenerované Azure Storage tabulky a kontejnery ze správně nakonfigurovaného rozšíření LAD 3,0 na testovacím virtuálním počítači. Obrázek se přesně neshoduje s [ukázkovou konfigurací LAD 3,0](#example-lad-30-configuration).
 
 :::image type="content" source="./media/diagnostics-linux/stg_explorer.png" alt-text="Snímek obrazovky ukazuje Průzkumník služby Azure Storage.":::
 
 
-V příslušné [dokumentaci k EventHubs](../../event-hubs/event-hubs-about.md) se dozvíte, jak využívat zprávy publikované do koncového bodu EventHubs.
+Další informace o tom, jak využívat zprávy publikované do Event Hubsho koncového bodu, najdete v příslušné [dokumentaci k Event Hubs](../../event-hubs/event-hubs-about.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vytvořte výstrahy metriky v [Azure monitor](../../azure-monitor/alerts/alerts-classic-portal.md) pro metriky, které shromažďujete.
+* V [Azure monitor](../../azure-monitor/alerts/alerts-classic-portal.md)vytvořte výstrahy pro metriky, které shromáždíte.
 * Vytvořte [grafy monitorování](../../azure-monitor/data-platform.md) pro vaše metriky.
-* Naučte se [vytvořit sadu škálování virtuálního počítače](../linux/tutorial-create-vmss.md) pomocí vašich metrik k řízení automatického škálování.
+* [Vytvořte sadu škálování virtuálního počítače](../linux/tutorial-create-vmss.md) pomocí vašich metrik pro řízení automatického škálování.

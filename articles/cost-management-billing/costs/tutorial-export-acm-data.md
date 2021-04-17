@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: a386b214c4372c9d8de729a8b6bed4aac9edd9f3
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: af050ae95b4ab161028229299a8de5ed3426430b
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043457"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482829"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaných dat
 
@@ -35,9 +35,9 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 Export dat je dostupný pro nejrůznější typy účtů Azure, včetně zákazníků se [smlouvou Enterprise ](https://azure.microsoft.com/pricing/enterprise-agreement/) a zákazníků se [Smlouvou se zákazníkem Microsoftu](get-started-partners.md). Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku, který [vysvětluje data služby Cost Management](understand-cost-mgt-data.md). Při exportu dat uživatelů a skupin se u předplatných podporují následující oprávnění, neboli obory, Azure. Další informace o oborech najdete v tématu [Principy oborů a práce s nimi](understand-work-scopes.md).
 
-- Vlastník – může vytvářet, upravovat a odstraňovat naplánované exporty u předplatných.
-- Přispěvatel – může vytvářet, upravovat a odstraňovat svoje vlastní naplánované exporty. Může měnit názvy naplánovaných exportů, které vytvořili jiní uživatelé.
-- Čtenář – může naplánovat exporty, ke kterým má oprávnění.
+- Vlastník â € může vytvářet, upravovat nebo odstraňovat plánované exporty pro předplatné.
+- Přispěvatel â € může vytvářet, upravovat nebo odstraňovat vlastní naplánované exporty. Může měnit názvy naplánovaných exportů, které vytvořili jiní uživatelé.
+- Čtenář â € může naplánovat exporty, ke kterým mají oprávnění.
 
 Pro účty služby Azure Storage:
 - Ke změně nakonfigurovaného účtu úložiště se vyžaduje oprávnění k zápisu, a to bez ohledu na oprávnění k exportu.
@@ -63,10 +63,10 @@ Pokud chcete vytvořit nebo zobrazit export dat nebo naplánovat export, otevře
     - **Skutečné náklady (využití a nákupy)** – Tuto možnost vyberte, pokud chcete exportovat standardní využití a nákupy.
     - **Amortizované náklady (využití a nákupy)** – Tuto možnost vyberte, pokud chcete exportovat amortizované náklady pro nákupy, jako jsou rezervace Azure.
 1. V poli **Typ exportu** vyberte:
-    - **Denní export nákladů od začátku měsíce** – Poskytuje každý den nový soubor exportu s náklady od začátku měsíce. Nejnovější data jsou agregována z předchozích denních exportů.
-    - **Týdenní export nákladů za posledních 7 dní** – Vytvoří týdenní export nákladů za posledních 7 dní od vybraného počátečního data exportu.
-    - **Měsíční export nákladů za poslední měsíc** – Poskytne vám export nákladů za poslední měsíc na základě aktuálního měsíce, ve kterém jste export vytvořili. Podle rozvrhu se export spustí vždy pátého dne v měsíci pro náklady za předchozí měsíc.
-    - **Jednorázový export** – Umožňuje zvolit časový rozsah historických dat pro export do služby Azure Blob Storage. Můžete exportovat maximálně 90 dní historických nákladů, a to od libovolného data. Tento export se spustí okamžitě a v účtu úložiště je k dispozici do dvou hodin.
+    - **Denní export nákladů na datum od začátku do dneška** poskytuje nový soubor exportu pro každý měsíc na aktuální náklady. Nejnovější data jsou agregována z předchozích denních exportů.
+    - **Týdenní export nákladů za posledních sedm dní** : vytvoří týdenní export vašich nákladů za posledních sedm dní od vybraného počátečního data vašeho exportu.
+    - **Měsíční export nákladů na poslední měsíc** vám poskytne exportovat náklady za poslední měsíc v porovnání s aktuálním měsícem, kdy jste export vytvořili. Podle rozvrhu se export spustí vždy pátého dne v měsíci pro náklady za předchozí měsíc.
+    - **Jednorázový export** â € "umožňuje vybrat rozsah kalendářních dat pro export historických dat do úložiště objektů BLOB v Azure. Můžete exportovat maximálně 90 dní historických nákladů, a to od libovolného data. Tento export se spustí okamžitě a v účtu úložiště je k dispozici do dvou hodin.
         V závislosti na typu exportu buď vyberte počáteční datum, nebo vyberte data **Od** a **Do**.
 1. Zadejte předplatné pro účet úložiště Azure a potom vyberte skupinu prostředků nebo vytvořte novou.
 1. Vyberte název účtu úložiště nebo vytvořte nový.

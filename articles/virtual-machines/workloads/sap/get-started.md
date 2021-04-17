@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/12/2021
+ms.date: 04/13/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad538dd36301a25396f426301c1ee0bf6dfb0ece
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 9f4a1f5823b67cc55a4e038bae911ec583608336
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364069"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483091"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -82,6 +82,7 @@ V této části najdete dokumenty ke službě Microsoft Power BI Integration do 
 
 
 ## <a name="change-log"></a>Protokol změn
+- 04/12/2021: Změna v [ha pro SAP HANA na virtuálních počítačích Azure v SLES](./sap-hana-high-availability.md), [ha pro SAP HANA na virtuálních počítačích Azure v RHEL](./sap-hana-high-availability-rhel.md) a [ha pro SAP HANA horizontálního navýšení kapacity pomocí ANF v RHEL](./sap-hana-high-availability-netapp-files-red-hat.md) pro přidání pokynů SAP HANA pro konfiguraci replikace systému v Pythonu  
 - 04/12/2021: vyměněna zálohovací dokumentaci pro SAP HANA dokumenty [SAP HANA zálohování a obnovení pomocí služby Azure Backup](../../../backup/sap-hana-db-about.md) 
 - 04/12/2021: vydání služby [SAP HANA Scale-out HSR s Pacemaker na virtuálních počítačích Azure v](./sap-hana-high-availability-scale-out-hsr-suse.md) průvodci konfigurací SLES
 - 04/07/2021: vyjasněná podpora SQL Server více instancí a podpora více databází v [SQL Server nasazení Azure Virtual Machines DBMS pro SAP NetWeaver](./dbms_guide_sqlserver.md)
@@ -145,7 +146,7 @@ V této části najdete dokumenty ke službě Microsoft Power BI Integration do 
 - 19. května 2020: přidejte důležitou zprávu, která nepoužívá skupinu kořenových svazků při použití LVM pro svazky související se službou HANA v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md) .
 - 19. května 2020: přidejte nový podporovaný operační systém pro velký typ instance pro HANA a v části [kompatibilní operační systémy pro velké instance Hana](/- azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) .
 - 12. května 2020: Změna [připojení veřejných koncových bodů pro virtuální počítače pomocí Azure Standard interního nástroje ve scénářích SAP ha](./high-availability-guide-standard-load-balancer-outbound-connections.md) k aktualizaci odkazů a přidání informací pro konfiguraci brány firewall třetích stran
-- 11. května 2020: Změna [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v SLES](./sap-hana-high-availability.md) a nastavení vytrvalost prostředků na hodnotu 0 u prostředku netcat, protože to vede k jednoduššímu převzetí služeb při selhání 
+- 11. května 2020: Změna [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v SLES](./sap-hana-high-availability.md) a nastavení vytrvalost prostředků na hodnotu 0 pro `netcat` prostředek, protože to vede k efektivnějšímu převzetí služeb při selhání 
 - 5. května 2020: změny v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver](./planning-guide.md) představují, aby Gen2 nasazení byla k dispozici pro rodinu virtuálních počítačů.
 - 24. dubna 2020: změny v [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s ANF na SLES](./sap-hana-scale-out-standby-netapp-files-suse.md), v SAP HANA škálování na více instancí [s pohotovostním uzlem na virtuálních počítačích Azure s ANF na RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md), [Vysoká dostupnost pro SAP NetWeaver na](./high-availability-guide-suse-netapp-files.md) virtuálních počítačích Azure v SLES s ANF, aby [bylo možné](./high-availability-guide-rhel-netapp-files.md) vyjasnění automaticky přiřadit IP adresy pro NetWeaver svazky
 - 22. dubna 2020: Změna [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v SLES](./sap-hana-high-availability.md) pro odebrání atributu meta `is-managed` z instrukcí, protože je v konfliktu s umístěním clusteru do nebo z režimu údržby
@@ -168,16 +169,3 @@ V této části najdete dokumenty ke službě Microsoft Power BI Integration do 
 - 05. března 2020: změny struktury a změny obsahu pro oblasti Azure a virtuální počítače Azure v [azure Virtual Machines plánování a implementace pro SAP NetWeaver](./planning-guide.md)
 - 03/03/2020: Změna [vysoké dostupnosti pro SAP NW na virtuálních počítačích Azure v SLES s ANF pro aplikace SAP](./high-availability-guide-suse-netapp-files.md) umožňující změnu na efektivnější rozložení svazku ANF
 - Března 01 2020: [Příručka pro zálohování SAP HANA v Azure Virtual Machines](./sap-hana-backup-guide.md) , která zahrnuje Azure Backup službu. Zmenšený a zúžený obsah v [SAP HANA Azure Backup na úrovni souborů](./sap-hana-backup-file-level.md) a odstranil třetí dokument, který se bude řešit zálohováním prostřednictvím snímku disku. Obsah se zpracovává v Průvodci zálohováním pro SAP HANA v Azure Virtual Machines 
-- 27. února 2020: Změna [vysoké dostupnosti pro SAP NW na virtuálních počítačích Azure v SLES pro aplikace SAP](./high-availability-guide-suse.md), [Vysoká dostupnost pro SAP NW na virtuálních počítačích Azure v SLES s ANF pro aplikace SAP](./high-availability-guide-suse-netapp-files.md) a [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v SLES Průvodce vícenásobnými SID](./high-availability-guide-suse-multi-sid.md) pro úpravu neúspěšného parametru clusteru
-- 26. února 2020: Změna v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md) pro upřesnění výběru systému souborů pro Hana v Azure
-- 26. února 2020: Změna v [architektuře vysoké dostupnosti a scénářích pro SAP](./sap-high-availability-architecture-scenarios.md) , aby zahrnovaly odkaz na ha pro SAP NetWeaver na virtuálních počítačích Azure v průvodci RHEL s více SID
-- 26. února 2020: Změna [vysoké dostupnosti pro SAP NW na virtuálních počítačích Azure v SLES pro aplikace SAP](./high-availability-guide-suse.md), [Vysoká dostupnost pro SAP NW na virtuálních počítačích Azure v SLES s ANF pro aplikace SAP](./high-availability-guide-suse-netapp-files.md), [virtuální počítače Azure s vysokou dostupností pro SAP NetWeaver na RHEL](./high-availability-guide-rhel.md) a [virtuální počítače Azure s vysokou dostupností pro SAP NetWeaver v RHEL s Azure NetApp Files](./high-availability-guide-rhel-netapp-files.md) pro odebrání příkazu, který nepodporují cluster/ASCS.
-- 26. února 2020: vydání  [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v průvodci RHEL s více SID](./high-availability-guide-rhel-multi-sid.md) pro přidání odkazu na průvodce clusterem s podporou SUSE multi-SID
-- 02/25/2020: Změna v [architektuře vysoké dostupnosti a scénářích](./sap-high-availability-architecture-scenarios.md) , aby mohl SAP přidat odkazy na novější články ha
-- 25. února 2020: Změna [vysoké dostupnosti IBM DB2 LUW na virtuálních počítačích Azure v SUSE Linux Enterprise Server s Pacemaker](./dbms-guide-ha-ibm.md) , aby odkazovala na dokument, který popisuje přístup k veřejnému koncovému bodu se standardním nástrojem pro vyrovnávání zatížení Azure
-- 21. února 2020: kompletní revize článku [SAP POmocného programu sap Virtual Machines DBMS pro úlohy SAP](./dbms_guide_sapase.md)
-- 21. února 2020: Změna [SAP HANA konfigurace úložiště virtuálního počítače Azure](./hana-vm-operations-storage.md) tak, aby reprezentovala nové doporučení pro/Hana/data a přidání nastavení v/v Scheduleru
-- 21. února 2020: změny ve velkých instancích dokumentů HANA reprezentují nově certifikované SKU S224 a S224m.
-- 21. února 2020: Změna [vysoké dostupnosti virtuálních počítačů Azure pro SAP NetWeaver v RHEL](./high-availability-guide-rhel.md) a [virtuálních počítačích Azure s vysokou dostupností pro SAP NetWeaver v RHEL s Azure NetApp Files](./high-availability-guide-rhel-netapp-files.md) pro úpravu omezení clusteru pro architekturu replikace serveru fronty 2 (ENSA2)
-- 20. února 2020: Změna [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v průvodci SLES s více SID](./high-availability-guide-suse-multi-sid.md) pro přidání odkazu na průvodce clusterem s podporou SUSE multi-SID
-

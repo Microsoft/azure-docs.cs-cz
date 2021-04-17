@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 9443c6fbaca16cf075745972a1655a2b4b2ea43c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: b240806b934cae54810cf9dfe1a6c1f369cede7e
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077529"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587506"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>Kurz: vytvoření a import podmínek glosáře v Azure dosah (Preview)
 
@@ -96,6 +96,9 @@ V tomto postupu importujete pojem glosáře prostřednictvím souboru. CSV:
 1. Všimněte si, kam jste uložili soubor s názvem *StarterKitTerms.csv*, který je součástí startovní sady, kterou jste si stáhli v [části 1 této série kurzů](tutorial-scan-data.md).
 
    Tento soubor obsahuje seznam předem vyplněných podmínek, které jsou relevantní pro vaši datovou nemovitost.
+
+ > [!Important]
+   > E-mailová adresa pro Stewards a odborníky v. Soubor CSV by měl být primární adresou uživatele ze skupiny AAD. Alternativní e-maily, hlavní název uživatele a e-maily, které nejsou AAD, se zatím nepodporují. E-mailové adresy je potřeba nahradit primární adresou AAD z vaší organizace.
 
 1. Pokud chcete začít s importem, vyberte **Glosář** a pak vyberte **importovat výrazy**.
 
