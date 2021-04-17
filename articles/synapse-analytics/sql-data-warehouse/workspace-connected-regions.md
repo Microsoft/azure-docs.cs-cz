@@ -11,12 +11,12 @@ ms.date: 11/11/2020
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: references_regions
-ms.openlocfilehash: 4ecf8a578343a10e7c1ddb0ac5e9345a652bc9af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f788675d84f7714d4da5f30cf50875e5d006c6c7
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97511701"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534749"
 ---
 # <a name="enabling-synapse-workspace-features-on-a-dedicated-sql-pool-formerly-sql-dw-in-your-region"></a>Povolení funkcí pracovního prostoru synapse ve vyhrazeném fondu SQL (dříve SQL DW) ve vaší oblasti.
 
@@ -29,13 +29,13 @@ Následující tabulka shrnuje podle oblastí, ve které se možnost povolit fun
 |:--- |:--- |:--- |
 | Austrálie – střed 1 |\* |
 | Austrálie – střed 2 |\* |
-| Čína – východ 2 |31. března 2021 |
-| Čína – sever 2 |31. března 2021 |
-| Indie – jih |31. března 2021 |
-| Indie – západ |31. března 2021 |
-| Jižní Korea – jih |31. března 2021 |
-| Švýcarsko – západ |31. března 2021 |
-| Spojené arabské emiráty sever |31. března 2021 |
+| Čína – východ 2 |\* |
+| Čína – sever 2 |\* |
+| Indie – jih |\*|
+| Indie – západ |\*|
+| Jižní Korea – jih |\* |
+| Švýcarsko – západ |\* |
+| Spojené arabské emiráty sever |\*|
  
  
 > [!NOTE]

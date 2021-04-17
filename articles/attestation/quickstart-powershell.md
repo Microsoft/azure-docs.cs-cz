@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a343c1729b47d88ec414f17fcef7f9323d99161d
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 628bb9886264574bf33ac927cf5480f91144c39c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515256"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534007"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Rychlý Start: nastavení ověření Azure pomocí Azure PowerShell
 
@@ -121,7 +121,7 @@ New-AzResourceGroup -Name $attestationResourceGroup -Location $location
 ```
 
  > [!NOTE]
-   > Jakmile se v této skupině prostředků vytvoří poskytovatel ověření identity, musí mít uživatel služby Azure AD na poskytovateli roli správce ověření, aby mohl provádět operace, jako je konfigurace zásad nebo Správa certifikátů podepisování zásad. Tato oprávnění je také možné dědit s rolemi, jako je vlastník (oprávnění zástupných znaků), přispěvatel (oprávnění zástupných znaků) u předplatného nebo skupiny prostředků.  
+   > Jakmile se v této skupině prostředků vytvoří poskytovatel ověření identity, musí mít uživatel Azure AD roli **Přispěvatel ověření identity** na poskytovateli, aby mohl provádět operace, jako je konfigurace zásad nebo Správa certifikátů podepisování zásad. Tato oprávnění je také možné dědit s rolemi, jako je **vlastník** (oprávnění zástupných znaků)/ **Přispěvatel** (oprávnění zástupných znaků) pro předplatné nebo skupinu prostředků.  
 
 
 ## <a name="create-and-manage-an-attestation-provider"></a>Vytvoření a Správa poskytovatele ověřování identity
@@ -174,12 +174,12 @@ Aby bylo možné spravovat zásady, vyžaduje uživatel Azure AD následující 
 - Microsoft. Attestation/attestationProviders/Attestation/Write
 - Microsoft. Attestation/attestationProviders/Attestation/DELETE
 
- Aby bylo možné provádět tyto akce, musí mít uživatel Azure AD roli "správce ověření" na poskytovateli ověření identity. Tato oprávnění je také možné dědit s rolemi, jako je vlastník (oprávnění zástupných znaků), přispěvatel (oprávnění zástupných znaků) u předplatného nebo skupiny prostředků.  
+ Aby bylo možné provádět tyto akce, musí mít uživatel služby Azure AD roli **Přispěvatel ověření identity** u poskytovatele ověření identity. Tato oprávnění je také možné dědit s rolemi, jako je **vlastník** (oprávnění zástupných znaků)/ **Přispěvatel** (oprávnění zástupných znaků) pro předplatné nebo skupinu prostředků.  
 
 Aby bylo možné číst zásady, vyžaduje uživatel Azure AD následující oprávnění pro akce:
 - Microsoft. Attestation/attestationProviders/ověření/čtení
 
- Aby bylo možné provést tuto akci, musí mít uživatel služby Azure AD na poskytovateli ověření roli "čtecí modul ověření". Oprávnění ke čtení je taky možné dědit s rolemi, jako je čtenář (oprávnění ke zástupným znakem) pro předplatné nebo skupinu prostředků.  
+ Aby bylo možné provést tuto akci, musí mít uživatel služby Azure AD roli **čtenáře ověření identity** u poskytovatele ověření identity. Oprávnění ke čtení je taky možné dědit s rolemi, jako je **Čtenář** (oprávnění ke zástupným znakem), pro předplatné nebo skupinu prostředků.  
 
 Níže uvedené rutiny prostředí PowerShell poskytují správu zásad pro poskytovatele ověření identity (jeden TEE v jednom okamžiku).
 

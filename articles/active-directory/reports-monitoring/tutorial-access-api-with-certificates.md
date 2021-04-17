@@ -17,12 +17,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: c3443cb73e85fc69349e7293597a5f4a723959d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4f4ac6ab3825c82ac0cb8ef5c31f9396ef7b41f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93130047"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533724"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Kurz: získání dat pomocí rozhraní API pro vytváření sestav Azure Active Directory s certifikáty
 
@@ -102,5 +102,5 @@ V tomto kurzu se dozvíte, jak pomocí testovacího certifikátu získat příst
 ## <a name="next-steps"></a>Další kroky
 
 * [Získejte představu o rozhraní API pro generování sestav](concept-reporting-api.md)
-* [Reference k rozhraní API auditu](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
-* [Reference k rozhraní API sestav aktivit přihlašování](/graph/api/resources/signin?view=graph-rest-beta)
+* [Reference k rozhraní API auditu](/graph/api/resources/directoryaudit) 
+* [Reference k rozhraní API sestav aktivit přihlašování](/graph/api/resources/signin)
