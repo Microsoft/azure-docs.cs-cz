@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 354568fa3ab3816b643a8f08305ab55868a9b0b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56d931f2346e5a0b615d3f11dce3b06396e586b4
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90973707"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588713"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurace brány firewall webových aplikací pro službu App Service Environment
 ## <a name="overview"></a>Přehled
@@ -66,7 +66,7 @@ Po přihlášení by se měl zobrazit podobný řídicí panel jako na následuj
 
 ![Správa – Řídicí panel][ManagementDashboard]
 
-Po kliknutí na kartu **Services** (Služby) můžete konfigurovat bránu WAF pro služby, které chrání. Další podrobnosti o konfiguraci Barracuda WAF najdete v příslušné [dokumentaci](https://techlib.barracuda.com/waf/getstarted1). V následujícím příkladu je nakonfigurované App Service aplikace obsluhující provoz na protokolech HTTP a HTTPS.
+Po kliknutí na kartu **Services** (Služby) můžete konfigurovat bránu WAF pro služby, které chrání. Další podrobnosti o konfiguraci Barracuda WAF najdete v příslušné [dokumentaci](https://campus.barracuda.com/product/webapplicationfirewall/doc/4259884/configure-the-barracuda-web-application-firewall-from-the-web-interface/). V následujícím příkladu je nakonfigurované App Service aplikace obsluhující provoz na protokolech HTTP a HTTPS.
 
 ![Správa – Přidání služeb][ManagementAddServices]
 

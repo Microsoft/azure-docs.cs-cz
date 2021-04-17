@@ -243,8 +243,6 @@
           displayName: 'accessing, long-running, sdk, invalid character, name, naming, file name'
         - name: 'Stránkování, filtrování, uspořádání entit'
           href: filter-order-page-entitites-how-to.md
-        - name: Azure RBAC
-          href: security-rbac-concept.md
         - name: Kódy chyb
           items:
             - name: Kódy chyb koncových bodů streamování
@@ -443,8 +441,18 @@
           href: asset-publish-cli-how-to.md
     - name: Zabezpečení
       items:
+        - name: Azure RBAC
+          href: security-rbac-concept.md
         - name: Zavedení přístupových klíčů úložiště
           href: security-storage-roll-access-keys-how-to.md
+        - name: Povolit důvěryhodné úložiště
+          href: security-trusted-storage-rest-tutorial.md
+        - name: Tokeny ověřování Azure Media PlayerPass
+          href: security-pass-authentication-tokens-how-to.md
+        - name: Povolit důvěryhodné úložiště
+          href: security-trusted-storage-rest-tutorial.md
+        - name: Klíče spravované zákazníkem s využitím REST API
+          href: security-customer-managed-keys-rest-postman-tutorial.md
     - name: Použití přehrávačů médií
       items:
         - name: Kompletní nastavení Azure Media Playeru

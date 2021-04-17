@@ -66,6 +66,12 @@
           href: automation-create-standalone-account.md
         - name: Vytvoření účtu Automation s využitím šablony Resource Manageru
           href: quickstart-create-automation-account-template.md
+        - name: Spravovaná identita
+          items:
+            - name: Povolení spravované identity
+              href: enable-managed-identity-for-automation.md
+            - name: Zakázat spravovanou identitu
+              href: disable-managed-identity-for-automation.md
         - name: Účet Spustit jako
           items:
             - name: Vytvořit účet Spustit jako

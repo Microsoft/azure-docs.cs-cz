@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 001a9a15c259d0b0d73eec9c9a39ad7c27f26721
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 23e006c637285ad484e98b23b2a9f506156f519c
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572364"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389719"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>Storage: osvědčené postupy výkonu pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -53,7 +53,7 @@ V následujícím kontrolním seznamu najdete stručný přehled osvědčených 
 - [Diskové shlukování na základě kreditu](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1-P20) by se mělo považovat jenom za úlohy pro vývoj a testování a systémy oddělení.
 - Zřídí účet úložiště ve stejné oblasti jako virtuální počítač SQL Server. 
 - Zakažte geograficky redundantní úložiště Azure (geografickou replikaci) a použijte LRS (místní redundantní úložiště) v účtu úložiště.
-- Naformátujte datový disk tak, aby používal velikost alokační jednotky 64 KB pro všechny datové soubory umístěné na jiné jednotce než na dočasném `D:\` disku (ve výchozím nastavení je 4 KB). SQL Server virtuální počítače nasazené prostřednictvím Azure Marketplace se dodávají s datovými disky formátovanými velikostí alokační jednotky a prokládání pro fond úložiště s nastavením 64 KB. 
+- Naformátujte datový disk tak, aby používal velikost bloku (alokační jednotka) 64 KB pro všechny datové soubory umístěné na jiné jednotce než na dočasném `D:\` disku (ve výchozím nastavení 4 KB). SQL Server virtuální počítače nasazené prostřednictvím Azure Marketplace se dodávají s datovými disky formátovanými velikostí bloku a proložením pro fond úložiště nastavený na 64 KB. 
 
 Pokud chcete porovnat kontrolní seznam úložiště s ostatními, přečtěte si podrobný [Kontrolní seznam pro osvědčené postupy výkonu](performance-guidelines-best-practices-checklist.md). 
 

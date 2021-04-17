@@ -1,15 +1,17 @@
 ---
 title: Použití Azure Service Bus témata a předplatných v jazyce Java (Azure-zasílání zpráv – ServiceBus)
 description: V tomto rychlém startu napíšete kód Java pomocí balíčku Azure-Messaging-ServiceBus k posílání zpráv do Azure Service Busho tématu a potom dostanete zprávy z odběrů do tohoto tématu.
-ms.devlang: Java
-ms.topic: quickstart
 ms.date: 02/13/2021
-ms.openlocfilehash: c5b930fb2c87a09a1f4801365936c62a7cf79f1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.devlang: Java
+ms.custom:
+- mode-api
+ms.openlocfilehash: 6fe0a3a91ebbd5b6daced95494b8eaa5b7db0c46
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100516171"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536383"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>Odeslání zpráv do Azure Service Bus tématu a příjem zpráv z předplatných do tématu (Java)
 V tomto rychlém startu napíšete kód Java pomocí balíčku Azure-Messaging-ServiceBus k posílání zpráv do Azure Service Busho tématu a potom dostanete zprávy z odběrů do tohoto tématu.

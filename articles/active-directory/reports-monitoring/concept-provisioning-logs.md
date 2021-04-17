@@ -17,12 +17,12 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d8c4876faf9ebc2619309aa0095a8ffe1e9e93d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 468e885bab6aab4becb5aaaec7b4d52ce5ef5e07
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500542"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535991"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Přehled zřizování protokolů v Azure Portal (Preview)
 
@@ -61,7 +61,7 @@ Zákazníci můžou s protokoly zřizování spolupracovat čtyřmi způsoby:
 
 - Přístup k protokolům z Azure Portal, jak je popsáno v následující části.
 - Streamování zřizovacích protokolů do [Azure monitor](../app-provisioning/application-provisioning-log-analytics.md). Tato metoda umožňuje rozšířené uchovávání dat a sestavování vlastních řídicích panelů, výstrah a dotazů.
-- Dotazování [rozhraní API pro Microsoft Graph](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) pro protokoly zřizování
+- Dotazování [rozhraní API pro Microsoft Graph](/graph/api/resources/provisioningobjectsummary) pro protokoly zřizování
 - Stahují se protokoly zřizování jako soubor CSV nebo JSON.
 
 ## <a name="access-the-logs-from-the-azure-portal"></a>Přístup k protokolům z Azure Portal
@@ -131,8 +131,8 @@ Filtr **stavu** umožňuje vybrat:
 
 - **Vše**
 - **Success**
-- **Poruše**
-- **Přeskočeno**
+- **Selhání**
+- **Vynecháno**
 
 Filtr **akcí** umožňuje filtrovat tyto akce:
 
@@ -243,7 +243,7 @@ Zde jsou některé tipy a doporučení pro sestavy zřizování:
 
 Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, které najdete v protokolech zřizování. U všech chybových kódů, které chybí, poskytněte zpětnou vazbu pomocí odkazu v dolní části této stránky. 
 
-|Kód chyby|Description|
+|Kód chyby|Popis|
 |---|---|
 |Konflikt, EntryConflict|Opravte konfliktní hodnoty atributu buď v Azure AD, nebo v aplikaci. Nebo si přečtěte odpovídající konfiguraci atributu, pokud by byl konfliktní uživatelský účet shodný a převzatý z něj. Další informace o konfiguraci atributů odpovídajícího atributu najdete v [dokumentaci](../app-provisioning/customize-application-attributes.md) .|
 |TooManyRequests|Cílová aplikace odmítla tento pokus o aktualizaci uživatele, protože je přetížený a přijímá příliš mnoho požadavků. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen. Společnost Microsoft si také oznámila tento problém.|
@@ -251,7 +251,7 @@ Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, kte
 |InsufficientRights, MethodNotAllowed, NotPermitted, Neautorizováno| Služba Azure AD byla ověřena pomocí cílové aplikace, ale nebyla autorizována k provedení aktualizace. Projděte si pokyny, které poskytuje cílová aplikace, spolu s příslušným [kurzem](../saas-apps/tutorial-list.md)aplikace.|
 |UnprocessableEntity|Cílová aplikace vrátila neočekávanou odpověď. Konfigurace cílové aplikace nemusí být správná nebo může být problém služby s cílovou aplikací znemožněný tím, že nebude fungovat.|
 |WebExceptionProtocolError |Při připojování k cílové aplikaci došlo k chybě protokolu HTTP. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen za 40 minut.|
-|InvalidAnchor|Uživatel, který byl dříve vytvořen nebo spárován službou zřizování, již neexistuje. Ujistěte se, že uživatel existuje. Pokud chcete vynutit nové porovnání všech uživatelů, [restartujte úlohu](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)pomocí rozhraní Microsoft Graph API. <br><br>Restartováním zřizování se aktivuje počáteční cyklus, což může trvat nějakou dobu. Restartováním zřizování se odstraní také mezipaměť, kterou služba zřizování používá k provozu. To znamená, že všechny uživatele a skupiny v tenantovi se budou muset vyhodnotit znovu a můžou se vynechat určité události zřizování.|
+|InvalidAnchor|Uživatel, který byl dříve vytvořen nebo spárován službou zřizování, již neexistuje. Ujistěte se, že uživatel existuje. Pokud chcete vynutit nové porovnání všech uživatelů, [restartujte úlohu](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true)pomocí rozhraní Microsoft Graph API. <br><br>Restartováním zřizování se aktivuje počáteční cyklus, což může trvat nějakou dobu. Restartováním zřizování se odstraní také mezipaměť, kterou služba zřizování používá k provozu. To znamená, že všechny uživatele a skupiny v tenantovi se budou muset vyhodnotit znovu a můžou se vynechat určité události zřizování.|
 |NotImplemented | Cílová aplikace vrátila neočekávanou odpověď. Je možné, že konfigurace aplikace není správná nebo pokud je problém služby s cílovou aplikací znemožněný pracovat. Projděte si pokyny, které poskytuje cílová aplikace, spolu s příslušným [kurzem](../saas-apps/tutorial-list.md)aplikace. |
 |MandatoryFieldsMissing, MissingValues |Uživatele nelze vytvořit, protože chybí požadované hodnoty. Opravte chybějící hodnoty atributu ve zdrojovém záznamu, nebo zkontrolujte shodnou konfiguraci atributu, abyste měli jistotu, že požadovaná pole nejsou vynechána. [Přečtěte si další informace](../app-provisioning/customize-application-attributes.md) o konfiguraci atributů, které se shodují.|
 |SchemaAttributeNotFound |Operaci se nepodařilo provést, protože byl zadán atribut, který v cílové aplikaci neexistuje. Přečtěte si [dokumentaci](../app-provisioning/customize-application-attributes.md) k přizpůsobení atributů a ujistěte se, že je vaše konfigurace správná.|
@@ -269,4 +269,4 @@ Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, kte
 
 * [Ověřit stav zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Problém s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD](../app-provisioning/application-provisioning-config-problem.md)
-* [Graph API pro protokoly zřizování](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)
+* [Graph API pro protokoly zřizování](/graph/api/resources/provisioningobjectsummary)

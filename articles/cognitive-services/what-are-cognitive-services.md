@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 71f8635d1cd96a6436cfc902622bf18bc608a143
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: c89131cc34d45ea94f3bb290ac11ec86f4b83be3
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104867181"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587608"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co je Azure Cognitive Services?
 
@@ -43,7 +43,7 @@ V následujících částech tohoto článku najdete seznam služeb, které jsou
 |[Custom Vision Service](./custom-vision-service/index.yml "Custom Vision Service")|Custom Vision Service umožňuje sestavovat, nasazovat a zdokonalovat vlastní klasifikátory obrázků. Klasifikátor obrázku je služba AI, která na obrázky aplikuje popisky na základě jejich vizuálních vlastností. |
 |[Rozpoznávání tváře](./face/index.yml "Tvář")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje. Pokud chcete začít používat službu, přečtěte si téma [rychlý Start obličeje](./face/quickstarts/client-libraries.md) .|
 |[Rozpoznávání formulářů](./form-recognizer/index.yml "Rozpoznávání formulářů")|Nástroj pro rozpoznávání formulářů identifikuje a extrahuje páry klíč-hodnota a tabulková data z dokumentů formulářů; pak výstup strukturovaných dat včetně relací v původním souboru. Začněte tím, že si přečtěte téma [rychlý Start pro rozpoznávání formulářů](./form-recognizer/quickstarts/client-library.md) .|
-|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer vám umožní extrahovat z videa přehledy. Začněte tím, že Projděte [video indexer rychlý Start](/media-services/video-indexer/video-indexer-get-started.md) .|
+|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer vám umožní extrahovat z videa přehledy. Začněte tím, že Projděte [video indexer rychlý Start](/azure/media-services/video-indexer/video-indexer-get-started) .|
 
 ## <a name="speech-apis"></a>Rozhraní API pro rozpoznávání řeči
 

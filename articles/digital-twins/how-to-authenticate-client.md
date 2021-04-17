@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1b7a846ee92da001ea2ac3ddd02efa9a870f72c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 958b0de97b79b447f2570dd9c57c87f380bcd551
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501902"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589324"
 ---
 # <a name="write-client-app-authentication-code"></a>Zápis ověřovacího kódu klientské aplikace
 
@@ -107,6 +107,20 @@ Chcete-li použít ověřování ve funkci, nezapomeňte na:
 * [Povolení spravované identity](../app-service/overview-managed-identity.md?tabs=dotnet)
 * Použijte [proměnné prostředí](/sandbox/functions-recipes/environment-variables?tabs=csharp) podle potřeby.
 * Přiřaďte oprávnění k aplikaci Functions, která mu umožní přístup k rozhraním API digitálních vláken. Další informace o procesech Azure Functions najdete v tématu [*Postup: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md).
+
+## <a name="authenticate-across-tenants"></a>Ověřování mezi tenanty
+
+Digitální vlákna Azure je služba, která podporuje jenom jednoho  [tenanta Azure Active Directory (Azure AD)](../active-directory/develop/quickstart-create-new-tenant.md): hlavní tenant z předplatného, kde se nachází instance digitálního vlákna Azure.
+
+[!INCLUDE [digital-twins-tenant-limitation](../../includes/digital-twins-tenant-limitation.md)]
+
+Pokud potřebujete získat přístup k instanci digitálních vláken Azure pomocí instančního objektu nebo uživatelského účtu, který patří do jiného tenanta z instance, můžete všechny federované identity z jiného tenanta požádat o **token** z tenanta z domova instance digitálních vláken Azure. 
+
+[!INCLUDE [digital-twins-tenant-solution-1](../../includes/digital-twins-tenant-solution-1.md)]
+
+V možnostech přihlašovacích údajů ve vašem kódu můžete také zadat domovského tenanta. 
+
+[!INCLUDE [digital-twins-tenant-solution-2](../../includes/digital-twins-tenant-solution-2.md)]
 
 ## <a name="other-credential-methods"></a>Další metody přihlašovacích údajů
 

@@ -7,13 +7,13 @@ ms.service: app-service
 ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.custom: include file
-ms.openlocfilehash: c00aa8d83c3ef69e4804822b5527c6faa64d4c8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: f49b0198b0365b9c2d83ad1f08059b4812f9d423
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102244921"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107512316"
 ---
 Vytvořte [webovou aplikaci](../articles/app-service/overview.md#app-service-on-linux) v `myAppServicePlan` plánu App Service. 
 
@@ -44,7 +44,7 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.s
 }
 </pre>
 
-Vytvořili jste prázdnou webovou aplikaci s povoleným nasazením Gitu.
+Účtován €™ v vytvořil prázdnou webovou aplikaci s povoleným nasazením Gitu.
 
 > [!NOTE]
 > Adresa URL vzdáleného úložiště Git se zobrazuje ve vlastnosti `deploymentLocalGitUrl` ve formátu `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`. Tuto adresu URL si uložte, protože ji budete potřebovat později.

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f0f3baf1bf56f958408f789961812c0555f289f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0882efeccfc8dc83686d75ab39b8364219c3b5f1
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043639"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588084"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>Možnosti redundance pro spravované disky
 
@@ -52,7 +52,7 @@ Podrobnosti najdete na [stránce s cenami za Azure](https://azure.microsoft.com/
 
 ### <a name="comparison-with-other-disk-types"></a>Porovnání s jinými typy disků
 
-S výjimkou větší latence zápisu jsou disky používající ZRS stejné jako disky používající LRS. Mají stejné cíle výkonu.
+S výjimkou větší latence zápisu jsou disky používající ZRS stejné jako disky používající LRS. Mají stejné cíle výkonu. Doporučujeme, abyste provedli [Srovnávací testování disku](disks-benchmarks.md) pro simulaci zatížení vaší aplikace, aby se porovnala latence mezi disky LRS a ZRS. 
 
 ### <a name="create-zrs-managed-disks"></a>Vytvoření ZRS spravovaných disků
 

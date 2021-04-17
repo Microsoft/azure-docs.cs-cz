@@ -4,14 +4,14 @@ description: Tento článek poskytuje přehled ověřování účtu Azure Automa
 keywords: automation security, secure automation; automation authentication
 services: automation
 ms.subservice: process-automation
-ms.date: 04/08/2021
+ms.date: 04/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: b52fa3083dc5c42fa71e720e9a3991cb7aa5afec
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 09aab71513b1152924de4eae91a718bad23d1012
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501565"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517997"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Přehled ověřování účtu Azure Automation
 
@@ -37,7 +37,7 @@ Spravovaná identita z Azure Active Directory (Azure AD) umožňuje sadě Runboo
 
 Zde jsou některé výhody použití spravovaných identit:
 
-- Spravované identity můžete použít k ověření pro libovolnou službu Azure, která podporuje ověřování Azure AD.
+- Spravované identity můžete použít k ověření pro libovolnou službu Azure, která podporuje ověřování Azure AD. Dají se použít pro Cloud i pro hybridní úlohy. Hybridní úlohy můžou používat spravované identity při spuštění na Hybrid Runbook Worker, která běží na virtuálním počítači Azure nebo mimo Azure.
 
 - Spravované identity lze použít bez jakýchkoli dalších nákladů.
 

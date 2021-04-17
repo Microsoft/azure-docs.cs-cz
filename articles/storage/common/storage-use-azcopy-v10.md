@@ -4,16 +4,16 @@ description: AzCopy je nástroj příkazového řádku, který můžete použít
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 826effb152d3f069e0a7c5b8e169f7083117ed22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34d3bd45d2c0bf0260a4f8524cff6f8ac03b746c
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103494491"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501712"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
@@ -40,25 +40,13 @@ Tyto soubory se komprimují jako soubor zip (Windows a Mac) nebo jako soubor s t
 > [!NOTE]
 > Pokud chcete kopírovat data do služby [Azure Table Storage](../tables/table-storage-overview.md) a z ní, nainstalujte [AzCopy verze 7,3](https://aka.ms/downloadazcopynet).
 
-
 ## <a name="run-azcopy"></a>Spuštění nástroje AzCopy
 
 Pro usnadnění práce zvažte přidání umístění adresáře spustitelného souboru AzCopy do systémové cesty. Tímto způsobem můžete zadat `azcopy` libovolný adresář v systému.
 
 Pokud se rozhodnete Nepřidávat adresář AzCopy do cesty, budete muset změnit adresáře na umístění spustitelného souboru AzCopy a typu `azcopy` nebo `.\azcopy` v příkazovém řádku prostředí Windows PowerShell.
 
-Pokud chcete zobrazit seznam příkazů, zadejte `azcopy -h` a potom stiskněte klávesu ENTER.
-
-Chcete-li získat informace o konkrétním příkazu, stačí zahrnout název příkazu (například: `azcopy list -h` ).
-
-> [!div class="mx-imgBorder"]
-> ![Vložená Help](media/storage-use-azcopy-v10/azcopy-inline-help.png)
-
-
-Podrobné referenční dokumentaci k jednotlivým příkazům a parametrům příkazu najdete v tématu [AzCopy](storage-ref-azcopy.md) .
-
-> [!NOTE] 
-> Jako vlastník účtu Azure Storage nemáte automaticky přiřazená oprávnění pro přístup k datům. Než budete moct s AzCopy dělat něco smysluplného, budete se muset rozhodnout, jak zadáte přihlašovací údaje pro autorizaci službě úložiště. 
+Jako vlastník účtu Azure Storage nemáte automaticky přiřazená oprávnění pro přístup k datům. Než budete moct s AzCopy dělat něco smysluplného, budete se muset rozhodnout, jak zadáte přihlašovací údaje pro autorizaci službě úložiště. 
 
 <a id="choose-how-youll-provide-authorization-credentials"></a>
 
@@ -95,24 +83,61 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 Další informace o tokenech SAS a o tom, jak je získat, najdete v tématu [použití sdílených přístupových podpisů (SAS)](./storage-sas-overview.md).
 
+> [!NOTE]
+> Nastavení [vyžadováno zabezpečeným přenosem](storage-require-secure-transfer.md) účtu úložiště Určuje, jestli je připojení k účtu úložiště zabezpečené pomocí protokolu TLS (Transport Layer Security). Standardně je toto nastavení povolené.   
+
 <a id="transfer-data"></a>
 
 ## <a name="transfer-data"></a>Přenos dat
 
 Po ověření identity nebo získání tokenu SAS můžete začít přenášet data.
 
-> [!NOTE]
-> Nastavení [vyžadováno zabezpečeným přenosem](storage-require-secure-transfer.md) účtu úložiště Určuje, jestli je připojení k účtu úložiště zabezpečené pomocí protokolu TLS (Transport Layer Security). Standardně je toto nastavení povolené.   
-
 Ukázkové příkazy najdete v některém z těchto článků.
 
 | Služba | Článek |
 |--------|-----------|
-|Azure Blob Storage |[Nahrání souborů do Azure Blob Storage](storage-use-azcopy-blobs-upload.md)<br><br>[Stažení objektů BLOB z Azure Blob Storage](storage-use-azcopy-blobs-download.md)<br><br>[Kopírování objektů BLOB mezi účty úložiště Azure](storage-use-azcopy-blobs-copy.md)<br><br>[Synchronizace s Azure Blob Storage](storage-use-azcopy-blobs-synchronize.md)|
+|Azure Blob Storage|[Nahrání souborů do Azure Blob Storage](storage-use-azcopy-blobs-upload.md) |
+|Azure Blob Storage|[Stažení objektů BLOB z Azure Blob Storage](storage-use-azcopy-blobs-download.md)|
+|Azure Blob Storage|[Kopírování objektů BLOB mezi účty úložiště Azure](storage-use-azcopy-blobs-copy.md)|
+|Azure Blob Storage|[Synchronizace s Azure Blob Storage](storage-use-azcopy-blobs-synchronize.md)|
 |Azure Files |[Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)|
 |Amazon S3|[Kopírovat data z Amazon S3 do Azure Storage](storage-use-azcopy-s3.md)|
 |Cloudové úložiště Googlu|[Kopírování dat z Google Cloud Storage do Azure Storage (Preview)](storage-use-azcopy-google-cloud.md)|
 |Azure Stack úložiště|[Přenos dat pomocí úložiště AzCopy a Azure Stack](/azure-stack/user/azure-stack-storage-transfer#azcopy)|
+
+## <a name="get-command-help"></a>Získat nápovědu k příkazu
+
+Pokud chcete zobrazit seznam příkazů, zadejte `azcopy -h` a potom stiskněte klávesu ENTER.
+
+Chcete-li získat informace o konkrétním příkazu, stačí zahrnout název příkazu (například: `azcopy list -h` ).
+
+> [!div class="mx-imgBorder"]
+> ![Vložená Help](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+
+### <a name="list-of-commands"></a>Seznam příkazů
+
+V následující tabulce jsou uvedeny všechny příkazy AzCopy v10 za účelem. Každý příkaz odkazuje na odkazový článek. 
+
+|Příkaz|Popis|
+|---|---|
+|[azcopy bench](storage-ref-azcopy-bench.md?toc=/azure/storage/blobs/toc.json)|Spustí srovnávací test výkonu odesláním nebo stažením testovacích dat do nebo ze zadaného umístění.|
+|[azcopy copy](storage-ref-azcopy-copy.md?toc=/azure/storage/blobs/toc.json)|Zkopíruje zdrojová data do cílového umístění.|
+|[azcopy doc](storage-ref-azcopy-doc.md?toc=/azure/storage/blobs/toc.json)|Vygeneruje dokumentaci pro nástroj ve formátu Markdownu.|
+|[azcopy env](storage-ref-azcopy-env.md?toc=/azure/storage/blobs/toc.json)|Zobrazuje proměnné prostředí, které můžou konfigurovat chování AzCopy.|
+|[azcopy jobs](storage-ref-azcopy-jobs.md?toc=/azure/storage/blobs/toc.json)|Dílčí příkazy související se správou úloh.|
+|[azcopy jobs clean](storage-ref-azcopy-jobs-clean.md?toc=/azure/storage/blobs/toc.json)|Odeberte všechny soubory protokolu a souboru s plánem pro všechny úlohy.|
+|[azcopy jobs list](storage-ref-azcopy-jobs-list.md?toc=/azure/storage/blobs/toc.json)|Zobrazí informace o všech úlohách.|
+|[azcopy jobs remove](storage-ref-azcopy-jobs-remove.md?toc=/azure/storage/blobs/toc.json)|Odebere všechny soubory přidružené k danému ID úlohy.|
+|[azcopy jobs resume](storage-ref-azcopy-jobs-resume.md?toc=/azure/storage/blobs/toc.json)|Obnoví existující úlohu s daným ID úlohy.|
+|[azcopy jobs show](storage-ref-azcopy-jobs-show.md?toc=/azure/storage/blobs/toc.json)|Zobrazí podrobné informace o daném ID úlohy.|
+|[azcopy load](storage-ref-azcopy-load.md)|Dílčí příkazy související s přenosem dat v konkrétních formátech.|
+|[azcopy load clfs](storage-ref-azcopy-load-avere-cloud-file-system.md?toc=/azure/storage/blobs/toc.json)|Převede místní data do kontejneru a uloží ho do formátu CLFS (avere Cloud FileSystem) Microsoftu.|
+|[azcopy list](storage-ref-azcopy-list.md?toc=/azure/storage/blobs/toc.json)|Zobrazí seznam entit v daném prostředku.|
+|[azcopy login](storage-ref-azcopy-login.md?toc=/azure/storage/blobs/toc.json)|Přihlásí se k Azure Active Directory pro přístup k prostředkům Azure Storage.|
+|[azcopy logout](storage-ref-azcopy-logout.md?toc=/azure/storage/blobs/toc.json)|Zaznamená uživatele a ukončí přístup k prostředkům Azure Storage.|
+|[azcopy make](storage-ref-azcopy-make.md?toc=/azure/storage/blobs/toc.json)|Vytvoří kontejner nebo sdílenou složku souborů.|
+|[azcopy remove](storage-ref-azcopy-remove.md?toc=/azure/storage/blobs/toc.json)|Odstraňte objekty blob nebo soubory z účtu služby Azure Storage.|
+|[azcopy sync](storage-ref-azcopy-sync.md?toc=/azure/storage/blobs/toc.json)|Replikuje zdrojové umístění do cílového umístění.|
 
 ## <a name="use-in-a-script"></a>Použití ve skriptu
 
@@ -161,7 +186,13 @@ Průzkumník služby Storage používá k provádění operací klíč účtu, t
 
 ## <a name="configure-optimize-and-fix"></a>Konfigurace, optimalizace a oprava
 
-Viz [konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
+Podívejte se na některý z následujících zdrojů:
+
+- [Nastavení konfigurace AzCopy](storage-ref-azcopy-configuration-settings.md)
+
+- [Optimalizace výkonu AzCopy](storage-use-azcopy-optimize.md)
+
+- [Řešení potíží s AzCopy v10 za účelem v Azure Storage pomocí souborů protokolu](storage-use-azcopy-configure.md)
 
 ## <a name="use-a-previous-version"></a>Použít předchozí verzi
 

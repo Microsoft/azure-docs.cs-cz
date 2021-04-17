@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: c98d88d66e89df3efe186212d8c004ec2a65158d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 1166585c7291c4fe0d78cbc9540e3f08f985db6c
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106450553"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107589865"
 ---
 | Prostředek | Omezení | Poznámka |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ ms.locfileid: "106450553"
 | Počet podmínek na přepsání sady pravidel|40| |
 | Souběžná připojení WebSocket |Střední brány 20 tisíc<sup>2</sup><br> Velké brány 50 tis<sup>2</sup>| |
 | Maximální délka adresy URL|32 KB| |
-| Maximální velikost hlavičky pro HTTP/2 |4KB| |
+| Maximální velikost hlavičky pro HTTP/2 |16 KB| |
 | Maximální velikost nahrávání souborů, Standard |2 GB | |
 | Maximální velikost nahrávání souborů WAF |V1 střední WAF brány, 100 MB<br>Velké WAF brány V1, 500 MB<br>V2 WAF, 750 MB| |
 | Omezení velikosti těla WAF, bez souborů|128 kB||

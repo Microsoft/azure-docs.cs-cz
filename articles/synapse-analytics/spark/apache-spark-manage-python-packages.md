@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 2d6ac02402414f096a46fec0340c3074d8e1784a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1d64233fc477ec25f91bb73c744b10210571df41
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104586637"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588339"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Správa knihoven Pythonu pro Apache Spark ve službě Azure synapse Analytics
 
@@ -76,7 +76,8 @@ dependencies:
   - matplotlib
   - koalas==1.7.0
 ```
-Podrobnosti o vytvoření prostředí z tohoto souboru prostředí. yml najdete v tématu [vytvoření prostředí ze souboru prostředí. yml](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html#creating-an-environment-file-manually).
+Podrobnosti o vytvoření prostředí z tohoto souboru prostředí. yml najdete v tématu [vytvoření prostředí ze souboru prostředí. yml](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment
+).
 
 #### <a name="update-python-packages"></a>Aktualizovat balíčky Pythonu
 Jakmile identifikujete soubor specifikace prostředí nebo sadu knihoven, které chcete nainstalovat do fondu Spark, můžete aktualizovat knihovny fondů Spark tak, že přejdete na Azure synapse Studio nebo Azure Portal. Tady můžete zadat specifikaci prostředí a vybrat knihovny pracovních prostorů k instalaci. 

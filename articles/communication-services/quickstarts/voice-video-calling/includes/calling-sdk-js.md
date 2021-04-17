@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 2ecbd207c4b1946a69b01f43ec2bc77d29b1a8c9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f20099943d3cfa3dd4afc161c26e5582e467ca8d
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073105"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589951"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,7 +50,7 @@ Pokud máte `CallClient` instanci, můžete vytvořit `CallAgent` instanci volá
 
 `createCallAgent`Metoda používá `CommunicationTokenCredential` jako argument. Přijímá [token přístupu uživatele](../../access-tokens.md).
 
-Po vytvoření `callAgent` instance můžete k `getDeviceManager` přístupu použít metodu z `CallClient` instance `deviceManager` .
+`getDeviceManager`Pro přístup k aplikaci můžete použít metodu z `CallClient` instance `deviceManager` .
 
 ```js
 // Set the logger's log level
@@ -109,9 +109,10 @@ const groupCall = callAgent.startCall([userCallee, pstnCallee], {alternateCaller
 > [!IMPORTANT]
 > V tuto chvíli nemůže být k dispozici více než jeden odchozí datový proud v místním videu.
 
-Chcete-li umístit audiovizuální volání, je nutné zadat své kamery pomocí `getCameras()` metody v `deviceManager` .
+Chcete-li umístit audiovizuální volání, je nutné vytvořit výčet místních kamer pomocí `getCameras()` metody v `deviceManager` .
 
 Po výběru kamery ji použijte k vytvoření `LocalVideoStream` instance. Předat do `videoOptions` jako položku v rámci `localVideoStream` pole do `startCall` metody.
+
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
@@ -146,7 +147,7 @@ const call = callAgent.join(context);
 > [!NOTE]
 > Toto rozhraní API se poskytuje jako verze Preview pro vývojáře a může se změnit na základě zpětné vazby, kterou dostaneme. Nepoužívejte toto rozhraní API v produkčním prostředí. Pokud chcete používat toto rozhraní API, použijte prosím verzi beta volání služby ACS, která volá web SDK.
 
-Chcete-li se připojit k týmu, použijte `join` metodu a předejte odkaz na schůzku nebo souřadnice.
+Chcete-li se připojit k týmu, použijte `join` metodu a předejte odkaz na schůzku nebo souřadnice schůzky.
 
 Připojte se pomocí odkazu na schůzku:
 
@@ -173,9 +174,13 @@ const call = callAgent.join(locator);
 
 ```js
 const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
-
-    //Get incoming call ID
+    const incomingCall = args.incomingCall; 
+    // Get incoming call ID
     var incomingCallId = incomingCall.id
+    // Get information about this Call. This API is provided as a preview for developers
+    // and may change based on feedback that we receive. Do not use this API in a production environment.
+    // To use this api please use 'beta' release of ACS Calling Web SDK
+    var callInfo = incomingCall.info;
 
     // Get information about caller
     var callerInfo = incomingCall.callerInfo
@@ -210,6 +215,12 @@ Získání jedinečného ID (řetězce) pro volání:
    ```js
     const callId: string = call.id;
    ```
+Získat informace o volání:
+> [!NOTE]
+> Toto rozhraní API se poskytuje jako verze Preview pro vývojáře a může se změnit na základě zpětné vazby, kterou dostaneme. Nepoužívejte toto rozhraní API v produkčním prostředí. Pokud chcete používat toto rozhraní API, použijte prosím verzi beta volání služby ACS, která volá web SDK.
+   ```js
+   const callInfo = call.info;
+   ```
 
 Přečtěte si o ostatních účastnících volání kontrolou `remoteParticipants` kolekce na instanci Call:
 
@@ -240,6 +251,7 @@ Získat stav volání:
   - `Connected`: Označuje, že je volání připojeno.
   - `LocalHold`: Označuje, že volání je blokováno místním účastníkem. Mezi místním koncovým bodem a vzdálenými účastníky není natékání žádného média.
   - `RemoteHold`: Označuje, že volání bylo blokováno vzdáleným účastníkem. Mezi místním koncovým bodem a vzdálenými účastníky není natékání žádného média.
+  - `InLobby`: Určuje, zda je uživatel v předsálí.
   - `Disconnecting`: Přechodový stav před tím, než volání přejde do `Disconnected` stavu.
   - `Disconnected`: Konečný stav volání. Pokud dojde ke ztrátě síťového připojení, stav se změní na `Disconnected` po dvou minutách.
 
@@ -276,17 +288,8 @@ Zkontrolujte aktivní streamy videa kontrolou `localVideoStreams` kolekce. Vrac�
    const localVideoStreams = call.localVideoStreams;
    ```
 
-### <a name="check-a-callended-event"></a>Ověřit událost callEnded
 
-`call`Instance emituje událost v `callEnded` případě, že volání skončí. Chcete-li naslouchat této události, přihlaste se k odběru pomocí následujícího kódu:
 
-```js
-const callEndHander = async (args: { callEndReason: CallEndReason }) => {
-    console.log(args.callEndReason)
-};
-
-call.on('callEnded', callEndHander);
-```
 
 ### <a name="mute-and-unmute"></a>Ztlumení a ztlumení
 
@@ -304,7 +307,7 @@ await call.unmute();
 
 ### <a name="start-and-stop-sending-local-video"></a>Spuštění a zastavení odesílání místního videa
 
-Chcete-li spustit video, je nutné zadat kamery pomocí `getCameras` metody `deviceManager` objektu. Pak vytvořte novou instanci `LocalVideoStream` předáním požadované kamery do `startVideo` metody jako argument:
+Chcete-li spustit video, je nutné vytvořit výčet kamer pomocí `getCameras` metody `deviceManager` objektu. Pak vytvořte novou instanci `LocalVideoStream` s požadovanou kamerou a potom předejte `LocalVideoStream` objekt do `startVideo` metody:
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
@@ -377,6 +380,7 @@ Vzdálení účastníci mají sadu přidružených vlastností a kolekcí:
   - `Connected`: Účastník je připojen ke volání.
   - `Hold`: Účastník je podržený.
   - `EarlyMedia`: Oznámení, které se přehrává před tím, než se účastník připojí k volání.
+  - `InLobby`: Označuje, že vzdálený účastník je v předsálí.
   - `Disconnected`: Konečný stav. Účastník je odpojen od volání. Pokud vzdálený účastník ztratí své připojení k síti, jejich stav se změní na `Disconnected` po dvou minutách.
 
 - `callEndReason`: Chcete-li zjistit, proč účastník opustil hovor, ověřte `callEndReason` vlastnost:
@@ -412,7 +416,7 @@ Vzdálení účastníci mají sadu přidružených vlastností a kolekcí:
 
 ### <a name="add-a-participant-to-a-call"></a>Přidání účastníka do volání
 
-Chcete-li přidat účastníka (buď uživatele nebo telefonní číslo) k volání, můžete použít `addParticipant` . Zadejte jeden z `Identifier` typů. Vrátí `remoteParticipant` instanci.
+Chcete-li přidat účastníka (buď uživatele nebo telefonní číslo) k volání, můžete použít `addParticipant` . Zadejte jeden z `Identifier` typů. Synchronně vrátí `remoteParticipant` instanci. `remoteParticipantsUpdated`Událost z volání je vyvolána při úspěšném přidání účastníka do volání.
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
@@ -488,7 +492,6 @@ Proudy vzdálených videí mají následující vlastnosti:
   ```
 
 ### <a name="videostreamrenderer-methods-and-properties"></a>Metody a vlastnosti VideoStreamRenderer
-
 Vytvořte `VideoStreamRendererView` instanci, která může být připojena v uživatelském rozhraní aplikace pro vykreslení vzdáleného streamu videa, použijte asynchronní `createView()` metodu, která se vyřeší, když je datový proud připraven k vykreslení a vrátí objekt s `target` vlastností, která představuje `video` prvek, který lze připojit kdekoli ve stromu modelu DOM.
 
   ```js
@@ -523,7 +526,7 @@ view.updateScalingMode('Crop')
 
 ## <a name="device-management"></a>Správa zařízení
 
-V nástroji `deviceManager` můžete zadat místní zařízení, která můžou přenášet vaše audio a video streamy ve volání. Pomůže vám taky požádat o oprávnění k přístupu k mikrofonu a kameře jiného uživatele pomocí rozhraní API nativního prohlížeče.
+V nástroji `deviceManager` můžete vytvořit výčet místních zařízení, která můžou přenášet vaše audio a video streamy ve volání. Můžete ji také použít k vyžádání oprávnění pro přístup k mikrofonům a fotoaparátům místního zařízení.
 
 Můžete získat přístup `deviceManager` voláním `callClient.getDeviceManager()` metody:
 
@@ -533,7 +536,7 @@ const deviceManager = await callClient.getDeviceManager();
 
 ### <a name="get-local-devices"></a>Získat místní zařízení
 
-Pro přístup k místním zařízením můžete použít metody výčtu v `deviceManager` .
+Pro přístup k místním zařízením můžete použít metody výčtu v `deviceManager` . Výčet je asynchronní akce.
 
 ```js
 //  Get a list of available video devices for use.

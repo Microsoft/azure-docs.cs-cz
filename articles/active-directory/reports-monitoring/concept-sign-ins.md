@@ -13,28 +13,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/24/2020
+ms.date: 04/16/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99f1f27cb087dc83295dddade4c0fca551a0d9c9
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93122839"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589682"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
-Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) se skládá z následujících součástí:
+Portál Azure Active Directory umožňuje přístup k třem protokolům aktivit:
 
-- **Aktivita** 
-    - **Přihlášení** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
-    - **Protokoly auditu**  -  [Protokoly auditu](concept-audit-logs.md) poskytují informace o aktivitě systému o uživatelích a správě skupin, spravovaných aplikacích a aktivitách adresářů.
-    - **Zřizování protokolů**  -  [Protokoly zřizování](./concept-provisioning-logs.md) umožňují zákazníkům monitorovat aktivity prostřednictvím služby zřizování, například vytvoření skupiny v ServiceNow nebo uživatele naimportovaného z Workday. 
-- **Zabezpečení** 
-    - **Riziková přihlášení** – [rizikové přihlášení](../identity-protection/overview-identity-protection.md) je indikátorem pokusu o přihlášení někoho, kdo není legitimním vlastníkem uživatelského účtu.
-    - **Uživatelé označení příznakem rizika** – [rizikové uživatel](../identity-protection/overview-identity-protection.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
+- **Přihlášení** – informace o přihlášeních a o tom, jak vaše prostředky používají vaši uživatelé.
+- **[Audit](concept-audit-logs.md)** – informace o změnách použitých pro vašeho tenanta, jako jsou uživatelé a Správa skupin nebo aktualizace, které se vztahují na prostředky vašeho tenanta.
+- **[Zřizování](concept-provisioning-logs.md)** – aktivity prováděné službou zřizování, například vytvoření skupiny v ServiceNow nebo uživatel importovaný z pracovního dne.
 
 Tento článek obsahuje přehled sestavy přihlášení.
 
@@ -99,12 +95,23 @@ Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznam
 > Další informace najdete v [nejčastějších dotazech k informacím o certifikační autoritě ve všech přihlášeních](reports-faq.md#conditional-access).
 
 
+## <a name="sign-in-error-code"></a>Kód chyby přihlášení
 
-## <a name="filter-sign-in-activities"></a>Filtrování aktivit přihlašování
+Pokud se nezdařilo přihlášení, můžete získat další informace o příčině v části **základní informace** o související položce protokolu. 
+
+![kód chyby přihlášení](./media/concept-all-sign-ins/error-code.png)
+ 
+I když položka protokolu poskytuje důvod selhání, existují případy, kdy můžete získat další informace pomocí [Nástroje pro vyhledávání chyb při přihlašování](https://login.microsoftonline.com/error). Pokud je k dispozici například, tento nástroj poskytuje kroky odstranění problému.  
+
+![Nástroj pro vyhledávání kódů chyb](./media/concept-all-sign-ins/error-code-lookup-tool.png)
+
+
+
+## <a name="filter-sign-in-activities&quot;></a>Filtrování aktivit přihlašování
 
 Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyhovovat. Za druhé filtrujte data přihlášení pomocí pole data jako výchozí filtr. Azure AD poskytuje širokou škálu dalších filtrů, které můžete nastavit:
 
-![Snímek obrazovky ukazuje možnost přidat filtry.](./media/concept-sign-ins/04.png "Aktivita přihlášení")
+![Snímek obrazovky ukazuje možnost přidat filtry.](./media/concept-sign-ins/04.png &quot;Aktivita přihlášení")
 
 **ID žádosti** – ID žádosti, o kterou vám záleží.
 
@@ -228,7 +235,7 @@ Na každém řádku v seznamu aktivit přihlašování se zobrazí:
 Kliknutím na položku zobrazíte další podrobnosti o přihlašovací operaci:
 
 - ID uživatele
-- User
+- Uživatel
 - Uživatelské jméno
 - ID aplikace
 - Aplikace

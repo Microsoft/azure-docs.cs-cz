@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 223d119786d99eac611ece597fc0e8de4fcaf6bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 090eda3c3310a1b793733e37725c62758445d6b2
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98762411"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587308"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí zálohování a obnovení služby ve službě Azure API Management
 
@@ -78,11 +78,14 @@ Všechny úlohy, které provedete v prostředcích pomocí Azure Resource Manage
 5. Vyberte možnost **Správa služeb Azure**.
 6. Stiskněte **Vybrat**.
 
-    ![Přidání oprávnění](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
+    :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/add-app-permission.png" alt-text="Snímek obrazovky, který ukazuje, jak přidat oprávnění aplikace"::: 
 
 7. Klikněte na **delegovaná oprávnění** vedle nově přidané aplikace, zaškrtněte políčko pro **přístup ke službě Azure Service Management (Preview)**.
+
+    :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/delegated-app-permission.png" alt-text="Snímek obrazovky, který ukazuje přidání oprávnění delegované aplikace":::
+
 8. Stiskněte **Vybrat**.
-9. Klikněte na **udělit oprávnění**.
+9. Klikněte na tlačítko **Přidat oprávnění**.
 
 ### <a name="configuring-your-app"></a>Konfigurace aplikace
 

@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 57e9d0c584600a8fac90499d72cfac1620052603
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 006abf62c605c2ca34fd1adeadee8e29ae0fb8fb
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694916"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588305"
 ---
 # <a name="troubleshoot-library-installation-errors"></a>Řešení chyb při instalaci knihovny 
 Chcete-li zpřístupnit aplikaci třetí straně nebo místně sestavený kód, můžete nainstalovat knihovnu na jeden z Apache Spark fondů bez serveru. Balíčky uvedené v souboru requirements.txt se stáhnou z PyPi v době spuštění fondu. Tento soubor požadavků se používá při každém vytvoření instance Spark z tohoto fondu Spark. Jakmile je knihovna nainstalována pro fond Spark, je k dispozici pro všechny relace používající stejný fond. 
@@ -92,7 +92,7 @@ Fondy Apache Spark serverů bez serveru jsou založené na distribuci systému L
 Opětovné vytvoření prostředí a ověření aktualizací:
  1. [Stáhněte](https://github.com/Azure-Samples/Synapse/blob/main/Spark/Python/base_environment.yml) šablonu pro místně znovu vytvořte modul runtime synapse. Mezi šablonou a skutečným prostředím synapse může dojít ke mírnému rozdílu.
    
- 2. Vytvořte virtuální prostředí podle [následujících pokynů](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html). Toto prostředí umožňuje vytvořit izolovanou instalaci Pythonu se zadaným seznamem knihoven. 
+ 2. Vytvořte virtuální prostředí podle [následujících pokynů](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment). Toto prostředí umožňuje vytvořit izolovanou instalaci Pythonu se zadaným seznamem knihoven. 
     
     ```
     conda myenv create -f environment.yml
@@ -102,7 +102,7 @@ Opětovné vytvoření prostředí a ověření aktualizací:
  3. Použijte ``pip install -r <provide your req.txt file>`` k aktualizaci virtuálního prostředí se zadanými balíčky. Pokud při instalaci dojde k chybě, může dojít ke konfliktu mezi tím, co je předem nainstalované v synapse základního modulu runtime a co je zadáno v zadaném souboru požadavků. Aby bylo možné získat aktualizované knihovny na Apache Spark fond bez serveru, je nutné vyřešit tyto konflikty závislostí.
 
 >[!IMPORTANT]
->Problémy se můžou arrise při použití PIP a conda společně. Při kombinování PIP a conda je vhodné dodržovat tyto [Doporučené osvědčené postupy](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html#using-pip-in-an-environment).
+>Problémy se můžou arrise při použití PIP a conda společně. Při kombinování PIP a conda je vhodné dodržovat tyto [Doporučené osvědčené postupy](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment).
 
 ## <a name="next-steps"></a>Další kroky
 - Zobrazení výchozích knihoven: [podpora Apache Spark verzí](apache-spark-version-support.md)

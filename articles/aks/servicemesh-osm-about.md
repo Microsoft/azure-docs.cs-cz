@@ -4,15 +4,15 @@ description: Otevřená síť (OSM) ve službě Azure Kubernetes (AKS)
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 0052c8d2f9b85c34d50a3e9d01253ecaf2d02bab
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d266021a666070fdbade819eadb819b973768a72
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106709"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480840"
 ---
 # <a name="open-service-mesh-aks-add-on-preview"></a>Otevřít doplněk AKS pro síť služby (Preview)
 

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8e4c422ad4577cd1cb94e10d42e6492137cd14bf
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 1a922f8f6b4b94e9aadb6e2d8fa40667403f85c1
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091802"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501602"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Azure Event Grid domény by měly zakázat přístup k veřejné síti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff8f774be-6aee-492a-9e29-486ef81f3a68) |Zakázání přístupu k veřejné síti zlepšuje zabezpečení tím, že zajistí, že prostředek není zveřejněný na veřejném Internetu. Místo toho můžete omezit vystavení prostředků vytvořením privátních koncových bodů. Další informace najdete tady: [https://aka.ms/privateendpoints](https://aka.ms/privateendpoints) . |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Domains_PublicNetworkAccess_AuditDeny.json) |
 |[Azure Event Grid domény by měly používat privátní odkaz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9830b652-8523-49cc-b1b3-e17dce1127ca) |Privátní odkaz Azure umožňuje připojit virtuální síť ke službám Azure bez veřejné IP adresy ve zdroji nebo cíli. Platforma privátních odkazů zpracovává připojení mezi klientem a službami přes páteřní síť Azure. Mapováním privátních koncových bodů na vaši doménu Event Grid místo celé služby budete chráněni i proti rizikům úniku dat. Další informace najdete tady: [https://aka.ms/privateendpoints](https://aka.ms/privateendpoints) . |Audit, zakázáno |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Domains_PrivateEndpoint_Audit.json) |

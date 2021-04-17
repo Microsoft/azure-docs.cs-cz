@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d1f0728a9a8da264f0960be2b956516b3c93742e
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 8c9d760ed888eb194ad8f282f180a634e3c09538
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258073"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587812"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Kurz: Konfigurace ochrany proti podvodům v Microsoft Dynamics 365 pomocí Azure Active Directory B2C
 
@@ -126,8 +126,8 @@ V části poskytnuté [vlastní zásady](https://github.com/azure-ad-b2c/partner
 |  {your_tenant_extensions_appid}   |  ID aplikace pro aplikaci úložiště vašeho tenanta   |  01234567-89AB-CDEF-0123-456789ABCDEF  |
 |   {your_tenant_extensions_app_objectid}  | ID objektu aplikace úložiště vašeho tenanta    | 01234567-89AB-CDEF-0123-456789ABCDEF   |
 |   {your_app_insights_instrumentation_key}  |   Klíč instrumentace instance App Insights *  |   01234567-89AB-CDEF-0123-456789ABCDEF |
-|  {your_ui_base_url}   | Koncový bod ve službě App Service, ze které jsou obsluhovány soubory uživatelského rozhraní    | https://yourapp.azurewebsites.net/B2CUI/GetUIPage   |
-|   {your_app_service_url}  | Adresa URL služby App Service    |  https://yourapp.azurewebsites.net  |
+|  {your_ui_base_url}   | Koncový bod ve službě App Service, ze které jsou obsluhovány soubory uživatelského rozhraní    | `https://yourapp.azurewebsites.net/B2CUI/GetUIPage`   |
+|   {your_app_service_url}  | Adresa URL služby App Service    |  `https://yourapp.azurewebsites.net`  |
 |   {vaše-Facebook-App-ID}  |  ID aplikace pro Facebook, kterou jste nakonfigurovali pro federaci s Azure AD B2C   | 000000000000000   |
 |  {vaše aplikace Facebook-App-Secret}   |  Název klíče zásad, na který jste uložili tajný klíč aplikace Facebook   | B2C_1A_FacebookAppSecret   |
 

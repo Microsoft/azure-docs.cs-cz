@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: ba75e11a067a257c659f8c659f68bb2bba6fa2e0
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: fac2eb75d210a34f4c5cd50c4649921aadfcd5ee
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012081"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588492"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -108,6 +108,7 @@ V kalendáři vydaných verzí [AKS Kubernetes](#aks-kubernetes-release-calendar
 
 Pro nové **menší** verze Kubernetes:
   * AKS publikuje před odebráním předem oznámení s plánovaným datem vydání nové verze a vyřazením původní verze v [poznámkách k verzi AKS](https://aka.ms/aks/releasenotes) nejméně 30 dní před odebráním.
+  * AKS používá [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) k upozornění uživatelů v případě, že nová verze způsobí, že v clusteru dojde k problémům z důvodu zastaralých rozhraní API. Azure Advisor se také používá k upozornění uživatele, pokud se v tuto chvíli nepodporují.
   * AKS zveřejňuje [oznámení o stavu služby](../service-health/service-health-overview.md) dostupné všem uživatelům s přístupem k AKS a portálu a pošle jim e-mail správcům předplatného s plánovanými datem odebrání verze.
 
     ````
@@ -142,16 +143,18 @@ Historii minulých verzí najdete v tématu [Kubernetes](https://en.wikipedia.or
 
 |  Verze K8s | Verze nadřazeného softwaru  | AKS ve verzi Preview  | AKS GA  | Konec života |
 |--------------|-------------------|--------------|---------|-------------|
-| 1,17  | Dec-09-19  | Leden 2019   | Července 2020  | 1,20 GA | 
 | 1,18  | Březen – 23-20  | Květen 2020   | Srpna 2020  | 1,21 GA | 
 | 1,19  | Srpna 04-20  | SEP 2020   | Listopadu 2020  | 1,22 GA | 
 | 1.20  | DEC-08-20  | Leden 2021   | Březen 2021  | 1,23 GA |
-| 1,21  | Duben – 08-21 * | Květen 2021   | Červen 2021  | 1,24 GA |
+| 1,21  | Duben – 08-21 | Květen 2021   | Červen 2021  | 1,24 GA |
 
-\* Verze Kubernetes 1,21 pro odesílání nadřazených verzí se může změnit jako nadřazený kalendář, který se ještě dokončuje.
 
 
 ## <a name="faq"></a>Časté otázky
+
+**Jak Microsoft oznamuje nové verze Kubernetes?**
+
+Tým AKS publikuje předem oznámení s plánovanými kalendářními daty nových verzí Kubernetes v naší dokumentaci, v našem [GitHubu](https://github.com/Azure/AKS/releases) i v e-mailech pro správce předplatného, kteří vlastní clustery, na které se bude vztahovat podpora.  Kromě oznámení AKS také používá [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) k upozornění zákazníka v rámci webu Azure Portal, pokud se nepodporují, a upozorní na zastaralá rozhraní API, která budou mít vliv na jejich aplikaci nebo proces vývoje. 
 
 **Jak často mám očekávat, že upgradují verze Kubernetes, aby zůstaly v podpoře?**
 

@@ -3,14 +3,14 @@ title: Řešení potíží s Azure Automation Update Management
 description: V tomto článku se dozvíte, jak řešit problémy s Azure Automation Update Management.
 services: automation
 ms.subservice: update-management
-ms.date: 01/13/2021
+ms.date: 04/16/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: c16b032502401b633532ab0fcf9518aa85a1b8d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f23632ba6a6b83f92b2bfc90beb4c1a8613c090a
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579747"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587359"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Řešení problémů s Update Managementem
 
@@ -188,11 +188,13 @@ Chcete-li zaregistrovat poskytovatele prostředků služby Automation, postupujt
 
 5. Pokud není v seznamu uveden, zaregistrujte poskytovatele Microsoft. Automation podle kroků v části [řešení chyb pro registraci poskytovatele prostředků](../../azure-resource-manager/templates/error-register-resource-provider.md).
 
-## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>Scénář: naplánovaná aktualizace s dynamickým plánem nenalezla některé počítače.
+## <a name="scenario-scheduled-update-did-not-patch-some-machines"></a><a name="scheduled-update-missed-machines"></a>Scénář: plánovaná aktualizace neaktualizovala některé počítače.
 
 ### <a name="issue"></a>Problém
 
-Počítače zahrnuté ve verzi Preview se nezobrazí v seznamu počítačů, které byly během naplánovaného spuštění opraveny.
+Počítače zahrnuté ve verzi Preview se nezobrazí v seznamu počítačů, které byly během naplánovaného spuštění opraveny, nebo se v seznamu Aktualizovat náhled na portálu nezobrazují virtuální počítače pro vybrané obory dynamické skupiny.
+
+Seznam aktualizovat náhled se skládá ze všech počítačů načtených dotazem na [Azure Resource Graph](../../governance/resource-graph/overview.md) pro vybrané obory. Obory jsou filtrované pro počítače, které mají nainstalovaný systém Hybrid Runbook Worker a pro které máte přístupová oprávnění.
 
 ### <a name="cause"></a>Příčina
 
@@ -201,6 +203,12 @@ Tento problém může mít jednu z následujících příčin:
 * Odběry definované v oboru v dynamickém dotazu nejsou konfigurovány pro registrovaného poskytovatele prostředků služby Automation.
 
 * Počítače nebyly k dispozici nebo nebyly po provedení plánu příslušné značky.
+
+* Nemáte správný přístup k vybraným oborům.
+
+* Dotaz na graf Azure Resource nenačítá očekávané počítače.
+
+* V počítačích nejsou nainstalované systémové Hybrid Runbook Worker.
 
 ### <a name="resolution"></a>Řešení
 
@@ -238,31 +246,15 @@ Následující postup použijte v případě, že je vaše předplatné nakonfig
 
 7. Spusťte znovu plán aktualizace, aby se zajistilo, že nasazení se zadanými dynamickými skupinami zahrnuje všechny počítače.
 
-## <a name="scenario-expected-machines-dont-appear-in-preview-for-dynamic-group"></a><a name="machines-not-in-preview"></a>Scénář: pro dynamickou skupinu se nezobrazí očekávané počítače ve verzi Preview.
-
-### <a name="issue"></a>Problém
-
-Virtuální počítače pro vybrané rozsahy dynamické skupiny se v seznamu Azure Portal Preview nezobrazují. Tento seznam se skládá ze všech počítačů načtených dotazem ARG pro vybrané obory. Obory jsou filtrované pro počítače, které mají nainstalované procesy Hybrid Runbook Worker a pro které máte přístupová oprávnění.
-
-### <a name="cause"></a>Příčina
-
-Tady jsou možné příčiny tohoto problému:
-
-* Nemáte správný přístup k vybraným oborům.
-* Dotaz ARG nenačte očekávané počítače.
-* Na počítačích není nainstalovaná Hybrid Runbook Worker.
-
-### <a name="resolution"></a>Řešení 
-
 #### <a name="incorrect-access-on-selected-scopes"></a>Nesprávný přístup pro vybrané obory
 
 Azure Portal zobrazí jenom počítače, pro které máte v daném oboru přístup pro zápis. Pokud nemáte správný přístup k oboru, přečtěte si téma [kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure Portal](../../role-based-access-control/quickstart-assign-role-user-portal.md).
 
-#### <a name="arg-query-doesnt-return-expected-machines"></a>ARG dotaz nevrací očekávané počítače
+#### <a name="resource-graph-query-doesnt-return-expected-machines"></a>Dotaz na graf prostředku nevrací očekávané počítače.
 
 Použijte následující postup, chcete-li zjistit, zda dotazy fungují správně.
 
-1. Spusťte dotaz ARG, který je uveden níže v okně Průzkumník diagramů prostředků v Azure Portal. Tento dotaz napodobá filtrům, které jste vybrali při vytváření dynamické skupiny v Update Management. Viz [použití dynamických skupin s Update Management](../update-management/configure-groups.md).
+1. Spusťte dotaz grafu prostředků Azure, jak je znázorněno níže v okně Průzkumník diagramů prostředků v Azure Portal. Pokud s Azure Resource graphem začínáte, přečtěte si tento [rychlý Start](../../governance/resource-graph/first-query-portal.md) , kde se dozvíte, jak pracovat s Průzkumníkem Graph Resource Exploreru. Tento dotaz napodobá filtrům, které jste vybrali při vytváření dynamické skupiny v Update Management. Viz [použití dynamických skupin s Update Management](../update-management/configure-groups.md).
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -287,7 +279,7 @@ Použijte následující postup, chcete-li zjistit, zda dotazy fungují správn�
 
 #### <a name="hybrid-runbook-worker-not-installed-on-machines"></a>Hybrid Runbook Worker není na počítačích nainstalovaný.
 
-Počítače se zobrazí ve výsledcích dotazu ARG, ale ve verzi Preview dynamické skupiny se ještě nezobrazují. V takovém případě nemusí být počítače určené jako hybridní pracovní procesy, takže nemůžou spouštět úlohy Azure Automation a Update Management. Pokud chcete zajistit, aby se počítače, které očekáváte zobrazit, nastavily jako procesy Hybrid Runbook Worker:
+Počítače se zobrazí ve výsledcích dotazu ve službě Azure Resource Graph, ale pořád se nezobrazí v dynamické skupině ve verzi Preview. V takovém případě nemusí být počítače určené jako System Hybrid Runbook Worker, takže nemohou spouštět Azure Automation a Update Management úlohy. Pokud chcete zajistit, aby se počítače, které očekáváte zobrazit, nastavily jako System Hybrid Runbook Worker:
 
 1. V Azure Portal přejdete do účtu Automation pro počítač, který se nezobrazuje správně.
 
@@ -297,11 +289,9 @@ Počítače se zobrazí ve výsledcích dotazu ARG, ale ve verzi Preview dynamic
 
 4. Ověřte, jestli je hybridní pracovní proces pro tento počítač přítomen.
 
-5. Pokud počítač není nastavený jako hybridní pracovní proces, proveďte úpravy pomocí pokynů v tématu [Automatizace prostředků ve vašem datovém centru nebo cloudu pomocí Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md).
+5. Pokud počítač není nastavený jako systémový Hybrid Runbook Worker, přečtěte si metody povolení počítače v části [povolení Update Management](../update-management/overview.md#enable-update-management) v článku Update Management přehled. Metoda, která se má povolit, je založená na prostředí, ve kterém je počítač spuštěný.
 
-6. Připojte počítač ke skupině Hybrid Runbook Worker.
-
-7. Opakujte výše uvedené kroky pro všechny počítače, které se nezobrazovaly ve verzi Preview.
+6. Opakujte výše uvedené kroky pro všechny počítače, které se nezobrazovaly ve verzi Preview.
 
 ## <a name="scenario-update-management-components-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>Scénář: Update Management komponenty povoleny, zatímco se virtuální počítač nadále zobrazuje jako nakonfigurovaný
 

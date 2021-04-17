@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: a7e709ba9a4de5ff77524a2d2b1b64a5933131a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 171e0c03dc6f246d0f56d11f793ca711b0082f49
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489408"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588288"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>Import klíčů chráněných modulem HSM do služby Key Vault
 
@@ -33,7 +33,7 @@ Přenos klíčů chráněných modulem HSM do Key Vault se podporuje dvěma růz
 
 |Název dodavatele|Typ dodavatele|Podporované modely HSM|Podporovaná metoda přenosu klíče HSM|
 |---|---|---|---|
-|[Podpůrný software nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|Výrobců<br/>HSM jako služba|<ul><li>Hardwarového nShield rodina HSM</li><li>Hardwarového nShield jako služba</ul>|**Metoda 1:** [podpůrný software nCipher BYOK](hsm-protected-keys-ncipher.md) (zastaralé)<br/>**Metoda 2:** [použití nové metody BYOK](hsm-protected-keys-byok.md) (doporučeno)|
+|[Podpůrný software nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|Výrobců<br/>HSM jako služba|<ul><li>Hardwarového nShield rodina HSM</li><li>Hardwarového nShield jako služba</ul>|**Metoda 1:** [podpůrný software nCipher BYOK](hsm-protected-keys-ncipher.md) (zastaralé). Tato metoda nebude podporována po 30. <strong>června 2021</strong><br/>**Metoda 2:** [použití nové metody BYOK](hsm-protected-keys-byok.md) (doporučeno)|
 |Thales|Manufacturer|<ul><li>Luna HSM 7 Family s firmwarem verze 7,3 nebo novější</li></ul>| [Použít novou metodu BYOK](hsm-protected-keys-byok.md)|
 |Fortanix|Výrobců<br/>HSM jako služba|<ul><li>Služba správy klíčů Self-Defending (SDKMS)</li><li>Equinix SmartKey</li></ul>|[Použít novou metodu BYOK](hsm-protected-keys-byok.md)|
 |PERC|Manufacturer|Všechny LiquidSecurity HSM s<ul><li>Firmware verze 2.0.4 nebo novější</li><li>Firmware verze 3,2 nebo novější</li></ul>|[Použít novou metodu BYOK](hsm-protected-keys-byok.md)|

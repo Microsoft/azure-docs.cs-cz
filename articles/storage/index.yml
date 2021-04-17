@@ -1,149 +1,143 @@
 ### YamlMime:Hub
 title: Dokumentace ke službě Azure Storage
-summary: Azure Storage zahrnuje úložiště pro objekty, soubory, disky, fronty a tabulky. K dispozici jsou také služby pro řešení hybridních úložišť a služby pro přenos, sdílení a zálohování dat.
+summary: 'Azure Storage zahrnuje úložiště pro objekty, soubory, disky, fronty a tabulky. K dispozici jsou také služby pro řešení hybridních úložišť a služby pro přenos, sdílení a zálohování dat.'
 brand: azure
 metadata:
   title: Dokumentace ke službě Azure Storage
-  description: Stránka centra dokumentace ke službě Azure Storage Odkazuje na dokumentaci ke službě pro řešení cloudových a hybridních úložišť a služby pro přenos, sdílení a zálohování dat.
+  description: 'Stránka centra dokumentace ke službě Azure Storage Odkazuje na dokumentaci ke službě pro řešení cloudových a hybridních úložišť a služby pro přenos, sdílení a zálohování dat.'
   ms.service: storage
   ms.topic: hub-page
   author: twooley
   ms.author: twooley
-  ms.date: 05/01/2020
-  ms.openlocfilehash: 886f61206bdc87dc5283a46e50ff438041be1a2f
-  ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-  ms.translationtype: MT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/27/2021
-  ms.locfileid: "98878472"
+  ms.date: 04/14/2021
 highlightedContent:
   items:
-  - title: Seznámení se základními službami úložiště
-    itemType: concept
-    url: ./common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: Další informace o jednotlivých typech účtů úložiště
-    itemType: concept
-    url: ./common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: vytvořit účet úložiště
-    itemType: how-to-guide
-    url: ./common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: Další informace o redundanci dat
-    itemType: concept
-    url: ./common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: Přesun dat do Azure
-    itemType: concept
-    url: ./common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: Seznámení se základními službami úložiště
+      itemType: concept
+      url: ./common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: Další informace o jednotlivých typech účtů úložiště
+      itemType: concept
+      url: ./common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: vytvořit účet úložiště
+      itemType: how-to-guide
+      url: ./common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: Další informace o redundanci dat
+      itemType: concept
+      url: ./common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: Migrace dat do Azure Storage
+      itemType: concept
+      url: ./common/storage-migration-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 additionalContent:
   sections:
-  - title: Řešení cloudového úložiště
-    items:
-    - title: Úložiště objektů pro vaše aplikace
-      links:
-      - url: ./blobs/storage-blobs-introduction.md
-        text: Další informace o úložišti pro nestrukturovaná data (úložiště objektů blob)
-      - url: /rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs
-        text: Vysvětlení objektů blob bloku, doplňovacích objektů blob a objektů blob stránky
-      - url: ./blobs/index.yml
-        text: Zobrazit víc >
-    - title: Úložiště pro analýzy velkých objemů dat
-      links:
-      - url: ./blobs/data-lake-storage-introduction.md
-        text: Další informace o úložišti pro podniková datová jezera (Data Lake Storage)
-      - url: ./blobs/data-lake-storage-data-scenarios.md
-        text: Seznámení s možnostmi a nástroji pro zpracování velkých objemů dat
-    - title: Sdílené složky hostované v cloudu
-      links:
-      - url: ./files/storage-files-introduction.md
-        text: Použití sdílených složek poskytovaných základní platformou Azure Storage (Azure Files)
-      - url: ../azure-netapp-files/azure-netapp-files-introduction.md
-        text: Použití svazků poskytovaných NetApp ONTAP (Azure NetApp Files)
-    - title: Diskové úložiště pro úlohy IaaS
-      links:
-      - url: ../virtual-machines/managed-disks-overview.md
-        text: Další informace o svazcích úložiště na úrovni bloku pro virtuální počítače Azure
-      - url: ../virtual-machines/disks-types.md
-        text: Seznámení s dostupnými typy disků
-      - url: ../virtual-machines/windows/attach-managed-disk-portal.md
-        text: Přidání nového disku do virtuálního počítače – Windows
-      - url: ../virtual-machines/linux/attach-disk-portal.md
-        text: Připojení datového disku k virtuálnímu počítači – Linux
-    - title: Úložiště pro asynchronní řízení front zpráv
-      links:
-      - url: ./queues/storage-queues-introduction.md
-        text: Další informace o řešení Azure Storage pro fronty (Queue Storage)
-      - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
-        text: Porovnání front Queue Storage a Service Bus
-      - url: ./queues/index.yml
-        text: Zobrazit víc >
-    - title: Úložiště pro strukturovaná data NoSQL
-      links:
-      - url: ./tables/table-storage-overview.md
-        text: Ukládání strukturovaných dat NoSQL v cloudu (Table Storage a Cosmos DB)
-      - url: ../cosmos-db/table-support.md
-        text: Porovnání rozhraní API pro tabulky Table Storage a Cosmos DB
-      - url: ./tables/index.yml
-        text: Zobrazit víc >
-  - title: Řešení hybridního úložiště
-    items:
-    - title: Rozšíření místních sdílených složek do cloudu
-      links:
-      - url: ./files/storage-sync-files-planning.md
-        text: Synchronizace sdílených složek Azure se souborovým serverem Windows (Synchronizace souborů Azure)
-      - url: ./files/storage-sync-files-deployment-guide.md
-        text: Nasazení Synchronizace souborů Azure
-      - url: ./files/index.yml
-        text: Zobrazit víc >
-    - title: Online přenos dat (z místního prostředí do Azure)
-      links:
-      - url: ../databox-gateway/data-box-gateway-overview.md
-        text: Bezproblémový přenos dat do Azure (Data Box Gateway)
-      - url: ../databox-online/azure-stack-edge-overview.md
-        text: Místní zpracování dat před přenosem do Azure (Azure Stack Edge)
-      - url: ../databox-online/index.yml
-        text: Zobrazit víc >
-    - title: Ukládání souborů do mezipaměti pro úlohy vysokovýkonného výpočetního prostředí (HPC)
-      links:
-      - url: ../hpc-cache/hpc-cache-overview.md
-        text: Použití plně spravované služby ukládání souborů do mezipaměti (Azure HPC Cache)
-      - url: ../avere-vfxt/avere-vfxt-overview.md
-        text: Ukládání místního řešení NAS do mezipaměti v Azure (Avere vFXT for Azure)
-      - url: ../fxt-edge-filer/fxt-overview.md
-        text: Nasazení místního zařízení pro ukládání do mezipaměti (Azure FXT Edge Filer)
-  - title: Operace s daty
-    items:
-    - title: Hromadný offline přenos do Azure
-      links:
-      - url: ../databox/data-box-disk-overview.md
-        text: Přenos < 40 TB dat (Data Box Disk)
-      - url: ../databox/data-box-overview.md
-        text: Přenos 40 – 500 TB dat (Data Box)
-      - url: ../databox/data-box-heavy-overview.md
-        text: Přenos > 500 TB dat (Data Box Heavy)
-      - url: ../databox/index.yml
-        text: Zobrazit víc >
-    - title: Přenos malých datových sad (online)
-      links:
-      - url: ./common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        text: Použití nástroje příkazového řádku AzCopy
-      - url: ./blobs/storage-quickstart-blobs-storage-explorer.md
-        text: Použití nástroje založeného na grafickém uživatelském rozhraní Průzkumník služby Azure Storage
-    - title: Náklady pod kontrolou
-      links:
-      - url: ./blobs/storage-blob-storage-tiers.md
-        text: Nákladově efektivní rozvrstvení dat objektů blob (horká, studená nebo archivní úroveň)
-    - title: Sdílení dat
-      links:
-      - url: ../data-share/index.yml
-        text: Sdílení dat se zákazníky a partnery (Azure Data Share)
-      - url: ../data-share/supported-data-stores.md
-        text: Podporovaná úložiště dat pro sdílení
-      - url: ../data-share/index.yml
-        text: Zobrazit víc >
-    - title: Zálohování dat
-      links:
-      - url: ../backup/quick-backup-vm-portal.md
-        text: Zálohování virtuálních počítačů (Azure Backup)
-      - url: ../backup/backup-afs.md
-        text: Zálohování sdílených složek Azure
-      - url: ../backup/index.yml
-        text: Zobrazit víc >
+    - title: Řešení cloudového úložiště
+      items:
+        - title: Úložiště objektů pro vaše aplikace
+          links:
+            - url: ./blobs/storage-blobs-introduction.md
+              text: Další informace o úložišti pro nestrukturovaná data (úložiště objektů blob)
+            - url: /rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs
+              text: 'Vysvětlení objektů blob bloku, doplňovacích objektů blob a objektů blob stránky'
+            - url: ./blobs/index.yml
+              text: Zobrazit víc >
+        - title: Úložiště pro analýzy velkých objemů dat
+          links:
+            - url: ./blobs/data-lake-storage-introduction.md
+              text: Další informace o úložišti pro podniková datová jezera (Data Lake Storage)
+            - url: ./blobs/data-lake-storage-data-scenarios.md
+              text: Seznámení s možnostmi a nástroji pro zpracování velkých objemů dat
+        - title: Sdílené složky hostované v cloudu
+          links:
+            - url: ./files/storage-files-introduction.md
+              text: Použití sdílených složek poskytovaných základní platformou Azure Storage (Azure Files)
+            - url: ../azure-netapp-files/azure-netapp-files-introduction.md
+              text: Použití svazků poskytovaných NetApp ONTAP (Azure NetApp Files)
+        - title: Diskové úložiště pro úlohy IaaS
+          links:
+            - url: ../virtual-machines/managed-disks-overview.md
+              text: Další informace o svazcích úložiště na úrovni bloku pro virtuální počítače Azure
+            - url: ../virtual-machines/disks-types.md
+              text: Seznámení s dostupnými typy disků
+            - url: ../virtual-machines/windows/attach-managed-disk-portal.md
+              text: Přidání nového disku do virtuálního počítače – Windows
+            - url: ../virtual-machines/linux/attach-disk-portal.md
+              text: Připojení datového disku k virtuálnímu počítači – Linux
+        - title: Úložiště pro asynchronní řízení front zpráv
+          links:
+            - url: ./queues/storage-queues-introduction.md
+              text: Další informace o řešení Azure Storage pro fronty (Queue Storage)
+            - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
+              text: Porovnání front Queue Storage a Service Bus
+            - url: ./queues/index.yml
+              text: Zobrazit víc >
+        - title: Úložiště pro strukturovaná data NoSQL
+          links:
+            - url: ./tables/table-storage-overview.md
+              text: Ukládání strukturovaných dat NoSQL v cloudu (Table Storage a Cosmos DB)
+            - url: ../cosmos-db/table-support.md
+              text: Porovnání rozhraní API pro tabulky Table Storage a Cosmos DB
+            - url: ./tables/index.yml
+              text: Zobrazit víc >
+    - title: Řešení hybridního úložiště
+      items:
+        - title: Rozšíření místních sdílených složek do cloudu
+          links:
+            - url: ./files/storage-sync-files-planning.md
+              text: Synchronizace sdílených složek Azure se souborovým serverem Windows (Synchronizace souborů Azure)
+            - url: ./files/storage-sync-files-deployment-guide.md
+              text: Nasazení Synchronizace souborů Azure
+            - url: ./files/index.yml
+              text: Zobrazit víc >
+        - title: Online přenos dat (z místního prostředí do Azure)
+          links:
+            - url: ../databox-gateway/data-box-gateway-overview.md
+              text: Bezproblémový přenos dat do Azure (Data Box Gateway)
+            - url: ../databox-online/azure-stack-edge-overview.md
+              text: Místní zpracování dat před přenosem do Azure (Azure Stack Edge)
+            - url: ../databox-online/index.yml
+              text: Zobrazit víc >
+        - title: Ukládání souborů do mezipaměti pro úlohy vysokovýkonného výpočetního prostředí (HPC)
+          links:
+            - url: ../hpc-cache/hpc-cache-overview.md
+              text: Použití plně spravované služby ukládání souborů do mezipaměti (Azure HPC Cache)
+            - url: ../avere-vfxt/avere-vfxt-overview.md
+              text: Ukládání místního řešení NAS do mezipaměti v Azure (Avere vFXT for Azure)
+            - url: ../fxt-edge-filer/fxt-overview.md
+              text: Nasazení místního zařízení pro ukládání do mezipaměti (Azure FXT Edge Filer)
+    - title: Operace s daty
+      items:
+        - title: Hromadný offline přenos do Azure
+          links:
+            - url: ../databox/data-box-disk-overview.md
+              text: Přenos < 40 TB dat (Data Box Disk)
+            - url: ../databox/data-box-overview.md
+              text: Přenos 40 – 500 TB dat (Data Box)
+            - url: ../databox/data-box-heavy-overview.md
+              text: Přenos > 500 TB dat (Data Box Heavy)
+            - url: ../databox/index.yml
+              text: Zobrazit víc >
+        - title: Přenos malých datových sad (online)
+          links:
+            - url: ./common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              text: Použití nástroje příkazového řádku AzCopy
+            - url: ./blobs/storage-quickstart-blobs-storage-explorer.md
+              text: Použití nástroje založeného na grafickém uživatelském rozhraní Průzkumník služby Azure Storage
+        - title: Náklady pod kontrolou
+          links:
+            - url: ./blobs/storage-blob-storage-tiers.md
+              text: 'Nákladově efektivní rozvrstvení dat objektů blob (horká, studená nebo archivní úroveň)'
+        - title: Sdílení dat
+          links:
+            - url: ../data-share/index.yml
+              text: Sdílení dat se zákazníky a partnery (Azure Data Share)
+            - url: ../data-share/supported-data-stores.md
+              text: Podporovaná úložiště dat pro sdílení
+            - url: ../data-share/index.yml
+              text: Zobrazit víc >
+        - title: Zálohování dat
+          links:
+            - url: ../backup/quick-backup-vm-portal.md
+              text: Zálohování virtuálních počítačů (Azure Backup)
+            - url: ../backup/backup-afs.md
+              text: Zálohování sdílených složek Azure
+            - url: ../backup/index.yml
+              text: Zobrazit víc >

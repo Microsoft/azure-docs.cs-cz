@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 04/16/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28cc8a858d1779e17c893d64eda5f907bb4c808e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1aafcd8ace846d7da65d95d4148872d5a6eddeee
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577984"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587846"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory
 
@@ -145,7 +145,7 @@ Následující skript ukazuje příklad použití této rutiny. V tomto skriptu 
 
 Rutina `Initialize-ADSyncDomainJoinedComputerSync`:
 
-* Používá modul PowerShellu služby Active Directory a nástroje Azure Active Directory Domain Services (Azure služba AD DS). Tyto nástroje spoléhají na službu Active Directory Web Services běžící na řadiči domény. Služba Active Directory Web Services se podporuje v řadičích domény s Windows Serverem 2008 R2 nebo novějším.
+* Používá modul PowerShellu služby Active Directory a nástroje Active Directory Domain Services (služba AD DS). Tyto nástroje spoléhají na službu Active Directory Web Services běžící na řadiči domény. Služba Active Directory Web Services se podporuje v řadičích domény s Windows Serverem 2008 R2 nebo novějším.
 * Se podporuje pouze v modulu MSOnline PowerShell verze 1.1.166.0. Tento modul můžete stáhnout pomocí [tohoto odkazu](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0).
 * Pokud nejsou nainstalované nástroje služba AD DS, `Initialize-ADSyncDomainJoinedComputerSync` selže. Nástroje pro služba AD DS můžete nainstalovat přes Správce serveru v části **funkce**  >    >  **Nástroje pro správu rolí** nástroje pro vzdálenou správu serveru.
 

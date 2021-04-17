@@ -3,13 +3,13 @@ title: BareMetal SKU pro úlohy Oracle
 description: Přečtěte si informace o SKU pro úlohy infrastruktury Oracle BareMetal.
 ms.topic: reference
 ms.subservice: workloads
-ms.date: 04/14/2021
-ms.openlocfilehash: 2482f8ed682a982ee3c8c4907e21b4e6c6ebbb4f
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.date: 04/15/2021
+ms.openlocfilehash: 42ff26b9ea9bcc022f1ddbf3dddcb041b2cea3a2
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107558983"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588849"
 ---
 # <a name="baremetal-skus-for-oracle-workloads"></a>BareMetal SKU pro úlohy Oracle
 
@@ -19,9 +19,9 @@ BareMetal infrastruktura pro rozsah SKU Oracle je tvořená dvěma sokety až č
  
 | **Certifikovaný****hardware** Oracle   | **Modelování** | **Celková paměť** | **Storage** | **Dostupnost** |
 | --- | --- | --- | --- | --- |
-| ANO | SAP HANA ve službě Azure S32m-2 x Intel® Xeon® procesorové procesory I623416 a 32 procesorových vláken | 1,5 TB | --- | K dispozici. |
-| ANO | SAP HANA ve službě Azure S64m-4 x Intel® Xeon® procesorové procesory I623432 a 64 procesorových vláken | 3,0 TB | --- | K dispozici. |
-| ANO | SAP HANA v Azure S96 – 2 x Intel® Xeon® procesor E7 – 8890 v448 procesorové jádro a 96 PROCESORová vlákna | 768 GB | 3,0 TB | K dispozici. |
+| ANO | SAP HANA ve službě Azure S32m-2 x Intel® Xeon® procesory I6234 procesory 16 procesorových jader a 32 PROCESORových vláken | 1,5 TB | --- | K dispozici. |
+| ANO | SAP HANA ve službě Azure S64m-4 x Intel® Xeon® procesory I6234 procesory 32 a 64 procesorových vláken | 3,0 TB | --- | K dispozici. |
+| ANO | SAP HANA v Azure S96 – 2 x Intel® Xeon® E7-8890 v4 48 procesory procesorů a 96 procesorových vláken | 768 GB | 3,0 TB | K dispozici. |
 | ANO | SAP HANA ve službě Azure S224 – 4 x procesory Intel® Xeon® Platinum 8276 procesor 112 CPU cores a 224 procesorová vlákna | 3,0 TB | 6,3 TB | K dispozici. |
 | ANO | SAP HANA ve službě Azure S224m – 4 x procesory Intel® Xeon® Platinum 8276 procesor 112 CPU cores a 224 procesorová vlákna | 6,0 TB | 10,5 TB | K dispozici. |
 

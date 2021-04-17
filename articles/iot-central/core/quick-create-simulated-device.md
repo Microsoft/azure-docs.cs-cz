@@ -8,18 +8,16 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 4c7925c1bc397e15d8b6e0f2f21d5e9147109b83
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 142d78cf8b787e04704d26bca0c650944052fd7f
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064847"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588968"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Rychlý Start: Přidání simulovaného zařízení do aplikace IoT Central
 
-*Tento článek je pro operátory, tvůrce a správce.*
-
-Šablona zařízení definuje možnosti zařízení, které se připojuje k vaší IoT Central aplikaci. Mezi možnosti patří telemetrie, kterou zařízení odesílá, vlastnosti zařízení a příkazy, na které zařízení reaguje. V rámci šablony zařízení může tvůrce nebo operátor přidat do aplikace skutečná i simulovaná zařízení. Simulovaná zařízení jsou užitečná pro testování chování aplikace IoT Central před propojením reálných zařízení.
+Šablona zařízení definuje možnosti zařízení, které se připojuje k vaší IoT Central aplikaci. Mezi možnosti patří telemetrie, kterou zařízení odesílá, vlastnosti zařízení a příkazy, na které zařízení reaguje. Pomocí šablony zařízení můžete do aplikace přidat skutečná i simulovaná zařízení. Simulovaná zařízení jsou užitečná pro testování chování aplikace IoT Central před propojením reálných zařízení.
 
 V tomto rychlém startu přidáte šablonu zařízení pro sadu ESP32-Azure pro vývojovou desku IoT Kit a vytvoříte simulované zařízení. K dokončení tohoto rychlého startu nepotřebujete skutečné zařízení, budete pracovat s simulací zařízení. Zařízení ESP32:
 
@@ -33,8 +31,6 @@ V tomto rychlém startu přidáte šablonu zařízení pro sadu ESP32-Azure pro 
 Dokončete průvodce [vytvořením aplikace Azure IoT Central](./quick-deploy-iot-central.md) pro vytvoření IoT Central aplikace pomocí vlastní šablony **aplikace > vlastní** .
 
 ## <a name="create-a-device-template"></a>Vytvořit šablonu zařízení
-
-Jako tvůrce můžete v aplikaci IoT Central vytvořit a upravit šablony zařízení. Po publikování šablony zařízení můžete vygenerovat simulované zařízení nebo propojit skutečná zařízení se šablonou zařízení. Simulovaná zařízení umožňují otestovat chování aplikace před připojením reálného zařízení.
 
 Chcete-li přidat novou šablonu zařízení do aplikace, vyberte kartu **šablony zařízení** v levém podokně.
 
@@ -56,7 +52,7 @@ Následující kroky ukazují, jak pomocí katalogu zařízení importovat model
 
 1. Chcete-li přidat novou šablonu zařízení, vyberte **+ Nový** na stránce **šablony zařízení** .
 
-1. Na stránce **Vybrat typ** se posuňte dolů, dokud nenajdete dlaždici **ESP32-Azure IoT Kit** v části **použití předkonfigurované šablony zařízení** .
+1. Na stránce **Vybrat typ** se posuňte dolů, dokud nenajdete dlaždici **ESP32-Azure IoT Kit** v části **použití předem nakonfigurované šablony zařízení** .
 
 1. Vyberte dlaždici **ESP32-Azure IoT Kit** a potom vyberte **Další: zkontrolovat**.
 
@@ -85,7 +81,7 @@ Následující kroky ukazují, jak pomocí katalogu zařízení importovat model
 
 ## <a name="views"></a>Zobrazení
 
-Jako tvůrce můžete aplikaci přizpůsobit tak, aby zobrazovala relevantní informace o zařízení pro operátora. Vlastní nastavení umožňuje operátorovi spravovat zařízení připojená k aplikaci. Můžete vytvořit dva typy zobrazení pro operátora pro práci se zařízeními:
+Aplikaci můžete přizpůsobit tak, aby zobrazovala relevantní informace o zařízení. Přizpůsobení umožňují jiným spravovat zařízení připojená k aplikaci. Můžete vytvořit dva typy zobrazení pro interakci se zařízeními:
 
 * Formuláře pro zobrazení a úpravy vlastností zařízení a cloudu.
 * Řídicí panely, které znázorňují zařízení, včetně telemetrie, kterou odesílají.
@@ -94,13 +90,13 @@ Jako tvůrce můžete aplikaci přizpůsobit tak, aby zobrazovala relevantní in
 
 Výchozí zobrazení představují rychlý způsob, jak začít s vizualizací důležitých informací o zařízení. Pro šablonu zařízení můžete mít vygenerované až tři výchozí zobrazení:
 
-* Zobrazení **příkazy** umožňuje operátorovi odeslat příkazy do vašeho zařízení.
+* Zobrazení **příkazy** umožňuje odeslat příkazy do zařízení.
 * Zobrazení **přehledu** používá grafy a metriky k zobrazení telemetrie zařízení.
 * V zobrazení **informace** se zobrazí vlastnosti zařízení.
 
 V šabloně zařízení vyberte uzel **zobrazení** . V případě, že jste přidali šablonu, vidíte, že IoT Central vygenerovala **Přehled** a **informace o** zobrazení.
 
-Přidání nového formuláře pro **správu zařízení** , který může operátor použít ke správě zařízení:
+Přidání nového formuláře pro správu zařízení:
 
 1. Vyberte uzel **zobrazení** a vyberte dlaždici **data zařízení a cloudu** a přidejte nové zobrazení.
 
@@ -120,25 +116,23 @@ Publikování šablony zařízení:
 
 1. Na stránce **šablony zařízení** přejděte na šablonu zařízení **kontroleru senzorů** .
 
-1. Vyberte **publikovat**:
+1. Na panelu příkazů v horní části stránky vyberte **publikovat** .
 
-    :::image type="content" source="media/quick-create-simulated-device/published-model.png" alt-text="Snímek obrazovky znázorňující umístění ikony publikování":::
+1. V dialogovém okně, které se zobrazí, vyberte **publikovat**.
 
-1. V dialogovém okně **Publikovat tuto šablonu zařízení do dialogu aplikace** vyberte **publikovat**.
-
-Po publikování se šablona zařízení zobrazí na stránce **zařízení** . V publikované šabloně zařízení nemůžete upravovat model zařízení bez vytváření nové verze. Můžete ale upravit vlastnosti cloudu, přizpůsobení a zobrazení v publikované šabloně zařízení bez správy verzí. Po provedení změn vyberte **publikovat**  , aby se tyto změny převedly do vašeho operátoru.
+Po publikování se šablona zařízení zobrazí na stránce **zařízení** . V publikované šabloně zařízení nemůžete upravovat model zařízení bez vytváření nové verze. Můžete ale upravit vlastnosti cloudu, přizpůsobení a zobrazení v publikované šabloně zařízení bez správy verzí. Po provedení jakýchkoli změn vyberte **publikovat**  a nahrajte tyto změny pro skutečná a simulovaná zařízení, která chcete použít.
 
 ## <a name="add-a-simulated-device"></a>Přidání simulovaného zařízení
 
 K přidání simulovaného zařízení do aplikace použijete šablonu zařízení **ESP32** , kterou jste vytvořili.
 
-1. Pokud chcete přidat nové zařízení jako operátor v levém podokně vyberte **zařízení** . Karta **zařízení** zobrazuje **všechna zařízení** a šablonu zařízení **KONTROLERU senzorů** pro zařízení ESP32. Vyberte **kontroler senzorů**.
+1. Pokud chcete přidat nové zařízení, v levém podokně vyberte **zařízení** . Karta **zařízení** zobrazuje **všechna zařízení** a šablonu zařízení **KONTROLERU senzorů** pro zařízení ESP32. Vyberte **kontroler senzorů**.
 
 1. Pokud chcete přidat simulované zařízení DevKit, vyberte **+ Nový**. Použijte navržené **ID zařízení** nebo zadejte vlastní. ID zařízení může obsahovat písmena, číslice a `-` znak. Můžete také zadat název nového zařízení. Ujistěte se, že je nastavení **Simulovat toto zařízení** nastaveno na **Ano** , a pak vyberte **vytvořit**.
 
     :::image type="content" source="media/quick-create-simulated-device/simulated-device.png" alt-text="Snímek obrazovky zobrazující zařízení simulovaného kontroleru senzorů":::
 
-Nyní můžete pracovat se zobrazeními vytvořenými tvůrcem pro šablonu zařízení pomocí simulovaných dat:
+Nyní můžete pracovat se zobrazeními, která byla vytvořena dříve pomocí simulovaných dat:
 
 1. Výběr simulovaného zařízení na stránce **zařízení**
 
@@ -150,25 +144,9 @@ Nyní můžete pracovat se zobrazeními vytvořenými tvůrcem pro šablonu zař
 
     * Zobrazení **příkazy** umožňuje spouštět příkazy, jako je třeba **restartování** na zařízení.
 
-    * Zobrazení **Správa zařízení** je formulář, který jste vytvořili pro obsluhu pro správu zařízení.
+    * Zobrazení **Správa zařízení** je formulář, který jste vytvořili pro správu zařízení.
 
     * Zobrazení **nezpracovaná data** vám umožní zobrazit nezpracované telemetrie a hodnoty vlastností odesílané zařízením. Toto zobrazení je užitečné pro ladění zařízení.
-
-## <a name="use-a-simulated-device-to-improve-views"></a>Použití simulovaného zařízení ke zlepšení zobrazení
-
-Po vytvoření nového simulovaného zařízení může tvůrce pomocí tohoto zařízení pokračovat ve zlepšování a sestavování zobrazení pro šablonu zařízení.
-
-1. V levém podokně zvolte **šablony zařízení** a vyberte šablonu **kontroleru senzorů** .
-
-1. Vyberte libovolné zobrazení, které chcete upravit, například **Přehled**, nebo vytvořte nové zobrazení. Vyberte **Konfigurovat zařízení verze Preview** a pak **Vyberte ze spuštěného zařízení**. Tady můžete zvolit, aby nedošlo k zobrazení náhledu, reálnému zařízení nakonfigurovanému pro testování nebo existujícímu zařízení, které jste přidali do IoT Central.
-
-1. V seznamu vyberte simulované zařízení. Pak vyberte **Použít**. Teď můžete vidět stejné simulované zařízení v zobrazeních šablon zařízení. Toto zobrazení je užitečné pro grafy a další vizualizace.
-
-    :::image type="content" source="media/quick-create-simulated-device/configure-preview.png" alt-text="Snímek obrazovky s nakonfigurovaným zařízením Preview":::
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8942262c2e02670d57b1db324eb154dcc38f00f8
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: b3f0dd599f982e19fee7febc3b85d46f91a55b35
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575390"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589291"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Principy modelů dvojčat v Azure Digital Twins
 
@@ -58,7 +58,7 @@ Rozhraní modelu DTDL může obsahovat nula, jednu nebo mnoho z následujících
     
     >[!TIP] 
     >Komponenty lze také použít pro organizaci k seskupení sad souvisejících vlastností v rámci rozhraní modelu. V této situaci si můžete každou komponentu představit jako obor názvů nebo "složka" uvnitř rozhraní.
-* Relace **Relationship** vám umožní vyjádřit, jak se může digitální vlákna zapojit do jiných digitálních vláken. Relace mohou představovat různé sémantické významy, jako je například *Contains* ("podlaha obsahuje místnost"), *studená* ("TVK studená místnost"), *isBilledTo* ("kompresor se účtuje uživateli") atd. Relace umožňují řešení poskytovat graf vzájemně souvisejících entit.
+* Relace **Relationship** vám umožní vyjádřit, jak se může digitální vlákna zapojit do jiných digitálních vláken. Relace mohou představovat různé sémantické významy, jako je například *Contains* ("podlaha obsahuje místnost"), *studená* ("TVK studená místnost"), *isBilledTo* ("kompresor se účtuje uživateli") atd. Relace umožňují řešení poskytovat graf vzájemně souvisejících entit. Relace mohou mít také vlastní [vlastnosti](#properties-of-relationships) .
 
 > [!NOTE]
 > [Specifikace DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) také definuje **příkazy**, které jsou metody, které lze provést na digitálního vlákna (například příkaz reset nebo příkaz pro přepnutí nebo vypnutí ventilátoru). V případě *digitálních vláken Azure se ale příkazy aktuálně nepodporují.*
@@ -80,6 +80,10 @@ Výsledkem je, že při navrhování modelu v digitálních proobjektech Azure b
 Telemetrii a vlastnosti často spolupracují na zpracování dat ze zařízení. Vzhledem k to, že všechny příchozí přenosy dat do Azure jsou prostřednictvím [rozhraní API](how-to-use-apis-sdks.md), obvykle použijete funkci příchozího přenosu dat ke čtení událostí telemetrie nebo vlastností ze zařízení a nastavíte vlastnost v digitálních událostech Azure v reakci. 
 
 Můžete také publikovat událost telemetrie z rozhraní API digitálních vláken Azure. Stejně jako u jiné telemetrie, jedná se o krátkodobou událost, která vyžaduje, aby naslouchací proces zpracoval.
+
+#### <a name="properties-of-relationships"></a>Vlastnosti relací
+
+DTDL také umožňuje, aby **relace** měly své vlastní vlastnosti. Při definování vztahu v rámci modelu DTDL může mít relace vlastní `properties` pole, kde můžete definovat vlastní vlastnosti pro popis stavu specifického pro relaci.
 
 ## <a name="model-inheritance"></a>Dědičnost modelů
 

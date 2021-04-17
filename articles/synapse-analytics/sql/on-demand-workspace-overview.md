@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e1a0f4f22411e506cab3b54e955a4cdc16986fe2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0abef835e406b442239cecd81fed5751f1c9a92
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667502"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378155"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Fond SQL bez serveru ve službě Azure synapse Analytics 
 
@@ -54,7 +54,7 @@ Koncový bod fondu SQL bez serveru je k dispozici v rámci každého pracovního
 
 ## <a name="client-tools"></a>Nástroje klienta
 
-Fond SQL bez serveru umožňuje existujícím nástrojům pro dotazování a business intelligencem SQL ad-hoc, které se mají na data Lake klepnout. Vzhledem k tomu, že poskytuje známou syntaxi T-SQL, se může každý nástroj schopný vytvořit nabídky SQL připojení TDS, [připojit k SQL na vyžádání a dotazovat se na synapse](connect-overview.md) . Můžete se připojit pomocí Azure Data Studio a spustit ad-hoc dotazy nebo se připojit pomocí Power BI a získat přehledy během několika minut.
+Fond SQL bez serveru umožňuje existujícím nástrojům pro dotazování a business intelligencem SQL ad-hoc, které se mají na data Lake klepnout. Vzhledem k tomu, že poskytuje známou syntaxi T-SQL, se může každý nástroj schopný vytvořit připojení TDS k nabídkám SQL [připojit k SQL a dotazovat se na synapse](connect-overview.md). Můžete se připojit pomocí Azure Data Studio a spustit ad-hoc dotazy nebo se připojit pomocí Power BI a získat přehledy během několika minut.
 
 ## <a name="t-sql-support"></a>Podpora T-SQL
 

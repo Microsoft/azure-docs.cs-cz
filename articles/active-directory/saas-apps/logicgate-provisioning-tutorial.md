@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: Zhchia
-ms.openlocfilehash: 7258aaba738b63db4d37af78389003d36874dcb9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c9c938ab344a7d861af713fa42e2e39afa1df1b3
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877877"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589461"
 ---
 # <a name="tutorial-configure-logicgate-for-automatic-user-provisioning"></a>Kurz: Konfigurace LogicGate pro Automatické zřizování uživatelů
 
@@ -139,7 +139,7 @@ Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a sk
 Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomocí následujících prostředků:
 
 1. S využitím [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) můžete zjistit, kteří uživatelé se zřídili úspěšně a kteří neúspěšně.
-2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user).
+2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user).
 3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
 ## <a name="additional-resources"></a>Další zdroje informací

@@ -8,18 +8,18 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: 6f7b24c711d99b1127ee77a920b305acb114d20e
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: abf5f601bb98ab7e03b25f6ab9bd06cb051a1112
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505123"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589056"
 ---
 # <a name="what-is-azure-iot-central"></a>Co je Azure IoT Central?
 
 IoT Central je platforma aplikací IoT, která snižuje nároky a náklady na vývoj, správu a údržbu řešení IoT na podnikové úrovni. Volba sestavování pomocí IoT Central vám umožní soustředit se na čas, peníze a energii při transformaci vaší firmy na data IoT, nikoli jenom na údržbu a aktualizaci složitých a nepřetržitě vyvíjejících se infrastruktury IoT.
 
-Webové uživatelské rozhraní umožňuje monitorovat podmínky zařízení, vytvářet pravidla a spravovat miliony zařízení a jejich data v průběhu svého životního cyklu. Kromě toho vám umožňuje reagovat na přehledy zařízení díky rozšíření IoT Intelligence do obchodních aplikací.
+Webové uživatelské rozhraní umožňuje rychle připojit zařízení, monitorovat požadavky na zařízení, vytvářet pravidla a spravovat miliony zařízení a jejich data v průběhu svého životního cyklu. Kromě toho vám umožňuje reagovat na přehledy zařízení díky rozšíření IoT Intelligence do obchodních aplikací.
 
 Tento článek popisuje, jak IoT Central:
 
@@ -41,14 +41,13 @@ Dokumentace IoT Central odkazuje na čtyři role uživatelů, které komunikují
 
 ## <a name="create-your-iot-central-application"></a>Vytvoření aplikace IoT Central
 
-Jako tvůrce řešení můžete pomocí IoT Central vytvořit vlastní řešení IoT hostované v cloudu pro vaši organizaci. Vlastní řešení IoT se obvykle skládá z těchto součástí:
+Můžete rychle nasadit novou aplikaci IoT Central a pak ji přizpůsobit konkrétním požadavkům. Začněte se _šablonou obecné aplikace_ nebo s jednou ze šablon aplikací zaměřených na obor pro [maloobchodní prodej](../retail/overview-iot-central-retail.md), [energii](../energy/overview-iot-central-energy.md), [státní](../government/overview-iot-central-government.md)správu nebo [zdravotní péči](../healthcare/overview-iot-central-healthcare.md).
 
-- Cloudová aplikace, která přijímá ze zařízení telemetrická data a umožňuje vám tato zařízení spravovat
-- Více zařízení připojených k vaší cloudové aplikaci, na kterých běží vlastní kód
+Podrobné informace o tom, jak vytvořit první aplikaci, najdete v tématu rychlý Start pro [Vytvoření nové aplikace](quick-deploy-iot-central.md) .
 
-Můžete rychle nasadit novou aplikaci IoT Central a pak ji přizpůsobit konkrétním požadavkům v prohlížeči. Můžete začít se _šablonou obecné aplikace_ nebo s jednou ze šablon aplikací zaměřených na odvětví pro [maloobchodní prodej](../retail/overview-iot-central-retail.md), [energii](../energy/overview-iot-central-energy.md), [státní](../government/overview-iot-central-government.md)správu nebo [zdravotní péči](../healthcare/overview-iot-central-healthcare.md).
+## <a name="connect-devices"></a>Připojení zařízení
 
-Jako tvůrce řešení můžete pomocí webových nástrojů vytvořit _šablonu zařízení_ pro zařízení, která se připojují k vaší aplikaci. Šablona zařízení je plán, který definuje charakteristiky a chování typu zařízení, například:
+Po vytvoření aplikace je prvním krokem vytvoření připojení zařízení. Všechna zařízení připojená k IoT Central používají _šablonu zařízení_. Šablona zařízení je plán, který definuje charakteristiky a chování typu zařízení, například:
 
 - Telemetrii, kterou posílá. Mezi příklady patří teplota a vlhkost. Telemetrie jsou streamovaná data.
 - Obchodní vlastnosti, které můžete upravit operátor Mezi příklady patří adresa zákazníka a datum poslední služby.
@@ -56,9 +55,9 @@ Jako tvůrce řešení můžete pomocí webových nástrojů vytvořit _šablonu
 - Vlastnosti, které jsou nastaveny jako operátor, které určují chování zařízení. Například cílovou teplotu pro zařízení.
 - Příkazy, které může operátor volat, které se spouštějí na zařízení. Například příkaz pro vzdálené restartování zařízení.
 
-Tato [Šablona zařízení](howto-set-up-template.md) zahrnuje:
+Každá [Šablona zařízení](howto-set-up-template.md) obsahuje:
 
-- _Model zařízení_ , který popisuje možnosti, které zařízení má implementovat. Mezi možnosti zařízení patří:
+- _Model zařízení_ popisující možnosti, které zařízení má implementovat. Mezi možnosti zařízení patří:
 
   - Telemetrie IT, která se má IoT Central.
   - Vlastnosti jen pro čtení, které používá k hlášení stavu do IoT Central.
@@ -68,25 +67,21 @@ Tato [Šablona zařízení](howto-set-up-template.md) zahrnuje:
 - Vlastnosti cloudu, které nejsou uložené na zařízení.
 - Vlastní nastavení, řídicí panely a formuláře, které jsou součástí vaší aplikace IoT Central.
 
-### <a name="create-device-templates"></a>Vytvoření šablon zařízení
-
-Jako tvůrce řešení máte k dispozici několik možností pro vytváření šablon zařízení:
+Pro vytváření šablon zařízení máte několik možností:
 
 - Navrhněte šablonu zařízení v IoT Central a potom v kódu zařízení implementujte svůj model zařízení.
 - Vytvořte model zařízení pomocí nástroje Visual Studio Code a publikujte model do úložiště. Implementujte kód zařízení z modelu a připojte své zařízení k aplikaci IoT Central. IoT Central najde model zařízení z úložiště a vytvoří pro vás jednoduchou šablonu zařízení.
 - Vytvořte model zařízení pomocí Visual Studio Code. Implementujte kód zařízení z modelu. Ručně importujte model zařízení do aplikace IoT Central a pak přidejte jakékoli vlastnosti cloudu, vlastní nastavení a řídicí panely, které aplikace IoT Central potřebuje.
 
-Jako tvůrce řešení můžete použít IoT Central k vygenerování kódu pro testovací zařízení pro ověření šablon zařízení.
-
-Pokud jste vývojář zařízení, přečtěte si téma [Přehled vývoje IoT Central zařízení](./overview-iot-central-developer.md) , kde najdete Úvod k implementaci zařízení, která používají tyto šablony zařízení.
+Podrobné informace o tom, jak vytvořit a připojit první zařízení, najdete v rychlém startu pro [Přidání simulovaného zařízení](quick-create-simulated-device.md) .
 
 ### <a name="customize-the-ui"></a>Přizpůsobení uživatelského rozhraní
 
-Jako tvůrce řešení můžete také přizpůsobit uživatelské rozhraní aplikace IoT Central pro operátory, kteří zodpovídají za každodenní použití aplikace. Vlastní nastavení, které může tvůrce řešení provést, zahrnují:
+Můžete také přizpůsobit uživatelské rozhraní aplikace IoT Central pro operátory, kteří zodpovídají za každodenní použití aplikace. Vlastní nastavení, která můžete provést, zahrnují:
 
-- Definovat rozložení vlastností a nastavení v šabloně zařízení
 - Nakonfigurovat vlastní řídicí panely, které operátorům pomůžou rychleji zjišťovat informace a řešit problémy
 - Nakonfigurovat vlastní analýzy pro zkoumání časových řad dat z připojených zařízení
+- Definovat rozložení vlastností a nastavení v šabloně zařízení
 
 ## <a name="manage-your-devices"></a>správu zařízení
 
@@ -96,9 +91,9 @@ Jako operátor můžete použít aplikaci IoT Central ke [správě zařízení](
 - Řešit potíže a opravovat problémy se zařízeními
 - Zřizovat nová zařízení
 
-Jako tvůrce řešení můžete [definovat vlastní pravidla a akce](howto-configure-rules.md) , které provozují streamování dat z připojených zařízení. Operátor může tato pravidla povolit nebo zakázat na úrovni zařízení za účelem řízení a automatizace úloh v rámci aplikace.
+Můžete [definovat vlastní pravidla a akce](howto-configure-rules.md) , které provozují streamování dat z připojených zařízení. Operátor může tato pravidla povolit nebo zakázat na úrovni zařízení za účelem řízení a automatizace úloh v rámci aplikace.
 
-U všech řešení IoT navržených pro provoz ve velkém měřítku je důležité strukturovaný přístup ke správě zařízení. Nestačí, abyste svá zařízení připojili ke cloudu, je potřeba zajistit, aby byla vaše zařízení připojená a v pořádku. Operátor může pomocí následujících možností IoT Central spravovat zařízení během životního cyklu aplikace:
+U všech řešení IoT navržených pro provoz ve velkém měřítku je důležité strukturovaný přístup ke správě zařízení. Nestačí, abyste svá zařízení připojili ke cloudu, je potřeba zajistit, aby byla vaše zařízení připojená a v pořádku. Pro správu zařízení během životního cyklu aplikace použijte následující možnosti IoT Central:
 
 ### <a name="dashboards"></a>Řídicí panely
 

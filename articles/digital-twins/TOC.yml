@@ -8,7 +8,7 @@
   expanded: true
   items:
     - name: Prozkoumání ukázkového scénáře
-      href: quickstart-adt-explorer.md
+      href: quickstart-azure-digital-twins-explorer.md
 - name: Výukové kurzy
   items:
     - name: Kódování klientské aplikace
@@ -149,6 +149,10 @@
           items:
             - name: 403 (zakázáno)
               href: troubleshoot-error-403.md
+            - name: Nenašlo se Sub-Domain 404.
+              href: troubleshoot-error-404.md
+            - name: Ověřování Průzkumníka digitálních vláken Azure
+              href: troubleshoot-error-azure-digital-twins-explorer-authentication.md
 - name: Referenční informace
   items:
     - name: REST API – referenční informace

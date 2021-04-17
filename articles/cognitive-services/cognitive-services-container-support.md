@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 04/12/2021
+ms.date: 04/16/2021
 ms.author: aahi
 keywords: místní, Docker, kontejner, Kubernetes
-ms.openlocfilehash: 45b1eb00b61c36e3a7a0f39bc41a9c1d053f3d8e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c40e91d81df448021be74af768bc9d5952b263dd
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313738"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588220"
 ---
 # <a name="azure-cognitive-services-containers"></a>Kontejnery Azure Cognitive Services
 
@@ -51,7 +51,7 @@ Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů D
 |--|--|--|--|
 | [LUIS][lu-containers] |  **Luis** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Načte vyškolený nebo publikovaný Language Understanding model, označovaný také jako aplikace LUIS, do kontejneru Docker a poskytuje přístup k předpovědi dotazů z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrajte je zpátky na [portál Luis](https://www.luis.ai) , aby se zlepšila přesnost předpovědi aplikace. | Obecná dostupnost |
 | [Analýza textu][ta-containers-keyphrase] | **Extrakce klíčových frází** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extrahuje klíčové fráze k identifikaci hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). | Preview |
-| [Analýza textu][ta-containers-language] |  **Textový rozpoznávání jazyka** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Pro až 120 jazyků rozpozná, který jazyk je vstupní text napsán, a nahlaste jeden kód jazyka pro každý dokument odeslaný na žádost. Kód jazyka spárovaný se skóre označuje sílu skóre. | Preview |
+| [Analýza textu][ta-containers-language] |  **Textový rozpoznávání jazyka** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Pro až 120 jazyků rozpozná, který jazyk je vstupní text napsán, a nahlaste jeden kód jazyka pro každý dokument odeslaný na žádost. Kód jazyka spárovaný se skóre označuje sílu skóre. | Obecná dostupnost |
 | [Analýza textu][ta-containers-sentiment] | **Analýza mínění V3** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analyzuje nezpracovaný text pro potvrzení o kladné nebo záporné mínění. Tato verze analýzy mínění vrací popisky mínění (například *kladné* nebo *záporné*) pro každý dokument a větu v něm. |  Obecná dostupnost |
 | [Analýza textu][ta-containers-health] |  **Analýza textu pro zdravotnictví** | Extrakce a označení lékařských informací z nestrukturovaného klinického textu. | Gated Preview. [Požádat o přístup][request-access] |
 

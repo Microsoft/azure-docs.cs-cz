@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/20/2021
 ms.author: baanders
-ms.openlocfilehash: 43cc3dfc5b425df6d9dd5e2c2f35a792907ccdea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00d584690d37f1dcc47b785ef533abe888befec3
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103622319"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107510874"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,7 +27,7 @@ K dokončení tohoto kurzu **nainstalujte [Visual Studio 2019](https://visualstu
 
 Tento kurz je založen na ukázkovém projektu napsaném v jazyce C#. Ukázka se nachází tady: [Azure Digital vlákens – komplexní ukázky](/samples/azure-samples/digital-twins-samples/digital-twins-samples). **Získejte vzorový projekt** na vašem počítači tak, že přejdete na vzorový odkaz a vyberete tlačítko *Procházet kód* pod nadpisem. Tím přejdete do úložiště GitHub pro ukázky, které si můžete stáhnout jako *. ZIP* výběrem tlačítka *kód* a *Stáhnout soubor zip*.
 
-:::image type="content" source="../articles/digital-twins/media/includes/download-repo-zip.png" alt-text="Podívejte se na úložiště digitálních vláken – Samples na GitHubu. Je vybráno tlačítko kód a vytvoří se malé dialogové okno, ve kterém je zvýrazněno tlačítko Stáhnout ZIP." lightbox="../articles/digital-twins/media/includes/download-repo-zip.png":::
+:::image type="content" source="../articles/digital-twins/media/includes/download-repo-zip.png" alt-text="Snímek obrazovky s digitálními dvojitými kopiemi ukázek na GitHubu. Je vybráno tlačítko kód a vytvoří se malé dialogové okno, ve kterém je zvýrazněno tlačítko Stáhnout ZIP." lightbox="../articles/digital-twins/media/includes/download-repo-zip.png":::
 
 Tím se stáhne *. Složka ZIP* na váš počítač jako **digital-twins-samples-master.zip**. Rozbalte složku a extrahujte soubory.
 

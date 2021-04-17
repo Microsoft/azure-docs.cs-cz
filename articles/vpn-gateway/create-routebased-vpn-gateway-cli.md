@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2bbd7e39ee65ba304ec62697b6fcc77bea133b41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87e3490711990944e017d2d463090f3c8697956c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94737213"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484213"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>Vytvoření brány sítě VPN založené na trasách pomocí rozhraní příkazového řádku
 
@@ -74,7 +74,7 @@ az network public-ip create \
 
 ## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>Vytvoření brány sítě VPN
 
-Vytvořte bránu VPN pomocí příkazu [az network vnet-gateway create](/cli/azure/group).
+Vytvořte bránu VPN pomocí příkazu [az network vnet-gateway create](/cli/azure/network/vnet-gateway).
 
 Pokud tento příkaz spustíte pomocí `--no-wait` parametru, nezobrazí se žádná zpětná vazba ani výstup. `--no-wait`Parametr umožňuje vytvořit bránu na pozadí. Neznamená to, že se Brána VPN vytvoří hned.
 

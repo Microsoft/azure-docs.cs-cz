@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: a11dbfbd6d6510b5c421e54cd2547c3aedb1bfb6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: f9f2bf2e2204e6b74bb8a31ac856dbe276a6e983
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100378192"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588747"
 ---
 # <a name="creating-a-new-branch-in-mapping-data-flow"></a>Vytvoření nové větve v mapování toku dat
 
@@ -27,3 +27,10 @@ Novou větev lze přidat ze seznamu transformací podobně jako jiné transforma
 V následujícím příkladu tok dat čte data taxislužby Trip. Výstup agregovaný podle dne a dodavatele je povinný. Místo vytváření dvou samostatných toků dat, které se čtou ze stejného zdroje, je možné přidat novou větev. Tímto způsobem lze obě agregace spustit v rámci stejného toku dat. 
 
 ![Snímek obrazovky znázorňující tok dat se dvěma větvemi ze zdroje.](media/data-flow/new-branch.png "Přidávání nové větve")
+
+> [!NOTE]
+> Když po kliknutí na symbol plus (+) přidáte transformace do grafu, zobrazí se pouze možnost Nová větev, pokud jsou k dispozici následné transformační bloky. Je to proto, že nová větev vytvoří odkaz na existující datový proud a vyžaduje další nadřazené zpracování, aby fungovalo. Pokud nevidíte možnost Nová větev, nejprve přidejte odvozený sloupec nebo jinou transformaci a pak se vraťte k předchozímu bloku a jako možnost se zobrazí nová větev.
+
+## <a name="next-steps"></a>Další kroky
+
+Po rozvětvení můžete chtít použít [transformace toku dat](data-flow-transformation-overview.md) .

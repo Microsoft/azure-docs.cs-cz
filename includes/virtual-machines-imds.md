@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 3da4f8f946b11985d93be35fa2748e7f25015a71
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 98866a4f06df0380d52d1aee3eede8aa2f70aaed
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564554"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588121"
 ---
 Služba Azure Instance Metadata Service (IMDS) poskytuje informace o aktuálně spuštěných instancích virtuálních počítačů. Můžete ji použít ke správě a konfiguraci virtuálních počítačů.
 Tyto informace zahrnují SKU, úložiště, konfigurace sítě a nadcházející události údržby. Úplný seznam dostupných dat najdete v části [Souhrn kategorií koncových bodů](#endpoint-categories).
@@ -333,7 +333,7 @@ Rozpis schématu:
 | Data | Description | Představená verze |
 |------|-------------|--------------------|
 | `azEnvironment` | Prostředí Azure, ve kterém je spuštěný virtuální počítač | 2018-10-01
-| `customData` | Tato funkce je zastaralá a zakázaná. Byl nahrazen `userData` | 2019-02-01
+| `customData` | Tato funkce je zastaralá a zakázaná [v IMDS](#frequently-asked-questions). Byl nahrazen `userData` | 2019-02-01
 | `evictionPolicy` | Nastaví, jak bude [virtuální počítač s přímým](../articles/virtual-machines/spot-vms.md) vyřazením. | 2020-12-01
 | `isHostCompatibilityLayerVm` | Určuje, jestli se virtuální počítač spouští na vrstvě kompatibility hostitele. | 2020-06-01
 | `licenseType` | Typ licence pro [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit). Tato možnost je k dispozici pouze pro virtuální počítače s podporou AHB. | 2020-09-01

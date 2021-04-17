@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: ad641c2270f94b9d902a25e8d061fb1137a0cdb7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 59955b291ce706a77d0dd5ab052809fe725166d9
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518598"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387883"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Kam ukládat a zapisovat soubory pro Azure Machine Learning experimenty
 
@@ -36,7 +36,7 @@ Limit úložiště pro snímky experimentů je 300 MB nebo 2 000 souborů.
 
 Z tohoto důvodu doporučujeme:
 
-* **Soubory se ukládají do [úložiště dat](/python/api/azureml-core/azureml.data)Azure Machine Learning.** Tím zabráníte problémům s latencí experimentů a máte výhody přístupu k datům ze vzdáleného výpočetního cíle, což znamená, že ověřování a připojování jsou spravovány Azure Machine Learning. Přečtěte si další informace o zadávání úložiště dat jako zdrojového adresáře a nahrání souborů do úložiště dat v článku [přístup k datům z vašich úložišť dat](how-to-access-data.md) .
+* **Soubory se ukládají do Azure Machine Learning [datové sady](/python/api/azureml-core/azureml.data).** Tím zabráníte problémům s latencí experimentů a máte výhody přístupu k datům ze vzdáleného výpočetního cíle, což znamená, že ověřování a připojování jsou spravovány Azure Machine Learning. Přečtěte si další informace o tom, jak zadat datovou sadu jako vstupní zdroj dat ve školicím skriptu s využitím [vlakových sad](how-to-train-with-datasets.md).
 
 * **Pokud potřebujete jenom několik datových souborů a skriptů závislostí a nemůžete použít úložiště dat,** umístěte soubory do složky do stejného adresáře jako školicí skript. Tuto složku zadejte `source_directory` přímo ve školicím skriptu nebo v kódu, který volá váš školicí skript.
 
@@ -64,9 +64,9 @@ Jupyter Notebooks| Vytvořte `.amlignore` soubor nebo přesuňte svůj Poznámko
 
 Vzhledem k izolaci experimentů při výuce se změny souborů, ke kterým dochází během spuštění, nemusí nutně uchovávat mimo vaše prostředí. Pokud váš skript upraví soubory, které jsou lokální na výpočetní výkon, změny se neukládají pro další spuštění experimentu a nešíří se automaticky zpátky do klientského počítače. Proto se změny provedené během prvního experimentu neprojeví a neměla by mít vliv na ty v druhém.
 
-Při psaní změn doporučujeme zapisovat soubory do úložiště dat Azure Machine Learning. Podívejte [se na přístup k datům z úložišť dat](how-to-access-data.md).
+Při psaní změn doporučujeme zapisovat soubory do úložiště prostřednictvím Azure Machine Learning datovou sadu s [objektem OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig). Přečtěte si téma [Vytvoření OutputFileDatasetConfig](how-to-train-with-datasets.md#where-to-write-training-output).
 
-Pokud nepotřebujete úložiště dat, zapište soubory do `./outputs` složky a/nebo `./logs` .
+V opačném případě zapište soubory do `./outputs` složky a/nebo `./logs` .
 
 >[!Important]
 > Dvě složky, *výstupy* a *protokoly* dostanou zvláštní zacházení Azure Machine Learning. Když při výuce zapisujete soubory do `./outputs` složky a, `./logs` budou soubory automaticky nahrány do historie spuštění, takže k nim budete mít přístup, až se vaše spuštění dokončí.
@@ -77,6 +77,6 @@ Pokud nepotřebujete úložiště dat, zapište soubory do `./outputs` složky a
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [přístupu k datům z úložišť dat](how-to-access-data.md).
+* Přečtěte si další informace o [přístupu k datům z úložiště](how-to-access-data.md).
 
 * Další informace o [vytváření výpočetních cílů pro školení a nasazení modelu](how-to-create-attach-compute-studio.md)

@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 528ba4a1be3650a81772d78a438f03611b9bd761
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 26b6adefd2d334c9fe570bfa7e63bb06b55b9d20
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102107470"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588764"
 ---
 # <a name="create-a-custom-conda-channel-for-package-management"></a>Vytvoření vlastního Condaového kanálu pro správu balíčků 
 Správce balíčků conda při instalaci balíčků Pythonu používá kanály k hledání balíčků. Možná budete muset vytvořit vlastní conda kanál z různých důvodů. Můžete například zjistit, že:
@@ -92,7 +92,7 @@ conda index channel1/linux-64
 conda index channel1 
 ```
 
-Další informace najdete také [v uživatelské příručce k conda](https://docs.conda.io/projects/conda/latest/user-guide/tasks/create-custom-channels.html) , kde můžete vytvářet vlastní kanály. 
+Další informace najdete také [v uživatelské příručce k conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/create-custom-channels.html) , kde můžete vytvářet vlastní kanály. 
 
 ## <a name="storage-account-permissions"></a>Oprávnění účtu úložiště
 Nyní bude nutné ověřit oprávnění účtu úložiště. Tato oprávnění nastavíte tak, že přejdete na cestu, kde se vytvoří vlastní kanál. Pak vytvořte token SAS pro ```privatechannel``` , který má oprávnění ke čtení, výpisu a spouštění. 

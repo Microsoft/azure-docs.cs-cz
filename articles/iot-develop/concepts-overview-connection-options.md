@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: conceptual
 ms.date: 02/11/2021
-ms.openlocfilehash: 6bbd7d37418af68065daa194d4ff4bd80f6fd09c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8669919192b1e6394043842d7d23f8829ec7c71e
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100654153"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589546"
 ---
 # <a name="overview-connection-options-for-azure-iot-device-developers"></a>Přehled: možnosti připojení pro vývojáře zařízení Azure IoT
 Jako vývojář, který pracuje se zařízeními, máte k dispozici několik možností pro připojení a správu zařízení Azure IoT. V tomto článku najdete přehled nejčastěji používaných možností a nástrojů, které vám pomůžou s připojením a správou zařízení.
@@ -35,10 +35,10 @@ Po výběru možnosti IoT Hub nebo IoT Central hostování aplikace IoT máte n�
 |---------|---------|---------|---------|
 |Centrální webové uživatelské rozhraní     | Central | [Centrální rychlé zprovoznění](../iot-central/core/quick-deploy-iot-central.md) | Portál založený na prohlížeči pro IoT Central. |
 |portál Azure     | Střed, střed      | [Vytvoření centra IoT pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md), [správa IoT Central z Azure Portal](../iot-central/core/howto-manage-iot-central-from-portal.md)| Portál založený na prohlížeči pro IoT Hub a zařízení. Funguje taky s dalšími prostředky Azure, včetně IoT Central. |
+|Průzkumník Azure IoT     | Rozbočovač | [Průzkumník Azure IoT](https://github.com/Azure/azure-iot-explorer#azure-iot-explorer-preview) | Nejde vytvořit centra IoT Hub. Připojí se ke stávajícímu centru IoT ke správě zařízení. Často se používá v rozhraní příkazového řádku nebo portálu.|
 |Azure CLI     | Střed, střed          | [Vytvoření služby IoT Hub pomocí](../iot-hub/iot-hub-create-using-cli.md)rozhraní příkazového řádku, [Správa IoT Central z Azure CLI](../iot-central/core/howto-manage-iot-central-from-cli.md) | Rozhraní příkazového řádku pro vytváření a správu aplikací IoT. |
 |Azure PowerShell     | Střed, střed   | [Vytvoření služby IoT Hub pomocí prostředí PowerShell](../iot-hub/iot-hub-create-using-powershell.md), [správa IoT Central z Azure PowerShell](../iot-central/core/howto-manage-iot-central-from-powershell.md) | Rozhraní PowerShell pro vytváření a správu aplikací IoT |
 |Azure IoT Tools pro VS Code  | Rozbočovač | [Vytvoření centra IoT pomocí nástrojů pro VS Code](../iot-hub/iot-hub-create-use-iot-toolkit.md) | VS Code rozšíření pro IoT Hub aplikace |
-|Průzkumník Azure IoT     | Rozbočovač | [Průzkumník Azure IoT](https://github.com/Azure/azure-iot-explorer) | Nejde vytvořit centra IoT Hub. Připojí se ke stávajícímu centru IoT ke správě zařízení. Často se používá v rozhraní příkazového řádku nebo portálu.|
 
 ## <a name="next-steps"></a>Další kroky
 Pokud chcete získat další informace o možnostech připojení zařízení k Azure IoT, prozkoumejte následující rychlé starty:

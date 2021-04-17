@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bffc9eb3e75dda2b04ad4118d1f599f85a0013c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 64e0a8cfcaf00c55038fbe5d1cdc7423b681b690
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590104"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589257"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>Základní hodnoty zabezpečení Azure pro Azure Load Balancer
 
@@ -42,7 +42,7 @@ Použití Standard Load Balancer se doporučuje pro produkční úlohy a obvykle
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy integrovaných definic – Microsoft. Network**:
 
@@ -72,7 +72,7 @@ Také odešlete protokoly toku do Log Analytics pracovního prostoru a potom pom
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy integrovaných definic – Microsoft. Network**:
 
@@ -126,7 +126,7 @@ Použijte funkci adaptivního posílení sítě Security Center k doporučení k
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy integrovaných definic – Microsoft. Network**:
 
@@ -140,7 +140,7 @@ Použijte funkci adaptivního posílení sítě Security Center k doporučení k
 
 **Odpovědnost:** Zákazník
 
-**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/azure/governance/policy/samples/azure-security-benchmark) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/azure/security-center/security-center-recommendations). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/azure/security-center/azure-defender) .
 
 **Azure Policy integrovaných definic – Microsoft. Network**:
 

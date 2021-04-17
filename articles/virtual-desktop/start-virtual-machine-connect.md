@@ -3,15 +3,15 @@ title: Spustit připojení k virtuálnímu počítači – Azure
 description: Postup konfigurace funkce spustit virtuální počítač při připojení
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/10/2021
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d3ef8e3656051c4a99ab52a7b52a0d623fdf9ce2
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: af95cf5d3e4112c717d653062f186797d48fb515
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303950"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389804"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>Spustit virtuální počítač na Connect (Preview)
 
@@ -119,7 +119,7 @@ Možnost spustit virtuální počítač v Connect je nastavení fondu hostitelů
 
 Postup použití Azure Portal ke konfiguraci spuštění virtuálního počítače v Connect:
 
-1. Otevřete prohlížeč a pokračujte na [Azure Portal](https://portal.azure.com/?feature.startVMonConnect=true#home). Doporučujeme otevřít Azure Portal v okně InPrivate.
+1. Otevřete prohlížeč a pokračujte na [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal přejít na **virtuální plochu Windows**.
 

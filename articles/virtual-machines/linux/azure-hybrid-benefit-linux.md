@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 73747222b9131fa85ae6ac01c9dedd5b0bbe1d63
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 774f4be6a5aa0e0e772086c52938881c6637b261
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543397"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588186"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Jak Zvýhodněné hybridní využití Azure platí pro virtuální počítače se systémem Linux
 
@@ -212,7 +212,7 @@ Odpověď: Ano, můžete. Můžete použít typ licence `RHEL_BYOS` pro virtuál
 
 *Otázka: je možné použít Zvýhodněné hybridní využití Azure na Virtual Machine Scale Sets pro RHEL a SLES?*
 
-Odpověď: Ano, Zvýhodněné hybridní využití Azure ve virtuálních počítačích Virtual Machine Scale Sets pro RHEL a SLES je ve verzi Preview. [Další informace o této výhodě a jejím použití najdete tady](https://docs.microsoft.com/azure/virtual-machine-scale-sets/azure-hybrid-benefit-linux-vmss). 
+Odpověď: Ano, Zvýhodněné hybridní využití Azure ve virtuálních počítačích Virtual Machine Scale Sets pro RHEL a SLES je ve verzi Preview. [Další informace o této výhodě a jejím použití najdete tady](/azure/virtual-machine-scale-sets/azure-hybrid-benefit-linux). 
 
 *Otázka: je možné použít Zvýhodněné hybridní využití Azure u rezervovaných instancí pro RHEL a SLES?*
 

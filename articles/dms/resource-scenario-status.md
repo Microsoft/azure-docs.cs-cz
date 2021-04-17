@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: fc2ab86a318086750b11780a7802aa3591065264
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c1a0853dc59b2e2ceabfd47d81aac364a2b5716
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463506"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589427"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Stav migračních scénářů, které podporuje Azure Database Migration Service
 
@@ -26,10 +26,6 @@ Azure Database Migration Service je navržený tak, aby podporoval různé scén
 ## <a name="offline-versus-online-migrations"></a>Offline online migrace
 
 Pomocí Azure Database Migration Service můžete provést offline nebo online migraci. Při *offline* migraci začíná výpadek aplikace ve stejnou dobu, kdy se spustí migrace. Pokud chcete omezit prostoje na dobu potřebnou k obnově prostředí po dokončení migrace, použijte *online* migraci. Doporučuje se otestovat offline migraci, abyste zjistili, jestli je výpadky přijatelné; Pokud ne, proveďte online migraci.
-
-## <a name="migration-scenario-status"></a>Stav scénáře migrace
-
-Stav migračních scénářů, které Azure Database Migration Service podporuje, se liší v závislosti na čase. Obecně jsou scénáře vydávány v **privátní verzi Preview**. Účast v privátní verzi Preview vyžaduje, aby zákazníci odeslali jmenování prostřednictvím [webu DMS Preview](https://aka.ms/dms-preview). Po použití privátní verze Preview se stav scénáře změní na **Public Preview**. Azure Database Migration Service uživatelé můžou vyzkoušet scénáře migrace ve verzi Public Preview přímo z uživatelského rozhraní. Nevyžaduje se žádné registraci.  Nicméně scénáře migrace ve verzi Public Preview nemusí být k dispozici ve všech oblastech a mohou před finální verzí podléhat dalším změnám. Po zobrazení verze Public Preview se stav scénáře změní na **všeobecně dostupné**. Všeobecná dostupnost (GA) je konečný stav vydaných verzí a funkce je kompletní a dostupná pro všechny uživatele.
 
 ## <a name="migration-scenario-support"></a>Podpora scénářů migrace
 

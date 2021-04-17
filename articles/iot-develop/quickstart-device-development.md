@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/15/2021
-ms.openlocfilehash: bc8317e3402fa0185186c06ed1f89e062e99fd5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 536b9092a7bddd353b58874e7aa97291839bafcc
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100654882"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589529"
 ---
 # <a name="getting-started-with-azure-iot-embedded-device-development"></a>Začínáme s vývojem zařízení Azure IoT Embedded
 
@@ -40,4 +40,4 @@ Příručka Začínáme obsahuje následující kurzy:
 
 ## <a name="next-steps"></a>Další kroky
 Po dokončení rychlého startu určitého zařízení v této příručce si Prozkoumejte další články a ukázky pro konkrétní zařízení v úložišti Azure RTO Začínáme:
-* [Začínáme s Azure RTO a Azure IoT](https://github.com/azure-rtos/getting-started)
+* [Začínáme s Azure RTO a Azure IoT](https://github.com/azure-rtos/getting-started#getting-started-with-azure-rtos-and-azure-iot)

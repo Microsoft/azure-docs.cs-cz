@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 8a45d490d060febc18d77c8487c9f562fd2a914a
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: e19d39a32d48ec55473bb957595d47ec5148e74b
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275492"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588781"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Nastavení místního vývoje pro Azure static Web Apps Preview
 
@@ -43,7 +43,7 @@ Následující tabulka ukazuje, jak se požadavky zpracovávají místně.
 :::image type="content" source="media/local-development/cli-conceptual.png" alt-text="Tok požadavků a odpovědí v Azure static Web App CLI":::
 
 > [!IMPORTANT]
-> Přejděte na adresu [http://localhost:4280](http://localhost:4280) pro přístup k aplikaci obsluhované rozhraním příkazového řádku.
+> Přejděte na adresu `http://localhost:4280` pro přístup k aplikaci obsluhované rozhraním příkazového řádku.
 
 - **Požadavky odeslané** na port `4280` se předávají příslušnému serveru v závislosti na typu požadavku.
 
@@ -79,7 +79,7 @@ Otevřete terminál do kořenové složky stávajícího webu Azure static Web A
 
     `swa start`
 
-1. Přejděte k [http://localhost:4280](http://localhost:4280) zobrazení aplikace v prohlížeči.
+1. Přejděte k http://localhost:4280 zobrazení aplikace v prohlížeči.
 
 ### <a name="other-ways-to-start-the-cli"></a>Další způsoby, jak spustit rozhraní příkazového řádku
 

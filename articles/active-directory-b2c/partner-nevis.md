@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: b8e72cab6d6220b71e93550eec7649752201180a
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 42e244249ecb0539637918ae2439bdb4f5da4b38
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256578"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588475"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>Kurz konfigurace Nevisu pomocí Azure Active Directory B2C pro ověřování bez hesla
 
-V tomto ukázkovém kurzu se naučíte, jak Azure AD B2C s nástrojem  [Nevis](https://www.nevis.net/solution/authentication-cloud) a povolit ověřování bez hesla. Nevis nabízí mobilní a plně náročné prostředí koncového uživatele s aplikací Nevis Access, které poskytuje silné ověřování zákazníků a dodržuje požadavky na transakce 2 (PSD2) pro platební služby.
+V tomto ukázkovém kurzu se naučíte, jak Azure AD B2C s nástrojem  [Nevis](https://www.nevis.net/en/solution/authentication-cloud) a povolit ověřování bez hesla. Nevis nabízí mobilní a plně náročné prostředí koncového uživatele s aplikací Nevis Access, které poskytuje silné ověřování zákazníků a dodržuje požadavky na transakce 2 (PSD2) pro platební služby.
 
 ## <a name="prerequisites"></a>Požadavky
 

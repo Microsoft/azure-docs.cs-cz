@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/28/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8010581667354f2e8484bc7341227ec41713d10f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bfd36b79ad800c14a68948aa8488e842d3f4def
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99072635"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481170"
 ---
 # <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-original-version-2018"></a>Co je nového digitálních vláken Azure? Jak se liší od původní verze (2018)?
 
@@ -42,6 +42,6 @@ Seznam omezení digitálních vláken Azure najdete v tématu [*omezení služby
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobně se do práce s aktuálním vydáním v rychlém startu: [*rychlý Start: Prozkoumejte ukázkový scénář*](quickstart-adt-explorer.md).
+* Podrobně se do práce s aktuálním vydáním v rychlém startu: [*rychlý Start: Prozkoumejte ukázkový scénář*](quickstart-azure-digital-twins-explorer.md).
 
 * Nebo začněte číst o klíčových konceptech s [*Koncepty: vlastní modely*](concepts-models.md).

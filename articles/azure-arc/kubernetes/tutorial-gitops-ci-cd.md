@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: 6fb8802dd92e6f9bd55a96772abe3cef5150ac30
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 9a228ce6f8b18afb77b656765abbad0bb4ae877f
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478382"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589125"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Kurz: implementace CI/CD pomocí GitOps s využitím clusterů Kubernetes s podporou ARC Azure
 
@@ -47,13 +47,13 @@ V tomto kurzu se seznámíte s Azure DevOps, Azure Reposmi a kanály a Azure CLI
 
   ```azurecli
   az extension add --name connectedk8s
-  az extension add --name k8s-configuration
+  az extension add --name k8sconfiguration
   ```
   * Chcete-li aktualizovat Tato rozšíření na nejnovější verzi, spusťte následující příkazy:
 
     ```azurecli
     az extension update --name connectedk8s
-    az extension update --name k8s-configuration
+    az extension update --name k8sconfiguration
     ```
 
 ## <a name="import-application-and-gitops-repos-into-azure-repos"></a>Import aplikací a úložišť GitOps do Azure Repos
@@ -119,7 +119,7 @@ Teď, když jste prosynchronizoval připojení GitOps, budete muset importovat k
 
 Úložiště aplikace obsahuje `.pipeline` složku s kanály, které budete používat pro PR, CI a CD. Importujte a přejmenujte tři kanály poskytované v ukázkovém úložišti:
 
-| Název souboru kanálu | Popis |
+| Název souboru kanálu | Description |
 | ------------- | ------------- |
 | [`.pipelines/az-vote-pr-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-pr-pipeline.yaml)  | Kanál PR aplikace s názvem **oblouk-cicd-demo-src PR** |
 | [`.pipelines/az-vote-ci-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-ci-pipeline.yaml) | Kanál CI aplikace s názvem **oblouk-cicd-demo-src CI** |
@@ -166,8 +166,7 @@ kubectl create secret docker-registry <secret-name> \
     --docker-password=<service-principal-password>
 ```
 
-> [!TIP]
-> Abyste se vyhnuli nutnosti nastavovat imagePullSecret pro všechny pod, zvažte přidání imagePullSecret k účtu služby v `dev` `stage` oborech názvů a. Další informace najdete v [kurzu Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account) .
+Abyste se vyhnuli nutnosti nastavovat imagePullSecret pro všechny pod, zvažte přidání imagePullSecret k účtu služby v `dev` `stage` oborech názvů a. Další informace najdete v [kurzu Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account) .
 
 ## <a name="create-environment-variable-groups"></a>Vytvoření skupin proměnných prostředí
 

@@ -5,12 +5,12 @@ ms.custom: references_regions
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 3676889fc56f6dc4746282e5001e33d1bc3c7c9a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 838eb517697c0625139058a19c7def764e869ed5
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501225"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588169"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
@@ -74,6 +74,9 @@ HDInsight 3,6 bude nadále běžet na Ubuntu 16,04. Až do 30. června 2021 se d
 Pokud chcete přesunout existující clustery do Ubuntu 18,04, musíte clustery vyřadit a znovu vytvořit. Pokud bude k dispozici podpora Ubuntu 18,04, naplánujte prosím vytvoření nebo opětovné vytvoření clusteru. Až bude nová image k dispozici ve všech oblastech, pošleme vám další oznámení.
 
 Důrazně doporučujeme, abyste v předem otestovali akce skriptů a vlastní aplikace nasazené na hraničních uzlech na virtuálním počítači s Ubuntu 18,04. Můžete [vytvořit jednoduchý Ubuntu Linux virtuální počítač v 18,04 – LTS](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/)a pak vytvořit a použít [pár klíčů ssh (Secure Shell)](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys#ssh-into-your-vm) na svém virtuálním počítači ke spouštění a testování akcí skriptu a vlastních aplikací nasazených na hraničních uzlech.
+
+### <a name="disable-stardard_a5-vm-size-as-head-node-for-hdinsgiht-40"></a>Zakázat Stardard_A5 velikosti virtuálního počítače jako hlavní uzel pro HDInsgiht 4,0
+Hlavní uzel clusteru HDInsight zodpovídá za inicializaci a správu clusteru. Velikost virtuálního počítače Standard_A5 má jako hlavní uzel pro HDInsight 4,0 problémy s spolehlivostí. Od další verze v květnu 2021 nebudou zákazníci moci vytvářet nové clustery s Standard_A5 velikostí virtuálních počítačů jako hlavní uzel. Můžete použít jiné virtuální počítače se 2 jádry, jako je E2_v3 nebo E2s_v3. Existující clustery se spustí, jak je. Pro hlavní uzel se důrazně doporučuje virtuální počítač se 4 jádry, aby se zajistila vysoká dostupnost a spolehlivost vašich clusterů v produkčním prostředí HDInsight.
 
 ### <a name="basic-support-for-hdinsight-36-starting-july-1-2021"></a>Podpora Basic pro HDInsight 3,6 od 1. července 2021
 Od 1. července 2021 bude Microsoft nabízet [Podpora Basic](hdinsight-component-versioning.md#support-options-for-hdinsight-versions) pro určité typy clusterů HDInsight 3,6. Plán podpora Basic bude k dispozici až do 3. dubna 2022. Automaticky se zaregistrujete do podpora Basic od 1. července 2021. Nemusíte nic dělat, abyste se mohli přihlásit. V [naší dokumentaci](hdinsight-36-component-versioning.md) , pro které jsou typy clusterů zahrnuté v podpora Basic. 

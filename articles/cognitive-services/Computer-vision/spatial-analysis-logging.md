@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 1f03f99e6394c3939855c73548e8fb917f8696bc
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 901e857a346b0955726c5755e23595efefbc2ca1
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286024"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589495"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie a řešení potíží
 
@@ -161,7 +161,7 @@ K optimalizaci protokolů odeslaných do vzdáleného koncového bodu, jako je n
 Konfigurace úrovně protokolu umožňuje řídit podrobnosti vygenerovaných protokolů. Podporované úrovně protokolu jsou: `none` , `verbose` , `info` , `warning` a `error` . Výchozí úroveň podrobností protokolu pro uzly i platformu je `info` . 
 
 Úrovně protokolu lze globálně upravit nastavením `ARCHON_LOG_LEVEL` proměnné prostředí na jednu z povolených hodnot.
-Dá se taky nastavit prostřednictvím vlákna s dvojitým odkazem IoT Edge modulu buď globálně, pro všechny nasazené dovednosti, nebo pro každou konkrétní dovednost nastavením hodnot pro `platformLogLevel` a `nodeLogLevel` , jak je uvedeno níže.
+Dá se taky nastavit prostřednictvím vlákna s dvojitým odkazem IoT Edge modulu buď globálně, pro všechny nasazené dovednosti, nebo pro každou konkrétní dovednost nastavením hodnot pro `platformLogLevel` a `nodesLogLevel` , jak je uvedeno níže.
 
 ```json
 {
@@ -173,7 +173,7 @@ Dá se taky nastavit prostřednictvím vlákna s dvojitým odkazem IoT Edge modu
             },
             "graphs": {
                 "samplegraph": {
-                    "nodeLogLevel": "verbose",
+                    "nodesLogLevel": "verbose",
                     "platformLogLevel": "verbose"
                 }
             }

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: efa5061a49978ed5e7766c0e7bf9b56a1e73cf5d
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 21247f6b396cb1f7016c74cbec528149c0583724
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389753"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587200"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -180,7 +180,7 @@ Následující seznam poskytuje další podrobnosti a obecné pokyny pro použí
 * K přímému volání rozhraní API digitálních vláken Azure můžete použít nástroj pro testování REST HTTP, jako je například post. Další informace o tomto procesu naleznete v tématu [*How to: Make a requests with post*](how-to-use-postman.md).
 * Chcete-li použít sadu SDK, vytvořte instanci `DigitalTwinsClient` třídy. Konstruktor vyžaduje přihlašovací údaje, které lze získat pomocí různých metod ověřování v `Azure.Identity` balíčku. Další `Azure.Identity` informace najdete v [dokumentaci k jejímu oboru názvů](/dotnet/api/azure.identity). 
 * `InteractiveBrowserCredential`Při zahájení práce může být užitečné, ale k dispozici je několik dalších možností, včetně přihlašovacích údajů pro [spravovanou identitu](/dotnet/api/azure.identity.interactivebrowsercredential), které pravděpodobně použijete k ověření služby [Azure Functions se službou MSI](../app-service/overview-managed-identity.md?tabs=dotnet) proti digitálním vazbám Azure. Další informace o naleznete `InteractiveBrowserCredential` v [dokumentaci třídy](/dotnet/api/azure.identity.interactivebrowsercredential).
-* Požadavky na rozhraní API digitálních vláken Azure vyžadují uživatele nebo instanční objekt, který je součástí stejného klienta služby [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD), kde se nachází instance digitálního vlákna Azure. Aby se zabránilo špatným aktérům v prověřování adres URL za účelem zjištění, kde se v Azure Digital procházejí instance, budou žádosti s přístupovými tokeny mimo původní tenant vracet chybové zprávy "404 Sub-Domain Nenalezeno". Tato chyba se vrátí *i v případě* , že se uživateli nebo instančnímu objektu dostala role data Reader pro digitální vlákna Azure nebo služba Azure Digital data Reader prostřednictvím spolupráce [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md) .
+* Požadavky na rozhraní API digitálních vláken Azure vyžadují uživatele nebo instanční objekt, který je součástí stejného klienta služby [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD), kde se nachází instance digitálního vlákna Azure. Aby se zabránilo zlomyslné kontrole koncových bodů digitálních vláken Azure, budou žádosti s přístupovými tokeny mimo původního tenanta vracet chybové zprávy "404 Sub-Domain Nenalezeno". Tato chyba se vrátí *i v případě* , že se uživateli nebo instančnímu objektu dostala role data Reader pro digitální vlákna Azure nebo služba Azure Digital data Reader prostřednictvím spolupráce [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md) . Informace o tom, jak dosáhnout přístupu napříč více klienty, najdete v tématu [*Postup: psaní ověřovacího kódu aplikace*](how-to-authenticate-client.md#authenticate-across-tenants).
 * Všechna volání rozhraní API služby jsou vystavena jako členské funkce `DigitalTwinsClient` třídy.
 * Všechny funkce služeb existují v synchronních a asynchronních verzích.
 * Všechny funkce služby vyvolávají výjimku pro libovolný návratový stav 400 nebo vyšší. Ujistěte se, že zabalíte volání do `try` oddílu a zachytíte alespoň `RequestFailedExceptions` . Další informace o tomto typu výjimky najdete [zde](/dotnet/api/azure.requestfailedexception).

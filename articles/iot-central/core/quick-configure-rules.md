@@ -8,16 +8,14 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 90fc1385afb2ef921828465ba030674281e96ebf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f65614de97e8ff6eed732e624ae30c3f2b70bd60
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833843"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589002"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Rychlé zprovoznění: Konfigurace pravidel a akcí pro zařízení v Azure IoT Central
-
-*Tento článek je pro operátory, tvůrce a správce.*
 
 V tomto rychlém startu vytvoříte pravidlo, které pošle e-mail, když je vlhkost hlášená snímačem zařízení větší než 55%.
 
@@ -70,10 +68,6 @@ Krátce po uložení se pravidlo aktivuje. Po splnění podmínek definovaných 
 
 > [!NOTE]
 > Po dokončení testování vypněte pravidlo, aby ve vaší doručené poště přestal přijímat výstrahy.
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
