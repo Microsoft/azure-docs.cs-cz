@@ -3,23 +3,23 @@ title: Vytváření kolekcí pro portály moje aplikace v Azure Active Directory
 description: Pomocí kolekcí moje aplikace můžete přizpůsobit stránky Moje aplikace, aby vaši koncoví uživatelé zjednodušili své prostředí aplikace. Uspořádejte aplikace do skupin pomocí samostatných karet.
 services: active-directory
 documentationcenter: ''
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 02/10/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7743a1af54b01f848c4ac6f0cb1d4526d66f8132
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc79e8026cb91b8ef3eac2addbb097b9db83afa7
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99254978"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377679"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Vytváření kolekcí na portálu Moje aplikace
 

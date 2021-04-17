@@ -4,12 +4,12 @@ description: Přečtěte si o konfiguraci rozhraní Ethernet pro instance BareMe
 ms.topic: reference
 ms.subservice: workloads
 ms.date: 04/14/2021
-ms.openlocfilehash: e98af51075d5193cab14d18f1cdb1f431c8fa892
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c57cbc86d17090d6960a334c2790d80b43420aca
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107559068"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588883"
 ---
 # <a name="ethernet-configuration-of-baremetal-for-oracle"></a>Konfigurace sítě Ethernet pro BareMetal pro Oracle
 
@@ -35,16 +35,16 @@ Výchozí konfigurace obsahuje jedno rozhraní IP klienta (eth1), které se při
 
 | **Logické rozhraní NIC** | **Název s operačním systémem RHEL** | **Případ použití** |
 | --- | --- | --- |
-| A | eth1. tenant | Klient do instance BareMetal |
-| C | ETH2. tenant | Z uzlu do úložiště; podporuje koordinaci a přístup k řadičům úložiště pro správu prostředí úložiště. |
-| B | Eth3. tenant | Uzel na uzel (privátní propojení) |
-| C | eth4. tenant | Rezervované/iSCSI |
-| C | eth5. tenant | Rezervované a zaprotokolované zálohování |
-| C | eth6. tenant | Zálohování Node-to-storage_Data (RMAN, Snapshot) |
-| C | eth7. tenant | Node-to-storage_dNFS-pri; poskytuje připojení k poli úložiště NetApp. |
-| C | eth8. tenant | Node-to-storage_dNFS-s; poskytuje připojení k poli úložiště NetApp. |
-| D | eth9. tenant | Připojení DR pro nastavení globálního přístupu pro přístup k BMI v jiné oblasti. |
-| A | \*ETH10. tenant | \* Klient do instance BareMetal
+| A | net1. tenant | Klient do instance BareMetal |
+| C | net2. tenant | Z uzlu do úložiště; podporuje koordinaci a přístup k řadičům úložiště pro správu prostředí úložiště. |
+| B | NET3. tenant | Uzel na uzel (privátní propojení) |
+| C | NET4. tenant | Rezervované/iSCSI |
+| C | NET5. tenant | Rezervované a zaprotokolované zálohování |
+| C | net6. tenant | Zálohování Node-to-storage_Data (RMAN, Snapshot) |
+| C | Net7. tenant | Node-to-storage_dNFS-pri; poskytuje připojení k poli úložiště NetApp. |
+| C | Net8. tenant | Node-to-storage_dNFS-s; poskytuje připojení k poli úložiště NetApp. |
+| D | Net9. tenant | Připojení DR pro nastavení globálního přístupu pro přístup k BMI v jiné oblasti. |
+| A | \*Net10. tenant | \* Klient do instance BareMetal
  |
 
 V případě potřeby můžete definovat více karet síťového rozhraní (NIC). Konfigurace stávajících síťových karet se ale *nedají* změnit.

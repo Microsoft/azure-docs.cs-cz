@@ -10,12 +10,12 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 03/12/2019
 ms.custom: seoapril2019 sqldbrb=1, devx-track-azurecli
-ms.openlocfilehash: 9c9af6e3bc3dfd798f4b3f0cad9319aa573c425d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc2bb24880b77eae24e9bb2ef0baf70ac0b92ac7
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96455999"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588628"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Správa elastických fondů v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -96,7 +96,7 @@ Chcete-li vytvořit a přesunout databáze v rámci stávajících elastických 
 |[sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Vrátí statistiku využití prostředků pro všechny elastické fondy na serveru. Pro každý elastický fond je k dispozici jeden řádek pro každé 15 sekundové okno pro vytváření sestav (čtyři řádky za minutu). To zahrnuje využití procesoru, vstupně-výstupních operací, protokolu, spotřeby úložiště a souběžného využívání požadavků a relací všemi databázemi ve fondu.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Vrátí edici edice (Service úrovně), cíl služby (cenová úroveň) a název elastického fondu, pokud existuje, pro databázi v SQL Database nebo Azure synapse Analytics. Pokud se přihlásíte k hlavní databázi na serveru, vrátí informace na všech databázích. Pro Azure synapse Analytics musíte být připojeni k hlavní databázi.|
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
 Pokud chcete vytvořit a spravovat SQL Database elastické fondy a databáze ve fondu, použijte tyto žádosti o REST API.
 
@@ -106,7 +106,8 @@ Pokud chcete vytvořit a spravovat SQL Database elastické fondy a databáze ve 
 |[Elastické fondy – odstranění](/rest/api/sql/elasticpools/delete)|Odstraní elastický fond.|
 |[Elastické fondy – získat](/rest/api/sql/elasticpools/get)|Získá elastický fond.|
 |[Elastické fondy – seznam podle serveru](/rest/api/sql/elasticpools/listbyserver)|Vrátí seznam elastických fondů na serveru.|
-|[Elastické fondy – aktualizace](/rest/api/sql/elasticpools/listbyserver)|Aktualizuje existující elastický fond.|
+|[Elastické fondy – aktualizace] (/rest/api/sql/2020-11-01-preview/elasticpools/update
+)|Aktualizuje existující elastický fond.|
 |[Aktivity elastického fondu](/rest/api/sql/elasticpoolactivities)|Vrátí aktivity elastického fondu.|
 |[Aktivity databáze elastického fondu](/rest/api/sql/elasticpooldatabaseactivities)|Vrátí aktivitu v databázích uvnitř elastického fondu.|
 |[Databáze – vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate)|Vytvoří novou databázi nebo aktualizuje stávající databázi.|

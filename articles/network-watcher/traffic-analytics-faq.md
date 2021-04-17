@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: f4d97b81bf8f11b8380f04dcbfdb72bd658805ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98c0a6f88da717256e78a748902317a90a369a9c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579240"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533627"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastějších dotazech
 
@@ -59,62 +59,6 @@ Postup kontroly rolí přiřazených uživateli pro předplatné:
 3. Pokud chcete zobrazit seznam všech rolí, které jsou přiřazené k zadanému uživateli, použijte příkaz  **Get-AzRoleAssignment-SignInName [User email]-IncludeClassicAdministrators**. 
 
 Pokud nevidíte žádný výstup, obraťte se na příslušného Správce předplatného a získejte přístup ke spuštění příkazů. Další podrobnosti najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
-
-
-## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Ve kterých oblastech Azure je Analýza provozu k dispozici?
-
-Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli z následujících podporovaných oblastí:
-- Střední Kanada
-- USA – středozápad
-- East US
-- USA – východ 2
-- USA – středosever
-- Středojižní USA
-- Střední USA
-- USA – západ
-- Západní USA 2
-- Francie – střed
-- West Europe
-- Severní Evropa
-- Brazílie – jih
-- Spojené království – západ
-- Spojené království – jih
-- Austrálie – východ
-- Austrálie – jihovýchod 
-- Východní Asie
-- Southeast Asia
-- Jižní Korea – střed
-- Indie – střed
-- Indie – jih
-- Japonsko – východ
-- Japonsko – západ
-- USA (Gov) – Virginia
-- Čína – východ 2
-
-Pracovní prostor Log Analytics musí existovat v následujících oblastech:
-- Střední Kanada
-- USA – středozápad
-- East US
-- USA – východ 2
-- USA – středosever
-- Středojižní USA
-- Střední USA
-- USA – západ
-- Západní USA 2
-- Francie – střed
-- West Europe
-- Severní Evropa
-- Spojené království – západ
-- Spojené království – jih
-- Austrálie – východ
-- Austrálie – jihovýchod
-- Východní Asie
-- Southeast Asia 
-- Jižní Korea – střed
-- Indie – střed
-- Japonsko – východ
-- USA (Gov) – Virginia
-- Čína – východ 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Může skupin zabezpečení sítě povolit protokolování toků v různých oblastech, než je můj pracovní prostor?
 

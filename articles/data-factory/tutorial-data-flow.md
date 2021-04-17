@@ -7,13 +7,13 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/14/2021
-ms.openlocfilehash: 0842dad0e0ea6f9987727e8abf3d0eaf8a59e821
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 04/16/2021
+ms.openlocfilehash: f8570c8b252fae91986508abd3725cbbedd361a0
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517506"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565419"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformace dat s využitím mapování toků dat
 
@@ -100,7 +100,7 @@ Po vytvoření toku dat se automaticky pošle na plátno toku dat. V tomto kroku
     ![Snímek obrazovky, který ukazuje, kde při pojmenování zdroje vyberete nový.](media/tutorial-data-flow/dataflow3.png)
 1. Vyberte **Azure Data Lake Storage Gen2**. Klikněte na Pokračovat.
 
-    ![Snímek obrazovky, který zobrazuje dlaždici Azure Data Lake Storage Gen2.](media/tutorial-data-flow/dataset1.png)
+    ![Snímek obrazovky, který ukazuje, kde je Azure Data Lake Storage Gen2 dlaždice](media/tutorial-data-flow/dataset1.png)
 1. Vyberte **DelimitedText**. Klikněte na Pokračovat.
 
     ![Snímek obrazovky, který zobrazuje dlaždici DelimitedText](media/tutorial-data-flow/dataset2.png)

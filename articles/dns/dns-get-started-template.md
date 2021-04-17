@@ -4,17 +4,19 @@ titleSuffix: Azure DNS
 description: Naučíte se vytvořit zónu a záznam DNS v DNS Azure. Toto je podrobný rychlý Start k vytvoření a správě první zóny a záznamu DNS pomocí šablony Azure Resource Manager (šablona ARM).
 services: dns
 author: duongau
-ms.service: dns
-ms.topic: quickstart
-ms.date: 09/8/2020
 ms.author: duau
-ms.custom: subject-armqs
-ms.openlocfilehash: 24460167e2279e7d3001d0bc16d050beb5b55289
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/8/2020
+ms.topic: quickstart
+ms.service: dns
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 34e810fa8244cf3ff00e57f193624a2c1fa4d755
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92790997"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107539021"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Rychlý Start: vytvoření zóny Azure DNS a záznamu pomocí šablony ARM
 

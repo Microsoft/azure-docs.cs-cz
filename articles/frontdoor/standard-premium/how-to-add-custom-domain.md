@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 36cb5720e409c86fcb4bc1a97863e5d3523cd3bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69e216c8893f9361a18354e5d165ecc0499601aa
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588745"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387917"
 ---
 # <a name="create-a-custom-domain-on-azure-front-door-standardpremium-sku-preview-using-the-azure-portal"></a>Vytvoření vlastní domény na Azure front-SKU Standard/Premium SKU (Preview) pomocí Azure Portal
 
@@ -23,7 +23,7 @@ ms.locfileid: "104588745"
 
 Pokud používáte službu Azure front-endu Standard/Premium pro doručování aplikací, je třeba vlastní doména, pokud chcete, aby se váš vlastní název domény zobrazoval v rámci požadavků koncových uživatelů. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky.
 
-Po vytvoření profilu služby Azure front-endu Standard nebo Premium bude mít výchozí hostitel s front-endu subdoménu azurefd.net. Tato subdoména se do adresy URL zahrne, když služba Azure front-Premium Standard nebo Premium doručuje obsah z back-endu ve výchozím nastavení. Například, `https://contoso-frontend.azurefd.net/activeusers.htm`. Pro usnadnění práce poskytuje Azure Front Door možnost přidružit k výchozímu hostiteli vlastní doménu. Pomocí této možnosti dodáte svůj obsah do vlastní domény v adrese URL místo názvu domény vlastněné službou Azure front-Premium (Standard/Premium). Například, https://www.contoso.com/photo.png.
+Po vytvoření profilu služby Azure front-endu Standard nebo Premium bude mít výchozí hostitel s front-endu subdoménu azurefd.net. Tato subdoména se do adresy URL zahrne, když služba Azure front-Premium Standard nebo Premium doručuje obsah z back-endu ve výchozím nastavení. Například, `https://contoso-frontend.azurefd.net/activeusers.htm`. Pro usnadnění práce poskytuje Azure Front Door možnost přidružit k výchozímu hostiteli vlastní doménu. Pomocí této možnosti dodáte svůj obsah do vlastní domény v adrese URL místo názvu domény vlastněné službou Azure front-Premium (Standard/Premium). Například https://www.contoso.com/photo.png .
 
 > [!IMPORTANT]
 > Služba Azure front-in standard/Premium (Preview) je aktuálně ve verzi Public Preview.

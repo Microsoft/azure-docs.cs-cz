@@ -11,18 +11,20 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 3d8c8f8df162d31c4f646866d7c82e9af237eaa8
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 1852bfdb4bf8513aaa5d43993e2b6ff804808dbd
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553800"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575645"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Připojení fondů Apache Spark (využívajících Azure synapse Analytics) pro tahání dat (Preview)
 
-V tomto článku se dozvíte, jak připojit a spustit fond Apache Spark s využitím [Azure synapse Analytics](../synapse-analytics/overview-what-is.md) pro data tahání ve velkém měřítku. 
+V tomto článku se dozvíte, jak připojit fond Apache Spark využívající [Azure synapse Analytics](../synapse-analytics/overview-what-is.md) k pracovnímu prostoru Azure Machine Learning, abyste ho mohli spustit a provádět data tahání ve velkém měřítku. 
 
-Tento článek obsahuje pokyny pro interaktivní provádění úloh tahání dat v rámci vyhrazené Synapseové relace v notebooku Jupyter. Pokud dáváte přednost použití kanálů Azure Machine Learning, přečtěte si téma [Jak používat Apache Spark (využívá Azure synapse Analytics) v kanálu Machine Learning (Preview)](how-to-use-synapsesparkstep.md).
+Tento článek obsahuje pokyny pro interaktivní provádění úloh tahání dat v rámci vyhrazené Synapseové relace ve Jupyter poznámkovém bloku s použitím [sady SDK služby Azure Machine Learning Python](/python/api/overview/azure/ml/). Pokud dáváte přednost použití kanálů Azure Machine Learning, přečtěte si téma [Jak používat Apache Spark (využívá Azure synapse Analytics) v kanálu Machine Learning (Preview)](how-to-use-synapsesparkstep.md).
+
+Pokud hledáte pokyny, jak používat Azure synapse Analytics s pracovním prostorem synapse, přečtěte si [řadu začínáme s Azure synapse Analytics](../synapse-analytics/get-started.md).
 
 >[!IMPORTANT]
 > Integrace analýzy Azure Machine Learning a Azure synapse je ve verzi Preview. Možnosti uvedené v tomto článku používají `azureml-synapse` balíček, který obsahuje [experimentální](/python/api/overview/azure/ml/#stable-vs-experimental) funkce verze Preview, které se můžou kdykoli změnit.
@@ -32,6 +34,8 @@ Tento článek obsahuje pokyny pro interaktivní provádění úloh tahání dat
 Integrace služby Azure synapse Analytics s Azure Machine Learning (Preview) umožňuje připojit fond Apache Spark s Azure synapse pro interaktivní zkoumání a přípravu dat. Díky této integraci můžete mít vyhrazenou výpočetní kapacitu pro data tahání ve velkém měřítku, a to vše v rámci stejného poznámkového bloku Pythonu, který používáte pro školení vašich modelů strojového učení.
 
 ## <a name="prerequisites"></a>Požadavky
+
+* [Sada SDK Azure Machine Learning Pythonu je nainstalovaná](/python/api/overview/azure/ml/install). 
 
 * [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md?tabs=python).
 
@@ -57,11 +61,15 @@ Pokud chcete načíst a použít existující propojenou službu, musíte mít o
 Zobrazení všech propojených služeb přidružených k pracovnímu prostoru Machine Learning. 
 
 ```python
+from azureml.core import LinkedService
+
 LinkedService.list(ws)
 ```
 
 Tento příklad načte existující propojenou službu `synapselink1` z pracovního prostoru `ws` s [`get()`](/python/api/azureml-core/azureml.core.linkedservice#get-workspace--name-) metodou.
 ```python
+from azureml.core import LinkedService
+
 linked_service = LinkedService.get(ws, 'synapselink1')
 ```
  
@@ -72,7 +80,7 @@ Jakmile nanačtete propojenou službu, připojte fond Apache Spark synapse jako 
 Fondy Apache Spark můžete připojit prostřednictvím,
 * Azure Machine Learning Studio
 * [Šablony Azure Resource Manageru (ARM)](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)
-* Sada Python SDK 
+* Sada SDK pro Azure Machine Learning Python 
 
 ### <a name="attach-a-pool-via-the-studio"></a>Připojení fondu přes Studio
 Postupujte takto: 
@@ -92,13 +100,13 @@ Postupujte takto:
 Můžete také použít **sadu Python SDK** pro připojení Apache Sparkho fondu. 
 
 Kód následného kódu, 
-1. Nakonfiguruje SynapseCompute pomocí,
+1. Nakonfiguruje [`SynapseCompute`](/python/api/azureml-core/azureml.core.compute.synapsecompute) s,
 
-   1. LinkedService, `linked_service` který jste vytvořili nebo získali v předchozím kroku. 
+   1. , [`LinkedService`](/python/api/azureml-core/azureml.core.linkedservice) `linked_service` Který jste vytvořili nebo získali v předchozím kroku. 
    1. Typ cíle výpočtů, který chcete připojit, `SynapseSpark`
    1. Název fondu Apache Spark. Ta se musí shodovat s existujícím fondem Apache Spark, který je ve vašem pracovním prostoru Azure synapse Analytics.
    
-1. Vytvoří ComputeTarget strojového učení tím, že ho projde. 
+1. Vytvoří strojové učení [`ComputeTarget`](/python/api/azureml-core/azureml.core.computetarget) předáním, 
    1. Pracovní prostor Machine Learning, který chcete použít, `ws`
    1. Název, který chcete odkazovat na výpočetní prostředky v pracovním prostoru Azure Machine Learning. 
    1. Attach_configuration, kterou jste zadali při konfiguraci výpočetní služby synapse.
@@ -109,11 +117,11 @@ from azureml.core.compute import SynapseCompute, ComputeTarget
 
 attach_config = SynapseCompute.attach_configuration(linked_service, #Linked synapse workspace alias
                                                     type='SynapseSpark', #Type of assets to attach
-                                                    pool_name="<Synapse Spark pool name>") #Name of Synapse spark pool 
+                                                    pool_name=synapse_spark_pool_name) #Name of Synapse spark pool 
 
 synapse_compute = ComputeTarget.attach(workspace= ws,                
-                                       name="<Synapse Spark pool alias in Azure ML>", 
-                                       attach_configuration=attach_config
+                                       name= synapse_compute_name, 
+                                       attach_configuration= attach_config
                                       )
 
 synapse_compute.wait_for_completion()
@@ -125,7 +133,7 @@ Ověřte, zda je fond Apache Spark připojen.
 ws.compute_targets['Synapse Spark pool alias']
 ```
 
-## <a name="launch-synapse-spark-pool-for-data-preparation-tasks"></a>Spuštění synapse Spark fondu pro úlohy přípravy dat
+## <a name="launch-synapse-spark-pool-for-data-wrangling-tasks"></a>Spuštění synapse Spark fondu pro úlohy tahání dat
 
 Chcete-li zahájit přípravu dat pomocí fondu Apache Spark, zadejte název Apache Spark fondu:
 
@@ -238,8 +246,8 @@ Můžete také získat existující registrovanou datovou sadu v pracovním pros
 Následující příklad ověřuje pracovní prostor, získá registrovanou TabularDataset, `blob_dset` , který odkazuje na soubory v úložišti objektů BLOB a převede je na datový rámec Spark. Když převedete datové sady na datový rámec Spark, můžete využívat knihovny pro `pyspark` zkoumání a přípravu dat.  
 
 ``` python
-
 %%synapse
+
 from azureml.core import Workspace, Dataset
 
 subscription_id = "<enter your subscription ID>"
@@ -262,6 +270,7 @@ Následující kód se rozšíří na příklad HDFS v předchozí části a fil
 
 ```python
 %%synapse
+
 from pyspark.sql.functions import col, desc
 
 df.filter(col('Survived') == 1).groupBy('Age').count().orderBy(desc('count')).show(10)
@@ -309,10 +318,46 @@ train_ds = Dataset.File.from_files(path=datastore_paths, validate=True)
 input1 = train_ds.as_mount()
 
 ```
+## <a name="use-a-scriptrunconfig-to-submit-an-experiment-run-to-a-synapse-spark-pool"></a>Použijte `ScriptRunConfig` k odeslání experimentu do fondu synapse Spark
+
+Můžete také [využít cluster synapse Spark, který jste dříve připojili](#attach-a-pool-with-the-python-sdk) jako výpočetní cíl pro odeslání experimentu s objektem [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) .
+
+```Python
+from azureml.core import RunConfiguration
+from azureml.core import ScriptRunConfig 
+from azureml.core import Experiment
+
+run_config = RunConfiguration(framework="pyspark")
+run_config.target = synapse_compute_name
+
+run_config.spark.configuration["spark.driver.memory"] = "1g" 
+run_config.spark.configuration["spark.driver.cores"] = 2 
+run_config.spark.configuration["spark.executor.memory"] = "1g" 
+run_config.spark.configuration["spark.executor.cores"] = 1 
+run_config.spark.configuration["spark.executor.instances"] = 1 
+
+run_config.environment.python.conda_dependencies = conda_dep
+
+script_run_config = ScriptRunConfig(source_directory = './code',
+                                    script= 'dataprep.py',
+                                    arguments = ["--tabular_input", input1, 
+                                                 "--file_input", input2,
+                                                 "--output_dir", output],
+                                    run_config = run_config)
+```
+
+Po `ScriptRunConfig` nastavení objektu můžete spustit odeslání.
+
+```python
+from azureml.core import Experiment 
+
+exp = Experiment(workspace=ws, name="synapse-spark") 
+run = exp.submit(config=script_run_config) 
+run
+```
+Další podrobnosti, jako je například `dataprep.py` skript použitý v tomto příkladu, najdete v [poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb).
 
 ## <a name="example-notebooks"></a>Příklady poznámkových bloků
-
-Po přípravě dat se dozvíte, jak [využít cluster Synase Spark jako cíl výpočetní služby pro školení modelů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb).
 
 V tomto [ukázkovém poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb) najdete další koncepty a ukázky možností integrace služby Azure synapse Analytics a Azure Machine Learning.
 

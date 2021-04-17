@@ -7,12 +7,12 @@ ms.custom: mvc, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 562ec4cf19d15772b2dec5adf59582f1feb5363a
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a7617a36ed800f1765ed7723568a4b612fcb6518
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478456"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587574"
 ---
 # <a name="tutorial-mock-api-responses"></a>Kurz: napodobení odpovědí rozhraní API
 
@@ -20,7 +20,7 @@ Back-endové rozhraní API je možné importovat do rozhraní API pro API Manage
 
 Možnost napodobení odpovědí může být užitečná v různých scénářích:
 
-+ Po prvním navržení rozhraní API faÃ § ADE a implementace back-endu se bude nacházet později. Případně vývoj back-endu probíhá paralelně.
++ Když se jako první navrhuje fasáda rozhraní API a back-endová implementace proběhne později. Případně vývoj back-endu probíhá paralelně.
 + Když back-end dočasně není v provozu nebo neumožňuje škálování.
 
 V tomto kurzu se naučíte:
@@ -84,7 +84,7 @@ Rozhraní API zpřístupňuje jednu nebo více operací. V této části přidej
 I když se v tomto příkladu nevyžaduje, další nastavení pro operaci rozhraní API můžete nakonfigurovat na dalších kartách, včetně těchto:
 
 
-|Karta      |Popis  |
+|Karta      |Description  |
 |---------|---------|
 |**Dotaz**     |  Přidejte parametry dotazu. Kromě zadání názvu a popisu můžete zadat hodnoty, které jsou přiřazeny parametru dotazu. Jedna z hodnot může být označená jako výchozí (volitelné).        |
 |**Žádost**     |  Definujte typy obsahu, příklady a schémata požadavku.       |

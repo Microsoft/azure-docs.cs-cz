@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 04d17e17ef11696efd52f04ea83639f2a9b81fea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e718ef30d029995c49efe36f19a6efcf7de0616
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96938745"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589597"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Kurz: Konfigurace Dropboxu pro firmy pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v Dropboxu pro firmy a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD tak, aby automaticky zřídily a zrušily zřizování uživatelů a skupin do Dropboxu pro firmy.
 
 > [!IMPORTANT]
-> Microsoft a Dropbox budou svou starou integraci Dropboxu používat jako efektivní 04/01/2021. Abyste se vyhnuli přerušení služby, doporučujeme migrovat na novou integraci Dropboxu, která podporuje skupiny. K migraci na novou integraci Dropboxu přidejte a nakonfigurujte novou instanci Dropboxu pro zřizování ve vašem tenantovi Azure AD pomocí následujících kroků. Jakmile nakonfigurujete novou integraci Dropboxu, zakažte zřizování na staré integraci Dropboxu, abyste zabránili problémům zřizování. Podrobnější kroky při migraci na novou integraci Dropboxu najdete v tématu [aktualizace na nejnovější Dropbox pro firmy pomocí Azure AD](https://help.dropbox.com/installs-integrations/third-party/update-dropbox-azure-ad-connector).
+> V budoucnu bude Microsoft a Dropbox zastaralá o starou integraci Dropboxu. Původně bylo naplánováno 4/1/2021, ale bylo odloženo po neomezenou dobu. Pokud ale chcete zabránit přerušení služby, doporučujeme migrovat na novou integraci Dropboxu SCIM 2,0, která podporuje skupiny. K migraci na novou integraci Dropboxu přidejte a nakonfigurujte novou instanci Dropboxu pro zřizování ve vašem tenantovi Azure AD pomocí následujících kroků. Jakmile nakonfigurujete novou integraci Dropboxu, zakažte zřizování na staré integraci Dropboxu, abyste zabránili problémům zřizování. Podrobnější kroky při migraci na novou integraci Dropboxu najdete v tématu [aktualizace na nejnovější Dropbox pro firmy pomocí Azure AD](https://help.dropbox.com/installs-integrations/third-party/update-dropbox-azure-ad-connector).
 
 > [!NOTE]
 > Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).

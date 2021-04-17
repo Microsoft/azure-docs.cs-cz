@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 04/15/2021
-ms.openlocfilehash: b9d6ca88d5e9d49d3973193059197a1aa171e3e8
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 61de2cf2e3ad9175d97378234d62f72ab3517b51
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568680"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587829"
 ---
 # <a name="create-resource-set-pattern-rules"></a>Vytvořit pravidla vzoru sady prostředků
 
@@ -53,6 +53,9 @@ Pomocí následujících kroků vytvořte nové pravidlo vzoru sady prostředků
       :::image type="content" source="media/how-to-resource-set-pattern-rules/scoped-resource-set-rule-example.png" alt-text="Vytvořit nové pravidlo konfigurace." border="true":::
 
 1. Uložte pravidlo kliknutím na **Přidat**.
+
+> [!NOTE]
+> Po vytvoření pravidla vzoru budou všechny nové kontroly používat pravidla při přijímání. Existující prostředky v katalogu dat se aktualizují prostřednictvím procesu na pozadí, který může trvat až několik hodin. 
 
 ## <a name="pattern-rule-syntax"></a><a name="syntax"></a> Syntaxe pravidla vzoru
 
@@ -168,7 +171,7 @@ Pravidlo 2
 
 **Kvalifikovaný název:**`raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-#### <a name="resource-set-true"></a>*Sada prostředků: true*
+**Sada prostředků:** true
 
 #### <a name="outputs"></a>Výstupy
 

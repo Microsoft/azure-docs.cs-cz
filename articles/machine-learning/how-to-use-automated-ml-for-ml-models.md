@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: nibaccam
-author: aniththa
+author: cartacioS
 ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 2e06375441d6540d6630cfe9d4d8c3beec558879
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5718e0e3732f57b46500f9d2cdb1165e883ca44f
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562718"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575577"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 
@@ -180,16 +180,16 @@ Podrobnější informace o všech dokončených modelech získáte v podrobnoste
 
 [![Podrobnosti iterace](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
-## <a name="model-explanations"></a>Vysvětlení modelu
+## <a name="model-explanations-preview"></a>Vysvětlení modelu (Preview)
 
-Pro lepší pochopení modelu si přečtěte, které datové funkce (RAW nebo inženýr) ovlivnily předpovědi modelu pomocí řídicího panelu vysvětlení modelu. 
+Pro lepší pochopení modelu můžete zjistit, které datové funkce (RAW nebo inženýr) ovlivnily předpovědi modelu pomocí řídicího panelu vysvětlení modelu. 
 
-Řídicí panel s popisem modelu poskytuje obecnou analýzu výukového modelu spolu s jeho předpovědi a vysvětleními. Umožňuje také přejít k jednotlivým datovým bodům a jejich důležitosti funkcím. [Přečtěte si další informace o vizualizacích řídicího panelu a konkrétních plochách](how-to-machine-learning-interpretability-aml.md#visualizations).
+Řídicí panel s popisem modelu poskytuje obecnou analýzu výukového modelu spolu s jeho předpovědi a vysvětleními. Umožňuje také přejít k jednotlivým datovým bodům a jejich důležitosti funkcím. [Přečtěte si další informace o vizualizacích řídicího panelu](how-to-machine-learning-interpretability-aml.md#visualizations).
 
 Chcete-li získat vysvětlení pro určitý model, 
 
-1. Na kartě **modely** vyberte model, který chcete použít. 
-1. Vyberte tlačítko **vysvětlit model** a poskytněte výpočetní prostředky, které se dají použít ke generování vysvětlení.
+1. Na kartě **modely** vyberte model, který chcete pochopit. 
+1. Vyberte tlačítko **vysvětlit model** a poskytněte výpočetní prostředky, které lze použít ke generování vysvětlení.
 1. Pro stav se podívejte na kartu **Podřízená spuštění** . 
 1. Po dokončení přejděte na kartu **vysvětlení (Preview)** , která obsahuje řídicí panel vysvětlení. 
 

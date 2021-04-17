@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeea88d8c21ba754fbeadbb24891126b639616c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31d82906625bc55cbdba21f2e356ee3f29f9d436
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96437226"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567379"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Rychlý Start: vytvoření nového tenanta v Azure Active Directory
 Pomocí portálu Azure Active Directory (Azure AD) můžete provádět všechny úlohy správy, včetně vytvoření nového tenanta pro vaši organizaci. 
@@ -59,10 +59,16 @@ Po přihlášení k webu Azure Portal můžete vytvořit nového tenanta pro svo
 
 Váš nový tenant se vytvoří s doménu contoso.onmicrosoft.com.
 
+## <a name="your-user-account-in-the-new-tenant"></a>Váš uživatelský účet v novém tenantovi
+
+Při vytváření nového tenanta AAD se stanete prvním uživatelem tohoto tenanta. Jako první uživatel jste automaticky přiřadili roli [globálního správce](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference#global-administrator) . Podívejte se na uživatelský účet tak, že přejdete na stránku [**Uživatelé**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers) .
+
+Ve výchozím nastavení je také uvedeno jako [technický kontakt](https://docs.microsoft.com/microsoft-365/admin/manage/change-address-contact-and-more?view=o365-worldwide#what-do-these-fields-mean) pro tenanta. Technické kontaktní informace je něco, co můžete změnit ve [**vlastnostech**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud nebudete tuto aplikaci nadále používat, můžete klienta odstranit pomocí následujících kroků:
 
-- Ujistěte se, že jste přihlášeni k adresáři, který chcete odstranit, pomocí filtru **Directory + Subscription** v Azure Portal a v případě potřeby přepnete do cílového adresáře.
+- Ujistěte se, že jste přihlášeni k adresáři, který chcete odstranit, pomocí filtru **adresáře a předplatného** v Azure Portal. V případě potřeby přepněte do cílového adresáře.
 - Vyberte **Azure Active Directory** a pak na stránce **Contoso - přehled** vyberte **Odstranit adresář**.
 
     Tím odstraníte tenanta a k němu přidružené informace.

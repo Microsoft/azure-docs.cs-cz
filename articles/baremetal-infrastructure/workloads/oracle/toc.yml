@@ -12,3 +12,13 @@
   href: oracle-baremetal-architecture.md
 - name: Zřídit
   href: oracle-baremetal-provision.md
+- name: Vysoká dostupnost a zotavení po havárii
+  items:
+    - name: Přehled
+      href: concepts-oracle-high-availability.md
+    - name: Funkce vysoké dostupnosti
+      href: high-availability-features.md
+    - name: Možnosti a aspekty
+      href: options-considerations-high-availability.md
+    - name: Zvolit způsob obnovení
+      href: oracle-high-availability-recovery.md

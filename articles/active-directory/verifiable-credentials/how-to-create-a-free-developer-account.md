@@ -9,12 +9,12 @@ ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 1e8bb59c09622a39dad680940ff34e643ee0cc3b
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a50c8b083c1cd453dbe3c51c63ec9cf53859c3bd
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222737"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587261"
 ---
 # <a name="how-to-create-a-free-azure-active-directory-developer-tenant"></a>Jak vytvořit bezplatného tenanta Azure Active Directoryho vývojáře
 
@@ -45,7 +45,7 @@ Pokud se rozhodnete zaregistrovat bezplatný program pro vývojáře Microsoft 3
 
 V tuto chvíli jste vytvořili tenanta s 25 uživateli s uživatelskými licencemi. Mezi licence E5 patří licence Azure AD P2. Volitelně můžete přidat ukázkové datové sady s uživateli, skupinami, poštou a SharePointem, které vám pomůžou s testováním ve vývojovém prostředí. U ověřené služby pro vystavování přihlašovacích údajů nejsou vyžadovány.
 
-Pro usnadnění práce byste mohli přidat vlastní pracovní účet jako [hosta](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal.md) do nově vytvořeného tenanta a použít tento účet ke správě tenanta. Pokud chcete, aby účet Guest mohl spravovat ověřitelnou přihlašovací službu, musíte tomuto uživateli přiřadit roli globální správce.
+Pro usnadnění práce byste mohli přidat vlastní pracovní účet jako [hosta](/azure/active-directory/external-identities/b2b-quickstart-add-guest-users-portal) do nově vytvořeného tenanta a použít tento účet ke správě tenanta. Pokud chcete, aby účet Guest mohl spravovat ověřitelnou přihlašovací službu, musíte tomuto uživateli přiřadit roli globální správce.
 
 ## <a name="next-steps"></a>Další kroky
 

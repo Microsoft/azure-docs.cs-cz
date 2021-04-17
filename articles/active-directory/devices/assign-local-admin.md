@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56e0f92593d185890e34a1a5120093d68cf45484
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 806ff92fcf75ff8d1c8e092d7ff4435751a9e7db
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388411"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529906"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD
 
@@ -76,7 +76,7 @@ Od verze 2004 Windows 10 můžete pomocí skupin Azure AD spravovat oprávnění
 
 V současné době není v Intune žádné uživatelské rozhraní pro správu těchto zásad a je potřeba je nakonfigurovat pomocí [vlastního nastavení OMA-URI](/mem/intune/configuration/custom-settings-windows-10). Několik důležitých informací pro použití některé z těchto zásad: 
 
-- Přidání skupin Azure AD prostřednictvím zásad vyžaduje, aby bylo možné získat identifikátor SID skupiny spuštěním [rozhraní Microsoft Graph API pro skupiny](/graph/api/resources/group?view=graph-rest-beta). Identifikátor SID je definován vlastností `securityIdentifier` v odpovědi rozhraní API.
+- Přidání skupin Azure AD prostřednictvím zásad vyžaduje, aby bylo možné získat identifikátor SID skupiny spuštěním [rozhraní Microsoft Graph API pro skupiny](/graph/api/resources/group). Identifikátor SID je definován vlastností `securityIdentifier` v odpovědi rozhraní API.
 - Když se vynutila zásada skupin s omezeným přístupem, všechny aktuální členy skupiny, které nejsou v seznamu členů, se odeberou. Aby tyto zásady vynutily nové členy nebo skupiny, odstraní stávající správce konkrétně uživatele, který se připojil k zařízení, roli Správce zařízení a roli globálního správce ze zařízení. Chcete-li se vyhnout odebrání stávajících členů, je třeba je nakonfigurovat jako součást seznamu členů v zásadě skupiny s omezeným přístupem. Toto omezení se řeší, pokud používáte zásady místních uživatelů a skupin, které umožňují přírůstkové aktualizace členství ve skupinách.
 - Oprávnění správce pomocí obou zásad se vyhodnocují jenom pro následující známé skupiny na zařízeních s Windows 10 – správci, uživatelé, hosty, Power Users, Uživatelé vzdálené plochy a uživatelé vzdálené správy. 
 - Správa místních správců pomocí skupin Azure AD není platná pro připojení k hybridní službě Azure AD nebo zařízením registrovaným v Azure AD.

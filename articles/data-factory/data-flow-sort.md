@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
-ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a6567f8576e2507704956233bc593b203b48239
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81606325"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588730"
 ---
 # <a name="sort-transformation-in-mapping-data-flow"></a>Transformace řazení v toku dat mapování
 
@@ -22,7 +22,7 @@ ms.locfileid: "81606325"
 Transformace řazení umožňuje řadit příchozí řádky v aktuálním datovém proudu. Můžete zvolit jednotlivé sloupce a seřadit je ve vzestupném nebo sestupném pořadí.
 
 > [!NOTE]
-> Mapování toků dat je prováděno v clusterech Spark, které distribuují data mezi více uzly a oddíly. Pokud se rozhodnete znovu rozdělit data v následné transformaci, může dojít ke ztrátě řazení z důvodu přerozdělování dat.
+> Mapování toků dat je prováděno v clusterech Spark, které distribuují data mezi více uzly a oddíly. Pokud se rozhodnete znovu rozdělit data v následné transformaci, může dojít ke ztrátě řazení z důvodu přerozdělování dat. Nejlepším způsobem, jak zachovat pořadí řazení v toku dat, je nastavit jeden oddíl na kartě optimalizace na transformaci a zachovat transformaci řazení co nejblíže k jímky.
 
 ## <a name="configuration"></a>Konfigurace
 

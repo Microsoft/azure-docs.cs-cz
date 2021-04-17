@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: cbf070dce056795ad8e4a5f3e4d609e7d36d631e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 330a6e54ee88781f71c4a861051aab94f8eef81f
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200820"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587897"
 ---
 # <a name="understanding-resource-sets"></a>Principy sad prostředků
 
@@ -102,14 +102,15 @@ Kvalifikovaný název: `https://myblob.blob.core.windows.net/sample-data/data{N}
 
 Zobrazovaný název: "data"
 
-## <a name="known-issues-with-resource-sets"></a>Známé problémy se sadami prostředků
+## <a name="customizing-resource-set-grouping-using-pattern-rules"></a>Přizpůsobení seskupení sad prostředků pomocí pravidel pro vzorce
 
-Přestože sady prostředků ve většině případů fungují dobře, může dojít k následujícím problémům, ve kterých Azure dosah:
+při kontrole účtu úložiště používá Azure dosah sadu definovaných vzorů k určení, jestli je skupina prostředků sada prostředků. V některých případech nemusí seskupení sad prostředků Azure dosah přesně odrážet vaše datové podstaty. Tyto problémy mohou zahrnovat:
 
-- Nesprávně označí Asset jako sadu prostředků.
-- Vloží Asset do nesprávné sady prostředků.
-- Nesprávně označuje prostředek jako sadu prostředků.
+- Nesprávné označení prostředku jako sady prostředků
+- Vložení prostředku do nesprávné sady prostředků
+- Nesprávně se označuje prostředek jako sada prostředků.
 
+Pokud chcete přizpůsobit nebo přepsat způsob, jakým Azure dosah zjistí, které prostředky se seskupují jako sady prostředků a jak se zobrazují v katalogu, můžete pravidla vzoru definovat v centru pro správu. Podrobné pokyny a syntaxi najdete v tématu [pravidla vzoru sady prostředků](how-to-resource-set-pattern-rules.md).
 ## <a name="next-steps"></a>Další kroky
 
 Informace o tom, jak začít s Azure dosah, najdete v tématu [rychlý Start: vytvoření účtu Azure dosah](create-catalog-portal.md).

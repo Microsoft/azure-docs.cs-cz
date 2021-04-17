@@ -3,18 +3,21 @@ title: Vytvoření a načtení atributů spravovaného klíče v Azure Key Vault
 description: Rychlý Start ukazující, jak nastavit a načíst spravovaný klíč z Azure Key Vault pomocí Azure PowerShell
 services: key-vault
 author: msmbaldwin
-tags: azure-resource-manager
+ms.author: mbaldwin
+ms.date: 01/26/2021
+ms.topic: quickstart
 ms.service: key-vault
 ms.subservice: keys
-ms.topic: quickstart
-ms.date: 01/26/2021
-ms.author: mbaldwin
-ms.openlocfilehash: 943555e9f7a26530a075aee27dd310d96974e652
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+tags:
+- azure-resource-manager
+ms.custom:
+- mode-api
+ms.openlocfilehash: ba1cd8d6b1410be30eefe9dca9675daaf6c16256
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99072909"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534667"
 ---
 # <a name="quickstart-set-and-retrieve-a-managed-key-from-azure-key-vault-using-powershell"></a>Rychlý Start: nastavení a načtení spravovaného klíče z Azure Key Vault pomocí prostředí PowerShell
 

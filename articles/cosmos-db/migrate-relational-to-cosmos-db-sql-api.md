@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 53a3317f38cc22ffa3745f5f0e58cc01a54b825c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7dbb162749e0a2f84140b8e9394934198d096eac
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93096744"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589614"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Migrace relačních dat 1:1 do Azure Cosmos DB účtu rozhraní SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -126,7 +126,7 @@ Spark v [Azure Databricks](https://azure.microsoft.com/services/databricks/) mů
 > Pro přehlednost a jednoduchost níže uvedené fragmenty kódu zahrnují fiktivní databázová hesla explicitně vložená, ale měli byste je vždycky používat Azure Databricks tajných klíčů.
 >
 
-Nejprve vytvoříme a připojíte požadované knihovny [SQL Connector](https://docs.databricks.com/data/data-sources/sql-databases-azure.html) a [Azure Cosmos DB konektoru](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) do našeho clusteru Azure Databricks. Restartujte cluster, abyste se ujistili, že jsou knihovny načteny.
+Nejprve vytvoříme a připojíte požadované knihovny [SQL Connector](/connectors/sql/) a [Azure Cosmos DB konektoru](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) do našeho clusteru Azure Databricks. Restartujte cluster, abyste se ujistili, že jsou knihovny načteny.
 
 :::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Snímek obrazovky, který ukazuje, kde vytvořit a připojit požadované konektory SQL a knihovny Azure Cosmos DB konektoru do našeho clusteru Azure Databricks.":::
 
@@ -136,7 +136,7 @@ Dále pro Scala a Python máme dvě ukázky.
 Tady získáte výsledky dotazu SQL s výstupem "FOR JSON" do datového rámce:
 
 ```scala
-// Connect to Azure SQL https://docs.databricks.com/data/data-sources/sql-databases-azure.html
+// Connect to Azure SQL /connectors/sql/
 import com.microsoft.azure.sqldb.spark.config.Config
 import com.microsoft.azure.sqldb.spark.connect._
 val configSql = Config(Map(

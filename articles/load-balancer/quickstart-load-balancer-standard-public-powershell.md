@@ -5,22 +5,23 @@ description: V tomto rychlém startu se dozvíte, jak vytvořit nástroj pro vyr
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: KumudD
-ms.assetid: ''
-ms.service: load-balancer
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/22/2020
 ms.author: allensu
-ms:custom: seodec18
-ms.openlocfilehash: ed585b3309cc03ed1eca4ed8023b3004c4f9dc79
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+manager: KumudD
+ms.date: 11/22/2020
+ms.assetid: ''
+ms.topic: quickstart
+ms.service: load-balancer
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.custom:
+- mode-api
+ms.openlocfilehash: 0ddaf0eede59053cd8022fef24d37a37c6d7db5a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056177"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529566"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure PowerShell
 
@@ -325,6 +326,8 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 3      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 4      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 ```
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="create-outbound-rule-configuration"></a>Vytvořit konfiguraci odchozího pravidla
 Odchozí pravidla nástroje pro vyrovnávání zatížení konfigurují odchozí Zdrojová síťová adresa (SNAT) pro virtuální počítače ve fondu back-endu. 
@@ -720,6 +723,8 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 3      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 4      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 ```
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ---
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92cfa5b2e399811754b57bda64569753ccfa6be8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1e37b2de2a3d4be0250d3e900fe48a36e45240e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668754"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309556"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>Síťová architektura SAP HANA (velké instance)
 
@@ -186,7 +186,7 @@ Data přenášená mezi velkou instancí a virtuálními počítači HANA nejsou
 
 ## <a name="use-hana-large-instance-units-in-multiple-regions"></a>Použít velké jednotky instancí HANA ve více oblastech
 
-Aby bylo možné realizovat nastavení zotavení po havárii, musíte mít SHANA jednotky velkých instancí ve více oblastech Azure. I při použití Azure [Global VNet peering] nefunguje ve výchozím nastavení přenosné směrování mezi klienty ve velkých instancích v HANA ve dvou různých oblastech. Global Reach ale otevře komunikační cestu mezi jednotkami velkých instancí HANA, které jste zřídili ve dvou různých oblastech. Tento scénář použití ExpressRoute Global Reach umožňuje:
+Aby bylo možné realizovat zotavení po havárii, je nutné mít velké jednotky instancí HANA ve více oblastech Azure. I při použití Azure [Global VNet peering] nefunguje ve výchozím nastavení přenosné směrování mezi klienty ve velkých instancích v HANA ve dvou různých oblastech. Global Reach ale otevře komunikační cestu mezi jednotkami velkých instancí HANA, které jste zřídili ve dvou různých oblastech. Tento scénář použití ExpressRoute Global Reach umožňuje:
 
  - Replikace systému HANA bez dalších proxy a bran firewall
  - Kopírování záloh mezi jednotkami velkých instancí HANA ve dvou různých oblastech, aby se prováděly systémové kopie nebo aktualizace systému

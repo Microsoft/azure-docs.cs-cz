@@ -6,13 +6,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/14/2021
-ms.openlocfilehash: ac0e088c587132b32f2112d21bce936eac35dc72
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 04/16/2021
+ms.openlocfilehash: 681a3643c04472cc42c1f672f4c9433da30e3955
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515857"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565491"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapování režimu ladění toku dat
 
@@ -22,9 +22,9 @@ ms.locfileid: "107515857"
 
 Azure Data Factory režim ladění toku dat umožňuje interaktivně sledovat transformaci datových tvarů při sestavování a ladění toků dat. Ladicí relaci lze použít jak v relacích návrhu toku dat, tak i při provádění ladění toků při ladění kanálu. Pokud chcete zapnout režim ladění, použijte tlačítko **ladění toku dat** na horním panelu plátna toku dat nebo plátna kanálu, když máte aktivity toku dat.
 
-![Posuvník ladění 1](media/data-flow/debugbutton.png "Posuvník ladění")
+![Snímek obrazovky, který ukazuje, kde je jezdec ladění 1](media/data-flow/debug-button.png)
 
-![Posuvník ladění 2](media/data-flow/debug-button-4.png "Posuvník ladění")
+![Snímek obrazovky, který ukazuje, kde je jezdec ladění 2](media/data-flow/debug-button-4.png)
 
 Jakmile posuvník zapnete, zobrazí se výzva, abyste vybrali konfiguraci prostředí Integration runtime, kterou chcete použít. Pokud je zvolená možnost AutoResolveIntegrationRuntime, provedou se cluster s osmi jádry obecného COMPUTE s výchozí 60-minutovou dobou provozu. Pokud chcete pro více nečinných týmů, než vyprší časový limit relace, použít více než jednu nečinný tým, můžete zvolit vyšší nastavení TTL. Další informace o modulu runtime integrace toku dat najdete v tématu [výkon toku dat](concepts-data-flow-performance.md#ir).
 

@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 218c0f345e4ea453a2300b3de85ac8856a09c6ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7c28ecbaa58731c528a9ecb5f869eba2bc0c99f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199276"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484417"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Průběžná integrace a průběžné nasazování na zařízení Azure IoT Edge (klasický Editor)
 
@@ -162,7 +162,7 @@ Tento kanál je teď nakonfigurovaný tak, aby se spouštěl automaticky při vl
 >[!NOTE]
 >Pokud chcete ve svém kanálu používat **vrstvená nasazení** , vrstvená nasazení ještě nejsou podporovaná v Azure IoT Edge úlohách v Azure DevOps.
 >
->V Azure DevOps ale můžete použít [úlohu Azure CLI](/azure/devops/pipelines/tasks/deploy/azure-cli) k vytvoření nasazení jako vrstveného nasazení. Pro hodnotu **vloženého skriptu** můžete použít [příkaz AZ IoT Edge Deployment Create](/cli/azure/ext/azure-iot/iot/edge/deployment):
+>V Azure DevOps ale můžete použít [úlohu Azure CLI](/azure/devops/pipelines/tasks/deploy/azure-cli) k vytvoření nasazení jako vrstveného nasazení. Pro hodnotu **vloženého skriptu** můžete použít [příkaz AZ IoT Edge Deployment Create](/cli/azure/iot/edge/deployment):
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

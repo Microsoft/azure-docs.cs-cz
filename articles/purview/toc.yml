@@ -16,6 +16,8 @@ items:
         href: create-purview-dotnet.md
       - name: Vytvoření účtu dosah – Python
         href: create-purview-python.md
+      - name: Správa oznámení Kafka – .NET
+        href: manage-kafka-dotnet.md
   - name: Kurzy
     items:
       - name: Úvodní sada

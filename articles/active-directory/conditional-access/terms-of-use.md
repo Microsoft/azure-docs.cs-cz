@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95fe70c774b933113c94125d227976e32a9e353f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4c8e18979ff1575e1a050244a96e7858cdce46b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919625"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530248"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
 
@@ -50,7 +50,7 @@ Zásady podmínek použití Azure AD mají tyto možnosti:
 - Seznamte se s podmínkami používání zásad použití, které se nebo nepřijaly.
 - Pomoc při plnění předpisů týkajících se ochrany osobních údajů.
 - Zobrazit protokol aktivity zásad použití pro dodržování předpisů a audit.
-- Vytvářejte a spravujte zásady použití pomocí [rozhraní Microsoft Graph API](/graph/api/resources/agreement?view=graph-rest-beta) (aktuálně ve verzi Preview).
+- Vytvářejte a spravujte zásady použití pomocí [rozhraní Microsoft Graph API](/graph/api/resources/agreement) (aktuálně ve verzi Preview).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -94,19 +94,19 @@ Po dokončení dokumentu zásad používání použijte následující postup a 
 
    | Platnost začíná dnem | Frekvence | Výsledek |
    | --- | --- | --- |
-   | Dnešní datum  | Měsíčně | Od dnešního dne musí uživatelé přijmout zásady použití a pak každý měsíc znovu přijmout. |
-   | Datum v budoucnosti  | Měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití zásady. Když dojde k budoucímu datu, vyprší platnost souhlasu a pak se uživatelé musí každý měsíc znovu akceptovat.  |
+   | Dnešní datum  | měsíčně | Od dnešního dne musí uživatelé přijmout zásady použití a pak každý měsíc znovu přijmout. |
+   | Datum v budoucnosti  | měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití zásady. Když dojde k budoucímu datu, vyprší platnost souhlasu a pak se uživatelé musí každý měsíc znovu akceptovat.  |
 
    Pokud například nastavíte vypršení platnosti začínající na **1** a četnost na **měsíčně**, v této části se může vyskytnout vypršení platnosti pro dva uživatele:
 
-   | User | Datum prvního přijetí | Datum prvního vypršení platnosti | Datum ukončení platnosti druhého dne | Třetí datum vypršení platnosti |
+   | Uživatel | Datum prvního přijetí | Datum prvního vypršení platnosti | Datum ukončení platnosti druhého dne | Třetí datum vypršení platnosti |
    | --- | --- | --- | --- | --- |
    | Náležící | 1. ledna | 1. února | Březen 1 | Duben 1 |
    | Bob | 15. ledna | 1. února | Březen 1 | Duben 1 |
 
 1. Použijte nastavení **Trvání před přijetím vyžaduje (dny)** , aby bylo možné zadat počet dní, než uživatel musí znovu přijmout podmínky použití zásady. To uživatelům umožňuje postupovat podle vlastního plánu. Pokud například nastavíte dobu trvání na **30** dní, v tomto příkladu se může vyskytnout vypršení platnosti pro dva uživatele:
 
-   | User | Datum prvního přijetí | Datum prvního vypršení platnosti | Datum ukončení platnosti druhého dne | Třetí datum vypršení platnosti |
+   | Uživatel | Datum prvního přijetí | Datum prvního vypršení platnosti | Datum ukončení platnosti druhého dne | Třetí datum vypršení platnosti |
    | --- | --- | --- | --- | --- |
    | Náležící | 1. ledna | 31. ledna | Březen 2 | Duben 1 |
    | Bob | 15. ledna | 14. února | 16. března | Duben 15 |
@@ -117,7 +117,7 @@ Po dokončení dokumentu zásad používání použijte následující postup a 
 
     ![Rozevírací seznam pro podmíněný přístup pro výběr šablony zásad](./media/terms-of-use/conditional-access-templates.png)
 
-   | Template (Šablona) | Description |
+   | Template (Šablona) | Popis |
    | --- | --- |
    | **Přístup ke cloudovým aplikacím pro všechny hosty** | Vytvoří se zásada podmíněného přístupu pro všechny hosty a všechny cloudové aplikace. Tato zásada má vliv na Azure Portal. Po vytvoření budete možná muset odhlásit a přihlásit se. |
    | **Přístup ke cloudovým aplikacím pro všechny uživatele** | Vytvoří se zásada podmíněného přístupu pro všechny uživatele a všechny cloudové aplikace. Tato zásada má vliv na Azure Portal. Po vytvoření budete muset odhlásit a přihlásit se. |
