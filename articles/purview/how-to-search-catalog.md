@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 03/16/2021
-ms.openlocfilehash: 7799266bf9cece1ed789d6fab64ec970a09fbfcb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 178604335968c3664bde51c144759c1c040c359d
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588435"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564909"
 ---
 # <a name="search-the-azure-purview-data-catalog"></a>Hledání ve službě Azure dosah Data Catalog
 
@@ -55,8 +55,8 @@ Níže jsou uvedeny operátory, které lze použít k vytvoření vyhledávacíh
 | NOT | Určuje, že Asset nemůže obsahovat klíčové slovo napravo od klauzule NOT. | Dotaz `hive NOT database` vrátí prostředky, které obsahují "podregistr", ale ne "Database". |
 | () | Seskupuje sadu klíčových slov a operátorů společně. Při kombinování více operátorů určují závorky pořadí operací. | Dotaz `hive AND (database OR warehouse)` vrátí assety, které obsahují ' podregistr ' a buď ' Database ' nebo ' Warehouse ', nebo obojí. |
 | "" | Určuje přesný obsah ve frázi, které musí dotaz odpovídat. | Dotaz `"hive database"` vrátí do vlastností prostředky, které obsahují frázi "databáze podregistru". |
-| * | Zástupný znak, který odpovídá jednomu na mnoho znaků. V klíčovém slově nemůže být první znak. | Dotaz `hiv\` * vrátí assety, které mají vlastnosti, které začínají na ' HIV ', například ' podregistr ' nebo ' podregistr-Table '. |
-| ? | Zástupný znak, který odpovídá jednomu znaku. Nejde o první znak v klíčovém slově. | Dotaz `hiv?` vrátí prostředky, které mají vlastnosti, které začínají na ' HIV ' a jsou čtyři písmena, například ' podregistr ' nebo ' Hiva '. |
+| * | Zástupný znak, který odpovídá jednomu na mnoho znaků. V klíčovém slově nemůže být první znak. | Dotaz `dat*` vrátí assety, které mají vlastnosti, které začínají na "dat", jako jsou data nebo databáze. |
+| ? | Zástupný znak, který odpovídá jednomu znaku. Nejde o první znak v klíčovém slově. | Dotaz `dat?` vrátí assety, které mají vlastnosti, které začínají na "dat" a jsou čtyři písmena, například data nebo data. |
 
 > [!Note]
 > Vždy zadejte logické operátory (**a**, **nebo**, **ne**) u všech velkých písmen. V opačném případě nezáleží na velikosti písmen a udělejte nadbytečné mezery.

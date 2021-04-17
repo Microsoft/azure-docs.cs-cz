@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 4b4ee9d1e583241f8ec9b467ae9ddfdb1360fb52
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 37ac7573a1794c97c81fe5364204f85ff14d9fa6
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284698"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538079"
 ---
 # <a name="spatial-analysis-operations"></a>Operace prostorových analýz
 
@@ -23,7 +23,7 @@ Prostorová analýza umožňuje analýzu streamování videa v reálném čase z
 
 Kontejner prostorových analýz implementuje následující operace:
 
-| Identifikátor operace| Description|
+| Identifikátor operace| Popis|
 |---------|---------|
 | cognitiveservices Account. Vision. spatialanalysis-personcount | Spočítá lidi v určené zóně v poli zobrazení kamery. Aby PersonCount mohl zaznamenat přesný součet, musí být zóna plně pokrytá jednou kamerou. <br> Vygeneruje počáteční událost _personCountEvent_ a pak _personCountEvent_ události při změně počtu.  |
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
@@ -33,7 +33,7 @@ Kontejner prostorových analýz implementuje následující operace:
 
 Všechny výše uvedené operace jsou také k dispozici ve `.debug` verzi, které mají schopnost vizualizovat snímky videa při jejich zpracování. Aby `xhost +` bylo možné vizualizaci snímků a událostí videa povolit, bude nutné spustit na hostitelském počítači.
 
-| Identifikátor operace| Description|
+| Identifikátor operace| Popis|
 |---------|---------|
 | cognitiveservices Account. Vision. spatialanalysis-personcount. Debug | Spočítá lidi v určené zóně v poli zobrazení kamery. <br> Vygeneruje počáteční událost _personCountEvent_ a pak _personCountEvent_ události při změně počtu.  |
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline. Debug | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
@@ -45,7 +45,7 @@ Prostorová analýza se dá také spustit s [živým video analýzou](../../medi
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| Identifikátor operace| Description|
+| Identifikátor operace| Popis|
 |---------|---------|
 | cognitiveservices Account. Vision. spatialanalysis-personcount. livevideoanalytics | Spočítá lidi v určené zóně v poli zobrazení kamery. <br> Vygeneruje počáteční událost _personCountEvent_ a pak _personCountEvent_ události při změně počtu.  |
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline. livevideoanalytics | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
@@ -60,7 +60,7 @@ K dispozici jsou také operace živé analýzy videí ve `.debug` verzi (např. 
 
 Jedná se o parametry, které vyžaduje každá z těchto prostorových analytických operací.
 
-| Provozní parametry| Description|
+| Provozní parametry| Popis|
 |---------|---------|
 | ID operace | Identifikátor operace z tabulky výše|
 | enabled | Logická hodnota: true nebo false|
@@ -120,12 +120,12 @@ Toto je příklad parametrů DETECTOR_NODE_CONFIG pro všechny operace prostorov
 }
 ```
 
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `zones` | list| Seznam zón. |
 | `name` | řetězec| Popisný název této zóny.|
 | `polygon` | list| Každá dvojice hodnot představuje x, y pro vrcholy mnohoúhelníku. Mnohoúhelník představuje oblasti, ve kterých jsou lidé sledováni nebo počítány, a body mnohoúhelníku jsou založeny na normalizovaných souřadnicích (0-1), kde je levý horní roh (0,0, 0,0) a pravý dolní roh je (1,0, 1,0).   
-| `threshold` | float| Pokud je spolehlivost modelů AI větší nebo rovna této hodnotě, dojde k odchozímu přenosu událostí. |
+| `threshold` | float| Pokud je osoba větší než tento počet pixelů v zóně, dojde k odchozímu přenosu událostí. |
 | `type` | řetězec| Pro **cognitiveservices Account. Vision. spatialanalysis-personcount** by to mělo být `count` .|
 | `trigger` | řetězec| Typ triggeru pro odeslání události. Podporované hodnoty jsou `event` pro odesílání událostí při změně počtu nebo `interval` pro pravidelné posílání událostí bez ohledu na to, jestli se počet změnil nebo ne.
 | `output_frequency` | int | Rychlost, s jakou jsou události odchozí Když `output_frequency` je = X, každá událost X je výstupní, ex. `output_frequency` = 2 znamená, že každá další událost je výstup. `output_frequency`Je použitelný pro i `event` `interval` . |
@@ -165,14 +165,14 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 }
 ```
 
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `lines` | list| Seznam řádků|
 | `name` | řetězec| Popisný název tohoto řádku|
 | `line` | list| Definice řádku Toto je směrná čára, která vám umožní pochopit "vstup" vs. "Exit".|
 | `start` | dvojice hodnot| souřadnice x, y pro počáteční bod řádku Hodnoty float označují polohu vrcholu vzhledem k hornímu a levému rohu. Chcete-li vypočítat absolutní hodnoty x, y, vynásobte tyto hodnoty velikostí rámečku. |
 | `end` | dvojice hodnot| souřadnice x, y pro koncový bod řádku Hodnoty float označují polohu vrcholu vzhledem k hornímu a levému rohu. Chcete-li vypočítat absolutní hodnoty x, y, vynásobte tyto hodnoty velikostí rámečku. |
-| `threshold` | float| Pokud je spolehlivost modelů AI větší nebo rovna této hodnotě, dojde k odchozímu přenosu událostí. Výchozí hodnota je 16. To je doporučená hodnota pro dosažení maximální přesnosti. |
+| `threshold` | float| Pokud je osoba větší než tento počet pixelů v zóně, dojde k odchozímu přenosu událostí. Výchozí hodnota je 16. To je doporučená hodnota pro dosažení maximální přesnosti. |
 | `type` | řetězec| Pro **cognitiveservices Account. Vision. spatialanalysis-personcrossingline** by to mělo být `linecrossing` .|
 |`trigger`|řetězec|Typ triggeru pro odeslání události.<br>Podporované hodnoty: událost: aktivuje se, když někdo přeškrtne řádek.|
 | `focus` | řetězec| Umístění bodu v ohraničujícím poli osoby používané k výpočtu událostí. Hodnota fokusu může být `footprint` (nároky na osobu), (v ohraničujícím poli ve středu osoby) (v `bottom_center` `center` ohraničujícím poli středu). Výchozí hodnota je.|
@@ -211,12 +211,12 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 }
 ```
 
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `zones` | list| Seznam zón. |
 | `name` | řetězec| Popisný název této zóny.|
 | `polygon` | list| Každá dvojice hodnot představuje x, y pro vrcholy mnohoúhelníku. Mnohoúhelník představuje oblasti, ve kterých jsou lidé sledováni nebo počítáni. Hodnoty float označují polohu vrcholu vzhledem k hornímu a levému rohu. Chcete-li vypočítat absolutní hodnoty x, y, vynásobte tyto hodnoty velikostí rámečku. 
-| `threshold` | float| Pokud je spolehlivost modelů AI větší nebo rovna této hodnotě, dojde k odchozímu přenosu událostí. Výchozí hodnota je 48, pokud je typ zonecrossing a 16, pokud je čas DwellTime. Tyto hodnoty jsou doporučené pro dosažení maximální přesnosti.  |
+| `threshold` | float| Pokud je osoba větší než tento počet pixelů v zóně, dojde k odchozímu přenosu událostí. Výchozí hodnota je 48, pokud je typ zonecrossing a 16, pokud je čas DwellTime. Tyto hodnoty jsou doporučené pro dosažení maximální přesnosti.  |
 | `type` | řetězec| Pro **cognitiveservices Account. Vision. spatialanalysis-personcrossingpolygon** by to mělo být `zonecrossing` nebo `zonedwelltime` .|
 | `trigger`|řetězec|Typ triggeru pro odeslání události<br>Podporované hodnoty: Event: aktivuje se, když někdo zadá nebo ukončí zónu.|
 | `focus` | řetězec| Umístění bodu v ohraničujícím poli osoby používané k výpočtu událostí. Hodnota fokusu může být `footprint` (nároky na osobu), (v ohraničujícím poli ve středu osoby) (v `bottom_center` `center` ohraničujícím poli středu). Výchozí hodnota je.|
@@ -246,12 +246,12 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 }
 ```
 
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `zones` | list| Seznam zón. |
 | `name` | řetězec| Popisný název této zóny.|
 | `polygon` | list| Každá dvojice hodnot představuje x, y pro vrcholy mnohoúhelníku. Mnohoúhelník představuje oblasti, ve kterých se uživatelé počítají, a vzdálenost mezi lidmi. Hodnoty float označují polohu vrcholu vzhledem k hornímu a levému rohu. Chcete-li vypočítat absolutní hodnoty x, y, vynásobte tyto hodnoty velikostí rámečku. 
-| `threshold` | float| Pokud je spolehlivost modelů AI větší nebo rovna této hodnotě, dojde k odchozímu přenosu událostí. |
+| `threshold` | float| Pokud je osoba větší než tento počet pixelů v zóně, dojde k odchozímu přenosu událostí. |
 | `type` | řetězec| Pro **cognitiveservices Account. Vision. spatialanalysis-persondistance** by to mělo být `people_distance` .|
 | `trigger` | řetězec| Typ triggeru pro odeslání události. Podporované hodnoty jsou `event` pro odesílání událostí při změně počtu nebo `interval` pro pravidelné posílání událostí bez ohledu na to, jestli se počet změnil nebo ne.
 | `output_frequency` | int | Rychlost, s jakou jsou události odchozí Když `output_frequency` je = X, každá událost X je výstupní, ex. `output_frequency` = 2 znamená, že každá další událost je výstup. `output_frequency`Je použitelný pro i `event` `interval` .|
@@ -1034,7 +1034,7 @@ Aby se dosáhlo nejlepšího výkonu a využití GPU, můžete nasadit všechny 
       }
   }
   ```
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `batch_size` | int | Pokud mají všechny kamery stejné rozlišení, nastavte `batch_size` počet fotoaparátů, které se v této operaci použijí, jinak nastavte `batch_size` na hodnotu 1 nebo nechte jako výchozí (1), což znamená, že žádná dávka není podporovaná. |
 

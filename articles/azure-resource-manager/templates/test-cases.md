@@ -2,15 +2,15 @@
 title: Testovací případy pro sadu nástrojů test Toolkit
 description: Popisuje testy, které jsou spuštěny pomocí sady nástrojů pro test šablon ARM.
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 04/12/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 31e30b4853da03e28a4a2d15292050805f5bc292
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 7805d6dbdb8b93968a2792ed6dfaf2ac8fea9ae5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064137"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363389"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Výchozí testovací případy pro sadu nástrojů pro test šablon ARM
 
@@ -495,7 +495,7 @@ Název testu: **identifikátory by měly být odvozeny od identifikátorů Resou
 
 Při zadávání ID prostředku použijte jednu z funkcí ID prostředku. Povolené funkce jsou:
 
-* [Prostředku](template-functions-resource.md#resourceid)
+* [resourceId](template-functions-resource.md#resourceid)
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 * [extensionResourceId](template-functions-resource.md#extensionresourceid)
@@ -540,7 +540,7 @@ Následující příklad **projde** tento test.
 
 Tento test platí pro:
 
-* [Prostředku](template-functions-resource.md#resourceid)
+* [resourceId](template-functions-resource.md#resourceid)
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 * [extensionResourceId](template-functions-resource.md#extensionresourceid)
@@ -637,7 +637,7 @@ Následující příklad **projde** tímto testem.
 
 Název testu: **ManagedIdentityExtension se nesmí použít** .
 
-Nepoužívejte rozšíření ManagedIdentity pro virtuální počítač. Další informace najdete v tématu [jak ukončit používání rozšíření spravované identity virtuálních počítačů a začít používat Azure instance metadata Service](../../active-directory/managed-identities-azure-resources/howto-migrate-vm-extension.md).
+Nepoužívejte rozšíření ManagedIdentity pro virtuální počítač. Rozšíření bylo zastaralé v 2019 a nemělo by se už používat.
 
 ## <a name="outputs-cant-include-secrets"></a>Výstupy nemůžou zahrnovat tajné klíče.
 

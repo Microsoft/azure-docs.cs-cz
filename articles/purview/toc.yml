@@ -75,6 +75,8 @@ items:
             href: manage-integration-runtimes.md
           - name: Řešení potíží s připojením
             href: troubleshoot-connections.md
+          - name: Pravidla vzoru sady prostředků
+            href: how-to-resource-set-pattern-rules.md
           - name: zdroje
             items:
               - name: Správa zdrojů dat

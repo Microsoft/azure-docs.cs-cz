@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: lajanuar
-ms.openlocfilehash: 324fde5198fe3469e3979cf5cd102715118a49aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfd2b32094aae06675ea8ee9157370f9d2833e91
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467280"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518217"
 ---
 Nástroj pro rozpoznávání formulářů funguje na vstupních dokumentech, které splňují tyto požadavky:
 
@@ -22,6 +22,5 @@ Nástroj pro rozpoznávání formulářů funguje na vstupních dokumentech, kte
 * Celková velikost sady školicích dat musí být 500 stránek nebo méně.
 * Pokud jsou vaše soubory PDF zamčené heslem, musíte zámek před odesláním odebrat.
 * Pokud je naskenovaný z papírových dokumentů, formuláře by měly být vysoce kvalitní kontroly.
-* Text musí používat latinku (anglické znaky).
 * V případě bezdohledového učení (bez popisků dat) musí data obsahovat klíče a hodnoty.
 * U bezdohledového učení (bez popisků dat) se klíče musí zobrazit nad nebo nalevo od hodnot. nemůžou se zobrazit níže nebo vpravo.

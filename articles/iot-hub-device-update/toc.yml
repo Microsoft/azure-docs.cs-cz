@@ -69,7 +69,7 @@
         - name: Řešení potíží s aktualizacemi zařízení
           href: troubleshoot-device-update.md
         - name: Kódy chyb klienta aktualizace zařízení
-      href: device-update-error-codes.md
+          href: device-update-error-codes.md
 - name: Referenční informace
   items:
     - name: REST API

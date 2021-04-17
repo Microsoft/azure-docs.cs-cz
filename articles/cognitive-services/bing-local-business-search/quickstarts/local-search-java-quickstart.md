@@ -4,19 +4,21 @@ titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu můžete začít posílat požadavky v jazyce Java do rozhraní API Bingu pro vyhledávání v místním prostředí, což je služba pro rozpoznávání Azure.
 services: cognitive-services
 author: aahill
+ms.author: aahi
 manager: nitinme
+ms.date: 05/12/2020
+ms.topic: quickstart
 ms.service: cognitive-services
 ms.subservice: bing-local-business
-ms.topic: quickstart
-ms.date: 05/12/2020
-ms.custom: devx-track-java
-ms.author: aahi
-ms.openlocfilehash: 09f387eebd48b6e2d72e49a24fc9345817674b35
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.custom:
+- devx-track-java
+- mode-api
+ms.openlocfilehash: 001fc80b30eaa736db27ba76384aaf273bdec903
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430118"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536650"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních aplikací pomocí jazyka Java
 

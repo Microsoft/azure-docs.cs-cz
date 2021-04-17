@@ -4,13 +4,13 @@ description: Seznamte se s osvědčenými postupy pro dosažení nejlepších v�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: 2f6ed85416cc5d7c3c2baba2b2cfe489e301d7e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: d5fa2a1e865a4f54de268e7ad756d1d4363f3b78
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98788481"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500205"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Osvědčené postupy pro sestavování aplikace pro porozumění jazyku (LUIS)
 Pomocí procesu vytváření aplikací sestavte aplikaci LUIS:
@@ -81,7 +81,7 @@ Počítače, které se naučily, jsou přizpůsobené vaší aplikaci a vyžaduj
 
 Entity učené počítačem můžou jako funkce používat jiné entity. Tyto další entity můžou být vlastními entitami, jako jsou entity regulárních výrazů nebo seznam entit, nebo můžete jako funkce použít předem připravené entity.
 
-Přečtěte si o [efektivních entitách strojového učení](luis-concept-entity-types.md#effective-machine-learned-entities).
+Přečtěte si o [efektivních entitách strojového učení](luis-concept-entity-types.md#machine-learned-ml-entity).
 
 <a name="#do-build-the-app-iteratively"></a>
 

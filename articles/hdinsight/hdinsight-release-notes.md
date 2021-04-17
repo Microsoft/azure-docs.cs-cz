@@ -5,12 +5,12 @@ ms.custom: references_regions
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: a648ff3aa0c042aaefe16eaae0f9d73953241b3d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3676889fc56f6dc4746282e5001e33d1bc3c7c9a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065493"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501225"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
@@ -67,7 +67,13 @@ HDInsight se postupně migruje na Azure Virtual Machine Scale Sets. Pro clustery
 V nadcházejících verzích dojde k následujícím změnám.
 
 ### <a name="os-version-upgrade"></a>Upgrade verze operačního systému
-HDInsight bude upgradovat verzi operačního systému z Ubuntu 16,04 na 18,04. Upgrade se dokončí do dubna 2021.
+Clustery HDInsight jsou aktuálně spuštěné v Ubuntu 16,04 LTS. Jak se odkazuje na cyklus vydaných [verzí Ubuntu](https://ubuntu.com/about/release-cycle), bude jádro Ubuntu 16,04 až do konce životnosti (konce řádku) v dubnu 2021. Začneme zavádět novou image clusteru HDInsight 4,0 běžící na Ubuntu 18,04 v květnu 2021. Nově vytvořené clustery HDInsight 4,0 se ve výchozím nastavení spustí na Ubuntu 18,04, jakmile budou k dispozici. Existující clustery na Ubuntu 16,04 se spustí s plnou podporou.
+
+HDInsight 3,6 bude nadále běžet na Ubuntu 16,04. Až do 30. června 2021 se dosáhne konce standardní podpory a změny se podpora Basic od 1. července 2021. Další informace o možnostech data a podpory najdete v tématu [verze Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). Ubuntu 18,04 nebude podporován pro HDInsight 3,6. Pokud chcete používat Ubuntu 18,04, budete muset své clustery migrovat do HDInsight 4,0. 
+
+Pokud chcete přesunout existující clustery do Ubuntu 18,04, musíte clustery vyřadit a znovu vytvořit. Pokud bude k dispozici podpora Ubuntu 18,04, naplánujte prosím vytvoření nebo opětovné vytvoření clusteru. Až bude nová image k dispozici ve všech oblastech, pošleme vám další oznámení.
+
+Důrazně doporučujeme, abyste v předem otestovali akce skriptů a vlastní aplikace nasazené na hraničních uzlech na virtuálním počítači s Ubuntu 18,04. Můžete [vytvořit jednoduchý Ubuntu Linux virtuální počítač v 18,04 – LTS](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/)a pak vytvořit a použít [pár klíčů ssh (Secure Shell)](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys#ssh-into-your-vm) na svém virtuálním počítači ke spouštění a testování akcí skriptu a vlastních aplikací nasazených na hraničních uzlech.
 
 ### <a name="basic-support-for-hdinsight-36-starting-july-1-2021"></a>Podpora Basic pro HDInsight 3,6 od 1. července 2021
 Od 1. července 2021 bude Microsoft nabízet [Podpora Basic](hdinsight-component-versioning.md#support-options-for-hdinsight-versions) pro určité typy clusterů HDInsight 3,6. Plán podpora Basic bude k dispozici až do 3. dubna 2022. Automaticky se zaregistrujete do podpora Basic od 1. července 2021. Nemusíte nic dělat, abyste se mohli přihlásit. V [naší dokumentaci](hdinsight-36-component-versioning.md) , pro které jsou typy clusterů zahrnuté v podpora Basic. 

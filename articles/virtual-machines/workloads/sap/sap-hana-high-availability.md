@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/16/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 42a4c4a41f6c8bdf9d4a8e78f634893722c8f389
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea1296fd4e31c2deaed79e980ab764c523a2bfd7
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104576389"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364358"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -172,7 +172,6 @@ K nasazení šablony použijte následující postup:
       1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **Hana-kg**).
       1. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**, **Hana-back-endu** a **Hana-HP**).
       1. Vyberte **porty ha**.
-      1. Zvyšte **časový limit nečinnosti** na 30 minut.
       1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
       1. Vyberte **OK**.
 
@@ -499,6 +498,71 @@ Kroky v této části používají následující předpony:
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
    </code></pre>
 
+## <a name="implement-the-python-system-replication-hook-saphanasr"></a>Implementace SAPHanaSRho zavěšení replikace systému Python
+
+To je důležitý krok pro optimalizaci integrace s clusterem a zlepšení detekce v případě potřeby převzetí služeb při selhání clusteru. Důrazně doporučujeme nakonfigurovat SAPHanaSR Python.    
+
+1. **[A]** nainstalujte "replikační zavěšení systému" Hana. Na obou uzlech databáze HANA je potřeba nainstalovat zavěšení.           
+
+   > [!TIP]
+   > Ověřte, že je v balíčku SAPHanaSR aspoň verze 0,153, aby bylo možné použít funkci SAPHanaSR vidlice Pythonu.       
+   > Vidlice Pythonu se dá implementovat jedině pro HANA 2,0.        
+
+   1. Připravte zavěšení jako `root` .  
+
+    ```bash
+     mkdir -p /hana/shared/myHooks
+     cp /usr/share/SAPHanaSR/SAPHanaSR.py /hana/shared/myHooks
+     chown -R hn1adm:sapsys /hana/shared/myHooks
+    ```
+
+   2. Zastavte HANA na obou uzlech. Spustit jako <\> ADM SID:  
+   
+    ```bash
+    sapcontrol -nr 03 -function StopSystem
+    ```
+
+   3. Upravte `global.ini` na všech uzlech clusteru.  
+ 
+    ```bash
+    # add to global.ini
+    [ha_dr_provider_SAPHanaSR]
+    provider = SAPHanaSR
+    path = /hana/shared/myHooks
+    execution_order = 1
+    
+    [trace]
+    ha_dr_saphanasr = info
+    ```
+
+2. **[A]** cluster vyžaduje konfiguraci sudoers na každém uzlu clusteru pro <ADM SID \> . V tomto příkladu je dosaženo vytvořením nového souboru. Spusťte příkazy jako `root` .    
+    ```bash
+    cat << EOF > /etc/sudoers.d/20-saphana
+    # Needed for SAPHanaSR python hook
+    hn1adm ALL=(ALL) NOPASSWD: /usr/sbin/crm_attribute -n hana_hn1_site_srHook_*
+    EOF
+    ```
+Další informace o implementaci SAP HANAho zavěšení replikace systému najdete v tématu [nastavení poskytovatelů Hana ha/Dr](https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-12/index.html#_set_up_sap_hana_hadr_providers).  
+
+3. **[A]** spusťte SAP HANA na obou uzlech. Spustit jako <\> ADM SID  
+
+    ```bash
+    sapcontrol -nr 03 -function StartSystem 
+    ```
+
+4. **[1]** Ověřte instalaci zavěšení. Vykoná se <\> ADM SID na aktivní lokalitě replikace systému Hana.   
+
+    ```bash
+     cdtrace
+     awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
+     { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
+     # Example output
+     # 2021-04-08 22:18:15.877583 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-08 22:18:46.531564 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-08 22:21:26.816573 ha_dr_SAPHanaSR SOK
+
+    ```
+
 ## <a name="create-sap-hana-cluster-resources"></a>Vytvoření prostředků clusteru SAP HANA
 
 Nejdřív vytvořte topologii HANA. Na jednom z uzlů clusteru Pacemaker spusťte následující příkazy:
@@ -711,6 +775,9 @@ Tato část popisuje, jak můžete otestovat instalaci. Každý test předpoklá
 Před zahájením testu se ujistěte, že Pacemaker nemá žádnou neúspěšnou akci (přes crm_mon-r), že neexistují žádná neočekávaná omezení umístění (například Leftovers testu migrace) a že HANA je stav synchronizace, například s SAPHanaSR-showAttr:
 
 <pre><code>hn1-db-0:~ # SAPHanaSR-showAttr
+Sites    srHook
+----------------
+SITE2    SOK
 
 Global cib-time
 --------------------------------
@@ -724,7 +791,7 @@ hn1-db-1 DEMOTED     30          online     logreplay nws-hana-vm-0 4:S:master1:
 
 SAP HANA hlavní uzel můžete migrovat spuštěním následujícího příkazu:
 
-<pre><code>crm resource migrate msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-1</b>
+<pre><code>crm resource move msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-1</b> force
 </code></pre>
 
 Pokud nastavíte `AUTOMATED_REGISTER="false"` , tato sekvence příkazů by měla migrovat SAP HANA hlavní uzel a skupinu obsahující virtuální IP adresu na HN1-DB-1.
@@ -763,7 +830,7 @@ Migrace vytvoří omezení umístění, která je potřeba odstranit znovu:
 
 <pre><code># Switch back to root and clean up the failed state
 exit
-hn1-db-0:~ # crm resource unmigrate msl_SAPHana_<b>HN1</b>_HDB<b>03</b>
+hn1-db-0:~ # crm resource clear msl_SAPHana_<b>HN1</b>_HDB<b>03</b>
 </code></pre>
 
 Také je nutné vyčistit stav prostředku sekundárního uzlu:

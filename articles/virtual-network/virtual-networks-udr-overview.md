@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2021
+ms.date: 04/14/2021
 ms.author: aldomel
-ms.openlocfilehash: 0dd053fa268e88c281c1fe6c00339fe6a6edf27a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 232b83fef2da312828f4f9f332ab2505e3a68100
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732597"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503639"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -111,7 +111,7 @@ V případě, že mezi trasou s explicitní předponou protokolu IP a trasou s o
    3. AzureCloud regionální značky (např. AzureCloud. canadacentral, AzureCloud. eastasia)
    4. Značka AzureCloud </br></br>
 
-Pokud chcete tuto funkci použít, zadejte název značky služby pro parametr předpony adresy v příkazech směrovací tabulky. Například v PowerShellu můžete vytvořit novou trasu pro přímý provoz odeslaný na virtuální zařízení Azure Storage předponou IP adresy pomocí: </br>
+Pokud chcete tuto funkci použít, zadejte název značky služby pro parametr předpony adresy v příkazech směrovací tabulky. Například v PowerShellu můžete vytvořit novou trasu pro přímý provoz odeslaný na virtuální zařízení Azure Storage předponou IP adresy pomocí: </br></br>
 
 ```azurepowershell-interactive
 New-AzRouteConfig -Name "StorageRoute" -AddressPrefix "Storage" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
@@ -123,6 +123,10 @@ Stejný příkaz pro rozhraní příkazového řádku bude: </br>
 az network route-table route create -g MyResourceGroup --route-table-name MyRouteTable -n StorageRoute --address-prefix Storage --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.100.4
 ```
 </br>
+
+#### <a name="known-issues-april-2021"></a>Známé problémy (duben 2021)
+
+Když jsou přítomné trasy protokolu BGP nebo je ve vaší podsíti nakonfigurovaný koncový bod služby, trasy se nemusí vyhodnotit se správnou prioritou. V tuto chvíli Probíhá oprava pro tyto scénáře. </br>
 
 
 > [!NOTE] 
@@ -174,7 +178,7 @@ Směrovací tabulka obsahuje například následující trasy:
 |Zdroj   |Předpony adres  |Typ dalšího segmentu směrování           |
 |---------|---------         |-------                 |
 |Výchozí  | 0.0.0.0/0        |Internet                |
-|User     | 0.0.0.0/0        |Brána virtuální sítě |
+|Uživatel     | 0.0.0.0/0        |Brána virtuální sítě |
 
 Pokud je provoz určený pro IP adresu mimo předpony adres jakýchkoli jiných tras ve směrovací tabulce, Azure vybere trasu se zdrojem **Uživatel**, protože trasy definované uživatelem mají vyšší prioritu než výchozí systémové trasy.
 
@@ -244,17 +248,17 @@ Směrovací tabulka pro podsíť *Subnet1* na obrázku obsahuje následující t
 |ID  |Zdroj |Stav  |Předpony adres    |Typ dalšího segmentu směrování          |IP adresa dalšího segmentu směrování|Název trasy definované uživatelem| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |Výchozí|Neplatný|10.0.0.0/16         |Virtuální síť        |                   |              |
-|2   |User   |Aktivní |10.0.0.0/16         |Virtuální zařízení      |10.0.100.4         |Within-VNet1  |
-|3   |User   |Aktivní |10.0.0.0/24         |Virtuální síť        |                   |Within-Subnet1|
+|2   |Uživatel   |Aktivní |10.0.0.0/16         |Virtuální zařízení      |10.0.100.4         |Within-VNet1  |
+|3   |Uživatel   |Aktivní |10.0.0.0/24         |Virtuální síť        |                   |Within-Subnet1|
 |4   |Výchozí|Neplatný|10.1.0.0/16         |Partnerské vztahy virtuálních sítí           |                   |              |
 |5   |Výchozí|Neplatný|10.2.0.0/16         |Partnerské vztahy virtuálních sítí           |                   |              |
-|6   |User   |Aktivní |10.1.0.0/16         |Žádné                   |                   |ToVNet2-1-Drop|
-|7   |User   |Aktivní |10.2.0.0/16         |Žádné                   |                   |ToVNet2-2-Drop|
+|6   |Uživatel   |Aktivní |10.1.0.0/16         |Žádné                   |                   |ToVNet2-1-Drop|
+|7   |Uživatel   |Aktivní |10.2.0.0/16         |Žádné                   |                   |ToVNet2-2-Drop|
 |8   |Výchozí|Neplatný|10.10.0.0/16        |Brána virtuální sítě|[X.X.X.X]          |              |
-|9   |User   |Aktivní |10.10.0.0/16        |Virtuální zařízení      |10.0.100.4         |To-On-Prem    |
+|9   |Uživatel   |Aktivní |10.10.0.0/16        |Virtuální zařízení      |10.0.100.4         |To-On-Prem    |
 |10  |Výchozí|Aktivní |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
 |11  |Výchozí|Neplatný|0.0.0.0/0           |Internet               |                   |              |
-|12  |User   |Aktivní |0.0.0.0/0           |Virtuální zařízení      |10.0.100.4         |Default-NVA   |
+|12  |Uživatel   |Aktivní |0.0.0.0/0           |Virtuální zařízení      |10.0.100.4         |Default-NVA   |
 
 Následuje vysvětlení jednotlivých ID tras:
 

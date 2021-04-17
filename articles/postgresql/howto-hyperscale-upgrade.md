@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 4/5/2021
-ms.openlocfilehash: 3758e2d458e1a6bd052ac746ac361de033d508e9
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 161204bf02ac36c1f5a3969cf57c61e98560c9b5
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023953"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518894"
 ---
 # <a name="upgrade-hyperscale-citus-server-group"></a>Upgradovat skupinu serverů Citus (s rozšířením)
 
@@ -23,7 +23,7 @@ Tyto pokyny popisují, jak upgradovat na novou hlavní verzi PostgreSQL na všec
 Upgrade PostgreSQL způsobí větší změny, než kolik jich možná představte, protože [rozšíření databáze](concepts-hyperscale-extensions.md)(Citus) bude také upgradovat, včetně rozšíření Citus.
 Důrazně doporučujeme, abyste před upgradem produkčního prostředí otestovali vaši aplikaci s novou verzí PostgreSQL a Citus.
 
-Pohodlný způsob, jak testovat, je vytvořit kopii skupiny serverů pomocí obnovení k určitému [bodu v čase](concepts-hyperscale-backup.md#point-in-time-restore-pitr). Upgradujte kopii a otestujte svoji aplikaci. Jakmile všechno ověříte, že vše funguje správně, upgradujte původní skupinu serverů.
+Pohodlný způsob, jak testovat, je vytvořit kopii skupiny serverů pomocí obnovení k určitému [bodu v čase](concepts-hyperscale-backup.md#restore). Upgradujte kopii a otestujte svoji aplikaci. Jakmile všechno ověříte, že vše funguje správně, upgradujte původní skupinu serverů.
 
 ## <a name="upgrade-a-server-group-in-the-azure-portal"></a>Upgrade skupiny serverů v Azure Portal
 

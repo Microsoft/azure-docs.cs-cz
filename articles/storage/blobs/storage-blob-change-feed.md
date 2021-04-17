@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 1366f24ec3bd35ec23d5bf0879fced367c9f6a45
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6da83ceb6d8ee51916d25949309d7ddfba0e4b30
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552427"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503592"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Změna podpory kanálu v Azure Blob Storage
 
@@ -67,8 +67,8 @@ Při povolování kanálu změn je potřeba mít na paměti několik věcí.
 Povolte na svém účtu úložiště změnu kanálu pomocí Azure Portal:
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj účet úložiště.
-1. V části **BLOB Service** přejděte na možnost **Ochrana dat** .
-1. V části **sledování** vyberte **zapnout kanál změny objektů BLOB**.
+1. V části **Správa dat** přejděte na možnost **Ochrana dat** .
+1. V části **sledování** vyberte **Povolit kanál změn objektů BLOB**.
 1. Klikněte na tlačítko **Uložit** a potvrďte nastavení ochrany dat.
 
     :::image type="content" source="media/storage-blob-change-feed/change-feed-enable-portal.png" alt-text="Snímek obrazovky ukazující, jak povolit informační kanál změn v Azure Portal":::

@@ -2,21 +2,21 @@
 title: Správa a monitorování – aktivita dotazů, využití prostředků
 description: Zjistěte, jaké možnosti jsou dostupné pro správu a monitorování Azure synapse Analytics. Pomocí zobrazení Azure Portal a dynamické správy (zobrazení dynamické správy) můžete pochopit aktivity dotazů a využití prostředků datového skladu.
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/09/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: e7f093860e9962db055a7551f5cdb608ecad9b29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b103991e22ffab8ed5bd2b3c10400330e1d09b3
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585668"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568399"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorování využití prostředků a aktivity dotazů v Azure synapse Analytics
 

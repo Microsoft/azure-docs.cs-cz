@@ -6,13 +6,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/19/2021
-ms.openlocfilehash: 0aa472aca40acbaf3f8c8a09469d08fe6b37187a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: ac0e088c587132b32f2112d21bce936eac35dc72
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699755"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515857"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapování režimu ladění toku dat
 
@@ -20,9 +20,11 @@ ms.locfileid: "101699755"
 
 ## <a name="overview"></a>Přehled
 
-Azure Data Factory režim ladění toku dat umožňuje interaktivně sledovat transformaci datových tvarů při sestavování a ladění toků dat. Ladicí relaci lze použít jak v relacích návrhu toku dat, tak i při provádění ladění toků při ladění kanálu. Pokud chcete zapnout režim ladění, použijte v horní části návrhové plochy tlačítko "ladění toku dat".
+Azure Data Factory režim ladění toku dat umožňuje interaktivně sledovat transformaci datových tvarů při sestavování a ladění toků dat. Ladicí relaci lze použít jak v relacích návrhu toku dat, tak i při provádění ladění toků při ladění kanálu. Pokud chcete zapnout režim ladění, použijte tlačítko **ladění toku dat** na horním panelu plátna toku dat nebo plátna kanálu, když máte aktivity toku dat.
 
-![Posuvník ladění](media/data-flow/debugbutton.png "Posuvník ladění")
+![Posuvník ladění 1](media/data-flow/debugbutton.png "Posuvník ladění")
+
+![Posuvník ladění 2](media/data-flow/debug-button-4.png "Posuvník ladění")
 
 Jakmile posuvník zapnete, zobrazí se výzva, abyste vybrali konfiguraci prostředí Integration runtime, kterou chcete použít. Pokud je zvolená možnost AutoResolveIntegrationRuntime, provedou se cluster s osmi jádry obecného COMPUTE s výchozí 60-minutovou dobou provozu. Pokud chcete pro více nečinných týmů, než vyprší časový limit relace, použít více než jednu nečinný tým, můžete zvolit vyšší nastavení TTL. Další informace o modulu runtime integrace toku dat najdete v tématu [výkon toku dat](concepts-data-flow-performance.md#ir).
 

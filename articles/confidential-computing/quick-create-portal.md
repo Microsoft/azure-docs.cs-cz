@@ -2,18 +2,20 @@
 title: Rychlý Start – vytvoření virtuálního počítače s důvěrnými informacemi z Azure v Azure Portal
 description: Začněte s nasazeními a Naučte se, jak rychle vytvořit virtuální počítač s důvěrným výpočetním prostředím v Azure Portal.
 author: JBCook
+ms.author: JenCook
+ms.date: 04/23/2020
+ms.topic: quickstart
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
-ms.topic: quickstart
-ms.date: 04/23/2020
-ms.author: JenCook
-ms.openlocfilehash: 3f0984acd66bd5d6c148be8451938d3152fb9ca7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: f43229570f6bab942cc57a2ea3be163d37f02f89
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566664"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536173"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Rychlý Start: nasazení virtuálního počítače s důvěrnými výpočetními prostředími Azure v Azure Portal
 
@@ -148,7 +150,7 @@ Další informace o připojení k virtuálním počítačům s Linuxem najdete v
 
 Postupujte podle podrobných pokynů k instalaci sady [OE SDK](https://github.com/openenclave/openenclave) na DCsv2-Series virtuální počítač s bitovou kopií 18,04 LTS 2. generace. 
 
-Pokud je váš virtuální počítač spuštěný na Ubuntu 16,04 LTS Gen 2, budete muset postupovat podle [pokynů k instalaci pro Ubuntu 16,04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_16.04.md).
+Pokud je váš virtuální počítač spuštěný na Ubuntu 18,04 LTS Gen 2, budete muset postupovat podle [pokynů k instalaci pro Ubuntu 18,04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md).
 
 #### <a name="1-configure-the-intel-and-microsoft-apt-repositories"></a>1. Konfigurace úložišť Intel a Microsoft APT
 

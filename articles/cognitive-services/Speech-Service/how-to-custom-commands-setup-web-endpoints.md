@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6f2dfdbb5833b34441b4abba7359ad70c4717d1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95f27827950c5ed38caa1f83ede266afb57a1697
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98602155"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515630"
 ---
 # <a name="set-up-web-endpoints"></a>Nastavení webových koncových bodů
 
@@ -27,13 +27,118 @@ V tomto článku se naučíte, jak v aplikaci Vlastní příkazy nastavit webov�
 - Integrace odpovědí webových koncových bodů do vlastní datové části JSON, odeslání a vizualizace z klientské aplikace Speech SDK pro UPW v C#
 
 ## <a name="prerequisites"></a>Požadavky
+
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 > * Klíč předplatného Azure pro službu Speech: [Získejte ho zdarma](overview.md#try-the-speech-service-for-free) nebo si ho vytvořte na webu [Azure Portal](https://portal.azure.com)
 > * Už [vytvořená aplikace Vlastní příkazy](quickstart-custom-commands-application.md)
 > * Klientská aplikace s podporou sady Speech SDK: [Postupy: Odeslání aktivity do klientské aplikace](./how-to-custom-commands-setup-speech-sdk.md)
 
-## <a name="setup-web-endpoints"></a>Nastavení webových koncových bodů
+## <a name="deploy-an-external-web-endpoint-using-azure-function-app"></a>Nasazení externího koncového bodu webu pomocí Azure Function App
+
+* Pro účely tohoto kurzu potřebujete koncový bod HTTP, který uchovává stavy pro všechna zařízení, která jste nastavili v příkazu **TurnOnOff** vaší aplikace s vlastními příkazy.
+
+* Pokud již máte webový koncový bod, který chcete volat, přejděte k [Další části](#setup-web-endpoints-in-custom-commands). Další možností je, že v další části jsme zadali výchozí hostovaný koncový bod webu, který můžete použít, pokud chcete tuto část přeskočit.
+
+### <a name="input-format-of-azure-function"></a>Vstupní formát funkce Azure Functions
+* V dalším kroku nasadíte koncový bod pomocí [Azure Functions](../../azure-functions/index.yml).
+Následuje obecný formát události vlastních příkazů, která je předána funkci Azure Functions. Tyto informace použijte při psaní aplikace Function App.
+
+    ```json
+    {
+      "conversationId": "string",
+      "currentCommand": {
+        "name": "string",
+        "parameters": {
+          "SomeParameterName": "string",
+          "SomeOtherParameterName": "string"
+        }
+      },
+      "currentGlobalParameters": {
+          "SomeGlobalParameterName": "string",
+          "SomeOtherGlobalParameterName": "string"
+      }
+    }
+    ```
+
+    
+* Pojďme se podívat na klíčové atributy tohoto vstupu:
+        
+    | Atribut | Vysvětlení |
+    | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
+    | **conversationId** | Jedinečný identifikátor konverzace Všimněte si, že toto ID může být vygenerováno z klientské aplikace. |
+    | **currentCommand** | Příkaz, který je aktuálně aktivní v konverzaci. |
+    | **Jméno** | Název příkazu `parameters`Atribut je mapa s aktuálními hodnotami parametrů. |
+    | **currentGlobalParameters** | Mapa, jako `parameters` je, která se používá pro globální parametry. |
+
+
+* Pro funkci **DeviceState** Azure Functions bude mít ukázková událost, která bude vypadat jako v následujícím příkladu. Bude fungovat jako **vstup** do aplikace Function App.
+    
+    ```json
+    {
+      "conversationId": "someConversationId",
+      "currentCommand": {
+        "name": "TurnOnOff",
+        "parameters": {
+          "item": "tv",
+          "value": "on"
+        }
+      }
+    }
+    ```
+
+### <a name="output-format-of-azure-function"></a>Výstupní formát funkce Azure Functions
+
+#### <a name="output-consumed-by-a-custom-commands--application"></a>Výstup spotřebovaný aplikací Custom Commands
+V takovém případě můžete nastavit výstupní formát musí splňovat následující formát. Další podrobnosti najdete [v postupu aktualizace příkazu z webového koncového bodu](./how-to-custom-commands-update-command-from-web-endpoint.md) .
+
+```json
+{
+  "updatedCommand": {
+    "name": "SomeCommandName",
+    "updatedParameters": {
+      "SomeParameterName": "SomeParameterValue"
+    },
+    "cancel": false
+  },
+  "updatedGlobalParameters": {
+    "SomeGlobalParameterName": "SomeGlobalParameterValue"
+  }
+}
+```
+
+#### <a name="output-consumed-by-a-client-application"></a>Výstup spotřebovaný klientskou aplikací
+V takovém případě můžete nastavit výstupní formát tak, aby odpovídal potřebě vašeho klienta.
+* Pro náš koncový bod **DeviceState** je výstup funkce Azure využíván klientskou aplikací namísto aplikace Custom Commands. Příklad **výstupu** funkce Azure Function by měl vypadat takto:
+    
+    ```json
+    {
+      "TV": "on",
+      "Fan": "off"
+    }
+    ``` 
+
+*  Tento výstup by taky měl být zapsaný do externího úložiště, abyste mohli odpovídajícím způsobem udržovat stav zařízení. V [části integrace s klientskou aplikací](#integrate-with-client-application)se použije externí stav úložiště.
+
+
+### <a name="host-azure-function"></a>Hostování funkce Azure Functions
+
+1. Vytvořte účet úložiště tabulek pro uložení stavu zařízení.
+    1. Přejít na Azure Portal a vytvořit nový prostředek typu **účet úložiště** podle názvu **devicestate**.
+        1. Zkopírujte hodnotu **připojovacího řetězce** z **Devicestate-> přístupových klíčů**.
+        1. Tento řetězec budete muset přidat do staženého ukázkového Function App kódu.
+    1. Stáhněte si ukázkový [kód Function App](https://aka.ms/speech/cc-function-app-sample).
+    1. Otevřete stažené řešení v sadě VS 2019. V souboru **Connections.jsna**, nahraďte **STORAGE_ACCOUNT_SECRET_CONNECTION_STRING** hodnotu kopírovaným tajným kódem z *kroku a*.
+1.  Stáhněte si kód **DeviceStateAzureFunction** .
+1. [Nasaďte](../../azure-functions/index.yml) aplikaci Functions do Azure.
+    
+    1.  Počkejte na úspěšné nasazení a přejít na nasazený prostředek na Azure Portal. 
+    1. V levém podokně vyberte **funkce** a pak vyberte **DeviceState**.
+    1.  V novém okně vyberte **kód + test** a pak vyberte **získat adresu URL funkce**.
+ 
+## <a name="setup-web-endpoints-in-custom-commands"></a>Nastavení koncových bodů webu ve vlastních příkazech
+Pojďme službu Azure Functions připojit k existující aplikaci Custom Commands.
+V této části použijete existující výchozí koncový bod **DeviceState** . Pokud jste vytvořili svůj vlastní webový koncový bod pomocí funkce Azure Functions nebo jinak, použijte místo výchozího https://webendpointexample.azurewebsites.net/api/DeviceState .
 
 1. Otevřete aplikaci Vlastní příkazy, kterou jste si vytvořili dříve.
 1. Přejděte na Webové koncové body a klikněte na Nový webový koncový bod.
@@ -49,7 +154,7 @@ V tomto článku se naučíte, jak v aplikaci Vlastní příkazy nastavit webov�
    | Hlavičky | Klíč: aplikace, hodnota: použijte prvních 8 číslic hodnoty applicationId | Parametry hlavičky, které mají být zahrnuté v hlavičce požadavku|
 
     > [!NOTE]
-    > - Ukázkový webový koncový bod je vytvořený pomocí [Azure Functions](../../azure-functions/index.yml). Připojí se k databázi, ve které se ukládá stav televizoru a ventilátoru.
+    > - Příklad webového koncového bodu vytvořeného pomocí [funkce Azure Functions](../../azure-functions/index.yml), která se zastavuje s databází, která ukládá stav zařízení televizoru a ventilátoru
     > - Navrhovaná hlavička je nutná jenom pro ukázkový koncový bod.
     > - Pokud chcete zajistit, že hodnota hlavičky je v našem ukázkovém koncovém bodu jedinečná,použijte prvních 8 číslic hodnoty applicationId.
     > - Webovým koncovým bodem může v reálném světě být koncový bod pro [centrum IOT](../../iot-hub/about-iot-hub.md), které spravuje vaše zařízení.
@@ -115,7 +220,7 @@ Odebrání jednoho z parametrů dotazu, uložení, přetrénování a testován�
 
 ## <a name="integrate-with-client-application"></a>Integrace s klientskou aplikací
 
-V části [Postupy: Odeslání aktivity do klientské aplikace (Preview)](./how-to-custom-commands-send-activity-to-client.md) jste přidali akci **Send activity to client** (Odeslání aktivity do klientské aplikace). Aktivita se odešle do klientské aplikace bez ohledu na to, jestli je akce **volání webového koncového bodu** úspěšná.
+V tématu [Postup: odeslání aktivity do klientské aplikace](./how-to-custom-commands-send-activity-to-client.md)jste přidali **aktivitu odeslat do akce klienta** . Aktivita se odešle do klientské aplikace bez ohledu na to, jestli je akce **volání webového koncového bodu** úspěšná.
 Ve většině případů ale chcete posílat aktivitu do klientské aplikace jenom v případě, že volání webového koncového bodu je úspěšné. V tomto příkladu je to tehdy, když se úspěšně aktualizuje stav zařízení.
 
 1. Odstraňte dříve přidanou akci **Send activity to client** (Odeslání aktivity do klientské aplikace).
