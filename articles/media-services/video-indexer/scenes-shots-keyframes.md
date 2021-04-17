@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: 248799d70e0741efcaea1714c12f4d92a42cef25
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a738152296aacbb5914e859a65976bd0f6dbf0a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93041900"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532422"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Scény, snímky a klíčové snímky
 
@@ -54,7 +54,7 @@ Rozbalte a otevřete složku. Ve složce *_KeyframeThumbnail* se nacházejí vš
 
 #### <a name="with-the-video-indexer-api"></a>S rozhraním API Video Indexer
 
-Pokud chcete získat klíčové snímky pomocí rozhraní Video Indexer API, nahrajte video a zaindexujte ho pomocí volání [Upload video](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) . Po dokončení úlohy indexování zavolejte [získat index videa](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?). Získáte tak všechny přehledy, které Video Indexer extrahovat z vašeho obsahu v souboru JSON.  
+Pokud chcete získat klíčové snímky pomocí rozhraní Video Indexer API, nahrajte video a zaindexujte ho pomocí volání [Upload video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) . Po dokončení úlohy indexování zavolejte [získat index videa](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Index). Získáte tak všechny přehledy, které Video Indexer extrahovat z vašeho obsahu v souboru JSON.  
 
 V rámci metadat každého snímku se zobrazí seznam ID klíčových snímků. 
 
@@ -98,7 +98,7 @@ V rámci metadat každého snímku se zobrazí seznam ID klíčových snímků.
 ]
 ```
 
-Nyní bude nutné spustit každé z těchto ID klíčových snímků v volání metody [získat miniatury](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) . Tím se do vašeho počítače stáhne všechny image klíčového snímku. 
+Nyní bude nutné spustit každé z těchto ID klíčových snímků v volání metody [získat miniatury](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Thumbnail) . Tím se do vašeho počítače stáhne všechny image klíčového snímku. 
 
 ## <a name="editorial-shot-type-detection"></a>Detekce typu redakčního snímku
 

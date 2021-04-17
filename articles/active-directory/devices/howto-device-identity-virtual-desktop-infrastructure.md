@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5a4cc2b964bcf4fa49d90c8b6d5aa546b7148a1
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 6c1d78094effe6919587f24c2262612e4fab347d
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107941"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575373"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Identita zařízení a virtualizace plochy
 
@@ -89,7 +89,7 @@ Při nasazení trvalé infrastruktury virtuálních počítačů (VDI) Společno
 - Pro Windows nižší úrovně:
    - Implementuje příkaz **autoworkplacejoin/Leave** jako součást skriptu pro odhlášení. Tento příkaz by měl být aktivován v kontextu uživatele a měl by být proveden před úplným odhlášením uživatele a v případě, že je stále k dispozici připojení k síti.
 - Pro Windows Current ve federovaném prostředí (např. AD FS):
-   - Implementujte **dsregcmd/JOIN** jako součást sekvence spouštění virtuálního počítače.
+   - Implementujte **dsregcmd/JOIN** jako součást pořadí spouštění virtuálních počítačů nebo objednávky a předtím, než se uživatel přihlásí.
    - V rámci procesu vypnutí nebo restartování virtuálního počítače **nespouštějte dsregcmd** /Leave.
 - Definujte a implementujte proces pro [správu zastaralých zařízení](manage-stale-devices.md).
    - Jakmile budete mít strategii pro identifikaci netrvalých hybridních zařízení připojených k Azure AD (například pomocí předpony zobrazovaného názvu počítače), měli byste být na vyčištění těchto zařízení spolehlivější, abyste se ujistili, že se váš adresář nespotřebovává s velkým počtem zastaralých zařízení.

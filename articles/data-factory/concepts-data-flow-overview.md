@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 04/11/2021
-ms.openlocfilehash: 26d119fb6880f4c539e0064db424699bc5d22f96
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.date: 04/14/2021
+ms.openlocfilehash: 826183e09f2aa7f3f22ace8b5ce3e16767d49863
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478671"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515650"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Mapování toků dat v Azure Data Factory
 
@@ -99,6 +99,67 @@ Režim ladění umožňuje interaktivně zobrazit výsledky jednotlivých kroků
 Mapování toku dat se integruje s existujícími možnostmi monitorování Azure Data Factory. Informace o tom, jak pochopit výstup monitorování toku dat, najdete v tématu [monitorování toků dat mapování](concepts-data-flow-monitoring.md).
 
 Tým Azure Data Factory vytvořil [Průvodce optimalizací výkonu](concepts-data-flow-performance.md) , který vám pomůže optimalizovat dobu provádění toků dat po sestavení obchodní logiky.
+
+
+## <a name="available-regions"></a>Dostupné oblasti
+
+Mapování toků dat je k dispozici v následujících oblastech v ADF:
+
+| Oblast Azure | Toky dat v ADF |
+| ------------ | ----------------- |
+| Austrálie – střed | |
+| Austrálie – střed 2 | |
+| Austrálie – východ | ✓ |
+| Austrálie – jihovýchod   | ✓ |
+| Brazílie – jih  | ✓ |
+| Střední Kanada | ✓ |
+| Indie – střed | ✓ |
+| USA – střed    | ✓ |
+| Čína – východ |      |
+| Čína – východ 2  |   |
+| Čína – neregionální | |
+| Čína – sever | ✓ |
+| Čína – sever 2 | ✓ |
+| Východní Asie | ✓ |
+| East US   | ✓ |
+| USA – východ 2 | ✓ |
+| Francie – střed | ✓ |
+| Francie – jih  | |
+| Německo – střed (Svrchovan) | |
+| Německo – bez ohledu na oblast (Svrchovan) | |
+| Německo – sever (veřejné) | |
+| Německo – Severovýchod (Svrchovan) | |
+| Německo – středozápad (veřejné) |  |
+| Japonsko – východ | ✓ |
+| Japonsko – západ |  |
+| Jižní Korea – střed | ✓ |
+| Jižní Korea – jih | |
+| USA – středosever  | ✓ |
+| Severní Evropa  | ✓ |
+| Norsko – východ | ✓ |
+| Norsko – západ | |
+| Jižní Afrika – sever    | ✓ |
+| Jižní Afrika – západ |  |
+| Středojižní USA  | |
+| Indie – jih | |
+| Southeast Asia    | ✓ |
+| Švýcarsko – sever |   |
+| Švýcarsko – západ | |
+| Spojené arabské emiráty – střed | |
+| Spojené arabské emiráty sever | ✓ |
+| Spojené království – jih  | ✓ |
+| Spojené království – západ |     |
+| US DoD – střed | |
+| US DoD – východ | |
+| USA (Gov) – Arizona | ✓ |
+| US Gov – bez ohledu na oblast | |
+| USA (Gov) – Texas | |
+| USA (Gov) – Virginia | ✓ |
+| USA – středozápad |     |
+| West Europe   | ✓ |
+| Západní Indie | |
+| USA – západ   | ✓ |
+| Západní USA 2 | ✓ |
 
 ## <a name="next-steps"></a>Další kroky
 

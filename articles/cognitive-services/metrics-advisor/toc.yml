@@ -1,4 +1,4 @@
-- name: Metrics Advisor
+- name: Dokumentace k nástroji Advisor pro metriky
   href: index.yml
 - name: Přehled
   expanded: true
@@ -7,9 +7,9 @@
       href: overview.md
     - name: Ceny
       href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
-    - name: Co je nového
+    - name: Co je nového?
       href: whats-new.md
-- name: Rychlé starty pro metrické metriky
+- name: Rychlé starty
   items:
     - name: Webový portál
       href: quickstarts/web-portal.md
@@ -35,6 +35,10 @@
       href: how-tos/anomaly-feedback.md
     - name: Sestavení grafu metrik
       href: how-tos/metrics-graph.md
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Použití klíčů spravovaných zákazníkem
+          href: encryption.md
 - name: Koncepty
   items:
     - name: Klíčové výrazy Poradce pro metriky
@@ -49,11 +53,11 @@
       href: /powershell/module/azurerm.cognitiveservices/
 - name: Zdroje a prostředky
   items:
-    - name: Podpora oblastí
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Podpora oblastí
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Dodržování předpisů a certifikace
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context
-    - name: Dodržování předpisů
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Šifrování
-      href: encryption.md

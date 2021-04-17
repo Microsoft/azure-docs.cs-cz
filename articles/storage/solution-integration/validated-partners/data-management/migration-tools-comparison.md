@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 15daeb0e6bf320a0727d8e6ea502063a30e67ad0
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 862feace6aab4f49ad3482c4ccd6510669c876a1
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106231471"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576529"
 ---
 # <a name="comparison-matrix"></a>Srovnávací matice
 
@@ -73,7 +73,7 @@ Následující srovnávací tabulka ukazuje základní funkce různých nástroj
 | **Podpora pro otevřené/zamčené soubory**       | Yes | Yes                        | Yes | Yes                            |
 | **Přírůstková migrace**                 | Yes | Yes                        | Yes | Yes                            |
 | **Přepínání podpory**                    | No  | Yes                        | Yes | Ne (ruční)               |
-| **[Další funkce](#other-features)**         | [Odkaz](#azure-file-sync)| [Odkaz](#dobimigrate) | [Odkaz](#data-mobility-and-migration) | [Odkaz](#intelligent-data-management)                |
+| **[Další funkce](#other-features)**         | [Propojit](#azure-file-sync)| [Propojit](#dobimigrate) | [Propojit](#data-mobility-and-migration) | [Propojit](#intelligent-data-management)                |
 
 ## <a name="assessment-and-reporting"></a>Posouzení a vytváření sestav
 
@@ -85,7 +85,7 @@ Následující srovnávací tabulka ukazuje základní funkce různých nástroj
 | **Distribuce stáří v čase**      | No      | Yes | Yes | Yes            |
 | **Čas přístupu**                     | No      | Yes | Yes | Yes            |
 | **Změněný čas**                   | No      | Yes | Yes | Yes            |
-| **Čas vytvoření**                   | No      | Yes | Yes | Ano (jenom SMB) |
+| **Čas vytvoření**                   | No      | Yes | Yes | Yes            |
 | **Stav sestavy podle souboru nebo objektu** | Částečné | Yes | Yes | Yes            |
 
 ## <a name="licensing"></a>Licencování

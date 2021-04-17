@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 592c128a05b66b268c954ccd32b06863df5b25d1
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 18a39adfff572b81e5fbb9d7a42c71834b93ad13
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029110"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575741"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytváření datových sad služby Azure Machine Learning
 
@@ -190,6 +190,7 @@ Jakmile vytvoříte a [zaregistrujete](#register-datasets) datovou sadu, můžet
 Pokud nepotřebujete dělat žádné tahání nebo průzkumy dat, přečtěte si téma Postup využívání datových sad ve školicích skriptech pro odesílání experimentů ML v [vlakech s datovými sadami](how-to-train-with-datasets.md).
 
 ### <a name="filter-datasets-preview"></a>Filtrovat datové sady (Preview)
+
 Možnosti filtrování závisí na typu datové sady, kterou máte. 
 > [!IMPORTANT]
 > Filtrování datových sad s metodou Public Preview [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) je funkce [experimentální](/python/api/overview/azure/ml/#stable-vs-experimental) verze Preview a může se kdykoli změnit. 

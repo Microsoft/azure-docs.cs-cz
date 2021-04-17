@@ -6,13 +6,13 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
-ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 7aa1982fc880ac5733cc4453808c18956969572f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-java
+ms.openlocfilehash: 493752a3857b80b43668b6bf1b20480604442955
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627009"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567991"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>Kurz: mapování stávající vlastní domény na jarní cloud Azure
 
@@ -30,7 +30,7 @@ Certifikáty šifrují webový provoz. Tyto certifikáty TLS/SSL můžou být ul
 
 ## <a name="keyvault-private-link-considerations"></a>Doporučení pro soukromé odkazy trezoru klíčů
 
-IP adresy pro správu jarních cloudů Azure nejsou součástí důvěryhodných služeb Microsoft Azure. Proto pokud chcete, aby služba Azure jaře Cloud mohla načítat certifikáty z Key Vault chráněných pomocí připojení privátního koncového bodu, musíte do Azure Key Vault firewallu přidat následující IP adresy:
+IP adresy pro správu jarních cloudů Azure ještě nejsou součástí důvěryhodných služeb Microsoft Azure. Proto pokud chcete, aby služba Azure jaře Cloud mohla načítat certifikáty z Key Vault chráněných pomocí připojení privátního koncového bodu, musíte do Azure Key Vault firewallu přidat následující IP adresy:
 
 ```
 20.53.123.160 52.143.241.210 40.65.234.114 52.142.20.14 20.54.40.121 40.80.210.49 52.253.84.152 20.49.137.168 40.74.8.134 51.143.48.243

@@ -5,12 +5,12 @@ ms.date: 10/21/2020
 ms.topic: conceptual
 description: Popisuje proces migrace z Azure Dev Spaces na přemostění do Kubernetes.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, most na Kubernetes
-ms.openlocfilehash: d48814df30c17f9b51d8642efa0960a26bbd24f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ffb7693ff223a9cb952964ded1e6967ceeb326e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888517"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499287"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrace na Bridge to Kubernetes
 
@@ -83,7 +83,7 @@ Most na Kubernetes má flexibilitu pro práci s aplikacemi spuštěnými v Kuber
 ### <a name="transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>Přechod na přemostění na Kubernetes z Azure Dev Spaces
 
 1. Pokud používáte aplikaci Visual Studio, aktualizujte integrované vývojové prostředí (IDE) sady Visual Studio na verzi 16,7 nebo vyšší a nainstalujte most do rozšíření Kubernetes z [Visual Studio Marketplace][vs-marketplace]. Pokud používáte Visual Studio Code, nainstalujte [most do rozšíření Kubernetes][vsc-marketplace].
-1. Vypněte kontroler Azure Dev Spaces pomocí Azure Portal nebo [Azure dev Spaces CLI][azds-delete].
+1. Zakažte kontroler Azure Dev Spaces pomocí Azure Portal nebo [Azure Dev Spaces CLI] [azds-Delete].
 1. Použijte [Azure Cloud Shell](https://shell.azure.com). Nebo na Macu, Linux nebo Windows s nainstalovaným bash otevřete příkazový řádek prostředí bash. Ujistěte se, že v prostředí příkazového řádku jsou k dispozici následující nástroje: Azure CLI, Docker, kubectl, kudrlinkou, tar a gunzip.
 1. Vytvořte registr kontejnerů nebo použijte existující. Registr kontejnerů můžete v Azure vytvořit pomocí [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) nebo pomocí [Docker Hub](https://hub.docker.com/). Při použití Azure Cloud Shell je k dispozici pouze Azure Container Registry pro hostování imagí Docker.
 1. Spusťte skript migrace a převeďte Azure Dev Spaces assety na přemostění na prostředky Kubernetes. Skript vytvoří nový Image kompatibilní s mostem na Kubernetes, nahraje ho do určeného registru a pak pomocí [Helm](https://helm.sh) aktualizuje cluster s imagí. Musíte zadat skupinu prostředků, název clusteru AKS a registr kontejneru. Existují další možnosti příkazového řádku, jak je znázorněno zde:
@@ -145,7 +145,6 @@ Přečtěte si další informace o tom, jak most Kubernetes funguje.
 > [Jak funguje Přemostění na Kubernetes][how-it-works-bridge-to-kubernetes]
 
 
-[azds-delete]: how-to/install-dev-spaces.md#remove-azure-dev-spaces-using-the-cli
 [kubernetes-extension]: https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools
 [btk-sample-app]: /visualstudio/containers/bridge-to-kubernetes#install-the-sample-application
 [how-it-works-bridge-to-kubernetes]: /visualstudio/containers/overview-bridge-to-kubernetes

@@ -6,13 +6,13 @@ author: johndowns
 ms.author: jodowns
 ms.service: frontdoor
 ms.topic: sample
-ms.date: 03/24/2021
-ms.openlocfilehash: 929adb0be948339af033d85b0dabd7e1cedf353e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/16/2021
+ms.openlocfilehash: 3559270710f56d43fe486e2e3d3e41c63e2a619b
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561742"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565827"
 ---
 # <a name="azure-resource-manager-templates-for-azure-front-door"></a>Šablony Azure Resource Manager pro přední dveře Azure
 
@@ -23,7 +23,9 @@ Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro p�
 
 | Ukázka | Popis |
 |-|-|
+| [Přední dvířka (rychlé vytvoření)](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium/) | Vytvoří základní profil front-dveří včetně koncového bodu, skupiny původu, zdroje a trasy.  |
 | [Sada pravidel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set/) | Vytvoří profil přední vrátka a sadu pravidel.  |
+| [Zásady WAF s vlastním pravidlem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-waf-custom/) | Vytvoří profil front-dveří a WAF s vlastním pravidlem.  |
 |**App Service zdroje**| **Popis** |
 | [App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-app-service-public) | Vytvoří aplikaci App Service s veřejným koncovým bodem a profilem front-dveří.  |
 | [App Service s privátním odkazem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-private-link) | Vytvoří aplikaci App Service s privátním koncovým bodem a profilem front-dveří.  |

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 593ccac7326a0a04884fe433cac85cb8eaf79319
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: dfc8fe0f1b4bc043feecd5c76340d48bc5421854
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228227"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568535"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumníkem služby Azure Storage
 
@@ -120,34 +120,62 @@ Pokud nemůžete najít žádné certifikáty podepsané svým držitelem pomoc�
 
 ## <a name="sign-in-issues"></a>Problémy s přihlašováním
 
-### <a name="blank-sign-in-dialog-box"></a>Dialogové okno prázdné přihlášení
+### <a name="understanding-sign-in"></a>Principy přihlášení
 
-Prázdné přihlašovací dialogová okna se nejčastěji vyskytují, když Active Directory Federation Services (AD FS) (AD FS) vyzývá Průzkumník služby Storage k provedení přesměrování, které nepodporuje elektronicky. Pokud chcete tento problém obejít, můžete zkusit použít tok kódu zařízení pro přihlášení. To můžete provést pomocí těchto kroků:
+Ujistěte se, že jste si přečetli [přihlašovací informace pro Průzkumník služby Storage](./storage-explorer-sign-in.md) dokumentaci.
 
-1. Na levém svislém panelu nástrojů otevřete **Nastavení**. Na panelu nastavení přejdete na přihlášení **aplikace**  >  . Povolit **používání přihlášení k toku kódu zařízení**
-2. Otevřete dialogové okno **připojit** (buď prostřednictvím ikony plug-in na levé straně, nebo vyberte **Přidat účet** na panelu účet).
-3. Vyberte prostředí, ke kterému se chcete přihlásit.
-4. Vyberte **Přihlásit se**.
-5. Postupujte podle pokynů na dalším panelu.
+### <a name="frequently-having-to-reenter-credentials"></a>Často se musí znovu zadat přihlašovací údaje.
 
-Pokud se nemůžete přihlásit k účtu, který chcete použít, protože váš výchozí prohlížeč je už přihlášený k jinému účtu, udělejte jednu z těchto akcí:
+Opakované zadání přihlašovacích údajů je pravděpodobně výsledkem zásad podmíněného přístupu nastavených vaším správcem AAD. Když Průzkumník služby Storage žádá o zadání přihlašovacích údajů z panelu účtu, mělo by se zobrazit **Podrobnosti o chybě...** odkaz. Kliknutím na tuto možnost zjistíte, proč Průzkumník služby Storage žádá o zadání přihlašovacích údajů znovu. Chyby zásad podmíněného přístupu, které vyžadují znovu zadat přihlašovací údaje, můžou vypadat nějak takto:
+- Platnost obnovovacího tokenu vypršela...
+- Pro přístup k aplikaci je nutné použít službu Multi-Factor Authentication...
+- Kvůli změně konfigurace provedené správcem...
 
-- Ručně zkopírujte odkaz a kód do privátní relace prohlížeče.
-- Ručně zkopírujte odkaz a kód do jiného prohlížeče.
+Chcete-li snížit četnost nutnosti znovu zadat přihlašovací údaje z důvodu chyb, jako jsou výše, budete se muset obrátit na správce AAD.
+
+### <a name="conditional-access-policies"></a>Zásady podmíněného přístupu
+
+Pokud máte zásady podmíněného přístupu, které pro svůj účet potřebujete splnit, ujistěte se, že používáte výchozí hodnotu **webového prohlížeče** pro možnost **Přihlásit se** . Informace o tomto nastavení najdete v tématu [Změna místa, kde se přihlašování stane](./storage-explorer-sign-in.md#changing-where-sign-in-happens).
+
+### <a name="unable-to-acquire-token-tenant-is-filtered-out"></a>Nepovedlo se získat token, tenant se odfiltruje.
+
+Pokud se zobrazí chybová zpráva oznamující, že token nejde získat, protože je odfiltrované klienta, znamená to, že se pokoušíte o přístup k prostředku, který je v tenantovi, který jste vyfiltroval. Chcete-li odfiltrovat tenanta, klikněte na **panel účtu** a ujistěte se, zda je zaškrtnuto políčko pro tenanta uvedené v chybě. Další informace o filtrování tenantů v Průzkumník služby Storage najdete v tématu [Správa účtů](./storage-explorer-sign-in.md#managing-accounts) .
+
+## <a name="authentication-library-failed-to-start-properly"></a>Knihovnu ověřování se nepovedlo správně spustit.
+
+Při spuštění se zobrazí chybová zpráva oznamující, že se nepovedlo správně spustit knihovnu ověřování Průzkumník služby Storage. pak se ujistěte, že vaše prostředí pro instalaci splňuje všechny [požadavky](../../vs-azure-tools-storage-manage-with-storage-explorer.md#prerequisites). Nejpravděpodobnější příčinou této chybové zprávy je, že nesplňuje požadavky.
+
+Pokud se domníváte, že vaše prostředí pro instalaci splňuje všechny požadavky, [otevřete problém na GitHubu](https://github.com/Microsoft/AzureStorageExplorer/issues/new). Po otevření problému nezapomeňte zahrnout:
+- Váš operační systém.
+- Jakou verzi Průzkumník služby Storage se snažíte použít.
+- Pokud jste kontrolovali požadavky.
+- [Protokoly ověřování](#authentication-logs) z neúspěšného spuštění Průzkumník služby Storage. Po výskytu tohoto typu chyby se automaticky povolí protokolování podrobného ověřování.
+
+### <a name="blank-window-when-using-integrated-sign-in"></a>Prázdné okno při použití integrovaného přihlašování
+
+Pokud jste se rozhodli použít **integrované přihlašování** a vidíte prázdné okno pro přihlášení, budete pravděpodobně muset přepnout na jinou metodu přihlašování. Dialogová okna prázdného přihlášení se nejčastěji objevují, když se Server Active Directory Federation Services (AD FS) (ADFS) vyzve Průzkumník služby Storage, aby provedl přesměrování, které nepodporované elektronicky.
+
+Pokud chcete přejít na jinou metodu přihlašování, změňte nastavení **Přihlásit se pomocí** možnosti **Nastavení**  >    >  **přihlášení** k aplikaci. Informace o různých typech metod přihlašování najdete v tématu [Změna místa, kde se přihlašování stane](./storage-explorer-sign-in.md#changing-where-sign-in-happens).
 
 ### <a name="reauthentication-loop-or-upn-change"></a>Smyčka opakovaného ověřování nebo změna hlavního názvu uživatele
 
-Pokud jste ve smyčce opakovaného ověřování nebo jste změnili hlavní název uživatele (UPN) jednoho z vašich účtů, postupujte takto:
+Pokud se nacházíte ve smyčce opakovaného ověřování nebo jste změnili hlavní název uživatele (UPN) jednoho ze svých účtů, zkuste postupovat takto:
 
-1. Odeberte všechny účty a pak Průzkumník služby Storage zavřete.
-2. Odstraňte. IdentityService složku z počítače. Ve Windows se složka nachází na adrese `C:\users\<username>\AppData\Local` . V případě systémů Mac a Linux můžete složku najít v kořenovém adresáři adresáře uživatele.
-3. Pokud používáte systém Mac nebo Linux, budete také muset odstranit položku Microsoft. Developer. IdentityService z úložiště klíčů operačního systému. V počítači Mac je úložiště *klíčů aplikací GNOME* . V systému Linux se aplikace obvykle nazývá _Správce klíčů_, ale název se může lišit v závislosti na vaší distribuci.
+1. Otevřít Průzkumník služby Storage
+2. Přejít na help > Reset
+3. Ujistěte se, že je zaškrtnuté políčko alespoň ověřování. Můžete zrušit kontrolu dalších položek, které nechcete resetovat.
+4. Klikněte na tlačítko obnovit.
+5. Restartujte Průzkumník služby Storage a zkuste se znovu přihlásit.
 
-### <a name="conditional-access"></a>Podmíněný přístup
+Pokud budete mít i nadále problémy po resetování, zkuste provést následující kroky:
 
-Z důvodu omezení v knihovně Azure AD, kterou používá Průzkumník služby Storage, není podmíněný přístup podporován, když se Průzkumník služby Storage používá ve Windows 10, Linux nebo macOS.
+1. Otevřít Průzkumník služby Storage
+2. Odeberte všechny účty a pak Průzkumník služby Storage zavřete.
+3. Odstraňte `.IdentityService` složku z počítače. Ve Windows se složka nachází na adrese `C:\users\<username>\AppData\Local` . V případě systémů Mac a Linux můžete složku najít v kořenovém adresáři adresáře uživatele.
+4. Pokud používáte systém Mac nebo Linux, budete také muset odstranit položku Microsoft. Developer. IdentityService z úložiště klíčů operačního systému. V počítači Mac je úložiště *klíčů aplikací GNOME* . V systému Linux se aplikace obvykle nazývá _Správce klíčů_, ale název se může lišit v závislosti na vaší distribuci.
+6. Restartujte Průzkumník služby Storage a zkuste se znovu přihlásit.
 
-## <a name="mac-keychain-errors"></a>Chyby řetězce klíčů Mac
+### <a name="macos-keychain-errors-or-no-sign-in-window"></a>macOS: Chyby řetězce klíčů nebo žádné přihlašovací okno
 
 MacOS řetězec klíčů může někdy zadat stav, který způsobuje problémy v knihovně ověřování Průzkumník služby Storage. Chcete-li získat z tohoto stavu řetězce klíčů, postupujte následovně:
 
@@ -162,15 +190,16 @@ MacOS řetězec klíčů může někdy zadat stav, který způsobuje problémy v
 6. Zobrazí se výzva se zprávou, jako je například "centrum služeb vyžaduje přístup k řetězci klíčů." Zadejte heslo účtu správce počítače Mac a vyberte možnost **vždy povolený** (nebo **Povolte** možnost **vždy** zakázat, pokud není k dispozici).
 7. Zkuste se přihlásit.
 
-### <a name="general-sign-in-troubleshooting-steps"></a>Obecné kroky při řešení potíží s přihlašováním
+### <a name="default-browser-doesnt-open"></a>Výchozí prohlížeč není otevřený.
 
-* Pokud pracujete v macOS a přihlašovací okno se nikdy nezobrazuje v dialogovém okně **čekání na ověření** , zkuste [tyto kroky](#mac-keychain-errors).
-* Restartujte Průzkumník služby Storage.
-* Pokud je okno ověřování prázdné, před zavřením dialogového okna ověřování počkejte alespoň jednu minutu.
-* Ujistěte se, že je nastavení proxy serveru a certifikátu správně nakonfigurované pro váš počítač i Průzkumník služby Storage.
-* Pokud používáte systém Windows a máte přístup k aplikaci Visual Studio 2019 ve stejném počítači a přihlašovací údaje přihlášení, zkuste se přihlásit k Visual Studiu 2019. Po úspěšném přihlášení do sady Visual Studio 2019 můžete otevřít Průzkumník služby Storage a zobrazit účet na panelu účet.
+Pokud se váš výchozí prohlížeč při pokusu o přihlášení neotevře, zkuste použít následující postupy:
+- Restartovat Průzkumník služby Storage
+- Před spuštěním přihlášení otevřete prohlížeč ručně.
+- Zkuste použít **integrované přihlašování**. pokyny k tomu, jak to udělat, najdete v tématu [Změna místa, kde se přihlašování](./storage-explorer-sign-in.md#changing-where-sign-in-happens) provádí.
 
-Pokud žádná z těchto metod nefunguje, [otevřete problém v GitHubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
+### <a name="other-sign-in-issues"></a>Další problémy s přihlašováním
+
+Pokud žádný z výše uvedených neplatí pro váš problém s přihlašováním, nebo pokud se nepodaří vyřešit potíže s přihlášením, [otevřete problém na GitHubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
 ### <a name="missing-subscriptions-and-broken-tenants"></a>Chybějící předplatná a poškození klienti
 
@@ -180,9 +209,9 @@ Pokud po úspěšném přihlášení nemůžete načíst vaše předplatné, zku
 * Ujistěte se, že jste se přihlásili přes správné prostředí Azure (Azure, Azure Čína 21Vianet, Azure Německo, Azure US státní správu nebo vlastní prostředí).
 * Pokud jste za proxy server, ujistěte se, že jste správně nakonfigurovali proxy Průzkumník služby Storage.
 * Zkuste účet odebrat a znovu přidat.
-* Pokud existuje odkaz Další informace, zjistěte, které chybové zprávy se pro klienty, kteří selžou, nahlásí. Pokud si nejste jistí, jak reagovat na chybové zprávy, můžete [otevřít problém na GitHubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
+* Pokud existuje odkaz "Další informace" nebo "Podrobnosti o chybě", zjistěte, které chybové zprávy se pro klienty, kteří selžou, nahlásí. Pokud si nejste jistí, jak reagovat na chybové zprávy, můžete [otevřít problém na GitHubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
-## <a name="cant-remove-an-attached-account-or-storage-resource"></a>Nejde odebrat připojený účet nebo prostředek úložiště.
+## <a name="cant-remove-an-attached-storage-account-or-resource"></a>Nejde odebrat připojený účet úložiště nebo prostředek.
 
 Pokud nemůžete odebrat připojený účet nebo prostředek úložiště prostřednictvím uživatelského rozhraní, můžete ručně odstranit všechny připojené prostředky odstraněním následujících složek:
 
@@ -526,6 +555,8 @@ V případě některých problémů budete potřebovat poskytnout protokoly sí�
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud žádná z těchto řešení nefunguje za vás, [otevřete problém v GitHubu](https://github.com/Microsoft/AzureStorageExplorer/issues). Můžete to udělat i tak, že v levém dolním rohu vyberete tlačítko **nahlásit problém k GitHubu** .
+Pokud žádná z těchto řešení nefunguje za vás, můžete:
+- Vytvoření lístku podpory
+- [Otevřete problém na GitHubu](https://github.com/Microsoft/AzureStorageExplorer/issues). Můžete to udělat i tak, že v levém dolním rohu vyberete tlačítko **nahlásit problém k GitHubu** .
 
 ![Váš názor](./media/storage-explorer-troubleshooting/feedback-button.PNG)

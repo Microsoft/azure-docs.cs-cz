@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 53058d27e94c9fdf18d726369f6a1b75a9f34db9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d56e03cd650032a775c30b02d939cf934f384fae
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567538"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568603"
 ---
 # <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>Nasazení Azure Data Services na zařízení GPU pro Azure Stack Edge pro
 
@@ -21,7 +21,7 @@ ms.locfileid: "105567538"
 
 Tento článek popisuje proces vytvoření řadiče dat ARC Azure a následné nasazení Azure Data Services na zařízení GPU Azure Stack Edge pro. 
 
-Řadič dat ARC Azure je místní rovina ovládacího prvku, která umožňuje Data Services Azure v prostředích spravovaných zákazníky. Jakmile vytvoříte řadič dat ARC Azure v clusteru Kubernetes, který běží na vašem zařízení Azure Stack Edge pro, můžete na tento řadič dat nasadit Data Services Azure, jako je SQL Managed instance (Preview).
+Řadič dat ARC Azure je místní rovina ovládacího prvku, která umožňuje Data Services Azure v prostředích spravovaných zákazníky. Jakmile vytvoříte řadič dat ARC Azure v clusteru Kubernetes, který běží na vašem zařízení GPU Azure Stack Edge pro, můžete na tento řadič dat nasadit Data Services Azure, jako je SQL Managed instance (Preview).
 
 Postup vytvoření kontroleru dat a následná implementace spravované instance SQL zahrnuje použití PowerShellu a `kubectl` nativního nástroje, který poskytuje přístup k Kubernetes clusteru na zařízení pomocí příkazového řádku.
 
@@ -30,9 +30,9 @@ Postup vytvoření kontroleru dat a následná implementace spravované instance
 
 Než začnete, ujistěte se, že:
 
-1. Máte přístup k zařízení Azure Stack Edge pro a aktivovali jste zařízení, jak je popsáno v tématu [aktivace Azure Stack Edge pro](azure-stack-edge-gpu-deploy-activate.md).
+1. Máte přístup k zařízení GPU Azure Stack Edge pro a aktivovali jste zařízení, jak je popsáno v tématu [aktivace Azure Stack Edge pro](azure-stack-edge-gpu-deploy-activate.md).
 
-1. Na zařízení jste povolili výpočetní roli. V zařízení se vytvořil i cluster Kubernetes, když jste na zařízení nakonfigurovali výpočetní výkon podle pokynů v tématu [Konfigurace výpočetních prostředků na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-configure-compute.md).
+1. Na zařízení jste povolili výpočetní roli. V zařízení se vytvořil i cluster Kubernetes, když jste na zařízení nakonfigurovali výpočetní výkon podle pokynů v tématu [Konfigurace výpočtů na zařízení GPU Azure Stack Edge pro](azure-stack-edge-gpu-deploy-configure-compute.md).
 
 1. Máte koncový bod rozhraní Kubernetes API ze stránky **zařízení** vašeho místního webového uživatelského rozhraní. Další informace najdete v pokynech v tématu [získání koncového bodu rozhraní API Kubernetes](azure-stack-edge-gpu-deploy-configure-compute.md#get-kubernetes-endpoints).
 
@@ -171,7 +171,7 @@ Nyní můžete v oboru názvů nasadit své aplikace datového kontroleru a dato
     Dokončení nasazení může trvat přibližně 5 minut.
 
     > [!NOTE]
-    > Řadič dat vytvořený v clusteru Kubernetes na vašem zařízení Azure Stack Edge pro funguje v aktuálním vydání jenom v odpojeném režimu.
+    > Řadič dat vytvořený v clusteru Kubernetes na vašem zařízení GPU Azure Stack Edge pro v aktuální verzi funguje jenom v odpojeném režimu. Odpojený režim je pro řadič dat a ne pro vaše zařízení.
 
 ### <a name="monitor-data-creation-status"></a>Stav vytváření dat monitorování
 

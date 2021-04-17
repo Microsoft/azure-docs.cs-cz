@@ -3,12 +3,12 @@ title: Co je nového ve službě Azure Backup
 description: Seznamte se s novými funkcemi v Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: c5e6734c6a962fa43d79fc90fdfaa85923b6339f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 68e0e5cc0876840c30ab9e428a2b96bd7d667756
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612479"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516327"
 ---
 # <a name="whats-new-in-azure-backup"></a>Co je nového ve službě Azure Backup
 
@@ -89,7 +89,7 @@ Další informace najdete v tématu [šablony Azure Resource Manager pro Azure B
 
 Azure Backup teď podporuje přírůstkové zálohování pro databáze SAP HANA hostované na virtuálních počítačích Azure. To umožňuje rychlejší a efektivnější zálohování dat SAP HANA.
 
-Další informace najdete v tématu [různé možnosti, které jsou dostupné během vytváření zásady zálohování](sap-hana-faq-backup-azure-vm.md#policy) , a [Postup vytvoření zásad zálohování pro databáze SAP HANA](tutorial-backup-sap-hana-db.md#creating-a-backup-policy).
+Další informace najdete v tématu [různé možnosti, které jsou dostupné během vytváření zásady zálohování](/sap-hana-faq-backup-azure-vm.yml#policy) , a [Postup vytvoření zásad zálohování pro databáze SAP HANA](tutorial-backup-sap-hana-db.md#creating-a-backup-policy).
 
 ## <a name="backup-center-in-preview"></a>Centrum zálohování (ve verzi Preview)
 

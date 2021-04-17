@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/05/2021
+ms.date: 04/16/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 37e508a0f4af940773a92271075239c204e52834
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 3665421ddbdd9cf079ff4aab9377fc9164a1599c
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010709"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575356"
 ---
 # <a name="azure-storage-redundancy"></a>Redundance Azure Storage
 
@@ -73,7 +73,7 @@ Následující tabulka uvádí, které typy účtů úložiště podporují ZRS,
 
 | Typ účtu úložiště | Podporované oblasti | Podporované služby |
 |--|--|--|
-| Obecné účely v2<sup>1</sup> | Poskytl Jižní Afrika – sever<br /> (Asie a Tichomoří) Východní Asie<br /> (Asie a Tichomoří) Jihovýchodní Asie<br /> (Asie a Tichomoří) Austrálie – východ<br /> (Asie a Tichomoří) Střed Indie<br /> (Asie a Tichomoří) Japonsko – východ<br /> (Asie a Tichomoří) Korea – střed<br /> Kanada Kanada – střed<br /> Evropským Severní Evropa<br /> Evropským Západní Evropa<br /> Evropským Francie – střed<br /> Evropským Německo – středozápad<br /> Evropským Norsko – východ<br /> Evropským Švýcarsko – sever<br /> Evropským Velká Británie – jih<br /> (Střední východ) Spojené arabské emiráty sever<br /> (Jižní Amerika) Brazílie – jih<br /> VYLEPŠENÍ Střed USA<br /> (USA) USA – východ<br /> VYLEPŠENÍ Východní USA 2<br /> VYLEPŠENÍ Střed USA – sever<br />VYLEPŠENÍ Střed USA – jih<br /> VYLEPŠENÍ Západní USA<br /> VYLEPŠENÍ Západní USA 2 | Objekty blob bloku<br /> Objekty blob stránky<sup>2</sup><br /> Sdílené složky (Standard)<br /> Tabulky<br /> Fronty<br /> |
+| Obecné účely v2<sup>1</sup> | Poskytl Jižní Afrika – sever<br /> (Asie a Tichomoří) Jihovýchodní Asie<br /> (Asie a Tichomoří) Austrálie – východ<br /> (Asie a Tichomoří) Japonsko – východ<br /> Kanada Kanada – střed<br /> Evropským Severní Evropa<br /> Evropským Západní Evropa<br /> Evropským Francie – střed<br /> Evropským Německo – středozápad<br /> Evropským Velká Británie – jih<br /> (Jižní Amerika) Brazílie – jih<br /> VYLEPŠENÍ Střed USA<br /> (USA) USA – východ<br /> VYLEPŠENÍ Východní USA 2<br /> VYLEPŠENÍ Střed USA – jih<br /> VYLEPŠENÍ Západní USA<br /> VYLEPŠENÍ Západní USA 2 | Objekty blob bloku<br /> Objekty blob stránky<sup>2</sup><br /> Sdílené složky (Standard)<br /> Tabulky<br /> Fronty<br /> |
 | BlockBlobStorage<sup>1</sup> | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br /> Evropa – západ<br /> Francie – střed <br /> Japan East<br /> Spojené království – jih <br /> USA – východ <br /> USA – východ 2 <br /> USA – západ 2| Jenom objekty blob bloku úrovně Premium |
 | Úložiště | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br /> Evropa – západ<br /> Francie – střed <br /> Japan East<br /> Spojené království – jih <br /> USA – východ <br /> USA – východ 2 <br /> USA – západ 2 | Jenom soubory úrovně Premium – jenom sdílené složky |
 

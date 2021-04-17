@@ -16,12 +16,12 @@ ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b6a1ead2fe3c1ec4e2206d1ffbaea4e5ec57433
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 44b4e4bccde07d078c9749ee76c1653e6d431e63
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222517"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532083"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Přidání propojené organizace v Azure AD – Správa nároků
 
@@ -140,7 +140,7 @@ Pokud už nebudete mít relaci s externím adresářem nebo doménou služby Azu
 
 ## <a name="managing-a-connected-organization-programmatically"></a>Programové řízení připojené organizace
 
-Připojené organizace můžete také vytvořit, vypsat, aktualizovat a odstranit pomocí Microsoft Graph. Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API pro správu objektů [connectedOrganization](/graph/api/resources/connectedorganization?view=graph-rest-beta) a pro ně nastavit sponzory.
+Připojené organizace můžete také vytvořit, vypsat, aktualizovat a odstranit pomocí Microsoft Graph. Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API pro správu objektů [connectedOrganization](/graph/api/resources/connectedorganization?view=graph-rest-beta&preserve-view=true) a pro ně nastavit sponzory.
 
 ## <a name="state-properties-of-connected-organizations"></a>Vlastnosti stavu propojených organizací
 

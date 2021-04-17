@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0396698fe63cb62fc1cfaf5d930b8a97a7b1bbc
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: f5bfce7ef2621cbe3bbbfdd95bf9a75e427c8cbd
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552253"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531881"
 ---
 # <a name="reset-redemption-status-for-a-guest-user-preview"></a>Resetovat stav uplatnění pro uživatele typu Host (Preview)
 
@@ -37,7 +37,9 @@ Pokud se chce uživatel přihlásit pomocí jiného e-mailu:
 3. Chcete-li obnovit stav uplatnění uživatele, použijte jednu z níže uvedených metod.
 
 > [!NOTE]
->Při resetování e-mailové adresy uživatele doporučujeme ve verzi Public Preview nastavit `mail` vlastnost na novou e-mailovou adresu. Tímto způsobem může uživatel uplatnit pozvánku tím, že se přihlásí k adresáři Kromě použití odkazu na uplatnění v pozvánce.
+>Ve verzi Public Preview máme dvě doporučení:
+>- Při resetování e-mailové adresy uživatele na novou adresu doporučujeme nastavit `mail` vlastnost. Tímto způsobem může uživatel uplatnit pozvánku tím, že se přihlásí k adresáři Kromě použití odkazu na uplatnění v pozvánce.
+>- Když resetujete stav uživatele typu Host B2B, nezapomeňte to udělat v kontextu uživatele. Volání jenom pro aplikace se v tuto chvíli nepodporují.
 >
 ## <a name="use-powershell-to-reset-redemption-status"></a>Obnovení stavu uplatnění pomocí PowerShellu
 
@@ -54,7 +56,7 @@ New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitat
 
 ## <a name="use-microsoft-graph-api-to-reset-redemption-status"></a>Obnovení stavu uplatnění pomocí rozhraní Microsoft Graph API
 
-Pomocí [rozhraní API pro Microsoft Graph pozvánky](/graph/api/resources/invitation?view=graph-rest-1.0)nastavte `resetRedemption` vlastnost na `true` a zadejte novou e-mailovou adresu ve `invitedUserEmailAddress` Vlastnosti.
+Pomocí [rozhraní API pro Microsoft Graph pozvánky](/graph/api/resources/invitation?view=graph-rest-beta&preserve-view=true)nastavte `resetRedemption` vlastnost na `true` a zadejte novou e-mailovou adresu ve `invitedUserEmailAddress` Vlastnosti.
 
 ```json
 POST https://graph.microsoft.com/beta/invitations  

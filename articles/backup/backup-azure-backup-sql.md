@@ -3,12 +3,12 @@ title: Zálohování SQL Server do Azure jako úlohy DPM
 description: Úvod k zálohování SQL Server databází pomocí služby Azure Backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 592a51051a0d02a6c1d491db0fe559e2e62babb2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 03763c3bee5ee4ca5239c49c99fdbeedc242b24d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96327045"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515171"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL Server do Azure jako úlohy DPM
 
@@ -196,4 +196,4 @@ Chcete-li obnovit chráněnou entitu, jako je například databáze SQL Server, 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [Azure Backup Nejčastější dotazy](backup-azure-backup-faq.md).
+Další informace najdete v tématu [Azure Backup Nejčastější dotazy](backup-azure-backup-faq.yml).

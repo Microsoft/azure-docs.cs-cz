@@ -2,21 +2,21 @@
 title: Ukázka PowerShellu – export aplikací s tajnými klíči a certifikáty po uplynutí doby od data, které se Azure Active Directory tenant.
 description: Příklad prostředí PowerShell, který vyexportuje všechny aplikace s tajnými klíči a certifikáty, jejichž platnost překračuje požadované datum pro zadané aplikace ve vašem tenantovi Azure Active Directory.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 03/09/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: mifarca
-ms.openlocfilehash: daeea48758a9f08e7eedbfcaddcde3815f5c1e16
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 692ab2cfd480fd15760c13c63922fe76d23058ea
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729095"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375385"
 ---
 # <a name="export-apps-with-secrets-and-certificates-expiring-beyond-the-required-date"></a>Exportujte aplikace s tajnými kódy a certifikáty po dobu mimo požadované datum.
 

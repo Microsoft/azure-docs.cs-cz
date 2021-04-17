@@ -3,26 +3,21 @@ title: Vytvoření fondu s povoleným šifrováním disků
 description: Naučte se používat konfiguraci šifrování disku k šifrování uzlů pomocí klíče spravovaného platformou.
 author: pkshultz
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 04/16/2021
 ms.author: peshultz
-ms.custom: references_regions
-ms.openlocfilehash: 41fc827459b454e2bcb120a925cdab8fcd46e310
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 40281211e5eb70089f4168dcb02720c912120a35
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99055310"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576104"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>Vytvoření fondu s povoleným šifrováním disků
 
 Když vytváříte fond Azure Batch s použitím [Konfigurace virtuálního počítače](nodes-and-pools.md#virtual-machine-configuration), můžete zašifrovat výpočetní uzly ve fondu pomocí klíče spravovaného platformou zadáním konfigurace šifrování disku.
 
 Tento článek vysvětluje, jak vytvořit fond Batch s povoleným šifrováním disku.
-
-> [!IMPORTANT]
-> Podpora šifrování u hostitele pomocí klíče spravovaného platformou v Azure Batch je v současnosti ve verzi Public Preview pro oblasti Východní USA, Západní USA 2, Střed USA – jih, US Gov – Virginie a US Gov – Arizona.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>Proč používat fond s konfigurací šifrování disku?
 
