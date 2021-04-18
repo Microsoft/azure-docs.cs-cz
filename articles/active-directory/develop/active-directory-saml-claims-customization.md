@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0cccf45037320b476b1a44cafa8074bacadacbc8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 25e737afb524cb8c6f45ac8e99f46a8064ae7855
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103600944"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598835"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -77,7 +77,7 @@ Vyberte požadovaný zdroj pro `NameIdentifier` deklaraci (nebo NameId). Můžet
 | Rozšíření adresáře | Rozšíření adresáře [synchronizovaná z místní služby Active Directory pomocí Azure AD Connect synchronizace](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | Atributy rozšíření 1-15 | Atributy místních rozšíření používaných k rozšíření schématu Azure AD |
 
-Další informace naleznete v [tabulce 3: platné hodnoty ID na zdroj](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
+Další informace naleznete v [tabulce 3: platné hodnoty ID na zdroj](reference-claims-mapping-policy-type.md#table-3-valid-id-values-per-source).
 
 Všem deklaracím, které definujete v Azure AD, můžete také přiřadit jakoukoli konstantní (statickou) hodnotu. Použijte následující postup k přiřazení konstantní hodnoty:
 

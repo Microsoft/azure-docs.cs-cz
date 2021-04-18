@@ -6,14 +6,14 @@ ms.author: amverma
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: overview
-ms.date: 03/18/2021
+ms.date: 04/09/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 65b37a8c07e083f5e9809812e2d4446cc48717d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 554764b89e5da4cd6777ec89fcb2f2d5ad104ebf
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720589"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600263"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>Vysoce výkonné výpočetní prostředí na InfiniBand s povolenými virtuálními počítači řady H-Series a N-Series
 
@@ -47,4 +47,5 @@ Třetí pro úlohy distribuovaných uzlů volba a konfigurace MPI je kritická. 
 - Přečtěte si o [konfiguraci a optimalizaci](configure.md) virtuálních počítačů řady [H-Series](../../sizes-hpc.md) a [N-Series](../../sizes-gpu.md) s podporou InfiniBand.
 - V přehledu [HBv3-Series](hb-series-overview.md) Overview a [HC-Series](hc-series-overview.md) najdete informace o optimální konfiguraci úloh pro zajištění výkonu a škálovatelnosti.
 - Přečtěte si o nejnovějších oznámeních, příkladech úloh HPC a výsledcích výkonu na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Otestujte své znalosti pomocí [výukového modulu o optimalizaci aplikací HPC v Azure](https://docs.microsoft.com/learn/modules/optimize-tightly-coupled-hpc-apps/).
 - Pro zobrazení architektury na vyšší úrovni pro spouštění úloh HPC si přečtěte téma věnované technologii [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).

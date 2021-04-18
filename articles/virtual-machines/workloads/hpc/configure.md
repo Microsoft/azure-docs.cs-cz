@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0c6f5dc55f7406aba7d6e3dc1a278b57fe4ec9ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 470d5efae68366b5cc96243bab4ebb8552771650
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721266"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600875"
 ---
 # <a name="configure-and-optimize-vms"></a>Konfigurace a optimalizace virtuálních počítačů
 
@@ -124,7 +124,7 @@ Volitelně může být WALinuxAgent zakázaný krok před úlohou a povolený ba
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [Povolení InfiniBand](enable-infiniband.md) na virtuálních počítačích s InfiniBand a [N-Series](../../sizes-gpu.md) [s podporou řady d-Series](../../sizes-hpc.md) .
-- Přečtěte si další informace o instalaci různých [podporovaných knihoven MPI](setup-mpi.md) a jejich optimálních konfiguracích na virtuálních počítačích.
+- Přečtěte si další informace o instalaci a spuštění různých [podporovaných knihoven MPI](setup-mpi.md) na virtuálních počítačích.
 - Přečtěte si přehled [HBv3-Series](hbv3-series-overview.md) Overview a [HC-Series](hc-series-overview.md).
 - Přečtěte si o nejnovějších oznámeních, příkladech úloh HPC a výsledcích výkonu na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Pro zobrazení architektury na vyšší úrovni pro spouštění úloh HPC si přečtěte téma věnované technologii [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).

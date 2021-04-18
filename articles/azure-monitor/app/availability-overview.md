@@ -3,12 +3,12 @@ title: Přehled dostupnosti Application Insights
 description: Nastavte opakované webové testy pro monitorování dostupnosti a odezvy vaší aplikace nebo webu.
 ms.topic: conceptual
 ms.date: 04/15/2021
-ms.openlocfilehash: c3b7a1d0bf8c50c77e5062a702bcdd7600d98d7a
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 3c2d248df98fcb9f75f5de9c05b9f600955cbac7
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520688"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600790"
 ---
 # <a name="availability-tests-overview"></a>Přehled testů dostupnosti
 
@@ -18,11 +18,9 @@ Testy dostupnosti můžete nastavit pro libovolný koncový bod HTTP nebo HTTPS,
 
 ## <a name="types-of-availability-tests"></a>Typy testů dostupnosti
 
-Existují čtyři typy testů dostupnosti:
+Existují tři typy testů dostupnosti:
 
 * [Test adresy URL pomocí příkazů](monitor-web-app-availability.md): Tato kategorie má dva jednoduché testy, které můžete vytvořit prostřednictvím portálu.
-    - Test základní příkazy pro testování: jednoduchý test, který můžete vytvořit v Azure Portal.
-    - Test standardního testu nástroje pro testování: pokročilejší standardní test testování pomocí funkcí, jako je třeba použití libovolných metod požadavku HTTP (například,, `GET` `HEAD` `POST` atd.) nebo přidávání vlastních hlaviček.
 * [Webový test s více kroky](availability-multistep.md): záznam sekvence webových požadavků, které je možné přehrát zpětně testovat složitější scénáře. Webové testy s více kroky jsou vytvořeny v Visual Studio Enterprise a nahrány na portál pro provádění.
 * [Testy dostupnosti vlastních stop](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability): Pokud se rozhodnete vytvořit vlastní aplikaci pro spuštění testů dostupnosti, `TrackAvailability()` lze použít metodu k odeslání výsledků do Application Insights.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 5d16fd87b01db69d3f55e22aad573b7847b9048c
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: b787102065f93588cd796027123d61072e9d5aea
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518025"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107601011"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Kurz: Azure Active Directory integrace s TOPdesk – Public
 
@@ -95,7 +95,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     f. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.topdesk.net/tas/public/login/verify`
     
     > [!NOTE] 
-    > Pokud se hodnoty **adresy URL** pro **identifikátor** a odpověď nezískají automaticky, je nutné je zadat ručně. V případě identifikátoru postupujte podle vzoru uvedeného výše a získejte adresu URL odpovědi z oddílu **Konfigurace jednotného přihlašování TopDesk** , který je vysvětlen dále v tomto kurzu. Hodnota **přihlašovací adresy URL** není skutečná, takže je potřeba aktualizovat hodnotu skutečnou adresou Sign-On. Kontaktujte [TopDesk – tým podpory veřejného klienta](https://help.topdesk.com/saas/enterprise/user/) , který získá hodnotu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Pokud se hodnoty **adresy URL** pro **identifikátor** a odpověď nezískají automaticky, je nutné je zadat ručně. V případě identifikátoru postupujte podle vzoru uvedeného výše a získejte adresu URL odpovědi z oddílu **Konfigurace jednotného přihlašování TopDesk** , který je vysvětlen dále v tomto kurzu. Hodnota **přihlašovací adresy URL** není skutečná, takže je potřeba aktualizovat hodnotu skutečnou adresou Sign-On. Kontaktujte [TopDesk – tým podpory veřejného klienta](https://my.topdesk.com/) , který získá hodnotu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 

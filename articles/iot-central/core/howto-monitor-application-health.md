@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a9abd00035ccd779fcbe5dcf29b90f47758ff403
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: df89d53e6b5043c1ef3caa1c92f2abaae542d6ec
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588645"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599005"
 ---
 # <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Monitorování celkového stavu aplikace IoT Central
 
@@ -54,7 +54,7 @@ Metriky se můžou lišit od čísel zobrazených na faktuře Azure IoT Central.
 
 - [Cenové tarify IoT Central Standard](https://azure.microsoft.com/pricing/details/iot-central/) zahrnují dvě zařízení a různé kvóty zpráv zdarma. I když jsou bezplatné položky vyloučené z fakturace, pořád se započítávají do metrik.
 
-- IoT Central pro každou šablonu zařízení v aplikaci automaticky vygeneruje jedno ID testovacího zařízení. Toto ID zařízení je viditelné na stránce **Spravovat testovací zařízení** pro šablonu zařízení. Tvůrci řešení se můžou rozhodnout [ověřit své šablony zařízení](./overview-iot-central.md#connect-devices) před jejich publikováním, a to tak, že generují kód, který používá tato ID testovacích zařízení. I když se tato zařízení z fakturace vyloučí, pořád se započítávají do metrik.
+- IoT Central pro každou šablonu zařízení v aplikaci automaticky vygeneruje jedno ID testovacího zařízení. Toto ID zařízení je viditelné na stránce **Spravovat testovací zařízení** pro šablonu zařízení. Tvůrci řešení se můžou rozhodnout ověřit své šablony zařízení před jejich publikováním, a to tak, že generují kód, který používá tato ID testovacích zařízení. I když se tato zařízení z fakturace vyloučí, pořád se započítávají do metrik.
 
 - I když se metriky můžou ukázat jako podmnožina komunikace typu zařízení-Cloud, veškerá komunikace mezi zařízením a cloudem se [vypočítává jako zpráva k fakturaci](https://azure.microsoft.com/pricing/details/iot-central/).
 

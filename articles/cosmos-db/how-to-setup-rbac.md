@@ -4,14 +4,14 @@ description: Zjistěte, jak nakonfigurovat řízení přístupu na základě rol
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/16/2021
 ms.author: thweiss
-ms.openlocfilehash: 1a6bdf55e52a7060423d2a016f07eee3608f50d4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 145c60784ec9cef60d0863e1eb03aa564dea2b55
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063470"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600824"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurace řízení přístupu na základě role pomocí Azure Active Directory pro účet Azure Cosmos DB (Preview)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,6 +45,13 @@ NeAzure Cosmos DB rovina dat je založena na konceptech, které se běžně nach
 
 ## <a name="permission-model"></a><a id="permission-model"></a> Model oprávnění
 
+> [!IMPORTANT]
+> Tento model oprávnění pokrývá pouze databázové operace, které umožňují čtení a zápis dat. Nepokrývá **žádný** druh operací správy, jako je vytváření kontejnerů nebo změna propustnosti. To znamená, že **nemůžete použít žádnou Azure Cosmos DB sadu SDK pro datovou rovinu** k ověřování operací správy s identitou AAD. Místo toho je nutné použít [Azure RBAC](role-based-access-control.md) prostřednictvím:
+> - [Šablony ARM](manage-with-templates.md)
+> - [Azure PowerShell skripty](manage-with-powershell.md),
+> - Skripty rozhraní příkazového [řádku Azure](manage-with-cli.md)
+> - [Knihovny pro správu Azure](https://azure.github.io/azure-sdk/releases/latest/index.html).
+
 V následující tabulce jsou uvedeny všechny akce vystavené modelem oprávnění.
 
 | Name | Odpovídající operace s databází |
@@ -64,9 +71,6 @@ Zástupné znaky jsou podporovány na úrovni *kontejnerů* a *položek* :
 
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`
-
-> [!IMPORTANT]
-> Tento model oprávnění pokrývá pouze databázové operace, které umožňují čtení a zápis dat. Nepokrývá **žádný** druh operací správy, jako je vytváření kontejnerů nebo změna propustnosti. K ověřování operací správy pomocí identity AAD použijte místo toho [Azure RBAC](role-based-access-control.md) .
 
 ### <a name="metadata-requests"></a><a id="metadata-requests"></a> Žádosti o metadata
 

@@ -1,29 +1,27 @@
 ---
 title: Správa uživatelů a rolí v Azure IoT Central aplikaci | Microsoft Docs
 description: Jak spravovat uživatele a role v aplikaci Azure IoT Central jako správce
-author: lmasieri
-ms.author: lmasieri
-ms.date: 12/05/2019
+author: vishwam
+ms.author: vishwams
+ms.date: 04/16/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: f6c45b8d9804f16c4e59d259f562cc03f187e6a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 928a9fbad7bde7fe7f1cfaf181bff2a7b9ce458b
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92122973"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599056"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>Správa uživatelů a rolí v aplikaci IoT Central
 
-Tento článek popisuje, jak jako správce můžete přidávat, upravovat a odstraňovat uživatele v aplikaci Azure IoT Central. Tento článek také popisuje, jak spravovat role v aplikaci Azure IoT Central.
-
-Pokud chcete získat přístup k části **Správa** a používat ji, musíte být v roli **správce** aplikace Azure IoT Central. Pokud vytvoříte aplikaci IoT Central Azure, automaticky se přiřadíte do role **správce** této aplikace.
+Tento článek popisuje, jak jako správce můžete přidávat, upravovat a odstraňovat uživatele v aplikaci Azure IoT Central. Tento článek také popisuje, jak spravovat role ve vaší aplikaci.
 
 ## <a name="add-users"></a>Přidání uživatelů
 
-Každý uživatel musí mít uživatelský účet, aby se mohl přihlásit a získat přístup k aplikaci Azure IoT Central. Účty Microsoft a účty Azure Active Directory jsou podporované ve službě Azure IoT Central. Azure Active Directory skupiny se v Azure IoT Central aktuálně nepodporují.
+Každý uživatel musí mít uživatelský účet předtím, než se může přihlásit a získat přístup k aplikaci. IoT Central aktuálně podporuje účty Microsoft a účty Azure Active Directory, ale ne skupiny Azure Active Directory.
 
 Další informace najdete v tématu [účet Microsoft nápovědu](https://support.microsoft.com/products/microsoft-account?category=manage-account) a  [rychlé zprovoznění: přidání nových uživatelů do Azure Active Directory](../../active-directory/fundamentals/add-users-azure-active-directory.md).
 
@@ -41,15 +39,15 @@ Další informace najdete v tématu [účet Microsoft nápovědu](https://suppor
 
     > [!NOTE]
     > Uživatel, který je ve vlastní roli, která jim uděluje oprávnění k přidávání dalších uživatelů, může přidat uživatele do role se stejnými nebo méně oprávněními než jejich vlastní role.
-
-Pokud se ID uživatele IoT Central z Azure Active Directory odstraní a pak se znovu přidá, uživatel se nebude moct přihlásit k aplikaci IoT Central. Chcete-li znovu povolit přístup, správce IoT Central by měl uživatele v aplikaci odstranit a číst.
+    > 
+    > Pokud se uživatel z Azure Active Directory odstraní a pak se přidá zpátky, nebude se moct automaticky přihlásit k aplikaci IoT Central. Aby bylo možné znovu povolit přístup, správce aplikace by měl také odstranit a znovu přidat uživatele do aplikace.
 
 ### <a name="edit-the-roles-that-are-assigned-to-users"></a>Úprava rolí, které jsou přiřazeny uživatelům
 
 Role se po přiřazení nedají změnit. Chcete-li změnit roli přiřazenou uživateli, odstraňte uživatele a pak znovu přidejte uživatele s jinou rolí.
 
 > [!NOTE]
-> Přiřazené role jsou specifické pro IoT Central aplikaci a nejde je spravovat z webu Azure Portal.
+> Přiřazené role jsou specifické pro aplikaci IoT Central a nelze je spravovat z webu Azure Portal.
 
 ## <a name="delete-users"></a>Odstranění uživatelů
 
@@ -78,7 +76,7 @@ Uživatelé v roli **operátora** mohou monitorovat stav a stav zařízení. Neu
 
 ## <a name="create-a-custom-role"></a>Vytvoření vlastní role
 
-Pokud vaše řešení vyžaduje jemnější řízení přístupu, můžete vytvořit vlastní role s vlastními sadami oprávnění. Chcete-li vytvořit vlastní roli, přejděte na stránku **role** v části **Správa** vaší aplikace. Pak vyberte **+ Nová role** a přidejte název a popis pro vaši roli. Vyberte oprávnění, které vaše role vyžaduje, a pak vyberte **Uložit**.
+Pokud vaše řešení vyžaduje jemnější řízení přístupu, můžete vytvořit role s vlastními sadami oprávnění. Chcete-li vytvořit vlastní roli, přejděte na stránku **role** v části **Správa** vaší aplikace. Pak vyberte **+ Nová role** a přidejte název a popis pro vaši roli. Vyberte oprávnění, které vaše role vyžaduje, a pak vyberte **Uložit**.
 
 Do vlastní role můžete přidat uživatele stejným způsobem, jakým přidáváte uživatele do předdefinované role.
 
@@ -87,7 +85,7 @@ Do vlastní role můžete přidat uživatele stejným způsobem, jakým přidáv
 
 ### <a name="custom-role-options"></a>Možnosti vlastní role
 
-Při definování vlastní role zvolíte sadu oprávnění, které uživatel udělí, pokud se jedná o člena této role. Některá oprávnění jsou závislá na ostatních. Pokud například přidáte do role oprávnění **řídicí panely aplikace aktualizace** , bude automaticky přidáno oprávnění **zobrazit řídicí panely aplikace** . Následující tabulky shrnují dostupná oprávnění a jejich závislosti, které můžete použít při vytváření vlastních rolí.
+Při definování vlastní role zvolíte sadu oprávnění, které uživatel udělí, pokud se jedná o člena této role. Některá oprávnění jsou závislá na ostatních. Pokud například přidáte do role oprávnění **řídicí panely aplikace aktualizovat** , budete také potřebovat oprávnění **zobrazit řídicí panely aplikace** . Následující tabulky shrnují dostupná oprávnění a jejich závislosti, které můžete použít při vytváření vlastních rolí.
 
 #### <a name="managing-devices"></a>Správa zařízení
 
@@ -108,7 +106,8 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 | Vytvořit | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
 | Odstranit | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
 | Spustit příkazy | Aktualizace, zobrazení <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
-| Úplné řízení | Zobrazit, aktualizovat, vytvořit, odstranit, spustit příkazy <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
+| Zobrazit nezpracovaná data | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
+| Úplné řízení | Zobrazit, aktualizovat, vytvořit, odstranit, spustit příkazy, zobrazit nezpracovaná data <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
 
 **Oprávnění skupin zařízení**
 
@@ -117,7 +116,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 | Zobrazení | Žádné <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení |
 | Aktualizace | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení   |
 | Vytvořit | Zobrazit, aktualizovat <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení   |
-| Odstranit | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení   |
+| Odstranit | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení  |
 | Úplné řízení | Zobrazit, aktualizovat, vytvořit, odstranit <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení |
 
 **Oprávnění pro správu připojení zařízení**
@@ -125,10 +124,10 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 | Name | Závislosti |
 | ---- | -------- |
 | Čtení instance | Žádné <br/> Další závislosti: zobrazení šablon zařízení, skupin zařízení, instancí zařízení |
-| Spravovat instanci | Žádné |
+| Spravovat instanci | Čtení instance <br /> Další závislosti: zobrazení šablon zařízení, skupin zařízení, instancí zařízení |
 | Číst globální | Žádné   |
 | Spravovat globální | Číst globální |
-| Úplné řízení | Čtení instance, Správa instance, čtení globálních prostředků, Správa globálních prostředků. <br/> Další závislosti: zobrazení šablon zařízení, skupin zařízení, instancí zařízení |
+| Úplné řízení | Čtení instance, Správa instance, čtení globálních prostředků, Správa globálních prostředků <br/> Další závislosti: zobrazení šablon zařízení, skupin zařízení, instancí zařízení |
 
 **Oprávnění úloh**
 
@@ -170,6 +169,14 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 | Zobrazení | Žádné     |
 | Export | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení, skupin zařízení, řídicích panelů, exportu dat, brandingování, odkazů na nápovědě, vlastních rolí, pravidel |
 | Úplné řízení | Zobrazit, exportovat <br/> Další závislosti: zobrazení šablon zařízení, skupin zařízení, řídicích panelů aplikací, exportu dat, brandingování, odkazů na nápovědě, vlastních rolí, pravidel |
+
+**Oprávnění pro nahrávání souborů zařízení**
+
+| Name | Závislosti |
+| ---- | -------- |
+| Zobrazení | Žádné     |
+| Spravovat | Zobrazení   |
+| Úplné řízení | Zobrazit, spravovat |
 
 **Fakturační oprávnění**
 
@@ -256,11 +263,11 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazení | Žádné     |
-| Vytvořit | Zobrazení   |
-| Odstranit | Zobrazení   |
-| Úplné řízení | Zobrazit, vytvořit, odstranit |
+| Zobrazení | Žádné  <br/> Další závislosti: zobrazení vlastních rolí |
+| Vytvořit | Zobrazení <br/> Další závislosti: zobrazení vlastních rolí |
+| Odstranit | Zobrazení <br/> Další závislosti: zobrazení vlastních rolí |
+| Úplné řízení | Zobrazit, vytvořit, odstranit <br/> Další závislosti: zobrazení vlastních rolí |
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak spravovat uživatele a role v aplikaci IoT Central Azure, je doporučeným dalším krokem informace o tom, jak [spravovat vaše vyúčtování](howto-view-bill.md).
+Teď, když jste se naučili, jak spravovat uživatele a role v aplikaci IoT Central, je navržený další krok, kde se dozvíte, jak [spravovat vaše vyúčtování](howto-view-bill.md).

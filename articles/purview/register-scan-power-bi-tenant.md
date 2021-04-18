@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 6646f131488a5ae4aa9b20fe614d7ebb46133444
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 8fb4c797df7961726ca785a56a6ab25807999842
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538866"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600858"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrace a kontrola klienta Power BIu (Preview)
 
@@ -70,13 +70,9 @@ Pokud chcete nastavit ověřování, vytvořte skupinu zabezpečení a přidejte
 
 Teď, když jste udělili oprávnění ke spravovaným identitám dosah pro připojení k rozhraní API pro správu vašeho tenanta Power BI, můžete si nastavit kontrolu z Azure dosah studia.
 
-1. Vyberte ikonu **centra pro správu** .
+1. V levém navigačním panelu vyberte **zdroje** .
 
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="Ikona centra pro správu":::
-
-1. Pak vyberte **+ Nový** ve **zdrojích dat**.
-
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/data-sources.png" alt-text="Obrázek tlačítka nový zdroj dat":::
+1. Pak vyberte **Register** (Registrovat).
 
     Jako zdroj dat vyberte **Power BI** .
 

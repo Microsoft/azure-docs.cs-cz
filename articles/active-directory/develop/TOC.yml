@@ -633,6 +633,8 @@
       href: reference-v2-libraries.md
     - name: Rozhraní API identity a přístupu v Microsoft Graphu
       href: /graph/api/resources/azure-ad-overview
+    - name: Typ zásad mapování deklarací identity
+      href: reference-claims-mapping-policy-type.md
     - name: Kódy chyb autorizace a ověřování
       displayName: AADSTS
       href: reference-aadsts-error-codes.md

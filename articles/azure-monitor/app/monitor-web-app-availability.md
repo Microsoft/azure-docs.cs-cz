@@ -4,65 +4,37 @@ description: Nastavte testy pro příkazy testu a testování v Application Insi
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.reviewer: sdash
-ms.openlocfilehash: ecfd4ffee3582ff37411e59c75d8be8fca5e945f
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 60698862e26175425221940a4b69867cb414fe86
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516593"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598869"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorování dostupnosti jakéhokoli webu
 
 Název "test příkazu" URL testu adresy URL je bitovou příponou misnomer. Aby bylo jasné, že tyto testy nebudou používat protokol ICMP (Internet Control Message Protocol) ke kontrole dostupnosti vašeho webu. Místo toho používají pokročilejší funkci požadavků HTTP k ověření, zda koncový bod reaguje. Také měří výkon spojený s touto odpovědí a přidávají možnost nastavit vlastní kritéria úspěchu v kombinaci s pokročilejšími funkcemi, jako je analýza závislých požadavků, a povolení pro opakování.
 
-K dispozici jsou dva typy testů adres URL typu URL, které můžete použít k testování testů, Basic a standard pro testování.
-
-> [!NOTE]
-> Testy na úrovni Basic a Standard jsou momentálně ve verzi Public Preview. Tyto verze Preview jsou poskytovány bez smlouvy o úrovni služeb. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-
-Základní vs Standard:
-
-- Úroveň Basic je omezena na pět míst na jeden test.
-- Standardní testy mohou mít vlastní záhlaví nebo tělo požadavku.
-- Standardní testy můžou používat jakoukoli metodu požadavku HTTP, zatímco základní může používat jenom `GET` .
-- Doba životnosti certifikátu SSL: po uplynutí doby, než vyprší platnost certifikátu, se zobrazí upozornění na nastavený čas.
-- Standardní testy jsou placené funkce.
-
-> [!NOTE]
-> Pro standardní testy testovacího testu pro testování funkcí verze Preview se momentálně neúčtují žádné další poplatky. Ceny pro funkce, které jsou ve verzi Preview, budou v budoucnu ohlášeny a oznámení poskytované před zahájením fakturace. Pokud se rozhodnete, že budete po období oznámení používat standardní testy pro testování pomocí příkazu, bude se vám účtovat příslušná sazba.
-
-## <a name="create-a-url-ping-test"></a>Vytvoření testu adresy URL pomocí příkazu Ping
-
 Aby bylo možné vytvořit test dostupnosti, je třeba použít existující prostředek Application Insights nebo [vytvořit prostředek Application Insights](create-new-resource.md).
 
-Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dostupnost a vyberte vytvořit test & zvolte Test SKU.
+Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dostupnost a vyberte  **vytvořit test**.
 
-:::image type="content" source="./media/monitor-web-app-availability/create-basic-test.png" alt-text="Snímek obrazovky vytvoření testu na základě požadavku na základní adresu URL na webu Azure Portal":::
+:::image type="content" source="./media/monitor-web-app-availability/availability-create-test-001.png" alt-text="Snímek obrazovky s vytvořením testu":::
 
-|Nastavení | Vysvětlení |
-|--------|-------------|
+## <a name="create-a-test"></a>Vytvořit test
+
+|Nastavení| Vysvětlení
+|----|----|----|
 |**Adresa URL** |  Adresa URL může být libovolná webová stránka, kterou chcete otestovat, ale musí být viditelná z veřejného internetu. Adresa URL může obsahovat řetězec dotazu. To znamená, že můžete také trochu vyzkoušet svou databázi. Pokud se adresa URL přeloží na přesměrování, budeme ji sledovat až po 10 přesměrování.|
-|**Analyzovat závislé požadavky**| Test žádostí o obrázky, skripty, soubory stylu a další soubory, které jsou součástí testované webové stránky. Zaznamenaná doba odezvy zahrnuje i čas potřebný k získání těchto souborů. Test se nezdaří, pokud některý z těchto prostředků nelze úspěšně stáhnout v časovém limitu pro celý test. Pokud tato možnost není zaškrtnutá, test si vyžádá pouze soubor na zadané adrese URL. Povolení této možnosti má za následek přísnější kontrolu. Test se nezdařil pro případy, které nemusí být při ručním procházení lokality patrné. |
-|**Povolit opakování**| V případě, že se test nezdařil, bude opakován po krátkém intervalu. Selhání je nahlášeno pouze v případě tří po sobě jdoucích neúspěšných pokusů. Následné testy jsou pak provedeny s obvyklou frekvencí testu. Opakování je dočasně pozastaveno do dalšího úspěchu. Toto pravidlo platí nezávisle na každém umístění testu. **Tuto možnost doporučujeme**. V průměru přibližně 80 % selhání při opakování zmizí.|
-| **Test ověřování certifikátu SSL** | Certifikát SSL můžete na svém webu ověřit, abyste se ujistili, že je správně nainstalovaný, platný, důvěryhodný a neposkytuje žádné chyby pro žádné z vašich uživatelů. |
-| **Proaktivní kontroly životního cyklu** | To vám umožní definovat nastavené časové období, než vyprší platnost certifikátu SSL. Po vypršení platnosti se test nezdaří. |
+|**Analyzovat závislé požadavky**| Test žádostí o obrázky, skripty, soubory stylu a další soubory, které jsou součástí testované webové stránky. Zaznamenaná doba odezvy zahrnuje i čas potřebný k získání těchto souborů. Test se nezdaří, pokud některý z těchto prostředků nelze úspěšně stáhnout v časovém limitu pro celý test. Pokud tato možnost není zaškrtnutá, test si vyžádá pouze soubor na zadané adrese URL. Povolení této možnosti má za následek přísnější kontrolu. Test se nezdařil pro případy, které nemusí být při ručním procházení lokality patrné.
+|**Povolit opakování**|v případě, že se test nezdařil, bude opakován po krátkém intervalu. Selhání je nahlášeno pouze v případě tří po sobě jdoucích neúspěšných pokusů. Následné testy jsou pak provedeny s obvyklou frekvencí testu. Opakování je dočasně pozastaveno do dalšího úspěchu. Toto pravidlo platí nezávisle na každém umístění testu. **Tuto možnost doporučujeme**. V průměru přibližně 80 % selhání při opakování zmizí.|
 |**Frekvence testování**| Nastaví, jak často se test spouští z každého umístění testu. S výchozí pětiminutovou frekvencí a pěti testovanými místy bude váš web testován v průměru každou minutu.|
-|**Testovací umístění**| Jsou místa, odkud naše servery odesílají webové požadavky na adresu URL. **Náš minimální počet doporučených testovacích umístění je pět** , abyste měli jistotu, že můžete odlišit problémy na webu od problémů se sítí. Můžete vybrat více než pět umístění se standardním testem a až 16 umístění.|
+|**Testovací umístění**| Jsou místa, odkud naše servery odesílají webové požadavky na adresu URL. **Náš minimální počet doporučených testovacích umístění je pět** , abyste měli jistotu, že můžete odlišit problémy na webu od problémů se sítí. Můžete vybrat až 16 umístění.
 
 **Pokud vaše adresa URL není viditelná z veřejného Internetu, můžete vybrat možnost selektivně otevřít bránu firewall, aby povolovala pouze testovací transakce**. Další informace o výjimkách brány firewall pro testovací agenty dostupnosti najdete v [Průvodci IP adresou](./ip-addresses.md#availability-tests).
 
 > [!NOTE]
 > Důrazně doporučujeme testování z více umístění s **minimálně pěti umístěními**. K tomu je potřeba zabránit falešným poplachům, které mohou být způsobeny přechodnými problémy s konkrétním umístěním. Kromě toho jsme zjistili, že optimální konfigurace má mít **počet testovacích umístění stejný jako prahová hodnota umístění výstrahy + 2**.
-
-## <a name="standard-test"></a>Standardní test
-
-:::image type="content" source="./media/monitor-web-app-availability/standard-test-post.png" alt-text="Snímek karty standardního testovacího údaje" border="false":::
-
-|Nastavení | Vysvětlení |
-|--------|-------------|
-| **Vlastní hlavičky** | Páry klíč-hodnota, které definují parametry operačního systému. |
-| **Operace požadavku HTTP** | Určete, jakou akci chcete s vaší žádostí provést. Pokud vaše zvolená operace není v uživatelském rozhraní k dispozici, můžete nasadit standardní test pomocí Sledování prostředků Azure s požadovanou volbou. |
-| **Text žádosti** | Vlastní data přidružená k požadavku HTTP Do svého obsahu můžete nahrát typ vlastní soubory, nebo tuto funkci zakázat. Pro obsah nezpracovaného textu podporujeme TEXT, JSON, HTML, XML a JavaScript. |
 
 ## <a name="success-criteria"></a>Kritéria úspěchu
 
@@ -83,7 +55,7 @@ Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dost
 
 Po nasazení testu adresy URL dostupnosti pomocí Azure Resource Manager se dá pro atribut geografické polohy použít následující Tagy naplnění.
 
-#### <a name="azure-gov"></a>Gov Azure
+### <a name="azure-gov"></a>Gov Azure
 
 | Zobrazovaný název   | Název souboru     |
 |----------------|---------------------|

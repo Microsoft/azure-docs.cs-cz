@@ -4,12 +4,12 @@ description: Naučte se používat spravované identity ve službě Azure Kubern
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 3ace7f1c93ab3918f460d245a863db43d98f1db5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 58813504c5de057e06433b2e955931b37560d825
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176089"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600654"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes
 
@@ -66,42 +66,14 @@ Pak vytvořte cluster AKS:
 az aks create -g myResourceGroup -n myManagedCluster --enable-managed-identity
 ```
 
-Úspěšné vytvoření clusteru pomocí spravovaných identit obsahuje tyto informace o profilu hlavního objektu služby:
-
-```output
-"servicePrincipalProfile": {
-    "clientId": "msi"
-  }
-```
-
-Použijte následující příkaz k dotazování objectID spravované identity vaší řídicí plochy:
-
-```azurecli-interactive
-az aks show -g myResourceGroup -n myManagedCluster --query "identity"
-```
-
-Výsledek by měl vypadat takto:
-
-```output
-{
-  "principalId": "<object_id>",   
-  "tenantId": "<tenant_id>",      
-  "type": "SystemAssigned"                                 
-}
-```
-
 Po vytvoření clusteru můžete nasadit úlohy aplikace do nového clusteru a pracovat s nimi stejným způsobem jako s clustery AKS založenými na instančních službách.
-
-> [!NOTE]
-> Při vytváření a používání vlastní virtuální sítě, statické IP adresy nebo připojeného disku Azure, kde jsou prostředky mimo skupinu prostředků uzlu pracovního procesu, se k provedení přiřazení role používá PrincipalID spravované identity přiřazené systémem clusteru. Další informace o přiřazení rolí najdete v tématu [delegování přístupu k jiným prostředkům Azure](kubernetes-service-principal.md#delegate-access-to-other-azure-resources).
->
-> K naplnění může trvat 60 minut i oprávnění pro spravovanou identitu clusteru, kterou používá poskytovatel cloudu Azure.
 
 Nakonec Získejte přihlašovací údaje pro přístup ke clusteru:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
+
 ## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>Aktualizace clusteru AKS na spravované identity (Preview)
 
 Teď můžete aktualizovat cluster AKS, který aktuálně pracuje s instančními objekty, aby fungoval se spravovanými identitami, a to pomocí následujících příkazů rozhraní příkazového řádku.
@@ -131,6 +103,43 @@ az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identi
 ```
 > [!NOTE]
 > Až budou identity přiřazené systémem nebo uživatelem přiřazené k spravované identitě aktualizované, proveďte `az aks nodepool upgrade --node-image-only` na svých uzlech aktualizaci spravované identity.
+
+## <a name="obtain-and-use-the-system-assigned-managed-identity-for-your-aks-cluster"></a>Získání a použití spravované identity přiřazené systémem pro váš cluster AKS
+
+Ověřte, že cluster AKS používá spravovanou identitu, a to pomocí následujícího příkazu CLI:
+
+```azurecli-interactive
+az aks show -g <RGName> -n <ClusterName> --query "servicePrincipalProfile"
+```
+
+Pokud cluster používá spravované identity, zobrazí se `clientId` hodnota "MSI". Místo toho se místo toho použije cluster s použitím instančního objektu, který zobrazí ID objektu. Například: 
+
+```output
+{
+  "clientId": "msi"
+}
+```
+
+Po ověření, že cluster používá spravované identity, můžete najít ID objektu systémové roviny přiřazené identitou systému pomocí následujícího příkazu:
+
+```azurecli-interactive
+az aks show -g <RGName> -n <ClusterName> --query "identity"
+```
+
+```output
+{
+    "principalId": "<object-id>",
+    "tenantId": "<tenant-id>",
+    "type": "SystemAssigned",
+    "userAssignedIdentities": null
+},
+```
+
+> [!NOTE]
+> Při vytváření a používání vlastní virtuální sítě, statické IP adresy nebo připojeného disku Azure, kde jsou prostředky mimo skupinu prostředků uzlu pracovního procesu, se k provedení přiřazení role používá PrincipalID spravované identity přiřazené systémem clusteru. Další informace o přiřazení rolí najdete v tématu [delegování přístupu k jiným prostředkům Azure](kubernetes-service-principal.md#delegate-access-to-other-azure-resources).
+>
+> K naplnění může trvat 60 minut i oprávnění pro spravovanou identitu clusteru, kterou používá poskytovatel cloudu Azure.
+
 
 ## <a name="bring-your-own-control-plane-mi"></a>Přineste si vlastní plochu ovládacího prvku MI
 Vlastní identita roviny ovládacího prvku umožňuje přístup k existující identitě před vytvořením clusteru. Tato funkce umožňuje scénáře, jako je například použití vlastní virtuální sítě nebo outboundType UDR s předem vytvořenou spravovanou identitou.

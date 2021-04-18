@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 4d6274f3e1356a8ff8a997e830f0ebee43f50cff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c2520c8e209ab8319cbc5a369b70d247a52232c
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92893011"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600994"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Kurz: Azure Active Directory integrace s PolicyStat
 
@@ -110,7 +110,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí PolicySt
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.policystat.com/saml2/metadata/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta PolicyStat](http://www.policystat.com/support/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta PolicyStat](https://rldatix.com/services-support/support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 4. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -154,13 +154,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí PolicySt
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-policystat-single-sign-on"></a>Nakonfigurovat PolicyStat jednu Sign-On
+### <a name="configure-policystat-single-sign-on&quot;></a>Nakonfigurovat PolicyStat jednu Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k webu PolicyStat společnosti jako správce.
 
 2. Klikněte na kartu **správce** a potom v levém navigačním podokně klikněte na **Konfigurace jedné Sign-On** .
    
-    ![Nabídka správce](./media/policystat-tutorial/ic808633.png "Nabídka správce")
+    ![Nabídka správce](./media/policystat-tutorial/ic808633.png &quot;Nabídka správce")
 
 3. Klikněte na **vaše metadata IDP** a potom v části **metadata IDP** proveďte následující kroky:
    

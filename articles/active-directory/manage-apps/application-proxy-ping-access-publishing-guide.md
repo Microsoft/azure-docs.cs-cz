@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4abef9c848a32d9fa6a34eabe407c4d10f913797
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23008d785c27b901f3487d3eddff7cb8e7529f6e
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643792"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600076"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Ověřování založené na hlavičkách pro jednotné přihlašování s Proxy aplikací a PingAccess
 
@@ -193,14 +193,14 @@ Příklad, jak zahrnout e-mailovou adresu do access_token, kterou bude PingAcces
 
 ### <a name="use-of-claims-mapping-policy-optional"></a>Použití zásad mapování deklarací (volitelné)
 
-[Zásady mapování deklarací identity (Preview)](../develop/active-directory-claims-mapping.md#claims-mapping-policy-properties) pro atributy, které neexistují v AzureAD. Mapování deklarací umožňuje migrovat staré aplikace Prem do cloudu přidáním dalších vlastních deklarací, které jsou založené na službě ADFS nebo uživatelských objektech.
+[Zásady mapování deklarací identity (Preview)](../develop/reference-claims-mapping-policy-type.md#claims-mapping-policy-properties) pro atributy, které neexistují v AzureAD. Mapování deklarací umožňuje migrovat staré aplikace Prem do cloudu přidáním dalších vlastních deklarací, které jsou založené na službě ADFS nebo uživatelských objektech.
 
-Pokud chcete, aby vaše aplikace používala vlastní deklaraci identity a zahrnovala další pole, ujistěte se, že jste [vytvořili také vlastní zásadu mapování deklarací identity a přiřadili ji k aplikaci](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+Pokud chcete, aby vaše aplikace používala vlastní deklaraci identity a zahrnovala další pole, ujistěte se, že jste [vytvořili také vlastní zásadu mapování deklarací identity a přiřadili ji k aplikaci](../develop/active-directory-claims-mapping.md).
 
 > [!NOTE]
 > Pokud chcete použít vlastní deklaraci identity, musíte mít také definovanou vlastní zásadu a přiřazenou aplikaci. Tato zásada by měla obsahovat všechny požadované vlastní atributy.
 >
-> Pomocí PowerShellu nebo Microsoft Graph můžete provádět definice zásad a jejich přiřazení. Pokud je provádíte v prostředí PowerShell, možná budete muset nejdřív použít `New-AzureADPolicy` a přiřadit aplikaci k aplikaci `Add-AzureADServicePrincipalPolicy` . Další informace najdete v tématu [přiřazení zásad mapování deklarací identity](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+> Pomocí PowerShellu nebo Microsoft Graph můžete provádět definice zásad a jejich přiřazení. Pokud je provádíte v prostředí PowerShell, možná budete muset nejdřív použít `New-AzureADPolicy` a přiřadit aplikaci k aplikaci `Add-AzureADServicePrincipalPolicy` . Další informace najdete v tématu [přiřazení zásad mapování deklarací identity](../develop/active-directory-claims-mapping.md).
 
 Příklad:
 ```powershell

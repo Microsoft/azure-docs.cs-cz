@@ -5,24 +5,27 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/25/2021
+ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d8c3a2d961cc5b6fd719b77dae07b6e46c3d8b65
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f5bdae17126048da153f70bf27609bcc4b92fe21
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604834"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599583"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>Známé problémy s virtuálními počítači řady H a N
 
 Tento článek se pokusí vypsat nedávné běžné problémy a jejich řešení při použití prostředí HPC [řady H-Series](../../sizes-hpc.md) a [N-Series](../../sizes-gpu.md) a virtuálních počítačů GPU.
 
+## <a name="qp0-access-restriction"></a>Omezení přístupu qp0
+
+Aby nedocházelo k hardwarovému přístupu nízké úrovně, který může mít za následek ohrožení zabezpečení, spárování fronty 0 není pro virtuální počítače hosta k dispozici. To by mělo mít vliv pouze na akce, které jsou obvykle spojeny s správou síťového rozhraní ConnectX InfiniBand, a spustí diagnostiku InfiniBand jako ibdiagnet, ale ne aplikace koncového uživatele.
+
 ## <a name="mofed-installation-on-ubuntu"></a>Instalace MOFED na Ubuntu
-V Ubuntu-18,04 se Mellanox OFED ukázalo nekompatibilní s verzemi jader `5.4.0-1039-azure #42` a novějšími, což způsobí zvýšení doby spuštění virtuálního počítače přibližně na 30 minut. To bylo oznámeno pro Mellanox OFED verze 5.2-1.0.4.0 a 5.2-2.2.0.0.
-Dočasné řešení je použití image **kanonického: UbuntuServer: 18_04-LTS-Gen2:18.04.202101290** Marketplace nebo starší, a ne pro aktualizaci jádra.
-Očekává se, že tento problém bude vyřešen novějším MOFED (TBD).
+U imagí virtuálních počítačů Marketplace založených na Ubuntu-18,04 a verzích jader `5.4.0-1039-azure #42` a novějších jsou některé starší Mellanox OFED nekompatibilní s tím, že v některých případech dojde k nárůstu doby spouštění virtuálních počítačů až 30 minut. To bylo oznámeno pro Mellanox OFED verze 5.2-1.0.4.0 a 5.2-2.2.0.0. Problém se vyřeší pomocí Mellanox OFED 5.3-1.0.0.1.
+Pokud je nutné používat nekompatibilní OFED, je třeba použít řešení **kanonické: UbuntuServer: 18_04-LTS-Gen2:18.04.202101290** Marketplace VM Image nebo starší a neaktualizovat jádro.
 
 ## <a name="mpi-qp-creation-errors"></a>Chyby při vytváření QP MPI
 Pokud se v průběhu spouštění všech úloh MPI, vystaví se chyby vytváření QP InfiniBand, jako je například znázorněné níže, doporučujeme restartovat virtuální počítač a znovu se pokusit o zatížení. Tento problém bude v budoucnu vyřešen.
@@ -72,10 +75,6 @@ Tento "duplicitní počítač MAC s cloudem-init na Ubuntu" je známý problém.
       version: 2
     EOF
     ```
-
-## <a name="qp0-access-restriction"></a>Omezení přístupu qp0
-
-Aby nedocházelo k hardwarovému přístupu nízké úrovně, který může mít za následek ohrožení zabezpečení, spárování fronty 0 není pro virtuální počítače hosta k dispozici. To by mělo mít vliv pouze na akce, které jsou obvykle spojeny s správou síťového rozhraní ConnectX-5, a spuštění některé diagnostiky InfiniBand jako ibdiagnet, ale nejedná se o samotné aplikace koncového uživatele.
 
 ## <a name="dram-on-hb-series-vms"></a>DRAM na virtuálních počítačích s nejvyšší řadou
 

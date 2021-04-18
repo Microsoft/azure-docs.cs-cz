@@ -7,12 +7,12 @@ ms.date: 3/12/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: d266021a666070fdbade819eadb819b973768a72
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 65b02ae1baef97442828de747249ab6ffeaf2417
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480840"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599467"
 ---
 # <a name="open-service-mesh-aks-add-on-preview"></a>Otevřít doplněk AKS pro síť služby (Preview)
 
@@ -2150,7 +2150,7 @@ Na stránce **Konfigurovat zdroj dat Prometheus** zadejte plně kvalifikovaný n
 
 Řídicí panely OSM jsou k dispozici prostřednictvím:
 
-- [Naše úložiště](/charts/osm/grafana)a lze je importovat jako objekty blob JSON prostřednictvím portálu pro správu webu.
+- [Naše úložiště](https://github.com/grafana/grafana)a lze je importovat jako objekty blob JSON prostřednictvím portálu pro správu webu.
 - nebo [online na adrese Grafana.com](https://grafana.com/grafana/dashboards/14145)
 
 Pokud chcete importovat řídicí panel, vyhledejte v `+` levé nabídce možnost Sign (podepsat) a vyberte `import` .

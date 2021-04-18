@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: d9377ba22f1461762e53b1004dfe5f06c2d7b972
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3eecb0b9628ae889ac22bfe6d621266f06abc83
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89420213"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598920"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Velikosti virtuálních počítačů v Azure
 
@@ -25,7 +25,7 @@ Tento článek popisuje dostupné velikosti a možnosti pro virtuální počíta
 | [Optimalizované pro výpočty](sizes-compute.md) | F, FS, Fsv2 | Vysoký poměr procesorů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery. |
 | [Optimalizované pro paměť](sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Ev4, Esv4, Edv4, Edsv4, Mv2, M, DSv2, Dv2 | Vysoký poměr paměti k procesoru. Jsou velmi vhodné pro servery s relační databází, střední a velké mezipaměti a analýzu v paměti.                 |
 | [Optimalizované pro úložiště](sizes-storage.md) | Lsv2 | Vysoká propustnost disku a vstupně-výstupní operace jsou ideální pro velké objemy dat, SQL, databáze NoSQL, datové sklady a velké transakční databáze.  |
-| [GPU](sizes-gpu.md) | NC, NCv2, NCv3, NCasT4_v3 (Preview), ND, NDv2 (Preview), NV, NVv3, NVv4 | Specializované virtuální počítače určené pro náročné vykreslování grafiky a úpravy videa a také školení modelů a Inferencing (ND) s hloubkovým učením. K dispozici s jedním nebo více grafickými procesory. |
+| [GPU](sizes-gpu.md) | NC, NCv2, NCv3, NCasT4_v3, ND, NDv2, NV, NVv3, NVv4 | Specializované virtuální počítače určené pro náročné vykreslování grafiky a úpravy videa a také školení modelů a Inferencing (ND) s hloubkovým učením. K dispozici s jedním nebo více grafickými procesory. |
 | [Vysokovýkonné výpočetní prostředí](sizes-hpc.md) | HBv2, HC, H | Naši nejrychlejší a nejvíc nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). |
 
 - Informace o cenách různých velikostí najdete na stránkách s cenami pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) nebo [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/Windows/#Windows).
@@ -33,7 +33,7 @@ Tento článek popisuje dostupné velikosti a možnosti pro virtuální počíta
 - Obecné omezení virtuálních počítačů Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Další informace o tom, jak Azure vyjmenovává své virtuální počítače, najdete v tématu zásady [vytváření názvů virtuálních počítačů Azure](./vm-naming-conventions.md).
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
 Informace o použití REST API k dotazování na velikosti virtuálních počítačů najdete v následujících tématech:
 

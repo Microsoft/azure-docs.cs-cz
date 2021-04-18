@@ -1,22 +1,22 @@
 ---
 title: Co jsou šablony aplikací v Azure IoT Central | Microsoft Docs
 description: Šablony aplikací pro Azure IoT Central umožňují přejít do vývoje řešení IoT.
-author: philmea
-ms.author: philmea
+author: ankitscribbles
+ms.author: ankitgup
 ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 27f054cb085e5064ffed0e75b77d53a1406b566e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8309a567436d1526c1341f3d7db774acf4879dc2
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97797124"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600615"
 ---
 # <a name="what-are-application-templates"></a>Co jsou šablony aplikací?
 
-Šablony aplikací v Azure IoT Central jsou nástroj, který pomůže sestavování řešení Kickstart jejich vývoj řešení IoT. Šablony aplikací můžete použít pro všechno, co je potřeba, abyste měli pocit, co je možné, abyste mohli své zákazníky plně přizpůsobovat a využívat k dalšímu prodeji.
+Šablony aplikací v Azure IoT Central jsou nástroj, který pomůže sestavování řešení Kickstart jejich vývoj řešení IoT. Šablony aplikací můžete použít pro všechno, co je to možné, abyste mohli plně přizpůsobit vaši aplikaci, aby se vaše zákazníci mohli znovu prodávat.
 
 Šablony aplikací se skládají z:
 
@@ -30,7 +30,7 @@ ms.locfileid: "97797124"
 
 ## <a name="custom-templates"></a>Vlastní šablony
 
-Pokud chcete vytvořit aplikaci od začátku, vyberte jednu ze šablon **vlastní aplikace** .
+Pokud chcete vytvořit aplikaci od začátku, vyberte jednu z **vlastních šablon aplikací** .
 
 ## <a name="industry-focused-templates"></a>Šablony zaměřené na odvětví
 
@@ -52,10 +52,6 @@ Azure IoT Central je nezávislá aplikační platforma pro odvětví. Šablony a
   - Monitorování kvality vody
 - [Zdravotní péče](../healthcare/overview-iot-central-healthcare.md).
   - Nepřetržité monitorování pacientů
-
-## <a name="application-versions"></a>Verze aplikace
-
-Šablony jsou spojeny s konkrétními verzemi aplikace IoT Central. Verzi aplikace můžete najít na stránce [o aplikaci](./howto-get-app-info.md) na webu s odkazem na **nápovědu** .
 
 ## <a name="next-steps"></a>Další kroky
 

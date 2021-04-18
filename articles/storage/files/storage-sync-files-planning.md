@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: b106c82e3755fbd0e02f12a769d80ce4761cf026
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 9382feeb16f2f6a82b946c05a6b4780866fdda5c
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285854"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600144"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -156,11 +156,11 @@ V následující tabulce je uveden stav spolupráce funkcí systému souborů NT
 | Funkce | Stav podpory | Poznámky |
 |---------|----------------|-------|
 | Seznamy ACL | Plně podporováno | Windows – volitelné seznamy řízení přístupu se uchovávají Synchronizace souborů Azure a vynutily Windows Server na koncových bodech serveru. Seznamy ACL je taky možné vyhovět při přímém připojení sdílené složky Azure, ale to vyžaduje další konfiguraci. Další informace najdete v [části Identita](#identity) . |
-| Pevné odkazy | Přeskočeno | |
-| Symbolické odkazy | Přeskočeno | |
+| Pevné odkazy | Vynecháno | |
+| Symbolické odkazy | Vynecháno | |
 | Přípojné body | Částečně podporované | Přípojné body můžou být kořenem koncového bodu serveru, ale pokud se nacházejí v oboru názvů koncového bodu serveru, přeskočí se. |
-| Spojení | Přeskočeno | Například systém souborů DFS (Distributed File System) DfrsrPrivate a DFSRoots složky. |
-| Body rozboru | Přeskočeno | |
+| Spojení | Vynecháno | Například systém souborů DFS (Distributed File System) DfrsrPrivate a DFSRoots složky. |
+| Body rozboru | Vynecháno | |
 | Komprese NTFS | Plně podporováno | |
 | Zhuštěné soubory | Plně podporováno | Synchronní soubory se synchronizují (nejsou blokované), ale synchronizují se s cloudem jako úplný soubor. Pokud se obsah souboru změní v cloudu (nebo na jiném serveru), soubor už nebude po stažení změny zhuštěný. |
 | Alternativní datové proudy (INZERÁTy) | Zachované, ale nesynchronizované | Například klasifikační značky vytvořené infrastrukturou klasifikace souborů se nesynchronizují. Existující klasifikační značky souborů na všech koncových bodech serveru jsou ponechány beze změny. |
@@ -196,7 +196,7 @@ Když je u svazku s povoleným vrstvou cloudu povolené odstranění duplicitní
 Všimněte si, že úspory svazku se vztahují jenom na server. vaše data ve sdílené složce Azure nebudou Odstraněná duplicitovaná.
 
 > [!Note]  
-> Aby bylo možné podporovat odstranění duplicitních dat u svazků s povoleným vrstvou cloudu, které jsou povoleny v systému Windows Server 2019, musí být nainstalována služba Windows Update [KB4520062](https://support.microsoft.com/help/4520062) a vyžaduje se synchronizace souborů Azure agenta verze 9.0.0.0 nebo novější.
+> Aby bylo možné podporovat odstranění duplicitních dat u svazků s povoleným vrstvou cloudu, které jsou povoleny v systému Windows Server 2019, musí být nainstalována služba Windows Update [KB4520062-říjen 2019](https://support.microsoft.com/help/4520062) nebo novější měsíční kumulativní aktualizace a vyžaduje se synchronizace souborů Azure agenta verze 12.0.0.0 nebo novější.
 
 **Windows Server 2012 R2**  
 Synchronizace souborů Azure nepodporuje odstranění duplicitních dat a vrstvení cloudu na stejném svazku na Windows Serveru 2012 R2. Pokud je u svazku povolené odstranění duplicitních dat, musí být vrstva cloudu zakázaná. 

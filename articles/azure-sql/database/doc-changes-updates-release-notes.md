@@ -9,14 +9,14 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/17/2021
 ms.author: sstein
-ms.openlocfilehash: 9827a40b2ebc91c17ad7b5457259b8d82565edee
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 81c306ac2a8a5c00c5d06877974db7e04964c76b
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640081"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600909"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -95,6 +95,7 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
 
 |Problém  |Datum zjištění  |Status  |Datum vyřešení  |
 |---------|---------|---------|---------|
+|[Změna typu připojení nemá vliv na připojení prostřednictvím koncového bodu skupiny převzetí služeb při selhání.](#changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint)|Leden 2021|Má alternativní řešení||
 |[Procedura sp_send_dbmail může dojít k přechodnému selhání při @query použití parametru](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|Leden 2021|Má alternativní řešení||
 |[Distribuované transakce se dají provést po odebrání spravované instance ze skupiny důvěryhodných serverů.](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Říjen 2020|Má alternativní řešení||
 |[Po operaci škálování spravované instance se nedají provést distribuované transakce.](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Říjen 2020|Má alternativní řešení||
@@ -126,6 +127,12 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
 |Obnovení databáze v čase z Pro důležité obchodní informace úrovně do Pro obecné účely úrovně nebude úspěšné, pokud zdrojová databáze obsahuje objekty OLTP v paměti.||Vyřešeno|Říjen 2019|
 |Funkce databázového e-mailu s externími poštovními servery (mimo Azure) pomocí zabezpečeného připojení||Vyřešeno|Říjen 2019|
 |Obsažené databáze nejsou ve spravované instanci SQL podporovány.||Vyřešeno|Srpna 2019|
+
+### <a name="changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint"></a>Změna typu připojení nemá vliv na připojení prostřednictvím koncového bodu skupiny převzetí služeb při selhání.
+
+Pokud se instance účastní [skupiny automatického převzetí služeb při selhání](https://docs.microsoft.com/azure/azure-sql/database/auto-failover-group-overview), změna [typu připojení](https://docs.microsoft.com/azure/azure-sql/managed-instance/connection-types-overview) instance se projeví u připojení navázaných prostřednictvím koncového bodu skupiny naslouchacího procesu převzetí služeb při selhání.
+
+**Alternativní řešení**: reecreate skupinu automatického převzetí služeb při selhání grafice změnou typu připojení.
 
 ### <a name="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>Procedura sp_send_dbmail může dojít k přechodnému selhání při @query použití parametru
 

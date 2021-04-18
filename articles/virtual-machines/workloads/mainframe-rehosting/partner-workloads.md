@@ -11,12 +11,12 @@ editor: edprice
 ms.author: larryme
 ms.date: 05/09/2020
 ms.topic: article
-ms.openlocfilehash: 467cae97f9b4efe4782ac802cccd84271d475ea7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b3dd754e226436cb26cbb808bf37e4262efa344
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955427"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599549"
 ---
 # <a name="mainframe-workloads-supported-on-azure"></a>Úlohy sálových počítačů podporované v Azure
 
@@ -52,7 +52,7 @@ Další nápovědu k emulaci a službám sálového počítače najdete v [centr
 
 ## <a name="code-conversion"></a>Převod kódu
 
-- Technologie převodu systému [Asysco](https://www.asysco.com/azure-cloud/) , která pokrývá zdrojový kód, data, dávku, plánování, monitorování TP, rozhraní, zabezpečení, správu a další.
+- Technologie převodu systému [Asysco](https://asysco.com/) , která pokrývá zdrojový kód, data, dávku, plánování, monitorování TP, rozhraní, zabezpečení, správu a další.
 - [Asysco služby AMT](https://www.asysco.com/migration-services/) pro projekty migrace, včetně inventáře a analýzy, školení pro návrh, příchodu a příchodu, přechází do provozu a podpory po migraci.
 - Nástroje na více [disků Blu](https://www.bluage.com/) pro digitalizaci starších obchodních aplikací a databází.
 - [Heirloom výpočetní](https://www.heirloomcomputing.com/tag/convert-cobol-to-java/) služby pro převod sálových COBOL, CICS a VSAM na Java.

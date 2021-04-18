@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bd3bb5e3060752d086f80f44a8f136cb861669c0
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: f002c7196b864d4a04beda1124d0519af612b716
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078515"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600229"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Základní hodnoty zabezpečení Azure pro Azure Monitor
 
@@ -605,7 +605,7 @@ Pokud používáte funkce APM živého streamování, zajistěte, aby byl kanál
 
 - [Vytvoření Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-- [Jak zajistit Key Vault ověřování pomocí spravované identity](/azure/key-vault/general/assign-access=policy-portal)
+- [Jak zajistit Key Vault ověřování pomocí spravované identity](/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad)
 
 **Odpovědnost:** Zákazník
 

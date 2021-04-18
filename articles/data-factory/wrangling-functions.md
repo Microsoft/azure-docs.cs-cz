@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: 659f6527d43e1b45a11fddf774050ca6d42bfe12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: f7a4041d87e00fa01ae5ae4dff0cade3b9755d31
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896659"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600929"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Transformační funkce v Power Query pro tahání dat
 
@@ -52,7 +52,7 @@ Následující funkce M přidají nebo transformují sloupce: [Table. AddColumn]
 
 * Číselná aritmetická operace
 * Zřetězení textu
-* Datum andTime aritmetické operace (aritmetické operátory, [datum. AddDays](/powerquery-m/date-adddays), [datum. AddMonths](/powerquery-m/date-addmonths), [datum. AddQuarters](/powerquery-m/date-addquarters), [datum. AddWeeks](/powerquery-m/date-addweeks), [datum. AddYears](/powerquery-m/date-addyears))
+* Aritmetické operace data a času (aritmetické operátory, [Date. AddDays](/powerquery-m/date-adddays), [Date. AddMonths](/powerquery-m/date-addmonths), [Date. AddQuarters](/powerquery-m/date-addquarters), [Date. AddWeeks](/powerquery-m/date-addweeks), [Date. AddYears](/powerquery-m/date-addyears))
 * Dobu trvání lze použít pro aritmetické operace data a času, ale musí být transformovány do jiného typu před zápisem do jímky (aritmetické operátory [, #duration](/powerquery-m/sharpduration), [Duration. Days](/powerquery-m/duration-days) [,](/powerquery-m/duration-totaldays) [Duration. hours](/powerquery-m/duration-hours) [,](/powerquery-m/duration-totalhours) [Duration](/powerquery-m/duration-minutes). [TotalMinutes](/powerquery-m/duration-totalminutes) [, Duration.](/powerquery-m/duration-seconds) [TotalSeconds](/powerquery-m/duration-totalseconds)).    
 * Většina standardních, vědeckých a trigonometrických numerických funkcí (všechny funkce v rámci [operací](/powerquery-m/number-functions#operations), [zaokrouhlování](/powerquery-m/number-functions#rounding)a [trigonometrické](/powerquery-m/number-functions#trigonometry) *s výjimkou* Number. faktoriál, Number. permutaces a Number. kombinací)
 * Náhrada ([replacer. ReplaceText](/powerquery-m/replacer-replacetext), [replacer. ReplaceValue](/powerquery-m/replacer-replacevalue), [text. Replace](/powerquery-m/text-replace), [text. Remove](/powerquery-m/text-remove))
@@ -99,6 +99,23 @@ Zachovat a odebrat horní, zachovat rozsah (odpovídající funkce M, jenom poč
 | Zpracování chyb na úrovni řádků | Zpracování chyb na úrovni řádků se momentálně nepodporuje. Chcete-li například vyfiltrovat nečíselné hodnoty ze sloupce, může být jedním z přístupů převod textového sloupce na číslo. Každá buňka, která se nedokáže transformovat, bude v chybovém stavu a bude nutné ji filtrovat. Tento scénář není možné škálovat M. |
 | Table.Transpose | Nepodporováno |
 | Table.Pivot | Nepodporováno |
+| Table.SplitColumn | Částečně podporované |
+
+## <a name="m-script-workarounds"></a>M alternativní řešení skriptů
+
+### <a name="for-splitcolumn-there-is-an-alternate-for-split-by-length-and-by-position"></a>Pro ```SplitColumn``` rozdělení podle délky a podle pozice je alternativa.
+
+* Table. AddColumn (Source, "First Characters"; Each text. Start ([email]; 7); typ text)
+* Table. AddColumn (# "vložil první znaky", "textový rozsah", každý text. Middle ([E-mail], 4, 9), text typu)
+
+Tato možnost je přístupná z možnosti extrakce na pásu karet
+
+![Power Query přidat sloupec](media/wrangling-data-flow/pq-split.png)
+
+### <a name="for-tablecombinecolumns"></a>For ```Table.CombineColumns```
+
+* Table. AddColumn (RemoveEmailColumn; "Name"; Each [FirstName] & "" & [LastName])
+
 
 ## <a name="next-steps"></a>Další kroky
 

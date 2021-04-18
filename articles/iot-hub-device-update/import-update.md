@@ -6,21 +6,21 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ede0d279b8769f49afcdae1cb9352c1b47fb59b5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d33c7f87d77f371d4eb4bf903e4d534f334e39c4
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932399"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599498"
 ---
 # <a name="import-new-update"></a>Importovat novou aktualizaci
 Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pro IoT Hub. Pokud jste to ještě neudělali, nezapomeňte se seznámit se základními [koncepcemi importu](import-concepts.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
+* Existující soubor aktualizace, který chcete nasadit do zařízení. Může se jednat o soubor obrázku pro aktualizaci na základě bitové kopie nebo [soubor manifestu apt](device-update-apt-manifest.md) pro aktualizaci založenou na balíčku. ([Návody zvolit?](understand-device-update.md#support-for-a-wide-range-of-update-artifacts))
 * [Pro IoT Hub povolený přístup k IoT Hub s aktualizací zařízení](create-device-update-account.md). 
 * Zařízení IoT (nebo simulátor) zřízené pro aktualizaci zařízení v IoT Hub.
-   * Pokud používáte reálné zařízení, budete potřebovat soubor s obrázkem aktualizace pro aktualizaci Image nebo [soubor manifestu apt](device-update-apt-manifest.md) pro aktualizaci balíčku.
 * [PowerShell 5](/powershell/scripting/install/installing-powershell) nebo novější (zahrnuje instalace pro Linux, MacOS a Windows)
 * Podporované prohlížeče:
   * [Microsoft Edge](https://www.microsoft.com/edge)
@@ -31,7 +31,7 @@ Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pr
 
 ## <a name="create-device-update-import-manifest"></a>Vytvořit manifest pro import aktualizace zařízení
 
-1. Ujistěte se, že soubor s obrázkem aktualizace nebo soubor manifestu APT je umístěný v adresáři přístupném z PowerShellu.
+1. Pokud jste to ještě neudělali, Získejte soubor obrázku nebo soubor manifestu APT, který chcete nasadit na zařízení. Může to být od výrobce zařízení nebo z systémového integrátoru, se kterým pracujete, nebo dokonce skupiny v rámci vaší organizace. Ujistěte se, že soubor s obrázkem aktualizace nebo soubor manifestu APT je umístěný v adresáři přístupném z PowerShellu.
 
 2. Vytvořte textový soubor s názvem **AduUpdate. psm1** v adresáři, ve kterém se nachází soubor s obrázkem aktualizace nebo soubor manifestu apt. Pak otevřete rutinu prostředí PowerShell [AduUpdate. psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) , zkopírujte obsah do textového souboru a uložte textový soubor.
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 33c767d847d9e70e95b3ee1648be7852aa5cec98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74df338fd888bd7f654ddfc2fc5f9dddf10e84ab
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100522882"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598410"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Upgrade veřejných IP adres
 
@@ -146,7 +146,7 @@ V Azure Resource Manager se vytvoří nová skupina prostředků s použitím n�
 ## <a name="limitations"></a>Omezení
 
 * Aby bylo možné upgradovat základní veřejnou IP adresu, nelze ji přidružit k žádnému prostředku Azure.  Přečtěte si prosím [tuto stránku](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address) , kde najdete další informace, jak zrušit přidružení veřejných IP adres.  Podobně, aby bylo možné migrovat Vyhrazená IP adresa, nelze je přidružit k žádné cloudové službě.  Další informace o tom, jak zrušit přidružení rezervovaných IP adres, najdete na [této stránce](./remove-public-ip-address-vm.md) .  
-* Veřejné IP adresy upgradované z úrovně Basic na standard SKU budou mít i nadále žádné [zóny dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) , a proto se nedají přidružit k prostředku Azure, který je buď redundantní v zóně nebo v oblasti.  Všimněte si, že to platí jenom pro oblasti, které nabízí zóny dostupnosti.
+* Veřejné IP adresy upgradované z úrovně Basic na standard SKU budou mít i nadále žádné garantované [zóny dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  Ujistěte se prosím, že při výběru prostředků, ke kterým se má přidružit IP adresa, je potřeba mít na paměti.
 * Nemůžete downgradovat z úrovně Standard na Basic.
 
 ## <a name="next-steps"></a>Další kroky

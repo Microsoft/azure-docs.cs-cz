@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e4a41d508d15c3d8f41cc727776f233cc56c0817
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b85e1fc74688f2883531bd3a6e724a2ce326a9db
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480932"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600246"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Použití spravovaných identit přiřazených systémem pro přístup k Azure Cosmos DB datům
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ V tomto kroku přiřadíte aplikaci Function App spravovanou identitu přiřazen
 
 V tomto kroku přiřadíte roli spravované identitě přiřazené k systému aplikace Function App. Azure Cosmos DB má několik předdefinovaných rolí, které můžete přiřadit ke spravované identitě. Pro toto řešení použijete tyto dvě role:
 
-|Předdefinovaná role  |Popis  |
+|Předdefinovaná role  |Description  |
 |---------|---------|
 |[Přispěvatel účtu DocumentDB](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Může spravovat účty Azure Cosmos DB. Umožňuje načtení klíčů pro čtení i zápis. |
 |[Role čtečky účtu Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Může číst data Azure Cosmos DB účtu. Umožňuje načtení klíčů pro čtení. |
@@ -93,10 +93,10 @@ az role assignment create --assignee $principalId --role "DocumentDB Account Con
 
 Teď máme aplikaci Function App, která má spravovanou identitu přiřazenou systémem pomocí role **Přispěvatel účtu DocumentDB** v oprávněních Azure Cosmos DB. Následující kód aplikace Function App získá Azure Cosmos DB klíčů, vytvoří objekt CosmosClient, získá teplotu Aquarium a pak ho uložte do Azure Cosmos DB.
 
-V této ukázce se k přístupu k klíčům účtu Azure Cosmos DB používá [rozhraní API pro klíče seznamu](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listkeys) .
+V této ukázce se k přístupu k klíčům účtu Azure Cosmos DB používá [rozhraní API pro klíče seznamu](/rest/api/cosmos-db-resource-provider/2021-03-15/databaseaccounts/listkeys) .
 
 > [!IMPORTANT] 
-> Pokud chcete přiřadit roli [čtenáře účtu Cosmos DB](#grant-access-to-your-azure-cosmos-account) , budete muset použít [seznam rozhraní API klíče jen pro čtení](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listreadonlykeys). Tím se naplní jenom klíče jen pro čtení.
+> Pokud chcete přiřadit roli [čtenáře účtu Cosmos DB](#grant-access-to-your-azure-cosmos-account) , budete muset použít [seznam rozhraní API klíče jen pro čtení](/rest/api/cosmos-db-resource-provider/2021-03-15/databaseaccounts/listreadonlykeys). Tím se naplní jenom klíče jen pro čtení.
 
 Rozhraní API seznam klíčů vrátí `DatabaseAccountListKeysResult` objekt. Tento typ není definován v knihovnách jazyka C#. Následující kód ukazuje implementaci této třídy:  
 

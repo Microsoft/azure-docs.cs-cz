@@ -1,24 +1,24 @@
 ---
 title: Prohlídka uživatelského rozhraní Azure IoT Central | Microsoft Docs
-description: Seznamte se s klíčovými oblastmi uživatelského rozhraní Azure IoT Central, které můžete použít k vytvoření, správě a používání řešení IoT.
-author: TheJasonAndrew
-ms.author: v-anjaso
+description: Seznamte se s klíčovými oblastmi uživatelského rozhraní Azure IoT Central, které používáte k vytváření, správě a používání řešení IoT.
+author: ankitscribbles
+ms.author: ankitgup
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: ff795281b3471d5c6f57397edf5a52e0df9bbd32
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 564e7d3d2353661d0a69cbd15ad8b281defacf87
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589111"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600559"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Prohlídka uživatelského rozhraní Azure IoT Central
 
-Tento článek vás seznámí s uživatelským rozhraním Microsoft Azure IoT Central. Pomocí uživatelského rozhraní můžete vytvořit, spravovat a používat řešení Azure IoT Central a připojená zařízení.
+Tento článek vás seznámí s uživatelským rozhraním Azure IoT Central. Pomocí uživatelského rozhraní můžete vytvořit, spravovat a používat aplikaci IoT Central a její připojená zařízení.
 
 ## <a name="iot-central-homepage"></a>IoT Central domovskou stránku
 
@@ -42,7 +42,7 @@ Aplikaci IoT Central spustíte tak, že přejdete na adresu URL, kterou jste si 
 
 ## <a name="navigate-your-application"></a>Navigace v aplikaci
 
-Až budete v aplikaci IoT, můžete k různým oblastem přistupovat v levém podokně. V levém podokně můžete rozbalit nebo sbalit tak, že v horní části podokna vyberete ikonu se třemi řádky:
+Po připojení k různým funkcím v levém podokně použijte levé podokno. V levém podokně můžete rozbalit nebo sbalit tak, že v horní části podokna vyberete ikonu se třemi řádky:
 
 > [!NOTE]
 > Položky, které vidíte v levém podokně, závisí na vaší roli uživatele. Přečtěte si další informace o [správě uživatelů a rolí](howto-manage-users-roles.md). 
@@ -55,21 +55,23 @@ Až budete v aplikaci IoT, můžete k různým oblastem přistupovat v levém po
   :::column span="2":::
      **Řídicí panely** zobrazují všechny aplikace a osobní řídicí panely. 
      
-     **Zařízení** umožňují spravovat připojená zařízení – reálné a simulované.
+     **Zařízení** umožňují spravovat všechna vaše zařízení.
 
      **Skupiny zařízení** vám umožní zobrazit a vytvořit kolekce zařízení, která jsou určená dotazem. Skupiny zařízení se používají prostřednictvím aplikace k provádění hromadných operací.
 
-     **Pravidla** umožňují vytvářet a upravovat pravidla pro monitorování vašich zařízení. Pravidla se vyhodnocují na základě telemetrie zařízení a triggerů přizpůsobitelných akcí.
+     **Pravidla** umožňují vytvářet a upravovat pravidla pro monitorování vašich zařízení. Pravidla se vyhodnocují v závislosti na datech zařízení a triggerech přizpůsobitelné akce.
 
-     **Analýza** vám umožní zobrazit telemetrii ze zařízení graficky.
+     **Analýza** zpřístupňuje bohatou možnost analýzy historických trendů a koreluje různé telemetrií ze svých zařízení.
 
      **Úlohy** umožňují spravovat zařízení ve velkém měřítku tím, že se spouštějí hromadné operace.
 
-     **Šablony zařízení** jsou místo, kde můžete vytvářet a spravovat charakteristiky zařízení, která se připojují k vaší aplikaci.
+     **Šablony zařízení** umožňují vytvářet a spravovat charakteristiky zařízení, která se připojují k vaší aplikaci.
 
-     **Export dat** umožňuje nakonfigurovat průběžný export na externí služby – například úložiště a fronty.
+     **Export dat** umožňuje nakonfigurovat průběžný export na externí služby, jako jsou například úložiště a fronty.
 
-     **Správa** je místo, kde můžete spravovat nastavení aplikace, přizpůsobení, fakturaci, uživatele a role.
+     **Správa** umožňuje spravovat nastavení, přizpůsobení, fakturaci, uživatele a role vaší aplikace.
+
+     **Moje aplikace** vám umožní přejít zpátky do správce IoT Central App Manager.
      
    :::column-end:::
 :::row-end:::
@@ -96,7 +98,7 @@ Můžete si vybrat mezi světlým a tmavým motivem uživatelského rozhraní:
 
 :::image type="content" source="Media/overview-iot-central-tour/dashboard.png" alt-text="Snímek obrazovky s řídicím panelem IoT Central.":::
 
-* Řídicí panel je první stránkou, která se zobrazí při přihlášení k aplikaci Azure IoT Central. Můžete vytvořit a přizpůsobit více řídicích panelů aplikace. Další informace o [přidávání dlaždic do řídicího panelu](howto-add-tiles-to-your-dashboard.md)
+* Řídicí panel je první stránkou, která se zobrazí při přihlášení k aplikaci IoT Central. Můžete vytvořit a přizpůsobit více řídicích panelů aplikace. Další informace o [přidávání dlaždic do řídicího panelu](howto-add-tiles-to-your-dashboard.md)
 
 * Je také možné vytvořit osobní řídicí panely, které vám umožní monitorovat, co se vám zajímá. Další informace najdete v článku o postupu [Vytvoření osobního řídicího panelu pro Azure IoT Central](howto-create-personal-dashboards.md) .
 
@@ -104,7 +106,7 @@ Můžete si vybrat mezi světlým a tmavým motivem uživatelského rozhraní:
 
 :::image type="content" source="Media/overview-iot-central-tour/devices.png" alt-text="Obrazovka stránky zařízení.":::
 
-Stránka Průzkumník zobrazuje _zařízení_ v aplikaci Azure IoT Central seskupená podle _šablony zařízení_. 
+Tato stránka zobrazuje zařízení v aplikaci IoT Central seskupená podle _šablony zařízení_. 
 
 * Šablona zařízení definuje typ zařízení, které se může připojit k vaší aplikaci.
 * Zařízení představuje v aplikaci buď skutečné, nebo simulované zařízení.
@@ -115,37 +117,30 @@ Další informace najdete v rychlém startu pro [monitorování vašich zaříze
 
 :::image type="content" source="Media/overview-iot-central-tour/device-groups.png" alt-text="Stránka skupiny zařízení":::
 
-Skupina zařízení je kolekce souvisejících zařízení. Skupiny zařízení slouží k provádění hromadných operací ve vaší aplikaci. Další informace najdete v článku [použití skupin zařízení v aplikaci Azure IoT Central](tutorial-use-device-groups.md) .
+Tato stránka umožňuje vytvořit a zobrazit skupiny zařízení v aplikaci IoT Central. Skupiny zařízení můžete použít k hromadnému provozu v aplikaci nebo k analýze dat. Další informace najdete v článku [použití skupin zařízení v aplikaci Azure IoT Central](tutorial-use-device-groups.md) .
 
 ### <a name="rules"></a>Pravidla
 :::image type="content" source="Media/overview-iot-central-tour/rules.png" alt-text="Snímek obrazovky se stránkou pravidel":::
 
-Stránka pravidla umožňuje definovat pravidla založená na telemetrie, stavu nebo událostech zařízení. Když se pravidlo aktivuje, může aktivovat jednu nebo více akcí – například odeslání e-mailu, upozornění externího systému prostřednictvím výstrah Webhooku atd. Další informace najdete v kurzu [Konfigurace pravidel](tutorial-create-telemetry-rules.md) . 
+Tato stránka umožňuje zobrazit a vytvořit pravidla založená na datech zařízení. Když se pravidlo aktivuje, může aktivovat jednu nebo více akcí, jako je například odeslání e-mailu nebo vyvolání Webhooku. Další informace najdete v kurzu [Konfigurace pravidel](tutorial-create-telemetry-rules.md) . 
 
 ### <a name="analytics"></a>Analýzy
 
 :::image type="content" source="Media/overview-iot-central-tour/analytics.png" alt-text="Snímek stránky Analytics":::
 
-Stránka Analytics umožňuje zobrazit telemetrii ze zařízení graficky v rámci časových řad. Další informace najdete v článku [Vytvoření analýzy pro Azure IoT Central aplikace](howto-create-analytics.md) .
+Analýza zpřístupňuje bohatou možnost analýzy historických trendů a koreluje různé telemetrií ze svých zařízení. Další informace najdete v článku [Vytvoření analýzy pro Azure IoT Central aplikace](howto-create-analytics.md) .
 
 ### <a name="jobs"></a>Úlohy
 
 :::image type="content" source="Media/overview-iot-central-tour/jobs.png" alt-text="Stránka úlohy":::
 
-Stránka úlohy umožňuje spustit hromadnou operaci na vašich zařízeních. Můžete aktualizovat vlastnosti zařízení, nastavení a spustit příkazy pro skupiny zařízení. Další informace najdete v článku o [spuštění úlohy](howto-run-a-job.md).
+Tato stránka umožňuje zobrazit a vytvořit úlohy, které se dají použít k hromadným operacím správy zařízení na vašich zařízeních. Můžete aktualizovat vlastnosti zařízení, nastavení a spustit příkazy pro skupiny zařízení. Další informace najdete v článku o [spuštění úlohy](howto-run-a-job.md).
 
 ### <a name="device-templates"></a>Šablony zařízení
 
 :::image type="content" source="Media/overview-iot-central-tour/templates.png" alt-text="Snímek obrazovky s šablonami zařízení":::
 
-Stránka šablony zařízení je místo, kde můžete vytvářet a spravovat šablony zařízení v aplikaci. Šablona zařízení Určuje charakteristiky zařízení, jako například:
-
-* Měření telemetrie, stavu a událostí
-* Vlastnosti
-* Příkazy
-* Zobrazení
-
-Další informace najdete v kurzu [Definování nového typu zařízení v aplikaci Azure IoT Central](howto-set-up-template.md). 
+Stránka šablony zařízení je místo, kde můžete v aplikaci zobrazit a vytvořit šablony zařízení. Další informace najdete v kurzu [Definování nového typu zařízení v aplikaci Azure IoT Central](howto-set-up-template.md). 
 
 ### <a name="data-export"></a>Export dat
 

@@ -384,6 +384,10 @@
       href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
     - name: Podmínky Azure Marketplace
       href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+    - name: Smlouva pro vydavatele Microsoftu
+      href: /legal/marketplace/msft-publisher-agreement
+    - name: Historie změn pro smlouvu Microsoft Publisher
+      href: /legal/marketplace/mpa-change-history
 - name: Reference
   items:
     - name: Referenční materiály k rozhraní API CPP

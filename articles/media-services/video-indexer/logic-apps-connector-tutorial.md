@@ -8,16 +8,16 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: f3504ca4a706e92081209f4eaaa86af9f71c52b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: caff6a2496e907da1bdc140860c47476d1842df4
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880907"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600671"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Kurz: použití Video Indexer s aplikací logiky a automatickým automatickým zapnutím
 
-Azure Media Services [video indexer v2 REST API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Delete-Video?) podporuje komunikaci mezi servery i mezi klientem a serverem, a umožňuje video indexer uživatelům integrovat video a zvukové poznatky do své aplikační logiky, a to díky podpoře nových prostředí a finanční zhodnocení příležitostí.
+Azure Media Services [video indexer v2 REST API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Video) podporuje komunikaci mezi servery i mezi klientem a serverem, a umožňuje video indexer uživatelům integrovat video a zvukové poznatky do své aplikační logiky, a to díky podpoře nových prostředí a finanční zhodnocení příležitostí.
 
 Abychom integraci zajistili ještě snazší, podporujeme [Logic Apps](https://azure.microsoft.com/services/logic-apps/)   a [Power](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)automaty   , které jsou kompatibilní s naším rozhraním API. Pomocí konektorů můžete nastavit vlastní pracovní postupy, abyste mohli efektivně indexovat a extrahovat poznatky z velkého množství videosouborů a zvukových souborů, aniž byste museli psát jediný řádek kódu. Navíc pomocí konektorů pro integraci získáte lepší přehled o stavu pracovního postupu a snadném způsobu jeho ladění.  
 

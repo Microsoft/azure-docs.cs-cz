@@ -3,12 +3,12 @@ title: Zotavení po havárii pro místní aplikace pomocí Azure Site Recovery
 description: Popisuje úlohy, které se dají chránit pomocí zotavení po havárii se službou Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a5d20e6feacfe72052142c07dc45753b9bc3138
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80062840"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599107"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>Informace o zotavení po havárii pro místní aplikace
 
@@ -40,17 +40,17 @@ Site Recovery dokáže replikovat jakoukoli aplikaci spuštěnou na podporované
 
 | **Úloha** |**Replikace virtuálních počítačů Azure do Azure** |**Replikace virtuálních počítačů Hyper-V do sekundární lokality** | **Replikace virtuálních počítačů Hyper-V do Azure** | **Replikace virtuálních počítačů VMware do sekundární lokality** | **Replikace virtuálních počítačů VMware do Azure** |
 | --- | --- | --- | --- | --- |---|
-| Active Directory, DNS |Ano |Ano |Ano |Ano |Ano|
-| Webové aplikace (IIS, SQL) |Ano |Ano |Ano |Ano |Ano|
-| System Center Operations Manager |Ano |Ano |Ano |Ano |Ano|
-| SharePoint |Ano |Ano |Ano |Ano |Ano|
+| Active Directory, DNS |Yes |Yes |Yes |Yes |Yes|
+| Webové aplikace (IIS, SQL) |Yes |Yes |Yes |Yes |Yes|
+| System Center Operations Manager |Yes |Yes |Yes |Yes |Yes|
+| SharePoint |Yes |Yes |Yes |Yes |Yes|
 | SAP<br/><br/>Replikace webu SAP do Azure k neclusterovému použití |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft)|
-| Exchange (ne DAG) |Ano |Ano |Ano |Ano |Ano|
-| Vzdálená plocha/VDI |Ano |Ano |Ano |Ano |Ano|
+| Exchange (ne DAG) |Yes |Yes |Yes |Yes |Yes|
+| Vzdálená plocha/VDI |Yes |Yes |Yes |Yes |Yes|
 | Linux (operační systém a aplikace) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft)|
-| Dynamics AX |Ano |Ano |Ano |Ano |Ano|
-| Souborový server systému Windows |Ano |Ano |Ano |Ano |Ano|
-| Citrix XenApp a XenDesktop |Ano|Není k dispozici |Ano |Není k dispozici |Ano |
+| Dynamics AX |Yes |Yes |Yes |Yes |Yes|
+| Souborový server systému Windows |Yes |Yes |Yes |Yes |Yes|
+| Citrix XenApp a XenDesktop |No|– |No |– |No |
 
 ## <a name="replicate-active-directory-and-dns"></a>Replikace služby Active Directory a DNS
 
@@ -108,9 +108,9 @@ Možnosti replikace najdete v následující tabulce:
 
 | **Vzdálená plocha** |**Replikace virtuálních počítačů Azure do Azure** | **Replikace virtuálních počítačů Hyper-V do sekundární lokality** | **Replikace virtuálních počítačů Hyper-V do Azure** | **Replikace virtuálních počítačů VMware do sekundární lokality** | **Replikace virtuálních počítačů VMware do Azure** | **Replikace fyzických serverů do sekundární lokality** | **Replikace fyzických serverů do Azure** |
 |---| --- | --- | --- | --- | --- | --- | --- |
-| **Virtuální desktop ve fondu (nespravovaný)** |Ne|Ano |Ne |Ano |Ne |Ano |Ne |
-| **Virtuální desktop ve fondu (spravovaný a bez UPD)** |Ne|Ano |Ne |Ano |Ne |Ano |Ne |
-| **Vzdálené aplikace a desktopové relace (bez UPD)** |Ano|Ano |Ano |Ano |Ano |Ano |Ano |
+| **Virtuální desktop ve fondu (nespravovaný)** |No|Yes |No |Yes |No |Yes |No |
+| **Virtuální desktop ve fondu (spravovaný a bez UPD)** |No|Yes |No |Yes |No |Yes |No |
+| **Vzdálené aplikace a desktopové relace (bez UPD)** |Yes|Yes |Yes |Yes |Yes |Yes |Yes |
 
 [Přečtěte si další informace](/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure) o zotavení po havárii pro RDS.
 
@@ -151,14 +151,7 @@ Azure Site Recovery poskytuje zotavení po havárii replikací kritických kompo
 
 ## <a name="protect-citrix-xenapp-and-xendesktop"></a>Ochrana pro Citrix XenApp a XenDesktop
 
-K ochraně nasazení Citrix XenApp a XenDesktop použijte Site Recovery následujícím způsobem:
-
-- Povolte ochranu nasazení Citrix XenApp a XenDesktop. Replikace různých vrstev nasazení do Azure: Active Directory, DNS Server, SQL Database Server, Citrix Delivery Controller, prezentace Server, XenApp Master (VDA), Citrix XenApp License Server.
-- Zjednodušte migraci do cloudu tak, že použijete Site Recovery k migraci nasazení Citrix XenApp a XenDesktop do Azure.
-- Usnadněte testování pro Citrix XenApp/XenDesktop tak, že vytvoříte na vyžádání kopii produkčního prostředí pro testování a ladění.
-- Toto řešení platí jenom pro virtuální počítače s Windows serverem a ne pro virtuální klienty klienta. Virtuální klientské počítače se zatím nepodporují pro licencování v Azure. [Další informace](https://azure.microsoft.com/pricing/licensing-faq/) týkající se licencování pro plochy klienta nebo serveru v Azure
-
-[Přečtěte si další informace](site-recovery-citrix-xenapp-and-xendesktop.md) o zotavení po havárii pro nasazení Citrix XenApp a XenDesktop. Nebo můžete použít odkaz na dokument [Citrix White Paper](https://aka.ms/citrix-xenapp-xendesktop-with-asr).
+Od března 2020 vydala Citrix nepoužívané a koncovou podporu pro úlohy hostované na veřejném cloudu. Proto nedoporučujeme používat Site Recovery pro ochranu úloh Citrix.
 
 ## <a name="next-steps"></a>Další kroky
 

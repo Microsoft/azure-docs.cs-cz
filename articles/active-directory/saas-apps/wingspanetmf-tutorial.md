@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 3ad9d7963da3719773afb4a39fc882ba0dddbf85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0744b98b0264a79072e60ddb7627a4b527bdf1e
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92520247"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600587"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>Kurz: Azure Active Directory integrace s Wingspan eTMF
 
@@ -108,7 +108,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wingspan
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<customer name>.<instance name>.mywingspan.com/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným Sign-On URL, identifikátor a adresu URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta podpory Wingspan eTMF](https://www.wingspan.com/contact-us/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným Sign-On URL, identifikátor a adresu URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na tým podpory klienta podpory Wingspan eTMF. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -126,7 +126,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wingspan
 
 ### <a name="configure-wingspan-etmf-single-sign-on"></a>Konfigurace Wingspan eTMF Single Sign-On
 
-Ke konfiguraci jednotného přihlašování na straně **Wingspan eTMF** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Wingspan eTMF](https://www.wingspan.com/contact-us/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Ke konfiguraci jednotného přihlašování na straně **Wingspan eTMF** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do týmu podpory Wingspan eTMF. Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -180,7 +180,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-wingspan-etmf-test-user"></a>Vytvořit testovacího uživatele Wingspan eTMF
 
-V této části vytvoříte uživatele s názvem Britta Simon v Wingspan eTMF. Pokud chcete přidat uživatele na platformě Wingspan eTMF, pracujte s [týmem podpory Wingspan eTMF](https://www.wingspan.com/contact-us/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v Wingspan eTMF. Pokud chcete přidat uživatele na platformě Wingspan eTMF, pracujte s týmem podpory Wingspan eTMF. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 

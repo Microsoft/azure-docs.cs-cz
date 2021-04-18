@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 089976f2009e006f53dd2a77f09f57d5090429b7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dba336c8690bba2bb388a8b9ab2d52b651166da5
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721241"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599600"
 ---
 # <a name="enable-infiniband"></a>Povolení sítí Infiniband
 
@@ -67,7 +67,7 @@ sudo systemctl restart waagent
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o instalaci různých [podporovaných knihoven MPI](setup-mpi.md) a jejich optimálních konfiguracích na virtuálních počítačích.
+- Přečtěte si další informace o instalaci a spuštění různých [podporovaných knihoven MPI](setup-mpi.md) na virtuálních počítačích.
 - Přečtěte si přehled [HBv3-Series](hbv3-series-overview.md) Overview a [HC-Series](hc-series-overview.md).
 - Přečtěte si o nejnovějších oznámeních, příkladech úloh HPC a výsledcích výkonu na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Pro zobrazení architektury na vyšší úrovni pro spouštění úloh HPC si přečtěte téma věnované technologii [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).

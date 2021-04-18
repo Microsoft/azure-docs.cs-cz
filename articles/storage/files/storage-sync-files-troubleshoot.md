@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 4/12/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 54a2493d930069142a8cd6965421dd588b8d76b8
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: bf74b3a1659547772368c9fb394eeab8321b5f5d
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366296"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599634"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Synchronizace souborů Azure můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -35,6 +35,20 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 ```
 
 Zkontrolujte instalační program. log a určete příčinu selhání instalace.
+
+<a id="agent-installation-gpo"></a>**Instalace agenta se nezdařila s chybou: Průvodce instalací agenta synchronizace úložiště byl předčasně ukončen z důvodu chyby.**
+
+V protokolu instalace agenta se zaznamená následující chyba:
+
+```
+CAQuietExec64:  + CategoryInfo          : SecurityError: (:) , PSSecurityException
+CAQuietExec64:  + FullyQualifiedErrorId : UnauthorizedAccess
+CAQuietExec64:  Error 0x80070001: Command line returned an error.
+```
+
+K tomuto problému dochází, pokud jsou [zásady spouštění prostředí PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) konfigurovány pomocí zásad skupiny a nastavení zásad je "povoluje pouze podepsané skripty". Všechny skripty, které jsou součástí agenta Synchronizace souborů Azure, jsou podepsané. Instalace agenta Synchronizace souborů Azure se nezdařila, protože instalační program provádí spuštění skriptu pomocí nastavení zásad pro spuštění bypass.
+
+Pokud chcete tento problém vyřešit, dočasně zakažte nastavení zásad skupiny [zapnout spouštění skriptů](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) na serveru. Po dokončení instalace agenta je možné nastavení zásad skupiny znovu povolit.
 
 <a id="agent-installation-on-DC"></a>**Instalace agenta na řadiči Doména služby Active Directory se nezdařila.**  
 Pokud se pokusíte nainstalovat agenta synchronizace v řadiči domény služby Active Directory, kde je vlastník role primárního řadiče domény v systému Windows Server 2008 R2 nebo pod verzí operačního systému, můžete se setkat s problémem, kdy se agent synchronizace nedaří nainstalovat.

@@ -1,16 +1,16 @@
 ---
-title: Správa senzorů a předplatných v programu Defender pro IoT Portal
+title: Správa senzorů v programu Defender pro IoT Portal
 description: Naučte se, jak pořídit, zobrazovat a spravovat senzory v programu Defender pro IoT Portal.
-ms.date: 2/18/2021
+ms.date: 4/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 5b4c8b3d10fe88816e07eb775b2bf3827d578b17
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 2c948aa2387552f9815ab075abb43c98307ae087
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383044"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600178"
 ---
-# <a name="manage-sensors-and-subscriptions-in-the-defender-for-iot-portal"></a>Správa senzorů a předplatných v programu Defender pro IoT Portal
+# <a name="manage-sensors-ain-the-defender-for-iot-portal"></a>Správa senzorů nacházejících z programu Defender pro IoT Portal
 
 Tento článek popisuje, jak připojit, zobrazit a spravovat senzory v programu [Defender pro IoT Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
 
@@ -118,24 +118,6 @@ Postup opětovné aktivace snímače:
 8. Vyberte **nahrát** a vyberte soubor, který jste uložili na stránce snímače desky.
 
 9. Vyberte **aktivovat**.
-
-## <a name="offboard-a-subscription"></a>Odpojení předplatného
-
-Předplatná se spravují měsíčně. Když odpojení předplatné, bude se vám účtovat toto předplatné až do konce měsíce. 
-
-Před zrušením předplatného odinstalujte všechny senzory, které jsou přidružené k předplatnému. Další informace o tom, jak odstranit senzor, najdete v tématu [odstranění snímače](#delete-a-sensor). 
-
-Odpojení předplatného:
-
-1. Přejděte na stránku s **cenami** .
-1. Vyberte předplatné a pak vyberte ikonu **Odstranit** :::image type="icon" source="media/how-to-manage-sensors-on-the-cloud/delete-icon.png" border="false"::: .
-1. V místní nabídce potvrzení zaškrtněte políčko a potvrďte tak, že jste odstranili všechny senzory přidružené k předplatnému.
-
-    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/offboard-popup.png" alt-text="Zaškrtněte políčko a vyberte odpojení, aby se odpojení senzor.":::
-
-1. Vyberte tlačítko **odpojení** . 
-
-Místní prostředí to neovlivní, ale měli byste senzor odinstalovat z místního prostředí nebo ho znovu přiřadit k jinému předplatnému, aby se zabránilo jakémukoli souvisejícím datům v toku do místní konzoly pro správu. 
 
 ## <a name="next-steps"></a>Další kroky
 

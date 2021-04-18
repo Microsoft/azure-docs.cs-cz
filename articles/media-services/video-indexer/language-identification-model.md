@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 40f2e146956919e154f59d90b56a1b03379abbb2
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81687127"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600633"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatická identifikace mluveného jazyka s využitím modelu identifikace jazyka
 
@@ -27,7 +27,7 @@ Nezapomeňte si přečíst část s [pokyny a omezeními](#guidelines-and-limita
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>Výběr automatické identifikace jazyka při indexování
 
-Při indexování nebo [opětovném indexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) videa pomocí rozhraní API vyberte `auto detect` možnost v `sourceLanguage` parametru.
+Při indexování nebo [opětovném indexování](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video) videa pomocí rozhraní API vyberte `auto detect` možnost v `sourceLanguage` parametru.
 
 Když používáte portál, přejděte na **video o účtu** na domovské stránce [video indexer](https://www.videoindexer.ai/) a najeďte myší na název videa, které chcete znovu indexovat. V pravém dolním rohu klikněte na tlačítko znovu indexovat. V dialogovém okně **znovu indexovat video** vyberte v rozevíracím seznamu **jazyk zdrojové video** možnost *automaticky rozpoznat* .
 

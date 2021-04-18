@@ -12,12 +12,12 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: detekce anomálií, strojové učení, algoritmy
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3bfa30cc5d3d57cfcd2677bb4b2719061541d5a9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: d63399d0f492f85a4a2d57a595a6d8ef5b606d92
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278860"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599515"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co je rozhraní API Detektoru anomálií?
 
@@ -113,5 +113,5 @@ Pro povolení odolnosti zóny není nutná žádná konfigurace zákazníka. Zó
 ## <a name="next-steps"></a>Další kroky
 
 * [Rychlý Start: zjištění anomálií v datech časových řad pomocí detektoru anomálií](quickstarts/client-libraries.md)
-* [Online ukázka](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) rozhraní API pro detekci anomálií
+* [Online ukázka](https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook) rozhraní API pro detekci anomálií
 * [Referenční informace o REST API](https://aka.ms/anomaly-detector-rest-api-ref) detektoru anomálií

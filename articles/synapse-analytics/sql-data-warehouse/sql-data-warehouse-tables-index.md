@@ -2,21 +2,21 @@
 title: Indexování tabulek
 description: Doporučení a příklady pro indexování tabulek ve vyhrazeném fondu SQL
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/18/2019
+ms.date: 04/16/2021
+author: XiaoyuMSFT
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: fabbdf330d43737ffa85379f9cc4d5ac59c4a734
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58f3eed8b16ff3ed02c6dfac6dc7d72ebb4ca374
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673514"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599974"
 ---
 # <a name="indexing-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>Indexování vyhrazených tabulek fondu SQL ve službě Azure synapse Analytics
 
@@ -30,7 +30,7 @@ Chcete-li vytvořit tabulku s indexem, přečtěte si dokumentaci [Create Table 
 
 ## <a name="clustered-columnstore-indexes"></a>Clusterované indexy columnstore
 
-Ve výchozím nastavení vytvoří vyhrazený fond SQL clusterovaný index columnstore, pokud v tabulce nejsou zadány žádné možnosti indexu. Clusterované tabulky columnstore nabízejí nejvyšší úroveň komprese dat i nejlepší celkový výkon dotazů.  Clusterované tabulky columnstore budou všeobecně překoná clusterovaných indexů nebo tabulek haldy a jsou obvykle nejlepší volbou pro velké tabulky.  Z těchto důvodů je clusterový columnstore nejlepší místo, kde si nejste jisti, jak indexovat tabulku.  
+Ve výchozím nastavení vytvoří vyhrazený fond SQL clusterovaný index columnstore, pokud v tabulce nejsou zadány žádné možnosti indexu. Clusterované tabulky columnstore nabízejí nejvyšší úroveň komprese dat a nejlepší celkový výkon dotazů.  Clusterované tabulky columnstore budou všeobecně překoná clusterovaných indexů nebo tabulek haldy a jsou obvykle nejlepší volbou pro velké tabulky.  Z těchto důvodů je clusterový columnstore nejlepší místo, kde si nejste jisti, jak indexovat tabulku.  
 
 Pokud chcete vytvořit clusterovanou tabulku columnstore, stačí v klauzuli WITH zadat CLUSTEROVANÝ INDEX COLUMNSTORE, nebo ponechte klauzuli WITH vypnuto:
 
@@ -70,7 +70,7 @@ WITH ( HEAP );
 
 ## <a name="clustered-and-nonclustered-indexes"></a>Clustery a neseskupené indexy
 
-Clusterované indexy můžou překoná clusterovaných tabulek columnstore, když je potřeba rychle načíst jeden řádek. U dotazů, u kterých je potřeba, aby se při extrémní rychlosti vybralo jedno nebo hodně málo vyhledávaných řádků, vezměte v úvahu index clusteru nebo neclusterovaný sekundární index. Nevýhodou použití clusterovaného indexu je to, že pouze dotazy, které mají výhodu, jsou ty, které využívají vysoce selektivní filtr u sloupce clusterovaného indexu. Aby bylo možné vylepšit filtr na ostatních sloupcích, můžete do jiných sloupců přidat neclusterovaný index. Každý index, který je přidán do tabulky, však přidává prostor a dobu zpracování pro načtení.
+Clusterované indexy můžou překoná clusterovaných tabulek columnstore, když je potřeba rychle načíst jeden řádek. Pro dotazy, u kterých je nutné, aby se při extrémní rychlosti využívalo jedno nebo příliš málo vyhledávání řádků, vezměte v úvahu clusterovaný index nebo neclusterovaný sekundární index. Nevýhodou použití clusterovaného indexu je to, že pouze dotazy, které mají výhodu, jsou ty, které využívají vysoce selektivní filtr u sloupce clusterovaného indexu. Pokud chcete vylepšit filtr na jiných sloupcích, můžete do jiných sloupců přidat neclusterovaný index. Každý index, který je přidán do tabulky, však přidává prostor a dobu zpracování pro načtení.
 
 Chcete-li vytvořit tabulku clusterovaných indexů, stačí zadat CLUSTEROVANÝ INDEX v klauzuli WITH:
 
@@ -177,6 +177,16 @@ Jakmile spustíte dotaz, můžete začít se podívat na data a analyzovat výsl
 | [CLOSED_rowgroup_rows_AVG] |Jak je uvedeno výše |
 | [Rebuild_Index_SQL] |SQL pro opětovné sestavení indexu columnstore pro tabulku |
 
+## <a name="impact-of-index-maintenance"></a>Dopad údržby indexu
+
+Sloupec `Rebuild_Index_SQL` v `vColumnstoreDensity` zobrazení obsahuje `ALTER INDEX REBUILD` příkaz, který lze použít k opětovnému sestavení indexů. Při opětovném sestavování indexů se ujistěte, že přidělíte dostatek paměti relaci, která znovu sestaví index. Provedete to tak, že zvýšíte [třídu prostředků](resource-classes-for-workload-management.md) uživatele, který má oprávnění k opětovnému sestavení indexu v této tabulce, do doporučeného minima. Příklad najdete v tématu [sestavení indexů pro zlepšení kvality segmentů](#rebuilding-indexes-to-improve-segment-quality) dále v tomto článku.
+
+Pro tabulku s uspořádaným clusterovaným indexem columnstore `ALTER INDEX REBUILD` budou data znovu řazena v databázi tempdb. Monitoruje databázi tempdb během operací opětovného sestavení. Pokud potřebujete více místa v databázi tempdb, naplánujte horizontální navýšení kapacity fondu databází. Po dokončení opětovného sestavení indexu se horizontální navýšení kapacity znovu zvětší.
+
+Pro tabulku s seřazeným clusterovaným indexem columnstore nedojde k `ALTER INDEX REORGANIZE` opakovanému seřazení dat. Pokud chcete data znovu seřadit, použijte `ALTER INDEX REBUILD` .
+
+Další informace o seřazených clusterovaných indexech columnstore najdete v tématu [ladění výkonu pomocí seřazeného clusterovaného indexu columnstore](performance-tuning-ordered-cci.md).
+
 ## <a name="causes-of-poor-columnstore-index-quality"></a>Příčiny nekvalitních indexů columnstore
 
 Pokud jste identifikovali tabulky s nízkou kvalitou segmentů, chcete identifikovat hlavní příčinu.  Níže jsou uvedeny některé další běžné příčiny špatné kvality segmentu:
@@ -190,11 +200,11 @@ Tyto faktory můžou způsobit, že index columnstore bude mnohem menší než o
 
 ### <a name="memory-pressure-when-index-was-built"></a>Tlak paměti při sestavení indexu
 
-Počet řádků na komprimovanou skupinu řádků přímo souvisí se šířkou řádku a velikostí paměti, která je k dispozici pro zpracování skupiny řádků.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Proto je osvědčeným postupem poskytnout relaci, která zapisuje do tabulek indexu columnstore, přístup k co nejvíce paměti.  Vzhledem k tomu, že existuje kompromis mezi pamětí a souběžnou, jsou pokyny týkající se správného přidělení paměti závislé na datech v jednotlivých řádcích tabulky, jednotkách datového skladu, které jsou přiděleny vašemu systému, a počtu slotů souběžnosti, které můžete přiřadit k relaci, která zapisuje data do tabulky.
+Počet řádků na komprimovanou skupinu řádků přímo souvisí se šířkou řádku a velikostí paměti, která je k dispozici pro zpracování skupiny řádků.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Proto je osvědčeným postupem poskytnout relaci, která zapisuje do tabulek indexu columnstore, přístup k co nejvíce paměti.  Vzhledem k tomu, že existuje kompromis mezi pamětí a souběžnou, jsou pokyny týkající se správného přidělení paměti závislé na datech v jednotlivých řádcích tabulky, jednotkách datového skladu, které jsou přiděleny vašemu systému, a počtu slotů souběžnosti, které můžete přiřadit do relace, která zapisuje data do tabulky.
 
 ### <a name="high-volume-of-dml-operations"></a>Velký objem operací DML
 
-Velký objem operací DML, které aktualizují a odstraňují řádky, mohou způsobit neúčinnost do columnstore. To platí hlavně v případě, že většina řádků ve skupině řádků je upravena.
+Velký objem operací DML, které aktualizují a odstraňují řádky, mohou způsobit neúčinnost do columnstore. To platí hlavně v případě, že je většina řádků ve skupině řádků upravena.
 
 - Odstranění řádku ze zkomprimované skupiny řádků pouze logicky označí řádek jako odstraněný. Řádek zůstane ve zkomprimované skupině řádků, dokud není oddíl nebo tabulka znovu sestavena.
 - Vložení řádku přidá řádek do interní tabulky rowstore s názvem rozdílové skupiny řádků. Vložená řádka není převedena do columnstore, dokud není skupina rozdílových řádků zaplněna a je označena jako uzavřená. Skupiny řádků se zavřou, jakmile dosáhnou maximální kapacity 1 048 576 řádků.
@@ -218,38 +228,38 @@ Po načtení tabulek s některými daty pomocí následujících kroků identifi
 
 ### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Krok 1: identifikace nebo vytvoření uživatele, který používá správnou třídu prostředků
 
-Jedním z rychlých způsobů, jak okamžitě vylepšit kvalitu segmentů, je znovu sestavit index.  SQL vrácený výše uvedeným zobrazením vrátí příkaz ALTER INDEX Rebuild, který lze použít k opětovnému sestavení indexů. Při opětovném sestavování indexů se ujistěte, že přidělíte dostatek paměti relaci, která znovu sestaví index.  Provedete to tak, že zvýšíte třídu prostředků uživatele, který má oprávnění k opětovnému sestavení indexu v této tabulce do doporučeného minima.
+Jedním z rychlých způsobů, jak okamžitě vylepšit kvalitu segmentů, je znovu sestavit index.  SQL vrácený výše uvedeným zobrazením vrátí příkaz ALTER INDEX Rebuild, který lze použít k opětovnému sestavení indexů. Při opětovném sestavování indexů se ujistěte, že přidělíte dostatek paměti relaci, která znovu sestaví index. Provedete to tak, že zvýšíte třídu prostředků uživatele, který má oprávnění k opětovnému sestavení indexu v této tabulce, do doporučeného minima.
 
 Níže je uveden příklad, jak přidělit uživateli více paměti tím, že zvýšíte jejich třídu prostředků. Chcete-li pracovat s třídami prostředků, přečtěte si téma [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md).
 
 ```sql
-EXEC sp_addrolemember 'xlargerc', 'LoadUser'
+EXEC sp_addrolemember 'xlargerc', 'LoadUser';
 ```
 
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Krok 2: opětovné sestavení clusterovaných indexů columnstore s vyšším uživatelským třídou prostředků
 
-Přihlaste se jako uživatel z kroku 1 (například LoadUser), který teď používá vyšší třídu prostředků, a spusťte příkazy ALTER INDEX. Ujistěte se, že tento uživatel má oprávnění ALTER pro tabulky, ve kterých je index znovu sestaven. Tyto příklady ukazují, jak znovu sestavit celý index columnstore nebo jak znovu sestavit jeden oddíl. Ve velkých tabulkách je praktické znovu sestavovat indexy v jednom oddílu.
+Přihlaste se jako uživatel z kroku 1 (LoadUser), který teď používá vyšší třídu prostředků, a spusťte příkazy ALTER INDEX. Ujistěte se, že tento uživatel má oprávnění ALTER pro tabulky, ve kterých je index znovu sestaven. Tyto příklady ukazují, jak znovu sestavit celý index columnstore nebo jak znovu sestavit jeden oddíl. Ve velkých tabulkách je praktické znovu sestavovat indexy v jednom oddílu.
 
 Případně místo opakovaného sestavování indexu můžete tabulku zkopírovat do nové tabulky [pomocí CTAS](sql-data-warehouse-develop-ctas.md). Jaký je nejlepší způsob? Pro velké objemy dat je CTAS obvykle rychlejší než [Změna indexu](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Pro menší objemy dat je snazší použít příkaz ALTER INDEX a nevyžaduje, abyste tabulku vyměnili.
 
 ```sql
 -- Rebuild the entire clustered index
-ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD
+ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 ```
 
 ```sql
 -- Rebuild a single partition
-ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5;
 ```
 
 ```sql
 -- Rebuild a single partition with archival compression
-ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE_ARCHIVE)
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE_ARCHIVE);
 ```
 
 ```sql
 -- Rebuild a single partition with columnstore compression
-ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE);
 ```
 
 Nové sestavení indexu ve vyhrazeném fondu SQL je operace offline.  Další informace o opětovném sestavení indexů naleznete v části ALTER INDEX Rebuild v tématu [Defragmentace](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)indexů columnstore a v článku [ALTER index](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
@@ -283,7 +293,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-Další podrobnosti o opětovném vytvoření oddílů pomocí CTAS najdete v tématu [použití oddílů ve vyhrazeném fondu SQL](sql-data-warehouse-tables-partition.md).
+Další informace o opětovném vytvoření oddílů pomocí CTAS najdete v tématu [použití oddílů ve vyhrazeném fondu SQL](sql-data-warehouse-tables-partition.md).
 
 ## <a name="next-steps"></a>Další kroky
 

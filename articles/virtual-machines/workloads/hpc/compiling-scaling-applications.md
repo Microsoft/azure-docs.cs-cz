@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/25/2021
+ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 4ab2c599bea4b2e3e682755a80a2ee348e4de7ef
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f81d40abdf402b1e19090c5375dfa8c335418248
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606772"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600960"
 ---
 # <a name="scaling-hpc-applications"></a>Škálování aplikací HPC
 
@@ -112,4 +112,7 @@ gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [HPC](/azure/architecture/topics/high-performance-computing/) v Azure.
+- Otestujte své znalosti pomocí [výukového modulu o optimalizaci aplikací HPC v Azure](https://docs.microsoft.com/learn/modules/optimize-tightly-coupled-hpc-apps/).
+- Přečtěte si přehled [HBv3-Series](hbv3-series-overview.md) Overview a [HC-Series](hc-series-overview.md).
+- Přečtěte si o nejnovějších oznámeních, příkladech úloh HPC a výsledcích výkonu na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Přečtěte si další informace o [HPC](/azure/architecture/topics/high-performance-computing/) v Azure.

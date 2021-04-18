@@ -11,12 +11,12 @@ ms.date: 04/13/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3245f560d9a5afb1f9cf8824eeaa3bc681706794
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: ab94a83a64ca9770f0c216ddf42145b262629c6d
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389668"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598988"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu s využitím uspořádaného clusterovaného indexu columnstore  
 
@@ -44,7 +44,7 @@ FROM sys.pdw_nodes_partitions AS pnp
    JOIN sys.pdw_nodes_column_store_segments AS cls ON pnp.partition_id = cls.partition_id AND pnp.distribution_id  = cls.distribution_id
 JOIN sys.columns as cols ON o.object_id = cols.object_id AND cls.column_id = cols.column_id
 WHERE o.name = '<Table Name>' and cols.name = '<Column Name>'  and TMap.physical_name  not like '%HdTable%'
-ORDER BY o.name, pnp.distribution_id, cls.min_data_id 
+ORDER BY o.name, pnp.distribution_id, cls.min_data_id;
 
 
 ```
@@ -66,7 +66,7 @@ V tomto příkladu má tabulka T1 clusterovaný index columnstore seřazený v s
 ```sql
 
 CREATE CLUSTERED COLUMNSTORE INDEX MyOrderedCCI ON  T1
-ORDER (Col_C, Col_B, Col_A)
+ORDER (Col_C, Col_B, Col_A);
 
 ```
 
@@ -138,6 +138,8 @@ Vytvoření seřazené konzulární instrukce je offline operace.  Pro tabulky, 
 > U vyhrazené tabulky fondu SQL s uspořádanou INSTRUKCí upraví opětovné sestavení indexu znovu seřadí data v databázi tempdb. Monitoruje databázi tempdb během operací opětovného sestavení. Pokud potřebujete více místa v databázi tempdb, naplánujte horizontální navýšení kapacity fondu. Po dokončení opětovného sestavení indexu se horizontální navýšení kapacity znovu zvětší.
 >
 > U vyhrazené tabulky fondu SQL s uspořádanou INSTRUKCí změna uspořádání indexu data znovu neřadí. Pokud chcete data použít, použijte příkaz ALTER INDEX Rebuild.
+>
+> Další informace o seřazené údržbě konzulárních instrukcí najdete v tématu [optimalizace clusterovaných indexů columnstore](sql-data-warehouse-tables-index.md#optimizing-clustered-columnstore-indexes).
 
 ## <a name="examples"></a>Příklady
 
@@ -147,15 +149,15 @@ Vytvoření seřazené konzulární instrukce je offline operace.  Pro tabulky, 
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
 FROM sys.index_columns i 
 JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
-WHERE column_store_order_ordinal <>0
+WHERE column_store_order_ordinal <>0;
 ```
 
 **B. Změna pořadí sloupců, přidání nebo odebrání sloupců ze seznamu objednávek nebo změna z instrukce na seřazenou INSTRUKCi:**
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
+CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON dbo.InternetSales
 ORDER (ProductKey, SalesAmount)
-WITH (DROP_EXISTING = ON)
+WITH (DROP_EXISTING = ON);
 ```
 
 ## <a name="next-steps"></a>Další kroky

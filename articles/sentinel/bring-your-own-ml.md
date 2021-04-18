@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: f8d795dcf64230140e1dd07e3f30ca3aa6825ab4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2164b8ac6e62b8826d5879da07384769c503bfb5
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99806999"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598597"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Přineste si vlastní Machine Learning (ML) do Azure Sentinel
 
@@ -137,7 +137,7 @@ az monitor log-analytics workspace data-export list --resource-group "RG_NAME" -
 
 ### <a name="export-custom-data"></a>Exportovat vlastní data
 
-Pro vlastní data, která nejsou Log Analytics automatického exportu podporovaná, můžete k přesunu dat použít aplikaci logiky nebo jiná řešení. Můžete se podívat na blog a skript pro [export Log Analytics dat do úložiště objektů BLOB](https://www.borninthecloud.com/exporting-log-analytics-data-to-blob-store/?preview=true) .
+Pro vlastní data, která nejsou Log Analytics automatického exportu podporovaná, můžete k přesunu dat použít aplikaci logiky nebo jiná řešení. Můžete se podívat na blog a skript pro [export Log Analytics dat do úložiště objektů BLOB](https://techcommunity.microsoft.com/t5/azure-monitor/log-analytics-data-export-preview/ba-p/1783530) .
 
 ### <a name="correlate-with-data-outside-of-azure-sentinel"></a>Korelace s daty mimo Azure Sentinel
 

@@ -4,14 +4,14 @@ description: Seznam metrik dostupných pro každý typ prostředku s Azure Monit
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 04/01/2021
+ms.date: 04/15/2021
 ms.author: robb
-ms.openlocfilehash: 6f664450d5450782d9a01d75abfb5a96b3e0bba6
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 1091d103428315a065dd1ff9800ce2ad16632df0
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221190"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600008"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
 
@@ -281,6 +281,20 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |Celkem uzlů|Yes|Celkem uzlů|Počet|Průměr|Počet uzlů celkem|Scénář, název_clusteru|
 |Nepoužitelné jádra|Yes|Nepoužitelné jádra|Počet|Průměr|Počet nepoužitelných jader|Scénář, název_clusteru|
 |Nepoužité uzly|Yes|Nepoužité uzly|Počet|Průměr|Počet nepoužitelných uzlů|Scénář, název_clusteru|
+
+## <a name="microsoftbingaccounts"></a>Microsoft. Bing/účty
+
+|Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|---|---|---|---|---|---|---|
+|BlockedCalls|Yes|Blokovaná volání|Počet|Celkem|Počet volání, která překročily sazbu nebo limit kvóty|ApiName, ServingRegion, StatusCode|
+|ClientErrors|Yes|Chyby klienta|Počet|Celkem|Počet volání s jakoukoli chybou klienta (Stavový kód HTTP 4xx)|ApiName, ServingRegion, StatusCode|
+|DataIn|Yes|Data v|Bajty|Celkem|Obsah příchozího požadavku – délka v bajtech|ApiName, ServingRegion, StatusCode|
+|Data|Yes|Výstupní data|Bajty|Celkem|Obsah odchozí odpovědi na délku v bajtech|ApiName, ServingRegion, StatusCode|
+|Latence|Yes|Latence|Milisekund|Průměr|Latence v milisekundách|ApiName, ServingRegion, StatusCode|
+|ServerErrors|Yes|Chyby serveru|Počet|Celkem|Počet volání s jakoukoli chybou serveru (kód stavu HTTP 5xx)|ApiName, ServingRegion, StatusCode|
+|SuccessfulCalls|Yes|Úspěšná volání|Počet|Celkem|Počet úspěšných volání (Stavový kód HTTP 2xx)|ApiName, ServingRegion, StatusCode|
+|TotalCalls|Yes|Celkový počet volání|Počet|Celkem|Celkový počet volání|ApiName, ServingRegion, StatusCode|
+|TotalErrors|Yes|Celkový počet chyb|Počet|Celkem|Počet volání s jakoukoli chybou (kód stavu HTTP 4xx nebo 5xx)|ApiName, ServingRegion, StatusCode|
 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. blockchain/blockchainMembers
@@ -1734,6 +1748,9 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |IoTConnectorMeasurementIngestionLatencyMs|Yes|Průměrná latence fáze skupiny|Milisekund|Průměr|Časové období mezi tím, kdy konektor IoT přijal data zařízení a kdy jsou data zpracována fází převodu FHIR.|Operace, konektor|
 |IoTConnectorNormalizedEvent|Yes|Počet normalizovaných zpráv|Počet|Sum|Celkový počet mapovaných normalizovaných hodnot vydaných ze fáze normalizace konektoru Azure IoT Connector pro FHIR.|Operace, konektor|
 |IoTConnectorTotalErrors|Yes|Celkový počet chyb|Počet|Sum|Celkový počet chyb protokolovaných službou Azure IoT Connector pro FHIR|Název, operace, ErrorType, ErrorSeverity, název konektoru|
+|ServiceApiErrors|Yes|Chyby služby|Počet|Sum|Celkový počet interních chyb serveru generovaných službou.|Protokol, ověřování, operace, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
+|ServiceApiLatency|Yes|Latence služby|Milisekund|Průměr|Latence odpovědi služby.|Protokol, ověřování, operace, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
+|ServiceApiRequests|Yes|Service Requests|Počet|Sum|Celkový počet požadavků přijatých službou.|Protokol, ověřování, operace, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
 |TotalErrors|Yes|Celkový počet chyb|Počet|Sum|Celkový počet interních chyb serveru zjištěných službou.|Protokol, StatusCode, StatusCodeClass, StatusCodeText|
 |TotalLatency|Yes|Celková latence|Milisekund|Průměr|Latence odpovědi služby.|Protokol|
 |TotalRequests|Yes|Požadavky celkem|Počet|Sum|Celkový počet požadavků přijatých službou.|Protokol|
@@ -1803,6 +1820,10 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
+|C2D. Commands. Failure|Yes|Neúspěšná vyvolání příkazu|Počet|Celkem|Počet všech neúspěšných žádostí o příkazy iniciované z IoT Central|Žádné dimenze|
+|C2D. Commands. requestSize|Yes|Velikost požadavku na vyvolání příkazu|Bajty|Celkem|Velikost žádosti všech požadavků na příkazy iniciované z IoT Central|Žádné dimenze|
+|C2D. Commands. responseSize|Yes|Velikost odezvy pro vyvolání příkazu|Bajty|Celkem|Velikost odpovědi všech odpovědí na příkazy iniciované z IoT Central|Žádné dimenze|
+|C2D. Commands. Success|Yes|Úspěšná volání příkazů|Počet|Celkem|Počet všech úspěšných žádostí o příkazy iniciovaných z IoT Central|Žádné dimenze|
 |C2D. Property. Read. Failure|Yes|Neúspěšná čtení vlastností zařízení z IoT Central|Počet|Celkem|Počet všech neúspěšných čtení vlastností zahájených z IoT Central|Žádné dimenze|
 |C2D. Property. Read. Success|Yes|Úspěšné čtení vlastností zařízení z IoT Central|Počet|Celkem|Počet všech úspěšných čtení vlastností zahájených z IoT Central|Žádné dimenze|
 |C2D. Property. Update. Failure|Yes|Neúspěšné aktualizace vlastností zařízení z IoT Central|Počet|Celkem|Počet všech neúspěšných aktualizací vlastností iniciované z IoT Central|Žádné dimenze|
@@ -1812,11 +1833,15 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |D2C. Property. Read. Success|Yes|Úspěšná čtení vlastností zařízení ze zařízení|Počet|Celkem|Počet všech úspěšných čtení vlastností inicializovaných ze zařízení|Žádné dimenze|
 |D2C. Property. Update. Failure|Yes|Neúspěšné aktualizace vlastností zařízení ze zařízení|Počet|Celkem|Počet všech neúspěšných aktualizací vlastností inicializovaných ze zařízení|Žádné dimenze|
 |D2C. Property. Update. Success|Yes|Úspěšná aktualizace vlastností zařízení ze zařízení|Počet|Celkem|Počet všech úspěšných aktualizací vlastností inicializovaných ze zařízení|Žádné dimenze|
+|D2C. telemetrie. příchozí přenos dat allProtocol|Yes|Celkový počet pokusů o odeslání zprávy telemetrie|Počet|Celkem|Počet zpráv typu zařízení-Cloud telemetrie, které se pokusily o odeslání do aplikace IoT Central|Žádné dimenze|
+|D2C. telemetrie. příchozí přenos dat. úspěch|Yes|Celkový počet odeslaných zpráv telemetrie|Počet|Celkem|Počet zpráv telemetrie typu zařízení-Cloud úspěšně odeslaných do aplikace IoT Central|Žádné dimenze|
 |DataExport. Chyba|Yes|Chyby exportu dat|Počet|Celkem|Počet chyb, ke kterým došlo při exportu dat|exportId, exportDisplayName, destinationId, destinationDisplayName|
 |DataExport. Messages. Filtered|Yes|Filtrované zprávy exportu dat|Počet|Celkem|Počet zpráv, které byly předány filtry při exportu dat|exportId, exportDisplayName, destinationId, destinationDisplayName|
 |dataexports. Messages. Received|Yes|Přijaté zprávy exportu dat|Počet|Celkem|Počet zpráv příchozích do exportu dat před zpracováním filtrování a obohacení|exportId, exportDisplayName, destinationId, destinationDisplayName|
 |DataExport. Messages. psaná|Yes|Napsané zprávy exportu dat|Počet|Celkem|Počet zpráv zapsaných do cílového umístění|exportId, exportDisplayName, destinationId, destinationDisplayName|
-
+|dataexports. statusChange|Yes|Změna stavu exportu dat|Počet|Celkem|Počet změn stavu|exportId, exportDisplayName, destinationId, destinationDisplayName, status|
+|deviceDataUsage|Yes|Celkové využití dat zařízení|Bajty|Celkem|Přenesené bajty do a ze všech zařízení připojených k aplikaci IoT Central|Žádné dimenze|
+|provisionedDeviceCount|No|Celkem zřízené zařízení|Počet|Průměr|Počet zařízení zřízených v IoT Central aplikaci|Žádné dimenze|
 
 ## <a name="microsoftkeyvaultmanagedhsms"></a>Microsoft. managedhsms – trezor/
 
@@ -2719,10 +2744,9 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
-|ConnectionCount|Yes|Počet připojení|Počet|Maximum|Množství připojení uživatele.|Žádné dimenze|
 |InboundTraffic|Yes|Příchozí provoz|Bajty|Celkem|Příchozí provoz služby|Žádné dimenze|
 |OutboundTraffic|Yes|Odchozí provoz|Bajty|Celkem|Odchozí provoz služby|Žádné dimenze|
-
+|TotalConnectionCount|Yes|Počet připojení|Počet|Maximum|Množství připojení uživatele.|Žádné dimenze|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
@@ -2737,7 +2761,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |virtual_core_count|Yes|Počet virtuálních jader|Počet|Průměr|Počet virtuálních jader|Žádné dimenze|
 
 
-## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/servery/databáze
+## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
@@ -2790,7 +2814,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |xtp_storage_percent|Yes|In-Memory OLTP úložiště v procentech|Procento|Průměr|In-Memory OLTP úložiště v procentech. Neplatí pro datové sklady.|Žádné dimenze|
 
 
-## <a name="microsoftsqlserverselasticpools"></a>Microsoft. SQL/servery/elasticPools
+## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
@@ -3002,7 +3026,6 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft. synapse/pracovní prostory
-
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |BuiltinSqlPoolDataProcessedBytes|No|Zpracovaná data (bajty)|Bajty|Celkem|Množství dat zpracovaných dotazy|Žádné dimenze|
@@ -3011,6 +3034,20 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |IntegrationActivityRunsEnded|No|Běh aktivity skončil.|Počet|Celkem|Počet zrušených integračních aktivit, které byly úspěšné, selhaly nebo byly zrušeny|Výsledek, FailureType, aktivita, ActivityType, kanál|
 |IntegrationPipelineRunsEnded|No|Běh kanálu skončil.|Počet|Celkem|Počet zrušených běhů kanálu integrace, které byly úspěšné, selhaly nebo byly zrušeny|Výsledek, FailureType, kanál|
 |IntegrationTriggerRunsEnded|No|Spuštění aktivační události skončilo.|Počet|Celkem|Počet zrušených aktivačních událostí integrace, které byly úspěšné, selhaly nebo byly zrušeny|Výsledek, FailureType, Trigger|
+|SQLStreamingBackloggedInputEventSources|No|Nevyřízené události vstupu (Preview)|Počet|Celkem|Tato metrika ve verzi Preview je dostupná v Východní USA Západní Evropa. Počet nevyřízených zdrojů vstupních událostí|ResourceName, SQLPoolName, SQLDatabaseName, JobName, Logic, PartitionId, ProcessorInstance|
+|SQLStreamingConversionErrors|No|Chyby převodu dat (Preview)|Počet|Celkem|Tato metrika ve verzi Preview je dostupná v Východní USA Západní Evropa. Počet výstupních událostí, které nebylo možné převést na očekávané výstupní schéma. Chcete-li odstranit události, které se vyskytnou v tomto scénáři, můžete změnit zásady chyb na možnost drop.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, Logic, PartitionId, ProcessorInstance|
+|SQLStreamingDeserializationError|No|Vstupní chyby deserializace (Náhled)|Počet|Celkem|Tato metrika ve verzi Preview je dostupná v Východní USA Západní Evropa. Počet vstupních událostí, které nebylo možné deserializovat.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, Logic, PartitionId, ProcessorInstance|
+|SQLStreamingEarlyInputEvents|No|Události předčasného vstupu (Preview)|Počet|Celkem|Tato metrika ve verzi Preview je dostupná v Východní USA Západní Evropa. Počet vstupních událostí, na které se v porovnání s časem doručení považuje čas aplikace včas, v souladu se zásadami pro předčasné doručení.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, Logic, PartitionId, ProcessorInstance|
+|SQLStreamingInputEventBytes|No|Bajty vstupních událostí (Preview)|Počet|Celkem|Tato metrika ve verzi Preview je dostupná v Východní USA Západní Evropa. Množství dat přijatých úlohou streamování (v bajtech). Tato možnost slouží k ověření, zda jsou události odesílány do vstupního zdroje.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, Logic, PartitionId, ProcessorInstance|
+|SQLStreamingInputEvents|No|Vstupní události (Preview)|Počet|Celkem|Tato metrika ve verzi Preview je dostupná v Východní USA Západní Evropa. Počet vstupních událostí.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, Logic, PartitionId, ProcessorInstance|
+|SQLStreamingInputEventsSourcesPerSecond|No|Přijaté vstupní zdroje (Preview)|Počet|Celkem|Tato metrika ve verzi Preview je dostupná v Východní USA Západní Evropa. Počet zdrojů vstupních událostí za sekundu|ResourceName, SQLPoolName, SQLDatabaseName, JobName, Logic, PartitionId, ProcessorInstance|
+|SQLStreamingLateInputEvents|No|Zpožděné vstupní události (Preview)|Počet|Celkem|Tato metrika ve verzi Preview je dostupná v Východní USA Západní Evropa. Počet vstupních událostí, jejichž čas aplikace se považuje za pozdě v porovnání s časem doručení, podle zásad pozdního doručení.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, Logic, PartitionId, ProcessorInstance|
+|SQLStreamingOutOfOrderEvents|No|Události mimo pořadí (Preview)|Počet|Celkem|Tato metrika ve verzi Preview je dostupná v Východní USA Západní Evropa. Počet událostí centra událostí (serializovaných zpráv) přijatých vstupním adaptérem centra událostí, které byly vyhozeny nebo upraveny časovým razítkem, na základě zásad řazení událostí.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, Logic, PartitionId, ProcessorInstance|
+|SQLStreamingOutputEvents|No|Výstupní události (Preview)|Počet|Celkem|Tato metrika ve verzi Preview je dostupná v Východní USA Západní Evropa. Počet výstupních událostí.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, Logic, PartitionId, ProcessorInstance|
+|SQLStreamingOutputWatermarkDelaySeconds|No|Prodleva vodoznaku (Preview)|Počet|Maximum|Tato metrika ve verzi Preview je dostupná v Východní USA Západní Evropa. Zpoždění výstupního meze v sekundách|ResourceName, SQLPoolName, SQLDatabaseName, JobName, Logic, PartitionId, ProcessorInstance|
+|SQLStreamingResourceUtilization|No|Prostředek% využití (Preview)|Procento|Maximum|Tato metrika ve verzi Preview je dostupná v Východní USA Západní Evropa.
+ Využití prostředků vyjádřené jako procento. Vysoké využití indikuje, že úloha používá blízko maximálního počtu přidělených prostředků.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, Logic, PartitionId, ProcessorInstance|
+|SQLStreamingRuntimeErrors|No|Běhové chyby (Preview)|Počet|Celkem|Tato metrika ve verzi Preview je dostupná v Východní USA Západní Evropa. Celkový počet chyb souvisejících se zpracováním dotazů (kromě chyb nalezených při ingestování událostí nebo výstupních výsledků).|ResourceName, SQLPoolName, SQLDatabaseName, JobName, Logic, PartitionId, ProcessorInstance|
 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. synapse/pracovní prostory/bigDataPools

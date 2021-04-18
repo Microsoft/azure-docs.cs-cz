@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 03/23/2021
-ms.openlocfilehash: 1825f5be8a4f8a8ddfba931dfbc7e77186b4331f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa65989953f761ff915383fcb59da7f36ea98dab
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889446"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600478"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Povolený Azure Security Center zdarma vs Azure Defender
 Azure Defender je pro prvních 30 dnů zdarma. Po uplynutí 30 dnů se můžete rozhodnout, že budete službu dál používat, a automaticky začneme účtovat za využití.
@@ -73,7 +73,7 @@ Pro povolení služby Azure Defender pro vaše předplatné můžete použít n�
 | Metoda                                          | Pokyny                                                                                                                                       |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Security Center stránky Azure Portal | [Povolení Azure Defenderu](enable-azure-defender.md)                                                                                                  |
-| REST API                                        | [Rozhraní API pro ceny](/rest/api/securitycenter/pricings)                                                                                                  |
+| Rozhraní REST API                                        | [Rozhraní API pro ceny](/rest/api/securitycenter/pricings)                                                                                                  |
 | Azure CLI                                       | [AZ Security Price](/cli/azure/security/pricing)                                                                                                 |
 | PowerShell                                      | [Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)                                                                      |
 | Azure Policy                                    | [Ceny sady prostředků](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json) |
@@ -119,7 +119,7 @@ Tento objem dat představuje denní průměr napříč všemi uzly. Takže i kdy
 
 ### <a name="what-data-types-are-included-in-the-500-mb-data-daily-allowance"></a>Jaké datové typy jsou zahrnuté do denního snížení limitu dat 500 MB?
 
-Fakturace Security Center je úzce vázaná na účtování Log Analytics. Security Center poskytuje přidělení 500 MB/uzel/den pro následující podmnožinu [datových typů zabezpečení](/azure/azure-monitor/reference/tables/tables-category.md#security):
+Fakturace Security Center je úzce vázaná na účtování Log Analytics. Security Center poskytuje přidělení 500 MB/uzel/den pro následující podmnožinu [datových typů zabezpečení](/azure/azure-monitor/reference/tables/tables-category#security):
 - WindowsEvent
 - SecurityAlert
 - SecurityBaseline

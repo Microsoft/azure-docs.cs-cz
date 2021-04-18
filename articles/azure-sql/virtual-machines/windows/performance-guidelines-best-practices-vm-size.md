@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 9427ae1b9bd68f63df40d24122cc13b5460fbc27
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 88adef7ea50744f913780d99594ce3baadade84b
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572359"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600892"
 ---
 # <a name="vm-size-performance-best-practices-for-sql-server-on-azure-vms"></a>Velikost virtuálního počítače: osvědčené postupy výkonu pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,9 +33,9 @@ Mezi optimalizací a optimalizací výkonu je typicky kompromis. Tato řada osv�
 
 V následujícím kontrolním seznamu najdete stručný přehled osvědčených postupů pro velikost virtuálního počítače, které zbytek článku pokrývá podrobněji: 
 
-- Používejte velikosti virtuálních počítačů 4 nebo více vCPU, jako je [Standard_M8-4ms](/../../virtual-machines/m-series), [E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)nebo [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) nebo vyšší. 
+- Používejte velikosti virtuálních počítačů 4 nebo více vCPU, jako je [Standard_M8-4ms](/azure/virtual-machines/m-series), [E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)nebo [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) nebo vyšší. 
 - Využijte [paměťově optimalizované](../../../virtual-machines/sizes-memory.md) velikosti virtuálních počítačů pro dosažení optimálního výkonu SQL Server úloh. 
-- [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md), [Edsv4](../../../virtual-machines/edv4-edsv4-series.md) Series, [M-](../../../virtual-machines/m-series.md)a [Mv2-](../../../virtual-machines/mv2-series.md) Series nabízejí optimální poměr mezi pamětí a Vcore potřebný pro úlohy OLTP. Oba virtuální počítače řady M nabízejí nejvyšší poměr paměti k vCore, který je potřeba pro důležité úlohy, a je taky ideální pro úlohy datového skladu. 
+- [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md), [Edsv4](../../../virtual-machines/edv4-edsv4-series.md) Series, [M-](/azure/virtual-machines/m-series)a [Mv2-](../../../virtual-machines/mv2-series.md) Series nabízejí optimální poměr mezi pamětí a Vcore potřebný pro úlohy OLTP. Oba virtuální počítače řady M nabízejí nejvyšší poměr paměti k vCore, který je potřeba pro důležité úlohy, a je taky ideální pro úlohy datového skladu. 
 - Zvažte vyšší poměr paměti k vCore pro důležité úlohy a úlohy datového skladu. 
 - Využijte image virtuálních počítačů Azure na Marketplace, protože nastavení SQL Server a možnosti úložiště jsou nakonfigurovány pro optimální výkon SQL Server. 
 - Shromážděte charakteristiky výkonu cílového zatížení a použijte je k určení vhodné velikosti virtuálních počítačů pro vaši firmu.
@@ -65,11 +65,11 @@ Použijte konfiguraci vCPU a paměti ze zdrojového počítače jako základní 
 
 ### <a name="m-mv2-and-mdsv2-series"></a>Řady M, Mv2 a Mdsv2
 
-[Řada M-Series](../../../virtual-machines/m-series.md) nabízí počty Vcore a paměť pro některé z největších SQL Server úloh.  
+[Řada M-Series](/azure/virtual-machines/m-series) nabízí počty Vcore a paměť pro některé z největších SQL Server úloh.  
 
 [Mv2-Series](../../../virtual-machines/mv2-series.md) má nejvyšší počet vCoreů a paměť a doporučuje se pro důležité úlohy datového skladu. Instance Mv2-Series jsou paměťově optimalizované velikosti virtuálních počítačů, které poskytují bezkonkurenční výpočetní výkon pro podporu velkých databází v paměti a úloh s vysokým poměrem paměti na procesor, který je ideální pro servery relačních databází, velké mezipaměti a analýzu v paměti.
 
-[Standard_M64ms](../../../virtual-machines/m-series.md) má například poměr 28 paměti k vCore.
+[Standard_M64ms](/azure/virtual-machines/m-series) má například poměr 28 paměti k vCore.
 
 [Mdsv2 střední paměť Series](../../..//virtual-machines/msv2-mdsv2-series.md) je nová řada M-Series, která je aktuálně ve [verzi Preview](https://aka.ms/Mv2MedMemoryPreview) , která nabízí rozsah virtuálních počítačů Azure na úrovni M-Series s nabídkou paměti midtier. Tyto počítače jsou vhodné pro SQL Server úlohy s minimálním počtem 10 vCorech paměti až do 30.
 
@@ -177,7 +177,7 @@ Počet vCPU může být omezený na jednu čtvrtinu původní velikosti virtuál
 
 Tyto nové velikosti virtuálních počítačů mají příponu, která určuje počet aktivních vCPU, aby je bylo snazší identifikovat. 
 
-Například [M64-32ms](../../../virtual-machines/constrained-vcpu.md) vyžaduje licencování pouze 32 SQL Server virtuální jádra s pamětí, vstupně-výstupními operacemi a propustností [M64ms](../../../virtual-machines/m-series.md) a [M64-16MS](../../../virtual-machines/constrained-vcpu.md) vyžaduje licencování pouze 16 virtuální jádra.  I když má [M64-16MS](../../../virtual-machines/constrained-vcpu.md) čtvrtinu SQL Server licenčních nákladů na M64ms, budou náklady na výpočetní výkon virtuálního počítače stejné.
+Například [M64-32ms](../../../virtual-machines/constrained-vcpu.md) vyžaduje licencování pouze 32 SQL Server virtuální jádra s pamětí, vstupně-výstupními operacemi a propustností [M64ms](/azure/virtual-machines/m-series) a [M64-16MS](../../../virtual-machines/constrained-vcpu.md) vyžaduje licencování pouze 16 virtuální jádra.  I když má [M64-16MS](../../../virtual-machines/constrained-vcpu.md) čtvrtinu SQL Server licenčních nákladů na M64ms, budou náklady na výpočetní výkon virtuálního počítače stejné.
 
 > [!NOTE] 
 > - Středně velké zátěže datového skladu můžou mít stále nárok na [omezené virtuální počítače s Vcore](../../../virtual-machines/constrained-vcpu.md), ale úlohy datového skladu se běžně charakterizují menším počtem uživatelů a procesy, které řeší větší objemy dat prostřednictvím plánů dotazů, které běží paralelně. 
@@ -194,4 +194,4 @@ Další informace najdete v dalších článcích v této sérii:
 
 Osvědčené postupy zabezpečení najdete v tématu [požadavky na zabezpečení pro SQL Server v Azure Virtual Machines](security-considerations-best-practices.md).
 
-Další informace o SQL Server článcích o virtuálních počítačích najdete v článku [SQL Server na Azure Virtual Machines přehled](sql-server-on-azure-vm-iaas-what-is-overview.md). Pokud máte dotazy k virtuálním počítačům s SQL Serverem, přečtěte si [Nejčastější dotazy](frequently-asked-questions-faq.md).
+Další informace o SQL Server článcích o virtuálních počítačích najdete v článku [SQL Server na Azure Virtual Machines přehled](sql-server-on-azure-vm-iaas-what-is-overview.md). Pokud máte dotazy k virtuálním počítačům s SQL Serverem, přečtěte si [Nejčastější dotazy](frequently-asked-questions-faq.md). 
