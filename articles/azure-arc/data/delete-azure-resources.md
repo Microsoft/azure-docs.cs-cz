@@ -9,22 +9,23 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 60c5ddcc67db6e4a0649458cfbd5c2949aa9a32a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ce46b7afe7344fabde03805dc2a0977411be5811
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202038"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107716074"
 ---
 # <a name="delete-resources-from-azure"></a>Odstranění prostředků z Azure
 
-> [!NOTE]
->  Možnosti odstraňování prostředků v tomto článku jsou nevratné!
+Tento článek popisuje, jak odstranit prostředky z Azure.
 
-> [!NOTE]
->  Vzhledem k tomu, že jediný režim připojení nabízený pro datové služby s podporou ARC Azure je momentálně nepřímým připojením k dispozici, odstranění instance z Kubernetes se neodebere z Azure a odstranění instance z Azure ji neodebere z Kubernetes.  Pro odstranění prostředku je třeba proces, který bude v budoucnu vylepšený.  Až se dokončí, Kubernetes bude zdrojem pravdy a Azure se aktualizuje tak, aby odrážel.
+> [!WARNING]
+> Při odstraňování prostředků, jak je popsáno v tomto článku, jsou tyto akce nevratné.
 
-V některých případech může být nutné ručně odstranit prostředky datových služeb s podporou ARC Azure v Azure Resource Manager (ARM).  Tyto prostředky můžete odstranit pomocí kterékoli z následujících možností.
+V režimu nepřímých připojení se odstranění instance z Kubernetes neodebere z Azure a odstranění instance z Azure ji neodebere z Kubernetes. V případě režimu nepřímých připojení je odstranění prostředku proces dvou kroků a v budoucnu bude vylepšený. Kubernetes bude zdrojem pravdy a portál bude aktualizován tak, aby odrážel.
+
+V některých případech může být nutné ručně odstranit prostředky datových služeb s podporou ARC Azure v Azure.  Tyto prostředky můžete odstranit pomocí kterékoli z následujících možností.
 
 - [Odstranění prostředků z Azure](#delete-resources-from-azure)
   - [Odstranit celou skupinu prostředků](#delete-an-entire-resource-group)
@@ -38,6 +39,7 @@ V některých případech může být nutné ručně odstranit prostředky datov
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="delete-an-entire-resource-group"></a>Odstranit celou skupinu prostředků
+
 Pokud jste používali určitou a vyhrazenou skupinu prostředků pro datové služby s podporou ARC Azure a chcete odstranit *všechno* , co se nachází uvnitř skupiny prostředků, můžete odstranit skupinu prostředků, která odstraní vše, co je v ní obsažená.  
 
 Skupinu prostředků v Azure Portal můžete odstranit následujícím způsobem:
