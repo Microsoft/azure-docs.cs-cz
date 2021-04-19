@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 565e6fd5aae3068605b617deccb0d04785c1e248
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a94f3cc6b2387857d19c7b98fa0be64dd6646ec9
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057622"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713853"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serializace telemetrie pomocí vyrovnávacích pamětí protokolu
 
@@ -57,7 +57,7 @@ Pokyny v tomto článku předpokládají, že používáte systém Windows. Poku
 
 Stáhněte a rozbalte [mikroslužby vzdáleného monitorování](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) z GitHubu do vhodného umístění v místním počítači. Toto úložiště zahrnuje mikroslužbu adaptéru úložiště, kterou potřebujete pro tento postup.
 
-Stáhněte a rozbalte [mikroslužbu simulace zařízení](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) z GitHubu do vhodného umístění v místním počítači.
+Stáhněte a rozbalte [mikroslužbu simulace zařízení](https://github.com/Azure/azure-iot-pcs-device-simulation/archive/master.zip) z GitHubu do vhodného umístění v místním počítači.
 
 ### <a name="run-the-storage-adapter-microservice"></a>Spuštění mikroslužby adaptéru úložiště
 
@@ -277,4 +277,4 @@ Mnoho funkcí IoT Hub neumožňuje nativně podporovat Protobuf nebo jiné biná
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste se naučili, jak přizpůsobit simulaci zařízení, aby při posílání telemetrie používal Protobuf, další krok je navštívit úložiště GitHub a získat další informace o [simulaci zařízení](https://github.com/Azure/device-simulation-dotnet).
+Nyní jste se naučili, jak přizpůsobit simulaci zařízení, aby při posílání telemetrie používal Protobuf, další krok je navštívit úložiště GitHub a získat další informace o [simulaci zařízení](https://github.com/Azure/azure-iot-pcs-device-simulation).

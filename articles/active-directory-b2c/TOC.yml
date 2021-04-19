@@ -96,6 +96,8 @@
       href: policy-keys-overview.md
 - name: Návody
   items:
+    - name: Správa tenanta
+      href: tenant-management.md
     - name: Integrace aplikací
       items:
         - name: Registrace webové aplikace

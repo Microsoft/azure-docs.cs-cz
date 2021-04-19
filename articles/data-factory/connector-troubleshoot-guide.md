@@ -4,15 +4,15 @@ description: Naučte se řešit potíže s konektorem v Azure Data Factory.
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/08/2021
+ms.date: 04/13/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9d8f940e3900c00b1c6f6623dfeff2d92ca85aa3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21b5522f07519e9a0c3353cb2463e0ec49063f34
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042428"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713421"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Řešení potíží s konektory Azure Data Factory
 
@@ -555,7 +555,109 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 - **Příčina**: Server Dynamics je nestabilní nebo nedostupný, nebo v síti dochází k problémům.
 
 - **Doporučení**: Další podrobnosti najdete v části připojení k síti nebo v protokolu Dynamics serveru. Pokud chcete získat další pomoc, obraťte se na podporu Dynamics.
+
+
+### <a name="error-code--dynamicsfailedtoconnect"></a>Kód chyby: DynamicsFailedToConnect 
+ 
+ - **Zpráva**: `Failed to connect to Dynamics: %message;` 
+ 
+
+ - **Příčina**: Pokud se zobrazí `Office 365 auth with OAuth failed` v chybové zprávě, znamená to, že váš server nemusí mít některé konfigurace kompatibilní s OAuth. 
+ 
+ - **Doporučení:** 
+    1. Požádejte o pomoc tým podpory Dynamics s podrobnou chybovou zprávou.  
+    1. Použijte ověřování instančního objektu a můžete se podívat na tento článek: [Příklad: Dynamics Online pomocí služby Azure AD – zabezpečení a ověřování certifikátů](https://docs.microsoft.com/azure/data-factory/connector-dynamics-crm-office-365#example-dynamics-online-using-azure-ad-service-principal-and-certificate-authentication). 
+ 
+
+ - **Příčina**: Pokud se zobrazí `Unable to retrieve authentication parameters from the serviceUri` chybová zpráva, znamená to, že buď zadáte špatnou adresu URL služby Dynamics nebo proxy/bránu firewall pro zachycení provozu. 
+ 
+ - **Doporučení:**
+    1. Ujistěte se, že jste do propojené služby umístili správný identifikátor URI služby. 
+    1. Pokud používáte technologii IR s místním hostováním, zajistěte, aby brána firewall nebo proxy nezachytil požadavky na server Dynamics. 
+   
+ 
+ - **Příčina**: Pokud se zobrazí `An unsecured or incorrectly secured fault was received from the other party` chybová zpráva, znamená to, že na straně serveru byly zjištěny neočekávané odpovědi. 
+ 
+ - **Doporučení:** 
+    1. Pokud používáte ověřování systému Office 365, ujistěte se, že je správné uživatelské jméno a heslo. 
+    1. Ujistěte se, že jste zadali správný identifikátor URI služby. 
+    1. Pokud použijete adresu URL místního CRM (adresa URL má číslo po ' CRM '), ujistěte se, že používáte správný regionální identifikátor.
+    1. Pokud chcete získat pomoc, obraťte se na tým podpory Dynamics. 
+ 
+
+ - **Příčina**: Pokud se zobrazí `No Organizations Found` chybová zpráva, znamená to, že název vaší organizace je chybný nebo jste v adrese URL služby použili špatný identifikátor oblasti CRM. 
+ 
+ - **Doporučení:** 
+    1. Ujistěte se, že jste zadali správný identifikátor URI služby.
+    1. Pokud použijete adresu URL místního CRM (adresa URL má číslo po ' CRM '), ujistěte se, že používáte správný regionální identifikátor. 
+    1. Pokud chcete získat pomoc, obraťte se na tým podpory Dynamics. 
+
+ 
+ - **Příčina**: Pokud se zobrazí `401 Unauthorized` chybová zpráva týkající se AAD, znamená to, že došlo k potížím s instančním objektem. 
+
+ - **Doporučení**: Opravte problém instančního objektu podle pokynů v chybové zprávě.  
+ 
+ 
+ - **Příčina**: u jiných chyb je obvykle problém na straně serveru. 
+
+ - **Doporučení**: k vytvoření připojení použijte [aplikace xrmtoolbox](https://www.xrmtoolbox.com/) . Pokud chyba přetrvává, požádejte o pomoc tým podpory Dynamics. 
+ 
+ 
+### <a name="error-code--dynamicsoperationfailed"></a>Kód chyby: DynamicsOperationFailed 
+ 
+- **Zpráva**: `Dynamics operation failed with error code: %code;, error message: %message;.` 
+
+- **Příčina**: operace se na straně serveru nezdařila. 
+
+- **Doporučení**: Extrahujte kód chyby operace Dynamics z chybové zprávy: a podrobnější `Dynamics operation failed with error code: {code}` informace najdete v článku [kódy chyb webové služby](https://docs.microsoft.com/powerapps/developer/data-platform/org-service/web-service-error-codes) . V případě potřeby můžete kontaktovat tým podpory Dynamics. 
+ 
+ 
+### <a name="error-code--dynamicsinvalidfetchxml"></a>Kód chyby: DynamicsInvalidFetchXml 
   
+- **Zpráva**: `The Fetch Xml query specified is invalid.` 
+
+- **Příčina**: v Fetch XML existuje chyba.  
+
+- **Doporučení**: Opravte chybu v souboru Fetch XML. 
+ 
+ 
+### <a name="error-code--dynamicsmissingkeycolumns"></a>Kód chyby: DynamicsMissingKeyColumns 
+ 
+- **Zpráva**: `Input DataSet must contain keycolumn(s) in Upsert/Update scenario. Missing key column(s): %column;`
+ 
+- **Příčina**: zdrojová data neobsahují klíčový sloupec pro entitu jímky. 
+
+- **Doporučení**: potvrďte, že klíčové sloupce jsou ve zdrojových datech, nebo namapujte zdrojový sloupec na klíčový sloupec v entitě jímky. 
+ 
+ 
+### <a name="error-code--dynamicsprimarykeymustbeguid"></a>Kód chyby: DynamicsPrimaryKeyMustBeGuid 
+ 
+- **Zpráva**: `The primary key attribute '%attribute;' must be of type guid.` 
+ 
+- **Příčina**: typ sloupce primárního klíče není ' GUID '. 
+ 
+- **Doporučení**: Ujistěte se, že sloupec primárního klíče ve zdrojových datech je typu GUID. 
+ 
+
+### <a name="error-code--dynamicsalternatekeynotfound"></a>Kód chyby: DynamicsAlternateKeyNotFound 
+ 
+- **Zpráva**: `Cannot retrieve key information of alternate key '%key;' for entity '%entity;'.` 
+ 
+- **Příčina**: zadaný alternativní klíč neexistuje, což může být způsobeno špatnými názvy klíčů nebo nedostatečnými oprávněními. 
+ 
+- **Doporučení:** <br/> 
+    1. Opravte překlepy v názvu klíče.<br/> 
+    1. Ujistěte se, že pro entitu máte dostatečná oprávnění. 
+ 
+ 
+### <a name="error-code--dynamicsinvalidschemadefinition"></a>Kód chyby: DynamicsInvalidSchemaDefinition 
+ 
+- **Zpráva**: `The valid structure information (column name and type) are required for Dynamics source.` 
+ 
+- **Příčina**: sloupce jímky v mapování sloupce nevedly vlastnost Type. 
+ 
+- **Doporučení**: vlastnost Type můžete přidat do těchto sloupců v mapování sloupce pomocí editoru JSON na portálu. 
+
 
 ## <a name="ftp"></a>FTP
 

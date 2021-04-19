@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 7446b2050fdd7bbc7704953c053da0629231191c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22a0629d50ee8181ffcbfe7dad32ab76fb3e68fd
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715118"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714159"
 ---
 # <a name="select-a-vmware-migration-option"></a>Vybrat možnost migrace VMware
 
@@ -34,7 +34,8 @@ Tato vybraná porovnání vám pomůžou rozhodnout, kterou metodu použít. Mů
 **Cílový disk** | Spravované disky | Spravované disky
 **Omezení disku** | Disk s operačním systémem: 2 TB<br/><br/> Datový disk: 32 TB<br/><br/> Maximální počet disků: 60 | Disk s operačním systémem: 2 TB<br/><br/> Datový disk: 32 TB<br/><br/> Maximální počet disků: 63
 **Průchozí disky** | Nepodporováno | Podporováno
-**Spouštění UEFI** | Podporuje se. | Podporuje se.
+**Spouštění UEFI** | Podporuje se. | Podporuje se. 
+**Připojení** | Veřejný Internet <br/> ExpressRoute s partnerským vztahem Microsoftu <br/> <br/> [Naučte](./replicate-using-expressroute.md) se používat privátní koncové body pro replikaci prostřednictvím privátního partnerského vztahu ExpressRoute nebo připojení S2S VPN. |Veřejný Internet <br/> ExpressRoute se soukromým partnerským vztahem <br/> ExpressRoute s partnerským vztahem Microsoftu <br/> Site-to-site VPN
 
 ## <a name="compare-deployment-steps"></a>Porovnání kroků nasazení
 

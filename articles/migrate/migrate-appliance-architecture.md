@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: f3a94576ef58eabf9d747c6e6c3a6372569d4cf1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4fc71f3242cc5607acebc68b62c5c0565b8f8e56
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785236"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107715005"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektura zařízení Azure Migrate
 
@@ -63,7 +63,7 @@ Zařízení komunikuje se zdroji zjišťování pomocí následujícího procesu
 ---|---|---|---
 **Spustit zjišťování** | Zařízení ve výchozím nastavení komunikuje s vCenter serverem na portu TCP 443. Pokud Server vCenter naslouchá na jiném portu, můžete ho nakonfigurovat ve Správci konfigurace zařízení. | Zařízení komunikuje s hostiteli Hyper-V na portu WinRM 5985 (HTTP). | Zařízení komunikuje se servery Windows prostřednictvím protokolu WinRM 5985 (HTTP) se servery Linux přes port 22 (TCP).
 **Shromažďování metadat konfigurace a výkonu** | Zařízení shromažďuje metadata serverů běžících na vCenter Server pomocí rozhraní API vSphere, a to připojením na portu 443 (výchozí port) nebo na jiném portu, na kterém naslouchá vCenter Server. | Zařízení shromažďuje metadata serverů, které běží na hostitelích Hyper-V, pomocí relace model CIM (Common Information Model) (CIM) s hostiteli na portu 5985.| Zařízení shromažďuje metadata ze serverů Windows pomocí relace model CIM (Common Information Model) (CIM) se servery na portu 5985 a ze serverů se systémem Linux pomocí připojení SSH na portu 22.
-**Odeslat data zjišťování** | Zařízení odesílá shromážděná data do Azure Migrate: zjišťování a vyhodnocení a Azure Migrate: Migrace serveru přes SSL port 443.<br/><br/> Zařízení se může připojit k Azure přes Internet nebo přes ExpressRoute (vyžaduje partnerský vztah Microsoftu). | Zařízení odesílá shromážděná data do Azure Migrate: zjišťování a posouzení přes port SSL 443.<br/><br/> Zařízení se může připojit k Azure přes Internet nebo přes ExpressRoute (vyžaduje partnerský vztah Microsoftu).| Zařízení odesílá shromážděná data do Azure Migrate: zjišťování a posouzení přes port SSL 443.<br/><br/> Zařízení se může připojit k Azure přes Internet nebo přes ExpressRoute (vyžaduje partnerský vztah Microsoftu).
+**Odeslat data zjišťování** | Zařízení odesílá shromážděná data do Azure Migrate: zjišťování a vyhodnocení a Azure Migrate: Migrace serveru přes SSL port 443.<br/><br/>  Zařízení se může připojit k Azure přes Internet nebo prostřednictvím privátního partnerského vztahu ExpressRoute nebo Microsoft peering okruhu. | Zařízení odesílá shromážděná data do Azure Migrate: zjišťování a posouzení přes port SSL 443.<br/><br/> Zařízení se může připojit k Azure přes Internet nebo prostřednictvím privátního partnerského vztahu ExpressRoute nebo Microsoft peering okruhu. | Zařízení odesílá shromážděná data do Azure Migrate: zjišťování a posouzení přes port SSL 443.<br/><br/> Zařízení se může připojit k Azure přes Internet nebo prostřednictvím privátního partnerského vztahu ExpressRoute nebo Microsoft peering okruhu. 
 **Frekvence shromažďování dat** | Metadata konfigurace se shromažďují a odesílají každých 30 minut. <br/><br/> Metadata o výkonu se shromažďují každých 20 sekund a agreguje se, aby se do Azure odesílal datový bod každých 10 minut. <br/><br/> Data inventáře softwaru se do Azure odesílají každých 12 hodin. <br/><br/> Data závislostí bez agentů se shromažďují každých 5 minut, agregovaná na zařízení a odesílaná do Azure každých 6 hodin. <br/><br/> Konfigurační data SQL Server se aktualizují jednou za 24 hodin a data o výkonu se zaznamenávají každých 30 sekund.| Metadata konfigurace se shromažďují a odesílají každých 30 minut. <br/><br/> Metadata o výkonu se shromažďují každých 30 sekund a agreguje se, aby se do Azure odesílal datový bod každých 10 minut.|  Metadata konfigurace se shromažďují a odesílají každých 30 minut. <br/><br/> Metadata o výkonu se shromažďují každých 5 minut a agreguje se, aby se do Azure odesílal datový bod každých 10 minut.
 **Posouzení a migrace** | Můžete vytvořit posouzení z metadat shromážděných zařízením pomocí nástroje Azure Migrate: Discovery and Assessment Tool.<br/><br/>Kromě toho můžete také začít migrovat servery běžící v prostředí VMware pomocí Azure Migrate: Nástroj pro migraci serveru pro orchestraci replikace serveru bez agenta.| Můžete vytvořit posouzení z metadat shromážděných zařízením pomocí nástroje Azure Migrate: Discovery and Assessment Tool. | Můžete vytvořit posouzení z metadat shromážděných zařízením pomocí nástroje Azure Migrate: Discovery and Assessment Tool.
 

@@ -2,13 +2,13 @@
 title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
-ms.date: 11/13/2018
-ms.openlocfilehash: b13eb22ad11535114b1cb82630bc1b490a03173f
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 04/14/2021
+ms.openlocfilehash: 144a5e26f5ad10d120a49f6a0385c3a310448dbc
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517568"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713673"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -28,7 +28,7 @@ Tento článek vysvětluje, jak připravit prostředí pro zálohování úloh p
 >
 >
 
-MABS nasazené na virtuálním počítači Azure může zálohovat virtuální počítače v Azure, ale měly by být ve stejné doméně, aby se povolila operace zálohování. Proces pro zálohování virtuálního počítače Azure zůstává stejný jako zálohování virtuálních počítačů místně, ale nasazení MABS v Azure má určitá omezení. Další informace o omezeních najdete v tématu [DPM jako virtuální počítač Azure](/system-center/dpm/install-dpm#setup-prerequisites) .
+MABS nasazené na virtuálním počítači Azure může zálohovat virtuální počítače v Azure, ale měly by být ve stejné doméně, aby se povolila operace zálohování. Proces pro zálohování virtuálního počítače Azure zůstává stejný jako zálohování virtuálních počítačů místně, ale nasazení MABS v Azure má určitá omezení. Další informace o omezeních najdete v tématu [DPM jako virtuální počítač Azure](/system-center/dpm/install-dpm#setup-prerequisites).
 
 > [!NOTE]
 > Azure má dva modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../azure-resource-manager/management/deployment-models.md). Tento článek popisuje informace a postupy pro obnovení virtuálních počítačů nasazených pomocí modelu Správce prostředků.
@@ -41,8 +41,8 @@ Azure Backup Server zdědí většinu funkcí zálohování úloh z Data Protect
 
 Prvním krokem k zahájení a spuštění Azure Backup Server je nastavení Windows serveru. Váš server může být v Azure nebo v místním prostředí.
 
-* K ochraně místních úloh se musí MABS Server nacházet místně.
-* Aby bylo možné chránit úlohy běžící na virtuálních počítačích Azure, musí být server MABS umístěný v Azure, který běží jako virtuální počítač Azure.
+* K ochraně místních úloh musí být server MABS místně umístěný a připojený k doméně.
+* Aby bylo možné chránit úlohy běžící na virtuálních počítačích Azure, musí být server MABS umístěný v Azure, spuštěný jako virtuální počítač Azure a připojený k doméně.
 
 ### <a name="using-a-server-in-azure"></a>Použití serveru v Azure
 
@@ -72,7 +72,7 @@ Pomocí odstranění duplicitních dat systému Windows Server můžete odstrani
 >
 > Instalace Azure Backup Server není podporovaná na jádru Windows serveru nebo na serveru Microsoft Hyper-V.
 
-Vždy připojte Azure Backup Server k doméně. Pokud plánujete přesunout server do jiné domény, nainstalujte nejprve Azure Backup Server a pak připojte Server k nové doméně. Přesunutí stávajícího Azure Backup Serverho počítače do nové domény po nasazení se *nepodporuje*.
+Vždy připojte Azure Backup Server k doméně. Přesunutí stávajícího Azure Backup Serverho počítače do nové domény po nasazení se *nepodporuje*.
 
 Bez ohledu na to, jestli odesíláte zálohovaná data do Azure, nebo je uložíte místně, Azure Backup Server musí být zaregistrovaná v Recovery Servicesm trezoru.
 
@@ -276,11 +276,11 @@ Tady je postup, pokud potřebujete přesunout MABS na nový server a zachovat ú
 7. Obnovte DPMDB provedených v kroku 1.
 8. Připojte úložiště k novému serveru z původního záložního serveru.
 9. Z SQL Obnovte DPMDB.
-10. Na novém serveru spusťte CMD (jako správce). Přejít do umístění instalačního Microsoft Azure Backup a složky bin
+10. Na novém serveru spusťte CMD (jako správce). Přejít do složky Microsoft Azure Backup umístění instalace a bin.
 
     Příklad cesty: `C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"`
 
-11. Pokud se chcete připojit k Azure Backup, spusťte `DPMSYNC -SYNC`
+11. Pokud se chcete připojit k Azure Backup, spusťte příkaz `DPMSYNC -SYNC` .
 
     Pokud jste přidali **nové** disky do fondu úložiště DPM místo přesunutí starých těch, spusťte příkaz `DPMSYNC -Reallocatereplica` .
 
@@ -366,7 +366,8 @@ K upgradu MABS použijte následující postup:
 ## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud Microsoft Azure Backup server selhává s chybami během fáze nastavení (nebo zálohování nebo obnovení), najdete další informace v [dokumentu s kódy chyb](https://support.microsoft.com/kb/3041338)  .
-Můžete se také podívat na [Azure Backup souvisejících nejčastějších](backup-azure-backup-faq.yml) dotazech.
+
+Můžete se také podívat na [Azure Backup souvisejících nejčastějších](backup-azure-backup-faq.yml)dotazech.
 
 ## <a name="next-steps"></a>Další kroky
 

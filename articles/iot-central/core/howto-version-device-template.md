@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 93545c63013c95e3db498b079061da3d9b189efd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 03d4b0e43c9f692b90f4ab5d4d136dac92b74de6
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95995756"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107715041"
 ---
 # <a name="create-a-new-device-template-version"></a>Vytvořit novou verzi šablony zařízení
 
@@ -86,7 +86,7 @@ Postup při verzi šablony zařízení:
 
 ## <a name="version-an-interface"></a>Verze rozhraní
 
-Správa verzí rozhraní umožňuje přidat, aktualizovat a odebrat funkce v rozhraní, které jste už vytvořili.
+Správa verzí rozhraní umožňuje přidávat a aktualizovat funkce v rozhraní, které jste už vytvořili.
 
 Verze rozhraní:
 

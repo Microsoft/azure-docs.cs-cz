@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: c4ca8d8ac24ac174158957e44b5eabe4a89a5340
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0bc2b69a4a1ec31cfa560d51920378fe1ab52b8
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775200"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714789"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Nastavení zařízení v Azure Government 
 
@@ -26,7 +26,7 @@ Podle tohoto článku nasaďte [zařízení Azure Migrate](./migrate-appliance-a
 
 Skript nastaví zařízení Azure Migrate na stávajícím fyzickém serveru nebo na virtualizovaném serveru.
 
-- Na serveru, který bude fungovat jako zařízení, musí být spuštěný Windows Server 2016 s 32 GB paměti, osmi vCPU, okolo 80 GB diskového úložiště a externím virtuálním přepínačem. Vyžaduje statickou nebo dynamickou IP adresu a přístup k Internetu.
+- Na serveru, který bude fungovat jako zařízení, musí být spuštěný Windows Server 2016 s 32 GB paměti, osmi vCPU, okolo 80 GB diskového úložiště a externím virtuálním přepínačem. Vyžaduje statickou nebo dynamickou IP adresu. 
 - Před nasazením zařízení si přečtěte podrobné požadavky na zařízení pro [servery v VMware](migrate-appliance.md#appliance---vmware), [Hyper-V](migrate-appliance.md#appliance---hyper-v)a [fyzických serverech](migrate-appliance.md#appliance---physical).
 - Nespouštějte skript na existujícím zařízení Azure Migrate.
 

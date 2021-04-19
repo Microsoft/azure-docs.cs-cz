@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 84a672f76de4b11558f2b39bf417a3eda2e31a36
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6ded5d4ed8c2a55939bba908a05adbd2dea2ccbf
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786528"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714771"
 ---
 # <a name="set-up-dependency-visualization"></a>Nastavení Vizualizace závislostí
 
@@ -54,6 +54,8 @@ Tento článek popisuje, jak nastavit analýzu závislostí založenou na agente
 
     ![Přidat nový pracovní prostor](./media/how-to-create-group-machine-dependencies/workspace.png)
 
+> [!Note]
+> [Naučte](https://docs.microsoft.com/azure/azure-monitor/logs/private-link-security) se nakonfigurovat pracovní prostor OMS pro připojení privátního koncového bodu.  
 
 ## <a name="download-and-install-the-vm-agents"></a>Stažení a instalace agentů virtuálního počítače
 

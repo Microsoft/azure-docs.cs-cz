@@ -130,6 +130,8 @@
   items:
     - name: Vytváření a správa projektů Azure Migrate
       href: create-manage-projects.md
+    - name: Použití Azure Migrate s privátním odkazem
+      href: how-to-use-azure-migrate-with-private-endpoints.md
     - name: Příprava na práci s nástroji ISV / Movere
       href: prepare-isv-movere.md
     - name: Zjišťování

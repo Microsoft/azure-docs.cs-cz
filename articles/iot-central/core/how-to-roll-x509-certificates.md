@@ -7,12 +7,12 @@ ms.date: 07/31/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a9e35c7d4d64279c65971dd512bcd2107dad6594
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c25af944b4c748307f4f974ca8616ecc9f7b28c3
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92000068"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714519"
 ---
 # <a name="how-to-roll-x509-device-certificates-in-iot-central-application"></a>Postup při navrácení certifikátů zařízení X. 509 v aplikaci IoT Central
 
@@ -23,7 +23,7 @@ Pokud máte porušení zabezpečení, jedná se o osvědčené postupy zabezpeč
 
 ## <a name="obtain-new-x509-certificates"></a>Získání nových certifikátů X. 509
 
-Pomocí nástroje, jako je OpenSSL, můžete vytvořit vlastní certifikáty X. 509. Tento přístup je skvělý pro testování certifikátů X. 509, ale poskytuje několik záruk týkajících se zabezpečení. Tento přístup používejte jenom pro testování, pokud jste se připravili jako poskytovatel vaší certifikační autority.
+Pomocí nástroje, jako je OpenSSL, můžete vytvořit vlastní certifikáty X. 509. Tento přístup je skvělý pro testování certifikátů X. 509, ale poskytuje několik záruk týkajících se zabezpečení. Tento přístup používejte jenom pro testování, pokud nejste připravení jednat jako poskytovatel vlastní certifikační autority.
 
 ## <a name="enrollment-groups-and-security-breaches"></a>Skupiny registrací a porušení zabezpečení
 

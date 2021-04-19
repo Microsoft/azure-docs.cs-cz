@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování S
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: bcbac4f6a91ad77d21eb6274aa03d251b8fbfe7c
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 354f64eb86cd545860c47562fba7ff43babe72ca
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515052"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714141"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Matice podpory pro zálohování SQL Server ve virtuálních počítačích Azure
 
@@ -97,7 +97,7 @@ Copy-Only úplné |  Sekundární
 
 Azure Backup podporuje konzistentní rychlost přenosu dat 200 MB/s pro úplné a rozdílové zálohy rozsáhlých databází SQL (z 500 GB). Chcete-li využít optimální výkon, zajistěte, aby:
 
-- Základní virtuální počítač (obsahující instanci SQL Server, která je hostitelem databáze), je nakonfigurován s požadovanou propustností sítě. Pokud je maximální propustnost virtuálního počítače menší než 200 MB/s, Azure Backup nemůže přenášet data při optimální rychlosti.<br></br>Také disk, který obsahuje soubory databáze, musí mít zřízenou dostatečnou propustnost. [Přečtěte si další informace](../virtual-machines/disks-performance.md) o propustnosti a výkonu disku ve virtuálních počítačích Azure. 
+- Základní virtuální počítač (obsahující instanci SQL Server, která je hostitelem databáze), je nakonfigurován s požadovanou propustností sítě. Pokud je maximální propustnost virtuálního počítače menší než 200 MB/s, Azure Backup nemůže přenášet data při optimální rychlosti.<br>Také disk, který obsahuje soubory databáze, musí mít zřízenou dostatečnou propustnost. [Přečtěte si další informace](../virtual-machines/disks-performance.md) o propustnosti a výkonu disku ve virtuálních počítačích Azure. 
 - Procesy, které běží na virtuálním počítači, nespotřebovávají šířku pásma virtuálních počítačů. 
 - Plány zálohování jsou rozloženy mezi podmnožinou databází. Více záloh spuštěných současně na virtuálním počítači sdílí míru spotřeby sítě mezi zálohami. [Přečtěte si další informace](faq-backup-sql-server.yml#can-i-control-how-many-concurrent-backups-run-on-the-sql-server-) o tom, jak řídit počet souběžných záloh.
 

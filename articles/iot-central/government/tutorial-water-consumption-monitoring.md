@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 476a0c2d75dcbee5c1ed4d758e0cbc9d4726ff95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b65013bbf21faa8bffdcf799a991952b69f5fead
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587192"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714465"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Kurz: Vytvoření aplikace monitorování spotřeby vody pomocí Azure IoT Central
 
@@ -200,22 +200,23 @@ Vytvořená aplikace pro monitorování spotřeby vody má tři předem nakonfig
 
    ![Podokno pravidla](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-rules.png)
 
-1. Vyberte **vysoké upozornění pH**, což je jedno z předkonfigurovaných pravidel v aplikaci.
+1. Vyberte **výstrahu vysokého toku**, což je jedno z předkonfigurovaných pravidel v aplikaci.
 
      ![Výstraha s vysokým pH](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 
-    `High flow alert`Pravidlo je nakonfigurováno pro kontrolu proti této podmínce `Acidity (pH)` je `greater than` `Max flow threshold` . Maximální prahová hodnota toku je cloudová vlastnost definovaná v šabloně zařízení **čipového ventilu** . Hodnota `Max flow threshold` je nastavená na instanci zařízení.
+    `High water flow alert`Pravidlo je nakonfigurováno pro kontrolu proti této podmínce `Flow` je `greater than` `Max flow threshold` . Maximální prahová hodnota toku je cloudová vlastnost definovaná v šabloně zařízení **čipového ventilu** . Hodnota `Max flow threshold` je nastavená na instanci zařízení.
 
 Nyní vytvoříme akci e-mailu.
 
 Postup přidání akce k pravidlu:
 
 1. Vyberte **+ e-mail**.
-1. Jako popisný **Zobrazovaný název** pro akci zadejte **vysoké výstrahy pH** .
+1. Jako popisný **Zobrazovaný název** pro akci zadejte **výstrahu vysokého toku** .
 1. Zadejte e-mailovou adresu přidruženou k vašemu účtu Azure **IoT Central v aplikaci**.
 1. Volitelně můžete zadat poznámku, která se má zahrnout do textu e-mailu.
 1. Akci dokončete výběrem možnosti **Hotovo** .
-1. Kliknutím na **Uložit** uložte a aktivujte nové pravidlo.
+1. Kliknutím na **Uložit** uložte nové pravidlo.
+1. Povolte pravidlo.
 
 Během několika minut byste měli obdržet e-mail po splnění nakonfigurované podmínky.
 

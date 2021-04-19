@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 91556087cd3e7ccd85550c721f70b8608fdc4ffd
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 9ebc6e266c93e55bc250e8450356f8b695dd9080
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168446"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714987"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
 
@@ -95,7 +95,7 @@ Následující obrázek zvýrazňuje oblast geografického rozkladu modře. Tras
 
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 
-Pokud chcete uložit data sledování narušení auta, vytvořte ve skupině prostředků [účet úložiště pro obecné účely v2](../storage/common/storage-account-overview.md#general-purpose-v2-accounts) . Pokud jste ještě nevytvořili skupinu prostředků, postupujte podle pokynů v části [Vytvoření skupiny prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups). V tomto kurzu Pojmenujte skupinu prostředků *ContosoRental*.
+Pokud chcete uložit data sledování narušení auta, vytvořte ve skupině prostředků [účet úložiště pro obecné účely v2](../storage/common/storage-account-overview.md) . Pokud jste ještě nevytvořili skupinu prostředků, postupujte podle pokynů v části [Vytvoření skupiny prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups). V tomto kurzu Pojmenujte skupinu prostředků *ContosoRental*.
 
 Pokud chcete vytvořit účet úložiště, postupujte podle pokynů v části [Vytvoření účtu úložiště](../storage/common/storage-account-create.md?tabs=azure-portal). V tomto kurzu pojmenujte účet úložiště *contosorentalstorage*, ale obecně ho můžete pojmenovat sami.
 

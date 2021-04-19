@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 2a37d206955e3372b9ecf97be8d27142bd417192
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: bf6b06ba7cc7f547f752ffa7877fca186ba4465e
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490450"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713781"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Připojení úložiště objektů BLOB pomocí protokolu NFS (Network File System) 3,0 (Preview)
 
@@ -68,15 +68,15 @@ Váš účet úložiště musí být obsažený v rámci virtuální sítě. Vir
 
 ## <a name="step-4-configure-network-security"></a>Krok 4: Konfigurace zabezpečení sítě
 
-Jediným způsobem, jak zabezpečit data v účtu, je použít virtuální síť a další nastavení zabezpečení sítě. Jakýkoli jiný nástroj, který se používá k zabezpečení dat, včetně ověřování klíčů účtu, Azure Active Directory (AD) a seznamů řízení přístupu (ACL), se zatím nepodporují v účtech s povolenou podporou protokolu NFS 3,0. 
+Jediným způsobem, jak zabezpečit data v účtu, je použít virtuální síť a další nastavení zabezpečení sítě. Jakýkoli jiný nástroj, který se používá k zabezpečení dat, včetně ověřování klíčů účtu, Azure Active Directory (AD) a seznamů řízení přístupu (ACL), se zatím nepodporují v účtech s povolenou podporou protokolu NFS 3,0.
 
 Pokud chcete zabezpečit data v účtu, přečtěte si tato doporučení: [doporučení zabezpečení sítě pro úložiště objektů BLOB](security-recommendations.md#networking).
 
 ## <a name="step-5-create-and-configure-a-storage-account"></a>Krok 5: vytvoření a konfigurace účtu úložiště
 
-Pokud chcete připojit kontejner pomocí NFS 3,0, musíte **po** registraci funkce u svého předplatného vytvořit účet úložiště. Nemůžete povolit účty, které existovaly před registrací funkce. 
+Pokud chcete připojit kontejner pomocí NFS 3,0, musíte **po** registraci funkce u svého předplatného vytvořit účet úložiště. Nemůžete povolit účty, které existovaly před registrací funkce.
 
-V rámci verze Preview této funkce je protokol NFS 3,0 podporován v účtech [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) a [obecné účely v2](../common/storage-account-overview.md#general-purpose-v2-accounts) .
+Ve verzi Preview této funkce se podporuje protokol NFS 3,0 pro účty úložiště standard pro obecné účely v2 a pro účty úložiště blob bloku úrovně Premium. Další informace o těchto typech účtů úložiště najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md).
 
 Při konfiguraci účtu vyberte tyto hodnoty:
 

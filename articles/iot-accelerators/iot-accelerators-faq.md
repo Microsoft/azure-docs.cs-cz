@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 1fd2b8461bd66c826dc4890c331b740c4703f896
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61993df77b0831926f16339a741a2553e80c2a0d
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96903985"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713835"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Nejčastější dotazy k akcelerátorům řešení IoT
 
@@ -24,7 +24,7 @@ Přečtěte si také [Nejčastější dotazy k připojeným objektům pro konkr�
 Zdrojový kód je uložený v následujících úložištích GitHub:
 
 * [Akcelerátor řešení propojené továrny](https://github.com/Azure/azure-iot-connected-factory)
-* [Akcelerátor řešení pro simulaci zařízení](https://github.com/Azure/device-simulation-dotnet)
+* [Akcelerátor řešení pro simulaci zařízení](https://github.com/Azure/azure-iot-pcs-device-simulation)
 
 ### <a name="where-can-i-find-the-remote-monitoring-and-predictive-maintenance-solution-accelerators"></a>Kde najdu akcelerátory řešení pro vzdálené monitorování a prediktivní údržbu?
 
@@ -36,7 +36,7 @@ Stávající nasazení nejsou ovlivněná odebráním akcelerátorů řešení v
 
 ### <a name="how-do-i-deploy-device-simulation-solution-accelerator"></a>Návody nasadit akcelerátor řešení pro simulaci zařízení?
 
-Pokud chcete nasadit akcelerátor řešení pro simulaci zařízení, přečtěte si téma úložiště GitHub pro [simulaci zařízení](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) .
+Pokud chcete nasadit akcelerátor řešení pro simulaci zařízení, přečtěte si téma úložiště GitHub pro [simulaci zařízení](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md) .
 
 ### <a name="where-can-i-find-information-about-the-removed-solution-accelerators"></a>Kde najdu informace o odebraných akcelerátorech řešení?
 

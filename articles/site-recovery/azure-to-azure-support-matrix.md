@@ -3,12 +3,12 @@ title: Matice podpory pro zotavení po havárii virtuálního počítače Azure 
 description: Shrnuje podporu zotavení po havárii virtuálních počítačů Azure do sekundární oblasti pomocí Azure Site Recovery.
 ms.topic: article
 ms.date: 11/29/2020
-ms.openlocfilehash: 02268471d58cbd473493b6001aa9f1df271077bb
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 79cde5957b2090b8337a3af424dbda7e42608398
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376150"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713331"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -46,21 +46,21 @@ Virtuální počítače můžete replikovat a obnovovat mezi dvěma oblastmi v r
 Používaný | Kanada – východ, Kanada – střed, Střed USA – jih, Středozápadní USA, Východní USA, Východní USA 2, Západní USA, Západní USA 2, Střed USA, Střed USA – sever
 Evropa | Velká Británie – západ, Velká Británie – jih, Severní Evropa, Západní Evropa, Jižní Afrika – západ, Jižní Afrika – sever, Norsko – východ, Francie – střed, Švýcarsko – sever, Německo – středozápad
 Asie | Jižní Indie, Střed Indie, Západní Indie, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – střed, Jižní Korea
+JIO | JIO Indie – západ
 Austrálie    | Austrálie – východ, Austrálie – jihovýchod, Austrálie – střed, Austrálie – střed 2
 Azure Government    | US GOV) – Virginia, US GOV Iowa, US GOV Arizona, US GOV Texas, US DOD – východ, US DOD – střed
 Německo    | Německo – střed, Německo – severovýchod
 Čína | Čína – východ, Čína – sever, Čína North2, Čína – východ 2
-Omezené oblasti rezervované pro zotavení po havárii v zemi |Švýcarsko – západ vyhrazena pro Švýcarsko – sever, Francie – jih vyhrazená pro Francii – střed, středová Spojené arabské EMIRÁTYa pro Spojené arabské emiráty sever, Norsko – západ pro zákazníky v Norsku – východ
+Brazílie | Brazílie – jih
+Omezené oblasti rezervované pro zotavení po havárii v zemi |Švýcarsko – západ vyhrazena pro Švýcarsko – sever, Francie – jih vyhrazená pro Francii – střed, střed USA – západ, USA – střed, JIO Indie – střed pro JIO Indie západní zákazníky, Brazílie – jihovýchod pro Brazílie – jih
 
 >[!NOTE]
 >
-> - Pro oblast **Brazílie – jih** můžete replikovat a přenášet služby při selhání do těchto oblastí: Střed USA – jih, Středozápadní USA, Východní USA, Východní USA 2, Západní USA, Západní USA 2 a střed USA – sever.
-> - Brazílie – jih se dá použít jenom jako zdrojová oblast, ze které se můžou virtuální počítače replikovat pomocí Site Recovery. Nemůže fungovat jako cílová oblast. Důvodem je příčiny potíží s latencí z důvodu zeměpisné vzdálenosti. Počítejte s tím, že Pokud převezmete služby při selhání z Brazílie – jih jako zdrojové oblasti cíle, je podporována navrácení služeb po obnovení do Brazílie – jih od cílové oblasti.
+> - Pro oblast **Brazílie – jih** můžete replikovat a přenášet služby při selhání do těchto oblastí: Brazílie – jihovýchod, Střed USA – jih, Středozápadní USA, Východní USA, Východní USA 2, Západní USA, Západní USA 2 a střed USA – sever.
+> - Brazílie – jih se dá použít jenom jako zdrojová oblast, ze které se můžou virtuální počítače replikovat pomocí Site Recovery. Nemůže fungovat jako cílová oblast. Důvodem je příčiny potíží s latencí z důvodu zeměpisné vzdálenosti. Počítejte s tím, že Pokud převezmete služby při selhání z Brazílie – jih jako zdrojové oblasti cíle, je podporována navrácení služeb po obnovení do Brazílie – jih od cílové oblasti. Brazílie – jihovýchod jde použít jenom jako cílovou oblast.
 > - Můžete pracovat v oblastech, pro které máte odpovídající přístup.
 > - Pokud se v oblasti, ve které chcete vytvořit trezor, nezobrazí, ujistěte se, že vaše předplatné má přístup k vytváření prostředků v této oblasti.
 > - Pokud při povolování replikace nevidíte oblast v rámci geografického clusteru, ujistěte se, že vaše předplatné má oprávnění k vytváření virtuálních počítačů v této oblasti.
-
-
 
 ## <a name="cache-storage"></a>Úložiště mezipaměti
 

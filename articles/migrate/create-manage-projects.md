@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: cb0ac41d469ad9a7670ce4b1bae23b315a17dc38
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c9102f8ca724e431bb478945c5f4ba0369643d6
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871056"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714828"
 ---
 # <a name="create-and-manage-projects"></a>Vytváření a správa projektů
 
@@ -46,9 +46,13 @@ Nastavte nový projekt v předplatném Azure.
 5. V části **vytvořit projekt** vyberte předplatné Azure a skupinu prostředků. Vytvořte skupinu prostředků, pokud ji nemáte.
 6. V části **Project Details (podrobnosti projektu**) zadejte název projektu a zeměpisnou oblast, ve které chcete vytvořit projekt.
     - Zeměpisná oblast se používá jenom k ukládání metadat shromážděných z místních serverů. Můžete vybrat libovolnou cílovou oblast pro migraci. 
-    - Projděte si podporované geografické oblasti pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government).
+    - Projděte si podporované geografické oblasti pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government). 
 
-8. Vyberte **Vytvořit**.
+
+    > [!Note]
+    > Pomocí oddílu **Pokročilé** konfigurace můžete vytvořit Azure Migrate projekt s připojením privátního koncového bodu. [Další informace](how-to-use-azure-migrate-with-private-endpoints.md#create-a-project-with-private-endpoint-connectivity) 
+
+7. Vyberte **Vytvořit**.
 
      :::image type="content" source="./media/create-manage-projects/project-details.png" alt-text="Nastavení stránky na vstupní projekt":::
 

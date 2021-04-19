@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/09/2021
+ms.date: 04/16/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 44ba2e39de37703de66aefd1fe843d0ca5002b6b
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2c4dcaaa1deaa50d620e7c24dacbe56fa91c217f
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256969"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713439"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Vlastní ověření e-mailu pomocí SendGrid
 
@@ -42,6 +42,9 @@ Vlastní ověřování e-mailu vyžaduje použití poskytovatele e-mailu jiného
 Pokud ho ještě nemáte, začněte nastavením účtu SendGrid (zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mailů). Pokyny k instalaci najdete v části [Vytvoření účtu SendGrid](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account) tématu [Jak odesílat e-maily pomocí SendGrid s Azure](../sendgrid-dotnet-how-to-send-email.md).
 
 Ujistěte se, že jste dokončili oddíl, ve kterém [vytvoříte klíč rozhraní SendGrid API](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key). Zaznamenejte klíč rozhraní API pro použití v pozdějším kroku.
+
+> [!IMPORTANT]
+> SendGrid nabízí zákazníkům možnost posílat e-maily ze sdílených IP [adres a vyhrazených IP adres](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/). Při použití vyhrazených IP adres je potřeba vytvořit si vlastní pověst správně s IP adresou zahřívání. Další informace najdete v tématu [zahřívání IP adresy](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/).
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Vytvořit klíč zásad Azure AD B2C
 

@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 86f4f31d45acd99ca97cfb48081d87c632da5c96
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 97e589755602c14a11873fee5288ee8c6e24ba83
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587659"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714273"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
@@ -179,7 +179,7 @@ Pro soukromý koncový bod, který jste vytvořili, by teď měly být nakonfigu
 
 #### <a name="privatelink-monitor-azure-com"></a>Privatelink-monitor – Azure-com
 Tato zóna pokrývá globální koncové body, které používá Azure Monitor, což znamená, že tyto koncové body slouží k zvažování všech prostředků, nikoli konkrétního. Tato zóna by měla mít namapované koncové body pro:
-* `in.ai` – (Application Insights koncový bod ingestování, zobrazí se globální a místní položka.
+* `in.ai` -Application Insights koncový bod ingestování (globální i místní položka)
 * `api` -Application Insights a Log Analytics koncový bod rozhraní API
 * `live` -Application Insights aktivní koncový bod metriky
 * `profiler` -Application Insights koncový bod profileru
@@ -197,8 +197,15 @@ Tato zóna pokrývá mapování specifického pracovního prostoru do koncových
 Tato zóna pokrývá mapování specifického pracovního prostoru do koncových bodů služby Agent Automation. Měla by se zobrazit položka pro každý pracovní prostor propojený s AMPLS připojeným k tomuto privátnímu koncovému bodu.
 [![Snímek obrazovky Privátní DNS agenta zóny svc-Azure-Automation-NET.](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net.png)](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net-expanded.png#lightbox)
 
+#### <a name="privatelink-blob-core-windows-net"></a>privatelink-BLOB-Core-Windows-NET
+Tato zóna nakonfiguruje připojení k účtu úložiště balíčků globálních agentů. Prostřednictvím IT agenti mohou stahovat nové nebo aktualizované balíčky řešení (označované také jako sady Management Pack). Pro obsluhu Log Analyticsch agentů se vyžaduje jenom jedna položka bez ohledu na to, kolik pracovních prostorů se používá.
+[![Snímek obrazovky Privátní DNS objektů BLOB zóny – Core-Windows-NET](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net.png)](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net-expanded.png#lightbox)
+> [!NOTE]
+> Tato položka je přidána pouze do nastavení privátních odkazů vytvořených v 19. dubna 2021.
+
+
 ### <a name="validating-you-are-communicating-over-a-private-link"></a>Ověřování, které komunikujete prostřednictvím privátního odkazu
-* Pokud chcete ověřit, že se vaše požadavky odesílají prostřednictvím privátního koncového bodu a privátních koncových bodů mapovaných přes IP adresu, můžete je zkontrolovat pomocí sledování sítě pro nástroje nebo dokonce i v prohlížeči. Například při pokusu o dotazování pracovního prostoru nebo aplikace se ujistěte, že je žádost odeslána privátní IP adresa mapovaná na koncový bod rozhraní API, v tomto příkladu je to *172.17.0.9*.
+* Chcete-li ověřit, že vaše požadavky jsou nyní odesílány prostřednictvím privátního koncového bodu a privátních koncových bodů mapovaných pomocí protokolu IP, můžete je zkontrolovat pomocí nástroje pro sledování sítě nebo dokonce i v prohlížeči. Například při pokusu o dotazování pracovního prostoru nebo aplikace se ujistěte, že je žádost odeslána privátní IP adresa mapovaná na koncový bod rozhraní API, v tomto příkladu je to *172.17.0.9*.
 
     Poznámka: některé prohlížeče můžou používat další nastavení DNS (viz [nastavení DNS v prohlížeči](#browser-dns-settings)). Ujistěte se, že platí nastavení DNS.
 
@@ -217,7 +224,7 @@ Přejděte na Azure Portal. V nabídce prostředku Log Analytics pracovního pro
 Na této obrazovce se zobrazí všechny rozsahy připojené k pracovnímu prostoru. Připojení k oborům (AMPLSs) umožňuje přístup k tomuto pracovnímu prostoru ze sítě z virtuální sítě připojené ke každému AMPLS. Vytvoření připojení prostřednictvím tohoto umístění má stejný účinek jako nastavení v oboru, stejně jako v souvislosti s [připojením Azure Monitorch prostředků](#connect-azure-monitor-resources). Chcete-li přidat nové připojení, vyberte možnost **Přidat** a vyberte Azure monitor obor privátních odkazů. Pokud ho chcete připojit, vyberte **použít** . Všimněte si, že se pracovní prostor může připojit k 5 AMPLS objektům, jak je uvedeno v [omezeních a omezeních](#restrictions-and-limitations). 
 
 ### <a name="manage-access-from-outside-of-private-links-scopes"></a>Správa přístupu mimo rozsahy privátních odkazů
-Nastavení v dolní části této stránky řídí přístup z veřejných sítí, což znamená sítě nepřipojené přes výše uvedené obory. Nastavení **povoluje přístup k veřejné síti pro** ingestování **bez** blokování přijímání protokolů z počítačů mimo připojené obory. Nastavení **povoluje přístup k veřejné síti pro dotazy** **bez** dotazů na bloky přicházející z počítačů mimo rozsah. Který zahrnuje dotazy spouštěné prostřednictvím sešitů, řídicích panelů, prostředí klienta založeného na rozhraní API, přehledy Azure Portal a dalších možností. Prostředí spuštěné mimo Azure Portal a dotaz Log Analytics data musí být spuštěná také v rámci virtuální sítě s privátním propojením.
+Nastavení v dolní části této stránky řídí přístup z veřejných sítí, což znamená sítě nepřipojené přes uvedené obory (AMPLSs). Nastavení **povoluje přístup k veřejné síti pro** ingestování **bez** blokování přijímání protokolů z počítačů mimo připojené obory. Nastavení **povoluje přístup k veřejné síti pro dotazy** **bez** dotazů na bloky přicházející z počítačů mimo rozsah. Který zahrnuje dotazy spouštěné prostřednictvím sešitů, řídicích panelů, prostředí klienta založeného na rozhraní API, přehledy Azure Portal a dalších možností. Prostředí spuštěné mimo Azure Portal a dotaz Log Analytics data musí být spuštěná také v rámci virtuální sítě s privátním propojením.
 
 ### <a name="exceptions"></a>Výjimky
 Omezení přístupu, jak je vysvětleno výše, se nevztahuje na Azure Resource Manager a má proto tato omezení:
@@ -228,19 +235,18 @@ Omezení přístupu, jak je vysvětleno výše, se nevztahuje na Azure Resource 
 > Protokoly a metriky nahrané do pracovního prostoru prostřednictvím [nastavení diagnostiky](../essentials/diagnostic-settings.md) přecházejí přes zabezpečený privátní kanál Microsoft a tato nastavení se nekontrolují.
 
 ### <a name="log-analytics-solution-packs-download"></a>Stažení balíčků řešení Log Analytics
+Log Analytics agenti potřebují přístup k globálnímu účtu úložiště, aby mohli stahovat balíčky řešení. Nastavení privátních odkazů, která se vytvořila během 19. dubna 2021, se můžou dostat do úložiště balíčků řešení pro agenty prostřednictvím privátního propojení. To je umožněno prostřednictvím nové zóny DNS vytvořené pro [BLOB.Core.Windows.NET](#privatelink-blob-core-windows-net).
 
-Aby mohl agent Log Analytics stahovat balíčky řešení, přidejte příslušné plně kvalifikované názvy domény do brány firewall povolených. 
+Pokud se vaše nastavení privátního odkazu vytvořilo před 19. dubna 2021, nedosáhnete úložiště balíčků řešení prostřednictvím privátního odkazu. Chcete-li zvládnout, že můžete provést jednu z následujících akcí:
+* Opětovné vytvoření AMPLS a připojení privátního koncového bodu
+* Umožněte vašim agentům přístup k účtu úložiště prostřednictvím jeho veřejného koncového bodu přidáním následujících pravidel do brány firewall povolených:
 
+    | Cloudové prostředí | Prostředek agenta | Porty | Směr |
+    |:--|:--|:--|:--|
+    |Veřejný partnerský vztah Azure     | scadvisorcontent.blob.core.windows.net         | 443 | Odchozí
+    |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Odchozí
+    |Azure (Čína) 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Odchozí
 
-| Cloudové prostředí | Prostředek agenta | Porty | Směr |
-|:--|:--|:--|:--|
-|Veřejný partnerský vztah Azure     | scadvisorcontent.blob.core.windows.net         | 443 | Odchozí
-|Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Odchozí
-|Azure (Čína) 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Odchozí
-
-
->[!NOTE]
-> Od 19. dubna 2021 se výše uvedené nastavení nebude vyžadovat a budete moct získat přístup k účtu úložiště pro balíčky řešení prostřednictvím privátního odkazu. Nová funkce vyžaduje opětovné vytvoření AMPLS (v dubnu 19, 2021 nebo novější) a připojeného privátního koncového bodu. Nebude platit pro stávající AMPLSs a privátní Endpints.
 
 ## <a name="configure-application-insights"></a>Konfigurace Application Insights
 

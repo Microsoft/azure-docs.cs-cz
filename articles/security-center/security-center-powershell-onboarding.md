@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 01/24/2021
+ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: 25639509cfb689e025ea4388f302378648af8ba6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f9ab258f59279112d0b90c5d460e6761ac911a2d
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439489"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713349"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatizace připojování Azure Security Center pomocí prostředí PowerShell
 
@@ -35,7 +35,7 @@ V tomto příkladu povolíme Security Center v předplatném s ID: d07c0080-170c
 
 6. Přiřaďte [výchozí zásady zabezpečení](tutorial-security-policy.md)Security Center.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tyto kroky je potřeba provést před spuštěním rutin Security Center:
 
@@ -75,9 +75,9 @@ Tyto kroky je potřeba provést před spuštěním rutin Security Center:
     > Doporučuje se povolit Automatické zřizování, aby se zajistilo, že se virtuální počítače Azure automaticky chrání pomocí Azure Security Center.
     >
 
-1. Volitelné: Důrazně doporučujeme, abyste definovali informace o kontaktu zabezpečení pro předplatná, která se budou používat jako příjemci výstrah a oznámení vygenerovaných Security Center:
+1. Volitelné: Důrazně doporučujeme, abyste [definovali informace o kontaktu zabezpečení](security-center-provide-security-contact-details.md) pro předplatná, která se budou používat jako příjemci výstrah a oznámení vygenerovaných Security Center:
 
-    ```Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert```
+    ```Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -AlertAdmin -NotifyOnAlert```
 
 1. Přiřaďte výchozí iniciativu zásad Security Center:
 

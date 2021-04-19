@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 10/22/2019
-ms.openlocfilehash: bfb4db5d3ebf69f9c7f552c175d33a8b817d1562
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c94bb23f5d514fef5cdacb855657efdf5219631
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595134"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714735"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Odstranění projektu Azure Migrate
 
@@ -49,7 +49,9 @@ Tyto tabulky shrnují prostředky vytvořené pro zjišťování, posuzování a
 > [!NOTE]
 > Odstraňte Trezor klíčů opatrně, protože může obsahovat bezpečnostní klíče.
 
-### <a name="vmwarephysical-server"></a>VMware / fyzický server
+### <a name="projects-with-public-endpoint-connectivity"></a>Projekty s připojením k veřejnému koncovému bodu
+
+#### <a name="vmwarephysical-server"></a>VMware / fyzický server
 
 **Prostředek** | **Typ**
 --- | ---
@@ -63,9 +65,9 @@ migrateappligwsa* | Účet úložiště
 migrateapplilsa* | Účet úložiště
 migrateapplicsa* | Účet úložiště
 migrateapplikv* | Trezor klíčů
-migrateapplisbns16041 | Service Bus Namespace
+migrateapplisbns* | Service Bus Namespace
 
-### <a name="hyper-v-vm"></a>Virtuální počítač s technologií Hyper-V 
+#### <a name="hyper-v-vm"></a>Virtuální počítač s technologií Hyper-V
 
 **Prostředek** | **Typ**
 --- | ---
@@ -74,6 +76,50 @@ Projekt ProjectName | Microsoft. migruje/assessmentProjects
 HyperV * KV | Trezor klíčů
 Hyper-v Web | Microsoft. OffAzure/HyperVSites
 "ProjectName"-MigrateVault-* | Trezor služby Recovery Services
+
+<br/>
+Následující tabulka shrnuje prostředky vytvořené nástrojem Azure Migrate k zjišťování, vyhodnocení a migraci serverů přes privátní síť pomocí [privátního propojení Azure](./how-to-use-azure-migrate-with-private-endpoints.md).
+
+### <a name="projects-with-private-endpoint-connectivity"></a>Projekty s připojením privátního koncového bodu
+
+#### <a name="vmware-vms---agentless-migrations"></a>Virtuální počítače VMware – migrace bez agentů
+
+**Typ** | **Prostředek** | **Soukromý koncový bod <br/>** |
+--- | --- | ---
+Microsoft. migruje/migrateprojects | Názevprojektu | "ProjectName" \* PE 
+Lokalita zjišťování (hlavní lokalita) | "ProjectName" * mastersite | "ProjectName" \* mastersite \* PE 
+Microsoft. migruje/assessmentProjects | "Zařízení" * projekt | "Zařízení" \* projektu \* PE 
+Trezor klíčů | "ProjectName" * KV | "ProjectName" \* KV \* PE
+Microsoft. OffAzure/VMwareSites | "Zařízení" * Web | NA
+Trezor služby Recovery Services | "Zařízení" * trezor | NA
+Účet úložiště | "Zařízení" * USA | "Zařízení" – \* USA – \* PE
+Trezor služby Recovery Services | "ProjectName"-MigrateVault-* | NA
+Účet úložiště | migrateappligwsa* | NA
+Účet úložiště | migrateapplilsa* | NA
+Trezor klíčů | migrateapplikv* | NA
+Service Bus Namespace | migrateapplisbns* | NA
+
+#### <a name="hyper-v-vms"></a>Virtuální počítače Hyper-V 
+
+**Typ** | **Prostředek** | **Soukromý koncový bod <br/>** |
+--- | --- | ---
+Microsoft. migruje/migrateprojects | Názevprojektu | "ProjectName" \* PE 
+Lokalita zjišťování (hlavní lokalita) | "ProjectName" * mastersite | "ProjectName" \* mastersite \* PE 
+Microsoft. migruje/assessmentProjects | "Zařízení" * projekt | "Zařízení" \* projektu \* PE 
+Trezor klíčů | "ProjectName" * KV | "ProjectName" \* KV \* PE
+Microsoft. OffAzure/HyperVSites | "Zařízení" * Web | NA
+Trezor služby Recovery Services | "ProjectName"-MigrateVault-* | "ProjectName"-MigrateVault-* PE
+
+#### <a name="physical-servers--aws-vms--gcp-vms"></a>Fyzické servery/virtuální počítače s AWS/virtuální počítače s GCP 
+
+**Typ** | **Prostředek** | **Soukromý koncový bod <br/>** |
+--- | --- | ---
+Microsoft. migruje/migrateprojects | Názevprojektu | "ProjectName" \* PE 
+Lokalita zjišťování (hlavní lokalita) | "ProjectName" * mastersite | "ProjectName" \* mastersite \* PE 
+Microsoft. migruje/assessmentProjects | "Zařízení" * projekt | "Zařízení" \* projektu \* PE 
+Trezor klíčů | "ProjectName" * KV | "ProjectName" \* KV \* PE
+Microsoft. OffAzure/serversites | "Zařízení" * Web | NA
+Trezor služby Recovery Services | "ProjectName"-MigrateVault-* | "ProjectName"-MigrateVault-* PE
 
 
 ## <a name="next-steps"></a>Další kroky

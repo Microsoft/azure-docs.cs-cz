@@ -22,7 +22,7 @@
 - name: Rychlé starty
   items:
     - name: Nasazení akcelerátoru řešení pro simulaci zařízení
-      href: 'https://github.com/Azure/device-simulation-dotnet/blob/master/README.md'
+      href: 'https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md'
     - name: Vyzkoušení řešení propojené továrny
       href: quickstart-connected-factory-deploy.md
   expanded: true
@@ -127,7 +127,7 @@
         - name: Referenční příručka pro vývojáře
           href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
         - name: Úložiště GitHub
-          href: 'https://github.com/Azure/device-simulation-dotnet'
+          href: 'https://github.com/Azure/azure-iot-pcs-device-simulation'
     - name: Referenční architektura
       href: /azure/architecture/reference-architectures/iot
       items:

@@ -793,7 +793,11 @@
         - name: Aktivační události kanálu
           href: pipeline-trigger-troubleshoot-guide.md
         - name: Toky dat
-          href: data-flow-troubleshoot-guide.md
+          items:
+            - name: Přehled toků dat
+              href: data-flow-troubleshoot-guide.md
+            - name: Konektor a formát
+              href: data-flow-troubleshoot-connector-format.md
         - name: "Průběžná integrace a\_nasazování"
           href: ci-cd-github-troubleshoot-guide.md
         - name: Řízení přístupu a zabezpečení

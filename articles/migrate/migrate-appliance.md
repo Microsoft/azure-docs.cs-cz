@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: b10d2e10f95470cadf67af762a0d7320bc09b7e0
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: d7fc04e65e2b79d43c48acd5a8c621f28d5c0403
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075691"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714663"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -128,7 +128,44 @@ download.microsoft.com/download | Povolí stahování z webu Microsoft Download 
 *. discoverysrv.windowsazure.us <br/> *. migration.windowsazure.us | Připojte se k adresám URL služby Azure Migrate.
 *. hypervrecoverymanager.windowsazure.us | **Používá se pro migraci bez agentů VMware.**<br/><br/> Připojte se k adresám URL služby Azure Migrate.
 *. blob.core.usgovcloudapi.net  |  **Používá se pro migraci bez agentů VMware.**<br/><br/>Nahrajte data do úložiště pro migraci.
-*. applicationinsights.us | Nahrávat protokoly zařízení používané pro interní monitorování
+*. applicationinsights.us | Nahrávat protokoly zařízení používané pro interní monitorování  
+
+### <a name="public-cloud-urls-for-private-link-connectivity"></a>Adresy URL veřejného cloudu pro připojení privátního propojení
+
+Zařízení musí mít přístup k následujícím adresám URL (přímo nebo prostřednictvím proxy) přes a nad přístupem privátního propojení. 
+
+**Adresa URL** | **Podrobnosti**  
+--- | --- | 
+*.portal.azure.com  | Přejděte na Azure Portal.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *. office.com | Přihlaste se ke svému předplatnému Azure.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Vytvořte Azure Active Directory (AD) aplikace pro zařízení, které budou komunikovat s Azure Migrate.
+management.azure.com | Vytvořte aplikace služby Azure AD, aby zařízení komunikovalo s Azure Migrate.
+*. services.visualstudio.com (volitelné) | Nahrávat protokoly zařízení používané pro interní monitorování
+aka.ms/* (volitelné) | Umožněte přístup i k odkazům. slouží ke stažení a instalaci nejnovějších aktualizací pro služby zařízení.
+download.microsoft.com/download | Povolí stahování z webu Microsoft Download Center.
+*.servicebus.windows.net | **Používá se pro migraci bez agentů VMware.**<br/><br/> Komunikace mezi zařízením a službou Azure Migrate.
+*.vault.azure.net | **Používá se pro migraci bez agentů VMware.**<br/><br/>  Zajistěte, aby k tomuto serveru měli přístup servery pro replikaci.
+*.hypervrecoverymanager.windowsazure.com | **Používá se pro migraci bez agentů VMware.**<br/><br/> Připojte se k adresám URL služby Azure Migrate.
+*.blob.core.windows.net |  **Používá se pro migraci bez agentů VMware.**<br/><br/>Nahrajte data do úložiště pro migraci.
+
+### <a name="government-cloud-urls-for-private-link-connectivity"></a>Adresy URL cloudu pro státní správu pro připojení privátních odkazů   
+
+Zařízení musí mít přístup k následujícím adresám URL (přímo nebo prostřednictvím proxy) přes a nad přístupem privátního propojení. 
+
+**Adresa URL** | **Podrobnosti**  
+--- | --- |
+*. portal.azure.us  | Přejděte na Azure Portal.
+graph.windows.net | Přihlaste se ke svému předplatnému Azure.
+login.microsoftonline.us  | Vytvořte Azure Active Directory (AD) aplikace pro zařízení, které budou komunikovat s Azure Migrate.
+management.usgovcloudapi.net | Vytvořte aplikace služby Azure AD, aby zařízení komunikovalo se službou Azure Migrate.
+*. services.visualstudio.com (volitelné) | Nahrávat protokoly zařízení používané pro interní monitorování
+aka.ms/* (volitelné) | Umožněte přístup i k odkazům. slouží ke stažení a instalaci nejnovějších aktualizací pro služby zařízení.
+download.microsoft.com/download | Povolí stahování z webu Microsoft Download Center.
+*. servicebus.usgovcloudapi.net  | **Používá se pro migraci bez agentů VMware.**<br/><br/> Komunikace mezi zařízením a službou Azure Migrate. 
+*. vault.usgovcloudapi.net | **Používá se pro migraci bez agentů VMware.**<br/><br/> Správa tajných kódů v Azure Key Vault.
+*. hypervrecoverymanager.windowsazure.us | **Používá se pro migraci bez agentů VMware.**<br/><br/> Připojte se k adresám URL služby Azure Migrate.
+*. blob.core.usgovcloudapi.net  |  **Používá se pro migraci bez agentů VMware.**<br/><br/>Nahrajte data do úložiště pro migraci.
+*. applicationinsights.us (volitelné) | Nahrávat protokoly zařízení používané pro interní monitorování  
 
 ## <a name="collected-data---vmware"></a>Shromážděná data – VMware
 

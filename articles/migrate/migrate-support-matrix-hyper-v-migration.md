@@ -6,12 +6,12 @@ ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 90da16789344754c02d46022160db71ee261a056
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33e34e777a78e1c609d2eacdcb501c0bce1f5c9d
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96754058"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714915"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Matice podpory pro migraci technologie Hyper-V
 
@@ -83,7 +83,13 @@ backup.windowsazure.us | Přenos a koordinace dat replikace.
 *. hypervrecoverymanager.windowsazure.us | Používá se pro správu replikace.
 *. blob.core.usgovcloudapi.net | Nahrajte data do účtů úložiště.
 dc.services.visualstudio.com | Nahrávat protokoly aplikací používané pro interní monitorování
-time.nist.gov | Ověřuje časovou synchronizaci mezi systémovým a globálním časem.
+time.nist.gov | Ověřuje časovou synchronizaci mezi systémovým a globálním časem.   
+
+>[!Note]
+>
+> Pokud migrujete projekt s **připojením privátního koncového bodu**, software zprostředkovatele replikace na hostitelích Hyper-V bude potřebovat přístup k těmto adresám URL pro podporu privátních odkazů. 
+> - *. blob.core.windows.com – pro přístup k účtu úložiště, který ukládá replikovaná data. To je volitelné a není vyžadováno, pokud má účet úložiště připojen privátní koncový bod. 
+> - login.windows.net pro řízení přístupu a správu identit pomocí služby Active Directory.
 
 ## <a name="azure-vm-requirements"></a>Požadavky na virtuální počítač Azure
 

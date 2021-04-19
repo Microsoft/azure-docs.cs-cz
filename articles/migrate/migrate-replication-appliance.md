@@ -1,17 +1,17 @@
 ---
 title: Zařízení pro replikaci Azure Migrate
-description: Přečtěte si o zařízení replikace Azure Migrate pro migraci VMWare založenou na agentech.
+description: Přečtěte si o zařízení replikace Azure Migrate pro migraci VMware založenou na agentech.
 author: anvar-ms
 ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: ec277bcc3e361561f54e72c54526d65487c113b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f63b033c3995932662fc9b68c1397bf57b0326e
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96754092"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714969"
 ---
 # <a name="replication-appliance"></a>Replikační zařízení
 
@@ -75,7 +75,7 @@ V počítači se zařízením replikace musí být nainstalován MySQL. Dá se n
 **Metoda** | **Podrobnosti**
 --- | ---
 Stáhnout a nainstalovat ručně | Stáhněte si aplikaci MySQL & umístěte ji do složky C:\Temp\ASRSetup a pak ji nainstalujte ručně.<br/> Když nastavíte zařízení MySQL, bude se zobrazovat jako již nainstalované.
-Bez online stažení | Umístěte aplikaci instalačního programu MySQL do složky C:\Temp\ASRSetup. Když nainstalujete zařízení a kliknete na stažení a instalaci MySQL, instalační program použije instalační program, který jste přidali.
+Bez online stažení | Umístěte aplikaci instalačního programu MySQL do složky C:\Temp\ASRSetup. Když nainstalujete zařízení a vyberete stáhnout a nainstalovat MySQL, instalační program použije instalační program, který jste přidali.
 Stažení a instalace v Azure Migrate | Po instalaci zařízení a zobrazení výzvy k MySQL vyberte **Stáhnout a nainstalovat**.
 
 ## <a name="url-access"></a>Přístup URL
@@ -89,7 +89,7 @@ Zařízení replikace potřebuje přístup k těmto adresám URL ve veřejném c
 \*.blob.core.windows.net | Používá se pro přístup k účtu úložiště, který ukládá replikovaná data.
 \*.hypervrecoverymanager.windowsazure.com | Slouží k operacím správy replikace a jejich koordinaci.
 https:\//management.azure.com | Slouží k operacím správy replikace a jejich koordinaci.
-*.services.visualstudio.com | Používá se pro účely telemetrie (je volitelné).
+*.services.visualstudio.com | Používá se pro účely přihlášení (nepovinné).
 time.windows.com | Používá se ke kontrole synchronizace mezi systémovým a globálním časem.
 https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https: \/ /Login.Live.com <br/> https: \/ /Graph.Windows.NET <br/> https:\//login.windows.net <br/> https: \/ /www.Live.com <br/> https: \/ /www.Microsoft.com  | Instalace zařízení potřebuje přístup k těmto adresám URL. Používají se k řízení přístupu a správě identit pomocí Azure Active Directory
 https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Pro dokončení stažení MySQL. V několika oblastech může být stahování Přesměrováno na adresu URL CDN. V případě potřeby se ujistěte, že je povolená i adresa URL CDN.
@@ -106,10 +106,17 @@ Zařízení replikace potřebuje přístup k těmto adresám URL v Azure Governm
 \*.blob.core.windows.net | Používá se pro přístup k účtu úložiště, který ukládá replikovaná data.
 \*. hypervrecoverymanager.windowsazure.us | Slouží k operacím správy replikace a jejich koordinaci.
 https:\//management.usgovcloudapi.net | Slouží k operacím správy replikace a jejich koordinaci.
-*.services.visualstudio.com | Používá se pro účely telemetrie (je volitelné).
+*.services.visualstudio.com | Používá se pro účely přihlášení (nepovinné).
 time.nist.gov | Používá se ke kontrole synchronizace mezi systémovým a globálním časem.
 https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https: \/ /Login.Live.com <br/> https: \/ /Graph.Windows.NET <br/> https:\//login.windows.net <br/> https: \/ /www.Live.com <br/> https: \/ /www.Microsoft.com  | Nastavení zařízení pomocí vajíček potřebuje přístup k těmto adresám URL. Používají se k řízení přístupu a správě identit pomocí Azure Active Directory.
-https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Pro dokončení stažení MySQL. V několika oblastech může být stahování Přesměrováno na adresu URL CDN. V případě potřeby se ujistěte, že je povolená i adresa URL CDN.
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Pro dokončení stažení MySQL. V několika oblastech může být stahování Přesměrováno na adresu URL CDN. V případě potřeby se ujistěte, že je povolená i adresa URL CDN.  
+
+>[!Note]
+>
+> Pokud migrujete projekt s připojením privátního koncového bodu, budete potřebovat přístup k následujícím adresám URL přes a vyšším přístup k privátnímu propojení:   
+> - *. blob.core.windows.com – pro přístup k účtu úložiště, který ukládá replikovaná data. To je volitelné a není vyžadováno, pokud má účet úložiště připojen privátní koncový bod. 
+> - https: \/ /Management.Azure.com pro operace správy replikace a koordinaci. 
+>- https:\//login.microsoftonline.com <br/>https:\//login.windows.net <br/> https: \/ /www.Live.com _a_ <br/> https: \/ /www.Microsoft.com pro řízení přístupu a správu identit pomocí Azure Active Directory
 
 ## <a name="port-access"></a>Přístup k portu
 
@@ -138,7 +145,7 @@ Procesový Server | Procesový server přijímá data replikace, optimalizuje je
 
 Zařízení se upgraduje ručně z centra Azure Migrate. Doporučujeme vždy spustit nejnovější verzi.
 
-1. V Azure Migrate > servery > Azure Migrate: posouzení serveru, servery infrastruktury, klikněte na **konfigurační servery**.
+1. V Azure Migrate > servery > Azure Migrate: Server Assessment, servery infrastruktury, vyberte **konfigurační servery**.
 2. V **konfiguračních serverech** se odkaz zobrazuje v části **verze agenta** , pokud je k dispozici nová verze zařízení replikace. 
 3. Stáhněte instalační program do počítače zařízení pro replikaci a nainstalujte upgrade. Instalační program zjistí aktuálně běžící verzi na zařízení.
  
