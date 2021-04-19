@@ -7,14 +7,17 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.topic: how-to
 ms.date: 02/08/2021
-ms.openlocfilehash: 99e9994d01e4579bf6ef2e369e0fe85c48af52ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dc27fd67a3801815464ecd37fea567c02dee6e49
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182430"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719038"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>Vysoká dostupnost Azure velkých instancí pro SAP v RHEL
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na termín nesouhlasný – *termín, který* společnost Microsoft už nepoužívá. Když se tento termín odebere ze softwaru, odebereme ho z tohoto článku.
 
 V tomto článku se dozvíte, jak nakonfigurovat cluster Pacemaker v RHEL 7,6 pro automatizaci převzetí služeb při selhání databáze SAP HANA. K dokončení kroků v této příručce potřebujete mít dobrý přehled o Linux, SAP HANA a Pacemaker.
 

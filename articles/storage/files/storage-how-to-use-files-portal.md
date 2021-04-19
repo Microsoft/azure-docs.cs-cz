@@ -4,15 +4,15 @@ description: Přečtěte si téma jak vytvořit a spravovat sdílené složky Az
 author: roygara
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/18/2018
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6a88124397812f7599ce54b46b23d22e626cf520
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7867a4bd60bb179c18fff49691072d683660f7e
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629814"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717827"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Rychlý start: Vytváření a správa sdílených složek Azure pomocí webu Azure Portal 
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systémech Windows, Linux a macOS. Tato příručka vás provede základy práce se sdílenými složkami Azure pomocí webu [Azure Portal](https://portal.azure.com/).
@@ -26,12 +26,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 Vytvoření sdílené složky Azure:
 
 1. Vyberte účet úložiště na řídicím panelu.
-2. Na stránce účtu úložiště v části **Služby** vyberte **Soubory**.
-    ![Snímek obrazovky účtu úložiště s částí Služby; výběr služby Soubory](media/storage-how-to-use-files-portal/create-file-share-1.png)
+1. Na stránce účtu úložiště v části **Služby** vyberte **Soubory**.
+    
+    ![Snímek obrazovky s oddílem úložiště dat účtu úložiště; Vyberte sdílení souborů.](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-3. V nabídce v horní části stránky **souborové služby** klikněte na **sdílení souborů**. Rozbalí se stránka **Nová sdílená složka**.
-4. Do pole **Název** zadejte *myshare*.
-5. Kliknutím na **OK** vytvořte sdílenou složku Azure.
+1. V nabídce v horní části stránky **souborové služby** klikněte na **sdílení souborů**. Rozbalí se stránka **Nová sdílená složka**.
+1. Do pole **název** zadejte *myshare* zadejte quoate a nechte vybraní **transakce optimalizované** pro **vrstvy**.
+1. Vyberte **vytvořit** a vytvořte sdílenou složku Azure.
 
 Názvy sdílených složek můžou obsahovat pouze malá písmena, číslice a spojovníky a nesmí začínat na spojovník. Kompletní informace o zadávání názvů sdílených složek a souborů najdete v tématu [Pojmenování a odkazování na sdílené složky, soubory a metadata](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
@@ -60,20 +61,21 @@ Teď, když jste vytvořili sdílenou složku Azure, můžete sdílenou složku 
 Vytvoření nového adresáře *myDirectory* v kořenovém adresáři sdílené složky Azure:
 
 1. Na stránce **Souborová služba** vyberte sdílenou složku **myshare**. Otevře se stránka vaší sdílené složky.
-2. V nabídce v horní části stránky vyberte **+ Přidat adresář**. Rozbalí se stránka **Nový adresář**.
-3. Zadejte *myDirectory* a pak klikněte na **OK**.
+1. V nabídce v horní části stránky vyberte **+ Přidat adresář**. Rozbalí se stránka **Nový adresář**.
+1. Zadejte *myDirectory* a pak klikněte na **OK**.
 
 #### <a name="upload-a-file"></a>Nahrání souboru 
 Abychom si předvedli nahrání souboru, nejprve musíte vytvořit nebo vybrat soubor k nahrání. Můžete to provést jakýmkoli způsobem, který vám vyhovuje. Po výběru souboru, který chcete nahrát:
 
 1. Klikněte na adresář **myDirectory**. Otevře se panel **myDirectory**.
-2. V nabídce v horní části klikněte na **Nahrát**. Otevře se panel **Nahrání souborů**.  
+1. V nabídce v horní části vyberte **Nahrát**. Otevře se panel **Nahrání souborů**.  
+    
     ![Snímek obrazovky s panelem Nahrání souborů](media/storage-how-to-use-files-portal/upload-file-1.png)
 
-3. Kliknutím na ikonu složky otevřete okno, ve kterém můžete procházet místní soubory. 
-4. Vyberte soubor a pak klikněte na **Otevřít**. 
-5. Na stránce **Nahrání souborů** ověřte název souboru a pak klikněte na **Nahrát**.
-6. Po dokončení by se soubor měl zobrazit v seznamu na stránce **myDirectory**.
+1. Kliknutím na ikonu složky otevřete okno, ve kterém můžete procházet místní soubory. 
+1. Vyberte soubor a pak klikněte na **Otevřít**. 
+1. Na stránce **Nahrání souborů** ověřte název souboru a pak klikněte na **Nahrát**.
+1. Po dokončení by se soubor měl zobrazit v seznamu na stránce **myDirectory**.
 
 #### <a name="download-a-file"></a>Stažení souboru
 Kliknutím pravým tlačítkem na soubor, který jste nahráli, můžete stáhnout jeho kopii. Po kliknutí na tlačítko pro stažení bude konkrétní prostředí záviset na operačním systému a prohlížeči, které používáte.

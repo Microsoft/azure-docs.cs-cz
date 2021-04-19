@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: a22f4b257476e96c51ae491b8570e3798f7b3ab7
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 7e1b11fd15cca9b11fc627222318f08d31743336
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259723"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719182"
 ---
 # <a name="understand-cache-usage-models"></a>Vysvětlení modelů využití mezipaměti
 
@@ -82,7 +82,7 @@ Pokud máte dotazy týkající se modelu nejlepšího využití pro pracovní po
 
 V některých situacích může být nutné znovu připojit klienty, pokud změníte model využití cíle úložiště. To je potřeba kvůli způsobu, jakým modely použití zpracovávají požadavky nástroje Network Lock Manager (NLM).
 
-Mezipaměť HPC je mezi klienty a back-end systémem úložiště. Mezipaměť obvykle projde požadavky NLM do back-endového systému úložiště, ale v některých případech samotné mezipaměti potvrdí požadavek NLM a vrátí hodnotu klientovi. V mezipaměti HPC Azure se to děje jenom v případě, že používáte model využití **těžkých silných, zřídka se zápisy** (nebo ve standardním cíli BLOB Storage, které nemají konfigurovatelné modely využití).
+Mezipaměť HPC je mezi klienty a back-end systémem úložiště. Mezipaměť obvykle projde požadavky NLM do back-endového systému úložiště, ale v některých případech samotné mezipaměti potvrdí požadavek NLM a vrátí hodnotu klientovi. V mezipaměti HPC Azure se to děje jenom v případě, že používáte model využití **těžkých silných, zřídka se zápisy** (nebo se standardním cílem úložiště BLOB, který nemá konfigurovatelné modely využití).
 
 Došlo k malému riziku konfliktu souborů, pokud změníte mezi modelem použití s **nečastými zápisy** a různými modely využití. Neexistuje žádný způsob, jak přenést aktuální stav NLM z mezipaměti do systému úložiště nebo naopak. Proto je stav zámku klienta nepřesný.
 

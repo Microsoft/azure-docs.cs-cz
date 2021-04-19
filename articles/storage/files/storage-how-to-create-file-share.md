@@ -5,16 +5,16 @@ description: Postup vytvoření sdílené složky Azure pomocí Azure Portal, Po
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 1/20/2021
+ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 24bee926d84c7a5be3f19c39d39285c2cd486824
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 91f42ae671cb1696e5b088bafde8362cf19ce856
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211018"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717952"
 ---
 # <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 Pokud chcete vytvořit sdílenou složku Azure, musíte odpovědět na tři otázky týkající se toho, jak ji budete používat:
@@ -32,7 +32,7 @@ Pokud chcete vytvořit sdílenou složku Azure, musíte odpovědět na tři otá
 
 Další informace o těchto třech volbách najdete v tématu [Plánování nasazení služby soubory Azure](storage-files-planning.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - V tomto článku se předpokládá, že jste už vytvořili předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](/powershell/azure/install-az-ps).
 - Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli).
@@ -54,11 +54,11 @@ Pokud chcete účet úložiště vytvořit přes Azure Portal, vyberte v řídic
 #### <a name="basics"></a>Základy
 První část, která se má dokončit pro vytvoření účtu úložiště, je označená **základy**. Obsahuje všechna povinná pole pro vytvoření účtu úložiště. Pokud chcete vytvořit účet úložiště GPv2, ujistěte se, že je přepínač **výkon** nastavený *na standardní* a rozevírací seznam **druh účtu** je vybraný jako *StorageV2 (pro obecné účely v2)*.
 
-![Snímek obrazovky s přepínačem výkonu s vybraným standardním a druhem účtu s StorageV2](media/storage-how-to-create-file-share/create-storage-account-1.png)
+:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-standard.png" alt-text="Snímek obrazovky s přepínačem výkonu s vybraným standardním a druhem účtu s storagev2":::
 
-Pokud chcete vytvořit účet úložiště úložiště, ujistěte se, že je přepínač **výkon** nastavený na hodnotu *Premium* a rozevírací seznam **druh účtu** je vybraný jako *úložiště*.
+Pokud chcete vytvořit účet úložiště úložiště souborů, ujistěte se, že je v rozevíracím  seznamu **typ účtu Premium** vybraný přepínač **výkon** a **sdílí** se s.
 
-![Snímek obrazovky s přepínačem výkonu s vybraným a druhem účtu s vybraným úložištěm](media/storage-how-to-create-file-share/create-storage-account-2.png)
+:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="Snímek obrazovky s přepínačem výkonu s vybraným a druhem účtu s vybraným úložištěm":::
 
 Ostatní pole základy jsou nezávislá na volbě účtu úložiště:
 - **Název účtu úložiště**: název prostředku účtu úložiště, který se má vytvořit. Tento název musí být globálně jedinečný, ale jinak může být libovolný název, který si přejete. Název účtu úložiště se použije jako název serveru při připojení sdílené složky Azure přes SMB.
@@ -75,9 +75,12 @@ Ostatní pole základy jsou nezávislá na volbě účtu úložiště:
 Oddíl Upřesnit obsahuje několik důležitých nastavení pro sdílené složky Azure:
 
 - **Vyžadován zabezpečený přenos**: Toto pole označuje, zda účet úložiště vyžaduje při přenosu přenos dat do účtu úložiště šifrování. Pokud požadujete podporu protokolu SMB 2,1, je nutné ji zakázat.
+
+    :::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-secure-transfer.png" alt-text="Snímek obrazovky s povoleným zabezpečeným přenosem v rozšířených nastaveních pro účet úložiště.":::
+
 - **Velké sdílené složky**: Toto pole umožňuje, aby byl účet úložiště pro sdílené složky rozložený až do 100 TIB. Povolením této funkce omezíte účet úložiště jenom na místně redundantní a redundantní možnosti úložiště v zóně. Jakmile je pro velké sdílené složky povolený účet úložiště GPv2, nemůžete zakázat možnost sdílení velkých souborů. Účty úložiště úložiště (účty úložiště pro soubory úrovně Premium) nemají tuto možnost, protože všechny sdílené složky Premium se můžou škálovat až na 100 TiB. 
 
-![Snímek obrazovky s důležitými pokročilými nastaveními, která se vztahují na soubory Azure](media/storage-how-to-create-file-share/create-storage-account-3.png)
+    :::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-large-file-shares.png" alt-text="Snímek obrazovky s nastavením pro rozsáhlou sdílenou složku v rozšířeném okně účtu úložiště":::
 
 Další nastavení, která jsou k dispozici na kartě Upřesnit (hierarchický obor názvů pro úložiště Azure Data Lake Gen 2, výchozí úroveň objektu blob, NFSv3 pro úložiště objektů BLOB atd.), se nevztahují na soubory Azure.
 
@@ -160,7 +163,7 @@ az storage account create \
 
 ---
 
-## <a name="create-file-share"></a>Vytvoření sdílené složky
+## <a name="create-a-file-share"></a>Vytvoření sdílené složky
 Po vytvoření účtu úložiště je vše, co zbývá, vytvořit sdílenou složku. Tento proces je většinou stejný bez ohledu na to, jestli používáte sdílenou složku Premium nebo standardní sdílení souborů. Měli byste zvážit následující rozdíly.
 
 Standardní sdílené složky můžou být nasazené na jednu z úrovní Standard: transakce je optimalizovaná (výchozí), horká nebo studená. Jedná se o vrstvu sdílení souborů, která není ovlivněná **úrovní přístupu objektu BLOB** účtu úložiště (Tato vlastnost se vztahuje pouze na Azure Blob Storage – nesouvisí s Azure Files vůbec). Úroveň sdílené složky můžete kdykoli změnit poté, co byla nasazena. Soubory úrovně Premium nelze přímo převést na žádnou úroveň Standard.
@@ -175,9 +178,7 @@ Vlastnost **Quota** znamená něco jiného, co se liší od úrovně Premium a s
 - V případě sdílených složek Premium znamená kvóta **zřízenou velikost**. Zřízená velikost je množství, které se vám bude účtovat bez ohledu na skutečné využití. Další informace o tom, jak naplánovat pro sdílenou složku Premium, najdete v tématu [zřizování souborů ke sdílení prémiových souborů](understanding-billing.md#provisioned-model).
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-Pokud jste právě vytvořili účet úložiště, můžete na něj přejít z obrazovky nasazení výběrem možnosti **Přejít k prostředku**. V účtu úložiště vyberte dlaždici s názvem **sdílené složky** (můžete také přejít ke **sdíleným složkám souborů** prostřednictvím obsahu pro účet úložiště).
-
-![Snímek obrazovky dlaždice sdílení souborů](media/storage-how-to-create-file-share/create-file-share-1.png)
+Pokud jste právě vytvořili účet úložiště, můžete na něj přejít z obrazovky nasazení výběrem možnosti **Přejít k prostředku**. V účtu úložiště vyberte **sdílené složky** v obsahu pro účet úložiště.
 
 V seznamu sdílení souborů byste měli vidět všechny sdílené složky, které jste předtím vytvořili v tomto účtu úložiště. prázdná tabulka, pokud dosud nebyly vytvořeny žádné sdílené složky. Pokud chcete vytvořit novou sdílenou složku, vyberte **+ Shared File** .
 
@@ -235,13 +236,13 @@ az storage share-rm create \
 > [!Note]  
 > Název vaší sdílené složky musí obsahovat jen malá písmena. Podrobné informace o pojmenovávání sdílených složek a souborů najdete v tématu [pojmenování a odkazování na sdílené složky, adresáře, soubory a metadata](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
-### <a name="changing-the-tier-of-an-azure-file-share"></a>Změna úrovně sdílené složky Azure
+### <a name="change-the-tier-of-an-azure-file-share"></a>Změna úrovně sdílené složky Azure
 Sdílené složky nasazené v **účtu úložiště pro obecné účely v2 (GPv2)** můžou být v transakci optimalizované, horké nebo studené úrovně. Úroveň sdílené složky Azure můžete kdykoli změnit v závislosti na transakčních cenách, jak je popsáno výše.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Na stránce hlavní účet úložiště vyberte **sdílené složky**  , vyberte dlaždici označené jako **sdílené složky** (můžete také přejít ke **sdíleným složkám souborů** prostřednictvím obsahu pro účet úložiště).
 
-![Snímek obrazovky dlaždice sdílení souborů](media/storage-how-to-create-file-share/create-file-share-1.png)
+:::image type="content" source="media/storage-files-quick-create-use-windows/click-files.png" alt-text="Snímek obrazovky s oknem účtu úložiště a vybranými sdílenými soubory":::
 
 V seznamu sdílené složky v tabulce vyberte sdílenou složku, pro kterou chcete změnit vrstvu. Na stránce s přehledem sdílení souborů vyberte v nabídce možnost **změnit úroveň** .
 

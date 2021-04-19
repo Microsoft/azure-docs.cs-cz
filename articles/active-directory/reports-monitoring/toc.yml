@@ -107,8 +107,6 @@
       href: reference-reports-data-retention.md
     - name: Latence generování sestav
       href: reference-reports-latencies.md
-    - name: Kódy chyb přihlašování
-      href: reference-sign-ins-error-codes.md
     - name: Nejčastější dotazy
       href: reports-faq.md
     - name: Schéma protokolu auditu

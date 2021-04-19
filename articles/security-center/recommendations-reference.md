@@ -7,18 +7,19 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: a44a5e4e715238c42e51e65dfe16d4f70dfcf54d
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: e994aead1840fd3ef9b57e92cf95e94837608d7a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504804"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719128"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Doporučení k zabezpečení – Referenční příručka
 
 V tomto článku jsou uvedena doporučení, která se mohou zobrazit v Azure Security Center. Doporučení zobrazená ve vašem prostředí závisí na prostředcích, které chráníte, a na vašich vlastních konfiguracích.
 
-Doporučení pro Security Center jsou založená na [testu zabezpečení Azure](../security/benchmarks/introduction.md). Srovnávací test zabezpečení Azure je Microsoftem vytvořená sada pokynů pro zabezpečení a osvědčené postupy na základě běžných architektur dodržování předpisů, které jsou specifické pro Azure. Toto široce uznávané sestavování srovnávacích testů v ovládacích prvcích z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se soustředí na zabezpečení zaměřené na Cloud.
+Doporučení pro Security Center jsou založená na [testu zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction).
+Srovnávací test zabezpečení Azure je Microsoftem vytvořená sada pokynů pro zabezpečení a osvědčené postupy na základě běžných architektur dodržování předpisů, které jsou specifické pro Azure. Toto široce uznávané sestavování srovnávacích testů v ovládacích prvcích z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se soustředí na zabezpečení zaměřené na Cloud.
 
 Další informace o tom, jak na tato doporučení reagovat, najdete v tématu o [nápravě doporučení v Azure Security Center](security-center-remediate-recommendations.md).
 

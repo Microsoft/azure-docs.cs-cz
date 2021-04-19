@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 04/11/2021
 ms.author: memildin
-ms.openlocfilehash: 3e4dddf61656ea38bac406366bf993788fd34943
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: bb79bbe918bb1a68b982ae4d44739c2c77a11434
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303147"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719146"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -329,7 +329,7 @@ Pokud povolíte Azure Defender pro servery na Windows serveru, součástí plán
 Podpora se teď rozšířila tak, aby zahrnovala Windows Server 2019 a [virtuální plochu Windows (WVD)](../virtual-desktop/overview.md).
 
 > [!NOTE]
-> Pokud povolujete Defender pro koncový bod na počítači s Windows serverem 2019, ujistěte se, že splňuje požadavky popsané v tématu [Povolení integrace programu Microsoft Defender pro koncové body](security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration).
+> Pokud povolujete Defender pro koncový bod na počítači s Windows serverem 2019, ujistěte se, že splňuje požadavky popsané v tématu [Povolení integrace programu Microsoft Defender pro koncové body](security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration).
 
 ### <a name="direct-link-to-policy-from-recommendation-details-page"></a>Přímá vazba na zásadu ze stránky s podrobnostmi o doporučení
 
@@ -411,7 +411,7 @@ Stávající doporučení nejsou ovlivněná a při zvětšování srovnávacíc
 
 Další informace najdete na následujících stránkách:
 
-- [Další informace o testu zabezpečení Azure](../security/benchmarks/introduction.md)
+- [Další informace o testu zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [Přizpůsobení sady standardů na řídicím panelu dodržování předpisů](update-regulatory-compliance-packages.md)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů se uvolní pro obecnou dostupnost (GA).
@@ -526,7 +526,7 @@ Další informace najdete v [žádosti o oprávnění na úrovni tenanta, pokud 
 
 ### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>35 doporučení verze Preview pro zvýšení pokrytí srovnávacího testu zabezpečení Azure
 
-Srovnávací test zabezpečení Azure je výchozí iniciativou zásad v Azure Security Center. 
+[Srovnávací test zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction) je výchozí iniciativou zásad v Azure Security Center. 
 
 Pro zvýšení pokrytí tohoto srovnávacího testu byly do Security Center přidány následující doporučení 35 Preview.
 
@@ -544,7 +544,7 @@ Pro zvýšení pokrytí tohoto srovnávacího testu byly do Security Center při
 
 Související odkazy:
 
-- [Další informace o testu zabezpečení Azure](../security/benchmarks/introduction.md)
+- [Další informace o testu zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [Další informace o Azure Database for MariaDB](../mariadb/overview.md)
 - [Další informace o Azure Database for MySQL](../mysql/overview.md)
 - [Další informace o Azure Database for PostgreSQL](../postgresql/overview.md)
@@ -787,7 +787,7 @@ Doporučení pro verzi Preview negenerují prostředek v pořádku a nejsou zahr
 
 Související odkazy:
 
-- [Další informace o testu zabezpečení Azure](../security/benchmarks/introduction.md)
+- [Další informace o testu zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [Další informace o Azure API Apps](../app-service/app-service-web-tutorial-rest-api.md)
 - [Další informace o aplikacích Azure Function App](../azure-functions/functions-overview.md)
 - [Další informace o službě Azure Web Apps](../app-service/overview.md)

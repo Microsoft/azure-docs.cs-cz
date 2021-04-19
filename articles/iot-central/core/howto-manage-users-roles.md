@@ -1,23 +1,25 @@
 ---
 title: Správa uživatelů a rolí v Azure IoT Central aplikaci | Microsoft Docs
 description: Jak spravovat uživatele a role v aplikaci Azure IoT Central jako správce
-author: vishwam
-ms.author: vishwams
+author: lmasieri
+ms.author: lmasieri
 ms.date: 04/16/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 928a9fbad7bde7fe7f1cfaf181bff2a7b9ce458b
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: cff8830d180b0c234e54f7578ed9fafafeb598f0
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599056"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719164"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>Správa uživatelů a rolí v aplikaci IoT Central
 
 Tento článek popisuje, jak jako správce můžete přidávat, upravovat a odstraňovat uživatele v aplikaci Azure IoT Central. Tento článek také popisuje, jak spravovat role ve vaší aplikaci.
+
+Pokud chcete získat přístup k části **Správa** a používat ji, musíte být v roli **správce** aplikace Azure IoT Central. Pokud vytvoříte aplikaci IoT Central Azure, automaticky se přiřadíte do role **správce** této aplikace.
 
 ## <a name="add-users"></a>Přidání uživatelů
 
@@ -26,21 +28,20 @@ Každý uživatel musí mít uživatelský účet předtím, než se může při
 Další informace najdete v tématu [účet Microsoft nápovědu](https://support.microsoft.com/products/microsoft-account?category=manage-account) a  [rychlé zprovoznění: přidání nových uživatelů do Azure Active Directory](../../active-directory/fundamentals/add-users-azure-active-directory.md).
 
 1. Chcete-li přidat uživatele do aplikace IoT Central, v části **Správa** klikněte na stránku **Uživatelé** .
-    
-    > [!div class="mx-imgBorder"]
-    >![Správa uživatelů](media/howto-manage-users-roles/manage-users-pnp.png)
+
+  :::image type="content" source="media/howto-manage-users-roles/manage-users-pnp.png" alt-text="Správa uživatelů":::
 
 1. Chcete-li přidat uživatele, klikněte na stránce **Uživatelé** na příkaz **+ Přidat uživatele**.
 
 1. V rozevírací nabídce **role** vyberte roli pro uživatele. Další informace o rolích najdete v části [Správa rolí](#manage-roles) v tomto článku.
 
-    > [!div class="mx-imgBorder"]
-    >![Přidat uživatele a vybrat roli](media/howto-manage-users-roles/add-user-pnp.png)
+  :::image type="content" source="media/howto-manage-users-roles/add-user-pnp.png" alt-text="Přidejte uživatele a vyberte roli.":::
 
-    > [!NOTE]
-    > Uživatel, který je ve vlastní roli, která jim uděluje oprávnění k přidávání dalších uživatelů, může přidat uživatele do role se stejnými nebo méně oprávněními než jejich vlastní role.
-    > 
-    > Pokud se uživatel z Azure Active Directory odstraní a pak se přidá zpátky, nebude se moct automaticky přihlásit k aplikaci IoT Central. Aby bylo možné znovu povolit přístup, správce aplikace by měl také odstranit a znovu přidat uživatele do aplikace.
+  > [!NOTE]
+  > Uživatel, který je ve vlastní roli, která jim uděluje oprávnění k přidávání dalších uživatelů, může přidat uživatele do role se stejnými nebo méně oprávněními než jejich vlastní role.
+
+  > [!NOTE]
+  > Pokud se uživatel z Azure Active Directory odstraní a pak se znovu přidá zpátky, nebude se moct přihlásit k aplikaci IoT Central. Aby bylo možné znovu povolit přístup, správce aplikace by měl také odstranit a znovu přidat uživatele do aplikace.
 
 ### <a name="edit-the-roles-that-are-assigned-to-users"></a>Úprava rolí, které jsou přiřazeny uživatelům
 
@@ -72,7 +73,7 @@ Uživatelé v roli **Tvůrce** můžou spravovat každou část aplikace, ale ne
 
 ### <a name="operator"></a>Operátor
 
-Uživatelé v roli **operátora** mohou monitorovat stav a stav zařízení. Neumožňují provádět změny v šablonách zařízení nebo spravovat aplikace. Operátoři můžou přidávat a odstraňovat zařízení, spravovat sady zařízení a spouštět analýzy a úlohy. 
+Uživatelé v roli **operátora** mohou monitorovat stav a stav zařízení. Neumožňují provádět změny v šablonách zařízení nebo spravovat aplikace. Operátoři můžou přidávat a odstraňovat zařízení, spravovat sady zařízení a spouštět analýzy a úlohy.
 
 ## <a name="create-a-custom-role"></a>Vytvoření vlastní role
 
@@ -85,7 +86,7 @@ Do vlastní role můžete přidat uživatele stejným způsobem, jakým přidáv
 
 ### <a name="custom-role-options"></a>Možnosti vlastní role
 
-Při definování vlastní role zvolíte sadu oprávnění, které uživatel udělí, pokud se jedná o člena této role. Některá oprávnění jsou závislá na ostatních. Pokud například přidáte do role oprávnění **řídicí panely aplikace aktualizovat** , budete také potřebovat oprávnění **zobrazit řídicí panely aplikace** . Následující tabulky shrnují dostupná oprávnění a jejich závislosti, které můžete použít při vytváření vlastních rolí.
+Při definování vlastní role zvolíte sadu oprávnění, které uživatel udělí, pokud se jedná o člena této role. Některá oprávnění jsou závislá na ostatních. Pokud například přidáte do role oprávnění **aktualizovat osobní řídicí panely** , přidají se oprávnění **Zobrazit osobní řídicí panely** automaticky. Následující tabulky shrnují dostupná oprávnění a jejich závislosti, které můžete použít při vytváření vlastních rolí.
 
 #### <a name="managing-devices"></a>Správa zařízení
 

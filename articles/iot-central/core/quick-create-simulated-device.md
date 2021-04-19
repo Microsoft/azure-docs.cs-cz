@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 0396c028c8c0e1a18baf037fed4efc21aad944f1
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 2eb0e3ce2ac20c89d9c0176ca3e7b33dc839c923
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715095"
+ms.locfileid: "107718822"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Rychlý Start: Přidání simulovaného zařízení do aplikace IoT Central
 
@@ -94,7 +94,7 @@ Výchozí zobrazení představují rychlý způsob, jak začít s vizualizací d
 * Zobrazení **přehledu** používá grafy a metriky k zobrazení telemetrie zařízení.
 * V zobrazení **informace** se zobrazí vlastnosti zařízení.
 
-V šabloně zařízení vyberte uzel **zobrazení** . V případě, že jste šablonu přidali, vidíte, že IoT Central vygenerovala **Přehled**, **informace o** zobrazení a zobrazení **nezpracovaných dat** .
+V šabloně zařízení vyberte uzel **zobrazení** . Můžete vidět, že IoT Central vygeneroval **Přehled**, **informace o** zobrazení a **nezpracovaná data** při přidání šablony.
 
 Přidání nového formuláře pro správu zařízení:
 
@@ -150,7 +150,7 @@ Nyní můžete pracovat se zobrazeními, která byla vytvořena dříve pomocí 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se dozvěděli, jak vytvořit šablonu zařízení **kontroleru senzorů** pro zařízení ESP32 a přidat do aplikace simulované zařízení.
+V tomto rychlém startu jste zjistili, jak vytvořit šablonu zařízení **kontroleru senzorů** pro zařízení ESP32 a přidat do aplikace simulované zařízení.
 
 Další informace o monitorování zařízení připojených k vaší aplikaci získáte, když budete pokračovat v rychlém startu:
 

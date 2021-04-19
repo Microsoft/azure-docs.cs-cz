@@ -8,16 +8,16 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c22b3f3164cbb7c1a7ed150d093f77777c7b1023
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20f9aaf73fe0cb30b136254d57e6c9b960c16af4
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501290"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107716971"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Povolit a vytvořit velké sdílené složky souborů
 
-Když ve svém účtu úložiště povolíte velké sdílené složky, sdílené složky se můžou škálovat až na 100 TiB a zároveň se zvýšily i omezení počtu vstupně-výstupních operací a propustnosti pro standardní sdílené složky. Toto škálování můžete taky povolit u svých stávajících účtů úložiště pro existující sdílené složky. Podrobnosti najdete v tématu [sdílení souborů a cíle pro škálování souborů](storage-files-scale-targets.md#azure-files-scale-targets) . 
+Po povolení velkých sdílených složek na vašem účtu úložiště se sdílené složky Azure můžou škálovat až na 100 TiB. Pokud povolíte velké sdílené složky, může to také zvýšit počet IOPS a omezení propustnosti sdílené složky. Toto škálování můžete taky povolit u stávajících účtů úložiště pro existující a nové sdílené složky. Podrobnosti o rozdílech v výkonu najdete v tématu [sdílené složky a cíle škálování souborů](storage-files-scale-targets.md#azure-files-scale-targets).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,7 +27,7 @@ Když ve svém účtu úložiště povolíte velké sdílené složky, sdílené
 
 ## <a name="restrictions"></a>Omezení
 
-V současné době můžete použít jenom místně redundantní úložiště (LRS) nebo úložiště ZRS (zóna – redundantní úložiště) na účtech s povolenými velkými sdílenými soubory. Nemůžete použít geograficky redundantní úložiště (GZRS), geograficky redundantní úložiště (GRS), geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS).
+Prozatím můžete v účtech úložiště s povolenými velkými sdílenými složkami použít jenom místně redundantní úložiště (LRS) nebo úložiště ZRS (zóna – redundantní úložiště). Nemůžete použít geograficky redundantní úložiště (GZRS), geograficky redundantní úložiště (GRS), geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS).
 
 Povolení velkých sdílených složek na účtu je nevratný proces. Když ho povolíte, nebudete moct účet převést na GZRS, GRS, RA-GRS nebo RA-GZRS.
 
@@ -38,29 +38,12 @@ Povolení velkých sdílených složek na účtu je nevratný proces. Když ho p
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V Azure Portal vyberte **všechny služby**. 
 1. V seznamu prostředků zadejte **účty úložiště**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **účty úložiště**.
-1. V okně **účty úložiště** , které se zobrazí, vyberte **Přidat**.
-1. Vyberte předplatné, které použijete k vytvoření účtu úložiště.
-1. Pod polem **Skupina prostředků** vyberte **Vytvořit novou**. Zadejte název nové skupiny prostředků.
-
-    ![Snímek obrazovky znázorňující postup vytvoření skupiny prostředků na portálu](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
-
-1. Dále zadejte název účtu úložiště. Název musí být v rámci Azure jedinečný. Název musí mít délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.
-1. Vyberte umístění pro váš účet úložiště.
-1. Nastavte replikaci buď na **místně redundantní úložiště** , nebo na **redundantní úložiště v zóně**.
-1. Ponechte tato pole na jejich výchozích hodnotách:
-
-   |Pole  |Hodnota  |
-   |---------|---------|
-   |Model nasazení     |Resource Manager         |
-   |Výkon     |Standard         |
-   |Druh účtu     |StorageV2 (obecné účely v2)         |
-   |Úroveň přístupu     |Horká         |
-
-1. Vyberte **Upřesnit** a potom vyberte možnost **povoleno** napravo od **velkých sdílených složek**.
+1. V okně **účty úložiště** , které se zobrazí, vyberte **+ Nový**.
+1. V okně základy vyplňte výběr podle vašich přání.
+1. Ujistěte se, že je **výkon** nastavený na **standardní**.
+1. Nastavte **redundanci** buď na **místně redundantní úložiště** , nebo na **redundantní úložiště v zóně**.
+1. Vyberte okno **Upřesnit** a potom vyberte možnost **povoleno** napravo od **velkých sdílených složek**.
 1. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
-
-    ![Snímek obrazovky s přepínačem Enabled na novém účtu úložiště v Azure Portal](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
-
 1. Vyberte **Vytvořit**.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -92,12 +75,13 @@ U stávajících účtů můžete také povolit velké sdílené složky. Pokud 
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Otevřete [Azure Portal](https://portal.azure.com)a přejít na účet úložiště, ve kterém chcete povolit velké sdílené složky souborů.
-1. Otevřete účet úložiště a vyberte **Konfigurace**.
+1. Otevřete [Azure Portal](https://portal.azure.com)a přejděte do účtu úložiště, ve kterém chcete povolit velké sdílené složky souborů.
+1. Otevřete účet úložiště a vyberte **sdílené složky**.
 1. Zaškrtněte políčko **povoleno** u **velkých sdílených složek** a pak vyberte **Uložit**.
 1. Vyberte **Přehled** a vyberte **aktualizovat**.
+1. Vyberte možnost **sdílet kapacitu** a pak vyberte **100 TIB** a **Save (Uložit**).
 
-![Výběr přepínače Enabled na existujícím účtu úložiště v Azure Portal](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
+    :::image type="content" source="media/storage-files-how-to-create-large-file-share/files-enable-large-file-share-existing-account.png" alt-text="Snímek obrazovky účtu úložiště Azure, okna sdílené složky s 100 TIB sdílené složky se zvýrazní.":::
 
 V účtu úložiště jste teď povolili velké sdílené složky. V dalším kroku musíte [aktualizovat kvótu existující sdílené složky](#expand-existing-file-shares) , abyste mohli využít větší kapacitu a škálování.
 

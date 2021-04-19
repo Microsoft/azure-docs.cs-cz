@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d33c7f87d77f371d4eb4bf903e4d534f334e39c4
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 196a449f25d97fb1c1b7b8d79ee8889e0d31a5ae
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599498"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717742"
 ---
 # <a name="import-new-update"></a>Importovat novou aktualizaci
 Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pro IoT Hub. Pokud jste to ještě neudělali, nezapomeňte se seznámit se základními [koncepcemi importu](import-concepts.md).
@@ -112,8 +112,8 @@ Příklad:
 
 ## <a name="import-update"></a>Importovat aktualizaci
 
-[!NOTE]
-Následující pokyny ukazují, jak naimportovat aktualizaci prostřednictvím uživatelského rozhraní Azure Portal. K importu aktualizace můžete použít taky [aktualizaci zařízení IoT Hub API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) . 
+> [!NOTE]
+> Následující pokyny ukazují, jak naimportovat aktualizaci prostřednictvím uživatelského rozhraní Azure Portal. K importu aktualizace můžete použít taky [aktualizaci zařízení IoT Hub API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) . 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte k IoT Hub pomocí aktualizace zařízení.
 

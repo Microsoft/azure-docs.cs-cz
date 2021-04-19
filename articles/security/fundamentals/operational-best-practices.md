@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 86874a60d48ddcbdaca5ae779ad554ee58cc233b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6634a536828b3c19d771d135fdb3a1224d3dfdf3
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498842"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717418"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy pro provozní zabezpečení Azure
 Tento článek poskytuje sadu provozních osvědčených postupů pro ochranu vašich dat, aplikací a dalších prostředků v Azure.
@@ -122,7 +122,7 @@ Bezpečné skóre, které je založeno na ovládacích prvcích Center for Inter
 **Podrobnosti**: [k shromažďování a exportu dat použijte Azure monitor](../../azure-monitor/overview.md#integrate-and-export-data). Tento postup je nezbytný pro povolení vyšetřování incidentů zabezpečení a uchování online protokolů je omezené. Pokud používáte Azure Sentinel, přečtěte si téma [připojení zdrojů dat](../../sentinel/connect-data-sources.md).
 
 **Osvědčený postup**: urychlení vyšetřovacích a loveckých procesů a omezení falešně pozitivních schopností integrací možností zjišťování koncových bodů a odpovědí (EDR) do šetření o útokech.   
-**Podrobnosti**: [Povolení integrace programu Microsoft Defender pro koncové body](../../security-center/security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration) prostřednictvím zásad zabezpečení Security Center. Zvažte použití Azure Sentinel pro lov hrozeb a reakci na incidenty.
+**Podrobnosti**: [Povolte integraci Microsoft Defenderu pro koncové body](../../security-center/security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration) prostřednictvím zásad zabezpečení Security Center. Zvažte použití Azure Sentinel pro lov hrozeb a reakci na incidenty.
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>Monitorování sítě v komplexním scénáři
 Zákazníci vytvářejí komplexní síť v Azure kombinací síťových prostředků, jako jsou virtuální síť, ExpressRoute, Application Gateway a nástroje pro vyrovnávání zatížení. Monitorování je k dispozici na všech síťových prostředcích.

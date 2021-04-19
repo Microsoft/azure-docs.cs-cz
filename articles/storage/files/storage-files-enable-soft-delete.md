@@ -4,16 +4,16 @@ description: Naučte se, jak ve sdílených složkách Azure povolit obnoviteln�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 428ef41340cd565bef0fa3c1e6519fb8862b091a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a0dff310ce4a40b7a66cc548f3c77213f4a10e00
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727565"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107716995"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Povolit obnovitelné odstranění u sdílených složek Azure
 
@@ -26,12 +26,13 @@ V následujících částech se dozvíte, jak povolit a použít obnovitelné od
 ## <a name="getting-started"></a>Začínáme
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-1. Přejděte do svého účtu úložiště a v části **Souborová služba** vyberte **sdílené složky** .
+1. Přejděte do svého účtu úložiště a v části **úložiště dat** vyberte **sdílené složky** .
+1. Vyberte **povoleno** u pole **obnovitelné odstranění**.
 1. **Pro všechny sdílené složky** vyberte možnost **povoleno** pro obnovitelné odstranění.
 1. Vyberte možnost **Doba uchování sdílené složky ve dnech** a zadejte číslo, které si zvolíte.
 1. Vyberte **Save (Uložit** ) a potvrďte nastavení uchovávání dat.
 
-:::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="Snímek obrazovky s podoknem nastavení obnovitelného odstranění účtu úložiště Zvýrazníte část obnovitelného odstranění sdílených složek, povolíte přepínač, nastavíte dobu uchování a uložíte. Tím se povolí obnovitelné odstranění pro všechny sdílené složky v účtu úložiště.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/files-enable-soft-delete-new-ui.png" alt-text="Snímek obrazovky s podoknem nastavení obnovitelného odstranění účtu úložiště Zvýrazníte část obnovitelného odstranění sdílených složek, povolíte přepínač, nastavíte dobu uchování a uložíte. Tím se povolí obnovitelné odstranění pro všechny sdílené složky v účtu úložiště.":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -129,11 +130,12 @@ Pokud chcete ukončit použití obnovitelného odstranění, postupujte podle t�
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přejděte do svého účtu úložiště a v části **Souborová služba** vyberte **sdílené složky** .
+1. Přejděte do svého účtu úložiště a v části **úložiště dat** vyberte **sdílené složky** .
+1. Vyberte odkaz vedle pole **obnovitelné odstranění**.
 1. Vyberte možnost **zakázáno** pro **obnovitelné odstranění pro všechny sdílené složky**.
 1. Vyberte **Save (Uložit** ) a potvrďte nastavení uchovávání dat.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="Vypnutí obnovitelného odstranění vám umožní okamžitě a trvale odstranit všechny sdílené složky v účtu úložiště ve vašem volném čase.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/files-disable-soft-delete.png" alt-text="Vypnutí obnovitelného odstranění vám umožní okamžitě a trvale odstranit všechny sdílené složky v účtu úložiště ve vašem volném čase.":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

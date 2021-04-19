@@ -4,12 +4,12 @@ description: Článek, který ukazuje, jak provádět určité úlohy virtuáln�
 ms.topic: conceptual
 ms.date: 3/13/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a28a59a0de40bba7914d1920b42034fbbc223ddc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c123b20e163731f9a872a969f2f1564479b6e308
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104609075"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718426"
 ---
 # <a name="how-to-configure-azure-functions-with-a-virtual-network"></a>Postup konfigurace Azure Functions s virtuální sítí
 
@@ -30,7 +30,7 @@ Pokud chcete nastavit funkci s účtem úložiště omezeným na soukromou síť
 
 1. Vytvořte nebo nakonfigurujte jiný účet úložiště.  Toto je účet úložiště, který se zabezpečuje s koncovými body služby a spojíme naši funkci.
 
-1. [Vytvořte sdílenou složku](../storage/files/storage-how-to-create-file-share.md#create-file-share) v účtu zabezpečeného úložiště.
+1. [Vytvořte sdílenou složku](../storage/files/storage-how-to-create-file-share.md#create-a-file-share) v účtu zabezpečeného úložiště.
 
 1. Povolte koncové body služby nebo privátní koncový bod pro účet úložiště.  
     * Pokud používáte připojení privátního koncového bodu, bude účet úložiště potřebovat privátní koncový bod `file` pro `blob` subprostředky a.  Pokud používáte některé možnosti, jako je Durable Functions, budete potřebovat `queue` a `table` přistupovat přes připojení privátního koncového bodu.

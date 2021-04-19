@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: a901e71da640f8413e5714ad59073324f582c1b9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a41696ba92757550f9cbaa08ccf78d9a5da528d2
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102441053"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718894"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>Vytváření vlastních iniciativ a zásad zabezpečení
 
@@ -90,7 +90,7 @@ Důležité pojmy v Azure Policy:
 
 - **Přiřazení** je aplikace iniciativy nebo zásady konkrétního oboru (skupina pro správu, předplatné atd.). 
 
-Security Center má předdefinovanou iniciativu, srovnávací test zabezpečení Azure, který zahrnuje všechny zásady zabezpečení. Pokud chcete vyhodnotit zásady Security Center v prostředcích Azure, měli byste vytvořit přiřazení ke skupině pro správu nebo předplatnému, které chcete vyhodnotit.
+Security Center má předdefinovanou iniciativu, [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction), který zahrnuje všechny zásady zabezpečení. Pokud chcete vyhodnotit zásady Security Center v prostředcích Azure, měli byste vytvořit přiřazení ke skupině pro správu nebo předplatnému, které chcete vyhodnotit.
 
 Integrovaná iniciativa má ve výchozím nastavení povolené všechny zásady Security Center. Můžete zvolit, že chcete zakázat určité zásady z předdefinované iniciativy. Pokud například chcete použít všechny zásady Security Center s výjimkou **firewallu webových aplikací**, změňte hodnotu parametru efektu zásady na **disabled (zakázáno**).
 

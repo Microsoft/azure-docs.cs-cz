@@ -4,15 +4,15 @@ description: Přečtěte si, jak povolit službu SMB vícekanálový ve sdílen�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2f867fa6d4b7e1d864a85106b5d957a53d38eb76
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: da4e1a58aef28e5c47100a0311ff81a5af04a918
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732530"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718969"
 ---
 # <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>Povolení funkce SMB vícekanálový na účtu úložiště účtů (Preview) 
 
@@ -26,7 +26,7 @@ ms.locfileid: "101732530"
 
 [!INCLUDE [storage-files-smb-multi-channel-regions](../../../includes/storage-files-smb-multi-channel-regions.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte účet úložiště](./storage-how-to-create-file-share.md).
 - Pokud máte v úmyslu použít modul Azure PowerShell, [nainstalujte si verzi 3.0.1-Preview modulu](https://www.powershellgallery.com/packages/Az.Storage/3.0.1-preview).
@@ -66,7 +66,7 @@ Jakmile vytvoříte účet úložiště, můžete postupovat podle pokynů k akt
 1. V části **Souborová služba** vyberte **sdílené složky** a pak vyberte **nastavení sdílení souborů**.
 1. Přepněte položku **SMB** na **zapnutou** (nebo **vypnutou** ) a vyberte **Uložit**.
 
-:::image type="content" source="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png" alt-text="Snímek obrazovky s účtem úložiště, na kterém je zapnutá funkce SMB vícekanálový.":::
+:::image type="content" source="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png" alt-text="Snímek obrazovky s účtem úložiště, na kterém je zapnutá funkce SMB vícekanálový."  lightbox="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png":::
 
 Pokud možnost vícekanálový protokolem SMB není v **Nastavení sdílené složky** viditelná nebo při aktualizaci konfigurace se nezdařilo aktualizovat chybu nastavení, ujistěte se prosím, že je vaše předplatné zaregistrované a že váš účet je v některé z [podporovaných oblastí](#regional-availability) s podporovaným typem účtu a replikací.
 

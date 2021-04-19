@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 1d2de439e661ef5b1d1669187355621f25400bc4
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 7bde8fe404e0839bf14500bff4fb92ce8cc4ea04
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075558"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717346"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Synchronizace souborů Azure
 
@@ -160,7 +160,7 @@ Můžete vybrat jinou oblast, ze které se aktuálně nacházejí data StorSimpl
 
 #### <a name="performance"></a>Výkon
 
-Máte možnost vybrat Storage úrovně Premium (SSD) pro sdílené složky Azure nebo úložiště Standard. Standardní úložiště obsahuje [několik vrstev pro sdílenou složku](storage-how-to-create-file-share.md#changing-the-tier-of-an-azure-file-share). Storage úrovně Standard je správnou možností pro většinu zákazníků, kteří migrují z StorSimple.
+Máte možnost vybrat Storage úrovně Premium (SSD) pro sdílené složky Azure nebo úložiště Standard. Standardní úložiště obsahuje [několik vrstev pro sdílenou složku](storage-how-to-create-file-share.md#change-the-tier-of-an-azure-file-share). Storage úrovně Standard je správnou možností pro většinu zákazníků, kteří migrují z StorSimple.
 
 Pořád si nejste jisti?
 
@@ -213,7 +213,7 @@ Po vytvoření účtů úložiště přejdete do části **sdílení souborů** 
         :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="Azure Portal snímek obrazovky s novým uživatelským rozhraním pro sdílení souborů.":::
     :::column-end:::
     :::column:::
-        </br>**Název**</br>Podporují se malá písmena, číslice a spojovníky.</br></br>**Kvóta**</br>Kvóta je tady srovnatelná s vynucenou kvótou SMB v instanci Windows serveru. Osvědčeným postupem je nenastavit kvótu, protože migrace a další služby selžou po dosažení kvóty.</br></br>**Úrovně**</br>Vyberte **transakci optimalizovanou** pro novou sdílenou složku. Během migrace proběhne spousta transakcí. Cenově výhodnější je později změnit úroveň na úroveň, která nejlépe vyhovuje vašim úlohám.
+        </br>**Název**</br>Podporují se malá písmena, číslice a spojovníky.</br></br>**Přidělení**</br>Kvóta je tady srovnatelná s vynucenou kvótou SMB v instanci Windows serveru. Osvědčeným postupem je nenastavit kvótu, protože migrace a další služby selžou po dosažení kvóty.</br></br>**Úrovně**</br>Vyberte **transakci optimalizovanou** pro novou sdílenou složku. Během migrace proběhne spousta transakcí. Cenově výhodnější je později změnit úroveň na úroveň, která nejlépe vyhovuje vašim úlohám.
     :::column-end:::
 :::row-end:::
 

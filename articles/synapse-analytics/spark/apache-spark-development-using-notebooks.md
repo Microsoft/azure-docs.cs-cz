@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4230ced172de52e5acf45e071fa2a49a332eb696
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612303"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719218"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a údržba poznámkových bloků synapse Studio v Azure synapse Analytics
 
@@ -40,7 +40,6 @@ Synapse tým přenesl novou součást poznámkových bloků do synapse studia, a
 |% zatížení| Nepodporováno |&#9745;|
 |%% HTML| Nepodporováno |&#9745;|
 |Přesunutí buňky přetažením myší| Nepodporováno |&#9745;|
-|Trvalý displej () výstup|&#9745;| Není k dispozici |
 |Formátování textové buňky pomocí tlačítek panelu nástrojů|&#9745;| Není k dispozici |
 |Operace vrácení buňky zpět| &#9745;| Není k dispozici |
 
@@ -416,7 +415,7 @@ K datům v primárním účtu úložiště můžete přistupovat přímo. Není 
 
 ![data na buňku](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
 
-## <a name="save-notebooks"></a>Ukládat poznámkové bloky
+## <a name="save-notebooks"></a>Ukládání poznámkových bloků
 
 V pracovním prostoru můžete uložit jeden Poznámkový blok nebo všechny poznámkové bloky.
 
@@ -432,7 +431,7 @@ Ve vlastnostech poznámkového bloku můžete nakonfigurovat, jestli se má při
 
    ![vlastnosti poznámkového bloku](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
-## <a name="magic-commands"></a>Magic – příkazy
+## <a name="magic-commands"></a>Příkazy magic
 V poznámkových blocích Azure synapse Studio můžete používat známé příkazy Jupyter Magic. Zkontrolujte následující seznam jako aktuální dostupné příkazy Magic. Řekněte nám [své případy použití na GitHubu](https://github.com/MicrosoftDocs/azure-docs/issues/new) , abychom mohli pokračovat v sestavování dalších příkazů Magic pro splnění vašich požadavků.
 
 > [!NOTE]

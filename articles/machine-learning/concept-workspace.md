@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 2365e42c3c8b34eba1814ba683eaf1f878b674ce
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 215da0e38045a2e66a4a11b54204c26e7720815c
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106062399"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719056"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je pracovní prostor služby Azure Machine Learning?
 
@@ -105,7 +105,7 @@ Když vytvoříte nový pracovní prostor, automaticky se vytvoří několik pro
   > [!IMPORTANT]
   > Ve výchozím nastavení je účet úložiště účet pro obecné účely v1. Po vytvoření pracovního prostoru můžete [tuto verzi upgradovat na obecné účely verze 2](../storage/common/storage-account-upgrade.md) . Po upgradu na obecné účely v2 nepovolujte v účtu úložiště hierarchický obor názvů.
 
-  Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). V rámci _výchozího_ účtu úložiště pracovního prostoru nejsou podporovány ani úrovně Premium Storage ani hierarchické obory názvů. Můžete použít Storage úrovně Premium nebo hierarchický obor názvů s účty úložiště, _které nejsou výchozí_ .
+  Pokud chcete použít existující účet Azure Storage, nemůže být typu BlobStorage nebo účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). V rámci _výchozího_ účtu úložiště pracovního prostoru nejsou podporovány ani úrovně Premium Storage ani hierarchické obory názvů. Můžete použít Storage úrovně Premium nebo hierarchický obor názvů s účty úložiště, _které nejsou výchozí_ .
   
 + [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): registruje kontejnery Docker, které používáte během školení a při nasazení modelu. Pro minimalizaci nákladů je ACR **opožděně načteno** , dokud se nevytvoří image nasazení.
 

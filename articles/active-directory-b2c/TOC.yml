@@ -460,6 +460,8 @@
                   href: aad-sspr-technical-profile.md
                 - name: Transformace deklarací identity
                   href: claims-transformation-technical-profile.md
+                - name: Podmíněný přístup
+                  href: conditional-access-technical-profile.md
                 - name: Tip tokenu ID
                   href: id-token-hint.md
                 - name: Vydavatel tokenu JWT

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f6907db7f6e53247a8f2fc0042e8c8e6b081dbd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 462d69a8bde0dec2689ac30620276b5bcd335410
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97516382"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717688"
 ---
 # <a name="secure-your-restful-services"></a>Zabezpečení služeb RESTful 
 
@@ -230,9 +230,50 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
 
 ### <a name="acquiring-an-access-token"></a>Získání přístupového tokenu 
 
-Přístupový token můžete získat jedním z několika způsobů: získáním [od poskytovatele federované identity](idp-pass-through-user-flow.md)voláním REST API, která vrací přístupový token, pomocí [toku ROPC](../active-directory/develop/v2-oauth-ropc.md)nebo pomocí [toku přihlašovacích údajů klienta](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md).  
+Přístupový token můžete získat jedním z několika způsobů: získáním [od poskytovatele federované identity](idp-pass-through-user-flow.md)voláním REST API, která vrací přístupový token, pomocí [toku ROPC](../active-directory/develop/v2-oauth-ropc.md)nebo pomocí [toku přihlašovacích údajů klienta](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). Tok přihlašovacích údajů klienta se běžně používá pro interakce mezi servery, které musí běžet na pozadí bez okamžité interakce s uživatelem.
 
-Následující příklad používá REST API technický profil k vytvoření požadavku na koncový bod tokenu Azure AD pomocí přihlašovacích údajů klienta předaných jako základní ověřování HTTP. Pokud ho chcete nakonfigurovat ve službě Azure AD, přečtěte si část [Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). Je možné, že ho budete muset změnit na rozhraní s vaším poskytovatelem identity. 
+#### <a name="acquiring-an-azure-ad-access-token"></a>Získání přístupového tokenu Azure AD 
+
+Následující příklad používá REST API technický profil k vytvoření požadavku na koncový bod tokenu Azure AD pomocí přihlašovacích údajů klienta předaných jako základní ověřování HTTP. Další informace najdete v tématu [tok přihlašovacích údajů klienta Microsoft Identity Platform a OAuth 2,0](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). 
+
+Pokud chcete získat přístupový token Azure AD, vytvořte v tenantovi Azure AD aplikaci:
+
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho TENANTA Azure AD.
+1. V nabídce vlevo vyberte **Azure Active Directory**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure Active Directory**.
+1. Vyberte **Registrace aplikací** a pak vyberte **Nová registrace**.
+1. Zadejte **název** aplikace. Například *Client_Credentials_Auth_app*.
+1. V části **podporované typy účtů** vyberte **účty jenom v tomto organizačním adresáři**.
+1. Vyberte **Zaregistrovat**.
+2. Poznamenejte si **ID aplikace (klienta)**. 
+
+
+Pro tok přihlašovacích údajů klienta je potřeba vytvořit tajný klíč aplikace. Tajný kód klienta je také označován jako heslo aplikace. Pro získání přístupového tokenu bude vaše aplikace používat tajný klíč.
+
+1. Na stránce **Azure AD B2C-registrace aplikací** vyberte aplikaci, kterou jste vytvořili, například *Client_Credentials_Auth_app*.
+1. V nabídce vlevo v části **Spravovat** vyberte **certifikáty & tajných** kódů.
+1. Vyberte **Nový tajný klíč klienta**.
+1. Do pole **Popis** zadejte popis tajného klíče klienta. Například *clientsecret1*.
+1. Pod položkou **konec platnosti** vyberte dobu, po kterou je tajný kód platný, a pak vyberte **Přidat**.
+1. Poznamenejte si **hodnotu** tajného klíče pro použití v kódu klientské aplikace. Tato hodnota tajného klíče se po opuštění této stránky už znovu nezobrazí. Tuto hodnotu použijete jako tajný klíč aplikace v kódu vaší aplikace.
+
+#### <a name="create-azure-ad-b2c-policy-keys"></a>Vytvoření klíčů zásad Azure AD B2C
+
+Je potřeba uložit ID klienta a tajný klíč klienta, které jste předtím nahráli ve svém tenantovi Azure AD B2C.
+
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta.
+3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
+5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
+6. Pro **Možnosti** vyberte možnost `Manual` .
+7. Zadejte **název** klíče zásad `SecureRESTClientId` . Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
+8. Do **tajného klíče** zadejte ID klienta, které jste si dříve nahráli.
+9. Pro **použití klíče** vyberte `Signature` .
+10. Klikněte na **Vytvořit**.
+11. Vytvořte další klíč zásad s následujícím nastavením:
+    -   **Název**: `SecureRESTClientSecret` .
+    -   **Tajný kód**: Zadejte svůj tajný klíč klienta, který jste nahráli dříve.
 
 Pro ServiceUrl nahraďte název-tenanta názvem vašeho tenanta Azure AD. Všechny dostupné možnosti najdete v tématu [RESTful Technical Profile](restful-technical-profile.md) reference.
 
@@ -251,7 +292,7 @@ Pro ServiceUrl nahraďte název-tenanta názvem vašeho tenanta Azure AD. Všech
   </CryptographicKeys>
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="client_credentials" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="https://secureb2cfunction.azurewebsites.net/.default" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="https://graph.microsoft.com/.default" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="bearerToken" PartnerClaimType="access_token" />

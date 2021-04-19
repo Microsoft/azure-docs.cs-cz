@@ -8,12 +8,12 @@ ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 267b68fbdae6d894acc3222a8d74a8e15e865dbc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cb3bee770653173f1a40b209c27d2dc92c7df11
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023516"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718030"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí synchronizace souborů Azure. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
@@ -116,7 +116,8 @@ Další informace najdete v tématu [Úvod do služby Azure Defender pro úloži
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>Povolit standardní sdílené složky pro rozsah až 100 TiB
-[!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
+Ve výchozím nastavení mohou standardní sdílené složky zahrnovat pouze až 5 TiB, ale můžete zvýšit limit počtu sdílení na 100 TiB. Další informace o tom, jak zvýšit limit vaší sdílené složky, najdete v tématu [povolení a vytváření velkých sdílených složek](storage-files-how-to-create-large-file-share.md).
+
 
 #### <a name="limitations"></a>Omezení
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]

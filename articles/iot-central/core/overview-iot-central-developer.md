@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 4423eea6c35ad44d55ad17f5703a95c6273422b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebd2759d4dfb8ee79130f9b4876eba8d45226d04
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585855"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718786"
 ---
 # <a name="iot-central-device-development-guide"></a>Průvodce vývojem zařízení IoT Central
 
@@ -125,7 +125,7 @@ Další informace o konvencích technologie Plug and Play IoT najdete v tématu 
 
 ### <a name="device-sdks"></a>Sady SDK pro zařízení
 
-K implementaci chování zařízení použijte jednu ze [sad SDK pro zařízení Azure IoT](#languages-and-sdks) . Kód by měl:
+K implementaci chování zařízení použijte jednu ze [sad SDK pro zařízení Azure IoT](../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) . Kód by měl:
 
 - Zaregistrujte zařízení pomocí DPS a pomocí informací z DPS se připojte k internímu centru IoT ve vaší aplikaci IoT Central.
 - Oznamuje DTMI modelu, který zařízení implementuje.

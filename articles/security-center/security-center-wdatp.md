@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: 88d0a3dcd89ea678d77bc558fc680630bc0f2309
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: e12578fa6da679587d41fb25b17b00eb1645299a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168174"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718408"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
@@ -38,7 +38,7 @@ Microsoft Defender pro koncové body je holistický, cloudové řešení zabezpe
 | Stav vydaných verzí:                  | Všeobecně dostupná (GA)                                                                                                                                                                                                                                                                                      |
 | Stanov                        | Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .                                                                                                                                                                                                                                             |
 | Podporované platformy:            |  • Počítače Azure s Windows<br> • Počítače s obloukem v Azure, na kterých běží Windows|
-| Podporované verze systému Windows:  |  • **Obecná dostupnost (GA) –** detekce na Windows serveru 2016, 2012 R2 a 2008 R2 SP1<br> • Zjišťování **verze Preview** na windows serveru 2019, [Windows Virtual desktopu (WVD)](../virtual-desktop/overview.md)a [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.yml) (dřív Enterprise pro virtuální plochy (evd)|
+| Podporované verze Windows pro detekci:  |  • Windows Server 2019, 2016, 2012 R2 a 2008 R2 SP1<br> • [Virtuální plocha Windows (WVD)](../virtual-desktop/overview.md)<br> • [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.yml) (dřív Enterprise pro virtuální plochy) (evd)|
 | Nepodporované operační systémy:  |  • Windows 10 (jiné než EVD nebo WVD)<br> • Linux|
 | Požadované role a oprávnění: | Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného** nebo **přispěvatele předplatného**|
 | Cloud                         | ![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov                                                        |
@@ -69,20 +69,22 @@ Když použijete Azure Security Center k monitorování serverů, automaticky se
 Po nakonfigurování umístění ho nemůžete změnit. Pokud máte vlastní licenci pro Microsoft Defender pro koncový bod a potřebujete přesunout vaše data do jiného umístění, obraťte se na podpora Microsoftu, aby tenant obnovil.
 
 
-## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>Povolení integrace programu Microsoft Defender pro koncové body
+## <a name="enable-the-microsoft-defender-for-endpoint-integration"></a>Povolit aplikaci Microsoft Defender pro integraci koncových bodů
 
-1. Ověřte, že váš počítač splňuje požadavky nezbytné pro Defender pro koncový bod:
+### <a name="prerequisites"></a>Požadavky
 
-    - Pro **všechny verze systému Windows**:
-        - Konfigurace nastavení sítě popsaná v tématu [Konfigurace nastavení proxy zařízení a připojení k Internetu](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)
-        - Pokud nasazujete Defender na koncový bod do místních počítačů, připojte ho ke službě Azure ARC, jak je vysvětleno v tématu [připojení hybridních počítačů se servery s podporou ARC Azure](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) .
-    - Pro **počítače s Windows serverem 2019** se navíc ujistěte, že běží na platném agentovi a že mají rozšíření MicrosoftMonitoringAgent.
+Ověřte, že váš počítač splňuje požadavky nezbytné pro Defender pro koncový bod:
 
+1. Konfigurace nastavení sítě popsaná v tématu [Konfigurace nastavení proxy zařízení a připojení k Internetu](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)
+1. Pokud nasazujete Defender na koncový bod do místních počítačů, připojte ho ke službě Azure ARC, jak je vysvětleno v tématu [připojení hybridních počítačů se servery s podporou ARC Azure](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) .
+1. Jenom pro počítače s Windows serverem 2019 zkontrolujte, jestli na vašich počítačích běží platný agent a jestli má rozšíření MicrosoftMonitoringAgent.
 1. Povolte **Azure Defender pro servery**. Další informace najdete v tématu [rychlý Start: povolení programu Azure Defender](enable-azure-defender.md).
-
 1. Pokud jste už na svých serverech licencovaný a nasazený program Microsoft Defender pro koncové body, odeberte ho pomocí postupu popsaného v tématu [odpojení Windows Servers](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers).
-1. V nabídce Security Center vyberte **cenové & nastavení**.
-1. Vyberte předplatné, které chcete změnit.
+1. Pokud jste přesunuli předplatné mezi klienty Azure, vyžadují se také některé ruční přípravné kroky. Pokud chcete získat úplné informace, obraťte se na [podporu Microsoftu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+
+
+### <a name="enable-the-integration"></a>Povolit integraci
+1. V nabídce Security Center vyberte **cenové & nastavení** a vyberte předplatné, které chcete změnit.
 1. Vyberte **detekci hrozeb**.
 1. Zaškrtněte políčko **povolí programu Microsoft Defender, aby měl koncový bod přístup k datům**, a vyberte **Uložit**.
 

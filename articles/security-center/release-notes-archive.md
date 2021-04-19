@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 04/04/2021
 ms.author: memildin
-ms.openlocfilehash: ecdaf6a8509583cf93857e24fabc059e38d23b67
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 9d376a374d1934f55b6a6fb15f1642c81b30b2fc
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383452"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718660"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archivujte, co je nového v Azure Security Center?
 
@@ -891,7 +891,7 @@ Nyní můžete přidat standardy jako:
 - **Canada Federal PBMM**
 - **Azure CIS 1.1.0 (nový)** (což je ucelenější reprezentace Azure CIS 1.1.0)
 
-Kromě toho jsme nedávno přidali **srovnávací testy zabezpečení Azure**, které jsou určené pro zabezpečení a osvědčené postupy pro dodržování předpisů v závislosti na běžných architekturách dodržování předpisů, a pokyny specifické pro Azure. Další standardy budou na řídicím panelu podporovány, jakmile budou k dispozici.  
+Kromě toho jsme nedávno přidali [srovnávací testy zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction), které jsou určené pro zabezpečení a osvědčené postupy pro dodržování předpisů v závislosti na běžných architekturách dodržování předpisů, a pokyny specifické pro Azure. Další standardy budou na řídicím panelu podporovány, jakmile budou k dispozici.  
  
 Přečtěte si další informace o [přizpůsobení sady standardů na řídicím panelu dodržování legislativních předpisů](update-regulatory-compliance-packages.md).
 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 04/19/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e694a5f6144cee65be074d05ce0015d31bfdf65e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f9f6dc1abd08c5e53f3d44a8f6ec1b3e20786ed
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104675821"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717436"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní šablonami HTML v Azure Active Directory B2C
 
@@ -261,7 +261,7 @@ Měla by se zobrazit stránka podobná následujícímu příkladu s prvky na st
 
 Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte **ContentDefinition** a jeho podřízené prvky ze základního souboru do souboru rozšíření.
 
-1. Otevřete základní soubor zásad. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> . Tento základní soubor je jedním ze souborů zásad, které jsou součástí počáteční sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](./custom-policy-get-started.md).
+1. Otevřete základní soubor zásad. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> . Tento základní soubor je jedním ze souborů zásad, které jsou součástí počáteční sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](./tutorial-create-user-flows.md?pivots=b2c-custom-policy).
 1. Vyhledejte a zkopírujte celý obsah elementu **ContentDefinitions** .
 1. Otevřete soubor rozšíření. Například *TrustFrameworkExtensions.xml*. Vyhledejte element **BuildingBlocks** . Pokud element neexistuje, přidejte jej.
 1. Vložte celý obsah elementu **ContentDefinitions** , který jste zkopírovali jako podřízený prvek **BuildingBlocks** elementu.
@@ -390,7 +390,7 @@ Postup použití ukázky:
     
 1. Uložte `\*.html` soubory a nahrajte je do úložiště objektů BLOB.
 1. Nyní upravte zásady tak, aby odkazovaly na soubor HTML, jak bylo uvedeno dříve.
-1. Pokud se zobrazí chybějící písma, obrázky nebo šablony stylů CSS, zkontrolujte odkazy v zásadách rozšíření a v \* souborech. html.
+1. Pokud se zobrazí chybějící písma, obrázky nebo šablony stylů CSS, zkontrolujte odkazy v zásadách rozšíření a v `\*.html` souborech.
 
 ## <a name="use-company-branding-assets-in-custom-html"></a>Použití prostředků brandingu společnosti ve vlastním HTML
 

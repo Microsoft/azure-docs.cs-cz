@@ -4,7 +4,7 @@ description: Seznámení se sestavami aktivit přihlašování na portálu Azure
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,20 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/16/2021
+ms.date: 04/19/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 781cafd9b382868d0aa4f6b77ff7338c4ee15ed2
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: dc9aa77b3fdc3cda94670545f847bb9de31e1160
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589639"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718948"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Sestavy aktivit přihlašování Azure Active Directory – Preview
 
-Portál Azure Active Directory umožňuje přístup k třem protokolům aktivit:
+Jako správce IT chcete zjistit, jak vaše IT prostředí dělá. Informace o stavu vašeho systému vám umožní posoudit, jestli a jak potřebujete reagovat na potenciální problémy. 
+
+Pro podporu s tímto cílem vám portál Azure Active Directory umožňuje přístup k třem protokolům aktivit:
 
 - **Přihlášení** – informace o přihlášeních a o tom, jak vaše prostředky používají vaši uživatelé.
 - **[Audit](concept-audit-logs.md)** – informace o změnách použitých pro vašeho tenanta, jako jsou uživatelé a Správa skupin nebo aktualizace, které se vztahují na prostředky vašeho tenanta.

@@ -10,15 +10,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/20/2020
+ms.date: 4/16/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92ef2e59dab1921eae8e7d88249e75116601c597
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a243b348c01e6d1297a6a1fe016e3b6bc8d98d47
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670871"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719074"
 ---
 # <a name="know-the-terms"></a>Seznámení s podmínkami
 
@@ -41,12 +41,11 @@ V průvodci architekturou a technickým nasazením se často používá několik
     - **Třída Type I**: S72, S72m, S96, S144, S144m, S192, S192m, S192xm, S224 a S224m
     - **Type II – třída**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm a S960m
 - **Razítko**: definuje interní velikost nasazení od Microsoftu velkých instancí Hana. Než bude možné nasazovat velké jednotky instancí HANA, musí být v umístění datového centra nasazené razítko pro velké instance, které se skládá z výpočetních, síťových a úložných stojanů. Toto nasazení se nazývá razítko velkého výskytu instance HANA nebo revize 4 (viz níže) na základě použití alternativního **řádku velkých instancí** .
-- **Revize**: Existují dvě různé revize razítka pro velká instance pro všechna razítka Hana. Liší se v architektuře a blízkosti hostitelů virtuálních počítačů Azure.
-    - "Revize 3" (rev 3): je původní návrh, který byl nasazen ze polovině roku 2016
-    - "Revize 4" (Rev 4): je nový návrh, který může poskytnout užší blízkost hostitelům virtuálních počítačů Azure a tím snížit latenci sítě mezi virtuálními počítači Azure a jednotkami velkých instancí HANA. 
-    - "Revize 4,2" (Rev 4,2): ve stávajícím řadiči domény revize 4 se prostředky přeBareMetal do infrastruktury.  Zákazníci mají přístup ke svým prostředkům jako BareMetal instance z Azure Portal. 
+- **Revize**: Existují dvě různé revize razítka pro velká instance pro všechna razítka Hana. Ty se liší v architektuře a blízkosti hostitelů virtuálních počítačů Azure.
+    - "Revize 3" (rev 3) je původní návrh nasazený od středu 2016.
+    - "Revize 4,2" (Rev 4,2) je nový návrh, který poskytuje užší blízkost pro hostitele virtuálních počítačů Azure. Rev 4,2 nabízí extrémně nízkou latenci sítě mezi virtuálními počítači Azure a jednotkami velkých instancí HANA. Prostředky v Azure Portal se označují jako BareMetal infrastruktura. Zákazníci mají přístup ke svým prostředkům jako BareMetal instance z Azure Portal. 
 
 K dispozici je celá řada dalších prostředků pro nasazení úlohy SAP v cloudu. Pokud máte v úmyslu spustit nasazení SAP HANA v Azure, musíte mít zkušenosti s principy Azure IaaS a nasazením úloh SAP na Azure IaaS. Než budete pokračovat, přečtěte si téma [použití řešení SAP na virtuálních počítačích Azure](get-started.md) , kde najdete další informace. 
 
-**Další kroky**
-- Reference k [certifikaci HLI](hana-certification.md)
+## <a name="next-steps"></a>Další kroky
+- Přečtěte si [HLI certifikace](hana-certification.md).

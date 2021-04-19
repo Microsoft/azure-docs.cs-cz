@@ -8,12 +8,12 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2650da2579f13ec1588af7a25e5b28908209bc82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed2d48288bf97fe3ebaa1e8ffc1336d8a82d940e
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101700180"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719020"
 ---
 # <a name="azure-cloud-services-extended-support-config-networkconfiguration-schema"></a>NetworkConfiguration schéma konfigurace služby Azure Cloud Services (Rozšířená podpora)
 
@@ -70,7 +70,7 @@ Následující tabulka popisuje podřízené prvky `NetworkConfiguration` elemen
 | VirtualNetworkSite | Nepovinný parametr. Určuje název lokality Virtual Network, do které chcete nasadit cloudovou službu. Toto nastavení nevytvoří web Virtual Network. Odkazuje na lokalitu, která byla dříve definována v síťovém souboru pro váš Virtual Network. Cloudová služba může být jenom členem jednoho Virtual Network. Pokud toto nastavení nezadáte, cloudová služba nebude nasazená do Virtual Network. Název Virtual Network lokality je definován řetězcem pro `name` atribut.|
 | InstanceAddress | Nepovinný parametr. Určuje přidružení role k podsíti nebo sadě podsítí v Virtual Network. Pokud přidružíte název role k adrese instance, můžete určit podsítě, ke kterým chcete přiřadit tuto roli. `InstanceAddress`Obsahuje element podsítě. Název role, která je přidružená k podsíti nebo podsítím, je definován řetězcem pro `roleName` atribut.|
 | Podsíť | Nepovinný parametr. Určuje podsíť, která odpovídá názvu podsítě v souboru konfigurace sítě. Název podsítě je definován řetězcem pro `name` atribut.|
-| Adresu | Nepovinný parametr. Určuje rezervovanou IP adresu, která má být přidružena k nasazení. K vytvoření rezervované IP adresy je nutné použít Vyhrazená IP adresa vytvořit adresu. Každé nasazení v cloudové službě může být přidruženo k jedné rezervované IP adrese. Název rezervované IP adresy je definován řetězcem pro `name` atribut.|
+| Adresu | Nepovinný parametr. Určuje rezervovanou IP adresu, která má být přidružena k nasazení. Metoda přidělení rezervované IP adresy musí být zadaná jako `Static` pro nasazení šablon a PowerShellu. Každé nasazení v cloudové službě může být přidruženo pouze k jedné rezervované IP adrese. Název rezervované IP adresy je definován řetězcem pro `name` atribut.|
 
 ## <a name="see-also"></a>Viz také
 [Schéma konfigurace cloudové služby (Rozšířená podpora)](schema-cscfg-file.md).

@@ -3,12 +3,12 @@ title: Přehled architektury
 description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 6ecf01838b8fe3104626f8ada5f832c3f52dc378
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 8fca05f8718fc5e44da33b19447895f5daafc905
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515902"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107716738"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -142,23 +142,7 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architektura: Integrovaná záloha virtuálního počítače Azure
 
-1. Když povolíte zálohování pro virtuální počítač Azure, zálohování se spustí podle plánu, který zadáte.
-1. Při prvním zálohování se na virtuálním počítači nainstaluje rozšíření zálohování, pokud je virtuální počítač spuštěný.
-    - U virtuálních počítačů s Windows se nainstaluje rozšíření VMSnapshot.
-    - Pro virtuální počítače se systémem Linux se nainstaluje rozšíření VMSnapshot Linux.
-1. Rozšíření používá snímek na úrovni úložiště.
-    - Pro virtuální počítače s Windows, na kterých běží, se zaregistrují služby Windows služba Stínová kopie svazku (VSS), aby vybraly snímek konzistentní vzhledem k aplikacím virtuálního počítače. Ve výchozím nastavení provádí zálohování úplné zálohy VSS. Pokud zálohování nedokáže vytvořit snímek konzistentní vzhledem k aplikacím, převezme snímek konzistentní se souborem.
-    - Pro virtuální počítače se systémem Linux aplikace Backup provede snímek konzistentní se souborem. U snímků konzistentních vzhledem k aplikacím je nutné ručně přizpůsobit skripty před/po.
-    - Zálohování je optimalizované zálohováním jednotlivých disků virtuálních počítačů paralelně. U každého zálohovaného disku Azure Backup načte bloky na disku a uloží jenom změněná data.
-1. Po pořízení snímku se data přenesou do trezoru.
-    - Zkopírovány jsou pouze bloky dat, které se od posledního zálohování změnily.
-    - Data nejsou šifrovaná. Azure Backup můžou zálohovat virtuální počítače Azure, které se šifrují pomocí Azure Disk Encryption.
-    - Data snímku se nemusí do trezoru zkopírovat okamžitě. V časech špičky může zálohování trvat několik hodin. Celková doba zálohování virtuálního počítače bude u zásad denního zálohování menší než 24 hodin.
-1. Po odeslání dat do trezoru se vytvoří bod obnovení. Ve výchozím nastavení se snímky uchovávají po dobu dvou dnů, než se odstraní. Tato funkce umožňuje operaci obnovení z těchto snímků, takže vystřihuje časy obnovení. Zkracuje dobu potřebnou k transformaci a zkopírování dat zpět z trezoru. Informace najdete v tématu [Azure Backup možnosti okamžitého obnovení](./backup-instant-restore-capability.md).
-
-Nemusíte explicitně povolit připojení k Internetu pro zálohování virtuálních počítačů Azure.
-
-![Zálohování virtuálních počítačů Azure](./media/backup-architecture/architecture-azure-vm.png)
+[!INCLUDE [azure-vm-backup-process.md](../../includes/azure-vm-backup-process.md)]
 
 ## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Architektura: přímé zálohování místních počítačů s Windows serverem nebo souborů nebo složek virtuálních počítačů Azure
 

@@ -7,12 +7,12 @@ ms.date: 03/11/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d545610b8fa13d0c0f8b91bf92107d53b81454c3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 13abb35d0fa9ad3ee949b6edf5205de601a02956
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313840"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718552"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Vyloučení prostředků a doporučení ze zabezpečeného skóre 
 
@@ -35,7 +35,7 @@ V takových případech můžete vytvořit výjimku pro doporučení pro:
 | Stav vydaných verzí:                  | Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
 | Stanov                        | Toto je prémiová funkce Azure Policy nabízená zákazníkům v Azure Defenderu bez dalších poplatků. Pro ostatní uživatele se můžou v budoucnu uplatňovat poplatky.                                                                                                                                                                 |
 | Požadované role a oprávnění: | **Vlastník** nebo **Přispěvatel zásad prostředků** pro vytvoření výjimky<br>Chcete-li vytvořit pravidlo, potřebujete oprávnění k úpravám zásad v Azure Policy.<br>Další informace najdete v [Azure Policy oprávnění služby Azure RBAC](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).                                            |
-| Omezení:                    | Výjimky je možné vytvořit jenom pro doporučení zahrnutá v výchozích iniciativách Security Center, srovnávacích testech zabezpečení Azure nebo kterékoli ze zadaných regulativních standardních iniciativ. Doporučení, která jsou generována z vlastních iniciativ, nelze vyloučit. Přečtěte si další informace o vztazích mezi [zásadami, iniciativami a doporučeními](security-policy-concept.md). |
+| Omezení:                    | Výjimky je možné vytvořit jenom pro doporučení zahrnutá v výchozích iniciativách Security Center, [srovnávacích testech zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction)nebo kterékoli ze zadaných regulativních standardních iniciativ. Doporučení, která jsou generována z vlastních iniciativ, nelze vyloučit. Přečtěte si další informace o vztazích mezi [zásadami, iniciativami a doporučeními](security-policy-concept.md). |
 | Cloud                         | ![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)                                                                                                                                                                                         |
 |                                 |                                                                                                                                                                                                                                                                                                                                    |
 

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 04/19/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 884cb0c30bc754366fda79a4b54b977517fbadd3
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: cf62330fd677dc978c8f25a81c6a1e5bfbb612ac
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530538"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717598"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Správa Azure AD B2C s využitím Microsoft Graph
 
@@ -48,6 +48,9 @@ Telefonní číslo, které může uživatel použít k přihlášení pomocí [S
 Všimněte si, že operace [list](/graph/api/authentication-list-phonemethods) vrátí jenom telefonní čísla, která jsou povolená. Následující telefonní číslo by mělo být povoleno pro použití se seznamem operací. 
 
 ![Povolit přihlašování telefonem](./media/microsoft-graph-operations/enable-phone-sign-in.png)
+
+> [!NOTE]
+> V aktuální verzi beta toto rozhraní API funguje jenom v případě, že je telefonní číslo uložené s mezerou mezi kódem země a telefonním číslem. Služba Azure AD B2C v tuto chvíli ve výchozím nastavení nepřidává toto místo.
 
 ## <a name="self-service-password-reset-email-address-beta"></a>E-mailová adresa pro Samoobslužné resetování hesla (beta verze)
 

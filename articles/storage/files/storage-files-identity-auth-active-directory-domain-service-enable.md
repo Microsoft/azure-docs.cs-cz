@@ -8,12 +8,12 @@ ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 3abca397186572cabb4f7ae99edae8688ea4d9a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df2bd1c12c86de43e2a5057813a743d822dbda33
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499505"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718339"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Povolení ověřování Azure Active Directory Domain Services u souborů Azure
 
@@ -93,7 +93,7 @@ Pokud chcete povolit ověřování pomocí služby Azure služba AD DS přes pro
 
 Následující obrázek ukazuje, jak povolit Azure služba AD DS ověřování pomocí protokolu SMB pro váš účet úložiště.
 
-![Povolit ověřování Azure služba AD DS přes SMB v Azure Portal](media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png)
+:::image type="content" source="media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png" alt-text="Snímek obrazovky s oknem konfigurace v účtu úložiště je povolená služba Azure Active Directory doména Services." lightbox="media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

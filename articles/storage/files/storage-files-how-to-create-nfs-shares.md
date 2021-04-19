@@ -4,16 +4,16 @@ description: Naučte se, jak vytvořit sdílenou složku Azure, kterou je možn�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: b085b9991175d8cd43e2dac0db80c5af4e703c34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b549c625f0a6ff0480eafc38f84d292e66350950
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521233"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717118"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Postup vytvoření sdílené složky systému souborů NFS
 Sdílené složky Azure jsou plně spravované sdílené složky, které jsou v cloudu živé. Tento článek popisuje vytvoření sdílené složky, která používá protokol NFS. Další informace o obou protokolech najdete v tématu [protokoly sdílení souborů Azure](storage-files-compare-protocols.md).
@@ -107,25 +107,24 @@ Pokud chcete vytvořit účet úložiště úložiště, přejděte na Azure Por
 
 1. V Azure Portal v nabídce vlevo vyberte **účty úložiště** .
 
-    ![Azure Portal hlavní stránka – Výběr účtu úložiště](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
+    ![Azure Portal hlavní stránka Vyberte účet úložiště.](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
-2. V okně **Účty úložiště**, které se zobrazí, zvolte **Přidat**.
-3. Vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
-4. Vyberte skupinu prostředků, ve které se má účet úložiště vytvořit.
+1. V okně **Účty úložiště**, které se zobrazí, zvolte **Přidat**.
+1. Vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
+1. Vyberte skupinu prostředků, ve které se má účet úložiště vytvořit.
+1. Dále zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure. Název také musí mít délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.
+1. Vyberte pro svůj účet úložiště nějaké umístění nebo použijte výchozí umístění.
+1. Pro **výkon** vyberte **Premium**.
 
-5. Dále zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure. Název také musí mít délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.
-6. Vyberte pro svůj účet úložiště nějaké umístění nebo použijte výchozí umístění.
-7. Pro **výkon** vyberte **Premium**.
+    V rozevírací nabídce **druh účtu** musíte vybrat možnost **Premium** pro **sdílení** souborů jako dostupnou.
 
-    V rozevíracím seznamu **druh účtu** musíte vybrat možnost **Premium** for **Storage** jako dostupnou.
+1. Jako **typ účtu Premium** vyberte **sdílené složky**.
 
-8. Vyberte **druh účtu** a zvolte **úložiště**.
-9. Ponechte **replikační** sadu nastavenou na výchozí hodnotu **místně redundantního úložiště (LRS)**.
+    :::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="Snímek obrazovky s vybraným výkonem Premium":::
 
-    ![Jak vytvořit účet úložiště pro sdílenou složku Premium](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
-
-10. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
-11. Vyberte **Vytvořit**.
+1. Ponechte **replikační** sadu nastavenou na výchozí hodnotu **místně redundantního úložiště (LRS)**.
+1. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
+1. Vyberte **Vytvořit**.
 
 Po vytvoření prostředku účtu úložiště přejděte na něj.
 
@@ -180,7 +179,7 @@ Teď, když jste vytvořili účet úložiště souborů a nakonfigurovali síť
     
 1. Vyberte **Vytvořit**.
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="Snímek obrazovky okna pro vytvoření sdílené složky":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/files-nfs-create-share.png" alt-text="Snímek obrazovky okna pro vytvoření sdílené složky":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -4,16 +4,16 @@ description: Naučte se používat sdílené složky Azure s Windows a Windows s
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9121774af0a1cfac6f677b4b8e2f4cd4b535042e
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94626890"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717173"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -63,7 +63,7 @@ Postup získání tohoto skriptu:
 1. Vyberte **Sdílené složky**.
 1. Vyberte sdílenou složku, kterou chcete připojit.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="případě":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="Snímek obrazovky okna sdílené složky, sdílení souborů je zvýrazněné.":::
 
 1. Vyberte **Connect** (Připojit).
 
@@ -72,7 +72,7 @@ Postup získání tohoto skriptu:
 1. Vyberte písmeno jednotky, ke které se má sdílená složka připojit.
 1. Zkopírujte zadaný skript.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Ukázkový text":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Snímek obrazovky okna připojit, tlačítko pro kopírování na skriptu je zvýrazněné.":::
 
 1. Vložte skript do prostředí v hostiteli, ke kterému chcete sdílenou složku připojit, a spusťte ji.
 

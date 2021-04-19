@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 9382feeb16f2f6a82b946c05a6b4780866fdda5c
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: cbc6e119348e5a0e805ac502de9eddfa9d9c4b6d
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600144"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717904"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -309,7 +309,9 @@ Další informace o šifrování v přenosu najdete v tématu [vyžadování zab
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>Povolit standardní sdílené složky pro rozsah až 100 TiB
-[!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
+
+Ve výchozím nastavení mohou standardní sdílené složky zahrnovat pouze až 5 TiB, ale můžete zvýšit limit počtu sdílení na 100 TiB. Další informace o tom, jak zvýšit limit vaší sdílené složky, najdete v tématu [povolení a vytváření velkých sdílených složek](storage-files-how-to-create-large-file-share.md).
+
 
 #### <a name="regional-availability"></a>Regionální dostupnost
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]

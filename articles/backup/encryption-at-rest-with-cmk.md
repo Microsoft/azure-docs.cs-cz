@@ -2,13 +2,13 @@
 title: Šifrování zálohovaných dat s využitím klíčů spravovaných zákazníkem
 description: Přečtěte si, jak Azure Backup umožňuje šifrovat zálohovaná data pomocí klíčů spravovaných zákazníkem (CMK).
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: b6cb1a288d0052b39bbeb52ed9fd20e68a6427ed
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 04/19/2021
+ms.openlocfilehash: bd51be06e707674f3e35b3478d7f99d096be912a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167886"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718768"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Šifrování zálohovaných dat s využitím klíčů spravovaných zákazníkem
 
@@ -44,7 +44,7 @@ Tento článek popisuje následující:
     >K použití zákaznických klíčů pro zálohy v úložišti Recovery Services použijte AZ Module 5.3.0 nebo vyšší.
     
     >[!Warning]
-    >Pokud používáte PowerShell ke správě šifrovacích klíčů pro zálohování, nedoporučujeme aktualizovat klíče z portálu.<br></br>Pokud klíč aktualizujete z portálu, nemůžete použít PowerShell k další aktualizaci šifrovacího klíče, dokud nebude k dispozici aktualizace PowerShellu pro podporu nového modelu. Můžete však pokračovat v aktualizaci klíče z Azure Portal.
+    >Pokud používáte PowerShell ke správě šifrovacích klíčů pro zálohování, nedoporučujeme aktualizovat klíče z portálu.<br>Pokud klíč aktualizujete z portálu, nemůžete použít PowerShell k další aktualizaci šifrovacího klíče, dokud nebude k dispozici aktualizace PowerShellu pro podporu nového modelu. Můžete však pokračovat v aktualizaci klíče z Azure Portal.
 
 Pokud jste úložiště Recovery Services nevytvořili a nenakonfigurujete, můžete [si ho přečíst zde](backup-create-rs-vault.md).
 
@@ -383,6 +383,16 @@ Když zadáte klíč spravovaný zákazníkem, který se musí použít k zašif
 Pomocí možnosti **vybrat z Key Vault** lze povolit automatické otočení pro vybraný klíč. Tím se eliminuje ruční úsilí při aktualizaci na další verzi. Pomocí této možnosti ale:
 - Aby se projevila aktualizace verze klíče, může to trvat až hodinu.
 - Pokud se nová verze klíče projeví, původní verze by měla být k dispozici (v povoleném stavu) pro alespoň jednu další úlohu zálohování po uplatnění aktualizace klíče.
+
+### <a name="using-azure-policies-for-auditing-and-enforcing-encryption-utilizing-customer-managed-keys-in-preview"></a>Použití zásad Azure pro auditování a vynucování šifrování pomocí klíčů spravovaných zákazníkem (ve verzi Preview)
+
+Azure Backup umožňuje pomocí zásad Azure auditovat a vysazovat šifrování pomocí klíčů spravovaných zákazníkem a dat v trezoru Recovery Services. Pomocí zásad Azure:
+
+- Zásady auditu lze použít pro audity trezorů s šifrováním pomocí klíčů spravovaných zákazníkem, které jsou povoleny po 04/01/2021. V případě trezorů s povoleným šifrováním CMK před tímto datem se může stát, že se zásada nepovede nebo může zobrazit falešně negativní výsledky (to znamená, že tyto trezory můžou být nahlášené jako nevyhovující předpisům, a to i s povoleným **šifrováním CMK** ).
+- Pokud chcete použít zásady auditu pro úložiště auditování s povoleným **šifrováním CMK** před 04/01/2021, aktualizujte šifrovací klíč pomocí Azure Portal. To pomáhá upgradovat na nový model. Pokud nechcete změnit šifrovací klíč, zadejte stejný klíč znovu pomocí identifikátoru URI klíče nebo možnosti výběru klíče. 
+
+   >[!Warning]
+    >Pokud používáte PowerShell ke správě šifrovacích klíčů pro zálohování, nedoporučujeme aktualizovat klíče z portálu.<br>Pokud klíč aktualizujete z portálu, nemůžete použít PowerShell k další aktualizaci šifrovacího klíče, dokud nebude k dispozici aktualizace PowerShellu pro podporu nového modelu. Můžete však pokračovat v aktualizaci klíče z Azure Portal.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
