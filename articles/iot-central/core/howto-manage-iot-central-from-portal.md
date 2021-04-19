@@ -3,50 +3,47 @@ title: Spravovat IoT Central z Azure Portal | Microsoft Docs
 description: Tento článek popisuje, jak vytvořit a spravovat vaše aplikace IoT Central z Azure Portal.
 services: iot-central
 ms.service: iot-central
-author: dominicbetts
-ms.author: dobett
-ms.date: 02/11/2020
+author: vishwam
+ms.author: vishwams
+ms.date: 04/17/2021
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 2af97206db00d683ab409710bc71a3b5048bf6ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed65e85c7428bf59fe770534e97afdd53564086a
+ms.sourcegitcommit: 089c2bd1ac4861f43c4b89396d3d056a6eef4913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104658461"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107601990"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Správa IoT Central z Azure Portal
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-Místo vytváření a správy aplikací IoT Central na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) můžete ke správě aplikací použít [Azure Portal](https://portal.azure.com) .
+Pomocí [Azure Portal](https://portal.azure.com) můžete vytvářet a spravovat IoT Central aplikace podobně jako funkce ve [správci aplikací](https://apps.azureiotcentral.com/myapps)v IoT Central.
 
 ## <a name="create-iot-central-applications"></a>Vytváření IoT Centralch aplikací
 
 [!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
-
-Chcete-li vytvořit aplikaci, přejděte do [Azure Portal](https://ms.portal.azure.com) a vyberte možnost **vytvořit prostředek**.
-
-V **části Hledat na panelu Marketplace** zadejte *IoT Central*:
-
-![Portál pro správu: hledání](media/howto-manage-iot-central-from-portal/image0a1.png)
-
-Ve výsledcích hledání vyberte dlaždici **IoT Central aplikace** :
-
-![Portál pro správu: výsledky hledání](media/howto-manage-iot-central-from-portal/image0b1.png)
-
-Nyní vyberte **vytvořit**:
-
-![Portál pro správu: IoT Central prostředek](media/howto-manage-iot-central-from-portal/image0c1.png)
-
-Vyplňte všechna pole ve formuláři. Tento formulář je podobný formuláři, který vyplníte, abyste mohli vytvářet aplikace na webu [Správce aplikací Azure IoT Central](https://aka.ms/iotcentral) . Další informace najdete v tématu rychlý Start [k vytvoření IoT Central aplikace](quick-deploy-iot-central.md) .
+Chcete-li vytvořit aplikaci, přejděte na stránku [vytvořit IoT Central aplikace](https://ms.portal.azure.com/#create/Microsoft.IoTCentral) v Azure Portal a vyplňte formulář.
 
 ![Vytvořit formulář IoT Central](media/howto-manage-iot-central-from-portal/image6a.png)
 
-**Umístění** je [geografická](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, kde byste chtěli vytvořit aplikaci. Obvykle byste měli zvolit umístění, které je fyzicky nejbližší pro vaše zařízení, aby se dosáhlo optimálního výkonu. Služba Azure IoT Central je aktuálně dostupná v zeměpisných oblastech **Austrálie**, **Asie a Tichomoří**, **Evropa**, **USA**, **Spojené království** a **Japonsko** . Jakmile zvolíte umístění, nemůžete později přesunout aplikaci do jiného umístění.
+* **Název prostředku** je jedinečný název, který můžete ve vaší skupině prostředků Azure zvolit pro vaši aplikaci IoT Central.
 
-Po vyplnění všech polí vyberte **vytvořit**.
+* **Adresa URL aplikace** je adresa URL, kterou můžete použít pro přístup k aplikaci.
+
+* **Umístění** je [geografická](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, kde byste chtěli vytvořit aplikaci. Obvykle byste měli zvolit umístění, které je fyzicky nejbližší pro vaše zařízení, aby se dosáhlo optimálního výkonu. Služba Azure IoT Central je aktuálně dostupná v následujících umístěních:
+    * Asie a Tichomoří
+    * Australia
+    * Europe
+    * Japan
+    * Spojené království
+    * USA
+
+  Jakmile zvolíte umístění, nemůžete později přesunout aplikaci do jiného umístění.
+
+Po vyplnění všech polí vyberte **vytvořit**. Další informace najdete v tématu rychlý Start [k vytvoření IoT Central aplikace](quick-deploy-iot-central.md) .
 
 ## <a name="manage-existing-iot-central-applications"></a>Spravovat existující aplikace IoT Central
 
@@ -55,9 +52,11 @@ Pokud už máte aplikaci Azure IoT Central, můžete ji odstranit nebo ji přesu
 > [!NOTE]
 > Aplikace vytvořené pomocí *bezplatného* plánu nevyžadují předplatná Azure, a proto je v Azure Portal nenajdete v seznamu předplatného Azure. Na portálu IoT Central můžete zobrazit a spravovat jenom bezplatné aplikace.
 
-Začněte tím, že vyberete **všechny prostředky** na portálu. Vyberte **Zobrazit skryté typy** a začněte psát název vaší aplikace ve **filtru podle názvu** a vyhledejte ji. Pak vyberte aplikaci IoT Central, kterou chcete spravovat.
+Začněte tím, že na panelu hledání v horní části Azure Portal vyhledáte svoji aplikaci. Všechny aplikace můžete zobrazit také tak, že vyhledáte "IoT Centralé aplikace" a vyberete službu:
 
-Pokud chcete přejít na aplikaci, vyberte **IoT Central adresa URL aplikace**:
+![Snímek obrazovky, který zobrazuje výsledky hledání pro "IoT Centralé aplikace" s první vybranou službou.](media/howto-manage-iot-central-from-portal/search-iot-central.png)
+
+Po výběru aplikace ve výsledcích hledání zobrazí Azure Portal přehled. Kliknutím na **IoT Central adresa URL aplikace** můžete přejít do vlastní aplikace:
 
 ![Snímek obrazovky zobrazující stránku "Přehled" s zvýrazněnou adresou URL aplikace IoT Central.](media/howto-manage-iot-central-from-portal/image3.png)
 

@@ -31,6 +31,8 @@
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Vyrovnávání zatížení virtuálního počítače v konkrétní zóně dostupnosti
       href: tutorial-load-balancer-standard-public-zonal-portal.md
+    - name: Vyrovnávání zatížení virtuálních počítačů s více skupinami dostupnosti
+      href: tutorial-multi-availability-sets-portal.md
     - name: Konfigurace přesměrování portů v Load Balanceru
       href: tutorial-load-balancer-port-forwarding-portal.md
     - name: Nástroj pro vyrovnávání zatížení mezi oblastmi

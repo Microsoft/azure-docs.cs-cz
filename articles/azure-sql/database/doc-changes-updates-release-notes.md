@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/17/2021
 ms.author: sstein
-ms.openlocfilehash: 81c306ac2a8a5c00c5d06877974db7e04964c76b
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: d0522fe2c8b6d6b623903a720e6c8e760bd6aa92
+ms.sourcegitcommit: 089c2bd1ac4861f43c4b89396d3d056a6eef4913
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600909"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107602092"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -132,7 +132,7 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
 
 Pokud se instance účastní [skupiny automatického převzetí služeb při selhání](https://docs.microsoft.com/azure/azure-sql/database/auto-failover-group-overview), změna [typu připojení](https://docs.microsoft.com/azure/azure-sql/managed-instance/connection-types-overview) instance se projeví u připojení navázaných prostřednictvím koncového bodu skupiny naslouchacího procesu převzetí služeb při selhání.
 
-**Alternativní řešení**: reecreate skupinu automatického převzetí služeb při selhání grafice změnou typu připojení.
+**Alternativní řešení**: vyřaďte a znovu vytvořte skupinu automatického převzetí služeb při selhání grafice změnou typu připojení.
 
 ### <a name="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>Procedura sp_send_dbmail může dojít k přechodnému selhání při @query použití parametru
 
