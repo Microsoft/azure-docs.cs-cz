@@ -4,17 +4,16 @@ description: Přečtěte si, jak koncové body služby virtuální sítě pro Az
 services: key-vault
 author: amitbapat
 ms.author: ambapat
-manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: ae22f07a70f3317b62776e5024b7a3d1084516a1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 985cbe1128d1dd64fda86ef062750dc5dd068ffe
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643479"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751728"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služby Azure Key Vault pro virtuální síť
 
@@ -27,7 +26,7 @@ Toto omezení má jednu důležitou výjimku. Pokud se uživatel rozhodl Povolit
 Ve výchozím nastavení můžete nakonfigurovat [Key Vault brány firewall a virtuální sítě](network-security.md) tak, aby odepřely přístup k provozu ze všech sítí (včetně internetového provozu). Můžete udělit přístup k provozu z konkrétních virtuálních sítí Azure a rozsahů veřejných IP adres, což vám umožní vytvořit zabezpečenou hranici sítě pro vaše aplikace.
 
 > [!NOTE]
-> Brány firewall Key Vault a pravidla virtuální sítě se vztahují jenom na [rovinu dat](secure-your-key-vault.md#data-plane-access-control) Key Vault. Brány firewall a pravidla virtuální sítě neovlivní Key Vault operace roviny řízení (například operace vytvoření, odstranění a úpravy, nastavení zásad přístupu, nastavení brány firewall a pravidla virtuální sítě a nasazení tajných klíčů nebo klíčů prostřednictvím šablon ARM).
+> Brány firewall Key Vault a pravidla virtuální sítě se vztahují jenom na [rovinu dat](security-overview.md#privileged-access) Key Vault. Brány firewall a pravidla virtuální sítě neovlivní Key Vault operace roviny řízení (například operace vytvoření, odstranění a úpravy, nastavení zásad přístupu, nastavení brány firewall a pravidla virtuální sítě a nasazení tajných klíčů nebo klíčů prostřednictvím šablon ARM).
 
 Tady je několik příkladů použití koncových bodů služby:
 

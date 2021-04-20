@@ -7,12 +7,12 @@ ms.date: 04/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 7d9575bedbdce96ef59e9b1d77b9034162bc16bf
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 6032300bd203db78e8cd147cf79300d6dcd9b1dc
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107730422"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751683"
 ---
 # <a name="transform-data-for-iot-central"></a>Transformovat data pro IoT Central
 
@@ -51,7 +51,7 @@ K transformaci dat zařízení v příchozím přenosu jsou k dispozici dvě mo�
 
 - **IoT Edge**: před odesláním dat do aplikace IoT Central použijte modul IoT Edge k transformaci dat ze všech podřízených zařízení.
 
-- **IoT Central mostu zařízení**: [most IoT Central zařízení](https://github.com/Azure/iotc-device-bridge) spojuje ostatní cloudy zařízení IoT, jako je Sigfox, částice a síť, do IoT Central. Most zařízení používá funkci Azure k přeposílání dat a můžete přizpůsobit funkci pro transformaci dat zařízení.
+- **IoT Central mostu zařízení**: [most IoT Central zařízení](howto-build-iotc-device-bridge.md) spojuje ostatní cloudy zařízení IoT, jako je Sigfox, částice a síť, do IoT Central. Most zařízení používá funkci Azure k přeposílání dat a můžete přizpůsobit funkci pro transformaci dat zařízení.
 
 ### <a name="use-iot-edge-to-transform-device-data"></a>Použití IoT Edge k transformaci dat zařízení
 

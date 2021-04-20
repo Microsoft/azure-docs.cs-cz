@@ -7,16 +7,16 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: 516576f4e005cc9fe2303945ecb1a13489908a5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f52900086afef09d69b80bf44474d5514e25235
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94696349"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748875"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> Řešení potíží s chybami odchozích připojení
 
-Tento článek je určený k tomu, aby se při odchozích připojeních z Azure Load Balancer mohla objevit řešení pro běžné problémy. Většina problémů s odchozím připojením, ke kterým se zákazníci setkávají, je způsobená vyčerpáním portů SNAT a vypršením časového limitu připojení, který vede k vyřazen Tento článek popisuje kroky pro zmírnění každého z těchto problémů.
+Tento článek je určený k zajištění řešení běžných problémů, ke kterým může dojít u odchozích připojení z Azure Load Balancer. Většina problémů s odchozím připojením, ke kterým se zákazníci setkávají, je způsobená vyčerpáním portů SNAT a vypršením časového limitu připojení, který vede k vyřazen Tento článek popisuje kroky pro zmírnění každého z těchto problémů.
 
 ## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a> Správa vyčerpání portů SNAT (PAT)
 [Dočasné porty](load-balancer-outbound-connections.md) používané pro [Pat](load-balancer-outbound-connections.md) jsou prostředek exhaustible, jak je popsáno na [samostatném virtuálním počítači bez veřejné IP adresy](load-balancer-outbound-connections.md) a [virtuálního počítače s vyrovnáváním zatížení bez veřejné IP adresy](load-balancer-outbound-connections.md). Pomocí [tohoto](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation) průvodce můžete monitorovat využití dočasných portů a porovnat je s vaším aktuálním přidělením, abyste zjistili riziko nebo potvrzení vyčerpání SNAT.

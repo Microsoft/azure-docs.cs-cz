@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 305fdd3a0b8e0c876924c6e1f090424e67571af0
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 1f56de94df4fd5d4dd154ae8485edb9eed88364c
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968657"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753339"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Základní hodnoty zabezpečení Azure pro Key Vault
 
@@ -136,7 +136,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledat nebo provádět akce s
 
 **Pokyny**: ingestování protokolů prostřednictvím Azure monitor k agregaci dat zabezpečení vygenerovaných Azure Key Vault. V rámci Azure Monitor můžete k dotazování a provádění analýz použít pracovní prostor Azure Log Analytics a používat účty Azure Storage k dlouhodobému a Archivačnímu úložišti. Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany. 
 
-- [Protokolování v Azure Key Vaultu](/azure/key-vault/key-vault-logging)
+- [Protokolování Azure Key Vault](/azure/key-vault/key-vault-logging)
 
 - [Rychlý Start: jak na desku zapnout službu Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
@@ -148,7 +148,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledat nebo provádět akce s
 
 **Pokyny**: povolení nastavení diagnostiky na vašich instancích Azure Key Vault pro přístup k protokolům auditu, zabezpečení a diagnostiky. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky.
 
-- [Protokolování v Azure Key Vaultu](/azure/key-vault/key-vault-logging)
+- [Protokolování Azure Key Vault](/azure/key-vault/key-vault-logging)
 
 **Odpovědnost:** Zákazník
 
@@ -208,7 +208,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledat nebo provádět akce s
 
 - [Registrace aplikace ve službě Azure AD](/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory)
 
-- [Zabezpečení přístupu k trezoru klíčů](secure-your-key-vault.md)
+- [Zabezpečení přístupu k trezoru klíčů](security-overview.md)
 
 **Odpovědnost:** Zákazník
 
@@ -368,11 +368,11 @@ Po uplatnění pravidel brány firewall můžete provádět operace Azure Key Va
 
 **Doprovodné** materiály: všechna data uložená v Azure Key Vault se považují za citlivá. Pro řízení přístupu k Azure Key Vault tajným klíčům použijte Azure Key Vault řízení přístupu k rovině dat. K řízení přístupu v síťové vrstvě můžete použít také vestavěnou bránu firewall Key Vault. Pokud chcete monitorovat přístup k Azure Key Vault, povolte Key Vault nastavení diagnostiky a odešlete protokoly do účtu Azure Storage nebo Log Analytics pracovního prostoru.
 
-- [Zabezpečení přístupu k trezoru klíčů](secure-your-key-vault.md)
+- [Zabezpečení přístupu k trezoru klíčů](security-overview.md)
 
 - [Konfigurace Azure Key Vault bran firewall a virtuálních sítí](/azure/key-vault/key-vault-network-security)
 
-- [Protokolování v Azure Key Vaultu](/azure/key-vault/key-vault-logging)
+- [Protokolování Azure Key Vault](/azure/key-vault/key-vault-logging)
 
 **Odpovědnost:** Zákazník
 
@@ -382,7 +382,7 @@ Po uplatnění pravidel brány firewall můžete provádět operace Azure Key Va
 
 **Doprovodné** materiály: zabezpečený přístup k rovině správy a dat vašich Azure Key Vaultch instancí.
 
-- [Zabezpečení přístupu k trezoru klíčů](secure-your-key-vault.md)
+- [Zabezpečení přístupu k trezoru klíčů](security-overview.md)
 
 **Odpovědnost:** Zákazník
 
@@ -424,7 +424,7 @@ Po uplatnění pravidel brány firewall můžete provádět operace Azure Key Va
 
 - [Získání předplatných, ke kterým má aktuální účet přístup](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
 
-- [Řízení přístupu na základě role v Azure (RBAC)](../../role-based-access-control/overview.md)
+- [Řízení přístupu na základě role Azure](../../role-based-access-control/overview.md)
 
 **Odpovědnost:** Zákazník
 

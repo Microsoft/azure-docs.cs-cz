@@ -2,13 +2,13 @@
 title: Co je nového v Azure Defenderu pro IoT
 description: Tento článek vám umožní zjistit, co je nového v nejnovější verzi programu Defender pro IoT.
 ms.topic: overview
-ms.date: 4/6/2021
-ms.openlocfilehash: df6a43dc68acd025b1c65877c65d1b7e947f210b
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.date: 04/19/2021
+ms.openlocfilehash: da5358ccf0f69ca2ba8f5722b75889b6b7c92c07
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739380"
+ms.locfileid: "107752601"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Co je nového v Azure Defenderu pro IoT?
 
@@ -16,22 +16,62 @@ Tento článek obsahuje seznam nových funkcí a vylepšení funkcí pro program
 
 Vyznačené funkce jsou ve verzi PREVIEW. [Doplňkové podmínky Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zahrnují další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
 
-## <a name="versioning-and-support-for-azure-defender-for-iot"></a>Správa verzí a podpora pro Azure Defender pro IoT 
+## <a name="april-2021"></a>Duben 2021
 
-Níže jsou uvedené podpory, zásady zásadní změny pro Defender pro IoT a verze Azure Defenderu pro IoT, které jsou momentálně dostupné. 
+### <a name="work-with-automatic-threat-intelligence-updates-public-preview"></a>Práce s automatickými aktualizacemi pro analýzu hrozeb (Public Preview)
 
-### <a name="servicing-information-and-timelines"></a>Informace o údržbě a časové osy 
+Nové balíčky analýzy hrozeb se teď dají automaticky vložit do senzorů připojených ke cloudu, které jsou vydané v programu Microsoft Defender pro IoT. Je to navíc ke stažení balíčků pro analýzy hrozeb a jejich nahrání do senzorů.
 
-Microsoft plánuje vydávat aktualizace pro Azure Defender for IoT na více než jednou za čtvrtletí. Všechny obecné dostupnosti (GA) verze programu Azure Defender pro IoT snímač a místní Konzola pro správu se podporují až po dobu devíti měsíců po jejím vydání. Opravy a nové funkce budou aplikovány na aktuální verzi GA, která je v současné době podporována a která nebude použita na starší verze GA.
+Práce s automatickými aktualizacemi pomáhá snižovat provozní úsilí a zajistit vyšší zabezpečení. Povolte automatické aktualizace připojením senzoru připojeného ke cloudu na portál Defender pro IoT, kde je zapnutý přepínač **automatických aktualizací pro analýzu hrozeb** zapnutý.
 
-### <a name="versions-and-support-dates"></a>Verze a data podpory
+Pokud chcete získat konzervativní přístup k aktualizaci dat analýzy hrozeb, můžete ručně zaručovat balíčky z Azure Defenderu pro IoT Portal do cloudových senzorů, jenom když se domníváte, že je potřeba.
+Díky tomu máte možnost řídit, kdy se balíček nainstaluje, aniž byste ho museli stahovat a načítat na senzory. Ručně Vyhrajte aktualizace senzorů ze stránky Defender pro **weby a senzory** IoT.
 
-| Verze | Datum vydání | Datum ukončení podpory |
-|--|--|--|
-| 10.0 | 01/2021 | 10/2021 |
+Můžete si také přečíst následující informace o balíčcích pro analýzu hrozeb:
+
+- Nainstalovaná verze balíčku
+- Režim aktualizace Intelligence Threat 
+- Stav aktualizace Intelligence Threat
+
+### <a name="view-cloud-connected-sensor-information-public-preview"></a>Zobrazit informace o senzoru připojeném ke cloudu (Public Preview)
+
+Zobrazte důležité provozní informace o senzorech propojených s cloudem na stránce **lokality a senzory** .
+
+- Nainstalovaná verze senzoru
+- Stav připojení senzoru ke cloudu.
+- Čas posledního zjištění senzoru při připojování ke cloudu.
+
+### <a name="alert-api-enhancements"></a>Vylepšení rozhraní API pro výstrahy
+
+Nová pole jsou k dispozici uživatelům, kteří pracují s rozhraními API výstrah.
+
+**Místní Konzola pro správu**
+
+- Zdrojová a cílová adresa
+- Postup nápravy
+- Název senzoru definovaného uživatelem
+- Název zóny přidružené ke senzoru 
+- Název webu přidruženého ke senzoru
+
+**Elektrické**
+
+- Zdrojová a cílová adresa
+- Postup nápravy
+
+Při práci s novými poli se vyžaduje rozhraní API verze 2.
+
+### <a name="features-delivered-as-generally-available-ga"></a>Funkce dodávané jako všeobecně dostupná (GA)
+
+Následující funkce byly dříve k dispozici pro Public Preview a jsou teď všeobecně dostupné funkce (GA):
+
+- Senzorem rozšířená vlastní pravidla výstrah
+- Místní Konzola pro správu – výstrahy exportu
+- Přidat druhé síťové rozhraní do místní konzoly pro správu
+- Tvůrce zařízení – nový Micro Agent
+
 ## <a name="march-2021"></a>Březen 2021
 
-### <a name="sensor---enhanced-custom-alert-rules-public-preview"></a>Senzorem rozšířená vlastní pravidla výstrah (verze Public Preview)
+### <a name="sensor---enhanced-custom-alert-rules-public-preview"></a>Senzorem rozšířená vlastní pravidla upozornění (Public Preview)
 
 Nyní můžete vytvořit vlastní pravidla upozornění na základě dne, skupiny dnů a doby, po kterou byla zjištěna síťová aktivita.  Práce s podmínkami pravidla dne a času je užitečná, například v případech, kdy je Závažnost výstrahy odvozena v době, kdy dojde k události výstrahy. Můžete například vytvořit vlastní pravidlo, které aktivuje výstrahu s vysokou závažností při zjištění síťové aktivity na víkendu nebo večer.
 
@@ -40,6 +80,12 @@ Tato funkce je k dispozici na senzoru s vydáním verze 10,2.
 ### <a name="on-premises-management-console---export-alerts-public-preview"></a>Místní Konzola pro správu – výstrahy exportu (Public Preview)
 
 Informace o výstrahách se teď dají exportovat do souboru. CSV z místní konzoly pro správu. Můžete exportovat informace o všech zjištěných výstrahách nebo informace o exportu na základě filtrovaného zobrazení.
+
+Tato funkce je k dispozici v místní konzole pro správu s vydáním verze 10,2.
+
+### <a name="add-second-network-interface-to-on-premises-management-console-public-preview"></a>Přidat druhé síťové rozhraní do místní konzoly pro správu (Public Preview)
+
+Zabezpečení nasazení teď můžete rozšířit přidáním druhého síťového rozhraní do místní konzoly pro správu. Tato funkce umožňuje, aby vaše místní správa měla připojené senzory v jedné zabezpečené síti, a zároveň umožňuje uživatelům přístup k místní konzole pro správu prostřednictvím druhého samostatného síťového rozhraní.
 
 Tato funkce je k dispozici v místní konzole pro správu s vydáním verze 10,2.
 

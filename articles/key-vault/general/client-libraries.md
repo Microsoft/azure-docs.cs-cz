@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c5b07c1059e146aaf3c3c2a26038514eb614a3cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37e67ad869af23b51497e1497865f620bae612aa
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505915"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749181"
 ---
 # <a name="client-libraries-for-azure-key-vault"></a>Klientské knihovny pro Azure Key Vault
 
@@ -35,4 +35,4 @@ Každá sada SDK obsahuje samostatné klientské knihovny pro Trezor klíčů, t
 
 - Projděte si [příručku pro vývojáře Azure Key Vault](developers-guide.md)
 - Přečtěte si další informace o [ověřování k trezoru klíčů](authentication.md) .
-- Přečtěte si další informace o [zabezpečení přístupu k Key Vault](secure-your-key-vault.md) .
+- Přečtěte si další informace o [zabezpečení přístupu k Key Vault](security-overview.md) .

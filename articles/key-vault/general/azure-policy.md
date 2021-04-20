@@ -1,18 +1,18 @@
 ---
 title: Integrace služby Azure Key Vault se službou Azure Policy
 description: Informace o tom, jak integrovat Azure Key Vault s Azure Policy
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 10/15/2020
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6ac4d0e0744bfc82a686671234e013b2dd717146
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cddc7b931bf59412d4a7ec8e6b0eecfe148f3d5e
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92927749"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749271"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Integrace služby Azure Key Vault se službou Azure Policy
 

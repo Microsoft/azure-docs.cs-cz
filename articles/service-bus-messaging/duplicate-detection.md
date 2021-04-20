@@ -2,13 +2,13 @@
 title: Zjišťování duplicitních zpráv Azure Service Bus | Microsoft Docs
 description: Tento článek vysvětluje, jak můžete zjišťovat duplicity v Azure Service Busch zprávách. Duplicitní zprávu lze ignorovat a vyřadit.
 ms.topic: article
-ms.date: 04/14/2021
-ms.openlocfilehash: a9ca9de988f5a3db15da773a870e2d929ab938c8
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 04/19/2021
+ms.openlocfilehash: baeda3509cb5646c658f79fb11610ecfdd1ffd3d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499474"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751269"
 ---
 # <a name="duplicate-detection"></a>Vyhledávání duplicit
 
@@ -37,7 +37,7 @@ Parametr *MessageID* může mít vždy nějaký identifikátor GUID, ale ukotven
 >- [Úroveň Premier](service-bus-premium-messaging.md) nepodporuje dělení na oddíly, proto doporučujeme, abyste ve svých aplikacích používali jedinečná ID zpráv a nespoléhá se na klíče oddílů pro detekci duplicitních dat. 
 
 
-## <a name="enable-duplicate-detection"></a>Povolit detekci duplicit
+## <a name="duplicate-detection-window-size"></a>Velikost okna zjišťování duplicit
 
 Kromě toho, že stačí pouze povolit detekci duplicit, můžete také nakonfigurovat velikost časového intervalu historie vyhledávání duplicit, během kterého se uchovávají ID zpráv.
 Tato hodnota je standardně 10 minut pro fronty a témata, přičemž minimální hodnota je 20 sekund až do maximální hodnoty 7 dní.
@@ -46,37 +46,20 @@ Povolení Detekce duplicitních dat a velikosti okna má přímý vliv na propus
 
 Udržování malého okna znamená, že se musí uchovávat a odpovídat méně identifikátorů zpráv a propustnost má dopad na míň. U entit s vysokou propustností, které vyžadují detekci duplicit, byste měli okno ponechat co nejmenší.
 
-### <a name="using-the-portal"></a>Použití portálu
-
-V portálu je při tvorbě entit zapnutá funkce Detekce duplicitních dat pomocí zaškrtávacího políčka **Povolit detekci duplicit** , která je ve výchozím nastavení vypnutá. Nastavení pro vytváření nových témat je ekvivalentní.
-
-![Snímek obrazovky dialogového okna vytvořit front s vybranou možností povolit detekci duplicit a popsaný červeně][1]
-
-> [!IMPORTANT]
-> Po vytvoření fronty nelze povolit nebo zakázat detekci duplicit. Tuto možnost můžete provést pouze v době vytváření fronty. 
-
-Časové období historie vyhledávání duplicit lze změnit v okně vlastnosti fronty a tématu v Azure Portal.
-
-![Snímek obrazovky funkce Service Bus s zvýrazněným nastavením vlastností a možností historie vyhledávání duplicit zobrazený červeně][2]
-
-### <a name="using-sdks"></a>S využitím sad SDK
-
-Můžete použít kteroukoli z našich sad SDK napříč platformami .NET, Java, JavaScript, Python a přejít na povolení funkce zjišťování duplicitních dat při vytváření front a témat. Můžete také změnit časový interval historie vyhledávání duplicit.
-K tomu, jaké vlastnosti se mají aktualizovat při vytváření front a témat k dosažení těchto akcí patří:
-- `RequiresDuplicateDetection`
-- `DuplicateDetectionHistoryTimeWindow`
-
-Všimněte si, že i když jsou názvy vlastností k dispozici v jazyce Pascal, jazyk JavaScript a sady SDK Pythonu budou používat ve stylu CamelCase velká a Snake velká písmena v uvedeném pořadí.
-
 ## <a name="next-steps"></a>Další kroky
-
-Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
-
-* [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
-* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
-* [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+Můžete povolit detekci duplicitních zpráv pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Správce prostředků šablony, .NET, Java, Python a JavaScriptu. Další informace najdete v tématu [Povolení Detekce duplicitních zpráv](enable-duplicate-detection.md). 
 
 Ve scénářích, kdy kód klienta nemůže znovu odeslat zprávu se stejným parametrem *MessageID* jako předtím, je důležité navrhovat zprávy, které lze bezpečně znovu zpracovat. Tento [Blogový příspěvek o idempotence](https://particular.net/blog/what-does-idempotent-mean) popisuje různé postupy, jak to provést.
 
-[1]: ./media/duplicate-detection/create-queue.png
-[2]: ./media/duplicate-detection/queue-prop.png
+Vyzkoušejte si ukázky v jazyce podle vašeho výběru, abyste prozkoumali Azure Service Bus funkce. 
+
+- [Azure Service Bus ukázek klientských knihoven pro Java](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Azure Service Bus ukázek klientských knihoven pro Python](/samples/azure/azure-sdk-for-python/servicebus-samples/)
+- [Azure Service Bus ukázek klientských knihoven pro JavaScript](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [Azure Service Bus Ukázky klientské knihovny pro TypeScript](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [Ukázky Azure. Messaging. ServiceBus pro .NET](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
+
+Vyhledejte ukázky pro starší klientské knihovny .NET a Java níže:
+- [Ukázky Microsoft. Azure. ServiceBus pro .NET](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Ukázky Azure-ServiceBus pro Java](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
+

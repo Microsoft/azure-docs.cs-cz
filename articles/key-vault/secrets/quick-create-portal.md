@@ -3,7 +3,6 @@ title: Rychlý start Azure – Nastavení a načtení tajného klíče ze služb
 description: Rychlý start ukazující nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webu Azure Portal
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 904c00c26171854a32234d7b6ba5cac81ac43e5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba5b375f75d2655045e62583679839c8dd2a5720
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936664"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752439"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webu Azure Portal
 
@@ -82,7 +81,7 @@ Až nebudete prostředky potřebovat, odstraňte jejich skupinu. Tím odstranít
 V tomto rychlém startu jste vytvořili Key Vault a uložili do něj tajný klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
-- Číst [zabezpečený přístup k Key Vault](../general/secure-your-key-vault.md)
+- Číst [zabezpečený přístup k Key Vault](../general/security-overview.md)
 - Viz [použití Key Vault s webovou aplikací App Service](../general/tutorial-net-create-vault-azure-web-app.md)
 - Viz [použití Key Vault s aplikací nasazenou do virtuálního počítače](../general/tutorial-net-virtual-machine.md) .
 - Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .

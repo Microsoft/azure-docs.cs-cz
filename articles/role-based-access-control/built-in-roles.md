@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: c89e6ed98e0a71f530cefda4cc1f42a27996d805
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: f4112d4b9bf55e45ec865f5c8606ead9088a7983
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518503"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752385"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
@@ -8210,7 +8210,7 @@ S výjimkou oprávnění spravovat je možné provést jakoukoli akci s certifik
 
 ### <a name="key-vault-contributor"></a>Přispěvatel Key Vault
 
-Spravujte trezory klíčů, ale neumožňuje přiřadit role v Azure RBAC a neumožňuje přístup k tajným klíčům, klíčům nebo certifikátům. [Další informace](../key-vault/general/secure-your-key-vault.md)
+Spravujte trezory klíčů, ale neumožňuje přiřadit role v Azure RBAC a neumožňuje přístup k tajným klíčům, klíčům nebo certifikátům. [Další informace](../key-vault/general/security-overview.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |

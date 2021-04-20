@@ -3,19 +3,18 @@ title: Přiřazení zásad Azure Key Vault přístupu (portál)
 description: Jak použít Azure Portal k přiřazení zásady přístupu Key Vault k objektu zabezpečení nebo identitě aplikace.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a64a91e6f41f3fba7584630380ffb878979b4389
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 443b269e7155fc206ee50e7907a7acded2c22f53
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968760"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751485"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Přiřazení zásady přístupu Key Vault pomocí Azure Portal
 
@@ -55,5 +54,5 @@ Další informace o vytváření skupin v Azure Active Directory prostřednictv�
 ## <a name="next-steps"></a>Další kroky
 
 - [Azure Key Vault zabezpečení: Správa identit a přístupu](security-overview.md#identity-management)
-- [Zabezpečte svůj Trezor klíčů](secure-your-key-vault.md).
+- [Zabezpečte svůj Trezor klíčů](security-overview.md).
 - [Azure Key Vault příručka pro vývojáře](developers-guide.md)

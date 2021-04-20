@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/11/2021
+ms.date: 04/20/2021
 ms.author: memildin
-ms.openlocfilehash: 5f94b17fac17a7238b3f4b7eef218961df7a42d5
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 92138b0253d28c8bf2617ee7b17474f30ac5cafe
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739957"
+ms.locfileid: "107751198"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -30,10 +30,12 @@ Další informace o *plánovaných* změnách, které už brzy Security Center, 
 Aktualizace v dubnu zahrnují:
 - [Nedávno načtené image registru kontejneru se teď prohledají týdně (všeobecně dostupné).](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
 - [Použití Azure Defenderu pro Kubernetes k ochraně hybridních a multi-cloudových nasazení Kubernetes (Preview)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [Doporučení pro povolení služby Azure Defender pro DNS a Správce prostředků (Preview)](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview)
 - [Čtyři nová doporučení týkající se konfigurace hosta (Preview)](#four-new-recommendations-related-to-guest-configuration-preview)
 - [Doporučení pro CMK se přesunula na kontrolu zabezpečení osvědčené postupy](#cmk-recommendations-moved-to-best-practices-security-control)
 - [11 upozornění služby Azure Defender jako zastaralé](#11-azure-defender-alerts-deprecated)
 - [Dvě doporučení pro řízení zabezpečení použít aktualizace systému se už nepoužívá.](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
+- [Dlaždice Azure Defender for SQL on Machine se odebrala z řídicího panelu Azure Defenderu.](#azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard)
 
 ### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>Nedávno načtené image registru kontejneru se teď prohledají týdně (všeobecně dostupné).
 
@@ -65,6 +67,19 @@ Tato integrace mezi Azure Security Center, Azure Defenderem a Kubernetesem s pov
 Další informace najdete v podrobnějších informacích o [používání Azure Defenderu pro Kubernetes s vašimi místními a Kubernetes clustery s více cloudy](defender-for-kubernetes-azure-arc.md).
 
 :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center doporučení pro nasazení rozšíření Azure Defenderu pro clustery s podporou Azure ARC s povoleným Kubernetes." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+
+
+### <a name="recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview"></a>Doporučení pro povolení služby Azure Defender pro DNS a Správce prostředků (Preview)
+
+Přidali jsme dvě nová doporučení, která zjednodušují proces povolování programu [Azure Defender pro správce prostředků](defender-for-resource-manager-introduction.md) a [Azure Defender pro DNS](defender-for-dns-introduction.md):
+
+- **Azure Defender pro správce prostředků by měl být povolený** – Defender pro správce prostředků automaticky monitoruje operace správy prostředků ve vaší organizaci. Azure Defender detekuje hrozby a upozorňuje na podezřelou aktivitu.
+- **Služba Azure Defender pro DNS by měla být povolená** – Defender pro DNS zajišťuje další vrstvu ochrany vašich cloudových prostředků tím, že nepřetržitě monitoruje všechny dotazy DNS z vašich prostředků Azure. Azure Defender vás upozorní na podezřelou aktivitu ve vrstvě DNS.
+
+Při povolení plánů programu Azure Defender se účtují poplatky. Seznamte se s podrobnostmi o cenách podle oblasti na stránce s cenami Security Center: https://aka.ms/pricing-security-center .
+
+> [!TIP]
+> Doporučení pro verzi Preview negenerují prostředek v pořádku a nejsou zahrnutá do výpočtů vašeho zabezpečeného skóre. Opravte je všude, kde je to možné, takže až do doby, kdy období Preview skončí, přispějete k vašemu skóre. Přečtěte si další informace o tom, jak na tato doporučení reagovat v tématu o [opravách doporučení v Azure Security Center](security-center-remediate-recommendations.md).
 
 ### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Čtyři nová doporučení týkající se konfigurace hosta (Preview)
 
@@ -141,6 +156,10 @@ Následující dvě doporučení jsou zastaralá a změny můžou vést k mírn�
 Doporučujeme, abyste provedli kontrolu průběžného exportu a konfigurací automatizace pracovních postupů, abyste zjistili, jestli jsou tato doporučení zahrnutá v nich. Také by se měly aktualizovat všechny řídicí panely nebo jiné nástroje pro monitorování, které by je mohly používat.
 
 Další informace o těchto doporučeních najdete na [referenční stránce doporučení zabezpečení](recommendations-reference.md).
+
+### <a name="azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard"></a>Dlaždice Azure Defender for SQL on Machine se odebrala z řídicího panelu Azure Defenderu.
+
+Oblast pokrytí řídicího panelu v Azure Defenderu obsahuje dlaždice pro příslušné plány Azure Defenderu pro vaše prostředí. Kvůli problému s Nahlášením počtu chráněných a nechráněných prostředků jsme se rozhodli dočasně odebrat stav pokrytí prostředků pro **Azure Defender pro SQL na počítačích** , dokud se problém nevyřeší.
 
 
 ## <a name="march-2021"></a>Březen 2021

@@ -3,19 +3,18 @@ title: Monitorování a správa vytvoření certifikátu
 description: Scénáře demonstrují škálu možností pro vytváření, monitorování a interakci s procesem vytváření certifikátů pomocí Key Vault.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 02e13ce81ed2f11c0bb69015a4864c4a1ad55593
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e4acb5195497dd31f466829b1cde301ba9696b3
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81430965"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751089"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Monitorování a správa vytvoření certifikátu
 Platí pro: Azure
@@ -414,7 +413,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 |Název elementu|Požaduje se|Typ|Verze|Popis|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|Ano|array|\<introducing version>|Řetěz certifikátů x509 jako základní pole řetězců 64.|
+|x5c|Yes|array|\<introducing version>|Řetěz certifikátů x509 jako základní pole řetězců 64.|
 
 ### <a name="response"></a>Odpověď
 

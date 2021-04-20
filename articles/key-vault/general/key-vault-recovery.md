@@ -6,14 +6,13 @@ ms.subservice: general
 ms.topic: how-to
 ms.author: mbaldwin
 author: msmbaldwin
-manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: a8e8e791f0dbe18322ad43364ae4ffd09b430caf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3ffbba9546ada54a42c3f2c2aa5d98da599b353
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98790380"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749723"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault správu obnovení s ochranou pomocí obnovitelného odstranění a mazání
 
@@ -399,6 +398,6 @@ Další informace o obnovitelném odstranění najdete v tématu [přehled Azure
 - [Key Vault příkazů rozhraní příkazového řádku Azure](/cli/azure/keyvault)
 - [Zálohování Azure Key Vault](backup.md)
 - [Postup povolení protokolování Key Vault](howto-logging.md)
-- [Zabezpečení přístupu k trezoru klíčů](secure-your-key-vault.md)
+- [Zabezpečení přístupu k trezoru klíčů](security-overview.md)
 - [Azure Key Vault příručka pro vývojáře](developers-guide.md)
 - [Osvědčené postupy použití trezoru klíčů](security-overview.md)

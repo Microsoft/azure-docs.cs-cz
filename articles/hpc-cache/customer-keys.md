@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: f587de4ee2ce051cb771db90d7f9ce00ce66b07f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36ce494c7fd51a1341834d5c231e32e60c5a32b9
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772701"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751989"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Použití šifrovacích klíčů spravovaných zákazníkem pro mezipaměť HPC Azure
 
@@ -56,7 +56,7 @@ Přístupová oprávnění trezoru klíčů:
 
 * Uživatel, který vytváří mezipaměť prostředí Azure HPC, musí mít oprávnění ekvivalentní [roli přispěvatele Key Vault](../role-based-access-control/built-in-roles.md#key-vault-contributor). K nastavení a správě Azure Key Vault je potřeba mít stejná oprávnění.
 
-  Pro další informace si přečtěte [zabezpečený přístup k trezoru klíčů](../key-vault/general/secure-your-key-vault.md) .
+  Pro další informace si přečtěte [zabezpečený přístup k trezoru klíčů](../key-vault/general/security-overview.md) .
 
 ## <a name="1-set-up-azure-key-vault"></a>1. nastavení Azure Key Vault
 

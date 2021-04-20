@@ -217,8 +217,6 @@
           href: core/howto-connect-ruuvi.md
         - name: Příprava a připojení Rigado Cascade 500
           href: core/howto-connect-rigado-cascade-500.md
-        - name: Připojení dalších cloudů IoT
-          href: core/howto-build-iotc-device-bridge.md
     - name: Sestavení integrovaných řešení
       items:
         - name: Přidání dlaždic na řídicí panel
@@ -235,7 +233,7 @@
           href: core/howto-export-data.md
         - name: Export dat do cílových umístění v cloudu (starší verze)
           href: core/howto-export-data-legacy.md
-        - name: Transformace dat pro Azure IoT Central
+        - name: Transformace dat
           href: core/howto-transform-data.md
         - name: Použití pracovních postupů pro integraci s ostatními službami
           href: core/howto-configure-rules-advanced.md
@@ -245,6 +243,8 @@
           href: core/howto-create-custom-analytics.md
         - name: Vizualizace dat v Power BI
           href: core/howto-connect-powerbi.md
+        - name: Připojení dalších cloudů IoT
+          href: core/howto-build-iotc-device-bridge.md
         - name: Připojení aplikace k polím služby Dynamics 365
           href: government/how-to-configure-connected-field-services.md
     - name: správu zařízení

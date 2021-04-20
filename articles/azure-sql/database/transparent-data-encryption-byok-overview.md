@@ -12,19 +12,19 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: 098d874d7de85aa7c66f92703eea9b4d12cee8df
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b812a3feaa900914ef5f16f2f72270d9b6008371
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305289"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752799"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparentní šifrování dat Azure SQL s využitím klíče spravovaného zákazníkem
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL [transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) s klíčem spravovaným zákazníkem povoluje scénář BRING Your Own Key (BYOK) pro ochranu dat v klidovém umístění a umožňuje organizacím implementovat oddělení úloh v rámci správy klíčů a dat. U transparentního šifrování dat spravovaného zákazníkem je zákazník zodpovědný za a úplnou kontrolu nad správou životního cyklu klíčů (vytváření klíčů, nahrávání, rotace, odstraňování), oprávnění použití klíčů a auditování operací s klíči.
 
-V tomto scénáři je klíč, který se používá k šifrování šifrovacího klíče databáze (klíč DEK), označovaný jako TDE ochrana, asymetrický klíč spravovaný zákazníkem, který je uložený v cloudu a zákazníkovi spravovaném [Azure Key Vault (integrace)](../../key-vault/general/secure-your-key-vault.md), což je cloudový externí systém správy klíčů. Key Vault je vysoce dostupné a škálovatelné zabezpečené úložiště pro kryptografické klíče RSA, volitelně zajištěné moduly zabezpečení FIPS 140-2 Level 2 (HSM). Neumožňuje přímý přístup k uloženému klíči, ale poskytuje služby šifrování a dešifrování pomocí klíče u autorizovaných entit. Klíč může být vygenerován trezorem klíčů, importován nebo [přenesen do trezoru klíčů ze zařízení Prem HSM](../../key-vault/keys/hsm-protected-keys.md).
+V tomto scénáři je klíč, který se používá k šifrování šifrovacího klíče databáze (klíč DEK), označovaný jako TDE ochrana, asymetrický klíč spravovaný zákazníkem, který je uložený v cloudu a zákazníkovi spravovaném [Azure Key Vault (integrace)](../../key-vault/general/security-overview.md), což je cloudový externí systém správy klíčů. Key Vault je vysoce dostupné a škálovatelné zabezpečené úložiště pro kryptografické klíče RSA, volitelně zajištěné moduly zabezpečení FIPS 140-2 Level 2 (HSM). Neumožňuje přímý přístup k uloženému klíči, ale poskytuje služby šifrování a dešifrování pomocí klíče u autorizovaných entit. Klíč může být vygenerován trezorem klíčů, importován nebo [přenesen do trezoru klíčů ze zařízení Prem HSM](../../key-vault/keys/hsm-protected-keys.md).
 
 Pro Azure SQL Database a Azure synapse Analytics se ochrana TDE nastaví na úrovni serveru a děděna všemi šifrovanými databázemi přidruženými k tomuto serveru. V případě spravované instance Azure SQL je ochrana TDE nastavena na úrovni instance a zděděna všemi šifrovanými databázemi v této instanci. Pojem *Server* odkazuje na server v SQL Database a v Azure synapse a na spravovanou instanci v rámci SQL Managed instance v tomto dokumentu, pokud není uvedeno jinak.
 

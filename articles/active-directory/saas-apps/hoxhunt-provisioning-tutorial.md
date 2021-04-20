@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: Zhchia
-ms.openlocfilehash: 24c8e2aafed6ee7b8823effc350dee4edb5e4873
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db33cc43419b4228ca270d3a69c0e88de2c05638
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650801"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752043"
 ---
 # <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>Kurz: Konfigurace Hoxhunt pro Automatické zřizování uživatelů
 
@@ -130,6 +130,9 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 * S využitím [protokolů zřizování](../reports-monitoring/concept-provisioning-logs.md) můžete zjistit, kteří uživatelé se zřídili úspěšně a kteří neúspěšně.
 * Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
 * Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Protokol změn
+* 04/20/2021 – přidala se podpora pro atribut preferredLanguage a Enterprise Extension Attribute "urn: IETF: param: SCIM: schemas: Extension: Enterprise: 2.0: User: divize".
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

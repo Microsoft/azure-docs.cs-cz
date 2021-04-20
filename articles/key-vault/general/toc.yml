@@ -47,21 +47,19 @@
       href: best-practices.md
     - name: Zabezpečení
       items:
-        - name: Přehled
+        - name: Funkce zabezpečení
           href: security-overview.md
-        - name: Zabezpečení přístupu k trezoru klíčů
-          href: secure-your-key-vault.md
         - name: Základy ověřování služby Key Vault
           href: authentication-fundamentals.md
-        - name: Světy zabezpečení a geografické hranice
+        - name: Světů zabezpečení a geografické oblasti
           href: overview-security-worlds.md
         - name: Zabezpečení sítě
           href: network-security.md
         - name: Standardní hodnoty zabezpečení Azure pro službu Key Vault
-          href: /security/benchmark/azure/baselines/key-vault-security-baseline?context=/azure/key-vault/context/context
+          href: /security/benchmark/azure/baselines/key-vault-security-baseline?context=/azure/key-vault/general/context/context
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
-          href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+          href: ../security-controls-policy.md?context=/azure/key-vault/general/context/context
     - name: Protokolování v Azure Key Vaultu
       href: logging.md
     - name: Oznámení
@@ -181,7 +179,7 @@
       displayName: ARM
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'
-      href: ../policy-reference.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+      href: ../policy-reference.md?context=/azure/key-vault/general/context/context
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

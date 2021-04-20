@@ -3,19 +3,18 @@ title: Vytvoření trezoru klíčů Azure a zásad přístupu k trezoru pomocí 
 description: Tento článek ukazuje, jak vytvořit trezory klíčů Azure a zásady přístupu k trezoru pomocí šablony Azure Resource Manager.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 3/14/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e489efd335d2a46a0e55d4ceb9bdee809ae6c39d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e70906cbf26c899744bfbe137da4ce9cfa651b20
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104595239"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753141"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Vytvoření trezoru klíčů Azure a zásad přístupu k trezoru pomocí šablony Správce prostředků
 
@@ -218,6 +217,6 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zabezpečení přístupu k trezoru klíčů](secure-your-key-vault.md)
+- [Zabezpečení přístupu k trezoru klíčů](security-overview.md)
 - [Ověřování pro Trezor klíčů](authentication.md)
 - [Průvodce vývojáře pro službu Azure Key Vault](developers-guide.md)

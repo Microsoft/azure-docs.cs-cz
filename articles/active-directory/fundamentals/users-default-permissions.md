@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85c588b82d2b6f4a4dce0ce41effc3b0336df3f4
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 348f1b4e6182739b3afbc96597853a5b887877c1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567311"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748767"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Jaká jsou výchozí uživatelská oprávnění v Azure Active Directory?
 V Azure Active Directory (Azure AD) mají všichni uživatelé udělenou sadu výchozích oprávnění. Přístup uživatele se skládá z typu uživatel, [přiřazení jejich rolí](active-directory-users-assign-role-azure-portal.md)a jejich vlastnictví jednotlivých objektů. Tento článek popisuje tato výchozí oprávnění a obsahuje porovnání výchozích nastavení člena a uživatele typu host. Výchozí uživatelská oprávnění se dají změnit jenom v nastavení uživatele v Azure AD.
@@ -134,7 +134,6 @@ Uživatelé mohou provádět následující akce u vlastněných skupin.
 | Microsoft. Directory/Groups/appRoleAssignments/Update | Aktualizuje vlastnost groups. appRoleAssignments v Azure Active Directory. |
 | Microsoft. Directory/Groups/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory. |
 | Microsoft. Directory/Groups/DELETE | Odstraní skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/dynamicMembershipRule/Update | Aktualizuje vlastnost groups. dynamicMembershipRule v Azure Active Directory. |
 | Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
 | Microsoft. Directory/Groups/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
 | Microsoft. Directory/skupiny/obnovení | Obnovte skupiny v Azure Active Directory. |

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: iangithinji
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: d81ad34c81a451f1faecb6cb33c0cc427567f122
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 202ccf6f540ec78c2bb30e0f0a0173609bba578c
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379600"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751449"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Možnosti jednotného přihlašování v Azure AD
 
@@ -86,13 +86,12 @@ Při přihlašování založeném na hesle se uživatelé přihlásí k aplikaci
 
 Jednotné přihlašování založené na heslech používá stávající proces ověřování, který je k dispozici v aplikaci. Když pro aplikaci povolíte jednotné přihlašování k heslům, Azure AD shromáždí a bezpečně ukládá uživatelská jména a hesla pro aplikaci. Přihlašovací údaje uživatele jsou uloženy v zašifrovaném stavu v adresáři.
 
+Správce může u jednotného přihlašování založeného na heslech povolit zásady podmíněného přístupu Azure AD nebo službu Multi-Factor Authentication.
+
 Vyberte jednotné přihlašování založené na heslech, když:
 
 - Aplikace nepodporuje protokol jednotného přihlašování SAML.
 - Aplikace se ověřuje pomocí uživatelského jména a hesla místo přístupových tokenů a hlaviček.
-
->[!NOTE]
->U jednotného přihlašování založeného na heslech nemůžete použít zásady podmíněného přístupu ani službu Multi-Factor Authentication.
 
 Jednotné přihlašování založené na heslech se podporuje pro všechny cloudové aplikace, které mají přihlašovací stránku založenou na jazyce HTML. Uživatel může použít kterýkoli z následujících prohlížečů:
 

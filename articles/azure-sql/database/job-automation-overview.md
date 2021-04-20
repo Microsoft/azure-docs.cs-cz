@@ -13,12 +13,12 @@ author: williamdassafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 2/1/2021
-ms.openlocfilehash: 1f4bd28d2b95aeebe07fcad84d757327622d51f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 295889cf64d27761021dd09549a3366ea142516e
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690426"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752025"
 ---
 # <a name="automate-management-tasks-using-elastic-jobs-preview"></a>Automatizace úloh správy pomocí elastických úloh (Preview)
 
@@ -159,7 +159,7 @@ Výstupy kroků úloh pro každou cílovou databázi se podrobně zaznamenávaj�
 
 #### <a name="job-history"></a>Historie úlohy
 
-Pomocí [dotazu na Jobs.job_executions tabulky](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status)zobrazte historii spuštění elastické úlohy v *databázi úloh* . Úloha vyčištění systému vyprázdní historii spouštění starší než 45 dnů. Pokud chcete odebrat historii mladší než 45 dnů, zavolejte v *databázi úloh* uloženou proceduru **sp_purge_history**.
+Pomocí [dotazu na Jobs.job_executions tabulky](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status)zobrazte historii spuštění elastické úlohy v *databázi úloh* . Úloha vyčištění systému vyprázdní historii spouštění starší než 45 dnů. Chcete-li odebrat historii starší než 45 dní, zavolejte **sp_purge_jobhistory** uloženou proceduru v *databázi úloh*.
 
 #### <a name="job-status"></a>Stav úlohy
 

@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 03/09/2021
 ms.author: ambapat
-ms.openlocfilehash: c2548b1669366564809ed2fde725cb3399922a29
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ecfcff00e6f44f5c739513c063baaa3fa02a3db
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803428"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753288"
 ---
 Služba Azure Key Vault podporuje dva typy prostředků: trezory a spravované HSM. Následující dvě části popisují omezení služby pro každé z nich.
 
@@ -65,7 +65,7 @@ Při zálohování objektu trezoru klíčů, jako je tajný klíč, klíč nebo 
 #### <a name="azure-private-link-integration"></a>Integrace s privátními propojeními Azure
 
 > [!NOTE]
-> Počet trezorů klíčů s povolenými soukromými koncovými body pro každé předplatné je upravitelný limit. Níže uvedený limit je nastaven jako výchozí. Pokud chcete pro vaši službu požádat o zvýšení limitu, pošlete prosím e-mail na adresu akv-privatelink@microsoft.com . Tyto žádosti schválíme na základě případu.
+> Počet trezorů klíčů s povolenými soukromými koncovými body pro každé předplatné je upravitelný limit. Níže uvedený limit je nastaven jako výchozí. Pokud chcete pro vaši službu požádat o zvýšení limitu, vytvořte žádost o podporu a vyhodnotí se případ od případu.
 
 | Prostředek | Omezení |
 | -------- | -----:|

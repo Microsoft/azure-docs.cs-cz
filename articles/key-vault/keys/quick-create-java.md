@@ -8,12 +8,12 @@ ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 124e56fad35be0f3ac5b08ee9dd66454b9d077c5
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: f0933a19ecfebfde8ac43ac3e88332506e2256ec
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374688"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750372"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>Rychlý Start: Azure Key Vault klíč klientské knihovny pro Java
 Začněte s klíčovou knihovnou klienta Azure Key Vault pro Java. Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
@@ -271,4 +271,4 @@ V tomto rychlém startu jste vytvořili Trezor klíčů, vytvořili klíč, nač
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
 - Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)
 - Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .
-- Jak [zabezpečit přístup k trezoru klíčů](../general/secure-your-key-vault.md)
+- Jak [zabezpečit přístup k trezoru klíčů](../general/security-overview.md)

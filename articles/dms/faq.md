@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 83ffd405bf8e39737d2d36c294eac27f9bc76daf
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 29240f371d39ef2d3234e3207cc91768478bf3ff
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588815"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748498"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Nejčastější dotazy týkající se použití Azure Database Migration Service
 
@@ -32,7 +32,7 @@ Azure Database Migration Service je plně spravovaná služba navržená tak, ab
 * Pokračující investice do migrace bez problémů.
 
 **Č. Které páry zdroj/cíl Azure Database Migration Service aktuálně podporují?**
-Služba aktuálně podporuje nejrůznější páry zdroj/cíl nebo scénáře migrace. Úplný seznam stavů každého dostupného scénáře migrace najdete v článku [o stavu scénářů migrace podporovaných Azure Database Migration Service](https://github.com/MicrosoftDocs/azure-docs-pr/pull/resource-scenario-status.md).
+Služba aktuálně podporuje nejrůznější páry zdroj/cíl nebo scénáře migrace. Úplný seznam stavů každého dostupného scénáře migrace najdete v článku [o stavu scénářů migrace podporovaných Azure Database Migration Service](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/dms/resource-scenario-status.md).
 
 **Č. Jaké verze SQL Server Azure Database Migration Service podporují jako zdroj?**
 Při migraci z SQL Server jsou podporované zdroje pro Azure Database Migration Service SQL Server 2005 až SQL Server 2019.

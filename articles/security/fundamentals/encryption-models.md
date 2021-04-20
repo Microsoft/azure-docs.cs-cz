@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9194f38ddea5570d94ba6c87ea6a537cb41fb98c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f76b2811531b49c9312a02a581e876f9ef569a2a
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102051374"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750963"
 ---
 # <a name="data-encryption-models"></a>Modely šifrování dat
 
@@ -102,7 +102,7 @@ U operací využívajících šifrovací klíče může být identitě služby u
 Chcete-li získat klíč pro použití při šifrování nebo dešifrování dat v případě, že je spuštěna instance služby Správce prostředků, musí mít UnwrapKey (k získání klíče pro dešifrování) a WrapKey (pro vložení klíče do trezoru klíčů při vytváření nového klíče).
 
 >[!NOTE]
->Další podrobnosti o autorizaci Key Vault najdete na stránce zabezpečení trezoru klíčů v [dokumentaci k Azure Key Vault](../../key-vault/general/secure-your-key-vault.md).
+>Další podrobnosti o autorizaci Key Vault najdete na stránce zabezpečení trezoru klíčů v [dokumentaci k Azure Key Vault](../../key-vault/general/security-overview.md).
 
 **Výhody**
 

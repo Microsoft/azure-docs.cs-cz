@@ -100,6 +100,8 @@
       items:
         - name: Relace zpráv
           href: message-sessions.md
+        - name: Detekce duplicitních zpráv
+          href: duplicate-detection.md
         - name: Akce a filtry témat
           href: topic-filters.md
         - name: Procházení zpráv
@@ -206,8 +208,6 @@
           items:
             - name: Předběžné načtení zpráv
               href: service-bus-prefetch.md
-            - name: Detekce duplicitních zpráv
-              href: duplicate-detection.md
             - name: Odložení zpráv
               href: message-deferral.md
             - name: Spojení entit s automatickým přeposíláním
@@ -236,6 +236,14 @@
           href: service-bus-integrate-with-rabbitmq.md
     - name: Spravovat
       items:
+        - name: Povolení relací pro frontu nebo odběr
+          href: enable-message-sessions.md
+        - name: Povolit detekci duplicit pro frontu nebo téma
+          href: enable-duplicate-detection.md
+        - name: Povolit oddíly pro frontu nebo téma
+          href: enable-partitions.md
+        - name: Povolit automatické předávání pro frontu nebo předplatné
+          href: enable-auto-forward.md
         - name: Přesun mezi oblastmi
           href: move-across-regions.md
         - name: Automatická aktualizace jednotek zasílání zpráv

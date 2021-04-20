@@ -3,19 +3,18 @@ title: Key Vault poznámky k verzi rozhraní .NET 2. x API | Microsoft Docs
 description: Naučte se aktualizovat aplikace napsané pro starší verze Azure Key Vault pro práci s verzí 2,0 knihovny Azure Key Vault pro C# a .NET.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 editor: bryanla
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 018570019b306dced76760fefa4441ee7d86ad2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b923cc289dc0229f18eba144b09ceb34e0edea4e
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96013951"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751881"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2,0 – poznámky k verzi a Průvodce migrací
 Následující informace pomáhají při migraci na verzi 2,0 knihovny Azure Key Vault pro C# a .NET.  Aplikace napsané pro starší verze se musí aktualizovat, aby podporovaly nejnovější verzi.  Tyto změny jsou potřebné k plnému podpoře nových a vylepšených funkcí, jako jsou **Key Vault certifikáty**.

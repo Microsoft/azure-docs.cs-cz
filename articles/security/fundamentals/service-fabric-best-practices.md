@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: a7396c9a29c7d9f69dbe6a9cc5cd085c72ebafde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91d7e0777cbdad459e4514a0216146e0d5739f6d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94700942"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750945"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Osvědčené postupy zabezpečení Azure Service Fabric
 Nasazení aplikace v Azure je rychlé, jednoduché a nákladově efektivní. Před nasazením cloudové aplikace do produkčního prostředí si Projděte náš seznam základních a doporučených osvědčených postupů pro implementaci zabezpečených clusterů ve vaší aplikaci.
@@ -155,7 +155,7 @@ Service Fabric používá certifikáty k poskytování ověřování a šifrová
 
 Service Fabric pomocí certifikátů X. 509 zabezpečuje cluster a poskytuje funkce zabezpečení aplikací. Pomocí Azure Key Vault můžete [spravovat certifikáty](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md) pro Service Fabric clustery v Azure. Poskytovatel prostředků Azure, který vytvoří clustery, vyžádá certifikáty z trezoru klíčů. Poskytovatel pak nainstaluje certifikáty na virtuální počítače, když je cluster nasazený v Azure.
 
-Mezi [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md), clusterem Service Fabric a poskytovatelem prostředků, který používá certifikáty, existuje vztah certifikátu. Po vytvoření clusteru se informace o vztahu certifikátu ukládají do trezoru klíčů.
+Mezi [Azure Key Vault](../../key-vault/general/security-overview.md), clusterem Service Fabric a poskytovatelem prostředků, který používá certifikáty, existuje vztah certifikátu. Po vytvoření clusteru se informace o vztahu certifikátu ukládají do trezoru klíčů.
 
 Existují dva základní kroky nastavení trezoru klíčů:
 1. Vytvořte skupinu prostředků specificky pro Trezor klíčů.

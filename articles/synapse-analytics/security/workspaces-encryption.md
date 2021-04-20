@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: d4bc59a9bd5299698bff9949aaaa881fbdf385ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ddafb0e76799e3d8011232534c505f97c79b22e
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100526268"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751125"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Šifrování pracovních prostorů Azure Synapse Analytics
 
@@ -53,7 +53,7 @@ Pracovní prostory je možné nakonfigurovat tak, aby v době vytváření praco
 
 ### <a name="key-access-and-workspace-activation"></a>Přístup k klíči a aktivace pracovního prostoru
 
-Model šifrování Azure synapse pomocí klíčů spravovaných zákazníkem vyžaduje, aby se v pracovním prostoru při přístupu k klíčům v Azure Key Vault zašifroval a dešifroval podle potřeby. Klíče jsou k dispozici v pracovním prostoru buď prostřednictvím zásad přístupu, nebo pomocí [přístupu Azure Key Vault RBAC](../../key-vault/general/rbac-guide.md). Při udělování oprávnění prostřednictvím zásad přístupu Azure Key Vault zvolte možnost [pouze aplikace](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options) při vytváření zásad (vyberte spravovanou identitu pracovního prostoru a nepřidejte ji jako autorizovanou aplikaci).
+Model šifrování Azure synapse pomocí klíčů spravovaných zákazníkem vyžaduje, aby se v pracovním prostoru při přístupu k klíčům v Azure Key Vault zašifroval a dešifroval podle potřeby. Klíče jsou k dispozici v pracovním prostoru buď prostřednictvím zásad přístupu, nebo pomocí [přístupu Azure Key Vault RBAC](../../key-vault/general/rbac-guide.md). Při udělování oprávnění prostřednictvím zásad přístupu Azure Key Vault zvolte možnost [pouze aplikace](../../key-vault/general/security-overview.md#key-vault-authentication-options) při vytváření zásad (vyberte spravovanou identitu pracovního prostoru a nepřidejte ji jako autorizovanou aplikaci).
 
  Aby bylo možné pracovní prostor aktivovat, musí být v trezoru klíčů udělena oprávnění, která potřebuje. Tato fáze přístupu k aktivaci pracovního prostoru zajišťuje, aby data v pracovním prostoru byla zašifrovaná pomocí klíče spravovaného zákazníkem. Upozorňujeme, že šifrování může být pro vyhrazené fondy SQL povolené nebo zakázané – ve výchozím nastavení není každý fond povolený šifrování.
 

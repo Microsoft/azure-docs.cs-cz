@@ -3,19 +3,18 @@ title: Přiřazení zásady přístupu Azure Key Vault
 description: Jak pomocí Azure Portal, rozhraní příkazového řádku Azure nebo Azure PowerShell přiřadit zásady Key Vault přístupu k objektu zabezpečení nebo identitě aplikace.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4637715b2ba885d58ebb4c5f3ed40a79be2f815b
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 1c7c31f38d6a59f4ded17e1e1fd7e985ce59922a
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968726"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751413"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Přiřazení zásady přístupu Key Vault pomocí Azure PowerShell
 
@@ -80,5 +79,5 @@ Potřebujete pouze zahrnout `-PermissionsToSecrets` , `-PermissionsToKeys` a `-P
 ## <a name="next-steps"></a>Další kroky
 
 - [Azure Key Vault zabezpečení: Správa identit a přístupu](security-overview.md#identity-management)
-- [Zabezpečte svůj Trezor klíčů](secure-your-key-vault.md).
+- [Zabezpečte svůj Trezor klíčů](security-overview.md).
 - [Azure Key Vault příručka pro vývojáře](developers-guide.md)

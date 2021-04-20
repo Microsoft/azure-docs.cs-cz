@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/09/2021
 ms.author: justinha
-ms.openlocfilehash: 3d0f2b44f37cb318be2117b5dc5d8b42b418ff19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32dcf2b387231d50796de0036388b53cab83bf72
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100090985"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749325"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Nejčastější dotazy týkající se služby Azure Active Directory (Active Directory Domain Services)
 
@@ -36,6 +36,7 @@ Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se Azure 
 * [Můžu přidat řadiče domény do spravované domény Azure AD Domain Services?](#can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain)
 * [Můžou být uživatelé typu Host pozváni do adresáře Azure AD Domain Services použít?](#can-guest-users-be-invited-to-my-directory-use-azure-ad-domain-services)
 * [Můžu existující Azure AD Domain Services spravovanou doménu přesunout do jiného předplatného, skupiny prostředků, oblasti nebo virtuální sítě?](#can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network)
+* [Je možné přejmenovat existující Azure AD Domain Services název domény?](#can-i-rename-an-existing-azure-ad-domain-services-domain-name)
 * [Zahrnuje Azure AD Domain Services možnosti vysoké dostupnosti?](#does-azure-ad-domain-services-include-high-availability-options)
 
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Můžu vytvořit více spravovaných domén pro jeden adresář služby Azure AD?
@@ -77,6 +78,9 @@ No. Uživatelé typu Host, kteří se pozvali k adresáři Azure AD pomocí proc
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Můžu existující Azure AD Domain Services spravovanou doménu přesunout do jiného předplatného, skupiny prostředků, oblasti nebo virtuální sítě?
 No. Po vytvoření spravované domény Azure AD Domain Services nemůžete tuto spravovanou doménu přesunout do jiné skupiny prostředků, virtuální sítě, předplatného atd. Při nasazení spravované domény se ujistěte, že vyberete nejvhodnější předplatné, skupinu prostředků, oblast a virtuální síť.
+
+### <a name="can-i-rename-an-existing-azure-ad-domain-services-domain-name"></a>Je možné přejmenovat existující Azure AD Domain Services název domény?
+No. Po vytvoření spravované domény Azure AD Domain Services nemůžete změnit název domény DNS. Při vytváření spravované domény pečlivě vyberte název domény DNS. Podrobné informace o tom, jak zvolit název domény DNS, najdete v [kurzu Vytvoření a konfigurace Azure AD Domain Services spravované domény](tutorial-create-instance.md#create-a-managed-domain).
 
 ### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>Zahrnuje Azure AD Domain Services možnosti vysoké dostupnosti?
 

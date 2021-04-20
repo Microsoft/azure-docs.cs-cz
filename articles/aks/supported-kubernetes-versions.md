@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: fac2eb75d210a34f4c5cd50c4649921aadfcd5ee
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 43b0304ec6ac4266c3727990bf013c3dcfe523a3
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588492"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750243"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -111,9 +111,9 @@ Pro nové **menší** verze Kubernetes:
   * AKS používá [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) k upozornění uživatelů v případě, že nová verze způsobí, že v clusteru dojde k problémům z důvodu zastaralých rozhraní API. Azure Advisor se také používá k upozornění uživatele, pokud se v tuto chvíli nepodporují.
   * AKS zveřejňuje [oznámení o stavu služby](../service-health/service-health-overview.md) dostupné všem uživatelům s přístupem k AKS a portálu a pošle jim e-mail správcům předplatného s plánovanými datem odebrání verze.
 
-    ````
-    To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator).
-    ````
+    > [!NOTE]
+    > Pokud chcete zjistit, kdo je správcem předplatného nebo ho změnit, přečtěte si téma [Správa předplatných Azure](../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator).
+    
   * Odebráním verze na podporu v případě, že uživatelé budou moci pokračovat v poskytování podpory, mají **30 dnů** od odebrání verze k upgradu na podporovanou verzi
 
 Pro nové verze **opravy** Kubernetes:

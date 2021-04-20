@@ -3,12 +3,12 @@ title: Koncepční vysvětlení základů programu Defender-IoT-Micro-Agent pro 
 description: Seznamte se se základními informacemi o konceptech a pracovních postupech v programu Defender-IoT-Micro-Agent pro Azure RTO.
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 83557930aeeccbb557382583e4d6666a000ce52c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 04b86d401bcb9fc919c36b28cf4f80ea3bfd7030
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779269"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750477"
 ---
 # <a name="defender-iot-micro-agent-for-azure-rtos-preview"></a>Defender – IoT-Micro-Agent pro Azure RTO (Preview)
 
@@ -16,7 +16,7 @@ Tento článek vám umožní lépe porozumět programu Defender-IoT-Micro-Agent 
 
 ## <a name="azure-rtos-iot-defender-iot-micro-agent"></a>Azure RTO IoT Defender – IoT-Micro-Agent
 
-Defender-IoT-Micro-Agent pro Azure RTO poskytuje komplexní řešení zabezpečení pro zařízení Azure RTO v rámci nabídky NetX Duo. V rámci nabídky NetX Duo Azure RTO dodává s předdefinovaným Azure IoT Defenderu IoT-Micro-agent a po aktivaci nabízí pokrytí běžných hrozeb na zařízeních s operačním systémem v reálném čase. 
+Defender-IoT-Micro-Agent pro Azure RTO poskytuje komplexní řešení zabezpečení pro zařízení Azure RTO v rámci nabídky NetX Duo. V rámci nabídky NetX Duo Azure RTO dodává s předdefinovaným Azure IoT Defenderu IoT-Micro-agent a po aktivaci nabízí pokrytí běžných hrozeb na zařízeních s operačním systémem v reálném čase.
 
 Defender-IoT-Micro-Agent pro Azure RTO běží na pozadí a poskytuje bezproblémové uživatelské prostředí při posílání zpráv o zabezpečení pomocí jedinečných připojení jednotlivých zákazníků k jejich IoT Hub. Defender-IoT-Micro-Agent pro Azure RTO je ve výchozím nastavení povolený.  
 

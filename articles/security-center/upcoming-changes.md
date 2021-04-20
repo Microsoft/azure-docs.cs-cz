@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/08/2021
+ms.date: 04/20/2021
 ms.author: memildin
-ms.openlocfilehash: f9e1b5d19acbc9bcee86c374a3f843530b8adc61
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3307d3aed422c3eab63412388244ef14ef3be699
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103755"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750984"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Důležité nadcházející změny Azure Security Center
 
@@ -30,7 +30,8 @@ Pokud hledáte nejnovější poznámky k verzi, najdete je v [Azure Security Cen
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
 | [21 doporučení mezi ovládacími prvky zabezpečení](#21-recommendations-moving-between-security-controls)                                                           | Duben 2021                |
 | [Nepoužívá se dvě doporučení pro řízení zabezpečení použít aktualizace systému.](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | Duben 2021                |
-| [Doporučení od AWS se uvolní pro obecnou dostupnost (GA).](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | **Srpen** 2021             |
+| [Starší verze implementace ISO 27001 se nahrazuje novou normou ISO 27001:2013](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)          | Červeně 2021                 |
+| [Doporučení od AWS se uvolní pro obecnou dostupnost (GA).](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | **Srpen** 2021           |
 | [Vylepšení doporučení klasifikace dat SQL](#enhancements-to-sql-data-classification-recommendation)                                                     | Q2 2021                   |
 |                                                                                                                                                                       |                           |
 
@@ -59,6 +60,12 @@ Následující dvě doporučení jsou zastaralá:
 - **Verze operačního systému by se měla aktualizovat pro vaše role cloudové služby** – ve výchozím nastavení Azure pravidelně aktualizuje hostovaný operační systém na nejnovější podporovanou image v rámci řady operačních systémů, kterou jste zadali v konfiguraci služby (. cscfg), jako je například Windows Server 2016.
 - **Kubernetes služby by měly být upgradovány na nezranitelnou Kubernetes verzi** – hodnocení tohoto doporučení nejsou v rozsahu, ve kterém bychom chtěli. Aktuální verze tohoto doporučení bude nakonec nahrazena rozšířenou verzí, která je lépe zarovnaná s potřebou zabezpečení našeho zákazníka.
 
+
+### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>Starší verze implementace ISO 27001 se nahrazuje novou normou ISO 27001:2013
+
+Starší verze ISO 27001 bude odebrána z řídicího panelu dodržování předpisů Security Center. Pokud sledujete dodržování předpisů ISO 27001 pomocí Security Center, připojíte nový standard ISO 27001:2013 pro všechny příslušné skupiny pro správu nebo odběry a stávající starší verze ISO 27001 budou brzy odebrány z řídicího panelu.
+
+:::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="Řídicí panel dodržování legislativních předpisů Security Center zobrazuje zprávu o odebrání starší verze implementace ISO 27001." lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::
 
 ### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>Doporučení od AWS se uvolní pro obecnou dostupnost (GA).
 

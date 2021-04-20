@@ -9,18 +9,42 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 7c22381d547029aedc5965d07033e8800fcbddc3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 1de495253dacac5aeab7dcff95f74aeed11782a8
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313143"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750729"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](/python/api/overview/azure/ml/intro) .
 
 __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozornění zkopírováním a vložením následující adresy URL do čtečky informačních kanálů: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+
+## <a name="2021-04-19"></a>2021-04-19
+
+### <a name="azure-machine-learning-sdk-for-python-v1270"></a>Sada SDK Azure Machine Learning pro Python v 1.27.0
++ **Opravy chyb a vylepšení**
+  + **azureml-core**
+    + Byla přidána možnost přepsat výchozí hodnotu časového limitu pro odesílání artefaktů prostřednictvím proměnné prostředí "AZUREML_ARTIFACTS_DEFAULT_TIMEOUT".
+    + Opravili jsme chybu, kdy se nerespektují nastavení Docker v objektu prostředí v ScriptRunConfig.
+    + Umožňuje rozdělit datovou sadu při kopírování do cíle.
+    + Do OutputDatasetConfig se přidal vlastní režim, který umožňuje předávání vytvořených datových sad v kanálech prostřednictvím funkce Link. Tato vylepšení podporují pro povolení tabulkového dělení pro pr.
+    + Do AzureML-Core se přidal nový výpočetní typ KubernetesCompute.
+  + **azureml-pipeline-core**
+    + Přidání vlastního režimu do OutputDatasetConfig a povolení průchodu uživatelem vytvořenými datovými sadami v kanálech prostřednictvím funkce Link. Cíle cesty k souboru podporují zástupné symboly. Tato podpora podporuje vylepšení pro povolení tabulkového dělení pro pr.
+    + Přidání nového typu COMPUTE KubernetesCompute do AzureML-Core.
+  + **azureml-pipeline-steps**
+    + Přidání nového typu COMPUTE KubernetesCompute do AzureML-Core.
+  + **azureml-synapse**
+    + Aktualizovat adresu URL uživatelského rozhraní Spark v widgetu AzureML synapse
+  + **azureml-train-automl-client**
+    + Featurizer STL pro úlohu předpovědi teď používá robustnější detekci sezónnost na základě frekvence časových řad.
+  + **azureml-train-core**
+    + Opravená chyba, kdy nejsou respektována nastavení Docker v objektu prostředí.
+    + Přidání nového typu COMPUTE KubernetesCompute do AzureML-Core.
 
 
 ## <a name="2021-04-05"></a>2021-04-05

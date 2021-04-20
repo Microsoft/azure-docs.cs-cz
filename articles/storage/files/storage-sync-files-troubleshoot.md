@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 4/12/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 6007ec954682c0cb0ba20cbbf6b3621ead0bf7ff
-ms.sourcegitcommit: 089c2bd1ac4861f43c4b89396d3d056a6eef4913
+ms.openlocfilehash: 872faab688844278caac4c78ff8cd9ae72e46a4b
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107602103"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752781"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Synchronizace souborů Azure můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -379,6 +379,7 @@ Následující tabulka obsahuje všechny znaky Unicode, které Synchronizace sou
 | Znaková sada | Počet znaků |
 |---------------|-----------------|
 | 0x00000000 – 0x0000001F (řídicí znaky) | 32 |
+| 0x0000FDD0-0x0000FDDD (Arabské prezentační Forms-a) | 14 |
 | <ul><li>0x00000022 (uvozovky)</li><li>0x0000002A (hvězdička)</li><li>0x0000002F (lomítko)</li><li>0x0000003A (dvojtečka)</li><li>0x0000003C (je menší než)</li><li>0x0000003E (je větší než)</li><li>0x0000003F (otazník)</li><li>0x0000005C (zpětné lomítko)</li><li>0x0000007C (kanál nebo pruh)</li></ul> | 9 |
 | <ul><li>0x0004FFFE-0x0004FFFF = 2 (neznak)</li><li>0x0008FFFE-0x0008FFFF = 2 (neznak)</li><li>0x000CFFFE-0x000CFFFF = 2 (neznak)</li><li>0x0010FFFE-0x0010FFFF = 2 (neznak)</li></ul> | 8 |
 | <ul><li>0x0000009D (příkaz pro operační systém OSC)</li><li>0x00000090 (řetězec řízení zařízení v řadičích domény)</li><li>0x0000008F (SS3 Single Shift)</li><li>0x00000081 (přednastavení s vysokým oktetem)</li><li>0x0000007F (del Delete)</li><li>0x0000008D (rezervovaný zpětný spojnicový kanál)</li></ul> | 6 |

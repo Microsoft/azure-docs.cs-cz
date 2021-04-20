@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 2bc9b1c5724fa7bab1fdf5ac9332d87ba03a6d11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0e076f3b248942870ba58a51c85c3df1f1277a4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545815"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750603"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Použití pojmenovaných hodnot v zásadách Azure API Management
 
@@ -42,7 +42,7 @@ Tajné hodnoty mohou být uloženy buď jako šifrované řetězce v API Managem
 Doporučuje se používat tajné klíče trezoru klíčů, protože pomáhá vylepšit API Management zabezpečení:
 
 * Tajné kódy uložené v trezorech klíčů je možné opakovaně používat napříč službami.
-* Podrobné [zásady přístupu](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) se dají použít u tajných klíčů.
+* Podrobné [zásady přístupu](../key-vault/general/security-overview.md#privileged-access) se dají použít u tajných klíčů.
 * Tajné kódy, které jsou v trezoru klíčů aktualizované, se automaticky otočí v API Management. Po aktualizaci v trezoru klíčů se pojmenovaná hodnota v API Management v rámci 4 hodin aktualizuje. Tajný kód můžete také aktualizovat ručně pomocí Azure Portal nebo prostřednictvím REST API pro správu.
 
 ### <a name="prerequisites-for-key-vault-integration"></a>Předpoklady pro integraci trezoru klíčů

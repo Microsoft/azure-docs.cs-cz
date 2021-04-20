@@ -1,4 +1,4 @@
-- name: Dokumentace k Cloud Services (Rozšířená podpora)
+- name: Dokumentace k Azure Cloud Services (Rozšířená podpora)
   href: index.yml
 - name: Přehled
   items:
@@ -53,7 +53,7 @@
           href: schema-cscfg-networkconfiguration.md
 - name: Postup
   items:
-    - name: Migrace na Cloud Services (Rozšířená podpora)
+    - name: Migrace na Azure Cloud Services (Rozšířená podpora)
       items:
         - name: Přehled migrace
           href: in-place-migration-overview.md
@@ -79,7 +79,7 @@
       href: certificates-and-key-vault.md
     - name: Vygenerovat šablonu ARM pomocí portálu
       href: generate-template-portal.md
-    - name: Prohození dvou cloudových služeb
+    - name: Prohození nasazení cloudových služeb
       href: swap-cloud-service.md
     - name: Potlačit podrobnosti SKU
       href: override-sku.md
@@ -107,7 +107,7 @@
       href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
     - name: Rutiny prostředí PowerShell
       href: /powershell/module/az.cloudservice/#cloudservice
-    - name: Odkaz na šablonu ARM
+    - name: Referenční informace k šablonám ARM
       href: /azure/templates/microsoft.compute/cloudservices
     - name: REST
       href: /rest/api/compute/cloudservices

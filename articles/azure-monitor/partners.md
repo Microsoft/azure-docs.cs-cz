@@ -5,12 +5,12 @@ author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 04/14/2021
-ms.openlocfilehash: c10e11fe547f643e04b5dbdeaf9e233b7105ce9a
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: d449f660fa97af8b5c24542258029834a964b3f2
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517470"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751611"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integrace partnerů ve službě Azure Monitor
 
@@ -113,7 +113,7 @@ Pokud stále používáte předchozí ručně nakonfigurovanou integraci, přeč
 
 DynaTrace OneAgent se integruje s virtuálními počítači Azure a App Services prostřednictvím mechanismu rozšíření Azure. Tímto způsobem může dynaTrace OneAgent shromažďovat metriky výkonu o hostitelích, síti a službách. Kromě pouhého zobrazení metrik dynaTrace vizualizuje prostředí od začátku do konce. Zobrazuje transakce ze strany klienta až po databázovou vrstvu. DynaTrace zajišťuje korelaci na základě AI a úplnou integrovanou hlavní příčinu a analýzu, která poskytuje přehledy na úrovni metod do kódu a databáze. Tento přehled přináší mnohem jednodušší řešení potíží a optimalizace výkonu.
 
-[Dokumentace k Dynatrack](https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/)
+[Dokumentace k dynaTrace](https://www.dynatrace.com/support/help/technology-support/cloud-platforms/microsoft-azure-services/)
 
 
 ## <a name="elastic"></a>Udává
@@ -343,7 +343,7 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy tím, že součas
 
 Použití Azure Monitor ke směrování dat monitorování do centra událostí Azure vám umožní snadnou integraci s některými externími nástroji pro SIEM a monitorování. Na následujících partnerech se říká integrace prostřednictvím centra událostí. 
 
-| Nástroj | Hostovaná v Azure | Popis |
+| Nástroj | Hostovaná v Azure | Description |
 |:---|:---| :---|
 |  IBM QRadar | No | Protokol Microsoft Azure DSM a Microsoft Azure centra událostí je k dispozici ke stažení na [webu podpory IBM](https://www.ibm.com/support). Další informace o integraci s Azure najdete v části [QRADAR DSM Configuration](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
 | Splunk | No | [Microsoft Azure Add-On pro Splunk](https://splunkbase.splunk.com/app/3757/) je open source projekt dostupný v Splunkbase. <br><br> Pokud do instance Splunk nemůžete nainstalovat doplněk, pokud například používáte proxy server nebo běží v cloudu Splunk, můžete tyto události pře do kolektoru událostí Splunk HTTP pomocí [funkce Azure Functions pro Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), která se aktivuje novými zprávami v centru událostí. |

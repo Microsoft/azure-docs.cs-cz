@@ -1,18 +1,18 @@
 ---
 title: Azure Key Vault základy ověřování
 description: Přečtěte si, jak funguje model ověřování trezoru klíčů.
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 09/25/2020
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 04/15/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: c43995a8b3a072d98db0ba2c8219694f17e49a26
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: f0cd2fb341dd790a7628cc3cf6a5bdd87d7c3687
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363423"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753411"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Základy ověřování služby Key Vault
 
@@ -119,7 +119,7 @@ Přiřazení role Key Vault jsou sada předdefinovaných přiřazení rolí Azur
 
 Další informace o službě Azure RBAC pro Key Vault najdete v následujících dokumentech:
 
-* [Odkaz](./secure-your-key-vault.md#management-plane-and-azure-rbac) na službu Azure RBAC pro Key Vault
+* [Odkaz](rbac-guide.md) na službu Azure RBAC pro Key Vault
 * [Odkaz](../../role-based-access-control/built-in-roles.md#key-vault-administrator) na role Azure RBAC pro Key Vault
 
 ## <a name="configure-key-vault-firewall"></a>Konfigurace brány Key Vault firewall

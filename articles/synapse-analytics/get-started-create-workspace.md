@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 61fcbfa9d40ebb26485ce8160fa3b011935ab4d6
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 4b7251be220c012ca51970863ac2eed55d46d711
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536306"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751143"
 ---
 # <a name="creating-a-synapse-workspace"></a>Vytváření pracovního prostoru synapse
 
@@ -69,7 +69,7 @@ Po vytvoření pracovního prostoru Azure synapse máte dva způsoby, jak otevř
 * Přejít na adresu `https://web.azuresynapse.net` a přihlaste se do svého pracovního prostoru.
 
 ## <a name="place-sample-data-into-the-primary-storage-account"></a>Vložení ukázkových dat do primárního účtu úložiště
-Pro mnoho příkladů v této příručce Začínáme budeme 100 používat datovou sadu ukázkových datových sad NYX taxislužby pro řádek. Začneme tak, že ho umístíte do primárního účtu úložiště, který jste vytvořili pro daný pracovní prostor.
+Pro mnoho příkladů v této příručce Začínáme budeme používat malou datovou sadu ukázek 100 tisíc řádků NYX taxislužby. Začneme tak, že ho umístíte do primárního účtu úložiště, který jste vytvořili pro daný pracovní prostor.
 
 * Stáhněte si tento soubor do počítače: https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet 
 * V synapse studiu přejděte do centra dat. 
@@ -77,6 +77,14 @@ Pro mnoho příkladů v této příručce Začínáme budeme 100 používat dato
 * V kategorii **Azure Data Lake Storage Gen2** uvidíte položku s názvem, jako je **MyWorkspace (Primary-contosolake)**.
 * Vyberte kontejner s názvem **Uživatelé (primární)**.
 * Vyberte **nahrát** a vyberte `NYCTripSmall.parquet` soubor, který jste stáhli.
+
+Jeden soubor Parquet se nahraje prostřednictvím dvou ekvivalentních identifikátorů URI:
+* `https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet` 
+* `abfss://users@contosolake.dfs.core.windows.net/NYCTripSmall.parquet`
+
+V příkladech, které následují v tomto kurzu, nezapomeňte nahradit **contosolake** v uživatelském rozhraní názvem primárního účtu úložiště, který jste vybrali pro váš pracovní prostor.
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

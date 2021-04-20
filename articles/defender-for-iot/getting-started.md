@@ -2,13 +2,13 @@
 title: 'Rychlý Start: Začínáme'
 description: V tomto rychlém startu se dozvíte, jak začít s porozuměním základnímu pracovnímu postupu pro nasazení v programu Defender pro IoT.
 ms.topic: quickstart
-ms.date: 2/18/2021
-ms.openlocfilehash: aa26ea26a3fb0a08d931657cb7ad236c68972e2f
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.date: 04/17/2021
+ms.openlocfilehash: b1e7686e1d68d5a3f239320930d69f22c78e13cb
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384949"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750441"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>Rychlý Start: Začínáme s Defenderem pro IoT
 
@@ -17,10 +17,6 @@ Tento článek poskytuje přehled kroků, které budete provádět při nastavov
 - Zaregistrujte své předplatné a senzory na portálu Azure Defender pro IoT Portal.
 - Nainstalujte software senzoru a místní konzolu pro správu.
 - Proveďte počáteční aktivaci senzoru a konzoly pro správu.
-
-## <a name="prerequisites"></a>Požadavky
-
-- Žádné
 
 ## <a name="permission-requirements"></a>Požadavky na oprávnění
 
@@ -32,7 +28,7 @@ Následující tabulka popisuje oprávnění pro přístup uživatelů k Azure D
 
 | Oprávnění | Čtenář zabezpečení | Správce zabezpečení | Přispěvatel předplatného | Vlastník předplatného |
 |--|--|--|--|--|
-| Zobrazit všechny Defendery pro obrazovky a data IoT | ✓ | ✓ | ✓ | ✓ |
+| Zobrazit podrobnosti a získat přístup k softwaru, aktivačním souborům a balíčkům pro analýzu hrozeb  | ✓ | ✓ | ✓ | ✓ |
 | Připojení snímače  |  |  ✓ | ✓ | ✓ |
 | Aktualizovat ceny  |  |  ✓ | ✓ | ✓ |
 | Obnovit heslo  | ✓  |  ✓ | ✓ | ✓ |
@@ -85,21 +81,20 @@ Instalace a nastavení:
 1. Nainstalujte software pro místní konzolu pro správu. Další informace najdete v tématu [Defender pro instalaci IoT](how-to-install-software.md).
 1. Aktivujte a nastavte konzolu pro správu. Další informace najdete v tématu [Aktivace a nastavení místní konzoly pro správu](how-to-activate-and-set-up-your-on-premises-management-console.md).
 
-## <a name="onboard-a-sensor"></a>Připojení snímače
+## <a name="onboard-a-sensor"></a>Připojení snímače ##
 
 Zaveďte senzor tak, že ho zaregistrujete do Azure Defenderu pro IoT a stáhnete soubor aktivace senzoru:
 
 1. Definujte název snímače a přidružte ho k předplatnému.
+1. Vyberte režim připojení snímače:
 
-1. Vyberte režim správy senzorů:
+   - **Senzory připojené ke cloudu**: informace, které detekuje senzory, se zobrazují v konzole senzorů. Kromě toho jsou informace o výstrahách doručovány prostřednictvím služby IoT Hub a mohou být sdíleny s ostatními službami Azure, jako je například Azure Sentinel.  Můžete se také rozhodnout automaticky nabízet balíčky pro analýzy hrozeb z Azure Defenderu pro IoT Portal na vaše senzory. Další informace najdete v tématu [výzkum a balíčky pro analýzu hrozeb](how-to-work-with-threat-intelligence-packages.md).
 
-   - **Senzory připojené ke cloudu**: informace, které detekuje senzory, se zobrazují v konzole senzorů. Kromě toho jsou informace o výstrahách doručovány prostřednictvím služby IoT Hub a mohou být sdíleny s ostatními službami Azure, jako je například Azure Sentinel.
-
-   - **Místně spravované senzory**: informace, které detekuje senzory, se zobrazí v konzole senzorů. Pokud pracujete v letecké gapped síti a chcete mít jednotný přehled o všech informacích zjištěných více místně spravovanými senzory, pracujte s místní konzolou pro správu. 
+   - **Místně spravované senzory**: informace, které detekuje senzory, se zobrazí v konzole senzorů. Pokud pracujete v letecké gapped síti a chcete mít jednotný přehled o všech informacích zjištěných více místně spravovanými senzory, pracujte s místní konzolou pro správu.
 
 1. Stáhněte si soubor aktivace senzoru.
 
-Další informace najdete v tématu [zprovoznění a správa senzorů v programu Defender pro IoT Portal](how-to-manage-sensors-on-the-cloud.md).
+Podrobnosti o registraci najdete v tématu [zprovoznění a správa senzorů v programu Defender pro IoT Portal](how-to-manage-sensors-on-the-cloud.md).
 
 ## <a name="install-and-set-up-the-sensor"></a>Instalace a nastavení senzoru
 
@@ -131,8 +126,8 @@ Další informace najdete v tématu [propojení senzorů s místní konzolou pro
 
 Pomocí konfigurace Azure Sentinelu odešlete informace o výstrahách do Azure Sentinel. Podívejte [se na téma připojení dat z Defenderu pro IoT do Azure Sentinel](how-to-configure-with-sentinel.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další kroky ##
 
-> [!div class="nextstepaction"]
-> [Vítá vás Azure Defender pro IoT](overview.md) 
->  [Azure Defender pro architekturu IoT](architecture.md)
+[Vítá vás Azure Defender pro IoT](overview.md)
+
+[Azure Defender pro architekturu IoT](architecture.md)

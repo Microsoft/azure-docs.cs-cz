@@ -4,12 +4,12 @@ description: Popisuje, jak rozdělit Service Bus fronty a témata pomocí více 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c500a69f853b11437a0dcaa48213fe3a84da53b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc41bcf31102b19dd35f62452b956faf4f029551
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97796631"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750909"
 ---
 # <a name="partitioned-queues-and-topics"></a>Dělené fronty a témata
 
@@ -146,6 +146,7 @@ V současné době Service Bus ukládá na dělené fronty a témata následují
 * Service Bus aktuálně umožňuje v jednom oboru názvů až 100 dělených front nebo témat. Každá dělená fronta nebo téma se počítá s kvótou 10 000 entit na obor názvů (nevztahuje se na úroveň Premium).
 
 ## <a name="next-steps"></a>Další kroky
+Dělení můžete povolit pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku, Správce prostředků šablony, .NET, Java, Python a JavaScriptu. Další informace najdete v tématu [Povolení dělení](enable-partitions.md). 
 
 Přečtěte si o základních konceptech specifikace zasílání zpráv AMQP 1,0 v [příručce k protokolu AMQP 1,0](service-bus-amqp-protocol-guide.md).
 

@@ -2,13 +2,13 @@
 title: Relace Azure Service Bus zpráv | Microsoft Docs
 description: Tento článek vysvětluje, jak pomocí relací povolit společné a seřazené zpracování neohraničených sekvencí souvisejících zpráv.
 ms.topic: article
-ms.date: 04/12/2021
-ms.openlocfilehash: c9a1c4fdccbbc8b38805e23d4895448959126f10
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/19/2021
+ms.openlocfilehash: e22dfb2aa7372a227f70fd2bfa8f72d2161cda17
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308466"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750747"
 ---
 # <a name="message-sessions"></a>Relace zpráv
 Microsoft Azure Service Bus relace umožňují společné a seřazené zpracování neohraničených sekvencí souvisejících zpráv. Relace se dají použít v vzorcích **First in, First out (FIFO)** a **Request-response** . Tento článek popisuje, jak používat relace k implementaci těchto vzorů při použití Service Bus. 
@@ -24,15 +24,6 @@ Každý odesilatel může vytvořit relaci při odesílání zpráv do tématu n
 U front a předplatných, které pracují s relacemi, se relace nacházejí v případě, že existuje alespoň jedna zpráva s ID relace. Po existující relaci není k dispozici žádný definovaný čas nebo rozhraní API pro dobu, kdy relace vyprší nebo zmizí. Teoreticky může být zpráva přijata pro relaci dnes, další zpráva v roce a v případě, že se shodují ID relace, relace je stejná jako v Service Bus perspektivě.
 
 Obvykle však aplikace má jasný pojem, kde se spustí a končí sada souvisejících zpráv. Service Bus nenastavuje žádná konkrétní pravidla. Například vaše aplikace může nastavit vlastnost **Label** první zprávy na **Start**, pro mezilehlé zprávy na **obsah** a na **konec** poslední zprávy. Relativní umístění zpráv obsahu lze vypočítat jako aktuální rozdíl *SequenceNumber* zprávy ze *SequenceNumber* **spuštění** zprávy.
-
-Tuto funkci povolíte nastavením vlastnosti [requiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) ve frontě nebo předplatném pomocí Azure Resource Manager nebo nastavením příznaku na portálu. Je nutné, abyste se pokusili použít související operace rozhraní API.
-
-Na portálu můžete povolit relace při vytváření entity (fronty nebo předplatného), jak je znázorněno v následujících příkladech. 
-
-:::image type="content" source="./media/message-sessions/queue-sessions.png" alt-text="Povolit relaci v době vytváření fronty":::
-
-:::image type="content" source="./media/message-sessions/subscription-sessions.png" alt-text="Povolit relaci v době vytváření předplatného":::
-
 
 > [!IMPORTANT]
 > Když jsou povoleny relace ve frontě nebo v předplatném, klientské aplikace ***již*** nemohou odesílat a přijímat pravidelné zprávy. Všechny zprávy musí být odesílány v rámci relace (nastavením ID relace) a přijaty přijetím relace.
@@ -90,14 +81,19 @@ Více aplikací může odesílat požadavky do jediné fronty požadavků, při�
 > Aplikace, která odesílá počáteční požadavky, by měla znát ID relace a použít ji k přijetí relace, aby byla relace, na které je očekávána odpověď, uzamčena. Je vhodné použít identifikátor GUID, který jedinečně identifikuje instanci aplikace jako ID relace. V příjemci relace pro frontu by neměl existovat žádná obslužná rutina relace ani časový limit určený k tomu, aby byly odpovědi k dispozici pro uzamknutí a zpracování konkrétními přijímači.
 
 ## <a name="next-steps"></a>Další kroky
+Relace zpráv můžete povolit při vytváření fronty pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku, Správce prostředků šablony, .NET, Java, Python a JavaScriptu. Další informace najdete v tématu [Povolení relací zpráv](enable-message-sessions.md). 
 
+Vyzkoušejte si ukázky v jazyce podle vašeho výběru, abyste prozkoumali Azure Service Bus funkce. 
+
+- [Azure Service Bus ukázek klientských knihoven pro Java](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Azure Service Bus ukázek klientských knihoven pro Python](/samples/azure/azure-sdk-for-python/servicebus-samples/)
+- [Azure Service Bus ukázek klientských knihoven pro JavaScript](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [Azure Service Bus Ukázky klientské knihovny pro TypeScript](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
 - [Ukázky Azure. Messaging. ServiceBus pro .NET](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
-- [Azure Service Bus Klientská knihovna pro Java – ukázky](/samples/azure/azure-sdk-for-java/servicebus-samples/)
-- [Azure Service Bus Klientská knihovna pro Python – ukázky](/samples/azure/azure-sdk-for-python/servicebus-samples/)
-- [Azure Service Bus klientské knihovny pro JavaScript – ukázky](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
-- [Azure Service Bus klientské knihovny pro TypeScript – ukázky](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
-- [Ukázky Microsoft. Azure. ServiceBus pro .NET](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/) (ukázky relací a SessionState)  
 
-Další informace o Service Bus zasílání zpráv najdete v tématu [Service Bus fronty, témata a předplatná](service-bus-queues-topics-subscriptions.md).
+Vyhledejte ukázky pro starší klientské knihovny .NET a Java níže:
+- [Ukázky Microsoft. Azure. ServiceBus pro .NET](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Ukázky Azure-ServiceBus pro Java](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
 
 [1]: ./media/message-sessions/sessions.png
+

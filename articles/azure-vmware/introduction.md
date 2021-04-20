@@ -1,18 +1,18 @@
 ---
 title: Úvod
-description: Seznamte se s funkcemi a výhodami řešení Azure VMware pro nasazení a správu úloh na bázi VMware v Azure.
+description: Seznamte se s funkcemi a výhodami řešení Azure VMware pro nasazení a správu úloh na bázi VMware v Azure. Smlouva SLA pro řešení Azure VMware zaručuje, že nástroje pro správu Azure VMware (vCenter Server a NSX Manager) budou k dispozici alespoň 99,9% času.
 ms.topic: overview
-ms.date: 03/24/2021
-ms.openlocfilehash: 32dd73108dc12d7d7acc605f43a0fbf6d2cf1cd7
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.date: 04/20/2021
+ms.openlocfilehash: 9471aa2e427d28e0b8211dc8b25b2e61a4bfa8c4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107978"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752637"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Co je Azure VMware Solution?
 
-Řešení Azure VMware poskytuje privátní cloudy, které obsahují vSphere clustery, sestavené z vyhrazené holé infrastruktury Azure. Minimální počáteční nasazení je tři hostitele, ale další hostitele je možné přidat najednou, maximálně 16 hostitelů na jeden cluster.  Všechny zřízené privátní cloudy mají vCenter Server, síti vSAN, vSphere a NSX-T. Můžete migrovat úlohy z místních prostředí, nasadit nové virtuální počítače a využívat služby Azure ze svých privátních cloudů.
+Řešení Azure VMware poskytuje privátní cloudy, které obsahují vSphere clustery, sestavené z vyhrazené holé infrastruktury Azure. Minimální počáteční nasazení je tři hostitele, ale další hostitele je možné přidat najednou, maximálně 16 hostitelů na jeden cluster.  Všechny zřízené privátní cloudy mají vCenter Server, síti vSAN, vSphere a NSX-T. Můžete migrovat úlohy z místních prostředí, nasadit nové virtuální počítače a využívat služby Azure ze svých privátních cloudů.  Nástroje pro správu Azure VMware (vCenter Server a NSX Manager) budou k dispozici minimálně 99,9% času. Další informace najdete v tématu [SLA pro řešení Azure VMware](https://aka.ms/avs/sla).
 
 Řešení Azure VMware je ověřované řešení VMware s průběžným ověřováním a testováním vylepšení a upgradů. Společnost Microsoft spravuje a udržuje privátní cloudovou infrastrukturu a software. Umožňuje soustředit se na vývoj a spouštění úloh v privátních cloudech. 
 

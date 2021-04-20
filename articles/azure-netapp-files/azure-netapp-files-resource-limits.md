@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 9b061184f97abeea79912aadbae2c2b188206c72
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f023bfa2b3941f7d667f4be34a8ee8dc1ed9a9c3
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057996"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750189"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
 
@@ -56,7 +56,7 @@ Další informace najdete v tématu [Nejčastější dotazy ke správě kapacity
 
 ## <a name="maxfiles-limits"></a>Omezení maxfiles <a name="maxfiles"></a> 
 
-Azure NetApp Files svazky mají omezení s názvem *maxfiles*. Limit maxfiles je počet souborů, které může obsahovat svazek. Limit maxfiles pro Azure NetApp Files svazek je indexovaný na základě velikosti (kvóty) svazku. Limit maxfiles pro svazek se zvyšuje nebo snižuje rychlostí 20 000 000 souborů za TiB zřízené velikosti svazku. 
+Azure NetApp Files svazky mají omezení s názvem *maxfiles*. Limit maxfiles je počet souborů, které může obsahovat svazek. Systémy souborů Linux odkazují na limit as *uzlů inode*. Limit maxfiles pro Azure NetApp Files svazek je indexovaný na základě velikosti (kvóty) svazku. Limit maxfiles pro svazek se zvyšuje nebo snižuje rychlostí 20 000 000 souborů za TiB zřízené velikosti svazku. 
 
 Služba dynamicky upravuje limit maxfiles pro svazek na základě jeho zřízené velikosti. Například svazek nakonfigurovaný původně s velikostí 1 TiB by měl maxfiles limit 20 000 000. Následné změny velikosti svazku mají za následek automatické přizpůsobení limitu maxfiles na základě následujících pravidel: 
 
@@ -68,7 +68,9 @@ Služba dynamicky upravuje limit maxfiles pro svazek na základě jeho zřízen�
 |    > 3 TiB, ale <= 4 TiB    |    80 000 000     |
 |    > 4 TiB                 |    100 000 000    |
 
-Pokud jste už pro svazek nastavili aspoň 4 TiB kvót, můžete [žádost o podporu](#limit_increase) iniciovat tak, že zvýšíte maxfiles limit nad 100 000 000. Pro každý 100 000 000 souborů, které narostete (nebo zlomku), potřebujete zvýšit odpovídající kvótu svazku o 4 TiB.  Pokud například zvýšíte limit maxfiles z 100 000 000 souborů na 200 000 000 souborů (nebo jakékoli číslo v rozsahu), musíte zvýšit kvótu svazku ze 4 TiB na 8 TiB.
+Pokud jste už pro svazek nastavili aspoň 4 TiB kvót, můžete zahájit [žádost o podporu](#limit_increase) a zvýšit limit maxfiles (uzlů inode) nad rámec 100 000 000. Pro každý 100 000 000 souborů, které narostete (nebo zlomku), potřebujete zvýšit odpovídající kvótu svazku o 4 TiB.  Pokud například zvýšíte limit maxfiles z 100 000 000 souborů na 200 000 000 souborů (nebo jakékoli číslo v rozsahu), musíte zvýšit kvótu svazku ze 4 TiB na 8 TiB.
+
+Limit maxfiles můžete zvýšit na 500 000 000, pokud je kvóta svazku aspoň 20 TiB. <!-- ANF-11854 --> 
 
 ## <a name="request-limit-increase"></a>Zvýšení limitu požadavku <a name="limit_increase"></a> 
 

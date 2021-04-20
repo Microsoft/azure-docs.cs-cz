@@ -2,20 +2,20 @@
 title: Přesuňte Trezor klíčů do jiné oblasti – Azure Key Vault | Microsoft Docs
 description: Tento článek obsahuje pokyny k přesunu trezoru klíčů do jiné oblasti.
 services: key-vault
-author: ShaneBala-keyvault
+author: msmbaldwin
 manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 04/24/2020
-ms.author: sudbalas
-ms.openlocfilehash: 97956b8c6f18d37acd07543b8921b4973be3bda9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 03/31/2021
+ms.author: mbaldwin
+ms.openlocfilehash: ac2f6347776c2f5d230065b80b1c0336e21e181c
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066649"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751791"
 ---
 # <a name="move-an-azure-key-vault-across-regions"></a>Přesun trezoru klíčů Azure napříč oblastmi
 

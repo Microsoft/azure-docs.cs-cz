@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 0c0a0c5f62f92aaf195e207dfd505ffb017d924e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bea1ccf0777c6325bc86c15e0f88304c465d89c9
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653896"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750279"
 ---
 # <a name="managed-hsm-access-control"></a>Řízení přístupu pro Managed HSM
 
@@ -65,6 +65,7 @@ V následující tabulce jsou uvedeny koncové body pro řídicí a datové rovi
 | Rovina správy | **Globální**<br> management.azure.com:443<br> | Vytváření, čtení, aktualizace, odstranění a přesun spravovaných HSM<br>Nastavení spravovaných značek HSM | Azure RBAC |
 | Rovina dat | **Globální**<br> &lt;HSM-name &gt; . managedhsm.Azure.NET:443<br> | **Klíče**: dešifrování, šifrování,<br> rozbalení, zalomení, ověření, podepsání, získání, seznam, aktualizace, vytvoření, import, odstranění, zálohování, obnovení, vyprázdnění<br/><br/> **Správa rolí roviny dat (spravovaná místní RBAC)**_: seznam definic rolí, přiřazování rolí, odstraňování přiřazení rolí, definování vlastních rolí <br/> <br/>_* zálohování a obnovení **: zálohování, obnovení, <br/> <br/> kontrolu stavu zálohování/obnovení** v doméně zabezpečení * *: stažení a nahrání domény zabezpečení | Spravovaná místní RBAC pro HSM |
 |||||
+
 ## <a name="management-plane-and-azure-rbac"></a>Rovina správy a Azure RBAC
 
 V rovině správy pomocí Azure RBAC autorizujete operace, které volající může spustit. V modelu Azure RBAC má každé předplatné Azure instanci Azure Active Directory. Přístup k uživatelům, skupinám a aplikacím udělíte z tohoto adresáře. Přístup se uděluje pro správu prostředků v předplatném Azure, které používají model nasazení Azure Resource Manager. K udělení přístupu použijte [Azure Portal](https://portal.azure.com/), rozhraní příkazového [řádku Azure CLI](/cli/azure/install-classic-cli), [Azure PowerShell](/powershell/azureps-cmdlets-docs)nebo [Azure Resource Manager rozhraní REST API](/rest/api/authorization/roleassignments).
@@ -87,6 +88,6 @@ Přístup k objektu zabezpečení udělíte oprávnění k provádění konkrét
 
 ## <a name="next-steps"></a>Další kroky
 
-- Úvodní kurz pro správce najdete v tématu [co je spravovaný modul HSM?](overview.md).
+- Úvodní kurz pro správce najdete v tématu [co je spravovaný modul HSM?](overview.md) .
 - Kurz správy rolí najdete v tématu [spravovaná místní RBAC](role-management.md) .
-- Další informace o protokolování využití spravovaného protokolování HSM najdete v tématu [MANAGED HSM Logging](logging.md).
+- Další informace o protokolování využití spravovaného protokolování HSM najdete v tématu [MANAGED HSM Logging](logging.md) .
