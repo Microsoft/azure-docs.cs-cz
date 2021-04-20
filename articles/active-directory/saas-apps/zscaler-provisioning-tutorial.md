@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 9f368a4aebc4d5de38ebbab800241366650633e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92553e9d598823ee1b812a4f07480dec380b2490
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936579"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739417"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler pro Automatické zřizování uživatelů
 
@@ -76,6 +76,10 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 ## <a name="configuring-automatic-user-provisioning-to-zscaler"></a>Konfigurace automatického zřizování uživatelů na Zscaler
 
 V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v Zscaler na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+
+
+> [!NOTE]
+> Otevřete [lístek podpory](https://help.zscaler.com/) pro vytvoření domény v Zscaler.
 
 > [!TIP]
 > Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Zscaler podle pokynů uvedených v [kurzu Zscaler jednotného přihlašování](zscaler-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.

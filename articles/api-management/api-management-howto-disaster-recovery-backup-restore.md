@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 090eda3c3310a1b793733e37725c62758445d6b2
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: ad0936fddacf8f5b2e4917441f5feaa41aad9de4
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587308"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739795"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí zálohování a obnovení služby ve službě Azure API Management
 
@@ -230,7 +230,7 @@ Obnovení je dlouhodobá operace, která může trvat až 30 minut, než se doko
 -   Konfigurace [spravované identity](api-management-howto-use-managed-service-identity.md)
 -   [Diagnostika Azure monitor](api-management-howto-use-azure-monitor.md) Rozšířeného.
 -   Nastavení [protokolů a šifry](api-management-howto-manage-protocols-ciphers.md) .
--   Obsah [portálu pro vývojáře](api-management-howto-developer-portal.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management)
+-   Obsah [portálu pro vývojáře](developer-portal-faq.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management)
 
 Frekvence, se kterou provádíte zálohování služby, má vliv na cíl bodu obnovení. Pro minimalizaci doporučujeme, abyste implementovali pravidelné zálohování a prováděli zálohování na vyžádání po provedení změn ve službě API Management.
 

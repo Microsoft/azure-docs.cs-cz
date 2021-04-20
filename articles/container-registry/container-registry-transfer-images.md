@@ -4,12 +4,12 @@ description: Přenos kolekcí imagí nebo jiných artefaktů z jednoho registru 
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: e921880eb0b8ae5a38e69c9c0045f6a26d84084d
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 7784ce3e5e0171c84fb1f1da6e69f7d38bec9637
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497978"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737401"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Přenos artefaktů do jiného registru
 
@@ -416,8 +416,14 @@ az resource delete \
 * **Template deployment chyby nebo chyby**
   * Pokud se spuštění kanálu nezdařilo, podívejte se na `pipelineRunErrorMessage` vlastnost prostředku spuštění.
   * Chyby při nasazení běžných šablon najdete v tématu [řešení potíží s nasazeními šablon ARM](../azure-resource-manager/templates/template-tutorial-troubleshoot.md) .
+* **Problémy s přístupem k úložišti**<a name="problems-accessing-storage"></a>
+  * Pokud se zobrazí `403 Forbidden` Chyba v úložišti, pravděpodobně máte problém s vaším tokenem SAS.
+  * Token SAS možná není aktuálně platný. Platnost tokenu SAS pravděpodobně vypršela nebo se od vytvoření tokenu SAS změnily klíče účtu úložiště. Ověřte platnost tokenu SAS tím, že se pokusíte použít token SAS k ověření přístupu k kontejneru účtu úložiště. Například vložte existující koncový bod objektu BLOB následovaný tokenem SAS do panelu Adresa v novém okně služby InPrivate Microsoft Edge nebo nahrajte objekt blob do kontejneru pomocí tokenu SAS pomocí `az storage blob upload` .
+  * Token SAS nemusí mít dostatečný povolený typ prostředku. Ověřte, zda byl tokenu SAS uděleno oprávnění ke službě, kontejneru a objektu v rámci povolených typů prostředků ( `srt=sco` v tokenu SAS).
+  * Token SAS pravděpodobně nemá dostatečná oprávnění. U kanálů exportu jsou požadovaná oprávnění tokenů SAS přečtená, zapisovat, zobrazovat a přidávat. U kanálů importu jsou požadovaná oprávnění tokenů SAS čtena, odstraněna a vypsána. (Oprávnění k odstranění se vyžaduje jenom v případě, že je `DeleteSourceBlobOnSuccess` povolená možnost kanál importu.)
+  * Token SAS pravděpodobně není konfigurován pro práci pouze s protokolem HTTPS. Ověřte, jestli je token SAS nakonfigurovaný tak, aby fungoval jenom s HTTPS ( `spr=https` v tokenu SAS).
 * **Problémy s exportem nebo importem objektů BLOB úložiště**
-  * Vypršela platnost tokenu SAS nebo může mít nedostatečná oprávnění pro zadaný příkaz pro export nebo import.
+  * Token SAS může být neplatný nebo může mít pro zadané spuštění exportu nebo importu nedostatečná oprávnění. Viz [problémy s přístupem k úložišti](#problems-accessing-storage).
   * Existující objekt BLOB úložiště ve zdrojovém účtu úložiště se při několika spuštěních exportu nemusí přepsat. Ověřte, že je v běhu pro export nastavená možnost OverwriteBlob a že token SAS má dostatečná oprávnění.
   * Po úspěšném spuštění importu se nemusí odstranit objekt BLOB úložiště v cílovém účtu úložiště. Ověřte, že je v běhu importu nastavená možnost DeleteBlobOnSuccess a že token SAS má dostatečná oprávnění.
   * Objekt BLOB úložiště se nevytvořil nebo se odstranil. Potvrďte, že kontejner zadaný v běhu export nebo import existuje, nebo pokud pro ruční spuštění importu existuje zadaný objekt BLOB úložiště. 

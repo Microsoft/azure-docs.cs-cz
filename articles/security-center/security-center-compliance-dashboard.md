@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: memildin
-ms.openlocfilehash: fb8dc22c923b7b53a6263baa43046862af4d2f04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 284a7f532ed918397fe1cfcf3458bbc6fb0bdd32
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100370256"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739003"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Kurz: Vylepšení dodržování právních předpisů
 
@@ -26,7 +26,7 @@ Azure Security Center pomáhá zjednodušit proces splnění požadavků na dodr
 
 Security Center nepřetržitě posuzuje vaše hybridní cloudové prostředí, aby se analyzovaly rizikové faktory podle ovládacích prvků a osvědčených postupů ve standardech, které se pro vaše předplatné nastavily. Řídicí panel odráží stav dodržování předpisů pomocí těchto standardů. 
 
-Když povolíte Security Center v předplatném Azure, automaticky se k tomuto předplatnému přiřadí [Srovnávací test zabezpečení Azure](../security/benchmarks/introduction.md) . Toto široce uznávané sestavování srovnávacích testů v ovládacích prvcích z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se soustředí na zabezpečení zaměřené na Cloud.
+Když povolíte Security Center v předplatném Azure, automaticky se k tomuto předplatnému přiřadí [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction) . Toto široce uznávané sestavování srovnávacích testů v ovládacích prvcích z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se soustředí na zabezpečení zaměřené na Cloud.
 
 Řídicí panel dodržování předpisů zobrazuje stav všech posouzení v rámci vašeho prostředí podle zvolených standardů a předpisů. Při rozhodování o doporučeních a omezení rizikových faktorů ve vašem prostředí vylepšuje stav dodržování předpisů.
 

@@ -7,19 +7,19 @@ author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 34a839eb6996f2b37c07bb2e54f81a1d21044fa9
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 8023dcc29fe8ea3af853237e911524549e4d2bcb
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502660"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739633"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Předdefinované definice Azure Policy pro Azure Security Center
 
 Tato stránka je indexem [Azure Policy](../governance/policy/overview.md) integrovaných definic zásad souvisejících s Azure Security Center. K dispozici jsou následující seskupení definic zásad:
 
 - Skupina [iniciativy](#azure-security-center-initiatives) obsahuje definice Azure Policy iniciativ v kategorii "Security Center".
-- [Výchozí skupina iniciativ](#azure-security-center-initiatives) obsahuje všechny definice Azure Policy, které jsou součástí výchozí iniciativy Security Center, [Srovnávací test zabezpečení Azure](../security/benchmarks/introduction.md). Tato společnost Microsoft vytvořila, široce uznávaná sestavení srovnávacích testů na základě kontrol z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se zaměřuje na zabezpečení zaměřené na Cloud.
+- [Výchozí skupina iniciativ](#azure-security-center-initiatives) obsahuje všechny definice Azure Policy, které jsou součástí výchozí iniciativy Security Center, [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction). Tato společnost Microsoft vytvořila, široce uznávaná sestavení srovnávacích testů na základě kontrol z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se zaměřuje na zabezpečení zaměřené na Cloud.
 - Skupina [kategorií](#azure-security-center-category) uvádí všechny definice Azure Policy v kategorii "Security Center".
 
 Další informace o zásadách zabezpečení najdete v tématu [práce se zásadami zabezpečení](./tutorial-security-policy.md). Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../governance/policy/samples/built-in-policies.md).

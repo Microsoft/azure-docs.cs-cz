@@ -2,13 +2,13 @@
 title: Přehled trezorů služby Backup
 description: Přehled trezorů služby Backup.
 ms.topic: conceptual
-ms.date: 08/17/2020
-ms.openlocfilehash: c189997ecc4814917182246b35003649d317ac77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/19/2021
+ms.openlocfilehash: e2d720da9474a35870de01559201d22c9e5b567f
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92091283"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739075"
 ---
 # <a name="backup-vaults-overview"></a>Přehled trezorů služby Backup
 
@@ -28,7 +28,8 @@ Trezor záloh je entita, která ukládá zálohy a body obnovení vytvořené v 
 
 ## <a name="encryption-settings-in-the-backup-vault"></a>Nastavení šifrování v úložišti záloh
 
-Tato část popisuje možnosti, které jsou k dispozici pro šifrování zálohovaných dat uložených v úložišti záloh.
+Tato část popisuje možnosti, které jsou k dispozici pro šifrování zálohovaných dat uložených v úložišti záloh. Azure Backup služba používá k přístupu k Azure Key Vault aplikaci **služby správy zálohování** , ale ne spravovanou identitu úložiště záloh.
+
 
 ### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Šifrování zálohovaných dat pomocí klíčů spravovaných platformou
 
@@ -87,7 +88,7 @@ Následující operace je destruktivní a nelze ji vrátit zpět. Všechna zálo
 
 Chcete-li odstranit trezor správně, je nutné postupovat podle kroků v tomto pořadí:
 
-- Je nutné ověřit, zda existují chráněné položky:
+- Ověřte, zda existují chráněné položky:
   - V levém navigačním panelu přejít na **instance zálohování** . Všechny položky, které jsou zde uvedeny, musí být nejprve odstraněny.
 
 Po dokončení těchto kroků můžete trezor i nadále odstranit.

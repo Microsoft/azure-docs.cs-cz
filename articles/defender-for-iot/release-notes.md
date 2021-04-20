@@ -2,19 +2,33 @@
 title: Co je nového v Azure Defenderu pro IoT
 description: Tento článek vám umožní zjistit, co je nového v nejnovější verzi programu Defender pro IoT.
 ms.topic: overview
-ms.date: 03/14/2021
-ms.openlocfilehash: 7d8c4ebfc55c80878b780fe9f663aaec62a75f9d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.date: 4/6/2021
+ms.openlocfilehash: df6a43dc68acd025b1c65877c65d1b7e947f210b
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382908"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739380"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Co je nového v Azure Defenderu pro IoT?
 
 Tento článek obsahuje seznam nových funkcí a vylepšení funkcí pro program Defender pro IoT.
 
 Vyznačené funkce jsou ve verzi PREVIEW. [Doplňkové podmínky Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zahrnují další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
+
+## <a name="versioning-and-support-for-azure-defender-for-iot"></a>Správa verzí a podpora pro Azure Defender pro IoT 
+
+Níže jsou uvedené podpory, zásady zásadní změny pro Defender pro IoT a verze Azure Defenderu pro IoT, které jsou momentálně dostupné. 
+
+### <a name="servicing-information-and-timelines"></a>Informace o údržbě a časové osy 
+
+Microsoft plánuje vydávat aktualizace pro Azure Defender for IoT na více než jednou za čtvrtletí. Všechny obecné dostupnosti (GA) verze programu Azure Defender pro IoT snímač a místní Konzola pro správu se podporují až po dobu devíti měsíců po jejím vydání. Opravy a nové funkce budou aplikovány na aktuální verzi GA, která je v současné době podporována a která nebude použita na starší verze GA.
+
+### <a name="versions-and-support-dates"></a>Verze a data podpory
+
+| Verze | Datum vydání | Datum ukončení podpory |
+|--|--|--|
+| 10.0 | 01/2021 | 10/2021 |
 ## <a name="march-2021"></a>Březen 2021
 
 ### <a name="sensor---enhanced-custom-alert-rules-public-preview"></a>Senzorem rozšířená vlastní pravidla výstrah (verze Public Preview)

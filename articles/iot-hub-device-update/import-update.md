@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e90253100b86397c5ca4873d5c38a3511ba21555
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: ecbc76651f09a9b4f2bde01c733cace5037f5fd4
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728564"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738823"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>Přidat aktualizaci do aktualizace zařízení pro IoT Hub
 Přečtěte si, jak přidat novou aktualizaci do aktualizace zařízení pro IoT Hub.
@@ -30,7 +30,7 @@ Přečtěte si, jak přidat novou aktualizaci do aktualizace zařízení pro IoT
 
 ## <a name="obtain-an-update-for-your-devices"></a>Získání aktualizace pro vaše zařízení
 
-Teď, když je aktualizace zařízení [nastavená](create-device-update-account.md), jste připraveni aktualizovat svoje zařízení. Nejdříve ale budete potřebovat vlastní soubory aktualizací pro ta zařízení, která budete nasazovat.
+Teď, když je aktualizace zařízení [nastavená](create-device-update-account.md), jste připraveni aktualizovat svoje zařízení. Dále budete potřebovat vlastní soubory aktualizací, které budete do těchto zařízení nasazovat.
 
 Pokud jste si koupili zařízení od integrátoru OEM nebo některého z integrátoru řešení, bude tato organizace pravděpodobně poskytovat soubory aktualizace za vás, aniž byste museli vytvářet aktualizace. Pokud chcete zjistit, jak jsou aktualizace k dispozici, obraťte se na integrátora OEM nebo řešení.
 

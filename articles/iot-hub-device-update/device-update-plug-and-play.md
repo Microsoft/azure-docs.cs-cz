@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0283a84650abaadd454b4f5bca83d1473e443fb8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fbc3502952e11830ef9abb06cb709fcc60288343
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561810"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739525"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>Aktualizace zařízení pro IoT Hub a IoT technologie Plug and Play
 
@@ -63,8 +63,8 @@ Metadata služby obsahují pole, která služba aktualizace zařízení použív
 
 |Name|Schéma|Směr|Description|
 |----|------|---------|-----------|
-|akce|integer|Cloud do zařízení|Jedná se o celé číslo, které odpovídá akci, kterou má agent provádět. Níže uvedené hodnoty.|
-|UpdateManifest –|řetězec|Cloud do zařízení|Slouží k popisu obsahu aktualizace. Vygenerováno z [manifestu importu](import-update.md#create-device-update-import-manifest)|
+|action|integer|Cloud do zařízení|Jedná se o celé číslo, které odpovídá akci, kterou má agent provádět. Níže uvedené hodnoty.|
+|UpdateManifest –|řetězec|Cloud do zařízení|Slouží k popisu obsahu aktualizace. Vygenerováno z [manifestu importu](import-update.md#create-a-device-update-import-manifest)|
 |updateManifestSignature|JSON – objekt|Cloud do zařízení|Webový podpis JSON (JWS) s webovými klíči JSON, který se používá pro ověření zdroje.|
 |Adresy URL|Mapa|Cloud do zařízení|Mapa `FileHash` pro `DownloadUri` . Instruuje agenta, které soubory se mají stáhnout, a hodnotu hash, která se má použít k ověření, že se soubory stáhly správně.|
 

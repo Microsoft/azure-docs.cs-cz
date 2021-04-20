@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jlian
-ms.openlocfilehash: 1e28c7767868904fb20ae6d27c6aea9e7077eb62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df38f9b3482847ea0415af5cb47540e244b0510b
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98630289"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739885"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Podpora IoT Hub pro virtuální sítě s privátním odkazem a spravovanou identitou
 
@@ -174,7 +174,7 @@ Důvěryhodná funkce výjimky služby Microsoft First stran je bezplatná. Popl
 
 ### <a name="egress-connectivity-to-storage-account-endpoints-for-routing"></a>Odchozí připojení k koncovým bodům účtu úložiště pro směrování
 
-IoT Hub může směrovat zprávy do účtu úložiště ve vlastnictví zákazníka. Aby funkce směrování umožnila přístup k účtu úložiště, když jsou zavedena omezení brány firewall, vaše IoT Hub musí mít [spravovanou identitu](#turn-on-managed-identity-for-iot-hub). Po zřízení spravované identity použijte následující postup a udělte jí oprávnění Azure RBAC pro přístup k vašemu účtu úložiště pro vaši identitu prostředku vašeho rozbočovače.
+IoT Hub může směrovat zprávy do účtu úložiště ve vlastnictví zákazníka. Aby funkce směrování umožnila přístup k účtu úložiště, když jsou zavedena omezení brány firewall, musí pro přístup k účtu úložiště použít spravovanou identitu. Nejdřív bude vaše centrum potřebovat [spravovanou identitu](#turn-on-managed-identity-for-iot-hub). Po zřízení spravované identity použijte následující postup a udělte jí oprávnění Azure RBAC pro přístup k vašemu účtu úložiště pro vaši identitu prostředku vašeho rozbočovače.
 
 1. V Azure Portal přejděte na kartu **řízení přístupu (IAM)** účtu úložiště a v části **Přidat přiřazení role** klikněte na **Přidat** .
 
@@ -192,7 +192,7 @@ Vlastní koncový bod úložiště je teď nastavený tak, aby používal identi
 
 ### <a name="egress-connectivity-to-event-hubs-endpoints-for-routing"></a>Odchozí připojení k koncovým bodům centra událostí pro směrování
 
-IoT Hub je možné nakonfigurovat tak, aby směroval zprávy do oboru názvů centra událostí vlastněných zákazníkem. Aby funkce směrování umožnila přístup k prostředku centra událostí, zatímco jsou zavedena omezení brány firewall, IoT Hub musí mít spravovanou identitu. Po vytvoření spravované identity postupujte podle následujících kroků a udělte službě Azure RBAC oprávnění k přístupu k vašemu centru událostí.
+IoT Hub je možné nakonfigurovat tak, aby směroval zprávy do oboru názvů centra událostí vlastněných zákazníkem. Aby funkce směrování umožnila přístup k prostředku centra událostí, zatímco jsou zavedena omezení brány firewall, IoT Hub musí pro přístup k prostředku centra událostí použít spravovanou identitu. Nejdřív bude vaše centrum potřebovat spravovanou identitu. Po vytvoření spravované identity postupujte podle následujících kroků a udělte službě Azure RBAC oprávnění k přístupu k vašemu centru událostí.
 
 1. V Azure Portal přejděte na kartu IAM (Event hub **Access Control)** a v části **Přidat přiřazení role** klikněte na **Přidat** .
 
@@ -210,7 +210,7 @@ Vaše vlastní koncový bod centra událostí je teď nastavený tak, aby použ�
 
 ### <a name="egress-connectivity-to-service-bus-endpoints-for-routing"></a>Odchozí připojení ke koncovým bodům služby Service Bus pro směrování
 
-IoT Hub je možné nakonfigurovat tak, aby směroval zprávy do oboru názvů služby Service Bus vlastněné zákazníkem. Aby funkce směrování umožnila přístup k prostředku služby Service Bus, když jsou zavedena omezení brány firewall, vaše IoT Hub musí mít spravovanou identitu. Po zřízení spravované identity postupujte podle následujících kroků a udělte službě Azure RBAC oprávnění ke svojí identitě prostředků vašeho rozbočovače pro přístup k vaší službě Service Bus.
+IoT Hub je možné nakonfigurovat tak, aby směroval zprávy do oboru názvů služby Service Bus vlastněné zákazníkem. Aby funkce směrování umožnila přístup k prostředku služby Service Bus, když jsou zavedena omezení brány firewall, IoT Hub musí pro přístup k prostředku služby Service Bus používat spravovanou identitu. Nejdřív bude vaše centrum potřebovat spravovanou identitu. Po zřízení spravované identity postupujte podle následujících kroků a udělte službě Azure RBAC oprávnění ke svojí identitě prostředků vašeho rozbočovače pro přístup k vaší službě Service Bus.
 
 1. V Azure Portal přejděte na kartu **řízení přístupu (IAM)** služby Service Bus a v části **Přidat přiřazení role** klikněte na **Přidat** .
 

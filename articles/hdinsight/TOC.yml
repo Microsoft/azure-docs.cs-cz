@@ -260,6 +260,8 @@
               href: ./hdinsight-cluster-availability.md
             - name: Dostupnost clusterů – protokoly Azure Monitoru
               href: ./cluster-availability-monitor-logs.md
+            - name: Aktualizace Azure Monitor tabulky
+              href: ./log-analytics-migration.md
         - name: Řešení potíží
           items:
             - name: Žádost o navýšení kvóty jader procesoru

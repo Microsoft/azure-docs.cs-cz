@@ -1,22 +1,23 @@
 ### YamlMime:Landing
 title: Dokumentace ke správě podnikových uživatelů – Azure AD
-summary: Azure AD poskytuje služby pro správu uživatelů, jako jsou skupiny a licence, a pomáhá rychle zvládat nejdůležitější úlohy správy. Přiřaďte licence, přiřaďte aplikační přístup ke skupinám nebo uživatelům a přidejte nebo spravujte názvy domén.
+summary: Azure AD poskytuje služby pro správu uživatelů, takže můžete přiřazovat licence, spravovat skupiny a uživatele a přidávat nebo spravovat názvy domén.
 metadata:
-  title: Dokumentace k uživatelům, skupinám, licencím a doménám služby Azure Active Directory
-  description: Zjistěte, jak využívat skupiny, názvy domén a licence ke správě ověřování uživatelů ve vaší organizaci Azure AD.
+  title: Dokumentace k Azure Active Directory uživatelům, skupinám, licencím a doménám
+  description: Naučte se používat skupiny, názvy domén a licence ke správě ověřování uživatelů ve vaší organizaci Azure AD.
   services: active-directory
   ms.service: active-directory
-  manager: daveba
+  ms.subservice: enterprise-users
+  manager: mtillman
   ms.topic: landing-page
-  ms.date: 10/19/2020
+  ms.date: 04/18/2021
   author: curtand
   ms.author: curtand
-  ms.openlocfilehash: a919a9785163776cfbcfb52a378405c0ac870035
-  ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
-  ms.translationtype: HT
+  ms.openlocfilehash: 8a129cf6e000a2e644f2fc7168d9e3105de0f957
+  ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/23/2020
-  ms.locfileid: "95503035"
+  ms.lasthandoff: 04/20/2021
+  ms.locfileid: "107739291"
 landingContent:
 - title: Podniková správa uživatelů
   linkLists:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: c4861192c7f2bbfb2a51e19b88daee45b501949b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 741cd68145b262c1f200ced9a7f28b25673b6925
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634766"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738913"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -72,7 +72,7 @@ Security Center vám pomůže **identifikovat Stínová předplatná**. Zobrazen
 
 ### <a name="continuous-assessments"></a>Nepřetržité hodnocení
 
-Security Center nepřetržitě zjišťuje nové prostředky, které jsou nasazené napříč vašimi úlohami, a posuzuje, jestli jsou nakonfigurované v souladu s osvědčenými postupy zabezpečení, pokud ne, jsou označené jako prioritní a vy získáte seznam doporučení, která je potřeba opravit, aby bylo možné počítače chránit. Tento seznam doporučení je povolený a podporovaný [srovnávacím testem zabezpečení Azure](../security/benchmarks/introduction.md), což je Microsoftem vytvořená sada pokynů pro Azure, která je založená na zásadách zabezpečení a dodržování předpisů v závislosti na běžných architekturách dodržování předpisů. Toto široce uznávané sestavování srovnávacích testů v ovládacích prvcích z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se soustředí na zabezpečení zaměřené na Cloud.
+Security Center nepřetržitě zjišťuje nové prostředky, které jsou nasazené napříč vašimi úlohami, a posuzuje, jestli jsou nakonfigurované v souladu s osvědčenými postupy zabezpečení, pokud ne, jsou označené jako prioritní a vy získáte seznam doporučení, která je potřeba opravit, aby bylo možné počítače chránit. Tento seznam doporučení je povolený a podporovaný [srovnávacím testem zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction), což je Microsoftem vytvořená sada pokynů pro Azure, která je založená na zásadách zabezpečení a dodržování předpisů v závislosti na běžných architekturách dodržování předpisů. Toto široce uznávané sestavování srovnávacích testů v ovládacích prvcích z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se soustředí na zabezpečení zaměřené na Cloud.
 
 Abychom vám pomohli pochopit, jak důležité je, aby každé doporučení bylo stav zabezpečení, Security Center seskupení doporučení do řízení zabezpečení a přidá do každého ovládacího prvku **zabezpečenou hodnotu skóre** . To je zásadní postup, který vám umožní **určit prioritu fungování zabezpečení**.
 

@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7eadc9121c54b636fa8b42579284d4018043e1c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efdd9666c8876ddaf12b9555fa66beb62c56e93e
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91355121"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107740051"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Řešení běžných potíží indexerů v Azure Kognitivní hledání
 
@@ -68,6 +68,86 @@ Podrobnější informace o přístupu k datům ve spravované instanci SQL jsou 
 ### <a name="cosmosdb-indexing-isnt-enabled"></a>CosmosDB "indexování" není povoleno
 
 Azure Kognitivní hledání má implicitní závislost na Cosmos DB indexování. Pokud automatické indexování v Cosmos DB vypnete, Azure Kognitivní hledání vrátí úspěšný stav, ale index obsahu kontejneru se nezdařil. Pokyny, jak kontrolovat nastavení a zapnout indexování, najdete v tématu [Správa indexování v Azure Cosmos DB](../cosmos-db/how-to-manage-indexing-policy.md#use-the-azure-portal).
+
+### <a name="sharepoint-online-conditional-access-policies"></a>Zásady podmíněného přístupu pro SharePoint Online
+
+Při vytváření indexeru SharePointu Online provedete krok, který po poskytnutí kódu zařízení vyžaduje přihlášení k aplikaci AAD. Pokud se zobrazí zpráva s oznámením, že vaše přihlášení bylo úspěšné, ale váš správce vyžaduje, aby zařízení vyžadovalo správu přístupového, indexer se pravděpodobně zablokuje přístup k knihovně dokumentů SharePointu Online z důvodu zásad [podmíněného přístupu](https://review.docs.microsoft.com/azure/active-directory/conditional-access/overview) .
+
+Pokud chcete aktualizovat zásadu tak, aby umožňovala přístupu indexeru k knihovně dokumentů, postupujte podle následujících kroků:
+
+1. Otevřete Azure Portal a vyhledejte **podmíněný přístup Azure AD** a pak v nabídce vlevo vyberte **zásady** . Pokud nemáte přístup k zobrazení této stránky, budete potřebovat buď najít někoho, kdo má přístup nebo získat přístup.
+
+1. Určete, které zásady blokují službě SharePoint Online indexer, aby se přistupovala k knihovně dokumentů. Zásady, které by mohly blokovat indexer, budou zahrnovat uživatelský účet, který jste použili k ověření během kroku vytvoření indexeru v části **Uživatelé a skupiny** . Zásady můžou mít taky **podmínky** , které:
+    * Omezte platformy **Windows** .
+    * Omezte **mobilní aplikace a klienty klasické pracovní plochy**.
+    * Má **stav zařízení** nastavenou **hodnotu Ano**.
+
+1. Jakmile ověříte, že je k dispozici zásada blokující indexer, je nutné vytvořit výjimku pro indexer. Načtěte IP adresu vyhledávací služby.
+
+    1. Získejte plně kvalifikovaný název domény (FQDN) vaší vyhledávací služby. Bude vypadat nějak takto `<search-service-name>.search.windows.net` : Plně kvalifikovaný název domény můžete najít vyhledáním vyhledávací služby na Azure Portal.
+
+   ![Získat plně kvalifikovaný název domény služby](media\search-indexer-howto-secure-access\search-service-portal.png "Získat plně kvalifikovaný název domény služby")
+
+    IP adresu vyhledávací služby lze získat pomocí `nslookup` (nebo `ping` ) plně kvalifikovaného názvu domény (FQDN). V následujícím příkladu byste přidali "150.0.0.1" do příchozího pravidla v bráně firewall Azure Storage. Může trvat až 15 minut, než se aktualizuje nastavení brány firewall pro indexer vyhledávací služby, aby mohl získat přístup k Azure Storagemu účtu.
+
+    ```azurepowershell
+
+    nslookup contoso.search.windows.net
+    Server:  server.example.org
+    Address:  10.50.10.50
+    
+    Non-authoritative answer:
+    Name:    <name>
+    Address:  150.0.0.1
+    Aliases:  contoso.search.windows.net
+    ```
+
+1. Získejte rozsahy IP adres pro spouštěcí prostředí indexeru pro vaši oblast.
+
+    Pro požadavky, které pocházejí z [prostředí pro spouštění s více klienty](search-indexer-securing-resources.md#indexer-execution-environment)indexeru, se používají další IP adresy. Tento rozsah IP adres můžete získat ze značky služby.
+
+    Rozsahy IP adres pro `AzureCognitiveSearch` značku služby lze získat buď prostřednictvím [rozhraní Discovery API (Preview)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) , nebo [souboru JSON ke stažení](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+
+    Pro tento návod za předpokladu, že je vyhledávací služba ve veřejném cloudu Azure, je potřeba stáhnout [veřejný soubor JSON pro Azure](https://www.microsoft.com/download/details.aspx?id=56519) .
+
+   ![Stáhnout soubor JSON](media\search-indexer-troubleshooting\service-tag.png "Stáhnout soubor JSON")
+
+    V souboru JSON, za předpokladu, že je služba vyhledávání v Středozápadní USA, seznam IP adres pro prostředí pro spuštění indexeru pro více tenantů je uvedený níže.
+
+    ```json
+        {
+          "name": "AzureCognitiveSearch.WestCentralUS",
+          "id": "AzureCognitiveSearch.WestCentralUS",
+          "properties": {
+            "changeNumber": 1,
+            "region": "westcentralus",
+            "platform": "Azure",
+            "systemService": "AzureCognitiveSearch",
+            "addressPrefixes": [
+              "52.150.139.0/26",
+              "52.253.133.74/32"
+            ]
+          }
+        }
+    ```
+
+1. Zpátky na stránce podmíněný přístup v Azure Portal v nabídce vlevo vyberte **pojmenovaná umístění** a pak vyberte **+ umístění rozsahů IP adres**. Dejte novému pojmenovanému umístění název a přidejte rozsahy IP adres pro prostředí služby Search a spuštění indexeru, které jste shromáždili v posledních dvou krocích.
+    * Pro IP adresu vyhledávací služby možná budete muset na konec IP adresy přidat "/32", protože akceptuje jenom platné rozsahy IP adres.
+    * Pamatujte na to, že pro rozsahy IP adres prostředí indexeru je třeba přidat rozsahy IP adres pro oblast, ve které je vaše vyhledávací služba.
+
+1. Vylučte z zásad nové pojmenované umístění. 
+    1. V nabídce vlevo vyberte **zásady** . 
+    1. Vyberte zásadu blokující indexer.
+    1. Vyberte **podmínky**.
+    1. Vyberte **umístění**.
+    1. Vyberte **vyloučit** a pak přidejte nové pojmenované umístění.
+    1. **Uložte** změny.
+
+1. Počkejte několik minut, než se zásada aktualizuje a vynutila nová pravidla zásad.
+
+1. Pokuste se znovu vytvořit indexer.
+    1. Odešlete žádost o aktualizaci objektu zdroje dat, který jste vytvořili.
+    1. Znovu odešlete žádost indexeru vytvořit. Pomocí nového kódu se přihlaste a potom po úspěšném přihlášení odešlete další požadavek na vytvoření indexeru.
 
 ## <a name="document-processing-errors"></a>Chyby zpracování dokumentu
 

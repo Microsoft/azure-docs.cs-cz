@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1bcba264589d6cbe9b4f671e1e4f2c9b1dbf2c5
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 6e595f7ff313ff85a12209e8c124b9aa376b20b6
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594244"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739732"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Kurz: zabezpečení vzdáleného vykreslování a úložiště modelu Azure
 
@@ -211,7 +211,7 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
     ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
-
+    
     using Microsoft.Azure.RemoteRendering;
     using Microsoft.Identity.Client;
     using System;
@@ -219,17 +219,9 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
     using System.Threading;
     using System.Threading.Tasks;
     using UnityEngine;
-
+    
     public class AADAuthentication : BaseARRAuthentication
     {
-        [SerializeField]
-        private string accountDomain;
-        public string AccountDomain
-        {
-            get => accountDomain.Trim();
-            set => accountDomain = value;
-        }
-
         [SerializeField]
         private string activeDirectoryApplicationClientID;
         public string ActiveDirectoryApplicationClientID
@@ -237,7 +229,7 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
             get => activeDirectoryApplicationClientID.Trim();
             set => activeDirectoryApplicationClientID = value;
         }
-
+    
         [SerializeField]
         private string azureTenantID;
         public string AzureTenantID
@@ -245,7 +237,15 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
             get => azureTenantID.Trim();
             set => azureTenantID = value;
         }
-
+    
+        [SerializeField]
+        private string azureRemoteRenderingDomain;
+        public string AzureRemoteRenderingDomain
+        {
+            get => azureRemoteRenderingDomain.Trim();
+            set => azureRemoteRenderingDomain = value;
+        }
+    
         [SerializeField]
         private string azureRemoteRenderingAccountID;
         public string AzureRemoteRenderingAccountID
@@ -255,37 +255,37 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
         }
     
         [SerializeField]
-        private string azureRemoteRenderingAccountAuthenticationDomain;
-        public string AzureRemoteRenderingAccountAuthenticationDomain
+        private string azureRemoteRenderingAccountDomain;
+        public string AzureRemoteRenderingAccountDomain
         {
-            get => azureRemoteRenderingAccountAuthenticationDomain.Trim();
-            set => azureRemoteRenderingAccountAuthenticationDomain = value;
-        }
-
+            get => azureRemoteRenderingAccountDomain.Trim();
+            set => azureRemoteRenderingAccountDomain = value;
+        }    
+    
         public override event Action<string> AuthenticationInstructions;
-
+    
         string authority => "https://login.microsoftonline.com/" + AzureTenantID;
-
+    
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
-
-        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountAuthenticationDomain + "/mixedreality.signin" };
-
+    
+        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountDomain + "/mixedreality.signin" };
+    
         public void OnEnable()
         {
             RemoteRenderingCoordinator.ARRCredentialGetter = GetAARCredentials;
             this.gameObject.AddComponent<ExecuteOnUnityThread>();
         }
-
+    
         public async override Task<SessionConfiguration> GetAARCredentials()
         {
             var result = await TryLogin();
             if (result != null)
             {
                 Debug.Log("Account signin successful " + result.Account.Username);
-
+    
                 var AD_Token = result.AccessToken;
-
-                return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+    
+                return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountDomain, AzureRemoteRenderingDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -293,7 +293,7 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
             }
             return default;
         }
-
+    
         private Task DeviceCodeReturned(DeviceCodeResult deviceCodeDetails)
         {
             //Since everything in this task can happen on a different thread, invoke responses on the main Unity thread
@@ -303,10 +303,10 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
                 Debug.Log(deviceCodeDetails.Message);
                 AuthenticationInstructions?.Invoke(deviceCodeDetails.Message);
             });
-
+    
             return Task.FromResult(0);
         }
-
+    
         public override async Task<AuthenticationResult> TryLogin()
         {
             var clientApplication = PublicClientApplicationBuilder.Create(ActiveDirectoryApplicationClientID).WithAuthority(authority).WithRedirectUri(redirect_uri).Build();
@@ -314,11 +314,11 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
             try
             {
                 var accounts = await clientApplication.GetAccountsAsync();
-
+    
                 if (accounts.Any())
                 {
                     result = await clientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
-
+    
                     return result;
                 }
                 else
@@ -356,7 +356,7 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
                 Debug.LogError("GetAccountsAsync");
                 Debug.LogException(ex);
             }
-
+    
             return null;
         }
     }
@@ -372,10 +372,10 @@ Pro tento kód používáme [tok kódu zařízení](../../../../active-directory
 Nejdůležitější část této třídy z perspektivy ARR je tento řádek:
 
 ```cs
-return await Task.FromResult(new SessionConfiguration(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountDomain, AzureRemoteRenderingDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-Tady vytvoříte nový objekt **SessionConfiguration** pomocí domény účtu, ID účtu, domény ověřování účtu a přístupového tokenu. Tento token je pak používán službou ARR k dotazování, vytvoření a připojení vzdálených relací vykreslování, pokud je uživatel autorizován na základě oprávnění na základě rolí nakonfigurovaných dříve.
+Tady vytvoříte nový objekt **SessionConfiguration** pomocí domény vzdáleného vykreslování, ID účtu, domény účtu a přístupového tokenu. Tento token je pak používán službou ARR k dotazování, vytvoření a připojení vzdálených relací vykreslování, pokud je uživatel autorizován na základě oprávnění na základě rolí nakonfigurovaných dříve.
 
 V důsledku této změny bude aktuální stav aplikace a její přístup k prostředkům Azure vypadat takto:
 
@@ -393,11 +393,11 @@ Pokud je v editoru Unity aktivní ověřování AAD, budete se muset ověřit p�
 
 1. Zadejte hodnoty pro ID klienta a ID tenanta. Tyto hodnoty najdete na stránce Přehled registrace vaší aplikace:
 
-    * **Doména účtu** je stejná doména, kterou jste používali v doméně účtu **RemoteRenderingCoordinator**.
     * **ID klienta aplikace služby Active Directory** je *ID aplikace (klienta)* nalezené v registraci aplikace AAD (viz obrázek níže).
     * **ID tenanta Azure** je *ID adresáře (tenant)* , které najdete v registraci aplikace AAD (viz obrázek níže).
+    * **Doména vzdáleného vykreslování Azure** je stejná jako doména, kterou jste používali v doméně vzdáleného vykreslování **RemoteRenderingCoordinator**.
     * **ID účtu vzdáleného vykreslování Azure** je stejné **ID účtu** , které jste používali pro **RemoteRenderingCoordinator**.
-    * **Doména ověřování účtu** je stejná **doména ověřování účtu** , kterou jste používali v **RemoteRenderingCoordinator**.
+    * **Doména účtu vzdáleného vykreslování Azure** je stejná **Doména účtu** , kterou jste používali v **RemoteRenderingCoordinator**.
 
     ![Snímek obrazovky, který zvýrazňuje ID aplikace (klienta) a ID adresáře (tenanta).](./media/app-overview-data.png)
 

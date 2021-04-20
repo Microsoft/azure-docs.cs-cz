@@ -3,12 +3,12 @@ title: Geografické zotavení po havárii – Azure Event Hubs | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Event Hubs
 ms.topic: article
 ms.date: 04/14/2021
-ms.openlocfilehash: 504a83772c2ac8e3afc86465899357d0eda4eb92
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b2cf2b0ebef2b460b626e45d6b52309c9281d6ce
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478654"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739237"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geografická zotavení po havárii 
 
@@ -117,14 +117,6 @@ Pokud zahájíte převzetí služeb při selhání, vyžadují se dva kroky:
 ## <a name="management"></a>Správa
 
 Pokud jste udělali chybu; například jste spároval nesprávné oblasti při počátečním nastavení, můžete kdykoli rozdělit párování obou oborů názvů. Pokud chcete používat spárované obory názvů jako běžné obory názvů, odstraňte alias.
-
-## <a name="samples"></a>ukázky
-
-[Ukázka na GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) ukazuje, jak nastavit a iniciovat převzetí služeb při selhání. Tato ukázka demonstruje následující koncepty:
-
-- Nastavení požadovaná v Azure Active Directory pro použití Azure Resource Manager s Event Hubs. 
-- Postup potřebný ke spuštění ukázkového kódu. 
-- Odeslat a přijmout z aktuálního primárního oboru názvů 
 
 ## <a name="considerations"></a>Požadavky
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: dcfe12b30e336863c8e112d9ad675a2f57fe48f4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ac147df90d3fa0c27bb4299c57ec79d9a9031710
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179132"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737584"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor pro Azure Průzkumník dat (Preview)
 
@@ -118,9 +118,14 @@ Karta **mezipaměť** umožňuje uživatelům analyzovat vlastní vzory dotazů 
 
 [![Snímek obrazovky s podrobnostmi o mezipaměti](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 
-## <a name="pin-to-azure-dashboard"></a>Připnout na řídicí panel Azure
+Karta **hranice clusteru** zobrazuje hranice clusteru na základě vašeho využití. Na této kartě můžete zkontrolovat využití procesoru, ingestování a ukládání do mezipaměti. Tyto metriky jsou vyhodnoceny jako "nízká", "střední" nebo "vysoká". Tyto metriky a skóre jsou důležité při rozhodování o optimálním počtu SKU a instancích pro váš cluster a jsou zohledněny při Azure Advisor doporučení SKU/velikosti. Na této kartě můžete vybrat dlaždici metrik a hloubkové podrobněy, abyste porozuměli jejímu vývoji a způsobu, jakým je jejich skóre rozhodnuto. Můžete si také prohlédnout Azure Advisor doporučení skladové jednotky/velikosti pro váš cluster. Například na následujícím obrázku vidíte, že všechny metriky jsou vyhodnoceny jako "nízká", a tím cluster přijme doporučení pro snížení kapacity a úspory a úsporu nákladů.
 
-Libovolný oddíl metriky (z perspektivy "na úrovni") můžete připnout na řídicí panel Azure tak, že vyberete ikonu připínáčku v pravém horním rohu oddílu.
+> [!div class="mx-imgBorder"]
+> [![Snímek obrazovky s hranicemi clusteru.](./media/data-explorer/cluster-boundaries.png)](./media/data-explorer/cluster-boundaries.png#lightbox)
+
+## <a name="pin-to-azure-dashboard&quot;></a>Připnout na řídicí panel Azure
+
+Libovolný oddíl metriky (z perspektivy &quot;na úrovni") můžete připnout na řídicí panel Azure tak, že vyberete ikonu připínáčku v pravém horním rohu oddílu.
 
 ![Snímek obrazovky s vybranou ikonou připnutí](./media/data-explorer/pin.png)
 
@@ -139,7 +144,7 @@ Vlastní nastavení se ukládají do vlastního sešitu, aby se zabránilo přep
 
 ![Snímek obrazovky Galerie sešitů](./media/data-explorer/gallery.png)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Obecné pokyny k odstraňování potíží najdete v článku věnovaném [řešení problémů](troubleshoot-workbooks.md)na základě vyhrazeného sešitu.
 

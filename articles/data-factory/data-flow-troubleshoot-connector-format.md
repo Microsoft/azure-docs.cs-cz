@@ -5,13 +5,13 @@ author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/12/2021
-ms.openlocfilehash: 7596bf3182f59758eeee66e248404e98c18da2e7
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.date: 04/20/2021
+ms.openlocfilehash: 1991436e2cc890b5c6a339f79e42536ced2fbd36
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715431"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739462"
 ---
 # <a name="troubleshoot-connector-and-format-issues-in-mapping-data-flows-in-azure-data-factory"></a>Řešení potíží s konektorem a formátováním při mapování toků dat v Azure Data Factory
 
@@ -36,16 +36,15 @@ Chcete-li přepsat výchozí chování a přinášet do dalších polí, ADF pos
 
     1. K získání kompletního schématu použijte **nastavení ladění** zdroje toku dat pro **Import projekce** s ukázkovými soubory nebo tabulkami. Můžete postupovat podle kroků na následujícím obrázku:<br/>
 
-        ![Snímek obrazovky, který ukazuje možnost 1-1 doporučení](./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-1.png)<br/>
+        ![Snímek obrazovky, který zobrazuje první část první možnosti přizpůsobení zdrojového schématu.](./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-1.png)<br/>
          1. V plátně toku dat vyberte **nastavení ladění** .
-         1. V místním podokně vyberte na kartě **CosmosSource** **ukázkovou tabulku** . 
-         1. Zadejte název tabulky v bloku **tabulky** .
+         1. V automaticky otevíraném podokně vyberte na kartě **cosmosSource** položku **ukázková tabulka** a do pole blok **tabulky** zadejte název tabulky.
          1. Vyberte **Uložit** a uložte nastavení.
          1. Vyberte **Import projekce**.<br/>  
     
     1. Změňte **nastavení ladění** zpět na použít zdrojovou datovou sadu pro zbývající přesun a transformaci dat. Můžete přejít na kroky na následujícím obrázku:<br/>
 
-        ![Snímek obrazovky, který ukazuje možnost 1-2 doporučení](./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-2.png) <br/>   
+        ![Snímek obrazovky, který zobrazuje druhou část první možnosti přizpůsobení zdrojového schématu.](./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-2.png) <br/>   
          1. V plátně toku dat vyberte **nastavení ladění** .
          1. V místním podokně vyberte **zdrojovou datovou sadu** na kartě **cosmosSource** .
          1. Vyberte **Uložit** a uložte nastavení.<br/>
@@ -54,7 +53,7 @@ Chcete-li přepsat výchozí chování a přinášet do dalších polí, ADF pos
 
 - **Možnost-2**: Pokud jste obeznámeni se schématem a jazykem DSL zdrojových dat, můžete ručně aktualizovat skript zdroje dat a přidat další/zmeškané sloupce pro čtení dat. Příklad je znázorněn na následujícím obrázku: 
 
-    ![Snímek obrazovky, který ukazuje možnost 2 doporučení](./media/data-flow-troubleshoot-connector-format/customize-schema-option-2.png)
+    ![Snímek obrazovky, který ukazuje druhou možnost přizpůsobení zdrojového schématu.](./media/data-flow-troubleshoot-connector-format/customize-schema-option-2.png)
 
 ## <a name="next-steps"></a>Další kroky
 Další pomoc při řešení potíží najdete v těchto materiálech:

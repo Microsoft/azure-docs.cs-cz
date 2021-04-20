@@ -173,48 +173,74 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: Přizpůsobení prostředí pro vývojáře
       items:
-        - name: Vysvětlení portálu pro vývojáře
-          href: api-management-howto-developer-portal.md
-        - name: Migrace ze zastaralého vývojářského portálu na nový
-          href: developer-portal-deprecated-migration.md
-        - name: Ověřování pomocí Azure AD
-          href: api-management-howto-aad.md
-        - name: Ověřování pomocí Azure AD B2C
-          href: api-management-howto-aad-b2c.md
-        - name: Delegované ověřování
-          href: api-management-howto-setup-delegation.md
-        - name: E-mailová oznámení a šablony
-          href: api-management-howto-configure-notifications.md
-        - name: Povolení podpory OAuth v konzole
-          href: api-management-howto-oauth2.md
-        - name: Zastaralý portál – přizpůsobení portálu
-          href: api-management-customize-styles.md
-        - name: Zastaralý portály – změna stránek a rozložení
-          href: api-management-modify-content-layout.md
-        - name: Zastaralý portál – přizpůsobení s využitím šablon
-          href: api-management-developer-portal-templates.md
-    - name: Šablony zastaralého portálu
-      items:
-        - name: Referenční informace k datovému modelu
-          href: api-management-template-data-model-reference.md
-        - name: Ovládací prvky stránek
-          href: api-management-page-controls.md
-        - name: Šablony
-          href: api-management-developer-portal-templates-reference.md
-        - name: Rozhraní API
-          href: api-management-api-templates.md
-        - name: Produkty
-          href: api-management-product-templates.md
-        - name: Aplikace
-          href: api-management-application-templates.md
-        - name: Problémy
-          href: api-management-issue-templates.md
-        - name: Profil uživatele
-          href: api-management-user-profile-templates.md
-        - name: Stránky
-          href: api-management-page-templates.md
-        - name: Prostředky šablon
-          href: api-management-template-resources.md
+        - name: Použití portálu pro vývojáře
+          items:
+            - name: Vysvětlení portálu pro vývojáře
+              href: api-management-howto-developer-portal.md
+            - name: Nejčastější dotazy
+              href: developer-portal-faq.md
+            - name: Automatizace nasazení portálu
+              href: automate-portal-deployments.md
+            - name: Migrace ze zastaralého vývojářského portálu na nový
+              href: developer-portal-deprecated-migration.md
+            - name: Ověřování pomocí Azure AD
+              href: api-management-howto-aad.md
+            - name: Ověřování pomocí Azure AD B2C
+              href: api-management-howto-aad-b2c.md
+            - name: Ověřování delegáta
+              href: api-management-howto-setup-delegation.md
+            - name: Povolení podpory OAuth v konzole
+              href: api-management-howto-oauth2.md
+            - name: E-mailová oznámení a šablony
+              href: api-management-howto-configure-notifications.md
+            - name: Integrace Application Insights
+              href: developer-portal-integrate-application-insights.md
+            - name: Integrace Google Tag Manager
+              href: developer-portal-integrate-google-tag-manager.md
+        - name: Portál pro vývojáře na samostatném hostiteli
+          items:
+            - name: Vytvoření portálu pro samoobslužné hostování
+              href: developer-portal-self-host.md
+            - name: Alternativní přístupy k samoobslužnému hostování
+              href: developer-portal-alternative-processes-self-host.md
+            - name: Implementace widgetů
+              href: developer-portal-implement-widgets.md
+            - name: Widgety pro Contribute
+              href: developer-portal-widget-contribution-guidelines.md
+            - name: Použití widgetů komunity
+              href: developer-portal-use-community-widgets.md
+            - name: Test samoobslužného portálu
+              href: developer-portal-testing.md
+        - name: Zastaralý portál
+          items:
+            - name: Zastaralý portál – přizpůsobení portálu
+              href: api-management-customize-styles.md
+            - name: Zastaralý portály – změna stránek a rozložení
+              href: api-management-modify-content-layout.md
+            - name: Zastaralý portál – přizpůsobení s využitím šablon
+              href: api-management-developer-portal-templates.md
+        - name: Šablony zastaralého portálu
+          items:
+            - name: Referenční informace k datovému modelu
+              href: api-management-template-data-model-reference.md
+            - name: Ovládací prvky stránek
+              href: api-management-page-controls.md
+            - name: Šablony
+              href: api-management-developer-portal-templates-reference.md
+            - name: Rozhraní API
+              href: api-management-api-templates.md
+            - name: Produkty
+              href: api-management-product-templates.md
+            - name: Aplikace
+              href: api-management-application-templates.md
+            - name: Problémy
+              href: api-management-issue-templates.md
+            - name: Profil uživatele
+              href: api-management-user-profile-templates.md
+            - name: Stránky
+              href: api-management-page-templates.md
+            - name: Prostředky šablon
+              href: api-management-template-resources.md
     - name: Definování zásad
       items:
         - name: Nastavení nebo úprava zásad

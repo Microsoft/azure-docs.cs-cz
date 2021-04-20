@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: 033ffb6e274432c5398779ba3e3226c626c10ce8
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 5972e95425513e789725ed8de142c721d58011f3
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107496703"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739921"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -44,7 +44,7 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Australská vláda** | Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 |
 | **Evropa** | Francie – střed, Francie – jih, Německo – sever, Německo – středozápad, Severní Evropa, Norsko – východ, Norsko – západ, Švýcarsko – sever, Švýcarsko – západ, Velká Británie – západ, Velká Británie – jih, Západní Evropa |Amsterdam, Amsterdam2, Berlín, Kodaň, Dublin, Frankfurt, Frankfurt2, Ženeva, Londýn, London2, Madrid, Marseille, Milán, Mnichov, Newport (Wales), Oslo, Paříž, Stavanger, Stockholm, Curych |
 | **Severní Amerika** | USA – východ, USA – západ, USA – východ 2, USA – západ 2, USA – střed, USA – středojih, USA – středosever, USA – středozápad, Kanada – střed, Kanada – východ |Brno, Chicago, Praha, Denver, Las Vegas, Los Angeles, Los Angeles2, Miami, Minneapolis, Montreal, New York, Phoenix, Quebec City, Queretaro (Mexiko), Quincy, San Antonio, Seattle, Silicon sedl, Silicon Valley2, Toronto, Toronto2, Vancouver, Washington DC, Washington DC2 |
-| **Východoasijsk** | Východní Asie, Jihovýchodní Asie | Bangkok, Hongkong, Hongkong, Kong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
+| **Asie** | Východní Asie, Jihovýchodní Asie | Bangkok, Hongkong, Hongkong, Kong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
 | **Indie** | Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
 | **Japonsko** | Japonsko – západ, Japonsko – východ |Ósaka, Tokio, Tokyo2 |
 | **Oceánie** | Austrálie – jihovýchod, Austrálie – východ |Auckland, Melbourne, Perth, Sydney, Sydney2 | 
@@ -173,12 +173,12 @@ Národní cloudy Azure jsou oddělené od sebe navzájem i z celosvětově komer
 | **Washington DC** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | US DoD – východ US Gov – Virginie | 10G, 100G | V&T NetBond, CenturyLink Cloud Connect, Equinix, Level 3 Communications, Megaport, Verizon |
 
 ### <a name="china"></a>Čína
-| **Umístění** | **Poskytovatelé služeb** |
-| --- | --- |
-| **Peking** |China Telecom |
-| **Beijing2** | Čína Telecom, Čína UNICOM, GDS |
-| **Šanghaj** |China Telecom |
-| **Shanghai2** | Čína Telecom, Čína UNICOM, GDS |
+| **Umístění** | **Adresa** | **Místní oblasti Azure** | **ER Direct** | **Poskytovatelé služeb** |
+| --- | --- | --- | --- | --- |
+| **Peking** | China Telecom | Není k dispozici | 10G | China Telecom |
+| **Beijing2** | GDS | Není k dispozici | 10G | Čína Telecom, Čína UNICOM, GDS |
+| **Šanghaj** | China Telecom | Není k dispozici | 10G | China Telecom |
+| **Shanghai2** | GDS | Není k dispozici | 10G | Čína Telecom, Čína UNICOM, GDS |
 
 Další informace najdete v tématu [ExpressRoute v Číně](http://www.windowsazure.cn/home/features/expressroute/).
 
@@ -250,7 +250,7 @@ Povolení soukromého připojení podle vlastních potřeb může být náročn�
 
 | **Kontinent** | **Systémoví integrátoři** |
 | --- | --- |
-| **Východoasijsk** |Avanade Inc., OneAs1a |
+| **Asie** |Avanade Inc., OneAs1a |
 | **Austrálie** | Ensyst, IT Consultancy, MOQdigital, Vigilant.IT |
 | **Evropa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
 | **Severní Amerika** |Avanade Inc., Equinix Professional Services, FlexManage, Lightstream, Perficient, Presidio |

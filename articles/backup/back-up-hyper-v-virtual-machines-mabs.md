@@ -2,13 +2,13 @@
 title: Zálohování virtuálních počítačů s technologií Hyper-V pomocí MABS
 description: Tento článek obsahuje postupy pro zálohování a obnovení virtuálních počítačů pomocí serveru Microsoft Azure Backup (MABS).
 ms.topic: conceptual
-ms.date: 07/18/2019
-ms.openlocfilehash: c1c894df29659dce312d092f1aa3ea5d584e248a
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/20/2021
+ms.openlocfilehash: b4de791269161b477fc07d6539feaa975fdd72ad
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107206"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739993"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Zálohování virtuálních počítačů s technologií Hyper-V pomocí Azure Backup Server
 
@@ -126,7 +126,7 @@ Virtuální počítač repliky je do převzetí služeb při selhání vypnutý,
 
 Když chcete obnovit zálohovaný virtuální počítač, pomocí Průvodce obnovením vyberte daný virtuální počítač a konkrétní bod obnovení. Průvodce obnovením otevřete a virtuální počítač obnovíte takto:
 
-1. V konzole pro správu MABS zadejte název virtuálního počítače, nebo rozbalte seznam chráněných položek a vyberte virtuální počítač, který chcete obnovit.
+1. V konzole pro správu MABS zadejte název virtuálního počítače, nebo rozbalte seznam chráněných položek, přejděte na **všechna chráněná data HyperV** a vyberte virtuální počítač, který chcete obnovit.
 
 2. V podokně **body obnovení pro** v kalendáři vyberte libovolné datum, aby se zobrazily dostupné body obnovení. Pak v podokně **Cesta** vyberte bod obnovení, který chcete použít v Průvodci obnovením.
 

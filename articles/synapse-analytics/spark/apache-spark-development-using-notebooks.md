@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 4230ced172de52e5acf45e071fa2a49a332eb696
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 6859a2f8571c11e6ef93a5e5b1635cdbe39ad001
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719218"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737656"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a údržba poznámkových bloků synapse Studio v Azure synapse Analytics
 
@@ -150,6 +150,18 @@ Funkce IntelliSense mají různé úrovně splatnosti pro různé jazyky. Pomoc�
 |SparkSQL|Yes|Yes|-|-|-|-|-|-|
 |.NET for Spark (C#)|Yes|-|-|-|-|-|-|-|
 
+
+
+### <a name="code-snippets"></a>Fragmenty kódu
+
+Poznámkové bloky Azure synapse Studio poskytují fragmenty kódu, které usnadňují zadávání běžných používaných vzorů kódu, jako je například konfigurace relace Spark, čtení dat jako Spark dataframe nebo kreslení grafů pomocí matplotlib atd.
+
+Fragmenty kódu se zobrazují v [IntelliSense](#ide-style-intellisense) i v kombinaci s jinými návrhy. Obsah fragmentů kódu je zarovnán s jazykem buňky kódu. Dostupné fragmenty můžete zobrazit zadáním **fragmentu** nebo libovolných klíčových slov v názvu fragmentu v editoru buněk kódu. Například zadáním **číst** můžete zobrazit seznam fragmentů kódu pro čtení dat z různých zdrojů dat.
+
+![Fragmenty kódu synapse](./media/apache-spark-development-using-notebooks/synapse-code-snippets.gif#lightbox)
+
+
+
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Formátování textové buňky pomocí tlačítek panelu nástrojů
 
 # <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
@@ -273,7 +285,7 @@ Kliknutím na tlačítko **Spustit vše** spustíte všechny buňky v aktuální
 
 # <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
 
-Chcete-li získat přístup k nabídce Další akce v buňce úplně vpravo, vyberte tři tečky (**...**). Pak vyberte **Spustit buňky výše** a spusťte tak všechny buňky nad aktuální sekvencí. Vyberte **Spustit buňky níže** , aby se spouštěly všechny buňky pod aktuálním pořadím.
+Chcete-li získat přístup k nabídce Akce jiné buňky úplně vpravo, vyberte tři tečky (**...**). Pak vyberte **Spustit buňky výše** a spusťte tak všechny buňky nad aktuální sekvencí. Vyberte **Spustit buňky níže** , aby se spouštěly všechny buňky pod aktuálním pořadím.
 
    ![Run-Cells-nad nebo – níže](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
@@ -467,7 +479,7 @@ Kliknutím na tlačítko **Přidat do kanálu** v pravém horním rohu přidáte
 
 # <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
 
-Chcete-li parametrizovat svůj Poznámkový blok, vyberte tři tečky (...) pro přístup k nabídce Další akce v buňce úplně vpravo. Pak vyberte položku **Přepnout parametr buňka** k označení buňky jako buňky Parameters.
+Chcete-li parametrizovat svůj Poznámkový blok, vyberte tři tečky (...) pro přístup k nabídce Další akce buňky úplně vpravo. Pak vyberte položku **Přepnout parametr buňka** k označení buňky jako buňky Parameters.
 
 ![přepínač-Parameter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 768f686889663d9b1af4b88d84b361ac9460a5a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dab6b504fe026324251b7284fc3abdb52bb9911a
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381728"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738949"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Přizpůsobení sady standardů na řídicím panelu dodržování předpisů
 
@@ -38,7 +38,7 @@ Společnost Microsoft sleduje zákonné normy samy a automaticky zlepšuje jejic
 
 ## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Jaké standardy dodržování předpisů jsou k dispozici v Security Center?
 
-Ve výchozím nastavení má každé předplatné přiřazené **srovnávací testy zabezpečení Azure** . Toto jsou pokyny specifické pro Azure, které se týkají zabezpečení a dodržování předpisů, a to pro osvědčené postupy na základě běžných architektur dodržování předpisů. [Další informace o srovnávacím testu zabezpečení Azure](../security/benchmarks/introduction.md)
+Ve výchozím nastavení má každé předplatné přiřazené **srovnávací testy zabezpečení Azure** . Toto jsou pokyny specifické pro Azure, které se týkají zabezpečení a dodržování předpisů, a to pro osvědčené postupy na základě běžných architektur dodržování předpisů. [Další informace o srovnávacím testu zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction)
 
 Můžete také přidat standardy, jako například:
 
@@ -122,6 +122,6 @@ V tomto článku jste zjistili, jak **Přidat standardy dodržování předpisů
 
 Související materiály najdete na následujících stránkách:
 
-- [Srovnávací test zabezpečení Azure](../security/benchmarks/introduction.md)
+- [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [Řídicí panel dodržování předpisů v Security Center](security-center-compliance-dashboard.md) – Naučte se sledovat a exportovat data dodržování předpisů pomocí Security Center a externích nástrojů.
 - [Práce se zásadami zabezpečení](tutorial-security-policy.md)

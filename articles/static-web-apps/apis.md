@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6724d8eb8df29ccfb033f5951ec56b7770e3c413
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fc5e1e6982686e7042e5b8ad55d72a4560b6aee
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90903563"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737473"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>Podpora rozhraní API ve službě Azure static Web Apps Preview s využitím Azure Functions
 
@@ -20,7 +20,6 @@ Azure static Web Apps poskytuje koncové body rozhraní API bez serveru přes [A
 
 - **Integrované zabezpečení** s přímým přístupem k [ověřování uživatelů a datům autorizace na základě rolí](user-information.md) .
 - **Bezproblémové směrování** , díky kterému bude trasa _rozhraní API_ dostupná webové aplikaci bezpečně, aniž by vyžadovala vlastní pravidla CORS.
-- **Azure Functions** V3 kompatibilní s Node.js 12, .net Core 3,1 a Python 3,8.
 - **Aktivační události http** a vstupní/výstupní vazby.
 
 ## <a name="configuration"></a>Konfigurace
@@ -32,11 +31,12 @@ Koncové body rozhraní API jsou k dispozici webové aplikaci prostřednictvím 
 Azure static Web Apps poskytuje rozhraní API prostřednictvím Azure Functions. Schopnosti Azure Functions jsou zaměřené na konkrétní sadu funkcí, které vám umožní vytvořit rozhraní API pro webovou aplikaci a povolit zabezpečenou připojení webové aplikace k rozhraní API. Tyto funkce se dodávají s určitými omezeními, včetně:
 
 - Předpona trasy rozhraní API musí být _rozhraní API_.
-- Rozhraní API musí být buď JavaScriptová, C# nebo aplikace Azure Functions Python.
+- Rozhraní API musí být buď Node.js 12, .NET Core 3,1 nebo Python 3,8 Azure Functions aplikace.
 - Pravidla směrování pro funkce rozhraní API podporují pouze [přesměrování](routes.md#redirects) a [zabezpečení tras s rolemi](routes.md#securing-routes-with-roles).
 - Aktivační události jsou omezené na [http](../azure-functions/functions-bindings-http-webhook.md).
   - Vstupní a výstupní [vazby](../azure-functions/functions-triggers-bindings.md#supported-bindings) jsou podporovány.
 - Protokoly jsou k dispozici pouze v případě, že do aplikace Functions přidáte [Application Insights](../azure-functions/functions-monitoring.md) .
+- Některá nastavení aplikace spravuje služba. Nemůžete nakonfigurovat nastavení aplikace, která začínají následujícími předponami: `APPSETTING_` , `AZUREBLOBSTORAGE_` , `AZUREFILESSTORAGE_` , `AZURE_FUNCTION_` , `CONTAINER_` , `DIAGNOSTICS_` , `DOCKER_` , `FUNCTIONS_` , `IDENTITY_` , `MACHINEKEY_` , `MAINSITE_` , `MSDEPLOY_` , `SCMSITE_` , `SCM_` , `WEBSITES_` , `WEBSITE_` , `WEBSOCKET_` , `AzureWeb` .
 
 ## <a name="next-steps"></a>Další kroky
 

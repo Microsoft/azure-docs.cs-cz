@@ -16,6 +16,8 @@
       href: multi-factor-authentication-end-user-app-passwords.md
     - name: Jak se přihlásit
       href: user-help-sign-in.md?toc=./toc.json
+    - name: Přihlášení k pracovnímu nebo školnímu účtu
+      href: multi-factor-authentication-end-user-signin.md
     - name: Podpora
       href: multi-factor-authentication-end-user-troubleshoot.md
 - name: Nápověda k resetování hesla

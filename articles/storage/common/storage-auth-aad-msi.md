@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 552d2587f35ed391b470c6d5b1693b79fd57306b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2aa6730759a9aa1aaab3156c55bf19e82641b8ea
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879574"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739327"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Autorizace přístupu k datům BLOB a Queue pomocí spravovaných identit pro prostředky Azure
 
@@ -171,4 +171,4 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 - [Spravujte přístupová práva k datům úložiště pomocí Azure RBAC](./storage-auth-aad-rbac-portal.md).
 - [Používejte Azure AD s aplikacemi pro úložiště](storage-auth-aad-app.md).
 - [Spuštění příkazů PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektu BLOB](../blobs/authorize-data-operations-powershell.md)
-- [Kurz: přístup k úložišti z App Service pomocí spravovaného identies](../../app-service/scenario-secure-app-access-storage.md)
+- [Kurz: přístup k úložišti z App Service pomocí spravovaných identit](../../app-service/scenario-secure-app-access-storage.md)

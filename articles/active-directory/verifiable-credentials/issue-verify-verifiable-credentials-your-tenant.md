@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: e4772b6701065a44416d849faa9a501bd7895f27
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 310c821bf102d267d0b5f77dbf206b896ab2f1c7
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553375"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739219"
 ---
 # <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Kurz – vystavení a ověření ověřitelných přihlašovacích údajů pomocí vašeho tenanta (Preview)
 
@@ -271,14 +271,14 @@ Použijte stejný postup jako v předchozím kurzu pro vydání ověřitelných 
 
   ![Přidat obrazovku přihlašovacích údajů po ověření](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified-authenticated.png)
 
-Nyní jsme vydali ověřitelné přihlašovací údaje pomocí našeho tenanta, který vygeneruje náš VC a pořád k ověřování používá náš tenant B2C.
+Nyní jsme vydali ověřené přihlašovací údaje pomocí vašeho tenanta, který vygeneruje váš VC a pořád k ověřování používá původní tenant B2C.
 
   ![VC vystavila vaše služba Azure AD a ověřená instancí Azure B2C](media/enable-your-tenant-verifiable-credentials/my-vc-b2c.png)
 
 
 ## <a name="test-verifying-the-vc-using-the-sample-app"></a>Test ověření VC pomocí ukázkové aplikace
 
-Teď, když jsme vydali ověřitelné přihlašovací údaje z našeho vlastního tenanta s deklaracemi z Azure AD, si ji ověříte pomocí naší ukázkové aplikace.
+Teď, když jsme vydali ověřitelné přihlašovací údaje z vašeho vlastního tenanta s deklaracemi z Azure AD, si je ověříte pomocí ukázkové aplikace.
 
 1. Zastavení spouštění služby vystavitele ngrok.
 

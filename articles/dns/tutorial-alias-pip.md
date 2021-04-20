@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 04/19/2021
 ms.author: rohink
-ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28e37ad0b404b5275a224c8debab5c11c07948b4
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80985435"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738805"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Kurz: Konfigurace záznamu aliasu odkazujícího na veřejnou IP adresu Azure 
 
@@ -36,8 +36,8 @@ Ukázková doména použitá v tomto kurzu je contoso.com, ale použijte vlastn�
 
 ## <a name="create-the-network-infrastructure"></a>Vytvoření síťové infrastruktury
 Nejprve vytvořte virtuální síť a podsíť, do které umístíte webové servery.
-1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
-2. V levém horním rohu portálu vyberte **Vytvořit prostředek**. Do vyhledávacího pole zadejte *skupina prostředků* a vytvořte skupinu prostředků **RG-DNS-Alias-pip**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Na levém panelu Azure Portal vyberte **vytvořit prostředek** . Do vyhledávacího pole zadejte *skupina prostředků* a vytvořte skupinu prostředků **RG-DNS-Alias-pip**.
 3. Vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť**.
 4. Vytvořte virtuální síť **VNet-Server**. Umístěte ji do skupiny prostředků **RG-DNS-Alias-pip** a podsíť pojmenujte **SN-Web**.
 
@@ -45,10 +45,10 @@ Nejprve vytvořte virtuální síť a podsíť, do které umístíte webové ser
 1. Vyberte **vytvořit prostředek**  >  **virtuální počítač s Windows serverem 2016**.
 2. Jako název zadejte **Web-01** a umístěte virtuální počítač do skupiny prostředků **RG-DNS-Alias-TM**. Zadejte uživatelské jméno a heslo a vyberte **OK**.
 3. Jako **Velikost** vyberte skladovou položku s 8 GB paměti RAM.
-4. V části **Nastavení** vyberte virtuální síť **VNet-Servers** a podsíť **SN-Web**. Pro veřejné příchozí porty vyberte **http**  >  **https**  >  **RDP (3389)** a pak vyberte **OK**.
+4. V části **Nastavení** vyberte virtuální síť **VNet-Servers** a podsíť **SN-Web**. Pro veřejné příchozí porty vyberte **http (80)**  >  **https (443)**  >  **RDP (3389)** a pak vyberte **OK**.
 5. Na stránce **Souhrn** vyberte **Vytvořit**.
 
-Dokončení tohoto postupu trvá několik minut. Virtuální počítač bude mít připojenou síťovou kartu, která bude mít základní dynamickou veřejnou IP adresu nazvanou web-01-IP. Veřejná IP adresa se změní pokaždé, když se virtuální počítač restartuje.
+Dokončení tohoto nasazení trvá několik minut. Virtuální počítač bude mít připojenou síťovou kartu se základní dynamickou veřejnou IP adresou nazvanou web-01-IP. Veřejná IP adresa se změní pokaždé, když se virtuální počítač restartuje.
 
 ### <a name="install-iis"></a>Instalace služby IIS
 

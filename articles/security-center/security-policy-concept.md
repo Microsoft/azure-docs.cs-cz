@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 4dc29c8b52a3d0953445666672a716af013ee408
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4eea2611997732a263e9e824bc150b45ed145ecd
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176429"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738967"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>Co jsou zásady zabezpečení, iniciativy a doporučení?
 
@@ -35,7 +35,7 @@ Bezpečnostní iniciativa definuje požadovanou konfiguraci vašich úloh a pom�
 
 Podobně jako zásady zabezpečení se Security Center iniciativy vytvářejí také v Azure Policy. [Azure Policy](../governance/policy/overview.md) můžete použít ke správě zásad, vytváření iniciativ a přiřazování iniciativ k několika předplatným nebo pro celou skupinu pro správu.
 
-Výchozí iniciativa automaticky přiřazená každému předplatnému v Azure Security Center je srovnávací test zabezpečení Azure. Tento srovnávací test je uživatelsky vytvořenou sadou základních pokynů pro zabezpečení a dodržování předpisů v závislosti na běžných architekturách dodržování předpisů, které jsou specifické pro Azure. Toto široce uznávané sestavování srovnávacích testů v ovládacích prvcích z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se soustředí na zabezpečení zaměřené na Cloud. Přečtěte si další informace o [srovnávacím testu zabezpečení Azure](../security/benchmarks/introduction.md).
+Výchozí iniciativa automaticky přiřazená každému předplatnému v Azure Security Center je srovnávací test zabezpečení Azure. Tento srovnávací test je uživatelsky vytvořenou sadou základních pokynů pro zabezpečení a dodržování předpisů v závislosti na běžných architekturách dodržování předpisů, které jsou specifické pro Azure. Toto široce uznávané sestavování srovnávacích testů v ovládacích prvcích z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se soustředí na zabezpečení zaměřené na Cloud. Přečtěte si další informace o [srovnávacím testu zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction).
 
 Security Center nabízí následující možnosti pro práci s iniciativami a zásadami zabezpečení:
 

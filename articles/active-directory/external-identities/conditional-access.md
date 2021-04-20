@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bfa4987f584bbd3490bc5f4f187dee5bc1bd87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22a5388d15b18180539eb95990a29f7ddf4f1951
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646278"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739543"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Podmíněný přístup pro uživatele spolupráce B2B
 
@@ -67,7 +67,7 @@ Pro uživatele, kteří jsou pro Azure AD Multi-Factor Authentication, je vždyc
 6. Společnost Fabrikam musí mít dostatečný nárok na licence Azure AD, které podporují Multi-Factor Authentication služby Azure AD. Uživatel od společnosti Contoso pak tuto licenci spotřebuje od společnosti Fabrikam. Informace o licencích B2B najdete v tématu [Model fakturace pro externí identity Azure AD](./external-identities-pricing.md) .
 
 >[!NOTE]
->Multi-Factor Authentication Azure AD se provádí v architektuře prostředků, aby se zajistila předvídatelnost.
+>Multi-Factor Authentication Azure AD se provádí v architektuře prostředků, aby se zajistila předvídatelnost. Když se uživatel typu Host přihlásí, uvidí přihlašovací stránku tenanta prostředků zobrazenou na pozadí a vlastní přihlašovací stránku a logo společnosti na svém domovském klientovi.
 
 ### <a name="set-up-azure-ad-multi-factor-authentication-for-b2b-users"></a>Nastavení Multi-Factor Authentication Azure AD pro uživatele B2B
 

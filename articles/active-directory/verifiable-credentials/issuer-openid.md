@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 942b77f8338636f9dda5dcf6cd4262dad57b4b0a
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 6aa502e1ed0e49192220174d5a8573690035a4a3
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726263"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739129"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>Příklady komunikace služby vystavitele (Preview)
 
@@ -31,9 +31,9 @@ Pro vydání ověřitelných přihlašovacích údajů se ověřovatel vydá pro
 | ------- | ----------- |
 | Typ udělení | Musí podporovat typ udělení autorizačního kódu. |
 | Formát tokenu | Musí vydávat nešifrované kompaktní JWTs. |
-| Algoritmus podpisu | Musí vydávat JWTs podepsané pomocí RSA 256. |
+| Algoritmus podpisu | Musí vydávat JWTs podepsané pomocí RS 256. |
 | Konfigurační dokument | Musí podporovat konfigurační dokument OpenID Connect a `jwks_uri` . | 
-| Registrace klienta | Musí podporovat registraci veřejného klienta pomocí `redirect_uri` hodnoty `vclient://openid/` . | 
+| Registrace klienta | Musí podporovat registraci veřejného klienta pomocí `redirect_uri` hodnoty `vcclient://openid/` . | 
 | PKCE | Doporučuje se z bezpečnostních důvodů, ale není to nutné. |
 
 Níže jsou uvedeny příklady požadavků HTTP odeslaných poskytovateli identity. Váš poskytovatel identity musí přijmout a reagovat na tyto žádosti v souladu se standardem ověřování OpenID Connect.

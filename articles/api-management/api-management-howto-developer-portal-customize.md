@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: tutorial
 ms.date: 11/16/2020
 ms.author: apimpm
-ms.openlocfilehash: 90544fbafe7393630c3f3fbc694ae367eccb7f90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c341dee3106530715248355da4412b97ed30980
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96012969"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739615"
 ---
 # <a name="tutorial-access-and-customize-the-developer-portal"></a>Kurz: přístup a přizpůsobení portálu pro vývojáře
 
@@ -45,6 +45,35 @@ Použijte následující postup, chcete-li získat přístup ke spravované verz
 1. V [Azure Portal](https://portal.azure.com)přejděte k instanci API Management.
 1. V horním navigačním panelu vyberte tlačítko **portál pro vývojáře** . Otevře se nová karta prohlížeče s verzí pro správu portálu.
 
+
+## <a name="developer-portal-architectural-concepts"></a>Koncepce architektury portálu pro vývojáře
+
+Komponenty portálu mohou být logicky rozděleny do dvou kategorií: *kód* a *obsah*.
+
+### <a name="code"></a>Kód
+
+Kód se uchovává v [úložišti GitHub](https://github.com/Azure/api-management-developer-portal) portálu API Management Developer a zahrnuje:
+
+- **Widgety** – reprezentují vizuální prvky a kombinují HTML, JavaScript, styl možností, nastavení a mapování obsahu. Příkladem je obrázek, textový odstavec, formulář, seznam rozhraní API atd.
+- **Definice** stylu – určete, jak můžou být widgety ve stylu
+- **Modul** , který generuje statické webové stránky z obsahu portálu a je napsán v JavaScriptu
+- **Vizuální Editor** – umožňuje prostředí pro přizpůsobení a vytváření v prohlížeči.
+
+### <a name="content"></a>Content
+
+Obsah je rozdělen do dvou podkategorií: *obsah portálu* a *API Management obsah*.
+
+*Obsah portálu* je specifický pro portál a zahrnuje:
+
+- **Stránky** – například úvodní stránka, kurzy k rozhraní API, příspěvky na blogu
+- **Média** – obrázky, animace a další obsah založený na souborech
+- **Rozložení** – šablony, které jsou porovnány s adresou URL a definují způsob zobrazení stránek
+- **Styly** – hodnoty pro definice stylu, například písma, barvy, ohraničení
+- **Nastavení** – konfigurace jako favicon, metadata webu
+
+    Obsah portálu, s výjimkou médií, se vyjadřuje jako dokumenty JSON.
+
+*API Management obsah* zahrnuje entity, jako jsou rozhraní API, operace, produkty a odběry.
 ## <a name="understand-the-portals-administrative-interface"></a>Pochopení rozhraní pro správu portálu
 
 ### <a name="default-content"></a>Výchozí obsah 
@@ -138,7 +167,7 @@ Po publikování portálu je možné k němu přistupovat na stejné adrese URL 
 
 ## <a name="apply-the-cors-policy-on-apis"></a>Použití zásad CORS na rozhraních API
 
-Pokud chcete návštěvníkům portálu umožnit otestovat rozhraní API prostřednictvím integrované interaktivní konzoly, povolte CORS (sdílení prostředků mezi zdroji) na vašich rozhraních API. Podrobnosti najdete v tématu [Přehled portálu pro vývojáře Azure API Management](api-management-howto-developer-portal.md#cors).
+Pokud chcete návštěvníkům portálu umožnit otestovat rozhraní API prostřednictvím integrované interaktivní konzoly, povolte CORS (sdílení prostředků mezi zdroji) na vašich rozhraních API. Podrobnosti najdete v [nejčastějších dotazech k portálu pro vývojáře Azure API Management](developer-portal-faq.md#cors).
 
 ## <a name="next-steps"></a>Další kroky
 

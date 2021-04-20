@@ -3,12 +3,12 @@ title: Přesunout podporu operace podle typu prostředku
 description: Zobrazuje seznam typů prostředků Azure, které se dají přesunout do nové skupiny prostředků, předplatného nebo oblasti.
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.openlocfilehash: c159b6e5f64f3052a6584034aa58b058b1426b16
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: a56a9e6f04aa800e16bbab0190ce7b41d87da590
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725561"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107740083"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout podporu operací pro prostředky
 
@@ -861,7 +861,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ---------- | ----------- |
 > | flexibleServers | No | No | No |
 > | servergroups | No | No | No |
-> | servery | Yes | Yes | K přesunutí stávajícího serveru můžete použít repliku čtení mezi oblastmi. Další [informace](../../postgresql/howto-move-regions-portal.md).
+> | servery | Yes | Yes | K přesunutí stávajícího serveru můžete použít repliku čtení mezi oblastmi. [Další informace](../../postgresql/howto-move-regions-portal.md).
 > | serversv2 | Yes | Yes | No |
 > | singleservers | Yes | Yes | No |
 

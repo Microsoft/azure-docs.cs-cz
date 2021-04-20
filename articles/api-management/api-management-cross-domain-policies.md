@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2021
 ms.author: apimpm
-ms.openlocfilehash: 85abf30d792b24b92685e191f5b460a42dc29142
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f074ff389971fa56da7838a9a46ec5c4d42dc5a
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688412"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739093"
 ---
 # <a name="api-management-cross-domain-policies"></a>Zásady pro API Management napříč doménami
 V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](./api-management-policies.md).
@@ -69,7 +69,7 @@ Tato `cors` zásada přidá podporu pro sdílení prostředků mezi zdroji (CORS
 
 CORS umožňuje prohlížeči a serveru spolupracovat a určit, jestli se mají povolit konkrétní požadavky na více zdrojů (tj. volání XMLHttpRequest prováděné z JavaScriptu na webové stránce v jiných doménách). Díky tomu je větší flexibilita než povolování pouze stejných požadavků, ale je bezpečnější než povolení všech žádostí mezi zdroji.
 
-Pokud chcete povolit interaktivní konzolu na portálu pro vývojáře, musíte použít zásadu CORS. Podrobnosti najdete v [dokumentaci k portálu pro vývojáře](./api-management-howto-developer-portal.md#cors) .
+Pokud chcete povolit interaktivní konzolu na portálu pro vývojáře, musíte použít zásadu CORS. Podrobnosti najdete v [dokumentaci k portálu pro vývojáře](./developer-portal-faq.md#cors) .
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 

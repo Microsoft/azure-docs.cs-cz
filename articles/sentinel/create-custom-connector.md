@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: 25f83088bdc55dbafe7ccf0ff06b0c6595c9ea71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a1aaf89624f8d0ab48692629d859f3c1bdb4ba67
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724349"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738895"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Prostředky pro vytváření vlastních konektorů Sentinel Azure
 
@@ -126,8 +126,6 @@ Příklady, jak můžete vytvořit vlastní konektor pro službu Azure Sentinel 
 - [Palo Alto Prisma Logic App Connector s použitím Webhooku](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Ingest-Prisma) (komunita Azure Sentinel GitHub)
 - [Zabezpečení volání Microsoft Teams pomocí plánované aktivace](https://techcommunity.microsoft.com/t5/azure-sentinel/secure-your-calls-monitoring-microsoft-teams-callrecords/ba-p/1574600) (blog)
 - Ingestování [indikátorů hrozeb ALIENVAULT otx do Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-alien-vault-otx-threat-indicators-into-azure-sentinel/ba-p/1086566) (blog)
-- [Odesílání protokolů PROOFPOINT klepněte na službu Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/sending-proofpoint-tap-logs-to-azure-sentinel/ba-p/767727) (blog)
-
 
 ## <a name="connect-with-powershell"></a>Připojení přes PowerShell
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: a0dab64aac8bc5fa68a53fad6cd8e6f6bb4bac03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 050d3ac23562e7822d186a16675d03c1b9dc670b
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98217137"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739201"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Přiřazení více IP adres k virtuálním počítačům pomocí Azure Portal
 
@@ -102,6 +102,9 @@ Veřejná IP adresa je jedno nastavení pro prostředek veřejné IP adresy. Pok
 5. Klikněte na **Uložit** a zavřete podokna. Pokud nemáte existující veřejnou IP adresu, můžete ji vytvořit provedením kroků v části [vytvoření prostředku veřejné IP adresy](#create-public-ip) v tomto článku.
 3. Zkontrolujte novou konfiguraci protokolu IP.
 4. Kliknutím na **Přidat** můžete přidat další konfigurace protokolu IP nebo zavřít všechna otevřená okna a dokončit přidávání IP adres. Nepřidejte veřejnou IP adresu k operačnímu systému.
+
+> [!NOTE]
+> Po změně konfigurace IP adresy musíte restartovat virtuální počítač, aby se změny projevily ve virtuálním počítači.
 
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

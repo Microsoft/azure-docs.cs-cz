@@ -1,19 +1,19 @@
 ---
 title: Průběžná integrace a doručování pro pracovní prostor synapse
 description: Naučte se používat průběžnou integraci a doručování k nasazení změn v pracovním prostoru z jednoho prostředí (vývoj, testování, produkce) do jiného.
-author: liud
+author: liudan66
 ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 5f68e3698f8616b581d319bc19d2a8c636c79c36
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 833478d956560c981bd6cc3ba03b48bb602f563c
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566082"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739669"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Průběžná integrace a doručování pro Azure synapse Workspace
 
@@ -21,16 +21,61 @@ ms.locfileid: "107566082"
 
 Průběžná integrace (CI) je proces automatizace sestavení a testování kódu pokaždé, když člen týmu potvrdí změny ve správě verzí. Průběžné nasazování (CD) je proces sestavení, testování, konfigurace a nasazení z několika testovacích nebo přípravných prostředí do produkčního prostředí.
 
-Pro pracovní prostor Azure synapse můžete průběžnou integraci a doručování (CI/CD) přesunout všechny entity z jednoho prostředí (vývoj, testování, produkce) do jiného. Pokud chcete svůj pracovní prostor zvýšit na jiný pracovní prostor, existují dvě části: použití [šablon Azure Resource Manager](../../azure-resource-manager/templates/overview.md) k vytvoření nebo aktualizaci prostředků pracovního prostoru (fondů a pracovního prostoru). Migrujte artefakty (skripty SQL, Poznámkový blok, definice úlohy Spark, kanály, datové sady, toky dat atd.) pomocí nástrojů CI/CD synapse v Azure DevOps. 
+V pracovním prostoru Azure synapse Analytics se průběžná integrace a doručování (CI/CD) přesouvá všechny entity z jednoho prostředí (vývoj, testování, produkce) do jiného. Pokud chcete svůj pracovní prostor zvýšit na jiný pracovní prostor, existují dvě části. Nejprve pomocí [šablony Azure Resource Manager (šablona ARM)](../../azure-resource-manager/templates/overview.md) můžete vytvořit nebo aktualizovat prostředky pracovního prostoru (fondy a pracovní prostor). Pak migrujte artefakty (skripty SQL, Poznámkový blok, definice úlohy Spark, kanály, datové sady, toky dat atd.) pomocí nástrojů CI/CD Azure synapse Analytics v Azure DevOps. 
 
-V tomto článku se dozvíte, jak pomocí kanálu pro vydávání Azure automatizovat nasazení pracovního prostoru synapse do více prostředí.
+Tento článek popisuje, jak pomocí kanálu vydaných verzí Azure DevOps automatizovat nasazení pracovního prostoru Azure synapse do více prostředí.
 
 ## <a name="prerequisites"></a>Požadavky
 
--   Pracovní prostor použitý pro vývoj byl nakonfigurován s úložištěm Git v nástroji Studio, viz [Správa zdrojového kódu v synapse studiu](source-control.md).
--   Projekt Azure DevOps se připravil pro běh kanálu vydávání verzí.
+Tyto požadavky a konfigurace musí být na místě pro automatizaci nasazení pracovního prostoru Azure synapse do více prostředí.
 
-## <a name="set-up-a-release-pipelines"></a>Nastavení kanálů vydání
+### <a name="azure-devops"></a>Azure DevOps
+
+- Projekt Azure DevOps byl připraven ke spuštění kanálu vydávání verzí.
+- [Udělte všem uživatelům, kteří budou vracet kód "základní" přístup na úrovni organizace](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page), aby viděli úložiště.
+- Udělte vlastnictví úložiště Azure synapse oprávnění vlastníka.
+- Ujistěte se, že jste vytvořili samoobslužný agent virtuálního počítače Azure DevOps nebo používáte hostovaného agenta Azure DevOps.
+- Oprávnění k [vytvoření připojení služby Azure Resource Manager pro skupinu prostředků](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml).
+- Správce služby Azure Active Directory (Azure AD) musí [do organizace Azure DevOps nainstalovat Deployment Agent rozšíření pracovního prostoru Azure DevOps synapse](/azure/devops/marketplace/install-extension).
+- Vytvořte nebo pojmenujte existující účet služby, ve kterém se má kanál spustit. Místo účtu služby můžete použít osobní přístupový token, ale vaše kanály nebudou po odstranění uživatelského účtu fungovat.
+
+### <a name="azure-active-directory"></a>Azure Active Directory
+
+- V Azure AD vytvořte instanční objekt, který se má použít pro nasazení. Úloha nasazení pracovního prostoru synapse nepodporuje použití spravované identity v verze 1 * a starších.
+- Pro tuto akci jsou vyžadována práva správce Azure AD.
+
+### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
+
+> [!NOTE]
+> Tyto požadavky můžete automatizovat a nasadit pomocí stejného kanálu, šablony ARM nebo rozhraní příkazového řádku Azure CLI, ale tento proces není popsaný v tomto článku.
+
+- Pracovní prostor zdroj, který se používá pro vývoj, musí být nakonfigurovaný s úložištěm Git v synapse studiu. Další informace najdete v tématu [Správa zdrojového kódu v synapse studiu](source-control.md#configuration-method-2-manage-hub).
+
+- Prázdný pracovní prostor, do kterého se má nasazovat. Nastavení prázdného pracovního prostoru:
+
+  1. Vytvořte nový pracovní prostor Azure synapse Analytics.
+  1. Udělte agentovi virtuálního počítače a oprávnění přispěvatele instančního objektu skupinu prostředků, ve které je hostovaný nový pracovní prostor.
+  1. V novém pracovním prostoru nekonfigurujte připojení úložiště Git.
+  1. V Azure Portal Najděte nový pracovní prostor Azure synapse Analytics a udělte si sami a ten, kdo spustí práva vlastníka pracovního prostoru Azure synapse Analytics kanálu Azure DevOps. 
+  1. Přidejte agenta virtuálního počítače Azure DevOps a instanční objekt do role přispěvatele pro daný pracovní prostor (Tato hodnota by se měla dědit, ale ověřit, jestli je).
+  1. V pracovním prostoru Azure synapse Analytics otevřete do **studia**  >  **Správa**  >  **IAM**. Přidejte agenta virtuálního počítače Azure DevOps a instanční objekt do skupiny Admins v pracovním prostoru.
+  1. Otevřete účet úložiště, který se používá pro pracovní prostor. V nástroji IAM přidejte agenta virtuálního počítače a instanční objekt do role Přispěvatel dat objektu BLOB pro výběr úložiště.
+  1. V rámci předplatného podpory vytvořte Trezor klíčů a ujistěte se, že stávající pracovní prostor i nový pracovní prostor mají k trezoru aspoň oprávnění získat a zobrazit seznam.
+  1. Aby automatizované nasazení fungovalo, ujistěte se, že všechny připojovací řetězce, které jsou zadané v propojených službách, jsou v trezoru klíčů.
+
+### <a name="additional-prerequisites"></a>Další požadavky
+ 
+ - Fondy Spark a prostředí Integration runtime v místním prostředí nejsou v kanálu vytvořené. Pokud máte propojenou službu, která používá místní prostředí Integration runtime, vytvořte ji ručně v novém pracovním prostoru.
+ - Pokud vyvíjíte poznámkové bloky a máte je připojené k fondu Spark, vytvořte v pracovním prostoru znovu fond Spark.
+ - Poznámkové bloky propojené s fondem Spark, které neexistují v prostředí, se nebudou nasazovat.
+ - Názvy fondů Spark musí být v obou pracovních prostorech stejné.
+ - Pojmenujte všechny databáze, fondy SQL a další prostředky, které jsou v obou pracovních prostorech stejné.
+ - Pokud jsou zřízené fondy SQL pozastavené při pokusu o nasazení, nasazení může selhat.
+
+Další informace najdete v tématu [CI CD ve službě Azure synapse Analytics část 4 – kanál pro vydávání verzí](https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434). 
+
+
+## <a name="set-up-a-release-pipeline"></a>Nastavení kanálu pro vydání
 
 1.  V [Azure DevOps](https://dev.azure.com/)otevřete projekt vytvořený pro vydání verze.
 
@@ -58,9 +103,9 @@ V tomto článku se dozvíte, jak pomocí kanálu pro vydávání Azure automati
 
     ![Přidání artefaktu](media/release-creation-publish-branch.png)
 
-## <a name="set-up-a-stage-task-for-arm-resource-create-and-update"></a>Nastavení úlohy fáze pro vytvoření a aktualizaci prostředku ARM 
+## <a name="set-up-a-stage-task-for-an-arm-template-to-create-and-update-resource"></a>Nastavení úlohy fáze pro šablonu ARM k vytvoření a aktualizaci prostředku 
 
-Přidejte úlohu nasazení Azure Resource Manager pro vytvoření nebo aktualizaci prostředků, včetně pracovního prostoru a fondů:
+Pokud máte šablonu ARM k nasazení prostředku, jako je pracovní prostor Azure synapse, Spark a SQL, nebo Trezor klíčů, přidejte úlohu nasazení Azure Resource Manager pro vytvoření nebo aktualizaci těchto prostředků:
 
 1. V zobrazení fáze vyberte možnost **Zobrazit úlohy fáze**.
 
@@ -89,7 +134,7 @@ Přidejte úlohu nasazení Azure Resource Manager pro vytvoření nebo aktualiza
  > [!WARNING]
 > V režimu úplného nasazení se **odstraní** prostředky, které jsou ve skupině prostředků, ale nejsou zadané v nové šabloně správce prostředků. Další informace najdete v tématu [režimy nasazení Azure Resource Manager](../../azure-resource-manager/templates/deployment-modes.md) .
 
-## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>Nastavení úlohy fáze pro nasazení artefaktů 
+## <a name="set-up-a-stage-task-for-synapse-artifacts-deployment"></a>Nastavení úlohy fáze pro nasazení artefaktů synapse 
 
 Pomocí rozšíření [nasazení pracovního prostoru synapse](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy) nasaďte další položky v pracovním prostoru synapse, jako je datová sada, skript SQL, Poznámkový blok, definice úlohy Spark, tok Dataflow, kanál, propojená služba, přihlašovací údaje a IR (Integration Runtime).  
 
@@ -113,7 +158,7 @@ Pomocí rozšíření [nasazení pracovního prostoru synapse](https://marketpla
 
 1. Vyberte připojení, skupinu prostředků a název cílového pracovního prostoru. 
 
-1. Vybrat **...** vedle pole **parametry šablony přepsání** a zadejte požadované hodnoty parametrů pro cílový pracovní prostor. 
+1. Vybrat **...** vedle pole **přepsat parametry šablony** a zadejte požadované hodnoty parametrů pro cílový pracovní prostor včetně připojovacích řetězců a klíčů účtů, které se používají ve vašich propojených službách. [Další informace získáte kliknutím sem]. (https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434)
 
     ![Nasazení pracovního prostoru synapse](media/create-release-artifacts-deployment.png)
 
@@ -225,6 +270,7 @@ Tady je příklad toho, co vypadá definice šablony parametru jako:
     }
 }
 ```
+
 Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle typu prostředku.
 
 #### <a name="notebooks"></a>Notebooks 
@@ -262,19 +308,19 @@ Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle t
 
 ## <a name="best-practices-for-cicd"></a>Osvědčené postupy pro CI/CD
 
-Pokud používáte integraci Git s vaším pracovním prostorem synapse a máte kanál CI/CD, který přesouvá vaše změny z vývoje do testu a následně do produkčního prostředí, doporučujeme tyto osvědčené postupy:
+Pokud používáte integraci Git s vaším pracovním prostorem Azure synapse a máte kanál CI/CD, který přesouvá vaše změny z vývoje do testu a následně do produkčního prostředí, doporučujeme tyto osvědčené postupy:
 
--   **Integrace Gitu**. Nakonfigurujte jenom váš pracovní prostor vývojového synapse s integrací Gitu. Změny pracovních prostorů testů a výroby se nasazují prostřednictvím CI/CD a nepotřebují integraci Git.
+-   **Integrace Gitu**. Nakonfigurujte jenom svůj vývojový pracovní prostor Azure synapse s integrací Gitu. Změny pracovních prostorů testů a výroby se nasazují prostřednictvím CI/CD a nepotřebují integraci Git.
 -   **Příprava fondů před migrací artefaktů**. Pokud máte skript SQL nebo Poznámkový blok připojený ke fondům v pracovním prostoru pro vývoj, očekává se stejný název fondů v různých prostředích. 
 -   **Infrastruktura jako kód (IAC)**. Správa infrastruktury (sítí, virtuálních počítačů, nástrojů pro vyrovnávání zatížení a topologie připojení) v popisném modelu používá stejnou verzi jako DevOps tým používá ke zdrojovému kódu. 
 -   **Ostatní**. Podívejte se [na osvědčené postupy pro artefakty ADF](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd) .
 
 ## <a name="troubleshooting-artifacts-deployment"></a>Řešení potíží s nasazením artefaktů 
 
-### <a name="use-the-synapse-workspace-deployment-task"></a>Použití úlohy nasazení v pracovním prostoru synapse
+### <a name="use-the-azure-synapse-analytics-workspace-deployment-task"></a>Použití úlohy nasazení pracovního prostoru Azure synapse Analytics
 
-V synapse existuje několik artefaktů, které nejsou prostředky ARM. To se liší od Azure Data Factory. Úloha nasazení šablony ARM nebude správně fungovat, aby se nasadily artefakty synapse.
+Ve službě Azure synapse Analytics existuje několik artefaktů, které nejsou prostředky ARM. To se liší od Azure Data Factory. Úloha nasazení šablony ARM nebude správně fungovat, aby se nasadily artefakty Azure synapse Analytics.
  
 ### <a name="unexpected-token-error-in-release"></a>Neočekávaná chyba tokenu ve vydané verzi
 
-Pokud soubor parametrů obsahuje hodnoty parametrů, které nejsou uvozeny řídicími znaky, kanál vydání nebude moci analyzovat soubor a vygeneruje chybu, "neočekávaný token". Doporučujeme, abyste přepsali parametry nebo používali Azure webrecovery k načtení hodnot parametrů. Jako alternativní řešení můžete použít také dvojité řídicí znaky.
+Pokud soubor parametrů obsahuje hodnoty parametrů, které nejsou uvozeny řídicími znaky, kanál vydání nebude moci analyzovat soubor a vygeneruje chybu, "neočekávaný token". Doporučujeme přepsat parametry nebo použít Azure Key Vault k načtení hodnot parametrů. Jako alternativní řešení můžete použít také dvojité řídicí znaky.

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 04/11/2021
 ms.author: memildin
-ms.openlocfilehash: bb79bbe918bb1a68b982ae4d44739c2c77a11434
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 5f94b17fac17a7238b3f4b7eef218961df7a42d5
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719146"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739957"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -770,7 +770,7 @@ Aktualizace v listopadu zahrnují:
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 doporučení verze Preview pro zvýšení pokrytí srovnávacích testů zabezpečení Azure
 
-Srovnávací test zabezpečení Azure je Microsoftem vytvořená sada pokynů pro zabezpečení a osvědčené postupy, které se týkají zabezpečení a dodržování předpisů v závislosti na běžných architekturách dodržování předpisů. [Další informace o srovnávacím testu zabezpečení Azure](../security/benchmarks/introduction.md)
+Srovnávací test zabezpečení Azure je Microsoftem vytvořená sada pokynů pro zabezpečení a osvědčené postupy, které se týkají zabezpečení a dodržování předpisů v závislosti na běžných architekturách dodržování předpisů. [Další informace o srovnávacím testu zabezpečení Azure](https://docs.microsoft.com/security/benchmark/azure/introduction)
 
 Následující 29 doporučení pro verzi Preview jsme přidali do Security Center, abyste zvýšili pokrytí tohoto srovnávacího testu.
 

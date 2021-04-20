@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: c3eecb0b9628ae889ac22bfe6d621266f06abc83
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: f2a4083e8cbbdbfbf971c441d8942b48e712c472
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598920"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107740014"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Velikosti virtuálních počítačů v Azure
 
 Tento článek popisuje dostupné velikosti a možnosti pro virtuální počítače Azure, které můžete použít ke spouštění aplikací a úloh. Nabízí také informace o nasazení, které vám pomůžeme při plánování používání těchto prostředků. 
+
+:::image type="content" source="media/sizes/azurevmsthumb.jpg" alt-text="Video na YouTube pro výběr správné velikosti pro váš virtuální počítač" link="https://youtu.be/zOSvnJFd3ZM":::
 
 | Typ | Velikosti | Popis |
 |------|-------|-------------|

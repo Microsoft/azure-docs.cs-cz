@@ -101,6 +101,8 @@
           href: storage-how-to-create-file-share.md
         - name: Nasazení Synchronizace souborů Azure
           href: storage-sync-files-deployment-guide.md
+        - name: Použití DFS-N se soubory Azure
+          href: files-manage-namespaces.md
         - name: Vytvoření sdílené složky NFS
           href: storage-files-how-to-create-nfs-shares.md
         - name: FCI SQL Serveru se sdílenými složkami úrovně Premium

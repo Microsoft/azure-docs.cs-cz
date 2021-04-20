@@ -5,20 +5,16 @@ description: Naučte se migrovat z starší verze portálu pro vývojáře na no
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/15/2020
+ms.date: 04/15/2021
 ms.author: apimpm
-ms.openlocfilehash: f5105c685de4b3ccdffe69eec8ee8eeb32976c1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4f9f3822b58886f7d453d52402b078d8401133f
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92325991"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738877"
 ---
 # <a name="migrate-to-the-new-developer-portal"></a>Migrace na nový portál pro vývojáře
 
@@ -33,19 +29,19 @@ Tento článek popisuje kroky, které je třeba provést při migraci z zastaral
 
 ## <a name="improvements-in-new-developer-portal"></a>Vylepšení na novém portálu pro vývojáře
 
-Nový portál pro vývojáře řeší celá řada omezení nepoužívaného portálu. Nabízí [vizuální editor pro přetahování](api-management-howto-developer-portal-customize.md) , který umožňuje upravovat obsah a vyhrazený panel pro návrháře na webu. Stránky, přizpůsobení a konfigurace se ukládají jako Azure Resource Manager prostředky ve službě API Management, která umožňuje [automatizovat nasazení portálu](api-management-howto-developer-portal.md#automate). A nakonec je základ kódu na portálu open source, takže [ho můžete roztáhnout vlastními funkcemi](api-management-howto-developer-portal.md#managed-vs-self-hosted).
+Nový portál pro vývojáře řeší celá řada omezení nepoužívaného portálu. Nabízí [vizuální editor pro přetahování](api-management-howto-developer-portal-customize.md) , který umožňuje upravovat obsah a vyhrazený panel pro návrháře na webu. Stránky, přizpůsobení a konfigurace se ukládají jako Azure Resource Manager prostředky ve službě API Management, která umožňuje [automatizovat nasazení portálu](automate-portal-deployments.md). A nakonec je základ kódu na portálu open source, takže [ho můžete roztáhnout vlastními funkcemi](api-management-howto-developer-portal.md#managed-vs-self-hosted).
 
 ## <a name="how-to-migrate-to-new-developer-portal"></a>Postup migrace na nový portál pro vývojáře
 
 Nový portál pro vývojáře není kompatibilní s nepoužívaným portálem a automatizovaná migrace není možná. Je potřeba ručně znovu vytvořit obsah (stránky, text, multimediální soubory) a přizpůsobit vzhled nového portálu. Přesné kroky se budou lišit v závislosti na přizpůsobení a složitosti portálu. Pokyny najdete [v kurzu na portálu pro vývojáře](api-management-howto-developer-portal-customize.md) . Zbývající konfigurace, jako je například seznam rozhraní API, produktů, uživatelů a zprostředkovatelů identity, se automaticky sdílí mezi oběma portály.
 
 > [!IMPORTANT]
-> Pokud jste nový portál pro vývojáře spustili dřív, ale neudělali jste žádné změny, [obnovte výchozí obsah](api-management-howto-developer-portal.md#preview-to-ga) tak, aby se aktualizoval na nejnovější verzi.
+> Pokud jste nový portál pro vývojáře spustili dřív, ale neudělali jste žádné změny, obnovte výchozí obsah tak, aby se aktualizoval na nejnovější verzi.
 
 Při migraci z zastaralého portálu mějte na paměti následující změny:
 
 - Pokud zpřístupníte portál pro vývojáře pomocí vlastní domény, [přiřaďte](configure-custom-domain.md) k novému portálu pro vývojáře doménu. Použijte možnost **portálu pro vývojáře** z rozevíracího seznamu v Azure Portal.
-- Pomocí [zásad CORS](api-management-howto-developer-portal.md#cors) v rozhraních API povolte interaktivní konzolu testů.
+- Pomocí [zásad CORS](developer-portal-faq.md#cors) v rozhraních API povolte interaktivní konzolu testů.
 - Pokud vložíte vlastní šablonu stylů CSS do stylu portálu, je nutné [replikovat styl pomocí integrovaného návrhového panelu](api-management-howto-developer-portal-customize.md). Na novém portálu není povoleno vkládání šablon stylů CSS.
 - Vlastní JavaScript můžete vložit jenom v [samoobslužné verzi nového portálu](api-management-howto-developer-portal.md#managed-vs-self-hosted).
 - Pokud je váš API Management ve virtuální síti a je přístupný pro Internet přes Application Gateway, [Přečtěte si článek v této dokumentaci](api-management-howto-integrate-internal-vnet-appgateway.md) , kde najdete přesné kroky konfigurace. Musíte:
