@@ -10,20 +10,22 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/21/2020
+ms.date: 4/19/2021
 ms.author: duau
-ms.openlocfilehash: a64c91910ba65901a6d1374df9633062398a90e4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f697606e195f102d2bfb5535c92e5c78eb44cdbe
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067647"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727202"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Rychlý Start: vytvoření přední dveře pro globální webovou aplikaci s vysokou dostupností pomocí Azure CLI
 
 Začínáme s předními dveřmi Azure pomocí rozhraní příkazového řádku Azure k vytvoření vysoce dostupné a vysoce výkonné globální webové aplikace.
 
 Přední dveře přesměrují webový provoz na konkrétní prostředky v back-end fondu. Definovali jste doménu front-end, přidáte prostředky do back-endu fondu a vytvoříte pravidlo směrování. Tento článek používá jednoduchou konfiguraci jednoho back-end fondu se dvěma prostředky webové aplikace a jedno pravidlo směrování s použitím výchozí cesty, která odpovídá "/*".
+
+:::image type="content" source="media/quickstart-create-front-door/environment-diagram.png" alt-text="Diagram prostředí nasazení front-dveří pomocí Azure CLI." border="false":::
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,8 +55,8 @@ az group create \
     --location centralus
 
 az group create \
-    --name myRGFDSouthCentral \
-    --location southcentralus
+    --name myRGFDEast \
+    --location eastus
 ```
 
 ## <a name="create-two-instances-of-a-web-app"></a>Vytvoření dvou instancí webové aplikace
@@ -65,7 +67,7 @@ Pokud ještě nemáte webovou aplikaci, použijte následující skript k nastav
 
 ### <a name="create-app-service-plans"></a>Vytvoření plánů služby App Service
 
-Než budete moct vytvořit webové aplikace, budete potřebovat dva plány služby App Service, jednu v *střed USA* a druhý v *střed USA – jih*.
+Než budete moct vytvořit webové aplikace, budete potřebovat dva plány služby App Service, jednu v *střed USA* a druhý v *východní USA*.
 
 Vytvoření plánů služby App Service pomocí [AZ AppService Plan Create](/cli/azure/appservice/plan#az_appservice_plan_create&preserve-view=true):
 
@@ -75,8 +77,8 @@ az appservice plan create \
 --resource-group myRGFDCentral
 
 az appservice plan create \
---name myAppServicePlanSouthCentralUS \
---resource-group myRGFDSouthCentral
+--name myAppServicePlanEastUS \
+--resource-group myRGFDEast
 ```
 
 ### <a name="create-web-apps"></a>Vytváření webových aplikací
@@ -87,14 +89,14 @@ Vytvoření webové aplikace pomocí [AZ WebApp Create](/cli/azure/webapp#az_web
 
 ```azurecli-interactive
 az webapp create \
---name WebAppContoso1 \
+--name WebAppContoso-1 \
 --resource-group myRGFDCentral \
 --plan myAppServicePlanCentralUS 
 
 az webapp create \
---name WebAppContoso2 \
---resource-group myRGFDSouthCentral \
---plan myAppServicePlanSouthCentralUS
+--name WebAppContoso-2 \
+--resource-group myRGFDEast \
+--plan myAppServicePlanEastUS
 ```
 
 Poznamenejte si výchozí název hostitele každé webové aplikace, abyste mohli definovat back-endové adresy při nasazení předních dveří v dalším kroku.
@@ -110,7 +112,7 @@ az network front-door create \
 --resource-group myRGFDCentral \
 --name contoso-frontend \
 --accepted-protocols http https \
---backend-address webappcontoso1.azurewebsites.net webappcontoso2.azurewebsites.net 
+--backend-address webappcontoso-1.azurewebsites.net webappcontoso-2.azurewebsites.net 
 ```
 
 **--Resource-Group:** Zadejte skupinu prostředků, do které chcete nasadit přední dveře.
@@ -140,7 +142,7 @@ az group delete \
 --name myRGFDCentral 
 
 az group delete \
---name myRGFDSouthCentral
+--name myRGFDEast
 ```
 
 ## <a name="next-steps"></a>Další kroky

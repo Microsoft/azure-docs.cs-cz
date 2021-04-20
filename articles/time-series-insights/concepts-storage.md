@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 67ab4c8cf079adaf3b38cdcc30abeec43cd4612f
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: cd26df1de86ee4bdb33050d0bc4769663707733e
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505191"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725021"
 ---
 # <a name="data-storage"></a>Úložiště dat
 
@@ -53,7 +53,7 @@ Data v teplém úložišti jsou k dispozici pouze prostřednictvím [rozhraní A
 
 * Pokud je tato možnost povolená, všechna data zasílaná do vašeho prostředí se budou směrovat do vašeho úložiště s teplem bez ohledu na časové razítko události. Mějte na paměti, že kanál pro příjem dat do streamování je sestavený pro streamování téměř v reálném čase a historické události se [nepodporují](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion).
 * Doba uchování se vypočítá na základě toho, kdy byla událost indexována v teplém úložišti, nikoli v časovém razítku události. To znamená, že data již nejsou v teplém úložišti k dispozici po uplynutí doby uchování, a to i v případě, že je časové razítko události pro budoucnost.
-  * Příklad: událost s 10 hodinami předpověď počasí je ingestovaná a indexovaná v kontejneru teplého úložiště nakonfigurovaném s dobou uchování 7 dní. Po 7 dnech je předpověď už v záložním úložišti přístupná, ale dá se k ní dotazovat z studeného provozu.
+  * Příklad: událost s 10 hodinami předpověď počasí je ingestovaná a indexovaná v kontejneru teplého úložiště nakonfigurovaném s dobou uchování 7 dní. Po sedmi dnech již předpověď nebude k dispozici v záložním úložišti, ale můžete se k ní dotázat z studené.
 * Pokud zapnete úložiště na stávajícím prostředí, které už má v studeném úložišti poslední data, je potřeba si uvědomit, že vaše teplé úložiště nebude s těmito daty zase vyplněné.
 * Pokud jste právě povolili služby teplého úložiště a dochází k problémům s prohlížením vašich nejnovějších dat v Průzkumníkovi, můžete dočasně přepnout dotazy služby tepl Store mimo:
 
@@ -70,6 +70,9 @@ Podrobný popis úložiště objektů BLOB v Azure najdete v [úvodu do objektů
 Azure Time Series Insights Gen2 zachovává až dvě kopie každé události v účtu Azure Storage. Jedna kopie ukládá události seřazené podle času příjmu, vždy umožňuje přístup k událostem v posloupnosti seřazené podle času. V průběhu času Azure Time Series Insights Gen2 také vytvoří znovu rozdělenou kopii dat, která se mají optimalizovat pro provádění dotazů.
 
 Všechna vaše data se ve vašem účtu Azure Storage ukládají na neomezenou dobu.
+
+> [!WARNING]
+> Neomezovat veřejný internetový přístup k rozbočovači nebo zdroji událostí, který používá Time Series Insights, nebo dojde k přerušení potřebného připojení.
 
 #### <a name="writing-and-editing-blobs"></a>Zápis a úpravy objektů BLOB
 
@@ -119,7 +122,7 @@ Azure Time Series Insights události Gen2 jsou namapovány na obsah souboru Parq
 * Každý řádek obsahuje sloupec **časového razítka** s časovým razítkem události. Vlastnost časového razítka není nikdy null. Ve výchozím nastavení je **čas** zařazený do fronty, pokud není ve zdroji událostí zadaná vlastnost časového razítka. Uložené časové razítko je vždy ve formátu UTC.
 * Každý řádek obsahuje sloupce s ID časové řady (TSID), jak je definováno při vytváření prostředí Azure Time Series Insights Gen2. Název vlastnosti TSID zahrnuje `_string` příponu.
 * Všechny ostatní vlastnosti odeslané jako data telemetrie jsou mapovány na názvy sloupců, které končí `_bool` (Boolean), `_datetime` (časové razítko), `_long` (Long), ( `_double` Double), `_string` (řetězec) nebo `dynamic` (dynamické), v závislosti na typu vlastnosti.  Další informace najdete v článku o [podporovaných datových typech](./concepts-supported-data-types.md).
-* Toto mapování schématu se vztahuje na první verzi formátu souboru, na kterou odkazuje **v = 1** a je uloženo v základní složce se stejným názvem. Vzhledem k tomu, že se tato funkce vyvíjí, může se toto mapování schématu změnit a zvýší se název odkazu.
+* Toto mapování schématu platí pro první verzi formátu souboru, na kterou odkazuje **v = 1** a je uloženo v základní složce se stejným názvem. Vzhledem k tomu, že se tato funkce vyvíjí, může se toto mapování schématu změnit a zvýší se název odkazu.
 
 ## <a name="next-steps"></a>Další kroky
 

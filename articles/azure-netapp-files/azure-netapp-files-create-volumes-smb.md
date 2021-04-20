@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: eeeaf01dd20e5b309884a01f954ceca576cbcbb9
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 9bb995e5e3038d7a4cd24f0db2608461c8848497
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259621"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726284"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -56,7 +56,7 @@ Před vytvořením svazku SMB je potřeba vytvořit připojení ke službě Acti
     * **Fond kapacit**  
         Zadejte fond kapacit, ve kterém chcete vytvořit svazek.
 
-    * **Kvóta**  
+    * **Přidělení**  
         Určuje velikost logického úložiště, které je přidělené svazku.  
 
         Pole **Dostupná kvóta** zobrazuje množství nevyužitého místa ve zvoleném fondu kapacity, které můžete použít k vytvoření nového svazku. Velikost nového svazku nesmí překročit dostupnou kvótu.  
@@ -91,6 +91,26 @@ Před vytvořením svazku SMB je potřeba vytvořit připojení ke službě Acti
     * Jako typ protokolu pro svazek vyberte **SMB** . 
     * V rozevíracím seznamu vyberte připojení ke **službě Active Directory** .
     * Zadejte název sdíleného svazku do pole  **název sdílené složky**.
+    * Pokud chcete povolit šifrování pro SMB3, vyberte **Povolit šifrování protokolu SMB3**.   
+        Tato funkce umožňuje šifrování pro SMB3 data v letovém řádu. Klienti SMB, kteří nepoužívají šifrování SMB3, nebudou mít k tomuto svazku přístup.  Data v klidovém stavu jsou šifrována bez ohledu na toto nastavení.  
+        Další informace najdete v tématu [Nejčastější dotazy týkající se šifrování protokolu SMB](azure-netapp-files-faqs.md#smb-encryption-faqs) . 
+
+        Funkce **šifrování protokolu SMB3** je aktuálně ve verzi Preview. Pokud tuto funkci používáte poprvé, zaregistrujte funkci před jejím použitím: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+
+        Ověřte stav registrace funkce: 
+
+        > [!NOTE]
+        > **RegistrationState** může být ve `Registering` stavu až 60 minut, než se změní na `Registered` . Než budete pokračovat, počkejte na stav `Registered` .
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+        
+        Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace.  
     * Pokud chcete povolit nepřetržitou dostupnost pro svazek SMB, vyberte možnost **Povolit nepřetržitou dostupnost**.    
 
         > [!IMPORTANT]   

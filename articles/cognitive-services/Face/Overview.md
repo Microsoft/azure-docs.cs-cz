@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: rozpoznávání obličeje, software pro rozpoznávání obličeje, analýza obličeje, shoda obličeje, aplikace pro rozpoznávání obličeje, hledání na základě obrázku, hledání ve formátu obličeje
-ms.openlocfilehash: a999b2100dc57d7b623cebbbe261f821a80835e3
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 30707dd844769f730f135a451cd5306ca7e402cb
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505118"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726983"
 ---
 # <a name="what-is-the-azure-face-service"></a>Co je služba Azure Face?
 
@@ -64,7 +64,7 @@ Další informace o identifikaci osob najdete v příručce věnovaném koncepc�
 
 ## <a name="find-similar-faces"></a>Vyhledání podobných tváří
 
-Rozhraní API najít podobné se shoduje mezi cílovou ploškou a sadou kandidátních plošek a hledáním menší sady tváře, které vypadají podobně jako cílový obličej. To je užitečné při hledání na základě obrázku. 
+Rozhraní API najít podobné se shoduje mezi cílovou ploškou a sadou kandidátních plošek a hledáním menší sady tváře, které vypadají podobně jako cílový obličej. Tato operace je užitečná pro hledání na základě obrázku. 
 
 Podporují se dva pracovní režimy **matchPerson** a **matchFace**. Režim **matchPerson** vrací podobné obličeje po filtrování pro stejnou osobu pomocí [rozhraní API pro ověření](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a). Režim **matchFace** ignoruje filtr stejné osoby. Vrátí seznam podobných kandidátních plošek, které mohou nebo nemusí patřit stejné osobě.
 

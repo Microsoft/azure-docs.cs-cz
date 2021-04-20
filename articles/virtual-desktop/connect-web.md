@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: b17ec374f2e8b6e268d993fc9a7b14ebeebd40df
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 80a090abee45f9cb3ec6ee5406aad6abf1d73a59
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447891"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725003"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Připojení k virtuálnímu počítači s Windows pomocí webového klienta
 
@@ -48,25 +48,6 @@ V prohlížeči přejděte na Azure Resource Manager integrovanou verzi webovéh
 >Pokud jste se už přihlásili pomocí jiného účtu Azure Active Directory, než který chcete použít pro virtuální plochu Windows, měli byste se buď odhlásit, nebo použít soukromé okno prohlížeče.
 
 Po přihlášení by se teď měl zobrazit seznam prostředků. Prostředky můžete spustit tak, že je vyberete jako normální aplikaci na kartě **všechny prostředky** .
-
-## <a name="using-an-input-method-editor"></a>Použití editoru IME
-
-Webový klient podporuje použití editoru IME (Input Method Editor) ve vzdálené relaci ve verzi **1.0.21.16 nebo novější**. V hostitelském virtuálním počítači musí být nainstalována jazyková sada klávesnice, kterou chcete použít ve vzdálené relaci. Další informace o nastavení jazykových sad ve vzdálené relaci najdete v části [přidání jazykových sad do bitové kopie Windows 10 s více relacemi](language-packs.md).
-
-Povolení vstupu v editoru IME pomocí webového klienta:
-
-1. Před připojením ke vzdálené relaci přejdete na panel **Nastavení** webového klienta.
-
-2. Přepněte nastavení **Povolit editor IME** na **zapnuto**.
-
-3. V rozevírací nabídce vyberte klávesnici, kterou budete používat ve vzdálené relaci.
-
-4. Připojte se ke vzdálené relaci.
-
-Webový klient bude potlačit místní okno editoru IME, pokud se zaměřujete na vzdálenou relaci. Změna nastavení editoru IME poté, co jste už připojení ke vzdálené relaci, nebude mít žádný vliv.
-
->[!NOTE]
->Pokud není jazyková sada nainstalována na hostitelském virtuálním počítači, bude Vzdálená relace ve výchozím nastavení pro anglickou (USA) klávesnici.
 
 ## <a name="next-steps"></a>Další kroky
 

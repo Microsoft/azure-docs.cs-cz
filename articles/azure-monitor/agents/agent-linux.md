@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 5171cefdb82b958ae8148ff63f1daef5f67916c6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 23597804a34a9bc409db179010569024aa472016
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044953"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725921"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Instalace agenta Log Analytics na počítačích s Linuxem
 Tento článek poskytuje podrobné informace o instalaci agenta Log Analytics v počítačích se systémem Linux pomocí následujících metod:
@@ -71,16 +71,16 @@ Spustitelný soubor python2 musí mít alias na *Python*. Následuje jedna metod
     ```
 
 ## <a name="supported-linux-hardening"></a>Podporované posílení zabezpečení pro Linux
-Agent OMS má podporu vlastního nastavení pro Linux. 
+Agent OMS má omezené možnosti přizpůsobení a posílení podpory pro Linux.
 
 V současné době jsou podporovány následující: 
 - Standardů
 
-Níže jsou uvedené aspekty, které se zatím nepodporují:
+Následující možnosti se nepodporují:
 - SLUŽBY
 - SELINUX
 
-Jiné metody posílení zabezpečení a přizpůsobení nejsou pro agenta OMS podporovány ani plánovány.  
+Podpora služby CIS a posílení zabezpečení SELINUX je plánována pro [Azure Monitoring Agent](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview). Další metody posílení zabezpečení a přizpůsobení nejsou pro agenta OMS podporovány ani plánovány.  
 
 ## <a name="agent-prerequisites"></a>Předpoklady pro agenta
 

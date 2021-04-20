@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: bfecc88dc0c504cee615f1a3d35f9208aeb724f8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 44fe6bb3787e1fe0df7ccf83200497b46c473568
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309180"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728495"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices"></a>Kurz: vytvoření hierarchie IoT Edgech zařízení
 
@@ -309,7 +309,7 @@ Při spuštění `iotedge check` z nižší vrstvy se program pokusí načíst i
 V tomto kurzu použijeme port 8000, proto ho musíme zadat:
 
 ```bash
-sudo iotedge check --diagnostics-image-name $upstream:8000/azureiotedge-diagnostics:1.2.0-rc4
+sudo iotedge check --diagnostics-image-name $upstream:8000/azureiotedge-diagnostics:1.2
 ```
 
 `azureiotedge-diagnostics`Hodnota je načtena z registru kontejneru, který je propojen s modulem registru. Tento kurz má ve výchozím nastavení nastavené na https://mcr.microsoft.com:

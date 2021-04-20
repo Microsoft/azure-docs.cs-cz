@@ -235,6 +235,8 @@
           href: core/howto-export-data.md
         - name: Export dat do cílových umístění v cloudu (starší verze)
           href: core/howto-export-data-legacy.md
+        - name: Transformace dat pro Azure IoT Central
+          href: core/howto-transform-data.md
         - name: Použití pracovních postupů pro integraci s ostatními službami
           href: core/howto-configure-rules-advanced.md
         - name: Vytvoření vlastních rolí

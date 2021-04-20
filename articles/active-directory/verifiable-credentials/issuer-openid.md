@@ -9,16 +9,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 8771c61f96b244e0cc0bca1c61ceb8042b4a5b4c
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 942b77f8338636f9dda5dcf6cd4262dad57b4b0a
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220194"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726263"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>Příklady komunikace služby vystavitele (Preview)
 
-Ověřitelná služba Vystavitel přihlašovacích údajů může vystavovat ověřitelné přihlašovací údaje načtením deklarací identity z tokenu ID generovaného poskytovatelem identity kompatibilního s OpenID vaší organizace. V tomto článku se naučíte, jak nastavit poskytovatele identity tak, aby ověřovatel mohl komunikovat s ním a načíst správný token ID, který se předává vydávající službě. 
+Služba ověřitelných přihlašovacích údajů Azure AD může vystavovat ověřitelné přihlašovací údaje načtením deklarací identity z tokenu ID generovaného poskytovatelem identity kompatibilního s OpenID vaší organizace. V tomto článku se naučíte, jak nastavit poskytovatele identity tak, aby ověřovatel mohl komunikovat s ním a načíst správný token ID, který se předává vydávající službě. 
 
 > [!IMPORTANT]
 > Azure Active Directory ověřitelných přihlašovacích údajů je aktuálně ve verzi Public Preview.

@@ -1,24 +1,23 @@
 ---
-title: Import nové aktualizace | Microsoft Docs
-description: Průvodce How-To pro import nové aktualizace do IoT Hub aktualizace zařízení pro IoT Hub.
+title: Postup přidání nové aktualizace | Microsoft Docs
+description: Průvodce How-To pro přidání nové aktualizace do aktualizace zařízení pro IoT Hub.
 author: andrewbrownmsft
 ms.author: andbrown
-ms.date: 2/11/2021
+ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 196a449f25d97fb1c1b7b8d79ee8889e0d31a5ae
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e90253100b86397c5ca4873d5c38a3511ba21555
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717742"
+ms.locfileid: "107728564"
 ---
-# <a name="import-new-update"></a>Importovat novou aktualizaci
-Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pro IoT Hub. Pokud jste to ještě neudělali, nezapomeňte se seznámit se základními [koncepcemi importu](import-concepts.md).
+# <a name="add-an-update-to-device-update-for-iot-hub"></a>Přidat aktualizaci do aktualizace zařízení pro IoT Hub
+Přečtěte si, jak přidat novou aktualizaci do aktualizace zařízení pro IoT Hub.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Existující soubor aktualizace, který chcete nasadit do zařízení. Může se jednat o soubor obrázku pro aktualizaci na základě bitové kopie nebo [soubor manifestu apt](device-update-apt-manifest.md) pro aktualizaci založenou na balíčku. ([Návody zvolit?](understand-device-update.md#support-for-a-wide-range-of-update-artifacts))
 * [Pro IoT Hub povolený přístup k IoT Hub s aktualizací zařízení](create-device-update-account.md). 
 * Zařízení IoT (nebo simulátor) zřízené pro aktualizaci zařízení v IoT Hub.
 * [PowerShell 5](/powershell/scripting/install/installing-powershell) nebo novější (zahrnuje instalace pro Linux, MacOS a Windows)
@@ -29,9 +28,19 @@ Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pr
 > [!NOTE]
 > Některá data odeslaná do této služby mohou být zpracována v oblasti mimo oblast, ve které byla tato instance vytvořena.
 
-## <a name="create-device-update-import-manifest"></a>Vytvořit manifest pro import aktualizace zařízení
+## <a name="obtain-an-update-for-your-devices"></a>Získání aktualizace pro vaše zařízení
 
-1. Pokud jste to ještě neudělali, Získejte soubor obrázku nebo soubor manifestu APT, který chcete nasadit na zařízení. Může to být od výrobce zařízení nebo z systémového integrátoru, se kterým pracujete, nebo dokonce skupiny v rámci vaší organizace. Ujistěte se, že soubor s obrázkem aktualizace nebo soubor manifestu APT je umístěný v adresáři přístupném z PowerShellu.
+Teď, když je aktualizace zařízení [nastavená](create-device-update-account.md), jste připraveni aktualizovat svoje zařízení. Nejdříve ale budete potřebovat vlastní soubory aktualizací pro ta zařízení, která budete nasazovat.
+
+Pokud jste si koupili zařízení od integrátoru OEM nebo některého z integrátoru řešení, bude tato organizace pravděpodobně poskytovat soubory aktualizace za vás, aniž byste museli vytvářet aktualizace. Pokud chcete zjistit, jak jsou aktualizace k dispozici, obraťte se na integrátora OEM nebo řešení.
+
+Pokud už vaše organizace vytvořila software pro zařízení, která používáte, tato skupina bude vytvářet aktualizace pro daný software. Při vytváření aktualizace, která se má nasadit pomocí aktualizace zařízení pro IoT Hub, zahajte buď [přístup na základě bitové kopie, nebo na základě balíčku](understand-device-update.md#support-for-a-wide-range-of-update-artifacts) podle vašeho scénáře. Poznámka: Pokud chcete vytvořit vlastní aktualizace, ale teprve začínáte, je GitHub vhodný způsob, jak spravovat vývoj. Svůj zdrojový kód můžete ukládat a spravovat a provádět průběžnou integraci (CI) a průběžné nasazování (CD) pomocí [akcí GitHubu](https://docs.github.com/en/actions/guides/about-continuous-integration).
+
+## <a name="create-a-device-update-import-manifest"></a>Vytvoření manifestu pro import aktualizace zařízení
+
+Pokud jste to ještě neudělali, nezapomeňte se seznámit se základními [koncepcemi importu](import-concepts.md).
+
+1. Ujistěte se, že vaše soubory aktualizace jsou umístěné v adresáři přístupném z prostředí PowerShell.
 
 2. Vytvořte textový soubor s názvem **AduUpdate. psm1** v adresáři, ve kterém se nachází soubor s obrázkem aktualizace nebo soubor manifestu apt. Pak otevřete rutinu prostředí PowerShell [AduUpdate. psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) , zkopírujte obsah do textového souboru a uložte textový soubor.
 
@@ -67,7 +76,7 @@ Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pr
     | updateFilePath (celkem) | Cesta k souborům aktualizací v počítači
 
 
-## <a name="review-generated-import-manifest"></a>Zkontrolovat vygenerovaný manifest importu
+## <a name="review-the-generated-import-manifest"></a>Zkontrolujte vygenerovaný manifest importu.
 
 Příklad:
 ```json
@@ -110,7 +119,7 @@ Příklad:
 }
 ```
 
-## <a name="import-update"></a>Importovat aktualizaci
+## <a name="import-an-update"></a>Importovat aktualizaci
 
 > [!NOTE]
 > Následující pokyny ukazují, jak naimportovat aktualizaci prostřednictvím uživatelského rozhraní Azure Portal. K importu aktualizace můžete použít taky [aktualizaci zařízení IoT Hub API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) . 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 72aa8e5e3284e0ee7fbe63e0fb617b9eba03292e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e762b8c2e2d7f72b89629c520560b205cedcd036
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100417362"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728551"
 ---
 # <a name="iot-central-solution-builder-guide"></a>Průvodce IoT Centralm tvůrcem řešení
 
@@ -51,9 +51,10 @@ IoT Central má integrované analytické možnosti, které operátor může pou�
 Jako tvůrce řešení můžete použít možnosti exportu dat a pravidel v IoT Central pro integraci s jinými službami. Další informace najdete v následujících tématech:
 
 - [Export dat IoT do cloudových cílů pomocí exportu dat](howto-export-data.md)
+- [Transformovat data pro IoT Central](howto-transform-data.md)
 - [Použití pracovních postupů k integraci aplikace IoT Central Azure s dalšími Cloud Services](howto-configure-rules-advanced.md)
 - [Rozšíření Azure IoT Central o vlastní pravidla s využitím služeb Stream Analytics, Azure Functions a SendGrid](howto-create-custom-rules.md)
-- [Rozšiřování Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks](howto-create-custom-analytics.md)
+- [Rozšíření Azure IoT Central o vlastní analýzy s využitím služby Azure Databricks](howto-create-custom-analytics.md)
 - [Vizualizace a analýza dat IoT Central Azure v řídicím panelu Power BI](howto-connect-powerbi.md)
 
 ## <a name="next-steps"></a>Další kroky

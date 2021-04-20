@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: 0f2d3c830f27eec9f521e6f79ac8dce3bce818e9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
-ms.translationtype: HT
+ms.openlocfilehash: ce9dff017a796e420586ad191a59c149bed07190
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442560"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726821"
 ---
 # <a name="azure-marketplace"></a>Azure Marketplace
 
@@ -74,45 +74,7 @@ Následující služby se ve smlouvě Enterprise účtují po hodinách namísto
 
 Pokud máte smlouvu Enterprise, platíte za službu Azure RemoteApp na základě vaší cenové úrovně smlouvy Enterprise. Neúčtují se žádné další poplatky. Standardní cena zahrnuje počátečních 40 hodin. Neomezená cena pokrývá počátečních 80 hodin. RemoteApp přestane generovat data o využití po uplynutí 80 hodin.
 
-## <a name="azure-marketplace-faq"></a>Nejčastější dotazy k Azure Marketplace
-
-Tato část vysvětluje, jak se záloha na Azure může použít na některé služby prodejců třetích stran na webu Azure Marketplace.
-
-### <a name="what-changed-with-azure-marketplace-services-and-azure-ea-prepayment"></a>Co se u služeb Azure Marketplace a zálohy na Azure se smlouvou EA změnilo?
-
-Od 1. března 2018 využívají některé služby prodejců třetích stran zálohu na Azure se smlouvou EA. S výjimkou rezervovaných instancí virtuálního počítače Azure byly služby dříve fakturovány mimo zálohu na Azure se smlouvou EA a účtovaly se samostatně.
-
-Rozšířili jsme možnosti použití zálohy na Azure tak, aby zahrnovaly některé služby publikované na Azure Marketplace třetími stranami, které si naši zákazníci kupují nejčastěji. Použití zálohy na Azure se smlouvou EA pro tyto služby na Azure Marketplace pomáhá zjednodušit nákup a správu plateb.
-
-### <a name="why-did-we-make-this-change"></a>Proč jsme tuto změnu provedli?
-
-Zákazníci neustále hledají další způsoby, jak využít zálohu na Azure hrazenou předem. Zákazníci tuto změnu často vyžadovali a měla vliv na velkou část zákazníků Azure Marketplace.
-
-### <a name="how-do-you-benefit"></a>Jaké přináší výhody?
-
-Fakturace se zjednoduší a budete mít možnost zálohu na Azure se smlouvou EA lépe využít. Vzhledem k tomu, že tyto služby jsou zahrnuté do zálohy na Azure, bude vaše záloha na Azure se smlouvou EA o to cennější.
-
-### <a name="what-azure-marketplace-services-use-azure-ea-prepayment-and-how-do-i-know"></a>Které služby Azure Marketplace používají zálohu na Azure se smlouvou EA a jak to zjistím?
-
-Když si koupíte službu, která používá zálohu na Azure, Azure Marketplace zobrazí právní omezení. Podporují se některé služby publikované společnostmi Red Hat, SUSE, Autodesk a Oracle. Podobně pojmenované služby publikované jinými stranami se v současné době od zálohy na Azure neodečtou. Úplný seznam najdete na konci těchto nejčastějších dotazů.
-
-### <a name="what-if-my-azure-ea-prepayment-runs-out"></a>Co když zálohu na Azure se smlouvou EA vyčerpám?
-
-Pokud využijete celou svoji zálohu na Azure a služby využíváte nadlimitně, poplatky související s těmito službami se zobrazí na další faktuře za nadlimitní využití společně se všemi dalšími službami založenými na spotřebě. Před změnou, ke které došlo 1. března 2018, se tyto poplatky fakturovaly s ostatními službami Azure Marketplace.
-
-### <a name="why-dont-all-azure-marketplaces-consume-azure-ea-prepayment"></a>Proč zálohu na Azure se smlouvou EA nevyužívají všechny služby Azure Marketplace?
-
-Často pracujeme na tom, abychom zákazníkům v souvislosti se zálohou na Azure se smlouvou EA poskytovali co nejlepší služby. Tato změna se týkala velkého množství zákazníků a významné části celkové útraty na Azure Marketplace. V budoucnu se možná přidají další služby.
-
-### <a name="how-does-this-impact-indirect-enrollment-and-partners"></a>Jaký to bude mít vliv na nepřímé registrace a partnery?
-
-Na naše zákazníky ani partnery s nepřímou registrací to nebude mít žádný vliv. Na tyto služby se vztahují stejné možnosti přirážky partnera jako na ostatní služby založené na spotřebě. Jedinou změnou je, že se poplatky objevují na jiné faktuře a že platba poplatků pochází ze záloh na Azure se smlouvou EA příslušného zákazníka.
-
-### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-azure-ea-prepayment"></a>Existuje seznam služeb Azure Marketplace, které využívají zálohu na Azure se smlouvou EA?
-
-Pro konkrétní nabídky Azure Marketplace je možné využít prostředky zálohy na Azure. Úplný seznam produktů zapojených do tohoto programu najdete v tématu týkajícím se [služeb třetích stran využívajících zálohu na Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment).
-
-
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o [cenách](ea-pricing-overview.md)
+- Přečtěte si [Nejčastější dotazy týkající se cost management + fakturace](../cost-management-billing-faq.yml) , kde najdete seznam otázek a odpovědí týkajících se služeb Azure Marketplace a předplacení Azure EA.

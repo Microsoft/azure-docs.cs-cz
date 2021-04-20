@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/16/2021
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f48135523238711eb9058b35348895c851a95403
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: b4bb58f106f3255ec6cd80b14b175ff413bc0dc6
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713817"
+ms.locfileid: "107725795"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Vlastní ověření e-mailu pomocí Mailjet
 
@@ -35,8 +35,6 @@ Pomocí vlastního e-mailu v Azure Active Directory B2C (Azure AD B2C) můžete 
 
 Vlastní ověřování e-mailu vyžaduje použití poskytovatele e-mailu jiného výrobce, jako je [Mailjet](https://Mailjet.com), [SendGrid](./custom-email-sendgrid.md)nebo [SparkPost](https://sparkpost.com), vlastní REST API nebo libovolného poskytovatele e-mailu založeného na protokolu HTTP (včetně vaší vlastní). Tento článek popisuje nastavení řešení, které používá Mailjet.
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="create-a-mailjet-account"></a>Vytvoření účtu Mailjet
 
 Pokud ho ještě nemáte, začněte tím, že nastavíte účet Mailjet (zákazníci Azure můžou odemknout 6 000 e-mailů s omezením 200 e-mailů za den). 
@@ -46,7 +44,7 @@ Pokud ho ještě nemáte, začněte tím, že nastavíte účet Mailjet (zákazn
 2. Přejděte na [stránku správy klíčů rozhraní API](https://app.mailjet.com/account/api_keys). Zaznamenejte **klíč rozhraní API** a **tajný klíč** pro použití v pozdějším kroku. Oba klíče jsou generovány automaticky při vytvoření vašeho účtu.  
 
 > [!IMPORTANT]
-> Mailjet nabízí zákazníkům možnost posílat e-maily ze sdílených IP [adres a vyhrazených IP adres](https://documentation.mailjet.com/hc/articles/360043101973-What-is-a-dedicated-IP). Při použití vyhrazených IP adres je potřeba vytvořit si vlastní pověst správně s IP adresou zahřívání. Další informace najdete v tématu [návody zahřívání služby IP?](https://documentation.mailjet.com/hc/articles/1260803352789-How-do-I-warm-up-my-IP-).
+> Mailjet nabízí zákazníkům možnost posílat e-maily ze sdílených IP [adres a vyhrazených IP adres](https://documentation.mailjet.com/hc/articles/360043101973-What-is-a-dedicated-IP). Při používání vyhrazených IP adres je potřeba, abyste správně vytvořili svou vlastní pověst s IP adresou zahřívání. Další informace najdete v tématu [návody zahřívání služby IP?](https://documentation.mailjet.com/hc/articles/1260803352789-How-do-I-warm-up-my-IP-).
 
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Vytvořit klíč zásad Azure AD B2C
@@ -321,6 +319,9 @@ V části definice obsahu dál `<BuildingBlocks>` přidejte do zásady následuj
 ## <a name="add-otp-technical-profiles"></a>Přidat technické profily jednorázového hesla
 
 `GenerateOtp`Technický profil generuje kód pro e-mailovou adresu. `VerifyOtp`Technický profil ověří kód přidružený k e-mailové adrese. Můžete změnit konfiguraci formátu a vypršení platnosti jednorázového hesla. Další informace o technických profilech pro jednorázové heslo najdete v tématu [definice technického profilu s](one-time-password-technical-profile.md)jednorázovým heslem.
+
+> [!NOTE]
+> Kódy jednorázového hesla generované protokolem Web. TPEngine. Providers. OneTimePasswordProtocolProvider jsou vázané na relaci prohlížeče. To znamená, že uživatel může generovat jedinečné kódy jednorázového hesla v různých relacích prohlížeče, které jsou každý platný pro příslušné relace. Naproti tomu kód jednorázového hesla generovaný integrovaným uživatelským tokem je nezávislý na relaci prohlížeče, takže pokud uživatel v nové relaci prohlížeče vygeneruje nový kód jednorázového hesla, nahradí předchozí kód pro jednorázové heslo.
 
 Do prvku přidejte následující technické profily `<ClaimsProviders>` .
 

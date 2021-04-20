@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/05/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: 94981cd0912f76b710b3a60040ffbffd38381bcd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 3c6da2137f2db43284ce7a533ff763e9ef157f35
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552100"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726641"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Co je nového v Azure NetApp Files
 
@@ -27,12 +27,16 @@ Azure NetApp Files se pravidelně aktualizují. Tento článek obsahuje souhrn n
 
 ## <a name="april-2021"></a>Duben 2021
 
+* [Šifrování protokolu SMB3](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Preview) 
+
+    Nyní můžete povolit šifrování protokolu SMB3 u Azure NetApp Files svazků SMB a Dual Protocol. Tato funkce umožňuje šifrování pro SMB3 data pomocí [algoritmu AES-ccm na smb 3,0 a algoritmu AES-GCM u připojení SMB 3.1.1](/windows-server/storage/file-server/file-server-smb-overview#features-added-in-smb-311-with-windows-server-2016-and-windows-10-version-1607) . Klienti SMB, kteří nepoužívají šifrování SMB3, nebudou mít k tomuto svazku přístup. Data v klidovém stavu jsou šifrována bez ohledu na toto nastavení. Šifrování protokolu SMB dále vylepšuje zabezpečení. Může to ale ovlivnit klienta (zatížení procesoru pro šifrování a dešifrování zpráv). Může to také ovlivnit využití prostředků úložiště (snížení propustnosti). Před nasazením úloh do produkčního prostředí byste měli otestovat dopad na výkon šifrování proti vašim aplikacím.
+
 * [Active Directory Domain Services (přidání) mapování uživatele LDAP pomocí rozšířených skupin NFS](configure-ldap-extended-groups.md) (Preview)   
 
     Ve výchozím nastavení Azure NetApp Files při zpracování přihlašovacích údajů uživatele NFS, jak je definováno v [dokumentu RFC 5531](https://tools.ietf.org/html/rfc5531), podporovat až 16 ID skupin. Díky této nové funkci teď můžete zvýšit maximální až 1 024, pokud máte uživatele, kteří jsou členy více než výchozí počet skupin. Pro podporu této funkce se teď dají přidat taky svazky systému souborů NFS, aby se přidal protokol LDAP, který umožňuje uživatelům služby Active Directory LDAP s položkami rozšířených skupin (s až 1024 skupinami) získat přístup ke svazku. 
 
 ## <a name="march-2021"></a>Březen 2021
-
+ 
 * [Sdílené složky SMB – nepřetržitá dostupnost (](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) ve verzi Preview)  
 
     Transparentní převzetí služeb při selhání ve službě SMB umožňuje operace údržby služby Azure NetApp Files bez přerušení připojení k serverovým aplikacím, které ukládají a získávají přístup k datům na svazcích SMB. Pro podporu transparentního převzetí služeb při selhání pomocí protokolu SMB Azure NetApp Files nyní podporuje možnost sdílené složky nepřetržité dostupnosti SMB pro použití s SQL Server aplikacemi přes SMB běžící na virtuálních počítačích Azure. Tato funkce je v současnosti podporovaná ve Windows SQL Server. Linux SQL Server se momentálně nepodporuje. Povolení této funkce přináší významné SQL Server vylepšení výkonu a škálování a cenová výhoda pro [jednu instanci, Always-On instanci clusteru s podporou převzetí služeb při selhání a Always-On nasazení skupin dostupnosti](azure-netapp-files-solution-architectures.md#sql-server). Podívejte se [na výhody použití Azure NetApp Files k nasazení SQL Server](solutions-benefits-azure-netapp-files-sql-server.md).

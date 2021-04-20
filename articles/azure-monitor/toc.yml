@@ -87,6 +87,8 @@
               href: app/resource-manager-web-app.md
             - name: Azure Functions
               href: app/resource-manager-function-app.md
+        - name: Přehledy kontejnerů
+          href: containers/resource-manager-container-insights.md
         - name: Pravidla shromažďování dat
           href: agents/resource-manager-data-collection-rules.md
         - name: Nastavení diagnostiky
@@ -95,10 +97,10 @@
           href: logs/resource-manager-workspace.md
         - name: Dotazy na protokoly
           href: logs/resource-manager-log-queries.md
+        - name: Přehledy SQL
+          href: insights/resource-manager-sql-insights.md
         - name: Workbooks
           href: visualize/resource-manager-workbooks.md
-        - name: Přehledy kontejnerů
-          href: containers/resource-manager-container-insights.md
         - name: Přehledy virtuálních počítačů
           href: vm/resource-manager-vminsights.md
     - name: Azure CLI

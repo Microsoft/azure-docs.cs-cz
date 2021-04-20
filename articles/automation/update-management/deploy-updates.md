@@ -3,14 +3,14 @@ title: Postup vytvoření nasazení aktualizací pro Azure Automation Update Man
 description: Tento článek popisuje, jak naplánovat nasazení aktualizací a zkontrolovat jejich stav.
 services: automation
 ms.subservice: update-management
-ms.date: 03/19/2021
+ms.date: 04/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6d35d6b49ab72d8aa7b25506011147ab624273fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e410e5de529bde122fe42d21b593a6fc483dcbc0
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104669674"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726666"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Jak nasadit aktualizace a zkontrolovat výsledky
 
@@ -69,15 +69,30 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
 
 7. Pomocí oblasti **klasifikace aktualizací** můžete určit [klasifikace aktualizací](view-update-assessments.md#work-with-update-classifications) pro produkty. U každého produktu zrušte výběr všech podporovaných klasifikací aktualizací, ale těch, které se mají zahrnout do nasazení aktualizace.
 
+   :::image type="content" source="./media/deploy-updates/update-classifications-example.png" alt-text="Příklad znázorňující výběr konkrétní klasifikace aktualizací.":::
+
     Pokud je vaše nasazení určeno pro použití pouze vybrané sady aktualizací, je nutné zrušit výběr všech předem vybraných klasifikací aktualizací při konfiguraci možnosti **Zahrnout/vyloučit aktualizace** , jak je popsáno v následujícím kroku. Tím se zajistí, že se na cílových počítačích nainstalují jenom aktualizace, které jste zadali pro *zahrnutí* do tohoto nasazení.
 
+   >[!NOTE]
+   > Nasazení aktualizací podle klasifikace aktualizací nefunguje na verzích RTM CentOS. Chcete-li správně nasadit aktualizace pro CentOS, vyberte všechny klasifikace, aby bylo zajištěno, že budou aktualizace aplikovány. V současné době není podporována žádná podporovaná metoda pro povolení nativní klasifikace – dostupnost dat v CentOS. Další informace o [klasifikacích aktualizací](overview.md#update-classifications)najdete v následujících tématech.
+
 8. Pomocí oblasti **zahrnout nebo vyloučit aktualizace** můžete přidat nebo vyloučit vybrané aktualizace z nasazení. Na stránce **zahrnutí/vyloučení** zadejte čísla ID článků znalostní báze, která se mají zahrnout nebo vyloučit pro aktualizace Windows. Pro podporovanou distribuce systému Linux zadáte název balíčku.
+
+   :::image type="content" source="./media/deploy-updates/include-specific-updates-example.png" alt-text="Příklad znázorňující, jak zahrnout konkrétní aktualizace.":::
 
    > [!IMPORTANT]
    > Zapamatujte si, že vyloučení přepisují. Například pokud definujete pravidlo vyloučení `*` , Update Management vyloučí všechny opravy nebo balíčky z instalace. Vyloučené opravy se pořád na počítačích zobrazují jako chybějící. U počítačů se systémem Linux, pokud zahrnete balíček, který má vyloučený závislý balíček, Update Management nenainstaluje hlavní balíček.
 
    > [!NOTE]
    > Aktualizace, které se nahradily, se nedají zadat, aby se zahrnuly do nasazení aktualizace.
+
+   Tady je několik ukázkových scénářů, které vám pomůžou pochopit, jak současně použít klasifikaci zahrnutí/vyloučení a aktualizace v nasazeních aktualizací:
+
+   * Pokud chcete jenom nainstalovat konkrétní seznam aktualizací, neměli byste vybrat žádné **klasifikace aktualizací** a zadat seznam aktualizací, které se mají použít, pomocí možnosti **Zahrnout** .
+
+   * Chcete-li nainstalovat pouze aktualizace zabezpečení a kritické aktualizace společně s jednou nebo více volitelnými aktualizacemi ovladačů, v části **klasifikace aktualizací** byste měli vybrat možnost **zabezpečení** a **kritické** . Pak zadejte aktualizace ovladačů pro možnost **Zahrnout** .
+
+   * Chcete-li nainstalovat pouze aktualizace zabezpečení a kritické aktualizace, ale přeskočit jednu nebo více aktualizací pro Python, aby nedošlo k narušení vaší starší aplikace, měli byste v části **klasifikace aktualizací** vybrat možnost **zabezpečení** a **kritické** . Potom pro možnost **vyloučit** přidejte balíčky Pythonu, které se mají přeskočit.
 
 9. Vyberte **Nastavení plánu**. Výchozí čas spuštění je 30 minut po aktuálním čase. Čas spuštění můžete nastavit na jakýkoli čas minimálně 10 minut po aktuálním čase.
 

@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: cc532c5ac6babb8378860ac5049e931cc7657932
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1caa8b680b6bc3df20ad31e581d336195308a2dc
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629253"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726317"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurace aplikace Java pro Azure App Service
 
@@ -32,7 +32,10 @@ V opačném případě vaše metoda nasazení bude záviset na typu archivu:
 
 ### <a name="java-se"></a>Java SE
 
-Pokud chcete nasadit soubory. jar do Java SE, použijte `/api/zipdeploy/` koncový bod webu Kudu. Další informace o tomto rozhraní API najdete v [této dokumentaci](./deploy-zip.md#rest).
+Pokud chcete nasadit soubory. jar do Java SE, použijte `/api/zipdeploy/` koncový bod webu Kudu. Další informace o tomto rozhraní API najdete v [této dokumentaci](./deploy-zip.md#rest). 
+
+> [!NOTE]
+>  Vaše aplikace. jar musí být pojmenována `app.jar` pro App Service k identifikaci a spuštění vaší aplikace. Modul plug-in Maven (uvedený výše) při nasazení automaticky přejmenuje vaši aplikaci. Pokud si svůj JAR nepřejete přejmenovat na *App. jar*, můžete nahrát skript prostředí pomocí příkazu pro spuštění vaší aplikace. jar. Vložte absolutní cestu k tomuto skriptu do textového pole [spouštěcí soubor](faq-app-service-linux.md#built-in-images) v části konfigurace portálu. Spouštěcí skript se nespouští z adresáře, do kterého je umístěn. Proto ve spouštěcím skriptu vždy používejte absolutní cesty k referenčním souborům (například: `java -jar /home/myapp/myapp.jar`).
 
 ### <a name="tomcat"></a>Tomcat
 

@@ -7,16 +7,16 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: quickstart
-ms.date: 12/02/2020
+ms.topic: include
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01149eed5cc4195ca501507e7fe1d66fffecb84d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2f01b1d222470c49505638be64180948b6f7e046
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107326969"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728246"
 ---
 Použijte REST API optického rozpoznávání znaků pro čtení vytištěného a rukopisného textu.
 
@@ -37,6 +37,8 @@ Použijte REST API optického rozpoznávání znaků pro čtení vytištěného 
 
 Služba OCR může číst viditelný text v obrázku a převést jej na datový proud znaků. Další informace o rozpoznávání textu naleznete v tématu [Přehled optického rozpoznávání znaků (OCR)](../overview-ocr.md).
 
+### <a name="call-the-read-api"></a>Volání rozhraní API pro čtení
+
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
 1. Zkopírujte do textového editoru následující příkaz.
@@ -53,6 +55,8 @@ curl -v -X POST "https://westcentralus.api.cognitive.microsoft.com/vision/v3.2/r
 ```
 
 Odpověď bude obsahovat `Operation-Location` hlavičku, jejíž hodnota je jedinečná adresa URL. Tuto adresu URL použijete k dotazování na výsledky operace čtení. Platnost adresy URL vyprší během 48 hodin.
+
+### <a name="get-read-results"></a>Získat výsledky čtení
 
 1. Zkopírujte následující příkaz do textového editoru.
 1. Adresu URL nahraďte `Operation-Location` hodnotou, kterou jste zkopírovali v předchozím kroku.
@@ -131,7 +135,9 @@ curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/vision/v3.2/re
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte rozhraní API pro optické rozpoznávání OCR podrobněji. Chcete-li rychle experimentovat s rozhraním API, vyzkoušejte [konzolu Open API Testing](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005/console).
+V tomto rychlém startu jste zjistili, jak volat REST API pro čtení. V dalším kroku se dozvíte víc o funkcích rozhraní API pro čtení.
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte rozhraní API pro optické rozpoznávání znaků](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
+>[Volání rozhraní API pro čtení](../Vision-API-How-to-Topics/call-read-api.md)
+
+* [Přehled rozpoznávání OCR](../overview-ocr.md)

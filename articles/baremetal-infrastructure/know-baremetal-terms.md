@@ -4,20 +4,20 @@ description: Poznejte pojem infrastruktura Azure BareMetal.
 ms.topic: conceptual
 ms.subservice: workloads
 ms.date: 04/06/2021
-ms.openlocfilehash: aa7d9693b3417ff0bb6c6a61800aee72cd416c48
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 61ff958e75952f73efb222df3f0c4d5437668cd3
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536781"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725453"
 ---
 # <a name="know-the-terms-for-baremetal-infrastructure"></a>Znát pojem BareMetal Infrastructure
 
 V tomto článku se podíváme na některé důležité výrazy, které se týkají infrastruktury BareMetal.
 
-- **Revize**: existuje původní revize razítka známá jako revize 3 (rev 3) a dvě další revize razítka pro BareMetal instance. Jednotlivá razítka se liší v architektuře a blízkosti hostitelů virtuálních počítačů Azure:
-    - **Revize 4** (Rev 4): novější návrh, který poskytuje užší blízkost hostitelům virtuálních počítačů Azure a snižuje latenci mezi virtuálními počítači Azure a instancemi SAP HANA. 
-    - **Revize 4,2** (Rev 4,2): nejnovější BareMetal infrastruktura s použitím existující architektury Rev 4. Rev 4 poskytuje užší blízkost pro hostitele virtuálních počítačů Azure. Má významná vylepšení latence sítě mezi virtuálními počítači Azure a BareMetal instancemi nasazenými v razítkech nebo řádcích Rev 4. Pomocí Azure Portal můžete přistupovat k instancím služby BareMetal a spravovat je.    
+- **Revize**: Existují dvě různé revize razítek pro razítka BareMetal infrastruktury (Hana velká instance). Ty se liší v architektuře a blízkosti hostitelů virtuálních počítačů Azure:
+    - "Revize 3" (rev 3): původní návrh nasazený v polovině-2016.
+    - "Revize 4,2" (Rev 4,2): nový návrh, který poskytuje užší blízkost pro hostitele virtuálních počítačů Azure, s nízkou latencí sítě mezi virtuálními počítači Azure a velkými instancemi HANA. Prostředky v Azure Portal jsou označovány jako "infrastruktura BareMetal" a zákazníci mají přístup ke svým prostředkům jako instance BareMetal z Azure Portal.
 
 - **Razítko**: definuje interní velikost nasazení BareMetal instancí Microsoftu. Před nasazením instancí se musí v umístění datacentra nasadit razítko instance BareMetal, které se skládá z úložišť COMPUTE, sítě a úložiště. Toto nasazení se nazývá razítko instance BareMetal.
 

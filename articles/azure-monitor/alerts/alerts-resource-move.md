@@ -6,16 +6,16 @@ ms.author: harelbr
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 02/14/2021
-ms.openlocfilehash: eb6dbb74fe0d345a157049e79f7a3642499d7cfa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 727196f274db3abae75a38d3ecdf31a78dec0fab
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037978"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725939"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Jak aktualizovat pravidla upozornění nebo pravidla akcí, když se jejich cílový prostředek přesune do jiné oblasti Azure
 
-Tento článek popisuje, proč můžou být ovlivněná stávající pravidla a [pravidla](./alerts-action-rules.md) pro [výstrahy](./alerts-overview.md) při přesunu dalších prostředků Azure mezi oblastmi a jak tyto problémy identifikovat a vyřešit. Podívejte se do dokumentace k hlavnímu [prostředku přesunutí](../../azure-resource-manager/management/move-region.md) , kde najdete další informace o tom, kdy se prostředek přesouvá mezi oblastmi, které jsou užitečné, a kontrolní seznam návrhu procesu přesunutí.
+Tento článek popisuje, proč můžou být ovlivněná stávající pravidla a [pravidla](./alerts-action-rules.md) pro [výstrahy](./alerts-overview.md) při přesunu dalších prostředků Azure mezi oblastmi a jak tyto problémy identifikovat a vyřešit. Podívejte se do dokumentace k hlavnímu [prostředku přesunutí](../../azure-resource-manager/management/move-resources-overview.md) , kde najdete další informace o tom, kdy se prostředek přesouvá mezi oblastmi, které jsou užitečné, a kontrolní seznam návrhu procesu přesunutí.
 
 ## <a name="why-the-problem-exists"></a>Proč existuje problém
 
@@ -82,7 +82,7 @@ Pokud se přesunuly **jenom některé** prostředky v oboru, je potřeba odebrat
 
 ### <a name="change-the-scope-of-a-rule-using-azure-resource-manager-templates"></a>Změna rozsahu pravidla pomocí Azure Resource Manager šablon
 
-1. Získejte šablonu Azure Resource Manager pravidla.  Export šablony pravidla z Azure Portal:
+1. Získejte šablonu Azure Resource Manager pravidla.   Export šablony pravidla z Azure Portal:
    1. Přejděte do části skupiny prostředků na portálu a otevřete skupinu prostředků, která pravidlo obsahuje.
    2. V části Přehled zaškrtněte políčko **Zobrazit skrytý typ** a proveďte filtrování podle příslušného typu pravidla.
    3. Vyberte příslušné pravidlo a zobrazte jeho podrobnosti.

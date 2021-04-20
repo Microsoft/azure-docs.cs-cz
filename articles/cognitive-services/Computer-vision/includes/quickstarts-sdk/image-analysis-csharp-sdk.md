@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 03/29/2021
 ms.author: pafarley
-ms.openlocfilehash: 407ef167ca05f08d349a017c60164e2fe67977a6
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0af6c97d6179a645b078f2335ff38f48890c42a3
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327780"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728161"
 ---
 <a name="HOLTop"></a>
 
@@ -79,7 +79,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 > [!TIP]
 > Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs), který obsahuje příklady kódu v tomto rychlém startu.
 
-V adresáři projektu otevřete soubor *ComputerVisionQuickstart. cs* v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Přidejte následující `using` direktivy:
+V adresáři projektu otevřete soubor *program. cs* v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Přidejte následující `using` direktivy:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_using)]
 
@@ -106,7 +106,7 @@ V `Main` metodě aplikace přidejte volání metod používaných v rámci tohot
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce sady image Analysis .NET SDK.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 | [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu. Vytvoříte jeho instanci s informacemi o předplatném a použijete ho k provádění většiny operací s imagí.|
 |[ComputerVisionClientExtensions](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions)| Tato třída obsahuje další metody pro **ComputerVisionClient**.|
@@ -150,19 +150,19 @@ Definujte novou metodu pro analýzu obrázků. Přidejte následující kód, kt
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_visualfeatures)]
 
-Vložte libovolný z následujících bloků kódu do metody **AnalyzeImageUrl** k implementaci jejich funkcí. Nezapomeňte na konec přidat pravou hranatou závorku.
-
-```csharp
-}
-```
-
-### <a name="analyze"></a>Analyzovat
+### <a name="call-the-analyze-api"></a>Volání rozhraní API pro analýzu
 
 Metoda **AnalyzeImageAsync** vrací objekt **ImageAnalysis** , který obsahuje všechny extrahované informace.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyze_call)]
 
 Následující části ukazují, jak podrobně analyzovat tyto informace.
+
+Do své metody **AnalyzeImageUrl** vložte libovolný z následujících bloků kódu k analýze dat z vizuálních funkcí, které jste si vyžádali výše. Nezapomeňte na konec přidat pravou hranatou závorku.
+
+```csharp
+}
+```
 
 ### <a name="get-image-description"></a>Získat popis obrázku
 

@@ -2,22 +2,20 @@
 title: Připojení řešení Azure VMware k místnímu prostředí
 description: Přečtěte si, jak propojit řešení Azure VMware s vaším místním prostředím.
 ms.topic: tutorial
-ms.date: 03/13/2021
-ms.openlocfilehash: 0b26dc4756cb37544c2b2f8c5a75df0ac1a9d629
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/19/2021
+ms.openlocfilehash: 392d82a9aca9b60b394a5d5f4a7e6b0111438e59
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491788"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725604"
 ---
 # <a name="connect-azure-vmware-solution-to-your-on-premises-environment"></a>Připojení řešení Azure VMware k místnímu prostředí
 
 V tomto článku budete dál používat [informace shromážděné během plánování](production-ready-deployment-steps.md) pro připojení řešení Azure VMware k místnímu prostředí.
 
-Než začnete, existují dva požadavky na připojení řešení Azure VMware k místnímu prostředí:
+Než začnete, musíte mít okruh ExpressRoute z místního prostředí do Azure.
 
-- Okruh ExpressRoute z místního prostředí do Azure.
-- A/29 překrývající se blok síťových adres CIDR pro ExpressRoute Global Reach partnerský vztah, který jste definovali v rámci [plánovací fáze](production-ready-deployment-steps.md).
 
 >[!NOTE]
 > Můžete se připojit prostřednictvím sítě VPN, ale to je mimo rozsah tohoto dokumentu rychlý Start.

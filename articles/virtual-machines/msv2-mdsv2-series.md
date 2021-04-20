@@ -1,5 +1,5 @@
 ---
-title: Msv2-Series (Preview) – Azure Virtual Machines
+title: Msv2/Mdsv2 střední paměť Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače řady Msv2-Series.
 author: ayshakeen
 ms.service: virtual-machines
@@ -7,18 +7,14 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: a7f4757467523837423d52998eb6b8204090e627
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d85623184ad52fb0d4acd4c49d08badfaf886b30
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562567"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728225"
 ---
-# <a name="msv2-and-mdsv2-series-medium-memory-preview"></a>Střední paměť Msv2 a Mdsv2-Series (Preview)
-
-
-> [!IMPORTANT]
-> Zapojte se do náhledu vyplněním formuláře na **https://aka.ms/Mv2MedMemoryPreview** .  
+# <a name="msv2-and-mdsv2-series-medium-memory"></a>Střední paměť Msv2 a Mdsv2-Series
 
 Série virtuálních počítačů Msv2 a Mdsv2 paměti Intel® Xeon® Platinum 8280 (Cascade Lake) procesor se základní frekvencí jádra 2,7 GHz a 4,0 GHz single core. U těchto virtuálních počítačů zákazníci dosahují větší flexibility s využitím místních disků a možností bez disků. Zákazníci mají také přístup k sadě nových izolovaných velikostí virtuálních počítačů s větším množstvím PROCESORů a paměti, které 192 vCPU paměti a 4 TiB paměti. 
 

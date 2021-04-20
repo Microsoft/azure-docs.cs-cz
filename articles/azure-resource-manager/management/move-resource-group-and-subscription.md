@@ -2,14 +2,14 @@
 title: Přesunutí prostředků do nového předplatného nebo skupiny prostředků
 description: K přesunutí prostředků do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 04/16/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 800e605571ae18b008a86b4add4b0b2adce9c140
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 08f2c123d37ac992e926e983d59edc650a8ab7ef
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078379"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728297"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -160,7 +160,7 @@ retry-after: 15
 ...
 ```
 
-Stavový kód 202 indikuje, že žádost o ověření byla přijata, ale ještě nebyla určena, pokud operace přesunutí proběhne úspěšně. `location`Hodnota obsahuje adresu URL, kterou použijete ke kontrole stavu dlouhotrvající operace.  
+Stavový kód 202 indikuje, že žádost o ověření byla přijata, ale ještě nebyla určena, pokud operace přesunutí proběhne úspěšně. `location`Hodnota obsahuje adresu URL, kterou použijete ke kontrole stavu dlouhotrvající operace.
 
 Chcete-li zjistit stav, odešlete následující požadavek:
 
@@ -209,8 +209,6 @@ Po ověření, že se prostředky dají přesunout, se zobrazí oznámení o bě
 
 Po dokončení budete upozorněni na výsledek.
 
-Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného](troubleshoot-move.md).
-
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
 
 Pokud chcete přesunout existující prostředky do jiné skupiny prostředků nebo předplatného, použijte příkaz [Move-AzResource](/powershell/module/az.resources/move-azresource) . Následující příklad ukazuje, jak přesunout několik prostředků do nové skupiny prostředků.
@@ -223,8 +221,6 @@ Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.Resource
 
 Chcete-li přejít k novému předplatnému, zahrňte hodnotu `DestinationSubscriptionId` parametru.
 
-Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného](troubleshoot-move.md).
-
 ## <a name="use-azure-cli"></a>Použití Azure CLI
 
 Pokud chcete přesunout existující prostředky do jiné skupiny prostředků nebo předplatného, použijte příkaz [AZ Resource Move](/cli/azure/resource#az-resource-move) . Zadejte ID prostředků, které se mají přesunout. Následující příklad ukazuje, jak přesunout několik prostředků do nové skupiny prostředků. V `--ids` parametru zadejte mezerami oddělený seznam ID prostředků, který chcete přesunout.
@@ -236,8 +232,6 @@ az resource move --destination-group newgroup --ids $webapp $plan
 ```
 
 Pokud chcete přejít k novému předplatnému, zadejte `--destination-subscription-id` parametr.
-
-Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného](troubleshoot-move.md).
 
 ## <a name="use-rest-api"></a>Použití rozhraní REST API
 
@@ -255,8 +249,6 @@ V textu žádosti zadáte cílovou skupinu prostředků a prostředky, které se
  "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
 }
 ```
-
-Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného](troubleshoot-move.md).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -303,6 +295,18 @@ Další běžný příklad zahrnuje přesun virtuální sítě. Možná budete m
 **Otázka: Proč nemůžu přesunout některé prostředky v Azure?**
 
 V současné době se nepodporují přesun všech prostředků v Azure. Seznam prostředků, které podporují přesun, najdete v tématu [o podpoře operací přesunutí pro prostředky](move-support-resources.md).
+
+**Otázka: kolik prostředků se dá v rámci jedné operace přesunout?**
+
+Pokud je to možné, přerušit velké přesunuté operace do samostatných operací přesunutí. Správce prostředků okamžitě vrátí chybu, pokud je v jedné operaci více než 800 prostředků. Přechod na méně než 800 prostředků ale může selhat také vypršením časového limitu.
+
+**Otázka: Jaký je význam chyby, že prostředek není v úspěšném stavu?**
+
+Když se zobrazí chybová zpráva s informacemi o tom, že prostředek nelze přesunout, protože není v úspěšném stavu, může se jednat o závislý prostředek, který tento přesun blokuje. Kód chyby je obvykle **MoveCannotProceedWithResourcesNotInSucceededState**.
+
+Pokud zdrojová nebo cílová skupina prostředků obsahuje virtuální síť, při přesunu se zkontrolují stavy všech závislých prostředků pro virtuální síť. Tato kontrolu zahrnuje tyto prostředky přímo a nepřímo závislé na virtuální síti. Pokud některý z těchto prostředků je ve stavu selhání, přesun se zablokuje. Pokud třeba virtuální počítač, který používá virtuální síť, selhal, přesun se zablokuje. Přesunutí je blokováno i v případě, že virtuální počítač není jedním z přesouvaných prostředků a není v jedné ze skupin prostředků pro přesunutí.
+
+Pokud se zobrazí tato chyba, máte dvě možnosti. Buď přesuňte prostředky do skupiny prostředků, která nemá virtuální síť, nebo se obraťte na [podporu](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ## <a name="next-steps"></a>Další kroky
 

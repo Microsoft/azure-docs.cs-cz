@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5eca75da57027789a06259e22e7c6cd5231404b6
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 37ecd06c4e3e71234e8fb1b6bad0cd05482dd31b
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448147"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727842"
 ---
 # <a name="configure-device-redirections"></a>Konfigurace přesměrování zařízení
 
@@ -53,7 +53,7 @@ Pro konfiguraci přesměrování kamery nastavte následující vlastnost RDP:
 >[!NOTE]
 >I v případě `camerastoredirect:s:` , že je vlastnost zakázaná, mohou být místní fotoaparáty přesměrovány prostřednictvím `devicestoredirect:s:` Vlastnosti. Chcete-li úplně zakázat nastavení přesměrování kamery `camerastoredirect:s:` a buď nastavit `devicestoredirect:s:` nebo definovat některé podmnožiny zařízení Plug and Play, která neobsahují fotoaparát.
 
-Můžete také přesměrovat konkrétní kamery pomocí středníku seznamu KSCATEGORY_VIDEO_CAMERA rozhraní, například `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` . 
+Můžete také přesměrovat konkrétní kamery pomocí středníku seznamu KSCATEGORY_VIDEO_CAMERA rozhraní, například `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` .
 
 ### <a name="clipboard-redirection"></a>Přesměrování schránky
 
@@ -100,6 +100,8 @@ Pro konfiguraci přesměrování místní jednotky nastavte následující vlast
 - `drivestoredirect:s:` Zakáže přesměrování na místní disk.
 
 Můžete také vybrat konkrétní jednotky pomocí seznamu středníkem oddělených, například `drivestoredirect:s:C:;E:;` .
+
+Chcete-li nakonfigurovat přenos souborů webového klienta, nastavte `drivestoredirect:s:*` .
 
 ### <a name="printer-redirection"></a>Přesměrování tiskárny
 

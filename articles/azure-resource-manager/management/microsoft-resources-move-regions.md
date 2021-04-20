@@ -3,12 +3,12 @@ title: Přesunutí oblastí pro prostředky v Microsoft. Resources
 description: Ukazuje, jak přesunout prostředky, které jsou v oboru názvů Microsoft. Resources, do nových oblastí.
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 098e5c36969da12966d793b6e1eddd4f79701ead
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 898e5efef22f76dc07395fcfcad413ef4582dafd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88951051"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725867"
 ---
 # <a name="move-microsoftresources-resources-to-new-region"></a>Přesunout prostředky Microsoft. Resources do nové oblasti
 
@@ -93,4 +93,4 @@ Pokud máte [specifikace šablony](../templates/template-specs.md) v jedné obla
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o přesouvání prostředků do nové skupiny prostředků nebo předplatného najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](move-resource-group-and-subscription.md).
-* Další informace o přesouvání prostředků do nové oblasti najdete v tématu [Přesunutí prostředků Azure do různých oblastí](move-region.md).
+* Další informace o přesouvání prostředků do nové oblasti najdete v tématu [Přesunutí prostředků do různých oblastí](move-resources-overview.md#move-resources-across-regions).

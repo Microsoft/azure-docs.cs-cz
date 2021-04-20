@@ -1,14 +1,14 @@
 ---
 title: Odstraňování běžných chyb
 description: Naučte se řešit problémy s vytvářením definic zásad, různých sad SDK a doplňku pro Kubernetes.
-ms.date: 01/26/2021
+ms.date: 04/19/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6e0e4067f07266bae9c87fd4443d27314cc28c0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4feae11c6d8d78a43bae9882405e292a18e90bd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100592613"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725057"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Řešení chyb pomocí Azure Policy
 
@@ -124,6 +124,24 @@ Přiřazení zásady k oboru nového nebo aktualizovaného prostředku splňuje 
 #### <a name="resolution"></a>Řešení
 
 Chybová zpráva z přiřazení zásady odepření zahrnuje ID přiřazení definice zásad a zásad. Pokud informace o chybě ve zprávě chybí, je také k dispozici v [protokolu aktivit](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log). Tyto informace slouží k získání dalších informací, které vám pomohou pochopit omezení prostředků a upravit vlastnosti prostředku v žádosti tak, aby odpovídaly povoleným hodnotám.
+
+### <a name="scenario-definition-targets-multiple-resource-types"></a>Scénář: definice se zaměřuje na více typů prostředků
+
+#### <a name="issue"></a>Problém
+
+Definice zásady, která zahrnuje více typů prostředků, se při vytváření nebo aktualizaci nezdařila s následující chybou:
+
+```error
+The policy definition '{0}' targets multiple resource types, but the policy rule is authored in a way that makes the policy not applicable to the target resource types '{1}'.
+```
+
+#### <a name="cause"></a>Příčina
+
+Pravidlo definice zásad obsahuje jednu nebo více podmínek, které nemusejí být vyhodnocovány cílovými typy prostředků.
+
+#### <a name="resolution"></a>Řešení
+
+Pokud se používá alias, ujistěte se, že alias bude vyhodnocen pouze proti typu prostředku, ke kterému patří, přidáním podmínky typu před něj. Alternativou je rozdělení definice zásad na více definic, aby nedocházelo k zacílení na více typů prostředků.
 
 ## <a name="template-errors"></a>Chyby šablon
 

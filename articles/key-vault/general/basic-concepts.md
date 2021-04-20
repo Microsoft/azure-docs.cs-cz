@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cc00a4f1c1551932b4a30a8ef9b27cb1d4082667
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46c8845b4f01db09bf5f96eb1e67078b4e361f9f
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071592"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728315"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault základní koncepty
 
-Azure Key Vault je cloudová služba pro bezpečné ukládání a přístup k tajným klíčům. Tajný kód je cokoli, ke kterému chcete přísně řídit přístup, jako jsou klíče rozhraní API, hesla, certifikáty nebo kryptografické klíče. Služba Key Vault podporuje dva typy kontejnerů: trezory a spravované fondy HSM. Trezory podporují ukládání softwaru a klíčů, tajných kódů a certifikátů, které jsou zálohovány modulem HSM. Spravované fondy HSM podporují jenom klíče zálohované modulem HSM. Úplné podrobnosti najdete v tématu [přehled Azure Key Vault REST API](about-keys-secrets-certificates.md) .
+Azure Key Vault je cloudová služba pro bezpečné ukládání a přístup k tajným klíčům. Tajný kód je cokoli, ke kterému chcete přísně řídit přístup, jako jsou klíče rozhraní API, hesla, certifikáty nebo kryptografické klíče. Služba Key Vault podporuje dva typy kontejnerů: trezory a fondy spravovaného modulu zabezpečení hardwaru (HSM). Trezory podporují ukládání softwaru a klíčů, tajných kódů a certifikátů, které jsou zálohovány modulem HSM. Spravované fondy HSM podporují jenom klíče zálohované modulem HSM. Úplné podrobnosti najdete v tématu [přehled Azure Key Vault REST API](about-keys-secrets-certificates.md) .
 
 Tady jsou další důležité výrazy:
 

@@ -76,6 +76,8 @@
           href: hana-li-portal.md
         - name: Nastavení vysoké dostupnosti s využitím techniky STONITH
           href: ha-setup-with-stonith.md
+        - name: Vysoká dostupnost Azure velkých instancí pro SAP v RHEL
+          href: large-instance-high-availability-rhel.md
         - name: Zálohování operačního systému pro SKU typu II
           href: os-backup-type-ii-skus.md
         - name: Povolení Kdump pro Velké instance HANA

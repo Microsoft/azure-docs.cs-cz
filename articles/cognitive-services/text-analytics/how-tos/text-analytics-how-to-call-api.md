@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 00f9c6510a87770367472c0da6774b94034c6d72
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 5790c7c62b9d97df9683773170301b6e09a47667
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029773"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728477"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Způsob volání Analýza textu REST API
 
@@ -64,6 +64,8 @@ Počínaje verzí v 3.1 – Preview. 3 poskytuje rozhraní API pro analýzu text
 * `/analyze`Koncový bod pro analýza textu umožňuje analyzovat stejnou sadu textových dokumentů s více funkcemi pro analýzu textu v jednom volání rozhraní API. Předtím, abyste mohli použít více funkcí, musíte pro každou operaci udělat samostatná volání rozhraní API. Tuto možnost zvažte, pokud potřebujete analyzovat velké sady dokumentů s více než jednou funkcí Analýza textu.
 
 * `/health`Koncový bod pro analýza textu pro stav, který může extrahovat a označovat relevantní lékařské informace z klinických dokumentů.  
+
+Všimněte si, že koncové body/Analyze a/Health jsou k dispozici pouze v následujících oblastech: Západní USA 2, Východní USA 2, Střed USA, Severní Evropa a Západní Evropa.
 
 V následující tabulce najdete informace o tom, které funkce se dají použít asynchronně. Všimněte si, že z koncového bodu může být volána pouze několik funkcí `/analyze` . 
 

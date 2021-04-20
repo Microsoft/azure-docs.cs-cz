@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 author: mingshen-ms
 ms.author: krsh
-ms.date: 03/25/2021
-ms.openlocfilehash: 8898a762e8a1e7a2d5c104f99d12032c676a5ca4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/16/2021
+ms.openlocfilehash: e119d40cd0b8f482d33c3c86c644cf6a0846390a
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629813"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727113"
 ---
 ## <a name="generalize-the-image"></a>Generalizace bitové kopie
 
@@ -40,6 +40,9 @@ Následující proces generalizuje virtuální počítač Linux a znovu ho nasad
 
 ### <a name="capture-image"></a>Zachytit bitovou kopii
 
+> [!NOTE]
+> Předplatné Azure obsahující SIG musí být ve stejném tenantovi jako účet vydavatele, aby bylo možné ho publikovat. Kromě toho musí mít účet vydavatele alespoň přístup přispěvatele k předplatnému, které obsahuje SIG.
+
 Jakmile je váš virtuální počítač připravený, můžete ho zachytit v galerii sdílených imagí Azure. Zachyťte postup podle následujících kroků:
 
 1. Na [Azure Portal](https://ms.portal.azure.com/)přejdete na stránku svého virtuálního počítače.
@@ -51,8 +54,6 @@ Jakmile je váš virtuální počítač připravený, můžete ho zachytit v gal
 7. Zadejte **číslo verze** image.
 8. Vyberte **zkontrolovat + vytvořit** a zkontrolujte své volby.
 9. Po úspěšném ověření vyberte **vytvořit**.
-
-Předplatné Azure obsahující SIG musí být ve stejném tenantovi jako účet vydavatele, aby bylo možné ho publikovat. Kromě toho musí mít účet vydavatele přístup vlastníka ke SIG. 
 
 Udělení přístupu:
 

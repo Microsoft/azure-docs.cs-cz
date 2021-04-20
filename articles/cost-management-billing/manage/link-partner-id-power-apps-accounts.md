@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: banders
-ms.openlocfilehash: adaff7a6b8559fe9604412a44eced6c490231e3c
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: acb22cc4b2a461e476131a83972db3e782425a39
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103603819"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727703"
 ---
 # <a name="link-a-partner-id-to-your-power-apps-accounts"></a>Propojení ID partnera s účty Power Apps
 
@@ -115,43 +115,8 @@ Odstranění propojeného ID partnera
 az managementpartner delete --partner-id 12345
 ```
 
-## <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
-
-Následující části obsahují Nejčastější dotazy týkající se propojení ID partnera s účty Power Apps.
-
-### <a name="who-should-link-the-partner-id"></a>Kdo má propojit ID partnera?
-
-Každý uživatel z partnerské organizace, který pracuje na zdrojích Power Apps zákazníka, může propojit ID partnera s účtem. V ideálním případě by přidružení v PAL mělo být provedeno na začátku projektu. Dá se ale udělat vždycky, když máte přístup v adresáři zákazníka.
-
-### <a name="can-a-partner-id-be-changed-after-its-linked"></a>Je možné po propojení změnit ID partnera?
-
-Ano. Propojené ID partnera lze změnit, přidat nebo odebrat. Příkladem pro tuto situaci může být situace, kdy zaměstnanec z vaší společnosti opustí vaši organizaci. Dalším příkladem může být situace, kdy projekt nebo smlouva s zákazníkem skončí.
-
-### <a name="what-if-a-user-has-an-account-in-more-than-one-customer-tenant"></a>Co když má uživatel účet ve více než jednom tenantovi zákazníka?
-
-Propojení mezi ID partnera a účtem se provádí u každého tenanta zákazníka. Propojte toto ID partnera v každém tenantovi zákazníka.
-
-### <a name="can-other-partners-or-customers-edit-or-remove-the-link-to-the-partner-id"></a>Můžou propojení s ID partnera upravit nebo odebrat jiní partneři nebo zákazníci?
-
-Propojení je přiřazeno na úrovni uživatelského účtu. Propojení s ID partnera můžete upravit nebo odebrat jenom vy. Zákazník ani jiní partneři nemůžou propojení s ID partnera změnit.
-
-### <a name="which-mpn-id-should-i-use-if-my-company-has-multiple"></a>Které MPN ID mám použít, pokud jich má moje společnost více?
-
-Nezapomeňte použít **přidružené ID MPN**, které je uvedené ve vašem partnerském profilu. Obvykle se jedná o přidružení ID místního účtu k vaší organizaci.
-
-### <a name="how-do-i-explain-pal-to-my-customer"></a>Vysvětlete si Návody zákazníka?
-
-PAL umožňuje Microsoftu identifikovat a rozpoznat partnery, kteří pomáhají zákazníkům dosáhnout obchodních cílů a realizace hodnoty v cloudu. Zákazníci musí nejdřív poskytnout přístup k partnerům jejich prostředků Power Apps. Po udělení přístupu se k němu přidělí ID Microsoft Partner Network partnera (MPN ID). Toto přidružení pomáhá Microsoftu porozumět poskytovatelům služeb a zdokonalovat nástroje a programy potřebné k tomu, aby zákazníci mohli nejlépe podporovat.
-
-### <a name="what-data-does-pal-collect"></a>Jaká data shromažďuje PAL?
-
-Přidružení PAL k existujícím přihlašovacím údajům neposkytuje Microsoftu žádná nová zákaznická data. Poskytne Microsoftu informace o tom, kde je partner aktivně zapojen do prostředí Power Apps zákazníka. Microsoft může na základě oprávnění účtu (role Power Apps) a rozsahu (tenanta, skupiny prostředků, prostředku) poskytnout partnerovi od zákazníka jeho využití a vliv z prostředí zákazníka na partnerský subjekt.
-
-### <a name="does-pal-association-affect-the-security-of-a-customers-power-apps-environment"></a>Ovlivňuje přidružení PAL zabezpečení prostředí Power Apps zákazníka?
-
-Asociace PAL přidává ID MPN partnera jenom na přihlašovací údaje, které jsou už zřízené. Nemění oprávnění (role Power Apps) ani neposkytují partnerům nebo Microsoftu dodatečná data služby Power Apps.
-
 ### <a name="next-steps"></a>Další kroky
 
+- Na otázky a odpovědi týkající se propojení ID partnera a účtů Power Apps si přečtěte [Nejčastější dotazy týkající se cost management a fakturace](../cost-management-billing-faq.yml) .
 - Připojte se k diskuzi v [komunitě partnerů Microsoftu](https://aka.ms/PALdiscussion), abyste mohli dostávat aktualizace nebo odesílat zpětnou vazbu.
 - Přečtěte si [Nejčastější dotazy k aplikaci pro vývoj aplikací s nízkým kódem](https://assetsprod.microsoft.com/mpn/faq-low-code-app-development-advanced-specialization.pdf) pro přidružení Power Apps založené na PAL pro pokročilou specializaci vývoj aplikací s nízkým kódem.

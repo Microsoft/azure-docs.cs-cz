@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2019
 ms.author: anupand
-ms.openlocfilehash: 555c903dc3375080a8b0d006d2aac7216854c939
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e39859e3cc4d28ac4b1456fcdaec65ecfb9c7f31
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99539294"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728207"
 ---
 # <a name="subnet-extension"></a>Rozšíření podsítě
 Migrace úloh do veřejného cloudu vyžaduje pečlivé plánování a koordinaci. Jedním z klíčových důležitých informací může být schopnost uchovávat vaše IP adresy. To může být důležité hlavně v případě, že vaše aplikace mají závislost IP adres nebo máte požadavky na dodržování předpisů pro použití konkrétních IP adres. Azure Virtual Network tento problém řeší tím, že vám umožní vytvořit virtuální síť a podsítě pomocí rozsahu IP adres podle vašeho výběru.
@@ -53,4 +53,4 @@ V předchozím příkladu síťové virtuální zařízení Azure a místní sí
 V další části najdete podrobné informace o řešeních rozšíření podsítě, která jsme otestovali v Azure.
 
 ## <a name="next-steps"></a>Další kroky 
-[Rozšíříte svou podsíť do Azure pomocí řešení dodavatelů.](https://github.com/microsoft/Azure-LISP)
+[Rozšiřte své místní podsítě do Azure pomocí rozšířené sítě Azure](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-extended-network).

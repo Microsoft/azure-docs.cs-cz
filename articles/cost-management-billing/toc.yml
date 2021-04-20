@@ -428,6 +428,8 @@
           href: /rest/api/consumption/reservationsdetails
 - name: Zdroje a prostředky
   items:
+    - name: Nejčastější dotazy
+      href: cost-management-billing-faq.yml
     - name: Získávání dovedností pomocí Microsoft Learn
       href: /learn/browse/?products=azure-cost-management
     - name: Fórum pro názory na Cost Management

@@ -3,16 +3,15 @@ title: Vysoká dostupnost Azure velkých instancí pro SAP v RHEL
 description: Naučte se automatizovat převzetí služeb při selhání databáze SAP HANA pomocí clusteru Pacemaker v Red Hat Enterprise Linux.
 author: jaawasth
 ms.author: jaawasth
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: dc27fd67a3801815464ecd37fea567c02dee6e49
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.date: 04/19/2021
+ms.openlocfilehash: f7b6e6efbbd17655b4f68d79ac26ee34ae754a3b
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719038"
+ms.locfileid: "107728441"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>Vysoká dostupnost Azure velkých instancí pro SAP v RHEL
 
@@ -38,33 +37,23 @@ Než začnete s konfigurací clusteru, nastavte výměnu klíčů SSH, aby bylo 
     ```
     root@sollabdsm35 ~]# cat /etc/hosts
     27.0.0.1 localhost localhost.azlinux.com
-    0.60.0.35 sollabdsm35.azlinux.com sollabdsm35 node1
-    0.60.0.36 sollabdsm36.azlinux.com sollabdsm36 node2
-    0.20.251.150 sollabdsm36-st
-
+    10.60.0.35 sollabdsm35.azlinux.com sollabdsm35 node1
+    10.60.0.36 sollabdsm36.azlinux.com sollabdsm36 node2
+    10.20.251.150 sollabdsm36-st
     10.20.251.151 sollabdsm35-st
-
-    
-
     10.20.252.151 sollabdsm36-back
-
     10.20.252.150 sollabdsm35-back
-
-    
-
     10.20.253.151 sollabdsm36-node
-
     10.20.253.150 sollabdsm35-node
-
     ```
 
 2.  Vytvoření a výměna klíčů SSH.
     1. Generování klíčů ssh.
 
-       ```
+    ```
        [root@sollabdsm35 ~]# ssh-keygen -t rsa -b 1024
        [root@sollabdsm36 ~]# ssh-keygen -t rsa -b 1024
-       ```
+    ```
     2. Zkopírujte klíče do ostatních hostitelů pro nepřístupný protokol SSH.
     
        ```
@@ -82,8 +71,6 @@ Než začnete s konfigurací clusteru, nastavte výměnu klíčů SSH, aby bylo 
 
     SELINUX=disabled
 
-    
-
     [root@sollabdsm36 ~]# vi /etc/selinux/config
 
     ...
@@ -97,8 +84,6 @@ Než začnete s konfigurací clusteru, nastavte výměnu klíčů SSH, aby bylo 
     [root@sollabdsm35 ~]# sestatus
 
     SELinux status: disabled
-
-    
 
     [root@sollabdsm36 ~]# sestatus
 
@@ -134,8 +119,6 @@ Než začnete s konfigurací clusteru, nastavte výměnu klíčů SSH, aby bylo 
     
         Ref time (UTC) : Thu Jan 28 18:46:10 2021
     
-        
-    
         chronyc sources
     
         210 Number of sources = 8
@@ -162,7 +145,6 @@ Než začnete s konfigurací clusteru, nastavte výměnu klíčů SSH, aby bylo 
         ```
         node1:~ # yum update
         ```
- 
 
 7. Nainstalujte úložiště SAP HANA a RHEL-HA.
 
@@ -176,11 +158,11 @@ Než začnete s konfigurací clusteru, nastavte výměnu klíčů SSH, aby bylo 
     ```
       
 
-8. Na všechny uzly nainstalujte nástroje Pacemaker, SBD, OpenIPMI, ipmitools a fencing_sbd.
+8. Na všechny uzly nainstalujte nástroje Pacemaker, SBD, OpenIPMI, ipmitool a fencing_sbd.
 
     ``` 
     yum install pcs sbd fence-agent-sbd.x86_64 OpenIPMI
-    ipmitools
+    ipmitool
     ```
 
   ## <a name="configure-watchdog"></a>Konfigurace sledovacího zařízení
@@ -202,8 +184,6 @@ V této části se dozvíte, jak nakonfigurovat sledovací zařízení. Tato č�
 
     Active: inactive (dead)
 
-    
-
     Nov 28 23:02:40 sollabdsm35 systemd[1]: Collecting watchdog.service
 
     ```
@@ -211,7 +191,6 @@ V této části se dozvíte, jak nakonfigurovat sledovací zařízení. Tato č�
 2. Výchozí sledovací zařízení Linux, které bude nainstalováno během instalace, je sledovací zařízení iTCO, které není podporováno systémy SDFlex UCS a HPE. Proto musí být toto sledovací zařízení zakázané.
     1. V systému je nainstalovaná a načtená nesprávná sledovací zařízení:
        ```
-   
        sollabdsm35:~ # lsmod |grep iTCO
    
        iTCO_wdt 13480 0
@@ -228,7 +207,6 @@ V této části se dozvíte, jak nakonfigurovat sledovací zařízení. Tato č�
         
     3. Abyste se ujistili, že ovladač není načtený během příštího spuštění systému, musí být ovladač blocklisted. Chcete-li seznamu blokovaných moduly iTCO, přidejte na konec `50-blacklist.conf` souboru následující:
        ```
-   
        sollabdsm35:~ # vi /etc/modprobe.d/50-blacklist.conf
    
         unload the iTCO watchdog modules
@@ -266,8 +244,6 @@ V této části se dozvíte, jak nakonfigurovat sledovací zařízení. Tato č�
 3. Ve výchozím nastavení se požadované zařízení/dev/Watchdog nevytvoří.
 
     ```
-    No watchdog device was created
-
     sollabdsm35:~ # ls -l /dev/watchdog
 
     ls: cannot access /dev/watchdog: No such file or directory
@@ -332,7 +308,7 @@ V této části se dozvíte, jak nakonfigurovat sledovací zařízení. Tato č�
 ## <a name="sbd-configuration"></a>Konfigurace SBD
 V této části se dozvíte, jak nakonfigurovat SBD. Tato část používá stejné dva hostitele, `sollabdsm35` a `sollabdsm36` odkazuje na začátek tohoto článku.
 
-1.  Ujistěte se, že je na obou uzlech viditelný disk iSCSI nebo FC. V tomto příkladu se používá zařízení SBD založené na FC. Další informace o SBD oplocení najdete v [referenční dokumentaci](http://www.linux-ha.org/wiki/SBD_Fencing).
+1.  Ujistěte se, že je na obou uzlech viditelný disk iSCSI nebo FC. V tomto příkladu se používá zařízení SBD založené na FC. Další informace o zásadách škálování na SBD najdete v tématu [pokyny k návrhu pro clustery s vysokou dostupností RHEL – SBD předpoklady](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Faccess.redhat.com%2Farticles%2F2941601&data=04%7C01%7Cralf.klahr%40microsoft.com%7Cd49d7a3e3871449cdecc08d8c77341f1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637478645171139432%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=c%2BUAC5gmgpFNWZCQFfiqcik8CH%2BmhH2ly5DsOV1%2FE5M%3D&reserved=0).
 2.  Identifikátor logické jednotky (LUN) musí být identický na všech uzlech.
   
 3.  U zařízení SBD se podívejte na stav Multipath.
@@ -402,18 +378,15 @@ V této části se dozvíte, jak nakonfigurovat SBD. Tato část používá stej
 7.  Přidejte zařízení SBD do konfiguračního souboru SBD.
 
     ```
-    \# SBD_DEVICE specifies the devices to use for exchanging sbd messages
-
-    \# and to monitor. If specifying more than one path, use ";" as
-
-    \# separator.
-
-    \#
+    # SBD_DEVICE specifies the devices to use for exchanging sbd messages
+    # and to monitor. If specifying more than one path, use ";" as
+    # separator.
+    #
 
     SBD_DEVICE="/dev/mapper/3600a098038304179392b4d6c6e2f4b62"
-    \## Type: yesno
+    ## Type: yesno
      Default: yes
-     \# Whether to enable the pacemaker integration.
+     # Whether to enable the pacemaker integration.
     SBD_PACEMAKER=yes
     ```
 
@@ -443,22 +416,16 @@ V této části inicializujete cluster. Tato část používá stejné dva hosti
     ```
     systemctl start pcsd
     ```
-  
-  
 
 5.  Ověřování clusteru spouštějte jenom z Uzel1.
 
     ```
     pcs cluster auth sollabdsm35 sollabdsm36
 
-
-
         Username: hacluster
 
             Password:
-
             sollabdsm35.localdomain: Authorized
-
             sollabdsm36.localdomain: Authorized
 
      ``` 
@@ -509,20 +476,16 @@ V této části inicializujete cluster. Tato část používá stejné dva hosti
 
 8. Pokud se jeden uzel nepřipojuje ke clusteru, kontrolujte, jestli je brána firewall pořád spuštěná.
 
-  
-
 9. Vytvoření a povolení zařízení SBD
     ```
     pcs stonith create SBD fence_sbd devices=/dev/mapper/3600a098038303f4c467446447a
     ```
   
-
 10. Zastavte cluster, restartujte Clusterové služby (na všech uzlech).
 
     ```
     pcs cluster stop --all
     ```
-
 
 11. Restartujte Clusterové služby (na všech uzlech).
 
@@ -631,7 +594,7 @@ V této části inicializujete cluster. Tato část používá stejné dva hosti
 
     Present Countdown: 19 sec
 
-    [root@sollabdsm351 ~] lsof /dev/watchdog
+    [root@sollabdsm35 ~] lsof /dev/watchdog
 
     COMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAME
 
@@ -670,6 +633,7 @@ V této části inicializujete cluster. Tato část používá stejné dva hosti
 19. Pro zbytek SAP HANA clusteringu můžete zakázat STONITH nastavením:
 
    * sada vlastností počítačů `stonith-enabled=false`
+   * Někdy je snazší STONITH deaktivovat během instalace clusteru, protože se vyhnete neočekávaným restartováním systému.
    * Tento parametr musí být nastaven na hodnotu true pro účely produktivního využívání. Pokud tento parametr není nastaven na hodnotu true, cluster se nepodporuje.
    * sada vlastností počítačů `stonith-enabled=true`
 
@@ -693,7 +657,7 @@ Pro integraci HANA jsou k dispozici dvě možnosti. První možností je řešen
    
        * su - hr2adm
    
-       * hdbsql -u system -p SAPhana10 -i 00 "select value from
+       * hdbsql -u system -p $YourPass -i 00 "select value from
        "SYS"."M_INIFILE_CONTENTS" where key='log_mode'"
    
        
@@ -704,7 +668,7 @@ Pro integraci HANA jsou k dispozici dvě možnosti. První možností je řešen
        ```
     2. Replikace SAP HANA systému bude fungovat až po provedení prvotního zálohování. Následující příkaz vytvoří počáteční zálohu v `/tmp/` adresáři. Vyberte pro databázi správný systém souborů zálohy. 
        ```
-       * hdbsql -i 00 -u system -p SAPhana10 "BACKUP DATA USING FILE
+       * hdbsql -i 00 -u system -p $YourPass "BACKUP DATA USING FILE
        ('/tmp/backup')"
    
    
@@ -721,18 +685,14 @@ Pro integraci HANA jsou k dispozici dvě možnosti. První možností je řešen
    
        -rw-r----- 1 hr2adm sapsys 1996496896 Oct 26 23:31 backup_databackup_3_1
    
-       ```
-    
+       ```  
 
     3. Zálohujte všechny kontejnery databáze této databáze.
-       ```
+       ``` 
+       * hdbsql -i 00 -u system -p $YourPass -d SYSTEMDB "BACKUP DATA USING
+       FILE ('/tmp/sydb')"     
    
-       * hdbsql -i 00 -u system -p SAPhana10 -d SYSTEMDB "BACKUP DATA USING
-       FILE ('/tmp/sydb')"
-   
-       
-   
-       * hdbsql -i 00 -u system -p SAPhana10 -d SYSTEMDB "BACKUP DATA FOR HR2
+       * hdbsql -i 00 -u system -p $YourPass -d SYSTEMDB "BACKUP DATA FOR HR2
        USING FILE ('/tmp/rh2')"
    
        ```
@@ -959,7 +919,7 @@ Pro integraci HANA jsou k dispozici dvě možnosti. První možností je řešen
 
 #### <a name="log-replication-mode-description"></a>Popis režimu replikace protokolů
 
-Další informace o režimu replikace protokolů najdete v [oficiální dokumentaci ke službě SAP](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/c039a1a5b8824ecfa754b55e0caffc01.html).
+Další informace o režimu replikace protokolů najdete v [oficiální dokumentaci ke službě SAP](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/627bd11e86c84ec2b9fcdf585d24011c.html).
   
 
 #### <a name="network-setup-for-hana-system-replication"></a>Nastavení sítě pro replikaci systému HANA
@@ -982,7 +942,7 @@ V následujícím příkladu `[system_replication_communication]listeninterface`
 
   
 
-### <a name="source-sap-ag-sap-hana-hrs-networking"></a>Zdroj SAP AG SAP HANA hod sítě
+Další informace najdete v tématu [Konfigurace sítě pro replikaci SAP HANA systému](https://www.sap.com/documents/2016/06/18079a1c-767c-0010-82c7-eda71af511fa.html).
 
   
 
@@ -1024,9 +984,8 @@ Ujistěte se, že splňujete následující požadavky:
     [root@node1 ~]# pcs resource defaults migration-threshold=5000
     ```
 2.  Nakonfigurujte Corosync.
+    Další informace najdete v tématu [Jak můžu nakonfigurovat RHEL 7 cluster s vysokou dostupností s využitím Pacemaker a Corosync](https://access.redhat.com/solutions/1293523).
     ```
-    https://access.redhat.com/solutions/1293523 --> quorum information RHEL7
-
     cat /etc/corosync/corosync.conf
 
     totem {
@@ -1090,71 +1049,60 @@ Ujistěte se, že splňujete následující požadavky:
     ```
   
 
-1.  Vytvořte Klonovaný prostředek SAPHanaTopology.
-    ```
-    pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 InstanceNumber=00 --clone clone-max=2 clone-node-max=1 interleave=true
-    SAPHanaTopology resource is gathering status and configuration of SAP
-    HANA System Replication on each node. SAPHanaTopology requires
-    following attributes to be configured.
+3.  Vytvořte Klonovaný prostředek SAPHanaTopology.
+    Prostředek SAPHanaTopology shromažďuje stav a konfiguraci replikace systému SAP HANA na všech uzlech. SAPHanaTopology vyžaduje, aby byly nakonfigurovány následující atributy.
+       ```
+       pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 InstanceNumber=00 --clone clone-max=2 clone-node-max=1    interleave=true
+       ```
 
+    | Název atributu | Description  |
+    |---|---|
+    | SID | Identifikátor systému SAP (SID) SAP HANA instalace. Musí být stejné pro všechny uzly. |
+    | Číslo instance | 2 číslice instance SAP Idntifier.|
 
-
-        Attribute Name Description
-
-        SID SAP System Identifier (SID) of SAP HANA installation. Must be
-    same for all nodes.
-
-    InstanceNumber 2-digit SAP Instance identifier.
-    pcs resource show SAPHanaTopology_HR2_00-clone
-
-    Clone: SAPHanaTopology_HR2_00-clone
-
+    * Stav prostředku
+       ```
+       pcs resource show SAPHanaTopology_HR2_00
+   
+       InstanceNumber 2-digit SAP Instance identifier.
+       pcs resource show SAPHanaTopology_HR2_00-clone
+   
+       Clone: SAPHanaTopology_HR2_00-clone
+   
         Meta Attrs: clone-max=2 clone-node-max=1 interleave=true
-
+   
         Resource: SAPHanaTopology_HR2_00 (class=ocf provider=heartbeat
-    type=SAPHanaTopology)
-
+       type=SAPHanaTopology)
+   
         Attributes: InstanceNumber=00 SID=HR2
-
+   
         Operations: monitor interval=60 timeout=60
-    (SAPHanaTopology_HR2_00-monitor-interval-60)
-
+       (SAPHanaTopology_HR2_00-monitor-interval-60)
+   
         start interval=0s timeout=180
-    (SAPHanaTopology_HR2_00-start-interval-0s)
-
+       (SAPHanaTopology_HR2_00-start-interval-0s)
+   
         stop interval=0s timeout=60 (SAPHanaTopology_HR2_00-stop-interval-0s)
+   
+       ```
 
-    ```
+4.  Vytvořte primární nebo sekundární prostředek SAPHana.
+    * Prostředek SAPHana zodpovídá za spuštění, zastavení a přemístění databáze SAP HANA. Tento prostředek musí být spuštěn jako prostředek primárního a sekundárního clusteru. Prostředek má následující atributy.
 
-3.  Vytvořte primární nebo sekundární prostředek SAPHana.
-
-    ```
-    SAPHana resource is responsible for starting, stopping and relocating the SAP HANA database. This resource must be run as a Primary/    Secondary cluster resource. The resource has the following attributes.
-
-    
-
-    Attribute Name Required? Default value Description
-
-    SID Yes None SAP System Identifier (SID) of SAP HANA installation. Must be same for all nodes.
-
-    InstanceNumber Yes none 2-digit SAP Instance identifier.
-
-    PREFER_SITE_TAKEOVER
-
-    no yes Should cluster prefer to switchover to secondary instance instead of restarting primary locally? ("no": Do prefer restart locally;   "yes": Do prefer takeover to remote site)
-
-    AUTOMATED_REGISTER no false Should the former SAP HANA primary be registered as secondary after takeover and DUPLICATE_PRIMARY_TIMEOUT?     ("false": no, manual intervention will be needed; "true": yes, the former primary will be registered by resource agent as secondary)
-
-    DUPLICATE_PRIMARY_TIMEOUT no 7200 Time difference (in seconds) needed between primary time stamps, if a dual-primary situation occurs. If   the time difference is less than the time gap, then the cluster holds one or both instances in a "WAITING" status. This is to give an   admin a chance to react on a failover. A failed former primary will be registered after the time difference is passed. After this   registration to the new primary all data will be overwritten by the system replication.
-    ```
-  
+| Název atributu            | Povinné? | Výchozí hodnota | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|---------------------------|-----------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SID                       | Yes       | Žádné          | Identifikátor systému SAP (SID) SAP HANA instalace. Musí být stejné pro všechny uzly.                                                                                                                                                                                                                                                                                                                                                                                       |
+| Číslo instance            | Yes       | žádné          | identifikátor instance SAP 2 číslice.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| PREFER_SITE_TAKEOVER      | ne        | ano           | Má cluster upřednostňovat přepnutí na sekundární instanci namísto místního restartování? ("ne": preferovat restartování místně; "Ano": preferovat převzetí na vzdálený web.)                                                                                                                                                                                                                                                                                            |
+|                           |           |               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| AUTOMATED_REGISTER        | ne        | FALSE         | Po převzetí a DUPLICATE_PRIMARY_TIMEOUT by měl být předchozí SAP HANA registrována jako sekundární? ("NEPRAVDA": Ne, ruční zásah bude potřeba; "true": Ano, předchozí primární primární bude registrován agentem prostředků jako sekundární)                                                                                                                                                                                                                        |
+| DUPLICATE_PRIMARY_TIMEOUT | ne        | 7200          | Časový rozdíl (v sekundách) potřebný mezi primárními časovými razítky, pokud dojde k Dual-primární situaci. Pokud je časový rozdíl menší než časová mezera, cluster bude obsahovat jednu nebo obě instance ve stavu "čekání". Díky tomu může mít správce možnost reagovat na převzetí služeb při selhání. Po uplynutí časového rozdílu se zaregistruje původní primární primární disk. Po této registraci do nové primární lokality budou systémová replikace přepsat všechna data. |
 
 5.  Vytvořte prostředek HANA.
     ```
     pcs resource create SAPHana_HR2_00 SAPHana SID=HR2 InstanceNumber=00 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200   AUTOMATED_REGISTER=true primary notify=true clone-max=2 clone-node-max=1 interleave=true
 
     pcs resource show SAPHana_HR2_00-primary
-
 
 
     Primary: SAPHana_HR2_00-primary
@@ -1252,10 +1200,8 @@ Ujistěte se, že splňujete následující požadavky:
     ```
 
 6.  Vytvořte prostředek virtuální IP adresy.
-
+    Cluster bude obsahovat virtuální IP adresu, aby bylo možné dosáhnout primární instance SAP HANA. Níže je příklad příkazu k vytvoření prostředku IPaddr2 s protokolem IP 10.7.0.84/24.
     ```
-    Cluster will contain Virtual IP address in order to reach the Primary instance of SAP HANA. Below is example command to create IPaddr2  resource with IP 10.7.0.84/24
-
     pcs resource create vip_HR2_00 IPaddr2 ip="10.7.0.84"
     pcs resource show vip_HR2_00
 
@@ -1272,13 +1218,11 @@ Ujistěte se, že splňujete následující požadavky:
     ```
 
 7.  Vytvořte omezení.
-
-    ```
-    For correct operation we need to ensure that SAPHanaTopology resources are started before starting the SAPHana resources and also that  the virtual IP address is present on the node where the Primary resource of SAPHana is running. To achieve this, the following 2    constraints need to be created.
-
-    pcs constraint order SAPHanaTopology_HR2_00-clone then SAPHana_HR2_00-primary symmetrical=false
-    pcs constraint colocation add vip_HR2_00 with primary SAPHana_HR2_00-primary 2000
-    ```
+    * Pro správnou operaci musíme před spuštěním prostředků SAPHana zajistit spuštění prostředků SAPHanaTopology a taky to, že virtuální IP adresa je k dispozici na uzlu, ve kterém je spuštěný primární prostředek SAPHana. Chcete-li toho dosáhnout, je třeba vytvořit následující 2 omezení.
+       ```
+       pcs constraint order SAPHanaTopology_HR2_00-clone then SAPHana_HR2_00-primary symmetrical=false
+       pcs constraint colocation add vip_HR2_00 with primary SAPHana_HR2_00-primary 2000
+       ```
 
 ###  <a name="testing-the-manual-move-of-saphana-resource-to-another-node"></a>Testování ručního přesunu prostředku SAPHana do jiného uzlu
 
@@ -1325,7 +1269,7 @@ Node Attributes:
   * Hostitel se sníženou úrovní:
 
     ```
-    hdbsql -i 00 -u system -p SAPhana10 -n 10.7.0.82
+    hdbsql -i 00 -u system -p $YourPass -n 10.7.0.82
 
     result:
 
@@ -1336,7 +1280,7 @@ Node Attributes:
   * Povýšený hostitel:
 
     ```
-    hdbsql -i 00 -u system -p SAPhana10 -n 10.7.0.84
+    hdbsql -i 00 -u system -p $YourPass -n 10.7.0.84
     
     Welcome to the SAP HANA Database interactive terminal.
     
@@ -1360,20 +1304,17 @@ Node Attributes:
 S možností `AUTOMATED_REGISTER=false` , nemůžete přepnout zpátky a zpátky.
 
 Pokud je tato možnost nastavená na false, musíte uzel znovu zaregistrovat:
-
-  
 ```
 hdbnsutil -sr_register --remoteHost=node2 --remoteInstance=00 --replicationMode=syncmem --name=DC1
 ```
-  
 
 Nyní Uzel2, což byl primární, funguje jako sekundární hostitel.
 
 Zvažte nastavení této možnosti na hodnotu true pro automatizaci registrace hostitele se sníženou úrovní.
-
   
 ```
 pcs resource update SAPHana_HR2_00-primary AUTOMATED_REGISTER=true
-
 pcs cluster node clear node1
 ```
+
+Bez ohledu na to, jestli dáváte přednost automatické registraci, záleží na scénáři zákazníka. Po převzetí bude pro provozní tým snazší automaticky znovu registrovat uzel. Můžete ale chtít uzel zaregistrovat ručně, abyste mohli nejdřív spustit další testy, abyste se ujistili, že vše funguje podle očekávání.

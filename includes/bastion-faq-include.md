@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b58040917ed3d3345a35b7acbe31b6b500f05562
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: c0ca74b6cf63e3c81d830eca76eea6815548faa1
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073352"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732547"
 ---
 ### <a name="do-i-need-a-public-ip-on-my-virtual-machine-to-connect-via-azure-bastion"></a><a name="publicip"></a>Potřebuji na svém virtuálním počítači veřejnou IP adresu pro připojení přes Azure bastionu?
 
@@ -51,7 +51,7 @@ Tato funkce nefunguje s počítači připojenými k rozšíření virtuálních 
 
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Které prohlížeče se podporují?
 
-Použijte prohlížeč Microsoft Edge nebo Google Chrome ve Windows. Pro Apple Mac použijte prohlížeč Google Chrome. Microsoft Edge chrom se podporuje i v obou oknech i v počítačích Mac.
+Prohlížeč musí podporovat HTML 5. Použijte prohlížeč Microsoft Edge nebo Google Chrome ve Windows. Pro Apple Mac použijte prohlížeč Google Chrome. Microsoft Edge chrom se podporuje i v obou oknech i v počítačích Mac.
 
 ### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>Kde Azure bastionu Store data Customer?
 

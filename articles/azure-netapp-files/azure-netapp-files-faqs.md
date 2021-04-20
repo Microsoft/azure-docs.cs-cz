@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: ae94ac9719a827a2d1af258398988f0972e61b3a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: a8c06b25b923d663e982e940100be7b9a2a009e1
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305510"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726839"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -213,6 +213,43 @@ Správa systému `SMB Shares` , `Sessions` a a `Open Files` prostřednictvím ko
 ### <a name="how-can-i-obtain-the-ip-address-of-an-smb-volume-via-the-portal"></a>Jak získám IP adresu svazku SMB přes portál?
 
 V podokně Přehled svazku použijte odkaz **Zobrazit JSON** a v části **vlastnosti** mountTargets vyhledejte identifikátor **startIp**  ->  .
+
+### <a name="smb-encryption-faqs"></a>Nejčastější dotazy týkající se šifrování protokolu SMB
+
+Tato část obsahuje odpovědi na nejčastější dotazy týkající se šifrování protokolu SMB (SMB 3,0 a SMB 3.1.1).
+
+#### <a name="what-is-smb-encryption"></a>Co je šifrování SMB?  
+
+[Šifrování SMB](/windows-server/storage/file-server/smb-security) zajišťuje komplexní šifrování dat SMB a chrání data před odposloucháváním výskytů nedůvěryhodných sítí. Šifrování protokolu SMB je podporované v SMB 3,0 a vyšších. 
+
+#### <a name="how-does-smb-encryption-work"></a>Jak šifrování SMB funguje?
+
+Při odesílání žádosti do úložiště klient zašifruje požadavek, který úložiště pak dešifruje. Odpovědi jsou podobně šifrovány serverem a dešifrovány klientem.
+
+#### <a name="which-clients-support-smb-encryption"></a>Kteří klienti podporují šifrování SMB?
+
+Šifrování SMB podporuje Windows 10, Windows 2012 a novější verze.
+
+#### <a name="with-azure-netapp-files-at-what-layer-is-smb-encryption-enabled"></a>U Azure NetApp Files v jaké vrstvě je šifrování SMB zapnuté?  
+
+Šifrování protokolu SMB je povolené na úrovni sdílené složky.
+
+#### <a name="what-forms-of-smb-encryption-are-used-by-azure-netapp-files"></a>Jaké formy šifrování protokolu SMB používá Azure NetApp Files?
+
+SMB 3,0 využívá algoritmus AES-CCM, zatímco protokol SMB 3.1.1 používá algoritmus AES-GCM.
+
+#### <a name="is-smb-encryption-required"></a>Vyžaduje se šifrování SMB?
+
+Šifrování protokolu SMB není vyžadováno. V takovém případě je tato možnost povolena pouze v případě, že uživatel požaduje, aby ji Azure NetApp Files. Sdílené složky Azure NetApp Files nejsou nikdy zpřístupněny Internetu. Jsou přístupné jenom z dané virtuální sítě, přes VPN nebo Express Route, takže Azure NetApp Files sdílené složky jsou v podstatě zabezpečení. Možnost povolit šifrování protokolu SMB je zaplněná uživateli. Než tuto funkci povolíte, počítejte s předpokládaným snížením výkonu.
+
+#### <a name="what-is-the-anticipated-impact-of-smb-encryption-on-client-workloads"></a><a name="smb_encryption_impact"></a>Jaký je předpokládaný dopad šifrování protokolu SMB u klientských úloh?
+
+I když šifrování SMB má vliv na klienta (zatížení procesoru pro šifrování a dešifrování zpráv) a úložiště (snížení propustnosti), v následující tabulce se zvýrazní jenom dopad na úložiště. Před nasazením úloh do produkčního prostředí byste měli otestovat dopad na výkon šifrování před vlastními aplikacemi.
+
+|     Profil I/O       |     Dopad        |
+|-  |-  |
+|     Čtení a zápis úloh      |     10% až 15%        |
+|     Náročné na metadata        |     5 %    |
 
 ## <a name="capacity-management-faqs"></a>Nejčastější dotazy ke správě kapacity
 

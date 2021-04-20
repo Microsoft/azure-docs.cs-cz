@@ -6,19 +6,19 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 564c7cf6e9627db08d543b964ce476e71bfb473d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/19/2021
+ms.openlocfilehash: 22c4fc0680d8666d8c2dfafb8829436e27cf1ebd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93040741"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725705"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Parametrizace mapování toků dat
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
 
-Mapování toků dat v Azure Data Factory podporuje použití parametrů. Definujte parametry uvnitř definice toku dat a používejte je v rámci svých výrazů. Hodnoty parametrů jsou nastaveny prostřednictvím volajícího kanálu prostřednictvím aktivity spustit tok dat. Máte tři možnosti, jak nastavit hodnoty ve výrazech aktivity toku dat:
+Mapování toků dat v Azure Data Factory a Azure synapse Analytics podporuje použití parametrů. Definujte parametry uvnitř definice toku dat a používejte je v rámci svých výrazů. Hodnoty parametrů jsou nastaveny prostřednictvím volajícího kanálu prostřednictvím aktivity spustit tok dat. Máte tři možnosti, jak nastavit hodnoty ve výrazech aktivity toku dat:
 
 * Nastavení dynamické hodnoty pomocí jazyka Expression Flow řízení kanálu
 * Nastavení dynamické hodnoty pomocí jazyka výrazu data Flow

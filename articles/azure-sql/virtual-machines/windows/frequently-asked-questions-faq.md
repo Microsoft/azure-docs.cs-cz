@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 014bbe4421bf00f35b2d80505cea288e75f8ca94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02bb1f539369cf72a5d5b6503a3584069589b19e
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224669"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727343"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Nejčastější dotazy k SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -193,6 +193,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
    1. Odinstalujte SQL Server úplně, včetně rozšíření SQL IaaS (Pokud je k dispozici).
    1. Nainstalujte bezplatnou [verzi SQL Express](https://www.microsoft.com/sql-server/sql-server-downloads).
    1. Zaregistrujte se pomocí rozšíření agenta SQL IaaS v [jednoduchém režimu](sql-agent-extension-manually-register-single-vm.md).
+   1. [Změnou edice SQL Server](change-sql-server-edition.md#change-edition-in-portal) v [Azure Portal](https://portal.azure.com) na Express zastavte účtování.  
    1. volitelné Zakažte službu Express SQL Server zakázáním spouštění služby. 
 
 1. **Můžu pomocí webu Azure Portal spravovat více instancí na jednom virtuálním počítači?**

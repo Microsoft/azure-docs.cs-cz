@@ -6,12 +6,12 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 1b59d482b8b88e37da2d61636ff3f254a46ba5c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f3fcdc56b4e8d7873872212cb62f57a7669b459
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99626083"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726623"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Přesunutí aplikace Service Fabric sítě do jiné oblasti Azure
 
@@ -22,7 +22,7 @@ ms.locfileid: "99626083"
 
 Tento článek popisuje, jak přesunout aplikaci Service Fabric sítě a její prostředky do jiné oblasti Azure. Prostředky můžete přesunout do jiné oblasti z řady důvodů. Například v reakci na výpadky můžete získat funkce nebo služby, které jsou k dispozici pouze v konkrétních oblastech, pro splnění požadavků na požadavky na interní zásady a zásady správného řízení nebo v reakci na požadavky na plánování kapacity.
 
- [Service Fabricová síť](../azure-resource-manager/management/region-move-support.md#microsoftservicefabricmesh) nepodporuje možnost přímého přesouvání prostředků napříč oblastmi Azure. Prostředky je ale možné nepřímo přesunout tím, že do nové cílové oblasti nasadíte kopii aktuální Azure Resource Manager šablony a potom přesměrujete příchozí přenos dat a závislosti na nově vytvořenou aplikaci Service Fabric sítě.
+ [Service Fabricová síť](../azure-resource-manager/management/move-support-resources.md#microsoftservicefabricmesh) nepodporuje možnost přímého přesouvání prostředků napříč oblastmi Azure. Prostředky je ale možné nepřímo přesunout tím, že do nové cílové oblasti nasadíte kopii aktuální Azure Resource Manager šablony a potom přesměrujete příchozí přenos dat a závislosti na nově vytvořenou aplikaci Service Fabric sítě.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,7 +43,7 @@ Tento článek popisuje, jak přesunout aplikaci Service Fabric sítě a její p
 
 2. S vaší exportovanou šablonou použijte postup v části [nasazení prostředků z vlastní šablony](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) pomocí Azure Portal. Můžete použít také rozhraní příkazového [řádku Azure CLI](../azure-resource-manager/templates/deploy-cli.md), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)nebo [REST API](../azure-resource-manager/templates/deploy-rest.md).
 
-3. Pokyny k přesunu souvisejících prostředků, jako jsou [účty Azure Storage](../storage/common/storage-account-move.md), najdete v pokynech k jednotlivým službám, které jsou uvedené v tématu [Přesunutí prostředků Azure do různých oblastí](../azure-resource-manager/management/move-region.md).
+3. Pokyny k přesunu souvisejících prostředků, jako jsou [účty Azure Storage](../storage/common/storage-account-move.md), najdete v pokynech k jednotlivým službám, které jsou uvedené v tématu [Přesunutí prostředků Azure do různých oblastí](../azure-resource-manager/management/move-resources-overview.md#move-resources-across-regions).
 
 ## <a name="verify"></a>Ověření
 
@@ -61,8 +61,8 @@ Pokud chcete dokončit přesun aplikace Service Fabric sítě, [odstraňte zdroj
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přesun prostředků Azure napříč oblastmi](../azure-resource-manager/management/move-region.md)
-* [Podpora přesunu prostředků Azure napříč oblastmi](../azure-resource-manager/management/region-move-support.md)
+* [Přesun prostředků Azure napříč oblastmi](../azure-resource-manager/management/move-resources-overview.md#move-resources-across-regions)
+* [Podpora přesunu prostředků Azure napříč oblastmi](../azure-resource-manager/management/move-support-resources.md)
 * [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md)
 * [Podpora operace přesunutí pro prostředky](../azure-resource-manager/management/move-support-resources.md
 )

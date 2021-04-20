@@ -6,7 +6,7 @@ documentationcenter: na
 author: duongau
 ms.author: duau
 manager: KumudD
-ms.date: 09/16/2020
+ms.date: 04/19/2021
 ms.topic: quickstart
 ms.service: frontdoor
 ms.workload: infrastructure-services
@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 2cf52d30c5658e73c55944bdfb7d424425fa4507
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 74b7c16904c86751076d40056027999fe44cb868
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538951"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727862"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rychlý start: Vytvoření Front Dooru pro vysoce dostupnou globální webovou aplikaci
 
 Začněte s předními dvířky Azure pomocí Azure Portal k nastavení vysoké dostupnosti pro webovou aplikaci.
 
 V tomto rychlém startu fond front Azure vytvoří fondy dvou instancí webové aplikace, které běží v různých oblastech Azure. Vytvoříte konfiguraci front-dveří na základě stejné a stejné priority jako u back-endu. Tato konfigurace směruje provoz na nejbližší lokalitu, která spouští aplikaci. Přední dveře Azure neustále monitorují webovou aplikaci. Služba zajišťuje automatické převzetí služeb při selhání pro další dostupnou lokalitu, když nejbližší web není dostupný.
+
+:::image type="content" source="media/quickstart-create-front-door/environment-diagram.png" alt-text="Diagram prostředí nasazení front-dveří pomocí Azure Portal." border="false":::
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -67,8 +69,8 @@ Po dokončení nasazení vytvořte druhou webovou aplikaci. Použijte stejný po
 | ---              | ---  |
 | **Skupina prostředků**   | Vyberte **vytvořit novou** a zadejte *FrontDoorQS_rg2* |
 | **Název**             | Zadejte jedinečný název vaší webové aplikace, v tomto příkladu *WebAppContoso-2* .  |
-| **Oblast**           | Jiné oblasti, v tomto příkladu *střed USA – jih* |
-| **Plán App Service**  >  **Plán Windows**         | Vyberte **nové** a zadejte *myAppServicePlanSouthCentralUS* a pak vyberte **OK** . |
+| **Oblast**           | Jiné oblasti, v tomto příkladu *východní USA* |
+| **Plán App Service**  >  **Plán Windows**         | Vyberte **nové** a zadejte *myAppServicePlanEastUS* a pak vyberte **OK** . |
 
 ## <a name="create-a-front-door-for-your-application"></a>Vytvoření Front Dooru pro vaši aplikaci
 

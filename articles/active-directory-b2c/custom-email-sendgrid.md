@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/16/2021
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2c4dcaaa1deaa50d620e7c24dacbe56fa91c217f
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: d63e7916423038e53c375b2be4114582cf4d6152
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713439"
+ms.locfileid: "107725759"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Vlastní ověření e-mailu pomocí SendGrid
 
@@ -35,8 +35,6 @@ Pomocí vlastního e-mailu v Azure Active Directory B2C (Azure AD B2C) můžete 
 
 Vlastní ověřování e-mailu vyžaduje použití poskytovatele e-mailu jiného výrobce, jako je [SendGrid](https://sendgrid.com), [Mailjet](https://Mailjet.com)nebo [SparkPost](https://sparkpost.com), vlastní REST API nebo libovolného poskytovatele e-mailu založeného na protokolu HTTP (včetně vaší vlastní). Tento článek popisuje nastavení řešení, které používá SendGrid.
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="create-a-sendgrid-account"></a>Vytvoření účtu SendGrid
 
 Pokud ho ještě nemáte, začněte nastavením účtu SendGrid (zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mailů). Pokyny k instalaci najdete v části [Vytvoření účtu SendGrid](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account) tématu [Jak odesílat e-maily pomocí SendGrid s Azure](../sendgrid-dotnet-how-to-send-email.md).
@@ -44,7 +42,7 @@ Pokud ho ještě nemáte, začněte nastavením účtu SendGrid (zákazníci Azu
 Ujistěte se, že jste dokončili oddíl, ve kterém [vytvoříte klíč rozhraní SendGrid API](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key). Zaznamenejte klíč rozhraní API pro použití v pozdějším kroku.
 
 > [!IMPORTANT]
-> SendGrid nabízí zákazníkům možnost posílat e-maily ze sdílených IP [adres a vyhrazených IP adres](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/). Při použití vyhrazených IP adres je potřeba vytvořit si vlastní pověst správně s IP adresou zahřívání. Další informace najdete v tématu [zahřívání IP adresy](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/).
+> SendGrid nabízí zákazníkům možnost posílat e-maily ze sdílených IP [adres a vyhrazených IP adres](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/). Při používání vyhrazených IP adres je potřeba, abyste správně vytvořili svou vlastní pověst s IP adresou zahřívání. Další informace najdete v tématu [zahřívání IP adresy](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/).
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Vytvořit klíč zásad Azure AD B2C
 
@@ -304,6 +302,9 @@ V části definice obsahu dál `<BuildingBlocks>` přidejte do zásady následuj
 ## <a name="add-otp-technical-profiles"></a>Přidat technické profily jednorázového hesla
 
 `GenerateOtp`Technický profil generuje kód pro e-mailovou adresu. `VerifyOtp`Technický profil ověří kód přidružený k e-mailové adrese. Můžete změnit konfiguraci formátu a vypršení platnosti jednorázového hesla. Další informace o technických profilech pro jednorázové heslo najdete v tématu [definice technického profilu s](one-time-password-technical-profile.md)jednorázovým heslem.
+
+> [!NOTE]
+> Kódy jednorázového hesla generované protokolem Web. TPEngine. Providers. OneTimePasswordProtocolProvider jsou vázané na relaci prohlížeče. To znamená, že uživatel může generovat jedinečné kódy jednorázového hesla v různých relacích prohlížeče, které jsou každý platný pro příslušné relace. Naproti tomu kód jednorázového hesla generovaný integrovaným uživatelským tokem je nezávislý na relaci prohlížeče, takže pokud uživatel v nové relaci prohlížeče vygeneruje nový kód jednorázového hesla, nahradí předchozí kód pro jednorázové heslo.
 
 Do prvku přidejte následující technické profily `<ClaimsProviders>` .
 

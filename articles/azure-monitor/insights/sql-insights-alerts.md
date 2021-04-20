@@ -5,15 +5,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2021
-ms.openlocfilehash: 5fe853ee0f7a113bfb8b0511744d9087f67927c4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bb42f74f6ac8487a93479bdf980c66ef87e8e742
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104609420"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726857"
 ---
 # <a name="create-alerts-with-sql-insights-preview"></a>Vytváření upozornění pomocí SQL Insights (Náhled)
 SQL Insights obsahuje sadu šablon pravidel upozornění, které můžete použít k vytvoření [pravidel upozornění v Azure monitor](../alert/../alerts/alerts-overview.md) pro běžné problémy SQL. Pravidla výstrah v SQL Insights jsou pravidla výstrah protokolů založená na datech výkonu uložených v tabulce *InsightsMetrics* v protokolech Azure monitor.  
+
+> [!NOTE]
+> Chcete-li vytvořit výstrahu pro SQL Insights pomocí šablony Resource Manageru, přečtěte si téma [Správce prostředků Samples Template for SQL Insights](resource-manager-sql-insights.md#create-an-alert-rule-for-sql-insights).
+
 
 > [!NOTE]
 > Pokud máte žádosti o další šablony pravidel upozornění SQL Insights, pošlete prosím svůj názor pomocí odkazu v dolní části této stránky nebo použijte odkaz na zpětnou vazbu SQL Insights v Azure Portal.

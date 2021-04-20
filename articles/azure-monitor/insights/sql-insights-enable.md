@@ -5,21 +5,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: cfcb34b731855fd26ddad191b819e308406117cb
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 012aa364fe9e379455b6b63f7c9e541d2d5b97ed
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478331"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726893"
 ---
 # <a name="enable-sql-insights-preview"></a>Povolit SQL Insights (Náhled)
 Tento článek popisuje, jak povolit [SQL Insights](sql-insights-overview.md) pro monitorování vašich nasazení SQL. Monitorování se provádí z virtuálního počítače Azure, který vytváří připojení k vašim nasazením SQL a pomocí zobrazení dynamické správy (zobrazení dynamické správy) shromažďuje data monitorování. Můžete řídit, které datové sady jsou shromažďovány a četnost shromažďování pomocí profilu monitorování.
+
+> [!NOTE]
+> Pokud chcete povolit SQL Insights vytvořením profilu monitorování a virtuálního počítače pomocí šablony Resource Manageru, přečtěte si téma [Správce prostředků Samples Template for SQL Insights](resource-manager-sql-insights.md).
 
 ## <a name="create-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
 SQL Insights ukládá data do jednoho nebo více [Log Analytics pracovních prostorů](../logs/data-platform-logs.md#log-analytics-workspaces).  Než budete moct povolit SQL Insights, musíte buď [vytvořit pracovní prostor](../logs/quick-create-workspace.md) , nebo vybrat existující. Jeden pracovní prostor se dá použít s několika profily monitorování, ale pracovní prostor a profily se musí nacházet ve stejné oblasti Azure. K povolení a přístupu k funkcím v SQL Insights potřebujete [roli přispěvatel Log Analytics](../logs/manage-access.md) v pracovním prostoru. 
 
 ## <a name="create-monitoring-user"></a>Vytvořit monitorovacího uživatele 
 Potřebujete uživatele na nasazeních SQL, která chcete monitorovat. Použijte následující postupy pro různé typy nasazení SQL.
+
+Níže uvedené pokyny zahrnují proces na typ SQL, který můžete monitorovat.  Pokud to chcete provést pomocí skriptu na několika prozdrojích SQL najednou, přečtěte si následující [soubor Readme](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Workloads/SQL/SQL%20Insights%20Onboarding%20Scripts/Permissions_LoginUser_Account_Creation-README.txt) a [ukázkový skript](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Workloads/SQL/SQL%20Insights%20Onboarding%20Scripts/Permissions_LoginUser_Account_Creation.ps1).
+
 
 ### <a name="azure-sql-database"></a>Databáze Azure SQL
 V Azure Portal otevřete Azure SQL Database pomocí [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) nebo [Editoru dotazů (Preview)](../../azure-sql/database/connect-query-portal.md) .
@@ -87,7 +93,7 @@ Ověřte, zda byl uživatel vytvořen.
 select name as username,
        create_date,
        modify_date,
-       type_desc as type,
+       type_desc as type
 from sys.server_principals
 where type not in ('A', 'G', 'R', 'X')
        and sid is not null

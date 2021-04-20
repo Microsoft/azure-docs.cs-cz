@@ -1,0 +1,469 @@
+### YamlMime:FAQ
+metadata:
+  title: Nejčastější dotazy k Cost Management a fakturaci (FAQ)
+  titleSuffix: Azure Cost Management + Billing
+  description: Nejčastější dotazy a odpovědi
+  author: bandersmsft
+  ms.reviewer: adwise
+  ms.service: cost-management-billing
+  ms.topic: conceptual
+  ms.date: 04/15/2021
+  ms.author: banders
+  ms.openlocfilehash: e96ba3c42ddce1ed12ad560b2d73b99a35c61f8b
+  ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 04/19/2021
+  ms.locfileid: "107728620"
+title: Nejčastější dotazy k Azure Cost Management a fakturaci (FAQ)
+summary: ''
+sections:
+- name: Obecné otázky týkající se fakturace
+  questions:
+  - question: Návody kontaktujte podporu fakturace Azure?
+    answer: >
+      Vytvořte žádost o podporu v [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+  - question: Návody platíte svůj účet?
+    answer: >
+      Podívejte [se na téma vyřešení zůstatku po splatnosti předplatného Azure](manage/resolve-past-due-balance.md).
+  - question: Návody najít moji fakturu?
+    answer: >
+      Podívejte [se na téma zobrazení a stažení faktury Microsoft Azure](understand/download-azure-invoice.md).
+  - question: Proč se mi účtují poplatky? Mám bezplatný účet Azure.
+    answer: >
+      Bezplatné služby mají omezení. Nejpravděpodobněji jste překročili bezplatné limity. Podívejte se, [jak se vyhnout poplatkům s bezplatným účtem Azure](manage/avoid-charges-free-account.md).
+  - question: Návody pochopit Moje vyúčtování?
+    answer: >
+      Pokud jste si koupili předplatné Azure prostřednictvím webu Azure, přečtěte si téma [Kontrola vašeho účtu Azure na základě vašeho předplatného](understand/review-individual-bill.md).
+  - question: Návody se rychle podívat na mé náklady?
+    answer: >
+      Přečtěte si téma [prozkoumat a analyzovat náklady pomocí analýzy nákladů](costs/quick-acm-cost-analysis.md).
+  - question: Mám neočekávané poplatky. Návody je pochopit?
+    answer: >
+      Viz téma [Analýza neočekávaných poplatků](understand/analyze-unexpected-charges.md).
+  - question: Návody zrušit své předplatné Azure?
+    answer: >
+      Viz [zrušení předplatného Azure](manage/cancel-azure-subscription.md).
+- name: Cost Management dotazy
+  questions:
+  - question: Jak můžu povolit přístup k zobrazení nákladů?
+    answer: >
+      Viz [přiřazení přístupu k cost management datům](costs/assign-access-acm-data.md).
+  - question: Které nabídky partnerů podporuje Cost Management?
+    answer: >
+      Cost Management je k dispozici pro partnery, jejichž zákazníci mají plán Azure. Díky povolení nastavení zásad můžou partneři zákazníkům povolit zobrazení informací o nákladech. Další informace najdete v článku [Začínáme se službou Azure Cost Management pro partnery](costs/get-started-partners.md). Klasický zprostředkovatel CSP nepodporuje Cost Management.
+  - question: Jak můžu zobrazit předpokládané náklady?
+    answer: >
+      Na webu Azure Portal přejděte na **Správa nákladů a fakturace** > **Správa náklad** > **Analýza nákladů**. Horní graf ve výchozím zobrazení obsahuje oddíly se skutečnými/amortizovanými náklady a s předpokládanými náklady. Plnou barvou jsou v grafu zobrazené vaše skutečné/amortizované náklady. Stínovaná barva znázorňuje předpokládané náklady.
+  - question: Návody zobrazit rozpis nákladů podle služby Azure?
+    answer: >
+      V Azure Portal přejděte **cost management + fakturace**  >  **cost management**  >  **náklady analýzy**. Vyberte **Náklady podle služeb** a pak je seskupte volbou **Úroveň služby**. Zobrazení změňte na možnost **Tabulka**.
+  - question: Návody se zobrazí náklady na moji fakturu?
+    answer: >
+      V Azure Portal přejděte na analýza nákladů pro obor přidružený k faktuře, kterou analyzujete. Vyberte **Podrobnosti o faktuře**. Detaily faktury vám ukáže poplatky, jak je znázorněno na faktuře.
+  - question: Návody se zobrazí náklady na značku?
+    answer: >
+      Na webu Azure Portal přejděte na **Správa nákladů a fakturace** > **Správa náklad** > **Analýza nákladů**. Vyberte **Seskupit podle** a konkrétní značku. Značky nejsou k dispozici pro nákupy, prostředky tenanta nepřidružené k předplatným, prostředky předplatných nenasazené do skupiny prostředků nebo klasické prostředky. Některé služby nezahrnují značky do údajů o využití. Další informace najdete v tématu [Podpora značek pro prostředky Azure](../azure-resource-manager/management/tag-support.md).
+  - question: Návody se zobrazí náklady na registraci EA?
+    answer: >
+      V Azure Portal přejděte na přehled > **cost management + fakturace** . Vyberte odkaz **rozpis** .
+  - question: Jak můžu zobrazit AWS náklady v Cost Management?
+    answer: >
+      Přečtěte si téma [nastavení a konfigurace AWS nákladů a integrace sestavy využití](costs/aws-integration-set-up-configure.md).
+  - question: Návody vytvořit rozpočet?
+    answer: >
+      Podívejte se na kurz [Vytvoření a Správa rozpočtů Azure](costs/tutorial-acm-create-budgets.md) .
+  - question: Návody vytvořit rozpočet pro určitý filtr nebo značku?
+    answer: >
+      V okně vytvořit rozpočet vyberte rozsah pro rozpočet, který chcete vytvořit. Vyberte možnost **Přidat filtr** a vyberte libovolné filtry nebo značku, kterou chcete přidat pro tento rozpočet. Další informace najdete v kurzu [Vytvoření a Správa rozpočtů Azure](costs/tutorial-acm-create-budgets.md#create-a-budget-in-the-azure-portal) .
+  - question: Návody exportovat data správy nákladů?
+    answer: >
+      Podívejte se na kurz [Vytvoření a Správa exportovaných dat](costs/tutorial-export-acm-data.md) .
+  - question: Pokud ve svém tenantovi nemáte předplatné Azure, Návody data správy nákladů exportovat jako partnera?
+    answer: >
+      Podívejte se na článek [Export nákladových dat pomocí klíče SAS k účtu Azure Storage](costs/export-cost-data-storage-account-sas-key.md) .
+  - question: Jako partner CSP je Cost Management v plánu Azure podporován v nabídce Classic CSP?
+    answer: "Vzhledem k plánům převodu zákazníků na klasického zprostředkovatele CSP do plánu Azure na [nové prostředí pro obchod](https://www.microsoft.com/licensing/news/new-azure-experience-in-csp)bude Azure cost management k dispozici pouze pro přímé partnery a nepřímé poskytovatele zákazníků, kteří jsou v plánu Azure. \n"
+  - question: Jak můžete jako partner CSP (globální správce) povolit zásady přehledu nákladů v oboru předplatného pro moje koncové zákazníky a prodejce v plánu Azure?
+    answer: >
+      V tématu [povolení cost management pro předplatná klientů zákazníka](costs/get-started-partners.md#enable-cost-management-for-customer-tenant-subscriptions) můžete povolit zásady viditelnosti nákladů pro Azure spotřebované služby za maloobchodní sazby pro uživatele v rámci předplatného Azure RBAC. Jako globální správce přímého partnera nebo nepřímého poskytovatele můžete zobrazit náklady v tenantovi zákazníka bez ohledu na zásadu.
+  - question: Jak můžu účtovat náklady zpátky?
+    answer: >
+      Můžete přidělit náklady v Cost Management, abyste viděli náklady, které distribuujete do předplatných, skupiny prostředků nebo značky při analýze nákladů. Další informace najdete v článku [Vytvoření a Správa pravidel přidělování nákladů Azure](costs/allocate-costs.md) .
+  - question: Můžu použít Power BI k zobrazení nákladů?
+    answer: >
+      Ano, Power BI Desktop použijete pro [připojení k cost management data](/power-bi/connect-data/desktop-connect-azure-cost-management) nebo můžete použít [aplikaci cost management Power BI pro EAS](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md).
+  - question: Jaké jsou podporované typy nabídek v Cost Management?
+    answer: >
+      Další informace najdete v tématu [podporované nabídky Microsoft Azure](/costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers).
+  - question: Jak brzy můžu zobrazit náklady a data o využití v Azure Cost Management?
+    answer: >
+      Viz [aktualizace a uchovávání dat o nákladech a využití](/costs/understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention).
+  - question: Můžu v Azure Cost Management najít všechny informace související s náklady?
+    answer: >
+      Podívejte [se na náklady zahrnuté v cost management](costs/understand-cost-mgt-data.md#costs-included-in-cost-management).
+  - question: Účtují se náklady přidělené do rozpočtů a zobrazení prognóz?
+    answer: >
+      <a name="budgets-forecast"></a>Ano. Přidělené náklady se promítají so rozpočtů a prognóz, které je také podporují. Zobrazení prognóz a rozpočtů ukazují přidělené náklady v souladu s konfigurací prostřednictvím pravidel alokace nákladů.
+  - question: Co se stane po odstranění pravidla alokace?
+    answer: >
+      <a name="delete-rule"></a>Po odstranění pravidla alokace se odeberou všechny otevřené a aktivní měsíční fakturační náklady alokované jednotlivým cílům. Pokud pravidlo alokace nákladů existovalo několik měsíců, zůstanou historické údaje o přidělování pro předchozí měsíce tak, jak byly tímto pravidlem alokace nákladů původně nastavené.
+  - question: Kdy je potřeba, aby správce registrace nebo fakturačního účtu vytvořil pravidla alokace nákladů?
+    answer: >
+      <a name="why-admin"></a>Pravidla alokace nákladů se vytvářejí v rozsahu registrace (smlouva Enterprise) nebo fakturačního účtu (Smlouva se zákazníkem Microsoftu). Oprávnění k provádění změn pro tyto rozsahy vyžadují oprávnění správce fakturace.
+  - question: Proč jsou zdroje a cíle přidělování nákladů omezeny na 25 na pravidlo?
+    answer: >
+      <a name="source-target-rule-limit"></a>Jde o omezení verze Preview, které mají zajistit dobrou škálovatelnost a výkon alokace nákladů. Při přechodu do fáze obecné dostupnosti se tato omezení alokace nákladů pravděpodobně zvýší nebo zruší úplně.
+  - question: Co se stane, když se pravidla alokace nákladů (zdroje/cíle) překrývají?
+    answer: >
+      <a name="rule-overlap"></a>Pravidla s překrývajícími se zdroji nebo cíli se nedoporučují. Pravidla alokace nákladů se aplikují v pořadí podle data vytvoření, takže v případě překrývání má přednost pravidlo alokace s nejdřívějším datem vytvoření.
+- name: Otázky k rozhraní API pro Cost Management a fakturaci
+  questions:
+  - question: Kdy jsou rozhraní API pro vytváření sestav EA zastaralá?
+    answer: >
+      Fakturační tým Cost Management + neoznámil pro rozhraní API časovou osu vyřazení. Rozhraní API už nejsou v aktivním vývoji. Doporučujeme, abyste si naplánovali potřebnou práci k migraci z nich.
+  - question: Návody migraci z rozhraní API pro vytváření sestav EA a jaká nová rozhraní API mám zavolat?
+    answer: >
+      Viz téma [migrace z vytváření sestav EA na rozhraní Azure Resource Manager API](costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md).
+  - question: Proč se mi zobrazí časový limit rozhraní API pro podrobnosti o využití?
+    answer: >
+      Datová sada podrobností využití může být často velmi velká (více GB nebo více). Čím větší je velikost datové sady, kterou požadujete, tím déle bude služba kompilovat data před odesláním do vás. Vzhledem k prodlevě může před zadáním vašich dat dojít ke zpoždění synchronních řešení API, jako je [rozhraní API podrobností využití](/rest/api/consumption/usagedetails/list) stránkovaného JSON. Pokud se setkáváte s časovými limity nebo máte procesy, které často potřebují získat velké množství podrobností o využití, přečtěte si článek o [opakovaném načítání velkých datových sad s exporty](costs/ingest-azure-usage-at-scale.md).
+  - question: Návody migrujete z rozhraní API pro vytváření sestav EA na rozhraní API zákaznické smlouvy Microsoftu?
+    answer: >
+      Přečtěte si téma [migrace z smlouva Enterprise na rozhraní API zákaznické smlouvy Microsoftu](costs/migrate-cost-management-api.md).
+- name: Azure Reservations dotazy
+  questions:
+  - question: Návody se zobrazit poplatky za rezervace?
+    answer: >
+      Na webu Azure Portal přejděte na **Správa nákladů a fakturace** > **Správa náklad** > **Analýza nákladů**. Přidejte filtr pro **Cenový model: Rezervace**. V oblasti rozsah a vedle zobrazených nákladů vyberte symbol šipky dolů a potom vyberte možnost **skutečné náklady** nebo metrika **nákladů na amortizaci** .
+  - question: Návody najdete informace o úsporách rezervací?
+    answer: >
+      K dispozici je několik způsobů, jak zobrazit úspory.
+
+      -  Pokud jste zákazníkem se smlouvou EA, můžete použít aplikaci Azure Cost Management Power BI App for EA k zobrazení [sestavy úspory](/costs/analyze-cost-data-azure-cost-management-power-bi-template-app#reports-available-with-the-app.md)pro rezervované instance.
+
+      -  Pro ruční [určení úspory rezervací](reservations/understand-reserved-instance-usage-ea.md#determine-reservation-savings)použijte soubor dat využití a poplatky.
+  - question: Návody zobrazit nevyužité rezervace?
+    answer: >
+      Přihlaste se k webu Azure Portal. Pak vyberte všechny služby > **rezervacích** a poznamenejte si **využití (%)** pro rezervaci. Vyberte některou rezervaci. Podívejte se na trend využití rezervace v průběhu času. Další informace najdete v tématu [zobrazení použití rezervací v Azure Portal](reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json#view-reservation-use-in-the-azure-portal). [V analýze nákladů si také můžete zobrazit nepoužívané náklady na rezervaci](costs/cost-analysis-common-uses.md#view-unused-ri-costs-in-cost-analysis).
+  - question: Jak najdu náklady na rezervaci, které se účtují zpátky?
+    answer: >
+      Podrobné informace najdete v tématu [poplatky zpátky na rezervované náklady Azure](reservations/charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json) .
+  - question: Jak si můžu zobrazit poplatky vzniklé pro virtuální počítače na místě?
+    answer: >
+      Podívejte [se na téma zobrazení poplatků za virtuální počítače na místě](/costs/cost-analysis-common-uses.md#view-your-spot-vm-charges).
+  - question: Návody získat sestavu s podrobnostmi o rezervaci?
+    answer: >
+      Přečtěte si dokumentaci k rozhraní API a [vygenerujte sestavu podrobnosti rezervace](/rest/api/cost-management/generatereservationdetailsreport).
+- name: Otázky k Azure smlouva Enterprise (EA) a na portálu EA
+  questions:
+  - question: Návody přiřadit k registraci oprávnění hlavního názvu služby (SPN)?
+    answer: >
+      Viz [přiřazení rolí k hlavním názvům služby EA](manage/assign-roles-azure-service-principals.md).
+  - question: Proč mi nedostali aktivační e-mail?
+    answer: >
+      Aktivační e-mail z portálu Azure EA se odesílá z adresy *waep@microsoft.com* . Pokud jste aktivační e-mail neobdrželi, vyhledejte ho ve složce se spamem nebo nevyžádanou poštou. Zpráva je v předmětu označená jako _pozvánka k zobrazení nebo správě služeb Microsoft Azure_. Měla by se odeslat každému nově přidanému správci EA.
+
+
+      Pokud jste si jisti, že vás někdo nastavil jako správce EA, nemusíte čekat, až dostanete aktivační e-mail, abyste se mohli k portálu Azure EA přihlásit. Místo toho můžete přejít na https://ea.azure.com a přihlásit se pomocí své e-mailové adresy a hesla (pro pracovní či školní účet nebo účet Microsoft).
+  - question: Návody přidat nového správce EA k registraci?
+    answer: >
+      Nového podnikového správce můžou přidat stávající podnikoví správci. Pokud jste správcem EA, přihlaste se k portálu EA, klikněte na **Spravovat**, pak v pravém horním rohu klikněte na **+ Přidat správce** a přidejte nového správce EA. Ujistěte se, že znáte e-mailovou adresu a upřednostňovanou metodu přihlašování (např. prostřednictvím pracovního nebo školního účtu nebo účtu Microsoft Live ID) uživatelů, abyste je mohli přidat.
+
+
+      Pokud nejste správcem EA, obraťte se na správce EA ve vaší společnosti a požádejte je, aby vás k registraci přidali. Jakmile vás k registraci přidají, obdržíte aktivační e-mail.
+
+
+      Pokud vám však správci EA nemůžou pomoct, můžeme vás přidat jejich jménem, když nám poskytnete následující informace:
+
+      - Číslo registrace
+
+      - E-mailová adresa, která se má přidat, a typ ověřování (pracovní nebo školní účet nebo účet Microsoft)
+
+      - E-mailové schválení od správce EA
+
+
+      Jakmile budete mít všechny požadované informace, odešlete žádost na stránce [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).
+  - question: Návody aktualizovat prvního správce EA na registraci?
+    answer: >
+      Prvního správce EA je možné aktualizovat na webu Volume Licensing Service Center aktualizací kontaktu pro zasílání oznámení a online správce na portálu. Aktualizace portálu EA bude trvat přibližně 24 hodin. Po aktualizaci nový správce EA obdrží aktivační e-mail.
+
+
+      Pokud nemáte přístup k portálu VLSC nebo pokud váš původní správce EA už nemůže spravovat registraci a nemá přístup k portálu EA, na stránce [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) odešlete žádost o aktualizaci a zadejte následující informace:
+
+      - Číslo registrace
+
+      - E-mailová adresa, která se má přidat, a typ ověřování (pracovní nebo školní účet nebo účet Microsoft)
+
+      - Důvod změny původního správce EA
+
+      - E-mailové schválení od původního správce EA
+  - question: Můj aktuální správce EA už není ve společnosti. Co bych měl/a dělat?
+    answer: >
+      Registrace EA může mít několik správců EA. S žádostí o přidání nového správce EA, vlastníka účtu nebo správce oddělení se tedy můžete obrátit na jiného správce EA. Pokud si však nejste jisti, kdo je ve vaší společnosti správcem EA, nebo pokud v dané registraci není k dispozici žádný jiný správce EA, obraťte se na nás s následujícími informacemi:
+
+      - Číslo registrace
+
+      - E-mailová adresa, která se má přidat, a typ ověřování (pracovní nebo školní účet nebo účet Microsoft)
+
+      - Informace o tom, že aktuální správce EA už u společnosti nepracuje
+
+
+      Upozorňujeme, že pokud jsou v dané registraci další správci EA, obrátíme se na ně s žádostí o schválení správních změn v registraci.
+  - question: Moje registrace se zobrazuje ve stavu čekání na vyřízení. Jak můžu registraci aktivovat?
+    answer: >
+      Registrace jsou ve stavu čekání na vyřízení v případě, že se původní správce EA ještě k registraci nepřihlásil. Pokud jste správcem EA, přihlaste se k portálu Azure EA. Na úvodní stránce s čísly všech vašich registrací se možná vaše registrace čekající na vyřízení nezobrazí. V pravém horním rohu webu EA Portal zrušte zaškrtnutí políčka Aktivní, aby se zobrazila i registrace čekající na vyřízení. Kliknutím na příslušnou registraci přejděte k informacím o registraci. Jakmile se dostanete na stránku Správa registrace, stav Čeká na vyřízení se aktualizuje na Aktivní.
+  - question: Proč se můj účet zaseknul ve stavu čekání na vyřízení?
+    answer: >
+      Při prvním přidání nových vlastníků účtů k registraci se u nich vždy zobrazí stav Čeká na vyřízení. Jakmile obdrží úvodní aktivační e-mail, můžou se vlastníci účtu přihlásit a aktivovat svůj účet. Po přihlášení se stav účtu aktualizuje z Čeká na vyřízení na Aktivní.
+  - question: Proč se při přihlašování k portálu Azure EA zobrazí chyba?
+    answer: "Během přihlašování k portálu Azure EA se může zobrazit chybová zpráva z několika důvodů. Postupujte podle těchto kroků pro řešení potíží:\n\n 1. Ujistěte se, že používáte správnou adresu URL portálu EA: [https://ea.azure.com](https://ea.azure.com).\n 1. Zjistěte si, jestli pro přístup k portálu Azure EA máte používat pracovní nebo školní účet, nebo účet Microsoft Live ID. Pokud používáte pracovní účet, zadejte svůj pracovní e-mail a heslo. Pokud používáte účet Microsoft Live ID, zadejte e-mail a heslo svého účtu Microsoft Live ID. Pokud jste zapomněli heslo svého účtu Microsoft Live ID, resetujte si ho na stránce [https://account.live.com/password/reset](https://account.live.com/password/reset).\n 1. Doporučujeme k přihlášení použít privátní režim prohlížeče, ve kterém se neuchovávají soubory cookie ani mezipaměť z předchozích ani stávajících relací. Vymažte mezipaměť a v privátním režimu nebo anonymním okně otevřete stránku [https://ea.azure.com](https://ea.azure.com).\n 1. Pokud používáte účet Microsoft a dochází k chybě Neplatný uživatel, může být důvodem to, že máte více účtů Microsoft a účet, pomocí kterého se pokoušíte přihlásit, není primárním aliasem. Pokud chcete zkontrolovat primární alias, přejděte na adresu account.live.com.\n     - Přejděte do části Vaše informace a vyberte Spravovat přihlašovací e-mail nebo telefonní číslo.\n     - Podle pokynů na obrazovce ověřte alternativní e-mailovou adresu a získejte kód pro přístup k citlivým informacím.\n     - Zadejte tento bezpečnostní kód.\n     - Pokud chcete dvoustupňové ověřování nastavit později, vyberte Nastavit později.\n     - Přejdete na stránku Správa aliasů účtu, kde se zobrazí vaše aliasy účtu. Pečlivě zkontrolujte, že se k portálu Azure EA přihlašujete pomocí primárního aliasu. Pokud se přihlašujete pomocí jiného aliasu, můžete ho nastavit jako svůj primární nebo místo něj použijte primární alias pro portál EA.\n \n Pokud výše uvedený postup při řešení potíží selže, na stránce [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) odešlete žádost obsahující například následující informace:\n   - Použité prohlížeče a jejich verze\n   - Snímek obrazovky s chybovou zprávou\n   - Adresa URL stránky, na které se zobrazuje chyba  \n   - Datum, čas a časové pásmo výskytu chyby\n\n- Kromě toho nám pomůže, když získáte soubor protokolu. Tady je postup zachycení trasování sítě:\n\n1. Otevřete Internet Explorer.\n1. Stiskněte klávesu F12. V dolní části aplikace Internet Explorer se otevře okno.\n1. Vyberte kartu **Síť**.\n1. Klikněte na **Spustit zachytávání**.\n1. Proveďte akci, která způsobuje chybu.\n1. Jakmile dojde k chybě, klikněte na **Zastavit zachytávání**.\n1. Uložte soubor se získanými informacemi a přiložte ho k žádosti o podporu.\n1. Nezapomeňte v žádosti o podporu uvést číslo vaší registrace a vaši e-mailovou adresu.\n"
+  - question: Jaký je rozdíl mezi pracovním nebo školním účtem a účtem Microsoft?
+    answer: >
+      **Účet Microsoft:** Účty přidružené k účtu Live ID na stránce [https://signup.live.com](https://signup.live.com).
+
+
+      **Pracovní nebo školní účet:** K dispozici pouze pro společnosti, které si nastavily službu Active Directory s federací na cloud a všechny účty mají v jednom tenantovi. Pokud je interní služba Active Directory dané společnosti federovaná na cloud, je možné přidávat uživatele s ověřováním prostřednictvím jejich pracovních nebo školních účtů.
+
+
+      Od září 2016 Microsoft již neumožňuje registraci pracovních nebo školních e-mailových adres jako účtů Microsoft. Další podrobnosti najdete v následujících materiálech: [https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/).
+
+
+      Pokud vaše organizace není federovaná na cloud, nebudete moct použít svou pracovní nebo školní e-mailovou adresu. Místo toho si zaregistrujte nebo vytvořte novou e-mailovou adresu a zaregistrujte ji jako účet Microsoft.
+  - question: Zapomněl (a) jsem heslo k portálu Azure EA. Co bych měl/a dělat?
+    answer: >
+      Pokud jste zapomněli heslo svého účtu Microsoft Live ID, resetujte si ho na stránce [https://account.live.com/password/reset](https://account.live.com/password/reset).
+
+
+      Pokud jste zapomněli své pracovní heslo, obraťte se na správce IT vaší společnosti.
+  - question: Mám platný pracovní nebo školní účet. Proč ji nemůžu přidat na portál EA?
+    answer: >
+      Pokud máte pracovní nebo školní účet v jiném tenantovi, na stránce s podrobnostmi registrace změňte úroveň autorizace na Pracovní nebo školní účet napříč tenanty a budete moct účet přidat.
+  - question: Omylem jsem přidružil(a) svůj stávající účet Azure k registraci Azure EA. Následkem toho se mi ztratil měsíční kredit. Mohu měsíční kredit získat zpět?
+    answer: >
+      Pokud jste se přihlásili jako vlastník účtu Azure EA pomocí stejných přihlašovacích údajů, které používáte pro Visual Studio Subscription, můžete obnovit svoje výhody Azure služby Visual Studio Subscription provedením jedné z následujících akcí:
+
+
+      - Po odebrání nebo přesunutí všech přidružených předplatných Azure odstraňte roli vlastníka účtu z portálu Azure Enterprise. Potom si znovu zaregistrujte jednotlivé výhody Azure pro Visual Studio.
+
+      - Odstraňte předplatitele sady Visual Studio z lokality správy na webu VLSC a znovu přiřaďte předplatné k účtu, ale tentokrát s jinými přihlašovacími údaji. Potom si znovu zaregistrujte jednotlivé výhody Azure pro Visual Studio.
+  - question: Jaký typ předplatného mám vytvořit?
+    answer: >
+      Portál Azure Enterprise nabízí podnikovým zákazníkům dva typy předplatného:
+
+
+      - Microsoft Azure Enterprise, které je ideální pro:
+
+      - Veškeré produkční využití
+
+      - Nejlepší ceny v závislosti na útratě za infrastrukturu
+
+
+      Pokud potřebujete další informace, [kontaktujte obchodní oddělení Azure](https://azure.microsoft.com/pricing/enterprise-agreement/).
+
+
+      - Enterprise pro vývoj/testování, které je ideální pro:
+
+      - Všechny týmové úlohy vývoje/testování
+
+      - Úlohy vývoje/testování se středním až vysokým zatížením
+
+      - Přístup ke speciálním imagím MSDN a preferenčním sazbám za služby
+
+
+      Další informace najdete v tématu, které se věnuje [nabídce Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/).
+  - question: Název mého předplatného je stejný jako název nabídky. Mám název předplatného změnit na nějaký smysluplný název pro naši organizaci?
+    answer: >
+      Při vytváření předplatného se jako výchozí název používá typ nabídky, kterou zvolíte. Doporučujeme změnit název předplatného na název, který vám usnadní sledování předplatného.
+
+
+      Změna názvu:
+
+
+      1. Přihlaste se k webu [https://account.windowsazure.com](https://account.windowsazure.com).
+
+      1. Vyberte seznam předplatných.
+
+      1. Vyberte předplatné, které chcete upravit.
+
+      1. Vyberte ikonu **Manage Subscription** (Spravovat předplatné).
+
+      1. Upravte podrobnosti o předplatném.
+  - question: Jak můžu sledovat vzniklé náklady podle nákladového střediska?
+    answer: >
+      Pokud chcete sledovat náklady podle nákladového střediska, musíte definovat nákladové středisko na jedné z následujících úrovní:
+
+
+      - Oddělení
+
+      - Účet
+
+      - Předplatné
+
+
+      Podle potřeby můžete stejné nákladové středisko použít ke sledování využití a nákladů souvisejících s konkrétním nákladovým střediskem.
+
+
+      Například pokud chcete sledovat náklady na speciální projekt, na kterém se podílí více oddělení, můžete ke sledování využití a nákladů definovat nákladové středisko na úrovni předplatného.
+
+
+      Nákladové středisko není možné definovat na úrovni služby. V případě, že chcete sledovat využití na úrovni služby, můžete využít funkci _značek_, která je dostupná na úrovni služby.
+  - question: Jak můžu sledovat využití a útratu v různých odděleních organizace?
+    answer: >
+      V rámci registrace Azure EA můžete vytvořit libovolný počet oddělení. Abyste mohli správně sledovat využití, zajistěte, aby se předplatná mezi odděleními nesdílela.
+
+
+      Po vytvoření oddělení a předplatných uvidíte v sestavě využití data. Tyto informace vám pomohou sledovat využití a spravovat náklady a útratu na úrovni oddělení.
+
+
+      K datům využití se můžete dostat také v rozhraní API pro generování sestav. Podrobné informace a ukázkový kód najdete v tématu [Rozhraní Azure Enterprise REST API](manage/ea-portal-rest-apis.md).
+  - question: Mohu nastavit kvótu útraty a dostávat upozornění, když se budu blížit limitu?
+    answer: >
+      Můžete nastavit kvótu útraty na úrovni oddělení a systém vás automaticky upozorní, když vaše limity útraty dosáhnou 50 %, 75 %, 90 % a 100 % definované kvóty.
+
+
+      Pokud chcete definovat kvótu útraty, vyberte oddělení a potom ikonu úprav. Po úpravě podrobností limitu útraty vyberte **Save** (Uložit).
+  - question: K implementaci řízení přístupu Azure RBAC a sledování využití jsem použil(a) skupiny prostředků. Jak mohu zobrazit související podrobnosti o využití?
+    answer: >
+      Informace o používání _skupin prostředků_ a _značek_ se sledují na úrovni služby a jsou k dispozici v souboru s podrobnými informacemi o využití (CSV), který si můžete stáhnout. Na portálu Azure Enterprise přejděte na [stažení sestavy využití](https://ea.azure.com/report/downloadusage).
+
+
+      K informacím o využití se dostanete také přes rozhraní API. Podrobné informace a ukázkový kód najdete v tématu [Rozhraní Azure Enterprise REST API](manage/ea-portal-rest-apis.md).
+
+
+      > [!NOTE]
+
+      > Značky můžete používat pouze u prostředků, které podporují operace Azure Resource Manageru. Pokud jste vytvořili virtuální počítač, virtuální síť nebo úložiště prostřednictvím modelu nasazení Classic (například přes portál Classic), nemůžete pro tyto prostředky použít značky. Pokud chcete zajistit podporu označování, musíte tyto prostředky nasadit znovu prostřednictvím Resource Manageru. Všechny ostatní prostředky označování podporují.
+  - question: Můžu provádět analýzy s využitím Power BI?
+    answer: >
+      Ano, můžete použít [konektor Azure cost management pro Power BI Desktop](/power-bi/connect-data/desktop-connect-azure-cost-management) k vytváření výkonných, přizpůsobených vizualizací a sestav, které vám pomůžou lépe porozumět útratám Azure. Pokud jste na smlouva Enterprise (EA), můžete také využít [Azure cost management App Template](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md). Azure Cost Management App template obsahuje předpřipravené sestavy, které vám pomůžou s náklady na monitorování, trendy využití služeb a určení možností optimalizace nákladů a snížit tak náklady.               Generování sestav Power BI je k dispozici pro přímé a nepřímé zákazníky a partnery Azure EA, kteří můžou zobrazit fakturační údaje.
+  - question: Mohu k registraci Azure EA přidružit stávající účet Azure?
+    answer: >
+      Ano. Všechna předplatná Azure, pro která jste vlastníkem účtu, se převedou na vaši smlouvu Enterprise. Zahrnuta jsou předplatná, která využívají měsíční kredit, například Visual Studio, AzurePass, MPN, BizSpark a další. Při převodu těchto předplatných přijdete o měsíční kredit.
+  - question: Kolik vlastníků účtů Azure je možné mít pro jedno předplatné?
+    answer: >
+      V jednom předplatném je povolený pouze jeden vlastník účtu.  Další role je možné přidat pomocí řízení přístupu na základě role nebo řízení přístupu (IAM) na kartě předplatného v levém horním rohu stránky na webu[Azure Portal](https://portal.azure.com).
+  - question: Je možné převést vlastnictví předplatného na jiný účet?
+    answer: >
+      Ano, vlastnictví předplatného můžete převést na jiný účet. Například pokud účet A obsahuje tři předplatná, podnikový správce může převést jedno předplatné do účtu B, jedno do účtu C a jedno do účtu D, nebo všechna do účtu E.
+
+
+      Přenos předplatných:
+
+
+      1. Na portálu Azure Enterprise vyberte **Manage** (Spravovat) > **Account** (Účet).
+
+      1. Myší najeďte na **Account** (Účet) úplně napravo, aby se zobrazily možnosti **Transfer Ownership** (Převést vlastnictví) (ikona osoby) a **Transfer Subscription** (Převést předplatné) (ikona seznamu). Tyto možnosti jsou viditelné pouze u aktivních účtů.
+  - question: Může být vlastník účtu Azure uvedený u více než jednoho oddělení?
+    answer: >
+      Ne, vlastník účtu může být přidružený pouze k jednomu oddělení. Tato zásada pomáhá zajistit přesné monitorování a rozdělování útraty a nákladů přidružených k odpovídajícímu oddělení v rámci registrace EA na portálu Azure EA Portal.
+  - question: Může být vlastník účtu Azure uvedený jako skupina zabezpečení?
+    answer: >
+      Ne, vlastníkem předplatného musí být jedinečný účet Microsoft (MSA) nebo ověřování Azure Active Directory (Azure AD). Pokud chcete v rámci organizace zohlednit nástupnictví, můžete zvážit vytvoření obecných účtů a použití Azure AD ke správě přístupu k předplatným.
+  - question: Může jeden uživatel vlastnit více předplatných?
+    answer: >
+      Vlastník účtu Azure může vytvářet a spravovat neomezené množství předplatných.
+  - question: Jak můžu zobrazit všechna předplatná organizace nebo k nim získat přístup?
+    answer: >
+      V současné době je potřeba k tomu použít zásady. To znamená, že byste museli vyžadovat, aby se pro každé vytvořené předplatné váš účet pomocí řízení přístupu na základě role přidal do role předplatného.
+  - question: Kde můžu vytvořit předplatné?
+    answer: >
+      Abyste mohli vytvořit předplatné nabídky Enterprise Azure (EA), správce vaší registrace EA musí na portálu Azure EA Portal přidat váš účet do role vlastníka účtu. Pak se musíte přihlásit k portálu Azure EA Portal a získat oprávnění k vytváření předplatných nabídek EA. První předplatné EA doporučujeme vytvořit pomocí odkazu + Přidat předplatné na kartě předplatného na portálu EA Portal.  Jakmile však váš účet získá oprávnění, může být snadnější vytvářet předplatná na webu portal.azure.com na kartě předplatného v levém horním rohu stránky, kde můžete předplatné v jednom kroku vytvořit i přejmenovat.
+  - question: Kdo může vytvořit předplatné?
+    answer: >
+      Abyste mohli vytvořit předplatné nabídky Enterprise Azure, musíte na [portálu EA](https://ea.azure.com) mít oprávnění role vlastníka účtu.
+  - question: Proč mé náklady ukazují jako $0?
+    answer: >
+      U zákazníků s **přímou registrací** můžou podnikoví správci poskytnout vlastníkům účtů a správcům oddělení přístup k informacím o nákladech a cenách v sestavách využití. Postupujte následovně:
+
+
+      1. V levém navigačním panelu portálu Azure Enterprise vyberte **Manage** (Spravovat).
+
+      1. Vyberte modrou tužku vedle možnosti DA (department administrator) view charges (Správce oddělení může zobrazit náklady).
+
+      1. Vyberte **Povoleno** a uložte provedenou změnu.
+
+      1. Vyberte modrou tužku vedle možnosti AO (account owner) view charges (Vlastník účtu může zobrazit náklady).
+
+      1. Vyberte **Povoleno** a uložte provedenou změnu.
+
+
+      > [!NOTE]
+
+      > Pokud jste vlastníkem účtu nebo správcem oddělení, obraťte se na podnikového správce s žádostí o povolení funkce cen.
+
+
+      Zákazníci s **nepřímou registrací** ověří u svého partnera, že pro ně povolil funkci cen. To může udělat jenom partner. Po povolení můžete zobrazit náklady a ceny u vaší registrace jako podnikový správce.
+
+
+      Pokud chtějí partneři povolit funkci zobrazení poplatků pro vlastníka účtu nebo správce oddělení, postupují podle pokynů v části s **přímou registrací**.
+  - question: Proč se v sestavě s podrobnostmi o využití nezobrazují žádné informace o skladových položkách?
+    answer: >
+      Sestava s podrobnostmi o využití neobsahuje žádné informace o skladových položkách. Tato sestava ale obsahuje informace o využití, abyste si mohli stáhnout sestavu ceníku a získat tak informace o skladových položkách.
+  - question: Proč celková částka u Azure Marketplace neodpovídá sestavám pro shrnutí využití a podrobnosti?
+    answer: >
+      Sestava poplatků za Azure Marketplace ukazuje pouze poplatky na základě využití. Jednorázové poplatky se nezobrazují. Nejaktuálnější poplatky na základě využití i jednorázové poplatky najdete na stránce se souhrnem využití.
+  - question: Proč sestava rozhraní API neobsahuje žádné informace?
+    answer: >
+      Platnost klíčů rozhraní API vyprší každých šest měsíců. Pokud máte problém, měl by podnikový správce vygenerovat nový klíč rozhraní API. Nezapomeňte postupovat podle kroků v nejčastějších dotazech k sestavě rozhraní API.
+  - question: Proč sestava Power BI nefunguje?
+    answer: >
+      V případě problémů s Power BI zaprotokolujte lístek pomocí [týmu podpory Power BI](https://support.powerbi.com).
+  - question: Proč se v mých sestavách nezobrazují značky prostředků?
+    answer: >
+      Značky prostředků se spravují na webu Azure Portal. Obraťte se na tým předplatného Azure na webu [Azure Portal](https://portal.azure.com). Postupujte podle kroků v článku [Jak vytvořit žádost o podporu Azure](../azure-portal/supportability/how-to-create-azure-support-request.md).
+  - question: Proč se mi každý den mění sazba za prostředek?
+    answer: >
+      Sazba za prostředek uvedená v podrobné sestavě využití je vypočtená hodnota. Představuje průměrnou měsíční sazbu, která se účtovala za službu. Sazba za prostředek se počítá na základě průměru měsíčního závazku a měsíčních poplatků za nadlimitní využití jednotky služby. Část poplatků účtovaná vůči závazku a sazby za nadlimitní využití se budou až do konce měsíce měnit. Proto se v průběhu měsíce mění i uvedená sazba za prostředek. Sazba za prostředek se uzamkne pátý den po konci měsíce.
+  - question: Co se u služeb Azure Marketplace a zálohy na Azure se smlouvou EA změnilo?
+    answer: >
+      Od 1. března 2018 některé služby prodejců třetích stran využívají předplacenou službu Azure EA. S výjimkou rezervovaných instancí virtuálního počítače Azure byly služby dříve fakturovány mimo zálohu na Azure se smlouvou EA a účtovaly se samostatně.
+
+
+      Rozšířili jsme možnosti použití zálohy na Azure tak, aby zahrnovaly některé služby publikované na Azure Marketplace třetími stranami, které si naši zákazníci kupují nejčastěji. Použití zálohy na Azure se smlouvou EA pro tyto služby na Azure Marketplace pomáhá zjednodušit nákup a správu plateb.
+
+
+      Tato změna byla provedena, protože zákazníci chtěli použít předplacenou platbu Azure před několika způsoby. Zákazníci tuto změnu často vyžadovali a měla vliv na velkou část zákazníků Azure Marketplace.
+  - question: Návody výhodou předplacení Azure pro Azure Marketplace nákupy se smlouvou EA?
+    answer: >
+      Fakturace se zjednoduší a budete mít možnost zálohu na Azure se smlouvou EA lépe využít. Vzhledem k tomu, že služby jsou zahrnuté do předplatného Azure, bude předplacená služba Azure EA mnohem cenná.
+  - question: Které služby Azure Marketplace používají zálohu na Azure se smlouvou EA a jak to zjistím?
+    answer: >
+      Když si koupíte službu, která používá zálohu na Azure, Azure Marketplace zobrazí právní omezení. Některé podporované služby jsou publikovány v Red Hat, SUSE, Autodesk a Oracle. Podobně pojmenované služby publikované jinými stranami se v současné době od zálohy na Azure neodečtou. Úplný seznam produktů, které jsou součástí programu, najdete v tématu [služby třetích stran, které používají předběžné platby Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment) .
+  - question: Co dělat v případě, že předplacení Azure EA vyprší pro Azure Marketplace nákupy?
+    answer: >
+      Pokud využijete celou svoji zálohu na Azure a služby využíváte nadlimitně, poplatky související s těmito službami se zobrazí na další faktuře za nadlimitní využití společně se všemi dalšími službami založenými na spotřebě. Před změnou, ke které došlo 1. března 2018, se tyto poplatky fakturovaly s ostatními službami Azure Marketplace.
+  - question: Proč zálohu na Azure se smlouvou EA nevyužívají všechny služby Azure Marketplace?
+    answer: >
+      Často pracujeme na tom, abychom zákazníkům v souvislosti se zálohou na Azure se smlouvou EA poskytovali co nejlepší služby. Nejnovější změny v rámci předplacení Azure EA řeší velký počet zákazníků a významnou část celkové útraty v Azure Marketplace. V budoucnu se možná přidají další služby.
+  - question: Jak Azure Marketplace služby a změny předplatného Azure EA ovlivňují nepřímý zápis a partnery?
+    answer: >
+      Na naše zákazníky ani partnery s nepřímou registrací to nebude mít žádný vliv. Na tyto služby se vztahují stejné možnosti přirážky partnera jako na ostatní služby založené na spotřebě. Jedinou změnou je, že se poplatky objevují na jiné faktuře a že platba poplatků pochází ze záloh na Azure se smlouvou EA příslušného zákazníka.
+  - question: Kde můžu vidět Azure Marketplace služby, které využívají předplacení Azure EA?
+    answer: >
+      Pro konkrétní nabídky Azure Marketplace je možné využít prostředky zálohy na Azure. Úplný seznam produktů, které jsou součástí programu, najdete v tématu [služby třetích stran, které používají předběžné platby Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment) .
+- name: Otázky partnerů
+  questions:
+  - question: Kdo má propojit ID partnera?
+    answer: >
+      Každý uživatel z partnerské organizace, který pracuje na zdrojích Power Apps zákazníka, může propojit ID partnera s účtem. V ideálním případě by přidružení v PAL mělo být provedeno na začátku projektu. Dá se ale udělat vždycky, když máte přístup v adresáři zákazníka.
+  - question: Je možné po propojení změnit ID partnera?
+    answer: >
+      Ano. Propojené ID partnera lze změnit, přidat nebo odebrat. Příkladem pro tuto situaci může být situace, kdy zaměstnanec z vaší společnosti opustí vaši organizaci. Dalším příkladem může být situace, kdy projekt nebo smlouva s zákazníkem skončí.
+  - question: Co když má uživatel účet ve více než jednom tenantovi zákazníka?
+    answer: >
+      Propojení mezi ID partnera a účtem se provádí u každého tenanta zákazníka. Propojte toto ID partnera v každém tenantovi zákazníka.
+  - question: Můžou propojení s ID partnera upravit nebo odebrat jiní partneři nebo zákazníci?
+    answer: >
+      Propojení je přiřazeno na úrovni uživatelského účtu. Propojení s ID partnera můžete upravit nebo odebrat jenom vy. Zákazník ani jiní partneři nemůžou propojení s ID partnera změnit.
+  - question: Které MPN ID mám použít, pokud jich má moje společnost více?
+    answer: >
+      Nezapomeňte použít **přidružené ID MPN**, které je uvedené ve vašem partnerském profilu. Obvykle se jedná o přidružení ID místního účtu k vaší organizaci.
+  - question: Vysvětlete si Návody zákazníka?
+    answer: >
+      PAL umožňuje Microsoftu identifikovat a rozpoznat partnery, kteří pomáhají zákazníkům dosáhnout obchodních cílů a realizace hodnoty v cloudu. Zákazníci musí nejdřív poskytnout přístup k partnerům jejich prostředků Power Apps. Po udělení přístupu se k němu přidělí ID Microsoft Partner Network partnera (MPN ID). Toto přidružení pomáhá Microsoftu porozumět poskytovatelům služeb a zdokonalovat nástroje a programy potřebné k tomu, aby zákazníci mohli nejlépe podporovat.
+  - question: Jaká data shromažďuje PAL?
+    answer: >
+      Přidružení PAL k existujícím přihlašovacím údajům neposkytuje Microsoftu žádná nová zákaznická data. Poskytne Microsoftu informace o tom, kde je partner aktivně zapojen do prostředí Power Apps zákazníka. Microsoft může na základě oprávnění účtu (role Power Apps) a rozsahu (tenanta, skupiny prostředků, prostředku) poskytnout partnerovi od zákazníka jeho využití a vliv z prostředí zákazníka na partnerský subjekt.
+  - question: Ovlivňuje přidružení PAL zabezpečení prostředí Power Apps zákazníka?
+    answer: Asociace PAL přidává ID MPN partnera jenom na přihlašovací údaje, které jsou už zřízené. Nemění oprávnění (role Power Apps) ani neposkytují partnerům nebo Microsoftu dodatečná data služby Power Apps.

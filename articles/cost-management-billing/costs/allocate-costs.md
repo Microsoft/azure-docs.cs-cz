@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 414ce626d76c9b7a7d073d6cbfa5a5f4446c3073
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: e7afef7e0a10bb4be3c30112fc207467167e4a17
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025522"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726515"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Vytváření a správa pravidel alokace nákladů na Azure (Preview)
 
@@ -105,12 +105,7 @@ Tady je video, které ukazuje, jak vytvořit pravidlo přidělení nákladů.
 
 Pravidlo alokace nákladů můžete upravit, pokud chcete změnit zdroj nebo cíl nebo pokud chcete aktualizovat předem vyplněný počet procent pro výpočetní funkce, úložiště nebo síť. Pravidla se upravují stejným způsobem, jako když se vytvářejí. Zpracování úpravy stávajících pravidel může trvat až dvě hodiny.
 
-## <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
-
-Následující části obsahují běžné otázky týkající se přidělování nákladů.
-
-### <a name="what-are-the-current-limitations-with-cost-allocation-in-public-preview"></a>Jaká jsou aktuální omezení pro alokaci nákladů ve verzi Public Preview?
-<a name="limitations"></a>
+## <a name="current-limitations"></a>Aktuální omezení
 
 V současné době se alokace nákladů podporuje ve službě Cost Management v zobrazeních analýzy nákladů, rozpočtů a prognóz. Přidělené náklady se zobrazují také v seznamu předplatných a na stránce s přehledem předplatných.
 
@@ -122,32 +117,9 @@ Alokace nákladů ve verzi Public Preview momentálně nepodporuje následujíc�
 - [Aplikace Power BI Cost Management](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)
 - [Konektor Power BI Desktop](/power-bi/connect-data/desktop-connect-azure-cost-management)
 
-### <a name="are-costs-factored-into-budgets-and-forecast-views"></a>Promítají se náklady do rozpočtů a zobrazení prognóz?
-<a name="budgets-forecast"></a>
-
-Ano. Přidělené náklady se promítají so rozpočtů a prognóz, které je také podporují. Zobrazení prognóz a rozpočtů ukazují přidělené náklady v souladu s konfigurací prostřednictvím pravidel alokace nákladů.
-
-### <a name="if-a-cost-allocation-rule-is-deleted-what-happens"></a>Co se stane po odstranění pravidla alokace?
-<a name="delete-rule"></a>
-
-Po odstranění pravidla alokace se odeberou všechny otevřené a aktivní měsíční fakturační náklady alokované jednotlivým cílům. Pokud pravidlo alokace nákladů existovalo několik měsíců, zůstanou historické údaje o přidělování pro předchozí měsíce tak, jak byly tímto pravidlem alokace nákladů původně nastavené.
-
-### <a name="why-is-an-enrollment-admin-or-a-billing-account-admin-needed-to-create-cost-allocation-rules"></a>Kdy je potřeba, aby správce registrace nebo fakturačního účtu vytvořil pravidla alokace nákladů?
-<a name="why-admin"></a>
-
-Pravidla alokace nákladů se vytvářejí v rozsahu registrace (smlouva Enterprise) nebo fakturačního účtu (Smlouva se zákazníkem Microsoftu). Oprávnění k provádění změn pro tyto rozsahy vyžadují oprávnění správce fakturace.
-
-### <a name="why-are-sources-and-targets-limited-to-25-per-rule"></a>Proč pro pravidla existují omezení 25 zdrojů a cílů?
-<a name="source-target-rule-limit"></a>
-
-Jde o omezení verze Preview, které mají zajistit dobrou škálovatelnost a výkon alokace nákladů. Při přechodu do fáze obecné dostupnosti se tato omezení alokace nákladů pravděpodobně zvýší nebo zruší úplně.
-
-### <a name="what-can-happen-if-cost-allocation-rules-sourcestargets-overlap"></a>Co se stane, když se pravidla alokace nákladů (zdroje/cíle) překrývají?
-<a name="rule-overlap"></a>
-
-Pravidla s překrývajícími se zdroji nebo cíli se nedoporučují. Pravidla alokace nákladů se aplikují v pořadí podle data vytvoření, takže v případě překrývání má přednost pravidlo alokace s nejdřívějším datem vytvoření.
 
 ## <a name="next-steps"></a>Další kroky
 
+- Přečtěte si část [cost management + Nejčastější dotazy týkající se fakturace](../cost-management-billing-faq.yml) pro otázky a odpovědi týkající se přidělení nákladů.
 - Vytvoření nebo aktualizace pravidel alokace s využitím [rozhraní REST API pro alokaci nákladů](/rest/api/cost-management/costallocationrules)
 - Další informace o [postupu při optimalizaci investic do cloudu s využitím služby Azure Cost Management](cost-mgt-best-practices.md)

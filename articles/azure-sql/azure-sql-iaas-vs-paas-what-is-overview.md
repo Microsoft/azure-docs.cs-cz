@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: ea097119111d5dbd5eba3c11aba549d201186e3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 394b3390386c60e2a64f52dd944dfcdb0d33951e
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592179"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727019"
 ---
 # <a name="what-is-azure-sql"></a>Co je Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -98,18 +98,19 @@ Azure SQL Database nabízí následující možnosti nasazení:
 ### <a name="sql-server-on-azure-vm"></a>SQL Server na virtuálním počítači Azure
 
 [SQL Server na virtuálním počítači Azure](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) spadají do kategorie odvětví *jako služby (IaaS)* a umožňuje spouštět SQL Server v plně spravovaném virtuálním počítači (VM) v Azure. 
-- Nejvhodnější pro migrace a aplikace vyžadující přístup na úrovni operačního systému. Virtuální počítače SQL v Azure jsou připravené pro existující aplikace, které vyžadují rychlou migraci do cloudu s minimálními změnami nebo žádnými změnami. Virtuální počítače SQL nabízejí úplnou administrativní kontrolu nad instancí SQL Server a podkladovým operačním systémem pro migraci do Azure. 
-- Scénáře rychlého vývoje a testování, když si nechcete koupit hardware pro místní neprodukční SQL Server. Virtuální počítače SQL se také spouštějí na standardizovaném hardwaru, který je vlastněn, hostován a spravován společností Microsoft. Pokud používáte virtuální počítače s SQL, můžete použít průběžné platby SQL Server licence, která už je zahrnutá v SQL Server imagi, nebo snadno použít stávající licenci. Virtuální počítač můžete také zastavit nebo obnovit podle potřeby. 
 - SQL Server nainstalovaná a hostovaná v cloudu běží na virtuálních počítačích s Windows serverem nebo Linux, které běží na Azure, označované taky jako infrastruktura jako služba (IaaS). Virtuální počítače SQL jsou vhodnou možností pro migraci místních SQL Server databází a aplikací bez změny v databázi. Všechny poslední verze a edice SQL Server jsou k dispozici pro instalaci na virtuálním počítači s IaaS. 
-
-    Nejvýznamnějším rozdílem od SQL Database a SQL spravované instance je to, že SQL Server v Azure Virtual Machines umožňuje úplnou kontrolu nad databázovým strojem. Můžete zvolit, kdy se má spustit Údržba/opravy, změnit model obnovení na jednoduché nebo Hromadně protokolované, pozastavit nebo spustit službu v případě potřeby a můžete plně přizpůsobit SQL Server databázový stroj. Tento další ovládací prvek přinese zodpovědnost za správu virtuálního počítače.
+- Nejvhodnější pro migrace a aplikace vyžadující přístup na úrovni operačního systému. Virtuální počítače SQL v Azure jsou připravené pro existující aplikace, které vyžadují rychlou migraci do cloudu s minimálními změnami nebo žádnými změnami. Virtuální počítače SQL nabízejí úplnou administrativní kontrolu nad instancí SQL Server a podkladovým operačním systémem pro migraci do Azure. 
+- Nejvýznamnějším rozdílem od SQL Database a SQL spravované instance je to, že SQL Server v Azure Virtual Machines umožňuje úplnou kontrolu nad databázovým strojem. Můžete zvolit, kdy se má spustit Údržba/opravy, změnit model obnovení na jednoduché nebo Hromadně protokolované, pozastavit nebo spustit službu v případě potřeby a můžete plně přizpůsobit SQL Server databázový stroj. Tento další ovládací prvek přinese zodpovědnost za správu virtuálního počítače.
+- Scénáře rychlého vývoje a testování, když si nechcete koupit hardware pro místní neprodukční SQL Server. Virtuální počítače SQL se také spouštějí na standardizovaném hardwaru, který je vlastněn, hostován a spravován společností Microsoft. Pokud používáte virtuální počítače s SQL, můžete použít průběžné platby SQL Server licence, která už je zahrnutá v SQL Server imagi, nebo snadno použít stávající licenci. Virtuální počítač můžete také zastavit nebo obnovit podle potřeby. 
 - Optimalizováno pro migraci stávajících aplikací do Azure nebo rozšíření stávajících místních aplikací do cloudu v hybridních nasazeních. Kromě toho lze systém SQL Server na virtuálním počítači použít k vývoji a testování tradičních aplikací systému SQL Server. S virtuálními počítači SQL máte plná práva správce pro vyhrazenou instanci SQL Server a cloudový virtuální počítač. Je ideální volbou v případě, že organizace už má dostupné IT zdroje pro údržbu virtuálních počítačů. Tyto schopnosti umožňují sestavit vysoce přizpůsobený systém pro plnění specifických požadavků vaší aplikace na výkon a dostupnost.
+
+
+### <a name="comparison-table"></a>Srovnávací tabulka
 
 V následující tabulce jsou uvedeny další rozdíly, ale *SQL Database i spravované instance SQL jsou optimalizované tak, aby se snížily celkové náklady na správu na minimum pro zřizování a správu velkého počtu databází.* Průběžné náklady na správu se sníží, protože nemusíte spravovat žádné virtuální počítače, operační systémy nebo databázový software. Není nutné spravovat upgrady, vysokou dostupnost nebo [zálohy](database/automated-backups-overview.md). 
 
-Obecně může SQL Database a SQL Managed instance významně zvýšit počet databází spravovaných jedním IT nebo vývojovým prostředkem. [Elastické fondy](database/elastic-pool-overview.md) také podporují SaaS architektury víceklientské aplikace s funkcemi, jako je izolace klientů, a schopnost škálování, aby se snížily náklady sdílením prostředků napříč databázemi. [Spravovaná instance SQL](managed-instance/sql-managed-instance-paas-overview.md) poskytuje podporu pro funkce s rozsahem instancí, které umožňují snadnou migraci stávajících aplikací a také sdílení prostředků mezi databázemi.
+Obecně může SQL Database a SQL Managed instance významně zvýšit počet databází spravovaných jedním IT nebo vývojovým prostředkem. [Elastické fondy](database/elastic-pool-overview.md) také podporují SaaS architektury víceklientské aplikace s funkcemi, jako je izolace klientů, a schopnost škálování, aby se snížily náklady sdílením prostředků napříč databázemi. [Spravovaná instance SQL](managed-instance/sql-managed-instance-paas-overview.md) poskytuje podporu pro funkce s rozsahem instancí, které umožňují snadnou migraci stávajících aplikací a také sdílení prostředků mezi databázemi. Vzhledem k tomu, že [SQL Server na virtuálních počítačích Azure](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) poskytují specializující podobné možnosti jako v místním prostředí, se kterými se seznámí. 
 
-### <a name="comparison-table"></a>Srovnávací tabulka
 
 | Azure SQL Database | Spravovaná instance Azure SQL | SQL Server na virtuálním počítači Azure |
 | :--- | :--- | :--- |

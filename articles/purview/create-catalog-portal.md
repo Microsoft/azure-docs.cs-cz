@@ -9,12 +9,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 72f4ac8df39b9511fd98a1dd5a3eca76e11e34bf
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 158eed6d287fa384023defbb20a7a1c39ea3d838
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535159"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728585"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Rychlý Start: vytvoření účtu Azure dosah v Azure Portal
 
@@ -119,7 +119,7 @@ V případě potřeby pomocí těchto kroků nakonfigurujte předplatné, aby by
    :::image type="content" source="./media/create-catalog-portal/add-purview-instance.png" alt-text="Snímek obrazovky ukazující, jak vytvořit instanci účtu Azure dosah v Azure Portal.":::
 
     > [!Note] 
-    > Azure dosah nepodporuje přesun svého účtu do různých oblastí. Další informace najdete na [stránce podporované služby Azure](../azure-resource-manager/management/region-move-support.md).
+    > Azure dosah nepodporuje přesun svého účtu do různých oblastí. Další informace o této funkci najdete v [podpoře operace přesunutí pro prostředky](../azure-resource-manager/management/move-support-resources.md).
 
 1. Na kartě **základy** proveďte následující:
     1. Vyberte **skupinu prostředků**.

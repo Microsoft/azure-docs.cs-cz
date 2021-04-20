@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: krsh
 ms.author: krsh
-ms.date: 03/10/2021
-ms.openlocfilehash: 4711ea76af83594ec529cfda13a308fbe6646398
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 47fe7b42b68ae42f74a74e5fc69c8d1041d3bf8d
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200466"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727112"
 ---
 # <a name="how-to-create-a-virtual-machine-using-your-own-image"></a>Jak vytvořit virtuální počítač pomocí vlastní image
 
@@ -48,6 +48,9 @@ Tato část popisuje, jak změnit velikost, aktualizovat a zobecnit virtuální 
 Všechny obrázky v Azure Marketplace musí být obecně znovu použitelné. K tomu je potřeba, aby byl virtuální pevný disk operačního systému zobecněný, operace, která odebere všechny identifikátory jednotlivých instancí a softwarové ovladače z virtuálního počítače.
 
 ## <a name="bring-your-image-into-azure"></a>Přenesení image do Azure
+
+> [!NOTE]
+> Předplatné Azure obsahující SIG musí být ve stejném tenantovi jako účet vydavatele, aby bylo možné ho publikovat. Kromě toho musí mít účet vydavatele alespoň přístup přispěvatele k předplatnému, které obsahuje SIG.
 
 Existují tři způsoby, jak přenést image do Azure:
 

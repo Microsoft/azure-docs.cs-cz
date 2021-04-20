@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 4e22d93d3037c190193f53b7cfdbc87cff2da6ed
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 499cb3c978a67f9ef71e6ad9dd03be9f05b45729
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504392"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726965"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights zdroje událostí Gen2
 
@@ -31,9 +31,12 @@ Zdroj události je propojení mezi vaším centrem a prostředím Azure Time Ser
 
 K vytváření, úpravám a odebírání zdrojů událostí vašeho prostředí můžete použít [Azure Portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment), [Azure CLI](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/event-source), [šablony Azure Resource Manager](time-series-insights-manage-resources-using-azure-resource-manager-template.md)a [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) .
 
+> [!WARNING]
+> Neomezovat veřejný internetový přístup k rozbočovači nebo zdroji událostí, který používá Time Series Insights, nebo dojde k přerušení potřebného připojení.
+
 ## <a name="start-options"></a>Možnosti spuštění
 
-Při vytváření zdroje událostí máte možnost určit, jaká existující data se mají shromažďovat. Toto nastavení je volitelné. Dostupné jsou tyto možnosti:
+Při vytváření zdroje událostí můžete určit, jaká existující data se mají shromažďovat. Toto nastavení je volitelné. Dostupné jsou tyto možnosti:
 
 | Název   |  Description  |  Příklad šablony Azure Resource Manager |
 |----------|-------------|------|
@@ -46,18 +49,17 @@ Při vytváření zdroje událostí máte možnost určit, jaká existující da
 > - Pokud vyberete EarliestAvailable a máte spoustu existujících dat, může dojít k vysoké počáteční latenci, protože vaše Azure Time Series Insights Gen2 prostředí zpracovává všechna vaše data.
 > - Tato vysoká latence by se měla nakonec při indexování dat vycházet. Pokud se setkáte s probíhající vysokou latencí, odešlete lístek podpory prostřednictvím Azure Portal.
 
-* EarliestAvailable
+- EarliestAvailable
 
 ![Diagram EarliestAvailable](media/concepts-streaming-event-sources/event-source-earliest-available.png)
 
-* EventSourceCreationTime
+- EventSourceCreationTime
 
 ![Diagram EventSourceCreationTime](media/concepts-streaming-event-sources/event-source-creation-time.png)
 
-* CustomEnqueuedTime
+- CustomEnqueuedTime
 
 ![Diagram CustomEnqueuedTime](media/concepts-streaming-event-sources/event-source-custom-enqueued-time.png)
-
 
 ## <a name="streaming-ingestion-best-practices"></a>Osvědčené postupy příjmu streamování
 
@@ -105,17 +107,17 @@ Při konfiguraci zdroje událostí budete požádáni o zadání vlastnosti ID �
 
 Obecně platí, že uživatelé budou chtít přizpůsobit vlastnost časového razítka a použít čas, kdy senzor nebo značka vygenerovala čtení místo použití výchozího centra ve frontě. To je vhodné zejména v případě, že zařízení mají přerušovanou ztrátu připojení a dávka zpožděných zpráv se předává Azure Time Series Insights Gen2.
 
-Pokud je vlastní časové razítko v rámci vnořeného objektu JSON nebo pole, budete muset zadat správný název vlastnosti za naše [sloučené a uvozovací konvence pojmenování](concepts-json-flattening-escaping-rules.md). Například zdrojové časové razítko pro datovou část JSON, které vidíte [tady](concepts-json-flattening-escaping-rules.md#example-a) , by mělo být zadáno jako `"values.time"` .
+Pokud je vlastní časové razítko v rámci vnořeného objektu JSON nebo pole, bude nutné zadat správný název vlastnosti za naše [sloučené a uvozovací konvence pojmenování](concepts-json-flattening-escaping-rules.md). Například zdrojové časové razítko pro datovou část JSON, které vidíte [tady](concepts-json-flattening-escaping-rules.md#example-a) , by mělo být zadáno jako `"values.time"` .
 
 ### <a name="time-zone-offsets"></a>Posuny časového pásma
 
-Časová razítka musí být odesílána ve formátu ISO 8601 a budou uložena v UTC. Pokud je k dispozici posun časového pásma, použije se posun a pak se čas uloží a vrátí ve formátu UTC. Pokud je posun nesprávně formátovaný, bude ignorován. V situacích, kdy vaše řešení nemusí mít kontext původního posunutí, můžete odeslat posunutá data v další samostatné vlastnosti události, abyste zajistili, že jsou zachovaná a že vaše aplikace může odkazovat na odpověď na dotaz.
+Časová razítka musí být odesílána ve formátu ISO 8601 a budou uložena v UTC. Pokud je k dispozici posun časového pásma, použije se posun a pak se čas uloží a vrátí ve formátu UTC. Pokud je posun nesprávně naformátovaný, bude ignorován. V situacích, kdy vaše řešení nemusí mít kontext původního posunutí, můžete odeslat posunutá data v další samostatné vlastnosti události, abyste zajistili, že jsou zachovaná a že vaše aplikace může odkazovat na odpověď na dotaz.
 
 Posun časového pásma by měl být naformátovaný jako jeden z následujících:
 
-± HHMMZ</br>
-± HH: MM</br>
-± HH: MMZ</br>
+± HHMMZ<br />
+± HH: MM<br />
+± HH: MMZ
 
 ## <a name="next-steps"></a>Další kroky
 

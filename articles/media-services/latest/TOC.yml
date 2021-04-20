@@ -85,6 +85,8 @@
       items:
         - name: Kódování a streamování vzdáleného souboru – Node.js
           href: stream-files-nodejs-quickstart.md
+        - name: Živé streamování pomocí Node.js
+          href: stream-live-tutorial-with-nodejs.md
     - name: Python
       items:
         - name: Základní kódování Pythonu

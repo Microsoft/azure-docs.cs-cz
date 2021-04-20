@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: b6a2d7ad92c209a93d740d60808c2cbd2f90c6b4
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: c702c41228512eceebeaf45ccae709db38a85a51
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258414"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725672"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
@@ -73,7 +73,7 @@ Pokud chcete vytvořit svazky systému souborů NFS, přečtěte si téma [vytvo
     * **Fond kapacit**  
         Zadejte fond kapacit, ve kterém chcete vytvořit svazek.
 
-    * **Kvóta**  
+    * **Přidělení**  
         Určuje velikost logického úložiště, které je přidělené svazku.  
 
         Pole **Dostupná kvóta** zobrazuje množství nevyužitého místa ve zvoleném fondu kapacity, které můžete použít k vytvoření nového svazku. Velikost nového svazku nesmí překročit dostupnou kvótu.  
@@ -111,6 +111,27 @@ Pokud chcete vytvořit svazky systému souborů NFS, přečtěte si téma [vytvo
     Tato cesta svazku je název sdíleného svazku. Název musí začínat abecedním znakem a musí být jedinečný v rámci každého předplatného a každé oblasti.  
 
     * Zadejte **styl zabezpečení** , který se má použít: systém souborů NTFS (výchozí) nebo UNIX.
+
+    * Pokud chcete povolit šifrování protokolu SMB3 pro svazek se dvěma protokoly, vyberte **Povolit šifrování protokolu SMB3**.   
+
+        Tato funkce umožňuje šifrování jenom pro data SMB3 v letu. Nešifruje NFSv3 data v letadlech. Klienti SMB, kteří nepoužívají šifrování SMB3, nebudou mít k tomuto svazku přístup. Data v klidovém stavu jsou šifrována bez ohledu na toto nastavení. Další informace najdete v tématu [Nejčastější dotazy týkající se šifrování protokolu SMB](azure-netapp-files-faqs.md#smb-encryption-faqs) . 
+
+        Funkce **šifrování protokolu SMB3** je aktuálně ve verzi Preview. Pokud tuto funkci používáte poprvé, zaregistrujte funkci před jejím použitím: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+
+        Ověřte stav registrace funkce: 
+
+        > [!NOTE]
+        > **RegistrationState** může být ve `Registering` stavu až 60 minut, než se změní na `Registered` . Než budete pokračovat, počkejte na stav `Registered` .
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+        
+        Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace.  
 
     * Volitelně můžete [nakonfigurovat zásadu exportu pro svazek](azure-netapp-files-configure-export-policy.md).
 

@@ -9,12 +9,12 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 643aac7927cc7b14693387fbb5765bdcd0214dc2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 5d945c421dc0a4abed17b3a355339c131dd922df
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598240"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728045"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Vysvětlení informací na faktuře za smlouvu Azure Enterprise
 
@@ -396,51 +396,6 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 
     Klíč rozhraní API můžete získat na portálu Azure Enterprise Portal na kartě **Download Usage** (Stažení údajů o využití). Vyberte **API Access Key** (Přístupový klíč rozhraní API) a potom tento klíč vložte do pole **Account Key** (Klíč účtu).
 1. Načtení dat v Power BI bude v závislosti na velikosti datových sad trvat přibližně 5 až 30 minut.
-
-## <a name="reports-faq"></a>Nejčastější dotazy k sestavám
-
-Tato část se zabývá běžnými dotazy k sestavám.
-
-### <a name="why-is-my-cost-showing-as-0"></a>Proč se mi v nákladech zobrazuje 0 USD?
-
-U zákazníků s **přímou registrací** můžou podnikoví správci poskytnout vlastníkům účtů a správcům oddělení přístup k informacím o nákladech a cenách v sestavách využití. Postupujte následovně:
-
-1. V levém navigačním panelu portálu Azure Enterprise vyberte **Manage** (Spravovat).
-1. Vyberte modrou tužku vedle možnosti DA (department administrator) view charges (Správce oddělení může zobrazit náklady).
-1. Vyberte **Povoleno** a uložte provedenou změnu.
-1. Vyberte modrou tužku vedle možnosti AO (account owner) view charges (Vlastník účtu může zobrazit náklady).
-1. Vyberte **Povoleno** a uložte provedenou změnu.
-
-> [!NOTE]
-> Pokud jste vlastníkem účtu nebo správcem oddělení, obraťte se na podnikového správce s žádostí o povolení funkce cen.
-
-Zákazníci s **nepřímou registrací** ověří u svého partnera, že pro ně povolil funkci cen. To může udělat jenom partner. Po povolení můžete zobrazit náklady a ceny u vaší registrace jako podnikový správce.
-
-Pokud chtějí partneři povolit funkci zobrazení poplatků pro vlastníka účtu nebo správce oddělení, postupují podle pokynů v části s **přímou registrací**.
-
-### <a name="why-is-there-no-sku-information-on-my-usage-detail-report"></a>Proč se v sestavě s podrobnostmi o využití nezobrazují žádné informace o skladových položkách?
-
-Sestava s podrobnostmi o využití neobsahuje žádné informace o skladových položkách. Tato sestava ale obsahuje informace o využití, abyste si mohli stáhnout sestavu ceníku a získat tak informace o skladových položkách.
-
-### <a name="why-doesnt-the-total-amount-on-azure-marketplace-match-the-reports-for-usage-summary-and-detail"></a>Proč celková částka u Azure Marketplace neodpovídá sestavám pro shrnutí využití a podrobnosti?
-
-Sestava poplatků za Azure Marketplace ukazuje pouze poplatky na základě využití. Jednorázové poplatky se nezobrazují. Nejaktuálnější poplatky na základě využití i jednorázové poplatky najdete na stránce se souhrnem využití.
-
-### <a name="why-is-there-no-information-on-my-api-report"></a>Proč sestava rozhraní API neobsahuje žádné informace?
-
-Platnost klíčů rozhraní API vyprší každých šest měsíců. Pokud máte problém, měl by podnikový správce vygenerovat nový klíč rozhraní API. Nezapomeňte postupovat podle kroků v nejčastějších dotazech k sestavě rozhraní API.
-
-### <a name="why-isnt-my-power-bi-report-working"></a>Proč sestava Power BI nefunguje?
-
-V případě problémů s Power BI zaprotokolujte lístek pomocí [týmu podpory Power BI](https://support.powerbi.com).
-
-### <a name="why-dont-my-resource-tags-show-on-my-reports"></a>Proč se značky prostředků nezobrazují u sestav?
-
-Značky prostředků se spravují na webu Azure Portal. Obraťte se na tým předplatného Azure na webu [Azure Portal](https://portal.azure.com). Postupujte podle kroků v článku [Jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md).
-
-### <a name="why-does-my-resource-rate-change-every-day"></a>Proč se mi každý den mění sazba za prostředek?
-
-Sazba za prostředek uvedená v podrobné sestavě využití je vypočtená hodnota. Představuje průměrnou měsíční sazbu, která se účtovala za službu. Sazba za prostředek se počítá na základě průměru měsíčního závazku a měsíčních poplatků za nadlimitní využití jednotky služby. Část poplatků účtovaná vůči závazku a sazby za nadlimitní využití se budou až do konce měsíce měnit. Proto se v průběhu měsíce mění i uvedená sazba za prostředek. Sazba za prostředek se uzamkne pátý den po konci měsíce.
 
 ### <a name="glossary-of-processes-for-calculating-the-resource-rate"></a>Glosář procesů pro výpočet sazby za prostředek
 

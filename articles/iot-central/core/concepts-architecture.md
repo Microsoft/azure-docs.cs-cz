@@ -8,18 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c2d5310d1a664aa2e22d4241d8066e41d9c82bd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bcda4ca252101ed1505f71a1b5f9fe9a0d8d16b9
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97796716"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728387"
 ---
 # <a name="azure-iot-central-architecture"></a>Architektura služby Azure IoT Central
 
-Tento článek poskytuje přehled architektury Microsoft Azure IoT Central.
-
-![Architektura nejvyšší úrovně](media/concepts-architecture/architecture.png)
+Tento článek poskytuje přehled klíčových konceptů v architektuře Azure IoT Central.
 
 ## <a name="devices"></a>Zařízení
 
@@ -28,7 +26,7 @@ Zařízení vyměňují data v aplikaci Azure IoT Central. Zařízení může:
 - Odesílejte měření, jako je telemetrie.
 - Synchronizujte nastavení s vaší aplikací.
 
-V Azure IoT Central se data, která si zařízení může vyměňovat s vaší aplikací, zadávají v šabloně zařízení. Další informace o šablonách zařízení najdete v tématu [Správa metadat](#metadata-management).
+V Azure IoT Central se data, která si zařízení může vyměňovat s vaší aplikací, zadávají v šabloně zařízení. Další informace o šablonách zařízení najdete v tématu [šablony zařízení](concepts-device-templates.md).
 
 Další informace o tom, jak se zařízení připojují k aplikaci Azure IoT Central, najdete v tématu [připojení zařízení](concepts-get-connected.md).
 
@@ -117,29 +115,6 @@ Azure IoT Central ukládá data aplikací v cloudu. Uložená data aplikací zah
 
 Azure IoT Central využívá úložiště časových řad k měření dat odesílaných z vašich zařízení. Data časové řady ze zařízení, která služba Analytics používá.
 
-## <a name="analytics"></a>Analýzy
-
-Služba analýzy zodpovídá za generování vlastních dat sestav, která aplikace zobrazuje. Operátor může [přizpůsobit analýzy](howto-create-analytics.md) zobrazené v aplikaci. Analytická služba je postavená na [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/) a zpracovává data měření odesílaná z vašich zařízení.
-
-## <a name="rules-and-actions"></a>Pravidla a akce
-
-[Pravidla a akce](tutorial-create-telemetry-rules.md) společně spolupracují na automatizaci úloh v rámci aplikace. Tvůrce může definovat pravidla na základě telemetrie zařízení, například teploty překračující stanovenou prahovou hodnotu. Azure IoT Central využívá procesor datových proudů k určení, kdy jsou podmínky pravidla splněné. Když je splněna podmínka pravidla, aktivuje akci definovanou tvůrcem. Akce může například odeslat e-mail s informacemi o tom, že teplota v zařízení je příliš vysoká.
-
-## <a name="metadata-management"></a>Správa metadat
-
-V aplikaci IoT Central Azure definují šablony zařízení chování a možnosti typů zařízení. Například šablona zařízení chladničky určuje telemetrii, kterou do vaší aplikace posílá chladnička.
-
-![Architektura šablon](media/concepts-architecture/template-architecture.png)
-
-V IoT Central [Šablona zařízení](concepts-device-templates.md) obsahuje:
-
-- **Model zařízení** , který určuje možnosti zařízení, jako je například telemetrie, kterou posílá, vlastnosti, které definují stav zařízení, a příkazy, na které zařízení reaguje. Možnosti zařízení jsou uspořádány do jednoho nebo více rozhraní.
-- **Vlastnosti cloudu** určují vlastnosti IoT Central úložišť pro zařízení. Tyto vlastnosti jsou uloženy pouze v IoT Central a nejsou nikdy odesílány do zařízení.
-- **Zobrazení** určují řídicí panely a formuláře, které tvůrce vytvoří, aby mohl obsluhu monitorovat a spravovat zařízení.
-- **Přizpůsobení** umožní tvůrci přepsat některé definice v modelu zařízení, aby byly lépe relevantní pro IoT Central aplikace.
-
-Aplikace může mít jedno nebo několik simulovaných a reálných zařízení založených na každé šabloně zařízení.
-
 ## <a name="data-export"></a>Export dat
 
 V aplikaci IoT Central Azure můžete [data průběžně exportovat](howto-export-data.md) do vlastních instancí Azure Event Hubs a Azure Service Bus. Data můžete také pravidelně exportovat do svého účtu služby Azure Blob Storage. IoT Central může exportovat měření, zařízení a šablony zařízení.
@@ -160,13 +135,6 @@ Mezi funkce zabezpečení v rámci Azure IoT Central patří:
 - Ověřování se poskytuje buď pomocí Azure Active Directory, nebo pomocí účtu Microsoft. Podporuje se dvojúrovňové ověřování.
 - Úplná izolace tenanta.
 - Zabezpečení na úrovni zařízení.
-
-## <a name="ui-shell"></a>Prostředí uživatelského rozhraní
-
-Prostředí uživatelského rozhraní je moderní aplikace založená na prohlížeči HTML5, reaguje na ni.
-Správce může přizpůsobovat uživatelské rozhraní aplikace pomocí vlastních motivů a úpravou odkazů na odkazy, které odkazují na vaše vlastní prostředky pro usnadnění. Další informace o přizpůsobení uživatelského rozhraní najdete v článku [přizpůsobení uživatelského rozhraní Azure IoT Central](howto-customize-ui.md) .
-
-Operátor může vytvářet přizpůsobené řídicí panely aplikací. Můžete mít několik řídicích panelů, které zobrazují různá data a mezi nimi přepínat.
 
 ## <a name="next-steps"></a>Další kroky
 

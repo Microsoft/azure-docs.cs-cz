@@ -3,14 +3,14 @@ author: baanders
 description: zahrnout soubor pro omezení digitálních vláken Azure
 ms.service: digital-twins
 ms.topic: include
-ms.date: 6/9/2020
+ms.date: 4/8/2021
 ms.author: baanders
-ms.openlocfilehash: 4a69b2ff15fc4857e9fb292d2f753aa68ed875d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34fec713c3764987f07bc7fb89ecb0a0d770a840
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100370089"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728012"
 ---
 ### <a name="functional-limits"></a>Funkční omezení
 
@@ -46,7 +46,8 @@ Následující tabulka odráží přenosová omezení různých rozhraní API.
 | Rozhraní API | Schopnost | Výchozí omezení | Měnitelný? |
 | --- | --- | --- | --- |
 | Rozhraní API modelů | Počet požadavků za sekundu | 100 | Yes |
-| Rozhraní API pro digitální vlákna | Počet požadavků za sekundu | 2 000 | Yes |
+| Rozhraní API pro digitální vlákna | Počet požadavků na čtení za sekundu | 1 000 | Yes |
+| Rozhraní API pro digitální vlákna | Počet požadavků na opravu za sekundu | 1 000 | Yes |
 | Rozhraní API pro digitální vlákna | Počet operací vytvoření/odstranění za sekundu napříč **všemi zdvojenými a relacemi** | 50 | Yes |
 | Rozhraní API pro digitální vlákna | Počet operací vytvoření/aktualizace/odstranění za sekundu pro **jednu dvojitou** nebo jeho relaci | 10 | No |
 | Rozhraní API pro dotazy | Počet požadavků za sekundu | 500 | Yes |
