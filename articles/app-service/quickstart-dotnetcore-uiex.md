@@ -7,12 +7,12 @@ ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 2a789b4ca1261c79e8e6eb93a4ed44e7e8e9272e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ff86bedf47395b50dc25e552b8b3ed4176e23b65
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102214231"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769098"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rychlý Start: Vytvoření webové aplikace v ASP.NET Core v Azure
 
@@ -251,12 +251,12 @@ az login
     ```
     
     <details>
-    <summary>Poradce při potížích</summary>
+    <summary>Řešení potíží</summary>
     <ul>
     <li>Pokud <code>az</code> příkaz není rozpoznaný, ujistěte se, že máte nainstalované rozhraní příkazového řádku Azure, jak je popsané v tématu <a href="#1-prepare-your-environment">Příprava prostředí</a>.</li>
     <li>Nahraďte <code>&lt;app-name&gt;</code> názvem, který je jedinečný v rámci všech Azure ( <em> platné znaky jsou <code>a-z</code> , <code>0-9</code> a <code>-</code> </em> ). Dobrým vzorem je použití kombinace názvu vaší společnosti a identifikátoru aplikace.</li>
     <li><code>--sku F1</code>Argument vytvoří webovou aplikaci na cenové úrovni Free. Vynechejte tento argument pro použití rychlejší úrovně Premium, což stojí za hodinu.</li>
-    <li>Volitelně můžete zahrnout argument <code>--location &lt;location-name&gt;</code> , kde <code>&lt;location-name&gt;</code> je dostupná oblast Azure. Seznam povolených oblastí pro váš účet Azure můžete načíst spuštěním <a href="/cli/azure/appservice#az-appservice-list-locations"> <code>az account list-locations</code> </a> příkazu.</li>
+    <li>Volitelně můžete zahrnout argument <code>--location &lt;location-name&gt;</code> , kde <code>&lt;location-name&gt;</code> je dostupná oblast Azure. Seznam povolených oblastí pro váš účet Azure můžete načíst spuštěním <a href="/cli/azure/appservice#az_appservice_list_locations"> <code>az account list-locations</code> </a> příkazu.</li>
     </ul>
     </details>
     
@@ -268,7 +268,7 @@ az login
     <ul>
     <li>Vytvoření výchozí skupiny prostředků</li>
     <li>Vytvořte výchozí plán App Service.</li>
-    <li><a href="/cli/azure/webapp#az-webapp-create">Vytvoří aplikaci App Service</a> se zadaným názvem.</li>
+    <li><a href="/cli/azure/webapp#az_webapp_create">Vytvoří aplikaci App Service</a> se zadaným názvem.</li>
     <li>Soubory <a href="/azure/app-service/deploy-zip">zip nasadí</a> z aktuálního pracovního adresáře do aplikace.</li>
     <li>Při spuštění poskytuje zpráva o vytváření prostředků, protokolování a nasazení souboru ZIP.</li>
     </ul>
@@ -302,14 +302,14 @@ http://<app_name>.azurewebsites.net
 
 <hr/> 
 
-## <a name="7-update-and-redeploy-the-code"></a>7. aktualizujte a znovu nasaďte kód.
+## <a name="7-update-and-redeploy-the-code&quot;></a>7. aktualizujte a znovu nasaďte kód.
 
 1. **Otevřete soubor _Startup. cs_** v místním adresáři. 
 
 1. **Udělejte malou změnu** textu ve volání metody `context.Response.WriteAsync` .
 
     ```csharp
-    await context.Response.WriteAsync("Hello Azure!");
+    await context.Response.WriteAsync(&quot;Hello Azure!");
     ```
     
 1. **Uložte změny**.

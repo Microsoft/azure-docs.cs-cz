@@ -5,12 +5,12 @@ description: Přečtěte si, jak vytvořit připojení RDP s clustery Windows se
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: 4b6ccc05d1cb49a77a2867dfc1c5fe5f45134dd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62f29c0550b858e34d888da61f1bd7fbd358f82d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951908"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782922"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Připojení pomocí protokolu RDP ke službě Azure Kubernetes (AKS) clustery Windows serveru pro účely údržby nebo řešení potíží
 
@@ -158,9 +158,9 @@ Pokud potřebujete další data pro řešení potíží, můžete [Zobrazit prot
 
 <!-- INTERNAL LINKS -->
 [aks-windows-cli]: windows-container-cli.md
-[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-vm-delete]: /cli/azure/vm#az-vm-delete
+[az-aks-install-cli]: /cli/azure/aks#az_aks_install_cli
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-vm-delete]: /cli/azure/vm#az_vm_delete
 [azure-monitor-containers]: ../azure-monitor/containers/container-insights-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [ssh-steps]: ssh.md

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b3d88c99ab0e9e204eb4d7dd78dc319f889a5e7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1dcd413f301f25460cb29f1bb20e67a37ac6ebb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97347655"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767311"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Kurz: Vytvoření aplikace Node.js a MongoDB v Azure
 
@@ -163,7 +163,7 @@ V tomto kroku připojíte ukázkovou aplikaci MEAN.js k právě vytvořené da
 
 ### <a name="retrieve-the-database-key"></a>Načtení klíče databáze
 
-Aby bylo možné se připojit k databázi Cosmos DB, potřebujete klíč databáze. V Cloud Shell použijte [`az cosmosdb list-keys`](/cli/azure/cosmosdb#az-cosmosdb-list-keys) příkaz k načtení primárního klíče.
+Aby bylo možné se připojit k databázi Cosmos DB, potřebujete klíč databáze. V Cloud Shell použijte [`az cosmosdb list-keys`](/cli/azure/cosmosdb#az_cosmosdb_list_keys) příkaz k načtení primárního klíče.
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup
@@ -276,7 +276,7 @@ V tomto kroku nasadíte svou aplikaci Node.js připojenou k databázi MongoDB 
 
 Ve výchozím nastavení projekt MEAN.js uchovává soubor _config/env/local-production.js_ mimo úložiště Git. Takže pro vaši aplikaci Azure použijete nastavení aplikace k definování připojovacího řetězce MongoDB.
 
-Nastavení aplikace nastavíte pomocí [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) příkazu v Cloud Shell. 
+Nastavení aplikace nastavíte pomocí [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) příkazu v Cloud Shell. 
 
 Následující příklad nakonfiguruje `MONGODB_URI` nastavení aplikace v aplikaci Azure. Nahraďte *\<app-name>* *\<cosmosdb-name>* *\<primary-master-key>* zástupné symboly, a.
 
@@ -482,7 +482,7 @@ Pokud jste dříve přidali články, můžete je stále zobrazit. Stávající 
 
 Zatímco je vaše aplikace Node.js spuštěná v Azure App Service, můžete směrovat protokoly konzoly do svého terminálu. Tímto způsobem můžete získat stejné diagnostické zprávy, které vám pomůžou ladit chyby aplikace.
 
-Chcete-li spustit streamování protokolů, použijte [`az webapp log tail`](/cli/azure/webapp/log#az-webapp-log-tail) příkaz v Cloud Shell.
+Chcete-li spustit streamování protokolů, použijte [`az webapp log tail`](/cli/azure/webapp/log#az_webapp_log_tail) příkaz v Cloud Shell.
 
 ```azurecli-interactive
 az webapp log tail --name <app-name> --resource-group myResourceGroup

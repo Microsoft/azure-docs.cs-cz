@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 894a89126d1ee3ed909134f3e0dd914166568654
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 921127ffdd35007cc3fa2eaaa95cdb3fac8bbe15
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90606869"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782264"
 ---
 Tuto frontu můžete zobrazit v [Azure Portal](../articles/storage/queues/storage-quickstart-queues-portal.md) nebo v  [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/). Tuto frontu můžete také zobrazit v rozhraní příkazového řádku Azure CLI, jak je popsáno v následujících krocích:
 
@@ -35,13 +35,13 @@ Tuto frontu můžete zobrazit v [Azure Portal](../articles/storage/queues/storag
     
     ---
     
-1. Volitelné Pomocí [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) příkazu Zobrazte ve svém účtu fronty úložiště. Výstup z tohoto příkazu by měl zahrnovat frontu s názvem `outqueue` , která byla vytvořena při zapsání první zprávy do této fronty.
+1. Volitelné Pomocí [`az storage queue list`](/cli/azure/storage/queue#az_storage_queue_list) příkazu Zobrazte ve svém účtu fronty úložiště. Výstup z tohoto příkazu by měl zahrnovat frontu s názvem `outqueue` , která byla vytvořena při zapsání první zprávy do této fronty.
     
     ```azurecli
     az storage queue list --output tsv
     ```
 
-1. Pomocí [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) příkazu si přečtěte zprávu z této fronty, která by měla být křestní jméno, které jste použili při předchozím testování funkce. Příkaz přečte a Odebere první zprávu z fronty. 
+1. Pomocí [`az storage message get`](/cli/azure/storage/message#az_storage_message_get) příkazu si přečtěte zprávu z této fronty, která by měla být křestní jméno, které jste použili při předchozím testování funkce. Příkaz přečte a Odebere první zprávu z fronty. 
 
     # <a name="bash"></a>[bash](#tab/bash)
     

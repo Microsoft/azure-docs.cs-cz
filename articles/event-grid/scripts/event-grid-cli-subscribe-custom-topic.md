@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 80eff2853db1083fa2805cdd719f03a3235fccac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6004961a43fe13db617f98ae2c65fa5829924e5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87499020"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766546"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-azure-cli"></a>Přihlášení k odběru událostí vlastního tématu pomocí Azure CLI
 
@@ -37,7 +37,7 @@ Tento skript k vytvoření odběru událostí používá následující příkaz
 
 | Příkaz | Poznámky |
 |---|---|
-| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Vytvoří odběr Event Gridu. |
+| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) | Vytvoří odběr Event Gridu. |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) – verze rozšíření | Vytvoří odběr Event Gridu. |
 
 ## <a name="next-steps"></a>Další kroky

@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: philmea
-ms.openlocfilehash: d414b86ff81a33f9e818a0a28031e73d88cabec2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c30781cb83436e15a217a1d43c0e39facae9f52d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202259"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770399"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Správa IoT Central z Azure CLI
 
@@ -32,7 +32,7 @@ Místo vytváření a správy aplikací IoT Central na webu [azure IoT Central S
 
 [!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
-Pomocí příkazu [AZ IoT Central App Create](/cli/azure/iot/central/app#az-iot-central-app-create) vytvořte aplikaci IoT Central ve vašem předplatném Azure. Například:
+Pomocí příkazu [AZ IoT Central App Create](/cli/azure/iot/central/app#az_iot_central_app_create) vytvořte aplikaci IoT Central ve vašem předplatném Azure. Například:
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -65,11 +65,11 @@ Tyto příkazy nejprve vytvoří skupinu prostředků v oblasti východní USA p
 
 ## <a name="view-your-applications"></a>Zobrazení vašich aplikací
 
-Pomocí příkazu [AZ IoT Central App list](/cli/azure/iot/central/app#az-iot-central-app-list) můžete zobrazit seznam aplikací IoT Central a zobrazovat metadata.
+Pomocí příkazu [AZ IoT Central App list](/cli/azure/iot/central/app#az_iot_central_app_list) můžete zobrazit seznam aplikací IoT Central a zobrazovat metadata.
 
 ## <a name="modify-an-application"></a>Úprava aplikace
 
-Pomocí příkazu [AZ IoT Central App Update](/cli/azure/iot/central/app#az-iot-central-app-update) aktualizujte metadata aplikace IoT Central. Například pro změnu zobrazovaného názvu vaší aplikace:
+Pomocí příkazu [AZ IoT Central App Update](/cli/azure/iot/central/app#az_iot_central_app_update) aktualizujte metadata aplikace IoT Central. Například pro změnu zobrazovaného názvu vaší aplikace:
 
 ```azurecli-interactive
 az iot central app update --name myiotcentralapp \
@@ -79,7 +79,7 @@ az iot central app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>Odebrání aplikace
 
-Pomocí příkazu [AZ IoT Central App Delete](/cli/azure/iot/central/app#az-iot-central-app-delete) odstraňte aplikaci IoT Central. Například:
+Pomocí příkazu [AZ IoT Central App Delete](/cli/azure/iot/central/app#az_iot_central_app_delete) odstraňte aplikaci IoT Central. Například:
 
 ```azurecli-interactive
 az iot central app delete --name myiotcentralapp \

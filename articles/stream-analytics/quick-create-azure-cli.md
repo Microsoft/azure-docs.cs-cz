@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: a3cc4c3d6936a51ca2010209ce23e4d82c9333eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58dccf56cd493782a422b0ddf0386e31d4d87daf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98016334"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765984"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí Azure CLI
 
@@ -29,7 +29,7 @@ V tomto rychlém startu použijete rozhraní příkazového řádku Azure CLI k 
 
 - Vytvořte skupinu prostředků. Všechny prostředky Azure musí být nasazené do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
 
-   V tomto rychlém startu vytvořte skupinu prostředků s názvem *streamanalyticsrg* v umístění *eastus* pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az-group-create) :
+   V tomto rychlém startu vytvořte skupinu prostředků s názvem *streamanalyticsrg* v umístění *eastus* pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az_group_create) :
 
    ```azurecli
    az group create --name streamanalyticsrg --location eastus

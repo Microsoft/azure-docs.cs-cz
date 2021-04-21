@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 49d6a85faa55de5dbf50377998dbe2fc829d9f6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07c4ac3234dc67978f16f6c0c7e0702924bf2bb5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96929782"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768880"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Odstranění úložiště konfigurace aplikace Azure
 
@@ -44,7 +44,7 @@ Tento skript pomocí následujících příkazů odstraní úložiště konfigur
 
 | Příkaz | Poznámky |
 |---|---|
-| [AZ appconfig DELETE](/cli/azure/appconfig#az-appconfig-delete) | Odstraní prostředek úložiště konfigurace aplikace. |
+| [AZ appconfig DELETE](/cli/azure/appconfig#az_appconfig_delete) | Odstraní prostředek úložiště konfigurace aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 

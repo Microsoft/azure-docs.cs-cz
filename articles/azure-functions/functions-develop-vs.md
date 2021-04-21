@@ -4,12 +4,12 @@ description: Naučte se vyvíjet a testovat Azure Functions pomocí Azure Functi
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cba0a9ad63e319af0a5eaa1c1c018c3b285c28a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97655811"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765570"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -237,7 +237,7 @@ Nastavení aplikace můžete spravovat také jedním z těchto způsobů:
 
 * [Použijte Azure Portal](functions-how-to-use-azure-function-app-settings.md#settings).
 * [Použijte `--publish-local-settings` možnost publikovat v Azure Functions Core Tools](functions-run-local.md#publish).
-* [Použijte rozhraní příkazového řádku Azure](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
+* [Použijte rozhraní příkazového řádku Azure](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set).
 
 ## <a name="monitoring-functions"></a>Funkce monitorování
 

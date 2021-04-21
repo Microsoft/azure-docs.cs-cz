@@ -3,16 +3,16 @@ title: Správa delegovaných prostředků Azure
 description: Správa delegovaných prostředků Azure je klíčovou součástí Azure Lighthouse, která umožňuje poskytovatelům služeb spravovat delegované prostředky ve velkém měřítku s flexibilitou a přesností.
 ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: d484e61fc4ab3714eb362b26d64d449890065888
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93a3de257fe88de4915eff3582ff38fc03ef380e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92203853"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767758"
 ---
 # <a name="azure-delegated-resource-management"></a>Správa delegovaných prostředků Azure
 
-Správa delegovaných prostředků Azure je jednou z klíčových součástí [Azure Lighthouse](../overview.md). Pomocí delegované správy prostředků Azure můžou poskytovatelé služeb zjednodušit zapojení zákazníků a zprovoznění při správě delegovaných prostředků s flexibilitou a přesností. Zákazníci udržují kontrolu nad tím, kteří poskytovatelé služeb mají přístup ke svým klientům, udržují kontrolu nad tím, kdo bude mít přístup ke svému tenantovi, k jakým prostředkům mají přístup, a jaké akce je možné učinit.
+Správa delegovaných prostředků Azure je jednou z klíčových součástí [Azure Lighthouse](../overview.md). Pomocí delegované správy prostředků Azure můžou poskytovatelé služeb zjednodušit zapojení zákazníků a zprovoznění při správě delegovaných prostředků s flexibilitou a přesností. Zákazníci si udrží kontrolu nad tím, kdo má přístup ke svému tenantovi, k jakým prostředkům mají přístup a jaké akce je možné provést.
 
 ## <a name="what-is-azure-delegated-resource-management"></a>Co je Správa prostředků delegovaná Azure?
 

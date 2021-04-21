@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 5de909d0d57ae212fa562eb31551e2271d307d47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82f23c1fea29e2a88dd2a67ec9c89c7bf05bfff7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694253"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783480"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvoření, změna nebo odstranění skupiny zabezpečení sítě
 
@@ -67,7 +67,7 @@ Existuje omezení, kolik skupin zabezpečení sítě, které můžete vytvořit 
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) |
+| Azure CLI | [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) |
 | PowerShell | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) |
 
 ### <a name="view-all-network-security-groups"></a>Zobrazit všechny skupiny zabezpečení sítě
@@ -78,7 +78,7 @@ Chcete-li zobrazit skupiny zabezpečení sítě, otevřete [Azure Portal](https:
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [AZ Network NSG list](/cli/azure/network/nsg#az-network-nsg-list) |
+| Azure CLI | [AZ Network NSG list](/cli/azure/network/nsg#az_network_nsg_list) |
 | PowerShell | [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) |
 
 ### <a name="view-details-of-a-network-security-group"></a>Zobrazit podrobnosti skupiny zabezpečení sítě
@@ -103,7 +103,7 @@ Další informace o běžných nastaveních Azure uvedených v následujících 
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [AZ Network NSG show](/cli/azure/network/nsg#az-network-nsg-show) |
+| Azure CLI | [AZ Network NSG show](/cli/azure/network/nsg#az_network_nsg_show) |
 | PowerShell | [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) |
 
 ### <a name="change-a-network-security-group"></a>Změna skupiny zabezpečení sítě
@@ -118,7 +118,7 @@ Nejběžnějšími změnami je [Přidání pravidla zabezpečení](#create-a-sec
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [AZ Network NSG Update](/cli/azure/network/nsg#az-network-nsg-update) |
+| Azure CLI | [AZ Network NSG Update](/cli/azure/network/nsg#az_network_nsg_update) |
 | PowerShell | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) |
 
 ### <a name="associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface"></a>Přidružení nebo zrušení přidružení skupiny zabezpečení sítě k podsíti nebo síťovému rozhraní
@@ -139,7 +139,7 @@ Pokud je skupina zabezpečení sítě přidružená k žádným podsítím nebo 
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [AZ Network NSG DELETE](/cli/azure/network/nsg#az-network-nsg-delete) |
+| Azure CLI | [AZ Network NSG DELETE](/cli/azure/network/nsg#az_network_nsg_delete) |
 | PowerShell | [Remove-AzNetworkSecurityGroup](/powershell/module/az.network/remove-aznetworksecuritygroup) |
 
 ## <a name="work-with-security-rules"></a>Práce s pravidly zabezpečení
@@ -182,7 +182,7 @@ U každého umístění Azure a předplatného můžete vytvořit omezení počt
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) |
+| Azure CLI | [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) |
 | PowerShell | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) |
 
 ### <a name="view-all-security-rules"></a>Zobrazit všechna pravidla zabezpečení
@@ -201,7 +201,7 @@ Seznam obsahuje všechna vámi vytvořená pravidla a [výchozí pravidla zabezp
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [az network nsg rule list](/cli/azure/network/nsg/rule#az-network-nsg-rule-list) |
+| Azure CLI | [az network nsg rule list](/cli/azure/network/nsg/rule#az_network_nsg_rule_list) |
 | PowerShell | [Get-AzNetworkSecurityRuleConfig](/powershell/module/az.network/get-aznetworksecurityruleconfig) |
 
 ### <a name="view-details-of-a-security-rule"></a>Zobrazení podrobností pravidla zabezpečení
@@ -221,7 +221,7 @@ Seznam obsahuje všechna vámi vytvořená pravidla a [výchozí pravidla zabezp
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [AZ Network NSG Rule show](/cli/azure/network/nsg/rule#az-network-nsg-rule-show) |
+| Azure CLI | [AZ Network NSG Rule show](/cli/azure/network/nsg/rule#az_network_nsg_rule_show) |
 | PowerShell | [Get-AzNetworkSecurityRuleConfig](/powershell/module/az.network/get-aznetworksecurityruleconfig) |
 
 ### <a name="change-a-security-rule"></a>Změna pravidla zabezpečení
@@ -237,7 +237,7 @@ Seznam obsahuje všechna vámi vytvořená pravidla a [výchozí pravidla zabezp
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [az network nsg rule update](/cli/azure/network/nsg/rule#az-network-nsg-rule-update) |
+| Azure CLI | [az network nsg rule update](/cli/azure/network/nsg/rule#az_network_nsg_rule_update) |
 | PowerShell | [Set-AzNetworkSecurityRuleConfig](/powershell/module/az.network/set-aznetworksecurityruleconfig) |
 
 ### <a name="delete-a-security-rule"></a>Odstraní pravidlo zabezpečení.
@@ -253,7 +253,7 @@ Seznam obsahuje všechna vámi vytvořená pravidla a [výchozí pravidla zabezp
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [AZ Network NSG Rule DELETE](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete) |
+| Azure CLI | [AZ Network NSG Rule DELETE](/cli/azure/network/nsg/rule#az_network_nsg_rule_delete) |
 | PowerShell | [Remove-AzNetworkSecurityRuleConfig](/powershell/module/az.network/remove-aznetworksecurityruleconfig) |
 
 ## <a name="work-with-application-security-groups"></a>Práce se skupinami zabezpečení aplikace
@@ -285,7 +285,7 @@ Skupina zabezpečení aplikace obsahuje nula nebo více síťových rozhraní. D
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [AZ Network ASG Create](/cli/azure/network/asg#az-network-asg-create) |
+| Azure CLI | [AZ Network ASG Create](/cli/azure/network/asg#az_network_asg_create) |
 | PowerShell | [New-AzApplicationSecurityGroup](/powershell/module/az.network/new-azapplicationsecuritygroup) |
 
 ### <a name="view-all-application-security-groups"></a>Zobrazit všechny skupiny zabezpečení aplikací
@@ -296,7 +296,7 @@ Pokud chcete zobrazit skupiny zabezpečení vaší aplikace, přejít na [Azure 
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [AZ Network ASG list](/cli/azure/network/asg#az-network-asg-list) |
+| Azure CLI | [AZ Network ASG list](/cli/azure/network/asg#az_network_asg_list) |
 | PowerShell | [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup) |
 
 ### <a name="view-details-of-a-specific-application-security-group"></a>Zobrazit podrobnosti konkrétní skupiny zabezpečení aplikace
@@ -309,7 +309,7 @@ Pokud chcete zobrazit skupiny zabezpečení vaší aplikace, přejít na [Azure 
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [AZ Network ASG show](/cli/azure/network/asg#az-network-asg-show) |
+| Azure CLI | [AZ Network ASG show](/cli/azure/network/asg#az_network_asg_show) |
 | PowerShell | [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup) |
 
 ### <a name="change-an-application-security-group"></a>Změna skupiny zabezpečení aplikace
@@ -329,7 +329,7 @@ Pokud chcete zobrazit skupiny zabezpečení vaší aplikace, přejít na [Azure 
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [AZ Network ASG Update](/cli/azure/network/asg#az-network-asg-update) |
+| Azure CLI | [AZ Network ASG Update](/cli/azure/network/asg#az_network_asg_update) |
 | PowerShell | Žádná rutina PowerShellu |
 
 ### <a name="delete-an-application-security-group"></a>Odstraní skupinu zabezpečení aplikace.
@@ -346,7 +346,7 @@ Skupinu zabezpečení aplikace nemůžete odstranit, pokud obsahuje jakákoli s�
 
 | Nástroj | Příkaz |
 | ---- | ------- |
-| Azure CLI | [AZ Network ASG DELETE](/cli/azure/network/asg#az-network-asg-delete) |
+| Azure CLI | [AZ Network ASG DELETE](/cli/azure/network/asg#az_network_asg_delete) |
 | PowerShell | [Remove-AzApplicationSecurityGroup](/powershell/module/az.network/remove-azapplicationsecuritygroup) |
 
 ## <a name="permissions"></a>Oprávnění

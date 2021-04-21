@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
-ms.topic: article
-ms.date: 04/05/2021
+ms.topic: conceptual
+ms.date: 04/19/2021
 tags: connectors
-ms.openlocfilehash: 5eae6b48a65f919ea233ad77a215ed5672425175
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: a19253e117f748b4d4045bfd2a29552018bba91e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385849"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781554"
 ---
 # <a name="create-and-manage-sftp-files-using-ssh-and-azure-logic-apps"></a>Vytváření a Správa souborů SFTP pomocí SSH a Azure Logic Apps
 
@@ -52,12 +52,12 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
   | Akce | Podpora bloků dat | Přepsat podporu velikosti bloku |
   |--------|------------------|-----------------------------|
   | **Kopírovat soubor** | Ne | Nelze použít |
-  | **Vytvořit soubor** | Ano | Ano |
+  | **Vytvořit soubor** | Yes | Yes |
   | **Vytvořit složku** | Nelze použít | Nelze použít |
   | **Odstranit soubor** | Nelze použít | Nelze použít |
   | **Extrakce archivu do složky** | Nelze použít | Nelze použít |
-  | **Získat obsah souboru** | Ano | Ano |
-  | **Získání obsahu souboru pomocí cesty** | Ano | Ano |
+  | **Získat obsah souboru** | Yes | Yes |
+  | **Získání obsahu souboru pomocí cesty** | Yes | Yes |
   | **Získat metadata souboru** | Nelze použít | Nelze použít |
   | **Získat metadata souboru pomocí cesty** | Nelze použít | Nelze použít |
   | **Zobrazit seznam souborů ve složce** | Nelze použít | Nelze použít |
@@ -123,7 +123,7 @@ Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje,
 
 ### <a name="trigger-recurrence-shift-and-drift"></a>Aktivovat opakování a posunování
 
-Aktivační události na základě připojení, kde je třeba vytvořit připojení jako první, jako je například Trigger SFTP-SSH, se liší od integrovaných triggerů, které se spouštějí nativně v Azure Logic Apps, jako je například [Trigger opakování](../connectors/connectors-native-recurrence.md). V případě opakovaných triggerů založených na připojení není plán opakování jediným ovladačem, který řídí provádění, a časové pásmo určuje pouze počáteční čas spuštění. Další spuštění závisí na plánu opakování, posledním spuštění triggeru *a* dalších faktorech, které by mohly způsobit, že doba běhu vznikne nebo neočekávané chování. Neočekávané chování může například zahrnovat selhání při zachovávání zadaného plánu při zahájení a ukončení letního času (DST). Chcete-li se ujistit, že se doba opakování nebude pohybovat, když se letní čas projeví, proveďte ruční úpravu opakování. Váš pracovní postup tak bude i nadále běžet v očekávaném čase. V opačném případě se čas zahájení posune jednu hodinu dopředu při zahájení LETNÍho času a hodinu zpětně od konce LETNÍho času. Další informace najdete v tématu [opakování pro aktivační události na základě připojení](../connectors/apis-list.md#recurrence-connection-based).
+Aktivační události na základě připojení, kde je třeba vytvořit připojení jako první, jako je například Trigger SFTP-SSH, se liší od integrovaných triggerů, které se spouštějí nativně v Azure Logic Apps, jako je například [Trigger opakování](../connectors/connectors-native-recurrence.md). V případě opakovaných triggerů založených na připojení není plán opakování jediným ovladačem, který řídí provádění, a časové pásmo určuje pouze počáteční čas spuštění. Další spuštění závisí na plánu opakování, posledním spuštění triggeru *a* dalších faktorech, které by mohly způsobit, že doba běhu vznikne nebo neočekávané chování. Neočekávané chování může například zahrnovat selhání při zachovávání zadaného plánu při zahájení a ukončení letního času (DST). Chcete-li se ujistit, že se doba opakování nebude pohybovat, když se letní čas projeví, proveďte ruční úpravu opakování. Váš pracovní postup tak bude i nadále běžet v očekávaném čase. V opačném případě se čas zahájení posune jednu hodinu dopředu při zahájení LETNÍho času a hodinu zpětně od konce LETNÍho času. Další informace najdete v tématu [opakování pro aktivační události na základě připojení](../connectors/apis-list.md#recurrence-for-connection-based-triggers).
 
 <a name="convert-to-openssh"></a>
 

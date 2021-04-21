@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 01/11/2021
-ms.openlocfilehash: 4d83609eea57c2350881360ef757b1a291627c23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: 3070083040424b877159955dc2138f15319f05c8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374724"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766384"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
@@ -33,7 +33,7 @@ Spouštění Logic Apps ve vaší vlastní samostatné vyhrazené instanci pomá
 
 * Přímý přístup k prostředkům, které jsou uvnitř nebo připojené k vaší virtuální síti
 
-  Logic Apps, které vytvoříte a spustíte ve ISE, můžou používat [speciálně navržené konektory, které běží ve vašich ISE](../connectors/apis-list.md#ise-connectors). Pokud konektor ISE existuje pro místní systém nebo zdroj dat, můžete se připojit přímo, aniž byste museli používat místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md). Další informace najdete v části [vyhrazená oproti více tenantů](#difference) a [přístup k místním systémům](#on-premises) dále v tomto tématu.
+  Logic Apps, které vytvoříte a spustíte ve ISE, můžou používat [speciálně navržené konektory, které běží ve vašich ISE](../connectors/managed.md#ise-connectors). Pokud konektor ISE existuje pro místní systém nebo zdroj dat, můžete se připojit přímo, aniž byste museli používat místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md). Další informace najdete v části [vyhrazená oproti více tenantů](#difference) a [přístup k místním systémům](#on-premises) dále v tomto tématu.
 
 * Pokračování přístupu k prostředkům, které jsou mimo nebo nejsou připojené k virtuální síti
 
@@ -53,7 +53,7 @@ Když vytváříte a spouštíte Logic Apps v ISE, získáte stejné uživatelsk
 
 * Integrované triggery a akce, jako je HTTP, zobrazují **základní** popisek a spouštějí se ve stejném ISE jako vaše aplikace logiky.
 
-* Spravované konektory, které zobrazují popisek **ISE** , jsou speciálně navržené pro ISEs a *vždy se SPOUŠTĚJÍ ve stejném ISE jako vaše aplikace logiky*. Například tady jsou některé [konektory, které nabízejí verze ISE](../connectors/apis-list.md#ise-connectors):<p>
+* Spravované konektory, které zobrazují popisek **ISE** , jsou speciálně navržené pro ISEs a *vždy se SPOUŠTĚJÍ ve stejném ISE jako vaše aplikace logiky*. Například tady jsou některé [konektory, které nabízejí verze ISE](../connectors/managed.md#ise-connectors):<p>
 
   * Blob Storage Azure, File Storage a Table Storage
   * Azure Service Bus, fronty Azure, Azure Event Hubs
@@ -79,7 +79,7 @@ Logic Apps, které běží v rámci ISE, můžou přímo přistupovat k místní
 
 * Konektor **ISE** , pokud je k dispozici pro místní systém nebo zdroj dat
 
-  Pokud je k dispozici konektor ISE, můžete získat přímý přístup k systému nebo zdroji dat bez místní [brány dat](../logic-apps/logic-apps-gateway-connection.md). Pokud ale potřebujete získat přístup k SQL Server z ISE a používat ověřování systému Windows, musíte použít verzi non-ISE konektoru a místní bránu dat. Verze ISE konektoru nepodporuje ověřování systému Windows. Další informace najdete v tématech [konektory ISE](../connectors/apis-list.md#ise-connectors) a [připojení z prostředí integrační služby](../connectors/apis-list.md#integration-service-environment).
+  Pokud je k dispozici konektor ISE, můžete získat přímý přístup k systému nebo zdroji dat bez místní [brány dat](../logic-apps/logic-apps-gateway-connection.md). Pokud ale potřebujete získat přístup k SQL Server z ISE a používat ověřování systému Windows, musíte použít verzi non-ISE konektoru a místní bránu dat. Verze ISE konektoru nepodporuje ověřování systému Windows. Další informace najdete v tématech [konektory ISE](../connectors/managed.md#ise-connectors) a [připojení z prostředí integrační služby](../connectors/managed.md#integration-account-connectors).
 
 * Vlastní konektor
 

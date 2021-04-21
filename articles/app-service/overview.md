@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 668988ae34c2f97f3baca3f360c13e3ec3e30731
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 771c79f56a31c83f2152886ad6cf68367776f83f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586346"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767223"
 ---
 # <a name="app-service-overview"></a>Přehled služby App Service
 
@@ -44,7 +44,7 @@ App Service může také hostovat webové aplikace nativně v systému Linux pro
 
 ### <a name="built-in-languages-and-frameworks"></a>Předdefinované jazyky a architektury
 
-App Service v systému Linux podporuje několik vestavěných imagí specifických pro jazyk. Stačí nasadit kód. Mezi podporované jazyky patří: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core a Ruby. Spusťte [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) , chcete-li zobrazit nejnovější jazyky a podporované verze. Pokud modul runtime, který vaše aplikace potřebuje, není podporovaný ve vestavěných bitových kopiích, můžete ho nasadit pomocí vlastního kontejneru.
+App Service v systému Linux podporuje několik vestavěných imagí specifických pro jazyk. Stačí nasadit kód. Mezi podporované jazyky patří: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core a Ruby. Spusťte [`az webapp list-runtimes --linux`](/cli/azure/webapp#az_webapp_list_runtimes) , chcete-li zobrazit nejnovější jazyky a podporované verze. Pokud modul runtime, který vaše aplikace potřebuje, není podporovaný ve vestavěných bitových kopiích, můžete ho nasadit pomocí vlastního kontejneru.
 
 Zastaralé moduly runtime se pravidelně odstraňují z Web Apps v portálu pro vytváření a konfiguraci na portálu. Tyto moduly runtime jsou skryté na portálu, pokud jsou nepoužívané organizací údržby nebo mají závažné ohrožení zabezpečení. Tyto možnosti jsou skryté pro zákazníky na nejnovější moduly runtime, kde budou úspěšné. 
 

@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0568860c387aa1239ec56005e404606272ae8275
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102178064"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800165"
 ---
 V tomto kroku vytvoříte [logický SQL Server](../database/logical-servers.md) a samostatnou [databázi](../database/single-database-overview.md) , která používá ukázková data AdventureWorksLT. Databázi můžete vytvořit pomocí nabídek a obrazovek Azure Portal nebo pomocí skriptu Azure CLI nebo PowerShellu v Azure Cloud Shell.
 
@@ -151,11 +151,11 @@ Předchozí kód používá tyto příkazy rozhraní příkazového řádku Azur
 
 | Příkaz | Popis |
 |---|---|
-| [AZ Account set](/cli/azure/account#az-account-set) | Nastaví předplatné jako aktuální aktivní předplatné. |
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Vytvoří server, který je hostitelem databází a elastických fondů. |
-| [AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Vytvoří pravidlo brány firewall na úrovni serveru. |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Vytvoří databázi. |
+| [AZ Account set](/cli/azure/account#az_account_set) | Nastaví předplatné jako aktuální aktivní předplatné. |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az sql server create](/cli/azure/sql/server#az_sql_server_create) | Vytvoří server, který je hostitelem databází a elastických fondů. |
+| [AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_create) | Vytvoří pravidlo brány firewall na úrovni serveru. |
+| [az sql db create](/cli/azure/sql/db#az_sql_db_create) | Vytvoří databázi. |
 
 Další Azure SQL Database ukázek rozhraní příkazového řádku Azure najdete v tématu [ukázky Azure CLI](../database/az-cli-script-samples-content-guide.md).
 

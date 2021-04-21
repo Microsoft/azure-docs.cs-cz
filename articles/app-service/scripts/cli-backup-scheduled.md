@@ -9,12 +9,12 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 500ac99cd35cfdf601be75a19a1d43f84795cbe8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db1d0558f93b203af1605663533847d32afbcffb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006416"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782544"
 ---
 # <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>Vytvoření naplánovaného zálohování pro App Service aplikaci pomocí rozhraní příkazového řádku
 
@@ -38,15 +38,15 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [`az storage account create`](/cli/azure/storage/account#az-storage-account-create) | Vytvoří účet úložiště. |
-| [`az storage container create`](/cli/azure/storage/container#az-storage-container-create) | Vytvoří kontejner úložiště Azure. |
-| [`az storage container generate-sas`](/cli/azure/storage/container#az-storage-container-generate-sas) | Vygeneruje token SAS pro kontejner úložiště Azure.  |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Vytvoří aplikaci App Service. |
-| [`az webapp config backup update`](/cli/azure/webapp/config/backup#az-webapp-config-backup-update) | Nakonfiguruje nový plán zálohování pro aplikaci App Service. |
-| [`az webapp config backup show`](/cli/azure/webapp/config/backup#az-webapp-config-backup-show) | Zobrazuje plán zálohování pro aplikaci App Service. |
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az-webapp-config-backup-list) | Načte seznam záloh pro aplikaci App Service. |
+| [`az group create`](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [`az storage account create`](/cli/azure/storage/account#az_storage_account_create) | Vytvoří účet úložiště. |
+| [`az storage container create`](/cli/azure/storage/container#az_storage_container_create) | Vytvoří kontejner úložiště Azure. |
+| [`az storage container generate-sas`](/cli/azure/storage/container#az_storage_container_generate_sas) | Vygeneruje token SAS pro kontejner úložiště Azure.  |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Vytvoří plán služby App Service. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Vytvoří aplikaci App Service. |
+| [`az webapp config backup update`](/cli/azure/webapp/config/backup#az_webapp_config_backup_update) | Nakonfiguruje nový plán zálohování pro aplikaci App Service. |
+| [`az webapp config backup show`](/cli/azure/webapp/config/backup#az_webapp_config_backup_show) | Zobrazuje plán zálohování pro aplikaci App Service. |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az_webapp_config_backup_list) | Načte seznam záloh pro aplikaci App Service. |
 
 ## <a name="next-steps"></a>Další kroky
 

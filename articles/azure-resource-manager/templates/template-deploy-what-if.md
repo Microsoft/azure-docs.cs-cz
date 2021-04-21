@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: ff024ff97baa8a80ae6b1fcdafba010e482afd98
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 7e300f896bb11ed7c77738836f894cff41cc8bf3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074618"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781824"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>Operace what-if (citlivostní analýza) při nasazení šablony ARM
 
@@ -95,17 +95,17 @@ Předchozí příkazy vrátí textový souhrn, který můžete ručně zkontrolo
 
 Chcete-li zobrazit náhled změn před nasazením šablony, použijte:
 
-* [AZ Deployment Group Co-if](/cli/azure/deployment/group#az-deployment-group-what-if) pro nasazení skupin prostředků
-* [AZ Deployment sub a if](/cli/azure/deployment/sub#az-deployment-sub-what-if) on Deployment na úrovni předplatného
-* [AZ Deployment mg co-if](/cli/azure/deployment/mg#az-deployment-mg-what-if) pro nasazení skupin pro správu
-* [AZ Deployment tenant co-if](/cli/azure/deployment/tenant#az-deployment-tenant-what-if) pro nasazení klientů
+* [AZ Deployment Group Co-if](/cli/azure/deployment/group#az_deployment_group_what_if) pro nasazení skupin prostředků
+* [AZ Deployment sub a if](/cli/azure/deployment/sub#az_deployment_sub_what_if) on Deployment na úrovni předplatného
+* [AZ Deployment mg co-if](/cli/azure/deployment/mg#az_deployment_mg_what_if) pro nasazení skupin pro správu
+* [AZ Deployment tenant co-if](/cli/azure/deployment/tenant#az_deployment_tenant_what_if) pro nasazení klientů
 
 Můžete použít `--confirm-with-what-if` přepínač (nebo jeho krátký tvar `-c` ) k zobrazení náhledu změn a zobrazení výzvy k pokračování v nasazení. Přidat tento přepínač do:
 
-* [AZ Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create)
-* [AZ Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create).
-* [AZ Deployment g Create](/cli/azure/deployment/mg#az-deployment-mg-create)
-* [AZ Deployment tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create)
+* [AZ Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create)
+* [AZ Deployment sub Create](/cli/azure/deployment/sub#az_deployment_sub_create).
+* [AZ Deployment g Create](/cli/azure/deployment/mg#az_deployment_mg_create)
+* [AZ Deployment tenant Create](/cli/azure/deployment/tenant#az_deployment_tenant_create)
 
 Například použijte `az deployment group create --confirm-with-what-if` nebo `-c` pro nasazení skupiny prostředků.
 

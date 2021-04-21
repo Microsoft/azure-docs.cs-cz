@@ -3,12 +3,12 @@ title: Řešení potíží se sítí pomocí registru
 description: Příznaky, příčiny a řešení běžných potíží při přístupu ke službě Azure Container Registry ve virtuální síti nebo za bránou firewall
 ms.topic: article
 ms.date: 03/30/2021
-ms.openlocfilehash: 0fdedf109703eb443904989d2c0b2d75a6ba5bb1
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: dc2110405713791d11fb438565fc091da9c9dd5c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481221"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780747"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Řešení potíží se sítí pomocí registru
 
@@ -39,7 +39,7 @@ Může zahrnovat jednu nebo více z následujících možností:
 
 ## <a name="further-diagnosis"></a>Další Diagnostika 
 
-Pokud chcete získat další informace o stavu prostředí registru a volitelně získat přístup k cílovému registru, spusťte příkaz [AZ ACR check-Health](/cli/azure/acr#az-acr-check-health) . Například Diagnostikujte určité síťové připojení nebo problémy s konfigurací. 
+Pokud chcete získat další informace o stavu prostředí registru a volitelně získat přístup k cílovému registru, spusťte příkaz [AZ ACR check-Health](/cli/azure/acr#az_acr_check_health) . Například Diagnostikujte určité síťové připojení nebo problémy s konfigurací. 
 
 Příklady příkazů najdete v tématu o [kontrole stavu služby Azure Container Registry](container-registry-check-health.md) . Pokud dojde k chybám, přečtěte si [referenční informace o chybě](container-registry-health-error-reference.md) a v následujících oddílech, kde najdete doporučená řešení.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 2bb80ba421617d5fd1699826deda00e56f1e43af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 401124ed4b2794d891ca224ba3dc1c78edcae8d5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943678"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783408"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Přidání nebo odebrání delegování podsítě
 
@@ -113,7 +113,7 @@ Integrovaná role [přispěvatele sítě](../role-based-access-control/built-in-
 
 V této části delegujete podsíť, kterou jste vytvořili v předchozí části, do služby Azure. 
 
-Pomocí [AZ Network VNet Subnet Update aktualizujte](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) podsíť s názvem **mySubnet** s delegováním na službu Azure.  V tomto příkladu se pro příklad delegování používá **Microsoft. DBforPostgreSQL/serversv2** :
+Pomocí [AZ Network VNet Subnet Update aktualizujte](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) podsíť s názvem **mySubnet** s delegováním na službu Azure.  V tomto příkladu se pro příklad delegování používá **Microsoft. DBforPostgreSQL/serversv2** :
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -123,7 +123,7 @@ Pomocí [AZ Network VNet Subnet Update aktualizujte](/cli/azure/network/vnet/sub
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
-K ověření použití delegování použijte [AZ Network VNet Subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show). Ověřte, zda je služba delegována do podsítě pod vlastností **ServiceName**:
+K ověření použití delegování použijte [AZ Network VNet Subnet show](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_show). Ověřte, zda je služba delegována do podsítě pod vlastností **ServiceName**:
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -152,7 +152,7 @@ K ověření použití delegování použijte [AZ Network VNet Subnet show](/cli
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Odebrání delegování podsítě ze služby Azure
 
-Pomocí [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) odeberte delegování z podsítě s názvem **mySubnet**:
+Pomocí [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) odeberte delegování z podsítě s názvem **mySubnet**:
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -161,7 +161,7 @@ Pomocí [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-networ
   --vnet-name myVnet \
   --remove delegations
 ```
-K ověření odebrání delegace použijte [AZ Network VNet Subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show). Ověřte, že je služba z podsítě odebraná v rámci vlastnosti **ServiceName**:
+K ověření odebrání delegace použijte [AZ Network VNet Subnet show](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_show). Ověřte, že je služba z podsítě odebraná v rámci vlastnosti **ServiceName**:
 
 ```azurecli-interactive
   az network vnet subnet show \

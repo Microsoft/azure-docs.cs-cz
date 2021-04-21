@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 36d6d8b4d4435b1db99f2721c817c9c06ca60945
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 77d54ef0c9bef40af47c2fc48b9d4b5d6315b119
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018291"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780390"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Kurz: příjem dat ze zařízení prostřednictvím Azure IoT Hub
 
@@ -44,7 +44,7 @@ Azure IoT Hub podporuje funkci [směrování zpráv](../../iot-hub/iot-hub-devgu
 Nastavení směrování zpráv se skládá ze dvou kroků.
 
 ### <a name="add-an-endpoint"></a>Přidání koncového bodu
-Tento krok definuje koncový bod, na který IoT Hub data směrovat. Vytvořte tento koncový bod pomocí příkazu PowerShellu [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) nebo [AZ IoT Hub Routing-Endpoint Create](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create) CLI na základě vaší předvolby.
+Tento krok definuje koncový bod, na který IoT Hub data směrovat. Vytvořte tento koncový bod pomocí příkazu PowerShellu [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) nebo [AZ IoT Hub Routing-Endpoint Create](/cli/azure/iot/hub/routing-endpoint#az_iot_hub_routing_endpoint_create) CLI na základě vaší předvolby.
 
 Tady je seznam parametrů, které se mají použít s příkazem pro vytvoření koncového bodu:
 
@@ -59,7 +59,7 @@ Tady je seznam parametrů, které se mají použít s příkazem pro vytvoření
 |Vlastnosti|connection-string|Připojovací řetězec ke službě Azure IoT Connector pro FHIR. Použijte hodnotu, kterou jste získali v předchozím kroku.|
 
 ### <a name="add-a-message-route"></a>Přidat trasu zpráv
-Tento krok definuje trasu zpráv pomocí koncového bodu vytvořeného výše. Vytvořte trasu pomocí příkazu [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShellu nebo [AZ IoT Hub Route Create](/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI, a to na základě vaší předvolby.
+Tento krok definuje trasu zpráv pomocí koncového bodu vytvořeného výše. Vytvořte trasu pomocí příkazu [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShellu nebo [AZ IoT Hub Route Create](/cli/azure/iot/hub/route#az_iot_hub_route_create) CLI, a to na základě vaší předvolby.
 
 Tady je seznam parametrů, které se mají použít s příkazem pro přidání trasy zprávy:
 

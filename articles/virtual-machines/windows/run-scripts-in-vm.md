@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: 24ff0d8089055f83c76156cf5fb163313faf9492
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7bf62eb2ab8d2ce82ce73e3e8ae26cf303b8ba67
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043474"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765876"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Spouštění skriptů na VIRTUÁLNÍm počítači s Windows
 
@@ -30,12 +30,12 @@ Pokud chcete automatizovat úlohy nebo řešit problémy, možná budete muset n
 * Spusťte skript prostředí PowerShell na počítačích s Windows a skriptu bash v počítačích se systémem Linux.
 * Užitečné pro konfiguraci po nasazení, instalaci softwaru a další úlohy konfigurace nebo správy.
 
-## <a name="run-command"></a>Spustit příkaz
+## <a name="run-command"></a>Spusťte příkaz .
 
 Funkce [příkazu Run](run-command.md) umožňuje správu virtuálních počítačů a aplikací a odstraňování potíží pomocí skriptů a je k dispozici i v případě, že je počítač nedostupný, například pokud brána firewall hosta nemá otevřený port RDP nebo SSH.
 
 * Spouštění skriptů na virtuálních počítačích Azure.
-* Dá se spustit pomocí [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command#az-vm-run-command-invoke)nebo [PowerShellu](/powershell/module/az.compute/invoke-azvmruncommand) .
+* Dá se spustit pomocí [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke)nebo [PowerShellu](/powershell/module/az.compute/invoke-azvmruncommand) .
 * Rychlé spuštění skriptu a zobrazení výstupu a opakování podle potřeby v Azure Portal.
 * Skript lze zadat přímo nebo můžete spustit jeden z vestavěných skriptů.
 * Spusťte skript prostředí PowerShell na počítačích s Windows a skriptu bash v počítačích se systémem Linux.
@@ -70,6 +70,6 @@ Funkce [příkazu Run](run-command.md) umožňuje správu virtuálních počíta
 Přečtěte si další informace o různých funkcích, které jsou k dispozici ke spouštění skriptů a příkazů v rámci virtuálních počítačů.
 
 * [Rozšíření vlastních skriptů](../extensions/custom-script-windows.md)
-* [Spuštění příkazu](run-command.md)
+* [Spustit příkaz](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
 * [Sériová konzola](/troubleshoot/azure/virtual-machines/serial-console-windows)

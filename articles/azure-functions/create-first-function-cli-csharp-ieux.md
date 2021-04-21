@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a78abea5bcc5925cb2e137d918c7217ae92b118e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2d03f8c820e0a8b6a19394649db66f8028b62781
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044319"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768790"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce jazyka C# v Azure z příkazového řádku
 
@@ -183,7 +183,7 @@ Než budete moct nasadit kód funkce do Azure, musíte vytvořit <abbr title="Lo
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
 
-    Pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) se vytvoří skupina prostředků. Obecně vytvoříte skupinu prostředků a prostředky v <abbr title="Zeměpisná reference na konkrétní datacentrum Azure, ve kterém jsou prostředky přiděleny.">oblast</abbr> poblíž vás pomocí dostupné oblasti vrácené z `az account list-locations` příkazu.
+    Pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create) se vytvoří skupina prostředků. Obecně vytvoříte skupinu prostředků a prostředky v <abbr title="Zeměpisná reference na konkrétní datacentrum Azure, ve kterém jsou prostředky přiděleny.">oblast</abbr> poblíž vás pomocí dostupné oblasti vrácené z `az account list-locations` příkazu.
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 

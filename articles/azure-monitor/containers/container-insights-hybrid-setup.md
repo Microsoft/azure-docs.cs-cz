@@ -3,12 +3,12 @@ title: Konfigurace hybridních clusterů Kubernetes s využitím Container Insig
 description: Tento článek popisuje, jak můžete nakonfigurovat službu Container Insights, která bude monitorovat clustery Kubernetes hostované v Azure Stack nebo jiném prostředí.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d2692b4a634d60ef62339f68277591d711260712
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90a4c14397df8e70fc8f3d88bc339f826bb1ccc9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711242"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767018"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-container-insights"></a>Konfigurace hybridních clusterů Kubernetes s využitím kontejnerů Insights
 
@@ -202,7 +202,7 @@ Abyste nejdřív identifikovali úplné ID prostředku Log Analytics pracovního
     }
     ```
 
-7. Upravte hodnoty pro **workspaceResourceId** pomocí hodnoty, kterou jste zkopírovali v kroku 3, a pro **WorkspaceRegion** Zkopírujte hodnotu **oblasti** po spuštění příkazu Azure CLI [AZ monitor Log-Analytics pracovní prostor zobrazit](/cli/azure/monitor/log-analytics/workspace#az-monitor-log-analytics-workspace-list&preserve-view=true).
+7. Upravte hodnoty pro **workspaceResourceId** pomocí hodnoty, kterou jste zkopírovali v kroku 3, a pro **WorkspaceRegion** Zkopírujte hodnotu **oblasti** po spuštění příkazu Azure CLI [AZ monitor Log-Analytics pracovní prostor zobrazit](/cli/azure/monitor/log-analytics/workspace#az_monitor-log-analytics-workspace-list&preserve-view=true).
 
 8. Uložte tento soubor jako containerSolutionParams.jsdo místní složky.
 
