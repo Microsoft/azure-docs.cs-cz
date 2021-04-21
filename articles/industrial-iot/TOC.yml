@@ -4,10 +4,8 @@
   items:
     - name: Co je průmyslový IoT?
       href: overview-what-is-industrial-iot.md
-    - name: Co je Vydavatel OPC?
+    - name: Co je OPC Publisher?
       href: overview-what-is-opc-publisher.md
-    - name: Co je průmyslová platforma IoT?
-      href: overview-what-is-industrial-iot-platform.md
 - name: Kurzy
   items:
     - name: Samostatné kurzy pro vydavatele OPC

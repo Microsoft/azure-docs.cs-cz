@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 62249f579909c3f8bfa9bcdf4e77e45453fcb68b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b980a74ebd4fd072c5e04089a737cb387d968f74
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792016"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814419"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Rychlý Start: Azure Key Vault klientské knihovny certifikátů pro Python
 
@@ -213,7 +213,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled Azure Key Vault](../general/overview.md)
-- [Zabezpečení přístupu k trezoru klíčů](../general/security-overview.md)
+- [Zabezpečení přístupu k trezoru klíčů](../general/security-features.md)
 - [Azure Key Vault příručka pro vývojáře](../general/developers-guide.md)
-- [Přehled zabezpečení Key Vault](../general/security-overview.md)
+- [Přehled zabezpečení Key Vault](../general/security-features.md)
 - [Ověřování pomocí Key Vault](../general/authentication.md)

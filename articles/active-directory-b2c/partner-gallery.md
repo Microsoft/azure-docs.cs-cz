@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0629606f602b975b399855a681570ecdac9ec832
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: b555c8651c6e1608193a6ae06c39b20f633e4ea9
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256816"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813649"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C partneři ISV
 
@@ -61,17 +61,26 @@ Partneři Microsoftu s tímto nezávislým výrobcům softwaru pro řízení př
 | ![Snímek obrazovky s logem n8identity](./media/partner-gallery/n8identity-logo.png) | [N8Identity](./partner-n8identity.md) je platforma pro zásady správného řízení identity jako služba, která poskytuje řešení pro řešení migrace zákaznických účtů a správy žádostí o služby zákazníkům, které běží na Microsoft Azure. |
 | ![Snímek obrazovky s logem Saviynt](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-Saviynt.md) Cloud-Native Platform podporuje lepší zabezpečení, dodržování předpisů a řízení prostřednictvím inteligentních analýz a integrace napříč aplikacemi pro zjednodušení modernizace IT. |
 
-## <a name="security"></a>Zabezpečení
+## <a name="secure-hybrid-access-to-on-premises-application"></a>Zabezpečený hybridní přístup k místní aplikaci
 
-Partneři Microsoftu s následujícími nezávislými výrobci softwaru pro zabezpečení.
+Partneři Microsoftu s následujícími nezávislými výrobci softwaru poskytují zabezpečený hybridní přístup k místní aplikaci. 
+
+| Partner ISV | Návody pro popis a integraci |
+|:-------------------------|:--------------|
+| ![Snímek obrazovky s logem nástroje test a odpověď](./media/partner-gallery/ping-logo.png) | [Příkaz Testovat identitu](./partner-ping-identity.md) umožňuje zabezpečený hybridní přístup k místním starším aplikacím v několika cloudech. |
+| ![Snímek obrazovky s logem vrstev](./media/partner-gallery/strata-logo.png) | [Vrstvy](./partner-strata.md) poskytují zabezpečený hybridní přístup k místním aplikacím vyvynucováním konzistentních zásad přístupu, udržováním synchronizovaných identit a zjednodušují přechod aplikací ze starších systémů identit do ověřování založeného na standardech a řízení přístupu, které poskytuje Azure AD B2C. |
+| ![Snímek obrazovky s logem Zscaler](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) zajišťuje zabezpečený přístup k soukromým aplikacím a prostředkům na základě zásad, aniž by došlo k nákladům, nepříjemnostem nebo bezpečnostním rizikům sítě VPN. |
+
+## <a name="fraud-protection"></a>Ochrana proti podvodům
+
+Partneři Microsoftu s následujícími nezávislými výrobci softwaru pro odhalování a prevenci podvodů. 
 
 | Partner ISV | Návody pro popis a integraci |
 |:-------------------------|:--------------|
 | ![Snímek obrazovky s logem Arkose Lab](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) je poskytovatel řešení prevence podvodů, který pomáhá organizacím chránit proti útokům na roboty, útokům na převzetí účtů a podvodné otevírání účtů. |
+| ![Snímek obrazovky s logem biocatch](./media/partner-gallery/biocatch-logo.png) | [Biocatch](./partner-biocatch.md) je poskytovatel řešení prevence podvodů, který analyzuje fyzické a rozeznávání digitálních chování uživatelů, aby vygeneroval přehledy, které se liší mezi legitimními zákazníky a internetovými podvodníky. |
 | ![Snímek obrazovky s logem Microsoft Dynamics 365](./media/partner-gallery/microsoft-dynamics365-logo.png) | [Ochrana proti podvodům v Microsoft Dynamics 365](./partner-dynamics-365-fraud-protection.md) je řešení, které pomáhá organizacím chránit před podvodnými otevřenými účty pomocí otisků prstů zařízení. |
-| ![Snímek obrazovky s logem nástroje test a odpověď](./media/partner-gallery/ping-logo.png) | [Příkaz Testovat identitu](./partner-ping-identity.md) umožňuje zabezpečený hybridní přístup k místním starším aplikacím v několika cloudech. |
-| ![Snímek obrazovky s logem vrstev](./media/partner-gallery/strata-logo.png) | [Vrstvy](./partner-strata.md) poskytují zabezpečený hybridní přístup k místním aplikacím vyvynucováním konzistentních zásad přístupu, udržováním synchronizovaných identit a zjednodušují přechod aplikací ze starších systémů identit do ověřování založeného na standardech a řízení přístupu, které poskytuje Azure AD B2C. |
-| ![Snímek obrazovky s logem Zscaler](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) zajišťuje zabezpečený přístup k soukromým aplikacím a prostředkům na základě zásad, aniž by došlo k nákladům, nepříjemnostem nebo bezpečnostním rizikům sítě VPN. |
+
 
 ## <a name="additional-information"></a>Další informace
 

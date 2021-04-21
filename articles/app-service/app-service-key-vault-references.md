@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: b87001f9b283c774096fe669d58a9b487174625d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1e6f46b205790d81a3e76d2aafbcf7e13dbb5afd
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750765"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815211"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Použití Key Vault odkazů pro App Service a Azure Functions
 
@@ -28,7 +28,7 @@ Aby bylo možné číst tajné kódy z Key Vault, je nutné vytvořit trezor a u
    > [!NOTE] 
    > Odkazy na Key Vault aktuálně podporují pouze spravované identity přiřazené systémem. Uživatelsky přiřazené identity nelze použít.
 
-1. Vytvořte [zásadu přístupu v Key Vault](../key-vault/general/security-overview.md#privileged-access) pro identitu aplikace, kterou jste vytvořili dříve. Povolit pro tuto zásadu oprávnění tajného klíče "získat". Nekonfigurujte "autorizovanou aplikaci" ani `applicationId` nastavení, protože to není kompatibilní se spravovanou identitou.
+1. Vytvořte [zásadu přístupu v Key Vault](../key-vault/general/security-features.md#privileged-access) pro identitu aplikace, kterou jste vytvořili dříve. Povolit pro tuto zásadu oprávnění tajného klíče "získat". Nekonfigurujte "autorizovanou aplikaci" ani `applicationId` nastavení, protože to není kompatibilní se spravovanou identitou.
 
 ### <a name="access-network-restricted-vaults"></a>Přístup k trezorům s omezeným přístupem k síti
 

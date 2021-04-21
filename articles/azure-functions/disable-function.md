@@ -3,13 +3,13 @@ title: Postup zakázání funkcí v Azure Functions
 description: Naučte se, jak zakázat a povolit funkce v Azure Functions.
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 03803abfda010c81fa8286a478d626ef39db59fb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: c4743603504639cba5c48af57046179a0680b371
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777576"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829873"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Postup zakázání funkcí v Azure Functions
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 48686fb78dc4295da3bd390d92ae3837cd09a4d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 048482c6b52d3fd9225224bd3b4ff3ee66bf24fd
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639416"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815355"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>Rychlý Start: vytvoření trezoru klíčů Azure a klíče pomocí šablony ARM 
 
@@ -223,4 +223,4 @@ V tomto rychlém startu jste vytvořili Trezor klíčů a klíč pomocí šablon
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
 - Další informace o [Azure Resource Manageru](../../azure-resource-manager/management/overview.md)
-- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)
+- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-features.md)

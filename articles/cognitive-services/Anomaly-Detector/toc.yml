@@ -17,10 +17,12 @@
       href: ./quickstarts/client-libraries.md
 - name: ukázky
   items:
-    - name: Interaktivní ukázka
+    - name: Interaktivní ukázka (univariate)
       href: 'https://aka.ms/adDemo'
-    - name: Jupyter Notebooks
+    - name: Jupyter Notebook (univariate)
       href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
+    - name: Jupyter Notebook (lineární)
+      href: 'https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb'
     - name: ukázek Azure
       href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=anomaly-detector'
 - name: Návody

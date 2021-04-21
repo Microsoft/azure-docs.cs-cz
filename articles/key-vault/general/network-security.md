@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8352deb00f6954d862b9e44646cce1604e2c5428
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1f2df113b855ef85906e00a0316b09870ff20fb7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749613"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814365"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurace Azure Key Vault bran firewall a virtuálních sítí
 
@@ -68,7 +68,7 @@ V takovém případě byste měli vytvořit prostředek v rámci virtuální sí
 Informace o tom, jak nakonfigurovat připojení privátního propojení v trezoru klíčů, najdete v dokumentu [zde](./private-link-service.md).
 
 > [!IMPORTANT]
-> Po uplatnění pravidel brány firewall můžou uživatelé provádět jenom Key Vault operace [roviny dat](security-overview.md#privileged-access) , když jejich požadavky pocházejí z povolených virtuálních sítí nebo rozsahů IPv4 adres. To platí také pro přístup k Key Vault z Azure Portal. I když uživatelé můžou přejít k trezoru klíčů z Azure Portal, nemusí být schopni zobrazit seznam klíčů, tajných kódů ani certifikátů, pokud jejich klientský počítač není v seznamu povolených. To má vliv také na Key Vault pro výběr jinými službami Azure. Uživatelé můžou zobrazit seznam trezorů klíčů, ale ne seznam klíčů, pokud pravidla brány firewall brání jejich klientskému počítači.
+> Po uplatnění pravidel brány firewall můžou uživatelé provádět jenom Key Vault operace [roviny dat](security-features.md#privileged-access) , když jejich požadavky pocházejí z povolených virtuálních sítí nebo rozsahů IPv4 adres. To platí také pro přístup k Key Vault z Azure Portal. I když uživatelé můžou přejít k trezoru klíčů z Azure Portal, nemusí být schopni zobrazit seznam klíčů, tajných kódů ani certifikátů, pokud jejich klientský počítač není v seznamu povolených. To má vliv také na Key Vault pro výběr jinými službami Azure. Uživatelé můžou zobrazit seznam trezorů klíčů, ale ne seznam klíčů, pokud pravidla brány firewall brání jejich klientskému počítači.
 
 > [!NOTE]
 > Mějte na paměti následující omezení konfigurace:
@@ -175,4 +175,4 @@ Tady je postup konfigurace Key Vault bran firewall a virtuálních sítí pomoc�
 ## <a name="next-steps"></a>Další kroky
 
 * [Koncové body služby virtuální sítě pro Key Vault](overview-vnet-service-endpoints.md)
-* [Přehled zabezpečení Azure Key Vault](security-overview.md)
+* [Přehled zabezpečení Azure Key Vault](security-features.md)

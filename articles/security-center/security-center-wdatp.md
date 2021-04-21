@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: e12578fa6da679587d41fb25b17b00eb1645299a
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: a9997fac66dd49af04f4ed78737118d605e27072
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718408"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829867"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
@@ -62,11 +62,12 @@ Integrací programu Defender pro koncový bod s Security Center se vám bude vyt
 
     :::image type="content" source="./media/security-center-wdatp/microsoft-defender-security-center.png" alt-text="Microsoft Defender pro vlastní Security Center koncového bodu" lightbox="./media/security-center-wdatp/microsoft-defender-security-center.png":::
 
-## <a name="microsoft-defender-for-endpoint-tenant-location"></a>Microsoft Defender pro umístění tenanta koncového bodu
+## <a name="what-are-the-requirements-for-the-microsoft-defender-for-endpoint-tenant"></a>Jaké jsou požadavky na klienta Microsoft Defender pro koncové body?
 
-Když použijete Azure Security Center k monitorování serverů, automaticky se vytvoří Microsoft Defender pro klienta koncového bodu. Data shromážděná programem Defender pro koncový bod jsou uložená v geograficky umístění tenanta, jak je uvedeno během zřizování. Zákaznická data – v pseudonymně naformátované formě se můžou ukládat do centrálního úložného a zpracovatelského systému v USA. 
+Když použijete Azure Security Center k monitorování serverů, automaticky se vytvoří Microsoft Defender pro klienta koncového bodu. 
 
-Po nakonfigurování umístění ho nemůžete změnit. Pokud máte vlastní licenci pro Microsoft Defender pro koncový bod a potřebujete přesunout vaše data do jiného umístění, obraťte se na podpora Microsoftu, aby tenant obnovil.
+- **Umístění:** Data shromážděná programem Defender pro koncový bod jsou uložená v geograficky umístění tenanta, jak je uvedeno během zřizování. Zákaznická data – v pseudonymně naformátované formě se můžou ukládat do centrálního úložného a zpracovatelského systému v USA. Po nakonfigurování umístění ho nemůžete změnit. Pokud máte vlastní licenci pro Microsoft Defender pro koncový bod a potřebujete přesunout vaše data do jiného umístění, obraťte se na podpora Microsoftu, aby tenant obnovil.
+- **Přesun předplatných:** Pokud jste přesunuli předplatné Azure mezi klienty Azure, před Security Center nasazením pro koncový bod se vyžadují některé ruční přípravné kroky. Pokud chcete získat úplné informace, obraťte se na [podporu Microsoftu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 
 ## <a name="enable-the-microsoft-defender-for-endpoint-integration"></a>Povolit aplikaci Microsoft Defender pro integraci koncových bodů
@@ -75,9 +76,12 @@ Po nakonfigurování umístění ho nemůžete změnit. Pokud máte vlastní lic
 
 Ověřte, že váš počítač splňuje požadavky nezbytné pro Defender pro koncový bod:
 
-1. Konfigurace nastavení sítě popsaná v tématu [Konfigurace nastavení proxy zařízení a připojení k Internetu](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)
-1. Pokud nasazujete Defender na koncový bod do místních počítačů, připojte ho ke službě Azure ARC, jak je vysvětleno v tématu [připojení hybridních počítačů se servery s podporou ARC Azure](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) .
-1. Jenom pro počítače s Windows serverem 2019 zkontrolujte, jestli na vašich počítačích běží platný agent a jestli má rozšíření MicrosoftMonitoringAgent.
+1. Ujistěte se, že je počítač připojený k Azure podle potřeby:
+
+    - V případě serverů **Windows** nakonfigurujte nastavení sítě popsané v tématu [Konfigurace nastavení serveru proxy a připojení k Internetu](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet) .
+    - **V případě místních** počítačů ho připojte ke službě Azure ARC, jak je vysvětleno v tématu [připojení hybridních počítačů se servery s podporou ARC Azure](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) .
+    - U počítačů s **Windows serverem 2019** a [WVD (Windows Virtual Desktop)](../virtual-desktop/overview.md) zkontrolujte, že na počítačích běží agent Log Analytics a jestli má rozšíření MicrosoftMonitoringAgent.
+    
 1. Povolte **Azure Defender pro servery**. Další informace najdete v tématu [rychlý Start: povolení programu Azure Defender](enable-azure-defender.md).
 1. Pokud jste už na svých serverech licencovaný a nasazený program Microsoft Defender pro koncové body, odeberte ho pomocí postupu popsaného v tématu [odpojení Windows Servers](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers).
 1. Pokud jste přesunuli předplatné mezi klienty Azure, vyžadují se také některé ruční přípravné kroky. Pokud chcete získat úplné informace, obraťte se na [podporu Microsoftu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

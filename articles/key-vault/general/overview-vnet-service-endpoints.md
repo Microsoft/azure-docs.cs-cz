@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 985cbe1128d1dd64fda86ef062750dc5dd068ffe
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 8d3b88841f03b0c5bdb9b21ea66d9a67ba795546
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751728"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814241"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služby Azure Key Vault pro virtuální síť
 
@@ -26,7 +26,7 @@ Toto omezení má jednu důležitou výjimku. Pokud se uživatel rozhodl Povolit
 Ve výchozím nastavení můžete nakonfigurovat [Key Vault brány firewall a virtuální sítě](network-security.md) tak, aby odepřely přístup k provozu ze všech sítí (včetně internetového provozu). Můžete udělit přístup k provozu z konkrétních virtuálních sítí Azure a rozsahů veřejných IP adres, což vám umožní vytvořit zabezpečenou hranici sítě pro vaše aplikace.
 
 > [!NOTE]
-> Brány firewall Key Vault a pravidla virtuální sítě se vztahují jenom na [rovinu dat](security-overview.md#privileged-access) Key Vault. Brány firewall a pravidla virtuální sítě neovlivní Key Vault operace roviny řízení (například operace vytvoření, odstranění a úpravy, nastavení zásad přístupu, nastavení brány firewall a pravidla virtuální sítě a nasazení tajných klíčů nebo klíčů prostřednictvím šablon ARM).
+> Brány firewall Key Vault a pravidla virtuální sítě se vztahují jenom na [rovinu dat](security-features.md#privileged-access) Key Vault. Brány firewall a pravidla virtuální sítě neovlivní Key Vault operace roviny řízení (například operace vytvoření, odstranění a úpravy, nastavení zásad přístupu, nastavení brány firewall a pravidla virtuální sítě a nasazení tajných klíčů nebo klíčů prostřednictvím šablon ARM).
 
 Tady je několik příkladů použití koncových bodů služby:
 
@@ -66,4 +66,4 @@ Tady je seznam důvěryhodných služeb, které mají povolený přístup k trez
 ## <a name="next-steps"></a>Další kroky
 
 - Podrobné pokyny najdete v tématu [konfigurace Azure Key Vault bran firewall a virtuálních sítí](network-security.md) .
-- Další informace najdete v tématu [Přehled zabezpečení Azure Key Vault](security-overview.md) .
+- Další informace najdete v tématu [Přehled zabezpečení Azure Key Vault](security-features.md) .

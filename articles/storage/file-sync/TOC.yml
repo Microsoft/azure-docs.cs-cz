@@ -51,6 +51,10 @@
           href: ../files/storage-how-to-create-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
         - name: Nasazení Synchronizace souborů Azure
           href: file-sync-deployment-guide.md
+        - name: Použití DFS-N se soubory Azure
+          href: ../files/files-manage-namespaces.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Nákup rezervací úložiště
+          href: ../files/files-reserve-capacity.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
     - name: Síť
       items:
         - name: Konfigurace koncových bodů sítě pro Synchronizaci souborů Azure

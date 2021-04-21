@@ -3,12 +3,12 @@ title: Povolit automatické předávání pro Azure Service Bus fronty a odběry
 description: Tento článek vysvětluje, jak povolit automatické předávání pro fronty a odběry pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku a programovacích jazyků (C#, Java, Python a JavaScript).
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: ef22ae08485dc896c94858db4e422cf89a00ec1f
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: e5f69a82aac96deaf96f0ae6aaa1a26d0ee3aaf3
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107755227"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814659"
 ---
 # <a name="enable-auto-forwarding-for-azure-service-bus-queues-and-subscriptions"></a>Povolit automatické předávání pro Azure Service Bus fronty a odběry
 Funkce automatického předávání Service Bus umožňuje řetězit frontu nebo předplatné do jiné fronty nebo tématu, které je součástí stejného oboru názvů. Pokud je povoleno automatické předávání, Service Bus automaticky odebere zprávy, které jsou umístěny v první frontě nebo předplatném (zdroj), a umístí je do druhé fronty nebo tématu (cíl). Je stále možné odeslat zprávu cílové entitě přímo. Další informace najdete v tématu [zřetězení Service Bus entit s automatickým přesměrováním](service-bus-auto-forwarding.md). Tento článek ukazuje různé způsoby, jak povolit automatické předávání Service Busch front a předplatných. 
@@ -17,13 +17,23 @@ Funkce automatického předávání Service Bus umožňuje řetězit frontu nebo
 > Základní Service Bus úrovně nepodporuje funkci automatického předávání. Úroveň Standard a Premium tuto funkci podporuje. Rozdíly mezi těmito úrovněmi najdete v tématu [Service Bus ceny](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="using-azure-portal"></a>Pomocí webu Azure Portal
-Při vytváření **fronty** nebo **odběru** tématu v Azure Portal vyberte možnost **Přesměrovat zprávy do fronty nebo tématu** , jak je znázorněno v následujících příkladech. Pak určete, zda chcete zprávy předávané do fronty nebo tématu. V tomto příkladu je vybrána možnost **fronta** a je vybrána fronta (**MyQueue**) ze stejného oboru názvů.
+Při vytváření **fronty** nebo **odběru** tématu v Azure Portal vyberte možnost **Přesměrovat zprávy do fronty nebo tématu** , jak je znázorněno v následujících příkladech. Pak určete, zda chcete zprávy předávané do fronty nebo tématu. V tomto příkladu je vybrána možnost **fronta** a je vybrána fronta ze stejného oboru názvů.
 
 ### <a name="create-a-queue-with-auto-forwarding-enabled"></a>Vytvoření fronty s povoleným automatickým přeposíláním
 :::image type="content" source="./media/enable-auto-forward/create-queue.png" alt-text="Povolit automatické dopřední v době vytváření fronty":::
 
 ### <a name="create-a-subscription-for-a-topic-with-auto-forwarding-enabled"></a>Vytvoření předplatného pro téma s povoleným automatickým přeposíláním
 :::image type="content" source="./media/enable-auto-forward/create-subscription.png" alt-text="Povolit automatické dopřední v době vytváření předplatného":::
+
+### <a name="update-the-auto-forward-setting-for-an-existing-queue"></a>Aktualizace nastavení automatického přeposílání pro existující frontu
+Na stránce **Přehled** pro frontu Service Bus vyberte aktuální hodnotu pro nastavení **předávané zprávy** . V následujícím příkladu je aktuální hodnota **zakázána**. V okně **přesměrované zprávy do fronty nebo tématu** můžete vybrat frontu nebo téma, kde chcete zprávy přesměrovat. 
+
+:::image type="content" source="./media/enable-auto-forward/queue-auto-forward.png" alt-text="Povolit automatické přeposílání pro existující frontu":::
+
+### <a name="update-the-auto-forward-setting-for-an-existing-subscription"></a>Aktualizace nastavení automatického přeposílání pro existující předplatné
+Na stránce **Přehled** předplatného Service Bus vyberte aktuální hodnotu pro nastavení **předávané zprávy** . V následujícím příkladu je aktuální hodnota **zakázána**. V okně **přesměrované zprávy do fronty nebo tématu** můžete vybrat frontu nebo téma, kde chcete zprávy přesměrovat. 
+
+:::image type="content" source="./media/enable-auto-forward/subscription-auto-forward.png" alt-text="Povolit automatické přeposílání pro existující předplatné":::
 
 ## <a name="using-azure-cli"></a>Použití Azure CLI
 Chcete-li **vytvořit frontu s povoleným automatickým přesměrováním**, použijte [`az servicebus queue create`](/cli/azure/servicebus/queue#az_servicebus_queue_create) příkaz s `--forward-to` nastavením na název fronty nebo tématu, do kterého chcete zprávy předávat. 
@@ -36,7 +46,29 @@ az servicebus queue create \
     --forward-to myqueue2
 ```
 
-Chcete-li **vytvořit odběr pro téma s povoleným automatickým přeposíláním**, použijte [`az servicebus topic subscription create`](/cli/azure/servicebus/topic/subscription#az_servicebus_topic_subscription_create) příkaz s `--forward-to` nastavením na název fronty nebo tématu, do kterého chcete zprávy předávat.
+Chcete-li **aktualizovat nastavení automatického přeposílání pro existující frontu**, použijte [`az servicebus queue update`](/cli/azure/servicebus/queue#az_servicebus_queue_update) příkaz s parametrem `--forward-to` nastaveným na název fronty nebo tématu, do kterého chcete zprávy předáváte. 
+
+```azurecli-interactive
+az servicebus queue update \
+    --resource-group myresourcegroup \
+    --namespace-name mynamespace \
+    --name myqueue \
+    --forward-to myqueue2
+```
+
+
+Chcete-li **vytvořit odběr tématu s povoleným automatickým přeposíláním**, použijte [`az servicebus topic subscription create`](/cli/azure/servicebus/topic/subscription#az_servicebus_topic_subscription_create) příkaz s `--forward-to` nastavením na název fronty nebo tématu, do kterého chcete zprávy předávat.
+
+```azurecli-interactive
+az servicebus topic subscription create \
+    --resource-group myresourcegroup \
+    --namespace-name mynamespace \
+    --topic-name mytopic \
+    --name mysubscription \
+    --forward-to myqueue2
+```
+
+Chcete-li **aktualizovat nastavení automatického navýšení pro předplatné na téma**, použijte [`az servicebus topic subscription update`](/cli/azure/servicebus/topic/subscription#az_servicebus_topic_subscription_update) příkaz s `--forward-to` nastavením na název fronty nebo tématu, na které chcete zprávy přeposílány.
 
 ```azurecli-interactive
 az servicebus topic subscription create \
@@ -57,6 +89,21 @@ New-AzServiceBusQueue -ResourceGroup myresourcegroup `
     -ForwardTo myqueue2
 ```
 
+Chcete-li **aktualizovat nastavení automatického přeposílání pro existující frontu**, použijte [`Set-AzServiceBusQueue`](/powershell/module/az.servicebus/set-azservicebusqueue) příkaz, jak je znázorněno v následujícím příkladu.
+
+```azurepowershell-interactive
+$queue=Get-AzServiceBusQueue -ResourceGroup myresourcegroup `
+    -NamespaceName mynamespace `
+    -QueueName myqueue 
+
+$queue.ForwardTo='myqueue2'
+
+Set-AzServiceBusQueue -ResourceGroup myresourcegroup `
+    -NamespaceName mynamespace `
+    -QueueName myqueue `
+    -QueueObj $queue
+``` 
+
 Chcete-li **vytvořit odběr pro téma s povoleným automatickým přeposíláním**, použijte [`New-AzServiceBusSubscription`](/powershell/module/az.servicebus/new-azservicebussubscription) příkaz s `-ForwardTo` nastavením na název fronty nebo tématu, do kterého chcete zprávy předávat.
 
 ```azurepowershell-interactive
@@ -65,6 +112,23 @@ New-AzServiceBusSubscription -ResourceGroup myresourcegroup `
     -TopicName mytopic `
     -SubscriptionName mysubscription `
     -ForwardTo myqueue2
+```
+
+Chcete-li **aktualizovat nastavení automatického přeposílání pro existující předplatné**, přečtěte si následující příklad.
+
+```azurepowershell-interactive
+$subscription=Get-AzServiceBusSubscription -ResourceGroup myresourcegroup `
+    -NamespaceName mynamespace `
+    -TopicName mytopic `
+    -SubscriptionName mysub
+
+$subscription.ForwardTo='mytopic2'
+
+Set-AzServiceBusSubscription -ResourceGroup myresourcegroup `
+    -NamespaceName mynamespace `
+    -Name mytopic `
+    -SubscriptionName mysub `
+    -SubscriptionObj $subscription 
 ```
 
 ## <a name="using-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manageru

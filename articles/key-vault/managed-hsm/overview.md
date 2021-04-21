@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.date: 04/01/2021
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: b56031d131743a3dc8c97bcd3e85d4653cdd2833
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a9df83535bf0ee7a6c484a7682392d2ad0ef59f7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484179"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815319"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm"></a>Co je Managed HSM služby Azure Key Vault?
 
-Azure Key Vault spravovaný modul HSM je plně spravovaná cloudová služba s vysokou dostupností, která vyhovuje standardům, která vám umožní chránit kryptografické klíče pro vaše cloudové aplikace, a to pomocí ověřené HSM **úrovně 3 ve standardu FIPS 140-2** .  
+Azure Key Vault spravovaný modul HSM je plně spravovaná cloudová služba s vysokou dostupností, která vyhovuje standardům, která vám umožní chránit kryptografické klíče pro vaše cloudové aplikace, a to pomocí ověřené HSM **úrovně 3 ve standardu FIPS 140-2** . Informace o cenách najdete v části spravované fondy HSM na [stránce s cenami Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). 
 
 ## <a name="why-use-managed-hsm"></a>Proč používat spravovaný modul HSM?
 

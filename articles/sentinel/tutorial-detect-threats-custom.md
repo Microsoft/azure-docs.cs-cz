@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: 70b56e70ec0e6f511142c48cc89720c054807a5c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 180a5edd00b6085ffd91568471ca763f5e4e9711
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105042794"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814851"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Kurz: vytvoření vlastních pravidel analýzy pro detekci hrozeb
 
@@ -75,7 +75,7 @@ Na kartě **nastavit logiku pravidla** můžete buď napsat dotaz přímo do pol
 
     > [!NOTE]
     > #### <a name="rule-query-best-practices"></a>Osvědčené postupy pro dotaz na pravidlo
-    > - Délka dotazu by měla být mezi 1 a 10 000 znaky a nesmí obsahovat znak " `search *` " nebo " `union *` ".
+    > - Délka dotazu by měla být mezi 1 a 10 000 znaky a nesmí obsahovat znak " `search *` " nebo " `union *` ". K překonání omezení délky dotazu můžete použít [uživatelsky definované funkce](/azure/data-explorer/kusto/query/functions/user-defined-functions) .
     >
     > - Použití funkcí ADX k vytvoření dotazů Azure Průzkumník dat v okně dotazu Log Analytics **není podporováno**.
     >

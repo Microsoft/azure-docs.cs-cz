@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 783b5afdaef369582614cde3525f7968fdb5e567
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69a69afedbd86871987a8e62b55dfc070121cc78
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508635"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813861"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktivní ladění pomocí Visual Studio Code
 
@@ -278,7 +278,7 @@ ip_address: 10.3.0.5
 Uložte `ip_address` hodnotu. Používá se v další části.
 
 > [!TIP]
-> IP adresu můžete najít také z protokolů spuštění pro tento krok kanálu pro podřízený běh. Další informace o tom, jak zobrazit tyto informace, najdete v tématu [monitorování běhů experimentů Azure ml a metrik](how-to-track-experiments.md).
+> IP adresu můžete najít také z protokolů spuštění pro tento krok kanálu pro podřízený běh. Další informace o tom, jak zobrazit tyto informace, najdete v tématu [monitorování běhů experimentů Azure ml a metrik](how-to-log-view-metrics.md).
 
 ### <a name="configure-development-environment"></a>Konfigurace vývojového prostředí
 
