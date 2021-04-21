@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 0e75eebc7aa63efe6d28069bf7ca82234ac15a25
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 67531c1c5d37b02f9107dfc487c10b2fcac734d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749991"
+ms.locfileid: "107791962"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Kurz: Import certifikátu v Azure Key Vault
 
@@ -103,9 +103,9 @@ az keyvault certificate import --file
                                [--tags]
 ```
 
-Přečtěte si další informace o [parametrech](/cli/azure/keyvault/certificate#az-keyvault-certificate-import).
+Přečtěte si další informace o [parametrech](/cli/azure/keyvault/certificate#az_keyvault_certificate_import).
 
-Po importu certifikátu si můžete certifikát zobrazit pomocí [zobrazení certifikátu](/cli/azure/keyvault/certificate#az-keyvault-certificate-show) .
+Po importu certifikátu si můžete certifikát zobrazit pomocí [zobrazení certifikátu](/cli/azure/keyvault/certificate#az_keyvault_certificate_show) .
 
 
 ```azurecli

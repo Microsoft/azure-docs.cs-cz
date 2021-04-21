@@ -8,12 +8,12 @@ ms.subservice: confidential-computing
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 0ba6ee92111da66a2118ba4c490b94e5bc9449e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 571c1a4ce545976db09f46a07d963d5344c02c29
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551381"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791008"
 ---
 # <a name="application-development-on-intel-sgx"></a>Vývoj aplikací v Intel SGX 
 
@@ -23,6 +23,7 @@ Infrastruktura důvěrné výpočetní techniky vyžaduje konkrétní nástroje 
 K využití síly enclaves a izolované prostředí budete muset použít nástroje, které podporují důvěrný výpočetní výkon. Existují různé nástroje, které podporují vývoj aplikací enklávy. Můžete například použít tyto Open-Source rozhraní: 
 
 - [Open enklávy Software Development Kit (OE SDK)](#oe-sdk)
+- [Sada EGo Software Development Kit](#ego)
 - [Rámec důvěrného konsorcia (CCF)](#ccf)
 
 ## <a name="overview"></a>Přehled
@@ -48,6 +49,10 @@ Během návrhu aplikace je důležité identifikovat a určit, jaká část apli
 Použijte knihovnu nebo architekturu podporovanou vaším poskytovatelem, pokud chcete napsat kód, který běží v enklávy. [Open ENKLÁVY SDK](https://github.com/openenclave/openenclave) (OE SDK) je open source sada SDK, která umožňuje abstrakci nad jiným důvěrným hardwarem, který je povolený. 
 
 Sada OE SDK je sestavena tak, aby byla jednou z abstrakcních vrstev na jakémkoli poskytovateli CSP. Sada OE SDK se dá využít na virtuální počítače s důvěrnými výpočetními prostředími Azure k vytváření a spouštění aplikací nad enclaves.
+
+## <a name="ego-software-development-kit"></a>EGo Software Development Kit <a id="ego"></a>
+
+[EGo](https://ego.dev/) je open-source sada SDK, která umožňuje spouštět aplikace napsané v programovacím jazyce jazyka jít v rámci enclaves. EGo sestaví na webu OE SDK a dodává se s knihovnou v enklávy pro ověřování a zapečetění. Mnohé existující aplikace v cestách běží na EGo bez úprav.  
 
 ## <a name="confidential-consortium-framework-ccf"></a>Důvěrné rozhraní Consortium (CCF) <a id="ccf"></a>
 

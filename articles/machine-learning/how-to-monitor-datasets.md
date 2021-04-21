@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml, contperf-fy21q2
-ms.openlocfilehash: e7da81e896c0d59af966cca2760b1adb163762aa
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 95fb2dfeea98b988eaeaea43efc4ea44fd6e33fd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067499"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770304"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Zjištění posunu dat (Preview) u datových sad
 
@@ -28,7 +28,7 @@ S Azure Machine Learning monitory datových sad (Preview) můžete:
 * **Monitorujte nová data** pro rozdíly mezi jednotlivými základními a cílovými datovou sadou.
 * **Profilování funkcí v datech** vám umožní sledovat, jak se statistické vlastnosti mění v čase.
 * **Nastavte výstrahy na posun dat** a včasné výstrahy na potenciální problémy. 
-* **[Vytvořit novou verzi datové sady] (postupy-verze-Track** -datové sady, když určíte, že data jsou příliš velká.
+* Pokud určíte, že data jsou příliš velká, **[vytvořte novou verzi datové sady](how-to-version-track-datasets.md)** .
 
 K vytvoření monitorování se používá [datová sada Azure Machine Learning](how-to-create-register-datasets.md) . Datová sada musí zahrnovat sloupec časového razítka.
 

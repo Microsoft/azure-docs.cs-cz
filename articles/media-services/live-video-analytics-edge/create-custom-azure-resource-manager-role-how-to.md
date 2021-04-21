@@ -3,12 +3,12 @@ title: Vytvoření vlastní role Azure Resource Manager a přiřazení k instan�
 description: Tento článek poskytuje pokyny k vytvoření vlastní role Azure Resource Manager a přiřazení k instančnímu objektu pro živé video analýzy v IoT Edge pomocí Azure CLI.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 80974c111dd451314635d06334766322bc68e437
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6c33f6703522fc0b28237e22c16c96587467df40
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102210440"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788506"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Vytvoření vlastní role Azure Resource Manager a přiřazení k instančnímu objektu
 
@@ -16,7 +16,7 @@ Live video Analytics v instanci modulu IoT Edge potřebuje pro správné fungov�
 
 V tomto článku se dozvíte, jak vytvořit vlastní roli Azure Resource Manager s Azure Cloud Shell, která pak slouží k vytvoření instančního objektu.
 
-## <a name="prerequisites"></a>Předpoklady  
+## <a name="prerequisites"></a>Požadavky  
 
 Požadavky pro tento článek jsou následující:
 
@@ -49,7 +49,7 @@ Pokud nemáte účet Media Service, vytvořte ho pomocí následujících kroků
     ```
     az account set --subscription " <yourSubscriptionName or yourSubscriptionId>"
     ```
-1. Vytvořte [skupinu prostředků](/cli/azure/group#az-group-create) a [účet úložiště](/cli/azure/storage/account#az-storage-account-create).
+1. Vytvořte [skupinu prostředků](/cli/azure/group#az_group_create) a [účet úložiště](/cli/azure/storage/account#az_storage_account_create).
 1. Nyní vytvořte účet služby Azure Media Service pomocí následující šablony příkazů v Cloud Shell:
 
     ```
@@ -86,7 +86,7 @@ Tento příkaz vytvoří odpověď podobnou této:
 1. Výstup pro instanční objekt s ověřováním hesla zahrnuje klíč hesla, který v tomto případě je parametrem "AadSecret". 
 
     Nezapomeňte tuto hodnotu zkopírovat – nedá se načíst. Pokud zapomenete heslo, [resetujte přihlašovací údaje instančního objektu](/cli/azure/create-an-azure-service-principal-azure-cli#reset-credentials).
-1. AppId a klíč tenanta se zobrazí ve výstupu jako "AadClientId" a "AadTenantId" v uvedeném pořadí. Používají se při ověřování instančního objektu. Poznamenejte si jejich hodnoty, ale můžete je kdykoli načíst pomocí příkaz [AZ AD SP list](/cli/azure/ad/sp#az-ad-sp-list).
+1. AppId a klíč tenanta se zobrazí ve výstupu jako "AadClientId" a "AadTenantId" v uvedeném pořadí. Používají se při ověřování instančního objektu. Poznamenejte si jejich hodnoty, ale můžete je kdykoli načíst pomocí příkaz [AZ AD SP list](/cli/azure/ad/sp#az_ad_sp_list).
 
 ### <a name="create-a-custom-role-definition"></a>Vytvoření vlastní definice role  
 
@@ -171,7 +171,7 @@ Výše uvedený příkaz vypíše objectId objektu služby.
 “objectId” : “<yourObjectId>”,
 ```
 
-Pomocí [příkazu AZ role Assignment vytvořit šablonu příkazu](/cli/azure/role/assignment#az-role-assignment-create) propojte vlastní roli s objektem služby:
+Pomocí [příkazu AZ role Assignment vytvořit šablonu příkazu](/cli/azure/role/assignment#az_role_assignment_create) propojte vlastní roli s objektem služby:
 
 ```
 az role assignment create --role “LVAEdge User” --assignee-object-id < objectId>    

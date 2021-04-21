@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 4/16/2021
-ms.openlocfilehash: 7dcbcddc5062470cc3d44fa55ea2591dd989d22d
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: d5b0c8e60632be5e058900680dc376b7f0761150
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576393"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781572"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -255,7 +255,7 @@ Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlev
 
 ### <a name="use-the-azure-cli"></a>Použití Azure CLI
 
-Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy při automatickém pozastavení se provádí pomocí příkazu [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) v Azure CLI pomocí `capacity` `min-capacity` argumentů, a `auto-pause-delay` .
+Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy při automatickém pozastavení se provádí pomocí příkazu [AZ SQL DB Update](/cli/azure/sql/db#az_sql_db_update) v Azure CLI pomocí `capacity` `min-capacity` argumentů, a `auto-pause-delay` .
 
 
 ## <a name="monitoring"></a>Monitorování

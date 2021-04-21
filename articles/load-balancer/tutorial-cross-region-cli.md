@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 03/04/2021
-ms.openlocfilehash: 83efb428a94d49b77ecd923d4868afe034374b5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca4134ff25dc9915f256b5a7bdd9404021b60a8e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225179"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791908"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>Kurz: vytvoření Azure Load Balancer pro různé oblasti pomocí rozhraní příkazového řádku Azure
 
@@ -54,7 +54,7 @@ V této části vytvoříte Nástroj pro vyrovnávání zatížení mezi oblastm
 
 Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az-group-create):
+Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az_group_create):
 
 * S názvem **myResourceGroupLB-CR**.
 * V umístění **westus** .
@@ -157,7 +157,7 @@ K přidání front-endu, které jste umístili do proměnných ve fondu back-end
 
 V této části otestujete Nástroj pro vyrovnávání zatížení mezi oblastmi. Připojíte se k veřejné IP adrese ve webovém prohlížeči.  Virtuální počítače zabráníte v jednom z back-endového fondu služby pro vyrovnávání zatížení a budete sledovat převzetí služeb při selhání.
 
-1. Pokud chcete získat veřejnou IP adresu nástroje pro vyrovnávání zatížení, použijte příkaz [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show):
+1. Pokud chcete získat veřejnou IP adresu nástroje pro vyrovnávání zatížení, použijte příkaz [AZ Network Public-IP show](/cli/azure/network/public-ip#az_network_public_ip_show):
 
     ```azurecli-interactive
       az network public-ip show \
@@ -174,7 +174,7 @@ V této části otestujete Nástroj pro vyrovnávání zatížení mezi oblastmi
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odeberte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky pomocí příkazu [AZ Group Delete](/cli/azure/group#az-group-delete) .
+Pokud už je nepotřebujete, odeberte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky pomocí příkazu [AZ Group Delete](/cli/azure/group#az_group_delete) .
 
 ```azurecli-interactive
   az group delete \

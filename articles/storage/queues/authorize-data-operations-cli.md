@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2f7092d8ce184d7021774814e96935e46d1ffb56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b3ac012da97194134f58d061dd9d84e945db554
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363164"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774462"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Volba způsobu autorizace přístupu k Queue data pomocí Azure CLI
 
@@ -63,7 +63,7 @@ Následující příklad ukazuje, jak vytvořit frontu z Azure CLI pomocí vaši
     > [!IMPORTANT]
     > Rozšiřování přiřazení rolí Azure může trvat několik minut.
 
-1. Voláním [`az storage queue create`](/cli/azure/storage/queue#az-storage-queue-create) příkazu s `--auth-mode` parametrem nastaveným na `login` vytvoříte frontu pomocí vašich přihlašovacích údajů Azure AD. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
+1. Voláním [`az storage queue create`](/cli/azure/storage/queue#az_storage_queue_create) příkazu s `--auth-mode` parametrem nastaveným na `login` vytvoříte frontu pomocí vašich přihlašovacích údajů Azure AD. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 
     ```azurecli
     az storage queue create \

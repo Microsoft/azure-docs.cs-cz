@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 93e605cb20d593750100ec8e340a7ad74c4dd385
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb38b72af6e7c649c0904c41d3052b15a4c36955
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587889"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770052"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Kurz: Vytvoření aplikace PHP (Laravel) a MySQL flexibilního serveru (Preview) v Azure App Service
 
@@ -139,7 +139,7 @@ V prohlížeči přejděte na `http://localhost:8000`. Na stránce přidejte n�
 Pokud chcete zastavit PHP, zadejte v terminálu `Ctrl + C`.
 
 ## <a name="create-a-mysql-flexible-server-preview"></a>Vytvoření flexibilního serveru MySQL (Preview)
-V tomto kroku vytvoříte databázi MySQL v [Azure Database for MySQL flexibilním serveru](../index.yml) , který je ve verzi Public Preview. Později nakonfigurujete aplikaci PHP pro připojení k této databázi. V [Azure Cloud Shell](../../cloud-shell/overview.md)vytvořte pomocí [`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) příkazu Server.
+V tomto kroku vytvoříte databázi MySQL v [Azure Database for MySQL flexibilním serveru](../index.yml) , který je ve verzi Public Preview. Později nakonfigurujete aplikaci PHP pro připojení k této databázi. V [Azure Cloud Shell](../../cloud-shell/overview.md)vytvořte pomocí [`az flexible-server create`](/cli/azure/mysql/server#az_mysql_flexible_server_create) příkazu Server.
 
 ```azurecli-interactive
 az mysql flexible-server create  --resource-group myResourceGroup --public-access <IP-Address>
@@ -280,7 +280,7 @@ V tomto kroku nasadíte aplikaci PHP připojenou k MySQL do služby Azure App Se
 
 FTP a místní Git se můžou nasadit do webové aplikace Azure pomocí uživatele nasazení. Jakmile nakonfigurujete uživatele nasazení, můžete ho použít pro všechna nasazení Azure. Uživatelské jméno a heslo nasazení na úrovni účtu se liší od přihlašovacích údajů předplatného Azure.
 
-Pokud chcete nakonfigurovat uživatele nasazení, spusťte v Azure Cloud Shell příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) . Místo uživatelského jména a hesla pro nasazení nahraďte _&lt; uživatelské jméno>_ a _&lt; heslo>_ .
+Pokud chcete nakonfigurovat uživatele nasazení, spusťte v Azure Cloud Shell příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) . Místo uživatelského jména a hesla pro nasazení nahraďte _&lt; uživatelské jméno>_ a _&lt; heslo>_ .
 
 Uživatelské jméno musí být v rámci Azure jedinečné a pro místní nabízená oznámení Git nesmí obsahovat symbol @.
 Heslo musí mít délku alespoň osm znaků a dva z následujících tří prvků: písmena, číslice a symboly.
@@ -293,7 +293,7 @@ Výstup JSON zobrazuje heslo jako null. Pokud se zobrazí zpráva "konflikt". Po
 
 ### <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 
-V Cloud Shell ve skupině prostředků vytvořte App Service plán pomocí příkazu [AZ AppService Plan Create](/cli/azure/appservice/plan#az-appservice-plan-create) . Následující příklad vytvoří plán App Service s názvem myAppServicePlan v bezplatné cenové úrovni (--SKU F1) a v kontejneru Linux (--is-Linux).
+V Cloud Shell ve skupině prostředků vytvořte App Service plán pomocí příkazu [AZ AppService Plan Create](/cli/azure/appservice/plan#az_appservice_plan_create) . Následující příklad vytvoří plán App Service s názvem myAppServicePlan v bezplatné cenové úrovni (--SKU F1) a v kontejneru Linux (--is-Linux).
 
 AZ AppService Plan Create--Name myAppServicePlan--Resource-Group myResourceGroup--SKU F1--is-Linux
 
@@ -303,7 +303,7 @@ AZ AppService Plan Create--Name myAppServicePlan--Resource-Group myResourceGroup
 
 Vytvořte [webovou aplikaci](../../app-service/overview.md#app-service-on-linux) v plánu myAppServicePlan App Service.
 
-V Cloud Shell můžete použít příkaz [AZ WebApp Create](/cli/azure/webapp#az-webapp-create) . V následujícím příkladu nahraďte _&lt; název aplikace>_ globálně jedinečným názvem aplikace (platné znaky jsou `a-z` , `0-9` a `-` ). Modul runtime je nastavený na `PHP|7.0`. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz [AZ WebApp list-runtimes--Linux](/cli/azure/webapp#az-webapp-list-runtimes).
+V Cloud Shell můžete použít příkaz [AZ WebApp Create](/cli/azure/webapp#az_webapp_create) . V následujícím příkladu nahraďte _&lt; název aplikace>_ globálně jedinečným názvem aplikace (platné znaky jsou `a-z` , `0-9` a `-` ). Modul runtime je nastavený na `PHP|7.0`. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz [AZ WebApp list-runtimes--Linux](/cli/azure/webapp#az_webapp_list_runtimes).
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.3" --deployment-local-git
@@ -334,7 +334,7 @@ Vytvořili jste novou prázdnou webovou aplikaci s povoleným nasazením Gitu.
 
 ### <a name="configure-database-settings"></a>Konfigurace nastavení databáze
 
-Ve službě App Service můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set).
+Ve službě App Service můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set).
 
 Následující příkaz nakonfiguruje nastavení aplikace `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` a `DB_PASSWORD`. Nahraďte zástupné symboly _&lt; název aplikace>_ a _&lt; mysql-Server-Name>_.
 
@@ -365,7 +365,7 @@ V okně místního terminálu pomocí příkazu `php artisan` vygenerujte nový 
 php artisan key:generate --show
 ```
 
-V Cloud Shell nastavte klíč aplikace v aplikaci App Service pomocí [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) příkazu. Nahraďte zástupné symboly _&lt; název aplikace>_ a _&lt; outputofphpartisankey: Generate>_.
+V Cloud Shell nastavte klíč aplikace v aplikaci App Service pomocí [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) příkazu. Nahraďte zástupné symboly _&lt; název aplikace>_ a _&lt; outputofphpartisankey: Generate>_.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"

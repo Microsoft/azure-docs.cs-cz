@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4f774351fc0eaaf32069687a1943c72b74b6308a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3dd971ff36bde02072d14c465dbafec2823b256d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96494320"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780312"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí Azure CLI
 
@@ -28,7 +28,7 @@ V tomto rychlém startu se dozvíte, jak pomocí příkazů rozhraní příkazov
 
  - Tento rychlý Start vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
- - Pomocí příkazu [AZ Account set](/cli/azure/account) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](/cli/azure/account#az-account-list).
+ - Pomocí příkazu [AZ Account set](/cli/azure/account) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](/cli/azure/account#az_account_list).
 
    ```azurecli
    az account set --subscription <subscription id>
@@ -41,7 +41,7 @@ Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/over
 az group create --name myresourcegroup --location westus
 ```
 
-Vytvořte server Azure Database for MySQL pomocí příkazu [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create). Server může obsahovat více databází.
+Vytvořte server Azure Database for MySQL pomocí příkazu [az mysql server create](/cli/azure/mysql/server#az_mysql_server_create). Server může obsahovat více databází.
 
 ```azurecli
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 
@@ -60,7 +60,7 @@ sku-name|GP_Gen5_2|Zadejte název cenové úrovně a konfiguraci výpočtů. Pos
 
 >[!IMPORTANT] 
 >- Výchozí verze MySQL na serveru je 5,7. V současné době jsou k dispozici i verze 5,6 a 8,0.
->- Chcete-li zobrazit všechny argumenty příkazu **AZ MySQL server Create** , přečtěte si tento [referenční dokument](/cli/azure/mysql/server#az-mysql-server-create).
+>- Chcete-li zobrazit všechny argumenty příkazu **AZ MySQL server Create** , přečtěte si tento [referenční dokument](/cli/azure/mysql/server#az_mysql_server_create).
 >- Protokol SSL je ve výchozím nastavení povolen na vašem serveru. Další infroamtion na SSL najdete v tématu [Konfigurace připojení SSL](howto-configure-ssl.md) .
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurace pravidla brány firewall na úrovni serveru 
@@ -126,7 +126,7 @@ Pokud tyto prostředky nepotřebujete pro další rychlý start nebo kurz, můž
 az group delete --name myresourcegroup
 ```
 
-Pokud chcete odstranit jenom nově vytvořený server, můžete spustit příkaz [az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete).
+Pokud chcete odstranit jenom nově vytvořený server, můžete spustit příkaz [az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete).
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver

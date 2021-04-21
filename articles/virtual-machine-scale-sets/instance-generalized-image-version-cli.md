@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e360ae3cf0c463add9e6445a96c118d9f40ce9cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de50540345ac6170d229549cad736dafb04e488c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878032"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792358"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>Vytvoření sady škálování z generalizované Image pomocí Azure CLI
 
@@ -24,7 +24,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 V tomto příkladu nahraďte názvy prostředků podle potřeby. 
 
-V galerii můžete zobrazit definice obrázků pomocí [AZ SIG image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) , abyste viděli název a ID definic.
+V galerii můžete zobrazit definice obrázků pomocí [AZ SIG image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list) , abyste viděli název a ID definic.
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -36,7 +36,7 @@ az sig image-definition list \
    --output tsv
 ```
 
-Vytvořte sadu škálování pomocí [`az vmss create`](/cli/azure/vmss#az-vmss-create) . 
+Vytvořte sadu škálování pomocí [`az vmss create`](/cli/azure/vmss#az_vmss_create) . 
 
 Pomocí ID definice image pro `--image` můžete vytvořit instance sady škálování z nejnovější verze image, která je k dispozici. Můžete také vytvořit instance sady škálování z konkrétní verze, a to zadáním ID verze image pro `--image` . Uvědomte si, že použití konkrétní verze image znamená, že automatizace může selhat, pokud není dostupná konkrétní verze image, protože se odstranila nebo odebrala z oblasti. Pro vytvoření nového virtuálního počítače doporučujeme použít ID definice image, pokud není potřeba konkrétní verze image.
 

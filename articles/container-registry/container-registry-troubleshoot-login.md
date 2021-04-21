@@ -3,12 +3,12 @@ title: Řešení potíží s přihlášením k registru
 description: Příznaky, příčiny a řešení běžných potíží při přihlašování do služby Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5deb1717cf3886d8ea9c021d92afa358946b16dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47186cc8256836e5367ecee520787b67662eb42f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99052074"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780726"
 ---
 # <a name="troubleshoot-registry-login"></a>Řešení potíží s přihlášením k registru
 
@@ -36,7 +36,7 @@ Může zahrnovat jednu nebo více z následujících možností:
 
 ## <a name="further-diagnosis"></a>Další Diagnostika 
 
-Pokud chcete získat další informace o stavu prostředí registru a volitelně získat přístup k cílovému registru, spusťte příkaz [AZ ACR check-Health](/cli/azure/acr#az-acr-check-health) . Například Diagnostikujte chyby konfigurace Docker nebo Azure Active Directory problémy s přihlášením. 
+Pokud chcete získat další informace o stavu prostředí registru a volitelně získat přístup k cílovému registru, spusťte příkaz [AZ ACR check-Health](/cli/azure/acr#az_acr_check_health) . Například Diagnostikujte chyby konfigurace Docker nebo Azure Active Directory problémy s přihlášením. 
 
 Příklady příkazů najdete v tématu o [kontrole stavu služby Azure Container Registry](container-registry-check-health.md) . Pokud dojde k chybám, přečtěte si [referenční informace o chybě](container-registry-health-error-reference.md) a v následujících oddílech, kde najdete doporučená řešení.
 
@@ -64,7 +64,7 @@ Při použití `docker login` Zadejte úplný název přihlašovacího serveru r
 docker login myregistry.azurecr.io
 ```
 
-Když používáte [AZ ACR Login](/cli/azure/acr#az-acr-login) s identitou Azure Active Directory, nejdřív se [přihlaste do Azure CLI](/cli/azure/authenticate-azure-cli)a pak zadejte název prostředku Azure registru. Název prostředku je název, který jste zadali při vytvoření registru, například *myregistry* (bez přípony domény). Příklad:
+Když používáte [AZ ACR Login](/cli/azure/acr#az_acr_login) s identitou Azure Active Directory, nejdřív se [přihlaste do Azure CLI](/cli/azure/authenticate-azure-cli)a pak zadejte název prostředku Azure registru. Název prostředku je název, který jste zadali při vytvoření registru, například *myregistry* (bez přípony domény). Příklad:
 
 ```azurecli
 az acr login --name myregistry
@@ -72,7 +72,7 @@ az acr login --name myregistry
 
 Související odkazy:
 
-* [AZ ACR Login se zdaří, ale Docker selže s chybou: Neautorizováno: vyžaduje se ověření.](container-registry-faq.md#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required )
+* [AZ ACR Login se zdaří, ale Docker selže s chybou: Neautorizováno: vyžaduje se ověření.](container-registry-faq.md#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
 
 ### <a name="confirm-credentials-to-access-registry"></a>Potvrďte přihlašovací údaje pro přístup k registru
 
@@ -94,7 +94,7 @@ Související odkazy:
 * [Přihlášení s tokenem s oborem úložiště](container-registry-repository-scoped-permissions.md)
 * [Přihlášení s účtem správce](container-registry-authentication.md#admin-account)
 * [Kódy chyb ověřování a autorizace Azure AD](../active-directory/develop/reference-aadsts-error-codes.md)
-* [AZ ACR Login](/cli/azure/acr#az-acr-login) reference
+* [AZ ACR Login](/cli/azure/acr#az_acr_login) reference
 
 ### <a name="confirm-credentials-are-authorized-to-access-registry"></a>Ověření přihlašovacích údajů má oprávnění pro přístup k registru.
 
@@ -125,7 +125,7 @@ Tokeny a přihlašovací údaje služby Active Directory můžou po definovanýc
 
 Související odkazy:
 
-* [Resetovat přihlašovací údaje instančního objektu](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset)
+* [Resetovat přihlašovací údaje instančního objektu](/cli/azure/ad/sp/credential#az_ad_sp_credential_reset)
 * [Znovu vygenerovat hesla tokenů](container-registry-repository-scoped-permissions.md#regenerate-token-passwords)
 * [Individuální přihlášení pomocí Azure AD](container-registry-authentication.md#individual-login-with-azure-ad)
 

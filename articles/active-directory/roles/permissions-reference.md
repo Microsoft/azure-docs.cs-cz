@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 04/06/2021
+ms.date: 04/20/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9266322d424d57ac847df85513db34d4a42e47e1
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: cf614922503212488c822ac020960b0ddb99fc28
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389821"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780060"
 ---
 # <a name="azure-ad-built-in-roles"></a>Předdefinované role Azure AD
 
@@ -519,7 +519,7 @@ Spravuje [žádosti Customer Lockbox](/office365/admin/manage/customer-lockbox-r
 
 ## <a name="desktop-analytics-administrator"></a>Správce Desktop Analytics
 
-Uživatelé v této roli můžou spravovat služby zásad & pro stolní počítače a přizpůsobení Office. Pro Desktop Analytics to zahrnuje možnost Zobrazit inventář assetů, vytvářet plány nasazení, zobrazovat stav nasazení a stavu. V případě služby Office Customization & Policy tato role umožňuje uživatelům spravovat zásady Office.
+Uživatelé v této roli můžou spravovat službu Desktop Analytics. To zahrnuje možnost Zobrazit inventář assetů, vytvářet plány nasazení a zobrazovat stav nasazení a stavu.
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -527,9 +527,6 @@ Uživatelé v této roli můžou spravovat služby zásad & pro stolní počíta
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health |
 > | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Azure |
 > | Microsoft. Office 365. desktopAnalytics/allEntities/allTasks | Správa všech aspektů Desktop Analytics |
-> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Čtení a konfigurace Service Health v centru pro správu Microsoft 365 |
-> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a správa žádostí o Microsoft 365 služby |
-> | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v centru pro správu Microsoft 365. |
 
 ## <a name="directory-readers"></a>Čtečky adresářů
 
@@ -1861,7 +1858,7 @@ Například:
 
 `microsoft.directory/applications/credentials/update`
 
-| Element oprávnění | Popis |
+| Element oprávnění | Description |
 | --- | --- |
 | namespace | Produkt nebo služba, které vystavují úkol a jsou součástí `microsoft` . Například všechny úlohy ve službě Azure AD používají `microsoft.directory` obor názvů. |
 | entita | Logická funkce nebo komponenta vystavené službou v Microsoft Graph. Například Azure AD zveřejňuje uživatele a skupiny, OneNote zpřístupňuje poznámky a Exchange zveřejňuje poštovní schránky a kalendáře. Existuje speciální `allEntities` klíčové slovo pro zadání všech entit v oboru názvů. Tato funkce se často používá v rolích, které udělují přístup k celému produktu. |

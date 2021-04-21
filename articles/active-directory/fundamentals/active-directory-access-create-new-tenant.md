@@ -12,14 +12,15 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31d82906625bc55cbdba21f2e356ee3f29f9d436
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: fc51c645c470f2b5b0a009eaf831db2f1957617e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567379"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780133"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Rychlý Start: vytvoření nového tenanta v Azure Active Directory
+
 Pomocí portálu Azure Active Directory (Azure AD) můžete provádět všechny úlohy správy, včetně vytvoření nového tenanta pro vaši organizaci. 
 
 V tomto rychlém startu se dozvíte, jak se dostat na web Azure Portal a do služby Azure Active Directory a jak vytvořit základního tenanta pro vaši organizaci.
@@ -27,6 +28,7 @@ V tomto rychlém startu se dozvíte, jak se dostat na web Azure Portal a do slu�
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>Vytvoření nového tenanta pro vaši organizaci
+
 Po přihlášení k webu Azure Portal můžete vytvořit nového tenanta pro svou organizaci. Váš nový tenant reprezentuje vaši organizaci a pomáhá vám spravovat konkrétní instanci cloudových služeb společnosti Microsoft pro vaše interní a externí uživatele.
 
 ### <a name="to-create-a-new-tenant"></a>Vytvoření nového tenanta
@@ -61,11 +63,15 @@ Váš nový tenant se vytvoří s doménu contoso.onmicrosoft.com.
 
 ## <a name="your-user-account-in-the-new-tenant"></a>Váš uživatelský účet v novém tenantovi
 
-Při vytváření nového tenanta AAD se stanete prvním uživatelem tohoto tenanta. Jako první uživatel jste automaticky přiřadili roli [globálního správce](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference#global-administrator) . Podívejte se na uživatelský účet tak, že přejdete na stránku [**Uživatelé**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers) .
+Při vytváření nového tenanta Azure AD se stanete prvním uživatelem tohoto tenanta. Jako první uživatel jste automaticky přiřadili roli [globálního správce](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference#global-administrator) . Podívejte se na uživatelský účet tak, že přejdete na stránku [**Uživatelé**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers) .
 
 Ve výchozím nastavení je také uvedeno jako [technický kontakt](https://docs.microsoft.com/microsoft-365/admin/manage/change-address-contact-and-more?view=o365-worldwide#what-do-these-fields-mean) pro tenanta. Technické kontaktní informace je něco, co můžete změnit ve [**vlastnostech**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
 
+> [!WARNING]
+> Zajistěte, aby měl adresář alespoň dva účty s přiřazenými oprávněními globálního správce. To vám pomůže v případě, že je jeden globální správce uzamčený. Další podrobnosti najdete v článku [Správa účtů pro nouzový přístup ve službě Azure AD](../roles/security-emergency-access.md).
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
+
 Pokud nebudete tuto aplikaci nadále používat, můžete klienta odstranit pomocí následujících kroků:
 
 - Ujistěte se, že jste přihlášeni k adresáři, který chcete odstranit, pomocí filtru **adresáře a předplatného** v Azure Portal. V případě potřeby přepněte do cílového adresáře.
@@ -76,6 +82,7 @@ Pokud nebudete tuto aplikaci nadále používat, můžete klienta odstranit pomo
     <kbd>![Stránka s přehledem se zvýrazněným tlačítkem odstranit adresář](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)</kbd>
 
 ## <a name="next-steps"></a>Další kroky
+
 - Změňte nebo přidejte další názvy domén, viz [Přidání vlastního názvu domény do Azure Active Directory](add-custom-domain.md)
 
 - Přidejte uživatele, viz [Přidání nebo odstranění nového uživatele](add-users-azure-active-directory.md)

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 886db905008af94b66a902cc551e4d55b36572a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 17968f2c137eef51eecdb6c7098c7056944dc970
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98250124"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782184"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Aktivační událost Azure Event Grid pro Azure Functions
 
@@ -446,7 +446,7 @@ Další informace o tom, jak vytvořit odběry pomocí Azure Portal, najdete v t
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pokud chcete vytvořit předplatné pomocí [Azure CLI](/cli/azure/get-started-with-azure-cli), použijte příkaz [AZ eventgrid Event-Subscription Create](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) .
+Pokud chcete vytvořit předplatné pomocí [Azure CLI](/cli/azure/get-started-with-azure-cli), použijte příkaz [AZ eventgrid Event-Subscription Create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) .
 
 Příkaz vyžaduje adresu URL koncového bodu, která vyvolá funkci. Následující příklad ukazuje vzor adresy URL pro konkrétní verzi:
 
@@ -571,7 +571,7 @@ K otestování triggeru Event Grid v místním počítači musíte získat Event
 1. [Vygenerujte požadavek](#generate-a-request) a zkopírujte text žádosti z aplikace pro prohlížeč.
 1. [Požadavek odešlete ručně](#manually-post-the-request) na adresu URL místního hostitele funkce triggeru Event Grid.
 
-Až budete s testováním hotovi, můžete použít stejné předplatné pro produkci aktualizací koncového bodu. Použijte příkaz [AZ eventgrid Event-Subscription aktualizace pro](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-update) Azure CLI.
+Až budete s testováním hotovi, můžete použít stejné předplatné pro produkci aktualizací koncového bodu. Použijte příkaz [AZ eventgrid Event-Subscription aktualizace pro](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_update) Azure CLI.
 
 ### <a name="create-a-viewer-web-app"></a>Vytvoření webové aplikace v prohlížeči
 

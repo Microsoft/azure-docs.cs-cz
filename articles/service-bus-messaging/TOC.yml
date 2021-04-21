@@ -345,7 +345,7 @@
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy
-      href: service-bus-faq.md
+      href: service-bus-faq.yml
     - name: Získávání dovedností pomocí Microsoft Learn
       href: /learn/browse/?products=azure-service-bus
     - name: Plány Azure do budoucna

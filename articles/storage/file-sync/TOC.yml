@@ -1,0 +1,268 @@
+- name: Dokumentace k Synchronizace souborů Azure
+  href: index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je Synchronizace souborů Azure?
+      href: file-sync-introduction.md
+- name: Kurzy
+  items:
+    - name: Rozšíření souborových serverů Windows s využitím Synchronizace souborů Azure
+      href: file-sync-extend-servers.md
+- name: Koncepty
+  items:
+    - name: Plánování nasazení Synchronizace souborů Azure
+      href: file-sync-planning.md
+    - name: Aspekty sítí pro hybridní přístup
+      href: file-sync-networking-overview.md
+    - name: Vrstvení cloudu
+      items:
+        - name: Přehled vrstvení cloudu
+          href: file-sync-cloud-tiering-overview.md
+        - name: Přehled zásad vrstvení cloudu
+          href: file-sync-cloud-tiering-policy.md
+        - name: Výběr zásad clouding
+          href: file-sync-choose-cloud-tiering-policies.md
+        - name: Monitorování vrstvení cloudu
+          href: file-sync-monitor-cloud-tiering.md
+    - name: Škálovatelnost a cíle výkonnosti
+      href: ../files/storage-files-scale-targets.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Prevence náhodného odstranění dat
+      href: ../files/storage-files-prevent-file-share-deletion.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Zálohování sdílených složek
+      href: ../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Principy fakturace
+      href: ../files/understanding-billing.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Šifrování
+      items:
+        - name: Šifrování neaktivních uložených dat
+          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Šifrování neaktivních uložených dat s využitím klíčů spravovaných zákazníkem
+          href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Nabídky pro dodržování předpisů
+      href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Nejčastější dotazy
+      href: ../files/storage-files-faq.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+- name: Návody
+  items:
+    - name: Nasazení
+      items:
+        - name: Vytvoření sdílené složky SMB
+          href: ../files/storage-how-to-create-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Nasazení Synchronizace souborů Azure
+          href: file-sync-deployment-guide.md
+    - name: Síť
+      items:
+        - name: Konfigurace koncových bodů sítě pro Synchronizaci souborů Azure
+          href: file-sync-networking-endpoints.md
+        - name: Nastavení brány firewall a proxy služby Synchronizace souborů
+          href: file-sync-firewall-and-proxy.md
+        - name: Konfigurace VPN typu site-to-site
+          href: ../files/storage-files-configure-s2s-vpn.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Konfigurace VPN typu point-to-site ve Windows
+          href: ../files/storage-files-configure-p2s-vpn-windows.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Spravovat
+      items:
+        - name: Registrace serveru pomocí Synchronizace souborů Azure
+          href: file-sync-server-registration.md
+        - name: Přidání koncového bodu serveru Synchronizace souborů Azure
+          href: file-sync-server-endpoint.md
+        - name: Správa úložiště v nezávislých cloudech Azure
+          href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Zahájení převzetí služeb při selhání účtu
+          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Správa vrstvených souborů
+          href: file-sync-how-to-manage-tiered-files.md
+        - name: 'Přesunutí prostředků do jiných skupin prostředků, předplatných a klientů AAD'
+          href: file-sync-resource-move.md
+    - name: Ochrana dat
+      items:
+        - name: Povolení obnovitelného odstranění
+          href: ../files/storage-files-enable-soft-delete.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Změna způsobu replikace dat
+          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Správa redundance dat
+          items:
+            - name: Změna způsobu replikace dat
+              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Návrh aplikací s vysokou dostupností
+              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Správa zotavení po havárii
+          items:
+            - name: Kontrola vlastnosti Čas poslední synchronizace
+              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Zahájení převzetí služeb při selhání účtu
+              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Zálohování sdílených složek
+          items:
+            - name: Portál
+              href: ../../backup/backup-afs.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Rozhraní příkazového řádku
+              href: ../../backup/backup-afs-cli.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/backup-azure-afs-automation.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: REST API
+              href: ../../backup/backup-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Obnovení sdílených složek
+          items:
+            - name: Portál
+              href: ../../backup/restore-afs.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Rozhraní příkazového řádku
+              href: ../../backup/restore-afs-cli.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/restore-afs-powershell.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: REST API
+              href: ../../backup/restore-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Správa sdílených složek
+          items:
+            - name: Portál
+              href: ../../backup/manage-afs-backup.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Rozhraní příkazového řádku
+              href: ../../backup/manage-afs-backup-cli.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/manage-afs-powershell.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: REST API
+              href: ../../backup/manage-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Monitorování
+      items:
+        - name: Monitorování služby Azure Files
+          href: ../files/storage-files-monitoring.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Sledování služby Synchronizace souborů Azure
+          href: file-sync-monitoring.md
+    - name: Migrace
+      items:
+        - name: Migrace do sdílených složek Azure
+          href: ../files/storage-files-migration-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Cílení na hybridní nasazení
+          items:
+            - name: Migrace hromadných dat do Synchronizace souborů Azure s využitím Azure Data Boxu
+              href: file-sync-offline-data-transfer.md
+            - name: Migrace z Linuxu na hybridní souborový server s využitím služby Synchronizace souborů Azure
+              href: ../files/storage-files-migration-linux-hybrid.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Migrace z místního serveru NAS na hybridní souborový server s využitím služby Azure File Sync
+              href: ../files/storage-files-migration-nas-hybrid.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Migrace z místního serveru NAS do hybridního souborového serveru pomocí DataBox
+              href: ../files/storage-files-migration-nas-hybrid-databox.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Ze StorSimple
+          items:
+            - name: Průvodce migrací StorSimple 8100 a 8600
+              href: ../files/storage-files-migration-storsimple-8000.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Průvodce migrací StorSimple 1200
+              href: ../files/storage-files-migration-storsimple-1200.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Povolení velkých sdílených složek
+      href: ../files/storage-files-how-to-create-large-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Zabezpečení
+      items:
+        - name: Správa šifrovacích klíčů pro účet úložiště
+          items:
+            - name: Kontrola modelu šifrovacího klíče pro účet
+              href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Konfigurace šifrování s využitím klíčů spravovaných zákazníkem
+              items:
+                - name: Uložení klíčů spravovaných zákazníkem v trezoru klíčů
+                  href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+                - name: Uložení klíčů spravovaných zákazníkem ve službě Managed HSM
+                  href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Povolení šifrování infrastruktury pro účet
+          href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Konfigurace Azure Defenderu pro ochranu před hrozbami
+          href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Konfigurace bran firewall a virtuálních sítí
+          href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Vyžádání bezpečného přenosu
+          href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Správa protokolu TLS (Transport Layer Security)
+          items:
+            - name: Vynucení minimální verze protokolu TLS pro příchozí požadavky
+              href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Konfigurace verze TLS pro klientskou aplikaci
+              href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží s Azure Files ve Windows (SMB)
+          href: ../files/storage-troubleshoot-windows-file-connection-problems.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Řešení potíží s výkonem sdílených složek Azure
+          href: ../files/storage-troubleshooting-files-performance.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Řešení problémů se Synchronizací souborů Azure
+          href: file-sync-troubleshoot.md
+        - name: Řešení potíží s odstraňováním sdílených složek Azure
+          href: ../files/storage-troubleshoot-cannot-delete-files-azure-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Řešení potíží se zálohováním sdílených složek
+          href: ../../backup/troubleshoot-azure-files.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+- name: Referenční informace
+  items:
+    - name: Referenční informace k Azure Files
+      href: ../files/reference.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Referenční informace k monitorování Azure Files
+      href: ../files/storage-files-monitoring-reference.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Šablona Resource Manageru
+      displayName: arm
+      href: /azure/templates/microsoft.storage/allversions
+    - name: ukázky
+      href: 'https://azure.microsoft.com/documentation/samples/?service=storage&term=file'
+    - name: Porovnání souborů a Azure NetApp Files Azure
+      href: ../files/storage-files-netapp-comparison.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+- name: Zdroje a prostředky
+  items:
+    - name: Aktualizace Azure
+      href: 'https://azure.microsoft.com/updates/?category=storage'
+    - name: Poznámky k verzi Synchronizace souborů Azure
+      href: file-sync-release-notes.md
+    - name: Azure Files na webu Microsoft Q&A
+      href: /answers/topics/azure-files.html
+    - name: Azure Files na webu Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-files'
+    - name: Ceny služby Azure Files
+      href: 'https://azure.microsoft.com/pricing/details/storage/files/'
+    - name: Cenová kalkulačka Azure
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
+    - name: Balíčky NuGet (.NET)
+      items:
+        - name: Microsoft.Azure.Storage.Common (verze 11.x)
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
+        - name: Azure.Storage.Common (verze 12.x – Preview)
+          href: 'https://www.nuget.org/packages/Azure.Storage.Common/'
+        - name: Microsoft.Azure.Storage.File (verze 11.x)
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.File/'
+        - name: Azure.Storage.File (verze 12.x – Preview)
+          href: 'https://www.nuget.org/packages/Azure.Storage.Files/'
+        - name: Azure Configuration Manager
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
+        - name: Knihovna pro přesun dat v Azure Storage
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+        - name: Knihovna poskytovatele prostředků úložiště
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/'
+    - name: Zdrojový kód
+      items:
+        - name: .NET
+          items:
+            - name: Klientská knihovna Azure Storage
+              items:
+                - name: Verze 12.x (Preview)
+                  href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage'
+                - name: Verze 11. x a starší
+                  href: 'https://github.com/Azure/azure-storage-net'
+            - name: Knihovna pro přesun dat
+              href: 'https://github.com/Azure/azure-storage-net-data-movement'
+            - name: Knihovna poskytovatele prostředků úložiště
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
+        - name: Java
+          items:
+            - name: Klientská knihovna Azure Storage verze 12.x (Preview)
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
+            - name: Klientská knihovna Azure Storage verze 8.x a starší
+              href: 'https://github.com/Azure/azure-storage-java'
+        - name: Node.js
+          items:
+            - name: Klientská knihovna Azure Storage verze 12.x (Preview)
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage'
+            - name: Klientská knihovna Azure Storage verze 10.x
+              href: 'https://github.com/Azure/azure-storage-node'
+        - name: Python
+          items:
+            - name: Klientská knihovna Azure Storage verze 12.x (Preview)
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage'
+            - name: Klientská knihovna Azure Storage verze 2.1
+              href: 'https://github.com/Azure/azure-storage-python'

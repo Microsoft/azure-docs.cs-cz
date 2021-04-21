@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: c0eea74890665297a0d450c8afd0a5d60dd1ae00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b08e8ebbba3ba91c1c1aa0f135c4cba37ba038b1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551806"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769908"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Vytvoření virtuálního počítače se systémem Linux v Azure s několika síťovými kartami
 
@@ -183,7 +183,7 @@ Přidejte směrovací tabulky do hostovaného operačního systému, a to proved
 
 Předchozí kroky vytvořily virtuální síť a podsíť, připojené síťové karty a pak vytvořily virtuální počítač. Nelze vytvořit pravidla veřejné IP adresy a skupiny zabezpečení sítě, která umožňují provoz protokolu SSH. Pokud chcete nakonfigurovat hostovaný operační systém pro víc síťových adaptérů, musíte na virtuálním počítači zapnout vzdálená připojení a spustit příkazy místně.
 
-Pokud chcete povolený provoz SSH, vytvořte pravidlo skupiny zabezpečení sítě pomocí příkazu [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) následujícím způsobem:
+Pokud chcete povolený provoz SSH, vytvořte pravidlo skupiny zabezpečení sítě pomocí příkazu [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) následujícím způsobem:
 
 ```azurecli
 az network nsg rule create \
@@ -194,7 +194,7 @@ az network nsg rule create \
     --destination-port-ranges 22
 ```
 
-Vytvořte veřejnou IP adresu pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) a přiřaďte ji k PRVNÍmu síťovému rozhraní pomocí [AZ Network nic IP-config Update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update):
+Vytvořte veřejnou IP adresu pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip#az_network_public_ip_create) a přiřaďte ji k PRVNÍmu síťovému rozhraní pomocí [AZ Network nic IP-config Update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update):
 
 ```azurecli
 az network public-ip create --resource-group myResourceGroup --name myPublicIP
@@ -206,7 +206,7 @@ az network nic ip-config update \
     --public-ip myPublicIP
 ```
 
-Veřejnou IP adresu virtuálního počítače zobrazíte pomocí příkazu [AZ VM show](/cli/azure/vm#az-vm-show) následujícím způsobem:
+Veřejnou IP adresu virtuálního počítače zobrazíte pomocí příkazu [AZ VM show](/cli/azure/vm#az_vm_show) následujícím způsobem:
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d041f864c6c8cd3ae9c522d79447d71c86f9ac04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab19bb1c6cc43334a3d0d427b6aff6ced2d6cc69
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98875600"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789658"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>Vytvoření snímku pomocí portálu nebo rozhraní příkazového řádku Azure
 
@@ -26,7 +26,7 @@ Následující příklad vyžaduje, abyste používali [Cloud Shell](https://she
 
 Následující kroky ukazují, jak pořídit snímek pomocí příkazu **AZ Snapshot Create** s parametrem **--source-disk** . Následující příklad předpokládá, že ve skupině prostředků *myResourceGroup* existuje virtuální počítač s názvem *myVM* .
 
-ID disku získáte pomocí [AZ VM show](/cli/azure/vm#az-vm-show).
+ID disku získáte pomocí [AZ VM show](/cli/azure/vm#az_vm_show).
 
 ```azurecli-interactive
 osDiskId=$(az vm show \
@@ -36,7 +36,7 @@ osDiskId=$(az vm show \
    -o tsv)
 ```
 
-Pořídit snímek s názvem *osDisk-Backup* pomocí [AZ Snapshot Create](/cli/azure/snapshot#az-snapshot-create).
+Pořídit snímek s názvem *osDisk-Backup* pomocí [AZ Snapshot Create](/cli/azure/snapshot#az_snapshot_create).
 
 ```azurecli-interactive
 az snapshot create \
@@ -48,7 +48,7 @@ az snapshot create \
 > [!NOTE]
 > Pokud chcete snímek Uložit do odolného úložiště v zóně, je nutné ho vytvořit v oblasti, která podporuje [zóny dostupnosti](../../availability-zones/az-overview.md) , a zahrnout parametr **--SKU Standard_ZRS** .
 
-Seznam snímků můžete zobrazit pomocí [seznamu AZ Snapshot list](/cli/azure/snapshot#az-snapshot-list).
+Seznam snímků můžete zobrazit pomocí [seznamu AZ Snapshot list](/cli/azure/snapshot#az_snapshot_list).
 
 ```azurecli-interactive
 az snapshot list \

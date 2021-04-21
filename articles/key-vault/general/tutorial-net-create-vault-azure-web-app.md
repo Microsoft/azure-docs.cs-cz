@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 901f2b938512f842a5b4c34adbfc61f9379e5131
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 479181e851e6f54246a2ad89e7529bf3f50bb8a4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772158"
+ms.locfileid: "107751971"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Kurz: použití spravované identity pro připojení Key Vault k webové aplikaci Azure v .NET
 
@@ -85,7 +85,7 @@ git commit -m "first commit"
 
 Pomocí FTP a místního Gitu můžete nasadit webovou aplikaci Azure pomocí *uživatele nasazení*. Po nakonfigurování uživatele nasazení ho můžete použít pro všechna nasazení Azure. Uživatelské jméno a heslo nasazení na úrovni účtu se liší od přihlašovacích údajů předplatného Azure. 
 
-Pokud chcete nakonfigurovat uživatele nasazení, spusťte příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user?#az_webapp_deployment_user_set) . Vyberte uživatelské jméno a heslo, které dodržuje tyto pokyny: 
+Pokud chcete nakonfigurovat uživatele nasazení, spusťte příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user?#az-webapp-deployment-user-set) . Vyberte uživatelské jméno a heslo, které dodržuje tyto pokyny: 
 
 - Uživatelské jméno musí být jedinečné v rámci Azure. Pro místní nabízená oznámení Git nesmí obsahovat symbol symbol @ (@). 
 - Heslo musí obsahovat alespoň osm znaků a obsahovat dva z následujících tří prvků: písmena, číslice a symboly. 
@@ -100,7 +100,7 @@ Poznamenejte si své uživatelské jméno a heslo, abyste ho mohli použít k na
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, do kterého nasazujete prostředky Azure a spravujete je. Vytvořte skupinu prostředků, která bude obsahovat váš Trezor klíčů a webovou aplikaci, pomocí příkazu [AZ Group Create](/cli/azure/group?#az_group_create) :
+Skupina prostředků je logický kontejner, do kterého nasazujete prostředky Azure a spravujete je. Vytvořte skupinu prostředků, která bude obsahovat váš Trezor klíčů a webovou aplikaci, pomocí příkazu [AZ Group Create](/cli/azure/group?#az-group-create) :
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
@@ -243,7 +243,7 @@ V této části nakonfigurujete webový přístup tak, aby Key Vault a aktualizo
 
 V tomto kurzu použijeme [spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md) k ověření Key Vault. Spravovaná identita automaticky spravuje přihlašovací údaje aplikací.
 
-V Azure CLI pro vytvoření identity pro aplikaci spusťte příkaz [AZ WebApp-identity Assign](/cli/azure/webapp/identity?#az_webapp_identity_assign) :
+V Azure CLI pro vytvoření identity pro aplikaci spusťte příkaz [AZ WebApp-identity Assign](/cli/azure/webapp/identity?#az-webapp-identity-assign) :
 
 ```azurecli-interactive
 az webapp identity assign --name "<your-webapp-name>" --resource-group "myResourceGroup"
@@ -259,7 +259,7 @@ Příkaz vrátí tento fragment kódu JSON:
 }
 ```
 
-Pokud chcete vaší webové aplikaci udělit oprávnění k **získání** a **výpisu** operací v trezoru klíčů, předejte `principalId` do Azure CLI příkaz [AZ Key trezor set-Policy](/cli/azure/keyvault?#az_keyvault_set_policy) :
+Pokud chcete vaší webové aplikaci udělit oprávnění k **získání** a **výpisu** operací v trezoru klíčů, předejte `principalId` do Azure CLI příkaz [AZ Key trezor set-Policy](/cli/azure/keyvault?#az-keyvault-set-policy) :
 
 ```azurecli-interactive
 az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: 075b02e3e5f2e409298bf31eb0b6720e64af68a0
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 1c9434d137114560b5585b081961497412dfbf69
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210824"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770250"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Vytvoření a připojení clusteru služby Azure Kubernetes
 
@@ -223,7 +223,7 @@ Pokud už máte ve svém předplatném Azure cluster AKS, můžete ho použít v
 
 Další informace o vytvoření clusteru AKS pomocí Azure CLI nebo portálu najdete v následujících článcích:
 
-* [Vytvoření clusteru AKS (rozhraní příkazového řádku)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az-aks-create)
+* [Vytvoření clusteru AKS (rozhraní příkazového řádku)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az_aks_create)
 * [Vytvoření clusteru AKS (portál)](../aks/kubernetes-walkthrough-portal.md)
 * [Vytvoření clusteru AKS (šablona ARM v šablonách rychlého startu Azure)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 

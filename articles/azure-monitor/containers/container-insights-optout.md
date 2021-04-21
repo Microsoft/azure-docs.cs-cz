@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak můžete přestat sledovat váš clust
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eab34f27d1e33b166971203082cce99fb2b0e106
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 619b6fc4cce860e5869fd0b31e303b4a474f8428
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101723533"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773994"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-container-insights"></a>Postup zastavení monitorování služby Azure Kubernetes (AKS) se službou Container Insights
 
@@ -18,7 +18,7 @@ Po povolení monitorování clusteru AKS můžete zastavit monitorování cluste
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Pomocí příkazu [AZ AKS Disable-addons](/cli/azure/aks#az-aks-disable-addons) zakažte službu Container Insights. Příkaz odebere agenta z uzlů clusteru, neodebere řešení ani data, která jsou již shromážděna a uložena v prostředku Azure Monitor.  
+Pomocí příkazu [AZ AKS Disable-addons](/cli/azure/aks#az_aks_disable_addons) zakažte službu Container Insights. Příkaz odebere agenta z uzlů clusteru, neodebere řešení ani data, která jsou již shromážděna a uložena v prostředku Azure Monitor.  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG

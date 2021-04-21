@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: ddb6276d63d90f4221475b163cba174116ec8bec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a2409c94e28135ca5c1fb8fa7210cd9b8b42858
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94539341"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791651"
 ---
 # <a name="restore-an-azure-database-for-mysql-server-using-azure-cli"></a>Obnovení serveru Azure Database for MySQL pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku obnoví jeden server Azure Database for MySQL k dřívějšímu bodu v čase.
@@ -33,12 +33,12 @@ Po spuštění skriptu pomocí následujícího příkazu odeberte skupinu prost
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 Tento skript používá příkazy uvedené v následující tabulce:
 
-| **Příkaz** | **Poznámky** |
+| **Systému** | **Poznámky** |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) | Vytvoří server MySQL, který je hostitelem databází. |
-| [az mysql server restore](/cli/azure/mysql/server#az-mysql-server-restore) | Obnoví server ze zálohy. |
-| [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az mysql server create](/cli/azure/mysql/server#az_mysql_server_create) | Vytvoří server MySQL, který je hostitelem databází. |
+| [az mysql server restore](/cli/azure/mysql/server#az_mysql_server_restore) | Obnoví server ze zálohy. |
+| [az group delete](/cli/azure/group#az_group_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace najdete v dokumentaci Azure CLI: [dokumentace k Azure CLI](/cli/azure).

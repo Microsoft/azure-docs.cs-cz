@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e5ea94fea00771b64634d6c28a7879fabb195f09
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82d272f22295a5b68d1e8de3fb5a70c45d4c14a3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89069655"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791206"
 ---
 # <a name="manage-storage-account-access-keys"></a>Správa přístupových klíčů účtu úložiště
 
@@ -54,7 +54,7 @@ $storageAccountKey = `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete zobrazit seznam klíčů pro přístup k účtu pomocí Azure CLI, zavolejte příkaz [AZ Storage Account Keys list](/cli/azure/storage/account/keys#az-storage-account-keys-list) , jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami. 
+Pokud chcete zobrazit seznam klíčů pro přístup k účtu pomocí Azure CLI, zavolejte příkaz [AZ Storage Account Keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) , jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami. 
 
 ```azurecli-interactive
 az storage account keys list \
@@ -116,7 +116,7 @@ Postup při otáčení přístupových klíčů k účtu úložiště pomocí Po
 K otočení přístupových klíčů účtu úložiště pomocí Azure CLI:
 
 1. Aktualizujte připojovací řetězce v kódu aplikace tak, aby odkazovaly na sekundární přístupový klíč pro účet úložiště.
-1. Zavolejte příkazem [AZ Storage Account Keys obnovit](/cli/azure/storage/account/keys#az-storage-account-keys-renew) a znovu vygenerujte primární přístupový klíč, jak je znázorněno v následujícím příkladu:
+1. Zavolejte příkazem [AZ Storage Account Keys obnovit](/cli/azure/storage/account/keys#az_storage_account_keys_renew) a znovu vygenerujte primární přístupový klíč, jak je znázorněno v následujícím příkladu:
 
     ```azurecli-interactive
     az storage account keys renew \

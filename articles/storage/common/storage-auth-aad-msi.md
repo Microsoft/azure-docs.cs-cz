@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2aa6730759a9aa1aaab3156c55bf19e82641b8ea
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 80df7b85ec1ad9e273081f9a6a96b9a9d7ec8cd9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739327"
+ms.locfileid: "107791188"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Autorizace přístupu k datům BLOB a Queue pomocí spravovaných identit pro prostředky Azure
 
@@ -67,7 +67,7 @@ Pokud vaše vývojové prostředí nepodporuje jednotné přihlašování nebo p
 
 #### <a name="create-the-service-principal"></a>Vytvoření instančního objektu
 
-Pokud chcete vytvořit instanční objekt pomocí Azure CLI a přiřadit roli Azure, zavolejte příkaz [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) . Zadejte Azure Storage roli přístupu k datům, která se přiřadí k novému instančnímu objektu. Kromě toho zadejte obor pro přiřazení role. Další informace o předdefinovaných rolích, které jsou k dispozici pro Azure Storage, najdete v tématu [předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
+Pokud chcete vytvořit instanční objekt pomocí Azure CLI a přiřadit roli Azure, zavolejte příkaz [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) . Zadejte Azure Storage roli přístupu k datům, která se přiřadí k novému instančnímu objektu. Kromě toho zadejte obor pro přiřazení role. Další informace o předdefinovaných rolích, které jsou k dispozici pro Azure Storage, najdete v tématu [předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
 
 Pokud nemáte dostatečná oprávnění k přiřazení role k instančnímu objektu, může být nutné požádat vlastníka nebo správce účtu, aby provedl přiřazení role.
 
