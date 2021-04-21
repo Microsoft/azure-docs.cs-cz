@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/15/2021
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 97d80e999ac61a2c2f8f561dc19213419014beb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f02b7f0f80cfb875cc6207b542db90607b379b67
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471000"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800210"
 ---
 | Prostředek | Omezení |
 | --- | --- |
@@ -27,4 +27,4 @@ ms.locfileid: "103471000"
 
 <sup>1</sup> Můžete použít až 50 značek přímo k předplatnému. Předplatné ale může obsahovat neomezený počet značek, které se aplikují na skupiny prostředků a prostředky v rámci předplatného. Počet značek na prostředek nebo skupinu prostředků je omezený na 50. Správce prostředků vrátí [seznam jedinečných názvů a hodnot značek](/rest/api/resources/tags) v rámci předplatného pouze v případě, že je počet značek 80 000 nebo méně. I když číslo překračuje 80 000, můžete pořád najít prostředek podle značky.
 
-<sup>2</sup> . Pokud dosáhnete limitu nasazení 800, odstraňte z historie nasazení, která už nepotřebujete. Pokud chcete odstranit nasazení na úrovni předplatného, použijte [Remove-AzDeployment](/powershell/module/az.resources/Remove-AzDeployment) nebo [AZ Deployment sub Delete](/cli/azure/deployment/sub#az-deployment-sub-delete).
+<sup>2</sup> . Pokud dosáhnete limitu nasazení 800, odstraňte z historie nasazení, která už nepotřebujete. Pokud chcete odstranit nasazení na úrovni předplatného, použijte [Remove-AzDeployment](/powershell/module/az.resources/Remove-AzDeployment) nebo [AZ Deployment sub Delete](/cli/azure/deployment/sub#az_deployment_sub_delete).
