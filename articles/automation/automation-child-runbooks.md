@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 338de996b06769b9d2891c7208b9050cc3acc7ed
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 101ff9affe43dcc97de6cf5a535c82559aafeced
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167290"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834907"
 ---
 # <a name="create-modular-runbooks"></a>Vytváření modulárních runbooků
 
@@ -21,7 +22,7 @@ Existují dva způsoby, jak volat podřízenou sadu Runbook, a existují různé
 |  | Přiřazený | Rutina |
 |:--- |:--- |:--- |
 | **Úloha** |Podřízené Runbooky spuštěné ve stejné úloze jako nadřízený. |Pro podřízený Runbook se vytvoří samostatná úloha. |
-| **Realizaci** |Nadřízený Runbook čeká na dokončení podřízeného. Teprve potom pokračuje. |Nadřazená sada Runbook pokračuje ihned po spuštění podřízeného Runbooku *nebo* se nadřazený Runbook počká, až se podřízená úloha dokončí. |
+| **Spuštění** |Nadřízený Runbook čeká na dokončení podřízeného. Teprve potom pokračuje. |Nadřazená sada Runbook pokračuje ihned po spuštění podřízeného Runbooku *nebo* se nadřazený Runbook počká, až se podřízená úloha dokončí. |
 | **Výstup** |Nadřízený Runbook může získat výstup přímo z podřízeného. |Nadřazená sada Runbook musí načíst výstup z podřízené úlohy Runbooku *nebo* může z nadřazeného Runbooku získat výstup přímo z podřízeného Runbooku. |
 | **Parametry** |Hodnoty pro parametry podřízeného Runbooku se zadávají samostatně a můžou používat jakýkoli datový typ. |Hodnoty pro parametry podřízeného Runbooku musí být sloučeny do jedné zatřiďovací tabulky. Tato zatřiďovací tabulka může zahrnovat pouze jednoduché datové typy Array a Object, které používají serializaci JSON. |
 | **Účet Automation** |Nadřazená sada Runbook může použít pouze podřízený Runbook ve stejném účtu Automation. |Nadřazené Runbooky můžou použít podřízený Runbook z libovolného účtu Automation, ze stejného předplatného Azure a dokonce z jiného předplatného, ke kterému máte připojení. |

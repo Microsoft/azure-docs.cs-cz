@@ -6,12 +6,13 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: d91b62afacad31d78feb7d4743cd4050fcc1bd4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 43db8d4c094ec1b08a24c29fdaccf97f63ef29b9
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104581639"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833967"
 ---
 # <a name="scale-an-azure-cache-for-redis-instance"></a>Škálování mezipaměti Azure pro instanci Redis
 Mezipaměť Azure pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti. V případě mezipaměti Basic, Standard nebo Premium můžete změnit její velikost a úroveň, aby se zajistilo, že budou splňovat požadavky vaší aplikace. V tomto článku se dozvíte, jak škálovat mezipaměť pomocí Azure Portal a nástrojů jako Azure PowerShell a Azure CLI.

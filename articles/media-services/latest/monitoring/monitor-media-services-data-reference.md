@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 8908fd1acc64fb180121ac0b6a4dc38ce5a02572
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 4e4c65966ec8a6a5b47d5f68596f6d2d496fda17
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121162"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835501"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Referenční informace o Media Services dat monitorování
 
@@ -23,62 +23,33 @@ Tento článek se zabývá daty, která jsou užitečná pro monitorování Medi
 
 Metriky se shromažďují v pravidelných intervalech bez ohledu na to, jestli se hodnota mění. Jsou užitečné pro upozorňování, protože je možné je vzorkovat často a výstraha se dá rychle aktivovat s relativně jednoduchou logikou.
 
+
 Media Services podporuje monitorování metrik pro následující prostředky:
 
-* Účet
-* Koncový bod streamování
+|Typ metriky | Obor názvů poskytovatele prostředků/typu<br/> a propojit s jednotlivými metrikami |
+|-------|-----|
+| Media Services obecné | [Obecné](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservices) |
+| Živé události | [Microsoft. Media/MediaServices/liveEvents](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservicesliveevents) 
+| Koncové body streamování | [Microsoft. Media/MediaServices/starají](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservicesstreamingendpoints), které jsou relevantní pro [koncové body streamování REST API](/rest/api/media/streamingendpoints). 
 
-### <a name="account"></a>Účet
-
-Můžete monitorovat následující metriky účtu.
-
-|Název metriky|Zobrazované jméno|Description|
-|---|---|---|
-|AssetCount|Počet assetů|Prostředky ve vašem účtu.|
-|AssetQuota|Kvóta prostředků|Kvóta prostředků ve vašem účtu.|
-|AssetQuotaUsedPercentage|Procento využité kvóty prostředků|Procento kvóty Assetu se už používá.|
-|ContentKeyPolicyCount|Počet zásad klíče obsahu|Zásady klíčů obsahu ve vašem účtu.|
-|ContentKeyPolicyQuota|Kvóta zásad pro klíč obsahu|Kvóta zásad pro klíče obsahu ve vašem účtu.|
-|ContentKeyPolicyQuotaUsedPercentage|Procento využité kvóty zásad klíčů obsahu|Procento již používané kvóty zásad klíčů obsahu.|
-|StreamingPolicyCount|Počet zásad streamování|Zásady streamování ve vašem účtu.|
-|StreamingPolicyQuota|Kvóta zásad streamování|Kvóta zásad streamování ve vašem účtu.|
-|StreamingPolicyQuotaUsedPercentage|Procento využité kvóty zásad streamování|Procento použité kvóty zásad streamování se už používá.|
 
 Měli byste taky zkontrolovat [kvóty a omezení účtu](../limits-quotas-constraints-reference.md).
 
-### <a name="streaming-endpoint"></a>Koncový bod streamování
-
-Jsou podporovány následující Media Services metriky [koncových bodů streamování](/rest/api/media/streamingendpoints) :
-
-|Název metriky|Zobrazované jméno|Description|
-|---|---|---|
-|Žádosti|Žádosti|Poskytuje celkový počet požadavků HTTP poskytovaných koncovým bodem streamování.|
-|Výchozí přenos dat|Výchozí přenos dat|Celkový počet odchozích bajtů za minutu na koncový bod streamování.|
-|SuccessE2ELatency|Koncová latence úspěch|Doba trvání od okamžiku, kdy koncový bod streamování přijal požadavek na odeslání posledního bajtu odpovědi.|
-|Využití procesoru| | Využití procesoru pro koncové body streamování Premium Tato data nejsou k dispozici pro standardní koncové body streamování. |
-|Šířka pásma pro výstup | | Šířka pásma pro odchozí přenosy v bitech za sekundu|
 
 ## <a name="metric-dimensions"></a>Dimenze metriky
 
 Další informace o tom, jaké dimenze metriky jsou, najdete v tématu multidimenzionální [metriky](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 <!--**PLACEHOLDER** for dimensions table.-->
+OutputFormat, HttpStatusCode, ErrorCode, Track
 
 ## <a name="resource-logs"></a>Protokoly prostředků
 
-## <a name="media-services-diagnostic-logs"></a>Protokoly diagnostiky Media Services
+## <a name="media-services-resource-logs"></a>Protokoly prostředků Media Services
 
-Diagnostické protokoly poskytují bohatou a častou data o provozu prostředku Azure. Další informace najdete v tématu [Jak shromažďovat a využívat data protokolu z vašich prostředků Azure](../../../azure-monitor/essentials/platform-logs-overview.md).
+Protokoly prostředků poskytují bohatou a častou data o provozu prostředku Azure. Další informace najdete v tématu [Jak shromažďovat a využívat data protokolu z vašich prostředků Azure](../../../azure-monitor/essentials/platform-logs-overview.md).
 
-Media Services podporuje následující diagnostické protokoly:
-
-* Doručení klíče
-
-### <a name="key-delivery"></a>Doručení klíče
-
-|Název|Description|
-|---|---|
-|Požadavek služby doručení klíčů|Protokoly, které zobrazují informace o požadavku služby doručování klíčů Další informace najdete v tématu [schémata](monitor-media-services-data-reference.md).|
+Media Services podporuje následující protokoly zdrojů: [Microsoft. Media/MediaServices](/azure/azure-monitor/essentials/resource-logs-categories#microsoftmediamediaservices)
 
 ## <a name="schemas"></a>Schémata
 

@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 6859a2f8571c11e6ef93a5e5b1635cdbe39ad001
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: c28bc47945882e6b7bbd39d1ba8524a1f7491ceb
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107737656"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835198"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a údržba poznámkových bloků synapse Studio v Azure synapse Analytics
 
@@ -331,6 +331,22 @@ Příklad: ``` %run /path/notebookA ```.
 
 ---
 
+### <a name="variable-explorer"></a>Průzkumník proměnných
+
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
+
+Nepodporováno
+
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+Synapse Poznámkový blok poskytuje integrovaný Průzkumníka proměnných, kde můžete zobrazit seznam názvů proměnných, typ, délku a hodnotu v aktuální relaci Spark pro buňky PySpark (Python). Další proměnné se zobrazí automaticky tak, jak jsou definovány v buňkách kódu. Kliknutím na záhlaví každého sloupce se řadí proměnné v tabulce.
+
+Můžete vybrat tlačítko **proměnné** na panelu příkazů poznámkového bloku a otevřít nebo skrýt Průzkumníka proměnných.
+
+![Azure – Poznámkový blok – proměnná – Průzkumník](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-variable-explorer.png)
+
+
+---
 
 ### <a name="cell-status-indicator"></a>Indikátor stavu buňky
 

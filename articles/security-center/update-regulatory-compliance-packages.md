@@ -1,29 +1,25 @@
 ---
 title: Použití řídicího panelu pro dodržování předpisů v Azure Security Center
 description: Přečtěte si, jak přidat a odebrat zákonné standardy z řídicího panelu dodržování předpisů regulativního předpisu v Security Center
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: c42d02e4-201d-4a95-8527-253af903a5c6
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/04/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: dab6b504fe026324251b7284fc3abdb52bb9911a
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 4ba65517b698896c57ca2254394efcadd6efbb1d
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738949"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835033"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Přizpůsobení sady standardů na řídicím panelu dodržování předpisů
 
 Azure Security Center průběžně porovnává konfiguraci vašich prostředků s požadavky v oborových normách, nařízeních a srovnávacích testech. **Řídicí panel dodržování předpisů** poskytuje přehledy o stav dodržování předpisů na základě toho, jak splňujete konkrétní požadavky na dodržování předpisů.
 
+> [!TIP]
+> Přečtěte si další informace o řídicím panelu dodržování předpisů Security Center v [nejčastějších dotazech](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard).
 
 ## <a name="how-are-regulatory-compliance-standards-represented-in-security-center"></a>Jak jsou ve Security Center standardy dodržování předpisů předpisy?
 
@@ -42,11 +38,13 @@ Ve výchozím nastavení má každé předplatné přiřazené **srovnávací te
 
 Můžete také přidat standardy, jako například:
 
-- NIST SP 800-53 R4
+- NIST SP 800-53
 - SWIFT CSP CSCF-v2020
 - Oficiální Velká Británie a Velká Británie NHS
 - Canada Federal PBMM
-- Azure CIS 1.1.0
+- Azure CIS 1.3.0
+- CMMC úrovně 3
+- Nový Zéland s omezením pro ISM
 
 Do řídicího panelu se přidají standardy, jakmile budou k dispozici.
 
@@ -71,13 +69,15 @@ Následující postup vysvětluje, jak přidat balíček, abyste mohli monitorov
 
 1. Na stránce **Přidat standardy dodržování předpisů** můžete vyhledat libovolné dostupné standardy, včetně:
 
-    - **NIST SP 800-53 R4**
-    - **NIST SP 800 171 R2**
+    - **NIST SP 800-53**
+    - **NIST SP 800 171**
     - **SWIFT CSP CSCF v2020**
     - **UKO a Velká Británie NHS**
     - **Canada Federal PBMM**
     - **HIPAA HITRUST**
-    - **Azure CIS 1.1.0**
+    - **Azure CIS 1.3.0**
+    - **CMMC úrovně 3**
+    - **Nový Zéland s omezením pro ISM**
     
     ![Přidání regulativních standardů do řídicího panelu dodržování předpisů v Azure Security Center](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 

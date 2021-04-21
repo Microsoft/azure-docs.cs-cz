@@ -4,13 +4,13 @@ description: Naučte se nasazovat aplikace do neprodukčního slotu a autoswap d
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: b93fb61cc58360ddfcf15d2af2c936203d869500
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: fasttrack-edit, devx-track-azurepowershell
+ms.openlocfilehash: 8a26332250f5c53116d940a2b625eb8d7991c187
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771528"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833096"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>

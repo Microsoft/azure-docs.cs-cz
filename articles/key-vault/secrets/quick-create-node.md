@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 3d8f20f598243754e3fd39f649e7c84d55b64817
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 90e505a4d505cc52920f1c7727afb321f4eda462
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751665"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814149"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>Rychlý Start: Klientská knihovna Azure Key Vault tajných klíčů pro JavaScript (verze 4)
 
@@ -285,6 +285,6 @@ V tomto rychlém startu jste vytvořili Trezor klíčů, uložili tajný klíč 
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
 - Přečtěte si [přehled Azure Key Vault tajných klíčů](about-secrets.md)
-- Jak [zabezpečit přístup k trezoru klíčů](../general/security-overview.md)
+- Jak [zabezpečit přístup k trezoru klíčů](../general/security-features.md)
 - Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .
-- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)
+- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-features.md)

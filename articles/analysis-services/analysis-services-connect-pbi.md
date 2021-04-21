@@ -4,22 +4,22 @@ description: Přečtěte si, jak se připojit k serveru Azure Analysis Services 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 4/20/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ed0f3d379ca961c610958c073c27c6fc9583252b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c5a430c5bb24032a2665ad078311dcb5137d2bb9
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96500916"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816023"
 ---
 # <a name="connect-with-power-bi"></a>Propojení s Power BI
 
 Po vytvoření serveru v Azure a nasazení tabelárního modelu do něj budou uživatelé ve vaší organizaci připraveni se připojit a začít prozkoumat data. 
 
-> [!TIP]
-> Ujistěte se, že používáte nejnovější verzi [Power BI Desktop](https://powerbi.microsoft.com/desktop/).
+> [!NOTE]
+> Pokud do služba Power BI publikujete Power BI Desktop model, ujistěte se, že na Azure Analysis Services serveru není vybraná vlastnost Server řazení Case-Sensitive (výchozí). Vlastnost serveru Case-Sensitive lze nastavit pomocí SQL Server Management Studio.
 > 
 > 
   

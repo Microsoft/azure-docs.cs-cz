@@ -3,12 +3,13 @@ title: Přehled agenta připojeného počítače
 description: Tento článek poskytuje podrobný přehled dostupného agenta serverů s podporou ARC Azure, který podporuje monitorování virtuálních počítačů hostovaných v hybridních prostředích.
 ms.date: 03/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2db1758240dca448409af9f4ec00c01d684c920a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: dd58997a8af86a3789895bfb29bfd5803826fa6f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609223"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832954"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Přehled agenta serverů s podporou ARC Azure
 

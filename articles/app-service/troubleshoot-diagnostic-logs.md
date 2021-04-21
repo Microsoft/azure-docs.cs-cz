@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 03ef2110af2d9e642019c2b07b53fae3e32b1ea6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ffff4215ddbe3f01da927cb47fb4e06f4946a207
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950174"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833845"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
@@ -190,12 +190,14 @@ Následující tabulka uvádí podporované typy a popisy protokolů:
 | AppServiceEnvironmentPlatformLogs | Yes | Není k dispozici | Ano | Yes | App Service Environment: škálování, změny konfigurace a protokoly stavu|
 | AppServiceAuditLogs | Yes | Yes | Yes | Yes | Přihlašovací aktivita prostřednictvím FTP a Kudu |
 | AppServiceFileAuditLogs | Yes | Yes | TBA | TBA | Změny souborů provedené v obsahu webu; **dostupné jenom pro úroveň Premium a vyšší** |
-| AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & obrázky s Tomcat, na kterých se nachází <sup>1</sup> | Java SE & obrázky s Tomcat, na kterých se nachází <sup>1</sup> | Protokoly aplikací |
+| AppServiceAppLogs | ASP .NET & Java Tomcat <sup>1</sup> | ASP .NET & Java Tomcat <sup>1</sup> | Java SE <sup>& obrázky s</sup> Tomcat s hodně | Java SE <sup>& obrázky s</sup> Tomcat s hodně | Protokoly aplikací |
 | AppServiceIPSecAuditLogs  | Yes | Yes | Yes | Yes | Žádosti z pravidel IP adres |
 | AppServicePlatformLogs  | TBA | Yes | Yes | Yes | Protokoly operací kontejneru |
 | AppServiceAntivirusScanAuditLogs | Yes | Yes | Yes | Yes | [Protokoly kontroly](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) antivirového programu pomocí programu Microsoft Defender; **dostupné jenom pro úroveň Premium** | 
 
-<sup>1</sup> pro aplikace Java se do nastavení aplikace přidejte $website _AZMON_PREVIEW_ENABLED a nastavte ji na 1 nebo true.
+<sup>1</sup> pro aplikace Java Tomcat přidejte do nastavení aplikace "TOMCAT_USE_STARTUP_BAT" a nastavte ji na hodnotu false nebo 0. Musí být na *nejnovější* verzi Tomcat a používat *Java. util. Logging*.
+
+<sup>2</sup> u aplikací Java se do nastavení aplikace přidejte $website _AZMON_PREVIEW_ENABLED a nastavte ji na true nebo 1.
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Další kroky
 * [Dotazování protokolů pomocí Azure Monitor](../azure-monitor/logs/log-query-overview.md)

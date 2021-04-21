@@ -1,24 +1,18 @@
 ---
 title: 'Kurz: kontroly dodržování předpisů v legislativě – Azure Security Center'
 description: 'Kurz: Naučte se, jak vylepšit dodržování legislativních předpisů pomocí Azure Security Center.'
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
 ms.service: security-center
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/10/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: 284a7f532ed918397fe1cfcf3458bbc6fb0bdd32
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: c8ac9079321e47a1e6d9b8689be46bf55bdd4243
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739003"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834606"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Kurz: Vylepšení dodržování právních předpisů
 
@@ -135,14 +129,15 @@ Můžete třeba chtít, aby se v případě neúspěšného vyhodnocení dodržo
 - [Jak můžu stáhnout sestavu s daty o dodržování předpisů v jiném formátu než PDF?](#how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf)
 - [Jak můžu vytvořit výjimky pro některé zásady na řídicím panelu dodržování předpisů?](#how-can-i-create-exceptions-for-some-of-the-policies-in-the-regulatory-compliance-dashboard)
 - [Jaké plány nebo licence v programu Azure Defender potřebuji k používání řídicího panelu dodržování předpisů?](#what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard)
+- [Návody víte, kterou srovnávací test nebo Standard použít?](#how-do-i-know-which-benchmark-or-standard-to-use)
 
 ### <a name="what-standards-are-supported-in-the-compliance-dashboard"></a>Jaké standardy jsou podporovány na řídicím panelu dodržování předpisů?
 Ve výchozím nastavení se na řídicím panelu dodržování předpisů zobrazuje srovnávací test zabezpečení Azure. Srovnávací test zabezpečení Azure je Microsoftem vytvořeným pravidlem pro zabezpečení a osvědčenými postupy pro dodržování předpisů, které jsou založené na běžných architekturách dodržování předpisů. Další informace najdete v [úvodu k zabezpečení Azure Security test](../security/benchmarks/introduction.md).
 
 Chcete-li sledovat dodržování předpisů u jakékoli jiné úrovně Standard, je nutné je explicitně přidat na řídicí panel.
  
-Můžete přidat standardy, jako je Azure CIS 1.1.0 (nový), NIST SP 800-53 R4, NIST SP 800-171 R2, SWIFT CSP CSCF-v2020, UK oficiální a UK NHS, HIPAA HITRUST, Kanada – federální PBMM, ISO 27001, SOC2-TSP a PCI-DSS 3.2.1.  
- 
+Můžete přidat další standardy, jako je Azure CIS 1.3.0, NIST SP 800-53, NIST SP 800-171, SWIFT CSP CSCF-v2020, UK oficiální a UK NHS, HIPAA, Kanada federální PBMM, ISO 27001, SOC2-TSP a PCI-DSS 3.2.1.  
+
 Do řídicího panelu budou přidány další standardy a jsou součástí informací o [přizpůsobení sady standardů na řídicím panelu dodržování předpisů](update-regulatory-compliance-packages.md).
 
 ### <a name="why-do-some-controls-appear-grayed-out"></a>Proč se některé ovládací prvky zobrazují šedě?
@@ -195,7 +190,12 @@ Pro jiné zásady můžete vytvořit výjimku přímo v samotné zásadě, a to 
 Pokud máte v některém z vašich typů prostředků Azure povolené nějaké balíčky Azure Defenderu, máte v Security Center přístup k řídicímu panelu dodržování předpisů, který obsahuje všechna jeho data.
 
 
+### <a name="how-do-i-know-which-benchmark-or-standard-to-use"></a>Návody víte, kterou srovnávací test nebo Standard použít?
+Dokumentem SSAE ( [Azure Security test](https://docs.microsoft.com/security/benchmark/azure/introduction) ) je kanonická sada doporučení zabezpečení a osvědčených postupů definovaných Microsoftem, které jsou zarovnané na společné architektury pro řízení dodržování předpisů, jako je třeba [SNS Microsoft Azure Foundation test](https://www.cisecurity.org/benchmark/azure/) and [NIST SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final). DOKUMENTEM SSAE je velmi komplexní srovnávací test a je navržený tak, aby doporučil nejaktuálnější možnosti zabezpečení široké škály služeb Azure. Doporučujeme dokumentem SSAE zákazníkům, kteří chtějí maximalizovat stav zabezpečení, a mít možnost zarovnávat svůj stav dodržování předpisů pomocí oborových standardů.
 
+[Srovnávací test modelu SNS](https://www.cisecurity.org/benchmark/azure/) je autorem nezávislé entity – centra pro Internet Security (CIS) – a obsahuje doporučení pro podmnožinu základních služeb Azure. Spolupracujeme se službou CIS a snažíme se zajistit, aby jejich doporučení byla aktuální s nejnovějšími vylepšeními v Azure, ale někdy spadají do stavu zastaralá a zastaralá se. Nicméně někteří zákazníci, jako je tento cíl, mají k použití tohoto cíle i posouzení od jiných dodavatelů jako počáteční a primární základní úroveň zabezpečení.
+
+Vzhledem k tomu, že jsme vydali srovnávací test zabezpečení Azure, mnozí zákazníci se na ni rozhodli přejít jako na náhradu za srovnávací testy CIS.
 
 
 ## <a name="next-steps"></a>Další kroky

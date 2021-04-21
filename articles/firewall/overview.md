@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 04/05/2021
+ms.date: 04/20/2021
 ms.author: victorh
-ms.openlocfilehash: bb89b6acbc76a4020ee721e87272b154bab6d0a4
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 9ed46af7e4c62b2b7213b9e7a3d71c1b4776c806
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385169"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835339"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -52,7 +52,7 @@ Další informace o tom, co je nového v Azure Firewall, najdete v tématu [Aktu
 
 Brána Azure Firewall má následující známé problémy:
 
-|Problém  |Popis  |Omezení rizik  |
+|Problém  |Description  |Omezení rizik  |
 |---------|---------|---------|
 |Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP) nebudou fungovat pro provoz do internetu.|Pravidla filtrování sítě pro protokoly jiné než TCP/UDP nefungují s SNAT na veřejnou IP adresu. Jiné protokoly než TCP/UDP jsou ale podporované mezi koncovými podsítěmi a virtuálními sítěmi.|Azure Firewall používá vyvažování zatížení úrovně Standard, [které v současnosti nepodporuje SNAT pro protokol IP](../load-balancer/load-balancer-overview.md). Zkoumáme možnosti podpory tohoto scénáře v budoucí verzi.|
 |Chybějící podpora PowerShellu a rozhraní příkazového řádku pro protokol ICMP|Azure PowerShell a CLI v síťových pravidlech nepodporují protokol ICMP jako platný protokol.|Protokol ICMP je stále možné používat prostřednictvím portálu a REST API. Pracujeme na přidání protokolu ICMP v PowerShellu a rozhraní příkazového řádku brzy.|
@@ -65,7 +65,7 @@ Brána Azure Firewall má následující známé problémy:
 |SNAT při příchozích připojeních|Kromě DNAT jsou připojení přes veřejnou IP adresu (příchozí) brány firewall před jejich vstupem na jednu z privátních IP adres brány firewall. Tento požadavek dnes (také pro aktivní/aktivní síťová virtuální zařízení) zajistíte tak, aby se zajistilo symetrické směrování.|Pokud chcete zachovat původní zdroj pro HTTP/S, zvažte použití hlaviček [xff](https://en.wikipedia.org/wiki/X-Forwarded-For) . Můžete například použít službu, jako je například [přední vrátka Azure](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) nebo [Azure Application Gateway](../application-gateway/rewrite-http-headers.md) před bránou firewall. WAF můžete také přidat jako součást služby Azure front-dveří a řetězit k bráně firewall.
 |Podpora filtrování plně kvalifikovaného názvu domény SQL pouze v režimu proxy (port 1433)|Pro Azure SQL Database, Azure synapse Analytics a Azure SQL Managed instance:<br><br>Filtrování plně kvalifikovaného názvu domény SQL je podporováno pouze v režimu proxy serveru (port 1433).<br><br>Pro Azure SQL IaaS:<br><br>Pokud používáte nestandardní porty, můžete tyto porty zadat v pravidlech aplikací.|V případě SQL v režimu přesměrování (výchozí při připojování z Azure) můžete místo toho filtrovat přístup pomocí značky služby SQL jako součást Azure Firewallch síťových pravidel.
 |Odchozí provoz na portu TCP 25 není povolený.| Odchozí připojení SMTP, která používají port TCP 25, jsou blokovaná. Port 25 se primárně používá pro neověřené doručování e-mailů. Toto je výchozí chování platformy pro virtuální počítače. Další informace najdete v tématu řešení potíží s [odchozím připojením SMTP v Azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). Na rozdíl od virtuálních počítačů ale tuto funkci v tuto chvíli nemůžete povolit na Azure Firewall. Poznámka: Pokud chcete umožnit ověřený protokol SMTP (port 587) nebo SMTP přes jiný port než 25, ujistěte se, že jste nakonfigurovali síťové pravidlo a nejedná se o pravidlo aplikace, protože kontrola SMTP není v tuto chvíli podporovaná.|Použijte doporučenou metodu k odeslání e-mailu, jak je popsáno v článku věnovaném odstraňování potíží SMTP. Nebo vylučte virtuální počítač, který potřebuje odchozí přístup SMTP z výchozí trasy k bráně firewall. Místo toho nakonfigurujte odchozí přístup přímo na Internet.
-|Metrika využití portu SNAT zobrazuje 0%|Metrika využití portů Azure Firewall SNAT může zobrazovat 0% využití i v případě, že se používají porty SNAT. V takovém případě poskytuje použití metriky jako součást metriky stavu brány firewall nesprávný výsledek.|Tento problém byl opraven a zavedení do produkčního prostředí je cílené na květen 2020. V některých případech se problém vyřeší opětovným nasazením brány firewall, ale není konzistentní. V rámci dočasného řešení je třeba stav brány firewall použít jenom k vyhledání *stavu = snížený*, ne pro *stav = v pořádku*. Vyčerpání portů se zobrazí jako *degradované*. *Není v pořádku* pro budoucí použití, pokud jsou více metrik, aby ovlivnily stav brány firewall.
+|Vyčerpání portů SNAT|Azure Firewall aktuálně podporuje porty 1024 na veřejnou IP adresu na jednu instanci sady škálování virtuálních počítačů back-endu. Ve výchozím nastavení jsou k dispozici dvě instance VMSS.|Toto je omezení SLB a neustále hledáme příležitosti pro zvýšení limitů. Mezitím se doporučuje nakonfigurovat Azure Firewall nasazení s minimálně pěti veřejnými IP adresami pro nasazení náchylná k vyčerpání SNAT. Tím se zvýší počet dostupných portů SNAT po dobu pěti. Přidělte z předpony IP adres, aby se zjednodušila oprávnění pro příjem dat.|
 |DNAT se nepodporuje s povoleným vynuceným tunelovým propojením.|Brány firewall nasazené s povoleným vynuceným tunelovým propojením nemůžou podporovat příchozí přístup z Internetu kvůli asymetrickému směrování.|Jedná se o návrh z důvodu asymetrického směrování. Návratová cesta pro příchozí připojení prochází přes místní bránu firewall, která neviděla navázání připojení.
 |Odchozí pasivní FTP nemusí fungovat pro brány firewall s více veřejnými IP adresami v závislosti na konfiguraci serveru FTP.|Pasivní FTP vytvoří různá připojení pro řídicí a datové kanály. Když brána firewall s více veřejnými IP adresami odesílá odchozí data, náhodně vybere jednu z jejích veřejných IP adres pro zdrojovou IP adresu. Protokol FTP může selhat, pokud datové a řídicí kanály používají jiné zdrojové IP adresy v závislosti na konfiguraci serveru FTP.|Naplánovala se explicitní konfigurace SNAT. Mezitím můžete nakonfigurovat server FTP tak, aby přijímal data a řídicí kanály z různých zdrojových IP adres (viz [Příklad služby IIS](/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/datachannelsecurity)). Případně zvažte použití jediné IP adresy v této situaci.|
 |Příchozí pasivní FTP nemusí fungovat v závislosti na konfiguraci serveru FTP. |Pasivní FTP vytvoří různá připojení pro řídicí a datové kanály. Příchozí připojení v Azure Firewall před jejich vstupem na jednu z privátních IP adres brány firewall, aby se zajistilo symetrické směrování. Protokol FTP může selhat, pokud datové a řídicí kanály používají jiné zdrojové IP adresy v závislosti na konfiguraci serveru FTP.|Probíhá zkoumání původní zdrojové IP adresy. Mezitím můžete nakonfigurovat server FTP tak, aby přijímal data a řídicí kanály z různých zdrojových IP adres.|

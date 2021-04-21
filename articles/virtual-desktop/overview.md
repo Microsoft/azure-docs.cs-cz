@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7e14dbf5aab68f5ea2d96274606306378feedad2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: a6d98f827c39f973714441e308dcc4f2bd061c9b
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445987"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835573"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop?
 
@@ -91,7 +91,7 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 >[!NOTE]
 >Pokud potřebujete předplatné Azure, můžete si [zaregistrovat měsíční bezplatnou zkušební verzi](https://azure.microsoft.com/free/). Pokud používáte bezplatnou zkušební verzi Azure, měli byste použít službu Azure AD Domain Services k udržování synchronizace služby Windows Server Active Directory s Azure Active Directory.
 
-Seznam adres URL, které byste měli odblokovat, aby nasazení virtuálních klientů Windows fungovalo tak, jak má, najdete v našem [seznamu bezpečných adres URL](safe-url-list.md).
+Seznam adres URL, které byste měli odblokovat, aby nasazení virtuálních klientů Windows fungovalo tak, jak má, najdete v našem [seznamu požadovaných adres URL](safe-url-list.md).
 
 Windows Virtual Desktop obsahuje stolní počítače a aplikace Windows, které dodáváte uživatelům a řešení pro správu, které je hostované jako služba v Azure od Microsoftu. Stolní počítače a aplikace můžou být nasazené na virtuálních počítačích v libovolné oblasti Azure a řešení pro správu a data pro tyto virtuální počítače se budou nacházet v USA. To může vést k přenosu dat do USA.
 
@@ -136,14 +136,14 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 
 |Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 Enterprise (více relací), verze 2004|Ano|Ano|Ano|Ano|
-|Windows 10 Enterprise (více relací), verze 1909|Ano|Ano|Ano|Ano|
-|Windows 10 Enterprise (více relací), verze 1903|Ano|Ano|Ne|Ne|
-|Windows 10 Enterprise (více relací), verze 1809|Ano|Ano|Ne|Ne|
-|Windows 7 Enterprise|Ano|Ano|Ne|Ne|
-|Windows Server 2019|Ano|Ano|Ne|Ne|
-|Windows Server 2016|Ano|Ano|Ano|Ano|
-|Windows Server 2012 R2|Ano|Ano|Ne|No|
+|Windows 10 Enterprise (více relací), verze 2004|Yes|Yes|Yes|Yes|
+|Windows 10 Enterprise (více relací), verze 1909|Yes|Yes|Yes|Yes|
+|Windows 10 Enterprise (více relací), verze 1903|Yes|Yes|No|No|
+|Windows 10 Enterprise (více relací), verze 1809|Yes|Yes|No|No|
+|Windows 7 Enterprise|Yes|Yes|No|No|
+|Windows Server 2019|Yes|Yes|No|No|
+|Windows Server 2016|Ano|Yes|Yes|Yes|
+|Windows Server 2012 R2|Ano|Yes|No|No|
 
 ## <a name="next-steps"></a>Další kroky
 

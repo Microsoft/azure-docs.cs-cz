@@ -3,13 +3,13 @@ title: Příchozí/odchozí IP adresy
 description: Přečtěte si, jak se příchozí a odchozí IP adresy používají v Azure App Service, když se mění a jak najít adresy pro vaši aplikaci.
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18
-ms.openlocfilehash: 4237e51251a7ece05800aa7efa328a9c6cf65e76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 1dda487d23c9f955aea8e35d16e5a560a890a173
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104591363"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834475"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Příchozí a odchozí IP adresy v Azure App Service
 

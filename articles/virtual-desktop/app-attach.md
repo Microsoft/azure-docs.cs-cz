@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d1ca4a843c6731cde7ed70d65fc230a21ef6e7c4
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 43a8cb00804927784982999db13ee193c34f55ca
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389430"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835375"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach"></a>Vytváření skriptů PowerShellu pro připojení aplikace MSIX
 
@@ -24,7 +24,7 @@ Je nutné nainstalovat certifikáty na všechny hostitele relací ve fondu hosti
 Pokud vaše aplikace používá certifikát, který není veřejný nebo podepsaný svým držitelem, tady je postup, jak ho nainstalovat:
 
 1. Klikněte pravým tlačítkem na balíček a vyberte **vlastnosti**.
-2. V zobrazeném okně vyberte kartu **digitální podpisy** . V seznamu na kartě by měla být pouze jedna položka, jak je znázorněno na následujícím obrázku. Vyberte tuto položku, chcete-li položku zvýraznit, a pak vyberte **Podrobnosti**.
+2. V zobrazeném okně vyberte kartu **digitální podpisy** . V seznamu na kartě by měla být pouze jedna položka. Vyberte tuto položku, chcete-li položku zvýraznit, a pak vyberte **Podrobnosti**.
 3. Když se zobrazí okno Podrobnosti digitálního podpisu, vyberte kartu **Obecné** a pak vyberte **Zobrazit certifikát** a pak vyberte **nainstalovat certifikát**.
 4. Jakmile se instalační program otevře, vyberte **místní počítač** jako umístění úložiště a pak vyberte **Další**.
 5. Pokud se instalační program zeptá, jestli chcete aplikaci umožnit, aby na svém zařízení provedla změny, vyberte **Ano**.

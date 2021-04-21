@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 2903407f88b57a7be948cdeb0610e6d65df975b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e7b8d567034cc9557a2d9fcec4afbffa878cf75
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101662470"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811823"
 ---
 # <a name="configure-microsoft-connected-cache-for-device-update-for-azure-iot-hub"></a>Konfigurace připojené mezipaměti Microsoftu pro aktualizace zařízení pro Azure IoT Hub
 
@@ -26,10 +26,10 @@ Proměnné prostředí Azure IoT Edge mezipaměti připojené k Microsoft jsou p
 
 | Název proměnné                 | Formát hodnoty                           | Požadováno/volitelné | Funkce                                    |
 | ----------------------------- | ---------------------------------------| ----------------- | ------------------------------------------------ |
-| CUSTOMER_ID                   | Identifikátor GUID předplatného Azure             | Vyžadováno          | Toto je klíč zákazníka, který poskytuje zabezpečení.<br>ověřování pro optimalizaci pro dodávání uzlu mezipaměti<br>Orgány. Vyžaduje se, aby modul fungoval. |
-| CACHE_NODE_ID                 | Identifikátor GUID ID uzlu mezipaměti                     | Vyžadováno          | Jednoznačně identifikuje mezipaměť propojenou Microsoftem.<br>Služby optimalizace pro doručení uzlu Vyžadováno v pořadí<br> má modul fungovat. |
+| CUSTOMER_ID                   | Identifikátor GUID předplatného Azure             | Vyžadováno          | Toto je klíč zákazníka, který poskytuje zabezpečení.<br>ověřování pro optimalizaci pro dodávání uzlu mezipaměti<br>Orgány.<br>Vyžaduje se, aby modul fungoval. |
+| CACHE_NODE_ID                 | Identifikátor GUID ID uzlu mezipaměti                     | Vyžadováno          | Jednoznačně identifikuje mezipaměť propojenou Microsoftem.<br>Služby optimalizace pro doručení uzlu<br>Vyžadováno v pořadí<br> má modul fungovat. |
 | CUSTOMER_KEY                  | GUID klíč zákazníka                     | Vyžadováno          | Toto je klíč zákazníka, který poskytuje zabezpečení.<br>ověřování uzlu mezipaměti pro doručování služeb optimalizace.<br>Vyžaduje se, aby modul fungoval.|
-| STORAGE_ *N* _SIZE_GB           | Kde N je požadovaný počet GB   | Vyžadováno          | Zadejte až devět jednotek pro ukládání obsahu do mezipaměti a zadání<br>maximální místo v gigabajtech, které se má přidělit obsahu na každé jednotce mezipaměti. Příklady:<br>STORAGE_1_SIZE_GB = 150<br>STORAGE_2_SIZE_GB = 50<br>Číslo jednotky musí odpovídat zadaným hodnotám vazby jednotky mezipaměti.<br>v možnosti vytvořit kontejner MicrosoftConnectedCache *N* hodnota|
+| STORAGE_ *N* _SIZE_GB           | Kde N je jednotka mezipaměti   | Vyžadováno          | Zadejte až 9 jednotek pro ukládání obsahu do mezipaměti a zadejte maximální místo v<br>Gigabajty k přidělení obsahu na každé jednotce mezipaměti. Příklady:<br>STORAGE_1_SIZE_GB = 150<br>STORAGE_2_SIZE_GB = 50<br>Číslo jednotky musí odpovídat zadaným hodnotám vazby jednotky mezipaměti.<br>v možnosti vytvořit kontejner MicrosoftConnectedCache *N* hodnota<br>Minimální velikost mezipaměti je 10 GB.|
 | UPSTREAM_HOST                 | PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY NEBO IP ADRESA                                | Volitelné          | Tato hodnota může určovat nadřazený Microsoft.<br>Uzel mezipaměti, který funguje jako proxy, pokud je uzel připojené mezipaměti<br> je odpojený od Internetu. Toto nastavení slouží k podpoře<br> Vnořený scénář IoT.<br>**Poznámka:** Mezipaměť připojená od Microsoftu naslouchá na výchozím portu HTTP 80.|
 | UPSTREAM_PROXY                | PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY/IP: PORT                           | Volitelné          | Odchozí internetový proxy server.<br>Může to být i proxy server DMZ, pokud síť ISA 95. |
 | CACHEABLE_CUSTOM_ *N* _HOST     | HOSTITEL/IP<br>FQDN                        | Volitelné          | Vyžaduje se pro podporu vlastních úložišť balíčků.<br>Úložiště by se mohla hostovat místně nebo na internetu.<br>Počet vlastních hostitelů, které se dají konfigurovat, není nijak omezený.<br><br>Příklady:<br>Název = CACHEABLE_CUSTOM_1_HOST hodnota = packages.foo.com<br> Název = CACHEABLE_CUSTOM_2_HOST hodnota = packages.bar.com    |
@@ -52,14 +52,6 @@ Vyžadováno pro mapování umístění úložiště kontejneru na umístění �
 
 Tato možnost určuje port http externího počítače, na kterém MCC naslouchá pro požadavky obsahu. Výchozí HostPort je port 80 a další porty nejsou v tuto chvíli podporovány, protože klient ADU zajišťuje žádosti na portu 80 ještě dnes. Port TCP 8081 je interní port kontejneru, na kterém naslouchá MCC, a nedá se změnit.
 
-```markdown
-8081/tcp": [
-   {
-       "HostPort": "80"
-   }
-]
-```
-
 ### <a name="container-service-tcp-port-mappings"></a>Mapování portů služby kontejnerů TCP
 
 Modul Microsoft Connected cache obsahuje službu .NET Core, kterou modul pro ukládání do mezipaměti používá pro různé funkce.
@@ -67,12 +59,29 @@ Modul Microsoft Connected cache obsahuje službu .NET Core, kterou modul pro ukl
 >[!Note]
 >Aby bylo možné podporovat vnořenou hraniční službu Azure IoT, nesmí být HostPort nastavené na 5000, protože modul proxy v registru už naslouchá na portu hostitele 5000.
 
-```markdown
-5000/tcp": [
-   {
-       "HostPort": "5001"
-   }
-]
+
+Ukázka možností vytvoření kontejneru
+
+```json
+{
+    "HostConfig": {
+        "Binds": [
+            "/microsoftConnectedCache1/:/nginx/cache1/"
+        ],
+        "PortBindings": {
+            "8081/tcp": [
+                {
+                    "HostPort": "80"
+                }
+            ],
+            "5000/tcp": [
+                {
+                    "HostPort": "5100"
+                }
+            ]
+        }
+    }
+}
 ```
 
 ## <a name="microsoft-connected-cache-summary-report"></a>Souhrnná sestava mezipaměti propojená Microsoftem
@@ -84,4 +93,5 @@ Sestava souhrnu je aktuálně jediným způsobem, jak zákazník zobrazit data u
 * **eggressBytes** – jedná se o součet hodnot HitBytes a missBytes a celkový počet bajtů dodaných klientům.
 * **hitRatioBytes** – jedná se o poměr HitBytes k egressBytes.  Pokud se 100% eggressBytes dostalo v období, které se rovná hitBytes, může to být například 1.
 
-Souhrnná sestava je k dispozici na adrese `http://<FQDN/IP of Azure IoT Edge Gateway hosting MCC>:5001/summary` (podrobnosti o viditelnosti této sestavy najdete v podrobnostech o proměnné prostředí níže).
+
+Souhrnná sestava je k dispozici na adrese `http://<FQDN/IP of Azure IoT Edge Gateway hosting MCC>:5001/summary` nahraďte \<Azure IoT Edge Gateway IP\> IP adresou nebo názvem hostitele vaší brány IoT Edge. (informace o viditelnosti této sestavy najdete v tématu podrobnosti o proměnné prostředí).

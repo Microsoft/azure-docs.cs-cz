@@ -48,7 +48,7 @@
     - name: Zabezpečení
       items:
         - name: Funkce zabezpečení
-          href: security-overview.md
+          href: security-features.md
         - name: Základy ověřování služby Key Vault
           href: authentication-fundamentals.md
         - name: Světů zabezpečení a geografické oblasti

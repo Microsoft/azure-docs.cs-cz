@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7f8bc4cadc720c7ac02a7246e741552e81eb3876
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ab54192480a1c36a27c175254d6d4d275b67c8b7
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057146"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835321"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Co je Azure Virtual WAN?
 
@@ -73,7 +73,7 @@ Virtuální síť WAN umožňuje následující typy připojení: Site-to-Site V
 
 K prostředkům v Azure se můžete připojit přes připojení typu Site-to-site IPsec/IKE (IKEv2). Další informace najdete v tématu [vytvoření připojení typu Site-to-site pomocí virtuální sítě WAN](virtual-wan-site-to-site-portal.md). 
 
-Tento typ připojení vyžaduje zařízení VPN nebo virtuální partnerská zařízení WAN. Virtuální partneři sítě WAN poskytují automatizaci pro připojení, což je schopnost exportovat informace o zařízení do Azure, stáhnout konfiguraci Azure a navázat připojení ke službě Azure Virtual WAN hub. Seznam dostupných partnerů a umístění najdete v článku věnovaném [virtuálním partnerům a umístěním sítě WAN](virtual-wan-locations-partners.md) . Pokud váš poskytovatel zařízení VPN/SD-WAN není uvedený na zmíněném odkazu, můžete zjednodušit pomocí podrobného pokynu [vytvořit připojení typu Site-to-site pomocí virtuální sítě WAN](virtual-wan-site-to-site-portal.md) a nastavit připojení.
+Tento typ připojení vyžaduje zařízení VPN nebo virtuální partnerská zařízení WAN. Virtuální partneři sítě WAN poskytují automatizaci pro připojení, což je schopnost exportovat informace o zařízení do Azure, stáhnout konfiguraci Azure a navázat připojení ke službě Azure Virtual WAN hub. Seznam dostupných partnerů a umístění najdete v článku věnovaném [virtuálním partnerům a umístěním sítě WAN](virtual-wan-locations-partners.md) . Pokud poskytovatel zařízení VPN/SD-WAN není uvedený na zmíněném odkazu, můžete jednoduše použít podrobné pokyny [vytvoření připojení typu Site-to-site pomocí virtuální sítě WAN](virtual-wan-site-to-site-portal.md) pro nastavení připojení.
 
 ### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>Připojení uživatele VPN (Point-to-site)
 

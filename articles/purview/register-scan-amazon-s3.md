@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 04/07/2021
+ms.date: 04/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: a0559028192b0a99aeffd45a3b2896f9c9d159be
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 75a7cba1e47509e3186ab519d0d8ca82dd315373
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310188"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815517"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Konektor Azure dosah pro Amazon S3
 
@@ -50,23 +50,23 @@ V následující tabulce jsou namapovány oblasti, ve kterých se data ukládaj�
 | Oblast úložiště | Oblast vyhledávání |
 | ------------------------------- | ------------------------------------- |
 | USA – východ (Ohio)                  | USA – východ (Ohio)                        |
-| USA – východ (N. ) – Virginia           | USA – východ (Ohio) nebo USA – východ (N. ) – Virginia                       |
+| USA – východ (N. ) – Virginia           | USA – východ (N. ) – Virginia                       |
 | USA – západ (N. Kalifornii         | USA – východ (Ohio)                        |
 | USA – západ (Oregon)                | USA – východ (Ohio)                        |
 | Afrika (kapverdské město)              | Evropa (Frankfurt)                    |
-| Asie a Tichomoří (Hongkong)        | Evropa (Frankfurt) nebo Asie a Tichomoří (Sydney)                   |
-| Asie a Tichomoří (Bombaj)           | Evropa (Frankfurt) nebo Asie a Tichomoří (Sydney)                   |
-| Asie a Tichomoří (Ósaka-Local)      | Evropa (Frankfurt) nebo Asie a Tichomoří (Sydney)                   |
-| Asie a Tichomoří (Soul)            | Evropa (Frankfurt) nebo Asie a Tichomoří (Sydney)                   |
-| Asie a Tichomoří (Singapur)        | Evropa (Frankfurt) nebo Asie a Tichomoří (Sydney)                   |
-| Asie a Tichomoří (Sydney)           | Evropa (Frankfurt) nebo Asie a Tichomoří (Sydney)                  |
-| Asie a Tichomoří (Tokio)            | Evropa (Frankfurt) nebo Asie a Tichomoří (Sydney)                 |
+| Asie a Tichomoří (Hongkong)        | Asie a Tichomoří (Sydney)                   |
+| Asie a Tichomoří (Bombaj)           | Asie a Tichomoří (Sydney)                   |
+| Asie a Tichomoří (Ósaka-Local)      | Asie a Tichomoří (Sydney)                   |
+| Asie a Tichomoří (Soul)            | Asie a Tichomoří (Sydney)                   |
+| Asie a Tichomoří (Singapur)        | Asie a Tichomoří (Sydney)                   |
+| Asie a Tichomoří (Sydney)           | Asie a Tichomoří (Sydney)                  |
+| Asie a Tichomoří (Tokio)            | Asie a Tichomoří (Sydney)                 |
 | Kanada (střed)                | USA – východ (Ohio)                        |
 | Čína (Peking)                 | Nepodporováno                    |
 | Čína (NingXia)                 | Nepodporováno                   |
 | Evropa (Frankfurt)              | Evropa (Frankfurt)                    |
-| Evropa (Irsko)                | Evropa (Frankfurt) nebo Evropa (Irsko)                   |
-| Evropa (Londýn)                 | Evropa (Frankfurt) nebo Evropa (Irsko)                   |
+| Evropa (Irsko)                | Evropa (Irsko)                   |
+| Evropa (Londýn)                 | Evropa (Irsko)                   |
 | Evropa (Milán)                  | Evropa (Frankfurt)                    |
 | Evropa (Paříž)                  | Evropa (Frankfurt)                    |
 | Evropa (Stockholm)              | Evropa (Frankfurt)                    |

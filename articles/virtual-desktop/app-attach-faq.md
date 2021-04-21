@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a1a2464735ff8039bb31c43d6956cbf03e694c63
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 6057f4a76f274e34b036ea352a3691b34d24b3a1
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448402"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835357"
 ---
 # <a name="msix-app-attach-faq"></a>DOTAZY k připojení aplikace MSIX
 
@@ -71,6 +71,16 @@ Ano. Můžete znovu připravit aplikace, které jste již znovu připravili, a n
 
 Ano. Certifikát podepsaný svým držitelem je potřeba nainstalovat na všechny virtuální počítače hostitele relací, kde se pro hostování aplikace podepsané svým držitelem používá připojení aplikace MSIX.
 
+## <a name="what-applications-can-i-repackage-to-msix"></a>Jaké aplikace můžu znovu zabalit do MSIX?
+
+Každá aplikace používá různé funkce operačního systému, programovacích jazyků a platforem. Chcete-li znovu zabalit aplikaci, postupujte podle pokynů v tématu [Jak přesunout existující instalační programy do MSIX](/windows/msix/packaging-tool/create-an-msix-overview#how-to-move-your-existing-installers-to-msix). Seznam věcí, které potřebujete k přebalení aplikace, najdete v části [Příprava na zabalení desktopové aplikace](/windows/msix/desktop/desktop-to-uwp-prepare). 
+
+Některé aplikace nemůžou mít aplikační vrstvu, což znamená, že se nedají znovu zabalit do souboru MSIX. Tady je seznam aplikací, které se nedají znovu zabalit:
+
+- Ovladače 
+- Active-X nebo Silverlight
+- Klienti VPN
+- Antivirové programy
 
 ## <a name="next-steps"></a>Další kroky
 

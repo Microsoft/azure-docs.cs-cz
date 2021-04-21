@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/20/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: 92138b0253d28c8bf2617ee7b17474f30ac5cafe
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: c47543fa1401a8da533a9af3ebe4554e405622d3
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751198"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835523"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -31,6 +31,7 @@ Aktualizace v dubnu zahrnují:
 - [Nedávno načtené image registru kontejneru se teď prohledají týdně (všeobecně dostupné).](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
 - [Použití Azure Defenderu pro Kubernetes k ochraně hybridních a multi-cloudových nasazení Kubernetes (Preview)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
 - [Doporučení pro povolení služby Azure Defender pro DNS a Správce prostředků (Preview)](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview)
+- [Přidaly se tři normy dodržování předpisů v souladu s předpisy: Azure CIS 1.3.0, CMMC Level 3 a New Zéland ISM](#three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted)
 - [Čtyři nová doporučení týkající se konfigurace hosta (Preview)](#four-new-recommendations-related-to-guest-configuration-preview)
 - [Doporučení pro CMK se přesunula na kontrolu zabezpečení osvědčené postupy](#cmk-recommendations-moved-to-best-practices-security-control)
 - [11 upozornění služby Azure Defender jako zastaralé](#11-azure-defender-alerts-deprecated)
@@ -80,6 +81,24 @@ Při povolení plánů programu Azure Defender se účtují poplatky. Seznamte s
 
 > [!TIP]
 > Doporučení pro verzi Preview negenerují prostředek v pořádku a nejsou zahrnutá do výpočtů vašeho zabezpečeného skóre. Opravte je všude, kde je to možné, takže až do doby, kdy období Preview skončí, přispějete k vašemu skóre. Přečtěte si další informace o tom, jak na tato doporučení reagovat v tématu o [opravách doporučení v Azure Security Center](security-center-remediate-recommendations.md).
+
+
+### <a name="three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted"></a>Přidaly se tři normy dodržování předpisů v souladu s předpisy: Azure CIS 1.3.0, CMMC Level 3 a New Zéland ISM
+
+Přidali jsme tři standardy pro použití s Azure Security Center. Pomocí řídicího panelu dodržování předpisů můžete teď sledovat dodržování předpisů pomocí:
+
+- [CI Microsoft Azure – 1.3.0 Foundation – srovnávací test](../governance/policy/samples/cis-azure-1-3-0.md)
+- [CMMC úrovně 3](../governance/policy/samples/cmmc-l3.md)
+- [Nový Zéland s omezením pro ISM](../governance/policy/samples/new-zealand-ism.md)
+
+Můžete je přiřadit k vašim předplatným, jak je popsáno v tématu [přizpůsobení sady standardů na řídicím panelu dodržování předpisů](update-regulatory-compliance-packages.md).
+
+:::image type="content" source="media/release-notes/additional-regulatory-compliance-standards.png" alt-text="Byly přidány tři standardy pro použití s řídicím panelem dodržování předpisů Azure Security Center." lightbox="media/release-notes/additional-regulatory-compliance-standards.png":::
+
+Další informace:
+- [Přizpůsobení sady standardů na řídicím panelu dodržování předpisů](update-regulatory-compliance-packages.md)
+- [Kurz: Vylepšení dodržování právních předpisů](security-center-compliance-dashboard.md)
+- [Nejčastější dotazy – Řídicí panel pro dodržování právních předpisů](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)
 
 ### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Čtyři nová doporučení týkající se konfigurace hosta (Preview)
 

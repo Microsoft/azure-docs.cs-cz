@@ -11,19 +11,19 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcfaef2f518028762958477a5b0d326acc237d1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6eba5ac4ed61847596e12f56544e6d07dca8075
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98938428"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829570"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Povolit registraci kombinovaných informací o zabezpečení v Azure Active Directory
 
 Před kombinovanou registrací uživatelé zaregistrovali metody ověřování pro Azure AD Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR) samostatně. Lidem se zaznamenalo, že se podobné metody používaly pro Azure AD Multi-Factor Authentication a SSPR, ale musely se zaregistrovat pro obě funkce. Teď se při kombinované registraci můžou uživatelé zaregistrovat jednou a získat výhody pro Azure AD Multi-Factor Authentication a SSPR.
 
 > [!NOTE]
-> Od 15. srpna 2020 budou všichni noví klienti Azure AD automaticky povoleni pro kombinovanou registraci. 
+> Od 15. srpna 2020 budou všichni noví klienti Azure AD automaticky povoleni pro kombinovanou registraci. Klienti vytvoření po tomto datu nebudou moci využívat starší pracovní postupy registrace.
 
 Aby bylo zajištěno, že před povolením nového prostředí rozumíte funkcím a efektům, přečtěte si téma věnované [principům registrace informací o zabezpečení](concept-registration-mfa-sspr-combined.md).
 
