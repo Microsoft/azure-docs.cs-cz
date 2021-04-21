@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: bab92a6d7e30f5aefdd28d06b34a006d065cee3c
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: d53ce97c4af302801098d9abaa633ced98c93f3a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966839"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814023"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v úhlové aplikaci s jednou stránkou
 
@@ -30,28 +30,30 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která demonstru
 * [Visual Studio Code](https://code.visualstudio.com/download) pro úpravu souborů projektu nebo sady [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) pro spuštění projektu.
 
 > [!div renderon="docs"]
+>
 > ## <a name="register-and-download-the-quickstart-app"></a>Registrace a stažení aplikace pro rychlý Start
+>
 > Chcete-li spustit aplikaci pro rychlý Start, použijte kteroukoli z následujících možností.
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Možnost 1 (Express): registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 >
 > 1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací</a>
 > 1. Zadejte název aplikace a pak vyberte **Registrovat**.
-> 1. Přejít do podokna pro rychlý Start a zobrazit úhlový rychlý Start. Podle pokynů stáhněte a automaticky nakonfigurujte novou aplikaci.
+> 1. V podokně rychlé spuštění Najděte úhlový rychlý Start. Podle pokynů stáhněte a automaticky nakonfigurujte novou aplikaci.
 >
 > ### <a name="option-2-manual-register-and-manually-configure-the-application-and-code-sample"></a>Možnost 2 (ruční): registrace a ruční konfigurace aplikace a ukázky kódu
 >
 > #### <a name="step-1-register-the-application"></a>Krok 1: registrace aplikace
 >
-> 1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
-> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 > 1. Postupujte podle pokynů k [registraci jednostránkové aplikace](./scenario-spa-app-registration.md) v Azure Portal.
 > 1. Přidejte novou platformu do podokna **ověřování** registrace vaší aplikace a zaregistrujte identifikátor URI přesměrování: `http://localhost:4200/` .
-> 1. V tomto rychlém startu se používá [implicitní tok udělení](v2-oauth2-implicit-grant-flow.md). V části **implicitní udělení a hybridní toky** vyberte **tokeny ID** a **přístupové tokeny**. Tokeny ID a přístupové tokeny jsou povinné, protože se tato aplikace přihlásí uživatelům a volá rozhraní API.
+> 1. V tomto rychlém startu se používá [implicitní tok udělení](v2-oauth2-implicit-grant-flow.md). V části **implicitní udělení a hybridní toky** vyberte **tokeny ID** a **přístupové tokeny**. Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace podepisuje uživatele v a volá rozhraní API.
 
 > [!div class="sxs-lookup" renderon="portal"]
+>
 > #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
-> Aby ukázka kódu v tomto rychlém startu fungovala, je nutné přidat identifikátor URI přesměrování jako **http://localhost:4200/** a povolit **implicitní udělení**.
+>
+> Aby ukázka kódu v tomto rychlém startu fungovala, je nutné přidat identifikátor URI přesměrování do `http://localhost:4200/` a povolit **implicitní udělení**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
 >
@@ -60,7 +62,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která demonstru
 
 #### <a name="step-2-download-the-code-sample"></a>Krok 2: stažení ukázky kódu
 >[!div renderon="docs"]
->Chcete-li spustit projekt s webovým serverem pomocí Node.js, [naklonujte ukázkové úložiště](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) nebo [si stáhněte základní soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip). Otevřete soubory pomocí editoru, jako je například Visual Studio Code.
+>Chcete-li spustit projekt s webovým serverem pomocí Node.js, naklonujte [ukázkové úložiště](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) nebo [si stáhněte základní soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip). Otevřete soubory v editoru, jako je například Visual Studio Code.
 
 > [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [Stažení ukázky kódu](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip)
@@ -89,7 +91,6 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která demonstru
 > > [!NOTE]
 > > Enter_the_Supported_Account_Info_Here
 
-
 > [!div renderon="docs"]
 >
 > Nahraďte tyto hodnoty:
@@ -97,11 +98,11 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která demonstru
 >|Název hodnoty|Description|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Na stránce **Přehled** registrace vaší aplikace se jedná o hodnotu ID vaší **aplikace (klienta)** . |
->|Enter_the_Cloud_Instance_Id_Here|Toto je instance cloudu Azure. V případě hlavního nebo globálního cloudu Azure zadejte **https://login.microsoftonline.com** . Pro národní cloudy (například Čína) si přečtěte téma [národní cloudy](./authentication-national-cloud.md).|
->|Enter_the_Tenant_Info_Here| Nastavte na jednu z následujících možností: Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu ID adresáře (tenant) nebo názvem tenanta (například **contoso.Microsoft.com**). Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu **organizacemi**. Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu **běžnými**. Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu **příjemci**. |
->|Enter_the_Redirect_Uri_Here|Nahraďte parametrem **http://localhost:4200** .|
->|cacheLocation  | Volitelné Nastavte úložiště prohlížeče pro stav ověřování. Výchozí hodnota je **SessionStorage**.   |
->|storeAuthStateInCookie  | Volitelné Identifikujte knihovnu, ve které je uložený stav žádosti o ověření. Tento stav je nutný k ověření toků ověřování v souborech cookie prohlížeče. Tento soubor cookie je nastaven pro Internet Explorer a Edge tak, aby se vešel na tyto dva prohlížeče. Další podrobnosti najdete v tématu [známé problémy](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues). |
+>|Enter_the_Cloud_Instance_Id_Here|Toto je cloudová instance Azure. V případě hlavního nebo globálního cloudu Azure zadejte `https://login.microsoftonline.com` . Pro národní cloudy (například Čína) si přečtěte téma [národní cloudy](./authentication-national-cloud.md).|
+>|Enter_the_Tenant_Info_Here| Nastavte na jednu z následujících možností: Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu ID adresáře (tenant) nebo názvem tenanta (například `contoso.microsoft.com` ). Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu hodnotou `organizations` . Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu hodnotou `common` . Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu hodnotou `consumers` . |
+>|Enter_the_Redirect_Uri_Here|Nahraďte parametrem `http://localhost:4200` .|
+>|cacheLocation  | Volitelné Nastavte úložiště prohlížeče pro stav ověřování. Výchozí formát je `sessionStorage`.   |
+>|storeAuthStateInCookie  | Volitelné Identifikujte knihovnu, ve které je uložený stav žádosti o ověření. Tento stav je nutný k ověření toků ověřování v souborech cookie prohlížeče. Tento soubor cookie je nastaven pro Internet Explorer a Microsoft Edge tak, aby vyhovoval těmto dvěma prohlížečům. Další podrobnosti najdete v tématu [známé problémy](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues). |
 >
 > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
 
@@ -140,20 +141,17 @@ Pokud používáte Node.js:
    npm start
    ```
 
-1. Přejděte na **http://localhost:4200/**.
-1. Vyberte **Přihlásit** se.
-1. Vyberte **profil** , který chcete volat Microsoft Graph.
-
-Poté, co prohlížeč načte aplikaci, vyberte **Přihlásit**. Při prvním přihlášení se zobrazí výzva k zadání vašeho souhlasu, který aplikaci umožní získat přístup k vašemu profilu a přihlásit se. Po úspěšném přihlášení vyberte **profil** a na stránce se zobrazí informace o vašem profilu uživatele.
+1. Přejděte na `http://localhost:4200/`.
+1. Vyberte **Přihlásit** se. Při prvním přihlášení se zobrazí výzva, abyste aplikaci povolili přístup k vašemu profilu a automaticky vás přihlásili.
+1. Vyberte **profil** , který chcete volat Microsoft Graph. Informace o profilu uživatele se zobrazí na stránce.
 
 ## <a name="how-the-sample-works"></a>Jak ukázka funguje
 
-![Diagram, který ukazuje, jak ukázková aplikace v tomto rychlém startu funguje](./media/quickstart-v2-angular/diagram-auth-flow-spa-angular.svg)
-
+![Diagram, který ukazuje, jak ukázková aplikace v tomto rychlém startu funguje.](./media/quickstart-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším kroku se dozvíte, jak se přihlašovat uživateli a získat tokeny v úhlovém kurzu:
+Naučte se, jak se přihlašovat uživateli a získat tokeny v úhlovém kurzu:
 
 > [!div class="nextstepaction"]
 > [Úhlový kurz](./tutorial-v2-angular.md)

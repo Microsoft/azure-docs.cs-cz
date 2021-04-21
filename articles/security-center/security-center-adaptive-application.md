@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/07/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: de5c5fbb6673d022517bba2486ed4aa1f739d19b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9e2dcace673a1c7215634434f9e89ddc6b953a63
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439574"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834602"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Použití adaptivních řízení aplikací k omezení ploch útoků počítačů
 
@@ -237,10 +237,17 @@ Některé funkce, které jsou dostupné z REST API:
 
 ## <a name="faq---adaptive-application-controls"></a>Nejčastější dotazy – Adaptivní řízení aplikací
 
+- [Existují nějaké možnosti, jak vymáhat ovládací prvky aplikace?](#are-there-any-options-to-enforce-the-application-controls)
+- [Proč se mi v mých doporučených aplikacích zobrazuje aplikace Qualys?](#why-do-i-see-a-qualys-app-in-my-recommendeded-applications)
+
 ### <a name="are-there-any-options-to-enforce-the-application-controls"></a>Existují nějaké možnosti, jak vymáhat ovládací prvky aplikace?
 V tuto chvíli nejsou k dispozici žádné možnosti vynucování. Adaptivní řízení aplikací je určeno k poskytování **výstrah zabezpečení** v případě, že některá aplikace běží jinak než ty, které jste definovali jako bezpečné. Mají řadu výhod ([Jaké jsou výhody adaptivních řízení aplikací?](#what-are-the-benefits-of-adaptive-application-controls)) a jsou extrémně přizpůsobitelná, jak je znázorněno na této stránce.
 
- 
+### <a name="why-do-i-see-a-qualys-app-in-my-recommendeded-applications"></a>Proč se mi v mých doporučených aplikacích zobrazuje aplikace Qualys?
+[Azure Defender pro servery](defender-for-servers-introduction.md) zahrnuje kontrolu ohrožení zabezpečení vašich počítačů bez dalších poplatků. Nepotřebujete licenci Qualys ani účet Qualys – všechno se bez problémů zpracovává v Security Center. Podrobnosti o tomto skeneru a pokyny, jak ho nasadit, najdete v tématu věnovaném [integrovanému řešení posouzení ohrožení zabezpečení v Defenderu](deploy-vulnerability-assessment-vm.md).
+
+Aby se zajistilo, že se při Security Center nasazení skeneru negenerují žádné výstrahy, seznam povolených ovládacích prvků pro Adaptivní řízení aplikací zahrnuje skener pro všechny počítače. 
+
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak použít adaptivní řízení aplikací v Azure Security Center k definování seznamů povolených aplikací běžících na počítačích Azure a mimo Azure. Další informace o některých dalších funkcích ochrany úloh v cloudu Security Center najdete v tématech:

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: be138a0c97e02cace45a57d8d6b32d7c9aea83b7
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b7a3126aef94ccdef7f6c9120ddeb6f20d872ab5
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749973"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815769"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Rychlý Start: nastavení a načtení certifikátu z Azure Key Vault pomocí Azure Portal
 
@@ -88,4 +88,4 @@ V tomto rychlém startu jste vytvořili Key Vault a v něm jste uložili certifi
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
 - Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .
-- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)
+- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-features.md)

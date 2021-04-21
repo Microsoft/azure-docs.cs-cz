@@ -3,12 +3,13 @@ title: Povolení rozšíření virtuálního počítače pomocí šablony Azure 
 description: Tento článek popisuje, jak nasadit rozšíření virtuálních počítačů na servery s podporou ARC Azure běžícími v hybridních cloudových prostředích pomocí šablony Azure Resource Manager.
 ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 095f95192a2054d34e438d8683ac9c2e20a824f1
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d32be184a7e5bb713aee83cd3023f271299d3872
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389634"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832855"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Povolení rozšíření virtuálních počítačů Azure pomocí šablony ARM
 

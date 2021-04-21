@@ -1,14 +1,14 @@
 ---
 title: Postup plánování a nasazení serverů s podporou ARC Azure
 description: Naučte se, jak povolit velké množství počítačů pro servery s podporou ARC Azure a zjednodušit tak konfiguraci základních funkcí zabezpečení, správy a monitorování v Azure.
-ms.date: 03/18/2021
+ms.date: 04/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5aa7022dba943fa3de247404522408f4660e80e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3f8fe410da56f627ceab5f17c980f2daa1a262c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023278"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831973"
 ---
 # <a name="plan-and-deploy-arc-enabled-servers"></a>Plánování a nasazení serverů s povoleným ARC
 
@@ -83,7 +83,7 @@ Fáze 3 vidí správcům nebo systémovým technikům automatizaci ručních úl
 |-----|-------|---------|
 |Vytvoření výstrahy Resource Health |Pokud server zastaví odesílání prezenčních signálů do Azure déle než 15 minut, může to znamenat, že je offline, síťové připojení je blokované nebo agent neběží. Vytvořte plán, jak budete reagovat a prozkoumat tyto incidenty, a pomocí [výstrah Resource Health dostávat upozornění](../..//service-health/resource-health-alert-monitor-guide.md) na jejich spuštění.<br><br> Při konfiguraci výstrahy zadejte následující:<br> **Typ prostředku**  =  **Servery s podporou ARC Azure**<br> **Aktuální stav prostředku**  =  **Nedostupné**<br> **Stav**  =  předchozího prostředku **K dispozici** | Jedna hodina |
 |Vytvoření výstrahy Azure Advisor | Pro zajištění nejlepšího prostředí a nejnovějších oprav zabezpečení a chyb doporučujeme udržovat agenta serverů s podporou ARC Azure v aktuálním stavu. Neaktuální agenti budou identifikováni pomocí [výstrahy Azure Advisor](../../advisor/advisor-alerts-portal.md).<br><br> Při konfiguraci výstrahy zadejte následující:<br> **Typ doporučení**  =  **Upgradujte na nejnovější verzi agenta připojeného počítače Azure** . | Jedna hodina |
-|[Přiřazení zásad Azure](../../governance/policy/assign-policy-portal.md) ke svému předplatnému nebo rozsahu skupiny prostředků |Přiřaďte k oboru předplatného nebo rozsahu skupiny prostředků [zásadu](../../azure-monitor/vm/vminsights-enable-policy.md) **Povolit Azure monitor pro virtuální počítače** (a další, které vyhovují vašim potřebám). Azure Policy vám umožní přiřadit definice zásad, které nainstalují požadované agenty pro Azure Monitor pro virtuální počítače ve vašem prostředí.| Různé |
+|[Přiřazení zásad Azure](../../governance/policy/assign-policy-portal.md) ke svému předplatnému nebo rozsahu skupiny prostředků |Přiřaďte k oboru předplatného nebo rozsahu skupiny prostředků [zásadu](../../azure-monitor/vm/vminsights-enable-policy.md) **Povolit Azure monitor pro virtuální počítače** (a další, které vyhovují vašim potřebám). Azure Policy vám umožní přiřadit definice zásad, které budou instalovat požadované agenty pro přehledy pro virtuální počítače v rámci vašeho prostředí.| Různé |
 |[Povolit Update Management pro servery s povoleným obloukem](../../automation/update-management/enable-from-automation-account.md) |Nakonfigurujte Update Management v Azure Automation ke správě aktualizací operačního systému pro virtuální počítače s Windows a Linux zaregistrované u serverů s podporou ARC. | 15 minut |
 
 ## <a name="next-steps"></a>Další kroky

@@ -2,13 +2,13 @@
 title: Kurz – nové přiřazení zásad s Azure Portal
 description: V tomto kurzu použijete Azure Portal k vytvoření přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
 ms.topic: tutorial
-ms.date: 10/07/2020
-ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/21/2021
+ms.openlocfilehash: 20cb8125a157a3ce97c88278c99f90936b449b65
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91826592"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831649"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Kurz: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy
 
@@ -95,9 +95,9 @@ K odebrání vytvořeného přiřazení použijte následující postup:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste přiřadili definici zásady k oboru a vyhodnotili sestavu dodržování předpisů. Definice zásady ověří, že všechny prostředky v oboru jsou v souladu s předpisy, a určí, které z nich nejsou. Teď jste připraveni monitorovat počítače serverů s podporou ARC Azure pomocí Azure Monitor pro virtuální počítače.
+V tomto kurzu jste přiřadili definici zásady k oboru a vyhodnotili sestavu dodržování předpisů. Definice zásady ověří, že všechny prostředky v oboru jsou v souladu s předpisy, a určí, které z nich nejsou. Teď jste připraveni monitorovat počítač serverů s podporou Azure ARC pomocí povolení [přehledů virtuálních počítačů](../../../azure-monitor/vm/vminsights-overview.md).
 
 Pokud se chcete dozvědět, jak monitorovat a sledovat výkon, běžící proces a jejich závislosti z počítače, přejděte k kurzu:
 
 > [!div class="nextstepaction"]
-> [Povolit Azure Monitor pro virtuální počítače](tutorial-enable-vm-insights.md)
+> [Povolit přehledy virtuálních počítačů](tutorial-enable-vm-insights.md)

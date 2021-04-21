@@ -5,12 +5,12 @@ description: Seznamte se s osvědčenými postupy pro použití pokročilých fu
 services: container-service
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 27b32d7d10b691ed806e4d7aa31a095630d2bfc9
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 971916c3fc903ff5d69db2e0f82fd884acf807b3
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103619"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831577"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro pokročilé funkce plánování ve službě Azure Kubernetes Service (AKS)
 
@@ -42,13 +42,18 @@ Plánovač Kubernetes pomocí chuti a tolerování omezuje, jaké úlohy je mož
 * Použití **chuti** na uzel k označení pouze určitých lusků, které je možné naplánovat.
 * Pak můžete použít **tolerování** na uzel pod, což jim umožní *tolerovat* jeho chuti.
 
-Když nasadíte uzel pod do clusteru AKS, Kubernetes pouze plánuje na uzly, jejichž funkce chuti je zarovnána s tolerovánou. Předpokládejme například, že máte ve svém clusteru AKS fond uzlů pro uzly s podporou GPU. Definujte název, jako je například *GPU*, a pak hodnotu pro plánování. Nastavení této hodnoty na hodnotu *neplánuje* Plánovač Kubernetes z plánování lusků pomocí nedefinovaného omezení na uzlu.
+Když nasadíte uzel pod do clusteru AKS, Kubernetes pouze plánuje na uzly, jejichž funkce chuti je zarovnána s tolerovánou. Předpokládejme například, že jste do clusteru AKS přidali fond uzlů pro uzly s podporou GPU. Definujte název, jako je například *GPU*, a pak hodnotu pro plánování. Nastavení této hodnoty na hodnotu *neplánuje* Plánovač Kubernetes z plánování lusků pomocí nedefinovaného omezení na uzlu.
 
-```console
-kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name taintnp \
+    --node-taints sku=gpu:NoSchedule \
+    --no-wait
 ```
 
-Při použití chuti v uzlech můžete definovat tolerování ve specifikaci pod, která umožňuje plánování na uzlech. Následující příklad definuje `sku: gpu` a `effect: NoSchedule` k tolerování chuti aplikovaný na uzel v předchozím kroku:
+Když je v uzlech ve fondu uzlů použit objekt chuti, definujete jeho tolerování ve specifikaci pod, která umožňuje plánování na uzlech. Následující příklad definuje `sku: gpu` a `effect: NoSchedule` k tolerování chuti použité pro fond uzlů v předchozím kroku:
 
 ```yaml
 kind: Pod
@@ -115,16 +120,22 @@ Při horizontálním navýšení kapacity fondu uzlů v AKS se neprovádí návr
 > 
 > Řízení plánování lusků na uzlech pomocí selektorů uzlů, spřažení uzlů nebo spřažení mezi uzly. Tato nastavení umožňují, aby Plánovač Kubernetes logicky izoluje úlohy, jako je například hardware v uzlu.
 
-Příchuti a tolerování logicky izolují prostředky pomocí pevného oříznutí. Pokud v poli není tolerována příchuti uzlu, není naplánována na uzlu. 
+Příchuti a tolerování logicky izolují prostředky pomocí pevného oříznutí. Pokud v poli není tolerována příchuti uzlu, není naplánována na uzlu.
 
-Alternativně můžete použít selektory uzlů. Například označíte uzly tak, aby označovaly místně připojené úložiště SSD nebo velké množství paměti a pak definovali ve specifikaci pod modulem pro výběr uzlu. Kubernetes plánuje tyto lusky na vyhovujícím uzlu. 
+Alternativně můžete použít selektory uzlů. Například označíte uzly tak, aby označovaly místně připojené úložiště SSD nebo velké množství paměti a pak definovali ve specifikaci pod modulem pro výběr uzlu. Kubernetes plánuje tyto lusky na vyhovujícím uzlu.
 
 Na rozdíl od tolerování je stále možné naplánovat lusky bez odpovídajícího voliče uzlů v uzlech s popisky. Toto chování umožňuje nevyužité prostředky na uzlech využívat, ale určuje prioritu lusků, které definují odpovídající selektor uzlů.
 
-Pojďme se podívat na příklad uzlů s velkým množstvím paměti. Tyto uzly stanovují prioritu lusků, které vyžadují vysoké množství paměti. Pokud chcete zajistit, aby se prostředky nečinné, mohly by také běžet jiné lusky.
+Pojďme se podívat na příklad uzlů s velkým množstvím paměti. Tyto uzly stanovují prioritu lusků, které vyžadují vysoké množství paměti. Pokud chcete zajistit, aby se prostředky nečinné, mohly by také běžet jiné lusky. Příkaz v následujícím příkladu přidá fond uzlů s jmenovkou *hardware = highmem* do *myAKSCluster* v *myResourceGroup*. Tento popisek budou mít všechny uzly ve fondu uzlů.
 
-```console
-kubectl label node aks-nodepool1 hardware=highmem
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name labelnp \
+    --node-count 1 \
+    --labels hardware=highmem \
+    --no-wait
 ```
 
 Specifikace pod pak přidá `nodeSelector` vlastnost k definování voliče uzlu, který odpovídá sadě popisku na uzlu:

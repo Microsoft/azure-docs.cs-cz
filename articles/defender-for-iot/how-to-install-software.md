@@ -1,14 +1,14 @@
 ---
 title: Instalace Defenderu pro IoT
 description: Přečtěte si, jak nainstalovat senzor a místní konzolu pro správu pro Azure Defender pro IoT.
-ms.date: 12/2/2020
+ms.date: 4/20/2021
 ms.topic: how-to
-ms.openlocfilehash: 5bdb292750ea041be68a22519583511f58b3b517
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8366a3408e64d95e6c4d50e3ddef84309b4e8e5
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782244"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829689"
 ---
 # <a name="defender-for-iot-installation"></a>Instalace Defenderu pro IoT
 
@@ -328,11 +328,11 @@ Instalace:
 
 1. Vyberte **senzor – Release- \<version\> Enterprise**.
 
-   :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Snímek obrazovky zobrazující výběr verze":::   
+   :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Vyberte verzi senzoru a typ podniku.":::   
 
 1. Zadejte profil zařízení a vlastnosti sítě:
 
-   :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="Snímek obrazovky, který zobrazuje profil zařízení.":::   
+   :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="Snímek obrazovky, který zobrazuje profil zařízení a vlastnosti sítě.":::   
 
    | Parametr | Konfigurace |
    |--|--|
@@ -470,7 +470,7 @@ Postup instalace softwaru:
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Obrazovka obrazovky pro výběr verze":::
 
-1. V Průvodci instalací definujte profil zařízení a vlastnosti sítě:
+1. V Průvodci instalací definujte profil hardwaru a vlastnosti sítě:
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="Snímek obrazovky, který zobrazuje Průvodce instalací.":::
 
@@ -703,6 +703,111 @@ Instalace:
 
     :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="Snímek obrazovky, který zobrazuje přístup ke konzole pro správu.":::
 
+## <a name="on-premises-management-console-installation"></a>Instalace místní konzoly pro správu
+
+Před instalací softwaru na zařízení je potřeba upravit konfiguraci systému BIOS zařízení:
+
+### <a name="bios-configuration"></a>Konfigurace systému BIOS
+
+Postup konfigurace systému BIOS pro zařízení:
+
+1. [Povolte vzdálený přístup a aktualizujte heslo](#enable-remote-access-and-update-the-password).
+
+1. [Nakonfigurujte systém BIOS](#configure-the-hpe-bios).
+
+### <a name="software-installation"></a>Instalace softwaru
+
+Proces instalace trvá přibližně 20 minut. Po dokončení instalace se systém několikrát restartuje. 
+
+Během procesu instalace budete moci přidat sekundární síťovou kartu. Pokud se rozhodnete neinstalovat sekundární síťovou kartu během instalace, můžete později [Přidat sekundární síťovou kartu](#add-a-secondary-nic) . 
+
+Postup instalace softwaru:
+
+1. Vyberte preferovaný jazyk pro proces instalace.
+
+   :::image type="content" source="media/tutorial-install-components/on-prem-language-select.png" alt-text="Vyberte preferovaný jazyk pro proces instalace.":::     
+
+1. Vyberte možnost **Správa-vydání \<version\> \<deployment type\> -**.
+
+   :::image type="content" source="media/tutorial-install-components/on-prem-install-screen.png" alt-text="Vyberte svou verzi.":::   
+
+1. V Průvodci instalací definujte vlastnosti sítě:
+
+   :::image type="content" source="media/tutorial-install-components/on-prem-first-steps-install.png" alt-text="Snímek obrazovky, který zobrazuje profil zařízení.":::   
+
+   | Parametr | Konfigurace |
+   |--|--|
+   | **Konfigurace síťového rozhraní pro správu** | Pro Dell: **eth0, eth1** <br /> Pro HP: **enu1, enu2** <br /> nebo <br />**možná hodnota** |
+   | **Konfigurace IP adresy sítě pro správu:** | **IP adresa poskytovaná zákazníkem** |
+   | **Nakonfigurujte masku podsítě:** | **IP adresa poskytovaná zákazníkem** |
+   | **Konfigurace DNS:** | **IP adresa poskytovaná zákazníkem** |
+   | **Konfigurace výchozí IP adresy brány:** | **IP adresa poskytovaná zákazníkem** |
+   
+1. **(Volitelné)** Pokud byste chtěli nainstalovat sekundární síťovou kartu (NIC), zadejte následující profil zařízení a vlastnosti sítě:
+
+    :::image type="content" source="media/tutorial-install-components/on-prem-secondary-nic-install.png" alt-text="Snímek obrazovky zobrazující otázky k instalaci sekundární síťové karty":::
+
+   | Parametr | Konfigurace |
+   |--|--|
+   | **konfigurovat rozhraní pro monitorování senzorů (volitelné):** | **eth1** nebo **možná hodnota** |
+   | **Nakonfigurujte IP adresu pro rozhraní monitorování senzoru:** | **IP adresa poskytovaná zákazníkem** |
+   | **Nakonfigurujte masku podsítě pro rozhraní monitorování snímače:** | **IP adresa poskytovaná zákazníkem** |
+
+1. Přijměte a pokračujte zadáním `Y` . 
+
+1. Po asi 10 minutách se zobrazí dvě sady přihlašovacích údajů. Jedna je určena pro uživatele **CyberX** a jedna je pro uživatele **podpory** .
+
+   :::image type="content" source="media/tutorial-install-components/credentials-screen.png" alt-text="Zkopírujte tyto přihlašovací údaje, protože nebudou znovu prezentovány.":::  
+
+   Uložte uživatelská jména a hesla, budete je potřebovat k přístupu k platformě při jejím prvním použití.
+
+1. Pokračujte výběrem **ENTER** .
+
+Informace o tom, jak najít fyzický port na zařízení, najdete v tématu [vyhledání portu](#find-your-port).
+
+### <a name="add-a-secondary-nic"></a>Přidat sekundární síťovou kartu
+
+Můžete zvýšit zabezpečení pro místní konzolu pro správu přidáním sekundární síťové karty. Když přidáte sekundární síťovou kartu, budete mít jednu vyhrazenou pro vaše uživatele a druhá bude podporovat konfiguraci brány pro směrované sítě. Druhá síťová karta se vyhradí pro všechny připojené senzory v rámci rozsahu IP adres.
+
+Oba síťové adaptéry mají povolený uživatelský rozhraní (UI). Pokud směrování není nutné, budou všechny funkce podporované uživatelským rozhraním dostupné v sekundárním síťovém adaptéru. Vysoká dostupnost se spustí na sekundárním síťovém adaptéru.
+
+Pokud se rozhodnete nenasadit sekundární síťovou kartu, budou všechny funkce dostupné prostřednictvím primárního síťového rozhraní. 
+
+Pokud jste již nakonfigurovali místní konzolu pro správu a chcete do místní konzoly pro správu přidat sekundární síťovou kartu, použijte následující postup:
+
+1. Použijte příkaz reconfigure sítě:
+
+    ```bash
+    sudo cyberx-management-network-reconfigure
+    ```
+
+1. Zadejte následující odpovědi na následující otázky:
+
+    :::image type="content" source="media/tutorial-install-components/network-reconfig-command.png" alt-text="Zadejte následující odpovědi pro konfiguraci zařízení.":::
+
+    | Parametry | Odpověď na ENTER |
+    |--|--|
+    | **IP adresa sítě pro správu** | `N` |
+    | **Maska podsítě** | `N` |
+    | **DNS** | `N` |
+    | **Výchozí IP adresa brány** | `N` |
+    | **Rozhraní pro monitorování senzorů (volitelné. Platí v případě, že senzory jsou v jiném segmentu sítě. Další informace najdete v pokynech k instalaci.)**| `Y`**Vyberte možnou hodnotu** . |
+    | **IP adresa pro rozhraní monitorování senzoru (ke kterým mají přístup senzory)** | `Y`, **IP adresa poskytnutá zákazníkem**|
+    | **Maska podsítě pro rozhraní monitorování snímače (dostupné senzory)** | `Y`, **IP adresa poskytnutá zákazníkem** |
+    | **Název hostitele** | **poskytl zákazník** |
+
+1. Zkontrolujte všechny volby a zadejte, `Y` aby se změny projevily. Probíhá restartování systému.
+
+### <a name="find-your-port"></a>Vyhledání portu
+
+Pokud máte potíže s umístěním fyzického portu na zařízení, můžete k tomu použít následující příkaz:
+
+```bash
+sudo ethtool -p <port value> <time-in-seconds>
+```
+
+Tento příkaz způsobí, že se na portu po zadaném časovém období bude zablikat. Pokud například zadáte `sudo ethtool -p eno1 120` , bude mít port eno1 Flash na 2 minuty, což vám umožní najít port na zadní straně zařízení. 
+
 ## <a name="virtual-appliance-on-premises-management-console-installation"></a>Virtuální zařízení: instalace místní konzoly pro správu
 
 Místní virtuální počítač konzoly pro správu podporuje následující architektury:
@@ -823,11 +928,7 @@ Vytvoření virtuálního počítače pomocí technologie Hyper-V:
 
 ### <a name="software-installation-esxi-and-hyper-v"></a>Instalace softwaru (ESXi a Hyper-V)
 
-Spuštění virtuálního počítače spustí proces instalace z image ISO. Pro zvýšení zabezpečení můžete vytvořit druhé síťové rozhraní v místní konzole pro správu. Jedno síťové rozhraní je vyhrazeno pro vaše uživatele a může podporovat konfiguraci brány pro směrované sítě. Druhé síťové rozhraní je vyhrazeno pro všechny připojené senzory v rámci rozsahu IP adres.
-
-Obě síťová rozhraní mají povolený uživatelský rozhraní (UI) a všechny funkce, které uživatelské rozhraní podporuje, budou k dispozici v sekundárním síťovém rozhraní, pokud není potřeba směrování. Vysoká dostupnost se spustí na sekundárním síťovém rozhraní.
-
-Pokud se rozhodnete nenasadit sekundární síťové rozhraní, budou všechny funkce k dispozici prostřednictvím primárního síťového rozhraní. 
+Spuštění virtuálního počítače spustí proces instalace z image ISO.
 
 Postup instalace softwaru:
 
@@ -837,22 +938,9 @@ Postup instalace softwaru:
 
 1. Definujte síťové rozhraní pro síť pro správu senzorů: rozhraní, IP adresu, podsíť, server DNS a výchozí bránu.
 
-1. Volitelné Přidejte druhé síťové rozhraní do místní konzoly pro správu.
+1. Přihlašovací údaje pro přihlášení se generují automaticky. Uložte si uživatelské jméno a heslo. Tyto přihlašovací údaje budete potřebovat pro přístup k platformě při jejím prvním použití.
 
-    1. `Please type sensor monitoring interface (Optional. Applicable when sensors are on a different network segment. For more information see the Installation instructions): <name of interface>`
-    
-    1. `Please type an IP address for the sensor monitoring interface (accessible by the sensors): <ip address>`
-    
-    1. `Please type a subnet mask for the sensor monitoring interface (accessible by the sensors): <subnet>`
-
-1. Přihlašovací údaje pro přihlášení se generují automaticky a prezentují. Tyto přihlašovací údaje Uchovávejte na bezpečném místě, protože jsou nutné pro přihlášení a správu.
-
-    | Uživatelské jméno | Description |
-    |--|--|
-    | Podpora | Administrativní uživatel pro správu uživatelů. |
-    | CyberX | Ekvivalent kořene pro přístup k zařízení. |
-
-1. Zařízení se restartuje.
+   Zařízení se pak restartuje.
 
 1. Přístup ke konzole pro správu prostřednictvím dříve nakonfigurované IP adresy: `<https://ip_address>` .
 
@@ -890,7 +978,7 @@ Ověření po instalaci musí zahrnovat následující testy:
 
 - **Nejdelší klíč**: zobrazuje nejdelší klíče, které by mohly způsobit velké využití paměti.
 
-#### <a name="system"></a>Systém
+#### <a name="system"></a>Systémový
 
 - **Core log**: poskytuje poslední 500 řádky základního protokolu, které vám umožní zobrazit poslední řádky protokolu, aniž byste museli exportovat celý systémový protokol.
 

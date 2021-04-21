@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b0150c18f2c007ed104d34daacd49ab03131a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f50792ec45570f7e90893a97150ea26b63ebf9c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96743373"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829831"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace infrastruktury Brána vzdálené plochy pomocí rozšíření serveru NPS (Network Policy Server) a Azure AD
 
@@ -112,9 +112,11 @@ Jakmile je pro MFA povolený účet, nebudete se moct přihlašovat k prostředk
 Postupujte podle kroků v části [co Azure AD Multi-Factor Authentication znamená pro mě?](../user-help/multi-factor-authentication-end-user-first-time.md) k pochopení a správné konfiguraci zařízení pro MFA s vaším uživatelským účtem.
 
 > [!IMPORTANT]
-> Chování při přihlašování pro Brána vzdálené plochy neposkytuje možnost zadat ověřovací kód s Multi-Factor Authentication služby Azure AD. Uživatelský účet musí být nakonfigurovaný pro ověřování na telefonu nebo pro aplikaci Microsoft Authenticator s nabízenými oznámeními.
+> Chování při přihlašování pro Brána vzdálené plochy neposkytuje možnost zadat ověřovací kód s Multi-Factor Authentication Azure AD. Uživatelský účet musí být nakonfigurovaný pro ověřování na telefonu nebo pro aplikaci Microsoft Authenticator s nabízenými oznámeními.
 >
-> Pokud není jedna z těchto dvou metod ověřování pro uživatele nakonfigurovaná, nebude moct dokončit službu Azure AD Multi-Factor Authentication Challenge a přihlásit se k Brána vzdálené plochy.
+> Pokud pro uživatele není nakonfigurované žádné ověřování telefonem nebo aplikace Microsoft Authenticator s nabízenými oznámeními, uživatel nebude moct dokončit dotaz Multi-Factor Authentication Azure AD a přihlásit se k Brána vzdálené plochy.
+>
+> Metoda SMS text nefunguje s Brána vzdálené plochy, protože neposkytuje možnost zadat ověřovací kód.
 
 ## <a name="install-and-configure-nps-extension"></a>Instalace a konfigurace rozšíření serveru NPS
 

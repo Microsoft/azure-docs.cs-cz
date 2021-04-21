@@ -8,12 +8,12 @@ ms.author: amjads
 author: amjads1
 ms.collection: windows
 ms.date: 08/31/2020
-ms.openlocfilehash: 13b4c4ef50ea37cabe30474d339acb19176cef97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6341e3abbf591d0e6e0395e17ccf15ec73a3ac43
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553897"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835447"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro virtuální počítače
 
@@ -74,7 +74,7 @@ Pokud je váš skript na místním serveru, budete možná potřebovat otevřít
 
 Konfigurace rozšíření vlastních skriptů určuje například umístění skriptu a příkaz, který má být spuštěn. Tuto konfiguraci můžete uložit do konfiguračních souborů, zadat ji na příkazovém řádku nebo ji zadat v šabloně Azure Resource Manager.
 
-Citlivá data můžete ukládat do chráněné konfigurace, která je zašifrovaná a v rámci virtuálního počítače se šifruje jenom. Chráněná konfigurace je užitečná, když příkaz pro spuštění zahrnuje tajné klíče, jako je třeba heslo.
+Citlivá data můžete ukládat do chráněné konfigurace, která je zašifrovaná a v rámci virtuálního počítače se šifruje jenom. Chráněná konfigurace je užitečná v případě, že příkaz pro spuštění zahrnuje tajné klíče, jako je například heslo nebo sdílený přístupový podpis (SAS), který by měl být chráněn.
 
 Tyto položky by měly být považovány za citlivá data a specifikována v konfiguraci nastavení chráněného rozšíření. Data nastavení chráněná rozšířením virtuálního počítače Azure jsou šifrovaná a v cílovém virtuálním počítači se dešifrují jenom.
 
@@ -97,16 +97,16 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
         "typeHandlerVersion": "1.10",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "fileUris": [
-                "script location"
-            ],
             "timestamp":123456789
         },
         "protectedSettings": {
             "commandToExecute": "myExecutionCommand",
             "storageAccountName": "myStorageAccountName",
             "storageAccountKey": "myStorageAccountKey",
-            "managedIdentity" : {}
+            "managedIdentity" : {},
+            "fileUris": [
+                "script location"
+            ]
         }
     }
 }
@@ -142,7 +142,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 #### <a name="property-value-details"></a>Podrobnosti hodnoty vlastnosti
 
 * `commandToExecute`: (**Required**; String) skript vstupního bodu, který se má provést. Místo toho použijte toto pole, pokud váš příkaz obsahuje tajné kódy, jako jsou hesla, nebo jsou vaše identifikátory URI typu "citlivé".
-* `fileUris`: (volitelné, pole řetězců) adresy URL pro soubory, které mají být staženy.
+* `fileUris`: (volitelné, pole řetězců) adresy URL pro soubory, které mají být staženy. Pokud jsou adresy URL citlivé (například adresy URL obsahující klíče), mělo by se toto pole zadat v protectedSettings.
 * `timestamp` (volitelné, 32 celé číslo) Toto pole použijte pouze k aktivaci opětovného spuštění skriptu změnou hodnoty tohoto pole.  Je přijatelné libovolné celočíselné hodnoty; musí se lišit jenom od předchozí hodnoty.
 * `storageAccountName`: (volitelné, řetězec) název účtu úložiště. Pokud zadáte přihlašovací údaje úložiště, `fileUris` musí být všechny adresy URL pro objekty blob Azure.
 * `storageAccountKey`: (volitelné, String) přístupový klíč účtu úložiště
@@ -153,6 +153,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 V rámci veřejného nebo chráněného nastavení lze nastavit následující hodnoty, rozšíření bude odmítat všechny konfigurace, kde jsou níže uvedené hodnoty nastaveny v nastavení veřejné i chráněné.
 
 * `commandToExecute`
+* `fileUris`
 
 Použití veřejného nastavení může být užitečné pro ladění, ale doporučuje se používat chráněná nastavení.
 

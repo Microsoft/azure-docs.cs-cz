@@ -7,12 +7,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: cca4612d3b22296209b4adfc6be97cbe95477aa3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3f49c0acc99f82cc2986ca896d40b3998cf47c5c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786664"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834997"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
@@ -22,13 +22,12 @@ ms.locfileid: "104786664"
 - Podpora poskytování více přihlašovacích údajů serveru v zařízení Azure Migrate pro zjišťování nainstalovaných aplikací (inventář softwaru), analýzy závislostí bez agentů a zjišťování SQL Server instancí a databází v prostředí VMware. [Další informace](tutorial-discover-vmware.md#provide-server-credentials)
 - Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. [Další informace](concepts-azure-sql-assessment-calculation.md) Začněte tím, že najdete kurzy pro [zjišťování](tutorial-discover-vmware.md) a [hodnocení](tutorial-assess-sql.md) .
 - Migrace VMware bez agentů teď podporuje souběžnou replikaci 500 virtuálních počítačů na vCenter.
-- Azure Migrate teď automaticky nainstaluje do virtuálních počítačů VMware agenta virtuálních počítačů Azure při jejich migraci do Azure pomocí metody migrace VMware bez agentů.
 
 ## <a name="update-january-2021"></a>Aktualizace (leden 2021)
 -  Azure Migrate: Nástroj pro migraci serveru teď umožňuje migrovat virtuální počítače VMware, fyzické servery a virtuální počítače z jiných cloudů na virtuální počítače Azure s disky šifrovanými pomocí šifrování na straně serveru pomocí klíčů spravovaných zákazníkem (CMK).
 
 ## <a name="update-december-2020"></a>Aktualizace (prosince 2020)
-- Azure Migrate teď automaticky nainstaluje do virtuálních počítačů VMware agenta virtuálních počítačů Azure při jejich migraci do Azure pomocí metody migrace VMware bez agentů.
+- Azure Migrate teď automaticky nainstaluje do virtuálních počítačů VMware agenta virtuálních počítačů Azure při jejich migraci do Azure pomocí metody migrace VMware bez agentů. (Windows Server 2008 R2 a novější)
 - Migrace virtuálních počítačů VMware na virtuální počítače Azure s disky šifrovanými pomocí šifrování na straně serveru (SSE) pomocí klíčů spravovaných zákazníkem (CMK Azure Migrate) je teď k dispozici prostřednictvím služby Azure Portal.
 
 ## <a name="update-september-2020"></a>Aktualizace (září 2020)

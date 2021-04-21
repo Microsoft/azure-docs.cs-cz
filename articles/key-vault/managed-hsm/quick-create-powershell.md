@@ -12,12 +12,12 @@ tags:
 - azure-resource-manager
 ms.custom:
 - mode-api
-ms.openlocfilehash: ba1cd8d6b1410be30eefe9dca9675daaf6c16256
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: aa984a8f3899db72ead878e2c4381ea6a080e32d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534667"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815427"
 ---
 # <a name="quickstart-set-and-retrieve-a-managed-key-from-azure-key-vault-using-powershell"></a>Rychlý Start: nastavení a načtení spravovaného klíče z Azure Key Vault pomocí prostředí PowerShell
 
@@ -115,4 +115,4 @@ V tomto rychlém startu jste vytvořili Key Vault a uložili do něj certifikát
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
 - Přečtěte si referenční informace pro [rutiny Azure PowerShell Key Vault](/powershell/module/az.keyvault/)
-- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)
+- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-features.md)

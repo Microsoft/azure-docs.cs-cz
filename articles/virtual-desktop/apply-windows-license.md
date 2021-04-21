@@ -1,16 +1,16 @@
 ---
 title: Použít licenci Windows na virtuální počítače hostitele relace – Azure
 description: Popisuje, jak použít licenci Windows pro virtuální počítače virtuálních počítačů s Windows.
-author: ChristianMontoya
+author: Heidilohr
 ms.topic: how-to
 ms.date: 08/14/2019
-ms.author: chrimo
-ms.openlocfilehash: 5f3749be36f5f035e49fcb862f92180e4902101f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: helohr
+ms.openlocfilehash: fa3c9f82e99536b07a27656e0143d6b2fcc89a44
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88010136"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833863"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Použít licenci Windows na virtuální počítače hostitele relace
 
@@ -61,3 +61,7 @@ Spuštěním následující rutiny zobrazíte seznam všech virtuálních počí
 $vms = Get-AzVM
 $vms | Where-Object {$_.LicenseType -like "Windows_Client"} | Select-Object ResourceGroupName, Name, LicenseType
 ```
+
+## <a name="requirements-for-deploying-windows-server-remote-desktop-services"></a>Požadavky na nasazení služby Vzdálená plocha systému Windows Server
+
+Pokud nasadíte Windows Server 2019, 2016 nebo 2012 R2 jako hostitele virtuálních ploch Windows v nasazení, musí být z těchto virtuálních počítačů dostupný licenční server služby Vzdálená plocha. Licenční server služby Vzdálená plocha se dá najít místně nebo v Azure. Další informace najdete v tématu [Aktivace licenčního serveru služby Vzdálená plocha](/windows-server/remote/remote-desktop-services/rds-activate-license-server).

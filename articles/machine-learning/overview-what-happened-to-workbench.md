@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: c800901ae139b16e75613b0cc8de3a9485186896
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c680be897c4c1bf2ccf20df1d34ab6f59f559f2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521369"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816147"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co se stalo s aplikací Azure Machine Learning Workbench?
 
@@ -35,13 +35,13 @@ V tomto článku se dozvíte, co se změnilo a jak ovlivňuje stávající prác
 
 Nejnovější vydaná verze Azure Machine Learning obsahuje následující funkce:
 + [Zjednodušený model prostředků Azure](concept-azure-machine-learning-architecture.md).
-+ [Nové uživatelské rozhraní portálu](how-to-track-experiments.md) pro správu experimentů a cílů výpočtů.
++ [Nové uživatelské rozhraní portálu](how-to-log-view-metrics.md) pro správu experimentů a cílů výpočtů.
 + Nová, komplexnější <a href="/python/api/overview/azure/ml/intro" target="_blank">sada Python SDK</a>.
 + Nové rozšířené [rozšíření Azure CLI](reference-azure-machine-learning-cli.md) pro Machine Learning.
 
 [Architektura](concept-azure-machine-learning-architecture.md) byla přepracována pro snadné použití. Místo několika prostředků a účtů Azure potřebujete jenom [pracovní prostor služby Azure Machine Learning](concept-workspace.md). Pracovní prostory můžete vytvářet rychle na webu [Azure Portal](how-to-manage-workspace.md). Když použijete pracovní prostor, více uživatelů může ukládat výpočetní a implementační cíle, modelové experimenty, image Docker, nasazené modely atd.
 
-I když v aktuální verzi existují nové vylepšené klienty rozhraní CLI a sady SDK, aplikace Desktop Workbench byla vyřazena. Experimenty se dají spravovat na [řídicím panelu pracovního prostoru v Azure Machine Learning Studiu](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal). Řídicí panel můžete použít k zobrazení historie experimentu, ke správě výpočetních cílů připojených k pracovnímu prostoru, ke správě modelů a imagí Dockeru, a dokonce i k nasazení webových služeb.
+I když v aktuální verzi existují nové vylepšené klienty rozhraní CLI a sady SDK, aplikace Desktop Workbench byla vyřazena. Experimenty se dají spravovat na [řídicím panelu pracovního prostoru v Azure Machine Learning Studiu](how-to-log-view-metrics.md#view-the-experiment-in-the-web-portal). Řídicí panel můžete použít k zobrazení historie experimentu, ke správě výpočetních cílů připojených k pracovnímu prostoru, ke správě modelů a imagí Dockeru, a dokonce i k nasazení webových služeb.
 
 <a name="timeline"></a>
 

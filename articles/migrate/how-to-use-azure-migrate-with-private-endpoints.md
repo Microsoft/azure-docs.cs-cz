@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/07/2020
-ms.openlocfilehash: e4feaa8f1b30bfe31f4e645943f766b5736150b3
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 82811c731c158d970d7ec2c2350a0cba106f6a67
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818363"
+ms.locfileid: "107835483"
 ---
 # <a name="using-azure-migrate-with-private-endpoints"></a>Použití Azure Migrate s privátními koncovými body  
 
@@ -95,16 +95,33 @@ Tím se vytvoří projekt migrace, který do něj připojí soukromý koncový b
 
 #### <a name="download-the-appliance-installer-file"></a>Stažení instalačního souboru zařízení  
 
-> [!Note]
-> Pokud se vám při stahování souboru instalačního programu zařízení zobrazují problémy, vytvořte prosím případ podpory.
-
 Azure Migrate: zjišťování a posouzení používá odlehčené Azure Migrate zařízení. Zařízení provádí zjišťování serveru a odesílá metadata konfigurace a výkonu serveru Azure Migrate.
 
-Pokud chcete zařízení nastavit, Stáhněte si z portálu soubor ZIP obsahující instalační skript. Zkopírujte soubor zip na server, který bude hostitelem zařízení. 
+Pokud chcete zařízení nastavit, Stáhněte si z portálu soubor ZIP obsahující instalační skript. Zkopírujte soubor zip na server, který bude hostitelem zařízení. Po stažení souboru ZIP ověřte zabezpečení souboru a spusťte skript instalačního programu pro nasazení zařízení. 
+
+Tady jsou odkazy ke stažení pro každý scénář s hodnotami hash:
+
+Scenario | Odkaz ke stažení | Hodnota hash
+--- | --- | ---
+Hyper-V | [AzureMigrateInstaller-HyperV-Public-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160557) | 17EFA01E3A7683F1CE2A08E3A9197A27D8BD2CC03C3AB5C6E00E4261A822BDB3
+Fyzické | [AzureMigrateInstaller-Physical-Public-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160558) | 01028F92C2095452F2DDCB89986CDC1F177AAC58E150A5B219A69CF1B7DA3BE0
+VMware | [AzureMigrateInstaller-VMware-public-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160648) | 66D3217AEC1DE51D84EC608B22BDDA605EC9C4FBAB06FC69FEC985886627C224
+Škálování VMware na více instancí | [AzureMigrateInstaller-VMware-Public-Scaleout-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160811) | 42C1E8D5CF428E35E5B98E4E7465DD08439F0FD5C319340CE3E3ADC3DC1717A6
+
+#### <a name="verify-security"></a>Ověřit zabezpečení
+
+Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
+
+1. Otevřete okno příkazového řádku správce na serveru, do kterého jste stáhli soubor.
+2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro soubor zip.
+
+    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+    - Příklad použití pro veřejný cloud: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-public-PrivateLink.zip SHA256 ```
+
+3.  Porovnáním hodnot hash z výše uvedené tabulky ověřte nejnovější verzi zařízení.
 
 Ujistěte se, že server splňuje [požadavky na hardware](https://docs.microsoft.com/azure/migrate/migrate-appliance) pro vybraný scénář (VMware/Hyper-V/fyzický nebo jiný) a že se může připojit k požadovaným cloudovým cloudům Azure – [veřejným](./migrate-appliance.md#public-cloud-urls-for-private-link-connectivity) a [státním](./migrate-appliance.md#government-cloud-urls-for-private-link-connectivity) cloudům.
 
-Po stažení souboru ZIP spusťte skript instalačního programu, který nasadí zařízení.
 
 #### <a name="run-the-script"></a>Spuštění skriptu
 
@@ -113,7 +130,7 @@ Po stažení souboru ZIP spusťte skript instalačního programu, který nasadí
 3. Změňte adresář PowerShellu na složku obsahující obsah extrahovaný ze staženého souboru ZIP.
 4. Spusťte skript **AzureMigrateInstaller.ps1** následujícím způsobem:
 
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1```
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-public-PrivateLink> .\AzureMigrateInstaller.ps1```
    
 5. Po úspěšném spuštění skriptu spustí Správce konfigurace zařízení, abyste mohli zařízení nakonfigurovat. Pokud narazíte na nějaké problémy, zkontrolujte protokoly skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
 

@@ -4,16 +4,16 @@ description: Pokud chcete vytvářet vysoce dostupné a odolné aplikace v Azure
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 04/13/2021
+ms.date: 04/21/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: b59062395c0b05f36dd0f5bd00fbd1acb3ccb2a9
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 4c592c2d67df1e792200cc36449a6268807bbb56
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529810"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816255"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Služby Azure, které podporují zóny dostupnosti
 
@@ -31,7 +31,7 @@ Služby Azure, které podporují Zóny dostupnosti spadají do tří kategorií:
 
 - Hraniční **služby** – prostředek se dá nasadit na konkrétní, samostatně vybranou zónu dostupnosti, abyste dosáhli přísnějších požadavků na latenci nebo výkon.  Odolnost proti chybám je navržená replikací aplikací a dat do jedné nebo více zón v rámci oblasti.  Prostředky je možné připnout ke konkrétní zóně. Například virtuální počítače, spravované disky nebo standardní IP adresy je možné připnout ke konkrétní zóně, což umožňuje zvýšit odolnost díky tomu, že se jedna nebo víc instancí prostředků rozloží v různých zónách.
 
-- **Redundantní služby v zóně** – platforma Azure replikuje prostředky a data napříč zónami.  Microsoft spravuje doručování vysoké dostupnosti, protože Azure automaticky replikuje a distribuuje instance v rámci dané oblasti.  ZRS například replikuje data ve třech zónách tak, že selhání zóny nemá vliv na HA dat. 
+- **Služba – redundantní služby** – prostředky se replikují nebo distribuují mezi zónami automaticky. Například ZRS replikuje data ve třech zónách, aby selhání zóny neovlivnilo HA dat.  
 
 - **Neregionální služby** – služby jsou vždycky dostupné z geografických oblastí Azure a jsou odolné vůči výpadkům v rámci zóny a také výpadkům v rámci oblastí. 
 

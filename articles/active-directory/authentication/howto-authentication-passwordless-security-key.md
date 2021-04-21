@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a88bb7904143f69a0eea84ea291c65e3244c70a1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 436a972693aafd220d277d7411c0da12636e9cc6
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765858"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829795"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Povolit přihlašování k bezpečnostnímu klíči s nezabezpečenými hesly 
 
@@ -32,6 +32,7 @@ Tento dokument se zaměřuje na povolení ověřování pomocí hesla založené
 - Operace WebAuthN vyžaduje Windows 10 verze 1903 nebo vyšší * *
 
 Chcete-li použít klíče zabezpečení pro přihlášení k webovým aplikacím a službám, je nutné mít prohlížeč, který podporuje protokol WebAuthN. Mezi ně patří Microsoft Edge, Chrome, Firefox a Safari.
+
 
 ## <a name="prepare-devices"></a>Příprava zařízení
 

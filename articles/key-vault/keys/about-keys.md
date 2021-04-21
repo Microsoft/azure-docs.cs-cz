@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 3c4bb61217c7b972220a55a4837c2b3db980f2ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9565095a40052a940d7a7b31f0fd3a27e0e75c2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095991"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814991"
 ---
 # <a name="about-keys"></a>Informace o klíčích
 
@@ -24,7 +24,7 @@ Azure Key Vault poskytuje dva typy prostředků pro ukládání a správu krypto
 |Typ prostředku|Metody ochrany klíčů|Základní adresa URL koncového bodu datové roviny|
 |--|--|--|
 | **Trezory** | Chráněný softwarem<br/><br/>a<br/><br/>Chráněná HSM (s SKU Premium)</li></ul> | https://{trezor-Name}. trezor. Azure. NET |
-| * * Spravované HSM * * | Chráněná HSM | https://{HSM-Name}. managedhsm. Azure. NET |
+| **Spravované HSM** | Chráněná HSM | https://{HSM-Name}. managedhsm. Azure. NET |
 ||||
 
 - **Trezory** – trezory poskytují nízký náklady, snadnou nasazování, víceklientské využití pro více tenantů (kde je dostupné) a vysoce dostupné řešení pro správu klíčů, které je vhodné pro většinu běžných scénářů cloudových aplikací.

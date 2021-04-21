@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e595f7ff313ff85a12209e8c124b9aa376b20b6
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: d30ab051e58573daefd16f178feb4fc94f2ec83f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739732"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835465"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Kurz: zabezpečení vzdáleného vykreslování a úložiště modelu Azure
 
@@ -405,8 +405,10 @@ Pokud je v editoru Unity aktivní ověřování AAD, budete se muset ověřit p�
     Vzhledem k tomu, že komponenta **AADAuthentication** má kontroler zobrazení, automaticky se připojovat k zobrazení výzvy po modálním panelu autorizace relace.
 1. Postupujte podle pokynů uvedených na panelu napravo od **AppMenu**.
     Mělo by se zobrazit něco podobného jako v tomto ![ příkladu, který zobrazuje panel instrukcí, který se zobrazí napravo od AppMenu.](./media/device-flow-instructions.png)
-    Po zadání poskytnutého kódu na sekundární zařízení (nebo v prohlížeči na stejném zařízení) a přihlášení pomocí vašich přihlašovacích údajů se přístupový token vrátí do žádající aplikace, v tomto případě v editoru Unity.
-1. Po tomto okamžiku by všechno v aplikaci mělo normálně pokračovat. Pokud nebudete postupovat podle očekávaných fází, podívejte se na konzolu Unity s případnými chybami.
+    
+    Po zadání poskytnutého kódu na sekundárním zařízení (nebo v prohlížeči na stejném zařízení) a přihlášení pomocí přihlašovacích údajů se přístupový token vrátí do žádající aplikace, v tomto případě v editoru Unity.
+
+Po tomto okamžiku by všechno v aplikaci mělo normálně pokračovat. Pokud nebudete postupovat podle očekávaných fází, podívejte se na konzolu Unity s případnými chybami.
 
 ## <a name="build-to-device"></a>Sestavit do zařízení
 

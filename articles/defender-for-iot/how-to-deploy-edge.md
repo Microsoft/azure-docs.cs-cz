@@ -1,26 +1,26 @@
 ---
-title: Nasazení IoT Edge Defenderu – IoT-Micro-Agent
+title: Nasadit modul zabezpečení IoT Edge
 description: Přečtěte si, jak nasadit Defender pro agenta zabezpečení IoT pro IoT Edge.
 ms.topic: conceptual
-ms.date: 1/30/2020
-ms.openlocfilehash: 38e2aa38ab07a4768e95d91ed0ebc866d7edf39f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/21/2021
+ms.openlocfilehash: 71efb0bb12d1e20f918481a086fd411d3a237e33
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784216"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813591"
 ---
-# <a name="deploy-a-defender-iot-micro-agent-on-your-iot-edge-device"></a>Nasazení programu Defender-IoT-Micro-Agent na zařízení IoT Edge
+# <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Nasazení modulu zabezpečení na zařízení IoT Edge
 
 Modul **Defender for IoT** poskytuje komplexní řešení zabezpečení pro vaše IoT Edge zařízení.
-Defender-IoT-Micro agent shromažďuje, agreguje a analyzuje nezpracované bezpečnostní údaje z operačního systému a systému kontejnerů do užitečných doporučení zabezpečení a výstrah.
-Další informace najdete v tématu [Defender-IoT-Micro-Agent pro IoT Edge](security-edge-architecture.md).
+Modul zabezpečení shromažďuje, agreguje a analyzuje nezpracovaná data zabezpečení z operačního systému a systému kontejnerů do užitečných doporučení zabezpečení a výstrah.
+Další informace najdete v tématu [modul zabezpečení pro IoT Edge](security-edge-architecture.md).
 
-V tomto článku se dozvíte, jak na zařízení IoT Edge nasadit agenta v programu Defender-IoT-Micro.
+V tomto článku se dozvíte, jak nasadit modul zabezpečení na zařízení IoT Edge.
 
-## <a name="deploy-defender-iot-micro-agent"></a>Nasazení programu Defender – IoT-Micro-Agent
+## <a name="deploy-security-module"></a>Nasadit modul zabezpečení
 
-Pomocí následujících kroků nasaďte Defender pro IoT Defender – IoT-Micro-Agent pro IoT Edge.
+Pomocí následujících kroků nasaďte modul zabezpečení Defender for IoT pro IoT Edge.
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -159,7 +159,7 @@ Dokončete každý krok, abyste dokončili nasazení IoT Edge pro Defender pro I
 
 ## <a name="diagnostic-steps"></a>Kroky diagnostiky
 
-Pokud narazíte na problém, je nejlepší způsob, jak se dozvědět o stavu programu IoT Edge Defender – IoT-Micro-agent. Ke shromáždění informací použijte příkazy a nástroje uvedené v této části.
+Pokud narazíte na problém, je nejlepším způsobem, jak se dozvědět o stavu zařízení modulu zabezpečení IoT Edge, jsou protokoly kontejnerů. Ke shromáždění informací použijte příkazy a nástroje uvedené v této části.
 
 ### <a name="verify-the-required-containers-are-installed-and-functioning-as-expected"></a>Ověřte, že požadované kontejnery jsou nainstalované a fungují podle očekávání.
 

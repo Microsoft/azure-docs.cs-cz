@@ -1,7 +1,7 @@
 ---
-title: Získat metodu stavu dokumentu
+title: Zrušit metodu překladu
 titleSuffix: Azure Cognitive Services
-description: Metoda získat stav dokumentu vrátí stav pro určitý dokument.
+description: Metoda zrušení překladu zruší aktuálně zpracovávané operace nebo operace zařazené do fronty.
 services: cognitive-services
 author: jann-skotdal
 manager: nitinme
@@ -10,22 +10,23 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/25/2021
 ms.author: v-jansk
-ms.openlocfilehash: 36cd10a0b04be21e9f332832b4381662eeedd01d
+ms.openlocfilehash: 3de052f50676065a6656f77a0ea68cf8c9ab46a8
 ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833665"
+ms.locfileid: "107836146"
 ---
-# <a name="get-document-status"></a>Získat stav dokumentu
+# <a name="cancel-translation"></a>Zrušit překlad
 
-Metoda získat stav dokumentu vrátí stav pro určitý dokument. Metoda vrátí stav překladu pro určitý dokument na základě ID žádosti a ID dokumentu.
+Zruší aktuálně zpracovávané operace nebo operace zařazené do fronty. Operace nebude zrušena, pokud je již dokončena nebo se nezdařila nebo zrušena. Vrátí se chybný požadavek. Všechny dokumenty, které mají dokončený překlad, se zruší a budou se účtovat. Pokud je to možné, všechny dokumenty, které čekají na schválení, se zruší.
 
 ## <a name="request-url"></a>Adresa URL požadavku
 
-Odeslat `GET` požadavek na:
-```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}/documents/{documentId}
+Odeslat `DELETE` požadavek na:
+
+```DELETE HTTP
+https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}
 ```
 
 Přečtěte si, jak najít [vlastní název domény](../get-started-with-document-translation.md#find-your-custom-domain-name).
@@ -40,43 +41,49 @@ Přečtěte si, jak najít [vlastní název domény](../get-started-with-documen
 Parametry žádosti předané řetězci dotazu jsou:
 
 |Parametr dotazu|Povinné|Popis|
-|--- |--- |--- |
-|documentId|Ano|ID dokumentu|
-|id|Ano|ID dávky.|
+|-----|-----|-----|
+|id|Ano|ID operace.|
+
 ## <a name="request-headers"></a>Hlavičky požadavku
 
 Hlavičky požadavku jsou:
 
 |Hlavičky|Description|
-|--- |--- |
+|-----|-----|
 |Ocp-Apim-Subscription-Key|Požadovaná hlavička žádosti|
 
 ## <a name="response-status-codes"></a>Stavové kódy odpovědí
 
 Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
 
-|Stavový kód|Description|
-|--- |--- |
-|200|OK. Požadavek je úspěšný a služba ho přijímá. Vrátí se podrobnosti o operaci. HeadersRetry-After: integerETag: String|
+| Stavový kód| Description|
+|-----|-----|
+|200|OK. Žádost o zrušení byla odeslána.|
 |401|Přístupu. Ověřte přihlašovací údaje.|
-|404|Nenalezeno. Prostředek se nenašel.|
-|500|Došlo k vnitřní chybě serveru.|
+|404|Nenalezeno. Prostředek se nenašel. 
+|500|Došlo k vnitřní chybě serveru.
 |Další stavové kódy|<ul><li>Příliš mnoho žádostí</li><li>Server je dočasně nedostupný.</li></ul>|
 
-## <a name="get-document-status-response"></a>Získat odpověď na stav dokumentu
+## <a name="cancel-translation-response"></a>Zrušit odpověď na překlad
 
-### <a name="successful-get-document-status-response"></a>Odpověď na stav dokumentu se úspěšně zobrazila
+### <a name="successful-response"></a>Úspěšná odpověď
+
+Následující informace jsou vráceny v úspěšné odpovědi.
 
 |Název|Typ|Description|
 |--- |--- |--- |
-|program|řetězec|Umístění dokumentu nebo složky.|
+|id|řetězec|ID operace|
 |createdDateTimeUtc|řetězec|Datum a čas vytvoření operace|
 |lastActionDateTimeUtc|řetězec|Datum a čas, kdy se stav operace aktualizoval.|
 |status|Řetězec|Seznam možných stavů pro úlohu nebo dokument: <ul><li>Zrušeno</li><li>Ruší</li><li>Neúspěšný</li><li>NotStarted</li><li>Spuštěno</li><li>Úspěšný</li><li>ValidationFailed</li></ul>|
-|na|řetězec|Kód jazyka se dvěma písmeny do jazyka. Podívejte se na seznam jazyků.|
-|progress|číslo|Průběh překladu, je-li k dispozici|
-|id|řetězec|ID dokumentu|
-|characterCharged|integer|Znaky účtované rozhraním API|
+|shrnutí|StatusSummary|Souhrn obsahující níže uvedené podrobnosti.|
+|Summary. Total|integer|Počet celkových dokumentů|
+|Shrnutí. selhalo|integer|Počet dokumentů se nezdařil.|
+|Shrnutí. úspěch|integer|Počet dokumentů, které byly úspěšně přeloženy.|
+|Shrnutí. probíhá zpracování|integer|Počet dokumentů, které probíhají.|
+|Summary. notYetStarted|integer|Počet dokumentů, které ještě nebyly spuštěny při zpracování.|
+|Shrnutí. zrušeno|integer|Počet zrušených.|
+|Summary. totalCharacterCharged|integer|Celkový počet znaků účtovaných rozhraním API|
 
 ### <a name="error-response"></a>Chybová odezva
 
@@ -84,25 +91,34 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
 |--- |--- |--- |
 |kód|řetězec|Výčty obsahující chybové kódy vysoké úrovně. Možné hodnoty:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Neautorizováno</li></ul>|
 |zpráva|řetězec|Získá chybovou zprávu vysoké úrovně.|
+|cílové|řetězec|Získá zdroj chyby. Například by to byl "dokumenty" nebo "ID dokumentu" pro neplatný dokument.|
 |innerError|InnerErrorV2|Nový formát vnitřní chyby, který je v souladu s pokyny pro Cognitive Services rozhraní API. Obsahuje požadované vlastnosti ErrorCode, zpráva a volitelné vlastnosti target, Details (dvojice klíč-hodnota), vnitřní chyba (může být vnořený).|
 |innerError. Code|řetězec|Načte řetězec chyby kódu.|
-|innerError. Message|řetězec|Získá chybovou zprávu vysoké úrovně.|
+|vnořen. Skutečný. Message|řetězec|Získá chybovou zprávu vysoké úrovně.|
 
 ## <a name="examples"></a>Příklady
 
 ### <a name="example-successful-response"></a>Příklad úspěšné odpovědi
+
 Následující objekt JSON je příkladem úspěšné odpovědi.
+
+Stavový kód: 200
 
 ```JSON
 {
-  "path": "https://myblob.blob.core.windows.net/destinationContainer/fr/mydoc.txt",
+  "id": "727bf148-f327-47a0-9481-abae6362f11e",
   "createdDateTimeUtc": "2020-03-26T00:00:00Z",
   "lastActionDateTimeUtc": "2020-03-26T01:00:00Z",
-  "status": "Running",
-  "to": "fr",
-  "progress": 0.1,
-  "id": "273622bd-835c-4946-9798-fd8f19f6bbf2",
-  "characterCharged": 0
+  "status": "Succeeded",
+  "summary": {
+    "total": 10,
+    "failed": 1,
+    "success": 9,
+    "inProgress": 0,
+    "notYetStarted": 0,
+    "cancelled": 0,
+    "totalCharacterCharged": 0
+  }
 }
 ```
 
@@ -110,17 +126,17 @@ Následující objekt JSON je příkladem úspěšné odpovědi.
 
 Následující objekt JSON je příkladem chybové odpovědi. Schéma pro ostatní kódy chyb je stejné.
 
-Stavový kód: 401
+Stavový kód: 500
 
 ```JSON
 {
   "error": {
-    "code": "Unauthorized",
-    "message": "User is not authorized",
-    "target": "Document",
+    "code": "InternalServerError",
+    "message": "Internal Server Error",
+    "target": "Operation",
     "innerError": {
-      "code": "Unauthorized",
-      "message": "Operation is not authorized"
+      "code": "InternalServerError",
+      "message": "Unexpected internal server error has occurred"
     }
   }
 }

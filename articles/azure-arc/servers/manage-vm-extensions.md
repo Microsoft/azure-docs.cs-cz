@@ -3,12 +3,12 @@ title: Správa rozšíření virtuálních počítačů pomocí serverů s podpo
 description: Servery s podporou ARC Azure můžou spravovat nasazení rozšíření virtuálních počítačů, která poskytují konfiguraci po nasazení a úlohy automatizace s virtuálními počítači mimo Azure.
 ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 67f1b5b3db6ef446342e8381d54d487af1f3426a
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: e28cd7753fc85f2e40385c65392fea73502aa05b
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389787"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832837"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Správa rozšíření virtuálních počítačů pomocí serverů s podporou Azure Arc
 
@@ -30,7 +30,7 @@ Podpora rozšíření virtuálních počítačů serverů s podporou ARC Azure n
 
 - Shromážděte data protokolu pro analýzu s [protokoly v Azure monitor](../../azure-monitor/logs/data-platform-logs.md) tím, že povolíte rozšíření virtuálního počítače agenta Log Analytics. To je užitečné při komplexní analýze napříč daty z různých druhů zdrojů.
 
-- Díky [Azure monitor pro virtuální počítače](../../azure-monitor/vm/vminsights-overview.md)analyzuje výkon virtuálních počítačů s Windows a Linux a monitoruje jejich procesy a závislosti na dalších prostředcích a externích procesech. Toho dosáhnete tím, že povolíte rozšíření Log Analytics agenta a rozšíření virtuálního počítače agenta závislostí.
+- Díky [přehledům virtuálních počítačů](../../azure-monitor/vm/vminsights-overview.md)analyzuje výkon virtuálních počítačů s Windows a Linux a monitoruje jejich procesy a závislosti na dalších prostředcích a externích procesech. Toho dosáhnete tím, že povolíte rozšíření Log Analytics agenta a rozšíření virtuálního počítače agenta závislostí.
 
 - Stahovat a spouštět skripty na hybridních připojených počítačích pomocí rozšíření vlastních skriptů. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakékoli jiné úlohy konfigurace nebo správy.
 

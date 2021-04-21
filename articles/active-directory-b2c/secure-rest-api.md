@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 04/21/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 462d69a8bde0dec2689ac30620276b5bcd335410
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: a1c161c28a589e4250fded13cd3d94ccdda97b55
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717688"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829813"
 ---
 # <a name="secure-your-restful-services"></a>Zabezpečení služeb RESTful 
 
@@ -236,10 +236,10 @@ Přístupový token můžete získat jedním z několika způsobů: získáním 
 
 Následující příklad používá REST API technický profil k vytvoření požadavku na koncový bod tokenu Azure AD pomocí přihlašovacích údajů klienta předaných jako základní ověřování HTTP. Další informace najdete v tématu [tok přihlašovacích údajů klienta Microsoft Identity Platform a OAuth 2,0](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). 
 
-Pokud chcete získat přístupový token Azure AD, vytvořte v tenantovi Azure AD aplikaci:
+Předtím, než technický profil může komunikovat se službou Azure AD za účelem získání přístupového tokenu, je potřeba zaregistrovat aplikaci. Azure AD B2C spoléhá na platformu Azure AD. Aplikaci můžete vytvořit ve svém tenantovi Azure AD B2C nebo v jakémkoli tenantovi Azure AD, které spravujete. Registrace aplikace:
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
-1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho TENANTA Azure AD.
+1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje službu Azure AD nebo klienta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure Active Directory**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure Active Directory**.
 1. Vyberte **Registrace aplikací** a pak vyberte **Nová registrace**.
 1. Zadejte **název** aplikace. Například *Client_Credentials_Auth_app*.
@@ -250,7 +250,7 @@ Pokud chcete získat přístupový token Azure AD, vytvořte v tenantovi Azure A
 
 Pro tok přihlašovacích údajů klienta je potřeba vytvořit tajný klíč aplikace. Tajný kód klienta je také označován jako heslo aplikace. Pro získání přístupového tokenu bude vaše aplikace používat tajný klíč.
 
-1. Na stránce **Azure AD B2C-registrace aplikací** vyberte aplikaci, kterou jste vytvořili, například *Client_Credentials_Auth_app*.
+1. Na stránce **Azure AD-registrace aplikací** vyberte aplikaci, kterou jste vytvořili, například *Client_Credentials_Auth_app*.
 1. V nabídce vlevo v části **Spravovat** vyberte **certifikáty & tajných** kódů.
 1. Vyberte **Nový tajný klíč klienta**.
 1. Do pole **Popis** zadejte popis tajného klíče klienta. Například *clientsecret1*.
@@ -270,7 +270,7 @@ Je potřeba uložit ID klienta a tajný klíč klienta, které jste předtím na
 7. Zadejte **název** klíče zásad `SecureRESTClientId` . Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
 8. Do **tajného klíče** zadejte ID klienta, které jste si dříve nahráli.
 9. Pro **použití klíče** vyberte `Signature` .
-10. Klikněte na **Vytvořit**.
+10. Vyberte **Vytvořit**.
 11. Vytvořte další klíč zásad s následujícím nastavením:
     -   **Název**: `SecureRESTClientSecret` .
     -   **Tajný kód**: Zadejte svůj tajný klíč klienta, který jste nahráli dříve.
@@ -278,7 +278,7 @@ Je potřeba uložit ID klienta a tajný klíč klienta, které jste předtím na
 Pro ServiceUrl nahraďte název-tenanta názvem vašeho tenanta Azure AD. Všechny dostupné možnosti najdete v tématu [RESTful Technical Profile](restful-technical-profile.md) reference.
 
 ```xml
-<TechnicalProfile Id="SecureREST-AccessToken">
+<TechnicalProfile Id="REST-AcquireAccessToken">
   <DisplayName></DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
@@ -312,7 +312,7 @@ Pokud chcete ve vlastních zásadách podporovat ověřování nosných tokenů,
     ```xml
     <Item Key="AuthenticationType">Bearer</Item>
     ```
-1. Změňte nebo přidejte *UseClaimAsBearerToken* do *bearerToken*, a to následujícím způsobem. *BearerToken* je název deklarace identity, ze které se načte token nosiče (výstupní deklarace identity z `SecureREST-AccessToken` ).
+1. Změňte nebo přidejte *UseClaimAsBearerToken* do *bearerToken*, a to následujícím způsobem. *BearerToken* je název deklarace identity, ze které se načte token nosiče (výstupní deklarace identity z `REST-AcquireAccessToken` ).
 
     ```xml
     <Item Key="UseClaimAsBearerToken">bearerToken</Item>

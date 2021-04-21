@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 04/13/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9d2c42a664c8d8a591d95a312cdf1c0034c4d031
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c067dba3a8af87e354019154fad8304fe9edfbbc
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305459"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829651"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurace nastavení Multi-Factor Authentication služby Azure AD
 
@@ -347,7 +347,7 @@ Funkce zapamatovat Multi-Factor Authentication nastaví trvalý soubor cookie v 
 
 Možnost **příště nedotazování na X dní** se nezobrazí v neprohlížečových aplikacích bez ohledu na to, jestli aplikace podporuje moderní ověřování. Tyto aplikace používají _aktualizační tokeny_ , které každou hodinu poskytují nové přístupové tokeny. Při ověření obnovovacího tokenu Azure AD zkontroluje, jestli se poslední služba Multi-Factor Authentication stala během zadaného počtu dnů.
 
-Tato funkce snižuje počet ověřování ve webových aplikacích, které se obvykle zobrazují při každém dotazu. Tato funkce může zvýšit počet ověřování pro klienty moderního ověřování, kteří se obvykle dotazují každých 90 dní, pokud je nakonfigurovaná nižší doba trvání. Může také zvýšit počet ověřování v kombinaci se zásadami podmíněného přístupu.
+Tato funkce snižuje počet ověřování ve webových aplikacích, které se obvykle zobrazují při každém dotazu. Tato funkce může zvýšit počet ověřování pro klienty moderního ověřování, kteří se obvykle dotazují každých 180 dní, pokud je nakonfigurovaná nižší doba trvání. Může také zvýšit počet ověřování v kombinaci se zásadami podmíněného přístupu.
 
 > [!IMPORTANT]
 > Funkce **Zapamatovat Multi-Factor Authentication** není kompatibilní s funkcí **zůstat přihlášenou** AD FS, když uživatelé provedou vícefaktorové ověřování pro AD FS prostřednictvím Azure Multi-Factor Authentication Server nebo řešení Multi-Factor Authentication jiného výrobce.

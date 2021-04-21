@@ -3,12 +3,12 @@ title: Práce s rozhraními API Defenderu for IoT
 description: Použijte externí REST API pro přístup k datům zjištěným senzory a konzolou pro správu a provádění akcí s těmito daty.
 ms.date: 12/14/2020
 ms.topic: reference
-ms.openlocfilehash: e7833a20d4f708ecb5b80394fae2c56fc07c9489
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0e3659d8d5e6829651012dae02ca74c5ecacaf0c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752727"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829957"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender pro rozhraní API pro senzory IoT a konzolu pro správu
 
@@ -622,8 +622,8 @@ Pole objektů JSON, které reprezentují výstrahy.
 | **jádra** | Řetězec | No | Porušení protokolu, porušení zásad, malware, anomálie nebo provozní |
 | **sourceDevice** | Číselný | Yes | ID zařízení |
 | **destinationDevice** | Číselný | Yes | ID zařízení |
-| **sourceDeviceAddress** | Číselný | Yes | IP adresa, MAC, null |
-| **destinationDeviceAddress** | Číselný | Yes | IP adresa, MAC, null |
+| **sourceDeviceAddress** | Číselný | Yes | IP ADRESA, MAC |
+| **destinationDeviceAddress** | Číselný | Yes | IP ADRESA, MAC |
 | **remediationSteps** | Řetězec | Yes | Postup nápravy popsaný v tématu upozornění |
 | **additionalInformation** | Objekt další informace | Yes | - |
 
@@ -2056,12 +2056,12 @@ Pomocí tohoto rozhraní API můžete načíst všechny nebo filtrované výstra
 | **jádra** | Řetězec | No | Porušení protokolu, porušení zásad, malware, anomálie nebo provozní |
 | **sourceDevice** | Číselný | Yes | ID zařízení |
 | **destinationDevice** | Číselný | Yes | ID zařízení |
-| **sourceDeviceAddress** | Číselný | Yes | IP adresa, MAC, null |
-| **destinationDeviceAddress** | Číselný | Yes | IP adresa, MAC, null |
+| **sourceDeviceAddress** | Číselný | Yes | IP ADRESA, MAC |
+| **destinationDeviceAddress** | Číselný | Yes | IP ADRESA, MAC |
 | **remediationSteps** | Řetězec | Yes | Postup nápravy zobrazený v upozornění|
-| **senzor** | Řetězec | Yes | Název senzoru definovaného uživatelem v konzole|
-|**Název_zóny** | Řetězec | Yes | Název zóny přidružené ke senzoru v konzole|
-| **Názvem** | Řetězec | Yes | Název webu přidruženého ke senzoru v konzole |
+| **senzor** | Řetězec | Yes | Název senzoru definovaného uživatelem |
+|**Název_zóny** | Řetězec | Yes | Název zóny přidružené ke senzoru|
+| **Názvem** | Řetězec | Yes | Název webu přidruženého ke senzoru |
 | **additionalInformation** | Objekt další informace | Yes | - |
 
 Všimněte si, že/API/v2/je potřeba pro následující informace:

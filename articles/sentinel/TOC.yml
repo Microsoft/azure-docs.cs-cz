@@ -61,6 +61,8 @@
       href: extend-sentinel-across-workspaces-tenants.md
     - name: Normalizace data napříč tabulkami
       href: normalization.md
+    - name: Použití Azure Průzkumník dat k dlouhodobému uchovávání protokolů
+      href: store-logs-in-azure-data-explorer.md
     - name: Zabezpečení
       items:
         - name: Standardní hodnoty zabezpečení
