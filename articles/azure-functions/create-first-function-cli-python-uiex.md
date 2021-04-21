@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: da7f6fdaedd8105363cc62bf55bae2cb5f72f234
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 626cff867a336880689373c289087e2332a816ee
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031646"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787444"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce Pythonu v Azure z příkazového řádku
 
@@ -239,7 +239,7 @@ Než budete moct nasadit kód funkce do Azure, musíte vytvořit <abbr title="Lo
     az login
     ```
 
-    Příkaz [AZ Login](/cli/azure/reference-index#az-login) vás přihlásí k účtu Azure.
+    Příkaz [AZ Login](/cli/azure/reference-index#az_login) vás přihlásí k účtu Azure.
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
     ```azurepowershell
@@ -258,7 +258,7 @@ Než budete moct nasadit kód funkce do Azure, musíte vytvořit <abbr title="Lo
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
  
-    Pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) se vytvoří skupina prostředků. Obecně vytvoříte skupinu prostředků a prostředky v <abbr title="Zeměpisná reference na konkrétní datacentrum Azure, ve kterém jsou prostředky přiděleny.">oblast</abbr> poblíž vás pomocí dostupné oblasti vrácené z `az account list-locations` příkazu.
+    Pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create) se vytvoří skupina prostředků. Obecně vytvoříte skupinu prostředků a prostředky v <abbr title="Zeměpisná reference na konkrétní datacentrum Azure, ve kterém jsou prostředky přiděleny.">oblast</abbr> poblíž vás pomocí dostupné oblasti vrácené z `az account list-locations` příkazu.
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -280,7 +280,7 @@ Než budete moct nasadit kód funkce do Azure, musíte vytvořit <abbr title="Lo
     az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
     ```
 
-    Příkaz [AZ Storage Account Create](/cli/azure/storage/account#az-storage-account-create) vytvoří účet úložiště. 
+    Příkaz [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create) vytvoří účet úložiště. 
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 

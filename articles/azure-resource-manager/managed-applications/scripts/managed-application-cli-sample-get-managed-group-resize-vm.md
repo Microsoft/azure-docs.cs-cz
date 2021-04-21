@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 711b516d1ba1154e574b0d8bbd8d86a02d7df018
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 179b1b64656d3f97778e183d57797e4b3660fece
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87497813"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775434"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Získání prostředků ve spravované skupině prostředků a změna velikosti virtuálních počítačů pomocí Azure CLI
 
@@ -34,9 +34,9 @@ Tento skript k nasazení spravované aplikace používá následující příkaz
 
 | Příkaz | Poznámky |
 |---|---|
-| [az managedapp list](/cli/azure/managedapp#az-managedapp-list) | Vypíše spravované aplikace. Pro zúžení výsledků zadejte hodnoty dotazu. |
-| [az resource list](/cli/azure/resource#az-resource-list) | Vypíše prostředky. Pro zúžení výsledků zadejte skupinu prostředků a hodnoty dotazu. |
-| [az vm resize](/cli/azure/vm#az-vm-resize) | Aktualizuje velikost virtuálního počítače. |
+| [az managedapp list](/cli/azure/managedapp#az_managedapp_list) | Vypíše spravované aplikace. Pro zúžení výsledků zadejte hodnoty dotazu. |
+| [az resource list](/cli/azure/resource#az_resource_list) | Vypíše prostředky. Pro zúžení výsledků zadejte skupinu prostředků a hodnoty dotazu. |
+| [az vm resize](/cli/azure/vm#az_vm_resize) | Aktualizuje velikost virtuálního počítače. |
 
 
 ## <a name="next-steps"></a>Další kroky

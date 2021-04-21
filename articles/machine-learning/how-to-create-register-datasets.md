@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 18a39adfff572b81e5fbb9d7a42c71834b93ad13
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: f47d610a24de2cfc8f1131f61afc8c8173a34376
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575741"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786616"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytváření datových sad služby Azure Machine Learning
 
@@ -193,7 +193,7 @@ Pokud nepotřebujete dělat žádné tahání nebo průzkumy dat, přečtěte si
 
 Možnosti filtrování závisí na typu datové sady, kterou máte. 
 > [!IMPORTANT]
-> Filtrování datových sad s metodou Public Preview [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) je funkce [experimentální](/python/api/overview/azure/ml/#stable-vs-experimental) verze Preview a může se kdykoli změnit. 
+> Filtrování datových sad pomocí metody Preview [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) je funkce [experimentální](/python/api/overview/azure/ml/#stable-vs-experimental) verze Preview a může se kdykoli kdykoli změnit. 
 > 
 **Pro TabularDatasets** můžete sloupce zachovat nebo odebrat pomocí metod [keep_columns ()](/python/api/azureml-core/azureml.data.tabulardataset#keep-columns-columns--validate-false-) a [drop_columns ()](/python/api/azureml-core/azureml.data.tabulardataset#drop-columns-columns-) .
 
@@ -230,6 +230,59 @@ labeled_dataset = labeled_dataset.filter(labeled_dataset['label'] == 'dog')
 # Dataset that only contains records where the label and isCrowd columns are True and where the file size is larger than 100000
 labeled_dataset = labeled_dataset.filter((labeled_dataset['label']['isCrowd'] == True) & (labeled_dataset.file_metadata['Size'] > 100000))
 ```
+
+### <a name="partition-data-preview"></a>Data oddílu (Preview)
+
+Můžete rozdělit datovou sadu zahrnutím `partitions_format` parametru při vytváření TabularDataset nebo DataSet. 
+
+> [!IMPORTANT]
+> Vytváření oddílů datové sady je [experimentální](/python/api/overview/azure/ml/#stable-vs-experimental) možnost verze Preview a může se kdykoli kdykoli změnit. 
+
+Při vytváření oddílů datové sady jsou informace o oddílu každé cesty k souboru extrahovány do sloupců v závislosti na zadaném formátu. Formát by měl začít od pozice prvního klíče oddílu až po konec cesty k souboru. 
+
+Například s ohledem na cestu, `../Accounts/2019/01/01/data.jsonl` kde je oddíl podle názvu a času oddělení; `partition_format='/{Department}/{PartitionDate:yyyy/MM/dd}/data.jsonl'` vytvoří sloupec String "Department" s hodnotou "Accounts" a sloupec typu DateTime "PartitionDate" s hodnotou `2019-01-01` .
+
+Pokud již vaše data obsahují existující oddíly a chcete zachovat tento formát, zahrňte `partitioned_format` parametr do [`from_files()`](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#from-files-path--validate-true--partition-format-none-) metody pro vytvoření datové sady. 
+
+Chcete-li vytvořit TabularDataset, který zachovává stávající oddíly, zahrňte `partitioned_format` parametr do metody [from_parquet_files ()](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) nebo [from_delimited_files ()](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--) .
+
+Následující příklad:
+* Vytvoří datovou sadu souborů z dělených souborů.
+* Získá klíče oddílu.
+* Vytvoří novou indexovou datovou sadu pomocí
+ 
+```Python
+
+file_dataset = Dataset.File.from_files(data_paths, partition_format = '{userid}/*.wav')
+ds.register(name='speech_dataset')
+
+# access partition_keys
+indexes = file_dataset.partition_keys # ['userid']
+
+# get all partition key value pairs should return [{'userid': 'user1'}, {'userid': 'user2'}]
+partitions = file_dataset.get_partition_key_values()
+
+
+partitions = file_dataset.get_partition_key_values(['userid'])
+# return [{'userid': 'user1'}, {'userid': 'user2'}]
+
+# filter API, this will only download data from user1/ folder
+new_file_dataset = file_dataset.filter(ds['userid'] == 'user1').download()
+```
+
+Můžete také vytvořit novou strukturu oddílů pro TabularDatasets pomocí metody [partitions_by ()](/python/api/azureml-core/azureml.data.tabulardataset#partition-by-partition-keys--target--name-none--show-progress-true--partition-as-file-dataset-false-) .
+
+```Python
+
+ dataset = Dataset.get_by_name('test') # indexed by country, state, partition_date
+
+# call partition_by locally
+new_dataset = ds.partition_by(name="repartitioned_ds", partition_keys=['country'], target=DataPath(datastore, "repartition"))
+partition_keys = new_dataset.partition_keys # ['country']
+```
+
+>[!IMPORTANT]
+> Oddíly TabularDataset se dají použít i v kanálu Azure Machine Learning jako vstup do vaší ParallelRunStep v mnoha aplikacích modelů. Podívejte se na příklad v [dokumentaci ke akcelerátoru modelů](https://github.com/microsoft/solution-accelerator-many-models/blob/master/01_Data_Preparation.ipynb).
 
 ## <a name="explore-data"></a>Zkoumání dat
 

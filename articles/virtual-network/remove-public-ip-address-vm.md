@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: allensu
-ms.openlocfilehash: 0665cbd7aa21575337999fb5c59478955c764048
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9bfadd3e2453f0241dc2f7b8bfa5c964333bcf5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98934187"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776535"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>Zrušení přidružení veřejné IP adresy z virtuálního počítače Azure 
 
@@ -45,7 +45,7 @@ Pomocí [Azure Portal](#azure-portal), [rozhraní příkazového řádku](#azure
 Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)nebo použijte Azure Cloud Shell. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. V následujících příkazech rozhraní příkazového řádku vyberte tlačítko **vyzkoušet** . Výběrem možnosti **vyzkoušet** vyvoláte Cloud Shell, pomocí které se můžete přihlásit ke svému účtu Azure.
 
 1. Pokud používáte rozhraní příkazového řádku místně v bash, přihlaste se k Azure pomocí `az login` .
-2. Veřejná IP adresa je přidružená ke konfiguraci protokolu IP síťového rozhraní připojeného k virtuálnímu počítači. Pomocí příkazu [AZ Network nic-IP-config Update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) oddělit veřejnou IP adresu z konfigurace protokolu IP. Následující příklad dissociates veřejnou IP adresu s názvem *myVMPublicIP* z konfigurace protokolu IP s názvem *ipconfigmyVM* existujícího síťového rozhraní s názvem *myVMVMNic* , který je připojen k virtuálnímu počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.
+2. Veřejná IP adresa je přidružená ke konfiguraci protokolu IP síťového rozhraní připojeného k virtuálnímu počítači. Pomocí příkazu [AZ Network nic-IP-config Update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update) oddělit veřejnou IP adresu z konfigurace protokolu IP. Následující příklad dissociates veřejnou IP adresu s názvem *myVMPublicIP* z konfigurace protokolu IP s názvem *ipconfigmyVM* existujícího síťového rozhraní s názvem *myVMVMNic* , který je připojen k virtuálnímu počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.
   
    ```azurecli-interactive
     az network nic ip-config update \
@@ -55,7 +55,7 @@ Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-c
     --remove PublicIpAddress
    ```
 
-   Pokud neznáte název síťového rozhraní připojeného k vašemu VIRTUÁLNÍmu počítači, zobrazte ho pomocí příkazu [AZ VM nic list](/cli/azure/vm/nic#az-vm-nic-list) . Například následující příkaz vypíše názvy síťových rozhraní připojených k virtuálnímu počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
+   Pokud neznáte název síťového rozhraní připojeného k vašemu VIRTUÁLNÍmu počítači, zobrazte ho pomocí příkazu [AZ VM nic list](/cli/azure/vm/nic#az_vm_nic_list) . Například následující příkaz vypíše názvy síťových rozhraní připojených k virtuálnímu počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
 
      ```azurecli-interactive
      az vm nic list --vm-name myVM --resource-group myResourceGroup
@@ -69,13 +69,13 @@ Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-c
 
      V předchozím příkladu je *myVMVMNic* název síťového rozhraní.
 
-   - Pokud název konfigurace protokolu IP pro síťové rozhraní neznáte, načtěte ho pomocí příkazu [AZ Network nic IP-config list](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-list) . Například následující příkaz zobrazí seznam názvů konfigurací veřejné IP adresy pro síťové rozhraní s názvem *myVMVMNic* ve skupině prostředků s názvem *myResourceGroup*:
+   - Pokud název konfigurace protokolu IP pro síťové rozhraní neznáte, načtěte ho pomocí příkazu [AZ Network nic IP-config list](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_list) . Například následující příkaz zobrazí seznam názvů konfigurací veřejné IP adresy pro síťové rozhraní s názvem *myVMVMNic* ve skupině prostředků s názvem *myResourceGroup*:
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
 
-   - Pokud neznáte název konfigurace veřejné IP adresy pro síťové rozhraní, načtěte ho pomocí příkazu [AZ Network nic IP-config show](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-show) . Například následující příkaz zobrazí seznam názvů konfigurací veřejné IP adresy pro síťové rozhraní s názvem *myVMVMNic* ve skupině prostředků s názvem *myResourceGroup*:
+   - Pokud neznáte název konfigurace veřejné IP adresy pro síťové rozhraní, načtěte ho pomocí příkazu [AZ Network nic IP-config show](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_show) . Například následující příkaz zobrazí seznam názvů konfigurací veřejné IP adresy pro síťové rozhraní s názvem *myVMVMNic* ve skupině prostředků s názvem *myResourceGroup*:
 
      ```azurecli-interactive
      az network nic ip-config show --name ipconfigmyVM --nic-name myVMVMNic --resource-group myResourceGroup --query publicIPAddress.id

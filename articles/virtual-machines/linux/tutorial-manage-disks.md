@@ -9,12 +9,12 @@ ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: bbecaa32f85c42954cea6c8e533f0f658eb2dfee
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 56e804bc0d479f09ef2900c42361fbd24eed1d98
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802280"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765948"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Kurz – Správa disků v Azure pomocí Azure CLI
 
@@ -70,13 +70,13 @@ Datové disky můžete vytvořit a připojit při vytváření virtuálního po�
 
 ### <a name="attach-disk-at-vm-creation"></a>Připojení disku při vytváření virtuálního počítače
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create).
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create).
 
 ```azurecli-interactive
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create). Následující příklad vytvoří virtuální počítač s názvem *myVM*, přidá uživatelský účet s názvem *azureuser* a vygeneruje klíče SSH, pokud ještě neexistují. Pomocí argumentu `--datadisk-sizes-gb` je možné určit, že se má vytvořit další disk a připojit k virtuálnímu počítači. Pokud chcete vytvořit a připojit více než jeden disk, použijte seznam hodnot velikostí disků oddělený mezerami. V následujícím příkladu se virtuální počítač vytvoří se dvěma datovými disky, které budou mít oba velikost 128 GB. Vzhledem k velikosti disků 128 GB se oba tyto disky nakonfigurují jako typ P10, který poskytuje maximálně 500 IOPS na disk.
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem *myVM*, přidá uživatelský účet s názvem *azureuser* a vygeneruje klíče SSH, pokud ještě neexistují. Pomocí argumentu `--datadisk-sizes-gb` je možné určit, že se má vytvořit další disk a připojit k virtuálnímu počítači. Pokud chcete vytvořit a připojit více než jeden disk, použijte seznam hodnot velikostí disků oddělený mezerami. V následujícím příkladu se virtuální počítač vytvoří se dvěma datovými disky, které budou mít oba velikost 128 GB. Vzhledem k velikosti disků 128 GB se oba tyto disky nakonfigurují jako typ P10, který poskytuje maximálně 500 IOPS na disk.
 
 ```azurecli-interactive
 az vm create \
@@ -91,7 +91,7 @@ az vm create \
 
 ### <a name="attach-disk-to-existing-vm"></a>Připojení disku k existujícímu virtuálnímu počítači
 
-Pokud chcete vytvořit nový disk a připojit ho k existujícímu virtuálnímu počítači, použijte příkaz [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach). Následující příklad vytvoří disk Premium o velikosti 128 gigabajtů a připojí ho k virtuálnímu počítači vytvořenému v předchozím kroku.
+Pokud chcete vytvořit nový disk a připojit ho k existujícímu virtuálnímu počítači, použijte příkaz [az vm disk attach](/cli/azure/vm/disk#az_vm_disk_attach). Následující příklad vytvoří disk Premium o velikosti 128 gigabajtů a připojí ho k virtuálnímu počítači vytvořenému v předchozím kroku.
 
 ```azurecli-interactive
 az vm disk attach \
@@ -190,7 +190,7 @@ Když pořídíte snímek disku, Azure vytvoří kopii disku k danému okamžiku
 
 ### <a name="create-snapshot"></a>Vytvoření snímku
 
-Před vytvořením snímku potřebujete ID nebo název disku. K snímku ID disku použijte [AZ VM show](/cli/azure/vm#az-vm-show) . V tomto příkladu se ID disku uloží do proměnné, aby se mohlo použít v pozdějším kroku.
+Před vytvořením snímku potřebujete ID nebo název disku. K snímku ID disku použijte [AZ VM show](/cli/azure/vm#az_vm_show) . V tomto příkladu se ID disku uloží do proměnné, aby se mohlo použít v pozdějším kroku.
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -200,7 +200,7 @@ osdiskid=$(az vm show \
    -o tsv)
 ```
 
-Teď, když máte ID, vytvořte snímek disku pomocí [AZ Snapshot Create](/cli/azure/snapshot#az-snapshot-create) .
+Teď, když máte ID, vytvořte snímek disku pomocí [AZ Snapshot Create](/cli/azure/snapshot#az_snapshot_create) .
 
 ```azurecli-interactive
 az snapshot create \
@@ -211,7 +211,7 @@ az snapshot create \
 
 ### <a name="create-disk-from-snapshot"></a>Vytvoření disku ze snímku
 
-Tento snímek se pak dá převést na disk pomocí [AZ disk Create](/cli/azure/disk#az-disk-create), který se dá použít k opětovnému vytvoření virtuálního počítače.
+Tento snímek se pak dá převést na disk pomocí [AZ disk Create](/cli/azure/disk#az_disk_create), který se dá použít k opětovnému vytvoření virtuálního počítače.
 
 ```azurecli-interactive
 az disk create \
@@ -222,7 +222,7 @@ az disk create \
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>Obnovení virtuálního počítače ze snímku
 
-Pokud chcete předvést obnovení virtuálního počítače, odstraňte existující virtuální počítač pomocí [AZ VM Delete](/cli/azure/vm#az-vm-delete).
+Pokud chcete předvést obnovení virtuálního počítače, odstraňte existující virtuální počítač pomocí [AZ VM Delete](/cli/azure/vm#az_vm_delete).
 
 ```azurecli-interactive
 az vm delete \
@@ -244,7 +244,7 @@ az vm create \
 
 K virtuálnímu počítači bude potřeba znovu připojit všechny datové disky.
 
-Pomocí příkazu [AZ disk list](/cli/azure/disk#az-disk-list) vyhledejte název datového disku. V tomto příkladu se umístí název disku do proměnné s názvem `datadisk` , která se používá v dalším kroku.
+Pomocí příkazu [AZ disk list](/cli/azure/disk#az_disk_list) vyhledejte název datového disku. V tomto příkladu se umístí název disku do proměnné s názvem `datadisk` , která se používá v dalším kroku.
 
 ```azurecli-interactive
 datadisk=$(az disk list \
@@ -253,7 +253,7 @@ datadisk=$(az disk list \
    -o tsv)
 ```
 
-Disk můžete připojit pomocí příkazu [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach).
+Disk můžete připojit pomocí příkazu [az vm disk attach](/cli/azure/vm/disk#az_vm_disk_attach).
 
 ```azurecli-interactive
 az vm disk attach \

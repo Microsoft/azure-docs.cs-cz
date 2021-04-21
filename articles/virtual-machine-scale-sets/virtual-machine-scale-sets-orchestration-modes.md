@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 72e36a942eeaea00699f346db99a7ca3503495da
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: d089708ead67891164aee074394e923d2a84a977
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481646"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774444"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Verze Preview: režimy orchestrace pro Virtual Machine Scale Sets v Azure 
 
@@ -55,7 +55,7 @@ Jednou z hlavních výhod flexibilní orchestrace je to, že poskytuje funkce or
 Můžete zvolit počet domén selhání pro flexibilní sadu škálování orchestrace. Ve výchozím nastavení platí, že když přidáte virtuální počítač do flexibilní sady škálování, Azure rovnoměrně rozšíří instance napříč doménami selhání. I když se doporučuje, aby Azure přidělil doménu selhání pro pokročilé scénáře nebo scénáře řešení potíží, můžete toto výchozí chování přepsat a zadat doménu selhání, kde se instance bude nakládat.
 
 ```azurecli-interactive 
-az vm create â€“vmss "myVMSS"  â€“-platform_fault_domain 1
+az vm create –vmss "myVMSS"  –-platform_fault_domain 1
 ```
 
 ### <a name="instance-naming"></a>Pojmenovávání instancí 
@@ -65,11 +65,11 @@ Když vytvoříte virtuální počítač a přidáte ho do flexibilní sady šk�
 Upřednostňovanou metodou je použití Azure Resource graphu k dotazování na všechny virtuální počítače v sadě škálování virtuálního počítače. Azure Resource Graph nabízí efektivní možnosti dotazů pro prostředky Azure ve velkém měřítku napříč předplatnými. 
 
 ``` 
-|â€¯whereâ€¯typeâ€¯=~â€¯'Microsoft.Compute/virtualMachines' 
-|â€¯whereâ€¯properties.virtualMachineScaleSetâ€¯containsâ€¯"demo" 
-|â€¯extendâ€¯powerStateâ€¯=â€¯properties.extended.instanceView.powerState.code 
-|â€¯projectâ€¯name,â€¯resourceGroup,â€¯location,â€¯powerState 
-|â€¯orderâ€¯byâ€¯resourceGroupâ€¯desc,â€¯nameâ€¯desc 
+| where type =~ 'Microsoft.Compute/virtualMachines' 
+| where properties.virtualMachineScaleSet contains "demo" 
+| extend powerState = properties.extended.instanceView.powerState.code 
+| project name, resourceGroup, location, powerState 
+| order by resourceGroup desc, name desc 
 ```
 
 Dotazování na prostředky pomocí [Azure Resource graphu](../governance/resource-graph/overview.md) je pohodlný a účinný způsob dotazování prostředků Azure a minimalizace volání rozhraní API poskytovateli prostředků. Azure Resource Graph je nakonec konzistentní mezipaměť, kde se nové nebo aktualizované prostředky nemusí projevit po dobu až 60 sekund. Další možnosti:
@@ -111,18 +111,18 @@ Následující tabulka porovnává flexibilní režim orchestrace, jednotný re�
 |         Ukončení oznámení (VM Scale Sets) |            No  |            Yes  |            –  |
 |         Oprava instance (VM Scale Sets) |            No  |            Yes   |            –  |
 |         Urychlení sítě  |            Yes  |            Yes  |            Yes  |
-|         Spotâ € ̄Instances a pricingâ € ̄  |            Ano, můžete mít instance obou přímých i běžných priorit.  |            Ano, instance musí být buď všechny přímé, nebo všechny běžné.  |            Ne, jenom instance běžné priority  |
+|         Přímé instance a ceny   |            Ano, můžete mít instance obou přímých i běžných priorit.  |            Ano, instance musí být buď všechny přímé, nebo všechny běžné.  |            Ne, jenom instance běžné priority  |
 |         Kombinace operačních systémů  |            Ano, Linux a Windows se můžou nacházet ve stejné flexibilní sadě škálování. |            Ne, instance se shodují s operačním systémem.  |               Ano, Linux a Windows se můžou nacházet ve stejné flexibilní sadě škálování. |
 |         Monitorovat stav aplikace  |            Rozšíření stavu aplikace  |            Test stavu aplikace nebo služba Azure Load Balancer  |            Rozšíření stavu aplikace  |
-|         UltraSSDâ € ̄Disksâ € ̄  |            Yes  |            Ano, pouze pro oblast nasazení  |            No  |
-|         Infinibandâ € ̄  |            No  |            Ano, pouze jedna skupina umístění  |            Yes  |
-|         Writeâ € ̄Acceleratorâ € ̄  |            No  |            Yes  |            Yes  |
-|         ProximityÂ € ̄Placement Groupsâ € ̄  |            Yes  |            Yes  |            Yes  |
-|         Azure vyhrazené Hostsâ € ̄  |            No  |            Yes  |            Yes  |
-|         Základní SLBâ € ̄  |            No  |            Yes  |            Yes  |
+|         UltraSSD disky   |            Yes  |            Ano, pouze pro oblast nasazení  |            No  |
+|         InfiniBand   |            No  |            Ano, pouze jedna skupina umístění  |            Yes  |
+|         Akcelerátor zápisu   |            No  |            Yes  |            Yes  |
+|         Skupiny umístění blízkosti   |            Yes  |            Yes  |            Yes  |
+|         Vyhrazení hostitelé Azure   |            No  |            Yes  |            Yes  |
+|         Základní SLB   |            No  |            Yes  |            Yes  |
 |         SKU Azure Load Balancer Standard |            Yes  |            Yes  |            Yes  |
 |         Application Gateway  |            No  |            Yes  |            Yes  |
-|         Údržba Controlâ € ̄  |            No  |            Yes  |            Yes  |
+|         Řízení údržby   |            No  |            Yes  |            Yes  |
 |         Vypsat virtuální počítače v sadě  |            Yes  |            Yes  |            Ano, vypsat virtuální počítače v AvSet  |
 |         Výstrahy Azure  |            No  |            Yes  |            Yes  |
 |         Přehledy virtuálních počítačů  |            No  |            Yes  |            Yes  |
@@ -165,7 +165,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0 
-K povolení verze Preview pro vaše předplatné použijte [AZ Feature Registry](/cli/azure/feature#az-feature-register) . 
+K povolení verze Preview pro vaše předplatné použijte [AZ Feature Registry](/cli/azure/feature#az_feature_register) . 
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name VMOrchestratorMultiFD

@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 4d6fcf0e2f2f5a6fb89ef5c2c45dcd4541fa6d1c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c4cd9140d03bba1f9d95ed64c3628da4fe32ecd9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308400"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771474"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity prostředků Azure
 
@@ -34,7 +34,7 @@ Spravované identity pro prostředky Azure podporují následující služby Azu
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici.][check] |
 | Přiřazená uživatelem | Preview | Preview | Není k dispozici | Preview |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure API Management (v oblastech, kde je dostupná), podívejte se na následující seznam:
@@ -45,8 +45,8 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure API Management (v obl
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici][check] |
-| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check]  | Není k dispozici  | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici.][check] | Není k dispozici | ![K dispozici.][check] |
+| Přiřazená uživatelem | ![K dispozici.][check] | ![K dispozici.][check]  | Není k dispozici  | ![K dispozici.][check] |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro konfiguraci aplikace Azure (v oblastech, kde je dostupná), podívejte se na následující seznam:
 
@@ -56,8 +56,8 @@ Pokud chcete nakonfigurovat spravovanou identitu pro konfiguraci aplikace Azure 
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] |
-| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check]  | ![K dispozici][check]  | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici.][check] | ![K dispozici.][check] | ![K dispozici.][check] |
+| Přiřazená uživatelem | ![K dispozici.][check] | ![K dispozici.][check]  | ![K dispozici.][check]  | ![K dispozici.][check] |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure App Service (v oblastech, kde je dostupná), použijte následující seznam:
 
@@ -79,7 +79,7 @@ Kubernetes s povoleným ARC Azure aktuálně [podporuje identitu přiřazenou sy
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | Není k dispozici |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici][check] | Není k dispozici | Není k dispozici |
 | Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 
 Všechny servery s podporou ARC Azure mají identitu přiřazenou systémem. Identitu přiřazenou systémem nelze zakázat ani změnit na serveru s podporou ARC Azure. Další informace o tom, jak využívat spravované identity na serverech s podporou ARC Azure, najdete v následujících zdrojích informací:
@@ -101,8 +101,8 @@ Pokud jste vaše předplatné přesunuli na nového tenanta, přečtěte si nás
 
 |Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | Není k dispozici |
-| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | Není k dispozici |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici][check] | Není k dispozici | Není k dispozici |
+| Přiřazená uživatelem | ![K dispozici.][check] | ![K dispozici][check] | Není k dispozici | Není k dispozici |
 
 Pokud chcete použít spravovanou identitu s podrobnými [plány Azure](../../governance/blueprints/overview.md), přečtěte si následující seznam:
 
@@ -114,14 +114,14 @@ Pokud chcete použít spravovanou identitu s podrobnými [plány Azure](../../go
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici.][check] |
 | Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 
 ### <a name="azure-cognitive-services"></a>Azure Cognitive Services
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici.][check] |
 | Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 
 
@@ -162,14 +162,14 @@ Pokud chcete nakonfigurovat spravovanou identitu pro úlohy Azure Container Regi
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici.][check] |
 | Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici.][check] |
 | Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Data Factory v2 (v oblastech, kde je dostupná), použijte následující seznam:
@@ -177,7 +177,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Data Factory v2 (v ob
 - [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
 - [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
-- [Sada SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
+- [SADĚ](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
 ### <a name="azure-digital-twins"></a>Azure Digital Twins
 
@@ -208,8 +208,8 @@ Typ spravované identity |Vše je všeobecně dostupné<br>Globální oblasti Az
 
 Typ spravované identity |Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] |
-| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check]  | ![K dispozici][check]  | ![K dispozici][check]  |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici.][check] | ![K dispozici.][check] | ![K dispozici.][check] |
+| Přiřazená uživatelem | ![K dispozici.][check] | ![K dispozici.][check]  | ![K dispozici.][check]  | ![K dispozici.][check]  |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Functions (v oblastech, kde je dostupná), použijte následující seznam:
 
@@ -222,7 +222,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Functions (v oblastec
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici.][check] |
 | Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure IoT Hub (v oblastech, kde je dostupná), podívejte se na následující seznam:
@@ -233,14 +233,14 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure IoT Hub (v oblastech,
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | --- | --- | --- | --- |
-| Přiřazená systémem | K dispozici v oblasti, kde je k dispozici služba Azure import export | Preview | K dispozici | K dispozici |
+| Přiřazená systémem | K dispozici v oblasti, kde je k dispozici služba Azure import export | Preview | K dispozici. | K dispozici. |
 | Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 
 ### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | Není k dispozici |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici][check] | Není k dispozici | Není k dispozici |
 | Přiřazená uživatelem | Preview | Není k dispozici | Není k dispozici | Není k dispozici |
 
 
@@ -250,8 +250,8 @@ Další informace najdete v tématu [použití spravovaných identit ve službě
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici][check] |
-| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici.][check] |
+| Přiřazená uživatelem | ![K dispozici.][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici.][check] |
 
 Další informace najdete v tématu [Princip fungování identity v Azure monitor](../../azure-monitor/logs/customer-managed-keys.md)
 
@@ -259,8 +259,8 @@ Další informace najdete v tématu [Princip fungování identity v Azure monito
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici][check] |
-| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici.][check] |
+| Přiřazená uživatelem | ![K dispozici.][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici.][check] |
 
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Logic Apps (v oblastech, kde je dostupná), použijte následující seznam:
@@ -281,14 +281,14 @@ Další informace najdete v tématu [použití spravovaných identit pomocí Azu
 
 |Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici.][check] | ![K dispozici.][check] | ![K dispozici.][check] |
 | Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Policy (v oblastech, kde je dostupná), použijte následující seznam:
 
 - [Azure Portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
-- [Azure CLI](/cli/azure/policy/assignment#az-policy-assignment-create)
+- [Azure CLI](/cli/azure/policy/assignment#az_policy_assignment_create)
 - [Šablony Azure Resource Manageru](/azure/templates/microsoft.authorization/policyassignments)
 - [REST](/rest/api/policy/policyassignments/create)
 
@@ -299,8 +299,8 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Policy (v oblastech, 
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | Není k dispozici | Není k dispozici | není k dispozici |
-| Přiřazená uživatelem | ![K dispozici][check] | Není k dispozici | Není k dispozici |Není k dispozici |
+| Přiřazená systémem | ![K dispozici.][check] | Není k dispozici | Není k dispozici | není k dispozici |
+| Přiřazená uživatelem | ![K dispozici.][check] | Není k dispozici | Není k dispozici |Není k dispozici |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro aplikace Service Fabric Azure ve všech oblastech, přečtěte si následující seznam:
 
@@ -310,7 +310,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro aplikace Service Fabric Azu
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | Není k dispozici | Není k dispozici | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici.][check] | Není k dispozici | Není k dispozici | ![K dispozici.][check] |
 | Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 
 
@@ -327,8 +327,8 @@ Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti A
 
 |Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] |
-| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici.][check] | ![K dispozici.][check] | ![K dispozici.][check] |
+| Přiřazená uživatelem | ![K dispozici.][check] | ![K dispozici.][check] | ![K dispozici.][check] | ![K dispozici.][check] |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machine Scale Sets (v oblastech, kde je dostupná), podívejte se na následující seznam:
 
@@ -344,8 +344,8 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machine Scale
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] |
-| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici.][check] | ![K dispozici.][check] | ![K dispozici.][check] |
+| Přiřazená uživatelem | ![K dispozici.][check] | ![K dispozici.][check] | ![K dispozici.][check] | ![K dispozici.][check] |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machines (v oblastech, kde je dostupná), podívejte se na následující seznam:
 
@@ -402,25 +402,25 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 
 | Cloud | ID prostředku | Status |
 |--------|------------|:-:|
-| Globální Azure | `https://management.azure.com/`| ![K dispozici][check] |
-| Azure Government | `https://management.usgovcloudapi.net/` | ![K dispozici][check] |
-| Azure (Německo) | `https://management.microsoftazure.de/` | ![K dispozici][check] |
-| Azure (Čína) 21Vianet | `https://management.chinacloudapi.cn` | ![K dispozici][check] |
+| Globální Azure | `https://management.azure.com/`| ![K dispozici.][check] |
+| Azure Government | `https://management.usgovcloudapi.net/` | ![K dispozici.][check] |
+| Azure (Německo) | `https://management.microsoftazure.de/` | ![K dispozici.][check] |
+| Azure (Čína) 21Vianet | `https://management.chinacloudapi.cn` | ![K dispozici.][check] |
 
 ### <a name="azure-key-vault"></a>Azure Key Vault
 
 | Cloud | ID prostředku | Status |
 |--------|------------|:-:|
-| Globální Azure | `https://vault.azure.net`| ![K dispozici][check] |
-| Azure Government | `https://vault.usgovcloudapi.net` | ![K dispozici][check] |
-| Azure (Německo) |  `https://vault.microsoftazure.de` | ![K dispozici][check] |
-| Azure (Čína) 21Vianet | `https://vault.azure.cn` | ![K dispozici][check] |
+| Globální Azure | `https://vault.azure.net`| ![K dispozici.][check] |
+| Azure Government | `https://vault.usgovcloudapi.net` | ![K dispozici.][check] |
+| Azure (Německo) |  `https://vault.microsoftazure.de` | ![K dispozici.][check] |
+| Azure (Čína) 21Vianet | `https://vault.azure.cn` | ![K dispozici.][check] |
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
 
 | Cloud | ID prostředku | Status |
 |--------|------------|:-:|
-| Globální Azure | `https://datalake.azure.net/` | ![K dispozici][check] |
+| Globální Azure | `https://datalake.azure.net/` | ![K dispozici.][check] |
 | Azure Government |  | Není k dispozici |
 | Azure (Německo) |   | Není k dispozici |
 | Azure (Čína) 21Vianet |  | Není k dispozici |
@@ -429,25 +429,25 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 
 | Cloud | ID prostředku | Status |
 |--------|------------|:-:|
-| Globální Azure | `https://database.windows.net/` | ![K dispozici][check] |
-| Azure Government | `https://database.usgovcloudapi.net/` | ![K dispozici][check] |
-| Azure (Německo) | `https://database.cloudapi.de/` | ![K dispozici][check] |
-| Azure (Čína) 21Vianet | `https://database.chinacloudapi.cn/` | ![K dispozici][check] |
+| Globální Azure | `https://database.windows.net/` | ![K dispozici.][check] |
+| Azure Government | `https://database.usgovcloudapi.net/` | ![K dispozici.][check] |
+| Azure (Německo) | `https://database.cloudapi.de/` | ![K dispozici.][check] |
+| Azure (Čína) 21Vianet | `https://database.chinacloudapi.cn/` | ![K dispozici.][check] |
 
 ### <a name="azure-data-explorer"></a>Průzkumník dat Azure
 
 | Cloud | ID prostředku | Status |
 |--------|------------|:-:|
-| Globální Azure | `https://<account>.<region>.kusto.windows.net` | ![K dispozici][check] |
-| Azure Government | `https://<account>.<region>.kusto.usgovcloudapi.net` | ![K dispozici][check] |
-| Azure (Německo) | `https://<account>.<region>.kusto.cloudapi.de` | ![K dispozici][check] |
-| Azure (Čína) 21Vianet | `https://<account>.<region>.kusto.chinacloudapi.cn` | ![K dispozici][check] |
+| Globální Azure | `https://<account>.<region>.kusto.windows.net` | ![K dispozici.][check] |
+| Azure Government | `https://<account>.<region>.kusto.usgovcloudapi.net` | ![K dispozici.][check] |
+| Azure (Německo) | `https://<account>.<region>.kusto.cloudapi.de` | ![K dispozici.][check] |
+| Azure (Čína) 21Vianet | `https://<account>.<region>.kusto.chinacloudapi.cn` | ![K dispozici.][check] |
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
 | Cloud | ID prostředku | Status |
 |--------|------------|:-:|
-| Globální Azure | `https://eventhubs.azure.net` | ![K dispozici][check] |
+| Globální Azure | `https://eventhubs.azure.net` | ![K dispozici.][check] |
 | Azure Government |  | Není k dispozici |
 | Azure (Německo) |   | Není k dispozici |
 | Azure (Čína) 21Vianet |  | Není k dispozici |
@@ -456,8 +456,8 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 
 | Cloud | ID prostředku | Status |
 |--------|------------|:-:|
-| Globální Azure | `https://servicebus.azure.net`  | ![K dispozici][check] |
-| Azure Government |  | ![K dispozici][check] |
+| Globální Azure | `https://servicebus.azure.net`  | ![K dispozici.][check] |
+| Azure Government |  | ![K dispozici.][check] |
 | Azure (Německo) |   | Není k dispozici |
 | Azure (Čína) 21Vianet |  | Není k dispozici |
 
@@ -473,19 +473,19 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 
 | Cloud | ID prostředku | Status |
 |--------|------------|:-:|
-| Globální Azure | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | ![K dispozici][check] |
-| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | ![K dispozici][check] |
-| Azure (Německo) | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.cloudapi.de` <br /><br />`https://<account>.queue.core.cloudapi.de` | ![K dispozici][check] |
-| Azure (Čína) 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.chinacloudapi.cn` <br /><br />`https://<account>.queue.core.chinacloudapi.cn` | ![K dispozici][check] |
+| Globální Azure | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | ![K dispozici.][check] |
+| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | ![K dispozici.][check] |
+| Azure (Německo) | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.cloudapi.de` <br /><br />`https://<account>.queue.core.cloudapi.de` | ![K dispozici.][check] |
+| Azure (Čína) 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.chinacloudapi.cn` <br /><br />`https://<account>.queue.core.chinacloudapi.cn` | ![K dispozici.][check] |
 
 ### <a name="azure-analysis-services"></a>Azure Analysis Services
 
 | Cloud | ID prostředku | Status |
 |--------|------------|:-:|
-| Globální Azure | `https://*.asazure.windows.net` | ![K dispozici][check] |
-| Azure Government | `https://*.asazure.usgovcloudapi.net` | ![K dispozici][check] |
-| Azure (Německo) | `https://*.asazure.cloudapi.de` | ![K dispozici][check] |
-| Azure (Čína) 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![K dispozici][check] |
+| Globální Azure | `https://*.asazure.windows.net` | ![K dispozici.][check] |
+| Azure Government | `https://*.asazure.usgovcloudapi.net` | ![K dispozici.][check] |
+| Azure (Německo) | `https://*.asazure.cloudapi.de` | ![K dispozici.][check] |
+| Azure (Čína) 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![K dispozici.][check] |
 
 > [!Note]
 > Microsoft Power BI také [podporuje spravované identity](../../stream-analytics/powerbi-output-managed-identity.md).

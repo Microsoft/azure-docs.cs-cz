@@ -3,19 +3,18 @@ title: Co je Azure Key Vault? | Dokumentace Microsoftu
 description: Přečtěte si, jak Azure Key Vault chrání kryptografické klíče a tajné kódy, které využívají cloudové aplikace a služby.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 46c8845b4f01db09bf5f96eb1e67078b4e361f9f
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 6fafacda322a974d04a04bb5e79d1ee086eaf7a5
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728315"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753393"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault základní koncepty
 
@@ -81,7 +80,7 @@ Vývojáři také mohou spravovat klíče přímo, pomocí rozhraní API. Dalš�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se [zabezpečit svůj trezor](secure-your-key-vault.md).
+- Naučte se [zabezpečit svůj trezor](security-overview.md).
 - Přečtěte si, jak [zabezpečit spravované fondy HSM](../managed-hsm/access-control.md) .
 
 <!--Image references-->

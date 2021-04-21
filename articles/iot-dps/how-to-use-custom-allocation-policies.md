@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 14a405dbab0460f841a5e9104dbfeff101568f44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1432aee341509d8a5bdc9fffe89dd9bad33fc7de
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919170"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766474"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Postupy používání vlastních zásad přidělování
 
@@ -58,7 +58,7 @@ V této části použijete Azure Cloud Shell k vytvoření služby zřizování 
 > Příkazy použité v tomto článku vytvářejí službu zřizování a další prostředky v umístění Západní USA. Doporučujeme vytvořit prostředky v oblasti nejbližší vašemu, který podporuje službu Device Provisioning Service. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` nebo na stránce [Stav Azure](https://azure.microsoft.com/status/) vyhledáním výrazu Služba Device Provisioning. V příkazech lze umístění zadat buď v jednom nebo více slovovém formátu; například: westus, Západní USA, západ USA atd. Hodnota nerozlišuje velká a malá písmena. Pokud k zadání umístění použijete víceslovný formát, uveďte hodnotu v uvozovkách, například `-- location "West US"`.
 >
 
-1. Pomocí Azure Cloud Shell vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+1. Pomocí Azure Cloud Shell vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create) . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
     Následující příklad vytvoří skupinu prostředků s názvem *Contoso-US-Resource-Group* v oblasti *westus* . Doporučuje se používat tuto skupinu pro všechny prostředky vytvořené v tomto článku. Tento přístup usnadňuje vyčištění po dokončení.
 
@@ -66,7 +66,7 @@ V této části použijete Azure Cloud Shell k vytvoření služby zřizování 
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. Pomocí Azure Cloud Shell vytvořte službu Device Provisioning Service (DPS) pomocí příkazu [AZ IoT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) . Služba zřizování bude přidána do *skupiny contoso-US-Resource-Group*.
+2. Pomocí Azure Cloud Shell vytvořte službu Device Provisioning Service (DPS) pomocí příkazu [AZ IoT DPS Create](/cli/azure/iot/dps#az_iot_dps_create) . Služba zřizování bude přidána do *skupiny contoso-US-Resource-Group*.
 
     Následující příklad vytvoří službu zřizování s názvem *Contoso-Provisioning-Service-1098* v umístění *westus* . Je nutné použít jedinečný název služby. Vytvořte vlastní příponu v názvu služby místo **1098**.
 
@@ -76,7 +76,7 @@ V této části použijete Azure Cloud Shell k vytvoření služby zřizování 
 
     Dokončení tohoto příkazu může trvat několik minut.
 
-3. Pomocí Azure Cloud Shell můžete pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) vytvořit **informační centrum společnosti Contoso s oddělením** IoT Hub. Centrum IoT se přidá do *skupiny contoso-US-Resource-Group*.
+3. Pomocí Azure Cloud Shell můžete pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az_iot_hub_create) vytvořit **informační centrum společnosti Contoso s oddělením** IoT Hub. Centrum IoT se přidá do *skupiny contoso-US-Resource-Group*.
 
     Následující příklad vytvoří centrum IoT s názvem contoso- *-hub-1098* v umístění *westus* . Je nutné použít jedinečný název centra. Vytvořte vlastní příponu v názvu centra místo **1098**. 
 
@@ -89,7 +89,7 @@ V této části použijete Azure Cloud Shell k vytvoření služby zřizování 
 
     Dokončení tohoto příkazu může trvat několik minut.
 
-4. Pomocí Azure Cloud Shell vytvořte pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) vytvořit centrum IoT pro **tepelné pumpy společnosti Contoso** . Toto centrum IoT se taky přidá do *skupiny contoso-US-Resource-Group*.
+4. Pomocí Azure Cloud Shell vytvořte pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az_iot_hub_create) vytvořit centrum IoT pro **tepelné pumpy společnosti Contoso** . Toto centrum IoT se taky přidá do *skupiny contoso-US-Resource-Group*.
 
     Následující příklad vytvoří centrum IoT s názvem *Contoso-heatpumps-hub-1098* v umístění *westus* . Je nutné použít jedinečný název centra. Vytvořte vlastní příponu v názvu centra místo **1098**. 
 

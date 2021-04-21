@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: bafebcc54e4cbde87e8deb776eff227fc99035cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52a5b127312ef979791d17b27ca67b21a779e310
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98623851"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765721"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Kurz: Vytvoření aplikace ASP.NET Core a Azure SQL Database v Azure App Service
 
@@ -95,7 +95,7 @@ Jako databáze SQL se v tomto kurzu používá [Azure SQL Database](/azure/sql-d
 
 ### <a name="create-a-sql-database-logical-server"></a>Vytvoření logického serveru databáze SQL
 
-V Cloud Shell vytvořte pomocí příkazu SQL Database logický server [`az sql server create`](/cli/azure/sql/server#az-sql-server-create) .
+V Cloud Shell vytvořte pomocí příkazu SQL Database logický server [`az sql server create`](/cli/azure/sql/server#az_sql_server_create) .
 
 *\<server-name>* Zástupný text nahraďte *jedinečným* názvem SQL Database. Tento název se používá jako součást globálně jedinečného SQL Databaseho koncového bodu, `<server-name>.database.windows.net` . Platné znaky jsou `a` - `z` , `0` - `9` , `-` . Také nahraďte *\<db-username>* a zadejte *\<db-password>* uživatelské jméno a heslo podle vašeho výběru. 
 
@@ -126,7 +126,7 @@ Po vytvoření logického serveru databáze SQL se v rozhraní příkazového ř
 
 ### <a name="configure-a-server-firewall-rule"></a>Konfigurace pravidla brány firewall serveru
 
-Vytvoření [pravidla brány firewall na úrovni serveru služby Azure SQL Database](../azure-sql/database/firewall-configure.md) pomocí příkazu [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create). Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. 
+Vytvoření [pravidla brány firewall na úrovni serveru služby Azure SQL Database](../azure-sql/database/firewall-configure.md) pomocí příkazu [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create). Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -144,7 +144,7 @@ az sql server firewall-rule create --name AllowLocalClient --server <server-name
 
 ### <a name="create-a-database"></a>Vytvoření databáze
 
-Vytvořte na serveru databázi s [úrovní výkonu S0](../azure-sql/database/service-tiers-dtu.md) pomocí příkazu [`az sql db create`](/cli/azure/sql/db#az-sql-db-create).
+Vytvořte na serveru databázi s [úrovní výkonu S0](../azure-sql/database/service-tiers-dtu.md) pomocí příkazu [`az sql db create`](/cli/azure/sql/db#az_sql_db_create).
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server-name> --name coreDB --service-objective S0
@@ -152,7 +152,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>Vytvoření připojovacího řetězce
 
-Pomocí příkazu Získejte připojovací řetězec [`az sql db show-connection-string`](/cli/azure/sql/db#az-sql-db-show-connection-string) .
+Pomocí příkazu Získejte připojovací řetězec [`az sql db show-connection-string`](/cli/azure/sql/db#az_sql_db_show_connection_string) .
 
 ```azurecli-interactive
 az sql db show-connection-string --client ado.net --server <server-name> --name coreDB
@@ -263,7 +263,7 @@ V tomto kroku nasadíte aplikaci .NET Core připojenou k databázi SQL do služb
 
 ### <a name="configure-connection-string"></a>Konfigurace připojovacího řetězce
 
-K nastavení připojovacích řetězců pro aplikaci Azure použijte [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) příkaz v Cloud Shell. V následujícím příkazu nahraďte a *\<app-name>* *\<connection-string>* parametr připojovacím řetězcem, který jste vytvořili dříve.
+K nastavení připojovacích řetězců pro aplikaci Azure použijte [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) příkaz v Cloud Shell. V následujícím příkazu nahraďte a *\<app-name>* *\<connection-string>* parametr připojovacím řetězcem, který jste vytvořili dříve.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
@@ -464,7 +464,7 @@ Vzorový projekt již postupuje podle pokynů [ASP.NET Core protokolování v Az
 - Obsahuje odkaz na `Microsoft.Extensions.Logging.AzureAppServices` v *DotNetCoreSqlDb. csproj*.
 - Volání `loggerFactory.AddAzureWebAppDiagnostics()` v *programu program. cs*.
 
-Chcete-li nastavit [úroveň protokolu](/aspnet/core/fundamentals/logging#log-level) ASP.NET Core v App Service na `Information` z výchozí úrovně `Error` , použijte [`az webapp log config`](/cli/azure/webapp/log#az-webapp-log-config) příkaz v Cloud Shell.
+Chcete-li nastavit [úroveň protokolu](/aspnet/core/fundamentals/logging#log-level) ASP.NET Core v App Service na `Information` z výchozí úrovně `Error` , použijte [`az webapp log config`](/cli/azure/webapp/log#az_webapp_log_config) příkaz v Cloud Shell.
 
 ```azurecli-interactive
 az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging filesystem --level information
@@ -473,7 +473,7 @@ az webapp log config --name <app-name> --resource-group myResourceGroup --applic
 > [!NOTE]
 > Úroveň protokolu projektu je již `Information` v *appsettings.jsnastavena na*.
 
-Chcete-li spustit streamování protokolů, použijte [`az webapp log tail`](/cli/azure/webapp/log#az-webapp-log-tail) příkaz v Cloud Shell.
+Chcete-li spustit streamování protokolů, použijte [`az webapp log tail`](/cli/azure/webapp/log#az_webapp_log_tail) příkaz v Cloud Shell.
 
 ```azurecli-interactive
 az webapp log tail --name <app-name> --resource-group myResourceGroup

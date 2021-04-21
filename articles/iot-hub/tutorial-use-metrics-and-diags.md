@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: 62958dc374598e6f530af398f722001e5ed51acd
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 099b7f4e812e92503c7ed8e3eb733f2e49ccd8b9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739687"
+ms.locfileid: "107768066"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a protokolů ve službě IoT Hub
 
@@ -409,7 +409,7 @@ V části [shromáždit protokoly pro připojení a telemetrie zařízení](#col
 
 Pokud chcete odebrat všechny prostředky, které jste vytvořili v tomto kurzu, odstraňte skupinu prostředků. Tato akce odstraní všechny prostředky, které skupina obsahuje. V takovém případě odebrání centra IoT, pracovního prostoru Log Analytics a samotné skupiny prostředků. Pokud jste připnuli grafy metriky na řídicí panel, budete je muset odstranit ručně kliknutím na tři tečky v pravém horním rohu každého grafu a výběrem možnosti **Odebrat**. Po odstranění grafů nezapomeňte změny uložit.
 
-Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group#az-group-delete).
+Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group#az_group_delete).
 
 ```azurecli-interactive
 az group delete --name ContosoResources

@@ -4,12 +4,12 @@ description: Zabrání uživatelům aktualizovat nebo odstraňovat prostředky A
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1cc96a855c2bfe79bbf5876f0476c016d36ca9a4
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 71637318a60e66bf5000de2f564d740cc101cc60
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030062"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768718"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
@@ -278,7 +278,7 @@ Remove-AzResourceLock -LockId $lockId
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Nasazené prostředky pomocí Azure CLI zamknete pomocí příkazu [AZ Lock Create](/cli/azure/lock#az-lock-create) .
+Nasazené prostředky pomocí Azure CLI zamknete pomocí příkazu [AZ Lock Create](/cli/azure/lock#az_lock_create) .
 
 Chcete-li uzamknout prostředek, zadejte název prostředku, jeho typ prostředku a název skupiny prostředků.
 
@@ -292,7 +292,7 @@ Chcete-li uzamknout skupinu prostředků, zadejte název skupiny prostředků.
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group exampleresourcegroup
 ```
 
-Pokud chcete získat informace o zámku, použijte příkaz [AZ Lock list](/cli/azure/lock#az-lock-list). Pokud chcete získat všechny zámky ve vašem předplatném, použijte:
+Pokud chcete získat informace o zámku, použijte příkaz [AZ Lock list](/cli/azure/lock#az_lock_list). Pokud chcete získat všechny zámky ve vašem předplatném, použijte:
 
 ```azurecli
 az lock list
@@ -324,7 +324,7 @@ lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup  --o
 az lock delete --ids $lockid
 ```
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Nasazené prostředky můžete uzamknout pomocí [REST API pro zámky pro správu](/rest/api/resources/managementlocks). REST API umožňuje vytvářet a odstraňovat zámky a načítat informace o stávajících zámkích.
 

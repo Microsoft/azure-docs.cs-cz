@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: node
 ms.topic: quickstart
 ms.date: 03/25/2021
-ms.openlocfilehash: 047700be674dfab997b5c87f7446c19fdea9e0eb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d42ac814678136c2f6342cd1064e3c3ff394507
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605956"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777234"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-nodejs"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub (Node.js)
 
@@ -128,12 +128,12 @@ Pokud už nepotřebujete prostředky Azure vytvořené v rámci tohoto rychlého
 > Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. 
 
 Odstranění skupiny prostředků podle názvu:
-1. Spusťte příkaz [AZ Group Delete](/cli/azure/group#az-group-delete) . Tento příkaz odebere skupinu prostředků, IoT Hub a registraci zařízení, kterou jste vytvořili.
+1. Spusťte příkaz [AZ Group Delete](/cli/azure/group#az_group_delete) . Tento příkaz odebere skupinu prostředků, IoT Hub a registraci zařízení, kterou jste vytvořili.
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. Spuštěním příkazu [AZ Group list](/cli/azure/group#az-group-list) potvrďte odstranění skupiny prostředků.  
+1. Spuštěním příkazu [AZ Group list](/cli/azure/group#az_group_list) potvrďte odstranění skupiny prostředků.  
 
     ```azurecli
     az group list

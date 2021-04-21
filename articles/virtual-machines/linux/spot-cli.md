@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 90ad35757834c14abdffb017ff31b3296074ca24
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8e8bdaa7a812d8c7accfea59b58b75a58d50e21e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802433"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789604"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-the-azure-cli"></a>Nasazení Azure spot Virtual Machines pomocí Azure CLI
 
@@ -31,7 +31,7 @@ Postup vytvoření virtuálního počítače se službou Azure na místě pomoc�
 
 Pokud chcete vytvořit Virtual Machines Azure, musíte mít spuštěnou verzi Azure CLI 2.0.74 nebo novější. Verzi zjistíte spuštěním příkazu **az --version**. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). 
 
-Přihlaste se k Azure pomocí [AZ Login](/cli/azure/reference-index#az-login).
+Přihlaste se k Azure pomocí [AZ Login](/cli/azure/reference-index#az_login).
 
 ```azurecli-interactive
 az login

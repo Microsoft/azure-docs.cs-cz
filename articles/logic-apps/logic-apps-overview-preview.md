@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/10/2021
-ms.openlocfilehash: 7120b6ff17657232c0e614f49b75bb24263712b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: 27889e8309c0efaf1e2869fc39d099f38f64f7c4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102636331"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764814"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Přehled: Azure Logic Apps Preview
 
@@ -80,7 +80,7 @@ Pomocí typu aplikace logiky pro jeden tenant můžete vytvořit tyto typy praco
   Pro snazší ladění můžete povolit historii spuštění pro bezstavový pracovní postup, který má vliv na výkon a po dokončení zakažte historii spuštění. Další informace najdete v tématu [vytváření stavových a bezstavových pracovních postupů v Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless) nebo [vytváření pracovních a bezstavových pracovních postupů v Azure Portal](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless).
 
   > [!NOTE]
-  > Bezstavové pracovní postupy aktuálně podporují jenom *Akce* pro [spravované konektory](../connectors/apis-list.md#managed-api-connectors), které jsou nasazené v Azure, a ne triggery. Chcete-li spustit pracovní postup, vyberte buď [integrovaný požadavek, Event Hubs nebo aktivační událost Service Bus](../connectors/apis-list.md#built-ins). Tyto aktivační události se spouštějí nativně v modulu runtime Azure Logic Apps Preview. Další informace o omezených, nedostupných nebo nepodporovaných triggerech, akcích a konektorech najdete v tématu [Změna, omezené, nedostupné nebo nepodporované funkce](#limited-unavailable-unsupported).
+  > Bezstavové pracovní postupy aktuálně podporují jenom *Akce* pro [spravované konektory](../connectors/managed.md), které jsou nasazené v Azure, a ne triggery. Chcete-li spustit pracovní postup, vyberte buď [integrovaný požadavek, Event Hubs nebo aktivační událost Service Bus](../connectors/built-in.md). Tyto aktivační události se spouštějí nativně v modulu runtime Azure Logic Apps Preview. Další informace o omezených, nedostupných nebo nepodporovaných triggerech, akcích a konektorech najdete v tématu [Změna, omezené, nedostupné nebo nepodporované funkce](#limited-unavailable-unsupported).
 
 <a name="nested-behavior"></a>
 
@@ -194,13 +194,13 @@ V Azure Logic Apps ve verzi Preview se tyto možnosti změnily nebo jsou aktuál
   > [!NOTE]
   > Pro místní spuštění v Visual Studio Code triggery a akce založené na webhookech vyžadují další nastavení. Další informace najdete v tématu [Vytvoření stavových a bezstavových pracovních postupů v Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#webhook-setup).
 
-  * V případě *bezstavových pracovních postupů* se karta **Azure** nezobrazí při výběru triggeru, protože můžete vybrat jenom [ *Akce* spravovaného konektoru, ne triggery](../connectors/apis-list.md#managed-api-connectors). I když můžete povolit spravované konektory nasazené Azure pro bezstavové pracovní postupy, Návrhář nezobrazí žádné triggery spravovaného konektoru, které byste mohli přidat.
+  * V případě *bezstavových pracovních postupů* se karta **Azure** nezobrazí při výběru triggeru, protože můžete vybrat jenom [ *Akce* spravovaného konektoru, ne triggery](../connectors/managed.md). I když můžete povolit spravované konektory nasazené Azure pro bezstavové pracovní postupy, Návrhář nezobrazí žádné triggery spravovaného konektoru, které byste mohli přidat.
 
-  * U *stavových pracovních postupů* kromě triggerů a akcí, které jsou uvedené níže jako nedostupné, se [triggery spravovaného konektoru a akce](../connectors/apis-list.md#managed-api-connectors) jsou k dispozici pro použití.
+  * U *stavových pracovních postupů* kromě triggerů a akcí, které jsou uvedené níže jako nedostupné, se [triggery spravovaného konektoru a akce](../connectors/managed.md) jsou k dispozici pro použití.
 
   * Tyto triggery a akce se buď změnily, nebo jsou aktuálně omezené, nepodporované nebo nedostupné:
 
-    * [ *Aktivační události* místních bran dat](../connectors/apis-list.md#on-premises-connectors) nejsou k dispozici, ale *jsou* k dispozici akce brány.
+    * [ *Aktivační události* místních bran dat](../connectors/managed.md#on-premises-connectors) nejsou k dispozici, ale *jsou* k dispozici akce brány.
 
     * Vestavěná akce, [Azure Functions – vyberte funkci Azure Functions](logic-apps-azure-functions.md) je teď funkce Azure **Functions – volejte funkci Azure Functions**. Tato akce teď funguje jenom pro funkce, které jsou vytvořené ze šablony **triggeru http** .
 
@@ -221,7 +221,7 @@ V Azure Logic Apps ve verzi Preview se tyto možnosti změnily nebo jsou aktuál
 
       * **Vložené akce kódu** mají [aktualizované limity](logic-apps-overview-preview.md#inline-code-limits).
 
-    * Některé [integrované aktivační události B2B a akce pro účty pro integraci](../connectors/apis-list.md#integration-account-connectors) nejsou k dispozici, například akce kódování a dekódování **plochého souboru** .
+    * Některé [integrované aktivační události B2B a akce pro účty pro integraci](../connectors/managed.md#integration-account-connectors) nejsou k dispozici, například akce kódování a dekódování **plochého souboru** .
 
     * Integrovaná akce, [Azure Logic Apps – vybrat pracovní postup aplikace logiky](logic-apps-http-endpoint.md) je teď **operace pracovního postupu – vyvolat pracovní postup v této aplikaci pracovního postupu**.
 

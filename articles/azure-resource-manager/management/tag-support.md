@@ -2,13 +2,13 @@
 title: Podpora značek pro prostředky
 description: Zobrazuje, které typy prostředků Azure podporují značky. Poskytuje podrobnosti pro všechny služby Azure.
 ms.topic: conceptual
-ms.date: 04/08/2021
-ms.openlocfilehash: 713fb5401db965787c2d9458da9afc3183a4c6a9
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.date: 04/20/2021
+ms.openlocfilehash: b196cae267a8d7dc878f055f6b2d70a3ff6f9313
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227326"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773958"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](tag-resources.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů. Náklady můžete zobrazit podle značek v [cost management analýza nákladů](../../cost-management-billing/costs/group-filter.md) a [fakturace Azure a data o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -120,7 +120,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > - [Microsoft. HybridNetwork](#microsofthybridnetwork)
 > - [Microsoft. Hydra](#microsofthydra)
 > - [Microsoft. ImportExport](#microsoftimportexport)
-> - [Microsoft. Insights](#microsoftinsights)
+> - [Microsoft.Insights](#microsoftinsights)
 > - [Microsoft.Intune](#microsoftintune)
 > - [Microsoft. IoTCentral](#microsoftiotcentral)
 > - [Microsoft. IoTSecurity](#microsoftiotsecurity)
@@ -939,7 +939,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | virtualMachineScaleSets/virtualMachines/networkInterfaces | No | No |
 
 > [!NOTE]
-> Nelze přidat značku k virtuálnímu počítači, který byl označen jako zobecněný. Virtuální počítač označíte jako zobecněný pomocí [set-AzVm-](/powershell/module/Az.Compute/Set-AzVM) [Generalized nebo AZ VM generalize](/cli/azure/vm#az-vm-generalize).
+> Nelze přidat značku k virtuálnímu počítači, který byl označen jako zobecněný. Virtuální počítač označíte jako zobecněný pomocí [set-AzVm-](/powershell/module/Az.Compute/Set-AzVM) [Generalized nebo AZ VM generalize](/cli/azure/vm#az_vm_generalize).
 
 ## <a name="microsoftconnectedcache"></a>Microsoft. ConnectedCache
 
@@ -1193,8 +1193,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | DatabaseMigrations | No | No |
-> | services | No | No |
-> | služby a projekty | No | No |
+> | services | Yes | Yes |
+> | služby a projekty | Yes | Yes |
 > | SqlMigrationServices | Yes | Yes |
 
 ## <a name="microsoftdataprotection"></a>Microsoft. DataProtection
@@ -1614,7 +1614,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ----------- |
 > | úlohy | Yes | Yes |
 
-## <a name="microsoftinsights"></a>Microsoft. Insights
+## <a name="microsoftinsights"></a>Microsoft.Insights
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -2567,7 +2567,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | servery/restorableDroppedDatabases | No | No |
 > | servery/serviceobjectives | No | No |
 > | servery/tdeCertificates | No | No |
-> | virtualClusters | No | No |
+> | virtualClusters | Yes | Yes |
 
 <a id="sqlnote"></a>
 

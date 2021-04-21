@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 505859075ce58c5db6873544123710a11135651a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bcb37c624f53d961020de022569a621ca1dfaba1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198604"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788957"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service (DPS) pomocí šablony ARM
 
@@ -136,7 +136,7 @@ Přihlaste se ke svému účtu Azure a vyberte své předplatné.
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Pokud chcete toto nasazení ověřit, spusťte následující [příkaz, který vypíše prostředky](/cli/azure/resource#az-resource-list) a vyhledá novou službu zřizování a centrum IoT ve výstupu:
+1. Pokud chcete toto nasazení ověřit, spusťte následující [příkaz, který vypíše prostředky](/cli/azure/resource#az_resource_list) a vyhledá novou službu zřizování a centrum IoT ve výstupu:
 
     ```azurecli
      az resource list -g "${projectName}rg"
@@ -171,4 +171,3 @@ V tomto rychlém startu jste nasadili službu IoT Hub a instanci služby Device 
 
 > [!div class="nextstepaction"]
 > [Rychlý Start k zřízení zařízení](./quick-create-simulated-device-symm-key.md)
-

@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7437a5208f94b435576b8a38dc65a6e798303a72
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bce6bfb61eb59d1fa66c550a133ac8b6f8d7f2c5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179081"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768997"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Rychlý Start: Vytvoření aplikace App Service pomocí šablony ARM
 
@@ -133,7 +133,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 <ul>
 <li>Vytvořit výchozí <abbr title="Logický kontejner pro související prostředky Azure, které můžete spravovat jako jednotku.">skupina prostředků</abbr>.</li>
 <li>Vytvořit výchozí <abbr title="Plán, který určuje umístění, velikost a funkce webové serverové farmy, která je hostitelem vaší aplikace.">Plán služby App Service</abbr>.</li>
-<li><a href="/cli/azure/webapp#az-webapp-create">Vytvořit <abbr title="Reprezentace vaší webové aplikace, která obsahuje kód vaší aplikace, názvy hostitelů DNS, certifikáty a související prostředky. "> Aplikace App Service</abbr></a> se zadaným názvem.</li>
+<li><a href="/cli/azure/webapp#az_webapp_create">Vytvořit <abbr title="Reprezentace vaší webové aplikace, která obsahuje kód vaší aplikace, názvy hostitelů DNS, certifikáty a související prostředky. "> Aplikace App Service</abbr></a> se zadaným názvem.</li>
 </ul>
 </details>
 
@@ -191,4 +191,3 @@ Pokud už je nepotřebujete, [odstraňte skupinu prostředků](../azure-resource
 - [PHP s MySQL](tutorial-php-mysql-app.md)
 - [Připojení ke službě Azure SQL Database pomocí jazyka Java](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
 - [Mapování vlastní domény](app-service-web-tutorial-custom-domain-uiex.md)
-

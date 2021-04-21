@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.openlocfilehash: 31eeb31fb78a4e9552e64121e0e85b5fd8d9b773
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d629e65106145a4af364cd9dd489250c8910c25d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102210627"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778566"
 ---
 # <a name="check-resource-usage-against-limits"></a>Kontrola využití prostředků s ohledem na limity
 
@@ -73,7 +73,7 @@ Network Watchers                   1     1
 
 Pokud k dokončení úkolů v tomto článku používáte příkazy rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z počítače. Tento článek vyžaduje Azure CLI verze 2.0.32 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte spustit taky, `az login` abyste se přihlásili k Azure.
 
-Zobrazte si použití omezení pomocí [AZ Network list-Usage](/cli/azure/network#az-network-list-usages). Následující příklad získá využití prostředků v umístění Východní USA:
+Zobrazte si použití omezení pomocí [AZ Network list-Usage](/cli/azure/network#az_network_list_usages). Následující příklad získá využití prostředků v umístění Východní USA:
 
 ```azurecli-interactive
 az network list-usages \
