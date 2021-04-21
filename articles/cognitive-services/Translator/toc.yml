@@ -146,22 +146,24 @@
           href: document-translation/create-sas-tokens.md
     - name: Reference
       items:
-        - name: Získat formáty dokumentů
-          href: document-translation/reference/get-document-formats.md
-        - name: Získat formáty glosáře
-          href: document-translation/reference/get-glossary-formats.md
-        - name: Získat zdroj úložiště dokumentů
-          href: document-translation/reference/get-document-storage-source.md
-        - name: Odeslat žádost o dávku
-          href: document-translation/reference/submit-batch-request.md
-        - name: Získat stav dokumentů operací
-          href: document-translation/reference/get-operation-documents-status.md
+        - name: Získat podporované formáty dokumentů
+          href: document-translation/reference/get-supported-document-formats.md
+        - name: Získat podporované formáty glosáře
+          href: document-translation/reference/get-supported-glossary-formats.md
+        - name: Získání podporovaných zdrojů úložiště
+          href: document-translation/reference/get-supported-storage-sources.md
+        - name: Spustit překlad
+          href: document-translation/reference/start-translation.md
         - name: Získat stav dokumentů
+          href: document-translation/reference/get-documents-status.md
+        - name: Získat stav dokumentu
           href: document-translation/reference/get-document-status.md
-        - name: Získat operace
-          href: document-translation/reference/get-operations.md
-        - name: Zrušit operaci
-          href: document-translation/reference/cancel-operation.md
+        - name: Získat stav překladu
+          href: document-translation/reference/get-translations-status.md
+        - name: Získat stav překladu
+          href: document-translation/reference/get-translation-status.md
+        - name: Zrušit překlad
+          href: document-translation/reference/cancel-translation.md
 - name: Návody
   items:
     - name: Připravenost pro podnikové zpracování

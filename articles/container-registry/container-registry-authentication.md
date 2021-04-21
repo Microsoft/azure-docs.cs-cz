@@ -3,12 +3,12 @@ title: Možnosti ověřování v registru
 description: Možnosti ověřování privátního služby Azure Container Registry, včetně přihlašování pomocí Azure Active Directory identity, pomocí instančních objektů a použití volitelných přihlašovacích údajů správce.
 ms.topic: article
 ms.date: 03/15/2021
-ms.openlocfilehash: 7ff55d569e2659262ce9f323e4db2ea7ed671d20
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 097a322260e4c4f55d4e0d7e3e107abdd15a3b8a
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784276"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831631"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Ověřování pomocí služby Azure Container Registry
 
@@ -65,7 +65,7 @@ Výstup zobrazuje přístupový token, který se tady zkracuje:
   "loginServer": "myregistry.azurecr.io"
 }
 ``` 
-Pro ověřování v registru doporučujeme ukládat přihlašovací údaje tokenu v bezpečném umístění a postupovat podle doporučených postupů pro správu přihlašovacích údajů uživatele [Docker](https://docs.docker.com/engine/reference/commandline/login/). Například uložte hodnotu tokenu do proměnné prostředí:
+Pro ověřování v registru doporučujeme ukládat přihlašovací údaje tokenu v bezpečném umístění a podle doporučených postupů spravovat přihlašovací údaje [Docker](https://docs.docker.com/engine/reference/commandline/login/) . Například uložte hodnotu tokenu do proměnné prostředí:
 
 ```bash
 TOKEN=$(az acr login --name <acrName> --expose-token --output tsv --query accessToken)

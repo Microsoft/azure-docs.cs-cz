@@ -4,13 +4,13 @@ description: Přečtěte si, jaké typy přihlašovacích údajů nasazení jsou
 ms.topic: article
 ms.date: 02/11/2021
 ms.reviewer: byvinyal
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: b77a26f61e1168846156de990806bbed2f7c41e3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 008bfa58c117fc1b43227ba73902d921cec25795
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789532"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830570"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurovat přihlašovací údaje nasazení pro Azure App Service
 Aby bylo možné zabezpečit nasazení aplikace z místního počítače, [Azure App Service](./overview.md) podporuje dva typy přihlašovacích údajů pro nasazení [místního úložiště Git](deploy-local-git.md) a [FTP/S](deploy-ftp.md). Tyto přihlašovací údaje nejsou stejné jako přihlašovací údaje vašeho předplatného Azure.

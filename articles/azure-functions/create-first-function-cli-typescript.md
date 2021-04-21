@@ -3,13 +3,13 @@ title: Vytvoření funkce TypeScript z příkazového řádku – Azure Function
 description: Naučte se vytvořit funkci TypeScript z příkazového řádku a pak publikovat místní projekt na hostování bez serveru v Azure Functions.
 ms.date: 11/03/2020
 ms.topic: quickstart
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 488ef9fa3fd5b6c09ed435483dbf8f6fa3eb5bef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: c7b37700d93ea129ba46de81989f06dd2afe52ba
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97937191"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831811"
 ---
 # <a name="quickstart-create-a-typescript-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce TypeScript v Azure z příkazového řádku
 

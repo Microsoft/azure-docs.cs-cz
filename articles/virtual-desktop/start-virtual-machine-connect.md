@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: af95cf5d3e4112c717d653062f186797d48fb515
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 161a4d578509a7752f9438ce8f05d599bdb54e93
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389804"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832279"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>Spustit virtuální počítač na Connect (Preview)
 
@@ -19,7 +19,7 @@ ms.locfileid: "107389804"
 > Funkce spustit virtuální počítač v Connect je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Funkce spustit virtuální počítač (VM) na Connect (Preview) umožňuje ušetřit náklady tím, že vám umožní zrušit přidělení virtuálních počítačů, když je nebudete používat. Pokud budete chtít virtuální počítač znovu použít, stačí, když znovu zapnete své virtuální počítače.
+Funkce spustit virtuální počítač (VM) na Connect (Preview) umožňuje ušetřit náklady tím, že koncovým uživatelům umožní zapnout své virtuální počítače jenom v případě, že je potřebují. Virtuální počítače pak můžete vypnout, pokud je nepotřebujete.
 
 >[!NOTE]
 >Virtuální plocha Windows (Classic) tuto funkci nepodporuje.

@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a4c63cc686b08d179e20e6f3e3a7aa1efa69a5f8
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: eeba3cb579c6ef9158379403a3206f99a2cfb060
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447076"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830623"
 ---
 # <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>Data a umístění metadat pro virtuální počítače s Windows
 
@@ -25,7 +25,7 @@ Virtuální plocha Windows je aktuálně dostupná pro všechna geografická um�
 >Společnost Microsoft nekontroluje ani neomezuje oblasti, ve kterých vy nebo vaši uživatelé máte přístup k datům specifických pro uživatele a aplikace.
 
 >[!IMPORTANT]
->Virtuální desktop Windows ukládá globální informace o metadatech, jako jsou názvy tenantů, názvy fondů hostitelů, názvy skupin aplikací a hlavní názvy uživatelů v datacentru. Pokaždé, když zákazník vytvoří objekt služby, musí zadat umístění pro objekt služby. Umístění, které zadáte, určuje, kam se budou ukládat metadata pro objekt. Zákazník vybere oblast Azure a metadata budou uložená v související zeměpisné oblasti. Seznam všech oblastí Azure a souvisejících geografických oblastí najdete v části [geografických oblastí Azure](https://azure.microsoft.com/global-infrastructure/geographies/).
+>Virtuální plocha Windows ukládá globální informace o metadatech, jako jsou názvy pracovních prostorů, názvy fondů hostitelů, názvy skupin aplikací a hlavní názvy uživatelů v datacentru. Pokaždé, když zákazník vytvoří objekt služby, musí zadat umístění pro objekt služby. Umístění, které zadáte, určuje, kam se budou ukládat metadata pro objekt. Zákazník vybere oblast Azure a metadata budou uložená v související zeměpisné oblasti. Seznam všech oblastí Azure a souvisejících geografických oblastí najdete v části [geografických oblastí Azure](https://azure.microsoft.com/global-infrastructure/geographies/).
 
 V současné době podporujeme ukládání metadat v následujících geografických oblastech:
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/06/2020
 ms.author: atulmal
 ms.custom: github-actions-azure
-ms.openlocfilehash: 3a8e91f74fe3c862a814d7660e64748df9553f1d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3d0b6030cc63d0d7f4eac2c72c3545cf315b1fd3
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779754"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832381"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>Akce GitHubu pro nasazení do služby Kubernetes
 
@@ -140,7 +140,7 @@ Než budete moct nasadit do AKS, budete muset nastavit cílový obor názvů Kub
       container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
       secret-name: ${{ env.SECRET }}
       namespace: ${{ env.NAMESPACE }}
-      force: true
+      arguments: --force true
 ```
 
 

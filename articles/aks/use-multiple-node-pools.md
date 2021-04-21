@@ -4,12 +4,12 @@ description: Naučte se vytvářet a spravovat fondy více uzlů pro cluster ve 
 services: container-service
 ms.topic: article
 ms.date: 02/11/2021
-ms.openlocfilehash: bb10e2023187c74a9e8b9a2e4c72115841e89a84
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: b7b54ccf6662e172ebfe95a84189df5e8e6e990f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552593"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832243"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a správa více fondů uzlů pro cluster ve službě Azure Kubernetes Service (AKS)
 
@@ -408,9 +408,12 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Určení značky, značky nebo značky pro fond uzlů
 
-### <a name="setting-nodepool-taints"></a>Nastavení nodepool chuti
-
 Při vytváření fondu uzlů můžete do tohoto fondu uzlů přidat značky, popisky nebo značky. Když přidáte značku, popisek nebo značku, budou mít všechny uzly v tomto fondu uzlů také tuto značku, popisek nebo značku.
+
+> [!IMPORTANT]
+> Přidání značek, popisků nebo značek do uzlů by se mělo provádět pro celý fond uzlů pomocí `az aks nodepool` . Použití tagů, lablels nebo značek na jednotlivých uzlech ve fondu uzlů `kubectl` se nedoporučuje.  
+
+### <a name="setting-nodepool-taints"></a>Nastavení nodepool chuti
 
 Chcete-li vytvořit fond uzlů s příchuti, použijte příkaz [AZ AKS nodepool Add][az-aks-nodepool-add]. Zadejte název *taintnp* a použijte `--node-taints` parametr k určení *SKU = GPU: inschedule* pro chuti.
 

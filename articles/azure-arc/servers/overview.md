@@ -2,14 +2,14 @@
 title: Přehled serverů s podporou ARC Azure
 description: Naučte se používat servery s podporou ARC Azure ke správě serverů hostovaných mimo Azure, jako je prostředek Azure.
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
-ms.date: 02/18/2021
+ms.date: 04/21/2021
 ms.topic: overview
-ms.openlocfilehash: 863cab073018c5a592cba6e94451a9af038ebd52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 324f6cc29bd9e4eca1a20413032c213c2618a11e
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023329"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831991"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Co jsou servery s podporou služby Azure Arc?
 
@@ -25,9 +25,9 @@ Když počítač připojíte k serverům s podporou ARC Azure, umožní vám pro
 
 - Nahlaste se o změnách konfigurace nainstalovaného softwaru, služeb Microsoftu, registru a souborů Windows a démonech Linux na monitorovaných serverech pomocí Azure Automation [Change Tracking a](../../automation/change-tracking/overview.md) [monitorování Integrity souborů a Azure Security Center](../../security-center/security-center-file-integrity-monitoring.md)pro servery, které jsou pro [Azure Defender pro servery](../../security-center/defender-for-servers-introduction.md)povolené.
 
-- Monitorujte výkon hostovaného operačního systému a Prohlédněte si součásti aplikace a sledujte jejich procesy a závislosti s dalšími prostředky, které aplikace komunikuje pomocí [Azure monitor pro virtuální počítače](../../azure-monitor/vm/vminsights-overview.md).
+- Monitorujte výkon hostovaného operačního systému a Prohlédněte si komponenty aplikace a sledujte jejich procesy a závislosti s dalšími prostředky, které aplikace komunikuje s využitím služby [VM Insights](../../azure-monitor/vm/vminsights-overview.md).
 
-- Zjednodušte nasazení s ostatními službami Azure, jako je [Konfigurace stavu](../../automation/automation-dsc-overview.md) Azure Automation, a Azure monitor Log Analytics pracovní prostor s použitím podporovaných [rozšíření virtuálních počítačů Azure](manage-vm-extensions.md) pro počítač se systémem Windows nebo Linux, který není Azure. To zahrnuje provádění konfigurace po nasazení nebo instalace softwaru pomocí rozšíření vlastních skriptů.
+- Zjednodušte nasazení pomocí jiných služeb Azure, jako je [Konfigurace stavu](../../automation/automation-dsc-overview.md) Azure Automation, a Azure monitor Log Analytics pracovní prostor s použitím podporovaných [rozšíření virtuálních počítačů Azure](manage-vm-extensions.md) pro počítač se systémem Windows nebo Linux, který není Azure. To zahrnuje provádění konfigurace po nasazení nebo instalace softwaru pomocí rozšíření vlastních skriptů.
 
 - Použití [Update Management](../../automation/update-management/overview.md) v Azure Automation ke správě aktualizací operačního systému pro servery s Windows a Linux
 
