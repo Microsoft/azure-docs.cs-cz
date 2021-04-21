@@ -6,14 +6,14 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: c3e5ca30b7f0f00b6d647f5fdaeb772900996adc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f844b5b413cda2cb16f9701970857be65fe6d91d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720235"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777612"
 ---
-# <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Přístup k Azure Storage (Preview) jako sdílené síťové složky z kontejneru v App Service
+# <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Přístup ke službě Azure Storage (Preview) jako sdílené síťové složce z kontejneru ve službě App Service
 
 ::: zone pivot="container-windows"
 
@@ -80,7 +80,7 @@ Tato příručka ukazuje, jak připojit Azure Storage k App Service kontejneru L
 
 Po vytvoření [účtu Azure Storage, sdílené složky a adresáře](#prerequisites)teď můžete aplikaci nakonfigurovat pomocí Azure Storage.
 
-Pokud chcete připojit sdílenou složku souborů Azure do adresáře ve vaší aplikaci App Service, použijte [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) příkaz. Typ úložiště musí být AzureFiles.
+Pokud chcete připojit sdílenou složku souborů Azure do adresáře ve vaší aplikaci App Service, použijte [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) příkaz. Typ úložiště musí být AzureFiles.
 
 ```azurecli
 az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory of form c:<directory name> >
@@ -94,7 +94,7 @@ To byste měli udělat pro všechny ostatní adresáře, které chcete propojit 
 
 Po vytvoření [účtu Azure Storage, sdílené složky a adresáře](#prerequisites)teď můžete aplikaci nakonfigurovat pomocí Azure Storage.
 
-Pokud chcete účet úložiště připojit k adresáři v aplikaci App Service, použijte [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) příkaz. Typ úložiště může být Azureblobu nebo AzureFiles. V tomto příkladu se používá AzureFiles. Nastavení cesty připojení odpovídá složce v kontejneru, který chcete připojit k Azure Storage. Nastavením na '/' připojí celý kontejner k Azure Storage.
+Pokud chcete účet úložiště připojit k adresáři v aplikaci App Service, použijte [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) příkaz. Typ úložiště může být Azureblobu nebo AzureFiles. V tomto příkladu se používá AzureFiles. Nastavení cesty připojení odpovídá složce v kontejneru, který chcete připojit k Azure Storage. Nastavením na '/' připojí celý kontejner k Azure Storage.
 
 
 > [!CAUTION]

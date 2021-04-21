@@ -81,11 +81,13 @@ additionalContent:
       items:
         - title: Rozšíření místních sdílených složek do cloudu
           links:
-            - url: ./files/storage-sync-files-planning.md
+            - url: ./file-sync/file-sync-introduction.md
+              text: Informace o Synchronizace souborů Azure
+            - url: ./file-sync/file-sync-planning.md
               text: Synchronizace sdílených složek Azure se souborovým serverem Windows (Synchronizace souborů Azure)
-            - url: ./files/storage-sync-files-deployment-guide.md
+            - url: ./file-sync/file-sync-deployment-guide.md
               text: Nasazení Synchronizace souborů Azure
-            - url: ./files/index.yml
+            - url: ./file-sync/index.yml
               text: Zobrazit víc >
         - title: Online přenos dat (z místního prostředí do Azure)
           links:

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 10/07/2020
-ms.openlocfilehash: 6e76da71cb14122817090e64354babf5a618db8b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12ee46316a3eadceedf6f1772ae41938d1cc903e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94562657"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761918"
 ---
 # <a name="throughput-rus-operations-with-azure-cli-for-a-table-for-azure-cosmos-db-table-api"></a>Operace propustnosti (RU/s) pomocí rozhraní příkazového řádku Azure pro tabulku Azure Cosmos DB rozhraní API pro tabulky
 [!INCLUDE[appliesto-table-api](../../../includes/appliesto-table-api.md)]
@@ -41,12 +41,12 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Vytvoří účet služby Azure Cosmos DB. |
-| [AZ cosmosdb Table Create](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) | Vytvoří tabulku rozhraní API pro tabulky služby Azure Cosmos. |
-| [AZ cosmosdb Table propustnost Update](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-update) | Aktualizujte propustnost pro rozhraní API pro tabulky tabulku Azure Cosmos. |
-| [AZ cosmosdb Table propustnost migrace](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-migrate) | Migrace propustnosti pro službu Azure Cosmos rozhraní API pro tabulky Table |
-| [az group delete](/cli/azure/resource#az-resource-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) | Vytvoří účet služby Azure Cosmos DB. |
+| [AZ cosmosdb Table Create](/cli/azure/cosmosdb/table#az_cosmosdb_table_create) | Vytvoří tabulku rozhraní API pro tabulky služby Azure Cosmos. |
+| [AZ cosmosdb Table propustnost Update](/cli/azure/cosmosdb/table/throughput#az_cosmosdb_table_throughput_update) | Aktualizujte propustnost pro rozhraní API pro tabulky tabulku Azure Cosmos. |
+| [AZ cosmosdb Table propustnost migrace](/cli/azure/cosmosdb/table/throughput#az_cosmosdb_table_throughput_migrate) | Migrace propustnosti pro službu Azure Cosmos rozhraní API pro tabulky Table |
+| [az group delete](/cli/azure/resource#az_resource_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 

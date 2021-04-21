@@ -12,12 +12,12 @@ ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: místní, OCR, Docker, kontejner
-ms.openlocfilehash: 1b4af5dddf8878118bc5f222532cc9e2d0f9dd66
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: dead48d7d449d1d403359c518eb842b32a54c634
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308764"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779088"
 ---
 # <a name="install-read-ocr-docker-containers"></a>Nainstalovat čtení kontejnerů Docker pro rozpoznávání OCR
 
@@ -452,6 +452,6 @@ V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, insta
 
 * Přečtěte si téma [konfigurace kontejnerů](computer-vision-resource-container-config.md) pro nastavení konfigurace
 * Další informace o rozpoznávání tiskového a rukopisného textu najdete v [přehledu optického rozpoznávání znaků](overview-ocr.md) .
-* Podrobnosti o metodách podporovaných kontejnerem najdete v tématu [rozhraní API pro čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) .
+* Podrobnosti o metodách podporovaných kontejnerem najdete v tématu [rozhraní API pro čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) .
 * Přečtěte si [Nejčastější dotazy](FAQ.md) k řešení problémů souvisejících se počítačové zpracování obrazu funkcemi.
 * Použít více [Cognitive Servicesch kontejnerů](../cognitive-services-container-support.md)

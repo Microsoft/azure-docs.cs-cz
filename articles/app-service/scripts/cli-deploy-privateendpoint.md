@@ -9,12 +9,12 @@ ms.date: 07/06/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: acebc75b579b13ebb2cfad0e18057245781165ad
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3c8d0927c3fb74c52e54ceb5ff8ba5c0361c4f46
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175273"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787824"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-cli"></a>Vytvoření aplikace App Service a nasazení privátního koncového bodu pomocí Azure CLI
 
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location francecentral
 ## <a name="create-an-app-service-plan"></a>Vytvoří plán služby App Service.
 
 Je potřeba vytvořit plán App Service pro hostování vaší webové aplikace.
-Pomocí [AZ AppService Plan Create](/cli/azure/appservice/plan#az-appservice-plan-create)vytvořte plán App Service.
+Pomocí [AZ AppService Plan Create](/cli/azure/appservice/plan#az_appservice_plan_create)vytvořte plán App Service.
 Tento příklad vytvoří plán App Service s názvem *myAppServicePlan* v umístění *francecentral* s *P1V2* SKU a pouze jedním pracovním procesem: 
 
 ```azurecli-interactive
@@ -52,7 +52,7 @@ az appservice plan create \
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
 Teď, když máte plán App Service, můžete nasadit webovou aplikaci.
-Vytvořte webovou aplikaci pomocí [az AppService Plan Create] (/CLI/Azure/WebApp # AZ-WebApp-Create.
+Vytvořte webovou aplikaci pomocí [az AppService Plan Create] (/CLI/Azure/WebApp # az_webapp_create.
 Tento příklad vytvoří webovou aplikaci s názvem *mySiteName* v plánu s názvem *myAppServicePlan*
 
 ```azurecli-interactive
@@ -78,7 +78,7 @@ az network vnet create \
 
 ## <a name="configure-the-subnet"></a>Konfigurace podsítě 
 
-Chcete-li zakázat zásady sítě privátního koncového bodu, je nutné aktualizovat podsíť. Aktualizujte konfiguraci podsítě s názvem *mySubnet* pomocí [AZ Network VNet Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
+Chcete-li zakázat zásady sítě privátního koncového bodu, je nutné aktualizovat podsíť. Aktualizujte konfiguraci podsítě s názvem *mySubnet* pomocí [AZ Network VNet Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update):
 
 ```azurecli-interactive
 az network vnet subnet update \

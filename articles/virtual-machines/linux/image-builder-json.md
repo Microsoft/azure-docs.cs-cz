@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: aaaabe758b036335062907c8e5549ae876c63997
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77460d1675b806e04c72e5f46da0ec4274d99d41
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594729"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762528"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -222,7 +222,7 @@ Nastaví zdrojovou bitovou kopii existující verze image v galerii sdílených 
    } 
 ```
 
-`imageVersionId`Měla by být ResourceID verze image. K vypsání verzí imagí použijte příkaz [AZ SIG Image-Version list](/cli/azure/sig/image-version#az-sig-image-version-list) .
+`imageVersionId`Měla by být ResourceID verze image. K vypsání verzí imagí použijte příkaz [AZ SIG Image-Version list](/cli/azure/sig/image-version#az_sig_image_version_list) .
 
 
 ## <a name="properties-buildtimeoutinminutes"></a>Vlastnosti: buildTimeoutInMinutes

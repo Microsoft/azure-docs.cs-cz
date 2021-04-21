@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: efc3bfef7c182ea005ac17a59793ac8f6484a424
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 37d50c030a2b426cb3e9af57afb899b7fab68388
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042007"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778465"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Zvýšení úrovně přístupu pro správu všech předplatných Azure a skupin pro správu
 
@@ -163,7 +163,7 @@ Pomocí následujících základních kroků můžete zvýšit přístup pro glo
 
 ### <a name="list-role-assignment-at-root-scope-"></a>Vypsat přiřazení role v kořenovém oboru (/)
 
-Chcete-li zobrazit seznam přiřazení role správce přístupu uživatele pro uživatele v kořenovém oboru ( `/` ), použijte příkaz [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list) .
+Chcete-li zobrazit seznam přiřazení role správce přístupu uživatele pro uživatele v kořenovém oboru ( `/` ), použijte příkaz [AZ role Assignment list](/cli/azure/role/assignment#az_role_assignment_list) .
 
 ```azurecli
 az role assignment list --role "User Access Administrator" --scope "/"
@@ -193,13 +193,13 @@ Chcete-li odebrat přiřazení role správce přístupu uživatele pro sebe nebo
 
 1. Přihlaste se jako uživatel, který může odebrat zvýšený přístup. Může to být stejný uživatel, který se použil ke zvýšení přístupu nebo jiného globálního správce se zvýšeným přístupem v kořenovém oboru.
 
-1. Pomocí příkazu [AZ role Assignment Delete](/cli/azure/role/assignment#az-role-assignment-delete) odeberte přiřazení role správce přístupu uživatele.
+1. Pomocí příkazu [AZ role Assignment Delete](/cli/azure/role/assignment#az_role_assignment_delete) odeberte přiřazení role správce přístupu uživatele.
 
     ```azurecli
     az role assignment delete --assignee username@example.com --role "User Access Administrator" --scope "/"
     ```
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Zvýšení přístupu pro globálního správce
 

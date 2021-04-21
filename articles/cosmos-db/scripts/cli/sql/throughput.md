@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/07/2020
-ms.openlocfilehash: 8310de5ce8fd3f90e422555a5111569fadcca982
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2df31e5903785b6e25ea79a107a53084849c66fe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566382"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789082"
 ---
 # <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-container-for-azure-cosmos-db-core-sql-api"></a>Operace propustnosti (RU/s) pomocí Azure CLI pro databázi nebo kontejner pro rozhraní API pro Azure Cosmos DB Core (SQL)
 [!INCLUDE[appliesto-sql-api](../../../includes/appliesto-sql-api.md)]
@@ -41,15 +41,15 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Vytvoří účet služby Azure Cosmos DB. |
-| [AZ cosmosdb SQL Database Create](/cli/azure/cosmosdb/sql/database#az-cosmosdb-sql-database-create) | Vytvoří databázi Azure Cosmos Core (SQL). |
-| [AZ cosmosdb SQL Container Create](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-create) | Vytvoří kontejner Azure Cosmos Core (SQL). |
-| [AZ cosmosdb SQL Database propustnost Update](/cli/azure/cosmosdb/sql/database/throughput#az-cosmosdb-sql-database-throughput-update) | Aktualizujte propustnost databáze Azure Cosmos Core (SQL). |
-| [AZ cosmosdb SQL Container propustnost Update](/cli/azure/cosmosdb/sql/container/throughput#az-cosmosdb-sql-container-throughput-update) | Aktualizujte propustnost kontejneru Azure Cosmos Core (SQL). |
-| [AZ cosmosdb SQL Database propustnost migrace](/cli/azure/cosmosdb/sql/database/throughput#az-cosmosdb-sql-database-throughput-migrate) | Migruje propustnost databáze Azure Cosmos Core (SQL). |
-| [AZ cosmosdb SQL Container propustnost migrace](/cli/azure/cosmosdb/sql/container/throughput#az-cosmosdb-sql-container-throughput-migrate) | Migrace propustnosti pro kontejner Azure Cosmos Core (SQL) |
-| [az group delete](/cli/azure/resource#az-resource-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) | Vytvoří účet služby Azure Cosmos DB. |
+| [AZ cosmosdb SQL Database Create](/cli/azure/cosmosdb/sql/database#az_cosmosdb_sql_database_create) | Vytvoří databázi Azure Cosmos Core (SQL). |
+| [AZ cosmosdb SQL Container Create](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_create) | Vytvoří kontejner Azure Cosmos Core (SQL). |
+| [AZ cosmosdb SQL Database propustnost Update](/cli/azure/cosmosdb/sql/database/throughput#az_cosmosdb_sql_database_throughput_update) | Aktualizujte propustnost databáze Azure Cosmos Core (SQL). |
+| [AZ cosmosdb SQL Container propustnost Update](/cli/azure/cosmosdb/sql/container/throughput#az_cosmosdb_sql_container_throughput_update) | Aktualizujte propustnost kontejneru Azure Cosmos Core (SQL). |
+| [AZ cosmosdb SQL Database propustnost migrace](/cli/azure/cosmosdb/sql/database/throughput#az_cosmosdb_sql_database_throughput_migrate) | Migruje propustnost databáze Azure Cosmos Core (SQL). |
+| [AZ cosmosdb SQL Container propustnost migrace](/cli/azure/cosmosdb/sql/container/throughput#az_cosmosdb_sql_container_throughput_migrate) | Migrace propustnosti pro kontejner Azure Cosmos Core (SQL) |
+| [az group delete](/cli/azure/resource#az_resource_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 

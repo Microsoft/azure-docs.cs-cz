@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.author: jgao
-ms.openlocfilehash: d35deb978b3b60b73ac393b241471cb528817d35
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c39b332e9ee62a8502d5e2fdf155819194a30e34
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536957"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762186"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Použití skriptů pro nasazení v šablonách ARM
 
@@ -397,10 +397,10 @@ Timeout             : PT1H
 
 Pomocí Azure CLI můžete spravovat skripty pro nasazení v rámci předplatného nebo oboru skupiny prostředků:
 
-- [AZ Deployment-Scripts Delete](/cli/azure/deployment-scripts#az-deployment-scripts-delete): odstranění skriptu nasazení.
-- [AZ Deployment-Scripting list](/cli/azure/deployment-scripts#az-deployment-scripts-list): vypíše všechny skripty nasazení.
-- [AZ Deployment-Scripts show](/cli/azure/deployment-scripts#az-deployment-scripts-show): načtení skriptu nasazení.
-- [AZ Deployment-skripty show-log](/cli/azure/deployment-scripts#az-deployment-scripts-show-log): zobrazí protokoly skriptu nasazení.
+- [AZ Deployment-Scripts Delete](/cli/azure/deployment-scripts#az_deployment_scripts_delete): odstranění skriptu nasazení.
+- [AZ Deployment-Scripting list](/cli/azure/deployment-scripts#az_deployment_scripts_list): vypíše všechny skripty nasazení.
+- [AZ Deployment-Scripts show](/cli/azure/deployment-scripts#az_deployment_scripts_show): načtení skriptu nasazení.
+- [AZ Deployment-skripty show-log](/cli/azure/deployment-scripts#az_deployment_scripts_show_log): zobrazí protokoly skriptu nasazení.
 
 Výstup příkazu list je podobný následujícímu:
 
@@ -586,7 +586,7 @@ Po úspěšném otestování skriptu ho můžete použít jako skript nasazení 
 
 ## <a name="deployment-script-error-codes"></a>Kódy chyb skriptu nasazení
 
-| Kód chyby | Popis |
+| Kód chyby | Description |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Definice prostředku skriptu nasazení v šabloně obsahuje neplatné názvy vlastností. |
 | DeploymentScriptResourceConflict | Nelze odstranit prostředek skriptu nasazení, který je v neterminálu, a provádění nepřekročilo 1 hodinu. Nebo nemůžete znovu spustit stejný skript nasazení se stejným identifikátorem prostředku (stejné předplatné, název skupiny prostředků a názvem prostředku), ale zároveň s jiným obsahem textu skriptu. |

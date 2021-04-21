@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: c7a46f98f74648ccae9f9f9f94c218d42056decb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3504f1221c501b997b04d9c81c721aba2903fba6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664644"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777054"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Seznam a aktualizace konfigurací Azure Database for MariaDB serveru pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku vypíše všechny dostupné parametry konfigurace, jakož i jejich přípustné hodnoty pro Azure Database for MariaDB Server a nastaví *innodb_lock_wait_timeout* na jinou hodnotu než výchozí.
@@ -35,14 +35,14 @@ Po spuštění skriptu pomocí následujícího příkazu odeberte skupinu prost
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 Tento skript používá příkazy uvedené v následující tabulce:
 
-| **Příkaz** | **Poznámky** |
+| **Systému** | **Poznámky** |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [AZ MariaDB Server Create](/cli/azure/mariadb/server#az-mariadb-server-create) | Vytvoří server MariaDB, který je hostitelem databází. |
-| [AZ MariaDB Server Configuration list](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) | Vypíše konfiguraci serveru Azure Database for MariaDB. |
-| [AZ MariaDB Server Configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) | Aktualizujte konfiguraci serveru Azure Database for MariaDB. |
-| [AZ MariaDB Server Configuration show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) | Zobrazit konfiguraci serveru Azure Database for MariaDB. |
-| [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [AZ MariaDB Server Create](/cli/azure/mariadb/server#az_mariadb_server_create) | Vytvoří server MariaDB, který je hostitelem databází. |
+| [AZ MariaDB Server Configuration list](/cli/azure/mariadb/server/configuration#az_mariadb_server_configuration_list) | Vypíše konfiguraci serveru Azure Database for MariaDB. |
+| [AZ MariaDB Server Configuration set](/cli/azure/mariadb/server/configuration#az_mariadb_server_configuration_set) | Aktualizujte konfiguraci serveru Azure Database for MariaDB. |
+| [AZ MariaDB Server Configuration show](/cli/azure/mariadb/server/configuration#az_mariadb_server_configuration_show) | Zobrazit konfiguraci serveru Azure Database for MariaDB. |
+| [az group delete](/cli/azure/group#az_group_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace najdete v dokumentaci Azure CLI: [dokumentace k Azure CLI](/cli/azure).

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 844846afa438a2d3425ecf6392b50f0411d8c03e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e698061122fcc8ff8019907b5fdeba5b2df58407
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308995"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779340"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
@@ -27,7 +27,7 @@ Pro konfiguraci můžete použít buď [Azure Portal](https://portal.azure.com) 
 - **Azure CLI**: máte dvě možnosti.
 
     - Spusťte příkazy v [Azure Cloud Shell](../cloud-shell/overview.md).
-    - Spusťte příkazy místně pomocí instalace nejnovější verze rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)a pak se přihlaste k Azure pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login).
+    - Spusťte příkazy místně pomocí instalace nejnovější verze rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)a pak se přihlaste k Azure pomocí příkazu [AZ Login](/cli/azure/reference-index#az_login).
     
 > [!NOTE]
 > Linux je aktuálně doporučenou možností pro spouštění aplikací v Pythonu v App Service. Informace o možnostech Windows najdete v tématu věnovaném jazyku [Python na App Service systému Windows](/visualstudio/python/managing-python-on-azure-app-service).

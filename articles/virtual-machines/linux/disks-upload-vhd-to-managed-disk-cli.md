@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 473e87904742395eca6b7eeba0875cd93789104d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 285f0acd5097ce68cddee6f732b17944dffb0eba
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91978981"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762564"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Nahrání virtuálního pevného disku do Azure nebo zkopírování spravovaného disku do jiné oblasti – Azure CLI
 
@@ -44,7 +44,7 @@ Tento druh spravovaného disku má dva jedinečné stavy:
 
 Než budete moct vytvořit prázdný standardní pevný disk pro nahrávání, budete potřebovat velikost souboru virtuálního pevného disku, který chcete nahrát (v bajtech). K získání toho můžete použít buď `wc -c <yourFileName>.vhd` nebo `ls -al <yourFileName>.vhd` . Tato hodnota se používá při zadání parametru **--Upload-Size-bytes** .
 
-Vytvořte prázdný standardní pevný disk pro nahrávání zadáním parametru **--for-upload** a parametru **--Upload-Size-bytes** v rutině [Create disku](/cli/azure/disk#az-disk-create) :
+Vytvořte prázdný standardní pevný disk pro nahrávání zadáním parametru **--for-upload** a parametru **--Upload-Size-bytes** v rutině [Create disku](/cli/azure/disk#az_disk_create) :
 
 Nahraďte `<yourdiskname>` `<yourresourcegroupname>` `<yourregion>` hodnotu hodnotou dle vašeho výběru. `--upload-size-bytes`Parametr obsahuje ukázkovou hodnotu `34359738880` , nahraďte ji hodnotou, která je pro vás vhodná.
 

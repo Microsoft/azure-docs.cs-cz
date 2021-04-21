@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07e0f7cf2834b3984d9207fa18f3b0e32340e216
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0de1f00823bd34e18a727b8e2929f64a8769c93a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660878"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789885"
 ---
 # <a name="create-and-manage-vnet-service-endpoints-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Vytvoření a správa koncových bodů služby virtuální sítě pro Azure Database for PostgreSQL pro jeden server pomocí Azure CLI
 Koncovými body a pravidly služby Virtual Network (VNet) přesahují privátní adresní prostor Virtual Network na server Azure Database for PostgreSQL. Pomocí praktických příkazů rozhraní příkazového řádku Azure (CLI) můžete vytvářet, aktualizovat, odstraňovat, vypisovat a zobrazovat koncové body a pravidla služby virtuální sítě pro správu serveru. Přehled koncových bodů služby virtuální sítě Azure Database for PostgreSQL, včetně omezení, najdete v tématu [koncové body služby virtuální sítě v Azure Database for PostgreSQL serveru](concepts-data-access-and-security-vnet.md). Koncové body služby virtuální sítě jsou k dispozici ve všech podporovaných oblastech pro Azure Database for PostgreSQL.
@@ -36,7 +36,7 @@ Postup pro krokování této příručky:
 ## <a name="configure-vnet-service-endpoints-for-azure-database-for-postgresql"></a>Konfigurace koncových bodů služby virtuální sítě pro Azure Database for PostgreSQL
 Příkazy [AZ Network VNet](/cli/azure/network/vnet) se používají ke konfiguraci virtuálních sítí.
 
-Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account#az-account-set) konkrétní ID předplatného. Zástupnou hodnotu id předplatného nahraďte vlastností **id** z výstupu příkazu **az login** pro vaše předplatné.
+Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account#az_account_set) konkrétní ID předplatného. Zástupnou hodnotu id předplatného nahraďte vlastností **id** z výstupu příkazu **az login** pro vaše předplatné.
 
 - Účet musí mít potřebná oprávnění k vytvoření virtuální sítě a koncového bodu služby.
 

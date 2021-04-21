@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 02/28/2018
-ms.openlocfilehash: 9af4a3d4a484ef22e147640add455741c533e9b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d95c06efa347618a7c571b65f01f147aeb5ef1f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660470"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778410"
 ---
 # <a name="restore-an-azure-database-for-postgresql-server-using-azure-cli"></a>Obnovení serveru Azure Database for PostgreSQL pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku obnoví jeden server Azure Database for PostgreSQL k dřívějšímu bodu v čase.
@@ -33,11 +33,11 @@ Po spuštění skriptu pomocí následujícího příkazu odeberte skupinu prost
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 Tento skript používá příkazy uvedené v následující tabulce:
 
-| **Příkaz** | **Poznámky** |
+| **Systému** | **Poznámky** |
 |---|---|
 | [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az postgresql server create](/cli/azure/postgres/server#az-postgres-server-create) | Vytvoří server PostgreSQL, který je hostitelem databází. |
-| [az postgresql server restore](/cli/azure/postgres/server#az-postgres-server-restore) | Obnoví server ze zálohy. |
+| [az postgresql server create](/cli/azure/postgres/server#az_postgres_server_create) | Vytvoří server PostgreSQL, který je hostitelem databází. |
+| [az postgresql server restore](/cli/azure/postgres/server#az_postgres_server_restore) | Obnoví server ze zálohy. |
 | [az group delete](/cli/azure/group) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky

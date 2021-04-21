@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 4/14/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: b5f6f06af3eecabe26f7b587a790912f99b006e4
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 4a18e0f257ac8d7b7d981d53249cf29f2f8f38bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107496754"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790144"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě
 <a name="network-service-tags"></a>
@@ -135,7 +135,7 @@ Můžete programově načíst aktuální seznam značek služeb společně s pod
 
 - [REST](/rest/api/virtualnetwork/servicetags/list)
 - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
-- [Azure CLI](/cli/azure/network#az-network-list-service-tags)
+- [Azure CLI](/cli/azure/network#az_network_list_service_tags)
 
 > [!NOTE]
 > Pro rozšíření nových dat značek služby do výsledků rozhraní API trvá až 4 týdny. V případě, že dojde k tomu, bude zvětšeno číslo změny v metadatech odpovědi. V případě, že jsou zadány jiné hodnoty umístění, mohou nastat dočasné rozdíly ve výsledcích. Při použití výsledků k vytvoření pravidel NSG byste měli nastavit umístění parametr tak, aby odpovídalo oblasti NSG. 

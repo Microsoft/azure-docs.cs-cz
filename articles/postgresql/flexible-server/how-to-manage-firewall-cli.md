@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3aafad8bcc42a9099dbd37b4e8349e4c093a0425
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: beed3dac1a2ca5bc6d2a87ba2a9044333e798fa9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226273"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778512"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql---flexible-server-firewall-rules-using-the-azure-cli"></a>Vytváření a Správa Azure Database for PostgreSQL – flexibilní pravidla brány firewall serveru pomocí rozhraní příkazového řádku Azure
 
@@ -37,13 +37,13 @@ Pokud dáváte přednost instalaci a používání rozhraní příkazového řá
 
 ## <a name="prerequisites"></a>Požadavky
 
-K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
+K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/reference-index#az_login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
 
 ```azurecli-interactive
 az login
 ```
 
-Pomocí příkazu [AZ Account set](/cli/azure/account#az-account-set) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](/cli/azure/account#az-account-list).
+Pomocí příkazu [AZ Account set](/cli/azure/account#az_account_set) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](/cli/azure/account#az_account_list).
 
 ```azurecli
 az account set --subscription <subscription id>

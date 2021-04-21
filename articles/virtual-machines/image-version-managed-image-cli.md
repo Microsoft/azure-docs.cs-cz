@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cae82072785838d410453b2eb83685905b0ba04e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d0644b9ec9009fe5d1db7701834cb9788f86ab0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553778"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790162"
 ---
 # <a name="clone-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Klonování spravované image na verzi Image pomocí Azure CLI
 Pokud máte existující spravovanou bitovou kopii, kterou byste chtěli klonovat do galerie sdílených imagí, můžete vytvořit image galerie sdílených imagí přímo ze spravované image. Jakmile otestujete novou bitovou kopii, můžete zdrojovou spravovanou bitovou kopii odstranit. Můžete také migrovat ze spravované image do galerie sdílených imagí pomocí [prostředí PowerShell](image-version-managed-image-powershell.md).
@@ -43,7 +43,7 @@ Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, čísl
 
 Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./shared-image-galleries.md#image-definitions).
 
-Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
+Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az_sig_image_definition_create).
 
 V tomto příkladu se definice image jmenuje *myImageDefinition* a je určena pro [zobecněnou](./shared-image-galleries.md#generalized-and-specialized-images) bitovou kopii operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
 
@@ -65,7 +65,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>Vytvoření verze image
 
-Vytvořte verze pomocí [AZ Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az-sig-image-version-create). Abyste mohli použít jako základ pro vytvoření verze image, budete muset předat ID spravované image. K získání ID imagí můžete použít [seznam AZ image list](/cli/azure/image?view#az-image-list) . 
+Vytvořte verze pomocí [AZ Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az_sig_image_version_create). Abyste mohli použít jako základ pro vytvoření verze image, budete muset předat ID spravované image. K získání ID imagí můžete použít [seznam AZ image list](/cli/azure/image?view#az_image_list) . 
 
 ```azurecli-interactive
 az image list --query "[].[name, id]" -o tsv

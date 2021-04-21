@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: b443fa7c2d6c644fc1173295f89813c18657d160
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4aa8927422d1f95a642e1d7c383aebc03a4930e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566720"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775768"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Vytvoření aplikační brány s interním přesměrování pomocí Azure CLI
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
-Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Pak můžete přidat podsíť s názvem *myBackendSubnet* , kterou potřebuje back-end fond serverů, pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
+Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Pak můžete přidat podsíť s názvem *myBackendSubnet* , kterou potřebuje back-end fond serverů, pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -98,7 +98,7 @@ Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplik
 
 Naslouchací proces je potřeba k tomu, aby brána Application Gateway mohla správně směrovat provoz na back-endový fond. V tomto kurzu vytvoříte dva naslouchací procesy pro dvě domény. V tomto příkladu se pro domény *webových \. contoso.com* a *www \. contoso.org* vytvoří naslouchací procesy.
 
-Přidejte back-endové naslouchací procesy, které jsou potřeba ke směrování provozu, příkazem [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create).
+Přidejte back-endové naslouchací procesy, které jsou potřeba ke směrování provozu, příkazem [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az_network_application_gateway_http_listener_create).
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -119,7 +119,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Přidat konfiguraci přesměrování
 
-Přidejte konfiguraci přesměrování, která odesílá provoz z *webové služby \. consoto.org* do naslouchacího procesu pro službu *www \. contoso.com* ve službě Application Gateway pomocí funkce [AZ Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
+Přidejte konfiguraci přesměrování, která odesílá provoz z *webové služby \. consoto.org* do naslouchacího procesu pro službu *www \. contoso.com* ve službě Application Gateway pomocí funkce [AZ Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az_network_application_gateway_redirect_config_create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -136,7 +136,7 @@ az network application-gateway redirect-config create \
 
 Pravidla se zpracovávají v pořadí, ve kterém jsou vytvořená, a provoz se směruje pomocí prvního pravidla, které odpovídá adrese URL odeslané do aplikační brány. Pokud máte například na stejném portu pravidlo založené na základním naslouchacím procesu a pravidlo založené na naslouchacím procesu pro více webů, musí být pravidlo s naslouchacím procesem pro více webů uvedeno před pravidlem se základním naslouchacím procesem, aby fungovalo podle očekávání. 
 
-V tomto příkladu vytvoříte dvě nová pravidla a odstraníte vytvořené výchozí pravidlo.  Pravidlo přidáte příkazem [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
+V tomto příkladu vytvoříte dvě nová pravidla a odstraníte vytvořené výchozí pravidlo.  Pravidlo přidáte příkazem [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -196,7 +196,7 @@ az vmss extension set \
 
 ## <a name="create-cname-record-in-your-domain"></a>Vytvoření názvu CNAME v doméně
 
-Jakmile vytvoříte aplikační bránu s veřejnou IP adresou, získáte adresu DNS, kterou můžete použít k vytvoření záznamu CNAME ve své doméně. K získání adresy DNS aplikační brány použijte příkaz [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Zkopírujte hodnotu *fqdn* z objektu DNESettings a použijte ji jako hodnotu vytvořeného záznamu CNAME. Použití záznamů typu A se nedoporučuje, protože virtuální IP adresa se při restartování aplikační brány může změnit.
+Jakmile vytvoříte aplikační bránu s veřejnou IP adresou, získáte adresu DNS, kterou můžete použít k vytvoření záznamu CNAME ve své doméně. K získání adresy DNS aplikační brány použijte příkaz [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte hodnotu *fqdn* z objektu DNESettings a použijte ji jako hodnotu vytvořeného záznamu CNAME. Použití záznamů typu A se nedoporučuje, protože virtuální IP adresa se při restartování aplikační brány může změnit.
 
 ```azurecli-interactive
 az network public-ip show \

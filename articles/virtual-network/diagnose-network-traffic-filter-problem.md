@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: 73562d8d32f265fa43ca80d2f8d4f84b1b631ec6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6835d06015923a70301c95370c76efbd0c2163e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98223665"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776730"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostika problému s filtrováním síťového provozu virtuálního počítače
 
@@ -115,7 +115,7 @@ V předchozím výstupu je název síťového rozhraní *myVMVMNic*.
 
 Pokud k dokončení úkolů v tomto článku používáte příkazy rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z počítače. Tento článek vyžaduje Azure CLI verze 2.0.32 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte taky spustit `az login` a přihlásit se k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions).
 
-Získejte platná pravidla zabezpečení pro síťové rozhraní pomocí [AZ Network nic list-efektivní-NSG](/cli/azure/network/nic#az-network-nic-list-effective-nsg). Následující příklad získá platná pravidla zabezpečení pro síťové rozhraní s názvem *myVMVMNic* , které je ve skupině prostředků s názvem *myResourceGroup*:
+Získejte platná pravidla zabezpečení pro síťové rozhraní pomocí [AZ Network nic list-efektivní-NSG](/cli/azure/network/nic#az_network_nic_list_effective_nsg). Následující příklad získá platná pravidla zabezpečení pro síťové rozhraní s názvem *myVMVMNic* , které je ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
 az network nic list-effective-nsg \

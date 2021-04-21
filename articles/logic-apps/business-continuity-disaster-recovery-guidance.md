@@ -3,15 +3,15 @@ title: Provozní kontinuita a zotavení po havárii
 description: Navrhněte strategii pro ochranu dat, rychlé obnovení z rušivých událostí, obnovení prostředků vyžadovaných důležitými obchodními funkcemi a udržování kontinuity podnikových prostředí pro Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: f974a99c59b19b5df7bf6ffcc66c2dc133743f0a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89658197"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790534"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Provozní kontinuita a zotavení po havárii pro Azure Logic Apps
 
@@ -46,7 +46,7 @@ Pro strategii převzetí služeb při selhání musí vaše aplikace logiky a um
 
 * Obě instance aplikace logiky mají stejný typ hostitele. To znamená, že obě instance se nasadí do oblastí v globálním víceklientském prostředí Azure, nebo se obě instance nasadí do ISEs, což umožní vašim Logic Apps přímý přístup k prostředkům ve službě Azure Virtual Network. Osvědčené postupy a další informace o spárovaných oblastech pro BCDR najdete v tématu [provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure](../best-practices-availability-paired-regions.md).
 
-  Například primární i sekundární umístění musí být ISEs, když je primární aplikace logiky spuštěna v ISE a používá [konektory s ISE verzí](../connectors/apis-list.md#ise-connectors), akce HTTP pro volání prostředků ve službě Azure Virtual Network nebo obojí. V tomto scénáři musí vaše sekundární aplikace logiky mít také podobné nastavení jako primární aplikace logiky v sekundárním umístění.
+  Například primární i sekundární umístění musí být ISEs, když je primární aplikace logiky spuštěna v ISE a používá [konektory s ISE verzí](../connectors/managed.md#ise-connectors), akce HTTP pro volání prostředků ve službě Azure Virtual Network nebo obojí. V tomto scénáři musí vaše sekundární aplikace logiky mít také podobné nastavení jako primární aplikace logiky v sekundárním umístění.
 
   > [!NOTE]
   > V případě pokročilejších scénářů můžete kombinovat více tenantů Azure i ISE jako umístění. Ujistěte se však, že zvažujete a rozumíte [rozdílům mezi tím, jak aplikace logiky běží v ISE oproti více tenantů Azure](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference).

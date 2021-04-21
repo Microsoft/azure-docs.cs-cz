@@ -9,12 +9,12 @@ ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 3d71a7ad2507909dacf54e7f1c49b6e768033113
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e8123c252d99b2999eeef42fecae189a05e382b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600475"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778116"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace bran firewall Azure Storage a virtuálních sítí
 
@@ -136,7 +136,7 @@ Při plánování zotavení po havárii během regionálního výpadku byste mě
 
 ### <a name="required-permissions"></a>Požadovaná oprávnění
 
-Aby bylo možné použít pravidlo virtuální sítě pro účet úložiště, musí mít uživatel příslušná oprávnění pro přidávané podsítě. Používání pravidla může provést [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor) nebo uživatel, kterému bylo uděleno oprávnění k `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` [operaci poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md#microsoftnetwork) prostřednictvím vlastní role Azure.
+Aby uživatel mohl použít pravidlo virtuální sítě pro účet úložiště, musí mít odpovídající oprávnění k přidávaným podsítím. Používání pravidla může provést [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor) nebo uživatel, kterému bylo uděleno oprávnění k `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` [operaci poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md#microsoftnetwork) prostřednictvím vlastní role Azure.
 
 Účet úložiště a udělený přístup k virtuálním sítím můžou být v různých předplatných, včetně předplatných, která jsou součástí jiného tenanta Azure AD.
 
@@ -242,7 +242,7 @@ Pravidla virtuální sítě pro účty úložiště můžete spravovat prostřed
 
 ---
 
-## <a name="grant-access-from-an-internet-ip-range"></a>Udělení přístupu z rozsahu internetových IP adres
+## <a name="grant-access-from-an-internet-ip-range"></a>Udělení přístupu z internetového rozsahu IP adres
 
 Můžete použít pravidla sítě IP k povolení přístupu z konkrétních rozsahů veřejných internetových IP adres vytvořením pravidel sítě IP. Každý účet úložiště podporuje až 200 pravidel. Tato pravidla udělují přístup ke konkrétním internetovým službám a místním sítím a blokují obecný internetový provoz.
 
@@ -571,10 +571,10 @@ Prostředky některých služeb, **Pokud jsou zaregistrované ve vašem předpla
 | Azure DevTest Labs       | Microsoft. DevTestLab       | Vytvoření vlastní image a instalace artefaktů. [Další informace](../../devtest-labs/devtest-lab-overview.md). |
 | Azure Event Grid         | Microsoft. EventGrid        | Povolte publikování událostí Blob Storage a umožněte Event Grid publikování do front úložiště. Přečtěte si informace o [událostech služby Blob Storage](../../event-grid/overview.md#event-sources) a [publikování do front](../../event-grid/event-handlers.md). |
 | Azure Event Hubs         | Microsoft. EventHub         | Archivujte data pomocí Event Hubsho zachycení. [Další informace](../../event-hubs/event-hubs-capture-overview.md) |
-| Synchronizace souborů Azure          | Microsoft. StorageSync      | Umožňuje transformovat souborový server Prem na mezipaměť pro sdílené složky Azure. Povoluje se synchronizace více webů, rychlé zotavení po havárii a zálohování na straně cloudu. [Další informace](../files/storage-sync-files-planning.md) |
+| Synchronizace souborů Azure          | Microsoft. StorageSync      | Umožňuje transformovat souborový server Prem na mezipaměť pro sdílené složky Azure. Povoluje se synchronizace více webů, rychlé zotavení po havárii a zálohování na straně cloudu. [Další informace](../file-sync/file-sync-planning.md) |
 | Azure HDInsight          | Microsoft. HDInsight        | Zřídí počáteční obsah výchozího systému souborů pro nový cluster HDInsight. [Další informace](../../hdinsight/hdinsight-hadoop-use-blob-storage.md). |
 | Export pro import do Azure      | Microsoft. ImportExport     | Umožňuje importovat data Azure Storage nebo exportovat data z Azure Storage pomocí služby Azure Storage import/export. [Další informace](../../import-export/storage-import-export-service.md).  |
-| Azure Monitor            | Microsoft. Insights         | Povoluje zápis dat monitorování do zabezpečeného účtu úložiště, včetně protokolů prostředků, Azure Active Directory protokolů pro přihlášení a auditu a protokolů Microsoft Intune. [Další informace](../../azure-monitor/roles-permissions-security.md). |
+| Azure Monitor            | Microsoft.Insights         | Povoluje zápis dat monitorování do zabezpečeného účtu úložiště, včetně protokolů prostředků, Azure Active Directory protokolů pro přihlášení a auditu a protokolů Microsoft Intune. [Další informace](../../azure-monitor/roles-permissions-security.md). |
 | Sítě Azure         | Microsoft.Network          | Ukládejte a analyzujte protokoly síťového provozu, včetně služeb Network Watcher a Analýza provozu. [Další informace](../../network-watcher/network-watcher-nsg-flow-logging-overview.md). |
 | Azure Site Recovery      | Microsoft. SiteRecovery     | Povolení replikace pro zotavení po havárii virtuálních počítačů Azure s IaaS při použití mezipaměti, zdrojového nebo cílového účtu úložiště podporujícího bránu firewall  [Další informace](../../site-recovery/azure-to-azure-tutorial-enable-replication.md). |
 

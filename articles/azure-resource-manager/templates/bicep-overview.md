@@ -3,12 +3,12 @@ title: Bicep jazyk pro šablony Azure Resource Manager
 description: Popisuje jazyk bicep pro nasazení infrastruktury do Azure prostřednictvím šablon Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 74028c682b48a492c2e8f13bef538d1694370cbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af207e6ca88eab50fe6030883379c87c0ec05691
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955903"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773742"
 ---
 # <a name="what-is-bicep-preview"></a>Co je bicep (Preview)?
 
@@ -31,6 +31,17 @@ Po instalaci nástrojů Vyzkoušejte [kurz bicep](./bicep-tutorial-create-first-
 Chcete-li zobrazit ekvivalentní soubory JSON a bicep vedle sebe, přečtěte si téma [bicep Playground](https://aka.ms/bicepdemo).
 
 Pokud máte existující šablonu ARM, kterou byste chtěli převést na bicep, přečtěte si téma [Převod šablon ARM mezi JSON a bicep](bicep-decompile.md).
+
+## <a name="benefits-of-bicep-versus-other-tools"></a>Výhody bicep oproti jiným nástrojům
+
+Bicep poskytuje následující výhody oproti jiným možnostem:
+
+* **Podpora pro všechny typy prostředků a verze rozhraní API**: bicep okamžitě podporuje všechny verze Preview a GA pro služby Azure. Jakmile poskytovatel prostředků zavádí nové typy prostředků a verze rozhraní API, můžete je použít v souboru bicep. Než začnete používat nové služby, nemusíte čekat na aktualizaci nástrojů.
+* **Prostředí pro vytváření obsahu**: při použití vs Code k vytvoření souborů bicep získáte prostředí pro vytváření první třídy. Editor poskytuje bohatou bezpečnost typů, technologie IntelliSense a ověřování syntaxe.
+* **Modularita**: kód bicep můžete rozdělit na spravovatelné části pomocí [modulů](bicep-modules.md). Modul nasadí sadu souvisejících prostředků. Moduly umožňují opakované použití kódu a zjednodušení vývoje. Modul můžete přidat do souboru bicep kdykoli, když potřebujete tyto prostředky nasadit.
+* **Integrace se službami Azure**: bicep se integruje se službami Azure, jako jsou Azure Policy, specifikace šablon a plány.
+* **Žádné soubory stavu nebo stavu ke správě**: veškerý stav je uložený v Azure. Uživatelé můžou spolupracovat a mít jistotu, že se jejich aktualizace zpracovávají podle očekávání. Chcete-li zobrazit náhled změn před nasazením šablony, použijte [operaci citlivostní zpracování](template-deploy-what-if.md) .
+* **Bez nákladů a open source**: bicep je zcela zdarma. Nemusíte platit za prémiové funkce. Podporuje ho i podpora Microsoftu.
 
 ## <a name="bicep-improvements"></a>Vylepšení bicep
 
@@ -57,11 +68,7 @@ output hostname string = publicIP.properties.dnsSettings.fqdn
 
 Bicep automaticky spravuje závislosti mezi prostředky. Můžete se vyhnout nastavení, `dependsOn` když se symbolický název prostředku používá v jiné deklaraci prostředků.
 
-Pomocí bicep můžete přerušit projekt do více modulů.
-
 Struktura souboru bicep je flexibilnější než šablona JSON. Můžete deklarovat parametry, proměnné a výstupy kdekoli v souboru. Ve formátu JSON musíte deklarovat všechny parametry, proměnné a výstupy v odpovídajících částech šablony.
-
-Rozšíření VS Code pro bicep nabízí bohatou validaci a technologii IntelliSense. Například můžete použít technologii IntelliSense rozšíření pro získání vlastností prostředku.
 
 ## <a name="known-limitations"></a>Známá omezení
 

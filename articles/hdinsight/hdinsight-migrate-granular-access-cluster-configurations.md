@@ -6,12 +6,12 @@ ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 47569309f35848e82488abd549751f6f1e5a1baa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afb30f4648f1649bf6cc6cc6a3bf02f433f49d45
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954866"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774926"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
@@ -192,7 +192,7 @@ Konfigurace clusteru jsou nyní za detailní řízení přístupu založené na 
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Proč se zobrazuje "nedostatečná oprávnění k dokončení operace" při spuštění příkazu rozhraní příkazového řádku Azure pro přiřazení role operátora clusteru HDInsight jinému uživateli nebo instančnímu objektu?
 
-Uživatel nebo instanční objekt, který spouští příkaz, musí kromě role vlastníka mít k dispozici dostatečná oprávnění služby Azure AD, aby mohl vyhledat ID objektu pověřené nabyvatelem. Tato zpráva indikuje nedostatečná oprávnění služby Azure AD. Zkuste nahradit `-–assignee` argument `–assignee-object-id` parametrem a místo názvu (nebo ID objektu zabezpečení v případě spravované identity) zadejte ID objektu zmocnění. Další informace najdete v části nepovinných parametrů v [dokumentaci AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create) .
+Uživatel nebo instanční objekt, který spouští příkaz, musí kromě role vlastníka mít k dispozici dostatečná oprávnění služby Azure AD, aby mohl vyhledat ID objektu pověřené nabyvatelem. Tato zpráva indikuje nedostatečná oprávnění služby Azure AD. Zkuste nahradit `-–assignee` argument `–assignee-object-id` parametrem a místo názvu (nebo ID objektu zabezpečení v případě spravované identity) zadejte ID objektu zmocnění. Další informace najdete v části nepovinných parametrů v [dokumentaci AZ role Assignment Create](/cli/azure/role/assignment#az_role_assignment_create) .
 
 Pokud to pořád nefunguje, požádejte správce Azure AD, aby získal správná oprávnění.
 

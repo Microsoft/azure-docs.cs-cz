@@ -6,12 +6,12 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: c9ecb670cea022988efda8ec690c0724310cdb4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7f8aa990f5a5e64d2d5c59b52457149187acddd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934845"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773976"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Vytvoření a publikování funkce v Azure pomocí Java a Gradle
 
@@ -114,7 +114,7 @@ az login
 ```
 
 > [!TIP]
-> Pokud má váš účet přístup k několika předplatným, použijte příkaz [AZ Account set](/cli/azure/account#az-account-set) k nastavení výchozího předplatného pro tuto relaci. 
+> Pokud má váš účet přístup k několika předplatným, použijte příkaz [AZ Account set](/cli/azure/account#az_account_set) k nastavení výchozího předplatného pro tuto relaci. 
 
 K nasazení projektu do nové aplikace Function App použijte následující příkaz. 
 

@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 04ab4ae4d3de6f33f800011b9b0802665d5fb16e
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 0b88923ff6447785a4ef5a7c80e1ff44d1a2b9cb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228312"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777311"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Postupy zřizování pro architekturu s více tenanty 
 
@@ -47,7 +47,7 @@ Tento článek používá ukázku simulovaného zařízení ze [sady Azure IoT C
 V této části použijete Azure Cloud Shell k vytvoření dvou nových oblastí centra IoT v oblasti **západní USA** a **východní USA** pro tenanta.
 
 
-1. Pomocí Azure Cloud Shell vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+1. Pomocí Azure Cloud Shell vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create) . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
     Následující příklad vytvoří skupinu prostředků s názvem *Contoso-US-Resource-Group* v oblasti *eastus* . Doporučuje se používat tuto skupinu pro všechny prostředky vytvořené v tomto článku. Díky tomu bude vyčištění snazší po dokončení.
 
@@ -55,7 +55,7 @@ V této části použijete Azure Cloud Shell k vytvoření dvou nových oblastí
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Pomocí Azure Cloud Shell vytvořte centrum IoT v oblasti **eastus** pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) . Centrum IoT se přidá do *skupiny contoso-US-Resource-Group*.
+2. Pomocí Azure Cloud Shell vytvořte centrum IoT v oblasti **eastus** pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az_iot_hub_create) . Centrum IoT se přidá do *skupiny contoso-US-Resource-Group*.
 
     Následující příklad vytvoří centrum IoT s názvem *Contoso-východ-hub* v umístění *eastus* . Místo **Contoso-východ-hub** musíte použít vlastní jedinečný název centra.
 
@@ -65,7 +65,7 @@ V této části použijete Azure Cloud Shell k vytvoření dvou nových oblastí
     
     Dokončení tohoto příkazu může trvat několik minut.
 
-3. Pomocí Azure Cloud Shell vytvořte centrum IoT v oblasti **westus** pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) . Toto centrum IoT se taky přidá do *skupiny contoso-US-Resource-Group*.
+3. Pomocí Azure Cloud Shell vytvořte centrum IoT v oblasti **westus** pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az_iot_hub_create) . Toto centrum IoT se taky přidá do *skupiny contoso-US-Resource-Group*.
 
     Následující příklad vytvoří centrum IoT s názvem *Contoso-západ-hub* v umístění *westus* . Místo názvu **Contoso-západ-hub** musíte použít vlastní jedinečný název centra.
 

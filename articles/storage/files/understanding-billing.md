@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 01/27/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6bb608492327baae958c32be05d8f2a1bb4dbfbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11d22fd83106bb1802514d0c7d5f67724664464d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99226637"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788380"
 ---
 # <a name="understand-azure-files-billing"></a>Vysvětlení fakturace souborů Azure
 Soubory Azure nabízí dva odlišné modely fakturace: zřízené a průběžné platby. Zřízený model je k dispozici jenom pro sdílené složky Premium, což jsou sdílené složky nasazené v typu **účtu úložiště souborů** . Model průběžných plateb je dostupný jenom pro standardní sdílené složky, což jsou sdílené složky nasazené v typu účtu úložiště pro **obecné účely verze 2 (GPv2)** . Tento článek vysvětluje, jak oba modely pracují, aby vám pomohly pochopit měsíční poplatky za soubory Azure.
@@ -116,5 +116,5 @@ Existuje pět základních kategorií transakcí: zapsat, vypsat, číst, jiné 
 
 ## <a name="see-also"></a>Viz také
 - [Stránka s cenami souborů Azure](https://azure.microsoft.com/pricing/details/storage/files/)
-- [Plánování nasazení služby soubory Azure](./storage-files-planning.md) a [Plánování nasazení synchronizace souborů Azure](./storage-sync-files-planning.md).
-- [Vytvořte sdílenou složku](./storage-how-to-create-file-share.md) a [Nasaďte synchronizace souborů Azure](./storage-sync-files-deployment-guide.md).
+- [Plánování nasazení služby soubory Azure](storage-files-planning.md) a [Plánování nasazení synchronizace souborů Azure](../file-sync/file-sync-planning.md).
+- [Vytvořte sdílenou složku](storage-how-to-create-file-share.md) a [Nasaďte synchronizace souborů Azure](../file-sync/file-sync-deployment-guide.md).

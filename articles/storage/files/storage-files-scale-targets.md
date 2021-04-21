@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0ecfbb9053fde4ff332cbbcb6e14a84a5bbeb99a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 276dd7aa1925fefaaa94dfdd5d7a5baba5164f56
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593148"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790252"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Škálovatelnost a cíle výkonnosti služby Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím protokolů systému souborů SMB a NFS. Tento článek popisuje škálovatelnost a výkonnostní cíle pro Azure Files a Synchronizace souborů Azure.
@@ -103,7 +103,7 @@ Vzhledem k tomu, že agent Synchronizace souborů Azure běží na počítači s
 
 Pro Synchronizace souborů Azure je výkon kritický ve dvou fázích:
 
-1. **Prvotní zřizování**: pro optimalizaci výkonu při počátečním zřizování najdete informace o optimálních podrobnostech o nasazení [pomocí synchronizace souborů Azure](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) .
+1. **Prvotní zřizování**: pro optimalizaci výkonu při počátečním zřizování najdete informace o optimálních podrobnostech o nasazení [pomocí synchronizace souborů Azure](../file-sync/file-sync-deployment-guide.md#onboarding-with-azure-file-sync) .
 2. **Průběžná synchronizace**: po počátečním navýšení dat ve sdílených složkách Azure synchronizace souborů Azure udržuje několik koncových bodů v synchronizaci.
 
 Abychom vám pomohli naplánovat nasazení pro každou fázi, níže jsou výsledky zjištěné během interního testování v systému s konfigurací.
@@ -134,7 +134,7 @@ Míra výkonu je 20 objektů za sekundu. Zákazníci si můžou odhadnout čas, 
 
 **Počáteční synchronizace dat ze systému Windows Server do sdílené složky Azure**: mnoho nasazení synchronizace souborů Azure začínat prázdnou sdílenou složkou Azure, protože všechna data jsou na Windows serveru. V těchto případech je počáteční výčet změn v cloudu rychlý a většina času stráví synchronizaci změn z Windows serveru až po sdílené složky Azure. 
 
-Zatímco synchronizace nahrává data do sdílené složky Azure, na místním souborovém serveru nedochází k výpadkům a správci můžou [nastavit omezení sítě](./storage-sync-files-server-registration.md#set-azure-file-sync-network-limits) , aby se omezila šířka pásma využitá pro nahrání dat na pozadí.
+Zatímco synchronizace nahrává data do sdílené složky Azure, na místním souborovém serveru nedochází k výpadkům a správci můžou [nastavit omezení sítě](../file-sync/file-sync-server-registration.md#set-azure-file-sync-network-limits) , aby se omezila šířka pásma využitá pro nahrání dat na pozadí.
 
 Počáteční synchronizace se obvykle omezí na počáteční rychlost nahrávání 20 souborů za sekundu na skupinu synchronizace. Zákazníci můžou odhadnout čas nahrávání všech svých dat do Azure pomocí následujícího vzorce a získat tak dobu ve dnech:  
 
@@ -164,4 +164,4 @@ Jako obecné vodítko pro vaše nasazení byste měli mít na paměti pár věc�
 
 ## <a name="see-also"></a>Viz také
 - [Plánování nasazení Azure Files](storage-files-planning.md)
-- [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)
+- [Plánování nasazení Synchronizace souborů Azure](../file-sync/file-sync-planning.md)

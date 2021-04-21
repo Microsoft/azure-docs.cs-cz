@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: duau
-ms.openlocfilehash: abac2e5b1fcba65db92edd2bcc2f390ec0114f59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 151cfc4ffb984b25902ae6d5dd69516a5e974c93
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98185338"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788309"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Směrování provozu pro vysokou dostupnost aplikací pomocí Azure CLI
 
@@ -51,7 +51,7 @@ Tento skript k vytvoření skupiny prostředků, webové aplikace, profilu služ
 |---|---|
 | [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az appservice plan create](/cli/azure/appservice/plan) | Vytvoří plán služby App Service. Toto je jako serverová farma pro webovou aplikaci Azure. |
-| [AZ WebApp web Create](/cli/azure/webapp#az-webapp-create) | Vytvoří webovou aplikaci Azure v rámci plánu App Service. |
+| [AZ WebApp web Create](/cli/azure/webapp#az_webapp_create) | Vytvoří webovou aplikaci Azure v rámci plánu App Service. |
 | [AZ Network Traffic-Manager Profile Create](/cli/azure/network/traffic-manager/profile) | Vytvoří profil služby Azure Traffic Manager. |
 | [AZ Network Traffic-Manager Endpoint Create](/cli/azure/network/traffic-manager/endpoint) | Přidá do profilu služby Azure Traffic Manager koncový bod. |
 

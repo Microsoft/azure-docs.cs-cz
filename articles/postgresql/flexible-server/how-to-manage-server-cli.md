@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 278f8f816909a7e365d7e45d04c5169950e79a65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a7e16bf85293a412baf5015af825377438ebb7b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96493674"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778494"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-by-using-the-azure-cli"></a>Správa Azure Database for PostgreSQL flexibilního serveru pomocí Azure CLI
 
@@ -26,13 +26,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 V místním prostředí budete muset spustit Azure CLI verze 2,0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
-Přihlaste se ke svému účtu pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) . 
+Přihlaste se ke svému účtu pomocí příkazu [AZ Login](/cli/azure/reference-index#az_login) . 
 
 ```azurecli-interactive
 az login
 ```
 
-Vyberte své předplatné pomocí příkazu [AZ Account set](/cli/azure/account) . Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu pro **odběr** v následujícím příkazu. Pokud máte více předplatných, vyberte předplatné, ke kterému se má prostředek fakturovat. Pokud chcete identifikovat všechna Vaše předplatná, použijte příkaz [AZ Account list](/cli/azure/account#az-account-list) .
+Vyberte své předplatné pomocí příkazu [AZ Account set](/cli/azure/account) . Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu pro **odběr** v následujícím příkazu. Pokud máte více předplatných, vyberte předplatné, ke kterému se má prostředek fakturovat. Pokud chcete identifikovat všechna Vaše předplatná, použijte příkaz [AZ Account list](/cli/azure/account#az_account_list) .
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -131,7 +131,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>Odstranění serveru
 
-Pokud chcete odstranit Azure Database for PostgreSQL flexibilní Server, spusťte příkaz [AZ Postgres Flexible-Server Delete](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) .
+Pokud chcete odstranit Azure Database for PostgreSQL flexibilní Server, spusťte příkaz [AZ Postgres Flexible-Server Delete](/cli/azure/postgres/flexible-server#az_postgresql_flexible_server_delete) .
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver

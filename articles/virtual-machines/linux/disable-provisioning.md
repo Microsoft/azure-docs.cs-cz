@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 7c797957c292b9859ca41951b15f58c3d0be40b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c70b02bdc554c723f53ad5f8c0d36c5eca87811e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561058"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774362"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>Zakázání nebo odebrání agenta pro Linux z virtuálních počítačů a imagí
 
@@ -32,7 +32,7 @@ Platforma Azure je hostitelem mnoha rozšíření, která jsou v rozsahu od konf
 
 ## <a name="disabling-extension-processing"></a>Zákaz zpracování rozšíření
 
-Existuje několik způsobů, jak zakázat zpracování rozšíření v závislosti na vašich potřebách, ale před pokračováním **musíte** odebrat všechna rozšíření nasazená na virtuální počítač, například pomocí Azure CLI, můžete [vypsat](/cli/azure/vm/extension#az-vm-extension-list) a [Odstranit](/cli/azure/vm/extension#az-vm-extension-delete):
+Existuje několik způsobů, jak zakázat zpracování rozšíření v závislosti na vašich potřebách, ale před pokračováním **musíte** odebrat všechna rozšíření nasazená na virtuální počítač, například pomocí Azure CLI, můžete [vypsat](/cli/azure/vm/extension#az_vm_extension_list) a [Odstranit](/cli/azure/vm/extension#az_vm_extension_delete):
 
 ```azurecli
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
@@ -156,7 +156,7 @@ Když vytváříte virtuální počítač z image bez agenta pro Linux, musíte 
 > 
 > Pokud to neuděláte výše, platforma se pokusí odeslat konfiguraci rozšíření a časový limit po 40min.
 
-Pokud chcete nasadit virtuální počítač s zakázanými rozšířeními, můžete použít Azure CLI s [agentem--Enable-agent](/cli/azure/vm#az-vm-create).
+Pokud chcete nasadit virtuální počítač s zakázanými rozšířeními, můžete použít Azure CLI s [agentem--Enable-agent](/cli/azure/vm#az_vm_create).
 
 ```azurecli
 az vm create \

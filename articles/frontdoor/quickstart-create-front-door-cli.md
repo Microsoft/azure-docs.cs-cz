@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/19/2021
 ms.author: duau
-ms.openlocfilehash: f697606e195f102d2bfb5535c92e5c78eb44cdbe
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 99204a2d4c3a2455f0916878fb09a348dc79ac7a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727202"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778749"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Rychlý Start: vytvoření přední dveře pro globální webovou aplikaci s vysokou dostupností pomocí Azure CLI
 
@@ -47,7 +47,7 @@ V Azure přidělíte související prostředky skupině prostředků. Můžete p
 
 Pro tento rychlý Start potřebujete dvě skupiny prostředků. Jednu v *střed USA* a druhý v *střed USA – jih*.
 
-Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az-group-create):
+Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az_group_create):
 
 ```azurecli-interactive
 az group create \

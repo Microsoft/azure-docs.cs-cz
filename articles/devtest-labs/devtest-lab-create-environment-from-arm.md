@@ -3,12 +3,12 @@ title: Vytváření prostředí s více virtuálními počítači a PaaS prostř
 description: Naučte se vytvářet prostředí s více virtuálními počítači a PaaS prostředky v Azure DevTest Labs ze šablony Azure Resource Manager
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 97659d4ab95fdbe75460161d0ceed71a1cb5cf82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f285acffe642a85fa27792ee51ea67a57f6d35a5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88182404"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790108"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Vytvoření prostředí více virtuálních počítačů a prostředků PaaS pomocí šablony Azure Resource Manageru
 
@@ -264,7 +264,7 @@ Následující vzorový skript vytvoří prostředí v testovacím prostředí. 
 Pomocí Azure CLI můžete také nasazovat prostředky pomocí Správce prostředků šablon. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/templates/deploy-cli.md).
 
 > [!NOTE]
-> Jenom uživatel s oprávněním vlastníka testovacího prostředí může vytvořit virtuální počítače ze šablony Správce prostředků pomocí Azure PowerShell. Pokud chcete automatizovat vytváření virtuálních počítačů pomocí šablony Správce prostředků a máte jenom uživatelská oprávnění, můžete použít příkaz CLI [AZ Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
+> Jenom uživatel s oprávněním vlastníka testovacího prostředí může vytvořit virtuální počítače ze šablony Správce prostředků pomocí Azure PowerShell. Pokud chcete automatizovat vytváření virtuálních počítačů pomocí šablony Správce prostředků a máte jenom uživatelská oprávnění, můžete použít příkaz CLI [AZ Lab VM Create](/cli/azure/lab/vm#az_lab_vm_create).
 
 ## <a name="resource-manager-template-limitations-in-devtest-labs"></a>Omezení šablon Správce prostředků v DevTest Labs
 

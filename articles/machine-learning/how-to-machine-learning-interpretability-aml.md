@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: 2d60c6dbedb24847b95ce268bedafcb073421319
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: d79458cfc76adcfd35a6b8dee40c0c45786abc28
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576512"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763284"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Vysvětlení modelů ML & předpovědi v Pythonu (Preview) pomocí balíčku pro interpretaci
 
@@ -34,8 +34,9 @@ V tomto průvodci se naučíte používat balíček pro interpretaci sady Azure 
 * Nasaďte vysvětlující bodování spolu s modelem a sledujte vysvětlení během Inferencing.
 
 
-
 Další informace o podporovaných technikách interpretace a modelech strojového učení najdete v tématu věnovaném [interpretaci modelu v Azure Machine Learning](how-to-machine-learning-interpretability.md) a [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model).
+
+Další informace o tom, jak povolit interpretaci pro modely školené pomocí automatizovaného strojového učení, najdete v tématu věnovaném [výkladům: vysvětlení modelů pro automatizované modely strojového učení (Preview)](how-to-machine-learning-interpretability-automl.md). 
 
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Vygenerovat hodnotu důležitosti funkce na vašem osobním počítači 
 Následující příklad ukazuje, jak použít balíček pro interpretaci na osobním počítači bez kontaktování služeb Azure.

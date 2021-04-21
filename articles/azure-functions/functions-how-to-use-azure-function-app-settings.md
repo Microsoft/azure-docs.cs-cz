@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 5080d16a7b14506b24e07e2ee4ba862c645f83a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed87a5a744defb15d4a898aeabdce5267b7431fe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98875445"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775650"
 ---
 # <a name="manage-your-function-app"></a>Správa aplikace Function App 
 
@@ -46,14 +46,14 @@ Karta **nastavení aplikace** uchovává nastavení, která používá aplikace 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list)Příkaz vrátí existující nastavení aplikace, jako v následujícím příkladu:
+[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_list)Příkaz vrátí existující nastavení aplikace, jako v následujícím příkladu:
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME>
 ```
 
-[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)Příkaz přidá nebo aktualizuje nastavení aplikace. Následující příklad vytvoří nastavení s klíčem s názvem `CUSTOM_FUNCTION_APP_SETTING` a hodnotou `12345` :
+[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set)Příkaz přidá nebo aktualizuje nastavení aplikace. Následující příklad vytvoří nastavení s klíčem s názvem `CUSTOM_FUNCTION_APP_SETTING` a hodnotou `12345` :
 
 
 ```azurecli-interactive
@@ -260,7 +260,7 @@ Když nakonfigurujete seznam **povolených zdrojů** pro aplikaci Function App, 
 
 Při použití zástupného znaku ( `*` ) jsou všechny ostatní domény ignorovány. 
 
-Pomocí [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) příkazu přidejte doménu do seznamu povolených zdrojů. Následující příklad přidá doménu contoso.com:
+Pomocí [`az functionapp cors add`](/cli/azure/functionapp/cors#az_functionapp_cors_add) příkazu přidejte doménu do seznamu povolených zdrojů. Následující příklad přidá doménu contoso.com:
 
 ```azurecli-interactive
 az functionapp cors add --name <FUNCTION_APP_NAME> \
@@ -268,9 +268,9 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 --allowed-origins https://contoso.com
 ```
 
-Pomocí [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) příkazu můžete zobrazit seznam aktuálních povolených zdrojů.
+Pomocí [`az functionapp cors show`](/cli/azure/functionapp/cors#az_functionapp_cors_show) příkazu můžete zobrazit seznam aktuálních povolených zdrojů.
 
-### <a name="authentication"></a><a name="auth"></a>Authentication
+### <a name="authentication"></a><a name="auth"></a>Přihlašovací
 
 ![Konfigurace ověřování pro aplikaci Function App](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
@@ -280,7 +280,7 @@ Pokud funkce používají aktivační událost HTTP, můžete vyžadovat první 
 ## <a name="next-steps"></a>Další kroky
 
 + [Konfigurace nastavení Azure App Service](../app-service/configure-common.md)
-+ [Průběžné nasazování se službou Azure Functions](functions-continuous-deployment.md)
++ [Průběžné nasazování pro Azure Functions](functions-continuous-deployment.md)
 
 [Azure CLI]: /cli/azure/
 [Azure Portal]: https://portal.azure.com

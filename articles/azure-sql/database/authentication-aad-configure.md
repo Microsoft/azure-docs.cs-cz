@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 5894defca5a90f1d8cd7f312f47a37df6495ccd3
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: c75364f2565611b6738996c082610229db0cb2a8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376167"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762222"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurace a Správa ověřování Azure AD pomocí Azure SQL
 
@@ -190,7 +190,7 @@ Pokud chcete zřídit správce Azure AD, spusťte následující příkazy Azure
 
 Rutiny používané ke zřízení a správě správce Azure AD pro vaši spravovanou instanci SQL jsou uvedené v následující tabulce:
 
-| Název rutiny | Popis |
+| Název rutiny | Description |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Zřídí správce Azure AD pro spravovanou instanci SQL v aktuálním předplatném. (Musí být z aktuálního předplatného)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Odebere správce Azure AD pro spravovanou instanci SQL v aktuálním předplatném. |
@@ -220,10 +220,10 @@ Správce Azure AD pro spravovanou instanci SQL můžete také zřídit voláním
 
 | Příkaz | Popis |
 | --- | --- |
-|[AZ SQL mi AD-admin Create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | Zřídí správce Azure Active Directory pro spravovanou instanci SQL (musí být z aktuálního předplatného). |
-|[AZ SQL mi AD-admin DELETE](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | Odebere správce Azure Active Directory pro spravovanou instanci SQL. |
-|[AZ SQL mi AD – seznam správců](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-list) | Vrátí informace o Správci Azure Active Directory aktuálně nakonfigurovaném pro spravovanou instanci SQL. |
-|[AZ SQL mi AD – aktualizace pro správce](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-update) | Aktualizuje Správce služby Active Directory pro spravovanou instanci SQL. |
+|[AZ SQL mi AD-admin Create](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_create) | Zřídí správce Azure Active Directory pro spravovanou instanci SQL (musí být z aktuálního předplatného). |
+|[AZ SQL mi AD-admin DELETE](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_delete) | Odebere správce Azure Active Directory pro spravovanou instanci SQL. |
+|[AZ SQL mi AD – seznam správců](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_list) | Vrátí informace o Správci Azure Active Directory aktuálně nakonfigurovaném pro spravovanou instanci SQL. |
+|[AZ SQL mi AD – aktualizace pro správce](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_update) | Aktualizuje Správce služby Active Directory pro spravovanou instanci SQL. |
 
 Další informace o příkazech rozhraní příkazového řádku najdete v tématu [AZ SQL mi](/cli/azure/sql/mi).
 
@@ -279,7 +279,7 @@ Pokud chcete spustit rutiny PowerShellu, musíte mít Azure PowerShell nainstalo
 
 Rutiny používané ke zřízení a správě správce Azure AD pro SQL Database a Azure synapse:
 
-| Název rutiny | Popis |
+| Název rutiny | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Zřídí správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse. (Musí být z aktuálního předplatného) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Odebere správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse.|
@@ -326,10 +326,10 @@ Správce Azure AD můžete zřídit voláním následujících příkazů rozhra
 
 | Příkaz | Popis |
 | --- | --- |
-|[AZ SQL Server AD-admin Create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Zřídí správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse. (Musí být z aktuálního předplatného) |
-|[AZ SQL Server AD – odstranění správce](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Odebere správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse. |
-|[AZ SQL Server AD – seznam správců](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | Vrátí informace o Správci Azure Active Directory aktuálně nakonfigurovaném pro server hostující SQL Database nebo Azure synapse. |
-|[AZ SQL Server AD – aktualizace pro správce](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | Aktualizuje Správce služby Active Directory pro server hostující SQL Database nebo Azure synapse. |
+|[AZ SQL Server AD-admin Create](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) | Zřídí správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse. (Musí být z aktuálního předplatného) |
+|[AZ SQL Server AD – odstranění správce](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) | Odebere správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse. |
+|[AZ SQL Server AD – seznam správců](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) | Vrátí informace o Správci Azure Active Directory aktuálně nakonfigurovaném pro server hostující SQL Database nebo Azure synapse. |
+|[AZ SQL Server AD – aktualizace pro správce](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_update) | Aktualizuje Správce služby Active Directory pro server hostující SQL Database nebo Azure synapse. |
 
 Další informace o příkazech rozhraní příkazového řádku najdete v tématu [AZ SQL Server](/cli/azure/sql/server).
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: kumud
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 18e380345ef0caab52e9b1c537bada73e36d8b48
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 701df4353e8d2e36baf0496bd6944c4a95395414
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063300"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763248"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Rychlý start: Diagnostika problému s filtrováním síťového provozu virtuálního počítače – Azure CLI
 
@@ -62,7 +62,7 @@ Pokud chcete otestovat síťovou komunikaci pomocí služby Network Watcher, mus
 
 ### <a name="enable-network-watcher"></a>Povolení Network Watcheru
 
-Pokud už máte sledovací proces sítě v oblasti USA – východ povolený, přeskočte vpřed na část [Použití ověření toku protokolu IP](#use-ip-flow-verify). K vytvoření sledovacího procesu sítě v oblasti USA – východ použijte příkaz [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure):
+Pokud už máte sledovací proces sítě v oblasti USA – východ povolený, přeskočte vpřed na část [Použití ověření toku protokolu IP](#use-ip-flow-verify). K vytvoření sledovacího procesu sítě v oblasti USA – východ použijte příkaz [az network watcher configure](/cli/azure/network/watcher#az_network_watcher_configure):
 
 ```azurecli-interactive
 az network watcher configure \
@@ -73,7 +73,7 @@ az network watcher configure \
 
 ### <a name="use-ip-flow-verify"></a>Použití ověření toku protokolu IP
 
-Když vytvoříte virtuální počítač, Azure u něj ve výchozím nastavení blokuje příchozí i odchozí síťový provoz. Později můžete výchozí nastavení Azure přepsat a povolit nebo odepřít další typy provozu. Když chcete otestovat, zda je provoz na různé cíle a ze zdrojových IP adres povolený nebo zakázaný, použijte příkaz [az network watcher test-ip-flow](/cli/azure/network/watcher#az-network-watcher-test-ip-flow).
+Když vytvoříte virtuální počítač, Azure u něj ve výchozím nastavení blokuje příchozí i odchozí síťový provoz. Později můžete výchozí nastavení Azure přepsat a povolit nebo odepřít další typy provozu. Když chcete otestovat, zda je provoz na různé cíle a ze zdrojových IP adres povolený nebo zakázaný, použijte příkaz [az network watcher test-ip-flow](/cli/azure/network/watcher#az_network_watcher_test_ip_flow).
 
 Otestujte odchozí komunikaci z virtuálního počítače na jednu z IP adres stránky www.bing.com:
 
@@ -125,7 +125,7 @@ Vrácený výsledek vás informuje o tom, že přístup byl odepřen kvůli prav
 
 ## <a name="view-details-of-a-security-rule"></a>Zobrazení podrobností pravidla zabezpečení
 
-Když chcete určit, proč pravidla v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) komunikaci povolují nebo blokují, zkontrolujte platná pravidla zabezpečení síťového rozhraní pomocí příkazu [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg):
+Když chcete určit, proč pravidla v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) komunikaci povolují nebo blokují, zkontrolujte platná pravidla zabezpečení síťového rozhraní pomocí příkazu [az network nic list-effective-nsg](/cli/azure/network/nic#az_network_nic_list_effective_nsg):
 
 ```azurecli-interactive
 az network nic list-effective-nsg \

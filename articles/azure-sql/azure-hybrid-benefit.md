@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 02/16/2021
-ms.openlocfilehash: f7a37e761e37e295bbb92e442b1813ebded2a7cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5f85e0dcb8ca70d5773b8f1c3b53e0b449ef013
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955274"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779196"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Zvýhodněné hybridní využití Azure-Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -51,9 +51,9 @@ Chcete-li nastavit nebo aktualizovat typ licence pomocí prostředí PowerShell:
 
 Nastavení nebo aktualizace typu licence pomocí Azure CLI:
 
-- [az sql db create](/cli/azure/sql/db#az-sql-db-create)
-- [AZ SQL mi Create](/cli/azure/sql/mi#az-sql-mi-create)
-- [AZ SQL mi Update](/cli/azure/sql/mi#az-sql-mi-update)
+- [az sql db create](/cli/azure/sql/db#az_sql_db_create)
+- [AZ SQL mi Create](/cli/azure/sql/mi#az_sql_mi_create)
+- [AZ SQL mi Update](/cli/azure/sql/mi#az_sql_mi_update)
 
 # <a name="rest-api"></a>[REST API](#tab/rest)
 

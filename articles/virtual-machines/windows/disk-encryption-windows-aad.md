@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3b7f6f63953ba09e57e4586c698e16b9abb8aa1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 081ead434dbdc3b9c348e3fa35068a638bab6e62
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555274"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776856"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Azure Disk Encryption s Azure AD pro virtuální počítače s Windows (předchozí verze)
 
@@ -37,7 +37,7 @@ Pomocí šablony Správce prostředků můžete povolit šifrování disku na no
 2. Vyberte předplatné, skupinu prostředků, umístění skupiny prostředků, parametry, právní smlouvy a smlouvu. Kliknutím na **koupit** nasadíte nový virtuální počítač s IaaS, ve kterém je povolené šifrování.
 
 3. Po nasazení šablony ověřte pomocí preferované metody stav šifrování virtuálního počítače:
-     - Pomocí příkazu [AZ VM Encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) ověřte pomocí Azure CLI. 
+     - Pomocí příkazu [AZ VM Encryption show](/cli/azure/vm/encryption#az_vm_encryption_show) ověřte pomocí Azure CLI. 
 
          ```azurecli-interactive 
          az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
@@ -124,7 +124,7 @@ Pomocí rutiny [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/s
      ```
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with--azure-cli"></a><a name="bkmk_RunningWinVMCLI"></a>Povolení šifrování u stávajících nebo spuštěných virtuálních počítačů pomocí Azure CLI
-Pomocí příkazu [AZ VM Encryption Enable](/cli/azure/vm/encryption#az-vm-encryption-enable) Povolte šifrování na běžícím virtuálním počítači s IaaS v Azure.
+Pomocí příkazu [AZ VM Encryption Enable](/cli/azure/vm/encryption#az_vm_encryption_enable) Povolte šifrování na běžícím virtuálním počítači s IaaS v Azure.
 
 - **Šifrování spuštěného virtuálního počítače pomocí tajného klíče klienta:**
 
@@ -141,13 +141,13 @@ Pomocí příkazu [AZ VM Encryption Enable](/cli/azure/vm/encryption#az-vm-encry
      >[!NOTE]
      > Syntaxe hodnoty parametru Disk-Encryption-trezor je úplný řetězec identifikátoru:/subscriptions/[ID předplatného-GUID]/resourceGroups/[Resource-Group-name]/providers/Microsoft.KeyVault/vaults/[Trezor klíčů-name] </br> Syntaxe hodnoty parametru klíč-šifrování klíče je úplný identifikátor URI pro KEK jako v: https://[název trezoru-name]. trezor. Azure. NET/Keys/[kekname]/[KEK-Unique-ID] 
 
-- **Ověřte, že jsou disky šifrované:** Pokud chcete zjistit stav šifrování virtuálního počítače s IaaS, použijte příkaz [AZ VM Encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) . 
+- **Ověřte, že jsou disky šifrované:** Pokud chcete zjistit stav šifrování virtuálního počítače s IaaS, použijte příkaz [AZ VM Encryption show](/cli/azure/vm/encryption#az_vm_encryption_show) . 
 
      ```azurecli-interactive
      az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
      ```
 
-- **Zakázat šifrování:** Pokud chcete šifrování zakázat, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption#az-vm-encryption-disable) . 
+- **Zakázat šifrování:** Pokud chcete šifrování zakázat, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption#az_vm_encryption_disable) . 
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
@@ -319,7 +319,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $VMName -Aa
      Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
 
-- **Zakázat šifrování pomocí Azure CLI:** Pokud chcete šifrování zakázat, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption#az-vm-encryption-disable) . 
+- **Zakázat šifrování pomocí Azure CLI:** Pokud chcete šifrování zakázat, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption#az_vm_encryption_disable) . 
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```

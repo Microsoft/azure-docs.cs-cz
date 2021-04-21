@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 5d5961ecae2fbc154ae6f1acd74df2bb74024fa1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ceef604fe07a11be89376e26c6fecc49298ebacf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96532614"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778854"
 ---
 # <a name="detect-adult-content"></a>Zjistit obsah pro dospělé
 
@@ -35,6 +35,6 @@ Klasifikace "dospělý" obsahuje několik různých kategorií:
 
 ## <a name="use-the-api"></a>Použití rozhraní API
 
-Obsah pro dospělé můžete detekovat pomocí rozhraní API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) . Když přidáte hodnotu `Adult` do parametru dotazu **visualFeatures** , vrátí rozhraní API tři logické vlastnosti &mdash; `isAdultContent` , `isRacyContent` a `isGoryContent` &mdash; v jeho odpovědi JSON. Metoda také vrátí odpovídající vlastnosti &mdash; `adultScore` , `racyScore` a, `goreScore` &mdash; které reprezentují výsledky spolehlivosti mezi nulou a jednou pro každou příslušnou kategorii.
+Obsah pro dospělé můžete detekovat pomocí rozhraní API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) . Když přidáte hodnotu `Adult` do parametru dotazu **visualFeatures** , vrátí rozhraní API tři logické vlastnosti &mdash; `isAdultContent` , `isRacyContent` a `isGoryContent` &mdash; v jeho odpovědi JSON. Metoda také vrátí odpovídající vlastnosti &mdash; `adultScore` , `racyScore` a, `goreScore` &mdash; které reprezentují výsledky spolehlivosti mezi nulou a jednou pro každou příslušnou kategorii.
 
 - [Rychlý Start: Počítačové zpracování obrazu REST API nebo klientské knihovny](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

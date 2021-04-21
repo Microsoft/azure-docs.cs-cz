@@ -9,16 +9,16 @@ author: rolyon
 ms.author: rolyon
 ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: e11e03ec7379dede6bf998f639a237201c297e72
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d6126e9d782765b992ae2fd51016984389c9b187
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303623"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778296"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
-V této části jsou uvedené operace pro poskytovatele prostředků Azure, které se používají ve vestavěných rolích. Tyto operace můžete použít ve vlastních [rolích Azure](custom-roles.md) a zajistit tak podrobné řízení přístupu k prostředkům v Azure. Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat nejnovější operace, použijte seznam operací [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) nebo [AZ Provider](/cli/azure/provider/operation#az-provider-operation-list).
+V této části jsou uvedené operace pro poskytovatele prostředků Azure, které se používají ve vestavěných rolích. Tyto operace můžete použít ve vlastních [rolích Azure](custom-roles.md) a zajistit tak podrobné řízení přístupu k prostředkům v Azure. Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat nejnovější operace, použijte seznam operací [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) nebo [AZ Provider](/cli/azure/provider/operation#az_provider_operation_list).
 
 Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v následující tabulce.
 
@@ -130,7 +130,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. OffAzure](#microsoftoffazure) |
 | **Monitorování** |
 | [Microsoft. AlertsManagement](#microsoftalertsmanagement) |
-| [Microsoft. Insights](#microsoftinsights) |
+| [Microsoft.Insights](#microsoftinsights) |
 | [Microsoft. OperationalInsights](#microsoftoperationalinsights) |
 | [Microsoft. OperationsManagement](#microsoftoperationsmanagement) |
 | [Microsoft. monitor zátěže byl](#microsoftworkloadmonitor) |
@@ -4258,10 +4258,10 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL
 > | Microsoft. SQL/Locations/longTermRetentionBackups/Read | Uvádí dlouhodobé zálohy uchovávání pro každou databázi na každém serveru v lokalitě. |
 > | Microsoft. SQL/Locations/longTermRetentionManagedInstanceBackupAzureAsyncOperation/Read | Získat stav operace zálohování dlouhodobé uchovávání spravované instance |
 > | Microsoft. SQL/Locations/longTermRetentionManagedInstanceBackupOperationResults/Read | Získat stav operace zálohování dlouhodobé uchovávání spravované instance |
-> | Microsoft. SQL/Locations/longTermRetentionManagedInstanceBackups/Read | Vrátí seznam záloh spravované instance pro konkrétní umístění.  |
-> | Microsoft. SQL/Locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/Read | Vrátí seznam záloh LTR pro databázi spravované instance. |
-> | Microsoft. SQL/Locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/DELETE | Odstraní zálohu LTR pro databázi spravované instance. |
-> | Microsoft. SQL/Locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/Read | Vrátí seznam záloh spravované instance pro konkrétní spravovanou instanci. |
+> | Microsoft.Sql/locations/longTermRetentionManagedInstanceBackups/read | Vrátí seznam záloh spravované instance pro konkrétní umístění.  |
+> | Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/read | Vrátí seznam záloh LTR pro databázi spravované instance. |
+> | Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete | Odstraní zálohu LTR pro databázi spravované instance. |
+> | Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/read | Vrátí seznam záloh spravované instance pro konkrétní spravovanou instanci. |
 > | Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionBackups/Read | Uvádí dlouhodobé zálohy uchovávání pro každou databázi na serveru. |
 > | Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/Copy/Action | Kopírovat dlouhodobou zálohu uchovávání informací |
 > | Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/Update/Action | Aktualizace dlouhodobého uchovávání záloh |
@@ -8579,7 +8579,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. AlertsManagement/smartGroups/changestate/Action | Změna stavu inteligentní skupiny |
 > | Microsoft. AlertsManagement/smartGroups/History/Read | Získat historii inteligentní skupiny |
 
-### <a name="microsoftinsights"></a>Microsoft. Insights
+### <a name="microsoftinsights"></a>Microsoft.Insights
 
 Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 

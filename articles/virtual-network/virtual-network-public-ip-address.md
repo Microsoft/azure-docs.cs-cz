@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: d52430c87d99f8837c78fcff89d8b214e45350ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: adc78dceb5269d65bcf76dc99af309fb5e28f450
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98934946"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774106"
 ---
 # <a name="manage-public-ip-addresses"></a>Správa veřejných IP adres
 
@@ -83,15 +83,15 @@ Další podrobnosti o specifických atributech veřejné IP adresy během vytvá
    
 |Operace|portál Azure|Azure PowerShell|Azure CLI|
 |---|---|---|---|
-|Zobrazení | V části **Přehled** veřejné IP adresy |[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) pro načtení objektu veřejné IP adresy a zobrazení jeho nastavení| [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show) pro zobrazení nastavení|
-|Seznam | V kategorii **veřejné IP adresy** |[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) načíst jeden nebo více objektů veřejné IP adresy a zobrazit její nastavení|[AZ Network Public-IP list](/cli/azure/network/public-ip#az-network-public-ip-list) a vypsat veřejné IP adresy|
-|Modify | V případě IP adresy, která je zrušení přidružení, vyberte **Konfigurace** a upravte časový limit nečinnosti, popisek názvu DNS nebo změňte přiřazení základní IP adresy ze statické na dynamickou.  |[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) aktualizuje nastavení. |[AZ Network Public-IP Update](/cli/azure/network/public-ip#az-network-public-ip-update) to Update |
+|Zobrazení | V části **Přehled** veřejné IP adresy |[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) pro načtení objektu veřejné IP adresy a zobrazení jeho nastavení| [AZ Network Public-IP show](/cli/azure/network/public-ip#az_network_public_ip_show) pro zobrazení nastavení|
+|Seznam | V kategorii **veřejné IP adresy** |[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) načíst jeden nebo více objektů veřejné IP adresy a zobrazit její nastavení|[AZ Network Public-IP list](/cli/azure/network/public-ip#az_network_public_ip_list) a vypsat veřejné IP adresy|
+|Modify | V případě IP adresy, která je zrušení přidružení, vyberte **Konfigurace** a upravte časový limit nečinnosti, popisek názvu DNS nebo změňte přiřazení základní IP adresy ze statické na dynamickou.  |[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) aktualizuje nastavení. |[AZ Network Public-IP Update](/cli/azure/network/public-ip#az_network_public_ip_update) to Update |
 
    - **Odstranit**: odstranění veřejných IP adres vyžaduje, aby se objekt veřejné IP adresy nepřidružil k žádné konfiguraci protokolu IP nebo síťovému adaptéru virtuálního počítače. Další podrobnosti najdete v následující tabulce.
 
 |Prostředek|portál Azure|Azure PowerShell|Azure CLI|
 |---|---|---|---|
-|[Virtuální počítač](./remove-public-ip-address-vm.md)|Vyberte **zrušit, pokud chcete** oddělit IP adresu od konfigurace síťových adaptérů, a pak vyberte **Odstranit**.|[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) oddělit IP adresu od konfigurace síťové karty; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) k odstranění|[AZ Network Public-IP Update--Remove pro zrušení](/cli/azure/network/public-ip#az-network-public-ip-update) přidružení IP adresy z konfigurace síťové karty; [AZ Network Public-IP Delete](/cli/azure/network/public-ip#az-network-public-ip-delete) to Delete |
+|[Virtuální počítač](./remove-public-ip-address-vm.md)|Vyberte **zrušit, pokud chcete** oddělit IP adresu od konfigurace síťových adaptérů, a pak vyberte **Odstranit**.|[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) oddělit IP adresu od konfigurace síťové karty; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) k odstranění|[AZ Network Public-IP Update--Remove pro zrušení](/cli/azure/network/public-ip#az_network_public_ip_update) přidružení IP adresy z konfigurace síťové karty; [AZ Network Public-IP Delete](/cli/azure/network/public-ip#az_network_public_ip_delete) to Delete |
 |Load Balancer front-endu | Přejděte na nepoužitou veřejnou IP adresu a vyberte **přidružit** a vyberte Load Balancer s příslušnou konfigurací IP adresy front-endu, která se má nahradit (pak se stará IP adresa dá odstranit pomocí stejné metody jako u virtuálního počítače).  | [Set-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) Přidruží novou konfiguraci protokolu IP front-endu k veřejným Load Balancer; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) , který se má odstranit; k odebrání konfigurace IP adresy front-endu taky můžete použít [Remove-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) , pokud existuje víc než jeden. |[AZ Network disendu-IP Update](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_update) pro přidružení nové konfigurace IP adresy front-endu k veřejnému Load Balancer; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) , který se má odstranit; dá se taky použít [AZ Network disendu-IP Delete](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_delete) , aby se odebrala konfigurace IP adresy front-endu, pokud existuje víc než jeden.|
 |Brána firewall|–| Zrušení [přidělení ()](../firewall/firewall-faq.yml#how-can-i-stop-and-start-azure-firewall) pro uvolnění brány firewall a odebrání všech konfigurací IP | [AZ Network firewall IP-config Delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) pro odebrání IP adresy (ale k navrácení se musí použít PowerShell)|
 

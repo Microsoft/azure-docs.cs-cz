@@ -5,12 +5,12 @@ description: Tento článek popisuje dvě vrstvy šifrování, které jsou k dis
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 3d4f9e3be02a64efa058ea1f84a3e261cb6166fc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 226516b1178f14789570b45b68cfdbf56f63bbd7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867113"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775146"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Dvojité šifrování Azure HDInsight pro neaktivní neaktivní data
 
@@ -133,7 +133,7 @@ Musíte také přiřadit spravovanou identitu ke clusteru.
 
 #### <a name="using-azure-cli"></a>Použití Azure CLI
 
-Následující příklad ukazuje, jak pomocí rozhraní příkazového řádku Azure vytvořit nový cluster Apache Spark s povoleným šifrováním disku. Další informace najdete v tématu [Azure CLI AZ HDInsight Create](/cli/azure/hdinsight#az-hdinsight-create). Parametr `encryption-key-version` je nepovinný.
+Následující příklad ukazuje, jak pomocí rozhraní příkazového řádku Azure vytvořit nový cluster Apache Spark s povoleným šifrováním disku. Další informace najdete v tématu [Azure CLI AZ HDInsight Create](/cli/azure/hdinsight#az_hdinsight_create). Parametr `encryption-key-version` je nepovinný.
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -371,7 +371,7 @@ K otočení klíče potřebujete identifikátor URI trezoru základního klíče
 
 #### <a name="using-azure-cli"></a>Použití Azure CLI
 
-Následující příklad ukazuje, jak otočit šifrovací klíč disku pro existující cluster HDInsight. Další informace najdete v tématu [Azure CLI AZ HDInsight otočit-Disk-Encryption-Key](/cli/azure/hdinsight#az-hdinsight-rotate-disk-encryption-key).
+Následující příklad ukazuje, jak otočit šifrovací klíč disku pro existující cluster HDInsight. Další informace najdete v tématu [Azure CLI AZ HDInsight otočit-Disk-Encryption-Key](/cli/azure/hdinsight#az_hdinsight_rotate_disk_encryption_key).
 
 ```azurecli
 az hdinsight rotate-disk-encryption-key \
@@ -404,7 +404,7 @@ Pokud cluster ztratí přístup k tomuto klíči, zobrazí se na portálu Apache
 
 **Jak mohu obnovit cluster, pokud jsou klíče odstraněny?**
 
-Vzhledem k tomu, že se podporují jenom klíče s povoleným obnovitelném odstraněním, měl by cluster znovu získat přístup k klíčům, pokud se klíče obnoví v trezoru klíčů. Pokud chcete obnovit Azure Key Vault klíč, přečtěte si téma [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) nebo [AZ-klíčů trezor-Key-Recovery](/cli/azure/keyvault/key#az-keyvault-key-recover).
+Vzhledem k tomu, že se podporují jenom klíče s povoleným obnovitelném odstraněním, měl by cluster znovu získat přístup k klíčům, pokud se klíče obnoví v trezoru klíčů. Pokud chcete obnovit Azure Key Vault klíč, přečtěte si téma [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) nebo [AZ-klíčů trezor-Key-Recovery](/cli/azure/keyvault/key#az_keyvault_key_recover).
 
 
 **Pokud je cluster škálovatelný, budou nové uzly bezproblémově podporovat klíče spravované zákazníky?**

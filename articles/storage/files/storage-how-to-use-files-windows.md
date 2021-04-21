@@ -8,12 +8,12 @@ ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9121774af0a1cfac6f677b4b8e2f4cd4b535042e
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e864dcaa2a611746ae813a4f0adf8409fbc50871
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717173"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789784"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -48,7 +48,7 @@ Zkontrolujte, že je otevřený port 445: Protokol SMB vyžaduje otevřený port
 ## <a name="using-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Pokud chcete používat sdílenou složku Azure s Windows, musíte ji buď připojit, což znamená přiřadit jí písmeno jednotky nebo cestu k přípojnému bodu, nebo k ní přistupovat přes její [cestu UNC](/windows/win32/fileio/naming-a-file). 
 
-Tento článek používá klíč účtu úložiště pro přístup ke sdílené složce souborů. Klíč účtu úložiště je klíč správce pro účet úložiště, včetně oprávnění správce ke všem souborům a složkám v rámci sdílené složky, ke které přistupujete, a ke všem sdíleným složkám a dalším prostředkům úložiště (objektům blob, frontám, tabulkám atd.) obsaženým v účtu úložiště. Pokud to pro vaše zatížení nestačí, můžete použít [synchronizace souborů Azure](storage-sync-files-planning.md) , nebo můžete použít [ověřování na základě identity přes protokol SMB](storage-files-active-directory-overview.md).
+Tento článek používá klíč účtu úložiště pro přístup ke sdílené složce souborů. Klíč účtu úložiště je klíč správce pro účet úložiště, včetně oprávnění správce ke všem souborům a složkám v rámci sdílené složky, ke které přistupujete, a ke všem sdíleným složkám a dalším prostředkům úložiště (objektům blob, frontám, tabulkám atd.) obsaženým v účtu úložiště. Pokud to pro vaše zatížení nestačí, můžete použít [synchronizace souborů Azure](../file-sync/file-sync-planning.md) , nebo můžete použít [ověřování na základě identity přes protokol SMB](storage-files-active-directory-overview.md).
 
 Při migraci obchodních aplikací očekávajících sdílenou složku SMB metodou „lift and shift“ do Azure se jako alternativa k provozu vyhrazeného souborového serveru Windows na virtuálním počítači Azure běžně používá sdílená složka Azure. Jedním z důležitých aspektů úspěšné migrace obchodní aplikace, která má používat sdílenou složku Azure, je to, že řada obchodních aplikací se spouští v kontextu vyhrazeného účtu služby s omezenými systémovými oprávněními, a ne v kontextu účtu správce virtuálního počítače. Proto je potřeba zajistit připojení a uložení přihlašovacích údajů pro sdílenou složku Azure z kontextu účtu služby, a nikoli účtu správce.
 

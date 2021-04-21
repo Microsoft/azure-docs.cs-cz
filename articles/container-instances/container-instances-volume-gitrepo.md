@@ -3,12 +3,12 @@ title: Připojit svazek Gitrepo nepodporují ke skupině kontejnerů
 description: Naučte se připojit svazek Gitrepo nepodporují, abyste mohli klonovat úložiště Git do svých instancí kontejnerů.
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 5f361b0bbd4a02f754e47c8321a664af05036601
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c1249e3120dd680c52bf74fb045bedf5202b9f2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86260711"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763716"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Připojení svazku Gitrepo nepodporují v Azure Container Instances
 
@@ -115,5 +115,5 @@ Naučte se připojit další typy svazků v Azure Container Instances:
 [pat-repos]: /azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-exec]: /cli/azure/container#az-container-exec
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-exec]: /cli/azure/container#az_container_exec

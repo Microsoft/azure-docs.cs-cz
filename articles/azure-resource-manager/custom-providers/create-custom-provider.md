@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 23ae69f49d37a210dd9fa1bfeedeca6c1b461e20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 721fe31f514cb948c93dc2a779a92ef3b2775ef9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888857"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779232"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Rychlý Start: Vytvoření vlastního zprostředkovatele a nasazení vlastních prostředků
 
@@ -27,7 +27,7 @@ Připravte prostředí pro rozhraní příkazového řádku Azure CLI.
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Příklady použití Azure CLI `az rest` pro `REST` požadavky. Další informace najdete v tématu [AZ REST](/cli/azure/reference-index#az-rest).
+Příklady použití Azure CLI `az rest` pro `REST` požadavky. Další informace najdete v tématu [AZ REST](/cli/azure/reference-index#az_rest).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -52,7 +52,7 @@ Pokud chcete nasadit vlastního zprostředkovatele, použijte Azure CLI, PowerSh
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Tento příklad vás vyzve k zadání názvu skupiny prostředků, umístění a názvu aplikace Function App poskytovatele. Názvy jsou uloženy v proměnných, které se používají v jiných příkazech. K nasazení prostředků nasaďte příkazy [AZ Group Create](/cli/azure/group#az-group-create) a [AZ Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create) .
+Tento příklad vás vyzve k zadání názvu skupiny prostředků, umístění a názvu aplikace Function App poskytovatele. Názvy jsou uloženy v proměnných, které se používají v jiných příkazech. K nasazení prostředků nasaďte příkazy [AZ Group Create](/cli/azure/group#az_group_create) a [AZ Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create) .
 
 ```azurecli-interactive
 read -p "Enter a resource group name:" rgName &&

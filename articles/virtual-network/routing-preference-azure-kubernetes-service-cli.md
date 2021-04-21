@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: ac70f48a3c484f8865c54e09c59662a14a259e74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9eaad12e254150109498be0fac2f285f33a5965c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101679388"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776568"
 ---
 # <a name="configure-routing-preference-for-a-kubernetes-cluster-using-azure-cli"></a>Konfigurace předvolby směrování pro cluster Kubernetes pomocí Azure CLI
 
@@ -31,14 +31,14 @@ V tomto článku se dozvíte, jak nakonfigurovat předvolby směrování prostř
 - Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.49 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků v **východní USA** oblasti Azure:
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků v **východní USA** oblasti Azure:
 
 ```azurecli
   az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-Vytvořte veřejnou IP adresu s preferovaným směrováním typu **Internet** pomocí příkazu [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create).
+Vytvořte veřejnou IP adresu s preferovaným směrováním typu **Internet** pomocí příkazu [AZ Network Public-IP Create](/cli/azure/network/public-ip#az_network_public_ip_create).
 
 Následující příkaz vytvoří novou veřejnou IP adresu s upřednostněním **internetového** směrování v oblasti **východní USA** Azure.
 
@@ -87,4 +87,3 @@ Pokud chcete ověřit, vyhledejte veřejnou IP adresu vytvořenou v předchozím
 
 - Přečtěte si další informace o [předvolbách směrování ve veřejných IP adresách](routing-preference-overview.md). 
 - [Nakonfigurujte předvolby směrování pro virtuální počítač pomocí Azure CLI](configure-routing-preference-virtual-machine-cli.md).
-

@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 54ad9f389070e1d5d280517a2f6c41e9a0f8f33e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc329feffbf22d63774ab0f3779d62d3ccf53adb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96929986"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774104"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Práce s klíčovými hodnotami v úložišti konfigurace aplikace Azure
 
@@ -83,9 +83,9 @@ V této tabulce jsou uvedené příkazy, které se používají v našem ukázko
 
 | Příkaz | Poznámky |
 |---|---|
-| [AZ appconfig KV set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Vytvoří nebo aktualizuje pár klíč-hodnota. |
-| [AZ appconfig KV list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Vypíše páry klíč-hodnota v úložišti konfigurace aplikace. |
-| [AZ appconfig KV DELETE](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Odstraní pár klíč-hodnota. |
+| [AZ appconfig KV set](/cli/azure/appconfig/kv#az_appconfig_kv_set) | Vytvoří nebo aktualizuje pár klíč-hodnota. |
+| [AZ appconfig KV list](/cli/azure/appconfig/kv#az_appconfig_kv_list) | Vypíše páry klíč-hodnota v úložišti konfigurace aplikace. |
+| [AZ appconfig KV DELETE](/cli/azure/appconfig/kv#az_appconfig_kv_delete) | Odstraní pár klíč-hodnota. |
 
 ## <a name="next-steps"></a>Další kroky
 

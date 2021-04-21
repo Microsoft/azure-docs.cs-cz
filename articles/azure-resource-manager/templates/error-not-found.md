@@ -3,12 +3,12 @@ title: Chyby nenalezených prostředků
 description: Popisuje, jak vyřešit chyby při nalezení prostředku. K této chybě může dojít při nasazování šablony Azure Resource Manager nebo při přijetí akcí správy.
 ms.topic: troubleshooting
 ms.date: 03/23/2021
-ms.openlocfilehash: b80c32683190167d5c0d6e0a7f75acce8bbdb833
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e3a72eaad99721cec9500956179a3ae9d9cf8d2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950871"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762132"
 ---
 # <a name="resolve-resource-not-found-errors"></a>Chyby při řešení nenalezených prostředků
 
@@ -43,7 +43,7 @@ Pokud se zobrazí tato chyba při provádění úlohy správy, ověřte hodnoty,
 * Název skupiny prostředků
 * Předplatné
 
-Pokud používáte prostředí PowerShell nebo rozhraní příkazového řádku Azure CLI, ověřte, zda je spuštěn příkaz v předplatném, které prostředek obsahuje. Předplatné můžete změnit pomocí [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) nebo [AZ Account set](/cli/azure/account#az-account-set). Mnoho příkazů také poskytuje parametr předplatného, který umožňuje zadat jiné předplatné, než je aktuální kontext.
+Pokud používáte prostředí PowerShell nebo rozhraní příkazového řádku Azure CLI, ověřte, zda je spuštěn příkaz v předplatném, které prostředek obsahuje. Předplatné můžete změnit pomocí [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) nebo [AZ Account set](/cli/azure/account#az_account_set). Mnoho příkazů také poskytuje parametr předplatného, který umožňuje zadat jiné předplatné, než je aktuální kontext.
 
 Pokud máte potíže s ověřováním vlastností, přihlaste se k [portálu](https://portal.azure.com). Vyhledejte prostředek, který se pokoušíte použít, a Projděte si název prostředku, skupinu prostředků a předplatné.
 

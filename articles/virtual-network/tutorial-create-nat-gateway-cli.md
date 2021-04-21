@@ -9,12 +9,12 @@ ms.subservice: nat
 ms.topic: tutorial
 ms.date: 03/10/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: d312702f441cfe2ad94e347cadcdfc88d4cc2a72
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 60436b8d4a0f338f4ece59ad4cd11c14c9e4c352
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479317"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762636"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-cli"></a>Kurz: Vytvoření brány NAT pomocí Azure CLI
 
@@ -92,7 +92,7 @@ Vytvořte virtuální síť s názvem **myVnet** s podsítí s názvem **mySubne
 
 Pro přístup k virtuálnímu počítači vytvořte hostitele Azure bastionu s názvem **myBastionHost** . 
 
-Pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) vytvořte podsíť Azure bastionu.
+Pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) vytvořte podsíť Azure bastionu.
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -111,7 +111,7 @@ az network public-ip create \
     --sku Standard
 ```
 
-K vytvoření hostitele bastionu použijte [AZ Network bastionu Create](/cli/azure/network/bastion#az-network-bastion-create) . 
+K vytvoření hostitele bastionu použijte [AZ Network bastionu Create](/cli/azure/network/bastion#az_network_bastion_create) . 
 
 ```azurecli-interactive
 az network bastion create \
@@ -141,7 +141,7 @@ Veškerý odchozí provoz do internetových cílů teď používá bránu NAT.  
 
 V této části vytvoříte virtuální počítač pro otestování brány NAT, abyste ověřili veřejnou IP adresu odchozího připojení.
 
-Vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm#az-vm-create).
+Vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm#az_vm_create).
 
 ```azurecli-interactive
 az vm create \

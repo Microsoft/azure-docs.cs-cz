@@ -4,12 +4,12 @@ description: Seznamte se s různými způsoby, jak můžete nasadit kód pro Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 4a65a00c28a20c9381d3dcc6fd7545137528d5c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca81067fa60836d77c4d8af121ebf415c772a1d7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943639"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789208"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -106,7 +106,7 @@ V Azure Functions jsou k dispozici následující metody nasazení.
 
 Adresu URL externího balíčku můžete použít k odkazování na vzdálený soubor balíčku (. zip), který obsahuje vaši aplikaci Function App. Soubor se stáhne ze zadané adresy URL a aplikace se spustí v režimu [spuštění z balíčku](run-functions-from-deployment-package.md) .
 
->__Jak ji použít:__ Přidejte [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) do nastavení aplikace. Hodnota tohoto nastavení by měla být adresa URL (umístění konkrétního souboru balíčku, který chcete spustit). Nastavení můžete přidat buď [na portálu](functions-how-to-use-azure-function-app-settings.md#settings) , nebo [pomocí Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
+>__Jak ji použít:__ Přidejte [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) do nastavení aplikace. Hodnota tohoto nastavení by měla být adresa URL (umístění konkrétního souboru balíčku, který chcete spustit). Nastavení můžete přidat buď [na portálu](functions-how-to-use-azure-function-app-settings.md#settings) , nebo [pomocí Azure CLI](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set).
 >
 >Pokud používáte službu Azure Blob Storage, pomocí privátního kontejneru se [sdíleným přístupovým podpisem (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) udělte funkce přístup k balíčku. Pokaždé, když se aplikace restartuje, načte kopii obsahu. Váš odkaz musí být platný po dobu života aplikace.
 
@@ -118,7 +118,7 @@ Pomocí nástroje zip Deploy nahrajte soubor. zip, který obsahuje vaši aplikac
 
 >__Jak ji použít:__ Nasazení pomocí vašeho oblíbeného klientského nástroje: [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)nebo z příkazového řádku pomocí [Azure Functions Core Tools](functions-run-local.md#project-file-deployment). Ve výchozím nastavení tyto nástroje používají nasazení zip a [spouštějí se z balíčku](run-functions-from-deployment-package.md). Základní nástroje a rozšíření Visual Studio Code umožňují [vzdálené sestavení](#remote-build) při nasazení do systému Linux. Pokud chcete soubor. zip nasadit do aplikace Function App ručně, postupujte podle pokynů v tématu [nasazení ze souboru. zip nebo adresy URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
->Když nasadíte pomocí nasazení zip, můžete nastavit, aby se aplikace [spouštěla z balíčku](run-functions-from-deployment-package.md). Pro spuštění z balíčku nastavte `WEBSITE_RUN_FROM_PACKAGE` hodnotu nastavení aplikace [] (Functions-App-Settings. MD # website_run_from_package na hodnotu) `1` . Doporučujeme nasazení zip. Poskytuje rychlejší načítání pro vaše aplikace a je výchozím nastavením pro VS Code, Visual Studio a Azure CLI.
+>Když nasadíte pomocí nasazení zip, můžete nastavit, aby se aplikace [spouštěla z balíčku](run-functions-from-deployment-package.md). Pro spuštění z balíčku nastavte [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) hodnotu nastavení aplikace na `1` . Doporučujeme nasazení zip. Poskytuje rychlejší načítání pro vaše aplikace a je výchozím nastavením pro VS Code, Visual Studio a Azure CLI.
 
 >__Kdy ji použít:__ Nasazení zip je doporučená technologie nasazení pro Azure Functions.
 
@@ -218,7 +218,7 @@ Když nasadíte aplikaci Function App do Azure, můžete ji nasadit do samostatn
 
 Další informace o nasazení aplikací Function App najdete v těchto článcích:
 
-+ [Průběžné nasazování se službou Azure Functions](functions-continuous-deployment.md)
++ [Průběžné nasazování pro Azure Functions](functions-continuous-deployment.md)
 + [Průběžné doručování pomocí Azure DevOps](functions-how-to-azure-devops.md)
 + [Nasazení zip pro Azure Functions](deployment-zip-push.md)
 + [Spuštění Azure Functions ze souboru balíčku](run-functions-from-deployment-package.md)

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/15/2020
-ms.openlocfilehash: 32c331b10fcc73b5449588595370f8f69ef9893c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 140709a0ddb548c126ceca208fdeef2db77616bf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104872043"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761794"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Kurz: vytvoření uceleného datového kanálu pro odvoditelné prodejní přehledy ve službě Azure HDInsight
 
@@ -90,7 +90,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
     ./scripts/resources.sh $resourceGroup LOCATION
     ```
 
-    Pokud si nejste jistí, kterou oblast určíte, můžete pro své předplatné načíst seznam podporovaných oblastí pomocí příkazu [AZ Account list-Locations](/cli/azure/account#az-account-list-locations) .
+    Pokud si nejste jistí, kterou oblast určíte, můžete pro své předplatné načíst seznam podporovaných oblastí pomocí příkazu [AZ Account list-Locations](/cli/azure/account#az_account_list_locations) .
 
     Příkaz nasadí následující prostředky:
 

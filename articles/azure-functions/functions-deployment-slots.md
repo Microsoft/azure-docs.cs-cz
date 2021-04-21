@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 73282145abd8bfe804b47fda3bf5f12dc691ff3a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 5f003b68283217f7877dc650ae4f07ddc5a31012
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551352"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789334"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions sloty nasazení
 
@@ -124,7 +124,7 @@ Všechny sloty se škálují na stejný počet pracovních procesů jako produk�
 
 ## <a name="add-a-slot"></a>Přidat slot
 
-Slot můžete přidat prostřednictvím rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create) nebo prostřednictvím portálu. Následující kroky ukazují, jak vytvořit novou patici na portálu:
+Slot můžete přidat prostřednictvím rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_create) nebo prostřednictvím portálu. Následující kroky ukazují, jak vytvořit novou patici na portálu:
 
 1. Přejděte do aplikace Function App.
 
@@ -138,7 +138,7 @@ Slot můžete přidat prostřednictvím rozhraní příkazového [řádku](/cli/
 
 ## <a name="swap-slots"></a>Prohození slotů
 
-Sloty můžete prohodit přes rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap) nebo prostřednictvím portálu. Následující kroky ukazují, jak odkládací sloty na portálu:
+Sloty můžete prohodit přes rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_swap) nebo prostřednictvím portálu. Následující kroky ukazují, jak odkládací sloty na portálu:
 
 1. Přejděte do aplikace Function App.
 1. Vyberte možnost **sloty nasazení** a pak vyberte **swap**.
@@ -157,7 +157,7 @@ Pokud dojde k chybě zahození nebo pokud chcete jednoduše vrátit zpět změny
 
 ## <a name="remove-a-slot"></a>Odebrat slot
 
-Slot můžete odebrat přes rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete) nebo prostřednictvím portálu. Následující kroky ukazují, jak odebrat slot na portálu:
+Slot můžete odebrat přes rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_delete) nebo prostřednictvím portálu. Následující kroky ukazují, jak odebrat slot na portálu:
 
 1. V aplikaci Function App přejděte na **sloty nasazení** a potom vyberte název slotu.
 
@@ -179,11 +179,11 @@ Slot můžete odebrat přes rozhraní příkazového [řádku](/cli/azure/functi
 
 Pomocí [Azure CLI](/cli/azure/functionapp/deployment/slot)můžete pro slot automatizovat následující akce:
 
-- [vytvořeny](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create)
-- [delete](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete)
-- [list](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-list)
-- [adresu](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap)
-- [Automatické prohození](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-auto-swap)
+- [vytvořeny](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_create)
+- [delete](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_delete)
+- [list](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_list)
+- [adresu](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_swap)
+- [Automatické prohození](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_auto_swap)
 
 ## <a name="change-app-service-plan"></a>Změnit plán App Service
 

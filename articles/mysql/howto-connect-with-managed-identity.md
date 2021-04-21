@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: f790e20c257c81418c6fcd5b14be957a6ef43b4a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c9c5c938650d1932349f17bde6b30c65718ef72a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612598"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774678"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Připojení ke službě Azure Database for MySQL s využitím spravované identity
 
@@ -38,13 +38,13 @@ Získáte informace o těchto tématech:
 
 ## <a name="creating-a-user-assigned-managed-identity-for-your-vm"></a>Vytvoření spravované identity přiřazené uživatelem pro váš virtuální počítač
 
-Pomocí příkazu [AZ identity Create](/cli/azure/identity#az-identity-create) vytvořte v předplatném identitu. Můžete použít stejnou skupinu prostředků, ve které je váš virtuální počítač spuštěný, nebo jiný.
+Pomocí příkazu [AZ identity Create](/cli/azure/identity#az_identity_create) vytvořte v předplatném identitu. Můžete použít stejnou skupinu prostředků, ve které je váš virtuální počítač spuštěný, nebo jiný.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myManagedIdentity
 ```
 
-Pokud chcete nakonfigurovat identitu v následujících krocích, pomocí příkazu [AZ identity show](/cli/azure/identity#az-identity-show) uložte ID prostředku identity a ID klienta do proměnných.
+Pokud chcete nakonfigurovat identitu v následujících krocích, pomocí příkazu [AZ identity show](/cli/azure/identity#az_identity_show) uložte ID prostředku identity a ID klienta do proměnných.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -54,7 +54,7 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myManagedI
 clientID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query clientId --output tsv)
 ```
 
-K virtuálnímu počítači teď můžeme přiřadit identitu přiřazenou uživatelem pomocí příkazu [AZ VM identity Assign](/cli/azure/vm/identity#az-vm-identity-assign) :
+K virtuálnímu počítači teď můžeme přiřadit identitu přiřazenou uživatelem pomocí příkazu [AZ VM identity Assign](/cli/azure/vm/identity#az_vm_identity_assign) :
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myVM --identities $resourceID

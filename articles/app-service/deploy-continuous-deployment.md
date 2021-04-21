@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/12/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 52f0db739cff9614dc4e9f5ef71d582e926fc65a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 633d62fc69c516b482d5749a07052337dc71f567
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470264"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789478"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Průběžné nasazování do Azure App Service
 
@@ -119,7 +119,7 @@ Poskytovatele sestavení akcí GitHubu můžete přizpůsobit následujícími z
 
 Tato volitelná konfigurace nahrazuje výchozí ověřování pomocí profilů publikování ve vygenerovaném souboru pracovního postupu.
 
-1. Vygenerujte instanční objekt pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). V následujícím příkladu nahraďte *\<subscription-id>* , *\<group-name>* a *\<app-name>* vlastními hodnotami:
+1. Vygenerujte instanční objekt pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). V následujícím příkladu nahraďte *\<subscription-id>* , *\<group-name>* a *\<app-name>* vlastními hodnotami:
 
     ```azurecli-interactive
     az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \

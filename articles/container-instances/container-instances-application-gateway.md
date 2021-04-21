@@ -3,12 +3,12 @@ title: Statická IP adresa pro skupinu kontejnerů
 description: Vytvoření skupiny kontejnerů ve virtuální síti a použití služby Azure Application Gateway k vystavení statické IP adresy front-endu pro kontejnerové webové aplikace
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de9e06b457a9ea5485fe268bd2b7cf206f0a6c0e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98035049"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790936"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Zveřejňuje statickou IP adresu pro skupinu kontejnerů.
 
@@ -151,10 +151,10 @@ Pokud chcete po úspěšné konfiguraci běžící webové aplikace zobrazit, p�
 * Můžete také nakonfigurovat aplikační bránu s certifikátem pro ukončení protokolu SSL. Podívejte se na [Přehled](../application-gateway/ssl-overview.md) a [kurz](../application-gateway/create-ssl-portal.md).
 * V závislosti na vašem scénáři zvažte použití dalších řešení vyrovnávání zatížení Azure s Azure Container Instances. Můžete například použít [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) k distribuci provozu napříč několika instancemi kontejnerů a napříč několika oblastmi. Podívejte se na tento [Blogový příspěvek](https://aaronmsft.com/posts/azure-container-instances/).
 
-[az-network-vnet-create]:  /cli/azure/network/vnet#az-network-vnet-create
-[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
-[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
-[az-network-public-ip-show]: /cli/azure/network/public-ip#az-network-public-ip-show
-[az-network-application-gateway-create]: /cli/azure/network/application-gateway#az-network-application-gateway-create
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-show]: /cli/azure/container#az-container-show
+[az-network-vnet-create]:  /cli/azure/network/vnet#az_network_vnet_create
+[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az_network_vnet_subnet_create
+[az-network-public-ip-create]: /cli/azure/network/public-ip#az_network_public_ip_create
+[az-network-public-ip-show]: /cli/azure/network/public-ip#az_network_public_ip_show
+[az-network-application-gateway-create]: /cli/azure/network/application-gateway#az_network-application-gateway-create
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-show]: /cli/azure/container#az_container_show

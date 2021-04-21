@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 72ebfd8c7aa16a22221173aebfa8a3c5e0f1f156
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eea11eb79cda47a11456178100941db05f0f2fa1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94542367"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791655"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Výpis a aktualizace konfigurace serveru Azure Database for MySQL pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku vypíše všechny dostupné parametry konfigurace a jejich povolené hodnoty pro server Azure Database for MySQL a nastaví parametr *innodb_lock_wait_timeout* na jinou než výchozí hodnotu.
@@ -33,14 +33,14 @@ Po spuštění skriptu pomocí následujícího příkazu odeberte skupinu prost
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 Tento skript používá příkazy uvedené v následující tabulce:
 
-| **Příkaz** | **Poznámky** |
+| **Systému** | **Poznámky** |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) | Vytvoří server MySQL, který je hostitelem databází. |
-| [az mysql server configuration list](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-list) | Vypíše konfiguraci serveru Azure Database for MySQL. |
-| [az mysql server configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) | Aktualizuje konfiguraci serveru Azure Database for MySQL. |
-| [az mysql server configuration show](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-show) | Zobrazí konfiguraci serveru Azure Database for MySQL. |
-| [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az mysql server create](/cli/azure/mysql/server#az_mysql_server_create) | Vytvoří server MySQL, který je hostitelem databází. |
+| [az mysql server configuration list](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_list) | Vypíše konfiguraci serveru Azure Database for MySQL. |
+| [az mysql server configuration set](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_set) | Aktualizuje konfiguraci serveru Azure Database for MySQL. |
+| [az mysql server configuration show](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_show) | Zobrazí konfiguraci serveru Azure Database for MySQL. |
+| [az group delete](/cli/azure/group#az_group_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace najdete v dokumentaci Azure CLI: [dokumentace k Azure CLI](/cli/azure).

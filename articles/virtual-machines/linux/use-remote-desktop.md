@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 84960e6247edc708bedb899c96ebf7522397269a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 309b106d2141c8257c5163efe7ff45a7bae5d5c3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580364"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759646"
 ---
 # <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>Instalace a konfigurace xrdp pro používání vzdálené plochy s Ubuntu
 
@@ -86,7 +86,7 @@ sudo passwd azureuser
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Vytvoření pravidla skupiny zabezpečení sítě pro provoz vzdálené plochy
 Pokud chcete povolit, aby se provoz vzdálené plochy dostal k vašemu VIRTUÁLNÍmu počítači Linux, je nutné vytvořit pravidlo skupiny zabezpečení sítě, které umožňuje TCP na portu 3389 k dosažení vašeho virtuálního počítače. Další informace o pravidlech skupin zabezpečení sítě najdete v tématu [co je skupina zabezpečení sítě](../../virtual-network/network-security-groups-overview.md) . [K vytvoření pravidla skupiny zabezpečení sítě můžete použít taky Azure Portal](../windows/nsg-quickstart-portal.md).
 
-Následující příklad vytvoří pravidlo skupiny zabezpečení sítě pomocí [AZ VM Open-port](/cli/azure/vm#az-vm-open-port) na portu *3389*. Z Azure CLI, ne z relace SSH k vašemu VIRTUÁLNÍmu počítači, otevřete následující pravidlo skupiny zabezpečení sítě:
+Následující příklad vytvoří pravidlo skupiny zabezpečení sítě pomocí [AZ VM Open-port](/cli/azure/vm#az_vm_open_port) na portu *3389*. Z Azure CLI, ne z relace SSH k vašemu VIRTUÁLNÍmu počítači, otevřete následující pravidlo skupiny zabezpečení sítě:
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389

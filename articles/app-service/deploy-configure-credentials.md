@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 02/11/2021
 ms.reviewer: byvinyal
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ec48ec32250e271eff9e40535689f83dd9d3b60c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b77a26f61e1168846156de990806bbed2f7c41e3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483629"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789532"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurovat přihlašovací údaje nasazení pro Azure App Service
 Aby bylo možné zabezpečit nasazení aplikace z místního počítače, [Azure App Service](./overview.md) podporuje dva typy přihlašovacích údajů pro nasazení [místního úložiště Git](deploy-local-git.md) a [FTP/S](deploy-ftp.md). Tyto přihlašovací údaje nejsou stejné jako přihlašovací údaje vašeho předplatného Azure.
@@ -24,9 +24,9 @@ Aby bylo možné zabezpečit nasazení aplikace z místního počítače, [Azure
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Spusťte příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) . Nahraďte \<username> a \<password> pomocí uživatelského jména a hesla pro nasazení. 
+Spusťte příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) . Nahraďte \<username> a \<password> pomocí uživatelského jména a hesla pro nasazení. 
 
-- Uživatelské jméno musí být v rámci Azure jedinečné a pro místní nabízená oznámení Git nesmí obsahovat symbol â € ̃ @â €™. 
+- Uživatelské jméno musí být v rámci Azure jedinečné a pro místní nabízená oznámení Git nesmí obsahovat symbol @. 
 - Heslo musí mít délku alespoň osm znaků a dva z následujících tří prvků: písmena, číslice a symboly. 
 
 ```azurecli-interactive
@@ -144,7 +144,7 @@ Chcete-li zakázat přístup FTP k webu, spusťte následující příkaz CLI. Z
 az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-Pokud chcete potvrdit, že je přístup k FTP blokovaný, můžete se pokusit ověřit pomocí klienta FTP, jako je FileZilly. Přihlašovací údaje pro publikování načtete tak, že přejdete do okna Přehled vaší lokality a kliknete na stáhnout profil publikování. K ověření použijte název hostitele FTP fileâ™ s, uživatelské jméno a heslo a zobrazí se chybová zpráva 401 s oznámením, že nemáte oprávnění.
+Pokud chcete potvrdit, že je přístup k FTP blokovaný, můžete se pokusit ověřit pomocí klienta FTP, jako je FileZilly. Přihlašovací údaje pro publikování načtete tak, že přejdete do okna Přehled vaší lokality a kliknete na stáhnout profil publikování. K ověření použijte název hostitele FTP, uživatelské jméno a heslo souboru a zobrazí se chybová zpráva 401 s oznámením, že nemáte oprávnění.
 
 ### <a name="webdeploy-and-scm"></a>WebDeploy a SCM
 
