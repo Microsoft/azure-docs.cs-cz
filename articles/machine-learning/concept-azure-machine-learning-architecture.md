@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 09ebbaa6bb7cd5a2b4dcdee4e18fe905c5b2fbd3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f1eb7a5b4697801775d23091c610ab594b0b27ec
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106062518"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813375"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -116,9 +116,9 @@ Když odešlete běh, Azure Machine Learning zkomprimuje adresář, který obsah
 
 ### <a name="logging"></a>protokolování
 
-Azure Machine Learning automaticky zaznamená standardní metriky běhu za vás. Můžete ale také [použít sadu Python SDK k protokolování libovolných metrik](how-to-track-experiments.md).
+Azure Machine Learning automaticky zaznamená standardní metriky běhu za vás. Můžete ale také [použít sadu Python SDK k protokolování libovolných metrik](how-to-log-view-metrics.md).
 
-Existují různé způsoby zobrazení protokolů: sledování stavu spuštění v reálném čase nebo zobrazení výsledků po dokončení. Další informace najdete v tématu [monitorování a zobrazování protokolů spuštění ml](how-to-monitor-view-training-logs.md).
+Existují různé způsoby zobrazení protokolů: sledování stavu spuštění v reálném čase nebo zobrazení výsledků po dokončení. Další informace najdete v tématu [monitorování a zobrazování protokolů spuštění ml](how-to-log-view-metrics.md).
 
 
 > [!NOTE]
@@ -256,8 +256,8 @@ Kroky kanálu jsou opakovaně použitelné a je možné je spustit bez nutnosti 
 Azure Machine Learning poskytuje následující možnosti monitorování a protokolování:
 
 * Pro odborníky přes __data__ můžete sledovat experimenty a informace protokolu z vašich školicích běhů. Další informace najdete v následujících článcích:
-   * [Spuštění, monitorování a zrušení školicích běhů](how-to-manage-runs.md)
-   * [Protokolování metrik pro tréninková spuštění](how-to-track-experiments.md)
+   * [Spuštění, monitorování a zrušení školicích běhů](how-to-track-monitor-analyze-runs.md)
+   * [Protokolování metrik pro tréninková spuštění](how-to-log-view-metrics.md)
    * [Sledování experimentů s využitím MLflow](how-to-use-mlflow.md)
    * [Vizualizace spuštění s využitím TensorBoardu](how-to-monitor-tensorboard.md)
 * Pro __správce__ můžete monitorovat informace o pracovním prostoru, souvisejících prostředcích Azure a událostech, jako je vytváření a odstraňování prostředků, pomocí Azure monitor. Další informace najdete v tématu [monitorování Azure Machine Learning](monitor-azure-machine-learning.md).

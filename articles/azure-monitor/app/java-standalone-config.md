@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 997a4e115f8632544b2f73aef498d40dceb0d459
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b78aaa659598e6eb58841c5cef0c209daaced5e0
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449966"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811971"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Možnosti konfigurace – Azure Monitor Application Insights pro Java
 
@@ -256,13 +256,13 @@ Zakázání automatické kolekce metrik mikroměřičů (včetně metriky pohán
 }
 ```
 
-## <a name="auto-collected-azure-sdk-telemetry"></a>Automaticky shromážděná telemetrie sady Azure SDK
+## <a name="auto-collected-azure-sdk-telemetry-preview"></a>Automaticky shromážděná telemetrie sady Azure SDK (Preview)
 
-Tato funkce je ve verzi Preview.
+Mnohé z nejnovějších knihoven Azure SDK pro vygenerování telemetrie (viz [úplný seznam](./java-in-process-agent.md#azure-sdks-preview)).
 
-Mnohé z nejnovějších knihoven Azure SDK pro vygenerování telemetrie.
+Od Application Insights Java 3.0.3 můžete povolit zachycování této telemetrie.
 
-Od verze 3.0.3 můžete povolit shromažďování této telemetrie:
+Pokud chcete povolit tuto funkci:
 
 ```json
 {

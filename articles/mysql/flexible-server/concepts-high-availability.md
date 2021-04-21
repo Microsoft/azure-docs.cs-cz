@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 6629beacb5c3edc6fe1d21509051b915c0894479
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5b5e1491d7f76cd4cff76d0c9a1af4daa49fa483
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109688"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812997"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Koncepty vysoké dostupnosti v Azure Database for MySQL flexibilním serveru (Preview)
 
@@ -69,6 +69,9 @@ Plánované výpadky událostí zahrnují aktivity naplánované v Azure, jako j
 
 ### <a name="failover-process---unplanned-events"></a>Proces převzetí služeb při selhání – neplánované události
 Neplánované výpadky služeb zahrnují chyby softwaru nebo chyby infrastruktury, jako jsou výpočetní prostředky, sítě, selhání úložiště nebo výpadky napájení, které mají vliv na dostupnost databáze. V případě nedostupnosti databáze je replikace do záložní repliky v pohotovostním stavu a je aktivovaná pohotovostní replika jako primární databáze. Služba DNS je aktualizována a klienti se pak znovu připojí k databázovému serveru a obnoví jejich provoz. Pro celkový čas převzetí služeb při selhání se očekává, že bude trvat 60-120 s. V závislosti na aktivitě v primárním databázovém serveru v době převzetí služeb při selhání, jako jsou například velké transakce a doba obnovení, může převzetí služeb při selhání trvat déle.
+
+### <a name="forced-failover"></a>Vynucené převzetí služeb při selhání
+Azure Database for MySQL vynucené převzetí služeb při selhání umožňuje ručně vynutit převzetí služeb při selhání, což vám umožní testovat funkce ve scénářích vaší aplikace a pomůže vám, abyste byli připraveni v případě výpadků. Vynucené převzetí služeb při selhání přepne pohotovostní server, který se stane primárním serverem, aktivací převzetí služeb při selhání, které aktivuje pohotovostní repliku, aby se stal primárním serverem se stejným názvem databázového serveru pomocí aktualizace záznamu DNS. Původní primární server se restartuje a přepne na pohotovostní repliku. Připojení klienta jsou odpojená a musí se znovu připojit, aby se operace obnovila. V závislosti na aktuální úloze a posledním kontrolním bodu se změří celkový čas převzetí služeb při selhání. Obecně se očekává, že bude mezi 60 – 120s.
 
 ## <a name="schedule-maintenance-window"></a>Naplánovat časový interval pro správu a údržbu 
 

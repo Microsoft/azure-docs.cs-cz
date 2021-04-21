@@ -4,12 +4,12 @@ description: Popisuje fronty nedoručených zpráv v Azure Service Bus. Service 
 ms.topic: article
 ms.date: 04/08/2021
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: cb791982b50d7afff7b74d70adfd285bb5e0a11c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6293a3a9a760ece137644578d8ee7dccebc63d95
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773220"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812367"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Přehled Service Bus front nedoručených zpráv
 
@@ -75,8 +75,4 @@ K frontě nedoručených zpráv můžete přistupovat pomocí následující syn
 
 
 ## <a name="next-steps"></a>Další kroky
-
-Další informace o frontách Service Bus najdete v následujících článcích:
-
-* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
-* [Ve srovnání s frontami Azure a frontami Service Bus](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+Další informace o různých způsobech konfigurace **nedoručených zpráv pro nastavení vypršení platnosti zprávy** najdete v tématu [Povolení nedoručených zpráv pro frontu nebo odběr](enable-dead-letter.md) .

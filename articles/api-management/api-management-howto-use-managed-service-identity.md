@@ -11,12 +11,13 @@ ms.workload: integration
 ms.topic: article
 ms.date: 03/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 98237efae89e7d88dd23cb7e8fc9f7e9f05bca70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 40ee196f53af040e4099fb344de5488109ce001b
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521539"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812241"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Použití spravovaných identit v Azure API Management
 

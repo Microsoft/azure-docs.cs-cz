@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 75de7b122bff75ea13e3b66bb0b79452142dc36c
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 77073d21f982e82e567e517b7d9eca061cb91859
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500086"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812885"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Kurz: nastavení Synchronizace dat SQL mezi databázemi v Azure SQL Database a SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,9 +49,9 @@ Příklady prostředí PowerShell týkající se konfigurace Synchronizace dat S
 
     :::image type="content" source="./media/sql-data-sync-sql-server-configure/sync-to-other-databases.png" alt-text = "Sync to other databases, Microsoft Azure portal":::
 
-1. Na stránce **synchronizovat s ostatními databázemi** vyberte **Nová skupina synchronizace**. Otevře se stránka **Nová skupina synchronizace** s **vytvořením skupiny synchronizace (krok 1)**.
+1. Na stránce **synchronizovat s ostatními databázemi** vyberte **Nová skupina synchronizace**. Otevře se stránka **Nová skupina synchronizace** s **vytvořením skupiny synchronizace**.
 
-   :::image type="content" source="./media/sql-data-sync-sql-server-configure/new-sync-group-private-link.png" alt-text = "Set up new sync group with private link":::
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/create-sync-group.png" alt-text = "Set up new sync group with private link":::
 
    Na stránce **vytvořit skupinu synchronizace dat** změňte následující nastavení:
 
@@ -70,19 +70,23 @@ Příklady prostředí PowerShell týkající se konfigurace Synchronizace dat S
    
 1. Pokud jste vybrali **možnost použít privátní odkaz**, na stránce **Nová skupina synchronizace** bude nutné schválit připojení privátního koncového bodu. Odkaz v informační zprávě vás převezme do prostředí připojení privátního koncového bodu, kde můžete připojení schválit. 
 
-   :::image type="content" source="./media/sql-data-sync-sql-server-configure/approve-private-link.png" alt-text = "Approve private link":::
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/approve-private-link-update.png" alt-text = "Approve private link":::
+   
+   > [!NOTE]
+   > Privátní odkazy pro skupinu Syng a členy synchronizace NEET vytvořit, schválit a zakázat samostatně. 
 
 ## <a name="add-sync-members"></a>Přidat členy synchronizace
 
-Po vytvoření a nasazení nové skupiny synchronizace je na stránce **Nová skupina synchronizace** zvýrazněna položka **přidat členy synchronizace (krok 2)** .
+Po vytvoření a nasazení nové skupiny synchronizace otevřete skupinu synchronizace a přejděte na stránku **databáze** , kde budete vybírat členy synchronizace.
 
-V části **databáze centra** Zadejte existující pověření pro server, na kterém se nachází databáze centra. Nezadávejte *nové* přihlašovací údaje v této části.
-
-   :::image type="content" source="./media/sql-data-sync-sql-server-configure/steptwo.png" alt-text = "Enter existing credentials for the hub database server":::
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/add-sync-members.png" alt-text = "Select sync members":::
+   
+   > [!NOTE]
+   > Chcete-li aktualizovat nebo vložit uživatelské jméno a heslo do databáze centra, klikněte na stránce **Vybrat členy synchronizace** na část **databáze centra** . 
 
 ### <a name="to-add-a-database-in-azure-sql-database"></a>Přidání databáze v Azure SQL Database
 
-V části **databáze členů** můžete volitelně přidat databázi v Azure SQL Database do skupiny synchronizace výběrem možnosti **Přidat Azure SQL Database**. Otevře se stránka **konfigurace Azure SQL Database** .
+V části **Vybrat členy synchronizace** můžete volitelně přidat databázi v Azure SQL Database do skupiny synchronizace tak, že vyberete **Přidat databázi Azure**. Otevře se stránka **Konfigurace databáze Azure** .
   
    :::image type="content" source="./media/sql-data-sync-sql-server-configure/step-two-configure.png" alt-text = "Add a database to the sync group":::
    
@@ -163,11 +167,11 @@ V části **databáze členů** můžete volitelně přidat SQL Server databázi
 
 ## <a name="configure-sync-group"></a>Konfigurovat skupinu synchronizace
 
-Po vytvoření a nasazení nových členů skupiny synchronizace se na stránce **Nová skupina synchronizace** zvýrazní **Konfigurace skupiny synchronizace (krok 3)** .
+Po vytvoření a nasazení nových členů skupiny synchronizace přejdete do části **tabulky** na stránce **Skupina synchronizace databáze** .
 
-![Krok 3 – nastavení](./media/sql-data-sync-sql-server-configure/stepthree.png)
+![Krok 3 – nastavení](./media/sql-data-sync-sql-server-configure/configure-sync-group.png)
 
-1. Na stránce **tabulky** vyberte databázi ze seznamu členů skupiny synchronizace a vyberte možnost **Aktualizovat schéma**.
+1. Na stránce **tabulky** vyberte databázi ze seznamu členů skupiny synchronizace a vyberte možnost **Aktualizovat schéma**. Očekává se zpoždění v průběhu aktualizace schématu o několik minut, zpoždění může trvat několik minut, než se použije privátní odkaz.
 
 1. V seznamu vyberte tabulky, které chcete synchronizovat. Ve výchozím nastavení jsou vybrány všechny sloupce, takže políčko pro sloupce, které nechcete synchronizovat, zakažte. Nezapomeňte ponechat vybraný sloupec primárního klíče.
 
@@ -233,7 +237,7 @@ Po exportu databáze jako souboru *. BacPac* a importu souboru pro vytvoření d
 
 Nejčastější dotazy týkající se klientského agenta najdete v tématu Nejčastější dotazy k [agentům](sql-data-sync-agent-overview.md#agent-faq).
 
-**Je nutné před zahájením používání privátního propojení ručně schválit?**
+**Je nutné, aby propojení ručně schválilo, než ho můžu začít používat?**
 
 Ano, na stránce připojení privátního koncového bodu Azure Portal během nasazování skupiny synchronizace nebo pomocí prostředí PowerShell musíte ručně schválit soukromý koncový bod spravované službou.
 

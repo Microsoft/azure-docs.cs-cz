@@ -6,12 +6,12 @@ ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/13/2021
-ms.openlocfilehash: f4ba3763dd781053349417fe3fed3a2848a06fc7
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: bd7f19df5eed87f2fb02af4b5f2577340bcbfd60
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515834"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812097"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Vlastní metriky v Azure Monitor (Preview)
 
@@ -224,15 +224,15 @@ Pokud máte 100 oblastí, 200 oddělení a 2000, zákazníci 100 x 200 x 2000 = 
 
 Toto omezení není znovu pro jednotlivé metriky. Je to pro součet všech takových metrik v rámci předplatného a oblasti.  
 
-## <a name="design-limitations"></a>Omezení návrhu
+## <a name="design-limitations-and-considerations"></a>Omezení návrhu a požadavky
 
-**Nepoužívejte Application Insights pro účely auditování** – Application Insights kanál používá vlastní rozhraní API metrik na pozadí. Kanál je optimalizovaný pro velký objem telemetrie s minimálním dopadem na aplikaci. V takovém případě omezuje nebo vzorkuje (bere v procentech jenom procento telemetrie a ignoruje), pokud váš příchozí datový proud přestalo být moc velký. Z důvodu tohoto chování ji nelze použít pro účely auditování, protože některé záznamy budou pravděpodobně vyřazeny. 
+**Nepoužívejte Application Insights pro účely auditování** – kanál telemetrie Application Insights je optimalizován pro minimalizaci dopadu na výkon a omezení síťového provozu z monitorování vaší aplikace. V takovém případě omezuje nebo vzorkuje (přebírá jenom procento z telemetrie a ignoruje zbytek), pokud počáteční datová sada bude moc velká. Z důvodu tohoto chování ji nelze použít pro účely auditování, protože některé záznamy budou pravděpodobně vyřazeny. 
 
-**Metriky s proměnnou v názvu** – nepoužívejte proměnnou jako součást názvu metriky, například identifikátor GUID nebo časové razítko. To rychle způsobí, že dosáhnete omezení časové řady 50 000. 
- 
-**Vysoká míra metriky mohutnosti** – metriky s příliš velkým počtem platných hodnot v dimenzi (vysoká mohutnost) jsou mnohem pravděpodobnější, že 50 tis limit. Obecně platí, že nikdy nepoužívejte trvale měnící hodnotu v dimenzi nebo názvu metriky. Časové razítko, například by nikdy nemělo být dimenze. Můžete použít server, zákazníka nebo ProductID, ale pouze v případě, že máte menší počet každého z těchto typů. Jako test si Položte dotaz, pokud byste měli každý graf taková data v grafu.  Pokud máte 10 nebo možná i 100 serverů, může být užitečné, abyste je viděli v grafu pro účely porovnání. Pokud ale máte 1000, výsledný graf by nejspíš byl obtížné, pokud ho nebude možné přečíst. Osvědčeným postupem je udržovat méně až 100 platných hodnot. Až 300 je šedá oblast.  Pokud potřebujete přejít přes tuto částku, použijte místo toho Azure Monitor vlastní protokoly.   
+**Metriky s proměnnou v názvu** – nepoužívejte proměnnou jako součást názvu metriky, místo toho použijte konstantu. Pokaždé, když proměnná změní svou hodnotu, Azure Monitor vygeneruje novou metriku a rychle zvýší počet metrik. Obecně platí, že pokud vývojáři chtějí do názvu metriky zahrnout proměnnou, chtějí si ve skutečnosti chtít sledovat více časové řady v rámci jedné metriky a používat dimenze místo názvů proměnných metriky. 
 
-Pokud máte proměnnou v názvu nebo vysoké dimenzi mohutnosti, může dojít k následujícím akcím. 
+**Vysoká míra metriky mohutnosti** – metriky s příliš velkým počtem platných hodnot v dimenzi (vysoká mohutnost) jsou mnohem pravděpodobnější, že 50 tis limit. Obecně platí, že nikdy nepoužívejte trvale měnící hodnotu v dimenzi nebo názvu metriky. Časové razítko, například by nikdy nemělo být dimenze. Můžete použít server, zákazníka nebo ProductID, ale pouze v případě, že máte menší počet každého z těchto typů. V rámci testu si Položte dotaz, jestli byste někdy chtěli data v grafu.  Pokud máte 10 nebo možná i 100 serverů, může být užitečné, abyste je viděli v grafu pro účely porovnání. Pokud ale máte 1000, výsledný graf by nejspíš byl obtížné, pokud ho nebude možné přečíst. Osvědčeným postupem je udržovat méně až 100 platných hodnot. Až 300 je šedá oblast.  Pokud potřebujete přejít přes tuto částku, použijte místo toho Azure Monitor vlastní protokoly.   
+
+Pokud máte proměnnou v názvu nebo vysoké dimenzi mohutnosti, může dojít k následujícím akcím:
 - Metriky se stávají nespolehlivou kvůli omezování.
 - Průzkumník metrik nefunguje
 - Výstrahy a oznámení se stanou nepředvídatelnými.

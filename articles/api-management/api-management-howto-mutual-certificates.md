@@ -9,12 +9,13 @@ ms.service: api-management
 ms.topic: article
 ms.date: 01/26/2021
 ms.author: apimpm
-ms.openlocfilehash: d5d261368260a1c9658ae0bef8bdf63a7ca6bafe
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9d198f34abe826af2dce0c1ed9950600d4c7bbd3
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750621"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812287"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>Zabezpečení back-end služeb pomocí ověřování klientských certifikátů v Azure API Management
 
@@ -32,7 +33,7 @@ API Management poskytuje dvě možnosti správy certifikátů používaných k z
 Doporučuje se použít certifikáty trezoru klíčů, protože pomáhá vylepšit API Management zabezpečení:
 
 * Certifikáty uložené v trezorech klíčů se dají znovu použít napříč službami.
-* V certifikátech uložených v trezorech klíčů se dají použít podrobné [zásady přístupu](../key-vault/general/security-overview.md#privileged-access) .
+* V certifikátech uložených v trezorech klíčů se dají použít podrobné [zásady přístupu](../key-vault/general/security-features.md#privileged-access) .
 * Certifikáty, které jsou v trezoru klíčů aktualizované, se automaticky otočí v API Management. Po aktualizaci v trezoru klíčů se certifikát v API Management aktualizoval do 4 hodin. Certifikát můžete také aktualizovat ručně pomocí Azure Portal nebo prostřednictvím REST API pro správu.
 
 ## <a name="prerequisites"></a>Požadavky

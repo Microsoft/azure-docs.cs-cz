@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: dc6eaaec334e7373f1a673bd1513ef05b761fee6
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3f22e165fe4a3f86ecce8b1e307b19fae0eeac81
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450017"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812043"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor monitorování aplikací s kódováním kódu Java Application Insights
 
@@ -130,9 +130,45 @@ V `applicationinsights.json` souboru můžete také nakonfigurovat:
 * Mikroměřič (včetně metriky pohánějícího spouštěcího zařízení)
 * JMX metriky
 
-### <a name="azure-sdks"></a>Sady Azure SDK
+### <a name="azure-sdks-preview"></a>Sady SDK Azure (Preview)
 
-* Tato funkce je ve verzi Preview, viz [Možnosti konfigurace](./java-standalone-config.md#auto-collected-azure-sdk-telemetry) , jak ji povolit.
+Pokud chcete povolit tuto funkci ve verzi Preview a zachytit telemetrii vydanou těmito sadami Azure SDK, Prohlédněte si [Možnosti konfigurace](./java-standalone-config.md#auto-collected-azure-sdk-telemetry-preview) :
+
+* [Konfigurace aplikace](https://docs.microsoft.com/java/api/overview/azure/data-appconfiguration-readme) 1.1.10 +
+* [Kognitivní hledání](https://docs.microsoft.com/java/api/overview/azure/search-documents-readme) 11.3.0 +
+* [Komunikační chat](https://docs.microsoft.com/java/api/overview/azure/communication-chat-readme) 1.0.0 +
+* [Komunikace – společné](https://docs.microsoft.com/java/api/overview/azure/communication-common-readme) 1.0.0 +
+* [Komunikace identity](https://docs.microsoft.com/java/api/overview/azure/communication-identity-readme) 1.0.0 +
+* [Komunikace SMS](https://docs.microsoft.com/java/api/overview/azure/communication-sms-readme) 1.0.0 +
+* [Cosmos DB](https://docs.microsoft.com/java/api/overview/azure/cosmos-readme) 4.13.0 +
+* [Event Grid](https://docs.microsoft.com/java/api/overview/azure/messaging-eventgrid-readme) 4.0.0 +
+* [Event Hubs](https://docs.microsoft.com/java/api/overview/azure/messaging-eventhubs-readme) 5.6.0 +
+* [Event Hubs – Azure Blob Storage Checkpoint Store](https://docs.microsoft.com/java/api/overview/azure/messaging-eventhubs-checkpointstore-blob-readme) 1.5.1 +
+* 3.0.6 a [rozpoznávání formulářů](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme)
+* [Identita](https://docs.microsoft.com/java/api/overview/azure/identity-readme) 1.2.4 +
+* [Key Vault – certifikáty](https://docs.microsoft.com/java/api/overview/azure/security-keyvault-certificates-readme) 4.1.6 +
+* [Key Vault klíče](https://docs.microsoft.com/java/api/overview/azure/security-keyvault-keys-readme) 4.2.6 +
+* [Key Vault – tajné klíče](https://docs.microsoft.com/java/api/overview/azure/security-keyvault-secrets-readme) 4.2.6 +
+* [Service Bus](https://docs.microsoft.com/java/api/overview/azure/messaging-servicebus-readme) 7.1.0 +
+* [Analýza textu](https://docs.microsoft.com/java/api/overview/azure/ai-textanalytics-readme) 5.0.4 +
+
+[//]: # "výše uvedené názvy a odkazy vyřazené z https://azure.github.io/azure-sdk/releases/latest/java.html"
+[//]: # "a synchronizuje verze ručně s nejstarší verzí v Maven centrálně postavené na Azure-Core 1.14.0"
+[//]: # ""
+[//]: # "var Table = Document. querySelector (' #tg-SB-Content > div > Table ')"
+[//]: # "var str = ' '"
+[//]: # "pro (var i = 1, řádek; řádek = Table. Rows [i]; i + +) {"
+[//]: # "  var Name = řádek. Cells [0]. getElementsByTagName (' div ') [0]. textContent. trim ()"
+[//]: # "  var stableRow = řádek. Cells [1]"
+[//]: # "  var versionBadge = stableRow. querySelector ('. BADGE ')"
+[//]: # "  if (! versionBadge) {"
+[//]: # "    pokraeovat"
+[//]: # "  }"
+[//]: # "  var verze = versionBadge. textContent. trim ()"
+[//]: # "  var link = stableRow. querySelectorAll (' a ') [2]. href"
+[//]: # "  str + = ' * [' + název + '] (' + Link + ') ' + Version"
+[//]: # "}"
+[//]: # "Console. log (str)"
 
 ## <a name="send-custom-telemetry-from-your-application"></a>Odeslání vlastní telemetrie z vaší aplikace
 
@@ -147,13 +183,13 @@ Následující tabulka představuje aktuálně podporované vlastní typy teleme
 
 |                     | Mikrometr | Log4j, logback, červenec | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Vlastní události**   |            |                     |  Ano    |
-| **Vlastní metriky**  |  Ano       |                     |  Ano    |
-| **Závislosti**    |            |                     |  Ano    |
-| **Výjimky**      |            |  Ano                |  Ano    |
-| **Page Views**      |            |                     |  Ano    |
-| **Žádosti**        |            |                     |  Ano    |
-| **Trasování**          |            |  Ano                |  Ano    |
+| **Vlastní události**   |            |                     |  Yes    |
+| **Vlastní metriky**  |  Yes       |                     |  Yes    |
+| **Závislosti**    |            |                     |  Yes    |
+| **Výjimky**      |            |  Yes                |  Yes    |
+| **Page Views**      |            |                     |  Yes    |
+| **Žádosti**        |            |                     |  Yes    |
+| **Trasování**          |            |  Yes                |  Yes    |
 
 V tuto chvíli neplánujeme vydání sady SDK pomocí Application Insights 3,0.
 

@@ -4,12 +4,12 @@ description: Doporučení pro zabezpečení imagí a tajných klíčů pro Azure
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: acccd79ecd1c216f92f19d1cf035682414cd17ca
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 40284c6e42cf1060906c6248495d08e133bda5bb
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750135"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812655"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Požadavky na zabezpečení pro Azure Container Instances
 
@@ -40,7 +40,7 @@ K dispozici jsou také řešení pro monitorování zabezpečení a kontrolu ima
 
 ### <a name="protect-credentials"></a>Ochrana přihlašovacích údajů
 
-Kontejnery se můžou rozdělit mezi několik clusterů a oblastí Azure. Proto je nutné zabezpečit pověření požadovaná pro přihlášení nebo přístup k rozhraní API, jako jsou hesla nebo tokeny. Ujistěte se, že k těmto kontejnerům mají přístup pouze uživatelé s oprávněním k přenosu a v klidovém provozu. Vytvořte inventář všech tajných kódů přihlašovacích údajů a pak vývojářům vyžadovat, aby používali nově vytvořené nástroje pro správu tajných klíčů, které jsou navržené pro kontejnery.  Ujistěte se, že vaše řešení zahrnuje šifrované databáze, šifrování TLS pro data tajných klíčů a minimální oprávnění [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md). [Azure Key Vault](../key-vault/general/security-overview.md) je cloudová služba, která chrání šifrovací klíče a tajné kódy (například certifikáty, připojovací řetězce a hesla) pro kontejnerové aplikace. Vzhledem k tomu, že tato data jsou citlivá a důležitá pro podnikání, zabezpečený přístup k vašim trezorům klíčů, aby k nim měli přístup jenom autorizovaní aplikace a uživatelé.
+Kontejnery se můžou rozdělit mezi několik clusterů a oblastí Azure. Proto je nutné zabezpečit pověření požadovaná pro přihlášení nebo přístup k rozhraní API, jako jsou hesla nebo tokeny. Ujistěte se, že k těmto kontejnerům mají přístup pouze uživatelé s oprávněním k přenosu a v klidovém provozu. Vytvořte inventář všech tajných kódů přihlašovacích údajů a pak vývojářům vyžadovat, aby používali nově vytvořené nástroje pro správu tajných klíčů, které jsou navržené pro kontejnery.  Ujistěte se, že vaše řešení zahrnuje šifrované databáze, šifrování TLS pro data tajných klíčů a minimální oprávnění [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md). [Azure Key Vault](../key-vault/general/security-features.md) je cloudová služba, která chrání šifrovací klíče a tajné kódy (například certifikáty, připojovací řetězce a hesla) pro kontejnerové aplikace. Vzhledem k tomu, že tato data jsou citlivá a důležitá pro podnikání, zabezpečený přístup k vašim trezorům klíčů, aby k nim měli přístup jenom autorizovaní aplikace a uživatelé.
 
 ## <a name="considerations-for-the-container-ecosystem"></a>Předpoklady pro ekosystém kontejnerů
 
