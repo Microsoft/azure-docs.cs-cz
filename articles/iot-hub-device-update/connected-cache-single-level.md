@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ae07926d7d8c768170e945e916367bee41999571
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c116bbf5ea9f5fc6e58962e02c93c630fc747d9e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101664566"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811719"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-samples"></a>Ukázky scénáře nasazení ve verzi Preview připojené k mezipaměti Microsoftu
 
@@ -22,23 +22,23 @@ Diagram níže popisuje scénář, ve kterém Azure IoT Edge bránu, která má 
 
   :::image type="content" source="media/connected-cache-overview/disconnected-device-update.png" alt-text="Aktualizace zařízení odpojené od Microsoftu připojené k mezipaměti" lightbox="media/connected-cache-overview/disconnected-device-update.png":::
 
-1. Přidejte modul Microsoft Connect cache do nasazení zařízení Azure IoT Edge brány ve službě Azure IoT Hub (podrobnosti najdete v tématu o `MCC concepts` tom, jak tento modul získat).
+1. Přidejte modul Microsoft Connect cache do nasazení zařízení Azure IoT Edge brány ve službě Azure IoT Hub (podrobné informace o tom, jak tento modul získat, najdete v tématu [Podpora odpojených zařízení](connected-cache-disconnected-device-update.md) ).
 2. Přidejte proměnné prostředí pro nasazení. Níže je uveden příklad proměnných prostředí.
 
     **Proměnné prostředí**
     
-    | Name                 | Hodnota                                       |
-    | ----------------------------- | --------------------------------------------| 
-    | CACHE_NODE_ID                 | Viz popis proměnné prostředí výše. |
-    | CUSTOMER_ID                   | Viz popis proměnné prostředí výše. |
-    | CUSTOMER_KEY                  | Viz popis proměnné prostředí výše. |
-    | STORAGE_ *N* _SIZE_GB           | N = 5                                       |
+    | Name                          | Hodnota                                                                 |
+    | ----------------------------- | ----------------------------------------------------------------------| 
+    | CACHE_NODE_ID                 | Viz popisy [proměnných prostředí](connected-cache-configure.md) |
+    | CUSTOMER_ID                   | Viz popisy [proměnných prostředí](connected-cache-configure.md) |
+    | CUSTOMER_KEY                  | Viz popisy [proměnných prostředí](connected-cache-configure.md) |
+    | STORAGE_1_SIZE_GB             | 10                                                                    |
 
 3. Přidejte kontejner možnosti vytvoření pro nasazení. Níže je uveden příklad možností vytvoření kontejneru.
 
 ### <a name="container-create-options"></a>Možnosti vytvoření kontejneru
 
-```markdown
+```json
 {
     "HostConfig": {
         "Binds": [
@@ -57,12 +57,13 @@ Diagram níže popisuje scénář, ve kterém Azure IoT Edge bránu, která má 
             ]
         }
     }
+}
 ```
 
-Pokud chcete ověřit správnou funkční mezipaměť Microsoft, spusťte následující příkaz v terminálu IoT Edge zařízení hostujícího modul nebo jakékoli zařízení v síti.
+Pokud chcete ověřit správnou funkční mezipaměť Microsoft, spusťte následující příkaz v terminálu IoT Edge zařízení hostujícího modul nebo jakékoli zařízení v síti. Nahraďte \<Azure IoT Edge Gateway IP\> IP adresou nebo názvem hostitele brány IoT Edge. (informace o viditelnosti této sestavy najdete v tématu podrobnosti o proměnné prostředí).
 
 ```bash
-    wget "http://<IOT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com
+    wget http://<IoT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com
 ```
 
 ## <a name="single-level-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>Brána Azure IoT Edge s odchozím neověřeným proxy serverem na úrovni Single
@@ -76,16 +77,16 @@ V tomto scénáři je Azure IoT Edge brána, která má přístup k prostředků
 
     **Proměnné prostředí**
 
-    | Name                 | Hodnota                                       |
-    | ----------------------------- | --------------------------------------------| 
-    | CACHE_NODE_ID                 | Viz popis proměnné prostředí výše. |
-    | CUSTOMER_ID                   | Viz popis proměnné prostředí výše. |
-    | CUSTOMER_KEY                  | Viz popis proměnné prostředí výše. |
-    | STORAGE_ *N* _SIZE_GB           | N = 5                                       |
-    | CACHEABLE_CUSTOM_1_HOST       | Packagerepo.com:80                          |
-    | CACHEABLE_CUSTOM_1_CANONICAL  | Packagerepo.com                             |
-    | IS_SUMMARY_ACCESS_UNRESTRICTED| true                                        |
-    | UPSTREAM_PROXY                | IP adresa proxy serveru nebo plně kvalifikovaný název domény                     |
+    | Name                          | Hodnota                                                                 |
+    | ----------------------------- | ----------------------------------------------------------------------| 
+    | CACHE_NODE_ID                 | Viz popisy [proměnných prostředí](connected-cache-configure.md) |
+    | CUSTOMER_ID                   | Viz popisy [proměnných prostředí](connected-cache-configure.md) |
+    | CUSTOMER_KEY                  | Viz popisy [proměnných prostředí](connected-cache-configure.md) |
+    | STORAGE_1_SIZE_GB             | 10                                                                    |
+    | CACHEABLE_CUSTOM_1_HOST       | Packagerepo.com:80                                                    |
+    | CACHEABLE_CUSTOM_1_CANONICAL  | Packagerepo.com                                                       |
+    | IS_SUMMARY_ACCESS_UNRESTRICTED| true                                                                  |
+    | UPSTREAM_PROXY                | Vaše proxy serverá IP adresa nebo plně kvalifikovaný název domény                                          |
 
 3. Přidejte kontejner možnosti vytvoření pro nasazení. V předchozím příkladu není žádný rozdíl v možnostech vytvoření kontejneru MCC. Níže je uveden příklad možností vytvoření kontejneru.
 
@@ -110,10 +111,11 @@ V tomto scénáři je Azure IoT Edge brána, která má přístup k prostředků
             ]
         }
     }
+}
 ```
 
-Pokud chcete ověřit správnou funkční mezipaměť Microsoft, spusťte následující příkaz v terminálu Azure IoT Edge zařízení hostujícího modul nebo jakékoli zařízení v síti.
+Pokud chcete ověřit správnou funkční mezipaměť Microsoft, spusťte následující příkaz v terminálu Azure IoT Edge zařízení hostujícího modul nebo jakékoli zařízení v síti. Nahraďte \<Azure IoT Edge Gateway IP\> IP adresou nebo názvem hostitele brány IoT Edge. (informace o viditelnosti této sestavy najdete v tématu podrobnosti o proměnné prostředí).
 
 ```bash
-    wget "http://<Azure IOT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com
+    wget http://<Azure IoT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com 
 ```
