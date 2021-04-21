@@ -3,12 +3,12 @@ title: Vytváření a správa virtuálních počítačů v DevTest Labs pomocí 
 description: Naučte se používat Azure DevTest Labs k vytváření a správě virtuálních počítačů pomocí Azure CLI.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 22ee6bf607fe1b66cece0e7ddb25a2da2830258b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 95e0add8ce14e47c609b1ae951673c261316293f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102201460"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763536"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Vytváření a správa virtuálních počítačů pomocí DevTest Labs pomocí Azure CLI
 Tento rychlý Start vás provede vytvořením, spuštěním, připojením, aktualizací a vyčištěním vývojového počítače ve vašem testovacím prostředí. 
@@ -48,7 +48,7 @@ Následující příkaz vytvoří virtuální počítač z image Marketplace s o
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 
-Můžete také vytvořit virtuální počítače založené na vzorcích nastavením parametru pro **typ obrázku** na **vzorec**. Pokud potřebujete pro svůj virtuální počítač zvolit konkrétní virtuální síť, použijte parametry **název virtuální** sítě a **podsítě** . Další informace najdete v tématu [AZ Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
+Můžete také vytvořit virtuální počítače založené na vzorcích nastavením parametru pro **typ obrázku** na **vzorec**. Pokud potřebujete pro svůj virtuální počítač zvolit konkrétní virtuální síť, použijte parametry **název virtuální** sítě a **podsítě** . Další informace najdete v tématu [AZ Lab VM Create](/cli/azure/lab/vm#az_lab_vm_create).
 
 ## <a name="verify-that-the-vm-is-available"></a>Ověřte, že je virtuální počítač dostupný.
 Pomocí `az lab vm show` příkazu ověřte, že je virtuální počítač k dispozici před tím, než začnete a připojíte se k němu. 

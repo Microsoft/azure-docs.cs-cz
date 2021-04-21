@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 0d56a1c46f251307755416ef44991ac6f809f330
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e66eca305433a89496f72aac667512efd418a369
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566737"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784762"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Vytvoření aplikační brány s přesměrováním HTTP na HTTPS pomocí Azure CLI
 
@@ -83,7 +83,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. 
+K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway#az_network_application_gateway_create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. 
 
 Aplikační brána je přiřazena k již vytvořené podsíti *myAGSubnet* a adrese *myAGPublicIPAddress*. Při vytváření aplikační brány v tomto příkladu přidružíte certifikát, který jste vytvořili, a heslo. 
 
@@ -118,7 +118,7 @@ az network application-gateway create \
 
 ### <a name="add-the-http-port"></a>Přidat port HTTP
 
-K přidání portu HTTP do aplikační brány můžete použít [příkaz AZ Network Application-Gateway end-port Create](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create) .
+K přidání portu HTTP do aplikační brány můžete použít [příkaz AZ Network Application-Gateway end-port Create](/cli/azure/network/application-gateway/frontend-port#az_network-application_gateway_frontend_port_create) .
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -130,7 +130,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-the-http-listener"></a>Přidat naslouchací proces HTTP
 
-K přidání naslouchacího procesu s názvem *MyListener* do aplikační brány můžete použít příkaz [AZ Network Application-Gateway http-naslouchacího procesu Create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) .
+K přidání naslouchacího procesu s názvem *MyListener* do aplikační brány můžete použít příkaz [AZ Network Application-Gateway http-naslouchacího procesu Create](/cli/azure/network/application-gateway/http-listener#az_network_application_gateway_http_listener_create) .
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -143,7 +143,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Přidat konfiguraci přesměrování
 
-Přidejte konfiguraci přesměrování HTTP na HTTPS do aplikační brány pomocí funkce [AZ Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
+Přidejte konfiguraci přesměrování HTTP na HTTPS do aplikační brány pomocí funkce [AZ Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az_network_application_gateway_redirect_config_create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -158,7 +158,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-the-routing-rule"></a>Přidat pravidlo směrování
 
-Přidejte pravidlo směrování s názvem *Rule2* s konfigurací přesměrování do aplikační brány pomocí funkce [AZ Network Application-Gateway Rule Create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
+Přidejte pravidlo směrování s názvem *Rule2* s konfigurací přesměrování do aplikační brány pomocí funkce [AZ Network Application-Gateway Rule Create](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -172,7 +172,7 @@ az network application-gateway rule create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 
-V tomto příkladu vytvoříte sadu škálování virtuálního počítače s názvem *myvmss* , která poskytuje servery pro back-end fond ve službě Application Gateway. Virtuální počítače jsou ve škálovací sadě přidruženy k podsíti *myBackendSubnet* a back-endovému fondu *appGatewayBackendPool*. K vytvoření škálovací sady použijte příkaz [az vmss create](/cli/azure/vmss#az-vmss-create).
+V tomto příkladu vytvoříte sadu škálování virtuálního počítače s názvem *myvmss* , která poskytuje servery pro back-end fond ve službě Application Gateway. Virtuální počítače jsou ve škálovací sadě přidruženy k podsíti *myBackendSubnet* a back-endovému fondu *appGatewayBackendPool*. K vytvoření škálovací sady použijte příkaz [az vmss create](/cli/azure/vmss#az_vmss_create).
 
 ```azurecli-interactive
 az vmss create \

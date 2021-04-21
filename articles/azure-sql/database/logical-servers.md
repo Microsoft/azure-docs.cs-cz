@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 09e8ef85b6df48b6b442351135d4ae4ed55e9b45
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c76d3ae78bf2b9b4a71d9520f7f1c6c2c322483b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641077"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784510"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Co je logický SQL Server v Azure SQL Database a Azure synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -114,25 +114,25 @@ Pokud chcete vytvořit a spravovat servery, databáze a brány firewall pomocí 
 
 | Rutina | Popis |
 | --- | --- |
-|[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Vytvoří databázi.|
-|[AZ SQL DB list](/cli/azure/sql/db#az-sql-db-list)|Zobrazí všechny databáze spravované serverem nebo všechny databáze v elastickém fondu.|
-|[AZ SQL DB list-Editions](/cli/azure/sql/db#az-sql-db-list-editions)|Zobrazí seznam dostupných cílů služby a omezení úložiště.|
-|[AZ SQL DB list-usages](/cli/azure/sql/db#az-sql-db-list-usages)|Vrátí využití databáze.|
-|[AZ SQL DB show](/cli/azure/sql/db#az-sql-db-show)|Získá databázi.
-|[az sql db update](/cli/azure/sql/db#az-sql-db-update)|Aktualizuje databázi.|
-|[AZ SQL DB DELETE](/cli/azure/sql/db#az-sql-db-delete)|Odebere databázi.|
-|[az group create](/cli/azure/group#az-group-create)|Vytvoří skupinu prostředků.|
-|[az sql server create](/cli/azure/sql/server#az-sql-server-create)|Vytvoří server.|
-|[AZ SQL Server list](/cli/azure/sql/server#az-sql-server-list)|Seznam serverů|
-|[AZ SQL Server list-usages](/cli/azure/sql/server#az-sql-server-list-usages)|Vrátí využití serveru.|
-|[AZ SQL Server show](/cli/azure/sql/server#az-sql-server-show)|Získá Server.|
-|[AZ SQL Server Update](/cli/azure/sql/server#az-sql-server-update)|Aktualizuje server.|
-|[AZ SQL Server DELETE](/cli/azure/sql/server#az-sql-server-delete)|Odstraní server.|
-|[AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Vytvoří pravidlo brány firewall serveru.|
-|[AZ SQL Server Firewall-Rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Vypíše pravidla brány firewall na serveru.|
-|[AZ SQL Server Firewall-Rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Zobrazuje podrobnosti pravidla brány firewall.|
-|[AZ SQL Server Firewall-Rule Update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Aktualizuje pravidlo brány firewall.|
-|[AZ SQL Server Firewall-Rule DELETE](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Odstraní pravidlo brány firewall.|
+|[az sql db create](/cli/azure/sql/db#az_sql_db_create) |Vytvoří databázi.|
+|[AZ SQL DB list](/cli/azure/sql/db#az_sql_db_list)|Zobrazí všechny databáze spravované serverem nebo všechny databáze v elastickém fondu.|
+|[AZ SQL DB list-Editions](/cli/azure/sql/db#az_sql_db_list_editions)|Zobrazí seznam dostupných cílů služby a omezení úložiště.|
+|[AZ SQL DB list-usages](/cli/azure/sql/db#az_sql_db_list_usages)|Vrátí využití databáze.|
+|[AZ SQL DB show](/cli/azure/sql/db#az_sql_db_show)|Získá databázi.
+|[az sql db update](/cli/azure/sql/db#az_sql_db_update)|Aktualizuje databázi.|
+|[AZ SQL DB DELETE](/cli/azure/sql/db#az_sql_db_delete)|Odebere databázi.|
+|[az group create](/cli/azure/group#az_group_create)|Vytvoří skupinu prostředků.|
+|[az sql server create](/cli/azure/sql/server#az_sql_server_create)|Vytvoří server.|
+|[AZ SQL Server list](/cli/azure/sql/server#az_sql_server_list)|Seznam serverů|
+|[AZ SQL Server list-usages](/cli/azure/sql/server#az_sql_server_list-usages)|Vrátí využití serveru.|
+|[AZ SQL Server show](/cli/azure/sql/server#az_sql_server_show)|Získá Server.|
+|[AZ SQL Server Update](/cli/azure/sql/server#az_sql_server_update)|Aktualizuje server.|
+|[AZ SQL Server DELETE](/cli/azure/sql/server#az_sql_server_delete)|Odstraní server.|
+|[AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|Vytvoří pravidlo brány firewall serveru.|
+|[AZ SQL Server Firewall-Rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|Vypíše pravidla brány firewall na serveru.|
+|[AZ SQL Server Firewall-Rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|Zobrazuje podrobnosti pravidla brány firewall.|
+|[AZ SQL Server Firewall-Rule Update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|Aktualizuje pravidlo brány firewall.|
+|[AZ SQL Server Firewall-Rule DELETE](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Odstraní pravidlo brány firewall.|
 
 > [!TIP]
 > Rychlý Start Azure CLI najdete v tématu [Vytvoření databáze v Azure SQL Database pomocí Azure CLI](az-cli-script-samples-content-guide.md). Ukázkové skripty Azure CLI najdete v tématu [použití rozhraní příkazového řádku k vytvoření databáze v Azure SQL Database a konfiguraci pravidla brány firewall](scripts/create-and-configure-database-cli.md) a [použití rozhraní příkazového řádku k monitorování a škálování databáze v Azure SQL Database](scripts/monitor-and-scale-database-cli.md).

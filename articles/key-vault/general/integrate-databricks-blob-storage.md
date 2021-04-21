@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: fc33b24aac8964d0a8390b4b38c5e1862ed639a8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: be1b0da23841b5a63ec044e04a5465e29345f9d1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198910"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772194"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>Kurz: přístup k Azure Blob Storage pomocí Azure Databricks a Azure Key Vault
 
@@ -33,7 +33,7 @@ Než začnete s tímto kurzem, nainstalujte rozhraní příkazového [řádku Az
 
 ## <a name="create-a-storage-account-and-blob-container-with-azure-cli"></a>Vytvoření účtu úložiště a kontejneru objektů BLOB pomocí Azure CLI
 
-Abyste mohli objekty blob používat, musíte nejdřív vytvořit účet úložiště pro obecné účely. Pokud [skupinu prostředků](/cli/azure/group#az-group-create)nemáte, vytvořte ji před spuštěním příkazu. Následující příkaz vytvoří a zobrazí metadata kontejneru úložiště. Zkopírujte **ID**.
+Abyste mohli objekty blob používat, musíte nejdřív vytvořit účet úložiště pro obecné účely. Pokud [skupinu prostředků](/cli/azure/group#az_group_create)nemáte, vytvořte ji před spuštěním příkazu. Následující příkaz vytvoří a zobrazí metadata kontejneru úložiště. Zkopírujte **ID**.
 
 ```azurecli
 az storage account create --name contosoblobstorage5 --resource-group contosoResourceGroup --location eastus --sku Standard_ZRS --encryption-services blob
@@ -94,7 +94,7 @@ az keyvault secret set --vault-name contosoKeyVault10 --name storageKey --value 
 
 ## <a name="create-an-azure-databricks-workspace-and-add-key-vault-secret-scope"></a>Vytvoření pracovního prostoru Azure Databricks a přidání rozsahu Key Vault tajného klíče
 
-Tuto část nelze dokončit prostřednictvím příkazového řádku. Postupujte podle tohoto [Průvodce](/azure/databricks/scenarios/store-secrets-azure-key-vault#create-an-azure-databricks-workspace-and-add-a-secret-scope). Budete potřebovat přístup k [Azure Portal](https://ms.portal.azure.com/#home) k těmto akcím:
+Tuto část nelze dokončit prostřednictvím příkazového řádku. Postupujte podle tohoto [průvodce](/azure/databricks/scenarios/store-secrets-azure-key-vault#create-an-azure-databricks-workspace-and-add-a-secret-scope). Budete potřebovat přístup k [Azure Portal](https://ms.portal.azure.com/#home) k těmto akcím:
 
 1. Vytvoření prostředku Azure Databricks
 1. Spustit pracovní prostor
@@ -102,7 +102,7 @@ Tuto část nelze dokončit prostřednictvím příkazového řádku. Postupujte
 
 ## <a name="access-your-blob-container-from-azure-databricks-workspace"></a>Přístup k kontejneru objektů BLOB z pracovního prostoru Azure Databricks
 
-Tuto část nelze dokončit prostřednictvím příkazového řádku. Postupujte podle tohoto [Průvodce](/azure/databricks/scenarios/store-secrets-azure-key-vault#access-your-blob-container-from-azure-databricks). Pracovní prostor Azure Databricks budete muset použít k těmto akcím:
+Tuto část nelze dokončit prostřednictvím příkazového řádku. Postupujte podle tohoto [průvodce](/azure/databricks/scenarios/store-secrets-azure-key-vault#access-your-blob-container-from-azure-databricks). Pracovní prostor Azure Databricks budete muset použít k těmto akcím:
 
 1. Vytvořit **nový cluster**
 1. Vytvoření **nového poznámkového bloku**

@@ -3,12 +3,12 @@ title: Webhooky, které reagují na akce registru
 description: Naučte se, jak pomocí webhooků aktivovat události, když se akce push nebo Pull vyskytnou v úložištích registru.
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 5374b58ba72727500294a173c26e9a131b29fe34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f6fb719f8d9d51429a19616aa5548b32a2687e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101722241"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773395"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Používání Azure Container Registry webhooků
 
@@ -47,7 +47,7 @@ Příklad formuláře Webhooku:
 
 ## <a name="create-webhook---azure-cli"></a>Vytvoření Webhooku – Azure CLI
 
-Pokud chcete vytvořit Webhook pomocí Azure CLI, použijte příkaz [AZ ACR Webhook Create](/cli/azure/acr/webhook#az-acr-webhook-create) . Následující příkaz vytvoří Webhook pro všechny události odstranění imagí v registru *mycontainerregistry*:
+Pokud chcete vytvořit Webhook pomocí Azure CLI, použijte příkaz [AZ ACR Webhook Create](/cli/azure/acr/webhook#az_acr_webhook_create) . Následující příkaz vytvoří Webhook pro všechny události odstranění imagí v registru *mycontainerregistry*:
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
@@ -67,7 +67,7 @@ Před použitím Webhooku ho můžete otestovat pomocí tlačítka **otestovat**
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pokud chcete otestovat Webhook ACR pomocí Azure CLI, použijte příkaz [AZ ACR Webhook příkazu příkazového](/cli/azure/acr/webhook#az-acr-webhook-ping) řádku.
+Pokud chcete otestovat Webhook ACR pomocí Azure CLI, použijte příkaz [AZ ACR Webhook příkazu příkazového](/cli/azure/acr/webhook#az_acr_webhook_ping) řádku.
 
 ```azurecli-interactive
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01

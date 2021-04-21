@@ -3,12 +3,12 @@ title: Pravidla akcí pro výstrahy Azure Monitor
 description: Vysvětlení toho, jaká pravidla akcí v Azure Monitor jsou a jak je nakonfigurovat a spravovat.
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: df71883d04106dd341af4571c13cc55f35a1ecc3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 4f54ee7d21d52386bd18921aec33cabe02046852
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304813"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772554"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
 
@@ -143,7 +143,7 @@ Pomocí příkazu [AZ monitor Action-Rule Create](/cli/azure/ext/alertsmanagemen
 
 1. Přihlaste se.
 
-   Pokud používáte místní instalaci rozhraní příkazového řádku, přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) .  Dokončete proces ověřování podle kroků zobrazených v terminálu.
+   Pokud používáte místní instalaci rozhraní příkazového řádku, přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az_login) .  Dokončete proces ověřování podle kroků zobrazených v terminálu.
 
     ```azurecli
     az login

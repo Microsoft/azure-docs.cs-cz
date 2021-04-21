@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte Spravovat zálohované SAP HANA databáz
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e8baf7f2589cd7d9054911516253b49253397871
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7090701e3642fd9703737060e0876c8bbfc27994
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101713282"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765174"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Kurz: Správa databází SAP HANA ve virtuálním počítači Azure pomocí Azure CLI
 
@@ -39,7 +39,7 @@ Azure CLI usnadňuje správu SAP HANA databáze běžící na virtuálním poč�
 
 ## <a name="monitor-backup-and-restore-jobs"></a>Monitorování úloh zálohování a obnovení
 
-Pokud chcete monitorovat dokončené nebo aktuálně spuštěné úlohy (zálohování nebo obnovení), použijte rutinu [AZ Backup Job list](/cli/azure/backup/job#az-backup-job-list) . CLI také umožňuje [pozastavit aktuálně spuštěnou úlohu](/cli/azure/backup/job#az-backup-job-stop) nebo počkat na [dokončení úlohy](/cli/azure/backup/job#az-backup-job-wait).
+Pokud chcete monitorovat dokončené nebo aktuálně spuštěné úlohy (zálohování nebo obnovení), použijte rutinu [AZ Backup Job list](/cli/azure/backup/job#az_backup_job_list) . CLI také umožňuje [pozastavit aktuálně spuštěnou úlohu](/cli/azure/backup/job#az_backup_job_stop) nebo počkat na [dokončení úlohy](/cli/azure/backup/job#az_backup_job_wait).
 
 ```azurecli-interactive
 az backup job list --resource-group saphanaResourceGroup \
@@ -60,7 +60,7 @@ F7c68818-039f-4a0f-8d73-e0747e68a813  Restore (Log)          Completed   hxe [hx
 
 ## <a name="change-policy"></a>Změnit zásady
 
-Pokud chcete změnit zásady pro SAP HANA konfiguraci zálohování, použijte rutinu [AZ Backup Policy set](/cli/azure/backup/policy#az-backup-policy-set) . Parametr Name v této rutině odkazuje na zálohovanou položku, jejíž zásady chceme změnit. Pro účely tohoto kurzu nahrazujeme zásadu naší SAP HANA databáze *saphanadatabase; hxe; hxe* novou zásadou *newsaphanaPolicy*. Nové zásady se dají vytvořit pomocí rutiny [AZ Backup Policy Create](/cli/azure/backup/policy#az-backup-policy-create) .
+Pokud chcete změnit zásady pro SAP HANA konfiguraci zálohování, použijte rutinu [AZ Backup Policy set](/cli/azure/backup/policy#az_backup_policy_set) . Parametr Name v této rutině odkazuje na zálohovanou položku, jejíž zásady chceme změnit. Pro účely tohoto kurzu nahrazujeme zásadu naší SAP HANA databáze *saphanadatabase; hxe; hxe* novou zásadou *newsaphanaPolicy*. Nové zásady se dají vytvořit pomocí rutiny [AZ Backup Policy Create](/cli/azure/backup/policy#az_backup_policy_create) .
 
 ```azurecli-interactive
 az backup item set policy --resource-group saphanaResourceGroup \
@@ -302,7 +302,7 @@ Pokud chcete provádět přírůstkové zálohování pouze v sobotu a uchovat j
 
 Při [registraci instance SAP HANA s Recovery Services trezorem](tutorial-sap-hana-backup-cli.md#register-and-protect-the-sap-hana-instance) se automaticky zjistí všechny databáze v této instanci.
 
-V případě, že se do instance SAP HANA později přidají nové databáze, použijte rutinu [AZ Backup Protected-Item Initialize](/cli/azure/backup/protectable-item#az-backup-protectable-item-initialize) . Tato rutina zjišťuje nově přidané databáze.
+V případě, že se do instance SAP HANA později přidají nové databáze, použijte rutinu [AZ Backup Protected-Item Initialize](/cli/azure/backup/protectable-item#az_backup_protectable_item_initialize) . Tato rutina zjišťuje nově přidané databáze.
 
 ```azurecli-interactive
 az backup protectable-item initialize --resource-group saphanaResourceGroup \
@@ -311,7 +311,7 @@ az backup protectable-item initialize --resource-group saphanaResourceGroup \
     --workload-type SAPHANA
 ```
 
-Potom pomocí rutiny [AZ Backup Protected-Item list](/cli/azure/backup/protectable-item#az-backup-protectable-item-list) vypíšete všechny databáze, které byly zjištěny v instanci SAP HANA. Tento seznam však vyloučí databáze, na kterých bylo zálohování již nakonfigurováno. Po zjištění databáze, která se má zálohovat, najdete informace  [v tématu Povolení zálohování databáze SAP HANA](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database).
+Potom pomocí rutiny [AZ Backup Protected-Item list](/cli/azure/backup/protectable-item#az_backup_protectable_item_list) vypíšete všechny databáze, které byly zjištěny v instanci SAP HANA. Tento seznam však vyloučí databáze, na kterých bylo zálohování již nakonfigurováno. Po zjištění databáze, která se má zálohovat, najdete informace  [v tématu Povolení zálohování databáze SAP HANA](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database).
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \
@@ -347,7 +347,7 @@ Pojďme se podívat na všechny způsoby, jak zastavit ochranu podrobněji.
 
 ### <a name="stop-protection-with-retain-data"></a>Zastavení ochrany se zachováním dat
 
-Pokud chcete zastavit ochranu s uchováním dat, použijte rutinu [AZ Backup Protection Disable](/cli/azure/backup/protection#az-backup-protection-disable) .
+Pokud chcete zastavit ochranu s uchováním dat, použijte rutinu [AZ Backup Protection Disable](/cli/azure/backup/protection#az_backup_protection_disable) .
 
 ```azurecli-interactive
 az backup protection disable --resource-group saphanaResourceGroup \
@@ -366,11 +366,11 @@ Name                                  ResourceGroup
 g0f15dae-7cac-4475-d833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-Chcete-li zjistit stav této operace, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job#az-backup-job-show) .
+Chcete-li zjistit stav této operace, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job#az_backup_job_show) .
 
 ### <a name="stop-protection-without-retain-data"></a>Zastavení ochrany bez zachování dat
 
-Pokud chcete zastavit ochranu, aniž byste zachovali data, použijte rutinu [AZ Backup Protection Disable](/cli/azure/backup/protection#az-backup-protection-disable) .
+Pokud chcete zastavit ochranu, aniž byste zachovali data, použijte rutinu [AZ Backup Protection Disable](/cli/azure/backup/protection#az_backup_protection_disable) .
 
 ```azurecli-interactive
 az backup protection disable --resource-group saphanaResourceGroup \
@@ -390,13 +390,13 @@ Name                                  ResourceGroup
 g0f15dae-7cac-4475-d833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-Chcete-li zjistit stav této operace, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job#az-backup-job-show) .
+Chcete-li zjistit stav této operace, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job#az_backup_job_show) .
 
 ## <a name="resume-protection"></a>Obnovit ochranu
 
 Když zastavíte ochranu pro SAP HANA databázi s uchováním dat, můžete později obnovit ochranu. Pokud nezachováte zálohovaná data, nebudete moci obnovit ochranu.
 
-Pokud chcete pokračovat v ochraně, použijte rutinu [AZ Backup Protection Resume](/cli/azure/backup/protection#az-backup-protection-resume) .
+Pokud chcete pokračovat v ochraně, použijte rutinu [AZ Backup Protection Resume](/cli/azure/backup/protection#az_backup_protection_resume) .
 
 ```azurecli-interactive
 az backup protection resume --resource-group saphanaResourceGroup \
@@ -414,7 +414,7 @@ Name                                  ResourceGroup
 b2a7f108-1020-4529-870f-6c4c43e2bb9e  saphanaResourceGroup
 ```
 
-Chcete-li zjistit stav této operace, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job#az-backup-job-show) .
+Chcete-li zjistit stav této operace, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job#az_backup_job_show) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6253deb53229172cd499a6aa14b8d8f19bc07b63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de342267292c6a93c4a1ba2eae232403ccaf9514
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629253"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785266"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Konfigurace sítě VPN typu Point-to-Site (P2S) ve Windows pro použití se soubory Azure
 Pomocí připojení VPN typu Point-to-Site (P2S) můžete připojit sdílené složky Azure přes protokol SMB mimo Azure bez nutnosti otevírat port 445. Připojení VPN typu Point-to-site je připojení VPN mezi Azure a jednotlivými klienty. Pokud chcete použít připojení VPN P2S se soubory Azure, bude nutné nakonfigurovat připojení VPN P2S pro každého klienta, který se chce připojit. Pokud máte mnoho klientů, kteří se potřebují připojit ke sdíleným složkám Azure ze své místní sítě, můžete místo připojení typu Point-to-site pro každého klienta použít připojení VPN typu Site-to-Site (S2S). Další informace najdete v tématu [Konfigurace sítě Site-to-Site VPN pro použití se soubory Azure](storage-files-configure-s2s-vpn.md).
 
 Důrazně doporučujeme, abyste si přečetli [požadavky na síť pro přímý přístup ke sdílené složce Azure](storage-files-networking-overview.md) , než budete pokračovat v tomto článku, kde najdete kompletní informace o možnostech sítě, které jsou dostupné pro soubory Azure.
 
-Tento článek podrobně popisuje postup konfigurace sítě VPN typu Point-to-site v systému Windows (klient Windows a Windows Server) pro připojení sdílených složek Azure přímo v místním prostředí. Pokud chcete směrovat Synchronizace souborů Azure provoz přes síť VPN, přečtěte si téma [Konfigurace nastavení proxy serveru synchronizace souborů Azure a brány firewall](storage-sync-files-firewall-and-proxy.md).
+Tento článek podrobně popisuje postup konfigurace sítě VPN typu Point-to-site v systému Windows (klient Windows a Windows Server) pro připojení sdílených složek Azure přímo v místním prostředí. Pokud chcete směrovat Synchronizace souborů Azure provoz přes síť VPN, přečtěte si téma [Konfigurace nastavení proxy serveru synchronizace souborů Azure a brány firewall](../file-sync/file-sync-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Požadavky
 - Nejnovější verze modulu Azure PowerShell. Další informace o tom, jak nainstalovat Azure PowerShell, najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps) a výběr operačního systému. Pokud dáváte přednost použití Azure CLI v systému Windows, může se stát, že následující pokyny jsou Azure PowerShell.

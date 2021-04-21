@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/16/2021
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: faf3afc60c8517509199e6a306f511a15b32358c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e0dc9093503cab92a71517a21a8788814d16cbbe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732835"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772860"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení Gitu pro Azure App Service
 
@@ -73,7 +73,7 @@ Pokud jste ještě aplikaci nevytvořili, přečtěte si místo toho možnost [v
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Spusťte příkaz [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) . Například:
+Spusťte příkaz [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config_local_git) . Například:
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>

@@ -3,12 +3,12 @@ title: Ověřit stav registru
 description: Naučte se, jak spustit příkaz Rychlý diagnostiky k identifikaci běžných problémů při použití služby Azure Container Registry, včetně místní konfigurace Docker a připojení k registru.
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fec05efe67f5c502f36ee90eec57ba283b15a4a0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88245379"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761740"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Zkontroluje stav služby Azure Container Registry.
 
@@ -89,4 +89,4 @@ Nejčastější dotazy a další známé problémy týkající se Azure Containe
 
 <!-- LINKS - internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-check-health]: /cli/azure/acr#az-acr-check-health
+[az-acr-check-health]: /cli/azure/acr#az_acr_check_health

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f70229fabe4331adb7740cf09cf2bf8f3e3e4617
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b74e7d312133c24daad448e029a3c3d4cbdce79
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587515"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773060"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí volání REST API
 
@@ -49,13 +49,13 @@ V této části se dozvíte, jak povolit a zakázat spravovanou identitu přiřa
 
 Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou identitou přiřazenou systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Pomocí příkazu [az group create](/cli/azure/group/#az-group-create) vytvořte [skupinu prostředků](../../azure-resource-manager/management/overview.md#terminology) pro nasazení a uchování virtuálního počítače a souvisejících prostředků. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
+1. Pomocí příkazu [az group create](/cli/azure/group/#az_group_create) vytvořte [skupinu prostředků](../../azure-resource-manager/management/overview.md#terminology) pro nasazení a uchování virtuálního počítače a souvisejících prostředků. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-2. Vytvoření [síťového rozhraní](/cli/azure/network/nic#az-network-nic-create) pro virtuální počítač:
+2. Vytvoření [síťového rozhraní](/cli/azure/network/nic#az_network_nic_create) pro virtuální počítač:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
@@ -309,7 +309,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    az account get-access-token
    ```
 
-2. Vytvoření [síťového rozhraní](/cli/azure/network/nic#az-network-nic-create) pro virtuální počítač:
+2. Vytvoření [síťového rozhraní](/cli/azure/network/nic#az_network_nic_create) pro virtuální počítač:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bbaf2fb99f1268a752fab4322078b0566a054d30
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80a0b4634a2e84181271b515d2f6f63271cce7f2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222849"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784960"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
@@ -176,7 +176,7 @@ Pokud používáte překlad adres poskytovaný službou Azure, poskytuje Azure D
 
 V případě potřeby můžete určit interní příponu DNS pomocí PowerShellu nebo rozhraní API:
 
-* Pro virtuální sítě v Azure Resource Manager modely nasazení je přípona k dispozici prostřednictvím [síťového rozhraní REST API](/rest/api/virtualnetwork/networkinterfaces), rutiny [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) prostředí PowerShell a příkazu [AZ Network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI.
+* Pro virtuální sítě v Azure Resource Manager modely nasazení je přípona k dispozici prostřednictvím [síťového rozhraní REST API](/rest/api/virtualnetwork/networkinterfaces), rutiny [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) prostředí PowerShell a příkazu [AZ Network nic show](/cli/azure/network/nic#az_network_nic_show) Azure CLI.
 * V klasických modelech nasazení je přípona k dispozici prostřednictvím volání metody [Get rozhraní API](/previous-versions/azure/reference/ee460804(v=azure.100)) nebo rutiny [Get-AzureVM-Debug](/powershell/module/servicemanagement/azure.service/get-azurevm) .
 
 Pokud předávání dotazů do Azure nevyhovuje vašim potřebám, měli byste poskytnout vlastní řešení DNS. Vaše řešení DNS potřebuje:

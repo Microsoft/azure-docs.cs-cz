@@ -4,12 +4,12 @@ description: V tomto rychlém startu povolíte Event Grid události pro registr 
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: b3957ff3b0ed01d2375f33c4984cc97a64a3642c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 43dea2640c9c9445ea464205f6c586bc1e486206
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065102"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784020"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Rychlý Start: odeslání událostí z privátního registru kontejneru do Event Grid
 
@@ -236,6 +236,6 @@ V tomto rychlém startu jste nasadili registr kontejneru, vytvořili jste image 
 
 <!-- LINKS - Internal -->
 [az-acr-create]: /cli/azure/acr/repository
-[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
-[az-eventgrid-event-subscription-create]: /cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create
-[az-group-create]: /cli/azure/group#az-group-create
+[az-acr-repository-delete]: /cli/azure/acr/repository#az_acr_repository_delete
+[az-eventgrid-event-subscription-create]: /cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create
+[az-group-create]: /cli/azure/group#az_group_create

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 350962aed89d04c5508e7b2c50e8a838cd5a7174
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb924ab1f8947fefc83ed35a409628a576fad4b9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566142"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772665"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Vytvoření aplikační brány, která hostuje několik webů pomocí Azure CLI
 
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-K vytvoření aplikační brány můžete použít příkaz [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k již vytvořené podsíti *myAGSubnet* a adrese *myAGPublicIPAddress*. 
+K vytvoření aplikační brány můžete použít příkaz [az network application-gateway create](/cli/azure/network/application-gateway#az_network_application_gateway_create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k již vytvořené podsíti *myAGSubnet* a adrese *myAGPublicIPAddress*. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -105,7 +105,7 @@ Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplik
 
 ### <a name="add-the-backend-pools"></a>Přidání back-endových fondů
 
-Přidejte back-end fondy, které jsou potřeba k tomu, aby obsahovaly servery back-end, pomocí [AZ Network Application-Gateway Address-Pool Create](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create) .
+Přidejte back-end fondy, které jsou potřeba k tomu, aby obsahovaly servery back-end, pomocí [AZ Network Application-Gateway Address-Pool Create](/cli/azure/network/application-gateway/address-pool#az_network_application_gateway_address-pool_create) .
 ```azurecli-interactive
 az network application-gateway address-pool create \
   --gateway-name myAppGateway \
@@ -120,7 +120,7 @@ az network application-gateway address-pool create \
 
 ### <a name="add-listeners"></a>Přidání naslouchacích procesů
 
-Přidejte naslouchací procesy, které jsou potřeba ke směrování provozu pomocí [AZ Network Application-Gateway http-Listener Create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create).
+Přidejte naslouchací procesy, které jsou potřeba ke směrování provozu pomocí [AZ Network Application-Gateway http-Listener Create](/cli/azure/network/application-gateway/http-listener#az_network_application_gateway_http_listener_create).
 
 >[!NOTE]
 > Pomocí Application Gateway nebo WAF v2 SKU můžete také nakonfigurovat až 5 názvů hostitelů na naslouchací proces a v názvu hostitele můžete použít zástupné znaky. Další informace najdete [v tématu názvy hostitelů se zástupnými znaky v naslouchací](multiple-site-overview.md#wildcard-host-names-in-listener-preview) službě.
@@ -148,7 +148,7 @@ az network application-gateway http-listener create \
 
 Pravidla se zpracovávají v pořadí, v jakém jsou uvedena. Provoz se přesměruje pomocí prvního pravidla, které odpovídá bez ohledu na specifičnost. Pokud máte například na stejném portu pravidlo založené na základním naslouchacím procesu a pravidlo založené na naslouchacím procesu pro více webů, musí být pravidlo s naslouchacím procesem pro více webů uvedeno před pravidlem se základním naslouchacím procesem, aby fungovalo podle očekávání. 
 
-V tomto příkladu vytvoříte dvě nová pravidla a odstraníte výchozí pravidlo vytvořené při nasazení aplikační brány. Pravidlo přidáte příkazem [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
+V tomto příkladu vytvoříte dvě nová pravidla a odstraníte výchozí pravidlo vytvořené při nasazení aplikační brány. Pravidlo přidáte příkazem [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -225,7 +225,7 @@ done
 
 ## <a name="create-a-cname-record-in-your-domain"></a>Vytvoření záznamu CNAME v doméně
 
-Jakmile vytvoříte aplikační bránu s veřejnou IP adresou, získáte adresu DNS, kterou můžete použít k vytvoření záznamu CNAME ve své doméně. K získání adresy DNS aplikační brány použijte příkaz [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Zkopírujte hodnotu *fqdn* z objektu DNESettings a použijte ji jako hodnotu vytvořeného záznamu CNAME. 
+Jakmile vytvoříte aplikační bránu s veřejnou IP adresou, získáte adresu DNS, kterou můžete použít k vytvoření záznamu CNAME ve své doméně. K získání adresy DNS aplikační brány použijte příkaz [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte hodnotu *fqdn* z objektu DNESettings a použijte ji jako hodnotu vytvořeného záznamu CNAME. 
 
 ```azurecli-interactive
 az network public-ip show \

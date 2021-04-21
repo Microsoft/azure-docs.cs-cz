@@ -16,12 +16,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 9d549d77b4a60f7543f69a9fd89e8b538c95d010
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ecad48592ecfb6723548a27997cfe1b81545b24a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564607"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759594"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI
 
@@ -50,7 +50,7 @@ K provedení následujících kroků budete potřebovat:
 > 
 
 
-- Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a jste přihlášení k účtu Azure pomocí [AZ Login](/cli/azure/reference-index#az-login).
+- Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a jste přihlášení k účtu Azure pomocí [AZ Login](/cli/azure/reference-index#az_login).
 
 V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami, například, `myResourceGroup` `mystorageaccount` a `mydisks` .
 
@@ -66,7 +66,7 @@ Azure podporuje různé distribuce systému Linux (viz [schválené distribuce](
 * [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
 * [SLES a openSUSE](suse-create-upload-vhd.md)
 * [Ubuntu](create-upload-ubuntu.md)
-* [Ostatní: neschválené distribuce](create-upload-generic.md)
+* [Ostatní: Neschválené distribuce](create-upload-generic.md)
 
 Další obecné tipy k přípravě imagí pro Linux pro Azure najdete také v [poznámkách k instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes) .
 
@@ -121,7 +121,7 @@ az disk create \
 
 ## <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm#az-vm-create) a Attach (--Attach-OS-disk) spravovaného disku jako disku s operačním systémem. Následující příklad vytvoří virtuální počítač s názvem *myNewVM* pomocí spravovaného disku, který jste vytvořili z nahraného VHD:
+Vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm#az_vm_create) a Attach (--Attach-OS-disk) spravovaného disku jako disku s operačním systémem. Následující příklad vytvoří virtuální počítač s názvem *myNewVM* pomocí spravovaného disku, který jste vytvořili z nahraného VHD:
 
 ```azurecli
 az vm create \

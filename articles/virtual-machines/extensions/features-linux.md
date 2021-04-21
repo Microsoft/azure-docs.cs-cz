@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 03/30/2018
-ms.openlocfilehash: 8ff7b2940ca9ce3e5dc5913c0e676a32857771e7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bdbbc4c421b83fd041c7d900fb0edd01c4d636e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046874"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785086"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozšíření a funkce virtuálních počítačů pro Linux
 
@@ -65,7 +65,7 @@ Pro přesměrování požadavků na přenos agenta má agent pro Linux proxy ser
 
 ## <a name="discover-vm-extensions"></a>Zjistit rozšíření virtuálních počítačů
 
-Pro použití s virtuálními počítači Azure je k dispozici řada různých rozšíření virtuálních počítačů. Pokud chcete zobrazit úplný seznam, použijte příkaz [AZ VM Extension image list](/cli/azure/vm/extension/image#az-vm-extension-image-list). V následujícím příkladu jsou uvedena všechna dostupná rozšíření v umístění *westus* :
+Pro použití s virtuálními počítači Azure je k dispozici řada různých rozšíření virtuálních počítačů. Pokud chcete zobrazit úplný seznam, použijte příkaz [AZ VM Extension image list](/cli/azure/vm/extension/image#az_vm_extension_image_list). V následujícím příkladu jsou uvedena všechna dostupná rozšíření v umístění *westus* :
 
 ```azurecli
 az vm extension image list --location westus --output table
@@ -79,7 +79,7 @@ Pomocí následujících metod lze spustit rozšíření pro existující virtu�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Rozšíření virtuálních počítačů Azure je možné spustit s existujícím virtuálním počítačem pomocí příkazu [AZ VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) . Následující příklad spustí rozšíření vlastních skriptů na virtuálním počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*. Nahraďte ukázkový název skupiny prostředků, název virtuálního počítače a skript, který se má spustit (https: \/ /raw.githubusercontent.com/me/Project/Hello.sh), s vašimi vlastními informacemi. 
+Rozšíření virtuálních počítačů Azure je možné spustit s existujícím virtuálním počítačem pomocí příkazu [AZ VM Extension set](/cli/azure/vm/extension#az_vm_extension_set) . Následující příklad spustí rozšíření vlastních skriptů na virtuálním počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*. Nahraďte ukázkový název skupiny prostředků, název virtuálního počítače a skript, který se má spustit (https: \/ /raw.githubusercontent.com/me/Project/Hello.sh), s vašimi vlastními informacemi. 
 
 ```azurecli
 az vm extension set `
@@ -277,7 +277,7 @@ Chcete-li získat nejnovější drobné opravy chyb vydaných verzí, důrazně 
 
 #### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Určení, jestli se rozšíření nastavilo pomocí autoUpgradeMinorVersion na virtuálním počítači
 
-V případě, že se rozšíření zřídilo pomocí ' autoUpgradeMinorVersion ', můžete vidět z modelu virtuálního počítače. Pokud chcete kontrolu ověřit, použijte příkaz [AZ VM show](/cli/azure/vm#az-vm-show) a zadejte skupinu prostředků a název virtuálního počítače následujícím způsobem:
+V případě, že se rozšíření zřídilo pomocí ' autoUpgradeMinorVersion ', můžete vidět z modelu virtuálního počítače. Pokud chcete kontrolu ověřit, použijte příkaz [AZ VM show](/cli/azure/vm#az_vm_show) a zadejte skupinu prostředků a název virtuálního počítače následujícím způsobem:
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM
@@ -346,7 +346,7 @@ Následující kroky pro řešení potíží se vztahují na všechna rozšíře
 
 ### <a name="view-extension-status"></a>Zobrazit stav rozšíření
 
-Po spuštění rozšíření virtuálního počítače s virtuálním počítačem pomocí příkazu [AZ VM Get-instance-View](/cli/azure/vm#az-vm-get-instance-view) můžete stav rozšíření vrátit následujícím způsobem:
+Po spuštění rozšíření virtuálního počítače s virtuálním počítačem pomocí příkazu [AZ VM Get-instance-View](/cli/azure/vm#az_vm_get_instance_view) můžete stav rozšíření vrátit následujícím způsobem:
 
 ```azurecli
 az vm get-instance-view \
@@ -379,7 +379,7 @@ Stav spuštění rozšíření lze také najít v Azure Portal. Pokud chcete zob
 
 ### <a name="rerun-a-vm-extension"></a>Opětovné spuštění rozšíření virtuálního počítače
 
-Můžou nastat případy, kdy je potřeba znovu spustit rozšíření virtuálního počítače. Rozšíření můžete znovu spustit tak, že ho odeberete a pak znovu spustíte rozšíření s vámi zvolenou metodou spuštění. Pokud chcete odebrat rozšíření, použijte příkaz [AZ VM Extension Delete](/cli/azure/vm/extension#az-vm-extension-delete) následujícím způsobem:
+Můžou nastat případy, kdy je potřeba znovu spustit rozšíření virtuálního počítače. Rozšíření můžete znovu spustit tak, že ho odeberete a pak znovu spustíte rozšíření s vámi zvolenou metodou spuštění. Pokud chcete odebrat rozšíření, použijte příkaz [AZ VM Extension Delete](/cli/azure/vm/extension#az_vm_extension_delete) následujícím způsobem:
 
 ```azurecli
 az vm extension delete \

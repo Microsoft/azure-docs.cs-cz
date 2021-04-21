@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: 918cee723bfde69d08532aee6fe4f395dbddb4ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b93d236d0b716bfaf7dfb45b21c9524ece75fcae
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101695443"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764562"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Verze Preview: Vytvoření virtuálního počítače s Windows pomocí Azure image Builder
 
@@ -199,7 +199,7 @@ az resource delete \
 ```
 
 ## <a name="start-the-image-build"></a>Spustit sestavení image
-Spusťte proces vytváření bitové kopie pomocí [AZ Resource Invoke-Action](/cli/azure/resource#az-resource-invoke-action).
+Spusťte proces vytváření bitové kopie pomocí [AZ Resource Invoke-Action](/cli/azure/resource#az_resource_invoke_action).
 
 ```azurecli-interactive
 az resource invoke-action \

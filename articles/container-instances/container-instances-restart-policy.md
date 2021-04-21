@@ -3,12 +3,12 @@ title: Zásady restartování pro úlohy běhu
 description: Naučte se používat Azure Container Instances k provádění úloh, které se spouštějí do dokončení, například v úlohách sestavení, testování nebo vykreslování imagí.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 49280549fa834b82574f81494f1cf44817d8be5d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3bce208e3663ecfcebe520be92de3ac4443c0c8f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203823"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771150"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Spuštění kontejnerizovaných úkolů se zásadami restartování
 
@@ -104,7 +104,7 @@ Podrobnosti o tom, jak zachovat výstup kontejnerů, které se spouští k dokon
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-logs]: /cli/azure/container#az-container-logs
-[az-container-show]: /cli/azure/container#az-container-show
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show
 [azure-cli-install]: /cli/azure/install-azure-cli

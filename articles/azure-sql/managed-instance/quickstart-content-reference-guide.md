@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: c84c81fa81cf4ba9be454eea5782927a09c3252a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec767e5f3a88c52f9686eec8f7e458ab517ee35f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690953"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784330"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Začínáme se službou Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,7 +44,7 @@ Jako první krok byste museli vytvořit svou první spravovanou instanci SQL pom
   > - Z místní sítě můžete také použít expresní směrování nebo připojení typu Site-to-site, ale tyto přístupy jsou z rozsahu těchto rychlých startů.
   > - Pokud změníte dobu uchování z 0 (neomezené uchovávání) na jakoukoli jinou hodnotu, pamatujte na to, že doba uchovávání se bude vztahovat jenom na protokoly zapsané po změně hodnoty uchování (protokoly zapsané během období, kdy byla doba uchování nastavená na neomezený, se zachovají i po povolení uchování).
 
-Jako alternativu k ručnímu vytvoření spravované instance SQL můžete použít [PowerShell](scripts/create-configure-managed-instance-powershell.md), [PowerShell s správce prostředků šablonou](./create-template-quickstart.md)nebo [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) pro vytvoření skriptu a automatizaci tohoto procesu.
+Jako alternativu k ručnímu vytvoření spravované instance SQL můžete použít [PowerShell](scripts/create-configure-managed-instance-powershell.md), [PowerShell s správce prostředků šablonou](./create-template-quickstart.md)nebo [Azure CLI](/cli/azure/sql/mi#az_sql_mi_create) pro vytvoření skriptu a automatizaci tohoto procesu.
 
 ### <a name="migrate-your-databases"></a>Migrace databází
 

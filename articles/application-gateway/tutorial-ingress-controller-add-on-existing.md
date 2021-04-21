@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: bfff962f6d302f589acc437550fa25f76ec7ce35
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2fe615da256099c3135f607a7b6f8095bb93b442
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040413"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772834"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway"></a>Kurz: Povolení doplňku Application Gateway příchozího adaptéru pro existující cluster AKS s existujícím Application Gateway
 
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-V Azure přidělíte související prostředky skupině prostředků. Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *canadacentral* (region). 
+V Azure přidělíte související prostředky skupině prostředků. Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *canadacentral* (region). 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location canadacentral
@@ -52,7 +52,7 @@ V následujícím příkladu budete nasazovat nový cluster AKS s názvem *myClu
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
 ```
 
-Chcete-li nakonfigurovat další parametry pro `az aks create` příkaz, navštivte odkazy [zde](/cli/azure/aks#az-aks-create). 
+Chcete-li nakonfigurovat další parametry pro `az aks create` příkaz, navštivte odkazy [zde](/cli/azure/aks#az_aks_create). 
 
 ## <a name="deploy-a-new-application-gateway"></a>Nasadit nový Application Gateway 
 
@@ -84,12 +84,12 @@ Pokud chcete použít Azure Portal k povolení doplňku AGIC, přejděte na adre
 
 ![Portál pro Application Gateway adaptéru příchozího přenosu dat](./media/tutorial-ingress-controller-add-on-existing/portal-ingress-controller-add-on.png)
 
-## <a name="peer-the-two-virtual-networks-together"></a>Partnerský vztah mezi dvěma virtuálními sítěmi
+## <a name="peer-the-two-virtual-networks-together&quot;></a>Partnerský vztah mezi dvěma virtuálními sítěmi
 
 Vzhledem k tomu, že jsme cluster AKS nasadili ve vlastní virtuální síti a Application Gateway v jiné virtuální síti, budete muset vytvořit partnerský vztah mezi dvěma virtuálními sítěmi, aby přenos dat z Application Gateway do lusků v clusteru. Partnerský vztah dvou virtuálních sítí vyžaduje, aby se příkaz Azure CLI používal dvakrát, aby se zajistilo obousměrné připojení. První příkaz vytvoří připojení partnerského vztahu z Application Gateway virtuální sítě k virtuální síti AKS; Druhý příkaz vytvoří připojení partnerského vztahu v druhém směru.
 
 ```azurecli-interactive
-nodeResourceGroup=$(az aks show -n myCluster -g myResourceGroup -o tsv --query "nodeResourceGroup")
+nodeResourceGroup=$(az aks show -n myCluster -g myResourceGroup -o tsv --query &quot;nodeResourceGroup")
 aksVnetName=$(az network vnet list -g $nodeResourceGroup -o tsv --query "[0].name")
 
 aksVnetId=$(az network vnet show -n $aksVnetName -g $nodeResourceGroup -o tsv --query "id")

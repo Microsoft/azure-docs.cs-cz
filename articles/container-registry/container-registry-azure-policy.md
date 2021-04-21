@@ -3,12 +3,12 @@ title: Dodržování předpisů pomocí Azure Policy
 description: Přiřazení předdefinovaných zásad v Azure Policy pro audit dodržování předpisů ve službě Azure Container Registry
 ms.topic: article
 ms.date: 03/01/2021
-ms.openlocfilehash: 0fed0c4132043e1eaed7e634e1f45b27f7c6e933
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 62a1fd8d3c996fd3a0bac3cadf77fc7e7ace0ce3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103014294"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784168"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Audit dodržování předpisů pro služby Azure Container Registry pomocí Azure Policy
 
@@ -51,7 +51,7 @@ Pokud prostředek není kompatibilní, existuje mnoho možných důvodů. Chcete
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Dodržování zásad v rozhraní příkazového řádku Azure
 
-K získání dat o dodržování předpisů můžete použít také rozhraní příkazového řádku Azure. Pomocí příkazu [AZ Policy list](/cli/azure/policy/assignment#az-policy-assignment-list) v rozhraní PŘÍKAZového řádku můžete například získat id zásad Azure Container Registry zásad, které se použijí:
+K získání dat o dodržování předpisů můžete použít také rozhraní příkazového řádku Azure. Pomocí příkazu [AZ Policy list](/cli/azure/policy/assignment#az_policy_assignment_list) v rozhraní PŘÍKAZového řádku můžete například získat id zásad Azure Container Registry zásad, které se použijí:
 
 ```azurecli
 az policy assignment list --query "[?contains(displayName,'Container Registries')].{name:displayName, ID:id}" --output table
@@ -66,14 +66,14 @@ Container Registries should not allow unrestricted network access           /sub
 Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
-Pak spusťte příkaz [AZ Policy list](/cli/azure/policy/state#az-policy-state-list) a vraťte stav dodržování předpisů ve formátu JSON pro všechny prostředky v rámci konkrétního ID zásad:
+Pak spusťte příkaz [AZ Policy list](/cli/azure/policy/state#az_policy_state_list) a vraťte stav dodržování předpisů ve formátu JSON pro všechny prostředky v rámci konkrétního ID zásad:
 
 ```azurecli
 az policy state list \
   --resource <policyID>
 ```
 
-Nebo spusťte [AZ Policy list](/cli/azure/policy/state#az-policy-state-list) a vraťte stav dodržování předpisů ve formátu JSON určitého prostředku registru, jako je například *myregistry*:
+Nebo spusťte [AZ Policy list](/cli/azure/policy/state#az_policy_state_list) a vraťte stav dodržování předpisů ve formátu JSON určitého prostředku registru, jako je například *myregistry*:
 
 ```azurecli
 az policy state list \

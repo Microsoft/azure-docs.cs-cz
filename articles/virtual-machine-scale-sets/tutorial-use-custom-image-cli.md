@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: b12715e299f523d7ace56a72b0098b5d7ffac0ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9a4abe550da4f0438f875127b3b689045c06e6f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98683045"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762988"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Kurz: Vytvoření a použití vlastní image pro škálovací sady virtuálních počítačů pomocí Azure CLI
 Při vytváření škálovací sady zadáte image, která se použije při nasazení instancí virtuálních počítačů. Pokud chcete snížit počet úloh po nasazení instancí virtuálních počítačů, můžete použít vlastní image virtuálního počítače. Tato vlastní image virtuálního počítače obsahuje instalace a konfigurace všech požadovaných aplikací. Všechny instance virtuálních počítačů vytvořené ve škálovací sadě používají vlastní image virtuálního počítače a jsou připravené k obsluze provozu aplikace. Co se v tomto kurzu naučíte:
@@ -77,7 +77,7 @@ Galerie imagí je primární prostředek, který slouží k povolení sdílení 
 
 Povolenými znaky pro název galerie jsou velká a malá písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky.   Názvy galerií musí být v rámci vašeho předplatného jedinečné. 
 
-Pomocí [AZ SIG Create](/cli/azure/sig#az-sig-create)vytvořte galerii imagí. Následující příklad vytvoří skupinu prostředků s názvem Gallery s názvem *myGalleryRG* v *východní USA* a galerii s názvem *myGallery*.
+Pomocí [AZ SIG Create](/cli/azure/sig#az_sig_create)vytvořte galerii imagí. Následující příklad vytvoří skupinu prostředků s názvem Gallery s názvem *myGalleryRG* v *východní USA* a galerii s názvem *myGallery*.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -94,7 +94,7 @@ Ujistěte se, že je vaše definice image správným typem. Pokud jste virtuáln
 
 Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](../virtual-machines/shared-image-galleries.md#image-definitions).
 
-Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
+Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az_sig_image_definition_create).
 
 V tomto příkladu se definice image jmenuje *myImageDefinition* a je určena pro [specializovanou](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) image operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
 
@@ -116,7 +116,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>Vytvoření verze image
 
-Z virtuálního počítače vytvořte verzi Image pomocí [AZ Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az-sig-image-version-create).  
+Z virtuálního počítače vytvořte verzi Image pomocí [AZ Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az_sig_image_version_create).  
 
 Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32 celé číslo. Formát: *MajorVersion*. *Podverze.* *Oprava*.
 
@@ -144,9 +144,9 @@ az sig image-version create \
 
 
 ## <a name="create-a-scale-set-from-the-image"></a>Vytvoření sady škálování z Image
-Vytvořte sadu škálování z specializované Image pomocí [`az vmss create`](/cli/azure/vmss#az-vmss-create) . 
+Vytvořte sadu škálování z specializované Image pomocí [`az vmss create`](/cli/azure/vmss#az_vmss_create) . 
 
-Vytvořením sady škálování pomocí [`az vmss create`](/cli/azure/vmss#az-vmss-create) parametru--specializované použijte k označení, že se jedná o specializovanou image. 
+Vytvořením sady škálování pomocí [`az vmss create`](/cli/azure/vmss#az_vmss_create) parametru--specializované použijte k označení, že se jedná o specializovanou image. 
 
 Pomocí ID definice image pro `--image` můžete vytvořit instance sady škálování z nejnovější verze image, která je k dispozici. Můžete také vytvořit instance sady škálování z konkrétní verze, a to zadáním ID verze image pro `--image` . 
 
@@ -199,7 +199,7 @@ Zadejte veřejnou IP adresu do svého webového prohlížeče. Zobrazí se vých
 
 Image můžete sdílet mezi předplatnými pomocí řízení přístupu na základě role Azure (RBAC). Obrázky můžete sdílet v galerii, definici obrázku nebo verzi image. Každý uživatel, který má oprávnění ke čtení verze image, dokonce i přes odběry, bude moci nasadit virtuální počítač pomocí verze image.
 
-Doporučujeme sdílet s ostatními uživateli na úrovni galerie. Chcete-li získat ID objektu galerie, použijte příkaz [AZ SIG show](/cli/azure/sig#az-sig-show).
+Doporučujeme sdílet s ostatními uživateli na úrovni galerie. Chcete-li získat ID objektu galerie, použijte příkaz [AZ SIG show](/cli/azure/sig#az_sig_show).
 
 ```azurecli-interactive
 az sig show \
@@ -208,7 +208,7 @@ az sig show \
    --query id
 ```
 
-Pomocí ID objektu jako oboru společně s e-mailovou adresou a [AZ role Assignment vytvořit](/cli/azure/role/assignment#az-role-assignment-create) poskytněte uživateli přístup k galerii sdílených imagí. Nahraďte `<email-address>` a `<gallery iD>` vlastními informacemi.
+Pomocí ID objektu jako oboru společně s e-mailovou adresou a [AZ role Assignment vytvořit](/cli/azure/role/assignment#az_role_assignment_create) poskytněte uživateli přístup k galerii sdílených imagí. Nahraďte `<email-address>` a `<gallery iD>` vlastními informacemi.
 
 ```azurecli-interactive
 az role assignment create \

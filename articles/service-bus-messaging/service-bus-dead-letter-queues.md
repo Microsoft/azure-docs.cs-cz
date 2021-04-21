@@ -4,12 +4,12 @@ description: Popisuje fronty nedoručených zpráv v Azure Service Bus. Service 
 ms.topic: article
 ms.date: 04/08/2021
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 6459c8edd03427357810c1ad30161e87c18e059c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: cb791982b50d7afff7b74d70adfd285bb5e0a11c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304320"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773220"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Přehled Service Bus front nedoručených zpráv
 
@@ -31,7 +31,7 @@ Počet zpráv ve frontě nedoručených zpráv není možné získat na úrovni 
 
 ![Počet zpráv DLQ](./media/service-bus-dead-letter-queues/dead-letter-queue-message-count.png)
 
-Počet zpráv DLQ můžete také získat pomocí příkazu rozhraní příkazového řádku Azure: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az-servicebus-topic-subscription-show) . 
+Počet zpráv DLQ můžete také získat pomocí příkazu rozhraní příkazového řádku Azure: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az_servicebus_topic_subscription_show) . 
 
 ## <a name="moving-messages-to-the-dlq"></a>Přesun zpráv do DLQ
 V Service Bus je několik aktivit, které způsobují, že se zprávy dostanou do DLQ z samotného stroje pro zasílání zpráv. Aplikace může také explicitně přesouvat zprávy do DLQ. Následující dvě vlastnosti (důvod nedoručených zpráv a popis nedoručených zpráv) se přidají do zpráv s nedoručenými zprávami. Aplikace mohou definovat vlastní kódy pro vlastnost důvod nedoručených zpráv, ale systém nastaví následující hodnoty.
@@ -80,4 +80,3 @@ Další informace o frontách Service Bus najdete v následujících článcích
 
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Ve srovnání s frontami Azure a frontami Service Bus](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-

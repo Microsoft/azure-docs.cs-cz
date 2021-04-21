@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: bbfafeaf9ce24911bb4893748d456d22e02fc411
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 870a04af244d18826e1041316895f746e27870eb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104879155"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786580"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Kurz: použití spravované identity pro připojení Key Vault k aplikaci pro jarní cloudovou službu Azure
 
@@ -29,14 +29,14 @@ Azure Key Vault můžete použít k bezpečnému ukládání a pečlivému říz
 * [Nainstalujte Maven 3,0 nebo novější.](https://maven.apache.org/download.cgi)
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků, která bude obsahovat Key Vault i jarní Cloud, pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create):
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků, která bude obsahovat Key Vault i jarní Cloud, pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create):
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
 ```
 
 ## <a name="set-up-your-key-vault"></a>Nastavení Key Vault
-Pokud chcete vytvořit Key Vault, použijte příkaz [AZ klíčů Create](/cli/azure/keyvault#az-keyvault-create):
+Pokud chcete vytvořit Key Vault, použijte příkaz [AZ klíčů Create](/cli/azure/keyvault#az_keyvault_create):
 
 > [!Important]
 > Každý Key Vault musí mít jedinečný název. V následujících příkladech nahraďte <název vašeho trezoru klíčů> názvem vaší Key Vault.
@@ -47,7 +47,7 @@ az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 
 Poznamenejte si vrácenou `vaultUri` hodnotu, která bude ve formátu "https://<vašeho trezoru klíčů – název>. Vault.Azure.NET". Bude použit v následujícím kroku.
 
-Tajný kód teď můžete do svého Key Vault umístit pomocí příkazu [AZ klíčů trezor tajná sada](/cli/azure/keyvault/secret#az-keyvault-secret-set):
+Tajný kód teď můžete do svého Key Vault umístit pomocí příkazu [AZ klíčů trezor tajná sada](/cli/azure/keyvault/secret#az_keyvault_secret_set):
 
 ```azurecli-interactive
 az keyvault secret set --vault-name "<your-keyvault-name>" \

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
-ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba1df23b40de82a8ef901541884ef29ea0b504a1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556019"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771870"
 ---
 # <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>Přiřazení rolí Azure pomocí šablon Azure Resource Manager
 
@@ -29,9 +29,9 @@ ms.locfileid: "100556019"
 
 Chcete-li přiřadit roli, je nutné zadat ID uživatele, skupiny nebo aplikace, ke které chcete přiřadit roli. ID má formát: `11111111-1111-1111-1111-111111111111` . ID můžete získat pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure.
 
-### <a name="user"></a>User
+### <a name="user"></a>Uživatel
 
-Pokud chcete získat ID uživatele, můžete použít příkazy [Get-AzADUser](/powershell/module/az.resources/get-azaduser) nebo [AZ AD User show](/cli/azure/ad/user#az-ad-user-show) .
+Pokud chcete získat ID uživatele, můžete použít příkazy [Get-AzADUser](/powershell/module/az.resources/get-azaduser) nebo [AZ AD User show](/cli/azure/ad/user#az_ad_user_show) .
 
 ```azurepowershell
 $objectid = (Get-AzADUser -DisplayName "{name}").id
@@ -43,7 +43,7 @@ objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
 
 ### <a name="group"></a>Group (Skupina)
 
-Pokud chcete získat ID skupiny, můžete použít příkazy [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) nebo [AZ AD Group show](/cli/azure/ad/group#az-ad-group-show) .
+Pokud chcete získat ID skupiny, můžete použít příkazy [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) nebo [AZ AD Group show](/cli/azure/ad/group#az_ad_group_show) .
 
 ```azurepowershell
 $objectid = (Get-AzADGroup -DisplayName "{name}").id
@@ -67,7 +67,7 @@ objectid=$(az ad sp list --display-name <Azure resource name> --query [].objectI
 
 ### <a name="application"></a>Aplikace
 
-Pokud chcete získat ID instančního objektu (identity používaného aplikací), můžete použít příkazy [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) nebo [AZ AD SP list](/cli/azure/ad/sp#az-ad-sp-list) . U instančního objektu použijte ID objektu, **nikoli** ID aplikace.
+Pokud chcete získat ID instančního objektu (identity používaného aplikací), můžete použít příkazy [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) nebo [AZ AD SP list](/cli/azure/ad/sp#az_ad_sp_list) . U instančního objektu použijte ID objektu, **nikoli** ID aplikace.
 
 ```azurepowershell
 $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id

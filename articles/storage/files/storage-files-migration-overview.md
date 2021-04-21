@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0c2de0c1b024d093bd0276a852d9b97ba3320f4b
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: a6335d90625f860984ccbfd224955a97a32b731f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286330"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785212"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrace do sdílených složek Azure
 
@@ -24,7 +24,7 @@ Tento článek obsahuje základní informace o migraci a tabulku průvodců migr
 
 Azure má několik dostupných typů cloudového úložiště. Základní aspekt migrace souborů do Azure je určení možnosti úložiště Azure, která je pro vaše data nejvhodnější.
 
-[Sdílené složky Azure](storage-files-introduction.md) jsou vhodné pro data souborů pro obecné účely. Mezi tato data patří cokoli, co používáte pro aplikaci místní sdílenou složku SMB nebo NFS. Pomocí [synchronizace souborů Azure](storage-sync-files-planning.md)můžete ukládat obsah několika sdílených složek Azure na serverech, na kterých běží Windows Server místně.
+[Sdílené složky Azure](storage-files-introduction.md) jsou vhodné pro data souborů pro obecné účely. Mezi tato data patří cokoli, co používáte pro aplikaci místní sdílenou složku SMB nebo NFS. Pomocí [synchronizace souborů Azure](../file-sync/file-sync-planning.md)můžete ukládat obsah několika sdílených složek Azure na serverech, na kterých běží Windows Server místně.
 
 Pro aplikaci, která je aktuálně spuštěná na místním serveru, může být vhodné zvolit ukládání souborů ve sdílené složce Azure. Aplikaci můžete přesunout do Azure a používat sdílené složky Azure jako sdílené úložiště. V tomto scénáři můžete zvážit také [disky Azure](../../virtual-machines/managed-disks-overview.md) .
 
@@ -81,7 +81,7 @@ Scénář bez propojení zatím nemá publikovaný Průvodce migrací. V této t
 | Zdroj | Cíl: </br>Hybridní nasazení | Cíl: </br>Pouze cloudové nasazení |
 |:---|:--|:--|
 | | Kombinace nástrojů:| Kombinace nástrojů: |
-| Windows Server 2012 R2 a novější | <ul><li>[Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)</li><li>[Synchronizace souborů Azure a Azure DataBox](storage-sync-offline-data-transfer.md)</li></ul> | <ul><li>Přes Robocopy do připojené sdílené složky Azure</li><li>Prostřednictvím Synchronizace souborů Azure</li></ul> |
+| Windows Server 2012 R2 a novější | <ul><li>[Synchronizace souborů Azure](../file-sync/file-sync-deployment-guide.md)</li><li>[Synchronizace souborů Azure a Azure DataBox](../file-sync/file-sync-offline-data-transfer.md)</li></ul> | <ul><li>Přes Robocopy do připojené sdílené složky Azure</li><li>Prostřednictvím Synchronizace souborů Azure</li></ul> |
 | Windows Server 2012 a starší | <ul><li>Přes DataBox a Synchronizace souborů Azure na nejnovější serverový operační systém</li><li>Přes službu migrace úložiště na nejnovější Server s Synchronizace souborů Azure a pak nahrajte</li></ul> | <ul><li>Přes službu migrace úložiště na nejnovější Server s Synchronizace souborů Azure</li><li>Přes Robocopy do připojené sdílené složky Azure</li></ul> |
 | Úložiště připojené k síti (NAS) | <ul><li>[Přes Synchronizace souborů Azure nahrát](storage-files-migration-nas-hybrid.md)</li><li>[Přes DataBox + Synchronizace souborů Azure](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[Přes DataBox](storage-files-migration-nas-cloud-databox.md)</li><li>Přes Robocopy do připojené sdílené složky Azure</li></ul> |
 | Linux/Samba | <ul><li>[Synchronizace souborů Azure a Robocopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>Přes Robocopy do připojené sdílené složky Azure</li></ul> |
@@ -139,7 +139,7 @@ Robocopy je jedním z nástrojů, které jsou nejvíce použitelné pro migrace 
 
 Synchronizace souborů Azure škáluje primárně s počtem položek (soubory a složkami) a ne s celkovou velikostí úložiště. Nástroj TreeSize umožňuje určit počet položek na svazcích Windows serveru.
 
-Pomocí tohoto nástroje můžete vytvořit perspektivu před [nasazením synchronizace souborů Azure](storage-sync-files-deployment-guide.md). Můžete ji také použít, když se po nasazení zapojí vrstva cloudu. V takovém scénáři vidíte počet položek a adresáře, které v mezipaměti serveru používají.
+Pomocí tohoto nástroje můžete vytvořit perspektivu před [nasazením synchronizace souborů Azure](../file-sync/file-sync-deployment-guide.md). Můžete ji také použít, když se po nasazení zapojí vrstva cloudu. V takovém scénáři vidíte počet položek a adresáře, které v mezipaměti serveru používají.
 
 Testovaná verze nástroje je verze 4.4.1. Je kompatibilní se soubory na úrovni cloudu. Nástroj během normálního fungování nezpůsobí odvolání vrstvených souborů.
 
@@ -151,5 +151,5 @@ Testovaná verze nástroje je verze 4.4.1. Je kompatibilní se soubory na úrovn
 Další informace o technologiích souborů Azure, které jsou uvedené v tomto článku:
 
 * [Přehled služby Azure File Share](storage-files-introduction.md)
-* [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)
-* [Synchronizace souborů Azure: vrstvení cloudu](storage-sync-cloud-tiering-overview.md)
+* [Plánování nasazení Synchronizace souborů Azure](../file-sync/file-sync-planning.md)
+* [Synchronizace souborů Azure: vrstvení cloudu](../file-sync/file-sync-cloud-tiering-overview.md)

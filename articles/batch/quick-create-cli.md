@@ -4,12 +4,12 @@ description: V tomto rychlém startu se dozvíte, jak vytvořit účet Batch a s
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 297af47b6280381646e654eaededfe8b71a5d874
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d3005233320a7ba0d00f186944a0a8c0c456647
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97106678"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765300"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní příkazového řádku Azure
 
@@ -25,7 +25,7 @@ Azure CLI slouží k vytváření a správě prostředků Azure z příkazového
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 Následující příklad vytvoří skupinu prostředků s názvem *QuickstartBatch-RG* v umístění *eastus2* .
 
@@ -37,7 +37,7 @@ az group create \
 
 ## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
-Účet Batch můžete propojit s účtem Azure Storage. I když to k tomuto rychlému startu není nutné, účet úložiště je užitečný při nasazování aplikací a ukládání vstupních a výstupních dat ve většině reálných způsobů využití. Ve vaší skupině prostředků vytvořte účet úložiště pomocí příkazu [az storage account create](/cli/azure/storage/account#az-storage-account-create).
+Účet Batch můžete propojit s účtem Azure Storage. I když to k tomuto rychlému startu není nutné, účet úložiště je užitečný při nasazování aplikací a ukládání vstupních a výstupních dat ve většině reálných způsobů využití. Ve vaší skupině prostředků vytvořte účet úložiště pomocí příkazu [az storage account create](/cli/azure/storage/account#az_storage_account_create).
 
 ```azurecli-interactive
 az storage account create \
@@ -49,7 +49,7 @@ az storage account create \
 
 ## <a name="create-a-batch-account"></a>Vytvoření účtu Batch
 
-K vytvoření účtu Batch použijte příkaz [az batch account create](/cli/azure/batch/account#az-batch-account-create). Účet potřebujete pro vytvoření výpočetních prostředků (fondy výpočetních uzlů) a úloh služby Batch.
+K vytvoření účtu Batch použijte příkaz [az batch account create](/cli/azure/batch/account#az_batch_account_create). Účet potřebujete pro vytvoření výpočetních prostředků (fondy výpočetních uzlů) a úloh služby Batch.
 
 Následující příklad vytvoří účet Batch s názvem *mybatchaccount* v *QuickstartBatch-RG* a propojí účet úložiště, který jste vytvořili.  
 
@@ -61,7 +61,7 @@ az batch account create \
     --location eastus2
 ```
 
-K vytváření a správě výpočetních fondů a úloh musíte využít ověřování pomocí služby Batch. Přihlaste se k účtu pomocí příkazu [az batch account login](/cli/azure/batch/account#az-batch-account-login). Po přihlášení budou příkazy `az batch` používat kontext tohoto účtu.
+K vytváření a správě výpočetních fondů a úloh musíte využít ověřování pomocí služby Batch. Přihlaste se k účtu pomocí příkazu [az batch account login](/cli/azure/batch/account#az_batch_account_login). Po přihlášení budou příkazy `az batch` používat kontext tohoto účtu.
 
 ```azurecli-interactive
 az batch account login \
@@ -72,7 +72,7 @@ az batch account login \
 
 ## <a name="create-a-pool-of-compute-nodes"></a>Vytvořte fond výpočetních uzlů.
 
-Teď, když máte účet služby Batch, vytvořte ukázkový fond linuxových výpočetních uzlů pomocí příkazu [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create). Následující příkaz vytvoří fond nazvaný *mypool* se 2 uzly velikosti *Standard_A1_v2*, na kterých běží Ubuntu 16.04 LTS. Navržená velikost uzlu nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady.
+Teď, když máte účet služby Batch, vytvořte ukázkový fond linuxových výpočetních uzlů pomocí příkazu [az batch pool create](/cli/azure/batch/pool#az_batch_pool_create). Následující příkaz vytvoří fond nazvaný *mypool* se 2 uzly velikosti *Standard_A1_v2*, na kterých běží Ubuntu 16.04 LTS. Navržená velikost uzlu nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady.
  
 ```azurecli-interactive
 az batch pool create \
@@ -82,7 +82,7 @@ az batch pool create \
     --node-agent-sku-id "batch.node.ubuntu 16.04"
 ```
 
-Služba Batch vytvoří fond okamžitě, ale přidělení a spuštění uzlů úložiště bude několik minut trvat. Během této doby je fond ve stavu `resizing`. K zobrazení stavu fondu můžete použít příkaz [az batch pool show](/cli/azure/batch/pool#az-batch-pool-show). Tento příkaz zobrazí všechny vlastnosti fondu a můžete zadat dotaz na specifické vlastnosti. Následující příkaz zobrazí stav přidělení fondu:
+Služba Batch vytvoří fond okamžitě, ale přidělení a spuštění uzlů úložiště bude několik minut trvat. Během této doby je fond ve stavu `resizing`. K zobrazení stavu fondu můžete použít příkaz [az batch pool show](/cli/azure/batch/pool#az_batch_pool_show). Tento příkaz zobrazí všechny vlastnosti fondu a můžete zadat dotaz na specifické vlastnosti. Následující příkaz zobrazí stav přidělení fondu:
 
 ```azurecli-interactive
 az batch pool show --pool-id mypool \
@@ -93,7 +93,7 @@ Dokud se stav fondu mění, pokračujte v následujících krocích pro vytvář
 
 ## <a name="create-a-job"></a>Vytvoření úlohy
 
-Teď máte vytvořený fond a můžete vytvořit úlohu, která se v něm bude spouštět. Úloha služby Batch je logická skupina jednoho nebo víc úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Vytvořte úlohu služby Batch pomocí příkazu [az batch job create](/cli/azure/batch/job#az-batch-job-create). Následující příkaz vytvoří úlohu *myjob* ve fondu *mypool*. Na začátku úloha neobsahuje žádné úkoly.
+Teď máte vytvořený fond a můžete vytvořit úlohu, která se v něm bude spouštět. Úloha služby Batch je logická skupina jednoho nebo víc úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Vytvořte úlohu služby Batch pomocí příkazu [az batch job create](/cli/azure/batch/job#az_batch_job_create). Následující příkaz vytvoří úlohu *myjob* ve fondu *mypool*. Na začátku úloha neobsahuje žádné úkoly.
 
 ```azurecli-interactive
 az batch job create \
@@ -103,7 +103,7 @@ az batch job create \
 
 ## <a name="create-tasks"></a>Vytváření úloh
 
-Teď použijte příkaz [az batch task create](/cli/azure/batch/task#az-batch-task-create) pro vytvoření úkolů ke spuštění v této úloze. V tomto příkladu vytvoříte čtyři stejné úkoly. Každý úkol spustí `command-line`, kde se zobrazí proměnné prostředí služby Batch ve výpočetním uzlu, a potom 90 sekund čeká. Při použití služby Batch se aplikace nebo skript zadávají právě na příkazovém řádku. Služba Batch poskytuje několik způsobů, jak nasazovat aplikace a skripty do výpočetních uzlů.
+Teď použijte příkaz [az batch task create](/cli/azure/batch/task#az_batch_task_create) pro vytvoření úkolů ke spuštění v této úloze. V tomto příkladu vytvoříte čtyři stejné úkoly. Každý úkol spustí `command-line`, kde se zobrazí proměnné prostředí služby Batch ve výpočetním uzlu, a potom 90 sekund čeká. Při použití služby Batch se aplikace nebo skript zadávají právě na příkazovém řádku. Služba Batch poskytuje několik způsobů, jak nasazovat aplikace a skripty do výpočetních uzlů.
 
 Následující skript Bash vytvoří 4 paralelní úkoly (*mytask1* až *mytask4*).
 
@@ -123,7 +123,7 @@ Výstup příkazu ukazuje nastavení pro jednotlivé úkoly. Služba Batch distr
 
 Po vytvoření služba Batch zařadí úkol do fronty pro spuštění ve fondu. Jakmile bude dostupný uzel, který ho bude moct spustit, úkol se spustí.
 
-K zobrazení stavu úkolů služby Batch použijte příkaz [az batch task show](/cli/azure/batch/task#az-batch-task-show). Následující příklad ukazuje údaje o úkolu *mytask1* spuštěném v jednom z uzlů fondu.
+K zobrazení stavu úkolů služby Batch použijte příkaz [az batch task show](/cli/azure/batch/task#az_batch_task_show). Následující příklad ukazuje údaje o úkolu *mytask1* spuštěném v jednom z uzlů fondu.
 
 ```azurecli-interactive
 az batch task show \
@@ -190,13 +190,13 @@ AZ_BATCH_TASK_USER_IDENTITY=PoolNonAdmin
 
 Pokud chcete pokračovat v prohlížení kurzů a ukázek služby Batch, použijte účet Batch a propojený účet úložiště, které jste vytvořili v tomto rychlém startu. Za samotný účet Batch se neúčtují žádné poplatky.
 
-Poplatky se účtují za fondy, ve kterých jsou spuštěné uzly, i když nejsou naplánované žádné úlohy. Pokud nějaký fond už nepotřebujete, odstraňte ho pomocí příkazu [az batch pool delete](/cli/azure/batch/pool#az-batch-pool-delete). Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech.
+Poplatky se účtují za fondy, ve kterých jsou spuštěné uzly, i když nejsou naplánované žádné úlohy. Pokud nějaký fond už nepotřebujete, odstraňte ho pomocí příkazu [az batch pool delete](/cli/azure/batch/pool#az_batch_pool_delete). Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech.
 
 ```azurecli-interactive
 az batch pool delete --pool-id mypool
 ```
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, účtu Batch, fondů a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az-group-delete). Prostředky odstraňte následujícím způsobem:
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, účtu Batch, fondů a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az_group_delete). Prostředky odstraňte následujícím způsobem:
 
 ```azurecli-interactive
 az group delete --name QuickstartBatch-rg

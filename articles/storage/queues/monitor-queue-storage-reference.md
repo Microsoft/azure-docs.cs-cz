@@ -4,17 +4,17 @@ description: Reference k protokolům a metrikám pro monitorování dat z Azure 
 author: normesta
 services: azure-monitor
 ms.author: normesta
-ms.date: 10/02/2020
+ms.date: 04/20/2021
 ms.topic: reference
 ms.service: azure-monitor
 ms.subservice: logs
-ms.custom: monitoring
-ms.openlocfilehash: 95f20737b044140fe12ea939e71cd2397cb4826d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-monitoring
+ms.openlocfilehash: 506f5a46688f597b8ac5db341c5bbe5eb5fb67c8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576694"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763140"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Referenční informace ke službě Azure Queue Storage monitoring data
 
@@ -42,7 +42,7 @@ Tato tabulka ukazuje [Queue Storage metriky](../../azure-monitor/essentials/metr
 | ------------------- | ----------------- |
 | **QueueCapacity** | Množství Queue Storage používaného účtem úložiště <br><br> Jednotce `Bytes` <br> Typ agregace: `Average` <br> Příklad hodnoty: `1024` |
 | **QueueCount** | Počet front v účtu úložiště. <br><br> Jednotce `Count` <br> Typ agregace: `Average` <br> Příklad hodnoty: `1024` |
-| **QueueMessageCount** | Přibližný počet zpráv ve frontě v účtu úložiště. <br><br> Jednotce `Count` <br> Typ agregace: `Average` <br> Příklad hodnoty: `1024` |
+| **QueueMessageCount** | Počet zpráv ve frontě s neplatným vypršením platnosti v účtu úložiště <br><br> Jednotce `Count` <br> Typ agregace: `Average` <br> Příklad hodnoty: `1024` |
 
 ### <a name="transaction-metrics"></a>Transakční metriky
 

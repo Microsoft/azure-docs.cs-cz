@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: 55c1b6f6c6690f0c8f00a8a2469834781f35fb3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dda4fc6a80bbe07977f8d2a5ffcbea895a4e1fe6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449794"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771834"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift 4
 
@@ -112,7 +112,7 @@ V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné pods�
 
 2. **Vytvořte skupinu prostředků.**
 
-   Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků a v případě, že při vytváření prostředků nezadáte jinou oblast, tam, kde se vaše prostředky spouštějí v Azure. Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) .
+   Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků a v případě, že při vytváření prostředků nezadáte jinou oblast, tam, kde se vaše prostředky spouštějí v Azure. Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create) .
     
    > [!NOTE] 
    > Azure Red Hat OpenShift není k dispozici ve všech oblastech, kde je možné vytvořit skupinu prostředků Azure. Informace o tom, kde se podporuje Azure Red Hat OpenShift, najdete v části [dostupné oblasti](https://azure.microsoft.com/en-gb/global-infrastructure/services/?products=openshift) .

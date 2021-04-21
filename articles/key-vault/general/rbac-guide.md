@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 9fb8eb79a381473b26a6ea14d8b71d24ac26f485
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 966f704bd47b4b238ed72579a6103bd2e4348849
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749451"
+ms.locfileid: "107772212"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure
 
@@ -236,7 +236,7 @@ Vytvořit nový tajný klíč (tajné klíče \> + Generovat/importovat) by se m
 
 ### <a name="creating-custom-roles"></a>Vytváření vlastních rolí 
 
-[AZ role definition Create – příkaz](/cli/azure/role/definition#az-role-definition-create)
+[AZ role definition Create – příkaz](/cli/azure/role/definition#az_role_definition_create)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli

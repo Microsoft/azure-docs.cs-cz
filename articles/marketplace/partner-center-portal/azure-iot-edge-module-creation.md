@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 6de387605a8c127485b68773b6cd1b19c7136d17
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 12600cadaa84ae116818eec06459d5db0c05304a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107495"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773415"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Vytvoření nabídky modulu IoT Edge
 
@@ -419,7 +419,7 @@ Na kartě **Podrobnosti o úložišti imagí** zadáte následující informace.
 
 1. Uživatel s rolí správce
 
-<br>**Heslo pro Azure Container Registry**: zadejte heslo pro uživatelské jméno správce, které je přidružené k Azure Container registry a má vaši image kontejneru. Aby vaše společnost měla přístup k registru, je nutné zadat uživatelské jméno a heslo. Heslo z Azure Portal můžete získat tak, že v **Container Registry**  >  **přístupové klávesy** nebo pomocí Azure CLI použijete [příkaz show.](/cli/azure/acr/credential#az-acr-credential-show)
+<br>**Heslo pro Azure Container Registry**: zadejte heslo pro uživatelské jméno správce, které je přidružené k Azure Container registry a má vaši image kontejneru. Aby vaše společnost měla přístup k registru, je nutné zadat uživatelské jméno a heslo. Heslo z Azure Portal můžete získat tak, že v **Container Registry**  >  **přístupové klávesy** nebo pomocí Azure CLI použijete [příkaz show.](/cli/azure/acr/credential#az_acr_credential_show)
 
 :::image type="content" source="media/example-iot-access-keys.png" alt-text="Ukazuje obrazovku přístupového klíče v Azure Portal.":::
 

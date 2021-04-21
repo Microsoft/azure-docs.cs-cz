@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ff11b8461b483f5a66df19bb1b108a1fe1168fb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfb9ff9e6b107c9da84b164a055453994fc29229
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98944023"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786634"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>Kurz: Vytvoření clusteru s povoleným Apache Kafka proxy REST v HDInsight pomocí Azure CLI
 
@@ -82,7 +82,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
     export componentVersion=kafka=2.1
     ```
 
-1. [Vytvořte skupinu prostředků](/cli/azure/group#az-group-create) zadáním následujícího příkazu:
+1. [Vytvořte skupinu prostředků](/cli/azure/group#az_group_create) zadáním následujícího příkazu:
 
     ```azurecli
      az group create \
@@ -90,7 +90,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
         --name $resourceGroupName
     ```
 
-1. [Vytvořte účet Azure Storage](/cli/azure/storage/account#az-storage-account-create) zadáním následujícího příkazu:
+1. [Vytvořte účet Azure Storage](/cli/azure/storage/account#az_storage_account_create) zadáním následujícího příkazu:
 
     ```azurecli
     # Note: kind BlobStorage is not available as the default storage account.
@@ -103,7 +103,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
         --sku Standard_LRS
     ```
 
-1. [Extrahujte primární klíč](/cli/azure/storage/account/keys#az-storage-account-keys-list) z účtu Azure Storage a uložte ho do proměnné zadáním následujícího příkazu:
+1. [Extrahujte primární klíč](/cli/azure/storage/account/keys#az_storage_account_keys_list) z účtu Azure Storage a uložte ho do proměnné zadáním následujícího příkazu:
 
     ```azurecli
     export storageAccountKey=$(az storage account keys list \
@@ -112,7 +112,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
         --query [0].value -o tsv)
     ```
 
-1. [Vytvořte kontejner Azure Storage](/cli/azure/storage/container#az-storage-container-create) zadáním následujícího příkazu:
+1. [Vytvořte kontejner Azure Storage](/cli/azure/storage/container#az_storage_container_create) zadáním následujícího příkazu:
 
     ```azurecli
     az storage container create \
@@ -121,7 +121,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
         --account-name $storageAccount
     ```
 
-1. [Vytvořte cluster HDInsight](/cli/azure/hdinsight#az-hdinsight-create). Před zadáním příkazu si všimněte následujících parametrů:
+1. [Vytvořte cluster HDInsight](/cli/azure/hdinsight#az_hdinsight_create). Před zadáním příkazu si všimněte následujících parametrů:
 
     1. Požadované parametry pro clustery Kafka:
 

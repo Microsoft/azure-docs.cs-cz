@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: ea51c1f7fcfce5b795965eab2f9c03a820a6ab03
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f9b40c934cb428a31a3feb77195518d5351818d7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059356"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785356"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>Konfigurace šifrování pomocí klíčů spravovaných zákazníkem uložených v Azure Key Vault spravovaném HSM (Preview)
 
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak nakonfigurovat šifrování pomocí klíčů s
 
 Nejdřív k účtu úložiště přiřaďte spravovanou identitu přiřazenou systémem. Pomocí této spravované identity udělíte účtu úložiště oprávnění k přístupu ke spravovanému HSM. Další informace o spravovaných identitách přiřazených systémem najdete v tématu [co jsou spravované identity pro prostředky Azure?](../../active-directory/managed-identities-azure-resources/overview.md).
 
-K přiřazení spravované identity pomocí Azure CLI volejte volání [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update). Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
+K přiřazení spravované identity pomocí Azure CLI volejte volání [AZ Storage Account Update](/cli/azure/storage/account#az_storage_account_update). Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
 ```azurecli
 az storage account update \
@@ -97,7 +97,7 @@ az storage account update
     --encryption-key-vault $hsmurl
 ```
 
-Když ručně aktualizujete verzi klíče, budete muset aktualizovat nastavení šifrování účtu úložiště tak, aby používalo novou verzi. Nejdřív dotaz na identifikátor URI trezoru klíčů zavoláním [AZ klíčů show](/cli/azure/keyvault#az-keyvault-show)a pro verzi klíče zavoláním [AZ Key trezor Key list-versionss](/cli/azure/keyvault/key#az-keyvault-key-list-versions). Pak zavolejte [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update) a aktualizujte nastavení šifrování účtu úložiště tak, aby používala novou verzi klíče, jak je znázorněno v předchozím příkladu.
+Když ručně aktualizujete verzi klíče, budete muset aktualizovat nastavení šifrování účtu úložiště tak, aby používalo novou verzi. Nejdřív dotaz na identifikátor URI trezoru klíčů zavoláním [AZ klíčů show](/cli/azure/keyvault#az_keyvault_show)a pro verzi klíče zavoláním [AZ Key trezor Key list-versionss](/cli/azure/keyvault/key#az_keyvault_key_list_versions). Pak zavolejte [AZ Storage Account Update](/cli/azure/storage/account#az_storage_account_update) a aktualizujte nastavení šifrování účtu úložiště tak, aby používala novou verzi klíče, jak je znázorněno v předchozím příkladu.
 
 ## <a name="next-steps"></a>Další kroky
 

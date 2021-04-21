@@ -3,12 +3,12 @@ title: Přístup k registru s omezeným přístupem přes síť pomocí důvěry
 description: Povolení důvěryhodné instance služby Azure pro zabezpečený přístup k registru kontejneru omezeného na síť pro vyžádání nebo vložení imagí
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 2e6b6ee3736f98f53ebb0aa43d707d42ba4cc058
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b0d7feb223bcfcec4e8b2c786b211f4e3c3c3eb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101716478"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785865"
 ---
 # <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>Povoluje důvěryhodným službám zabezpečený přístup k registru kontejnerů s omezeným přístupem k síti (Preview).
 
@@ -49,7 +49,7 @@ Pokud je povolené nastavení **Povolit důvěryhodné služby** registru, můž
 
 ## <a name="allow-trusted-services---cli"></a>Povolení důvěryhodných služeb – CLI
 
-Ve výchozím nastavení je nastavení Povolit důvěryhodné služby povolené v novém službě Azure Container Registry. Zakažte nebo povolte nastavení spuštěním příkazu [AZ ACR Update](/cli/azure/acr#az-acr-update) .
+Ve výchozím nastavení je nastavení Povolit důvěryhodné služby povolené v novém službě Azure Container Registry. Zakažte nebo povolte nastavení spuštěním příkazu [AZ ACR Update](/cli/azure/acr#az_acr_update) .
 
 Chcete-li zakázat:
 

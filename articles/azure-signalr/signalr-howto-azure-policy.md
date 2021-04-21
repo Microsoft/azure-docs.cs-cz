@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: jixin
-ms.openlocfilehash: 018033d3a6123948191a7261f5a1ee2ae526e25a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8776102602f5bdcf29139d808a6f603cc5c7473
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89295011"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784568"
 ---
 # <a name="audit-compliance-of-azure-signalr-service-resources-using-azure-policy"></a>Audit dodržování předpisů u prostředků služby signalizace Azure pomocí Azure Policy
 
@@ -53,7 +53,7 @@ Pokud prostředek není kompatibilní, existuje mnoho možných důvodů. Chcete
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Dodržování zásad v rozhraní příkazového řádku Azure
 
-K získání dat o dodržování předpisů můžete použít také rozhraní příkazového řádku Azure. Pomocí příkazu [AZ Policy list](/cli/azure/policy/assignment#az-policy-assignment-list) v rozhraní PŘÍKAZového řádku můžete například získat ID zásad pro zásady služby Azure Signal, které se použijí:
+K získání dat o dodržování předpisů můžete použít také rozhraní příkazového řádku Azure. Pomocí příkazu [AZ Policy list](/cli/azure/policy/assignment#az_policy_assignment_list) v rozhraní PŘÍKAZového řádku můžete například získat ID zásad pro zásady služby Azure Signal, které se použijí:
 
 ```azurecli
 az policy assignment list --query "[?contains(displayName,'SignalR')].{name:displayName, ID:id}" --output table
@@ -67,13 +67,13 @@ Name                                                                            
 [Preview]: Azure SignalR Service should use private links  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Authorization/policyAssignments/<assignmentId>
 ```
 
-Pak spusťte příkaz [AZ Policy list](/cli/azure/policy/state#az-policy-state-list) a vraťte stav dodržování předpisů ve formátu JSON pro všechny prostředky v určité skupině prostředků:
+Pak spusťte příkaz [AZ Policy list](/cli/azure/policy/state#az_policy_state_list) a vraťte stav dodržování předpisů ve formátu JSON pro všechny prostředky v určité skupině prostředků:
 
 ```azurecli
 az policy state list --g <resourceGroup>
 ```
 
-Nebo spusťte [AZ Policy list](/cli/azure/policy/state#az-policy-state-list) a vraťte stav dodržování předpisů ve formátu JSON konkrétního prostředku signalizace:
+Nebo spusťte [AZ Policy list](/cli/azure/policy/state#az_policy_state_list) a vraťte stav dodržování předpisů ve formátu JSON konkrétního prostředku signalizace:
 
 ```azurecli
 az policy state list \

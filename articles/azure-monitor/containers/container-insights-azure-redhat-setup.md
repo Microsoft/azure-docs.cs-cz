@@ -3,12 +3,12 @@ title: Konfigurace Azure Red Hat OpenShift v3. x s kontejnerem Insights | Micros
 description: Tento článek popisuje, jak nakonfigurovat monitorování clusteru Kubernetes s Azure Monitor hostovaným na Azure Red Hat OpenShift verze 3 a vyšší.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: b46dfda0bdb0f3b582aa751786187a4d74524f75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2910655601548f39983547e12460d949901954d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708369"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784672"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-container-insights"></a>Konfigurace Azure Red Hat OpenShift V3 pomocí služby Container Insights
 
@@ -30,7 +30,7 @@ Služba Container Insights poskytuje bohatou monitorovací prostředí pro clust
 Službu Container Insights můžete povolit pro nové nebo jedno nebo více stávajících nasazení Azure Red Hat OpenShift pomocí následujících podporovaných metod:
 
 - Pro existující cluster z Azure Portal nebo pomocí šablony Azure Resource Manager.
-- Pro nový cluster pomocí šablony Azure Resource Manager nebo při vytváření nového clusteru pomocí rozhraní příkazového [řádku Azure CLI](/cli/azure/openshift#az-openshift-create).
+- Pro nový cluster pomocí šablony Azure Resource Manager nebo při vytváření nového clusteru pomocí rozhraní příkazového [řádku Azure CLI](/cli/azure/openshift#az_openshift_create).
 
 ## <a name="supported-and-unsupported-features"></a>Podporované a nepodporované funkce
 

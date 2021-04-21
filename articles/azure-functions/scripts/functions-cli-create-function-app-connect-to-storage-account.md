@@ -4,12 +4,12 @@ description: Ukázkový skript Azure CLI – Vytvoření funkce Azure, která se
 ms.topic: sample
 ms.date: 04/20/2017
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 13120ad4478febf9281ff423a3a7a8f8f3b25845
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 539c3a7dd95045b2e569dbb339be0e5a0c845902
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934403"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786274"
 ---
 # <a name="create-a-function-app-with-a-named-storage-account-connection"></a>Vytvoření aplikace funkcí s pojmenovaným připojením účtu úložiště 
 
@@ -35,11 +35,11 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků s umístěním. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Vytvoření účtu úložiště |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu spotřeby](../consumption-plan.md)bez serveru. |
-| [AZ Storage Account show-Connection-String](/cli/azure/storage/account#az-storage-account-show-connection-string) | Získá připojovací řetězec pro účet. |
-| [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | Nastaví připojovací řetězec jako nastavení aplikace ve Function App. |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků s umístěním. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Vytvoření účtu úložiště |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Vytvoří aplikaci funkcí v [plánu spotřeby](../consumption-plan.md)bez serveru. |
+| [AZ Storage Account show-Connection-String](/cli/azure/storage/account#az_storage_account_show_connection_string) | Získá připojovací řetězec pro účet. |
+| [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) | Nastaví připojovací řetězec jako nastavení aplikace ve Function App. |
 
 ## <a name="next-steps"></a>Další kroky
 

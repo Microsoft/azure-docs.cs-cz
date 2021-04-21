@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: manayar
-ms.openlocfilehash: fa4fa1c43ab9d31b879bdec8e724e896bd16e14c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bf9e802e2485e84211044ce650c7748e789e752e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102123890"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762600"
 ---
 # <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Preview: automatický upgrade rozšíření pro virtuální počítače a sady škálování v Azure
 
@@ -83,7 +83,7 @@ Verze Preview automatického upgradu rozšíření podporuje následující roz�
 ## <a name="enabling-preview-access"></a>Povolení přístupu ve verzi Preview
 Povolení funkcí verze Preview vyžaduje jednorázové přihlášení k funkci **AutomaticExtensionUpgradePreview** pro každé předplatné, jak je popsáno níže.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 Následující příklad popisuje, jak povolit verzi Preview pro vaše předplatné:
 
 ```
@@ -122,7 +122,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
-K povolení verze Preview pro vaše předplatné použijte [AZ Feature Registry](/cli/azure/feature#az-feature-register) .
+K povolení verze Preview pro vaše předplatné použijte [AZ Feature Registry](/cli/azure/feature#az_feature_register) .
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name AutomaticExtensionUpgradePreview

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a349f8160e8ab5b6459b2085e21e7368570c57db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7970ab4472000c53e23f7962a9cbf4ec05ea3465
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87503833"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763176"
 ---
 # <a name="use-an-azure-cli-script-to-route-traffic-through-a-network-virtual-appliance"></a>Použití skriptu Azure CLI ke směrování provozu přes síťové virtuální zařízení
 
@@ -56,8 +56,8 @@ Tento skript k vytvoření skupiny prostředků, virtuální sítě a skupin zab
 | [az network nsg create](/cli/azure/network/nsg) | Vytvoří skupinu zabezpečení sítě (NSG). |
 | [az network nsg rule create](/cli/azure/network/nsg/rule) | Vytvoří pravidla NSG, která povolí příchozí provoz na portech HTTP a HTTPS do virtuálního počítače. |
 | [az network vnet subnet update](/cli/azure/network/vnet/subnet)| Přidruží k podsítím skupiny zabezpečení sítě a směrovací tabulky. |
-| [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create)| Vytvoří směrovací tabulku pro všechny trasy. |
-| [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| Vytvoří trasy pro směrování provozu mezi podsítěmi a internetem přes virtuální počítač. |
+| [az network route-table create](/cli/azure/network/route-table#az_network_route_table_create)| Vytvoří směrovací tabulku pro všechny trasy. |
+| [az network route-table route create](/cli/azure/network/route-table/route#az_network_route_table_route_create)| Vytvoří trasy pro směrování provozu mezi podsítěmi a internetem přes virtuální počítač. |
 | [az vm create](/cli/azure/vm) | Vytvoří virtuální počítač a připojí k němu síťovou kartu. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu. |
 | [az group delete](/cli/azure/group) | Odstraní skupinu prostředků a všechny prostředky, které obsahuje. |
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: manayar
-ms.openlocfilehash: 276762bc2b8624f687cbb77e1af771478791a57b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a6a67fe43d4e0a6086154d71e61fe51680dbcd0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101679377"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762582"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>Preview: Automatické opravy hosta virtuálního počítače pro virtuální počítače Azure
 
@@ -136,7 +136,7 @@ Virtuální počítače v Azure teď podporují následující režimy orchestra
 
 Povolení funkcí verze Preview vyžaduje jednorázové přihlášení k funkcím **InGuestAutoPatchVMPreview** a **InGuestPatchVMPreview** na předplatné, jak je popsáno v následující části.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 Následující příklad popisuje, jak povolit verzi Preview pro vaše předplatné:
 
 ```
@@ -182,7 +182,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-K povolení verze Preview pro vaše předplatné použijte [AZ Feature Registry](/cli/azure/feature#az-feature-register) .
+K povolení verze Preview pro vaše předplatné použijte [AZ Feature Registry](/cli/azure/feature#az_feature_register) .
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview `
@@ -258,13 +258,13 @@ Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName
 ```
 
 ### <a name="azure-cli-for-windows-vms"></a>Azure CLI pro virtuální počítače s Windows
-Pomocí [AZ VM Create](/cli/azure/vm#az-vm-create) můžete povolit automatické opravy hosta virtuálního počítače při vytváření nového virtuálního počítače. Následující příklad konfiguruje automatickou opravu hosta virtuálního počítače pro virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
+Pomocí [AZ VM Create](/cli/azure/vm#az_vm_create) můžete povolit automatické opravy hosta virtuálního počítače při vytváření nového virtuálního počítače. Následující příklad konfiguruje automatickou opravu hosta virtuálního počítače pro virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image Win2019Datacenter --enable-agent --enable-auto-update --patch-mode AutomaticByPlatform
 ```
 
-Pokud chcete upravit existující virtuální počítač, použijte příkaz [AZ VM Update](/cli/azure/vm#az-vm-update) .
+Pokud chcete upravit existující virtuální počítač, použijte příkaz [AZ VM Update](/cli/azure/vm#az_vm_update) .
 
 ```azurecli-interactive
 az vm update --resource-group myResourceGroup --name myVM --set osProfile.windowsConfiguration.enableAutomaticUpdates=true osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform
@@ -309,7 +309,7 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM" -Status
 Prostředí PowerShell v současné době poskytuje pouze informace o příponě patch. Informace o této službě `patchStatus` budou k dispozici také brzy prostřednictvím prostředí PowerShell.
 
 ### <a name="azure-cli"></a>Azure CLI
-Pro přístup k zobrazení instance virtuálního počítače použijte [příkaz AZ VM Get-instance-View](/cli/azure/vm#az-vm-get-instance-view) .
+Pro přístup k zobrazení instance virtuálního počítače použijte [příkaz AZ VM Get-instance-View](/cli/azure/vm#az_vm_get_instance_view) .
 
 ```azurecli-interactive
 az vm get-instance-view --resource-group myResourceGroup --name myVM
@@ -344,7 +344,7 @@ Invoke-AzVmPatchAssessment -ResourceGroupName "myResourceGroup" -VMName "myVM"
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
-Pomocí [AZ VM resuzuje-patchs](/cli/azure/vm#az-vm-assess-patches) můžete vyhodnotit dostupné opravy pro váš virtuální počítač.
+Pomocí [AZ VM resuzuje-patchs](/cli/azure/vm#az_vm_assess_patches) můžete vyhodnotit dostupné opravy pro váš virtuální počítač.
 
 ```azurecli-interactive
 az vm assess-patches --resource-group myResourceGroup --name myVM
