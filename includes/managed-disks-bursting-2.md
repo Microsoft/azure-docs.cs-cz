@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 3035b5d2803ff91e84bc6b47a99963185f9195d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4162fe12ff54f16cd5f982f6a576905227c9a107
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102623580"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107820978"
 ---
 ## <a name="disk-level-bursting"></a>Roztržení na úrovni disku
 
@@ -58,6 +58,9 @@ Konfigurace disku: SSD úrovně Premium – 1 TB (P30), povolený shlukování d
 Transakce shlukového přenosu je účtována jako maximální počet transakcí ze zátěže IOPS nebo MB/s. Z 00:00:01 – 00:00:05 jsou kumulovaná transakce shluku Max ((10 000 – 5 000), (300-200) * 1024/256)) * 5 = 25 000 transakcí. Z 00:00:06 – 00:00:10 jsou kumulovaná transakce shluku Max ((6 000 – 5 000), (600-200) * 1024/256)) * 5 = 8 000 transakcí. Na to se zahrnou paušální poplatek za povolení shluku, který vám umožní získat celkové náklady na povolení shlukování disků na vyžádání. 
 
 Podrobnosti o cenách a použití [cenové kalkulačky Azure](https://azure.microsoft.com/pricing/calculator/?service=storage) k vyhodnocení vašich úloh najdete na [stránce s cenami Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/) . 
+
+
+Pokud chcete povolit shlukování na vyžádání, přečtěte si téma [Povolení shlukování na](../articles/virtual-machines/disks-enable-bursting.md)vyžádání.
 
 ### <a name="credit-based-bursting"></a>Shlukování na základě kreditu
 

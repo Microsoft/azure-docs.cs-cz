@@ -1,47 +1,42 @@
 ---
-title: Kurz – vyrovnávání zatížení virtuálních počítačů s Linux v Azure
+title: Kurz – vyrovnávání zatížení virtuálních počítačů pro zajištění vysoké dostupnosti
 description: V tomto kurzu se dozvíte, jak pomocí Azure CLI vytvořit nástroj pro vyrovnávání zatížení pro vysoce dostupnou a zabezpečenou aplikaci na třech virtuálních počítačích s Linuxem.
-services: virtual-machines
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.subservice: networking
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/13/2017
+ms.date: 04/20/2021
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 433bbd51618cfb5624c8ed2c549e1793488f0e81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 191eb1338533cf1a5f81f4d04c5dfc6fd5cc569c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553761"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818741"
 ---
-# <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů s Linuxem v Azure za účelem vytvoření vysoce dostupné aplikace pomocí Azure CLI
+# <a name="tutorial-load-balance-vms-for-high-availability"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů pro zajištění vysoké dostupnosti
 
 Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. V tomto kurzu se seznámíte s různými komponentami nástroje pro vyrovnávání zatížení Azure, které distribuují provoz a zajišťují vysokou dostupnost. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření nástroje pro vyrovnávání zatížení Azure
-> * Vytvoření sondy stavu nástroje pro vyrovnávání zatížení
-> * Vytvoření pravidel provozu pro nástroj pro vyrovnávání zatížení
-> * Vytvoření základní aplikace Node.js pomocí cloud-init
+> * Vytvoření nástroje pro vyrovnávání zatížení
+> * Vytvoření sondy stavu
+> * Vytvoření pravidel provozu
+> * Použití Cloud-init k instalaci základní aplikace Node.js
 > * Vytvoření virtuálních počítačů a jejich připojení k nástroji pro vyrovnávání zatížení
-> * Zobrazení nástroje pro vyrovnávání zatížení v akci
-> * Přidání virtuálních počítačů do nástroje pro vyrovnávání zatížení nebo jejich odebrání
+> * Zobrazit Nástroj pro vyrovnávání zatížení v akci
+> * Přidání a odebrání virtuálních počítačů z nástroje pro vyrovnávání zatížení
 
 V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](../../cloud-shell/overview.md), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="azure-load-balancer-overview"></a>Azure Load Balancer – přehled
+
 Nástroj pro vyrovnávání zatížení Azure je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP), který poskytuje vysokou dostupnost díky distribuci příchozího provozu mezi virtuální počítače v dobrém stavu. Sonda stavu nástroje pro vyrovnávání zatížení na všech virtuálních počítačích monitoruje daný port a distribuuje provoz pouze do virtuálních počítačů, které jsou v provozu.
 
 Nadefinujete konfiguraci front-endových IP adres, která obsahuje jednu nebo více veřejných IP adres. Tato konfigurace front-endových IP adres povoluje přístup k vašemu nástroji pro vyrovnávání zatížení a vašim aplikacím přes internet. 

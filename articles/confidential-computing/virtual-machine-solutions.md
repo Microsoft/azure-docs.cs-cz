@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 8621dc8cfc10ab44ecb358a40fdae1a1b2081734
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 580c53f311bc8ee70e974df2bc4111e6361d06f6
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566579"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818957"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Řešení na virtuálních počítačích Azure
 
@@ -66,7 +66,7 @@ Postupujte podle kurzu rychlý Start a nasaďte DCsv2-Series virtuální počít
   
 - **Změna velikosti** – z důvodu jejich specializovaného hardwaru můžete měnit velikost důvěrných výpočetních instancí v rámci stejné řady velikostí. Například můžete změnit velikost virtuálního počítače DCsv2-Series jenom z jedné velikosti řady DCsv2-Series na jinou. Změna velikosti nedůvěrného výpočetního prostředí na velikost důvěrného zpracování není podporovaná.  
 
-- **Image** – pro zajištění podpory rozšíření Intel SGX (software Guard Extension) na důvěrných výpočetních instancích musí být všechna nasazení spuštěná na imagí 2. generace. Důvěrné výpočetní prostředí Azure podporuje úlohy běžící na Ubuntu 18,04 Gen 2, Ubuntu 16,04 Gen 2, Windows Server 2019 Gen2 a Windows Server 2016 Gen 2. Přečtěte si o [podpoře pro virtuální počítače 2. generace v Azure](../virtual-machines/generation-2.md) , kde najdete další informace o podporovaných a nepodporovaných scénářích. 
+- **Image** – pro zajištění podpory rozšíření Intel SGX (software Guard Extension) na důvěrných výpočetních instancích musí být všechna nasazení spuštěná na imagí 2. generace. Důvěrné výpočetní prostředí Azure podporuje úlohy běžící na Ubuntu 18,04 Gen 2, Ubuntu 20,04 Gen 2, Windows Server 2019 Gen2 a Windows Server 2016 Gen 2. Přečtěte si o [podpoře pro virtuální počítače 2. generace v Azure](../virtual-machines/generation-2.md) , kde najdete další informace o podporovaných a nepodporovaných scénářích. 
 
 - **Storage** – datové disky s důvěrnými výpočetními virtuálními počítači Azure a naše dočasné disky s operačním systémem jsou na discích NVMe. Instance podporují pouze SSD úrovně Premium a SSD úrovně Standard disky, nikoli SSD úrovně Ultra nebo HDD úrovně Standard. Velikost virtuálního počítače **DC8_v2** nepodporuje Prémiové úložiště. 
 
@@ -122,10 +122,10 @@ V části **vlastnosti** bude také nutné odkazovat na obrázek v rámci **stor
         "sku": "18_04-lts-gen2",
         "version": "latest"
       },
-      "16_04-lts-gen2": {
+      "20_04-lts-gen2": {
         "offer": "UbuntuServer",
         "publisher": "Canonical",
-        "sku": "16_04-lts-gen2",
+        "sku": "20_04-lts-gen2",
         "version": "latest"
       }
 ```

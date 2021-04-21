@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 34adcf2218e29572ec9a86583addc7c021313085
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ec01561c5c44c850b32187629552b1bdb99537e7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519635"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819173"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Ladění modelu pomocí Azure Machine Learning
 
@@ -183,7 +183,7 @@ run_logger.log("accuracy", float(val_accuracy))
 
 Školicí skript vypočítá `val_accuracy` a zaznamená jako přesnost primární metriky. Pokaždé, když se metrika zaznamená, obdrží ji služba pro ladění pomocí parametrů. Můžete určit četnost generování sestav.
 
-Další informace o hodnotách protokolování v běhu školicích kurzů najdete v tématu [Povolení protokolování v běhu školicích kurzů Azure ml](how-to-track-experiments.md).
+Další informace o hodnotách protokolování v běhu školicích kurzů najdete v tématu [Povolení protokolování v běhu školicích kurzů Azure ml](how-to-log-view-metrics.md).
 
 ## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> Zadat zásady prvotního ukončení
 
@@ -424,7 +424,7 @@ Pomocí widgetu poznámkového bloku můžete vizualizovat vaše běhy ladění 
 
 ### <a name="studio"></a>Studio
 
-V [Azure Machine Learning Studiu](https://ml.azure.com)můžete vizualizovat všechna spuštění ladění vašich parametrů. Další informace o tom, jak zobrazit experiment na portálu, najdete v tématu [zobrazení záznamů spuštění v nástroji Studio](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
+V [Azure Machine Learning Studiu](https://ml.azure.com)můžete vizualizovat všechna spuštění ladění vašich parametrů. Další informace o tom, jak zobrazit experiment na portálu, najdete v tématu [zobrazení záznamů spuštění v nástroji Studio](how-to-log-view-metrics.md#view-the-experiment-in-the-web-portal).
 
 - **Graf metrik**: Tato vizualizace sleduje metriky zaznamenané pro každou podřízenou položku Hyperdrive, která se spouští po dobu trvání ladění parametrů. Každý řádek představuje podřízený běh a každý bod měří primární hodnotu metriky v této iteraci modulu runtime.  
 
@@ -481,5 +481,5 @@ Další informace najdete v poznámkách k vlakovým parametrům-* v této slož
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Další kroky
-* [Sledování experimentu](how-to-track-experiments.md)
+* [Sledování experimentu](how-to-log-view-metrics.md)
 * [Nasazení trained model](how-to-deploy-and-where.md)

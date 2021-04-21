@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 583f588004f41fc07037e7f5e4ce75538a581c70
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0eac999fa53679ef67c2a322bd8cc7841197d493
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518326"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819137"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>TensorFlow se škálováním modelů pomocí Azure Machine Learning
 
@@ -361,6 +361,6 @@ service = Model.deploy(ws, "tensorflow-web-service", [model])
 
 V tomto článku jste si naučili a zaregistrovali model TensorFlow a seznámili jste se s možnostmi nasazení. Další informace o Azure Machine Learning najdete v těchto článcích.
 
-* [Sledovat metriky spuštění během školení](how-to-track-experiments.md)
+* [Sledovat metriky spuštění během školení](how-to-log-view-metrics.md)
 * [Ladění hyperparametrů](how-to-tune-hyperparameters.md)
 * [Referenční architektura distribuovaného školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

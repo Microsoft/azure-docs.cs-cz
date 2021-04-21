@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 807174fdbede2e4631b3ca1df7220904038da4c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ef64d94ed3e860895bcc81a1429008205a1a8acb
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518292"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817102"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Naučte se scikit modely s možností škálování pomocí Azure Machine Learning
 
@@ -203,5 +203,5 @@ Poznámka: tyto závislosti jsou součástí předem připraveného kontejneru s
 
 V tomto článku jste si naučili a zaregistrovali model scikit-učení a seznámili jste se s možnostmi nasazení. Další informace o Azure Machine Learning najdete v těchto článcích.
 
-* [Sledovat metriky spuštění během školení](how-to-track-experiments.md)
+* [Sledovat metriky spuštění během školení](how-to-log-view-metrics.md)
 * [Ladění hyperparametrů](how-to-tune-hyperparameters.md)

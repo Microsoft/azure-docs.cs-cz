@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 02/23/2021
-ms.openlocfilehash: 4db523624922d8ddcb8c1868b84927926d9ed3d5
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/20/2021
+ms.openlocfilehash: 59c1ca67c9e93b62890512cda647ffcdf7712f9a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103806"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819263"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Sdílení a příjem dat ze služeb Azure Blob Storage a Azure Data Lake Storage
 
@@ -19,7 +19,7 @@ ms.locfileid: "107103806"
 
 Azure Data Share podporuje sdílení na základě snímků z účtu úložiště. Tento článek vysvětluje, jak sdílet a přijímat data z Azure Blob Storage, Azure Data Lake Storage Gen1 a Azure Data Lake Storage Gen2.
 
-Azure Data Share podporuje sdílení souborů, složek a systémů souborů z Azure Data Lake Gen1 a Azure Data Lake Gen2. Podporuje taky sdílení objektů blob, složek a kontejnerů z Azure Blob Storage. V současné době jsou podporovány pouze objekty blob bloku. Data, která z těchto zdrojů sdílíte, můžou Azure Data Lake Gen2 nebo Azure Blob Storage přijmout.
+Azure Data Share podporuje sdílení souborů, složek a systémů souborů z Azure Data Lake Gen1 a Azure Data Lake Gen2. Podporuje taky sdílení objektů blob, složek a kontejnerů z Azure Blob Storage. Můžete sdílet objekty blob bloku, Append nebo Page a přijímají se jako objekty blob bloku. Data, která z těchto zdrojů sdílíte, můžou Azure Data Lake Gen2 nebo Azure Blob Storage přijmout.
 
 Když se v rámci sdílení na základě snímků sdílí systémy souborů, kontejnery nebo složky, můžou si příjemci dat vytvořit úplnou kopii sdílených dat. Nebo mohou použít funkci přírůstkového snímku ke kopírování pouze nových nebo aktualizovaných souborů. Funkce přírůstkového snímku je založena na době poslední změny souborů. 
 

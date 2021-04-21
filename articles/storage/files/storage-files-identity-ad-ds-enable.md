@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 5ee4481b3151e28d5d37760e486a43adbc194994
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f38911b1fffb083902ba67e262141b6780a43ada
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553217"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817841"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Část 1: povolení ověřování služba AD DS pro sdílené složky Azure 
 
@@ -44,24 +44,27 @@ Zástupné hodnoty nahraďte vlastními v parametrech níže, než je spustíte 
 > U obou typů účtů doporučujeme, abyste zkontrolovali stáří vypršení platnosti hesla nakonfigurované v prostředí služby AD a naplánovali byste si [aktualizovat heslo účtu úložiště](storage-files-identity-ad-ds-update-password.md) účtu služby AD před maximálním stářím hesla. Můžete zvážit [Vytvoření nové organizační jednotky AD (OU) ve službě AD](/powershell/module/addsadministration/new-adorganizationalunit) a zakázat zásady pro vypršení platnosti hesla na účtech [počítačů](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) nebo účtů přihlášení služby odpovídajícím způsobem. 
 
 ```PowerShell
-#Change the execution policy to unblock importing AzFilesHybrid.psm1 module
+# Change the execution policy to unblock importing AzFilesHybrid.psm1 module
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 
 # Navigate to where AzFilesHybrid is unzipped and stored and run to copy the files into your path
 .\CopyToPSPath.ps1 
 
-#Import AzFilesHybrid module
+# Import AzFilesHybrid module
 Import-Module -Name AzFilesHybrid
 
-#Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
+# Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
+# If you are logging into an Azure environment other than Public (ex. AzureUSGovernment) you will need to specify that.
+# See https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-ps
+# for more information.
 Connect-AzAccount
 
-#Define parameters
+# Define parameters
 $SubscriptionId = "<your-subscription-id-here>"
 $ResourceGroupName = "<resource-group-name-here>"
 $StorageAccountName = "<storage-account-name-here>"
 
-#Select the target subscription for the current session
+# Select the target subscription for the current session
 Select-AzSubscription -SubscriptionId $SubscriptionId 
 
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 

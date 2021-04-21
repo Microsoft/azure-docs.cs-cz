@@ -10,12 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 02/26/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 584e421b6beac0e4ecfab5b3e3cb735b8465e1b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57f5da06909436e0cbce92559c29c309ca9e20e3
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503517"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819227"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co jsou kanály Azure Machine Learning?
 
@@ -47,7 +47,7 @@ Až bude kanál navržený, často se vyladí cyklus školení kanálu. Při opa
 
 S kanály se můžete rozhodnout použít jiný hardware pro různé úlohy. Azure koordinuje různé [výpočetní cíle](concept-azure-machine-learning-architecture.md) , které používáte, takže mezilehlá data hladce plynule natéká do výpočetních cílů pro příjem dat.
 
-[Metriky pro testy kanálu můžete sledovat](./how-to-track-experiments.md) přímo v Azure Portal nebo na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com). Po publikování kanálu můžete nakonfigurovat koncový bod REST, který umožňuje znovu spustit kanál z jakékoli platformy nebo zásobníku.
+[Metriky pro testy kanálu můžete sledovat](./how-to-log-view-metrics.md) přímo v Azure Portal nebo na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com). Po publikování kanálu můžete nakonfigurovat koncový bod REST, který umožňuje znovu spustit kanál z jakékoli platformy nebo zásobníku.
 
 V krátkém případě je možné s kanály považovat všechny komplexní úkoly životního cyklu strojového učení. Jiné technologie kanálu Azure mají své vlastní síly. [Azure Data Factory kanálů](../data-factory/concepts-pipelines-activities.md) v práci s daty a [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) je pravý Nástroj pro průběžnou integraci a nasazování. Pokud se ale zaměřujete na strojové učení, Azure Machine Learning kanály budou pravděpodobně nejlepší volbou pro potřeby pracovního postupu. 
 

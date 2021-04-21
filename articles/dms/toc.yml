@@ -45,7 +45,9 @@
           href: tutorial-sql-server-managed-instance-online.md
     - name: Migrace MySQL
       items:
-        - name: Do Azure Database for MySQL
+        - name: pro Azure Database for MySQL (offline)
+          href: tutorial-mysql-azure-mysql-offline-portal.md
+        - name: pro Azure Database for MySQL (online)
           href: tutorial-mysql-azure-mysql-online.md
     - name: Migrace RDS MySQL
       items:
@@ -87,6 +89,8 @@
           href: howto-sql-server-to-azure-sql-managed-instance-powershell-online.md
         - name: SQL Server k SQL MI (offline)
           href: howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md
+        - name: MySQL pro Azure Database for MySQL (offline)
+          href: migrate-mysql-to-azure-mysql-powershell.md
     - name: Opětovné nasazení balíčku SSIS do
       items:
         - name: Azure SQL Database

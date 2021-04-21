@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e217dcaeafd553803f5c9699ab6d7779ed755b67
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93241731"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818276"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>Správa redundantní vysoké dostupnosti zóny v Azure Database for MySQL flexibilním serveru (Preview)
 
@@ -62,6 +62,27 @@ Pomocí těchto kroků zakážete vysokou dostupnost pro flexibilní Server, kte
 5.  Kliknutím na tlačítko **Zakázat ha** zakážete vysokou dostupnost.
 
 6.  V oznámení se zobrazí vyřazení nasazení vysoké dostupnosti z provozu.
+
+
+## <a name="forced-failover"></a>Vynucené převzetí služeb při selhání
+
+Pomocí těchto kroků vynutíte převzetí služeb při selhání z primárního na pohotovostní server flexibilního serveru.
+
+1.  V [Azure Portal](https://portal.azure.com/)vyberte svůj existující Azure Database for MySQL flexibilní Server, který má povolenou funkci vysoké dostupnosti.
+
+2.  Na stránce flexibilní Server klikněte na horním panelu na možnost **Vysoká dostupnost** a otevřete stránku vysoké dostupnosti.
+
+3.  Ověřte **primární zónu dostupnosti** a **zónu dostupnosti v pohotovostním stavu** .
+
+4.  Kliknutím na **Vynucené převzetí služeb při** selhání spusťte ruční postup převzetí služeb při selhání. Automaticky otevírané okno vás bude informovat o očekávané době převzetí služeb při selhání v závislosti na aktuálním zatížení primárního a recency posledního kontrolního bodu, přečtěte si zprávu a klikněte na OK.
+ 
+5. V oznámení se zobrazí zmínka o tom, že probíhá převzetí služeb při selhání.
+
+6. Po úspěšném převzetí služeb při selhání do pohotovostního serveru se zobrazí oznámení.
+
+7. Ověřte novou **primární zónu dostupnosti** a **zónu dostupnosti v pohotovostním režimu**.
+
+![Postup vynuceného převzetí služeb při selhání](media/how-to-configure-high-availability/how-to-forced-failover.png) 
 
 ## <a name="next-steps"></a>Další kroky
 

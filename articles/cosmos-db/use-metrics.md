@@ -7,14 +7,14 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 04/09/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0711d764514e45d3c28e26cf99b45dc711ef201c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cf92d9e1a1f92c2dc3294b71e3e620166fd90680
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868235"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818691"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Monitorování a ladění pomocí metrik v Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,7 +31,7 @@ Tento článek popisuje běžné případy použití a možnosti použití metri
 
    :::image type="content" source="./media/use-metrics/performance-metrics.png" alt-text="Cosmos DB metriky výkonu v Azure Portal":::
 
-V podokně **metriky** jsou k dispozici následující metriky: 
+V podokně **metriky** jsou k dispozici následující metriky:
 
 * **Metriky propustnosti** – Tato metrika zobrazuje počet použitých nebo neúspěšných požadavků (kód odpovědi 429), protože byla překročena propustnost nebo kapacita úložiště zřízená pro kontejner.
 

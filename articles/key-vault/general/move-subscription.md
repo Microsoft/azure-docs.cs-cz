@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 65dc9da03a6b763d419c51e53bf756550e8b56a4
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1a1cd8c051f9e04c09ef2986805873d8e7fea54e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751845"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817625"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Přesun služby Azure Key Vault do jiného předplatného
 
@@ -123,5 +123,5 @@ Pokud používáte spravovanou identitu, musíte aktualizovat taky identitu, pro
 - Další informace o [klíčích, tajných klíčích a certifikátech](about-keys-secrets-certificates.md)
 - Koncepční informace, včetně toho, jak interpretovat protokoly Key Vault, najdete v tématu [Key Vault Logging](logging.md) .
 - [Průvodce vývojáře pro službu Key Vault](../general/developers-guide.md)
-- [Zabezpečení trezoru klíčů](security-overview.md)
+- [Funkce zabezpečení Azure Key Vault](security-features.md)
 - [Konfigurace Azure Key Vault bran firewall a virtuálních sítí](network-security.md)

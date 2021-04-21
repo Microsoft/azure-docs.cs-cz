@@ -1,27 +1,24 @@
 ---
 title: Nasazení Elasticsearch na vývojový virtuální počítač v Azure
-description: Kurz – Instalace řešení Elastic Stack na vývojový virtuální počítač s Linuxem v Azure
+description: Instalace elastického zásobníku (ELK) na virtuální počítač pro vývoj Linux v Azure
 services: virtual-machines
-documentationcenter: virtual-machines
 author: rloutlaw
 manager: justhe
-tags: azure-resource-manager
 ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: b3213d7de9aee88486fa1db1388c51948fbde430
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ce28efa30b04a2a762c39f47dac739633eac209
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557807"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818453"
 ---
-# <a name="install-the-elastic-stack-on-an-azure-vm"></a>Instalace řešení Elastic Stack na virtuální počítač Azure
+# <a name="install-the-elastic-stack-elk-on-an-azure-vm"></a>Instalace elastického zásobníku (ELK) na virtuální počítač Azure
 
 Tento článek vás provede nasazením [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Logstash](https://www.elastic.co/products/logstash) a [Kibana](https://www.elastic.co/products/kibana) na virtuální počítač s Ubuntu v Azure. Pokud chcete vidět Elastic Stack v akci, můžete se volitelně připojit ke Kibana a pracovat s ukázkovými daty protokolování. 
 
@@ -165,7 +162,7 @@ Otestujte Logstash v interaktivním režimu, abyste se ujistili, že funguje spr
 sudo /usr/share/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
 ```
 
-Toto je základní [kanál](https://www.elastic.co/guide/en/logstash/5.6/pipeline.html) Logstash, který vypisuje standardní vstup na standardním výstupu. 
+Toto je základní [kanál](https://www.elastic.co/guide/en/logstash/5.6/pipeline.html) Logstash, který vrací standardní vstup do standardního výstupu. 
 
 ```output
 The stdin plugin is now waiting for input:

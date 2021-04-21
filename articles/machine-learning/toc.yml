@@ -390,15 +390,12 @@
           href: how-to-migrate-from-estimators-to-scriptrunconfig.md
         - name: Sledování a monitorování trénování
           items:
-            - name: 'Spuštění, monitorování nebo zrušení běhů'
+            - name: 'Sledovat, monitorovat a analyzovat běhy'
               displayName: 'cancel, fail, status, child run'
-              href: how-to-manage-runs.md
-            - name: Povolení protokolů
-              displayName: 'troubleshoot, log, files, tracing'
-              href: how-to-track-experiments.md
-            - name: Zobrazit protokoly a metriky pro spuštění
+              href: how-to-track-monitor-analyze-runs.md
+            - name: '& protokolu zobrazit metriky a soubory protokolu'
               displayName: 'troubleshoot, log, files, tracing, metrics'
-              href: how-to-monitor-view-training-logs.md
+              href: how-to-log-view-metrics.md
             - name: Vizualizace spuštění s využitím TensorBoardu
               displayName: 'log, monitor, metrics'
               href: how-to-monitor-tensorboard.md

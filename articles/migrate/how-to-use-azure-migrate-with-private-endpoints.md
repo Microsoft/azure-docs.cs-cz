@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/07/2020
-ms.openlocfilehash: 97d4f0a387b75c9b23f64992a8ef39bc0bad17f0
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: e4feaa8f1b30bfe31f4e645943f766b5736150b3
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715437"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818363"
 ---
 # <a name="using-azure-migrate-with-private-endpoints"></a>Použití Azure Migrate s privátními koncovými body  
 
@@ -93,31 +93,18 @@ Tím se vytvoří projekt migrace, který do něj připojí soukromý koncový b
 
 4. Po úspěšném vygenerování klíče zkopírujte podrobnosti klíče a nakonfigurujte a zaregistrujte zařízení.   
 
-#### <a name="download-the-appliance-installer-file"></a>Stažení instalačního souboru zařízení
+#### <a name="download-the-appliance-installer-file"></a>Stažení instalačního souboru zařízení  
+
+> [!Note]
+> Pokud se vám při stahování souboru instalačního programu zařízení zobrazují problémy, vytvořte prosím případ podpory.
 
 Azure Migrate: zjišťování a posouzení používá odlehčené Azure Migrate zařízení. Zařízení provádí zjišťování serveru a odesílá metadata konfigurace a výkonu serveru Azure Migrate.
 
-Pokud chcete zařízení nastavit, Stáhněte si z portálu soubor ZIP obsahující instalační skript. Zkopírujte soubor zip na server, který bude hostitelem zařízení.
+Pokud chcete zařízení nastavit, Stáhněte si z portálu soubor ZIP obsahující instalační skript. Zkopírujte soubor zip na server, který bude hostitelem zařízení. 
 
 Ujistěte se, že server splňuje [požadavky na hardware](https://docs.microsoft.com/azure/migrate/migrate-appliance) pro vybraný scénář (VMware/Hyper-V/fyzický nebo jiný) a že se může připojit k požadovaným cloudovým cloudům Azure – [veřejným](./migrate-appliance.md#public-cloud-urls-for-private-link-connectivity) a [státním](./migrate-appliance.md#government-cloud-urls-for-private-link-connectivity) cloudům.
 
-Po stažení souboru ZIP ověřte zabezpečení souboru a spusťte skript instalačního programu pro nasazení zařízení.
-
-#### <a name="verify-file-security"></a>Ověřit zabezpečení souboru
-
-Ověřte, zda je soubor zip zabezpečený před jeho nasazením.
-
-1. Otevřete okno příkazového řádku správce na serveru, do kterého jste stáhli soubor. 
-2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro soubor zip.
-    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Příklad: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-PrivateEndPoint.zip SHA256```
-3. Ověřte verzi nejnovějšího a skriptu pro veřejný cloud Azure:
-
-    **Algoritmus** | **Stáhnout** | **SHA256**
-    --- | --- | ---
-    VMware (85,8 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
-    Hyper-V (85,8 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
-    Fyzický nebo jiný (85,8 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
+Po stažení souboru ZIP spusťte skript instalačního programu, který nasadí zařízení.
 
 #### <a name="run-the-script"></a>Spuštění skriptu
 

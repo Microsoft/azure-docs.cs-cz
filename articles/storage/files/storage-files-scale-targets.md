@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 276dd7aa1925fefaaa94dfdd5d7a5baba5164f56
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bdcee6b8ced45dba34309724e5a634cbb60a6d37
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790252"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818813"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Škálovatelnost a cíle výkonnosti služby Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím protokolů systému souborů SMB a NFS. Tento článek popisuje škálovatelnost a výkonnostní cíle pro Azure Files a Synchronizace souborů Azure.
@@ -35,8 +35,8 @@ Azure podporuje více typů účtů úložiště pro různé scénáře úloži�
 | Maximální kapacita účtu úložiště | 5 PiB<sup>1</sup> | 100 TiB (zřízený) |
 | Maximální počet sdílených složek | Unlimited | Neomezená celková zřízená velikost všech sdílených složek musí být menší než maximální kapacita účtu úložiště. |
 | Maximální počet souběžných požadavků | 20 000 IOPS<sup>1</sup> | 100 000 IOPS |
-| Maximální příchozí přenosy | <ul><li>USA/Evropa: 10 GBP/s<sup>1</sup></li><li>Další oblasti (LRS/ZRS): 10 GBP/s<sup>1</sup></li><li>Další oblasti (GRS): 5 GBP/s<sup>1</sup></li></ul> | 4 136 MiB/s |
-| Maximální výstup | 50 GBP/s<sup>1</sup> | 6 204 MiB/s |
+| Maximální příchozí přenosy | <ul><li>USA/Evropa: 9 536 MiB/s<sup>1</sup></li><li>Další oblasti (LRS/ZRS): 9 536 MiB za sekundu<sup>1</sup></li><li>Další oblasti (GRS): 4 768 GiB/s<sup>1</sup></li></ul> | 4 136 MiB/s |
+| Maximální výstup | 47 683 MiB/s<sup>1</sup> | 6 204 MiB/s |
 | Maximální počet pravidel virtuální sítě | 200 | 200 |
 | Maximální počet pravidel IP adres | 200 | 200 |
 | Operace čtení správy | 800 za 5 minut | 800 za 5 minut |

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2d8bfdf3a4ad8b713fb6c937d61fa437fc7977f2
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 93c0c77ad36be82802fd53e4130e48ac431b0280
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749667"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819281"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>Rychlý Start: vytvoření trezoru klíčů pomocí Azure Portal
 
@@ -69,5 +69,5 @@ Až nebudete prostředky potřebovat, odstraňte jejich skupinu. Tím odstranít
 V tomto rychlém startu jste vytvořili Key Vault pomocí Azure Portal. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Key Vault](overview.md)
-- Přečtěte si [Přehled zabezpečení Azure Key Vault](security-overview.md)
+- Přečtěte si [Přehled zabezpečení Azure Key Vault](security-features.md)
 - Další informace najdete v [příručce pro vývojáře Azure Key Vault](developers-guide.md) .

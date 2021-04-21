@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e112060db4a44884d3094a939b03ff106ba72e65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c00f001ae3cba9420a137a42f9f696619584d50
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96492195"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817372"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -60,7 +60,7 @@ Do `Program` třídy v souboru *program. cs* přidejte všechny příklady kódu
 
 Podívejte se na tyto balíčky v projektu:
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \. NET SDK V12](#tab/dotnet)
 
 - [Knihovna Azure Core pro .NET](https://www.nuget.org/packages/Azure.Core/): Tento balíček je implementací kanálu klienta Azure.
 - [Azure Storage BLOB Klientská knihovna pro .NET](https://www.nuget.org/packages/Azure.Storage.Blobs/): Tento balíček poskytuje programový přístup k prostředkům BLOB v účtu úložiště.
@@ -80,7 +80,7 @@ K získání balíčků můžete použít NuGet. Postupujte takto:
    - **Azure. Storage. Files. shares**
    - **System.Configuration.ConfigurationManager**
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \. NET SDK v11](#tab/dotnetv11)
 
 - [Microsoft Azure Storage společnou knihovnu pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Tento balíček poskytuje programový přístup k běžným prostředkům v účtu úložiště.
 - [Microsoft Azure Storage knihovna objektů BLOB pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/): Tento balíček poskytuje programový přístup k prostředkům BLOB v účtu úložiště.
@@ -105,13 +105,13 @@ K získání balíčků můžete použít NuGet. Postupujte takto:
 
 Potom uložte své přihlašovací údaje do souboru *App.config* projektu. V **Průzkumník řešení** dvakrát klikněte `App.config` a upravte soubor tak, aby byl podobný následujícímu příkladu.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \. NET SDK V12](#tab/dotnet)
 
 Nahraďte `myaccount` názvem svého účtu úložiště a `mykey` klíčem účtu úložiště.
 
 :::code language="xml" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/app.config" highlight="5,6,7":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \. NET SDK v11](#tab/dotnetv11)
 
 Nahraďte `myaccount` názvem svého účtu úložiště a `StorageAccountKeyEndingIn==` klíčem účtu úložiště.
 
@@ -137,11 +137,11 @@ Nahraďte `myaccount` názvem svého účtu úložiště a `StorageAccountKeyEnd
 
 V **Průzkumník řešení** otevřete soubor *program. cs* a na začátek souboru přidejte následující direktivy using.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \. NET SDK V12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_UsingStatements":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \. NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -158,13 +158,13 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 
 Do souboru *program. cs* přidejte následující kód pro přístup ke sdílené složce programově.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \. NET SDK V12](#tab/dotnet)
 
 Následující metoda vytvoří sdílení souborů, pokud ještě neexistuje. Metoda začíná vytvořením objektu [ShareClient](/dotnet/api/azure.storage.files.shares.shareclient) z připojovacího řetězce. Ukázka pak pokusí stáhnout soubor, který jsme vytvořili dříve. Zavolejte tuto metodu z `Main()` .
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_CreateShare":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \. NET SDK v11](#tab/dotnetv11)
 
 Dále přidejte následující obsah do `Main()` metody po výše uvedeném kódu, aby bylo možné načíst připojovací řetězec. Tento kód získá odkaz na soubor, který jsme vytvořili dříve, a vytvoří výstup svého obsahu.
 
@@ -212,11 +212,11 @@ Nastavení kvóty pro sdílenou složku omezí celkovou velikost souborů ulože
 
 Dole uvedený příklad ukazuje, jak můžete zkontrolovat aktuální využití sdílené složky a jak nastavit kvótu pro sdílenou složku.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \. NET SDK V12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_SetMaxShareSize":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \. NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -254,13 +254,13 @@ if (share.Exists())
 
 Od verze 5. x klientské knihovny souborů Azure můžete vygenerovat sdílený přístupový podpis (SAS) pro sdílenou složku nebo pro jednotlivé soubory.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \. NET SDK V12](#tab/dotnet)
 
 Následující příklad metody vrátí SAS pro soubor v zadané sdílené složce.
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_GetFileSasUri":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \. NET SDK v11](#tab/dotnetv11)
 
 Můžete také vytvořit uložené zásady přístupu pro sdílenou složku pro správu podpisů sdíleného přístupu. Doporučujeme vytvořit zásadu uloženého přístupu, protože umožňuje odvolat SAS, pokud dojde k ohrožení zabezpečení. Následující příklad vytvoří uloženou zásadu přístupu pro sdílenou složku. Tento příklad používá tuto zásadu k poskytnutí omezení pro SAS v souboru ve sdílené složce.
 
@@ -325,11 +325,11 @@ AzCopy můžete použít také ke kopírování jednoho souboru do jiného nebo 
 
 V následujícím příkladu se zkopíruje soubor do jiného souboru ve stejné sdílené složce. K provedení kopírování můžete použít [ověřování pomocí sdíleného klíče](/rest/api/storageservices/authorize-with-shared-key) , protože tato operace kopíruje soubory v rámci stejného účtu úložiště.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \. NET SDK V12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_CopyFile":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \. NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -379,11 +379,11 @@ if (share.Exists())
 
 V následujícím příkladu se vytvoří soubor a zkopíruje se do objektu blob ve stejném účtu úložiště. V příkladu se pro zdrojový soubor vytvoří SAS, který služba během operace kopírování použije k autorizaci přístupu ke zdrojovému souboru.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \. NET SDK V12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_CopyFileToBlob":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \. NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -441,11 +441,11 @@ Od verze 8,5 klientské knihovny souborů Azure Files můžete vytvořit snímek
 
 Následující příklad vytvoří snímek sdílené složky.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \. NET SDK V12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_CreateShareSnapshot":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \. NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 storageAccount = CloudStorageAccount.Parse(ConnectionString); 
@@ -462,11 +462,11 @@ var snapshotShare = myShare.Snapshot();
 
 Následující příklad vypíše snímky pro sdílenou složku.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \. NET SDK V12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_ListShareSnapshots":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \. NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 var shares = fClient.ListShares(baseShareName, ShareListingDetails.All);
@@ -478,11 +478,11 @@ var shares = fClient.ListShares(baseShareName, ShareListingDetails.All);
 
 Následující příklad prochází soubory a adresáře v rámci snímků sdílené složky.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \. NET SDK V12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_ListSnapshotContents":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \. NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); 
@@ -498,11 +498,11 @@ Pořízení snímku sdílené složky umožňuje obnovení jednotlivých soubor�
 
 Soubor můžete ze snímku sdílené složky obnovit zadáním dotazu na snímky sdílené složky nebo sdílenou složku. Pak můžete načíst soubor, který patří do konkrétního snímku sdílené složky. Tuto verzi můžete použít k přímému čtení nebo obnovení souboru.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \. NET SDK V12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_RestoreFileFromSnapshot":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \. NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 CloudFileShare liveShare = fClient.GetShareReference(baseShareName);
@@ -533,11 +533,11 @@ fileInliveShare.StartCopyAsync(new Uri(sourceUri));
 
 Následující příklad odstraní snímek sdílené složky.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \. NET SDK V12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_DeleteSnapshot":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \. NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); mySnapshot.Delete(null, null, null);
@@ -553,11 +553,11 @@ Metriky pro soubory Azure můžete povolit z [Azure Portal](https://portal.azure
 
 Následující příklad kódu ukazuje, jak pomocí klientské knihovny .NET povolit metriky pro soubory Azure.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \. NET SDK V12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_UseMetrics":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \. NET SDK v11](#tab/dotnetv11)
 
 Nejprve `using` do souboru *program. cs* přidejte následující direktivy spolu s těmi, které jste přidali výše:
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 06/19/2020
-ms.openlocfilehash: 193e7bd78046a1d73cb55171c15c9cb6a7278297
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e44d5d94a8dc172962a26f3e0dae9ccbb7f8a865
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96490036"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818885"
 ---
 # <a name="what-is-a-test-drive"></a>Co je testovací verze?
 
@@ -60,7 +60,7 @@ Tato šablona nasazení obsahuje všechny prostředky Azure, které tvoří vaš
 
 Hostovaná testovací jednotka odebere složitost nastavení tím, že umožní hostování společnosti Microsoft a údržbu služby, která provede test zřizování uživatelů a zrušení zřizování. Pokud máte nabídku Microsoft AppSource, sestavte testovací jednotku pro připojení k instanci Dynamics AX/CRM. Můžete použít následující typy nabídek AppSource:
 
-- Pro zákaznickou práci se zákaznickým systémem, jako je například prodej, služba, služba projektu a služba pole, použijte [Dynamics 365 pro zapojení zákazníka](partner-center-portal/create-new-customer-engagement-offer.md) .
+- Pro zákaznickou práci, jako jsou Sales, Service, Project Service a Field Service, můžete použít [Dynamics 365 pro službu Customer Engagement a Power Apps](dynamics-365-customer-engage-offer-setup.md) .
 - Pro operace s plánováním podnikových prostředků podnikových zdrojů, jako jsou finance, operace a výrobní, dodavatelský řetězec, použijte [Dynamics 365](partner-center-portal/create-new-operations-offer.md) .
 
 ### <a name="logic-app-test-drive"></a>Testovací jednotka aplikace logiky

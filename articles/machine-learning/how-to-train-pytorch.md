@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: b1cb14e07f6c0e402510abad6f1cb160f5215c63
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5a955424f3fb91a38e9061966ed742922913f1c4
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518377"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819155"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch se škálováním modelů pomocí Azure Machine Learning
 
@@ -383,7 +383,7 @@ Chcete-li optimalizovat odvození s [modulem runtime ONNX](concept-onnx.md), př
 V tomto článku jste si naučili a zaregistrovali obsáhlý Learning, neuronové síť pomocí PyTorch na Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek nasazení modelu.
 
 * [Jak a kde nasadit modely](how-to-deploy-and-where.md)
-* [Sledovat metriky spuštění během školení](how-to-track-experiments.md)
+* [Sledovat metriky spuštění během školení](how-to-log-view-metrics.md)
 * [Ladění hyperparametrů](how-to-tune-hyperparameters.md)
 * [Nasazení trained model](how-to-deploy-and-where.md)
 * [Referenční architektura distribuovaného školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

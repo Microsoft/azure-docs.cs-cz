@@ -10,12 +10,12 @@ ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.custom:
 - mode-portal
-ms.openlocfilehash: f43229570f6bab942cc57a2ea3be163d37f02f89
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 1ae6631c3f6ee71d7a09832956c7e687ceca22b6
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536173"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819047"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Rychlý Start: nasazení virtuálního počítače s důvěrnými výpočetními prostředími Azure v Azure Portal
 
@@ -62,7 +62,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 
 1. Nakonfigurujte bitovou kopii operačního systému, kterou chcete použít pro virtuální počítač.
 
-    * **Zvolte obrázek**: pro tento kurz vyberte Ubuntu 18,04 LTS. Můžete také vybrat možnost Windows Server 2019, Windows Server 2016 nebo Ubuntu 16,04 LTS. Pokud se rozhodnete tak učinit, budete v tomto kurzu přesměrováni podle potřeby.
+    * **Zvolte obrázek**: pro tento kurz vyberte Ubuntu 18,04 LTS. Můžete také vybrat možnost Windows Server 2019, Windows Server 2016 nebo Ubuntu 20,04 LTS. Pokud se rozhodnete tak učinit, budete v tomto kurzu přesměrováni podle potřeby.
     
     * **Přepněte obrázek pro Gen 2**: důvěrné výpočetní virtuální počítače běží jenom na imagí [generace 2](../virtual-machines/generation-2.md) . Ujistěte se, že vybraný obrázek je obrázek 2. generace. Klikněte na kartu **Upřesnit** nad místem, kde konfigurujete virtuální počítač. Posuňte se dolů, dokud nenajdete část s označením "generování virtuálního počítače". Vyberte Obecné 2 a potom se vraťte na kartu **základy** .
     
@@ -79,7 +79,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
     ![DCsv2-Series virtuálních počítačů](media/quick-create-portal/dcsv2-virtual-machines.png)
 
     > [!TIP]
-    > Měli byste vidět velikosti **DC1s_v2**, **DC2s_v2**, **DC4s_V2** a **DC8_v2**. Toto jsou jediné velikosti virtuálních počítačů, které aktuálně podporují důvěrný výpočetní výkon. [Další informace](virtual-machine-solutions.md).
+    > Měli byste vidět velikosti **DC1s_v2**, **DC2s_v2**, **DC4s_V2** a **DC8_v2**. Toto jsou jediné velikosti virtuálních počítačů, které v současné době podporují SGX důvěrný výpočetní výkon Intel. [Další informace](virtual-machine-solutions.md).
 
 1. Zadejte následující informace:
 
@@ -166,11 +166,18 @@ wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add 
 ```
 
 #### <a name="2-install-the-intel-sgx-dcap-driver"></a>2. Nainstalujte ovladač Intel SGX DCAP.
+Je možné, že některé verze Ubuntu již mají nainstalovaný ovladač Intel SGX. Pomocí následujícího příkazu ověřte: 
+
+```bash
+dmesg | grep -i sgx
+[  106.775199] sgx: intel_sgx: Intel SGX DCAP Driver {version}
+``` 
+Pokud je výstup prázdný, nainstalujte ovladač: 
 
 ```bash
 sudo apt update
 sudo apt -y install dkms
-wget https://download.01.org/intel-sgx/sgx-dcap/1.9/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.36.2.bin -O sgx_linux_x64_driver.bin
+wget https://download.01.org/intel-sgx/sgx-dcap/1.7/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.35.bin -O sgx_linux_x64_driver.bin
 chmod +x sgx_linux_x64_driver.bin
 sudo ./sgx_linux_x64_driver.bin
 ```
@@ -180,8 +187,9 @@ sudo ./sgx_linux_x64_driver.bin
 
 #### <a name="3-install-the-intel-and-open-enclave-packages-and-dependencies"></a>3. nainstalujte balíčky a enklávy balíčky Intel a otevřete tyto součásti:
 
+
 ```bash
-sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-common-dev libprotobuf10 libsgx-dcap-ql libsgx-dcap-ql-dev az-dcap-client open-enclave
+sudo apt -y install clang-8 libssl-dev gdb libsgx-enclave-common libprotobuf10 libsgx-dcap-ql libsgx-dcap-ql-dev az-dcap-client open-enclave
 ```
 
 > [!NOTE] 

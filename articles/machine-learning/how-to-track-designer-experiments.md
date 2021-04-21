@@ -11,19 +11,19 @@ ms.subservice: core
 ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: designer
-ms.openlocfilehash: b940f5c9bd14bcec404827daaef666da802d969b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13a3b86514428b0219aaf671260c07b4e197d2de
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98065248"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817288"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Povolit protokolování v Azure Machine Learningch kanálech návrháře
 
 
 V tomto článku se dozvíte, jak přidat kód protokolování do kanálů návrháře. Naučíte se také, jak tyto protokoly zobrazit pomocí webového portálu Azure Machine Learning Studio.
 
-Další informace o protokolování metrik pomocí prostředí SDK pro vytváření obsahu najdete v tématu [monitorování běhů experimentů Azure ml a metrik](how-to-track-experiments.md).
+Další informace o protokolování metrik pomocí prostředí SDK pro vytváření obsahu najdete v tématu [monitorování běhů experimentů Azure ml a metrik](how-to-log-view-metrics.md).
 
 ## <a name="enable-logging-with-execute-python-script"></a>Povolit protokolování pomocí skriptu Pythonu pro spuštění
 
@@ -33,7 +33,7 @@ Následující příklad ukazuje, jak protokolovat střední chybu dvou vyškole
 
 1. Připojte modul __spuštění skriptu Pythonu__ k výstupu modulu __vyhodnocení modelu__ .
 
-    ![Připojit modul spuštění skriptu Pythonu k vyhodnocení modulu modelu](./media/how-to-track-experiments/designer-logging-pipeline.png)
+    ![Připojit modul spuštění skriptu Pythonu k vyhodnocení modulu modelu](./media/how-to-log-view-metrics/designer-logging-pipeline.png)
 
 1. Vložte následující kód do editoru kódu __spouštěného v Pythonu__ , aby se protokoloval střední absolutní chyba pro vyškolený model. Podobný vzor můžete použít k zaznamenání jakékoli jiné hodnoty v Návrháři:
 
@@ -61,7 +61,7 @@ Následující příklad ukazuje, jak protokolovat střední chybu dvou vyškole
     
 Tento kód používá sadu SDK Azure Machine Learning Python k protokolování hodnot. K získání kontextu aktuálního běhu používá Run.get_context (). Poté zaznamená hodnoty do tohoto kontextu pomocí metody Run. Parent. log (). Používá `parent` se k protokolování hodnot do nadřazeného spuštění kanálu namísto spuštění modulu.
 
-Další informace o tom, jak použít sadu Python SDK k protokolování hodnot, najdete v tématu [Povolení protokolování ve školicích kurzech Azure ml](how-to-track-experiments.md).
+Další informace o tom, jak použít sadu Python SDK k protokolování hodnot, najdete v tématu [Povolení protokolování ve školicích kurzech Azure ml](how-to-log-view-metrics.md).
 
 ## <a name="view-logs"></a>Zobrazení protokolů
 
@@ -72,7 +72,7 @@ Po dokončení kanálu můžete na stránce experimenty zobrazit *Mean_Absolute_
 1. Vyberte běh v experimentu, který chcete zobrazit.
 1. Vyberte **Metriky**.
 
-    ![Zobrazit metriky spuštění v studiu](./media/how-to-track-experiments/experiment-page-metrics-across-runs.png)
+    ![Zobrazit metriky spuštění v studiu](./media/how-to-log-view-metrics/experiment-page-metrics-across-runs.png)
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -80,5 +80,5 @@ V tomto článku jste zjistili, jak používat protokoly v návrháři. Další 
 
 
 * Přečtěte si, jak řešit potíže s kanály návrháře, najdete v tématu [ladění & řešení potíží s kanály](how-to-debug-pipelines.md#azure-machine-learning-designer).
-* Přečtěte si, jak pomocí sady Python SDK protokolovat metriky v prostředí pro vytváření obsahu SDK, najdete v tématu [Povolení protokolování ve školicích kurzech Azure ml](how-to-track-experiments.md).
+* Přečtěte si, jak pomocí sady Python SDK protokolovat metriky v prostředí pro vytváření obsahu SDK, najdete v tématu [Povolení protokolování ve školicích kurzech Azure ml](how-to-log-view-metrics.md).
 * Naučte se používat [skript spustit](./algorithm-module-reference/execute-python-script.md) v jazyce Python v návrháři.

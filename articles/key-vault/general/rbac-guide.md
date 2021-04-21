@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 966f704bd47b4b238ed72579a6103bd2e4348849
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9806327c7393c3ba1fdab09acfb5545d6026e5cf
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772212"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818457"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure
 
@@ -41,7 +41,7 @@ Oprávnění k jednotlivým klíčům, tajným klíčům a certifikátům by se 
 
 Další informace o pokynech pro správu Azure Key Vault najdete v tématech:
 
-- [Přehled zabezpečení Azure Key Vault](security-overview.md)
+- [Funkce zabezpečení Azure Key Vault](security-features.md)
 - [Omezení služby Azure Key Vault](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations"></a>Předdefinované role Azure pro operace Key Vault roviny dat

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/19/2021
 ms.author: thweiss
-ms.openlocfilehash: 209d18dfbadea89f14fd90da9a1bc57b3ccf0dfe
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 9de41835e33d50a670a44089cb10d44cc57e92a7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728067"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818690"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurace řízení přístupu na základě role pomocí Azure Active Directory pro účet Azure Cosmos DB (Preview)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -330,9 +330,10 @@ Chcete-li ve své aplikaci použít Azure Cosmos DB RBAC, je nutné aktualizovat
 
 Způsob vytvoření `TokenCredential` instance je mimo rámec tohoto článku. Existuje mnoho způsobů, jak vytvořit takovou instanci v závislosti na typu identity AAD, kterou chcete použít (hlavní uživatelské rozhraní, instanční objekt, skupina atd.). Nejdůležitější je, že se vaše `TokenCredential` instance musí přeložit na identitu (ID objektu zabezpečení), ke které jste přiřadili role. Můžete najít příklady vytvoření `TokenCredential` třídy:
 
-- [v .NET](/dotnet/api/overview/azure/identity-readme#credential-classes)
-- [v jazyce Java](/java/api/overview/azure/identity-readme#credential-classes)
-- [v JavaScriptu](/javascript/api/overview/azure/identity-readme#credential-classes)
+- [V .NET](/dotnet/api/overview/azure/identity-readme#credential-classes)
+- [V Javě](/java/api/overview/azure/identity-readme#credential-classes)
+- [V JavaScriptu](/javascript/api/overview/azure/identity-readme#credential-classes)
+- V REST API
 
 Níže uvedené příklady používají instanční objekt s `ClientSecretCredential` instancí.
 
@@ -379,6 +380,12 @@ const client = new CosmosClient({
     aadCredentials: servicePrincipal
 });
 ```
+
+### <a name="in-rest-api"></a>V REST API
+
+Azure Cosmos DB RBAC se v současné době podporuje v REST API verze 2021-03-15. Při sestavování [autorizační hlavičky](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)nastavte parametr **typu** na **AAD** a podpis hash **(SIG)** na **token OAuth** , jak je znázorněno v následujícím příkladu:
+
+`type=aad&ver=1.0&sig=<token-from-oauth>`
 
 ## <a name="auditing-data-requests"></a>Požadavky na auditování dat
 

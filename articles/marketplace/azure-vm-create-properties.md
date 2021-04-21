@@ -7,16 +7,16 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 281553782774c31ec8cfaf614542fd739c4d3dd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5942368ba1709127b815a35676b716955c1bee8f
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629525"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819083"
 ---
-# <a name="how-to-configure-virtual-machine-offer-properties"></a>Postup konfigurace vlastností nabídky virtuálního počítače
+# <a name="configure-virtual-machine-offer-properties"></a>Konfigurace vlastností nabídky virtuálního počítače
 
-Na stránce **vlastnosti** (vyberte z nabídky vlevo – navigace v partnerském centru) Definujte kategorie používané k seskupení nabídky virtuálních počítačů na Azure Marketplace, verzi vaší aplikace a právní smlouvy, které vaši nabídku podporují.
+Na stránce **vlastnosti** (vyberte z nabídky vlevo – navigace) Definujte kategorie používané k seskupení nabídky virtuálních počítačů na Azure Marketplace, verzi vaší aplikace a právní smlouvy, které vaši nabídku podporují.
 
 ## <a name="select-a-category"></a>Vybrat kategorii
 
@@ -75,7 +75,7 @@ V části **Universal dodatku ke standardní smlouvě pro komerční tržiště 
 
 ### <a name="use-your-own-terms-and-conditions"></a>Použití vlastních podmínek a ujednání
 
-Místo standardní smlouvy se můžete rozhodnout, že budete chtít zadat vlastní podmínky a ujednání. Zákazníci musí tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
+Místo používání standardní smlouvy můžete zadat vlastní podmínky a ujednání. Zákazníci musí tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
 
 1. V části **právní** políčko u **komerčního tržiště Microsoftu** zrušte zaškrtnutí políčka použít standardní kontrakt.
 1. V poli **podmínky a ujednání** zadejte až 10 000 znaků textu.
