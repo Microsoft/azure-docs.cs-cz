@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb14a6a82535ac5a7d36213b082d08aedbb44da5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 585e31ab566cc990af2819fcf9cdde0506560208
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99090616"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780168"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure v sadě škálování virtuálních počítačů pomocí REST API volání
 
@@ -60,13 +60,13 @@ V této části se dozvíte, jak povolit a zakázat spravovanou identitu přiřa
 
 Chcete-li vytvořit sadu škálování virtuálního počítače s povolenou spravovanou identitou přiřazenou systémem, je nutné vytvořit sadu škálování virtuálního počítače a načíst přístupový token pro použití prvku KUDRLINKOU k volání Správce prostředků koncového bodu s hodnotou spravovaného typu identity přiřazené systémem.
 
-1. Vytvořte [skupinu prostředků](../../azure-resource-manager/management/overview.md#terminology) pro omezení a nasazení sady škálování virtuálních počítačů a souvisejících prostředků pomocí [AZ Group Create](/cli/azure/group/#az-group-create). Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
+1. Vytvořte [skupinu prostředků](../../azure-resource-manager/management/overview.md#terminology) pro omezení a nasazení sady škálování virtuálních počítačů a souvisejících prostředků pomocí [AZ Group Create](/cli/azure/group/#az_group_create). Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-2. Vytvořte [síťové rozhraní](/cli/azure/network/nic#az-network-nic-create) pro sadu škálování virtuálního počítače:
+2. Vytvořte [síťové rozhraní](/cli/azure/network/nic#az_network_nic_create) pro sadu škálování virtuálního počítače:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
@@ -325,7 +325,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
    az account get-access-token
    ```
 
-2. Vytvořte [síťové rozhraní](/cli/azure/network/nic#az-network-nic-create) pro sadu škálování virtuálního počítače:
+2. Vytvořte [síťové rozhraní](/cli/azure/network/nic#az_network_nic_create) pro sadu škálování virtuálního počítače:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic

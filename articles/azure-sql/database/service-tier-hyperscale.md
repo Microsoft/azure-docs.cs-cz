@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 1/13/2021
-ms.openlocfilehash: 2e03b6fe189f11b6f8e855137438859360df686d
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: e0982b4a43a931552574e447d5639d3fa92402d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505395"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773767"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -117,7 +117,7 @@ Díky možnosti rychlého zprovoznění dalších výpočetních uzlů jen pro �
 
 ## <a name="create-a-hyperscale-database"></a>Vytvoření databáze s škálovatelným škálováním
 
-Databázi škálování na více systému je možné vytvořit pomocí [Azure Portal](https://portal.azure.com), [T-SQL](/sql/t-sql/statements/create-database-transact-sql), [PowerShellu](/powershell/module/azurerm.sql/new-azurermsqldatabase)nebo rozhraní příkazového [řádku](/cli/azure/sql/db#az-sql-db-create). Databáze s škálovatelným škálováním jsou dostupné jenom pomocí [nákupního modelu založeného na Vcore](service-tiers-vcore.md).
+Databázi škálování na více systému je možné vytvořit pomocí [Azure Portal](https://portal.azure.com), [T-SQL](/sql/t-sql/statements/create-database-transact-sql), [PowerShellu](/powershell/module/azurerm.sql/new-azurermsqldatabase)nebo rozhraní příkazového [řádku](/cli/azure/sql/db#az_sql_db_create). Databáze s škálovatelným škálováním jsou dostupné jenom pomocí [nákupního modelu založeného na Vcore](service-tiers-vcore.md).
 
 Následující příkaz T-SQL vytvoří databázi s měřítkem. V příkazu je nutné zadat jak edici, tak i cíl služby `CREATE DATABASE` . Seznam platných cílů služeb najdete v tématu [omezení prostředků](./resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen4) .
 
@@ -131,7 +131,7 @@ Tím se vytvoří databáze s Gen5 na hardwaru se čtyřmi jádry.
 
 ## <a name="upgrade-existing-database-to-hyperscale"></a>Upgrade existující databáze na škálovatelný
 
-Stávající databáze můžete v Azure SQL Database přesunout do škálování pomocí [Azure Portal](https://portal.azure.com), [T-SQL](/sql/t-sql/statements/alter-database-transact-sql), [PowerShellu](/powershell/module/azurerm.sql/set-azurermsqldatabase)nebo rozhraní příkazového [řádku](/cli/azure/sql/db#az-sql-db-update). Tato možnost je v současnosti jednosměrnou migrací. Databáze nemůžete přesouvat z škálování na jinou úroveň služby, a to i z exportu a importu dat. V případě potřeby konceptu (POCs) doporučujeme vytvořit kopii produkčních databází a migrovat kopii do škálování na velká. Migrace stávající databáze v Azure SQL Database do vrstvy škálování je velikost datové operace.
+Stávající databáze můžete v Azure SQL Database přesunout do škálování pomocí [Azure Portal](https://portal.azure.com), [T-SQL](/sql/t-sql/statements/alter-database-transact-sql), [PowerShellu](/powershell/module/azurerm.sql/set-azurermsqldatabase)nebo rozhraní příkazového [řádku](/cli/azure/sql/db#az_sql_db_update). Tato možnost je v současnosti jednosměrnou migrací. Databáze nemůžete přesouvat z škálování na jinou úroveň služby, a to i z exportu a importu dat. V případě potřeby konceptu (POCs) doporučujeme vytvořit kopii produkčních databází a migrovat kopii do škálování na velká. Migrace stávající databáze v Azure SQL Database do vrstvy škálování je velikost datové operace.
 
 Následující příkaz T-SQL přesune databázi do vrstvy služby s škálováním na úrovni služeb. V příkazu je nutné zadat jak edici, tak i cíl služby `ALTER DATABASE` .
 
@@ -227,7 +227,7 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 | Při změně Azure SQL Database úrovně služby na škálovatelné, operace dojde k chybě, pokud má databáze nějaké datové soubory větší než 1 TB. | V některých případech je možné tento problém obejít tak, že velké soubory [zmenšíte](file-space-manage.md#shrinking-data-files) na méně než 1 TB předtím, než se pokusíte změnit úroveň služby na škálování. Pomocí následujícího dotazu určete aktuální velikost databázových souborů. `SELECT file_id, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Spravovaná instance SQL | Spravovaná instance Azure SQL se v současné době nepodporuje u databází s podporou škálování na více instancí. |
 | Elastické fondy |  Elastické fondy se v současné době nepodporují s měřítkem.|
-| Migrace do škálování je momentálně jednosměrnou operací. | Jakmile se databáze migruje do škálování, nejde ji migrovat přímo na úroveň služby, která není na úrovni služby. V současné době jediný způsob, jak migrovat databázi z velkého měřítka do neškálovatelného škálování, je exportovat a importovat pomocí souboru BacPac nebo jiných technologií pro přesun dat (hromadné kopírování, Azure Data Factory, Azure Databricks, SSIS atd.). BacPac exportujte/Azure Portal importujte z prostředí PowerShell pomocí rutiny [New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) nebo [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport)z Azure CLI pomocí příkazového řádku [AZ SQL DB export](/cli/azure/sql/db#az-sql-db-export) a [AZ SQL DB import](/cli/azure/sql/db#az-sql-db-import)a z [REST API](/rest/api/sql/) se nepodporuje. Import/export BacPac pro menší databáze s více škálováními (až 200 GB) se podporuje pomocí SSMS a [SqlPackage](/sql/tools/sqlpackage) verze 18,4 a novější. Pro větší databáze může BacPac export/import trvat delší dobu a může dojít k selhání z různých důvodů.|
+| Migrace do škálování je momentálně jednosměrnou operací. | Jakmile se databáze migruje do škálování, nejde ji migrovat přímo na úroveň služby, která není na úrovni služby. V současné době jediný způsob, jak migrovat databázi z velkého měřítka do neškálovatelného škálování, je exportovat a importovat pomocí souboru BacPac nebo jiných technologií pro přesun dat (hromadné kopírování, Azure Data Factory, Azure Databricks, SSIS atd.). BacPac exportujte/Azure Portal importujte z prostředí PowerShell pomocí rutiny [New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) nebo [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport)z Azure CLI pomocí příkazového řádku [AZ SQL DB export](/cli/azure/sql/db#az_sql_db_export) a [AZ SQL DB import](/cli/azure/sql/db#az_sql_db_import)a z [REST API](/rest/api/sql/) se nepodporuje. Import/export BacPac pro menší databáze s více škálováními (až 200 GB) se podporuje pomocí SSMS a [SqlPackage](/sql/tools/sqlpackage) verze 18,4 a novější. Pro větší databáze může BacPac export/import trvat delší dobu a může dojít k selhání z různých důvodů.|
 | Migrace databází s In-Memory objekty OLTP | Měřítko podporuje podmnožinu objektů In-Memory OLTP, včetně paměťově optimalizovaných typů tabulek, proměnných tabulky a nativně kompilovaných modulů. Pokud se ale v databázi, kterou migrujete, vyskytuje libovolný druh In-Memory objektů OLTP, migrace z úrovně Premium a Pro důležité obchodní informace na škálování služby se nepodporuje. Chcete-li migrovat takovou databázi do škálování, je nutné vyřadit všechny In-Memory objekty OLTP a jejich závislosti. Po migraci databáze je možné tyto objekty znovu vytvořit. Odolné a netrvanlivé paměťově optimalizované tabulky se v současné době nepodporují a musí se měnit na diskové tabulky.|
 | Geografická replikace  | Pro Azure SQL Database škálování na úrovni služby ještě nemůžete konfigurovat geografickou replikaci. |
 | Kopie databáze | Kopie databáze na škále je teď ve verzi Public Preview. |

@@ -4,12 +4,12 @@ description: Tento skript vytvoří účet Azure Batch v režimu služby Batch a
 ms.topic: sample
 ms.date: 01/29/2018
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2349b6b373f271a5aa0f169e5a9ebc9f58f6f608
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d978cf56e92abf9824c116e51f94d53bbe14bbb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93076806"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768318"
 ---
 # <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>Příklad rozhraní příkazového řádku: Vytvoření účtu Batch v režimu služby Batch
 
@@ -37,14 +37,14 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Vytvoří účet Batch. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Vytvoří účet úložiště. |
-| [az batch account set](/cli/azure/batch/account#az-batch-account-set) | Aktualizuje vlastnosti účtu Batch.  |
-| [az batch account show](/cli/azure/batch/account#az-batch-account-show) | Načte podrobnosti o zadaném účtu Batch.  |
-| [az batch account keys list](/cli/azure/batch/account/keys#az-batch-account-keys-list) | Načte přístupové klíče zadaného účtu Batch.  |
-| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Provede ověření v zadaném účtu Batch pro další práci s rozhraním příkazového řádku.  |
-| [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Vytvoří účet Batch. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Vytvoří účet úložiště. |
+| [az batch account set](/cli/azure/batch/account#az_batch_account_set) | Aktualizuje vlastnosti účtu Batch.  |
+| [az batch account show](/cli/azure/batch/account#az_batch_account_show) | Načte podrobnosti o zadaném účtu Batch.  |
+| [az batch account keys list](/cli/azure/batch/account/keys#az_batch_account_keys_list) | Načte přístupové klíče zadaného účtu Batch.  |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | Provede ověření v zadaném účtu Batch pro další práci s rozhraním příkazového řádku.  |
+| [az group delete](/cli/azure/group#az_group_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: fa5d34d195cfed2d5dbfa6954d83b28487bf0bba
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: d315fa5b588c6e5f2e4643ca18626e400e6ca01b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167749"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785644"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Kurz: rychlé škálování a ochrana webové aplikace s využitím front-bran Azure a firewallu webových aplikací Azure (WAF)
 
@@ -144,7 +144,7 @@ Doporučujeme, abyste měli jistotu, že s vaší webovou aplikací můžou komu
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete prostředky používané v tomto kurzu, odeberte skupinu prostředků, přední dveře a zásady WAF pomocí příkazu [AZ Group Delete](/cli/azure/group#az-group-delete) :
+Pokud už nepotřebujete prostředky používané v tomto kurzu, odeberte skupinu prostředků, přední dveře a zásady WAF pomocí příkazu [AZ Group Delete](/cli/azure/group#az_group_delete) :
 
 ```azurecli-interactive
   az group delete \

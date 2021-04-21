@@ -4,12 +4,12 @@ description: Vytvořte registr kontejnerů Azure, nakonfigurujte geografickou re
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 6abf1b7a524bc7dd28f1704a362749ac84de2389
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c5f5627462f016c857d956be46c276dda78e9b2b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97826071"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780654"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
 
@@ -98,7 +98,7 @@ Přejděte do nového registru kontejneru v Azure Portal a v části **Nastaven�
 
 Když teď máte nakonfigurovanou geografickou replikaci, sestavte image kontejneru a nasdílejte ji do svého registru. Před nahráním imagí do registru se musíte nejdřív přihlásit do svého registru.
 
-Pomocí příkazu [az acr login](/cli/azure/acr#az-acr-login) se ověřte a uložte do mezipaměti přihlašovací údaje pro váš registr. `<acrName>` nahraďte názvem registru, který jste vytvořili dříve.
+Pomocí příkazu [az acr login](/cli/azure/acr#az_acr_login) se ověřte a uložte do mezipaměti přihlašovací údaje pro váš registr. `<acrName>` nahraďte názvem registru, který jste vytvořili dříve.
 
 ```azurecli
 az acr login --name <acrName>

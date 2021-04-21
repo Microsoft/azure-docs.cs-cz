@@ -3,7 +3,6 @@ title: Kurz – aktualizace frekvence automatického otočení certifikátů v K
 description: Kurz ukazující, jak aktualizovat frekvenci automatického otočení certifikátu v Azure Key Vault pomocí Azure Portal
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
@@ -11,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: ec648f02918717dad6b739aa6ae99206bcec1d6e
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 48a531e054bf92c8ddc7761689b8fdf1df8a28a7
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581824"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750009"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Kurz: Konfigurace automatického rotace certifikátů v Key Vault
 
@@ -80,10 +79,12 @@ Key Vault automaticky otočí certifikáty prostřednictvím zavedených partner
    - **Doba platnosti**: zadejte hodnotu (v měsících). Vytváření krátkodobých certifikátů je doporučeným postupem zabezpečení. Ve výchozím nastavení je hodnota platnosti nově vytvořeného certifikátu 12 měsíců.
    - **Typ akce životního cyklu**: vyberte akci automatického obnovení a upozornění certifikátu a pak aktualizujte **procentuální hodnotu životnosti** nebo **počet dní před vypršením platnosti**. Ve výchozím nastavení je automatické obnovení certifikátu nastavené na 80% své životnosti. V rozevírací nabídce vyberte jednu z následujících možností.
 
-        |  Automaticky obnovit v daném čase| Poslat všem kontaktům e-mail v daném čase |
-        |-----------|------|
-        |Výběrem této možnosti se *zapne* automatické otočení. | Vyberete-li tuto možnost, *nedojde* k automatickému otočení, ale budete upozorněni pouze na kontakty.|
-         You can learn about [setting up Email contact here](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)
+      |  Automaticky obnovit v daném čase| Poslat všem kontaktům e-mail v daném čase |
+      |-----------|------|
+      |Výběrem této možnosti se *zapne* automatické otočení. | Vyberete-li tuto možnost, *nedojde* k automatickému otočení, ale budete upozorněni pouze na kontakty.|
+      
+      Informace o [nastavení kontaktu e-mailu najdete tady](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration) .
+
 1. Vyberte **Vytvořit**.
 
 ![Životní cyklus certifikátů](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)

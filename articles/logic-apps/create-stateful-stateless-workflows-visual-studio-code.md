@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/30/2021
-ms.openlocfilehash: 491d5f14cc8f456d228a5bc6efaa6686575979c1
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 4010f7e2d0d20216107a45109056478694c940ca
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078736"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772500"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových a bezstavových pracovních postupů v Visual Studio Code s rozšířením Azure Logic Apps (Preview)
 
@@ -360,7 +360,7 @@ Funkce pro vytváření obsahu je aktuálně dostupná jenom v Visual Studio Cod
    ![Snímek obrazovky zobrazující podokno Průzkumník se seznamem povolit konektory v Azure a vybrat možnost použít konektory z Azure](./media/create-stateful-stateless-workflows-visual-studio-code/use-connectors-from-azure.png)
 
    > [!NOTE]
-   > Bezstavové pracovní postupy aktuálně podporují jenom *Akce* pro [spravované konektory](../connectors/apis-list.md#managed-api-connectors), které jsou nasazené v Azure, a ne triggery. I když máte možnost povolit konektory v Azure pro bezstavový pracovní postup, Návrhář nezobrazí žádné triggery spravovaného konektoru, které byste mohli vybrat.
+   > Bezstavové pracovní postupy aktuálně podporují jenom *Akce* pro [spravované konektory](../connectors/managed.md), které jsou nasazené v Azure, a ne triggery. I když máte možnost povolit konektory v Azure pro bezstavový pracovní postup, Návrhář nezobrazí žádné triggery spravovaného konektoru, které byste mohli vybrat.
 
 1. V seznamu **Vybrat odběr** vyberte předplatné Azure, které chcete použít pro projekt aplikace logiky.
 
@@ -685,7 +685,7 @@ Chcete-li otestovat aplikaci logiky, spusťte pomocí těchto kroků ladicí rel
    | **Stornován** | ![Ikona pro stav akce zrušeno][cancelled-icon] | Akce byla spuštěna, ale přijala požadavek na zrušení. |
    | **Neúspěšný** | ![Ikona pro stav akce "neúspěch"][failed-icon] | Akce se nezdařila. |
    | **Spuštěno** | ![Ikona pro spuštěný stav akce][running-icon] | Tato akce je aktuálně spuštěná. |
-   | **Přeskočeno** | ![Ikona pro stav akce přeskočeno][skipped-icon] | Akce byla přeskočena, protože bezprostředně předchozí akce se nezdařila. Akce má `runAfter` podmínku, která vyžaduje, aby předchozí akce byla úspěšně dokončena předtím, než bude možné spustit aktuální akci. |
+   | **Vynecháno** | ![Ikona pro stav akce přeskočeno][skipped-icon] | Akce byla přeskočena, protože bezprostředně předchozí akce se nezdařila. Akce má `runAfter` podmínku, která vyžaduje, aby předchozí akce byla úspěšně dokončena předtím, než bude možné spustit aktuální akci. |
    | **Úspěšný** | ![Ikona stavu akce "úspěch"][succeeded-icon] | Akce byla úspěšná. |
    | **Úspěch s opakováním** | ![Ikona pro stav akce úspěšné a opakované pokusy][succeeded-with-retries-icon] | Akce byla úspěšná, ale jenom po jednom nebo několika opakovaných pokusech. Chcete-li zkontrolovat historii opakování, v zobrazení podrobností historie spuštění vyberte tuto akci, aby bylo možné zobrazit vstupy a výstupy. |
    | **Vypršel časový limit** | ![Ikona pro stav akce vypršel časový limit][timed-out-icon] | Akce byla zastavena z důvodu vypršení časového limitu zadaného nastavením této akce. |

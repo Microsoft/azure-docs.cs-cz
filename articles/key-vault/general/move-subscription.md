@@ -3,19 +3,18 @@ title: Azure Key Vault přesunu trezoru do jiného předplatného | Microsoft Do
 description: Pokyny k přesunutí trezoru klíčů do jiného předplatného.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c23f961b8aeaae3e338f9c513a9f2b9d07b64abb
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 65dc9da03a6b763d419c51e53bf756550e8b56a4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056398"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751845"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Přesun služby Azure Key Vault do jiného předplatného
 
@@ -36,7 +35,7 @@ ms.locfileid: "106056398"
 
 Další informace o Azure Key Vault a Azure Active Directory najdete v tématu
 - [Informace o službě Azure Key Vault](overview.md)
-- [Co je Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
+- [Představení služby Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
 - [Jak zjistit ID tenanta](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)
 
 ## <a name="limitations"></a>Omezení
@@ -124,5 +123,5 @@ Pokud používáte spravovanou identitu, musíte aktualizovat taky identitu, pro
 - Další informace o [klíčích, tajných klíčích a certifikátech](about-keys-secrets-certificates.md)
 - Koncepční informace, včetně toho, jak interpretovat protokoly Key Vault, najdete v tématu [Key Vault Logging](logging.md) .
 - [Průvodce vývojáře pro službu Key Vault](../general/developers-guide.md)
-- [Zabezpečení trezoru klíčů](secure-your-key-vault.md)
+- [Zabezpečení trezoru klíčů](security-overview.md)
 - [Konfigurace Azure Key Vault bran firewall a virtuálních sítí](network-security.md)

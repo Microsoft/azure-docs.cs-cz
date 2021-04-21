@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: 5550c53289228f154fab485b4b7bbff17555aad7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a8c007d7f4419ddbe1555b50ceb6fb92ea0a6f98
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045735"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783894"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
@@ -110,7 +110,7 @@ Rozšiřování změn pravidel brány firewall trvá nějakou dobu. Po změně n
 - [Podporuje Azure Container Registry důvěryhodnost obsahu?](#does-azure-container-registry-support-content-trust)
 - [Návody udělit přístup k vyžádanému nebo nabízenému obrázku bez oprávnění ke správě prostředku registru?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Návody povolit automatické karantény imagí pro registr?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
-- [Návody povolit anonymní přístup pro vyžádání obsahu?](#how-do-i-enable-anonymous-pull-access)
+- [Jak můžu povolit anonymní přístup pro čtení?](#how-do-i-enable-anonymous-pull-access)
 - [Návody do registru vložit nedistribuovatelné vrstvy?](#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Návody přístup k HTTP API v2 registru Docker?
@@ -258,7 +258,7 @@ V případě použití jenom `AcrPull` `AcrPush` role nebo nemá nabyvatel oprá
 
 Karanténa obrázku je teď funkcí Preview ACR. Můžete povolit karanténní režim registru, aby byly normálním uživatelům viditelné pouze ty image, které úspěšně prošly kontrolou zabezpečení. Podrobnosti najdete v [úložišti GitHub ACR](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
-### <a name="how-do-i-enable-anonymous-pull-access"></a>Návody povolit anonymní přístup pro vyžádání obsahu?
+### <a name="how-do-i-enable-anonymous-pull-access"></a>Jak můžu povolit anonymní přístup pro čtení?
 
 Nastavení služby Azure Container registry pro anonymní (neověřené) oprávnění k získání přístupu je aktuálně funkce ve verzi Preview, která je dostupná ve [vrstvách](container-registry-skus.md)Standard a Premium. 
 
@@ -484,7 +484,7 @@ Obraťte se prosím na správce sítě nebo Zkontrolujte konfiguraci sítě a p�
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Proč dojde k selhání žádosti o přijetí změn nebo nabízení oznámení s nepovolenou operací?
 
 Tady je několik scénářů, ve kterých může být operace zakázaná:
-* Klasické Registry už nejsou podporované. Upgradujte prosím na podporovanou [úroveň služby](./container-registry-skus.md) pomocí [AZ acr Update](/cli/azure/acr#az-acr-update) nebo Azure Portal.
+* Klasické Registry už nejsou podporované. Upgradujte prosím na podporovanou [úroveň služby](./container-registry-skus.md) pomocí [AZ acr Update](/cli/azure/acr#az_acr_update) nebo Azure Portal.
 * Bitová kopie nebo úložiště je možná zamčené, aby se nemohlo odstranit ani aktualizovat. Aktuální atributy můžete zobrazit pomocí příkazu [AZ ACR show úložištì](./container-registry-image-lock.md) .
 * Pokud je obrázek v karanténě, některé operace jsou zakázané. Přečtěte si další informace o [karanténě](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 * Je možné, že váš registr dosáhl svého [limitu úložiště](container-registry-skus.md#service-tier-features-and-limits).

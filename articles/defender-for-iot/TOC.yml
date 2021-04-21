@@ -21,7 +21,7 @@
           displayName: 'firewall, proxy, open ports'
           href: quickstart-system-prerequisites.md
         - name: Začínáme se službou Azure Defender for IoT
-          displayName: 'getting started, registration, onboarding'
+          displayName: 'getting started, registration, onboarding, activation, threat intelligence'
           href: getting-started.md
     - name: Řešení založená na agentech pro tvůrce zařízení
       items:
@@ -122,8 +122,8 @@
               href: how-to-install-software.md
         - name: Příprava senzorů
           items:
-            - name: Spravovat senzory
-              displayName: 'onboard, cloud, register, activate, offboard, subscription, subscriptions, offboarding'
+            - name: Nasazení senzorů
+              displayName: 'onboard, cloud, register, version, activate, offboard, subscription, threat intelligence, packages, connected'
               href: how-to-manage-sensors-on-the-cloud.md
             - name: Aktivace a nastavení senzoru
               displayName: 'deployment, onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'
@@ -171,6 +171,7 @@
           displayName: 'mail, SMTP, activation, certificate, software update, backup, restore, proxy, password recovery'
         - name: Práce s balíčky analýz hrozeb
           href: how-to-work-with-threat-intelligence-packages.md
+          displayName: 'packages, automatic, intelligence, push, threat'
         - name: Práce s informacemi inventáře zařízení
           items:
             - name: Prošetření všech detekovaných podnikových senzorů v inventáři zařízení

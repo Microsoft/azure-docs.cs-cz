@@ -138,7 +138,9 @@
       items:
         - name: Otevření žádosti o podporu pro selhání nasazení
           href: fix-deployment-provisioning-failures.md
-    - name: Nejčastější dotazy
+        - name: Kód chyby VIX nástrojů VMware = 21009
+          href: 'https://kb.vmware.com/s/article/2129927'
+    - name: Časté otázky
       items:
         - name: Obecné
           href: /azure/azure-vmware/faq#general

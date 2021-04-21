@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 3442c3b6023edcde97aabcb13e91120ba6811027
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d94640e1c6a037893fb1ad9198b82195c46dd24
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91323069"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768120"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Rychlý Start: Vytvoření člena blockchain služby Azure blockchain pomocí Azure CLI
 
@@ -34,7 +34,7 @@ Pokud dáváte přednost instalaci a používání rozhraní příkazového řá
 
 1. Přihlaste se.
 
-    Pokud používáte místní instalaci rozhraní příkazového řádku, přihlaste se pomocí příkazu [az login](/cli/azure/reference-index#az-login).
+    Pokud používáte místní instalaci rozhraní příkazového řádku, přihlaste se pomocí příkazu [az login](/cli/azure/reference-index#az_login).
 
     ```azurecli
     az login
@@ -56,7 +56,7 @@ Pokud dáváte přednost instalaci a používání rozhraní příkazového řá
 
     Služba Azure blockchain, stejně jako všechny prostředky Azure, musí být nasazená do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
 
-    V tomto rychlém startu vytvořte skupinu prostředků s názvem _myResourceGroup_ v umístění _eastus_ pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az-group-create) :
+    V tomto rychlém startu vytvořte skupinu prostředků s názvem _myResourceGroup_ v umístění _eastus_ pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az_group_create) :
 
     ```azurecli-interactive
     az group create \

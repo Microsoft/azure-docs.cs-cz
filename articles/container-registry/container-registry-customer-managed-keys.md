@@ -4,12 +4,12 @@ description: Přečtěte si o šifrování v klidovém prostředí služby Azure
 ms.topic: article
 ms.date: 03/03/2021
 ms.custom: ''
-ms.openlocfilehash: aad9419fdb139ff615bfe07075be78a2ca4ee4ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4e23acde9e3640da83b993c8c0c8c0818ccaa4f
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489068"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750153"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Šifrování registru pomocí klíče spravovaného zákazníkem
 
@@ -601,7 +601,7 @@ Pokud k tomuto problému dochází s identitou přiřazenou systémem, [Vytvořt
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o [šifrování v klidovém umístění v Azure](../security/fundamentals/encryption-atrest.md).
-* Přečtěte si další informace o zásadách přístupu a o tom, jak [zabezpečit přístup k trezoru klíčů](../key-vault/general/secure-your-key-vault.md).
+* Přečtěte si další informace o zásadách přístupu a o tom, jak [zabezpečit přístup k trezoru klíčů](../key-vault/general/security-overview.md).
 
 
 <!-- LINKS - external -->

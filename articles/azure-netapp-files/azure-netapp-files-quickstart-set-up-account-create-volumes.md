@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 0b48963fa6cb28c836c57de8b46861ef83752231
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 77d5ce2cc903be51b7a38d6edc34bb8424c52ddb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388550"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786094"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS
 
@@ -147,7 +147,7 @@ Další informace najdete v tématu věnovaném [registraci Azure NetApp Files](
     > Pokud chcete získat název oblasti, který podporuje naše nástroje příkazového řádku, použijte prosím `az account list-locations --query "[].{Region:name}" --out table`
     >
 
-2. Pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) vytvořte novou skupinu prostředků:
+2. Pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create) vytvořte novou skupinu prostředků:
 
     ```azurecli-interactive
     az group create \
@@ -155,7 +155,7 @@ Další informace najdete v tématu věnovaném [registraci Azure NetApp Files](
         --location $LOCATION
     ```
 
-3. Vytvořte účet Azure NetApp Files pomocí příkazu [AZ netappfiles Account Create](/cli/azure/netappfiles/account#az-netappfiles-account-create) :
+3. Vytvořte účet Azure NetApp Files pomocí příkazu [AZ netappfiles Account Create](/cli/azure/netappfiles/account#az_netappfiles_account_create) :
 
     ```azurecli-interactive
     az netappfiles account create \
@@ -226,7 +226,7 @@ Následující fragment kódu ukazuje, jak vytvořit účet NetApp v šabloně A
     SERVICE_LEVEL="Premium" # Valid values are Standard, Premium and Ultra
     ```
 
-2. Vytvořte nový fond kapacit pomocí funkce [AZ netappfiles Pool Create](/cli/azure/netappfiles/pool#az-netappfiles-pool-create) .
+2. Vytvořte nový fond kapacit pomocí funkce [AZ netappfiles Pool Create](/cli/azure/netappfiles/pool#az_netappfiles_pool_create) .
 
     ```azurecli-interactive
     az netappfiles pool create \
@@ -343,7 +343,7 @@ Následující fragment kódu ukazuje, jak vytvořit fond kapacit v šabloně Az
     SUBNET_NAME="myANFSubnet"
     ```
 
-1. Pomocí příkazu [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-create) vytvořte virtuální síť bez podsítě.
+1. Pomocí příkazu [AZ Network VNet Create](/cli/azure/network/vnet#az_network_vnet_create) vytvořte virtuální síť bez podsítě.
 
     ```azurecli-interactive
     az network vnet create \
@@ -354,7 +354,7 @@ Následující fragment kódu ukazuje, jak vytvořit fond kapacit v šabloně Az
 
     ```
 
-2. Pomocí příkazu [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) vytvořte delegovanou podsíť.
+2. Pomocí příkazu [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) vytvořte delegovanou podsíť.
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -365,7 +365,7 @@ Následující fragment kódu ukazuje, jak vytvořit fond kapacit v šabloně Az
         --delegations "Microsoft.NetApp/volumes"
     ```
 
-3. Pomocí příkazu [AZ netappfiles Volume Create](/cli/azure/netappfiles/volume#az-netappfiles-volume-create) vytvořte svazek.
+3. Pomocí příkazu [AZ netappfiles Volume Create](/cli/azure/netappfiles/volume#az_netappfiles_volume_create) vytvořte svazek.
 
     ```azurecli-interactive
     VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAME --query "id" -o tsv)
@@ -449,7 +449,7 @@ Až budete hotovi, a pokud chcete, můžete odstranit skupinu prostředků. Akce
 > [!IMPORTANT]
 > Všechny prostředky v rámci skupin prostředků se trvale odstraní a nedá se vrátit zpátky.
 
-1. Odstraňte skupinu prostředků pomocí příkazu [AZ Group Delete](/cli/azure/group#az-group-delete) .
+1. Odstraňte skupinu prostředků pomocí příkazu [AZ Group Delete](/cli/azure/group#az_group_delete) .
 
     ```azurecli-interactive
     az group delete \

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-azurecli
 ms.date: 02/26/2020
-ms.openlocfilehash: b17c5a2abc036c16ff3ce36b81428f9149e36b4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14b88700f3968e3bfdc788abb2fc9ce90634068e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98942868"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770340"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Správa clusterů Azure HDInsight pomocí rozhraní příkazového řádku Azure
 
@@ -39,7 +39,7 @@ az login
 
 ## <a name="list-clusters"></a>Výpis clusterů
 
-K vypsání clusterů použijte [AZ HDInsight list](/cli/azure/hdinsight#az-hdinsight-list) . Níže uvedené příkazy upravte nahrazením `RESOURCE_GROUP_NAME` názvem vaší skupiny prostředků a zadáním příkazů:
+K vypsání clusterů použijte [AZ HDInsight list](/cli/azure/hdinsight#az_hdinsight_list) . Níže uvedené příkazy upravte nahrazením `RESOURCE_GROUP_NAME` názvem vaší skupiny prostředků a zadáním příkazů:
 
 ```azurecli-interactive
 # List all clusters in the current subscription
@@ -57,7 +57,7 @@ az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:
 
 ## <a name="show-cluster"></a>Zobrazit cluster
 
-K zobrazení informací o zadaném clusteru použijte [AZ HDInsight show](/cli/azure/hdinsight#az-hdinsight-show) . Níže uvedený příkaz upravte nahrazením `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušnými informacemi a zadáním příkazu:
+K zobrazení informací o zadaném clusteru použijte [AZ HDInsight show](/cli/azure/hdinsight#az_hdinsight_show) . Níže uvedený příkaz upravte nahrazením `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušnými informacemi a zadáním příkazu:
 
 ```azurecli-interactive
 az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -65,7 +65,7 @@ az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 
 ## <a name="delete-clusters"></a>Odstranění clusterů
 
-Pomocí [AZ HDInsight Delete](/cli/azure/hdinsight#az-hdinsight-delete) odstraňte zadaný cluster. Níže uvedený příkaz upravte nahrazením `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušnými informacemi a zadáním příkazu:
+Pomocí [AZ HDInsight Delete](/cli/azure/hdinsight#az_hdinsight_delete) odstraňte zadaný cluster. Níže uvedený příkaz upravte nahrazením `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušnými informacemi a zadáním příkazu:
 
 ```azurecli-interactive
 az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -79,7 +79,7 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>Škálování clusterů
 
-Pomocí [AZ HDInsight Resize](/cli/azure/hdinsight#az-hdinsight-resize) změňte velikost zadaného clusteru HDInsight na určenou velikost. Úpravou příkazu níže nahraďte `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušné informace. Nahraďte `WORKERNODE_COUNT` požadovaným počtem uzlů pracovního procesu pro váš cluster. Další informace o škálování clusterů najdete v tématu [škálování clusterů HDInsight](./hdinsight-scaling-best-practices.md). Zadejte příkaz:
+Pomocí [AZ HDInsight Resize](/cli/azure/hdinsight#az_hdinsight_resize) změňte velikost zadaného clusteru HDInsight na určenou velikost. Úpravou příkazu níže nahraďte `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušné informace. Nahraďte `WORKERNODE_COUNT` požadovaným počtem uzlů pracovního procesu pro váš cluster. Další informace o škálování clusterů najdete v tématu [škálování clusterů HDInsight](./hdinsight-scaling-best-practices.md). Zadejte příkaz:
 
 ```azurecli-interactive
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT

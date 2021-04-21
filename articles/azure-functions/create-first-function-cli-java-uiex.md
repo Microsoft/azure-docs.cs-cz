@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: b5bc453e2e0371ee0412824f01d99863b12d91e2
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: a270f482438129b7b07506744bf3f9489b242900
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375368"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787480"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce Java v Azure z příkazového řádku
 
@@ -195,7 +195,7 @@ Chcete-li vytvořit aplikaci Function App běžící na systému Linux namísto 
     az login
     ```
 
-    Příkaz [AZ Login](/cli/azure/reference-index#az-login) vás přihlásí k účtu Azure.
+    Příkaz [AZ Login](/cli/azure/reference-index#az_login) vás přihlásí k účtu Azure.
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
     ```azurepowershell

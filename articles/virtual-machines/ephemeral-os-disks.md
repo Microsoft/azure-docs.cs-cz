@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 814824fb6708abaf549bb3de19b4aced4774a244
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24b1be2ca55b057c887c8782ce7eea1150f143da
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102485754"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762618"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Dočasné disky s operačním systémem pro virtuální počítače Azure
 
@@ -71,7 +71,7 @@ Set-AzVmssStorageProfile -DiffDiskSetting Local -OsDiskCaching ReadOnly
 
 ## <a name="cli"></a>Rozhraní příkazového řádku
 
-Chcete-li použít dočasný disk pro nasazení virtuálního počítače CLI, nastavte `--ephemeral-os-disk` parametr v parametru [AZ VM Create](/cli/azure/vm#az-vm-create) na `true` a `--os-disk-caching` parametr na `ReadOnly` .
+Chcete-li použít dočasný disk pro nasazení virtuálního počítače CLI, nastavte `--ephemeral-os-disk` parametr v parametru [AZ VM Create](/cli/azure/vm#az_vm_create) na `true` a `--os-disk-caching` parametr na `ReadOnly` .
 
 ```azurecli-interactive
 az vm create \
@@ -84,7 +84,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Pro sady škálování použijte stejný `--ephemeral-os-disk true` parametr pro [AZ-VMSS-Create](/cli/azure/vmss#az-vmss-create) a nastavte `--os-disk-caching` parametr na `ReadOnly` .
+Pro sady škálování použijte stejný `--ephemeral-os-disk true` parametr pro [AZ-VMSS-Create](/cli/azure/vmss#az_vmss_create) a nastavte `--os-disk-caching` parametr na `ReadOnly` .
 
 ## <a name="portal"></a>Portál
 
@@ -251,4 +251,4 @@ Odpověď: dočasné disky nepodporují:
 > 
  
 ## <a name="next-steps"></a>Další kroky
-Virtuální počítač s dočasným diskem s operačním systémem můžete vytvořit pomocí rozhraní příkazového [řádku Azure CLI](/cli/azure/vm#az-vm-create).
+Virtuální počítač s dočasným diskem s operačním systémem můžete vytvořit pomocí rozhraní příkazového [řádku Azure CLI](/cli/azure/vm#az_vm_create).

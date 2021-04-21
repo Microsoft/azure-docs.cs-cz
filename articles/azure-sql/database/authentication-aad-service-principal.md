@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 02/11/2021
-ms.openlocfilehash: 68267cdedd2f0b64549791866e8750cf42928ab4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 17e846c7435e2f1cc77c5915f7e0b308c3706f96
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201249"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775416"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory instančního objektu se službou Azure SQL
 
@@ -72,7 +72,7 @@ Pokud chcete povolit vytvoření objektu Azure AD v SQL Database a Azure synapse
     - Pokud chcete zjistit, jestli je identita serveru přiřazená k serveru, spusťte příkaz Get-AzSqlServer.
 
     > [!NOTE]
-    > Identitu serveru lze přiřadit také pomocí příkazů rozhraní příkazového řádku. Další informace najdete v tématu [AZ SQL Server Create](/cli/azure/sql/server#az-sql-server-create) a [AZ SQL Server Update](/cli/azure/sql/server#az-sql-server-update).
+    > Identitu serveru lze přiřadit také pomocí příkazů rozhraní příkazového řádku. Další informace najdete v tématu [AZ SQL Server Create](/cli/azure/sql/server#az_sql_server_create) a [AZ SQL Server Update](/cli/azure/sql/server#az_sql_server_update).
 
 2. Udělte [**čtenářům adresáře**](../../active-directory/roles/permissions-reference.md#directory-readers) Azure AD oprávnění k vytvoření nebo přiřazení serveru k identitě serveru.
     - Pokud chcete toto oprávnění udělit, postupujte podle popisu použitého pro spravovanou instanci SQL, který je k dispozici v následujícím článku: [zřízení správce Azure AD (spravovaná instance SQL)](authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-managed-instance)
@@ -94,7 +94,7 @@ Pokud chcete povolit vytvoření objektu Azure AD v SQL Database a Azure synapse
       - U výše uvedených chyb postupujte podle pokynů pro [přiřazení identity k logickému serveru Azure SQL](authentication-aad-service-principal-tutorial.md#assign-an-identity-to-the-azure-sql-logical-server) a [přiřazení oprávnění čtenářům adresáře k identitě logického serveru SQL](authentication-aad-service-principal-tutorial.md#assign-directory-readers-permission-to-the-sql-logical-server-identity).
     > [!NOTE]
     > Výše uvedené chybové zprávy budou změněny před funkcí GA, aby jasně identifikovaly chybějící požadavky na instalaci pro podporu aplikací Azure AD.
-- Nastavení aplikace Azure AD jako správce Azure AD pro spravovanou instanci SQL se podporuje jenom pomocí příkazu CLI a příkazu PowerShellu s [AZ. SQL 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) nebo novějším. Další informace najdete v tématu [AZ SQL mi AD-admin Create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) a [set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) Commands. 
+- Nastavení aplikace Azure AD jako správce Azure AD pro spravovanou instanci SQL se podporuje jenom pomocí příkazu CLI a příkazu PowerShellu s [AZ. SQL 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) nebo novějším. Další informace najdete v tématu [AZ SQL mi AD-admin Create](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_create) a [set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) Commands. 
     - Pokud chcete použít službu Azure Portal pro spravovanou instanci SQL k nastavení správce Azure AD, možná alternativní řešení je vytvoření skupiny Azure AD. Pak do této skupiny přidejte instanční objekt (aplikace Azure AD) a nastavte tuto skupinu jako správce Azure AD pro spravovanou instanci SQL.
     - Nastavení instančního objektu (aplikace Azure AD) jako správce Azure AD pro SQL Database a Azure synapse se podporuje pomocí příkazů Azure Portal, [PowerShellu](authentication-aad-configure.md?tabs=azure-powershell#powershell-for-sql-database-and-azure-synapse)a rozhraní příkazového [řádku](authentication-aad-configure.md?tabs=azure-cli#powershell-for-sql-database-and-azure-synapse) .
 - Použití aplikace Azure AD s instančním objektem z jiného tenanta Azure AD selže při přístupu k SQL Database nebo spravované instanci SQL, která se vytvořila v jiném tenantovi. Instanční objekt přiřazený k této aplikaci musí být ze stejného tenanta jako logický server SQL nebo spravovaná instance.

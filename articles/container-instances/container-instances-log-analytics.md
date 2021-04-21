@@ -3,12 +3,12 @@ title: Shromažďovat & analyzovat protokoly prostředků
 description: Přečtěte si, jak odesílat protokoly prostředků a data událostí ze skupin kontejnerů v Azure Container Instances do protokolů Azure Monitor
 ms.topic: article
 ms.date: 07/13/2020
-ms.openlocfilehash: cfdcd1cc8e36a118c4e3c4435eaa002e4d3b1b93
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e46a1df65a4cfe5d10a58704aff485aa2834b55f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579329"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763914"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor
 
@@ -172,4 +172,4 @@ Informace o monitorování prostředků procesoru a paměti instance kontejneru 
 [query_lang]: /azure/data-explorer/
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
+[az-container-create]: /cli/azure/container#az_container_create

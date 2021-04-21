@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 381573ae40f6c31a1c7dbf18bc60be5944fff39e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84783040"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762888"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Použití rozšíření Stav aplikace se škálovacími sadami virtuálních počítačů
 Monitorování stavu vaší aplikace je důležitým signálem pro správu a upgrade nasazení. Azure Virtual Machine Scale Sets poskytují podporu pro průběžné [upgrady](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) včetně [automatických upgradů BITOVÝCH kopií operačního systému](virtual-machine-scale-sets-automatic-upgrade.md), které jsou závislé na monitorování stavu jednotlivých instancí při upgradu vašeho nasazení. Pomocí rozšíření Health můžete také monitorovat stav aplikací každé instance v sadě škálování a provádět opravy instancí pomocí [automatických oprav instancí](virtual-machine-scale-sets-automatic-instance-repairs.md).
@@ -75,7 +75,7 @@ Následující JSON zobrazuje schéma pro rozšíření pro stav aplikace. Pří
 ## <a name="deploy-the-application-health-extension"></a>Nasazení rozšíření stavu aplikace
 Rozšíření pro stav aplikace můžete nasadit do sady škálování, jak je popsáno níže v následujících příkladech.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Následující příklad přidá rozšíření stavu aplikace (s názvem myHealthExtension) do extensionProfile v modelu sady škálování sady Windows se škálováním na více systémů.
 
@@ -141,7 +141,7 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Pomocí [AZ VMSS Extension set](/cli/azure/vmss/extension#az-vmss-extension-set) přidejte rozšíření pro stav aplikace do definice modelu sady škálování.
+Pomocí [AZ VMSS Extension set](/cli/azure/vmss/extension#az_vmss_extension_set) přidejte rozšíření pro stav aplikace do definice modelu sady škálování.
 
 Následující příklad přidá rozšíření stavu aplikace do modelu škálované sady pro sadu škálování na bázi systému Linux.
 

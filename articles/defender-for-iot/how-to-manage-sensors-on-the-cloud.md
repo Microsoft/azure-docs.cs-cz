@@ -1,16 +1,16 @@
 ---
 title: Správa senzorů v programu Defender pro IoT Portal
 description: Naučte se, jak pořídit, zobrazovat a spravovat senzory v programu Defender pro IoT Portal.
-ms.date: 4/18/2021
+ms.date: 04/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 2c948aa2387552f9815ab075abb43c98307ae087
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: f407a65f60a1b969f17ebe00be39a888a09ec83d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600178"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752709"
 ---
-# <a name="manage-sensors-ain-the-defender-for-iot-portal"></a>Správa senzorů nacházejících z programu Defender pro IoT Portal
+# <a name="manage-sensors-in-the-defender-for-iot-portal"></a>Správa senzorů v programu Defender pro IoT Portal
 
 Tento článek popisuje, jak připojit, zobrazit a spravovat senzory v programu [Defender pro IoT Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
 
@@ -26,16 +26,14 @@ Postup registrace:
 1. Vyberte **senzor zprovoznění**.
 1. Vytvořte název snímače. Doporučujeme, abyste zahrnuli IP adresu snímače, který jste nainstalovali jako součást názvu, nebo můžete použít snadno identifikovatelný název. Tím se zajistí snazší sledování a konzistentní pojmenování mezi názvem registrace v Azure [Defenderu pro IoT Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) a IP adresou nasazeného senzoru zobrazeného v konzole senzorů.
 1. Přidružte senzor k předplatnému Azure.
-1. Vyberte režim správy senzorů pomocí přepínače **připojeného ke cloudu** . Pokud je přepínač zapnutý, je senzor připojený ke cloudu. Pokud je přepínač vypnutý, je senzor místně spravován.
+1. Vyberte režim připojení senzoru pomocí přepínače **připojeného ke cloudu** . Pokud je přepínač zapnutý, je senzor připojený ke cloudu. Pokud je přepínač vypnutý, je senzor místně spravován.
 
-   - **Senzory připojené ke cloudu**: informace, které senzor detekuje, se zobrazí v konzole senzorů. Informace o výstrahách se doručují prostřednictvím služby IoT Hub a můžou se sdílet s ostatními službami Azure, jako je Azure Sentinel.
+   - **Senzory připojené ke cloudu**: informace, které senzor detekuje, se zobrazí v konzole senzorů. Informace o výstrahách se doručují prostřednictvím služby IoT Hub a můžou se sdílet s ostatními službami Azure, jako je Azure Sentinel. Balíčky analýzy hrozeb se navíc dají z Azure Defenderu pro IoT Portal přidat do senzorů. Naopak když není senzor připojený ke cloudu, musíte stáhnout balíčky pro řešení hrozeb a pak je nahrát na své podnikové senzory. Pokud chcete programu Defender pro IoT povolit vkládání balíčků do senzorů, povolte přepínač **aktualizace automatických analýz pro analýzu hrozeb** . Další informace najdete v tématu [výzkum a balíčky pro analýzu hrozeb](how-to-work-with-threat-intelligence-packages.md).
+   Vyberte službu IoT Hub, která bude sloužit jako brána mezi tímto senzorem a portálem Azure Defender pro IoT. Definujte název a zónu lokality. Můžete také přidat popisné značky. Název lokality, zóna a značky jsou popisné záznamy na [stránce weby a senzory](#view-onboarded-sensors).
 
    - **Místně spravované senzory**: informace, které detekuje senzory, se zobrazí v konzole senzorů. Pokud pracujete v letecké gapped síti a chcete mít jednotný přehled o všech informacích zjištěných více místně spravovanými senzory, pracujte s místní konzolou pro správu.
 
-   Pro senzory připojené k cloudu je název definovaný během připojování název, který se zobrazí v konzole senzorů. Tento název nemůžete změnit přímo z konzoly. U místně spravovaných senzorů se název používaný během připojování uloží do Azure a bude možné ho aktualizovat v konzole senzorů.
-
-1. Vyberte IoT Hub, který bude sloužit jako brána mezi tímto senzorem a Azure Defenderem pro IoT.
-1. Pokud je senzor připojený ke cloudu, přidružte ho ke službě IoT Hub a pak definujte název a zónu lokality. Můžete také přidat popisné značky. Název lokality, zóna a značky jsou popisné záznamy na [stránce weby a senzory](#view-onboarded-sensors).
+   Pro senzory připojené k cloudu je název definovaný během připojování název, který se zobrazí v konzole senzorů. Tento název nemůžete změnit přímo z konzoly. U místně spravovaných senzorů se název používaný během připojování uloží do Azure, ale dá se aktualizovat v konzole senzorů.
 
 ### <a name="download-the-sensor-activation-file"></a>Stáhnout aktivační soubor senzoru
 
@@ -48,15 +46,16 @@ Stažení aktivačního souboru:
 
 ## <a name="view-onboarded-sensors"></a>Zobrazení integrovaných senzorů
 
-Na [portálu Defender pro IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)můžete zobrazit základní informace o integrovaných senzorech.
+Na [portálu Defender pro IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)můžete zobrazit důležité provozní informace o integrovaných senzorech.
 
-1. Vyberte **weby a senzory**.
-1. Pomocí nástrojů pro filtrování a vyhledávání Najděte informace o senzorech a analýzách hrozeb, které potřebujete.
+1. Vyberte **weby a senzory**. Na stránce se zobrazuje počet senzorů, které jsou připojené ke cloudu a jsou místně spravované, a také tyto senzory:
 
-- Kolik senzorů se připojilo
-- Počet senzorů, které jsou připojené ke cloudu a jsou místně spravované
-- Centrum přidružené k integrovanému senzoru
-- Podrobnosti o snímači, jako je název přiřazený senzoru během připojování, zóna přidružená ke senzoru nebo jiné popisné informace přidané pomocí značek
+- název snímače přiřazený během připojování
+- Typ připojení (připojený ke cloudu nebo místně spravovaný)
+- zóna přidružená ke senzoru
+- Nainstalovaná verze senzoru
+- Stav připojení senzoru ke cloudu.
+- Čas posledního zjištění senzoru při připojování ke cloudu.
 
 ## <a name="manage-onboarded-sensors"></a>Správa integrovaných senzorů
 

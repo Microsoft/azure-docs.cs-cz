@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: 25fc021a48e8936f242df35f7485fc59a93bba13
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 95767e94a120b7f4595744beabc72fcd954e6e2f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172796"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783102"
 ---
 # <a name="http-application-routing"></a>Směrování aplikace HTTP
 
@@ -210,8 +210,8 @@ Pomocí příkazu [kubectl logs][kubectl-logs] Zobrazte protokoly aplikací pro 
 ```
 $ kubectl logs -f deploy/addon-http-application-routing-external-dns -n kube-system
 
-time="2018-04-26T20:36:19Z" level=info msg="Updating A record named 'aks-helloworld' to '52.242.28.189' for Azure DNS zone '471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io'."
-time="2018-04-26T20:36:21Z" level=info msg="Updating TXT record named 'aks-helloworld' to '"heritage=external-dns,external-dns/owner=default"' for Azure DNS zone '471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io'."
+time="2018-04-26T20:36:19Z&quot; level=info msg=&quot;Updating A record named 'aks-helloworld' to '52.242.28.189' for Azure DNS zone '471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io'."
+time="2018-04-26T20:36:21Z&quot; level=info msg=&quot;Updating TXT record named 'aks-helloworld' to '&quot;heritage=external-dns,external-dns/owner=default&quot;' for Azure DNS zone '471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io'."
 ```
 
 Tyto záznamy se taky můžou zobrazit na prostředku zóny DNS v Azure Portal.
@@ -280,12 +280,12 @@ ingress "aks-helloworld" deleted
 Informace o tom, jak nainstalovat řadič příchozího přenosu HTTPS v AKS, najdete v tématu https informing [on Azure Kubernetes Service (AKS)][ingress-https].
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-show]: /cli/azure/aks#az_aks_show
 [ingress-https]: ./ingress-tls.md
-[az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
-[az aks install-cli]: /cli/azure/aks#az-aks-install-cli
-[az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-enable-addons]: /cli/azure/aks#az_aks_enable_addons
+[az aks install-cli]: /cli/azure/aks#az_aks_install_cli
+[az aks get-credentials]: /cli/azure/aks#az_aks_get_credentials
 
 <!-- LINKS - external -->
 [dns-pricing]: https://azure.microsoft.com/pricing/details/dns/

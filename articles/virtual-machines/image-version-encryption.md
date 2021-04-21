@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: 258d8ab6ab23a95d73b8ed0c2549f373cf097674
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 601b8236ca413dd510585bdfffddc3e892caa73b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554084"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759664"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Verze Preview: použití klíčů spravovaných zákazníkem pro šifrování imagí
 
@@ -162,7 +162,7 @@ az provider register -n Microsoft.Compute
 ```
 
 
-Pokud chcete pro verzi image zadat sadu šifrování disku, použijte parametr [AZ Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az-sig-image-version-create) `--target-region-encryption` . Formát pro `--target-region-encryption` je čárkami oddělený seznam klíčů pro šifrování operačních systémů a datových disků. Mělo by to vypadat takto: `<encryption set for the OS disk>,<Lun number of the data disk>,<encryption set for the data disk>,<Lun number for the second data disk>,<encryption set for the second data disk>` . 
+Pokud chcete pro verzi image zadat sadu šifrování disku, použijte parametr [AZ Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az_sig_image_version_create) `--target-region-encryption` . Formát pro `--target-region-encryption` je čárkami oddělený seznam klíčů pro šifrování operačních systémů a datových disků. Mělo by to vypadat takto: `<encryption set for the OS disk>,<Lun number of the data disk>,<encryption set for the data disk>,<Lun number for the second data disk>,<encryption set for the second data disk>` . 
 
 Pokud je zdroj pro disk s operačním systémem spravovaným diskem nebo virtuálním počítačem, použijte `--managed-image` k určení zdroje verze image. V tomto příkladu je zdrojem spravovaná image, která má disk s operačním systémem a datový disk na logické jednotce (LUN) 0. Disk s operačním systémem se zašifruje pomocí DiskEncryptionSet1 a datový disk se zašifruje pomocí DiskEncryptionSet2.
 

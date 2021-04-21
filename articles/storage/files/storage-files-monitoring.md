@@ -10,12 +10,12 @@ ms.date: 3/02/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 16a899b7f0e40c2eee91d1dd445f0992572a9dda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 620ee3bc5978da4b274aed9a412679ae0835f0b9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103418160"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759822"
 ---
 # <a name="monitoring-azure-files"></a>Monitorování souborů Azure
 
@@ -212,7 +212,7 @@ Další informace najdete v tématu [streamování protokolů prostředků Azure
 
 Pokud se rozhodnete archivovat protokoly do účtu úložiště, platíte za objem protokolů, které se odesílají do účtu úložiště. Konkrétní ceny najdete v části **protokoly platformy** na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) .
 
-Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) .
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true}]'
@@ -234,7 +234,7 @@ Popis jednotlivých parametrů najdete v tématu [archivní protokoly prostředk
 
 Pokud se rozhodnete streamovat protokoly do centra událostí, platíte za objem protokolů, které se odesílají do centra událostí. Konkrétní ceny najdete v části **protokoly platformy** na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) .
 
-Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) .
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -248,7 +248,7 @@ Popis jednotlivých parametrů najdete v tématu [streamovaná data, která se E
 
 #### <a name="send-logs-to-log-analytics"></a>Odesílání protokolů do Log Analytics
 
-Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) .
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
@@ -308,7 +308,7 @@ Můžete číst hodnoty metriky na úrovni účtu účtu úložiště nebo služ
 
 #### <a name="list-the-account-level-metric-definition"></a>Výpis definice metriky na úrovni účtu
 
-Můžete vypsat definici metriky svého účtu úložiště nebo služby soubory Azure. Použijte příkaz [AZ monitor Metrics list-definitions](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) .
+Můžete vypsat definici metriky svého účtu úložiště nebo služby soubory Azure. Použijte příkaz [AZ monitor Metrics list-definitions](/cli/azure/monitor/metrics#az_monitor_metrics_list_definitions) .
  
 V tomto příkladu nahraďte `<resource-ID>` zástupný symbol ID prostředku celého účtu úložiště nebo ID prostředku služby soubory Azure. Tato ID prostředků najdete na stránkách **vlastností** svého účtu úložiště v Azure Portal.
 
@@ -318,7 +318,7 @@ V tomto příkladu nahraďte `<resource-ID>` zástupný symbol ID prostředku ce
 
 #### <a name="read-account-level-metric-values"></a>Číst hodnoty metrik na úrovni účtu
 
-Můžete si přečíst hodnoty metrik účtu úložiště nebo služby soubory Azure. Použijte příkaz [AZ monitor Metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) .
+Můžete si přečíst hodnoty metrik účtu úložiště nebo služby soubory Azure. Použijte příkaz [AZ monitor Metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) .
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H

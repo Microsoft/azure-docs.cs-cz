@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: 94ff29d2c3272b61ff09fa0e564fcf2fcd281130
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b2c1e663c659935e7e820f30a281099058a4cf34
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566034"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770988"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-cassandra-api-keyspace-and-table-using-azure-cli"></a>Vytvoření zámku prostředků pro Azure Cosmos rozhraní API Cassandraho prostoru a tabulky pomocí Azure CLI
 [!INCLUDE[appliesto-cassandra-api](../../../includes/appliesto-cassandra-api.md)]
@@ -34,10 +34,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [AZ Lock Create](/cli/azure/lock#az-lock-create) | Vytvoří zámek. |
-| [AZ Lock list](/cli/azure/lock#az-lock-list) | Vypíše informace o zámku. |
-| [AZ Lock show](/cli/azure/lock#az-lock-show) | Zobrazit vlastnosti zámku. |
-| [AZ LOCK Delete](/cli/azure/lock#az-lock-delete) | Odstraní zámek. |
+| [AZ Lock Create](/cli/azure/lock#az_lock_create) | Vytvoří zámek. |
+| [AZ Lock list](/cli/azure/lock#az_lock_list) | Vypíše informace o zámku. |
+| [AZ Lock show](/cli/azure/lock#az_lock_show) | Zobrazit vlastnosti zámku. |
+| [AZ LOCK Delete](/cli/azure/lock#az_lock_delete) | Odstraní zámek. |
 
 ## <a name="next-steps"></a>Další kroky
 

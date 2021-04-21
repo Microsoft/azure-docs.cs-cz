@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 8edb5e44fc0a8e7aa67c4edd69971c35c6866d82
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: fa52327225667bd84047e74a89e3b1394964b22c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752457"
+ms.locfileid: "107769980"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem
 
@@ -97,7 +97,7 @@ Když nakonfigurujete šifrování dat pomocí klíče spravovaného zákazníke
 * Pokud vytvoříme repliku pro čtení pro váš Azure Database for PostgreSQL jeden server, který má povolené šifrování dat, server repliky bude v *nepřístupovém* stavu. Stav serveru můžete opravit pomocí [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) nebo [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers).
 * Pokud odstraníte Trezor klíčů, Azure Database for PostgreSQL jediný server nebude moci získat přístup k tomuto klíči a přesune se do *nedostupného* stavu. Obnovte [Key Vault](../key-vault/general/key-vault-recovery.md) a znovu ověřte šifrování dat, aby byl server *dostupný*.
 * Pokud klíč odstraníme z trezoru klíčů, Azure Database for PostgreSQL jeden server nebude moci získat přístup ke klíči a přesune se do *nedostupného* stavu. Obnovte [klíč](../key-vault/general/key-vault-recovery.md) a znovu ověřte šifrování dat *pro zpřístupnění serveru.*
-* Pokud klíč uložený ve službě Azure webrecovery vyprší, klíč se stane neplatným a Azure Database for PostgreSQL jeden server se převede do stavu *nepřístupné* . Rozšíříte datum vypršení platnosti klíče pomocí rozhraní příkazového [řádku](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) a pak znovu ověříte šifrování dat, aby byl server *dostupný*.
+* Pokud klíč uložený ve službě Azure webrecovery vyprší, klíč se stane neplatným a Azure Database for PostgreSQL jeden server se převede do stavu *nepřístupné* . Rozšíříte datum vypršení platnosti klíče pomocí rozhraní příkazového [řádku](/cli/azure/keyvault/key#az_keyvault_key_set_attributes) a pak znovu ověříte šifrování dat, aby byl server *dostupný*.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Odvolání přístupu k náhodnému klíči z Key Vault
 

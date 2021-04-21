@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 01/19/2020
+ms.date: 04/20/2021
 ms.author: banders
-ms.openlocfilehash: 0c69e9533130d6ca70c57422c7cdd5fc75adff72
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: edc1a80687f768723a3a218ecaa1f6459cd484ed
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683713"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763554"
 ---
 # <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>Získat smlouva Enterprise a náklady a využití rezervace zákaznických smluv Microsoftu
 
@@ -95,7 +95,6 @@ Na webu Azure Portal přejděte na [Správa nákladů a fakturace](https://porta
 ![Příklad, který ukazuje, kde na webu Azure Portal stáhnout soubor CSV s daty o využití](./media/understand-reserved-instance-usage-ea/portal-download-csv.png)
 4. V okně **Stáhnout využití a poplatky** v oblasti **Podrobnosti využití verze 2** vyberte **Všechny poplatky (využití a nákupy)** a klikněte na Stáhnout. Totéž opakujte pro **Amortizované poplatky (využití a nákupy)** .
 
-Stažené soubory CSV obsahují skutečné náklady a amortizované náklady.
 
 ## <a name="common-cost-and-usage-tasks"></a>Běžné úlohy související s náklady a využitím
 
@@ -158,8 +157,7 @@ Další informace o rezervacích Azure najdete v následujících článcích:
 
 - [Co jsou rezervace Azure?](save-compute-costs-reservations.md)
 - [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/prepay-reserved-vm-instances.md)
-- [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
-- [Správa rezervací Azure](manage-reserved-vm-instance.md)
 - [Vysvětlení způsobu uplatnění slevy za rezervaci](../manage/understand-vm-reservation-charges.md)
-- [Vysvětlení využití rezervací u předplatného s průběžnými platbami](understand-reserved-instance-usage.md)
 - [Náklady na software pro Windows nezahrnuté v rezervacích](reserved-instance-windows-software-costs.md)
+- [Získání nákladových dat pomocí instančního objektu](../manage/assign-roles-azure-service-principals.md)
+- [Použití exportů nákladů na správu](../costs/tutorial-export-acm-data.md)

@@ -5,12 +5,12 @@ author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 04/12/2021
-ms.openlocfilehash: 85be4100d62971ef7f69840ae3e9b117fbc3c047
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: fc9af94b07add5728201baaa8fa6992728a60a8c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305221"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786004"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s upozorněními na metriky služby Azure Monitor 
 
@@ -175,7 +175,7 @@ Chcete-li zjistit aktuální využití pravidel upozornění metriky, postupujte
 
 - PowerShell – [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)
 - Rozhraní REST API – [Seznam podle předplatného](/rest/api/monitor/metricalerts/listbysubscription)
-- Azure CLI – [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-list)
+- Azure CLI – [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_list)
 
 ## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>Správa pravidel výstrah pomocí Správce prostředků šablon, REST API, PowerShellu nebo rozhraní příkazového řádku Azure
 
@@ -186,7 +186,7 @@ Pokud dochází k potížím při vytváření, aktualizaci, načítání nebo o
 - Projděte si seznam [běžných chyb nasazení Azure](../../azure-resource-manager/templates/common-deployment-errors.md) a vyřešte případné potíže.
 - V [příkladech výstrahy metriky Azure Resource Manager příklady šablon](./alerts-metric-create-templates.md) , abyste měli jistotu, že předáváte všechny parametry správně.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Přečtěte si [průvodce REST API](/rest/api/monitor/metricalerts/) , abyste ověřili, že všechny parametry předáváte správně.
 

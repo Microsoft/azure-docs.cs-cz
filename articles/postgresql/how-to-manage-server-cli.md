@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: 2ea07e2bc12e6fc0d62abd462b8537c6a93689f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36151a9afda0bb23ee244ee778a30f30a41243ee
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935797"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791458"
 ---
 # <a name="manage-an-azure-database-for-postgresql-single-server-using-the-azure-cli"></a>Správa samostatného serveru s Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure
 
@@ -21,13 +21,13 @@ V tomto článku se dozvíte, jak spravovat jednotlivé servery nasazené v Azur
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Tento článek vyžaduje, abyste v místním prostředí používali Azure CLI verze 2,0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
+K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/reference-index#az_login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
 
 ```azurecli-interactive
 az login
 ```
 
-Pomocí příkazu [AZ Account set](/cli/azure/account) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](/cli/azure/account#az-account-list).
+Pomocí příkazu [AZ Account set](/cli/azure/account) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](/cli/azure/account#az_account_list).
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -64,10 +64,10 @@ Pomocí kteréhokoli z těchto příkazů můžete vytvořit, odstranit, vypsat 
 
 | Rutina | Využití| Description |
 | --- | ---| --- |
-|[AZ Postgres DB Create](/cli/azure/sql/db#az-mysql-db-create)|```az postgres db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |Vytvoří databázi.|
-|[AZ Postgres DB DELETE](/cli/azure/sql/db#az-mysql-db-delete)|```az postgres db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|Odstraňte databázi ze serveru. Tento příkaz neodstraní váš server. |
-|[AZ Postgres DB list](/cli/azure/sql/db#az-mysql-db-list)|```az postgres db list -g myresourcegroup -s mydemoserver```|zobrazí všechny databáze na serveru.|
-|[AZ Postgres DB show](/cli/azure/sql/db#az-mysql-db-show)|```az postgres db show -g myresourcegroup -s mydemoserver -n mydatabasename```|Zobrazí další podrobnosti o databázi.|
+|[AZ Postgres DB Create](/cli/azure/sql/db#az_mysql_db_create)|```az postgres db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |Vytvoří databázi.|
+|[AZ Postgres DB DELETE](/cli/azure/sql/db#az_mysql_db_delete)|```az postgres db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|Odstraňte databázi ze serveru. Tento příkaz neodstraní váš server. |
+|[AZ Postgres DB list](/cli/azure/sql/db#az_mysql_db_list)|```az postgres db list -g myresourcegroup -s mydemoserver```|zobrazí všechny databáze na serveru.|
+|[AZ Postgres DB show](/cli/azure/sql/db#az_mysql_db_show)|```az postgres db show -g myresourcegroup -s mydemoserver -n mydatabasename```|Zobrazí další podrobnosti o databázi.|
 
 ## <a name="update-admin-password"></a>Aktualizovat heslo správce
 Pomocí tohoto příkazu můžete změnit heslo role správce.
@@ -80,7 +80,7 @@ az postgres server update --resource-group myresourcegroup --name mydemoserver -
 > Heslo musí obsahovat znaky ze tří z následujících kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.
 
 ## <a name="delete-a-server"></a>Odstranění serveru
-Pokud byste chtěli jenom odstranit jediný server PostgreSQL, můžete spustit příkaz [AZ Postgres Server Delete](/cli/azure/mysql/server#az-mysql-server-delete) .
+Pokud byste chtěli jenom odstranit jediný server PostgreSQL, můžete spustit příkaz [AZ Postgres Server Delete](/cli/azure/mysql/server#az_mysql_server_delete) .
 
 ```azurecli-interactive
 az postgres server delete --resource-group myresourcegroup --name mydemoserver

@@ -3,12 +3,12 @@ title: Odhad nákladů na plán spotřeby v Azure Functions
 description: Naučte se, jak lépe odhadnout náklady, které vám mohou vzniknout při spuštění aplikace Function App v plánu spotřeby v Azure.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4967e0ff79a638891da4f784cf2f5f1ca4ddfe51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 648be6325cce5bad36795b113c8bbccb3e21d37b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578557"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773998"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Odhad nákladů na plán spotřeby
 
@@ -105,7 +105,7 @@ Tento graf znázorňuje celkem 1 110 000 000 `Function Execution Units` spotřeb
 
 #### <a name="azure-cli"></a>Azure CLI
 
-Rozhraní příkazového [řádku Azure CLI](/cli/azure/) obsahuje příkazy pro načítání metrik. Rozhraní příkazového řádku můžete použít z místního příkazového prostředí nebo přímo z portálu pomocí [Azure Cloud Shell](../cloud-shell/overview.md). Například následující příkaz [AZ monitor Metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) vrátí hodinová data ve stejném časovém období použitém dříve.
+Rozhraní příkazového [řádku Azure CLI](/cli/azure/) obsahuje příkazy pro načítání metrik. Rozhraní příkazového řádku můžete použít z místního příkazového prostředí nebo přímo z portálu pomocí [Azure Cloud Shell](../cloud-shell/overview.md). Například následující příkaz [AZ monitor Metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) vrátí hodinová data ve stejném časovém období použitém dříve.
 
 Nahraďte `<AZURE_SUBSCRIPTON_ID>` ID předplatného Azure, které spouští příkaz.
 

@@ -8,15 +8,15 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 04/20/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: e02fbe0f77a53b7d3f8f3ce420bf46189dc85a65
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: f97ecedd4088a825b9ec5a076f4da70df92a3269
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600977"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775398"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
 
@@ -67,6 +67,10 @@ V této verzi teď podporujeme celkem 142 neuronové hlasy v různých 60 jazyc�
 - **C++/c #/Java/Objective-C/Python**: Přidání podpory pro samostatnou sdílenou knihovnu pro audio Microphone and mluvčí Control. To umožňuje použít sadu SDK v prostředích, která nemají požadované závislosti knihovny zvuku.
 - **Cíl-C/SWIFT**: přidala se podpora pro modul Framework s koheader hlavičkou. To umožňuje importovat sadu Speech SDK jako modul v aplikacích pro iOS/Mac v cíli – C/SWIFT. Tím se vyřeší [problém #452 GitHubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/452).
 - **Python**: Přidání podpory pro [Python 3,9](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-python) a Zahození podpory Pythonu 3,5 na [konci životnosti v Pythonu pro 3,5](https://devguide.python.org/devcycle/#end-of-life-branches).
+
+**Známé problémy**
+
+- **C++/c #/Java**: `DialogServiceConnector` nelze použít `CustomCommandsConfig` pro přístup k aplikaci vlastních příkazů a místo toho dojde k chybě připojení. Můžete to vyřešit ručním přidáním ID aplikace do žádosti pomocí `config.SetServiceProperty("X-CommandsAppId", "your-application-id", ServicePropertyChannel.UriQueryParameter)` . Očekávané chování `CustomCommandsConfig` bude obnoveno v příští verzi.
 
 #### <a name="improvements"></a>Vylepšen
 

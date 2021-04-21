@@ -3,19 +3,18 @@ title: Metody vytvoření certifikátu
 description: Přečtěte si o různých možnostech, jak vytvořit nebo importovat certifikát Key Vault v Azure Key Vault. Existuje několik způsobů, jak vytvořit certifikát Key Vault.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f06f2de1f373f72aa5e55da17c249ff119a36950
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 72ff2a1a7b8bcff768248833183ce03a169f9a4d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581843"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752115"
 ---
 # <a name="certificate-creation-methods"></a>Metody vytvoření certifikátu
 
@@ -50,7 +49,7 @@ Následující popisy odpovídají zeleným písmenovým krokům v předchozím 
 ## <a name="asynchronous-process"></a>Asynchronní proces
 KV – vytvoření certifikátu je asynchronní proces. Tato operace vytvoří žádost o certifikát KV a vrátí stavový kód HTTP 202 (přijato). Stav požadavku lze sledovat pomocí cyklického dotazování na objekt, který byl vytvořen touto operací. V hlavičce umístění se vrátí úplný identifikátor URI objektu, který čeká na vyřízení.  
 
-Když se dokončí žádost o vytvoření certifikátu KV, stav objektu, který čeká na vyřízení, se změní na dokončeno z nedokončené verze a vytvoří se nová verze certifikátu KV. Tím se stane aktuální verze.  
+Po dokončení žádosti o vytvoření certifikátu KV se stav objektu, který čeká na vyřízení, změní na dokončeno z probíhajícího a vytvoří se nová verze certifikátu KV. Tím se stane aktuální verze.  
 
 ## <a name="first-creation"></a>První vytvoření
  Při prvním vytvoření certifikátu KV se vytvoří také adresovatelný klíč a tajný kód se stejným názvem jako certifikát. Pokud se název už používá, operace se nezdaří se stavovým kódem HTTP 409 (konflikt).
@@ -93,5 +92,5 @@ Všimněte si, že když je objednávka umístěná u poskytovatele vystavitele,
 
 ## <a name="see-also"></a>Viz také
 
- - Návod k vytváření certifikátů v Key Vault pomocí [portálu](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal), [Azure CLI](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-cli), [Azure PowerShellu](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-powershell)
+ - Průvodce vytvořením certifikátů v Key Vault pomocí [portálu](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal), rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-cli) [Azure PowerShell](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-powershell)
  - [Monitorování a správa vytvoření certifikátu](create-certificate-scenarios.md)

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6b1079797f1a753fa8362d6e920f3394087d7e9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4c06cf13b3988891f3c4b45c96f7153b3014ce0
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98119284"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752151"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat v Azure Kognitivní hledání
 
@@ -146,7 +146,7 @@ Tento krok přeskočte, pokud již máte v Azure Key Vault klíč.
 
 V tomto kroku vytvoříte zásadu přístupu v Key Vault. Tato zásada poskytuje aplikaci, kterou jste zaregistrovali s oprávněním služby Active Directory, k používání vašeho klíče spravovaného zákazníkem.
 
-Přístupová oprávnění by mohla být v daném okamžiku odvolána. Po odvolání se žádný index služby vyhledávání nebo mapa synonym používající tento trezor klíčů stane nepoužitelným. Obnovení přístupových oprávnění trezoru klíčů později obnoví přístup k mapě index\synonym. Další informace najdete v tématu [zabezpečený přístup k trezoru klíčů](../key-vault/general/secure-your-key-vault.md).
+Přístupová oprávnění by mohla být v daném okamžiku odvolána. Po odvolání se žádný index služby vyhledávání nebo mapa synonym používající tento trezor klíčů stane nepoužitelným. Obnovení přístupových oprávnění trezoru klíčů později obnoví přístup k mapě index\synonym. Další informace najdete v tématu [zabezpečený přístup k trezoru klíčů](../key-vault/general/security-overview.md).
 
 1. Pořád v Azure Portal otevřete stránku s **přehledem** trezoru klíčů. 
 

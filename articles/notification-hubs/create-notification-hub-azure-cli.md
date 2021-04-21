@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c565be3aea43fc4dc86fd793e0dc2dea0b08d4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8400eb051c09fac4cb88863ad2fac12d2ca0a1b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94563745"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789856"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rychlý Start: vytvoření centra oznámení Azure pomocí Azure CLI
 
@@ -38,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 Azure Notification Hubs, stejně jako všechny prostředky Azure, musí být nasazené do skupiny prostředků.  Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.  Další informace o skupinách prostředků najdete v tématu [co je Azure Resource Manager](../azure-resource-manager/management/overview.md) .
 
-V tomto rychlém startu vytvořte skupinu prostředků s názvem **spnhubrg** v umístění **eastus** pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az-group-create) .
+V tomto rychlém startu vytvořte skupinu prostředků s názvem **spnhubrg** v umístění **eastus** pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az_group_create) .
 
 ```azurecli
 az group create --name spnhubrg --location eastus

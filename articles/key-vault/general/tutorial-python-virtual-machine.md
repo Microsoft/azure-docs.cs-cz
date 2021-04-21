@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 2fc77d0cdfb6bd8a62555951c0b6dc7e9b732f93
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 25182105db831724565c6bf3dbbbb79832b677f7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203534"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772055"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Kurz: použití Azure Key Vault s virtuálním počítačem v Pythonu
 
@@ -34,7 +34,7 @@ Než začnete, přečtěte si téma [Key Vault Basic koncepty](basic-concepts.md
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro Windows, Mac a Linux:
   * [Git](https://git-scm.com/downloads)
@@ -81,7 +81,7 @@ Všimněte si hodnoty `publicIpAddress` ve výstupu.
 
 ## <a name="assign-an-identity-to-the-vm"></a>Přiřazení identity k virtuálnímu počítači
 
-Vytvořte pro virtuální počítač identitu přiřazenou systémem pomocí příkazu Azure CLI [AZ VM identity Assign](/cli/azure/vm/identity#az-vm-identity-assign) :
+Vytvořte pro virtuální počítač identitu přiřazenou systémem pomocí příkazu Azure CLI [AZ VM identity Assign](/cli/azure/vm/identity#az_vm_identity_assign) :
 
 ```azurecli
 az vm identity assign --name "myVM" --resource-group "myResourceGroup"

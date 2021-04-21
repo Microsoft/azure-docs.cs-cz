@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: 71d8d577bdfd8b359ce872f3489b60dca0b462b2
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 2bed95385823a167c7a31eed11d752894984ea38
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575628"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791872"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Vyhodnotit automatizované výsledky experimentování ve strojovém učení
 
@@ -74,7 +74,7 @@ Následující tabulka shrnuje metriky výkonu modelu, které automatizované ML
 
 |Metric|Popis|Výpočet|
 |--|--|---|
-|AUC | AUC je oblast pod [křivkou s provozní charakteristikou přijímače](#roc-curve).<br><br> **Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** [0, 1]<br> <br>Mezi podporované názvy metrik patří, <li>`AUC_macro`, aritmetický průměr AUC pro každou třídu.<li> `AUC_micro`, vypočítáno kombinací skutečných kladných hodnot a falešně pozitivních hodnot z každé třídy. <li> `AUC_weighted`, aritmetický průměr skóre pro každou třídu váže podle počtu skutečných instancí v každé třídě.   |[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | 
+|AUC | AUC je oblast pod [křivkou s provozní charakteristikou přijímače](#roc-curve).<br><br> **Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** [0, 1]<br> <br>Mezi podporované názvy metrik patří, <li>`AUC_macro`, aritmetický průměr AUC pro každou třídu.<li> `AUC_micro`, vypočítáno kombinací skutečných kladných hodnot a falešně pozitivních hodnot z každé třídy. <li> `AUC_weighted`, aritmetický průměr skóre pro každou třídu váže podle počtu skutečných instancí v každé třídě.<br><br>Poznámka: hodnoty AUC hlášené pomocí automatizovaného ML nemusí odpovídat grafu ROC, pokud jsou k dispozici pouze dvě třídy. V případě binární klasifikace se základní scikit implementace AUC ve skutečnosti nepoužívá pro průměrnou průměrnou dobu v makrech/mikro/vážených hodnotách. Místo toho se vrátí AUC z nejpravděpodobnější kladné třídy. Graf ROC nadále používá pro binární klasifikaci třídu průměrnou třídu stejně jako pro třídu s více třídami.  |[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | 
 |accuracy| Přesnost je poměr předpovědi, který přesně odpovídá skutečným popiskům třídy. <br> <br>**Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** [0, 1]|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
 |average_precision|Průměrná přesnost shrnuje křivku pro odvolání přesnosti jako vážený průměr přesností dosaženého při každé prahové hodnotě, přičemž se zvýší počet odvolání z předchozí prahové hodnoty použité jako váha. <br><br> **Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** [0, 1]<br> <br>Mezi podporované názvy metrik patří,<li>`average_precision_score_macro`, aritmetický průměr skóre každé třídy přesnosti.<li> `average_precision_score_micro`, vypočítáno kombinací pravdivé kladné hodnoty a falešně pozitivních při každém přerušení.<li>`average_precision_score_weighted`, aritmetický průměr průměrného skóre přesnosti pro každou třídu, váže podle počtu skutečných instancí v každé třídě.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|
 balanced_accuracy|Vyvážená přesnost je aritmetickým průměrem odvolání jednotlivých tříd.<br> <br>**Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** [0, 1]|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
@@ -117,6 +117,7 @@ Oblast pod křivkou (AUC) může být interpretována jako poměr správně klas
 Křivka, která se blíží levému hornímu rohu grafu, se blíží hodnotě 100% TPR a 0% ZAREGISTROVANÝCH zařízeních, což je nejlepší možný model. Náhodný model vytvoří křivku ROC podél `y = x` čáry od levého dolního rohu po pravé horní části. Horší než náhodný model by měl mít křivku ROC, která je v `y = x` souladu s řádkem.
 > [!TIP]
 > Pro pokusy o klasifikaci lze každý spojnicové grafy vytvořené pro automatizované modely ML použít k vyhodnocení modelu na třídu nebo průměrně přes všechny třídy. Můžete přepínat mezi různými zobrazeními kliknutím na popisky tříd v legendě napravo od grafu.
+
 ### <a name="roc-curve-for-a-good-model"></a>Křivka ROC pro dobrý model
 ![Křivka ROC pro dobrý model](./media/how-to-understand-automated-ml/chart-roc-curve-good.png)
 

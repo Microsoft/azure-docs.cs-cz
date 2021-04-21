@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak nakonfigurovat soukromé koncové body
 ms.topic: how-to
 ms.date: 11/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f8a9ac46596b1c2611ce9df387ac995e8149e7b9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 85546e99a8c431dc75b1af3d5044e06a18cf226d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425341"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770502"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Konfigurace privátních koncových bodů pro Azure Event Grid témata nebo domény
 Pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md) můžete v případě, že chcete přijímat události přímo z vaší virtuální sítě, zabezpečit vaše témata a domény přes [privátní propojení](../private-link/private-link-overview.md) , aniž byste museli procházet veřejným internetem. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro vaše téma nebo doménu. Další koncepční informace najdete v tématu [zabezpečení sítě](network-security.md).
@@ -121,7 +121,7 @@ Můžete odmítat soukromý koncový bod, který je ve stavu čekání nebo schv
 
 
 ## <a name="use-azure-cli"></a>Použití Azure CLI
-Pokud chcete vytvořit privátní koncový bod, použijte metodu [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) , jak je znázorněno v následujícím příkladu:
+Pokud chcete vytvořit privátní koncový bod, použijte metodu [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?#az_network_private_endpoint_create) , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -135,12 +135,12 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-Popisy parametrů použitých v příkladu najdete v dokumentaci k [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create). Poznámka v tomto příkladu je několik bodů: 
+Popisy parametrů použitých v příkladu najdete v dokumentaci k [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?#az_network_private_endpoint_create). Poznámka v tomto příkladu je několik bodů: 
 
 - V případě `private-connection-resource-id` Zadejte ID prostředku **tématu** nebo **domény**. Předchozí příklad používá typ: téma.
 - pro `group-ids` Zadejte `topic` nebo `domain` . V předchozím příkladu `topic` je použit. 
 
-K odstranění privátního koncového bodu použijte metodu [AZ Network Private-Endpoint Delete](/cli/azure/network/private-endpoint?#az-network-private-endpoint-delete) , jak je znázorněno v následujícím příkladu:
+K odstranění privátního koncového bodu použijte metodu [AZ Network Private-Endpoint Delete](/cli/azure/network/private-endpoint?#az_network_private_endpoint_delete) , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>
@@ -151,7 +151,7 @@ az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --nam
 
 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Aktualizujte rozšíření Azure Event Grid pro rozhraní příkazového řádku spuštěním následujícího příkazu: 
 
 ```azurecli-interactive
@@ -165,7 +165,7 @@ az extension add -n eventgrid
 ```
 
 ### <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
-Pokud chcete vytvořit privátní koncový bod, použijte metodu [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) , jak je znázorněno v následujícím příkladu:
+Pokud chcete vytvořit privátní koncový bod, použijte metodu [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?#az_network_private_endpoint_create) , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -179,12 +179,12 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-Popisy parametrů použitých v příkladu najdete v dokumentaci k [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create). Poznámka v tomto příkladu je několik bodů: 
+Popisy parametrů použitých v příkladu najdete v dokumentaci k [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?#az_network_private_endpoint_create). Poznámka v tomto příkladu je několik bodů: 
 
 - V případě `private-connection-resource-id` Zadejte ID prostředku **tématu** nebo **domény**. Předchozí příklad používá typ: téma.
 - pro `group-ids` Zadejte `topic` nebo `domain` . V předchozím příkladu `topic` je použit. 
 
-K odstranění privátního koncového bodu použijte metodu [AZ Network Private-Endpoint Delete](/cli/azure/network/private-endpoint?#az-network-private-endpoint-delete) , jak je znázorněno v následujícím příkladu:
+K odstranění privátního koncového bodu použijte metodu [AZ Network Private-Endpoint Delete](/cli/azure/network/private-endpoint?#az_network_private_endpoint_delete) , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>

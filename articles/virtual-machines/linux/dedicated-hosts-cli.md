@@ -7,12 +7,12 @@ ms.subservice: dedicated-hosts
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: 9d4117cafd665556fb60278aa4dc60dc14a27ada
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: adc09bf2572be563ff52cf9fa3d0dea51263d032
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670532"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774408"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Nasazení na vyhrazené hostitele pomocí Azure CLI
  
@@ -54,7 +54,7 @@ V obou případech je nutné zadat počet domén selhání pro skupinu hostitel�
 Můžete se také rozhodnout použít jak zóny dostupnosti, tak i domény selhání. 
 
 
-V tomto příkladu použijeme příkaz [AZ VM Host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) k vytvoření skupiny hostitelů pomocí zón dostupnosti i domén selhání. 
+V tomto příkladu použijeme příkaz [AZ VM Host Group Create](/cli/azure/vm/host/group#az_vm_host_group_create) k vytvoření skupiny hostitelů pomocí zón dostupnosti i domén selhání. 
 
 ```azurecli-interactive
 az vm host group create \
@@ -69,7 +69,7 @@ Přidejte `--automatic-placement true` parametr, který bude mít vaše virtuál
 
 ### <a name="other-examples"></a>Další příklady
 
-Pomocí [AZ VM Host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) můžete také vytvořit skupinu hostitelů v zóně dostupnosti 1 (a žádné domény selhání).
+Pomocí [AZ VM Host Group Create](/cli/azure/vm/host/group#az_vm_host_group_create) můžete také vytvořit skupinu hostitelů v zóně dostupnosti 1 (a žádné domény selhání).
 
 ```azurecli-interactive
 az vm host group create \
@@ -79,7 +79,7 @@ az vm host group create \
    --platform-fault-domain-count 1 
 ```
  
-Následující: pomocí [AZ VM Host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) vytvoří skupinu hostitelů jenom pomocí domén selhání (bude se používat jenom v oblastech, kde se zóny dostupnosti nepodporují). 
+Následující: pomocí [AZ VM Host Group Create](/cli/azure/vm/host/group#az_vm_host_group_create) vytvoří skupinu hostitelů jenom pomocí domén selhání (bude se používat jenom v oblastech, kde se zóny dostupnosti nepodporují). 
 
 ```azurecli-interactive
 az vm host group create \
@@ -94,7 +94,7 @@ Nyní vytvoříme vyhrazeného hostitele ve skupině hostitelů. Kromě názvu p
 
 Další informace o SKU a cenách hostitelů najdete v tématu [ceny za vyhrazené hostitele Azure](https://aka.ms/ADHPricing).
 
-Pomocí [AZ VM Host Create](/cli/azure/vm/host#az-vm-host-create) Vytvořte hostitele. Pokud pro skupinu hostitelů nastavíte počet domén selhání, budete požádáni o zadání domény selhání pro hostitele.  
+Pomocí [AZ VM Host Create](/cli/azure/vm/host#az_vm_host_create) Vytvořte hostitele. Pokud pro skupinu hostitelů nastavíte počet domén selhání, budete požádáni o zadání domény selhání pro hostitele.  
 
 ```azurecli-interactive
 az vm host create \
@@ -108,7 +108,7 @@ az vm host create \
 
  
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače 
-Pomocí [AZ VM Create](/cli/azure/vm#az-vm-create)vytvořte virtuální počítač v rámci vyhrazeného hostitele. Pokud jste při vytváření skupiny hostitelů zadali zónu dostupnosti, budete při vytváření virtuálního počítače muset použít stejnou zónu.
+Pomocí [AZ VM Create](/cli/azure/vm#az_vm_create)vytvořte virtuální počítač v rámci vyhrazeného hostitele. Pokud jste při vytváření skupiny hostitelů zadali zónu dostupnosti, budete při vytváření virtuálního počítače muset použít stejnou zónu.
 
 ```azurecli-interactive
 az vm create \
@@ -149,7 +149,7 @@ Pokud chcete ručně zvolit, který hostitel má nasadit sadu škálování na, 
 
 ## <a name="check-the-status-of-the-host"></a>Zkontroluje stav hostitele.
 
-Můžete kontrolovat stav hostitele a počet virtuálních počítačů, které můžete nasadit do hostitele pomocí funkce [AZ VM Host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view).
+Můžete kontrolovat stav hostitele a počet virtuálních počítačů, které můžete nasadit do hostitele pomocí funkce [AZ VM Host Get-instance-View](/cli/azure/vm/host#az_vm_host_get_instance_view).
 
 ```azurecli-interactive
 az vm host get-instance-view \
@@ -256,7 +256,7 @@ az vm host get-instance-view \
 ```
  
 ## <a name="export-as-a-template"></a>Exportovat jako šablonu 
-Šablonu můžete exportovat, pokud teď chcete vytvořit další vývojové prostředí se stejnými parametry nebo produkčním prostředím, které odpovídá tomuto. Správce prostředků používá šablony JSON, které definují všechny parametry vašeho prostředí. Můžete sestavit celá prostředí odkazem na tuto šablonu JSON. Můžete vytvořit šablony JSON ručně nebo exportovat existující prostředí a vytvořit šablonu JSON. K exportu skupiny prostředků použijte [AZ Group export](/cli/azure/group#az-group-export) .
+Šablonu můžete exportovat, pokud teď chcete vytvořit další vývojové prostředí se stejnými parametry nebo produkčním prostředím, které odpovídá tomuto. Správce prostředků používá šablony JSON, které definují všechny parametry vašeho prostředí. Můžete sestavit celá prostředí odkazem na tuto šablonu JSON. Můžete vytvořit šablony JSON ručně nebo exportovat existující prostředí a vytvořit šablonu JSON. K exportu skupiny prostředků použijte [AZ Group export](/cli/azure/group#az_group_export) .
 
 ```azurecli-interactive
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
@@ -277,19 +277,19 @@ az deployment group create \
 
 Účtují se vám poplatky za vaše vyhrazené hostitele i v případě, že nejsou nasazené žádné virtuální počítače. Měli byste odstranit všechny hostitele, na které aktuálně nepoužíváte, abyste ušetřili náklady.  
 
-Hostitele můžete odstranit jenom v případě, že ho nepoužívá žádný virtuální počítač. Odstraňte virtuální počítače pomocí [AZ VM Delete](/cli/azure/vm#az-vm-delete).
+Hostitele můžete odstranit jenom v případě, že ho nepoužívá žádný virtuální počítač. Odstraňte virtuální počítače pomocí [AZ VM Delete](/cli/azure/vm#az_vm_delete).
 
 ```azurecli-interactive
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
-Po odstranění virtuálních počítačů můžete hostitele odstranit pomocí [AZ VM Host Delete](/cli/azure/vm/host#az-vm-host-delete).
+Po odstranění virtuálních počítačů můžete hostitele odstranit pomocí [AZ VM Host Delete](/cli/azure/vm/host#az_vm_host_delete).
 
 ```azurecli-interactive
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
 ```
  
-Po odstranění všech hostitelů můžete skupinu hostitelů odstranit pomocí [AZ VM Host Group Delete](/cli/azure/vm/host/group#az-vm-host-group-delete).  
+Po odstranění všech hostitelů můžete skupinu hostitelů odstranit pomocí [AZ VM Host Group Delete](/cli/azure/vm/host/group#az_vm_host_group_delete).  
  
 ```azurecli-interactive
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  

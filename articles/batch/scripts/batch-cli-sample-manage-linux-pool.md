@@ -4,12 +4,12 @@ description: Tento skript ukazuje některé příkazy, které jsou k dispozici v
 ms.topic: sample
 ms.date: 01/29/2018
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b2e0fbf44be5718cf5577f6bc9aea436968e2fc3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5e1bdccefffa7803fbe744e27c1b36ca719560d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93073536"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768282"
 ---
 # <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>Příklad rozhraní příkazového řádku: Vytvoření a správa fondu s Linuxem ve službě Azure Batch
 
@@ -37,17 +37,17 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Vytvoří účet Batch. |
-| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Provede ověření v zadaném účtu Batch pro další práci s rozhraním příkazového řádku.  |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Vytvoří účet Batch. |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | Provede ověření v zadaném účtu Batch pro další práci s rozhraním příkazového řádku.  |
 | [az batch pool node-agent-skus list](../batch-linux-nodes.md#list-of-virtual-machine-images) | Vypíše dostupné skladové položky agenta uzlu a informace o imagi.  |
-| [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) | Vytvoří fond výpočetních uzlů.  |
-| [az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize) | Změní počet spuštěných virtuálních počítačů v zadaném fondu.  |
-| [az batch pool show](/cli/azure/batch/pool#az-batch-pool-show) | Zobrazí vlastnosti fondu.  |
-| [az batch node list](/cli/azure/batch/node#az-batch-node-list) | Vypíše všechny výpočetní uzly v zadaném fondu.  |
-| [az batch node reboot](/cli/azure/batch/node#az-batch-node-reboot) | Restartuje zadaný výpočetní uzel.  |
-| [az batch node delete](/cli/azure/batch/node#az-batch-node-delete) | Odstraní uvedené uzly ze zadaného fondu.  |
-| [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az batch pool create](/cli/azure/batch/pool#az_batch_pool_create) | Vytvoří fond výpočetních uzlů.  |
+| [az batch pool resize](/cli/azure/batch/pool#az_batch_pool_resize) | Změní počet spuštěných virtuálních počítačů v zadaném fondu.  |
+| [az batch pool show](/cli/azure/batch/pool#az_batch_pool_show) | Zobrazí vlastnosti fondu.  |
+| [az batch node list](/cli/azure/batch/node#az_batch_node_list) | Vypíše všechny výpočetní uzly v zadaném fondu.  |
+| [az batch node reboot](/cli/azure/batch/node#az_batch_node_reboot) | Restartuje zadaný výpočetní uzel.  |
+| [az batch node delete](/cli/azure/batch/node#az_batch_node_delete) | Odstraní uvedené uzly ze zadaného fondu.  |
+| [az group delete](/cli/azure/group#az_group_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 

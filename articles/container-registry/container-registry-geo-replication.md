@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 4e82be0e81e5e8c0182e061a0fba0f880bd45cc6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3e5b064ec37b855186f633677e2b1a3f615a6736
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632386"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783858"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace v Azure Container Registry
 
@@ -105,7 +105,7 @@ ACR zahájí synchronizaci imagí napříč nakonfigurovanými replikami. Po dok
 
 ## <a name="delete-a-replica"></a>Odstranění repliky
 
-Jakmile nakonfigurujete repliku pro svůj registr, můžete ji kdykoli odstranit, pokud už ji nepotřebujete. Odstraňte repliku pomocí Azure Portal nebo jiných nástrojů, jako je příkaz [AZ ACR Replication Delete](/cli/azure/acr/replication#az-acr-replication-delete) v rozhraní příkazového řádku Azure CLI.
+Jakmile nakonfigurujete repliku pro svůj registr, můžete ji kdykoli odstranit, pokud už ji nepotřebujete. Odstraňte repliku pomocí Azure Portal nebo jiných nástrojů, jako je příkaz [AZ ACR Replication Delete](/cli/azure/acr/replication#az_acr_replication_delete) v rozhraní příkazového řádku Azure CLI.
 
 Odstranění repliky v Azure Portal:
 
@@ -163,5 +163,5 @@ Podívejte se na tři části kurzu, [geografickou replikaci v Azure Container R
 > [!div class="nextstepaction"]
 > [Geografická replikace v Azure Container Registry](container-registry-tutorial-prepare-registry.md)
 
-[az-acr-replication-list]: /cli/azure/acr/replication#az-acr-replication-list
-[az-acr-replication-update]: /cli/azure/acr/replication#az-acr-replication-update
+[az-acr-replication-list]: /cli/azure/acr/replication#az_acr_replication_list
+[az-acr-replication-update]: /cli/azure/acr/replication#az_acr_replication_update

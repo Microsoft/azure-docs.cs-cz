@@ -6,12 +6,12 @@ manager: gwallace
 ms.topic: article
 ms.date: 02/03/2021
 ms.author: stevelas
-ms.openlocfilehash: 8a73f295999888dab20531ffdd0fb042790a5357
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 399bb001432759556cd0ba8bf15f7738dd4edb7c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99988225"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781482"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Vložení a vyžádání artefaktu OCI pomocí služby Azure Container Registry
 
@@ -46,7 +46,7 @@ Pokud si chcete přečíst heslo ze standardního vstupu, použijte `--password-
 
 [Přihlaste](/cli/azure/authenticate-azure-cli) se do Azure CLI s vaší identitou a zasuňte a nahrajte artefakty z registru kontejnerů.
 
-Pak použijte příkaz Azure CLI [AZ ACR Login](/cli/azure/acr#az-acr-login) pro přístup k registru. Například pro ověření v registru s názvem *myregistry*:
+Pak použijte příkaz Azure CLI [AZ ACR Login](/cli/azure/acr#az_acr_login) pro přístup k registru. Například pro ověření v registru s názvem *myregistry*:
 
 ```azurecli
 az login
@@ -173,7 +173,7 @@ Pomocí příkazu vytvořte a nahrajte nový artefakt OCI do cílového registru
 oras push myregistry.azurecr.io/dockerfile:1.0 hello-world.dockerfile
 ```
 
-Spuštěním příkazu [AZ ACR Build](/cli/azure/acr#az-acr-build) Sestavte image Hello-World pomocí nového artefaktu jako kontextu sestavení:
+Spuštěním příkazu [AZ ACR Build](/cli/azure/acr#az_acr_build) Sestavte image Hello-World pomocí nového artefaktu jako kontextu sestavení:
 
 ```azurecli
 az acr build --registry myregistry --image builds/hello-world:v1 \
@@ -194,5 +194,5 @@ az acr build --registry myregistry --image builds/hello-world:v1 \
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
 <!-- LINKS - internal -->
-[az-acr-repository-show]: /cli/azure/acr/repository?#az-acr-repository-show
-[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
+[az-acr-repository-show]: /cli/azure/acr/repository?#az_acr_repository_show
+[az-acr-repository-delete]: /cli/azure/acr/repository#az_acr_repository_delete

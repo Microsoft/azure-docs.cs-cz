@@ -1,17 +1,17 @@
 ---
-title: Správa služby Azure blockchain pomocí Azure CLI
+title: Správa služby Azure Blockchain Service pomocí Azure CLI
 description: Jak spravovat službu Azure blockchain pomocí Azure CLI
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 36b012c486c0c7d3303a81998e88f1605999c899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 63401f5ce5cd35f63915e03b7f0362811d2660ec
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87170856"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768048"
 ---
-# <a name="manage-azure-blockchain-service-using-azure-cli"></a>Správa služby Azure blockchain pomocí Azure CLI
+# <a name="manage-azure-blockchain-service-using-azure-cli"></a>Správa služby Azure Blockchain Service pomocí Azure CLI
 
 Kromě Azure Portal můžete použít rozhraní příkazového řádku Azure ke správě členů blockchain a uzlů transakcí pro službu Azure blockchain.
 
@@ -27,7 +27,7 @@ Pokud dáváte přednost instalaci a používání rozhraní příkazového řá
 
 1. Přihlaste se.
 
-    Pokud používáte místní instalaci rozhraní příkazového řádku, přihlaste se pomocí příkazu [az login](/cli/azure/reference-index#az-login).
+    Pokud používáte místní instalaci rozhraní příkazového řádku, přihlaste se pomocí příkazu [az login](/cli/azure/reference-index#az_login).
 
     ```azurecli
     az login

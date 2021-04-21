@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: 2ea833b72b9522cdfca836a7b13f7b411402103e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee298b33736ae25b365cc54ee1bb5ec9f38bfb62
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94562691"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763594"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-dbs-api-for-mongodb-using-azure-cli"></a>Vytvoření zámku prostředku pro rozhraní Azure Cosmos DB API pro MongoDB pomocí Azure CLI
 [!INCLUDE[appliesto-mongodb-api](../../../includes/appliesto-mongodb-api.md)]
@@ -34,10 +34,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [AZ Lock Create](/cli/azure/lock#az-lock-create) | Vytvoří zámek. |
-| [AZ Lock list](/cli/azure/lock#az-lock-list) | Vypíše informace o zámku. |
-| [AZ Lock show](/cli/azure/lock#az-lock-show) | Zobrazit vlastnosti zámku. |
-| [AZ LOCK Delete](/cli/azure/lock#az-lock-delete) | Odstraní zámek. |
+| [AZ Lock Create](/cli/azure/lock#az_lock_create) | Vytvoří zámek. |
+| [AZ Lock list](/cli/azure/lock#az_lock_list) | Vypíše informace o zámku. |
+| [AZ Lock show](/cli/azure/lock#az_lock_show) | Zobrazit vlastnosti zámku. |
+| [AZ LOCK Delete](/cli/azure/lock#az_lock_delete) | Odstraní zámek. |
 
 ## <a name="next-steps"></a>Další kroky
 

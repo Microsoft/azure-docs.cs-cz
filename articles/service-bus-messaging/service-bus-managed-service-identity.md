@@ -3,12 +3,12 @@ title: Spravované identity pro prostředky Azure s Service Bus
 description: Tento článek popisuje, jak používat spravované identity pro přístup k Azure Service Bus entit (fronty, témata a předplatná).
 ms.topic: article
 ms.date: 01/21/2021
-ms.openlocfilehash: cac254ef6b57f1878620b1e3ca30e757d7f39a88
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0558e00ac7e8ce67d2e5194b02d2de06f2d38ff1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529469"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785428"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus
 [Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) je funkce mezi Azure, která umožňuje vytvořit zabezpečenou identitu přidruženou k nasazení, ve kterém se spouští kód aplikace. Tuto identitu pak můžete přidružit k rolím řízení přístupu, které udělují vlastní oprávnění pro přístup ke konkrétním prostředkům Azure, které vaše aplikace potřebuje.
@@ -45,7 +45,7 @@ Než do objektu zabezpečení přiřadíte roli Azure, určete rozsah přístupu
 
 Následující seznam popisuje úrovně, na jejichž základě můžete nastavit rozsah přístupu k prostředkům Service Bus, počínaje nejužším rozsahem:
 
-- **Zařazení do fronty**, **tématu** nebo **předplatného**: přiřazení role se vztahuje na konkrétní entitu Service Bus. V současné době Azure Portal nepodporuje přiřazování uživatelů/skupin/spravovaných identit do Service Bus rolí Azure na úrovni předplatného. Tady je příklad použití příkazu Azure CLI: [AZ-role-Assignment-Create](/cli/azure/role/assignment?#az-role-assignment-create) k přiřazení identity k Service Bus role Azure: 
+- **Zařazení do fronty**, **tématu** nebo **předplatného**: přiřazení role se vztahuje na konkrétní entitu Service Bus. V současné době Azure Portal nepodporuje přiřazování uživatelů/skupin/spravovaných identit do Service Bus rolí Azure na úrovni předplatného. Tady je příklad použití příkazu Azure CLI: [AZ-role-Assignment-Create](/cli/azure/role/assignment?#az_role_assignment_create) k přiřazení identity k Service Bus role Azure: 
 
     ```azurecli
     az role assignment create \

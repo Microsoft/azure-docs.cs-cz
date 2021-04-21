@@ -3,12 +3,12 @@ title: Spustit příkazy ve spuštěné instanci kontejneru
 description: Přečtěte si, jak spustit příkaz v kontejneru, který je aktuálně spuštěný v Azure Container Instances
 ms.topic: article
 ms.date: 03/30/2018
-ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42832910efff67f111c669793798d9ff0e413536
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "79247199"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790774"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>Spuštění příkazu ve spuštěné instanci kontejneru Azure
 
@@ -89,6 +89,6 @@ Azure Container Instances aktuálně podporuje spuštění jednoho procesu pomoc
 Přečtěte si o dalších nástrojích řešení potíží a běžných potížích s nasazením při řešení potíží s [kontejnerem a nasazením v Azure Container Instances](container-instances-troubleshooting.md)
 
 <!-- LINKS - internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-exec]: /cli/azure/container#az-container-exec
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-exec]: /cli/azure/container#az_container_exec
 [azure-cli]: /cli/azure

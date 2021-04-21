@@ -3,12 +3,12 @@ title: Práce s rozhraními API Defenderu for IoT
 description: Použijte externí REST API pro přístup k datům zjištěným senzory a konzolou pro správu a provádění akcí s těmito daty.
 ms.date: 12/14/2020
 ms.topic: reference
-ms.openlocfilehash: d509f2674a61af1d0ab03892186526b1cb109eee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7833a20d4f708ecb5b80394fae2c56fc07c9489
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778827"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752727"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender pro rozhraní API pro senzory IoT a konzolu pro správu
 
@@ -617,12 +617,21 @@ Pole objektů JSON, které reprezentují výstrahy.
 | **ID** | Číselný | No | - |
 | **interval** | Číselný | No | Epocha (UTC) |
 | **title** | Řetězec | No | - |
-| **zpráva** | Řetězec | No | - |
+| **Zpráva** | Řetězec | No | - |
 | **závažnost** | Řetězec | No | Upozornění, vedlejší, hlavní nebo kritická |
 | **jádra** | Řetězec | No | Porušení protokolu, porušení zásad, malware, anomálie nebo provozní |
 | **sourceDevice** | Číselný | Yes | ID zařízení |
 | **destinationDevice** | Číselný | Yes | ID zařízení |
+| **sourceDeviceAddress** | Číselný | Yes | IP adresa, MAC, null |
+| **destinationDeviceAddress** | Číselný | Yes | IP adresa, MAC, null |
+| **remediationSteps** | Řetězec | Yes | Postup nápravy popsaný v tématu upozornění |
 | **additionalInformation** | Objekt další informace | Yes | - |
+
+Všimněte si, že/API/v2/je potřeba pro následující informace:
+
+- sourceDeviceAddress 
+- destinationDeviceAddress
+- remediationSteps
 
 #### <a name="additional-information-fields"></a>Další pole s informacemi
 
@@ -1359,7 +1368,7 @@ Objekt JSON, který představuje hodnocené výsledky. Každý klíč obsahuje p
 | Název pole | Typ | Seznam hodnot |
 |--|--|--|
 | **adresy** s | Číselný | - |
-| **network** | Řetězec | IP adresa |
+| **sítě** | Řetězec | IP adresa |
 | **Vlastnost maska** | Řetězec | Maska podsítě |
 
 **protocolProblems**
@@ -1742,19 +1751,16 @@ response:
 > |--|--|--|
 > | POST | složené-k-d ' {"admin_username": "<ADMIN_USERNAME>", "admin_password": "<ADMIN_PASSWORD>", "username": "<USER_NAME>", "new_password": "<NEW_PASSWORD>"} '-H ' Content-Type: Application/JSON ' https://<IP_address>/API/External/Authentication/set_password_by_admin | kudrlinkou-k-d "{" admin_user ":" adminUser "," admin_password ":" 1234@abcd "," username ":" myUser "," new_password ":" abcd@1234 "}"-H "Content-Type: Application/JSON ' https:/ <span> /127.0.0.1/API/External/Authentication/set_password_by_admin |
 
-## <a name="on-premises-management-console-api-specifications"></a>Specifikace rozhraní API pro místní konzolu pro správu
+## <a name="on-premises-management-console-api-specifications"></a>Specifikace rozhraní API pro místní konzolu pro správu ##
 
-Tato část popisuje následující místní rozhraní API konzoly pro správu:
+Tato část popisuje rozhraní API místních konzol pro správu pro:
+- Vyloučení výstrah
+- Informace o zařízení
+- Informace o výstrahách
 
-- **/external/v1/alerts/<UUID>**
+### <a name="alert-exclusions"></a>Vyloučení výstrah ###
 
-- **Vyloučení výstrah (časové období údržby)**
-
-:::image type="content" source="media/references-work-with-defender-for-iot-apis/alert-exclusion-window.png" alt-text="Okno vyloučení výstrahy zobrazující aktivní pravidla":::
-
-Definujte podmínky, za kterých se výstrahy neodesílají. Například definujte a aktualizujte časy zastavení a zahájení, zařízení nebo podsítě, které mají být vyloučeny při aktivaci výstrah nebo Defender pro moduly IoT, které mají být vyloučeny. Například během časového období údržby můžete chtít zastavit doručování všech výstrah, s výjimkou upozornění na malware na důležitých zařízeních.
-
-Rozhraní API, která tady definujete, se zobrazí v okně **vyloučení výstrah** v místní konzole pro správu jako pravidlo vyloučení jen pro čtení.
+Definujte podmínky, za kterých se výstrahy neodesílají. Například definujte a aktualizujte časy zastavení a zahájení, zařízení nebo podsítě, které mají být vyloučeny při aktivaci výstrah nebo Defender pro moduly IoT, které mají být vyloučeny. Například během časového období údržby můžete chtít zastavit doručování všech výstrah, s výjimkou upozornění na malware na důležitých zařízeních. Položky, které zde definujete, se zobrazí v okně **vyloučení výstrah** v místní konzole pro správu jako pravidla vyloučení jen pro čtení.
 
 #### <a name="externalv1maintenancewindow"></a>/external/v1/maintenanceWindow
 
@@ -1771,15 +1777,15 @@ Rozhraní API, která tady definujete, se zobrazí v okně **vyloučení výstra
 
 ```
 
-#### <a name="change-password---externalauthenticationset_password"></a>Změna hesla –/External/Authentication/set_password
+#### <a name="change-password---externalauthenticationset_password"></a>Změna hesla –/External/Authentication/set_password 
 
 Pomocí tohoto rozhraní API můžete uživatelům umožnit změnit si vlastní hesla. S rozhraním API můžou pracovat všechny role uživatelů v rámci služby IoT. Pro použití tohoto rozhraní API nepotřebujete k používání tohoto rozhraní API Defender pro přístup k IoT.
 
-#### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Aktualizace hesla uživatele správcem systému –/External/Authentication/set_password_by_admin
+#### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Aktualizace hesla uživatele správcem systému –/External/Authentication/set_password_by_admin 
 
 Pomocí tohoto rozhraní API umožněte správcům systému měnit hesla pro konkrétní uživatele. Aplikace Defender pro role uživatelů správce IoT můžou pracovat s rozhraním API. Pro použití tohoto rozhraní API nepotřebujete k používání tohoto rozhraní API Defender pro přístup k IoT.
 
-### <a name="retrieve-device-information---externalv1devices"></a>Načíst informace o zařízení –/External/v1/Devices
+### <a name="retrieve-device-information---externalv1devices"></a>Načíst informace o zařízení –/External/v1/Devices ###
 
 Toto rozhraní API vyžádá seznam všech zařízení zjištěných programem Defender pro senzory IoT, které jsou připojené k místní konzole pro správu.
 
@@ -2032,27 +2038,40 @@ Pomocí tohoto rozhraní API můžete načíst všechny nebo filtrované výstra
 
   `/api/v1/alerts?toTime=<epoch>`
 
-- **ID** serveru: lokalita, na které byla výstraha zjištěna. [2](#2)
-
-- **zoneId**: zóna, ve které byla výstraha zjištěna. [2](#2)
-
+- **ID** serveru: lokalita, na které byla výstraha zjištěna.
+- **zoneId**: zóna, ve které byla výstraha zjištěna.
 - **senzor**: senzor, na kterém byla výstraha zjištěna.
 
-##### <a name="you-might-not-have-the-site-and-zone-id-if-this-is-the-case-query-all-devices-to-retrieve-the-site-and-zone-id"></a><a id="2">2</a> *možná nemáte ID webu a zóny. V takovém případě se dotázat na všechna zařízení, aby se načetla lokalita a ID zóny.*
+*Možná nemáte ID webu a zóny. V takovém případě se dotázat na všechna zařízení, aby se načetla lokalita a ID zóny.*
 
-#### <a name="alert-fields"></a>Pole výstrah
+#### <a name="alert-fields"></a>Pole výstrah 
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
 | **ID** | Číselný | No | - |
 | **interval** | Číselný | No | Epocha (UTC) |
 | **title** | Řetězec | No | - |
-| **zpráva** | Řetězec | No | - |
+| **Zpráva** | Řetězec | No | - |
 | **závažnost** | Řetězec | No | Upozornění, vedlejší, hlavní nebo kritická |
 | **jádra** | Řetězec | No | Porušení protokolu, porušení zásad, malware, anomálie nebo provozní |
 | **sourceDevice** | Číselný | Yes | ID zařízení |
 | **destinationDevice** | Číselný | Yes | ID zařízení |
+| **sourceDeviceAddress** | Číselný | Yes | IP adresa, MAC, null |
+| **destinationDeviceAddress** | Číselný | Yes | IP adresa, MAC, null |
+| **remediationSteps** | Řetězec | Yes | Postup nápravy zobrazený v upozornění|
+| **senzor** | Řetězec | Yes | Název senzoru definovaného uživatelem v konzole|
+|**Název_zóny** | Řetězec | Yes | Název zóny přidružené ke senzoru v konzole|
+| **Názvem** | Řetězec | Yes | Název webu přidruženého ke senzoru v konzole |
 | **additionalInformation** | Objekt další informace | Yes | - |
+
+Všimněte si, že/API/v2/je potřeba pro následující informace:
+
+- sourceDeviceAddress 
+- destinationDeviceAddress
+- remediationSteps
+- senzor
+- Název_zóny
+- Názvem
 
 #### <a name="additional-information-fields"></a>Další pole s informacemi
 
@@ -2390,7 +2409,7 @@ Načte protokol všech akcí otevření, zavření a aktualizace, které byly b�
 
 - název **tokenu**: filtruje protokoly související s konkrétním názvem tokenu.
 
-#### <a name="error-code"></a>Kód chyby
+#### <a name="error-code"></a>Kód chyby 
 
 - **200 (ok)**: akce byla úspěšně dokončena.
 

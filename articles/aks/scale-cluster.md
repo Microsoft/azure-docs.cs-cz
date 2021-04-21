@@ -4,12 +4,12 @@ description: Naučte se škálovat počet uzlů v clusteru Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: fdb61bf090351894329c24eb1a3c73d627e622e8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1468f9a0a23935022ed14488dfb65d789828d310
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102173762"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782882"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Škálování počtu uzlů ve clusteru Azure Kubernetes Service (AKS)
 
@@ -90,7 +90,7 @@ V tomto článku jste ručně nazměnili velikost clusteru AKS na zvýšení neb
 
 <!-- LINKS - internal -->
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-aks-scale]: /cli/azure/aks#az-aks-scale
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-aks-scale]: /cli/azure/aks#az_aks_scale
 [cluster-autoscaler]: cluster-autoscaler.md
-[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az_aks_nodepool_scale

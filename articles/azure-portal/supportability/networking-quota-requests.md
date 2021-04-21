@@ -6,12 +6,12 @@ ms.author: anavin
 ms.date: 01/23/2020
 ms.topic: how-to
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: e945dec2ce8514c3e4f1edecdecd13c5c43f7c75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 801f0424e7ec15fbde58f35975f4c7eca4c9a5de
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745447"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775560"
 ---
 # <a name="networking-limit-increase"></a>Zvýšení limitu sítě
 
@@ -19,7 +19,7 @@ K zvýšení kvóty sítě použijte [Azure Portal](https://portal.azure.com) .
 
 Pokud chcete zobrazit aktuální využití sítě a kvótu v Azure Portal, otevřete své předplatné a pak vyberte **využití a kvóty**. Pomocí následujících možností můžete také zobrazit omezení využití a omezení sítě.
 
-* [Použití rozhraní příkazového řádku](/cli/azure/network#az-network-list-usages)
+* [Použití rozhraní příkazového řádku](/cli/azure/network#az_network_list_usages)
 * [PowerShell](/powershell/module/azurerm.network/get-azurermnetworkusage)
 * [Rozhraní API využití sítě](/rest/api/virtualnetwork/virtualnetworks/listusage)
 

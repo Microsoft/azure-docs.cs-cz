@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: cca08e1be0f81c26d0838566ac4900d36580b8b8
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ca46ce3355edf2b77400011d023cd6af330a3b58
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066292"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770428"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co je Azure Data Box Disk?
 
@@ -35,7 +35,7 @@ Poskytovatelé Azure a poskytovatelé jiných výrobců Azure mohou ingestovat d
 
 - **SharePoint Online** – k migraci obsahu sdílené složky do SharePointu online použijte Azure Data box a nástroj pro migraci služby SharePoint (SPMT). Pomocí Data Box odeberete závislost na síti WAN pro přenos dat. Další informace najdete v tématu [použití Azure Data box Heavy k migraci obsahu sdílené složky do SharePointu Online](data-box-heavy-migrate-spo.md).
 
-- **Synchronizace souborů Azure** – replikuje soubory z vaší data box do sdílené složky Azure a umožní vám centralizovat vaše souborové služby v Azure a přitom zachovat místní přístup k vašim datům. Další informace najdete v tématu [nasazení synchronizace souborů Azure](../storage/files/storage-sync-files-deployment-guide.md).
+- **Synchronizace souborů Azure** – replikuje soubory z vaší data box do sdílené složky Azure a umožní vám centralizovat vaše souborové služby v Azure a přitom zachovat místní přístup k vašim datům. Další informace najdete v tématu [nasazení synchronizace souborů Azure](../storage/file-sync/file-sync-deployment-guide.md).
 
 - **HDFS ukládá** – migruje data z místního úložiště Hadoop systém souborů DFS (DISTRIBUTED File System) (HDFS) vašeho clusteru hadoop do Azure Storage pomocí data box. Další informace najdete v tématu [migrace z úložiště Prem HDFS do Azure Storage s Azure Data box](../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
 

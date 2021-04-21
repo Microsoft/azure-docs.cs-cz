@@ -4,12 +4,12 @@ description: Naučte se vytvořit funkci JavaScriptu z příkazového řádku a 
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c9810b1eb9e5f6bc65843d65f2f2452eac1be703
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b8db78e56087e7cb777d1aa85391d4b6ac2aae27
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102447312"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787534"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce JavaScriptu v Azure z příkazového řádku
 
@@ -118,7 +118,7 @@ Každá vazba vyžaduje směr, typ a jedinečný název. Aktivační událost pr
     az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 12 --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     
-    Příkazem [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) se vytvoří aplikace Function App v Azure. Pokud používáte Node.js 10, změňte také `--runtime-version` na `10` .
+    Příkazem [AZ functionapp Create](/cli/azure/functionapp#az_functionapp_create) se vytvoří aplikace Function App v Azure. Pokud používáte Node.js 10, změňte také `--runtime-version` na `10` .
     
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     

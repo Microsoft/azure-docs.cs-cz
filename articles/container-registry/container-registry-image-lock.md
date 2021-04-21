@@ -3,12 +3,12 @@ title: Uzamknutí imagí
 description: Nastavte atributy pro Image kontejneru nebo úložiště, aby se nemohlo odstranit ani přepsat v registru kontejnerů Azure.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 340beb1bb6666ddf0de7de38adee6be71f5f52bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "77659692"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772338"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Uzamknutí image kontejneru ve službě Azure Container Registry
 
@@ -154,9 +154,8 @@ Pokud chcete zobrazit atributy nastavené pro verzi Image nebo úložiště, pou
 Podrobnosti o operacích odstranění najdete [v tématu Odstranění imagí kontejneru v Azure Container Registry][container-registry-delete].
 
 <!-- LINKS - Internal -->
-[az-acr-repository-update]: /cli/azure/acr/repository#az-acr-repository-update
-[az-acr-repository-show]: /cli/azure/acr/repository#az-acr-repository-show
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests
+[az-acr-repository-update]: /cli/azure/acr/repository#az_acr_repository_update
+[az-acr-repository-show]: /cli/azure/acr/repository#az_acr_repository_show
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az_acr_repository_show_manifests
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-delete]: container-registry-delete.md
-

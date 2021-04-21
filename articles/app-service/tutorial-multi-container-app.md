@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: msangapu
 ms.custom: cli-validate, devx-track-azurecli
-ms.openlocfilehash: e73d681cadaddd32290cec40ae7a9c8f6e8ac758
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dee00c6f733cfbebf68276ee4b54f91b8e2cb35b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97005643"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765534"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Kurz: Vytvoření vícekontejnerové aplikace (verze Preview) ve službě Web App for Containers
 
@@ -63,7 +63,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-V Cloud Shell vytvořte skupinu prostředků pomocí [`az group create`](/cli/azure/group#az-group-create) příkazu. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *USA – středojih*. Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service v Linuxu na úrovni **Standard**, spusťte příkaz [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az-appservice-list-locations).
+V Cloud Shell vytvořte skupinu prostředků pomocí [`az group create`](/cli/azure/group#az_group_create) příkazu. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *USA – středojih*. Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service v Linuxu na úrovni **Standard**, spusťte příkaz [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az_appservice_list_locations).
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -75,7 +75,7 @@ Po dokončení příkazu se ve výstupu JSON zobrazí vlastnosti skupiny prostř
 
 ## <a name="create-an-azure-app-service-plan"></a>Vytvoření plánu služby Azure App Service
 
-V Cloud Shell vytvořte pomocí příkazu plán App Service ve skupině prostředků [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) .
+V Cloud Shell vytvořte pomocí příkazu plán App Service ve skupině prostředků [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) .
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 
@@ -109,7 +109,7 @@ Po vytvoření plánu služby App Service se ve službě Cloud Shell zobrazí po
 
 ## <a name="create-a-docker-compose-app"></a>Vytvoření aplikace Docker Compose
 
-Ve službě Cloud Shell pomocí příkazu [az webapp create](/cli/azure/webapp#az-webapp-create) vytvořte vícekontejnerovou [webovou aplikaci](overview.md) v plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit _\<app-name>_ jedinečným názvem aplikace.
+Ve službě Cloud Shell pomocí příkazu [az webapp create](/cli/azure/webapp#az_webapp_create) vytvořte vícekontejnerovou [webovou aplikaci](overview.md) v plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit _\<app-name>_ jedinečným názvem aplikace.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -146,7 +146,7 @@ Kontejnery databáze se nedoporučuje používat v produkčním prostředí. Mí
 
 ### <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
 
-Pomocí příkazu vytvořte server Azure Database for MySQL [`az mysql server create`](/cli/azure/mysql/server#az-mysql-server-create) .
+Pomocí příkazu vytvořte server Azure Database for MySQL [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) .
 
 V následujícím příkazu nahraďte název serveru MySQL, kde se zobrazí zástupný symbol _&lt; MySQL-Server-Name>_ (platné znaky jsou `a-z` , `0-9` a `-` ). Tento název je součástí názvu hostitele serveru MySQL (`<mysql-server-name>.database.windows.net`) a musí být globálně jedinečný.
 
@@ -171,7 +171,7 @@ Vytvoření serveru může trvat několik minut. Po vytvoření serveru MySQL se
 
 ### <a name="configure-server-firewall"></a>Konfigurace brány firewall serveru
 
-Vytvořte pravidlo brány firewall pro server MySQL, aby bylo možné připojit klienta pomocí [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create) příkazu. Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure.
+Vytvořte pravidlo brány firewall pro server MySQL, aby bylo možné připojit klienta pomocí [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) příkazu. Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -205,7 +205,7 @@ Po vytvoření databáze se ve službě Cloud Shell zobrazí podobné informace 
 
 Kvůli připojení aplikace WordPress k tomuto novému serveru MySQL nakonfigurujete několik proměnných prostředí specifických pro WordPress včetně cesty k certifikační autoritě SSL definované pomocí `MYSQL_SSL_CA`. Níže uvedená [vlastní image](#use-a-custom-image-for-mysql-ssl-and-other-configurations) obsahuje [kořenový certifikát Baltimore CyberTrust](https://www.digicert.com/digicert-root-certificates.htm) od společnosti [DigiCert](https://www.digicert.com/).
 
-K provedení těchto změn použijte příkaz [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) ve službě Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
+K provedení těchto změn použijte příkaz [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) ve službě Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WORDPRESS_DB_HOST="<mysql-server-name>.mysql.database.azure.com" WORDPRESS_DB_USER="adminuser@<mysql-server-name>" WORDPRESS_DB_PASSWORD="My5up3rStr0ngPaSw0rd!" WORDPRESS_DB_NAME="wordpress" MYSQL_SSL_CA="BaltimoreCyberTrustroot.crt.pem"
@@ -279,7 +279,7 @@ Uložte změny a editor nano zavřete. K uložení použijte příkaz `^O` a k z
 
 ### <a name="update-app-with-new-configuration"></a>Aktualizace aplikace o novou konfiguraci
 
-Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](overview.md). Nezapomeňte nahradit _\<app-name>_ názvem webové aplikace, kterou jste vytvořili dříve.
+Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) konfiguraci vícekontejnerové [webové aplikace](overview.md). Nezapomeňte nahradit _\<app-name>_ názvem webové aplikace, kterou jste vytvořili dříve.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -308,7 +308,7 @@ Ve více kontejnerech se teď provozuje služba Web App for Containers. Pokud al
 
 ### <a name="configure-environment-variables"></a>Konfigurace proměnných prostředí
 
-Pokud chcete použít trvalé úložiště, povolte toto nastavení v rámci App Service. K provedení této změny použijte příkaz [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) ve službě Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
+Pokud chcete použít trvalé úložiště, povolte toto nastavení v rámci App Service. K provedení této změny použijte příkaz [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) ve službě Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
@@ -355,7 +355,7 @@ services:
 
 ### <a name="update-app-with-new-configuration"></a>Aktualizace aplikace o novou konfiguraci
 
-Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](overview.md). Nezapomeňte nahradit _\<app-name>_ jedinečným názvem aplikace.
+Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) konfiguraci vícekontejnerové [webové aplikace](overview.md). Nezapomeňte nahradit _\<app-name>_ jedinečným názvem aplikace.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -415,7 +415,7 @@ services:
 
 ### <a name="configure-environment-variables"></a>Konfigurace proměnných prostředí
 
-Abyste mohli použít Redis, povolíte ve službě App Service nastavení `WP_REDIS_HOST`. Jde o *povinné nastavení*, které WordPressu umožňuje komunikovat s hostitelem Redis. K provedení této změny použijte příkaz [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) ve službě Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
+Abyste mohli použít Redis, povolíte ve službě App Service nastavení `WP_REDIS_HOST`. Jde o *povinné nastavení*, které WordPressu umožňuje komunikovat s hostitelem Redis. K provedení této změny použijte příkaz [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) ve službě Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WP_REDIS_HOST="redis"
@@ -441,7 +441,7 @@ Po vytvoření nastavení aplikace se ve službě Cloud Shell zobrazí podobné 
 
 ### <a name="update-app-with-new-configuration"></a>Aktualizace aplikace o novou konfiguraci
 
-Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](overview.md). Nezapomeňte nahradit _\<app-name>_ jedinečným názvem aplikace.
+Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) konfiguraci vícekontejnerové [webové aplikace](overview.md). Nezapomeňte nahradit _\<app-name>_ jedinečným názvem aplikace.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml

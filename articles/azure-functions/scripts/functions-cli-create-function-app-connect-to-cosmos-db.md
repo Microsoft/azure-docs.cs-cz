@@ -4,12 +4,12 @@ description: Ukázkový skript Azure CLI – Vytvoření funkce Azure, která se
 ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9ec4d3cb9d47608aa98075ba98aacfde51f341cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 261ede1493b93ccd3cfed19125bbabc3be871698
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934420"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786281"
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Vytvoření funkce Azure, která se připojuje ke službě Azure Cosmos DB
 
@@ -35,20 +35,16 @@ Tento skript používá následující příkazy: Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků s umístěním. |
-| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | Vytvoření účtu úložiště |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu spotřeby](../consumption-plan.md)bez serveru. |
-| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Vytvoří účet databáze Azure Cosmos DB. |
-| [AZ cosmosdb show](/cli/azure/cosmosdb#az-cosmosdb-show)| Získá připojení k databázovému účtu. |
-| [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys)| Získá klíče pro databázi. |
-| [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | Nastaví připojovací řetězec jako nastavení aplikace ve Function App. |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků s umístěním. |
+| [az storage accounts create](/cli/azure/storage/account#az_storage_account_create) | Vytvoření účtu úložiště |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Vytvoří aplikaci funkcí v [plánu spotřeby](../consumption-plan.md)bez serveru. |
+| [az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) | Vytvoří účet databáze Azure Cosmos DB. |
+| [AZ cosmosdb show](/cli/azure/cosmosdb#az_cosmosdb_show)| Získá připojení k databázovému účtu. |
+| [az cosmosdb list-keys](/cli/azure/cosmosdb#az_cosmosdb_list_keys)| Získá klíče pro databázi. |
+| [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) | Nastaví připojovací řetězec jako nastavení aplikace ve Function App. |
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
 Další ukázkové skripty rozhraní příkazového řádku pro službu Azure Functions najdete v [dokumentaci ke službě Azure Functions](../functions-cli-samples.md).
-
-
-
-

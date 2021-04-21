@@ -3,12 +3,12 @@ title: Konfigurace statické odchozí IP adresy
 description: Konfigurace brány Azure firewall a uživatelem definovaných tras pro Azure Container Instances úlohy, které používají veřejnou IP adresu brány firewall pro příchozí a odchozí přenosy
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 497645b9fe7f908cc9b8b4d7ed0ba5e201570160
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1cd0ff48da58706a1be59caf4b9d5974dc5f552a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89566564"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790810"
 ---
 # <a name="configure-a-single-public-ip-address-for-outbound-and-inbound-traffic-to-a-container-group"></a>Konfigurace jedné veřejné IP adresy pro odchozí a příchozí provoz do skupiny kontejnerů
 
@@ -127,7 +127,7 @@ Privátní IP adresu brány firewall získáte pomocí příkazu [AZ Network fir
 FW_PRIVATE_IP="$(az network firewall ip-config list \
   --resource-group $RESOURCE_GROUP_NAME \
   --firewall-name myFirewall \
-  --query "[].privateIpAddress" --output tsv)"
+  --query "[].privateIpAddress&quot; --output tsv)"
 ```
 Veřejnou IP adresu brány firewall získáte pomocí příkazu [AZ Network Public-IP show][az-network-public-ip-show] . Tato veřejná IP adresa se používá v pozdějším příkazu.
 
@@ -286,25 +286,19 @@ Další informace o správě provozu a ochraně prostředků Azure najdete v dok
 
 
 
-[az-group-create]: /cli/azure/group#az-group-create
-[az-container-create]: /cli/azure/container#az-container-create
-[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
-[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-group-create]: /cli/azure/group#az_group_create
+[az-container-create]: /cli/azure/container#az_container_create
+[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az_network_vnet_subnet_create
+[az-extension-add]: /cli/azure/extension#az_extension_add
 [az-network-firewall-update]: /cli/azure/ext/azure-firewall/network/firewall#ext-azure-firewall-az-network-firewall-update
-[az-network-public-ip-show]: /cli/azure/network/public-ip/#az-network-public-ip-show
-[az-network-route-table-create]:/cli/azure/network/route-table/#az-network-route-table-create
-[az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
+[az-network-public-ip-show]: /cli/azure/network/public-ip/#az_network_public_ip_show
+[az-network-route-table-create]:/cli/azure/network/route-table/#az_network_route_table_create
+[az-network-route-table-route-create]: /cli/azure/network/route-table/route#az_network_route_table_route_create
 [az-network-firewall-ip-config-list]: /cli/azure/ext/azure-firewall/network/firewall/ip-config#ext-azure-firewall-az-network-firewall-ip-config-list
-[az-network-vnet-subnet-update]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-update
-[az-container-exec]: /cli/azure/container#az-container-exec
-[az-vm-create]: /cli/azure/vm#az-vm-create
-[az-vm-open-port]: /cli/azure/vm#az-vm-open-port
-[az-vm-list-ip-addresses]: /cli/azure/vm#az-vm-list-ip-addresses
+[az-network-vnet-subnet-update]: /cli/azure/network/vnet/subnet#az_network_vnet_subnet_update
+[az-container-exec]: /cli/azure/container#az_container_exec
+[az-vm-create]: /cli/azure/vm#az_vm_create
+[az-vm-open-port]: /cli/azure/vm#az_vm_open_port
+[az-vm-list-ip-addresses]: /cli/azure/vm#az_vm_list_ip_addresses
 [az-network-firewall-application-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/application-rule#ext-azure-firewall-az-network-firewall-application-rule-create
 [az-network-firewall-nat-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/nat-rule#ext-azure-firewall-az-network-firewall-nat-rule-create
-
-
-
-
-
-

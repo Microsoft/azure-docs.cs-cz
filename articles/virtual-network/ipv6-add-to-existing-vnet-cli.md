@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9a321687a755f8a3d6e6d9139138d61c58764ef4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5835ea4d80f9c4111b76672facc4a0250ae0079a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98932596"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769837"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>Přidání IPv6 do aplikace IPv4 ve službě Azure Virtual Network – Azure CLI
 
@@ -48,7 +48,7 @@ az network public-ip create \
 
 ## <a name="configure-ipv6-load-balancer-frontend"></a>Konfigurace front-endu protokolu IPv6 pro vyrovnávání zatížení
 
-Nakonfigurujte Nástroj pro vyrovnávání zatížení novou IP adresou IPv6 pomocí příkazu [AZ Network diskont-IP Create](/cli/azure/network/lb/frontend-ip#az-network-lb-frontend-ip-create) následujícím způsobem:
+Nakonfigurujte Nástroj pro vyrovnávání zatížení novou IP adresou IPv6 pomocí příkazu [AZ Network diskont-IP Create](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_create) následujícím způsobem:
 
 ```azurecli-interactive
 az network lb frontend-ip create \
@@ -60,7 +60,7 @@ az network lb frontend-ip create \
 
 ## <a name="configure-ipv6-load-balancer-backend-pool"></a>Konfigurovat back-end fond nástroje pro vyrovnávání zatížení IPv6
 
-Vytvořte back-end fond pro síťové karty s adresami IPv6 pomocí příkazu [AZ Network Address-Pool Create](/cli/azure/network/lb/address-pool#az-network-lb-address-pool-create) následujícím způsobem:
+Vytvořte back-end fond pro síťové karty s adresami IPv6 pomocí příkazu [AZ Network Address-Pool Create](/cli/azure/network/lb/address-pool#az_network_lb_address_pool_create) následujícím způsobem:
 
 ```azurecli-interactive
 az network lb address-pool create \
@@ -71,7 +71,7 @@ az network lb address-pool create \
 
 ## <a name="configure-ipv6-load-balancer-rules"></a>Konfigurace pravidel nástroje pro vyrovnávání zatížení IPv6
 
-Vytvořte pravidla nástroje pro vyrovnávání zatížení IPv6 pomocí [AZ Network diskont Rule Create](/cli/azure/network/lb/rule#az-network-lb-rule-create).
+Vytvořte pravidla nástroje pro vyrovnávání zatížení IPv6 pomocí [AZ Network diskont Rule Create](/cli/azure/network/lb/rule#az_network_lb_rule_create).
 
 ```azurecli-interactive
 az network lb rule create \
@@ -104,7 +104,7 @@ az network vnet subnet update \
 
 ## <a name="add-ipv6-configuration-to-nics"></a>Přidat konfiguraci IPv6 do síťových karet
 
-Nakonfigurujte síťové karty virtuálních počítačů s adresou IPv6 pomocí příkazu [AZ Network nic IP-config Create](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-create) následujícím způsobem:
+Nakonfigurujte síťové karty virtuálních počítačů s adresou IPv6 pomocí příkazu [AZ Network nic IP-config Create](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_create) následujícím způsobem:
 
 ```azurecli-interactive
 az network nic ip-config create \

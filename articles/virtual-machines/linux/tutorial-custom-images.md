@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 40ec86030e136a06fe240e473a469681dcfa7c4f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81bbf0b49919db68407a85b9ea2f731c5f8e1d91
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557757"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769872"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure CLI
 
@@ -61,7 +61,7 @@ Galerie imagí je primární prostředek, který slouží k povolení sdílení 
 
 Povolenými znaky pro název galerie jsou velká a malá písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky.   Názvy galerií musí být v rámci vašeho předplatného jedinečné. 
 
-Pomocí [AZ SIG Create](/cli/azure/sig#az-sig-create)vytvořte galerii imagí. Následující příklad vytvoří skupinu prostředků s názvem Gallery s názvem *myGalleryRG* v *východní USA* a galerii s názvem *myGallery*.
+Pomocí [AZ SIG Create](/cli/azure/sig#az_sig_create)vytvořte galerii imagí. Následující příklad vytvoří skupinu prostředků s názvem Gallery s názvem *myGalleryRG* v *východní USA* a galerii s názvem *myGallery*.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -70,13 +70,13 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 ## <a name="get-information-about-the-vm"></a>Získat informace o virtuálním počítači
 
-Seznam virtuálních počítačů, které jsou k dispozici, můžete zobrazit pomocí [seznamu AZ VM list](/cli/azure/vm#az-vm-list). 
+Seznam virtuálních počítačů, které jsou k dispozici, můžete zobrazit pomocí [seznamu AZ VM list](/cli/azure/vm#az_vm_list). 
 
 ```azurecli-interactive
 az vm list --output table
 ```
 
-Jakmile budete znát název virtuálního počítače a k čemu se v něm skupina prostředků, Získejte ID virtuálního počítače pomocí [AZ VM Get-instance-View](/cli/azure/vm#az-vm-get-instance-view). 
+Jakmile budete znát název virtuálního počítače a k čemu se v něm skupina prostředků, Získejte ID virtuálního počítače pomocí [AZ VM Get-instance-View](/cli/azure/vm#az_vm_get_instance_view). 
 
 ```azurecli-interactive
 az vm get-instance-view -g MyResourceGroup -n MyVm --query id
@@ -92,7 +92,7 @@ Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, čísl
 
 Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](../shared-image-galleries.md#image-definitions).
 
-Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create). 
+Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az_sig_image_definition_create). 
 
 V tomto příkladu se definice image jmenuje *myImageDefinition* a je určena pro [specializovanou](../shared-image-galleries.md#generalized-and-specialized-images) image operačního systému Linux. 
 
@@ -112,7 +112,7 @@ Zkopírujte ID definice obrázku z výstupu pro pozdější použití.
 
 ## <a name="create-the-image-version"></a>Vytvoření verze image
 
-Z virtuálního počítače vytvořte verzi Image pomocí [AZ Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az-sig-image-version-create).  
+Z virtuálního počítače vytvořte verzi Image pomocí [AZ Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az_sig_image_version_create).  
 
 Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32 celé číslo. Formát: *MajorVersion*. *Podverze.* *Oprava*.
 
@@ -140,7 +140,7 @@ az sig image-version create \
  
 ## <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač pomocí příkazového typu [AZ VM Create](/cli/azure/vm#az-vm-create) pomocí parametru--specializované, který označuje, že se jedná o specializovanou image. 
+Vytvořte virtuální počítač pomocí příkazového typu [AZ VM Create](/cli/azure/vm#az_vm_create) pomocí parametru--specializované, který označuje, že se jedná o specializovanou image. 
 
 Použijte ID definice image pro `--image` k vytvoření virtuálního počítače z nejnovější verze image, která je k dispozici. Virtuální počítač můžete vytvořit také z konkrétní verze zadáním ID verze image pro `--image` . 
 
@@ -158,7 +158,7 @@ az vm create --resource-group myResourceGroup \
 
 Image můžete sdílet mezi předplatnými pomocí řízení přístupu na základě role Azure (RBAC). Image můžete sdílet v galerii, definici Image nebo imagi verze Leve. Každý uživatel, který má oprávnění ke čtení verze image, dokonce i přes odběry, bude moci nasadit virtuální počítač pomocí verze image.
 
-Doporučujeme sdílet s ostatními uživateli na úrovni galerie. Chcete-li získat ID objektu galerie, použijte příkaz [AZ SIG show](/cli/azure/sig#az-sig-show).
+Doporučujeme sdílet s ostatními uživateli na úrovni galerie. Chcete-li získat ID objektu galerie, použijte příkaz [AZ SIG show](/cli/azure/sig#az_sig_show).
 
 ```azurecli-interactive
 az sig show \
@@ -167,7 +167,7 @@ az sig show \
    --query id
 ```
 
-Pomocí ID objektu jako oboru společně s e-mailovou adresou a [AZ role Assignment vytvořit](/cli/azure/role/assignment#az-role-assignment-create) poskytněte uživateli přístup k galerii sdílených imagí. Nahraďte `<email-address>` a `<gallery iD>` vlastními informacemi.
+Pomocí ID objektu jako oboru společně s e-mailovou adresou a [AZ role Assignment vytvořit](/cli/azure/role/assignment#az_role_assignment_create) poskytněte uživateli přístup k galerii sdílených imagí. Nahraďte `<email-address>` a `<gallery iD>` vlastními informacemi.
 
 ```azurecli-interactive
 az role assignment create \

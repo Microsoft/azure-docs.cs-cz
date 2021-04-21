@@ -9,12 +9,12 @@ ms.subservice: instance-protection
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 8b331eaf52a0a97232d481dccfff932221cd5faa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 292abce3361c000eeeef2c399d5ffa2d2c4852e1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933453"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762852"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Ochrana instancí pro instance sady škálování virtuálních počítačů Azure
 
@@ -56,7 +56,7 @@ Ochranu pomocí škálování můžete v Azure Portal použít na instanci v sad
 1. V okně **Zásady ochrany** vyberte možnost **chránit před škálováním** .
 1. Vyberte **Uložit**. 
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Následující příklad aplikuje ochranu se škálováním na instanci v sadě škálování.
 
@@ -94,7 +94,7 @@ Update-AzVmssVM `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Pomocí [AZ VMSS Update](/cli/azure/vmss#az-vmss-update) aplikujte ochranu škálováním na více instancí na instanci sady škálování.
+Pomocí [AZ VMSS Update](/cli/azure/vmss#az_vmss_update) aplikujte ochranu škálováním na více instancí na instanci sady škálování.
 
 Následující příklad aplikuje ochranu se škálováním na instanci v sadě škálování s ID instance 0.
 
@@ -124,7 +124,7 @@ Ochranu můžete použít z akcí sady škálování pomocí Azure Portal do ins
 1. V okně **Zásady ochrany** vyberte možnost **nastavit akce chránit ze sady škálování** .
 1. Vyberte **Uložit**. 
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Následující příklad aplikuje ochranu z akcí sady škálování na instanci v sadě škálování.
 
@@ -165,7 +165,7 @@ Update-AzVmssVM `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Pomocí [AZ VMSS Update](/cli/azure/vmss#az-vmss-update) aplikujte ochranu ze všech akcí sady škálování na vaši instanci sady škálování.
+Pomocí [AZ VMSS Update](/cli/azure/vmss#az_vmss_update) aplikujte ochranu ze všech akcí sady škálování na vaši instanci sady škálování.
 
 Následující příklad aplikuje ochranu z akcí sady škálování na instanci v sadě škálování s ID instance 0.
 
