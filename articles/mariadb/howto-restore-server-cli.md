@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a6e46efd7f998437c3998df9a989ef9e1500e888
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af197f2dd144e7541f669fdd67b58c38d91b4400
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664830"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777126"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Postup zálohování a obnovení serveru v Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure
 
@@ -57,7 +57,7 @@ Doba uchovávání záloh určuje, jak daleko se obnovení k určitému bodu v �
 
 Server můžete obnovit k předchozímu bodu v čase. Obnovená data se zkopírují na nový server a stávající server zůstane tak, jak je. Například pokud je tabulka omylem vyřazena v poledne ještě dnes, můžete ji obnovit do času těsně před poledne. Pak můžete načíst chybějící tabulku a data z obnovené kopie serveru.
 
-K obnovení serveru použijte příkaz Azure CLI [AZ MariaDB Server Restore](/cli/azure/mariadb/server#az-mariadb-server-restore) .
+K obnovení serveru použijte příkaz Azure CLI [AZ MariaDB Server Restore](/cli/azure/mariadb/server#az_mariadb_server_restore) .
 
 ### <a name="run-the-restore-command"></a>Spuštění příkazu RESTORE
 

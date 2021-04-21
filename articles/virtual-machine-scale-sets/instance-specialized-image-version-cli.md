@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2ecc2bfe6bdc06ede61e6c4d1e6eccfc9ef6323a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5fc88c00d548c0a034984976557d316fdac7620f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98877998"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792340"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Vytvoření sady škálování s použitím specializované verze Image pomocí Azure CLI
 
@@ -25,7 +25,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 V tomto příkladu nahraďte názvy prostředků podle potřeby. 
 
-V galerii můžete zobrazit definice obrázků pomocí [AZ SIG image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) , abyste viděli název a ID definic.
+V galerii můžete zobrazit definice obrázků pomocí [AZ SIG image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list) , abyste viděli název a ID definic.
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -37,7 +37,7 @@ az sig image-definition list \
    --output tsv
 ```
 
-Vytvořte sadu škálování pomocí [`az vmss create`](/cli/azure/vmss#az-vmss-create) `--specialized` parametru pomocí parametru, který označuje, že se jedná o specializovanou image.
+Vytvořte sadu škálování pomocí [`az vmss create`](/cli/azure/vmss#az_vmss_create) `--specialized` parametru pomocí parametru, který označuje, že se jedná o specializovanou image.
 
 Pomocí ID definice image pro `--image` můžete vytvořit instance sady škálování z nejnovější verze image, která je k dispozici. Můžete také vytvořit instance sady škálování z konkrétní verze, a to zadáním ID verze image pro `--image` . Uvědomte si, že použití konkrétní verze image znamená, že automatizace může selhat, pokud není dostupná konkrétní verze image, protože se odstranila nebo odebrala z oblasti. Pro vytvoření nového virtuálního počítače doporučujeme použít ID definice image, pokud není potřeba konkrétní verze image.
 

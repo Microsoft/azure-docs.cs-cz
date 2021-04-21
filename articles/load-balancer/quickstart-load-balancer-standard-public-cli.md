@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 1956d51cbcf962f7a73e970ca2cec858d9ec6579
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 9b332b18930d58ebb1d155c35a74eed69a90ce73
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056500"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788758"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý start: Vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
 
@@ -36,7 +36,7 @@ Začínáme s Azure Load Balancer pomocí rozhraní příkazového řádku Azure
 
 Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az-group-create):
+Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az_group_create):
 
 * Název **CreatePubLBQS-RG**. 
 * V umístění **eastus** .
@@ -61,7 +61,7 @@ Než nasadíte virtuální počítače a otestujete Nástroj pro vyrovnávání 
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-createt):
+Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az_network_vnet_createt):
 
 * S názvem **myVNet**.
 * Předpona adresy **10.1.0.0/16**
@@ -81,7 +81,7 @@ Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/
 ```
 ### <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-K vytvoření veřejné IP adresy pro hostitele bastionu použijte [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) :
+K vytvoření veřejné IP adresy pro hostitele bastionu použijte [AZ Network Public-IP Create](/cli/azure/network/public-ip#az_network_public_ip_create) :
 
 * Vytvořte záložní veřejnou IP adresu zóny Standard s názvem **myBastionIP**.
 * V **CCreatePubLBQS-RG**.
@@ -94,7 +94,7 @@ az network public-ip create \
 ```
 ### <a name="create-a-bastion-subnet"></a>Vytvoření podsítě bastionu
 
-Pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) vytvořte podsíť bastionu:
+Pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) vytvořte podsíť bastionu:
 
 * S názvem **AzureBastionSubnet**.
 * Předpona adresy **10.1.1.0/24**.
@@ -111,7 +111,7 @@ az network vnet subnet create \
 
 ### <a name="create-bastion-host"></a>Vytvořit hostitele bastionu
 
-Pomocí [AZ Network bastionu Create](/cli/azure/network/bastion#az-network-bastion-create) Vytvořte hostitele bastionu:
+Pomocí [AZ Network bastionu Create](/cli/azure/network/bastion#az_network_bastion_create) Vytvořte hostitele bastionu:
 
 * S názvem **myBastionHost**.
 * V **CreatePubLBQS-RG**.
@@ -134,7 +134,7 @@ Nasazení hostitele Azure bastionu může trvat několik minut.
 
 U standardního nástroje pro vyrovnávání zatížení musí být virtuální počítače na back-endové adrese k dispozici pro síťová rozhraní, která patří do skupiny zabezpečení sítě. 
 
-Vytvořte skupinu zabezpečení sítě pomocí [AZ Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create):
+Vytvořte skupinu zabezpečení sítě pomocí [AZ Network NSG Create](/cli/azure/network/nsg#az_network_nsg_create):
 
 * S názvem **myNSG**.
 * Ve skupině prostředků **CreatePubLBQS-RG**.
@@ -147,7 +147,7 @@ Vytvořte skupinu zabezpečení sítě pomocí [AZ Network NSG Create](/cli/azur
 
 ### <a name="create-a-network-security-group-rule"></a>Vytvoření pravidla skupiny zabezpečení sítě
 
-Vytvořte pravidlo skupiny zabezpečení sítě pomocí [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create):
+Vytvořte pravidlo skupiny zabezpečení sítě pomocí [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create):
 
 * S názvem **myNSGRuleHTTP**.
 * Ve skupině zabezpečení sítě, kterou jste vytvořili v předchozím kroku, **myNSG**.
@@ -184,7 +184,7 @@ V této části vytvoříte:
 
 ### <a name="create-network-interfaces-for-the-virtual-machines"></a>Vytvoření síťových rozhraní pro virtuální počítače
 
-Vytvořte tři síťová rozhraní pomocí [AZ Network nic Create](/cli/azure/network/nic#az-network-nic-create):
+Vytvořte tři síťová rozhraní pomocí [AZ Network nic Create](/cli/azure/network/nic#az_network_nic_create):
 
 * Pojmenované **myNicVM1**, **myNicVM2** a **myNicVM3**.
 * Ve skupině prostředků **CreatePubLBQS-RG**.
@@ -207,7 +207,7 @@ Vytvořte tři síťová rozhraní pomocí [AZ Network nic Create](/cli/azure/ne
 
 ### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
-Vytvořte virtuální počítače pomocí [AZ VM Create](/cli/azure/vm#az-vm-create):
+Vytvořte virtuální počítače pomocí [AZ VM Create](/cli/azure/vm#az_vm_create):
 
 ### <a name="vm1"></a>VM1
 * S názvem **myVM1**.
@@ -263,11 +263,13 @@ Vytvořte virtuální počítače pomocí [AZ VM Create](/cli/azure/vm#az-vm-cre
 ```
 Nasazení virtuálních počítačů může trvat několik minut.
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="create-a-public-ip-address---standard"></a>Vytvoření veřejné IP adresy – Standard
 
 Pokud chcete mít k webové aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. 
 
-Použijte [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) to:
+Použijte [AZ Network Public-IP Create](/cli/azure/network/public-ip#az_network_public_ip_create) to:
 
 * Vytvořte záložní veřejnou IP adresu zóny Standard s názvem **myPublicIP**.
 * V **CreatePubLBQS-RG**.
@@ -300,7 +302,7 @@ Tato část podrobně popisuje vytvoření a konfiguraci následujících kompon
 
 ### <a name="create-the-load-balancer-resource"></a>Vytvoření prostředku nástroje pro vyrovnávání zatížení
 
-Vytvoření veřejného nástroje pro vyrovnávání zatížení pomocí [AZ Network](/cli/azure/network/lb#az-network-lb-create)diskont Create:
+Vytvoření veřejného nástroje pro vyrovnávání zatížení pomocí [AZ Network](/cli/azure/network/lb#az_network_lb_create)diskont Create:
 
 * S názvem **myLoadBalancer**.
 * Front-endového fondu s názvem **myFrontEnd**.
@@ -323,7 +325,7 @@ Sonda stavu kontroluje všechny instance virtuálních počítačů, aby bylo za
 
 Z nástroje pro vyrovnávání zatížení se odebere virtuální počítač s neúspěšnou kontrolou testu. Po vyřešení chyby se virtuální počítač do nástroje pro vyrovnávání zatížení přidá zpátky.
 
-Vytvořte sondu stavu pomocí [AZ Network disprobe test Create](/cli/azure/network/lb/probe#az-network-lb-probe-create):
+Vytvořte sondu stavu pomocí [AZ Network disprobe test Create](/cli/azure/network/lb/probe#az_network_lb_probe_create):
 
 * Monitoruje stav virtuálních počítačů.
 * S názvem **myHealthProbe**.
@@ -347,7 +349,7 @@ Pravidlo nástroje pro vyrovnávání zatížení definuje:
 * Fond IP adres back-endu pro příjem provozu.
 * Požadovaný zdrojový a cílový port. 
 
-Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [AZ Network diskont Rule Create](/cli/azure/network/lb/rule#az-network-lb-rule-create):
+Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [AZ Network diskont Rule Create](/cli/azure/network/lb/rule#az_network_lb_rule_create):
 
 * Pojmenovaný **myHTTPRule**
 * Naslouchat na **portu 80** ve fondu front-endu **myFrontEnd**.
@@ -376,7 +378,7 @@ Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [AZ Network 
 ```
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Přidání virtuálních počítačů do back-endového fondu služby Load Balancer
 
-Přidejte virtuální počítače do fondu back-end pomocí [AZ Network nic IP-config Address-Pool Add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add):
+Přidejte virtuální počítače do fondu back-end pomocí [AZ Network nic IP-config Address-Pool Add](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_add):
 
 * Ve fondu back-end adres **myBackEndPool**.
 * Ve skupině prostředků **CreatePubLBQS-RG**.
@@ -404,7 +406,7 @@ Veřejnou IP adresu nebo předponu lze použít pro odchozí konfiguraci.
 
 ### <a name="public-ip"></a>Veřejná IP adresa
 
-Pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) vytvořte jednu IP adresu pro odchozí připojení.  
+Pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip#az_network_public_ip_create) vytvořte jednu IP adresu pro odchozí připojení.  
 
 * S názvem **myPublicIPOutbound**.
 * V **CreatePubLBQS-RG**.
@@ -428,7 +430,7 @@ Vytvoření redundantní veřejné IP adresy v Zóna 1:
 
 ### <a name="public-ip-prefix"></a>Předpona veřejné IP adresy
 
-Pomocí [AZ Network Public-IP prefix Create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) vytvořte předponu veřejné IP adresy pro odchozí připojení.
+Pomocí [AZ Network Public-IP prefix Create](/cli/azure/network/public-ip/prefix#az_network_public_ip_prefix_create) vytvořte předponu veřejné IP adresy pro odchozí připojení.
 
 * S názvem **myPublicIPPrefixOutbound**.
 * V **CreatePubLBQS-RG**.
@@ -454,7 +456,7 @@ Další informace o škálování odchozího NAT a odchozího připojení najdet
 
 ### <a name="create-outbound-frontend-ip-configuration"></a>Vytvoření odchozí konfigurace IP adresy front-endu
 
-Vytvořte novou konfiguraci IP adresy front-endu pomocí [AZ Network disendu-IP Create ](/cli/azure/network/lb/frontend-ip#az-network-lb-frontend-ip-create):
+Vytvořte novou konfiguraci IP adresy front-endu pomocí [AZ Network disendu-IP Create ](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_create):
 
 Vyberte příkazy veřejné IP adresy nebo předpony veřejných IP adres na základě rozhodnutí v předchozím kroku.
 
@@ -490,7 +492,7 @@ Vyberte příkazy veřejné IP adresy nebo předpony veřejných IP adres na zá
 
 ### <a name="create-outbound-pool"></a>Vytvořit odchozí fond
 
-Vytvořte nový odchozí fond pomocí [AZ Network Address-Pool Create](/cli/azure/network/lb/address-pool#az-network-lb-address-pool-create):
+Vytvořte nový odchozí fond pomocí [AZ Network Address-Pool Create](/cli/azure/network/lb/address-pool#az_network_lb_address_pool_create):
 
 * S názvem **myBackEndPoolOutbound**.
 * Ve skupině prostředků **CreatePubLBQS-RG**.
@@ -504,7 +506,7 @@ Vytvořte nový odchozí fond pomocí [AZ Network Address-Pool Create](/cli/azur
 ```
 ### <a name="create-outbound-rule"></a>Vytvořit odchozí pravidlo
 
-Vytvořte nové odchozí pravidlo pro odchozí back-end fond pomocí [AZ Network Outbound-rule Create](/cli/azure/network/lb/outbound-rule#az-network-lb-outbound-rule-create):
+Vytvořte nové odchozí pravidlo pro odchozí back-end fond pomocí [AZ Network Outbound-rule Create](/cli/azure/network/lb/outbound-rule#az_network_lb_outbound_rule_create):
 
 * S názvem **myOutboundRule**.
 * Ve skupině prostředků **CreatePubLBQS-RG**.
@@ -528,7 +530,7 @@ Vytvořte nové odchozí pravidlo pro odchozí back-end fond pomocí [AZ Network
 ```
 ### <a name="add-virtual-machines-to-outbound-pool"></a>Přidat virtuální počítače do odchozího fondu
 
-Přidejte virtuální počítače do odchozího fondu pomocí [AZ Network nic IP-config Address-Pool Add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add):
+Přidejte virtuální počítače do odchozího fondu pomocí [AZ Network nic IP-config Address-Pool Add](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_add):
 
 
 * Ve fondu back-end adres **myBackEndPoolOutbound**.
@@ -561,7 +563,7 @@ Než nasadíte virtuální počítače a otestujete Nástroj pro vyrovnávání 
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-create):
+Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az_network_vnet_create):
 
 * S názvem **myVNet**.
 * Předpona adresy **10.1.0.0/16**
@@ -582,7 +584,7 @@ Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/
 
 ### <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-K vytvoření veřejné IP adresy pro hostitele bastionu použijte [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) :
+K vytvoření veřejné IP adresy pro hostitele bastionu použijte [AZ Network Public-IP Create](/cli/azure/network/public-ip#az_network_public_ip_create) :
 
 * Vytvořte záložní veřejnou IP adresu zóny Standard s názvem **myBastionIP**.
 * V **CreatePubLBQS-RG**.
@@ -595,7 +597,7 @@ az network public-ip create \
 ```
 ### <a name="create-a-bastion-subnet"></a>Vytvoření podsítě bastionu
 
-Pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) vytvořte podsíť bastionu:
+Pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) vytvořte podsíť bastionu:
 
 * S názvem **AzureBastionSubnet**.
 * Předpona adresy **10.1.1.0/24**.
@@ -612,7 +614,7 @@ az network vnet subnet create \
 
 ### <a name="create-bastion-host"></a>Vytvořit hostitele bastionu
 
-Pomocí [AZ Network bastionu Create](/cli/azure/network/bastion#az-network-bastion-create) Vytvořte hostitele bastionu:
+Pomocí [AZ Network bastionu Create](/cli/azure/network/bastion#az_network_bastion_create) Vytvořte hostitele bastionu:
 
 * S názvem **myBastionHost**.
 * V **CreatePubLBQS-RG**.
@@ -635,7 +637,7 @@ Nasazení hostitele Azure bastionu může trvat několik minut.
 
 U standardního nástroje pro vyrovnávání zatížení musí být virtuální počítače na back-endové adrese k dispozici pro síťová rozhraní, která patří do skupiny zabezpečení sítě. 
 
-Vytvořte skupinu zabezpečení sítě pomocí [AZ Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create):
+Vytvořte skupinu zabezpečení sítě pomocí [AZ Network NSG Create](/cli/azure/network/nsg#az_network_nsg_create):
 
 * S názvem **myNSG**.
 * Ve skupině prostředků **CreatePubLBQS-RG**.
@@ -648,7 +650,7 @@ Vytvořte skupinu zabezpečení sítě pomocí [AZ Network NSG Create](/cli/azur
 
 ### <a name="create-a-network-security-group-rule"></a>Vytvoření pravidla skupiny zabezpečení sítě
 
-Vytvořte pravidlo skupiny zabezpečení sítě pomocí [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create):
+Vytvořte pravidlo skupiny zabezpečení sítě pomocí [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create):
 
 * S názvem **myNSGRuleHTTP**.
 * Ve skupině zabezpečení sítě, kterou jste vytvořili v předchozím kroku, **myNSG**.
@@ -687,7 +689,7 @@ V této části vytvoříte:
 
 ### <a name="create-network-interfaces-for-the-virtual-machines"></a>Vytvoření síťových rozhraní pro virtuální počítače
 
-Vytvořte tři síťová rozhraní pomocí [AZ Network nic Create](/cli/azure/network/nic#az-network-nic-create):
+Vytvořte tři síťová rozhraní pomocí [AZ Network nic Create](/cli/azure/network/nic#az_network_nic_create):
 
 
 * Pojmenované **myNicVM1**, **myNicVM2** a **myNicVM3**.
@@ -710,7 +712,7 @@ Vytvořte tři síťová rozhraní pomocí [AZ Network nic Create](/cli/azure/ne
 ```
 ### <a name="create-availability-set-for-virtual-machines"></a>Vytvořit skupinu dostupnosti pro virtuální počítače
 
-Vytvořte skupinu dostupnosti pomocí [AZ VM Availability-set Create](/cli/azure/vm/availability-set#az-vm-availability-set-create):
+Vytvořte skupinu dostupnosti pomocí [AZ VM Availability-set Create](/cli/azure/vm/availability-set#az_vm_availability_set_create):
 
 * S názvem **myAvSet**.
 * Ve skupině prostředků **CreatePubLBQS-RG**.
@@ -726,7 +728,7 @@ Vytvořte skupinu dostupnosti pomocí [AZ VM Availability-set Create](/cli/azure
 
 ### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
-Vytvořte virtuální počítače pomocí [AZ VM Create](/cli/azure/vm#az-vm-create):
+Vytvořte virtuální počítače pomocí [AZ VM Create](/cli/azure/vm#az_vm_create):
 
 ### <a name="vm1"></a>VM1
 * S názvem **myVM1**.
@@ -782,11 +784,13 @@ Vytvořte virtuální počítače pomocí [AZ VM Create](/cli/azure/vm#az-vm-cre
 ```
 Nasazení virtuálních počítačů může trvat několik minut.
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="create-a-public-ip-address---basic"></a>Vytvoření veřejné IP adresy – základní
 
 Pokud chcete mít k webové aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. 
 
-Použijte [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) to:
+Použijte [AZ Network Public-IP Create](/cli/azure/network/public-ip#az_network_public_ip_create) to:
 
 * Vytvořte záložní veřejnou IP adresu zóny Standard s názvem **myPublicIP**.
 * V **CreatePubLBQS-RG**.
@@ -809,7 +813,7 @@ Tato část podrobně popisuje vytvoření a konfiguraci následujících kompon
 
 ### <a name="create-the-load-balancer-resource"></a>Vytvoření prostředku nástroje pro vyrovnávání zatížení
 
-Vytvoření veřejného nástroje pro vyrovnávání zatížení pomocí [AZ Network](/cli/azure/network/lb#az-network-lb-create)diskont Create:
+Vytvoření veřejného nástroje pro vyrovnávání zatížení pomocí [AZ Network](/cli/azure/network/lb#az_network_lb_create)diskont Create:
 
 * S názvem **myLoadBalancer**.
 * Front-endového fondu s názvem **myFrontEnd**.
@@ -832,7 +836,7 @@ Sonda stavu kontroluje všechny instance virtuálních počítačů, aby bylo za
 
 Z nástroje pro vyrovnávání zatížení se odebere virtuální počítač s neúspěšnou kontrolou testu. Po vyřešení chyby se virtuální počítač do nástroje pro vyrovnávání zatížení přidá zpátky.
 
-Vytvořte sondu stavu pomocí [AZ Network disprobe test Create](/cli/azure/network/lb/probe#az-network-lb-probe-create):
+Vytvořte sondu stavu pomocí [AZ Network disprobe test Create](/cli/azure/network/lb/probe#az_network_lb_probe_create):
 
 * Monitoruje stav virtuálních počítačů.
 * S názvem **myHealthProbe**.
@@ -856,7 +860,7 @@ Pravidlo nástroje pro vyrovnávání zatížení definuje:
 * Fond IP adres back-endu pro příjem provozu.
 * Požadovaný zdrojový a cílový port. 
 
-Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [AZ Network diskont Rule Create](/cli/azure/network/lb/rule#az-network-lb-rule-create):
+Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [AZ Network diskont Rule Create](/cli/azure/network/lb/rule#az_network_lb_rule_create):
 
 * Pojmenovaný **myHTTPRule**
 * Naslouchat na **portu 80** ve fondu front-endu **myFrontEnd**.
@@ -881,7 +885,7 @@ Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [AZ Network 
 
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Přidání virtuálních počítačů do back-endového fondu služby Load Balancer
 
-Přidejte virtuální počítače do fondu back-end pomocí [AZ Network nic IP-config Address-Pool Add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add):
+Přidejte virtuální počítače do fondu back-end pomocí [AZ Network nic IP-config Address-Pool Add](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_add):
 
 * Ve fondu back-end adres **myBackEndPool**.
 * Ve skupině prostředků **CreatePubLBQS-RG**.
@@ -923,7 +927,7 @@ K instalaci služby IIS na virtuálních počítačích použijte [AZ VM Extensi
 
 ## <a name="test-the-load-balancer"></a>Testování Load Balanceru
 
-K získání veřejné IP adresy nástroje pro vyrovnávání zatížení použijte příkaz [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). 
+K získání veřejné IP adresy nástroje pro vyrovnávání zatížení použijte příkaz [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). 
 
 Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
@@ -938,7 +942,7 @@ Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého pr
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odeberte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky pomocí příkazu [AZ Group Delete](/cli/azure/group#az-group-delete) .
+Pokud už je nepotřebujete, odeberte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky pomocí příkazu [AZ Group Delete](/cli/azure/group#az_group_delete) .
 
 ```azurecli-interactive
   az group delete \

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/22/2021
 ms.author: allensu
-ms.openlocfilehash: 76fd959c28203132be4695031d96315f258cf53f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8e32a56148326104c3514b8a2fdb5d6bbd3f00a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563026"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778458"
 ---
 # <a name="quickstart-create-a-private-link-service-using-azure-cli"></a>Rychlý Start: vytvoření služby privátního propojení pomocí Azure CLI
 
@@ -48,7 +48,7 @@ V této části vytvoříte virtuální síť a interní Azure Load Balancer.
 
 V této části vytvoříte virtuální síť a podsíť pro hostování nástroje pro vyrovnávání zatížení, který přistupuje ke službě privátního propojení.
 
-Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-create):
+Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az_network_vnet_create):
 
 * S názvem **myVNet**.
 * Předpona adresy **10.1.0.0/16**
@@ -69,7 +69,7 @@ Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/
 
 ```
 
-Chcete-li aktualizovat podsíť, aby se zakázaly síťové zásady služby privátního propojení, použijte příkaz [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
+Chcete-li aktualizovat podsíť, aby se zakázaly síťové zásady služby privátního propojení, použijte příkaz [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -90,7 +90,7 @@ Tato část podrobně popisuje vytvoření a konfiguraci následujících kompon
 
 ### <a name="create-the-load-balancer-resource"></a>Vytvoření prostředku nástroje pro vyrovnávání zatížení
 
-Vytvoření veřejného nástroje pro vyrovnávání zatížení pomocí [AZ Network](/cli/azure/network/lb#az-network-lb-create)diskont Create:
+Vytvoření veřejného nástroje pro vyrovnávání zatížení pomocí [AZ Network](/cli/azure/network/lb#az_network_lb_create)diskont Create:
 
 * S názvem **myLoadBalancer**.
 * Front-endového fondu s názvem **myFrontEnd**.
@@ -115,7 +115,7 @@ Sonda stavu kontroluje všechny instance virtuálních počítačů, aby bylo za
 
 Z nástroje pro vyrovnávání zatížení se odebere virtuální počítač s neúspěšnou kontrolou testu. Po vyřešení chyby se virtuální počítač do nástroje pro vyrovnávání zatížení přidá zpátky.
 
-Vytvořte sondu stavu pomocí [AZ Network disprobe test Create](/cli/azure/network/lb/probe#az-network-lb-probe-create):
+Vytvořte sondu stavu pomocí [AZ Network disprobe test Create](/cli/azure/network/lb/probe#az_network_lb_probe_create):
 
 * Monitoruje stav virtuálních počítačů.
 * S názvem **myHealthProbe**.
@@ -139,7 +139,7 @@ Pravidlo nástroje pro vyrovnávání zatížení definuje:
 * Fond IP adres back-endu pro příjem provozu.
 * Požadovaný zdrojový a cílový port. 
 
-Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [AZ Network diskont Rule Create](/cli/azure/network/lb/rule#az-network-lb-rule-create):
+Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [AZ Network diskont Rule Create](/cli/azure/network/lb/rule#az_network_lb_rule_create):
 
 * Pojmenovaný **myHTTPRule**
 * Naslouchat na **portu 80** ve fondu front-endu **myFrontEnd**.
@@ -168,7 +168,7 @@ Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [AZ Network 
 
 V této části vytvoříte službu privátního propojení, která používá Azure Load Balancer vytvořené v předchozím kroku.
 
-Vytvoření služby privátního propojení pomocí konfigurace IP adresy standardního front-endu pro vyrovnávání zatížení pomocí metody [AZ Network Private-Link-Service Create](/cli/azure/network/private-link-service#az-network-private-link-service-create):
+Vytvoření služby privátního propojení pomocí konfigurace IP adresy standardního front-endu pro vyrovnávání zatížení pomocí metody [AZ Network Private-Link-Service Create](/cli/azure/network/private-link-service#az_network_private_link_service_create):
 
 * S názvem **myPrivateLinkService**.
 * Ve virtuální síti **myVNet**.
@@ -195,7 +195,7 @@ V této části namapujete službu privátního propojení na soukromý koncový
 
 ### <a name="create-private-endpoint-virtual-network"></a>Vytvořit virtuální síť privátního koncového bodu
 
-Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-create):
+Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az_network_vnet_create):
 
 * S názvem **myVNetPE**.
 * Předpona adresy **11.1.0.0/16**
@@ -214,7 +214,7 @@ Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/
     --subnet-prefixes 11.1.0.0/24
 ```
 
-Pokud chcete aktualizovat podsíť, aby se zakázaly zásady sítě privátního koncového bodu, použijte [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
+Pokud chcete aktualizovat podsíť, aby se zakázaly zásady sítě privátního koncového bodu, použijte [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -256,7 +256,7 @@ az network vnet subnet update \
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odeberte pomocí příkazu [AZ Group Delete](/cli/azure/group#az-group-delete) skupinu prostředků, službu privátního propojení, nástroj pro vyrovnávání zatížení a všechny související prostředky.
+Pokud už je nepotřebujete, odeberte pomocí příkazu [AZ Group Delete](/cli/azure/group#az_group_delete) skupinu prostředků, službu privátního propojení, nástroj pro vyrovnávání zatížení a všechny související prostředky.
 
 ```azurecli-interactive
   az group delete \

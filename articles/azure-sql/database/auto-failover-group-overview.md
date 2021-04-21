@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/26/2021
-ms.openlocfilehash: c0149dbb5f17af87229d951cf744c285e54835af
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: f3bc1dfcfeeb6dda110f71ed7a1c53909153cf00
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375946"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762150"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -434,11 +434,11 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 | Příkaz | Popis |
 | --- | --- |
-| [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
-| [AZ SQL Failover-Group DELETE](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
-| [AZ SQL Failover-Group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Načte konfiguraci skupiny převzetí služeb při selhání. |
-| [AZ SQL Failover-Group Update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Upraví konfiguraci skupiny převzetí služeb při selhání nebo přidá jednu nebo více databází do skupiny převzetí služeb při selhání.|
-| [AZ SQL Failover-Group set-Primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server. |
+| [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group#az_sql_failover_group_create) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
+| [AZ SQL Failover-Group DELETE](/cli/azure/sql/failover-group#az_sql_failover_group_delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
+| [AZ SQL Failover-Group show](/cli/azure/sql/failover-group#az_sql_failover_group_show) | Načte konfiguraci skupiny převzetí služeb při selhání. |
+| [AZ SQL Failover-Group Update](/cli/azure/sql/failover-group#az_sql_failover_group_update) |Upraví konfiguraci skupiny převzetí služeb při selhání nebo přidá jednu nebo více databází do skupiny převzetí služeb při selhání.|
+| [AZ SQL Failover-Group set-Primary](/cli/azure/sql/failover-group#az_sql_failover_group_set_primary) | Aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server. |
 
 # <a name="rest-api"></a>[Rozhraní REST API](#tab/rest-api)
 
@@ -472,11 +472,11 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 | Příkaz | Popis |
 | --- | --- |
-| [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
-| [AZ SQL Failover-Group DELETE](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
-| [AZ SQL Failover-Group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Načte konfiguraci skupiny převzetí služeb při selhání. |
-| [AZ SQL Failover-Group Update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Upraví konfiguraci skupiny převzetí služeb při selhání nebo přidá jednu nebo více databází do skupiny převzetí služeb při selhání.|
-| [AZ SQL Failover-Group set-Primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server. |
+| [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group#az_sql_failover_group_create) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
+| [AZ SQL Failover-Group DELETE](/cli/azure/sql/failover-group#az_sql_failover_group_delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
+| [AZ SQL Failover-Group show](/cli/azure/sql/failover-group#az_sql_failover_group_show) | Načte konfiguraci skupiny převzetí služeb při selhání. |
+| [AZ SQL Failover-Group Update](/cli/azure/sql/failover-group#az_sql_failover_group_update) |Upraví konfiguraci skupiny převzetí služeb při selhání nebo přidá jednu nebo více databází do skupiny převzetí služeb při selhání.|
+| [AZ SQL Failover-Group set-Primary](/cli/azure/sql/failover-group#az_sql_failover_group_set_primary) | Aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server. |
 
 # <a name="rest-api"></a>[Rozhraní REST API](#tab/rest-api)
 

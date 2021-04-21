@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: ef0f32ecc59bea6ee7a0f7ff12083fd2358c223c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 08bc36500bbd95633d1cb1d02bf10a7397401aa4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478909"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780114"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Určete, který Azure Storage model šifrovacího klíče se používá pro účet úložiště.
 
@@ -62,7 +62,7 @@ Pokud je hodnota vlastnosti **zdroje** `Microsoft.Storage` klíče, pak je úče
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Pokud chcete ověřit model šifrování pro účet úložiště pomocí rozhraní příkazového řádku Azure, zavolejte příkaz [AZ Storage Account show](/cli/azure/storage/account#az-storage-account-show) a pak zkontrolujte vlastnost **source** účtu.
+Pokud chcete ověřit model šifrování pro účet úložiště pomocí rozhraní příkazového řádku Azure, zavolejte příkaz [AZ Storage Account show](/cli/azure/storage/account#az_storage_account_show) a pak zkontrolujte vlastnost **source** účtu.
 
 ```azurecli-interactive
 key_source=$(az storage account show \

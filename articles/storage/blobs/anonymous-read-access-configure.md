@@ -10,12 +10,12 @@ ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: feac7b890c973b1541c5362f860432687082953f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31812a7b2dddad474ab5cd422a15f6e5368dba5c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96533872"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774624"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Konfigurace anonymního veřejného přístupu pro čtení pro kontejnery a objekty blob
 
@@ -239,7 +239,7 @@ Pokud je pro účet úložiště zakázaný veřejný přístup, nedá se nastav
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Chcete-li aktualizovat úroveň veřejného přístupu pro jeden nebo více kontejnerů pomocí rozhraní příkazového řádku Azure CLI, použijte příkaz [AZ Storage Container set Permission](/cli/azure/storage/container#az-storage-container-set-permission) . Autorizaci této operace provedete předáním klíče účtu, připojovacího řetězce nebo sdíleného přístupového podpisu (SAS). Operace [set ACL kontejneru](/rest/api/storageservices/set-container-acl) , která nastavuje úroveň veřejného přístupu kontejneru, nepodporuje autorizaci pomocí Azure AD. Další informace najdete v tématu [oprávnění pro volání operací s daty objektů BLOB a front](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Chcete-li aktualizovat úroveň veřejného přístupu pro jeden nebo více kontejnerů pomocí rozhraní příkazového řádku Azure CLI, použijte příkaz [AZ Storage Container set Permission](/cli/azure/storage/container#az_storage_container_set_permission) . Autorizaci této operace provedete předáním klíče účtu, připojovacího řetězce nebo sdíleného přístupového podpisu (SAS). Operace [set ACL kontejneru](/rest/api/storageservices/set-container-acl) , která nastavuje úroveň veřejného přístupu kontejneru, nepodporuje autorizaci pomocí Azure AD. Další informace najdete v tématu [oprávnění pro volání operací s daty objektů BLOB a front](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
 
 Následující příklad vytvoří kontejner s povoleným veřejným přístupem a pak aktualizuje nastavení veřejného přístupu kontejneru tak, aby povoloval anonymní přístup ke kontejneru a jeho objektům blob. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 

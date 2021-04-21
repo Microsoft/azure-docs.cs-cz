@@ -3,12 +3,12 @@ title: Matice podpory pro zotavení po havárii virtuálního počítače Azure 
 description: Shrnuje podporu zotavení po havárii virtuálních počítačů Azure do sekundární oblasti pomocí Azure Site Recovery.
 ms.topic: article
 ms.date: 11/29/2020
-ms.openlocfilehash: 79cde5957b2090b8337a3af424dbda7e42608398
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: daba23ec1382f1b5fb18bffba48d0571fe998a2f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713331"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792448"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -53,6 +53,12 @@ Německo    | Německo – střed, Německo – severovýchod
 Čína | Čína – východ, Čína – sever, Čína North2, Čína – východ 2
 Brazílie | Brazílie – jih
 Omezené oblasti rezervované pro zotavení po havárii v zemi |Švýcarsko – západ vyhrazena pro Švýcarsko – sever, Francie – jih vyhrazená pro Francii – střed, střed USA – západ, USA – střed, JIO Indie – střed pro JIO Indie západní zákazníky, Brazílie – jihovýchod pro Brazílie – jih
+
+Replikace a obnovení virtuálních počítačů mezi dvěma oblastmi v různých kontinentech je omezené na následující páry oblastí:
+
+* Jihovýchodní Asie a Austrálie – východ
+* Jihovýchodní Asie a Austrálie – jihovýchod
+* Západní Evropa a Střed USA – jih.
 
 >[!NOTE]
 >

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 06b37e8b25d932115384124a45156c801fb9708f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53ad6dd922c1ccebd79aebcd2966b23b38de00e7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361668"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776892"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>Volba způsobu autorizace přístupu k datům objektů BLOB pomocí Azure CLI
 
@@ -63,7 +63,7 @@ Následující příklad ukazuje, jak vytvořit kontejner z Azure CLI pomocí va
     > [!IMPORTANT]
     > Rozšiřování přiřazení rolí Azure může trvat několik minut.
 
-1. Zavolejte pomocí příkazu [AZ Storage Container Create](/cli/azure/storage/container#az-storage-container-create) s `--auth-mode` parametrem nastaveným na `login` , aby se vytvořil kontejner pomocí vašich přihlašovacích údajů Azure AD. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
+1. Zavolejte pomocí příkazu [AZ Storage Container Create](/cli/azure/storage/container#az_storage_container_create) s `--auth-mode` parametrem nastaveným na `login` , aby se vytvořil kontejner pomocí vašich přihlašovacích údajů Azure AD. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 
     ```azurecli
     az storage container create \

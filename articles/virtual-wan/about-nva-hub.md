@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
-ms.openlocfilehash: e70b899ea0133704e4ecab42dd4c2a09bca41804
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 7c3ae14cd409e7bfc9be77c1a593964b73a12ddc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226307"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791044"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Virtuální síťové zařízení ve službě Azure Virtual WAN hub (Preview)
 
@@ -77,13 +77,14 @@ SÍŤOVÉ virtuální zařízení ve virtuálním rozbočovači je k dispozici p
 
 |Geopolitická oblast | Oblast Azure|
 |---|---|
-| Severní Amerika| Západní USA, Střed USA – jih Východní USA 2   |
-| Jižní Amerika | Brazílie – jih |
-| Evropa | Západní Evropa Velká Británie – jih|
+| Severní Amerika| Kanada – střed, Kanada – východ, Střed USA, Východní USA, Východní USA 2, Střed USA – sever, Středozápadní USA, Západní USA, Západní USA 2 |
+| Jižní Amerika | Brazílie – jih, Brazílie – jihovýchod |
+| Evropa | Francie – střed, Francie – jih, Německo – sever, Německo – středozápad, Severní Evropa, Norsko – východ, Norsko – západ, Švýcarsko – sever, Švýcarsko – západ, Velká Británie – jih, Velká Británie – západ, Západní Evropa|
 |  Střední východ | Spojené arabské emiráty sever |
-| Asie | Japan East |
-| Austrálie | Austrálie – východ |
-
+| Asie |  Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, jihovýchodní Asie | 
+| Austrálie | Austrálie – jihovýchod, Austrálie – východ, Austrálie – střed, Austrálie – střed 2|
+| Afrika | Jižní Afrika – sever |
+| Indie | Jižní Indie, Západní Indie Střed Indie | 
 ## <a name="faq"></a>Časté otázky
 
 ### <a name="i-am-a-network-appliance-partner-and-want-to-get-our-nva-in-the-hub--can-i-join-this-partner-program"></a>Jsem partnerem síťového zařízení a chcete získat naše síťové virtuální ZAŘÍZENÍy v centru.  Můžu se připojit k tomuto partnerskému programu?
@@ -92,7 +93,7 @@ V tuto chvíli bohužel nemusíme mít na zadarmo žádné nové nabídky partne
 
 ### <a name="can-i-deploy-any-nva-from-azure-marketplace-into-the-virtual-wan-hub"></a>Můžu nasazovat jakékoli síťové virtuální zařízení z Azure Marketplace do virtuálního centra sítě WAN?
 
-V tuto chvíli jsou k dispozici pouze aplikace [Barracuda CLOUDGEN WAN](https://aka.ms/BarracudaMarketPlaceOffer) a [Cisco Cloud vWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) , které by bylo možné nasadit do virtuálního centra sítě WAN.
+V současné době je k dispozici pouze [Barracuda aplikace CLOUDGEN WAN](https://aka.ms/BarracudaMarketPlaceOffer)  [Cisco Cloud VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) a [VMware SD-WAN](https://aka.ms/vmwareMarketplaceLink) pro nasazení do virtuálního centra sítě WAN.
 
 ### <a name="what-is-the-cost-of-the-nva"></a>Jaké jsou náklady na síťové virtuální zařízení?
 
@@ -104,7 +105,7 @@ No. Pokud chcete nasadit síťové virtuální zařízení, musíte použít sta
 
 ### <a name="can-i-deploy-an-nva-into-a-secure-hub"></a>Můžu síťové virtuální zařízení nasadit do zabezpečeného centra?
 
-Ano. Barracuda CloudGen WAN se dá nasadit do centra s Azure Firewall.
+Ano. Partnerská síťové virtuální zařízení se dají nasadit do centra s Azure Firewall.
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>Můžu na svém firemním pobočce připojit libovolné zařízení CPE, aby se Barracuda CloudGen WAN síťové virtuální zařízení v centru?
 

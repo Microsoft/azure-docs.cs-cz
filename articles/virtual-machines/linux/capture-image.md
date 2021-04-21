@@ -9,12 +9,12 @@ ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: 8e81c204c1f05b7fc6bdf1efc7060e2094c648e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dddbad2403734bc749497a7acca16b2a5b6076f4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102630618"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792250"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Postup vytvoření spravované image virtuálního počítače nebo virtuálního pevného disku
 
@@ -32,7 +32,7 @@ Před vytvořením image budete potřebovat tyto položky:
 
 * Virtuální počítač Azure vytvořený v modelu nasazení Správce prostředků, který používá spravované disky. Pokud jste ještě nevytvořili virtuální počítač Linux, můžete použít šablony [portálu](quick-create-portal.md), [Azure CLI](quick-create-cli.md)nebo [Správce prostředků](create-ssh-secured-vm-from-template.md). Nakonfigurujte virtuální počítač podle potřeby. Můžete například [přidat datové disky](add-disk.md), použít aktualizace a nainstalovat aplikace. 
 
-* Je nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásili jste se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index#az-login).
+* Je nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásili jste se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index#az_login).
 
 ## <a name="prefer-a-tutorial-instead"></a>Chcete místo toho použít kurz?
 
@@ -77,7 +77,7 @@ Pomocí rozhraní příkazového řádku Azure můžete označit virtuální po�
 
     Virtuální počítač, který je zobecněn, již nelze restartovat.
 
-3. Vytvořte bitovou kopii prostředku virtuálního počítače pomocí [AZ image Create](/cli/azure/image#az-image-create). Následující příklad vytvoří image s názvem *myImage* ve skupině prostředků s názvem *myResourceGroup* pomocí prostředku virtuálního počítače s názvem *myVM*.
+3. Vytvořte bitovou kopii prostředku virtuálního počítače pomocí [AZ image Create](/cli/azure/image#az_image_create). Následující příklad vytvoří image s názvem *myImage* ve skupině prostředků s názvem *myResourceGroup* pomocí prostředku virtuálního počítače s názvem *myVM*.
    
     ```azurecli
     az image create \
@@ -106,7 +106,7 @@ az vm create \
 
 ### <a name="creating-the-vm-in-another-resource-group"></a>Vytvoření virtuálního počítače v jiné skupině prostředků 
 
-Virtuální počítače můžete vytvořit z image v libovolné skupině prostředků v rámci vašeho předplatného. Pokud chcete vytvořit virtuální počítač v jiné skupině prostředků než image, zadejte úplné ID prostředku k imagi. K zobrazení seznamu imagí použijte [AZ image list](/cli/azure/image#az-image-list) . Výstup se podobá následujícímu příkladu.
+Virtuální počítače můžete vytvořit z image v libovolné skupině prostředků v rámci vašeho předplatného. Pokud chcete vytvořit virtuální počítač v jiné skupině prostředků než image, zadejte úplné ID prostředku k imagi. K zobrazení seznamu imagí použijte [AZ image list](/cli/azure/image#az_image_list) . Výstup se podobá následujícímu příkladu.
 
 ```json
 "id": "/subscriptions/guid/resourceGroups/MYRESOURCEGROUP/providers/Microsoft.Compute/images/myImage",
@@ -114,7 +114,7 @@ Virtuální počítače můžete vytvořit z image v libovolné skupině prostř
    "name": "myImage",
 ```
 
-Následující příklad používá příkaz [AZ VM Create](/cli/azure/vm#az-vm-create) k vytvoření virtuálního počítače ve skupině prostředků, která je jiná než zdrojová image, zadáním ID prostředku image.
+Následující příklad používá příkaz [AZ VM Create](/cli/azure/vm#az_vm_create) k vytvoření virtuálního počítače ve skupině prostředků, která je jiná než zdrojová image, zadáním ID prostředku image.
 
 ```azurecli
 az vm create \
@@ -128,7 +128,7 @@ az vm create \
 
 ## <a name="step-4-verify-the-deployment"></a>Krok 4: Ověření nasazení
 
-Připojte se přes SSH k virtuálnímu počítači, který jste vytvořili pro ověření nasazení a začněte používat nový virtuální počítač. Pokud se chcete připojit přes SSH, vyhledejte IP adresu nebo plně kvalifikovaný název domény virtuálního počítače pomocí [AZ VM show](/cli/azure/vm#az-vm-show).
+Připojte se přes SSH k virtuálnímu počítači, který jste vytvořili pro ověření nasazení a začněte používat nový virtuální počítač. Pokud se chcete připojit přes SSH, vyhledejte IP adresu nebo plně kvalifikovaný název domény virtuálního počítače pomocí [AZ VM show](/cli/azure/vm#az_vm_show).
 
 ```azurecli
 az vm show \

@@ -36,8 +36,12 @@
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
 - name: Koncepty
   items:
-    - name: Konektory pro Logic Apps
+    - name: Přehled konektorů pro Logic Apps
       href: ../connectors/apis-list.md
+    - name: Spravované konektory pro Logic Apps
+      href: ../connectors/managed.md
+    - name: Předdefinované konektory pro Logic Apps
+      href: ../connectors/built-in.md
     - name: Plánování opakujících se pracovních postupů
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Bez serveru s Azure

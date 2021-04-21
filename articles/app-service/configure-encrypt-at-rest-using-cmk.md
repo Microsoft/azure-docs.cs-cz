@@ -3,12 +3,12 @@ title: Šifrování zdroje aplikace v klidovém umístění
 description: Naučte se šifrovat data aplikací v Azure Storage a nasazovat je jako soubor balíčku.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 5524b749b1e15342dd0133920d7190e33ced18ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a26660723fbe96a9b765401af1f0c9cfc80dbc3f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92146039"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779429"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem
 
@@ -43,7 +43,7 @@ Přidáním tohoto nastavení aplikace dojde k restartování vaší webové apl
 
 Nyní můžete nahradit hodnotu `WEBSITE_RUN_FROM_PACKAGE` nastavení aplikace Key Vault odkazem na adresu URL kódovanou pomocí SAS. Tím se zachovává adresa URL SAS zašifrovaná v Key Vault, která poskytuje další vrstvu zabezpečení.
 
-1. [`az keyvault create`](/cli/azure/keyvault#az-keyvault-create)K vytvoření instance Key Vault použijte následující příkaz.       
+1. [`az keyvault create`](/cli/azure/keyvault#az_keyvault_create)K vytvoření instance Key Vault použijte následující příkaz.       
 
     ```azurecli    
     az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus    
@@ -51,13 +51,13 @@ Nyní můžete nahradit hodnotu `WEBSITE_RUN_FROM_PACKAGE` nastavení aplikace K
 
 1. Podle [těchto pokynů udělte aplikaci přístup](app-service-key-vault-references.md#granting-your-app-access-to-key-vault) k vašemu trezoru klíčů:
 
-1. Pomocí následujícího [`az keyvault secret set`](/cli/azure/keyvault/secret#az-keyvault-secret-set) příkazu přidejte svoji externí adresu URL jako tajný klíč do trezoru klíčů:   
+1. Pomocí následujícího [`az keyvault secret set`](/cli/azure/keyvault/secret#az_keyvault_secret_set) příkazu přidejte svoji externí adresu URL jako tajný klíč do trezoru klíčů:   
 
     ```azurecli    
     az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<SAS-URL>"    
     ```    
 
-1.  Pomocí následujícího [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) příkazu vytvořte `WEBSITE_RUN_FROM_PACKAGE` nastavení aplikace s hodnotou jako Key Vault odkaz na externí adresu URL:
+1.  Pomocí následujícího [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) příkazu vytvořte `WEBSITE_RUN_FROM_PACKAGE` nastavení aplikace s hodnotou jako Key Vault odkaz na externí adresu URL:
 
     ```azurecli    
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"    

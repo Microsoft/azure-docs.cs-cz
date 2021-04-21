@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 04/16/2021
-ms.openlocfilehash: 9887350842749809dd4c3708acc71a08f416e54f
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 286da1412e8a74ffbf34e4abb493241914d4f925
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565878"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764868"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -391,7 +391,7 @@ Když aplikace logiky potřebuje komunikovat přes bránu firewall, která omezu
 
 Například pro podporu volání, která Logic Apps v Západní USA oblasti odesílají nebo přijímají prostřednictvím integrovaných triggerů a akcí, jako je například [Trigger nebo akce http](../connectors/connectors-native-http.md), musí brána firewall povolit přístup pro *všechny* příchozí IP adresy služby Logic Apps *a* odchozí IP adresy, které existují v oblasti západní USA.
 
-Pokud vaše aplikace logiky používá i [spravované konektory](../connectors/apis-list.md#managed-api-connectors), jako je například konektor Office 365 Outlook nebo konektor SQL, nebo používá [vlastní konektory](/connectors/custom-connectors/), musí brána firewall také umožňovat přístup pro *všechny* [odchozí IP adresy spravovaného konektoru](#outbound) v oblasti Azure vaší aplikace logiky. Pokud navíc používáte vlastní konektory, které přistupují k místním prostředkům prostřednictvím [prostředku místní brány dat v Azure](logic-apps-gateway-connection.md), je třeba nastavit instalaci brány tak, aby povolovala přístup pro příslušné *[odchozí IP adresy](#outbound)spravovaných konektorů*.
+Pokud vaše aplikace logiky používá i [spravované konektory](../connectors/managed.md), jako je například konektor Office 365 Outlook nebo konektor SQL, nebo používá [vlastní konektory](/connectors/custom-connectors/), musí brána firewall také umožňovat přístup pro *všechny* [odchozí IP adresy spravovaného konektoru](#outbound) v oblasti Azure vaší aplikace logiky. Pokud navíc používáte vlastní konektory, které přistupují k místním prostředkům prostřednictvím [prostředku místní brány dat v Azure](logic-apps-gateway-connection.md), je třeba nastavit instalaci brány tak, aby povolovala přístup pro příslušné *[odchozí IP adresy](#outbound)spravovaných konektorů*.
 
 Další informace o nastavení komunikace v bráně najdete v těchto tématech:
 
@@ -406,7 +406,7 @@ Než nastavíte bránu firewall s IP adresami, přečtěte si tyto požadavky:
 
 * Pokud používáte [Power Automatizujte](/power-automate/getting-started), můžete některé akce, jako je **http** a **http + openapi**, přejít přímo prostřednictvím služby Azure Logic Apps a pocházet z IP adres, které jsou tady uvedené. Další informace o IP adresách, které používá Power automat, najdete v tématu věnovaném [omezením a konfiguraci pro automatizaci napájení](/flow/limits-and-config#ip-address-configuration).
 
-* Pro [Azure Čína 21Vianet](/azure/china/)jsou pevné nebo rezervované IP adresy nedostupné pro [vlastní konektory](../logic-apps/custom-connector-overview.md) a pro [spravované konektory](../connectors/apis-list.md#managed-api-connectors), jako je Azure Storage, SQL Server, Office 365 Outlook atd.
+* Pro [Azure Čína 21Vianet](/azure/china/)jsou pevné nebo rezervované IP adresy nedostupné pro [vlastní konektory](../logic-apps/custom-connector-overview.md) a pro [spravované konektory](../connectors/managed.md), jako je Azure Storage, SQL Server, Office 365 Outlook atd.
 
 * Pokud vaše aplikace logiky běží v [prostředí ISE (Integration Service Environment)](connect-virtual-network-vnet-isolated-environment-overview.md), ujistěte se, že jste [tyto porty otevřeli](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise).
 

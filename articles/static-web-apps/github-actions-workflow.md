@@ -7,18 +7,21 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 4f1f432da33bded4fc0f04170673e5943dec5fb0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b20a1670c13a272ed48088567a205d854ac99179
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311324"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791242"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Pracovní postupy akcí GitHubu pro Azure static Web Apps Preview
 
-Když vytvoříte nový prostředek služby Azure static Web App, Azure vygeneruje pracovní postup akcí GitHubu pro řízení průběžného nasazování aplikace. Pracovní postup je založený na souboru YAML. Tento článek podrobně popisuje strukturu a možnosti souboru pracovního postupu.
+Když vytvoříte nový prostředek služby Azure static Web Apps, Azure vygeneruje pracovní postup akcí GitHubu pro řízení průběžného nasazování aplikace. Pracovní postup je založený na souboru YAML. Tento článek podrobně popisuje strukturu a možnosti souboru pracovního postupu.
 
 Nasazení jsou iniciována [triggery](#triggers), které spouštějí [úlohy](#jobs) , které jsou definovány jednotlivými [kroky](#steps).
+
+> [!NOTE]
+> Azure static Web Apps také podporuje Azure DevOps. Informace o nastavení kanálu najdete v tématu [publikování pomocí Azure DevOps](publish-devops.md) .
 
 ## <a name="file-location"></a>Umístění souboru
 
@@ -179,13 +182,16 @@ with:
 
 ## <a name="route-file-location"></a>Umístění souboru tras
 
-Pracovní postup můžete přizpůsobit tak, aby vyhledal [staticwebapp.config.js](routes.md) v libovolné složce v úložišti. Následující vlastnost může být definována v `with` oddílu úlohy.
+Pracovní postup můžete přizpůsobit tak, aby vyhledal [routes.js](routes.md) v libovolné složce v úložišti. Následující vlastnost může být definována v `with` oddílu úlohy.
 
 | Vlastnost          | Popis                                                                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `routes_location` | Definuje umístění adresáře, kde se nachází _staticwebapp.config.jsv_ souboru. Toto umístění je relativní vzhledem ke kořenu úložiště. |
+| `routes_location` | Definuje umístění adresáře, kde se nachází _routes.jsv_ souboru. Toto umístění je relativní vzhledem ke kořenu úložiště. |
 
-Explicitní informace o umístění vašeho _staticwebapp.config.jsv_ souboru je zvláště důležité, pokud se ve výchozím kroku sestavení rozhraní front-end nepřesouvá tento soubor do `output_location` výchozího nastavení.
+Explicitní informace o umístění vašeho _routes.jsv_ souboru je zvláště důležité, pokud se ve výchozím kroku sestavení rozhraní front-end nepřesouvá tento soubor do `output_location` výchozího nastavení.
+
+> [!IMPORTANT]
+> Funkce definované v _routes.jsv_ souboru jsou teď zastaralé. Informace o _staticwebapp.config.js_ najdete v [souboru konfigurace](./configuration.md) statického Web Apps Azure.
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 

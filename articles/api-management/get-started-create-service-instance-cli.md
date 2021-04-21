@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 09/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 72d1faac02a21f23d46eb992af1d501bca89e71f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19fc2e1629e7f67063e3cc3eec8cb3707b6dd2e4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688072"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775848"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli"></a>Rychlý Start: vytvoření nové instance služby Azure API Management pomocí rozhraní příkazového řádku Azure
 
@@ -30,7 +30,7 @@ Tento rychlý Start popisuje kroky pro vytvoření nové instance API Management
 
 Instance Azure API Management, jako jsou všechny prostředky Azure, musí být nasazené do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
 
-Nejprve vytvořte skupinu prostředků s názvem *myResourceGroup* v umístění střed USA pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az-group-create) :
+Nejprve vytvořte skupinu prostředků s názvem *myResourceGroup* v umístění střed USA pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az_group_create) :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location centralus
@@ -38,7 +38,7 @@ az group create --name myResourceGroup --location centralus
 
 ## <a name="create-a-new-service"></a>Vytvoření nové služby
 
-Teď, když máte skupinu prostředků, můžete vytvořit instanci služby API Management. Vytvořte ho pomocí příkazu [AZ APIM Create](/cli/azure/apim#az-apim-create) a sdělte mu podrobnosti o názvu služby a vydavateli. Název služby musí být v rámci Azure jedinečný. 
+Teď, když máte skupinu prostředků, můžete vytvořit instanci služby API Management. Vytvořte ho pomocí příkazu [AZ APIM Create](/cli/azure/apim#az_apim_create) a sdělte mu podrobnosti o názvu služby a vydavateli. Název služby musí být v rámci Azure jedinečný. 
 
 V následujícím příkladu se pro název služby používá *myapim* . Aktualizujte název na jedinečnou hodnotu. Aktualizujte také název organizace vydavatele rozhraní API a e-mailovou adresu pro příjem oznámení. 
 
@@ -53,7 +53,7 @@ Ve výchozím nastavení příkaz vytvoří instanci ve vrstvě vývojář, což
 > [!TIP]
 > Vytvoření a aktivace služby API Management v této vrstvě může trvat 30 až 40 minut. Předchozí příkaz použije `--no-wait` možnost, takže se příkaz vrátí hned při vytvoření služby.
 
-Stav nasazení ověřte spuštěním příkazu [AZ APIM show](/cli/azure/apim#az-apim-show) :
+Stav nasazení ověřte spuštěním příkazu [AZ APIM show](/cli/azure/apim#az_apim_show) :
 
 ```azurecli-interactive
 az apim show --name myapim --resource-group myResourceGroup --output table
@@ -79,7 +79,7 @@ Když je vaše instance API Management služby online, jste připraveni ji použ
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a instance služby API Management použít příkaz [AZ Group Delete](/cli/azure/group#az-group-delete) .
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a instance služby API Management použít příkaz [AZ Group Delete](/cli/azure/group#az_group_delete) .
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

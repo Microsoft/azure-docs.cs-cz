@@ -3,12 +3,12 @@ title: Jak cílit na verze modulu runtime Azure Functions
 description: Azure Functions podporuje více verzí modulu runtime. Naučte se, jak určit běhovou verzi aplikace Function App hostované v Azure.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: e9aa5546b5f07b724fe22bc1e20a2e97feb2aec2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9a9f8fca1c39fd0251df3e3a8da3d789aae4d3d6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102435558"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779268"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Jak cílit na verze modulu runtime Azure Functions
 
@@ -106,7 +106,7 @@ az functionapp config appsettings set --name <FUNCTION_APP> \
 
 Nahraďte `<FUNCTION_APP>` názvem vaší aplikace Function App. Nahraďte také `<RESOURCE_GROUP>` názvem skupiny prostředků vaší aplikace Function App. Nahraďte také `<VERSION>` buď konkrétní verzí, nebo `~3` , `~2` nebo `~1` .
 
-Výběrem možnosti **vyzkoušet** v předchozím příkladu kódu spusťte příkaz v [Azure Cloud Shell](../cloud-shell/overview.md). K provedení tohoto příkazu můžete také spustit [Azure CLI místně](/cli/azure/install-azure-cli) . Pokud používáte místně, musíte nejdřív spustit příkaz [AZ Login](/cli/azure/reference-index#az-login) , abyste se přihlásili.
+Výběrem možnosti **vyzkoušet** v předchozím příkladu kódu spusťte příkaz v [Azure Cloud Shell](../cloud-shell/overview.md). K provedení tohoto příkazu můžete také spustit [Azure CLI místně](/cli/azure/install-azure-cli) . Pokud používáte místně, musíte nejdřív spustit příkaz [AZ Login](/cli/azure/reference-index#az_login) , abyste se přihlásili.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -165,7 +165,7 @@ az functionapp config set --name <FUNCTION_APP> \
 
 Nahraďte `<FUNCTION_APP>` názvem vaší aplikace Function App. Nahraďte také `<RESOURCE_GROUP>` názvem skupiny prostředků vaší aplikace Function App. Nahraďte také `<LINUX_FX_VERSION>` hodnotou konkrétního obrázku, jak je popsáno výše.
 
-Tento příkaz můžete spustit z [Azure Cloud Shell](../cloud-shell/overview.md) výběrem možnosti **vyzkoušet** v předchozím příkladu kódu. Pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) můžete také spustit tento příkaz po provedení příkazu [AZ Login](/cli/azure/reference-index#az-login) pro přihlášení.
+Tento příkaz můžete spustit z [Azure Cloud Shell](../cloud-shell/overview.md) výběrem možnosti **vyzkoušet** v předchozím příkladu kódu. Pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) můžete také spustit tento příkaz po provedení příkazu [AZ Login](/cli/azure/reference-index#az_login) pro přihlášení.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

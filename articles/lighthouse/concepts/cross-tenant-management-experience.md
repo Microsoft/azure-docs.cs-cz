@@ -3,12 +3,12 @@ title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
 ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12c4aaa4dda159862344675c802603fcbda2f254
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 027d1d5e81d5a652a7e2d5441c40440c661f730f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934321"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778620"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -35,7 +35,7 @@ Azure Lighthouse umožňuje větší flexibilitu při správě prostředků pro 
 
 [Rutina Azure PowerShell Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) zobrazí ve `TenantId` výchozím nastavení pro správu tenanta. `HomeTenantId` `ManagedByTenantIds` U každého předplatného můžete použít atributy a, které vám umožní určit, jestli vracený odběr patří do spravovaného tenanta nebo do vašeho tenanta pro správu.
 
-Podobně příkazy rozhraní příkazového řádku Azure, jako je například [AZ Account list](/cli/azure/account#az-account-list) , zobrazí `homeTenantId` `managedByTenants` atributy a. Pokud nevidíte tyto hodnoty při použití rozhraní příkazového řádku Azure, zkuste vyprázdnit mezipaměť spuštěním příkazu `az account clear` a `az login --identity` .
+Podobně příkazy rozhraní příkazového řádku Azure, jako je například [AZ Account list](/cli/azure/account#az_account_list) , zobrazí `homeTenantId` `managedByTenants` atributy a. Pokud nevidíte tyto hodnoty při použití rozhraní příkazového řádku Azure, zkuste vyprázdnit mezipaměť spuštěním příkazu `az account clear` a `az login --identity` .
 
 V Azure REST API jsou k dis příkazy [Subscriptions-Get](/rest/api/resources/subscriptions/get) a [Subscriptions-list](/rest/api/resources/subscriptions/list) `ManagedByTenant` .
 

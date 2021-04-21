@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 41c6995f16b836231142520362f9aace7d91ffe0
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: a5e0e5544c5e66f43b56de49beaa3ef3932d33f9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500307"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776874"
 ---
 # <a name="create-a-vm-from-a-generalized-image-version-using-the-azure-cli"></a>Vytvoření virtuálního počítače z generalizované verze Image pomocí Azure CLI
 
@@ -23,7 +23,7 @@ Vytvořte virtuální počítač z [zobecněné verze image](./shared-image-gall
 
 ## <a name="get-the-image-id"></a>Získat ID image
 
-V galerii můžete zobrazit definice obrázků pomocí [AZ SIG image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) , abyste viděli název a ID definic.
+V galerii můžete zobrazit definice obrázků pomocí [AZ SIG image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list) , abyste viděli název a ID definic.
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -33,7 +33,7 @@ az sig image-definition list --resource-group $resourceGroup --gallery-name $gal
 
 ## <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create). Chcete-li použít nejnovější verzi obrázku, nastavte `--image` na ID definice obrázku. 
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Chcete-li použít nejnovější verzi obrázku, nastavte `--image` na ID definice obrázku. 
 
 V tomto příkladu nahraďte názvy prostředků podle potřeby. 
 

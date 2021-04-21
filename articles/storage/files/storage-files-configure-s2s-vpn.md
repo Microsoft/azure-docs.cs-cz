@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0fa3fb8040fd79d68f9260ab520d3b6823ab363d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a08ca4142876a5a92adbe8b1c3fce9ec7953019
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629287"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778008"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Konfigurace sítě VPN typu Site-to-site pro použití se soubory Azure
 Připojení VPN typu Site-to-Site (S2S) můžete použít k připojení sdílených složek Azure přes protokol SMB z místní sítě bez nutnosti otevření portu 445. SÍŤ VPN typu Site-to-site můžete nastavit pomocí [VPN Gateway Azure](../../vpn-gateway/vpn-gateway-about-vpngateways.md), což je prostředek Azure, který nabízí služby VPN a který je nasazený ve skupině prostředků spolu s účty úložiště nebo jinými prostředky Azure.
@@ -21,7 +21,7 @@ Připojení VPN typu Site-to-Site (S2S) můžete použít k připojení sdílen�
 
 Důrazně doporučujeme, abyste si přečetli [Přehled sítě Azure Files](storage-files-networking-overview.md) , než budete pokračovat v tomto článku, abyste mohli získat úplnou diskusi o možnostech sítě dostupných pro soubory Azure.
 
-Tento článek podrobně popisuje kroky pro konfiguraci sítě VPN typu Site-to-site pro připojení sdílených složek Azure přímo v místním prostředí. Pokud chcete směrovat provoz synchronizace pro Synchronizace souborů Azure přes síť Site-to-Site VPN, přečtěte si téma [Konfigurace nastavení proxy serveru synchronizace souborů Azure a brány firewall](storage-sync-files-firewall-and-proxy.md).
+Tento článek podrobně popisuje kroky pro konfiguraci sítě VPN typu Site-to-site pro připojení sdílených složek Azure přímo v místním prostředí. Pokud chcete směrovat provoz synchronizace pro Synchronizace souborů Azure přes síť Site-to-Site VPN, přečtěte si téma [Konfigurace nastavení proxy serveru synchronizace souborů Azure a brány firewall](../file-sync/file-sync-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Požadavky
 - Sdílená složka Azure, kterou byste chtěli místně připojit. Sdílené složky Azure se nasazují v rámci účtů úložiště, což jsou konstrukce správy, které představují sdílený fond úložiště, ve kterém můžete nasazovat víc sdílených složek a další prostředky úložiště, jako jsou kontejnery nebo fronty objektů BLOB. Další informace o tom, jak nasadit sdílené složky Azure a účty úložiště, najdete v tématu [Vytvoření sdílené složky Azure](storage-how-to-create-file-share.md).

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: cec391ba998165af4dd9339b719a3b73cb330c16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94440b71eee1ff9dcc4a86733582e3e5f57f6a00
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601786"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764616"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Povolení Azure Disk Encryption s Azure AD na virtuálních počítačích se systémem Linux (předchozí verze)
 
@@ -32,7 +32,7 @@ Před šifrováním [disků si poznamenejte, vytvořte](snapshot-copy-managed-di
  > - Pokud jste dřív použili [Azure Disk Encryption s aplikací Azure AD](disk-encryption-overview-aad.md) k šifrování tohoto virtuálního počítače, musíte tuto možnost použít k ZAšifrování virtuálního počítače. V tomto šifrovaném virtuálním počítači nemůžete použít [Azure Disk Encryption](disk-encryption-overview.md) , protože to není podporovaný scénář, což znamená, že se zatím nepodporují přepnutí z aplikace Azure AD pro tento zašifrovaný virtuální počítač.
  > - Abyste se ujistili, že šifrovací tajná klíče nejsou mezi regionálními hranicemi, Azure Disk Encryption potřebuje Trezor klíčů a virtuální počítače, které se mají umístit do stejné oblasti. Vytvořte a použijte Trezor klíčů, který je ve stejné oblasti jako virtuální počítač, který se má šifrovat.
  > - Když zašifrujete svazky operačního systému Linux, proces může trvat několik hodin. Pro svazky operačního systému Linux je běžné, že k šifrování trvá déle než objemy dat.
-> - Při šifrování svazků operačního systému Linux by se měl virtuální počítač považovat za nedostupný. Důrazně doporučujeme, abyste se vyhnuli přihlášením přes SSH, zatímco probíhá šifrování, aby nedošlo k blokování otevřených souborů, ke kterým je potřeba během procesu šifrování dostat. Ke kontrole průběhu použijte příkazy pro [zobrazení šifrování virtuálního počítače](/cli/azure/vm/encryption#az-vm-encryption-show) [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) nebo VM. Můžete očekávat, že tento proces bude trvat několik hodin na 30 GB svazku s operačním systémem a dodatečnou dobu pro šifrování datových svazků. Doba šifrování datového svazku je úměrná velikosti a množství datových svazků, pokud se nepoužije možnost **Šifrovat formát All** . 
+> - Při šifrování svazků operačního systému Linux by se měl virtuální počítač považovat za nedostupný. Důrazně doporučujeme, abyste se vyhnuli přihlášením přes SSH, zatímco probíhá šifrování, aby nedošlo k blokování otevřených souborů, ke kterým je potřeba během procesu šifrování dostat. Ke kontrole průběhu použijte příkazy pro [zobrazení šifrování virtuálního počítače](/cli/azure/vm/encryption#az_vm_encryption_show) [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) nebo VM. Můžete očekávat, že tento proces bude trvat několik hodin na 30 GB svazku s operačním systémem a dodatečnou dobu pro šifrování datových svazků. Doba šifrování datového svazku je úměrná velikosti a množství datových svazků, pokud se nepoužije možnost **Šifrovat formát All** . 
  > - Zakázání šifrování u virtuálních počítačů se systémem Linux je podporováno pouze pro datové svazky. Pokud je svazek s operačním systémem zašifrovaný, není podpora na svazcích dat nebo operačních systémů podporovaná. 
 
  
@@ -50,7 +50,7 @@ V tomto scénáři můžete šifrování povolit pomocí šablony Azure Resource
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-the-azure-cli"></a><a name="bkmk_RunningLinuxCLI"> </a>Povolení šifrování na stávajícím nebo BĚŽÍCÍm virtuálním počítači se systémem Linux pomocí rozhraní příkazového řádku Azure 
 Pomocí nástroje příkazového řádku [Azure CLI 2,0](/cli/azure) můžete povolit šifrování disku na zašifrovaném virtuálním pevném disku. Můžete ho používat v prohlížeči pomocí služby [Azure Cloud Shell](../../cloud-shell/overview.md) nebo nainstalovat na místním počítači a používat ho v jakékoli relaci PowerShellu. Pokud chcete povolit šifrování pro existující nebo běžící virtuální počítače s IaaS Linux v Azure, použijte následující příkazy rozhraní příkazového řádku:
 
-Pomocí příkazu [AZ VM Encryption Enable](/cli/azure/vm/encryption#az-vm-encryption-enable) Povolte šifrování na běžícím virtuálním počítači s IaaS v Azure.
+Pomocí příkazu [AZ VM Encryption Enable](/cli/azure/vm/encryption#az_vm_encryption_enable) Povolte šifrování na běžícím virtuálním počítači s IaaS v Azure.
 
 -  **Šifrování spuštěného virtuálního počítače pomocí tajného klíče klienta:**
     
@@ -67,13 +67,13 @@ Pomocí příkazu [AZ VM Encryption Enable](/cli/azure/vm/encryption#az-vm-encry
    >[!NOTE]
    > Syntaxe hodnoty parametru Disk-Encryption-trezor je úplný řetězec identifikátoru:/subscriptions/[ID předplatného-GUID]/resourceGroups/[Resource-Group-name]/providers/Microsoft.KeyVault/vaults/[Trezor klíčů-name].</br> </br> Syntaxe pro hodnotu parametru klíč-šifrovací klíč je úplný identifikátor URI pro KEK, jako v: https://[klíč trezor-name]. trezor. Azure. NET/Keys/[kekname]/[KEK-Unique-ID].
 
-- **Ověřte, že jsou disky šifrované:** Pokud chcete zjistit stav šifrování virtuálního počítače s IaaS, použijte příkaz [AZ VM Encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) . 
+- **Ověřte, že jsou disky šifrované:** Pokud chcete zjistit stav šifrování virtuálního počítače s IaaS, použijte příkaz [AZ VM Encryption show](/cli/azure/vm/encryption#az_vm_encryption_show) . 
 
      ```azurecli-interactive
          az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
      ```
 
-- **Zakázat šifrování:** Pokud chcete šifrování zakázat, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption#az-vm-encryption-disable) . Zakázání šifrování je povolené jenom u datových svazků pro virtuální počítače se systémem Linux.
+- **Zakázat šifrování:** Pokud chcete šifrování zakázat, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption#az_vm_encryption_disable) . Zakázání šifrování je povolené jenom u datových svazků pro virtuální počítače se systémem Linux.
     
      ```azurecli-interactive
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
@@ -337,7 +337,7 @@ Syntaxe pro hodnotu parametru klíč-šifrovací klíč je úplný identifikáto
          Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' [--volume-type {ALL, DATA, OS}]
      ```
 
-- **Zakázat šifrování pomocí Azure CLI:** Pokud chcete šifrování zakázat, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption#az-vm-encryption-disable) . 
+- **Zakázat šifrování pomocí Azure CLI:** Pokud chcete šifrování zakázat, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption#az_vm_encryption_disable) . 
      ```azurecli-interactive
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 98c71f3cf1c521c08d177acb89aad85301e61579
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 8a8da50dc703d59dc16b5cb6253d39aeb33fd76d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103007"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777630"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Rychlý Start: vytvoření a konfigurace Azure DDoS Protection Standard pomocí Azure CLI
 
@@ -39,7 +39,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 V Azure přidělíte související prostředky skupině prostředků. Můžete použít buď existující skupinu prostředků, nebo vytvořit novou.
 
-Chcete-li vytvořit skupinu prostředků, použijte příkaz [AZ Group Create](/cli/azure/group#az-group-create). V tomto příkladu pojmenujte naši skupinu prostředků _MyResourceGroup_ a použijeme _východní USA_ umístění:
+Chcete-li vytvořit skupinu prostředků, použijte příkaz [AZ Group Create](/cli/azure/group#az_group_create). V tomto příkladu pojmenujte naši skupinu prostředků _MyResourceGroup_ a použijeme _východní USA_ umístění:
 
 ```azurecli-interactive
 az group create \

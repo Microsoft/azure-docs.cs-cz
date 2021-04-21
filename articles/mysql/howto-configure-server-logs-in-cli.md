@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 945a67f81010a61adf814f6f6f422eba5001b48d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d5fc2b14a655251e59a9209e078b0534f08baf9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95998545"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763230"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům pomalým dotazům pomocí Azure CLI
 Protokoly pomalých dotazů Azure Database for MySQL můžete stáhnout pomocí Azure CLI, nástroje příkazového řádku Azure.
@@ -41,14 +41,14 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 ```
 
 ## <a name="list-logs-for-azure-database-for-mysql-server"></a>Vypsat protokoly pro Azure Database for MySQL server
-Pokud je **log_output** nakonfigurovaná na soubor, můžete získat přístup k protokolům přímo z místního úložiště serveru. Chcete-li zobrazit seznam dostupných souborů protokolu pomalých dotazů pro váš server, spusťte příkaz [AZ MySQL server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) .
+Pokud je **log_output** nakonfigurovaná na soubor, můžete získat přístup k protokolům přímo z místního úložiště serveru. Chcete-li zobrazit seznam dostupných souborů protokolu pomalých dotazů pro váš server, spusťte příkaz [AZ MySQL server-logs list](/cli/azure/mysql/server-logs#az_mysql_server_logs_list) .
 
 Soubory protokolu pro server **mydemoserver.MySQL.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem **\_ soubory protokolu \_list.txt**.
 ```azurecli-interactive
 az mysql server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-from-the-server"></a>Stáhnout protokoly ze serveru
-Pokud je **log_output** nakonfigurovaná na "soubor", můžete jednotlivé soubory protokolu stáhnout ze serveru pomocí příkazu [AZ MySQL server-logs Download](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) .
+Pokud je **log_output** nakonfigurovaná na "soubor", můžete jednotlivé soubory protokolu stáhnout ze serveru pomocí příkazu [AZ MySQL server-logs Download](/cli/azure/mysql/server-logs#az_mysql_server_logs_download) .
 
 Použijte následující příklad ke stažení konkrétního souboru protokolu pro server **mydemoserver.MySQL.Database.Azure.com** ve skupině prostředků **myresourcegroup** do svého místního prostředí.
 ```azurecli-interactive
