@@ -4,18 +4,18 @@ description: Připojení k místním zdrojům dat z Azure Logic Apps vytvoření
 services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
-ms.topic: article
-ms.date: 01/20/2021
-ms.openlocfilehash: 356e63bb0a749ad0f41d886e75971e9b05c7f9dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: conceptual
+ms.date: 03/24/2021
+ms.openlocfilehash: 49da5d7f045ed06ba16696ebd16ad212b9d140d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99218990"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763304"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
 
-Po [instalaci místní *brány dat* na místním počítači](../logic-apps/logic-apps-gateway-install.md) a před tím, než budete moci získat přístup ke zdrojům dat místně z aplikace logiky, musíte vytvořit prostředek brány v Azure pro instalaci brány. Pak můžete vybrat tento prostředek brány v aktivačních událostech a akcích, které chcete použít pro [místní konektory](../connectors/apis-list.md#on-premises-connectors) dostupné v Azure Logic Apps. Azure Logic Apps podporuje operace čtení a zápisu přes bránu dat. Nicméně tyto operace mají [omezení velikosti datové části](/data-integration/gateway/service-gateway-onprem#considerations).
+Po [instalaci místní *brány dat* na místním počítači](../logic-apps/logic-apps-gateway-install.md) a před tím, než budete moci získat přístup ke zdrojům dat místně z aplikace logiky, musíte vytvořit prostředek brány v Azure pro instalaci brány. Pak můžete vybrat tento prostředek brány v aktivačních událostech a akcích, které chcete použít pro [místní konektory](../connectors/managed.md#on-premises-connectors) dostupné v Azure Logic Apps. Azure Logic Apps podporuje operace čtení a zápisu přes bránu dat. Nicméně tyto operace mají [omezení velikosti datové části](/data-integration/gateway/service-gateway-onprem#considerations).
 
 Tento článek ukazuje, jak vytvořit prostředek brány Azure pro dříve [nainstalovanou bránu na místním počítači](../logic-apps/logic-apps-gateway-install.md). Další informace o bráně najdete v tématu [jak brána funguje](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
 
@@ -33,7 +33,7 @@ Informace o tom, jak používat bránu s dalšími službami, najdete v těchto 
 
 ## <a name="supported-data-sources"></a>Podporované zdroje dat
 
-Místní brána dat v Azure Logic Apps podporuje místní [konektory](../connectors/apis-list.md#on-premises-connectors) pro tyto zdroje dat:
+Místní brána dat v Azure Logic Apps podporuje místní [konektory](../connectors/managed.md#on-premises-connectors) pro tyto zdroje dat:
 
 * BizTalk Server 2016
 * Systém souborů

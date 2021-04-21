@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: c4e21267c5eee9d86c05c51bc57bebfee699ef2c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 807fdbb1844eb6f89f71e639537a65baf8c76ad5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200595"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761758"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Rychlý Start: použití akcí GitHubu pro připojení k Azure MySQL
 
@@ -42,7 +42,7 @@ Soubor má dvě části:
 
 ## <a name="generate-deployment-credentials"></a>Generovat přihlašovací údaje nasazení
 
-[Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac&preserve-view=true) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Spusťte tento příkaz s [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo vyberte tlačítko **vyzkoušet** .
+[Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az_ad_sp_create_for_rbac&preserve-view=true) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Spusťte tento příkaz s [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo vyberte tlačítko **vyzkoušet** .
 
 Zástupné symboly nahraďte `server-name` názvem vašeho serveru MySQL hostovaným v Azure. Nahraďte `subscription-id` a `resource-group` pomocí ID předplatného a skupiny prostředků připojené k serveru MySQL.  
 

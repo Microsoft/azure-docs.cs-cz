@@ -5,13 +5,13 @@ ms.service: logic-apps
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.custom: subject-cost-optimization
-ms.date: 01/29/2021
-ms.openlocfilehash: 44351497ed58c8d49404c094f6800b52186edabb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: ec2e1098df4c21704ee7c17852b893630cd3fd27
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709627"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761812"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>Plánování a Správa nákladů na Azure Logic Apps
 
@@ -210,7 +210,7 @@ Otherwise, if no other cost-saving recommendations or best practices exist to re
 
 Pokud chcete snížit náklady na Logic AP a související prostředky, zkuste tyto možnosti:
 
-* Pokud je to možné, využijte [integrované triggery a akce](../connectors/apis-list.md#built-in), které s cenou méně poběží na spuštění než [triggery spravovaného konektoru a akce](../connectors/apis-list.md#managed-connectors).
+* Pokud je to možné, využijte [integrované triggery a akce](../connectors/built-in.md), které s cenou méně poběží na spuštění než [triggery spravovaného konektoru a akce](../connectors/managed.md).
 
   Například může být možné snížit náklady při přístupu k jiným prostředkům pomocí [akce http](../connectors/connectors-native-http.md) nebo voláním funkce, kterou jste vytvořili pomocí [služby Azure Functions](../azure-functions/functions-overview.md) a pomocí [integrované Azure Functions akce](../logic-apps/logic-apps-azure-functions.md). Použití Azure Functions také má za následek i náklady, takže se ujistěte, že jste porovnali své možnosti.
 

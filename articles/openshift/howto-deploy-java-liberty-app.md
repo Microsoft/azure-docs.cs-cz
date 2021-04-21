@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: Java, jakartaee, JavaEE, mikroprofile, Open-svoboda, WebSphere-svoboda, ARO, OpenShift, Red Hat
-ms.openlocfilehash: 08fd3ab112498a983b438d5ba1f1f100816cbf5d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2a308c7de754f395a3ef8a1bd97ed2441d27d21d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212990"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783570"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Nasazení aplikace v jazyce Java s otevřeným nástrojem svobody/WebSphere Svoboda v clusteru Azure Red Hat OpenShift 4
 
@@ -20,7 +20,7 @@ V této příručce se dozvíte, jak spustit aplikaci v jazyce Java, Java EE, [J
 
 [!INCLUDE [aro-support](includes/aro-support.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K úspěšnému procházení tohoto průvodce dokončete následující požadavky.
 
@@ -40,7 +40,7 @@ K úspěšnému procházení tohoto průvodce dokončete následující požadav
 
    Pokud máte v úmyslu spouštět aplikace náročné na paměť v clusteru, určete správnou velikost virtuálního počítače pro pracovní uzly pomocí `--worker-vm-size` parametru. Například `Standard_E4s_v3` minimální velikost virtuálního počítače pro instalaci operátoru Elasticsearch v clusteru. Další informace naleznete v tématu:
 
-   * [Rozhraní příkazového řádku Azure pro vytvoření clusteru](/cli/azure/aro#az-aro-create)
+   * [Rozhraní příkazového řádku Azure pro vytvoření clusteru](/cli/azure/aro#az_aro_create)
    * [Podporované velikosti virtuálních počítačů pro paměťově optimalizované](./support-policies-v4.md#memory-optimized)
    * [Předpoklady pro instalaci operátoru Elasticsearch](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 

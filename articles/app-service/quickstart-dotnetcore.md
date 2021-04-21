@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-dotnetcore-uiex
-ms.openlocfilehash: 7f538f5accb533b01c5ea685e424c70bfeb44f00
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 482bf6d29fbc1e982ee4d17099d82915ff3a0241
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058204"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762456"
 ---
 <!-- NOTES:
 
@@ -426,7 +426,7 @@ az webapp up --sku F1 --name <app-name> --os-type <os>
 - Nahraďte `<app-name>` názvem, který je jedinečný v rámci všech Azure (*platné znaky jsou `a-z` , `0-9` a `-`*). Dobrým vzorem je použití kombinace názvu vaší společnosti a identifikátoru aplikace.
 - `--sku F1`Argument vytvoří webovou aplikaci na [cenové úrovni][app-service-pricing-tier] **Free** . Vynechejte tento argument pro použití rychlejší úrovně Premium, což stojí za hodinu.
 - Nahraďte `<os>` buď `linux` nebo `windows` . Je nutné použít, `windows` když cílíte na *ASP.NET Framework 4,8*.
-- Volitelně můžete zahrnout argument `--location <location-name>` , kde `<location-name>` je dostupná oblast Azure. Seznam povolených oblastí pro váš účet Azure můžete načíst spuštěním [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) příkazu.
+- Volitelně můžete zahrnout argument `--location <location-name>` , kde `<location-name>` je dostupná oblast Azure. Seznam povolených oblastí pro váš účet Azure můžete načíst spuštěním [`az account list-locations`](/cli/azure/appservice#az_appservice_list_locations) příkazu.
 
 Dokončení příkazu může trvat několik minut. Když je spuštěný, poskytuje zprávy o vytvoření skupiny prostředků, plánování App Service a hostování aplikace, konfiguraci protokolování a následném nasazení souboru ZIP. Potom vytvoří výstup zprávy s adresou URL aplikace:
 

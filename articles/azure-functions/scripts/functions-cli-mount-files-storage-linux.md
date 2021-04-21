@@ -4,12 +4,12 @@ description: Vytvořte aplikaci funkcí Python bez serveru a připojte existují
 ms.topic: sample
 ms.date: 03/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 00bf0ecc9db3cf369fd75b427dcfba686aed0ed5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0037cea24b1989c4f7a4d2ddd6bf3f8f7e812b3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98035117"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762276"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>Připojení sdílené složky k aplikaci funkcí Pythonu pomocí rozhraní příkazového řádku Azure
 
@@ -38,13 +38,13 @@ Každý příkaz v tabulce odkazuje na příslušnou část dokumentace. Tento s
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Vytvoří účet služby Azure Storage. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí. |
-| [az storage share create](/cli/azure/storage/share#az-storage-share-create) | Vytvoří sdílenou složku služby soubory Azure v účtu úložiště. | 
-| [AZ Storage Directory Create](/cli/azure/storage/directory#az-storage-directory-create) | Vytvoří adresář ve sdílené složce. |
-| [AZ WebApp config Storage-Account Add](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) | Připojí sdílenou složku do aplikace Function App. |
-| [AZ WebApp config Storage-Account list](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-list) | Zobrazuje sdílené složky připojené k aplikaci Function App. | 
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Vytvoří účet služby Azure Storage. |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Vytvoří aplikaci funkcí. |
+| [az storage share create](/cli/azure/storage/share#az_storage_share_create) | Vytvoří sdílenou složku služby soubory Azure v účtu úložiště. | 
+| [AZ Storage Directory Create](/cli/azure/storage/directory#az_storage_directory_create) | Vytvoří adresář ve sdílené složce. |
+| [AZ WebApp config Storage-Account Add](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) | Připojí sdílenou složku do aplikace Function App. |
+| [AZ WebApp config Storage-Account list](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_list) | Zobrazuje sdílené složky připojené k aplikaci Function App. | 
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,12 +4,12 @@ description: Vložení imagí Docker do soukromého registru kontejnerů v Azure
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 982a49af271648caeb62e5759530aa6049be4382
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 48f5f1707881ac8461e12212be631d3b80c16ca7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308298"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783822"
 ---
 # <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>Nahrání první image do služby Azure Container Registry pomocí Docker CLI
 
@@ -24,7 +24,7 @@ V následujících krocích stáhnete veřejnou [Image Nginx](https://store.dock
 
 ## <a name="log-in-to-a-registry"></a>Přihlášení k registru
 
-Existuje [několik způsobů](container-registry-authentication.md) , jak ověřit do privátního registru kontejneru. Doporučeným způsobem při práci na příkazovém řádku je příkaz Azure CLI [AZ ACR Login](/cli/azure/acr#az-acr-login). Pokud se například chcete přihlásit k registru s názvem *myregistry*, přihlaste se do Azure CLI a pak proveďte ověření v registru:
+Existuje [několik způsobů](container-registry-authentication.md) , jak ověřit do privátního registru kontejneru. Doporučeným způsobem při práci na příkazovém řádku je příkaz Azure CLI [AZ ACR Login](/cli/azure/acr#az_acr_login). Pokud se například chcete přihlásit k registru s názvem *myregistry*, přihlaste se do Azure CLI a pak proveďte ověření v registru:
 
 ```azurecli
 az login
@@ -114,7 +114,7 @@ Pokud už image Nginx nepotřebujete, můžete ji místně odstranit pomocí př
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-K odebrání imagí z Azure Container Registry můžete použít příkaz Azure CLI [AZ ACR úložiště Delete](/cli/azure/acr/repository#az-acr-repository-delete). Například následující příkaz odstraní manifest, na který odkazuje `samples/nginx:latest` tag, jakákoli jedinečná data vrstvy a všechny ostatní značky odkazující na manifest.
+K odebrání imagí z Azure Container Registry můžete použít příkaz Azure CLI [AZ ACR úložiště Delete](/cli/azure/acr/repository#az_acr_repository_delete). Například následující příkaz odstraní manifest, na který odkazuje `samples/nginx:latest` tag, jakákoli jedinečná data vrstvy a všechny ostatní značky odkazující na manifest.
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest

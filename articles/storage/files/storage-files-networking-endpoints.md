@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 079d7aa9b654a318c7269a41605c3e146b08f127
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42e83facec7817b6588bf69977fea5ab74b6b10d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96621327"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759874"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Konfigurace koncových bodů sítě služby soubory Azure
 
@@ -23,7 +23,7 @@ Soubory Azure poskytují dva hlavní typy koncových bodů pro přístup ke sdí
 
 V účtu služby Azure Storage existují veřejné a privátní koncové body. Účet úložiště je konstrukce správy, která představuje sdílený fond úložiště, ve kterém můžete nasadit více sdílených složek a další prostředky úložiště, jako jsou kontejnery nebo fronty objektů BLOB.
 
-Tento článek se zaměřuje na konfiguraci koncových bodů účtu úložiště pro přímý přístup ke sdílené složce Azure. Většina podrobností uvedených v tomto dokumentu se vztahuje také na to, jak Synchronizace souborů Azure spolupracují s veřejnými a soukromými koncovými body pro účet úložiště. Další informace o požadavcích na síť pro Synchronizace souborů Azure nasazení najdete v tématu [konfigurace synchronizace souborů Azure proxy serveru a nastavení brány firewall](storage-sync-files-firewall-and-proxy.md).
+Tento článek se zaměřuje na konfiguraci koncových bodů účtu úložiště pro přímý přístup ke sdílené složce Azure. Většina podrobností uvedených v tomto dokumentu se vztahuje také na to, jak Synchronizace souborů Azure spolupracují s veřejnými a soukromými koncovými body pro účet úložiště. Další informace o požadavcích na síť pro Synchronizace souborů Azure nasazení najdete v tématu [konfigurace synchronizace souborů Azure proxy serveru a nastavení brány firewall](../file-sync/file-sync-firewall-and-proxy.md).
 
 Před načtením tohoto průvodce doporučujeme přečíst si [informace o sítích Azure Files](storage-files-networking-overview.md) .
 

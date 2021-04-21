@@ -3,12 +3,12 @@ title: Azure Event Hubs – vizualizace anomálií dat v událostech v reálném
 description: 'Kurz: vizualizace anomálií dat v reálném čase odeslaných do Microsoft Azure Event Hubs'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: bd08d611761e125fdd03173ce6027c60e82baed6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb7d8da2498005b8b2e1183a836d9385f3d31e5c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98623455"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783732"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Azure Event Hubs
 
@@ -349,7 +349,7 @@ Přihlaste se ke svému účtu Power BI. Přejděte do části **Můj pracovní 
 
 ### <a name="clean-up-resources-using-azure-cli"></a>Vyčištění prostředků pomocí Azure CLI
 
-Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group#az-group-delete).
+Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group#az_group_delete).
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

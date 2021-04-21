@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c779e95b790d91b801d5d35b4702191f5e7986d5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b93fb61cc58360ddfcf15d2af2c936203d869500
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802960"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771528"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -248,7 +248,7 @@ Po uložení nastavení se zadané procento klientů náhodně směruje do nepro
 Po automatickém směrování klienta na konkrétní slot je tento slot "připnuté" do této patice po celou dobu trvání této klientské relace. V klientském prohlížeči uvidíte, ke kterému slotu je vaše relace připnuté, a Prohlédněte si `x-ms-routing-name` soubor cookie v hlavičkách protokolu HTTP. Požadavek, který je směrován do "přípravného" slotu, má soubor cookie `x-ms-routing-name=staging` . Požadavek, který je směrován do produkčního slotu, má soubor cookie `x-ms-routing-name=self` .
 
    > [!NOTE]
-   > Vedle Azure Portal můžete pomocí [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) příkazu v Azure CLI nastavit procenta směrování z nástrojů CI/CD, jako jsou kanály DevOps nebo jiné systémy automatizace.
+   > Vedle Azure Portal můžete pomocí [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az_webapp_traffic_routing_set) příkazu v Azure CLI nastavit procenta směrování z nástrojů CI/CD, jako jsou kanály DevOps nebo jiné systémy automatizace.
    > 
 
 ### <a name="route-production-traffic-manually"></a>Ruční směrování provozní provozu

@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f148a5b267edd3fc1dd33ef17d5ad01005b4a903
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 202278d6436439a212dda229f209ab8fb75db596
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566281"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752331"
 ---
 # <a name="start-monitor-and-track-run-history"></a>Spustit, sledovat a sledovat historii spuštění 
 
@@ -405,7 +405,12 @@ Chcete-li vytvořit mnoho podřízených spuštění efektivně, použijte [`cre
 
 Podřízené běhy lze také odeslat z nadřazeného spuštění. To umožňuje vytvářet hierarchie nadřazených a podřízených spuštění. Nemůžete vytvořit podřízené spuštění bez nadřazeného prvku: i když nadřazený běh neprovede žádné akce, ale spustí podřízené spuštění, je stále nutné vytvořit hierarchii. Stavy všech spuštění jsou nezávislé: nadřazený stav může být v `"Completed"` úspěšném stavu i v případě, že jeden nebo více podřízených spuštění bylo zrušeno nebo selhalo.  
 
-Můžete chtít, aby vaše podřízená spuštění používala jinou konfiguraci spuštění než v nadřazeném spuštění. Můžete například použít méně náročnou konfiguraci založenou na PROCESORech pro nadřazený objekt při použití konfigurací založených na GPU pro vaše děti. Dalším běžným přáním je předat každý podřízený objekt různým argumentům a datům. Pro přizpůsobení podřízeného spuštění vytvořte `ScriptRunConfig` objekt pro podřízený běh. Níže uvedený kód:
+Můžete chtít, aby vaše podřízená spuštění používala jinou konfiguraci spuštění než v nadřazeném spuštění. Můžete například použít méně náročnou konfiguraci založenou na PROCESORech pro nadřazený objekt při použití konfigurací založených na GPU pro vaše děti. Dalším běžným přáním je předat každý podřízený objekt různým argumentům a datům. Pro přizpůsobení podřízeného spuštění vytvořte `ScriptRunConfig` objekt pro podřízený běh. 
+
+> [!IMPORTANT]
+> Pokud chcete odeslat podřízené spuštění z nadřazeného spuštění na vzdálené výpočetní prostředí, musíte nejdřív přihlásit k pracovnímu prostoru v nadřazeném kódu spustit. Ve výchozím nastavení nemá objekt kontextu spuštění ve vzdáleném běhu přihlašovací údaje pro odeslání podřízených spuštění. Přihlaste se pomocí instančního objektu nebo spravovaných přihlašovacích údajů identity. Další informace o ověřování najdete v tématu [nastavení ověřování](how-to-setup-authentication.md).
+
+Níže uvedený kód:
 
 - Načte výpočetní prostředek s názvem `"gpu-cluster"` z pracovního prostoru. `ws`
 - Iteruje přes různé hodnoty argumentů, které se mají předat podřízeným `ScriptRunConfig` objektům.

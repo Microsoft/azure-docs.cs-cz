@@ -3,12 +3,12 @@ title: Pravidla přístupu brány firewall
 description: Nakonfigurujte pravidla pro přístup ke službě Azure Container Registry za bránou firewall tím, že povolíte přístup k názvům REST API a datovým koncovým službám nebo rozsahům IP adres pro konkrétní služby.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 548d64632c1d726111770dfb49f705d31f5ca714
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6aea4415468eb21e8d010b74597fc68e4ebf573f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935984"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783930"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall
 
@@ -197,5 +197,5 @@ Pokud potřebujete přístup k Microsoft Container Registry (MCR) z za bránou f
 
 <!-- LINKS - Internal -->
 
-[az-acr-update]: /cli/azure/acr#az-acr-update
-[az-acr-show-endpoints]: /cli/azure/acr#az-acr-show-endpoints
+[az-acr-update]: /cli/azure/acr#az_acr_update
+[az-acr-show-endpoints]: /cli/azure/acr#az_acr_show_endpoints

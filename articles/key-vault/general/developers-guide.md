@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f2c0b82f14fd16ecb9eef163e7a263f4327cfc46
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 4f9523594c07209d530a143713061be6d0467af8
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364545"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753375"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -45,7 +45,7 @@ Přístup k vrstvě správy řídí [řízení přístupu na základě role v Az
 
 Instalační balíčky a zdrojový kód najdete v tématu [klientské knihovny](client-libraries.md) .
 
-Další informace o Key Vault rovině správy najdete v tématu [Key Vault rovina správy](./secure-your-key-vault.md#management-plane-and-azure-rbac) .
+Další informace o Key Vault rovině správy najdete v tématu [Key Vault rovina správy](security-overview.md) .
 
 ## <a name="authenticate-to-key-vault-in-code"></a>Ověřování pro Key Vault v kódu
 
@@ -105,7 +105,7 @@ Přístup k klíčům, tajným klíčům a certifikátům je řízen rovinou dat
 
 Instalační balíčky a zdrojový kód najdete v tématu [klientské knihovny](client-libraries.md) .
 
-Další informace o Key Vault Zabezpečení roviny dat najdete v tématech [Key Vault rovina dat a zásady přístupu](./secure-your-key-vault.md#data-plane-and-access-policies) a [Key Vault rovině dat a Azure RBAC](./secure-your-key-vault.md#data-plane-and-azure-rbac) .
+Další informace o Key Vault Zabezpečení roviny dat najdete v tématu [Přehled zabezpečení Key Vault](security-overview.md).
 
 ### <a name="code-examples"></a>Příklady kódu
 

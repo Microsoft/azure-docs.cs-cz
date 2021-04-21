@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: 0ae724f9900eea713af7d295eba26bf03cdf471a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a1a061945fe1c6c6a95eb62d286d40a158281ca
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94563218"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770730"
 ---
 # <a name="add-regions-change-failover-priority-trigger-failover-for-an-azure-cosmos-account-using-azure-cli"></a>Přidání oblastí, změna priority převzetí služeb při selhání, aktivace převzetí služeb při selhání pro účet Azure Cosmos pomocí Azure CLI
 [!INCLUDE[appliesto-all-apis](../../../includes/appliesto-all-apis.md)]
@@ -50,11 +50,11 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Vytvoří účet služby Azure Cosmos DB. |
-| [az cosmosdb update](/cli/azure/cosmosdb#az-cosmosdb-update) | Aktualizuje účet Azure Cosmos DB (Přidat nebo odebrat oblast). |
-| [AZ cosmosdb Failover-priority-Change](/cli/azure/cosmosdb#az-cosmosdb-failover-priority-change) | Aktualizujte prioritu převzetí služeb při selhání nebo aktivujte převzetí služeb při selhání na účtu Azure Cosmos DB |
-| [az group delete](/cli/azure/resource#az-resource-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) | Vytvoří účet služby Azure Cosmos DB. |
+| [az cosmosdb update](/cli/azure/cosmosdb#az_cosmosdb_update) | Aktualizuje účet Azure Cosmos DB (Přidat nebo odebrat oblast). |
+| [AZ cosmosdb Failover-priority-Change](/cli/azure/cosmosdb#az_cosmosdb_failover_priority_change) | Aktualizujte prioritu převzetí služeb při selhání nebo aktivujte převzetí služeb při selhání na účtu Azure Cosmos DB |
+| [az group delete](/cli/azure/resource#az_resource_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 

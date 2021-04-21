@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.date: 06/30/2020
-ms.openlocfilehash: 8cee79efd9be53ddb9d450f643c04f21ae5e7fca
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/01/2021
+ms.openlocfilehash: bdeb80dc487d8418e21a40a29e5d2baab49d7b05
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213993"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771888"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Rychlý Start: vytvoření a nasazení pracovního postupu aplikace logiky pomocí šablony ARM
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 
 V tomto rychlém startu se používá šablona [**vytvořit aplikaci logiky**](https://azure.microsoft.com/resources/templates/101-logic-app-create/) , kterou najdete v [galerii šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates) , ale je moc dlouhá, takže ji tady můžete zobrazit. Místo toho můžete zkontrolovat ["azuredeploy.jsna soubor](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) šablony pro rychlý Start" v galerii šablon.
 
-Šablona pro rychlý Start vytvoří pracovní postup aplikace logiky, který používá aktivační událost opakování, která je nastavená na spouštění každou hodinu, a [ *integrovanou* akci](../connectors/apis-list.md#connector-types)http, která volá adresu URL, která vrací stav pro Azure. Integrovaná akce je nativní pro Azure Logic Apps platformu.
+Šablona pro rychlý Start vytvoří pracovní postup aplikace logiky, který používá aktivační událost opakování, která je nastavená na spouštění každou hodinu, a [ *integrovanou* akci](../connectors/built-in.md)http, která volá adresu URL, která vrací stav pro Azure. Integrovaná akce je nativní pro Azure Logic Apps platformu.
 
 Tato šablona vytvoří následující prostředek Azure:
 
@@ -303,7 +303,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Další informace najdete v tématu [Azure CLI: AZ Group Delete](/cli/azure/group#az-group-delete).
+Další informace najdete v tématu [Azure CLI: AZ Group Delete](/cli/azure/group#az_group_delete).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

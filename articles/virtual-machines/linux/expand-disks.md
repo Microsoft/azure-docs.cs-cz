@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 72778c431c561f5345dde3d6803e814d6fdebfba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c27b042b78931fd58e43e4bbb06699abe510f385
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549120"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762546"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozbalení virtuálních pevných disků na virtuálním počítači se systémem Linux pomocí Azure CLI
 
@@ -23,13 +23,13 @@ Tento článek popisuje, jak rozbalit spravované disky pro virtuální počíta
 > Zajistěte, aby byl systém souborů v dobrém stavu, typ tabulky diskového oddílu bude podporovat novou velikost a před provedením operací změny velikosti disku se ujistěte, že jsou vaše data zálohována. Další informace najdete v tématu [rychlý start Azure Backup](../../backup/quick-backup-vm-portal.md). 
 
 ## <a name="expand-an-azure-managed-disk"></a>Rozšíření spravovaného disku Azure
-Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a že jste k účtu Azure přihlášení pomocí [AZ Login](/cli/azure/reference-index#az-login).
+Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a že jste k účtu Azure přihlášení pomocí [AZ Login](/cli/azure/reference-index#az_login).
 
 Tento článek vyžaduje existující virtuální počítač v Azure s alespoň jedním připojeným a připraveným datovým diskem. Pokud ještě nemáte virtuální počítač, který můžete použít, přečtěte si téma [Vytvoření a Příprava virtuálního počítače s datovými disky](tutorial-manage-disks.md#create-and-attach-disks).
 
 V následujících ukázkách nahraďte příklady názvů parametrů jako *myResourceGroup* a *myVM* vlastními hodnotami.
 
-1. Operace s virtuálními pevnými disky nejde provést s virtuálním počítačem, na kterém běží. Zrušte přidělení virtuálního počítače pomocí [AZ VM disallocate](/cli/azure/vm#az-vm-deallocate). Následující příklad zruší přidělení virtuálního počítače s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
+1. Operace s virtuálními pevnými disky nejde provést s virtuálním počítačem, na kterém běží. Zrušte přidělení virtuálního počítače pomocí [AZ VM disallocate](/cli/azure/vm#az_vm_deallocate). Následující příklad zruší přidělení virtuálního počítače s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -38,7 +38,7 @@ V následujících ukázkách nahraďte příklady názvů parametrů jako *myRe
     > [!NOTE]
     > Aby se virtuální pevný disk mohl rozšířit, musí se virtuální počítač uvolnit. Při zastavení virtuálního počítače se `az vm stop` neuvolní výpočetní prostředky. K uvolnění výpočetních prostředků použijte `az vm deallocate` .
 
-1. Zobrazte seznam spravovaných disků ve skupině prostředků pomocí [seznamu AZ disk list](/cli/azure/disk#az-disk-list). Následující příklad zobrazí seznam spravovaných disků ve skupině prostředků s názvem *myResourceGroup*:
+1. Zobrazte seznam spravovaných disků ve skupině prostředků pomocí [seznamu AZ disk list](/cli/azure/disk#az_disk_list). Následující příklad zobrazí seznam spravovaných disků ve skupině prostředků s názvem *myResourceGroup*:
 
     ```azurecli
     az disk list \
@@ -47,7 +47,7 @@ V následujících ukázkách nahraďte příklady názvů parametrů jako *myRe
         --output table
     ```
 
-    Požadovaný disk rozbalte pomocí [AZ disk Update](/cli/azure/disk#az-disk-update). V následujícím příkladu se rozšíří spravovaný disk s názvem *myDataDisk* na *200* GB:
+    Požadovaný disk rozbalte pomocí [AZ disk Update](/cli/azure/disk#az_disk_update). V následujícím příkladu se rozšíří spravovaný disk s názvem *myDataDisk* na *200* GB:
 
     ```azurecli
     az disk update \
@@ -59,7 +59,7 @@ V následujících ukázkách nahraďte příklady názvů parametrů jako *myRe
     > [!NOTE]
     > Když rozbalíte spravovaný disk, aktualizovaná velikost se zaokrouhluje na nejbližší velikost spravovaného disku. Tabulku dostupných velikostí a úrovní spravovaných disků najdete v tématu [Přehled Azure Managed disks – ceny a fakturace](../managed-disks-overview.md).
 
-1. Spusťte virtuální počítač pomocí [AZ VM Start](/cli/azure/vm#az-vm-start). Následující příklad spustí virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
+1. Spusťte virtuální počítač pomocí [AZ VM Start](/cli/azure/vm#az_vm_start). Následující příklad spustí virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -69,7 +69,7 @@ V následujících ukázkách nahraďte příklady názvů parametrů jako *myRe
 ## <a name="expand-a-disk-partition-and-filesystem"></a>Rozbalení diskového oddílu a systému souborů
 Chcete-li použít rozšířený disk, rozbalte příslušný oddíl a systém souborů.
 
-1. Připojte se k VIRTUÁLNÍmu počítači přes SSH s příslušnými přihlašovacími údaji. Veřejnou IP adresu vašeho virtuálního počítače můžete zobrazit pomocí [AZ VM show](/cli/azure/vm#az-vm-show):
+1. Připojte se k VIRTUÁLNÍmu počítači přes SSH s příslušnými přihlašovacími údaji. Veřejnou IP adresu vašeho virtuálního počítače můžete zobrazit pomocí [AZ VM show](/cli/azure/vm#az_vm_show):
 
     ```azurecli
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --output tsv

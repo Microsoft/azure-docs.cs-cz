@@ -4,12 +4,12 @@ description: K přesunutí prostředků do nové skupiny prostředků nebo před
 ms.topic: conceptual
 ms.date: 04/16/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 08f2c123d37ac992e926e983d59edc650a8ab7ef
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 7a50ecc6081f8fa7c7600ddf1f98a95eceafa73b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728297"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784618"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -223,7 +223,7 @@ Chcete-li přejít k novému předplatnému, zahrňte hodnotu `DestinationSubscr
 
 ## <a name="use-azure-cli"></a>Použití Azure CLI
 
-Pokud chcete přesunout existující prostředky do jiné skupiny prostředků nebo předplatného, použijte příkaz [AZ Resource Move](/cli/azure/resource#az-resource-move) . Zadejte ID prostředků, které se mají přesunout. Následující příklad ukazuje, jak přesunout několik prostředků do nové skupiny prostředků. V `--ids` parametru zadejte mezerami oddělený seznam ID prostředků, který chcete přesunout.
+Pokud chcete přesunout existující prostředky do jiné skupiny prostředků nebo předplatného, použijte příkaz [AZ Resource Move](/cli/azure/resource#az_resource_move) . Zadejte ID prostředků, které se mají přesunout. Následující příklad ukazuje, jak přesunout několik prostředků do nové skupiny prostředků. V `--ids` parametru zadejte mezerami oddělený seznam ID prostředků, který chcete přesunout.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
