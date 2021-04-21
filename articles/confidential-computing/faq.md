@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 05c98102109d1925eb78d4558faf62b366801e77
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: aa78d6495eeffd0ea733451e029f07413602ce0d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538991"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812727"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Nejčastější dotazy týkající se důvěrného výpočetního prostředí Azure
 
@@ -32,7 +32,7 @@ Tady je několik způsobů, jak můžete nasadit virtuální počítač s DCsv2:
 
 **Budou všechny image operačních systémů fungovat s důvěrným výpočetním prostředím Azure?**
 
-No. Virtuální počítače se dají nasadit jenom na operační počítače generace 2 s Ubuntu serverem 18,04, Ubuntu serverem 16,04, Windows Server 2019 Datacenter a Windows Server 2016 Datacenter. Další informace o virtuálních počítačích 2. generace v systémech [Linux](../virtual-machines/generation-2.md) a [Windows](../virtual-machines/generation-2.md)
+No. Virtuální počítače se dají nasadit jenom na operační počítače generace 2 s Ubuntu serverem 18,04, Ubuntu serverem 20,04, Windows Server 2019 Datacenter a Windows Server 2016 Datacenter. Další informace o virtuálních počítačích 2. generace v systémech [Linux](../virtual-machines/generation-2.md) a [Windows](../virtual-machines/generation-2.md)
 
 **Virtuální počítače s DCsv2 jsou na portálu zobrazeny šedě a nelze je vybrat.**
 

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: 39012e1f5a0282da7dda6bab216719e31fdc5061
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 084f9aae16cfbf495f05c90c8244b2b9b71cf624
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752169"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812930"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -114,11 +114,11 @@ Například při použití ovladače ADO.NET se dosáhnete pomocí  **Encrypt = 
 
 [Transparentní šifrování dat (TDE) pro SQL Database, spravovaná instance SQL a Azure synapse Analytics](transparent-data-encryption-tde-overview.md) přináší úroveň zabezpečení, která vám umožní chránit neaktivní data před neoprávněným přístupem nebo offline přístupem k nezpracovaným souborům nebo zálohám. Mezi běžné scénáře patří krádež datového centra nebo nezabezpečené vyřazení hardwaru nebo médií, jako jsou diskové jednotky a záložní pásky.TDE šifruje celou databázi pomocí šifrovacího algoritmu AES, který nepožaduje, aby vývojáři aplikací provedli změny v existujících aplikacích.
 
-V Azure se všechny nově vytvořené databáze šifrují ve výchozím nastavení a šifrovací klíč databáze je chráněný integrovaným certifikátem serveru.  Údržba a rotace certifikátů spravuje služba a nevyžaduje od uživatele žádné vstupy. Zákazníci, kteří chtějí převzít kontrolu nad šifrovacími klíči, mohou spravovat klíče v [Azure Key Vault](../../key-vault/general/security-overview.md).
+V Azure se všechny nově vytvořené databáze šifrují ve výchozím nastavení a šifrovací klíč databáze je chráněný integrovaným certifikátem serveru.  Údržba a rotace certifikátů spravuje služba a nevyžaduje od uživatele žádné vstupy. Zákazníci, kteří chtějí převzít kontrolu nad šifrovacími klíči, mohou spravovat klíče v [Azure Key Vault](../../key-vault/general/security-features.md).
 
 ### <a name="key-management-with-azure-key-vault"></a>Správa klíčů pomocí Azure Key Vault
 
-Podpora [Bring Your Own Key](transparent-data-encryption-byok-overview.md) (BYOK) pro [transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) umožňuje zákazníkům převzít vlastnictví správy klíčů a rotace pomocí [Azure Key Vault](../../key-vault/general/security-overview.md), cloudového externího systému správy klíčů Azure. Pokud je přístup k trezoru klíčů odvolaný, databáze nemůže být dešifrována a načtena do paměti. Azure Key Vault poskytuje platformu pro správu centrálních klíčů, využívá důkladně monitorované moduly hardwarového zabezpečení (HSM) a umožňuje oddělení povinností mezi správou klíčů a dat, které vám pomůžou splnit požadavky na dodržování předpisů zabezpečení.
+Podpora [Bring Your Own Key](transparent-data-encryption-byok-overview.md) (BYOK) pro [transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) umožňuje zákazníkům převzít vlastnictví správy klíčů a rotace pomocí [Azure Key Vault](../../key-vault/general/security-features.md), cloudového externího systému správy klíčů Azure. Pokud je přístup k trezoru klíčů odvolaný, databáze nemůže být dešifrována a načtena do paměti. Azure Key Vault poskytuje platformu pro správu centrálních klíčů, využívá důkladně monitorované moduly hardwarového zabezpečení (HSM) a umožňuje oddělení povinností mezi správou klíčů a dat, které vám pomůžou splnit požadavky na dodržování předpisů zabezpečení.
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (šifrování při použití)
 

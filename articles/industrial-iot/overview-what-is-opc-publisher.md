@@ -1,32 +1,30 @@
 ---
 title: Vydavatel Microsoft OPC
 description: Tento článek poskytuje přehled modulu OPC Publisher Edge.
-author: jehona-m
+author: v-condav
 ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: conceptual
 ms.date: 3/22/2021
-ms.openlocfilehash: 3a44bdbadfe6ecd86a1b98fb7002f2d75c23bb6a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6df39c93e9bcfca522ac61a863c87269216cc592
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800529"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816165"
 ---
 # <a name="what-is-the-opc-publisher"></a>Co je Vydavatel OPC?
 
-Vydavatel OPC je plně podporovaný produkt společnosti Microsoft vyvinutý v otevřeném prostředí, který přemostěníuje mezeru mezi průmyslovými prostředky a cloudem Microsoft Azure. Provedete to tak, že se připojíte k prostředkům s podporou OPC UA nebo softwaru pro průmyslové připojení a publikujete data telemetrie do Azure IoT Hub v různých formátech, včetně IEC62541 OPC UA PubSub Standard (od verze 2,6 a vyšší).
-
-Spouští se v Azure IoT Edge jako modul nebo v jednoduchém Docker jako kontejner. Vzhledem k tomu, že využívá modul runtime pro více platforem .NET, běží také nativně v systémech Linux a Windows 10.
+Vydavatel OPC je plně podporovaný produkt Microsoftu, který prochází mezeru mezi průmyslovými prostředky a cloudem Microsoft Azure. Provedete to tak, že k vašemu Microsoft Azure cloudu připojíte prostředky s podporou OPC UA nebo software pro průmyslové připojení. Publikuje data telemetrie do Azure IoT Hub v různých formátech, včetně standardního formátu IEC62541 OPC UA PubSub (verze 2,6 a vyšší). OPC Publisher běží na Azure IoT Edge jako modul nebo v jednoduchém Docker jako kontejner. Protože využívá modul runtime pro více platforem .NET, běží nativně na systémech Linux i Windows 10.
 
 Vydavatel OPC je referenční implementace, která ukazuje, jak:
 
 - Připojte se k existujícím serverům OPC UA.
-- Publikujte data telemetrie kódovaná pomocí JSON ze serverů OPC UA v OPC UA/sub Format s použitím datové části JSON do Azure IoT Hub.
+- Publikujte data telemetrie kódovaná pomocí JSON ze serverů OPC UA ve formátu Pub/sub v OPC UA a použijte datovou část JSON pro IoT Hub Azure.
 
-Můžete použít libovolný přenosový protokol, který podporuje klientská sada SDK pro Azure IoT Hub: HTTPS, AMQP a MQTT.
+Můžete použít libovolný přenosový protokol, který podporuje klientská sada SDK pro Azure IoT Hub, jako je například HTTPS, AMQP a MQTT.
 
-Referenční implementace zahrnuje:
+Referenční implementace zahrnuje následující.
 
 - *Klient* OPC UA pro připojení k existujícím SERVERŮM OPC UA, které máte ve vaší síti.
 - *Server* OPC ua na portu 62222, který můžete použít ke správě co publikovaných a nabízí IoT Hub přímých metod, které se mají provést.

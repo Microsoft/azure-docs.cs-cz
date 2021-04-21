@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6fafacda322a974d04a04bb5e79d1ee086eaf7a5
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 863f98e643a7978856c03f5efe95736e6787f977
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753393"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814401"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault základní koncepty
 
@@ -80,7 +80,7 @@ Vývojáři také mohou spravovat klíče přímo, pomocí rozhraní API. Dalš�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se [zabezpečit svůj trezor](security-overview.md).
+- Přečtěte si o [Azure Key Vault funkcích zabezpečení](security-features.md).
 - Přečtěte si, jak [zabezpečit spravované fondy HSM](../managed-hsm/access-control.md) .
 
 <!--Image references-->

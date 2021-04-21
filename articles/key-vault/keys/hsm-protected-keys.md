@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: 171e0c03dc6f246d0f56d11f793ca711b0082f49
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: d2719f473caa8d7fa6ce1480a35ddc6cca8a33d6
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588288"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815625"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>Import klíčů chráněných modulem HSM do služby Key Vault
 
@@ -46,5 +46,5 @@ Přenos klíčů chráněných modulem HSM do Key Vault se podporuje dvěma růz
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md) , abyste zajistili zabezpečení, odolnost a monitorování vašich klíčů.
+* Přečtěte si [Přehled zabezpečení Key Vault](../general/security-features.md) , abyste zajistili zabezpečení, odolnost a monitorování vašich klíčů.
 * Úplný popis nové metody BYOK najdete v tématu [BYOK Specification](./byok-specification.md) .

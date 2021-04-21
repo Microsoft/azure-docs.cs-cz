@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e2b27934f58402ecfb7dabf5560dc43e45f3f7dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e216d42ff1f279d87e657126514fcfb50960f806
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101679262"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811899"
 ---
 # <a name="understand-support-for-disconnected-device-updates"></a>Vysvětlení podpory pro odpojené aktualizace zařízení
 
@@ -20,7 +20,7 @@ V případě transparentní brány může jedno nebo více zařízení předat z
 
 ## <a name="how-does-microsoft-connected-cache-preview-for-device-update-for-azure-iot-hub-work"></a>Jak aplikace Microsoft propojili mezipaměť pro aktualizace zařízení pro Azure IoT Hub funguje?
 
-Mezipaměť propojená Microsoftem je inteligentní a transparentní mezipaměť pro obsah publikovaný pro aktualizace zařízení pro Azure IoT Hub obsah a dá se přizpůsobit pro ukládání obsahu do mezipaměti z jiných zdrojů, jako jsou úložiště balíčků. Mezipaměť propojená Microsoftem je studená mezipaměť, kterou vyžadují klientské požadavky na přesné rozsahy souborů požadované klientem Optimalizace doručení a neobsahují předem počáteční obsah. Diagram a podrobný popis níže vysvětluje, jak funguje mezipaměť připojená Microsoftem v rámci aktualizace zařízení pro infrastrukturu Azure IoT Hub.
+Služba Microsoft inverze cache Preview je inteligentní, transparentní mezipaměť pro obsah publikovaný pro aktualizace zařízení pro Azure IoT Hub obsah a dá se přizpůsobit pro ukládání obsahu do mezipaměti z jiných zdrojů, jako jsou úložiště balíčků. Mezipaměť propojená Microsoftem je studená mezipaměť, kterou vyžadují klientské požadavky na přesné rozsahy souborů požadované klientem Optimalizace doručení a neobsahují předem počáteční obsah. Diagram a podrobný popis níže vysvětluje, jak funguje mezipaměť připojená Microsoftem v rámci aktualizace zařízení pro infrastrukturu Azure IoT Hub.
 
 >[!Note]
 >Při definování tohoto toku se předpokládá, že IoT Edge brána má připojení k Internetu. V případě scénáře pro příjem IoT Edge brány (vnořený hraniční) se dá "Content Delivery Network" (CDN) považovat za MCC hostovanou v nadřazené IoT Edge bráně.

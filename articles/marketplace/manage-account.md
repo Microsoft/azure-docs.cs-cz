@@ -7,12 +7,12 @@ ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 04/07/2021
-ms.openlocfilehash: c76d9d06425405cf7f43e089cb9c2995e30410ee
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 6b721e7acb7907743c0696aff6c11ad59f5ceba9
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107108233"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812565"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Správa účtu komerčního tržiště v partnerském centru
 
@@ -179,7 +179,7 @@ Nastavení správy zařízení se týká jenom publikování na platformě pro u
 
 ## <a name="create-a-billing-profile"></a>Vytvořit fakturační profil
 
-Pokud publikujete [dynamics 365 pro zákaznickou zapojení & Power Apps](./partner-center-portal/create-new-customer-engagement-offer.md) nebo [Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md) nabídka, musíte dokončit svůj *Fakturační profil*.
+Pokud publikujete [dynamics 365 pro zákaznickou zapojení & Power Apps](dynamics-365-customer-engage-offer-setup.md) nebo [Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md) nabídka, musíte dokončit svůj *Fakturační profil*.
 
 Fakturační adresa je předem vyplněná z vaší právnické osoby a tuto adresu můžete později aktualizovat. Pole DPH a ID DPH jsou vyžadována pro některé země a volitelné pro ostatní. Název země nebo oblasti a název společnosti nelze upravovat.
 

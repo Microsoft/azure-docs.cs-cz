@@ -12,19 +12,19 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 10/12/2020
-ms.openlocfilehash: 160066f9599388256c7c821732a1e06fec49bdf5
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: f93d65b4d10c1a8454a8e24b5cb081dae4d6943e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749037"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812799"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Transparentní šifrování dat pro SQL Database, spravovanou instanci SQL a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 [Transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) pomáhá chránit Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics s hrozbou neoprávněné aktivity škodlivou v offline režimu šifrováním dat v klidovém stavu. Šifruje a dešifruje databáze, související zálohy a soubory transakčních protokolů v reálném čase, a přitom nevyžaduje změny v aplikaci. Ve výchozím nastavení je TDE povolený pro všechny nově nasazené databáze SQL a musí se ručně povolit pro starší databáze Azure SQL Database, spravované instance Azure SQL. TDE se musí ručně povolit pro Azure synapse Analytics.
 
-TDE provádí šifrování v/v v reálném čase a dešifrování dat na úrovni stránky. Každá stránka se při načtení do paměti dešifruje a pak se před zápisem na disk zašifruje. TDE šifruje úložiště celé databáze pomocí symetrického klíče, který se nazývá šifrovací klíč databáze (klíč DEK). Při spuštění databáze se šifrované klíč DEK dešifrují a potom se používají k dešifrování a opětovnému šifrování souborů databáze v procesu SQL Server databázového stroje. KLÍČ DEK je chráněn ochranou TDE. TDE Protector je buď certifikát spravovaný službou (transparentní šifrování dat spravovaný službou), nebo asymetrický klíč uložený v [Azure Key Vault](../../key-vault/general/security-overview.md) (transparentní šifrování dat spravované zákazníkem).
+TDE provádí šifrování v/v v reálném čase a dešifrování dat na úrovni stránky. Každá stránka se při načtení do paměti dešifruje a pak se před zápisem na disk zašifruje. TDE šifruje úložiště celé databáze pomocí symetrického klíče, který se nazývá šifrovací klíč databáze (klíč DEK). Při spuštění databáze se šifrované klíč DEK dešifrují a potom se používají k dešifrování a opětovnému šifrování souborů databáze v procesu SQL Server databázového stroje. KLÍČ DEK je chráněn ochranou TDE. TDE Protector je buď certifikát spravovaný službou (transparentní šifrování dat spravovaný službou), nebo asymetrický klíč uložený v [Azure Key Vault](../../key-vault/general/security-features.md) (transparentní šifrování dat spravované zákazníkem).
 
 Pro Azure SQL Database a Azure synapse se ochrana TDE nastaví na úrovni [serveru](logical-servers.md) a děděna všemi databázemi přidruženými k tomuto serveru. U spravované instance Azure SQL je ochrana TDE nastavena na úrovni instance a zděděna všemi šifrovanými databázemi v této instanci. Pojem *Server* v celém tomto dokumentu odkazuje na server i na instanci, pokud není uvedeno jinak.
 
@@ -156,4 +156,4 @@ Pro Azure SQL Database a Azure synapse použijte následující sadu příkazů:
 - Obecný popis TDE najdete v tématu [transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Další informace o TDE s podporou BYOK pro Azure SQL Database, spravované instance Azure SQL a Azure synapse najdete v tématu [transparentní šifrování dat s podporou Bring Your Own Key](transparent-data-encryption-byok-overview.md).
 - Pokud chcete začít používat TDE s podporou Bring Your Own Key, přečtěte si téma Průvodce postupy, [zapněte transparentní šifrování dat pomocí vlastního klíče z Key Vault](transparent-data-encryption-byok-configure.md).
-- Další informace o Key Vault najdete v tématu [zabezpečený přístup k trezoru klíčů](../../key-vault/general/security-overview.md).
+- Další informace o Key Vault najdete v tématu [zabezpečený přístup k trezoru klíčů](../../key-vault/general/security-features.md).
