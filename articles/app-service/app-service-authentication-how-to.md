@@ -4,12 +4,12 @@ description: Naučte se přizpůsobit funkci ověřování a autorizace v App Se
 ms.topic: article
 ms.date: 03/29/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: b7faf47363a5efee6a60951e67d9ad2bed8bf76f
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 9335bb62e494fab50f7beadf3d7bbc423d80cf14
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076866"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775722"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené použití ověřování a autorizace v Azure App Service
 
@@ -652,7 +652,7 @@ Aktuální verzi middlewaru pro ověření platformy můžete zobrazit buď pomo
 
 ##### <a name="from-the-azure-cli"></a>Z Azure CLI
 
-Pomocí Azure CLI zobrazte aktuální verzi middlewaru pomocí příkazu [AZ WebApp auth show](/cli/azure/webapp/auth#az-webapp-auth-show) .
+Pomocí Azure CLI zobrazte aktuální verzi middlewaru pomocí příkazu [AZ WebApp auth show](/cli/azure/webapp/auth#az_webapp_auth_show) .
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -683,7 +683,7 @@ K zobrazení aktuální verze middlewaru, na které je aplikace spuštěná, mů
 
 #### <a name="update-the-current-runtime-version"></a>Aktualizace aktuální verze modulu runtime
 
-Pomocí Azure CLI můžete `runtimeVersion` v aplikaci aktualizovat nastavení pomocí příkazu [AZ WebApp auth Update](/cli/azure/webapp/auth#az-webapp-auth-update) .
+Pomocí Azure CLI můžete `runtimeVersion` v aplikaci aktualizovat nastavení pomocí příkazu [AZ WebApp auth Update](/cli/azure/webapp/auth#az_webapp_auth_update) .
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \
@@ -693,7 +693,7 @@ az webapp auth update --name <my_app_name> \
 
 Nahraďte `<my_app_name>` názvem vaší aplikace. Nahraďte také `<my_resource_group>` názvem skupiny prostředků vaší aplikace. Nahraďte také `<version>` platnou verzí modulu runtime 1. x nebo `~1` nejnovější verzí. Poznámky k verzi najdete v různých verzích modulu runtime [zde] (aby bylo možné https://github.com/Azure/app-service-announcements) určit verzi, ke které se má připnout).
 
-Tento příkaz můžete spustit z [Azure Cloud Shell](../cloud-shell/overview.md) výběrem možnosti **vyzkoušet** v předchozím příkladu kódu. Pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) můžete také spustit tento příkaz po provedení příkazu [AZ Login](/cli/azure/reference-index#az-login) pro přihlášení.
+Tento příkaz můžete spustit z [Azure Cloud Shell](../cloud-shell/overview.md) výběrem možnosti **vyzkoušet** v předchozím příkladu kódu. Pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) můžete také spustit tento příkaz po provedení příkazu [AZ Login](/cli/azure/reference-index#az_login) pro přihlášení.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, contperf-fy21q2
 ms.date: 03/09/2021
-ms.openlocfilehash: c614f2f60adfa2a29a01000cd3adf4791591b8b5
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: d5500c04b4299c215eba843530dc84932fa10894
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378750"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775038"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí akcí skriptů
 
@@ -320,12 +320,12 @@ Následující příklad skriptu ukazuje použití rutin pro povýšení a pak s
 
 | Příkaz | Popis |
 | --- | --- |
-| [`az hdinsight script-action delete`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-delete) |Odstraní zadanou akci trvalého skriptu clusteru. Tento příkaz nevrátí zpět akce provedené skriptem, odebere pouze trvalý příznak.|
-|[`az hdinsight script-action execute`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute)|Spustí akce skriptu v zadaném clusteru HDInsight.|
-| [`az hdinsight script-action list`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list) |Zobrazí seznam všech trvalých akcí skriptu pro zadaný cluster. |
-|[`az hdinsight script-action list-execution-history`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list-execution-history)|Vypíše historii spuštění všech skriptů pro zadaný cluster.|
-|[`az hdinsight script-action promote`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-promote)|Propaguje zadané spuštění skriptu ad hoc na trvalý skript.|
-|[`az hdinsight script-action show-execution-details`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-show-execution-details)|Získá podrobnosti spuštění skriptu pro dané ID spuštění skriptu.|
+| [`az hdinsight script-action delete`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_delete) |Odstraní zadanou akci trvalého skriptu clusteru. Tento příkaz nevrátí zpět akce provedené skriptem, odebere pouze trvalý příznak.|
+|[`az hdinsight script-action execute`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_execute)|Spustí akce skriptu v zadaném clusteru HDInsight.|
+| [`az hdinsight script-action list`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_list) |Zobrazí seznam všech trvalých akcí skriptu pro zadaný cluster. |
+|[`az hdinsight script-action list-execution-history`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_list_execution_history)|Vypíše historii spuštění všech skriptů pro zadaný cluster.|
+|[`az hdinsight script-action promote`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_promote)|Propaguje zadané spuštění skriptu ad hoc na trvalý skript.|
+|[`az hdinsight script-action show-execution-details`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_show_execution_details)|Získá podrobnosti spuštění skriptu pro dané ID spuštění skriptu.|
 
 ### <a name="hdinsight-net-sdk"></a>Sada HDInsight .NET SDK
 

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cea1571a48afe00350dde247c3c10e222a446247
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42382076b6c14989eb153725e991c8ef047ad15b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98662385"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774786"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům Azure Database for Marie DB pomalým dotazům pomocí Azure CLI
 
@@ -42,14 +42,14 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ```
 
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Vypsat protokoly pro Azure Database for MariaDB Server
-Pokud je **log_output** nakonfigurovaná na soubor, můžete získat přístup k protokolům přímo z místního úložiště serveru. Chcete-li zobrazit seznam dostupných souborů protokolu pomalých dotazů pro váš server, spusťte příkaz [AZ MariaDB Server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) .
+Pokud je **log_output** nakonfigurovaná na soubor, můžete získat přístup k protokolům přímo z místního úložiště serveru. Chcete-li zobrazit seznam dostupných souborů protokolu pomalých dotazů pro váš server, spusťte příkaz [AZ MariaDB Server-logs list](/cli/azure/mariadb/server-logs#az_mariadb_server_logs_list) .
 
 Soubory protokolu pro server **mydemoserver.MariaDB.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem **\_ soubory protokolu \_list.txt**.
 ```azurecli-interactive
 az mariadb server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-from-the-server"></a>Stáhnout protokoly ze serveru
-Pokud je **log_output** nakonfigurovaná na "soubor", můžete jednotlivé soubory protokolu stáhnout ze serveru pomocí příkazu [AZ MariaDB Server-logs Download](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-download) .
+Pokud je **log_output** nakonfigurovaná na "soubor", můžete jednotlivé soubory protokolu stáhnout ze serveru pomocí příkazu [AZ MariaDB Server-logs Download](/cli/azure/mariadb/server-logs#az_mariadb_server_logs_download) .
 
 Použijte následující příklad ke stažení konkrétního souboru protokolu pro server **mydemoserver.MariaDB.Database.Azure.com** ve skupině prostředků **myresourcegroup** do svého místního prostředí.
 ```azurecli-interactive

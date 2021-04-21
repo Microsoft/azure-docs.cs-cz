@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 02/19/2021
-ms.openlocfilehash: 8180fe8554e5fff83e4caef8c245839518649ca1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: 0a98f9e4b108d2498fa19bc0b041f9d52272c7d2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719045"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774912"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Umožňuje spravovat prostředky Azure a monitorovat náklady vytvořením úloh automatizace (Preview).
 
@@ -150,7 +150,7 @@ Chcete-li zobrazit historii spuštění úlohy spolu se stavy, vstupy, výstupy 
 
    Otevře se podokno **spuštění aplikace logiky** a zobrazí se základní pracovní postup, který byl spuštěn.
 
-   * Pracovní postup vždy začíná [*triggerem*](../connectors/apis-list.md#triggers-actions). Pracovní postup pro tento úkol začíná [triggerem **opakování**](../connectors/connectors-native-recurrence.md).
+   * Pracovní postup vždy začíná [*triggerem*](../connectors/apis-list.md#triggers). Pracovní postup pro tento úkol začíná [triggerem **opakování**](../connectors/connectors-native-recurrence.md).
 
    * Každý krok zobrazuje jeho stav a dobu běhu. Kroky, které mají dobu 0 sekund, trvalo spuštění méně než 1 sekundu.
 
