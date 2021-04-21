@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: banders
-ms.openlocfilehash: 13a9e3ad1dcdfa230d757230e3fdea91e4ee9d23
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b2cdb106ab1c77c23626258f7e0708a20ffd3c4e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310389"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772248"
 ---
 # <a name="buy-a-reservation"></a>Nákup rezervace
 
@@ -133,4 +133,8 @@ U zákazníků s individuálními předplatnými:
 
 ## <a name="next-steps"></a>Další kroky
 
+- [Další informace o oprávněních rezervací](view-reservations.md)
 - [Správa rezervací prostředků Azure](manage-reserved-vm-instance.md)
+- [Automatizace pomocí rozhraní REST API](/rest/api/reserved-vm-instances/reservationorder)
+- [Automatizace pomocí Azure PowerShell](/powershell/module/az.reservations)
+- [Automatizace pomocí rozhraní příkazového řádku](/cli/azure/reservations)
