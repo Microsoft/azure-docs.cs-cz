@@ -3,12 +3,12 @@ title: Zobrazení protokolů aktivit Azure pro monitorování prostředků
 description: Protokoly aktivit můžete použít ke kontrole akcí a chyb uživatele. Zobrazuje Azure Portal PowerShell, rozhraní příkazového řádku Azure a REST.
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 14015e9b2792515e6818af551b8bd9f54c686bee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7612146a0f9407663631f87c57f30ea4c590c7a4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91371588"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773922"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Zobrazení protokolů aktivit pro monitorování akcí u prostředků
 
@@ -140,7 +140,7 @@ Pomocí grafu prostředků můžete zobrazit historii změn pro určitý prostř
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Chcete-li načíst položky protokolu, spusťte pomocí příkazu [AZ monitor Activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) s posunem, aby označoval časový rozsah.
+Chcete-li načíst položky protokolu, spusťte pomocí příkazu [AZ monitor Activity-log list](/cli/azure/monitor/activity-log#az_monitor_activity_log_list) s posunem, aby označoval časový rozsah.
 
 ```azurecli-interactive
 az monitor activity-log list --resource-group ExampleGroup --offset 7d
@@ -184,7 +184,7 @@ az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationNam
 
 Pomocí grafu prostředků můžete zobrazit historii změn pro určitý prostředek. Další informace najdete v tématu [získání změn prostředků](../../governance/resource-graph/how-to/get-resource-changes.md).
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
 Operace REST pro práci s protokolem aktivit jsou součástí [rozhraní REST API služby Insights](/rest/api/monitor/). Pokud chcete načíst události z protokolu aktivit, navštivte stránku věnovanou [výpisu událostí správy v předplatném](/rest/api/monitor/activitylogs).
 

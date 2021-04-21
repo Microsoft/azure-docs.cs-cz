@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: a02da7237252811d89e2c19a29f49f0bf9bb3804
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22804015ebf0344c00e60c88f780fe22ba440b52
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98945734"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774984"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Apache Hadoop clusterů s účty úložiště s bezpečným přenosem ve službě Azure HDInsight
 
@@ -35,7 +35,7 @@ Pokud chcete aktualizovat existující účet úložiště pomocí PowerShellu, 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pro příkaz Azure CLI [AZ Storage Account Create](/cli/azure/storage/account#az-storage-account-create), ujistěte se, že parametr `--https-only` je nastavený na `true` .
+Pro příkaz Azure CLI [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create), ujistěte se, že parametr `--https-only` je nastavený na `true` .
 
 Pokud chcete aktualizovat existující účet úložiště pomocí Azure CLI, přečtěte si téma [vyžadování zabezpečeného přenosu pomocí Azure CLI](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli).
 

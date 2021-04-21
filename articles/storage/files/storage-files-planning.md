@@ -8,12 +8,12 @@ ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 2cb3bee770653173f1a40b209c27d2dc92c7df11
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: be7e5b1f9721cc65c2f9b371becf8b4c82fb37b4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718030"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759756"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí synchronizace souborů Azure. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
@@ -22,7 +22,7 @@ ms.locfileid: "107718030"
 
 - **Ukládání sdílené složky Azure do mezipaměti v místním prostředí pomocí synchronizace souborů Azure**: synchronizace souborů Azure umožňuje centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zachovat tak flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje místní (nebo cloudový) Windows Server na rychlou mezipaměť sdílené složky Azure SMB. 
 
-Tento článek primárně řeší požadavky nasazení na nasazení sdílené složky Azure, aby je bylo možné přímo připojit k místnímu nebo cloudovém klientovi. Chcete-li naplánovat nasazení Synchronizace souborů Azure, přečtěte si téma [Plánování nasazení synchronizace souborů Azure](storage-sync-files-planning.md).
+Tento článek primárně řeší požadavky nasazení na nasazení sdílené složky Azure, aby je bylo možné přímo připojit k místnímu nebo cloudovém klientovi. Chcete-li naplánovat nasazení Synchronizace souborů Azure, přečtěte si téma [Plánování nasazení synchronizace souborů Azure](../file-sync/file-sync-planning.md).
 
 ## <a name="available-protocols"></a>Dostupné protokoly
 
@@ -131,7 +131,7 @@ V mnoha případech nebudete pro vaši organizaci vytvářet novou sdílenou slo
 [Článek Přehled migrace](storage-files-migration-overview.md) stručně popisuje základy a obsahuje tabulku, která vás zavede k migračním průvodcům, které se pravděpodobně týkají vašeho scénáře.
 
 ## <a name="next-steps"></a>Další kroky
-* [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)
+* [Plánování nasazení Synchronizace souborů Azure](../file-sync/file-sync-planning.md)
 * [Nasazení souborů Azure](./storage-how-to-create-file-share.md)
-* [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)
+* [Nasazení Synchronizace souborů Azure](../file-sync/file-sync-deployment-guide.md)
 * [Podívejte se na článek Přehled migrace, kde najdete Průvodce migrací pro váš scénář.](storage-files-migration-overview.md)

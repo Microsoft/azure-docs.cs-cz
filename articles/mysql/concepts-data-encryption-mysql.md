@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 809827fc61cde3c8077484dbe2a5be5037609cd8
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: bed0ccbc25c6fcc43d8fb0948182f229bce63edf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748543"
+ms.locfileid: "107764706"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL šifrování dat pomocí klíče spravovaného zákazníkem
 
@@ -99,7 +99,7 @@ Když nakonfigurujete šifrování dat pomocí klíče spravovaného zákazníke
 * Pokud pro váš Azure Database for MySQL vytvoříme repliku pro čtení, která má povolené šifrování dat, server repliky bude v *nepřístupovém* stavu. Tuto chybu můžete vyřešit pomocí [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) nebo rozhraní příkazového [řádku](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers).
 * Pokud odstraníte Trezor klíčů, Azure Database for MySQL nebude moci získat přístup k tomuto klíči a bude přesunut do *nedostupného* stavu. Obnovte [Key Vault](../key-vault/general/key-vault-recovery.md) a znovu ověřte šifrování dat, aby byl server *dostupný*.
 * Pokud klíč odstraníme z trezoru klíčů, Azure Database for MySQL nebude moct získat přístup k tomuto klíči a přesune se do *nedostupného* stavu. Obnovte [klíč](../key-vault/general/key-vault-recovery.md) a znovu ověřte šifrování dat *pro zpřístupnění serveru.*
-* Pokud klíč uložený ve službě Azure webrecovery vyprší, klíč se stane neplatným a Azure Database for MySQL přejde do *nedostupného* stavu. Rozšíříte datum vypršení platnosti klíče pomocí rozhraní příkazového [řádku](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) a pak znovu ověříte šifrování dat, aby byl server *dostupný*.
+* Pokud klíč uložený ve službě Azure webrecovery vyprší, klíč se stane neplatným a Azure Database for MySQL přejde do *nedostupného* stavu. Rozšíříte datum vypršení platnosti klíče pomocí rozhraní příkazového [řádku](/cli/azure/keyvault/key#az_keyvault_key_set-attributes) a pak znovu ověříte šifrování dat, aby byl server *dostupný*.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Odvolání přístupu k náhodnému klíči z Key Vault
 

@@ -4,12 +4,12 @@ description: Popisuje postup zobrazení Azure Resource Manager operací nasazen�
 tags: top-support-issue
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 898af2365dfbb0f61b6b87e7532c9256269d799a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e7ed2096a696efdc9a2654a8fd0c294c82cbd4f7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732767"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781860"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Zobrazit historii nasazení pomocí Azure Resource Manager
 
@@ -61,13 +61,13 @@ ID korelace získáte pomocí:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete zobrazit seznam nasazení pro skupinu prostředků, použijte příkaz [AZ Deployment Group list](/cli/azure/group/deployment#az-deployment-group-list).
+Pokud chcete zobrazit seznam nasazení pro skupinu prostředků, použijte příkaz [AZ Deployment Group list](/cli/azure/group/deployment#az_deployment_group_list).
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-Konkrétní nasazení získáte pomocí [skupiny AZ Deployment Group show](/cli/azure/group/deployment#az-deployment-group-show).
+Konkrétní nasazení získáte pomocí [skupiny AZ Deployment Group show](/cli/azure/group/deployment#az_deployment_group_show).
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment
@@ -81,13 +81,13 @@ az deployment group show --resource-group ExampleGroup --name ExampleDeployment 
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-Chcete-li zobrazit seznam nasazení pro skupinu prostředků, použijte následující operaci. Nejnovější číslo verze rozhraní API, které se má použít v žádosti, najdete v tématu  [nasazení – seznam podle skupiny prostředků](/rest/api/resources/resources/deployments/listbyresourcegroup).
+Chcete-li zobrazit seznam nasazení pro skupinu prostředků, použijte následující operaci. Nejnovější číslo verze rozhraní API, které se má použít v žádosti, najdete v tématu  [nasazení – seznam podle skupiny prostředků](/rest/api/resources/deployments/listbyresourcegroup).
 
 ```
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/?api-version={api-version}
 ```
 
-Pro získání konkrétního nasazení. použijte následující operaci. Nejnovější číslo verze rozhraní API, které se má použít v žádosti, najdete v tématu [nasazení – získat](/rest/api/resources/resources/deployments/get).
+Pro získání konkrétního nasazení. použijte následující operaci. Nejnovější číslo verze rozhraní API, které se má použít v žádosti, najdete v tématu [nasazení – získat](/rest/api/resources/deployments/get).
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
@@ -147,7 +147,7 @@ Stavovou zprávu o neúspěšných operacích získáte pomocí následujícího
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete zobrazit operace nasazení pro nasazení do skupiny prostředků, použijte příkaz [AZ Deployment Operation Group list](/cli/azure/deployment/operation/group#az-deployment-operation-group-list) . Musíte mít Azure CLI 2.6.0 nebo novější.
+Pokud chcete zobrazit operace nasazení pro nasazení do skupiny prostředků, použijte příkaz [AZ Deployment Operation Group list](/cli/azure/deployment/operation/group#az_deployment-operation-group-list) . Musíte mít Azure CLI 2.6.0 nebo novější.
 
 ```azurecli-interactive
 az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
@@ -167,7 +167,7 @@ az deployment operation group list --resource-group ExampleGroup --name ExampleD
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-K získání operací nasazení použijte následující operaci. Nejnovější číslo verze rozhraní API, které se má použít v žádosti, najdete v tématu věnovaném [operacím nasazení – seznam](/rest/api/resources/resources/deploymentoperations/list).
+K získání operací nasazení použijte následující operaci. Nejnovější číslo verze rozhraní API, které se má použít v žádosti, najdete v tématu věnovaném [operacím nasazení – seznam](/rest/api/resources/deploymentoperations/list).
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
@@ -214,4 +214,3 @@ Odpověď obsahuje chybovou zprávu.
 * Nápovědu k řešení konkrétních chyb nasazení najdete v tématu [řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manager](common-deployment-errors.md).
 * Další informace o tom, jak se nasazení spravují v historii, najdete v tématu [Automatické odstraňování z historie nasazení](deployment-history-deletions.md).
 * Chcete-li před spuštěním ověřit nasazení, přečtěte si téma [nasazení skupiny prostředků pomocí šablony Azure Resource Manager](deploy-powershell.md).
-

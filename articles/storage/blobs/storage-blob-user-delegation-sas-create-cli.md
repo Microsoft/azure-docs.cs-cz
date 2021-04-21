@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 536cd01fbcf2c5d18a8c12030b709427d9bb91b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ec434b9b6da3b3b80a3afddbb432ddeece2b389
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98703602"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788542"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Vytvoření SAS delegování uživatele pro kontejner nebo objekt BLOB pomocí Azure CLI
 
@@ -65,7 +65,7 @@ Při vytváření SAS delegování uživatele `--auth-mode login` `--as-user par
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>Vytvoření SAS pro delegování uživatelů pro kontejner
 
-Pokud chcete vytvořit přidružení zabezpečení delegování uživatelů pro kontejner pomocí Azure CLI, zavolejte příkaz [AZ Storage Container Generate-SAS](/cli/azure/storage/container#az-storage-container-generate-sas) .
+Pokud chcete vytvořit přidružení zabezpečení delegování uživatelů pro kontejner pomocí Azure CLI, zavolejte příkaz [AZ Storage Container Generate-SAS](/cli/azure/storage/container#az_storage_container_generate_sas) .
 
 K dispozici jsou podporovaná oprávnění pro SAS uživatelů na kontejneru, včetně přidat, vytvořit, odstranit, zobrazit, číst a zapisovat. Oprávnění lze zadat jednotlivě nebo v kombinaci. Další informace o těchto oprávněních najdete v tématu [Vytvoření SAS uživatele pro delegování](/rest/api/storageservices/create-user-delegation-sas).
 
@@ -89,7 +89,7 @@ se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26
 
 ### <a name="create-a-user-delegation-sas-for-a-blob"></a>Vytvoření SAS pro delegování uživatelů pro objekt BLOB
 
-K vytvoření SAS delegování uživatele pro objekt BLOB pomocí Azure CLI volejte příkaz [AZ Storage BLOB Generate-SAS](/cli/azure/storage/blob#az-storage-blob-generate-sas) .
+K vytvoření SAS delegování uživatele pro objekt BLOB pomocí Azure CLI volejte příkaz [AZ Storage BLOB Generate-SAS](/cli/azure/storage/blob#az_storage_blob_generate_sas) .
 
 K dispozici jsou podporovaná oprávnění pro SAS uživatele v objektu blob, včetně přidat, vytvořit, odstranit, číst a zapisovat. Oprávnění lze zadat jednotlivě nebo v kombinaci. Další informace o těchto oprávněních najdete v tématu [Vytvoření SAS uživatele pro delegování](/rest/api/storageservices/create-user-delegation-sas).
 
@@ -119,7 +119,7 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 
 ## <a name="revoke-a-user-delegation-sas"></a>Odvolání SAS uživatele na delegování
 
-Pokud chcete z Azure CLI odvolat SAS delegování uživatele, zavolejte příkaz [AZ Storage Account REVOKE-Keys-Keys](/cli/azure/storage/account#az-storage-account-revoke-delegation-keys) . Tento příkaz odvolá všechny klíče delegování uživatelů přidružené k zadanému účtu úložiště. Zruší se platnost všech sdílených přístupových podpisů přidružených k těmto klíčům.
+Pokud chcete z Azure CLI odvolat SAS delegování uživatele, zavolejte příkaz [AZ Storage Account REVOKE-Keys-Keys](/cli/azure/storage/account#az_storage_account_revoke_delegation_keys) . Tento příkaz odvolá všechny klíče delegování uživatelů přidružené k zadanému účtu úložiště. Zruší se platnost všech sdílených přístupových podpisů přidružených k těmto klíčům.
 
 Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 

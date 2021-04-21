@@ -4,12 +4,12 @@ description: Tento ukázkový skript ukazuje, jak přidat aplikaci pro použití
 ms.topic: sample
 ms.date: 01/29/2018
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 414a401168b1b378ed33f4904607243de0267d22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06afb59a76e763c25e943c3be1531372a6bd2aa1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94565802"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765259"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>Příklad rozhraní příkazového řádku: Přidání aplikace do účtu Azure Batch
 
@@ -38,14 +38,14 @@ Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Vytvoří účet úložiště. |
-| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Vytvoří účet Batch. |
-| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Provede ověření v zadaném účtu Batch pro další práci s rozhraním příkazového řádku.  |
-| [az batch application create](/cli/azure/batch/application#az-batch-application-create) | Vytvoří aplikaci.  |
-| [az batch application package create](/cli/azure/batch/application/package#az-batch-application-package-create) | Přidá balíček aplikace do zadané aplikace.  |
-| [az batch application set](/cli/azure/batch/application#az-batch-application-set) | Aktualizuje vlastnosti aplikace.  |
-| [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Vytvoří účet úložiště. |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Vytvoří účet Batch. |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | Provede ověření v zadaném účtu Batch pro další práci s rozhraním příkazového řádku.  |
+| [az batch application create](/cli/azure/batch/application#az_batch-application-create) | Vytvoří aplikaci.  |
+| [az batch application package create](/cli/azure/batch/application/package#az_batch-application-package-create) | Přidá balíček aplikace do zadané aplikace.  |
+| [az batch application set](/cli/azure/batch/application#az_batch-application-set) | Aktualizuje vlastnosti aplikace.  |
+| [az group delete](/cli/azure/group#az_group_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 

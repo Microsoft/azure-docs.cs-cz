@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: bbad7dcaa1d92df4969c88e4ba86a62987509e39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 200df14e7d18c4bdfb903bef46c169f6f7bf5ca5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98632795"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781770"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Pravidla brány firewall pro Azure SQL Database a Azure synapse
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -215,11 +215,11 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 | Rutina | Level | Description |
 | --- | --- | --- |
-|[AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Server|Vytvoří pravidlo brány firewall protokolu IP serveru.|
-|[AZ SQL Server Firewall-Rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Server|Vypíše pravidla brány firewall protokolu IP na serveru.|
-|[AZ SQL Server Firewall-Rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Server|Zobrazuje podrobnosti pravidla brány firewall protokolu IP.|
-|[AZ SQL Server Firewall-Rule Update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Server|Aktualizuje pravidlo brány firewall protokolu IP.|
-|[AZ SQL Server Firewall-Rule DELETE](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Server|Odstraní pravidlo brány firewall protokolu IP.|
+|[AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|Server|Vytvoří pravidlo brány firewall protokolu IP serveru.|
+|[AZ SQL Server Firewall-Rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|Server|Vypíše pravidla brány firewall protokolu IP na serveru.|
+|[AZ SQL Server Firewall-Rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|Server|Zobrazuje podrobnosti pravidla brány firewall protokolu IP.|
+|[AZ SQL Server Firewall-Rule Update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|Server|Aktualizuje pravidlo brány firewall protokolu IP.|
+|[AZ SQL Server Firewall-Rule DELETE](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Server|Odstraní pravidlo brány firewall protokolu IP.|
 
 V následujícím příkladu se k nastavení pravidla brány firewall protokolu IP na úrovni serveru používá rozhraní příkazového řádku:
 

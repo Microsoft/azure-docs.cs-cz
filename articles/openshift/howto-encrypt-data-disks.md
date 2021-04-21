@@ -7,12 +7,12 @@ author: stuartatmicrosoft
 ms.author: stkirk
 ms.service: azure-redhat-openshift
 keywords: šifrování, BYOK, ARO, CMK, OpenShift, Red Hat
-ms.openlocfilehash: cf028456cc8971678373d36214885c3f79df8e82
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f6c80bab6f821dc7c85352bf57ebe255ae712d43
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047061"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783516"
 ---
 # <a name="encrypt-persistent-volume-claims-with-a-customer-managed-key-cmk-on-azure-red-hat-openshift-aro-preview"></a>Šifrování trvalých deklarací identity pomocí klíče spravovaného zákazníkem (CMK) v Azure Red Hat OpenShift (ARO) (Preview)
 
@@ -250,8 +250,8 @@ az disk show -n $pvName -g $buildRG -o json --query [encryption]
 <!-- LINKS - external -->
 
 <!-- LINKS - internal -->
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [best-practices-security]: ../aks/operator-best-practices-cluster-security.md
 [byok-azure-portal]: ../storage/common/customer-managed-keys-configure-key-vault.md
 [customer-managed-keys]: ../virtual-machines/disk-encryption.md#customer-managed-keys
