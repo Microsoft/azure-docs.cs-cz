@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: azhussai
-ms.openlocfilehash: 3e7bdc92dc6268c712eecbd69ff014e2229b3b84
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: b7cf7c98e71da215eb30dcab556a88d6d2701591
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490960"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789442"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Přepsat hlavičky a adresu URL protokolu HTTP pomocí Application Gateway
 
- Application Gateway umožňuje přepsat vybraný obsah požadavků a odpovědí. Pomocí této funkce můžete překládat adresy URL, parametry řetězce dotazu a také upravovat hlavičky požadavků a odpovědí. Umožňuje taky přidat podmínky, abyste zajistili, že se adresa URL nebo zadaná záhlaví přepíší jenom v případě, že jsou splněné určité podmínky. Tyto podmínky vycházejí z informací o požadavku a odpovědi.
+Application Gateway umožňuje přepsat vybraný obsah požadavků a odpovědí. Pomocí této funkce můžete překládat adresy URL, parametry řetězce dotazu a také upravovat hlavičky požadavků a odpovědí. Umožňuje taky přidat podmínky, abyste zajistili, že se adresa URL nebo zadaná záhlaví přepíší jenom v případě, že jsou splněné určité podmínky. Tyto podmínky vycházejí z informací o požadavku a odpovědi.
 
 >[!NOTE]
 >Funkce hlaviček protokolu HTTP a přepis adres URL jsou k dispozici pouze pro [SKU Application Gateway v2](application-gateway-autoscaling-zone-redundant.md) .
@@ -44,7 +44,7 @@ Pomocí funkce pro přepsání adresy URL v Application Gateway můžete:
 
 * Přepište název hostitele, cestu a řetězec dotazu adresy URL požadavku. 
 
-* Vyberte, že se má přepsat adresa URL všech žádostí na naslouchací proces, nebo jenom ty, které splňují jednu nebo více podmínek, které jste nastavili. Tyto podmínky jsou založené na vlastnostech žádosti a odpovědi (požadavek, hlavička, hlavička odpovědi a proměnné serveru).
+* Vyberte, chcete-li přepsat adresu URL všech požadavků na naslouchací proces nebo pouze ty žádosti, které odpovídají jednomu nebo více podmínkám, které jste nastavili. Tyto podmínky jsou založené na vlastnostech žádosti a odpovědi (požadavek, hlavička, hlavička odpovědi a proměnné serveru).
 
 * Zvolte, že se má žádost směrovat (vyberte fond back-end) na základě původní adresy URL nebo přepsané adresy URL.
 
@@ -132,7 +132,7 @@ Application Gateway podporuje následující proměnné serveru pro scénáře v
 
 |   Název proměnné    |                   Description                                           |
 | ------------------------- | ------------------------------------------------------------ |
-| client_certificate        | Certifikát klienta ve formátu PEM pro navázání připojení SSL. |
+| client_certificate        | Certifikát klienta ve formátu PEM pro navázáné připojení SSL. |
 | client_certificate_end_date| Koncové datum klientského certifikátu. |
 | client_certificate_fingerprint| Otisk certifikátu SHA1 klientského certifikátu pro navázáné připojení SSL. |
 | client_certificate_issuer | Řetězec "název" vystavitele klientského certifikátu pro navázáné připojení SSL. |
@@ -153,13 +153,13 @@ Sada pravidel přepsání obsahuje:
 
 * **Typ přepsání**: k dispozici jsou tři typy přepsání:
    * Přepis hlaviček požadavků 
-   * Přepisují se hlavičky odpovědí.
-   * Přepisování adresy URL: typ přepisu adresy URL má 3 součásti
+   * Přepis hlaviček odpovědí
+   * Přepisování součástí adresy URL
       * **Cesta URL**: hodnota, na kterou má být cesta přepsána. 
       * **Řetězec dotazu adresy URL**: hodnota, na kterou se má řetězec dotazu přepsat. 
       * **Znovu vyhodnotit mapu cest**: slouží k určení, zda má být mapování cesty URL znovu vyhodnoceno. Pokud je tato akce ponechána nezaškrtnutá, použije se původní cesta URL, která bude odpovídat vzoru cesty v mapě cesty URL. Pokud je nastavená hodnota true, mapování cesty URL se znovu vyhodnotí, aby se zkontrolovala shoda s přepsanou cestou. Povolení tohoto přepínače pomáhá při směrování požadavku do jiného back-endu po opětovném zápisu.
 
-## <a name="rewrite-configuration-common-pitfall"></a>Přepsat Common Pitfall konfigurace
+## <a name="rewrite-configuration-common-pitfalls"></a>Přepsat Common nástrah konfigurace
 
 * Povolení možnosti znovu vyhodnotit mapu cest není pro základní pravidla směrování žádostí povolené. K tomu je potřeba zabránit nekonečnému vyhodnocení cyklu pro základní pravidlo směrování.
 
@@ -191,7 +191,7 @@ Application Gateway vloží do všech požadavků hlavičku X s přesměrování
 
 Když aplikace back-end pošle odezvu přesměrování, může být vhodné přesměrovat klienta na jinou adresu URL, než která je určena v back-endové aplikaci. Můžete to třeba udělat, když je služba App Service hostována za aplikační bránou a vyžaduje, aby klient provedl přesměrování na jeho relativní cestu. (Například přesměrování z contoso.azurewebsites.net/path1 na contoso.azurewebsites.net/path2.)
 
-Vzhledem k tomu, že App Service je víceklientské služba, používá v žádosti hlavičku hostitele ke směrování požadavku na správný koncový bod. App Services mají výchozí název domény *. azurewebsites.net (řekněme contoso.azurewebsites.net), který se liší od názvu domény služby Application Gateway (řekněme contoso.com). Vzhledem k tomu, že původní požadavek od klienta má název domény služby Application Gateway (contoso.com) jako název hostitele, služba Application Gateway změní název hostitele na contoso.azurewebsites.net. Tato změna tuto změnu provede, aby služba App Service mohla požadavek směrovat do správného koncového bodu.
+Vzhledem k tomu, že App Service je víceklientské služba, používá v žádosti hlavičku hostitele ke směrování požadavku na správný koncový bod. App Services mají výchozí název domény \* . azurewebsites.NET (řekněme contoso.azurewebsites.NET), který se liší od názvu domény služby Application Gateway (řekněme contoso.com). Vzhledem k tomu, že původní požadavek od klienta má název domény služby Application Gateway (contoso.com) jako název hostitele, služba Application Gateway změní název hostitele na contoso.azurewebsites.net. Tato změna tuto změnu provede, aby služba App Service mohla požadavek směrovat do správného koncového bodu.
 
 Když služba App Service pošle odezvu přesměrování, používá stejný název hostitele v hlavičce umístění odpovědi jako v žádosti, kterou přijímá z aplikační brány. Proto klient provede požadavek přímo na místo průchodu `contoso.azurewebsites.net/path2` přes Aplikační bránu ( `contoso.com/path2` ). Obcházení aplikační brány není žádoucí.
 
@@ -226,7 +226,7 @@ Pro přítomnost záhlaví nebo serverové proměnné můžete vyhodnotit hlavi�
 
 #### <a name="parameter-based-path-selection"></a>Výběr cesty na základě parametrů
 
-Chcete-li dosáhnout scénářů, ve kterých chcete vybrat back-end fond na základě hodnoty záhlaví, části adresy URL nebo řetězce dotazu v žádosti, můžete použít kombinaci možností přepsání adresy URL a směrování na základě cesty.  Například pokud máte nákupní web a kategorie produktu se předává jako řetězec dotazu v adrese URL a chcete směrovat požadavek do back-endu na základě řetězce dotazu, pak:
+Chcete-li dosáhnout scénářů, ve kterých chcete vybrat back-end fond na základě hodnoty záhlaví, části adresy URL nebo řetězce dotazu v žádosti, můžete použít kombinaci možností přepsání adresy URL a směrování na základě cesty. Například pokud máte nákupní web a kategorie produktu se předává jako řetězec dotazu v adrese URL a chcete směrovat požadavek do back-endu na základě řetězce dotazu, pak:
 
 **Krok 1:**  Vytvořte mapu cest, jak je znázorněno na obrázku níže.
 
@@ -234,11 +234,11 @@ Chcete-li dosáhnout scénářů, ve kterých chcete vybrat back-end fond na zá
 
 **Krok 2 (a):** Vytvořte sadu přepsání, která má 3 pravidla přepisu: 
 
-* První pravidlo má podmínku, která kontroluje *QUERY_STRING*  proměnnou pro *kategorii = obuv* a má akci, která přepíše cestu URL k/*listing1* a má **znovu vyhodnotit mapu cest** povoleno.
+* První pravidlo má podmínku, která kontroluje *QUERY_STRING* proměnnou pro *kategorii = obuv* a má akci, která přepíše cestu URL k/*listing1* a má **znovu vyhodnotit mapu cest** povoleno.
 
-* Druhé pravidlo má podmínku, která kontroluje *QUERY_STRING*  proměnnou pro *Category = pytle* a má akci, která přepíše cestu URL k/*listing2*  a má **znovu vyhodnotit mapu cest** .
+* Druhé pravidlo má podmínku, která kontroluje *QUERY_STRING* proměnnou pro *Category = pytle* a má akci, která přepíše cestu URL k/*listing2*  a má **znovu vyhodnotit mapu cest** .
 
-* Třetí pravidlo má podmínku, která kontroluje *QUERY_STRING*  proměnnou pro *kategorii = příslušenství* a má akci, která přepíše cestu URL k/*listing3* a má **znovu vyhodnotit mapu cest** zapnuto.
+* Třetí pravidlo má podmínku, která kontroluje *QUERY_STRING* proměnnou pro *kategorii = příslušenství* a má akci, která přepíše cestu URL k/*listing3* a má **znovu vyhodnotit mapu cest** zapnuto.
 
 :::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="Scénář přepsání adresy URL 1-2.":::
 
@@ -250,10 +250,10 @@ Chcete-li dosáhnout scénářů, ve kterých chcete vybrat back-end fond na zá
 
 Když teď uživatel požaduje *contoso.com/listing?Category=any*, pak se porovná s výchozí cestou, protože žádný ze vzorů cest v mapě cest (/listing1,/listing2,/listing3) se neshoduje. Vzhledem k tomu, že jste přidružili výše uvedenou sadu přepsání s touto cestou, vyhodnotí se tato sada přepisování. Vzhledem k tomu, že řetězec dotazu se neshoduje s podmínkou v žádném z 3 pravidel přepsání v této sadě přepsání, nebude provedena žádná akce přepisu, takže požadavek bude směrován beze změny do back-endu přidruženého k výchozí cestě (což je *GenericList*).
 
- Pokud uživatel požádá o *contoso.com/listing?Category=Shoes,* bude se shodovat výchozí cesta. V tomto případě se ale podmínka prvního pravidla bude shodovat, a proto se spustí akce přidružená k této podmínce, která přepíše cestu URL k/*listing1*  a znovu vyhodnotí mapu cest. Když se znovu vyhodnotí mapování cest, požadavek se teď bude shodovat s cestou přidruženou ke vzorové */listing1* a požadavek se směruje do back-endu přidruženého k tomuto vzoru, což je ShoesListBackendPool.
+Pokud uživatel požádá o *contoso.com/listing?Category=Shoes*, bude se shodovat výchozí cesta. V tomto případě se ale podmínka prvního pravidla bude shodovat, a proto se spustí akce přidružená k této podmínce, která přepíše cestu URL k/*listing1*  a znovu vyhodnotí mapu cest. Když se znovu vyhodnotí mapování cest, požadavek se teď bude shodovat s cestou přidruženou ke vzorové */listing1* a požadavek se směruje do back-endu přidruženého k tomuto vzoru, což je ShoesListBackendPool.
 
 >[!NOTE]
->Tento scénář je možné rozšířit na jakékoli hodnoty hlaviček nebo souborů cookie, cestu URL, řetězec dotazu nebo proměnné serveru na základě definované podmínky a v podstatě vám umožní směrovat požadavky na základě těchto podmínek.
+>Tento scénář je možné rozšířit na jakékoli hodnoty hlaviček nebo souborů cookie, cestu URL, řetězec dotazu nebo proměnné serveru založené na definovaných podmínkách a v podstatě vám umožní směrovat požadavky na základě těchto podmínek.
 
 #### <a name="rewrite-query-string-parameters-based-on-the-url"></a>Přepsat parametry řetězce dotazu na základě adresy URL
 
@@ -273,9 +273,9 @@ Podrobný průvodce pro dosažení výše popsaného scénáře najdete v témat
 
 ### <a name="url-rewrite-vs-url-redirect"></a>Přesměrování adresy URL přepsání adresy URL vs
 
-V případě přepisu adresy URL Application Gateway přepíše adresu URL před odesláním požadavku do back-endu. Tato změna neovlivní to, co uživatelé uvidí v prohlížeči, protože změny se od uživatele skryjí.
+V případě přepsání adresy URL Application Gateway přepíše adresu URL před odesláním požadavku do back-endu. Tato změna neovlivní to, co uživatelé uvidí v prohlížeči, protože změny se od uživatele skryjí.
 
-V případě přesměrování adresy URL Application Gateway odešle klientovi odpověď přesměrování s novou adresou URL. To zase vyžaduje, aby klient znovu odeslal svůj požadavek na novou adresu URL, která je k dispozici v přesměrování. Adresa URL, kterou uživatel vidí v prohlížeči, se aktualizuje na novou adresu URL.
+V případě přesměrování adresy URL Application Gateway odešle klientovi odpověď přesměrování s novou adresou URL. To zase vyžaduje, aby klient znovu odeslal svůj požadavek na novou adresu URL, která je k dispozici v přesměrování. Adresa URL, kterou uživatel uvidí v prohlížeči, se aktualizuje na novou adresu URL.
 
 :::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="Přepište a přesměrujte.":::
 
@@ -283,7 +283,7 @@ V případě přesměrování adresy URL Application Gateway odešle klientovi o
 
 - Pokud má odpověď více než jednu hlavičku se stejným názvem, pak přepsání hodnoty jednoho z těchto hlaviček způsobí vyřazení ostatních hlaviček v odpovědi. K tomu obvykle dochází v Set-Cookie hlavičce, protože odpověď může obsahovat více než jednu Set-Cookie hlavičku. Takový scénář se používá v případě, že používáte službu App Service s aplikační bránou a máte nakonfigurovanou spřažení relací na základě souborů cookie na aplikační bránu. V takovém případě bude odpověď obsahovat dvě hlavičky Set-Cookie: jednu, kterou používá služba App Service, například: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` a další pro spřažení Application Gateway, například `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Přepsání jedné z hlaviček Set-Cookie v tomto scénáři může mít za následek odebrání druhé hlavičky Set-Cookie z odpovědi.
 - Přepsání nejsou podporována, pokud je brána Application Gateway nakonfigurována pro přesměrování požadavků nebo zobrazení vlastní chybové stránky.
-- Názvy hlaviček můžou obsahovat libovolné alfanumerické znaky a specifické symboly, jak jsou definované v [dokumentu RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). V názvech hlaviček Momentálně nepodporujeme speciální znak podtržítka (_).
+- Názvy hlaviček můžou obsahovat libovolné alfanumerické znaky a specifické symboly, jak jsou definované v [dokumentu RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). V názvech hlaviček Momentálně nepodporujeme \_ speciální znak podtržítka ().
 - Nelze přepsat hlavičky připojení a upgradu
 
 ## <a name="next-steps"></a>Další kroky

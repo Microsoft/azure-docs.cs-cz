@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: fb5203629915914ab9af22d89e5f2865078a8e44
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 82fc5707800e06e3221754bfa29d8e981ccdbd2d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012603"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782580"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Nejčastější dotazy k Azure App Service v Linuxu
 
@@ -122,7 +122,7 @@ Zadejte úplnou adresu URL registru, včetně `http://` nebo `https://` .
 
 **Jaký je formát názvu bitové kopie v možnosti privátního registru?**
 
-Přidejte úplný název bitové kopie včetně adresy URL privátního registru (například myacr.azurecr.io/dotnet:latest). Názvy obrázků, které používají vlastní port, [nelze zadat prostřednictvím portálu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). K nastavení `docker-custom-image-name` použijte [ `az` Nástroj příkazového řádku](/cli/azure/webapp/config/container#az-webapp-config-container-set).
+Přidejte úplný název bitové kopie včetně adresy URL privátního registru (například myacr.azurecr.io/dotnet:latest). Názvy obrázků, které používají vlastní port, [nelze zadat prostřednictvím portálu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). K nastavení `docker-custom-image-name` použijte [ `az` Nástroj příkazového řádku](/cli/azure/webapp/config/container#az_webapp_config_container_set).
 
 **Můžu na vlastní imagi kontejneru zobrazit víc než jeden port?**
 

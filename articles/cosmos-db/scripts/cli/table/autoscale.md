@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 7/29/2020
-ms.openlocfilehash: ed2c09476882d4a8db802b23cc06f5de987f7acc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 656a8b87fc2a039ff4436bf53ce5a5c0ad1a976a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566176"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789064"
 ---
 # <a name="create-an-azure-cosmos-table-api-account-and-table-with-autoscale-using-azure-cli"></a>Vytvoření účtu Azure rozhraní API pro tabulky Cosmos a tabulky pomocí automatického škálování pomocí Azure CLI
 [!INCLUDE[appliesto-table-api](../../../includes/appliesto-table-api.md)]
@@ -39,10 +39,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Vytvoří účet služby Azure Cosmos DB. |
-| [AZ cosmosdb Table Create](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) | Vytvoří tabulku rozhraní API pro tabulky služby Azure Cosmos. |
-| [az group delete](/cli/azure/resource#az-resource-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) | Vytvoří účet služby Azure Cosmos DB. |
+| [AZ cosmosdb Table Create](/cli/azure/cosmosdb/table#az_cosmosdb_table_create) | Vytvoří tabulku rozhraní API pro tabulky služby Azure Cosmos. |
+| [az group delete](/cli/azure/resource#az_resource_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 

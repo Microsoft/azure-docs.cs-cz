@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 150f6b57f1dec0b6d925ef53b4a7001ae9f23607
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe906a63a681515d401d005bf3357a4e7218ae66
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97007904"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771420"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Nasazení aplikace pro Azure App Service pomocí souboru ZIP nebo WAR
 
@@ -44,7 +44,7 @@ Výše uvedený koncový bod nefunguje v současnosti pro Linux App Services. Zv
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>Nasazení souboru ZIP pomocí Azure CLI
 
-Nasaďte nahraný soubor ZIP do webové aplikace pomocí příkazu [AZ WebApp Deployment source config-zip](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) .  
+Nasaďte nahraný soubor ZIP do webové aplikace pomocí příkazu [AZ WebApp Deployment source config-zip](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config_zip) .  
 
 Následující příklad nasadí soubor ZIP, který jste nahráli. Pokud používáte místní instalaci rozhraní příkazového řádku Azure CLI, zadejte cestu k místnímu souboru ZIP pro `--src` .
 

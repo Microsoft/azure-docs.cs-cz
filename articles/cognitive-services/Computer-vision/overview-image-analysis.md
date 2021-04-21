@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/30/2021
 ms.author: pafarley
 keywords: počítačové zpracování obrazu, aplikace počítačové vidění, Služba Computer visioning Service
-ms.openlocfilehash: f262fdb49cac4ab9abe7f3f6873160d3059968c6
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 0258eb7c57bc0734b5c0a67644cbaa4f62a34537
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287210"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766910"
 ---
 # <a name="what-is-image-analysis"></a>Co je analýza obrázků?
 
@@ -24,7 +24,7 @@ ms.locfileid: "106287210"
 
 Služba analýzy Počítačové zpracování obrazu Image může z obrázků extrahovat širokou škálu vizuálních funkcí. Například může určit, jestli obrázek obsahuje obsah pro dospělé, najít konkrétní značky nebo objekty nebo najít lidské obličeje.
 
-Analýzu obrázků můžete použít prostřednictvím sady Client Library SDK nebo přímo voláním [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) . Začněte tím, že přejdete do kurzu [rychlý Start](quickstarts-sdk/image-analysis-client-library.md) .
+Analýzu obrázků můžete použít prostřednictvím sady Client Library SDK nebo přímo voláním [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v2-ga/operations/5d986960601faab4bf452005) . Začněte tím, že přejdete do kurzu [rychlý Start](quickstarts-sdk/image-analysis-client-library.md) .
 
 Tato dokumentace obsahuje následující typy článků:
 * [Rychlé starty](./quickstarts-sdk/image-analysis-client-library.md) jsou podrobné pokyny, které vám umožní volat službu a získat výsledky v krátké době. 
@@ -34,7 +34,7 @@ Tato dokumentace obsahuje následující typy článků:
 
 ## <a name="image-analysis-features"></a>Funkce analýzy obrázků
 
-Obrázky můžete analyzovat a poskytnout tak přehled o jejich vizuálních funkcích a vlastnostech. Všechny funkce v následujícím seznamu jsou poskytovány rozhraním API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) . Začněte pomocí [rychlého](./quickstarts-sdk/image-analysis-client-library.md) startu.
+Obrázky můžete analyzovat a poskytnout tak přehled o jejich vizuálních funkcích a vlastnostech. Všechny funkce v následujícím seznamu jsou poskytovány rozhraním API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) . Začněte pomocí [rychlého](./quickstarts-sdk/image-analysis-client-library.md) startu.
 
 
 ### <a name="tag-visual-features"></a>Označování vizuálních vlastností

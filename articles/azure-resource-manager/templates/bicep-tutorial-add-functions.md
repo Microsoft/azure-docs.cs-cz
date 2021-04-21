@@ -2,20 +2,20 @@
 title: Kurz – přidání funkcí do Azure Resource Manager souborů bicep
 description: Přidejte do souborů bicep funkce pro vytvoření hodnot.
 author: mumian
-ms.date: 03/10/2021
+ms.date: 04/20/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: references_regions
-ms.openlocfilehash: b909beb0cce9ad04ba00068ee25247520dcff47d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 43dec6ceb21a6604bc0034b3f14b79ffd2cbe263
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102633151"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773796"
 ---
 # <a name="tutorial-add-functions-to-azure-resource-manager-bicep-file"></a>Kurz: Přidání funkcí do souboru Azure Resource Manager bicep
 
-V tomto kurzu se naučíte přidávat [funkce šablon](template-functions.md) do souboru bicep. Funkce slouží k dynamickému vytváření hodnot. Kromě těchto funkcí šablon poskytovaných systémem můžete také vytvořit [uživatelsky definované funkce](./template-user-defined-functions.md). Dokončení tohoto kurzu trvá **7 minut** .
+V tomto kurzu se naučíte přidávat [funkce šablon](template-functions.md) do souboru bicep. Funkce slouží k dynamickému vytváření hodnot. Bicep v současné době nepodporuje uživatelsky definované funkce. Dokončení tohoto kurzu trvá **7 minut** .
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 

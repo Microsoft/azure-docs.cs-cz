@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: cf100861705bf1654b7206445c884b5fe315b06d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 148b24aea42072f1901c76c7a09a126340ef9951
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792629"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784366"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Referenční informace ke spravovanému rozhraní API pro službu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -60,18 +60,18 @@ Pokud chcete vytvořit a nakonfigurovat spravované instance pomocí [Azure CLI]
 
 | Rutina | Popis |
 | --- | --- |
-|[AZ SQL mi Create](/cli/azure/sql/mi#az-sql-mi-create) |Vytvoří spravovanou instanci.|
-|[AZ SQL mi list](/cli/azure/sql/mi#az-sql-mi-list)|Zobrazí seznam dostupných spravovaných instancí.|
-|[AZ SQL mi show](/cli/azure/sql/mi#az-sql-mi-show)|Získá podrobnosti o spravované instanci.|
-|[AZ SQL mi Update](/cli/azure/sql/mi#az-sql-mi-update)|Aktualizuje spravovanou instanci.|
-|[AZ SQL mi DELETE](/cli/azure/sql/mi#az-sql-mi-delete)|Odebere spravovanou instanci.|
+|[AZ SQL mi Create](/cli/azure/sql/mi#az_sql_mi_create) |Vytvoří spravovanou instanci.|
+|[AZ SQL mi list](/cli/azure/sql/mi#az_sql_mi_list)|Zobrazí seznam dostupných spravovaných instancí.|
+|[AZ SQL mi show](/cli/azure/sql/mi#az_sql_mi_show)|Získá podrobnosti o spravované instanci.|
+|[AZ SQL mi Update](/cli/azure/sql/mi#az_sql_mi_update)|Aktualizuje spravovanou instanci.|
+|[AZ SQL mi DELETE](/cli/azure/sql/mi#az_sql_mi_delete)|Odebere spravovanou instanci.|
 |[AZ SQL mi op list](/cli/azure/sql/mi/op#az_sql_mi_op_list)|Načte seznam operací správy provedených na spravované instanci.|
 |[AZ SQL mi op show](/cli/azure/sql/mi/op#az_sql_mi_op_show)|Získá konkrétní operaci správy prováděnou na spravované instanci.|
 |[AZ SQL mi op Cancel](/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|Zruší konkrétní operaci správy prováděnou na spravované instanci.|
-|[AZ SQL MIDB Create](/cli/azure/sql/midb#az-sql-midb-create) |Vytvoří spravovanou databázi.|
-|[AZ SQL MIDB list](/cli/azure/sql/midb#az-sql-midb-list)|Zobrazí seznam dostupných spravovaných databází.|
-|[AZ SQL MIDB Restore](/cli/azure/sql/midb#az-sql-midb-restore)|Obnoví spravovanou databázi.|
-|[AZ SQL MIDB DELETE](/cli/azure/sql/midb#az-sql-midb-delete)|Odebere spravovanou databázi.|
+|[AZ SQL MIDB Create](/cli/azure/sql/midb#az_sql_midb_create) |Vytvoří spravovanou databázi.|
+|[AZ SQL MIDB list](/cli/azure/sql/midb#az_sql_midb_list)|Zobrazí seznam dostupných spravovaných databází.|
+|[AZ SQL MIDB Restore](/cli/azure/sql/midb#az_sql_midb_restore)|Obnoví spravovanou databázi.|
+|[AZ SQL MIDB DELETE](/cli/azure/sql/midb#az_sql_midb_delete)|Odebere spravovanou databázi.|
 
 ## <a name="transact-sql-create-and-configure-instance-databases"></a>Transact-SQL: vytvoření a konfigurace databází instancí
 

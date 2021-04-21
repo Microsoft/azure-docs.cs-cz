@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-python-uiex
-ms.openlocfilehash: 1b6805434f8c697c1ea13925ee681fdc7b5f1a29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5c51630d111bd68e311a93100abb8266e2a8e27
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101704748"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787426"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce Pythonu v Azure z příkazového řádku
 
@@ -180,7 +180,7 @@ Tyto položky vytvoříte pomocí následujících příkazů. Podporují se roz
     az login
     ```
 
-    Příkaz [AZ Login](/cli/azure/reference-index#az-login) vás přihlásí k účtu Azure.
+    Příkaz [AZ Login](/cli/azure/reference-index#az_login) vás přihlásí k účtu Azure.
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
     ```azurepowershell
@@ -199,7 +199,7 @@ Tyto položky vytvoříte pomocí následujících příkazů. Podporují se roz
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
  
-    Pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) se vytvoří skupina prostředků. Obecně vytvoříte skupinu prostředků a prostředky v oblasti blízko vás pomocí dostupné oblasti vrácené z `az account list-locations` příkazu.
+    Pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create) se vytvoří skupina prostředků. Obecně vytvoříte skupinu prostředků a prostředky v oblasti blízko vás pomocí dostupné oblasti vrácené z `az account list-locations` příkazu.
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -222,7 +222,7 @@ Tyto položky vytvoříte pomocí následujících příkazů. Podporují se roz
     az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
     ```
 
-    Příkaz [AZ Storage Account Create](/cli/azure/storage/account#az-storage-account-create) vytvoří účet úložiště. 
+    Příkaz [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create) vytvoří účet úložiště. 
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 

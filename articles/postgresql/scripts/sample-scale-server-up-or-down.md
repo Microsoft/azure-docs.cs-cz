@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.custom: mvc, devx-track-azurecli
 ms.topic: sample
 ms.date: 08/07/2019
-ms.openlocfilehash: b0a17b12c51c08cd39d0c4fb7860021b8c68e606
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 56fd88ab658e59cccb14a35559d1793bc3ad1aa0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606398"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778412"
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Monitorování a škálování jednoho serveru PostgreSQL pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku škáluje výpočetní výkon a úložiště pro jeden Azure Database for PostgreSQL Server po dotazování metrik. Výpočetní výkon se může škálovat nahoru nebo dolů. Velikost úložiště se dá škálovat jenom nahoru. 
@@ -36,11 +36,11 @@ Po spuštění skriptu pomocí následujícího příkazu odeberte skupinu prost
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 Tento skript používá příkazy uvedené v následující tabulce:
 
-| **Příkaz** | **Poznámky** |
+| **Systému** | **Poznámky** |
 |---|---|
 | [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az postgres server create](/cli/azure/postgres/server#az-postgres-server-create) | Vytvoří server PostgreSQL, který je hostitelem databází. |
-| [AZ Postgres Server Update](/cli/azure/postgres/server#az-postgres-server-update) | Aktualizuje vlastnosti serveru PostgreSQL. |
+| [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create) | Vytvoří server PostgreSQL, který je hostitelem databází. |
+| [AZ Postgres Server Update](/cli/azure/postgres/server#az_postgres_server_update) | Aktualizuje vlastnosti serveru PostgreSQL. |
 | [az monitor metrics list](/cli/azure/monitor/metrics) | Vypíše hodnotu metriky pro prostředky. |
 | [az group delete](/cli/azure/group) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 

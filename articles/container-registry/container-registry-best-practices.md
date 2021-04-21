@@ -3,12 +3,12 @@ title: Osvědčené postupy registru
 description: Zjistěte, jak pomocí těchto osvědčených postupů efektivně používat službu Azure Container Registry.
 ms.topic: article
 ms.date: 01/07/2021
-ms.openlocfilehash: 01c8c7f547be9dd225022fb3315a4bdecc48c2bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0811cc4a5bffc21ffba19e64a3887eab6bc36fbb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578136"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784132"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Osvědčené postupy pro službu Azure Container Registry
 
@@ -63,7 +63,7 @@ Při ověřování ve službě Azure Container Registry existují dva primární
 
 | Typ | Ukázkový scénář | Doporučená metoda |
 |---|---|---|
-| Jednotlivá identita | Vývojář přetahující image do svého vývojového počítače nebo sdílející image ze svého vývojového počítače. | [az acr login](/cli/azure/acr#az-acr-login) |
+| Jednotlivá identita | Vývojář přetahující image do svého vývojového počítače nebo sdílející image ze svého vývojového počítače. | [az acr login](/cli/azure/acr#az_acr_login) |
 | Bezobslužné ověření/identita služby | Kanály sestavení a nasazení bez přímého zapojení uživatele. | [Instanční objekt](container-registry-authentication.md#service-principal) |
 
 Podrobné informace o těchto a dalších Azure Container Registrych scénářích ověřování najdete v tématu [ověřování pomocí služby Azure Container Registry](container-registry-authentication.md).
@@ -108,8 +108,8 @@ Doporučení pro zlepšení stav zabezpečení registrů kontejnerů najdete v t
 [registry-overview-quotas]: ./media/container-registry-best-practices/registry-overview-quotas.png
 
 <!-- LINKS - Internal -->
-[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
-[az-acr-show-usage]: /cli/azure/acr#az-acr-show-usage
+[az-acr-repository-delete]: /cli/azure/acr/repository#az_acr_repository_delete
+[az-acr-show-usage]: /cli/azure/acr#az_acr_show_usage
 [azure-cli]: /cli/azure
 [azure-portal]: https://portal.azure.com
 [container-registry-geo-replication]: container-registry-geo-replication.md

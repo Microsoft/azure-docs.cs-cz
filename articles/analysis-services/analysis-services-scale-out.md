@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 24ee31b941d836d296c30927cfb9636f3023fa89
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a2385cb811e322bd44daefa03d821b2ae47e0652
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92019425"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769243"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Škálování služby Azure Analysis Services na více instancí
 
@@ -118,7 +119,7 @@ V **přehledu** > model > **synchronizovat model**.
 
 ![Ikona synchronizace](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Použijte operaci **synchronizace** .
 

@@ -3,12 +3,12 @@ title: Reference k chybě pro kontroly stavu registru
 description: Kódy chyb a možná řešení problémů nalezené spuštěním příkazu AZ ACR check-Health Diagnostic v Azure Container Registry
 ms.topic: article
 ms.date: 01/25/2021
-ms.openlocfilehash: 05ae5a7ac19bb7748d5313ccb4974b639ab52d9c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9716c29093ae58518bc86ec06af40522d49047c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99061864"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773436"
 ---
 # <a name="health-check-error-reference"></a>Informace o chybě kontroly stavu
 
@@ -121,4 +121,4 @@ Nejčastější dotazy a další známé problémy týkající se Azure Containe
 
 
 <!-- LINKS - internal -->
-[az-acr-check-health]: /cli/azure/acr#az-acr-check-health
+[az-acr-check-health]: /cli/azure/acr#az_acr_check_health

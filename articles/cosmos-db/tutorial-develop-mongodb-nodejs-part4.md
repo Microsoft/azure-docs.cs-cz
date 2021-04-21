@@ -10,12 +10,12 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js, devx-track-azurecli
 ms.reviewer: sngun
-ms.openlocfilehash: 0690f7f6d0807af181740a7133ec5400fc64cc12
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 99edeff93bdf75596eea80a238e159548f00679c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482258"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790198"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – vytvoření účtu Cosmos
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -49,7 +49,7 @@ V této části kurzu můžete použít Azure Cloud Shell (v internetovém prohl
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
 
-Pomocí příkazu vytvořte účet Azure Cosmos DB [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) .
+Pomocí příkazu vytvořte účet Azure Cosmos DB [`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) .
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB

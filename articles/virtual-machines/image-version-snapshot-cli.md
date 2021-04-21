@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: c809edd3699d0b9827fe15da53d5d18b12cbe6e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2dc6d99b8b1c913479fc584b52f6ff919dfac675
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556957"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792286"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Vytvoření image ze spravovaného disku nebo snímku v galerii sdílených imagí pomocí Azure CLI
 
@@ -35,13 +35,13 @@ Při práci s tímto článkem nahraďte názvy prostředků tam, kde je to pot�
 
 ## <a name="find-the-snapshot-or-managed-disk"></a>Vyhledání snímku nebo spravovaného disku 
 
-Seznam snímků, které jsou k dispozici ve skupině prostředků, můžete zobrazit pomocí [AZ Snapshot list](/cli/azure/snapshot#az-snapshot-list). 
+Seznam snímků, které jsou k dispozici ve skupině prostředků, můžete zobrazit pomocí [AZ Snapshot list](/cli/azure/snapshot#az_snapshot_list). 
 
 ```azurecli-interactive
 az snapshot list --query "[].[name, id]" -o tsv
 ```
 
-Místo snímku můžete použít také spravovaný disk. Pokud chcete získat spravovaný disk, použijte příkaz [AZ disk list](/cli/azure/disk#az-disk-list). 
+Místo snímku můžete použít také spravovaný disk. Pokud chcete získat spravovaný disk, použijte příkaz [AZ disk list](/cli/azure/disk#az_disk_list). 
 
 ```azurecli-interactive
 az disk list --query "[].[name, id]" -o tsv
@@ -56,7 +56,7 @@ Stejný postup můžete použít k získání všech datových disků, které ch
 
 K vytvoření definice obrázku budete potřebovat informace o galerii imagí.
 
-Seznam informací o dostupných galeriích imagí pomocí [AZ SIG list](/cli/azure/sig#az-sig-list). Poznamenejte si název galerie, se kterou má Galerie použít, aby se později používala.
+Seznam informací o dostupných galeriích imagí pomocí [AZ SIG list](/cli/azure/sig#az_sig_list). Poznamenejte si název galerie, se kterou má Galerie použít, aby se později používala.
 
 ```azurecli-interactive 
 az sig list -o table
@@ -71,7 +71,7 @@ Při vytváření definice obrázku se ujistěte, že jsou všechny správné in
 
 Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./shared-image-galleries.md#image-definitions).
 
-Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
+Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az_sig_image_definition_create).
 
 V tomto příkladu se definice image jmenuje *myImageDefinition* a je určena pro [specializovanou](./shared-image-galleries.md#generalized-and-specialized-images) image operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
 
@@ -95,7 +95,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>Vytvoření verze image
 
-Vytvoření verze Image pomocí [AZ Image Galerie vytvořit-Image-Version](/cli/azure/sig/image-version#az-sig-image-version-create) 
+Vytvoření verze Image pomocí [AZ Image Galerie vytvořit-Image-Version](/cli/azure/sig/image-version#az_sig_image_version_create) 
 
 Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32 celé číslo. Formát: *MajorVersion*. *Podverze.* *Oprava*.
 

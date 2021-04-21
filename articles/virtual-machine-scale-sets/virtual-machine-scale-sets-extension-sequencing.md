@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 01/30/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b5aea1f0f0101231408dc9ad7b57a30f2c86256
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83121027"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788152"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Zřizování rozšíření sekvence ve virtuálních počítačích Virtual Machine Scale Sets
 Rozšíření virtuálních počítačů Azure poskytují možnosti, jako je například konfigurace po nasazení a správa, monitorování, zabezpečení a další. Produkční nasazení obvykle používají kombinaci více rozšíření nakonfigurovaných pro instance virtuálních počítačů, aby dosáhla požadovaných výsledků.
@@ -145,7 +145,7 @@ Vzhledem k tomu, že vlastnost "provisionAfterExtensions" přijímá pole názv�
 }
 ```
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 Následující příklad přidá nové rozšíření s názvem ExtensionC do modelu sady škálování. ExtensionC má závislosti na příponách a ExtensionB, které už jsou definované v modelu sady škálování.
 
 ```
@@ -223,7 +223,7 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Pomocí [AZ VMSS Extension set](/cli/azure/vmss/extension#az-vmss-extension-set) přidejte rozšíření pro stav aplikace do definice modelu sady škálování. Sekvence rozšíření vyžaduje použití Azure CLI 2.0.55 nebo vyšší.
+Pomocí [AZ VMSS Extension set](/cli/azure/vmss/extension#az_vmss_extension_set) přidejte rozšíření pro stav aplikace do definice modelu sady škálování. Sekvence rozšíření vyžaduje použití Azure CLI 2.0.55 nebo vyšší.
 
 Následující příklad přidá [rozšíření stavu aplikace](virtual-machine-scale-sets-health-extension.md) do modelu škálované sady pro sadu škálování založeného na systému Windows. Rozšíření pro stav aplikace se zřídí po zřízení [rozšíření vlastních skriptů](../virtual-machines/extensions/custom-script-windows.md), které už je definované v sadě škálování.
 

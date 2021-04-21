@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
-ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f20fa22dac3fba4d01cbc5e398bafa4113e94a96
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84737525"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780294"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Zobrazení topologie virtuální sítě Azure
 
@@ -61,7 +61,7 @@ Příkazy můžete spustit v následujících krocích:
     az group create --name NetworkWatcherRG --location eastus
     ```
 
-2. Vytvořte sledovací proces sítě pomocí [AZ Network Watch Configure](/cli/azure/network/watcher#az-network-watcher-configure). Následující příklad vytvoří sledovací proces sítě v oblasti *eastus* :
+2. Vytvořte sledovací proces sítě pomocí [AZ Network Watch Configure](/cli/azure/network/watcher#az_network_watcher_configure). Následující příklad vytvoří sledovací proces sítě v oblasti *eastus* :
 
     ```azurecli-interactive
     az network watcher configure \
@@ -70,7 +70,7 @@ Příkazy můžete spustit v následujících krocích:
       --enabled true
     ```
 
-3. Prohlédněte si topologii pomocí [AZ Network sledovacího procesu show-Topology](/cli/azure/network/watcher#az-network-watcher-show-topology). V následujícím příkladu se zobrazí topologie pro skupinu prostředků s názvem *MyResourceGroup*:
+3. Prohlédněte si topologii pomocí [AZ Network sledovacího procesu show-Topology](/cli/azure/network/watcher#az_network_watcher_show_topology). V následujícím příkladu se zobrazí topologie pro skupinu prostředků s názvem *MyResourceGroup*:
 
     ```azurecli-interactive
     az network watcher show-topology --resource-group MyResourceGroup

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: bcc9ca0175e0e03c62c2ce2b91d8ec337756a3cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84fd0c368bcf39af1bae90dc83336ffdb8489768
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92490097"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791512"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>Kurz: nasazení aplikace v Django s využitím App Service a Azure Database for PostgreSQLm flexibilním serverem (Preview)
 
@@ -105,7 +105,7 @@ V této části vytvoříte hostitele aplikací v aplikaci App Service, připoj�
 
 V terminálu se ujistěte, že jste v kořenovém adresáři úložiště ( `djangoapp` ), který obsahuje kód aplikace.
 
-Vytvořte aplikaci App Service (hostitelský proces) pomocí [`az webapp up`](/cli/azure/webapp#az-webapp-up) příkazu:
+Vytvořte aplikaci App Service (hostitelský proces) pomocí [`az webapp up`](/cli/azure/webapp#az_webapp_up) příkazu:
 
 ```azurecli
 
@@ -129,7 +129,7 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 - Povolí výchozí protokolování pro aplikaci, pokud ještě není povolené.
 - Nahrajte úložiště pomocí nasazení ZIP s povoleným automatizací buildu.
 - **AZ WebApp VNet-Integration** příkaz přidá webovou aplikaci ve stejné virtuální síti jako server Postgres.
-- Kód aplikace očekává nalezení informací o databázi v řadě proměnných prostředí. K nastavení proměnných prostředí v App Service vytvoříte nastavení aplikace pomocí příkazu [AZ WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) .
+- Kód aplikace očekává nalezení informací o databázi v řadě proměnných prostředí. K nastavení proměnných prostředí v App Service vytvoříte nastavení aplikace pomocí příkazu [AZ WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) .
 
 > [!TIP]
 > Mnoho příkazů rozhraní příkazového řádku Azure v mezipaměti běžně ukládá společné parametry, jako je název skupiny prostředků a plán App Service, do souboru *. Azure/config*. V důsledku toho nemusíte zadávat stejný parametr s pozdějšími příkazy. Například pro opětovné nasazení aplikace po provedení změn můžete spustit `az webapp up` znovu bez parametrů.

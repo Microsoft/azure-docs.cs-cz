@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3452bfee1e9228926bb687d1b9dc7fb26dfff85a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 410da33b531524f4a6458df13a89807fedd739a2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642173"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773328"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>Vytvoření a správa privátního odkazu pro Azure Database for PostgreSQL s jedním serverem pomocí rozhraní příkazového řádku
 
@@ -50,7 +50,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>Zakázat zásady privátního koncového bodu podsítě 
-Azure nasadí prostředky do podsítě v rámci virtuální sítě, takže musíte vytvořit nebo aktualizovat podsíť, aby se zakázaly [zásady sítě](../private-link/disable-private-endpoint-network-policy.md)privátního koncového bodu. Aktualizujte konfiguraci podsítě s názvem *mySubnet* pomocí [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
+Azure nasadí prostředky do podsítě v rámci virtuální sítě, takže musíte vytvořit nebo aktualizovat podsíť, aby se zakázaly [zásady sítě](../private-link/disable-private-endpoint-network-policy.md)privátního koncového bodu. Aktualizujte konfiguraci podsítě s názvem *mySubnet* pomocí [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update):
 
 ```azurecli-interactive
 az network vnet subnet update \

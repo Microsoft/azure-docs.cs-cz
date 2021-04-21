@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.date: 04/06/2021
 ms.author: rolyon
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: b4a3f7f613f75f2f285437b7ae6f816adf56d999
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: d816854c8d8a78931060c6e56fffbaee1fde5150
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580108"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771708"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Řešení potíží s Azure RBAC
 
@@ -138,7 +138,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Podobně platí, že pokud toto přiřazení role vypíšete pomocí Azure CLI, může se zobrazit prázdná `principalName` . Například [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list) vrátí přiřazení role, které je podobné následujícímu výstupu:
+Podobně platí, že pokud toto přiřazení role vypíšete pomocí Azure CLI, může se zobrazit prázdná `principalName` . Například [AZ role Assignment list](/cli/azure/role/assignment#az_role_assignment_list) vrátí přiřazení role, které je podobné následujícímu výstupu:
 
 ```
 {

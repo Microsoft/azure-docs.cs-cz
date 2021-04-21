@@ -4,12 +4,12 @@ description: Naučte se řešit běžné problémy při nasazení, spuštění n
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d8e7fb85e369f5f278436370944eafeb1fb6a50e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce7e3018e470df3840eb01127a7bf2ffa01b5cbc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96779511"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771060"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží se službou Azure Container Instances
 
@@ -236,5 +236,5 @@ Naučte se, jak [načíst protokoly a události kontejneru](container-instances-
 [docker-hub-windows-nano]: https://hub.docker.com/_/microsoft-windows-nanoserver
 
 <!-- LINKS - Internal -->
-[az-container-show]: /cli/azure/container#az-container-show
+[az-container-show]: /cli/azure/container#az_container_show
 [list-cached-images]: /rest/api/container-instances/location/listcachedimages

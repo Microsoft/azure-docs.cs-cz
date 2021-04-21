@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 21db7ed0cf13a3ed282929b09847c6c3ba8a36ed
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9dce264b7f2c88aed11f5b82a61f83cbac6c9697
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307244"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785104"
 ---
 # <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Konfigurace proxy služba KDC (Key Distribution Center) protokolu Kerberos (Preview)
 
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak nakonfigurovat informační kanál v klientovi
 Pokud chcete nakonfigurovat hostitele relace virtuálních počítačů s Windows pomocí služby KDC proxy, budete potřebovat následující věci:
 
 - Přístup k Azure Portal a účtu správce Azure.
-- Na vzdálených klientských počítačích musí být spuštěný systém Windows 10 nebo Windows 7 a musí být nainstalovaný [klient Windows Desktop](/windows-server/remote/remote-desktop-services/clients/windowsdesktop) .
+- Na vzdálených klientských počítačích musí být spuštěný systém Windows 10 nebo Windows 7 a musí být nainstalovaný [klient Windows Desktop](/windows-server/remote/remote-desktop-services/clients/windowsdesktop) . V současné době není webový klient podporován.
 - Je nutné, aby byl na vašem počítači již nainstalován proxy služby KDC. Další informace o tom, jak to provést, najdete v tématu [Nastavení role Brána VP pro virtuální počítač s Windows](rd-gateway-role.md).
 - Operační systém počítače musí být Windows Server 2016 nebo novější.
 

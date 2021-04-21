@@ -8,12 +8,12 @@ ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: df2bd1c12c86de43e2a5057813a743d822dbda33
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e82ac4e1fdb8e5f88c9d83924da50b1ff5c659cc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718339"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777918"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Povolení ověřování Azure Active Directory Domain Services u souborů Azure
 
@@ -125,7 +125,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 Pokud chcete povolit ověřování Azure AD přes protokol SMB pomocí Azure CLI, nainstalujte nejnovější verzi rozhraní příkazového řádku (verze 2.0.70 nebo novější). Další informace o instalaci rozhraní příkazového řádku Azure najdete v tématu [instalace Azure CLI](/cli/azure/install-azure-cli).
 
-Chcete-li vytvořit nový účet úložiště, zavolejte příkaz [AZ Storage Account Create](/cli/azure/storage/account#az-storage-account-create)a nastavte `--enable-files-aadds` vlastnost na **hodnotu true**. V následujícím příkladu Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami. (Pokud jste používali předchozí modul Preview, je parametr pro povolení funkce **File-AAD**.)
+Chcete-li vytvořit nový účet úložiště, zavolejte příkaz [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create)a nastavte `--enable-files-aadds` vlastnost na **hodnotu true**. V následujícím příkladu Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami. (Pokud jste používali předchozí modul Preview, je parametr pro povolení funkce **File-AAD**.)
 
 ```azurecli-interactive
 # Create a new storage account

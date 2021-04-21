@@ -3,12 +3,12 @@ title: Základní aktualizace obrázků – úkoly
 description: Přečtěte si o základních imagí pro Image kontejnerů aplikací a o tom, jak může základní aktualizace image aktivovat úlohu Azure Container Registry.
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: df33096830cd7b34a288c38c105aff3610315337
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc501cc1db654c11675e5a4f0d19a5a56b63a165
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97707482"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781176"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>Základní aktualizace obrázků pro úlohy ACR
 
@@ -85,13 +85,13 @@ V následujících kurzech najdete scénáře pro automatizaci sestavení imagí
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-pack-build]: /cli/azure/acr/pack#az-acr-pack-build
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-pack-build]: /cli/azure/acr/pack#az_acr_pack_build
 [az-acr-task]: /cli/azure/acr/task
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
-[az-acr-task-update]: /cli/azure/acr/task#az-acr-task-update
-[az-login]: /cli/azure/reference-index#az-login
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
+[az-acr-task-update]: /cli/azure/acr/task#az_acr_task_update
+[az-login]: /cli/azure/reference-index#az_login
 [az-login-service-principal]: /cli/azure/authenticate-azure-cli
 
 <!-- IMAGES -->

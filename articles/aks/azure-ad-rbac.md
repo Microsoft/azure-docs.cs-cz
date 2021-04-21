@@ -5,12 +5,12 @@ description: Naučte se používat členství ve skupině Azure Active Directory
 services: container-service
 ms.topic: article
 ms.date: 03/17/2021
-ms.openlocfilehash: aa9a3340d6ff0a9818ba92b94b345bd86a78d426
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 0d5171e9e9a5d7f033ff615a3f1205b8dc93966f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106016"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769548"
 ---
 # <a name="control-access-to-cluster-resources-using-kubernetes-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Řízení přístupu k prostředkům clusteru pomocí řízení přístupu na základě role Kubernetes a identit Azure Active Directory ve službě Azure Kubernetes
 
@@ -425,14 +425,14 @@ Osvědčené postupy týkající se identit a řízení prostředků najdete v t
 [kubectl-run]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run
 
 <!-- LINKS - internal -->
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
 [azure-ad-aks-cli]: azure-ad-integration-cli.md
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-ad-group-create]: /cli/azure/ad/group#az-ad-group-create
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[az-ad-user-create]: /cli/azure/ad/user#az-ad-user-create
-[az-ad-group-member-add]: /cli/azure/ad/group/member#az-ad-group-member-add
-[az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-ad-group-create]: /cli/azure/ad/group#az_ad_group_create
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-ad-user-create]: /cli/azure/ad/user#az_ad_user_create
+[az-ad-group-member-add]: /cli/azure/ad/group/member#az_ad_group_member_add
+[az-ad-group-show]: /cli/azure/ad/group#az_ad_group_show
 [rbac-authorization]: concepts-identity.md#kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md

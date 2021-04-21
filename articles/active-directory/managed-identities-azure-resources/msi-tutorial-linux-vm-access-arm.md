@@ -16,12 +16,12 @@ ms.date: 12/01/2020
 ms.author: barclayn
 ROBOTS: NOINDEX,NOFOLLOW
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 247b3c1b4341eff11069a6af324fff5cf1fba62c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9c7555235283e892741234b74ddb80ce3a13051
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96546586"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784708"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Kurz: Použití spravované identity přiřazené uživatelem na virtuálním počítači s Linuxem pro přístup k Azure Resource Manageru
 
@@ -42,11 +42,11 @@ V tomto kurzu se naučíte:
 - Potřebujete také virtuální počítač se systémem Linux. Pokud pro tento kurz potřebujete vytvořit virtuální počítač, můžete postupovat podle článku [s názvem vytvoření virtuálního počítače se systémem Linux pomocí Azure Portal](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
 - Chcete-li spustit ukázkové skripty, máte dvě možnosti:
     - Použijte [Azure Cloud Shell](../../cloud-shell/overview.md), který můžete otevřít pomocí tlačítka **vyzkoušet** v pravém horním rohu bloků kódu.
-    - Spusťte skripty místně pomocí instalace nejnovější verze rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)a pak se přihlaste k Azure pomocí [AZ Login](/cli/azure/reference-index#az-login).
+    - Spusťte skripty místně pomocí instalace nejnovější verze rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)a pak se přihlaste k Azure pomocí [AZ Login](/cli/azure/reference-index#az_login).
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
 
-Vytvořte spravovanou identitu přiřazenou uživatelem pomocí příkazu [az identity create](/cli/azure/identity#az-identity-create). Parametr `-g` určuje skupinu prostředků, ve které se spravovaná identita přiřazená uživatelem vytvoří, a parametr `-n` určuje její název. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<UAMI NAME>` vlastními hodnotami:
+Vytvořte spravovanou identitu přiřazenou uživatelem pomocí příkazu [az identity create](/cli/azure/identity#az_identity_create). Parametr `-g` určuje skupinu prostředků, ve které se spravovaná identita přiřazená uživatelem vytvoří, a parametr `-n` určuje její název. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<UAMI NAME>` vlastními hodnotami:
     
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 

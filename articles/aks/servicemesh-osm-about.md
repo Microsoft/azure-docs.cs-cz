@@ -7,12 +7,12 @@ ms.date: 3/12/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 65b02ae1baef97442828de747249ab6ffeaf2417
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: bbc07a7ee3f996c778cfc1b9d1764f10a613c50b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599467"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782940"
 ---
 # <a name="open-service-mesh-aks-add-on-preview"></a>Otevřít doplněk AKS pro síť služby (Preview)
 
@@ -107,7 +107,7 @@ Pro nový scénář nasazení clusteru AKS začínáte značkou nového nasazen�
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-V Azure přidělíte související prostředky skupině prostředků. Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků s názvem _myOsmAksGroup_ v umístění _eastus2_ (region):
+V Azure přidělíte související prostředky skupině prostředků. Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků s názvem _myOsmAksGroup_ v umístění _eastus2_ (region):
 
 ```azurecli-interactive
 az group create --name <myosmaksgroup> --location <eastus2>

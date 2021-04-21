@@ -4,12 +4,12 @@ description: Naučte se, jak nasadit skupinu kontejnerů do nové nebo existují
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44be66957aa745179ffe4cd00db75f1d47237dfc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028875"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771042"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejnerů do virtuální sítě Azure
 
@@ -234,8 +234,8 @@ Postup nasazení nové virtuální sítě, podsítě, profilu sítě a skupiny k
 [aci-helloworld]: https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-show]: /cli/azure/container#az-container-show
-[az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
-[az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-show]: /cli/azure/container#az_container_show
+[az-network-vnet-create]: /cli/azure/network/vnet#az_network_vnet_create
+[az-network-profile-list]: /cli/azure/network/profile#az_network_profile_list
 [container-regions]: container-instances-region-availability.md

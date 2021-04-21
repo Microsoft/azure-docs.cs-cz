@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 7c2e1a54861e47ba8009078ba718fba4fc738f0d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 2c15090551ad9d84282f65925ff9c2cfbab7e14f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750315"
+ms.locfileid: "107773346"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Rychlý Start: Klientská knihovna pro Azure Key Vault klíče pro Python
 
@@ -179,7 +179,7 @@ Chcete-li číst klíč z Key Vault, použijte metodu [get_key](/python/api/azur
 retrieved_key = client.get_key(keyName)
  ```
 
-Můžete také ověřit, že byl klíč nastaven pomocí příkazu Azure CLI [AZ Key trezor Key show](/cli/azure/keyvault/key?#az-keyvault-key-show).
+Můžete také ověřit, že byl klíč nastaven pomocí příkazu Azure CLI [AZ Key trezor Key show](/cli/azure/keyvault/key?#az_keyvault_key_show).
 
 ### <a name="delete-a-key"></a>Odstranění klíče
 
@@ -192,7 +192,7 @@ deleted_key = poller.result()
 
 `begin_delete_key`Metoda je asynchronní a vrací objekt cyklického dotazování. Volání metody cyklického dotazování `result` čeká na jeho dokončení.
 
-Můžete ověřit, jestli se klíč odstranil pomocí příkazu Azure CLI [AZ Key trezor Key show](/cli/azure/keyvault/key?#az-keyvault-key-show).
+Můžete ověřit, jestli se klíč odstranil pomocí příkazu Azure CLI [AZ Key trezor Key show](/cli/azure/keyvault/key?#az_keyvault_key_show).
 
 Po odstranění klíč zůstane v odstraněném stavu, ale po dobu se obnoví. Pokud kód znovu spustíte, použijte jiný název klíče.
 

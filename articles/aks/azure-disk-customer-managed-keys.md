@@ -4,12 +4,12 @@ description: Přineste si vlastní klíče (BYOK) k šifrování AKS operačníh
 services: container-service
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: 4b1c311132cc812ccb2bbbc95c4b7414b108008c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c5c555d7eb5142f5f41f65b24f754c65450a2713
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499199"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776186"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Přineste si vlastní klíče (BYOK) s disky Azure ve službě Azure Kubernetes Service (AKS).
 
@@ -148,8 +148,8 @@ Kontrola [osvědčených postupů pro zabezpečení clusteru AKS][best-practices
 <!-- LINKS - external -->
 
 <!-- LINKS - internal -->
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [best-practices-security]: ./operator-best-practices-cluster-security.md
 [byok-azure-portal]: ../storage/common/customer-managed-keys-configure-key-vault.md
 [customer-managed-keys-windows]: ../virtual-machines/disk-encryption.md#customer-managed-keys
