@@ -61,25 +61,18 @@
           href: test-drive-hosted-detailed-config.md
         - name: Nastavení předplatného Azure pro hostované testovací verze
           href: test-drive-azure-subscription-setup.md
-    - name: Přidělení zákaznického využití Azure
+    - name: Přisuzování využití ze strany zákazníků partnerům Azure
       href: azure-partner-customer-usage-attribution.md
     - name: Možnosti pro uvedení na trh
       items:
         - name: Vaše výhody na trhu
           href: gtm-your-marketplace-benefits.md
-          items: null
-        - name: Společný prodej s Microsoftem
-          items:
-            - name: Přehled společného prodeje
-              href: co-sell-overview.md
-            - name: Požadavky na společný prodej
-              href: co-sell-requirements.md
-            - name: Konfigurace společného prodeje
-              href: co-sell-configure.md
-            - name: Ověření stavu společného prodeje
-              href: co-sell-status.md
-            - name: Migrace řešení spoluprodeje z OCP GTM
-              href: co-sell-solution-migration.md
+        - name: Zapojení partnerů do společného prodeje
+          href: marketplace-co-sell.md
+        - name: Možnost spoluprodeje v Partnerském centru
+          href: commercial-marketplace-co-sell.md
+        - name: Migrace řešení spoluprodeje z OCP GTM
+          href: co-sell-solution-migration.md
         - name: Prodej prostřednictvím partnerů CSP
           href: cloud-solution-providers.md
         - name: Průvodce onboardingem programu Connect
@@ -206,20 +199,32 @@
           href: create-consulting-service-pricing-availability.md
     - name: Nabídky Dynamics 365
       items:
-        - name: Plánování nabídky Dynamics 365
-          href: appsource-offer-publishing-guide.md
-        - name: Vytvoření a publikování nabídky Dynamics 365
+        - name: Plánování nabídky
+          href: marketplace-dynamics-365.md
+        - name: Vytvoření nabídky Power Apps & Customer Engagement
           items:
-            - name: Vytvoření nabídky Dynamics 365 Customer Engagement a Power Apps
-              href: partner-center-portal/create-new-customer-engagement-offer.md
+            - name: Vytvoření nabídky
+              href: dynamics-365-customer-engage-offer-setup.md
+            - name: Vlastnosti
+              href: dynamics-365-customer-engage-properties.md
+            - name: Seznam nabídek
+              href: dynamics-365-customer-engage-offer-listing.md
+            - name: Dostupnost
+              href: dynamics-365-customer-engage-availability.md
+            - name: Technická konfigurace
+              href: dynamics-365-customer-engage-technical-configuration.md
+            - name: Doplňkový obsah
+              href: dynamics-365-customer-engage-supplemental-content.md
+            - name: Kontrola a publikování
+              href: dynamics-365-customer-engage-review-publish.md
+        - name: Vytvoření nabídky operací
+          items:
             - name: Vytvoření nabídky Dynamics 365 for Operations
-              items:
-                - name: Vytvoření nabídky Dynamics 365 for Operations
-                  href: partner-center-portal/create-new-operations-offer.md
-                - name: Funkční ověření
-                  href: dynamics-365-finance-operations-functional-validation.md
-            - name: Vytvoření nabídky Dynamics 365 Business Central
-              href: partner-center-portal/create-new-business-central-offer.md
+              href: partner-center-portal/create-new-operations-offer.md
+            - name: Funkční ověření
+              href: dynamics-365-finance-operations-functional-validation.md
+        - name: Vytvoření nabídky Business Central
+          href: partner-center-portal/create-new-business-central-offer.md
     - name: Nabídky modulů IoT Edge
       items:
         - name: Plánování nabídky modulů IoT Edge
@@ -228,8 +233,6 @@
           href: partner-center-portal/azure-iot-edge-module-creation.md
         - name: Příprava technických prostředků modulu IoT Edge
           href: partner-center-portal/create-iot-edge-module-asset.md
-        - name: Kontrolní seznam před certifikacim
-          href: iot-edge-checklist.md
     - name: Nabídky spravované služby
       items:
         - name: Plánování nabídky spravované služby
@@ -328,48 +331,6 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: Řídicí panel hodnocení a recenzí
       href: partner-center-portal/ratings-reviews.md
-    - name: Programový přístup k analýzám
-      items:
-        - name: Začínáme
-          href: analytics-get-started.md
-        - name: Požadavky na programový přístup
-          href: analytics-prerequisites.md
-        - name: Programové přístupové paradigma
-          href: analytics-programmatic-access.md
-        - name: Udělejte své první volání rozhraní API
-          href: analytics-make-your-first-api-call.md
-        - name: Seznam systémových dotazů
-          href: analytics-system-queries.md
-        - name: Ukázkové dotazy
-          href: analytics-sample-queries.md
-        - name: Ukázková aplikace
-          href: analytics-sample-application.md
-        - name: Specifikace vlastního dotazu
-          href: analytics-custom-query-specification.md
-        - name: Nejčastější dotazy k program Analytics
-          href: analytics-programmatic-faq.md
-        - name: Reference k rozhraní API pro analýzu
-          items:
-            - name: Seznam rozhraní API
-              href: analytics-available-apis.md
-            - name: Získat všechny datové sady
-              href: analytics-api-get-all-datasets.md
-            - name: Získat rozhraní API pro dotazy sestav
-              href: analytics-api-get-report-queries.md
-            - name: Odstranit rozhraní API pro dotazy sestav
-              href: analytics-api-delete-report-queries.md
-            - name: Vyzkoušet rozhraní API dotazů sestav
-              href: analytics-api-try-report-queries.md
-            - name: Získat rozhraní API pro sestavy
-              href: analytics-api-get-report.md
-            - name: Rozhraní API pro aktualizaci sestav
-              href: analytics-api-update-report.md
-            - name: Odstranit rozhraní API sestav
-              href: analytics-api-delete-report.md
-            - name: Pozastavit rozhraní API pro spouštění sestav
-              href: analytics-api-pause-report-executions.md
-            - name: Obnovit rozhraní API pro spouštění sestav
-              href: analytics-api-resume-report-executions.md
     - name: Správa anomálií s měřením fakturace
       href: anomaly-detection.md
     - name: Časté dotazy k analýzám
@@ -470,8 +431,6 @@
       href: commercial-marketplace-co-sell-countries.md
     - name: Kódy stavu pro spoluprodej
       href: commercial-marketplace-co-sell-states.md
-    - name: Diagram referenční architektury
-      href: reference-architecture-diagram.md
     - name: Kategorie a podkategorie
       href: categories.md
     - name: Podporované značky HTML

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2021
+ms.date: 04/20/2021
 ms.author: b-juche
-ms.openlocfilehash: a8c06b25b923d663e982e940100be7b9a2a009e1
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 6cef4860184b217e96e8967ab24a3befc632e316
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726839"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811844"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -213,6 +213,11 @@ Správa systému `SMB Shares` , `Sessions` a a `Open Files` prostřednictvím ko
 ### <a name="how-can-i-obtain-the-ip-address-of-an-smb-volume-via-the-portal"></a>Jak získám IP adresu svazku SMB přes portál?
 
 V podokně Přehled svazku použijte odkaz **Zobrazit JSON** a v části **vlastnosti** mountTargets vyhledejte identifikátor **startIp**  ->  .
+
+### <a name="can-an-azure-netapp-files-smb-share-act-as-an-dfs-namespace-dfs-n-root"></a>Může Azure NetApp Files sdílená složka SMB fungovat jako kořenový adresář oboru názvů DFS (DFS-N)?
+
+No. Azure NetApp Files sdílené složky SMB ale můžou sloužit jako cíl složky oboru názvů DFS (DFS-N).   
+Pokud chcete jako cíl složky DFS-N použít Azure NetApp Files sdílenou složku SMB, zadejte cestu k připojení UNC (Universal Naming Convention) Azure NetApp Files sdílené složky SMB pomocí procedury [cíle přidat složku DFS](/windows-server/storage/dfs-namespaces/add-folder-targets#to-add-a-folder-target) .  
 
 ### <a name="smb-encryption-faqs"></a>Nejčastější dotazy týkající se šifrování protokolu SMB
 

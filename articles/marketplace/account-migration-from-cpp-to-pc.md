@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: f43bdd0ec6654ba2fc8a04dbb62d2d658e06ce0f
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 189966c468fe5a39fbd44f7961e9512b7b054882
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107108246"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811780"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Postup migrace účtu z portál partnerů cloudu do partnerského centra
 
@@ -72,7 +72,7 @@ Konkrétní informace o tom, co je potřeba udělat **15. října 2019** pro nab
 
 1. Pokud jste svůj účet MPN ve svém předplatném vytvořili v centru pro členství v partnerském centru (PMC), přihlaste se do [partnerského centra](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) a potvrďte, že byl váš účet migrován. Pokud se vám zobrazí obrazovka s ID programu MPN, budete připraveni pokračovat v práci. V takovém případě je potřeba spustit migraci účtu podle pokynů v centru pro členství v [partnerovi](https://partners.microsoft.com/partnerprogram/Welcome.aspx). Pokud potřebujete pomoc, přejděte na [podporu](https://partner.microsoft.com/support?issueid=100-0077).
 2. Přejít na [stránku Přehled komerčního tržiště v partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace/overview). Pokud se v levém navigačním podokně zobrazí "komerční tržiště", jste zaregistrovaní a měli byste pokračovat k dalšímu kroku. Pokud ne, [Zaregistrujte si nyní komerční Marketplace](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
-3. Potvrzování nabídek najdete v AppSource [hledáním vašich nabídek](https://appsource.microsoft.com/). Pokud jsou vaše nabídky už v AppSource, pokračujte k dalšímu kroku. V případě jakékoli nabídky, která není v AppSource, vytvořte novou nabídku Dynamics [365 Customer Engagement](.\partner-center-portal\create-new-customer-engagement-offer.md) nebo [novou nabídku operací Dynamics 365](.\partner-center-portal\create-new-operations-offer.md).
+3. Potvrzování nabídek najdete v AppSource [hledáním vašich nabídek](https://appsource.microsoft.com/). Pokud jsou vaše nabídky už v AppSource, pokračujte k dalšímu kroku. V případě jakékoli nabídky, která není v AppSource, najdete další informace v tématu [plánování nabídky dynamics 365 Customer Engagement](dynamics-365-customer-engage-offer-setup.md) nebo [Vytvoření nabídky pro operace Dynamics 365](.\partner-center-portal\create-new-operations-offer.md).
 4. Na [stránce smlouvy](https://partner.microsoft.com/dashboard/account/agreements)partnerského centra se ujistěte, že jste zkontrolovali a přijali **Business Applications dodatek ISV**.
 5. V [Nastavení účtu](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile)partnerského centra se ujistěte, že jsou informace o fakturaci dokončené.
 6. Odešlete všechny nové a stávající nabídky pro certifikaci a publikování, a to i v případě, že vaše nabídky byly dříve certifikovány.

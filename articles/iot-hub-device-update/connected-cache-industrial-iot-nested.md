@@ -6,12 +6,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0d70ed8b906c171c001c5bda81a79ca9b65febac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 083c7bf6edc7da1fd617487e91b0a3848fb401fe
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101664567"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811806"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-microsoft-connected-cache-within-an-azure-iot-edge-for-industrial-iot-configuration"></a>Ukázka scénáře nasazení Microsoft Internet Cache Preview: propojená mezipaměť Microsoftu v rámci Azure IoT Edge pro konfiguraci pro průmyslový IoT
 
@@ -33,10 +33,10 @@ Klíč ke konfiguraci nasazení Microsoftem připojené mezipaměti v rámci sí
    * UPSTREAM_HOST – IP adresa nebo plně kvalifikovaný název domény IoT Edge brány pro L4, které mezipaměť L3 (Microsoft Connected cache) bude požadovat obsah.
    * UPSTREAM_PROXY – IP adresa/plně kvalifikovaný název domény: PORT z proxy server OT.
 
-3. Proxy server musí do seznamu povolených adres přidat MCC plně kvalifikovaný název domény nebo IP adresu L4.
+3. Proxy server musí do povolených přidat plně kvalifikovaný název domény nebo IP adresu MCC L4.
 
-Chcete-li ověřit, zda mezipaměť propojená Microsoftem funguje správně, spusťte následující příkaz v terminálu IoT Edge zařízení, hostování modulu nebo jakéhokoli zařízení v síti.
+Chcete-li ověřit, zda mezipaměť propojená Microsoftem funguje správně, spusťte následující příkaz v terminálu IoT Edge zařízení, hostování modulu nebo jakéhokoli zařízení v síti. Nahraďte \<Azure IoT Edge Gateway IP\> IP adresou nebo názvem hostitele brány IoT Edge. (informace o viditelnosti této sestavy najdete v tématu podrobnosti o proměnné prostředí).
 
 ```bash
-    wget "http://<L3 IoT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com
+    wget http://<L3 IoT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com
 ```
