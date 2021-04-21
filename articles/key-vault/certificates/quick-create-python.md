@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 598bbef0ceb24f3eb5932239a4146e1693521f24
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 62249f579909c3f8bfa9bcdf4e77e45453fcb68b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751323"
+ms.locfileid: "107792016"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Rychlý Start: Azure Key Vault klientské knihovny certifikátů pro Python
 
@@ -183,7 +183,7 @@ Chcete-li číst certifikát z Key Vault, použijte metodu [get_certificate](/py
 retrieved_certificate = client.get_certificate(certificateName)
  ```
 
-Můžete také ověřit, že se certifikát nastavil pomocí příkazu Azure CLI AZ klíčů [trezor Certificate show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show).
+Můžete také ověřit, že se certifikát nastavil pomocí příkazu Azure CLI AZ klíčů [trezor Certificate show](/cli/azure/keyvault/certificate?#az_keyvault_certificate_show).
 
 ### <a name="delete-a-certificate"></a>Odstranit certifikát
 
@@ -196,7 +196,7 @@ deleted_certificate = poller.result()
 
 `begin_delete_certificate`Metoda je asynchronní a vrací objekt cyklického dotazování. Volání metody cyklického dotazování `result` čeká na jeho dokončení.
 
-Můžete ověřit, že se certifikát odstranil pomocí příkazu Azure CLI AZ klíčů [trezor Certificate show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show).
+Můžete ověřit, že se certifikát odstranil pomocí příkazu Azure CLI AZ klíčů [trezor Certificate show](/cli/azure/keyvault/certificate?#az_keyvault_certificate_show).
 
 Po odstranění zůstane certifikát uložený v odstraněném stavu, ale po dobu nepůjde obnovit. Pokud kód znovu spustíte, použijte jiný název certifikátu.
 

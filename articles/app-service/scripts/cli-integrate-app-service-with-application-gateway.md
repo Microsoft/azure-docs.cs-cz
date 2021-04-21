@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3820e7bf00f99a846dd2be0edeaf4248e0dfd8ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d30cc27fc3c546619e85bb9aabd0b31c10102e96
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006074"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787804"
 ---
 # <a name="integrate-app-service-with-application-gateway-using-cli"></a>Integrace App Service s Application Gateway pomocí rozhraní příkazového řádku
 
@@ -45,16 +45,16 @@ Tento skript k vytvoření skupiny prostředků, App Service aplikace, Cosmos DB
 
 | Příkaz | Poznámky |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [`az network vnet create`](/cli/azure/network/vnet#az-network-vnet-create) | Vytvoří virtuální síť. |
-| [`az network public-ip create`](/cli/azure/network/public-ip#az-network-public-ip-create) | Vytvoří veřejnou IP adresu. |
-| [`az network public-ip show`](/cli/azure/network/public-ip#az-network-public-ip-show) | Zobrazí podrobnosti veřejné IP adresy. |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Vytvoří App Service webovou aplikaci. |
-| [`az webapp show`](/cli/azure/webapp#az-webapp-show) | Zobrazí podrobnosti o App Service webové aplikaci. |
-| [`az webapp config access-restriction add`](/cli/azure/webapp/config/access-restriction#az-webapp-config-access-restriction-add) | Přidá omezení přístupu do webové aplikace App Service. |
-| [`az network application-gateway create`](/cli/azure/network/application-gateway#az-network-application-gateway-create) | Vytvoří Application Gateway. |
-| [`az network application-gateway http-settings update`](/cli/azure/network/application-gateway/http-settings#az-network-application-gateway-http-settings-update) | Aktualizuje nastavení protokolu HTTP Application Gateway. |
+| [`az group create`](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [`az network vnet create`](/cli/azure/network/vnet#az_network_vnet_create) | Vytvoří virtuální síť. |
+| [`az network public-ip create`](/cli/azure/network/public-ip#az_network_public_ip_create) | Vytvoří veřejnou IP adresu. |
+| [`az network public-ip show`](/cli/azure/network/public-ip#az_network_public_ip_show) | Zobrazí podrobnosti veřejné IP adresy. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Vytvoří plán služby App Service. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Vytvoří App Service webovou aplikaci. |
+| [`az webapp show`](/cli/azure/webapp#az_webapp_show) | Zobrazí podrobnosti o App Service webové aplikaci. |
+| [`az webapp config access-restriction add`](/cli/azure/webapp/config/access-restriction#az_webapp_config_access_restriction_add) | Přidá omezení přístupu do webové aplikace App Service. |
+| [`az network application-gateway create`](/cli/azure/network/application-gateway#az_network_application_gateway_create) | Vytvoří Application Gateway. |
+| [`az network application-gateway http-settings update`](/cli/azure/network/application-gateway/http-settings#az_network-application-gateway-http_settings_update) | Aktualizuje nastavení protokolu HTTP Application Gateway. |
 
 ## <a name="next-steps"></a>Další kroky
 

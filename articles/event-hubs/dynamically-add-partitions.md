@@ -3,12 +3,12 @@ title: Dynamické přidávání oddílů do centra událostí v Azure Event Hubs
 description: V tomto článku se dozvíte, jak dynamicky přidávat oddíly do centra událostí v Azure Event Hubs.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: e6efdc7bab309f825032555c97f1e1128f5addd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aeeee1bcefe58b006dac0b6913aaa609cbeefb8c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625261"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775115"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Dynamické přidávání oddílů do centra událostí (Apache Kafka téma) v Azure Event Hubs
 Služba Event Hubs poskytuje datový proud zpráv pomocí schématu rozdělujícího datový proud na oddíly pro jednotlivé příjemce. To zajišťuje, aby každý příjemce četl jenom konkrétní podmnožinu nebo oddíl datového proudu zpráv. Toto schéma umožňuje vodorovné škálování zpracování událostí a poskytuje další funkce zaměřené na datový proud, které nejsou ve frontách a tématech k dispozici. Oddíl je seřazená posloupnost událostí, která se nachází v centru událostí. Jakmile přijdete o novější události, přidají se na konec této sekvence. Další informace o oddílech obecně najdete v [oddílu oddíly](event-hubs-scalability.md#partitions) .
@@ -33,7 +33,7 @@ Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespac
 ```
 
 ### <a name="cli"></a>Rozhraní příkazového řádku
-[`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub#az-eventhubs-eventhub-update)K aktualizaci oddílů v centru událostí použijte příkaz CLI. 
+[`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub#az_eventhubs_eventhub_update)K aktualizaci oddílů v centru událostí použijte příkaz CLI. 
 
 ```azurecli-interactive
 az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-name MyNamespaceName --name MyEventHubName --partition-count 12
@@ -105,4 +105,3 @@ Když člen skupiny uživatelů provede obnovení metadat a vybere nově vytvoř
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o oddílech najdete v tématu [oddíly](event-hubs-scalability.md#partitions).
-

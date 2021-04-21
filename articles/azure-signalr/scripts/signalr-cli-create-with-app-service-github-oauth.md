@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/22/2018
 ms.author: zhshang
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ee9f0253f2ec27b4afbbb6c5dc1ff3f5c129fe8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c46ac350c1bf7f7593f334a9a7fa5df1af7b19d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94841797"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787318"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>Vytvoření webové aplikace využívající službu SignalR a ověřování GitHubu
 
@@ -107,14 +107,14 @@ Každý příkaz v tabulce odkazuje na příslušnou část dokumentace. Tento s
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az signalr create](/cli/azure/signalr#az-signalr-create) | Vytvoří prostředek služby Azure SignalR. |
-| [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | Vypíše klíče, které bude vaše aplikace používat při nabízení aktualizací obsahu v reálném čase pomocí SignalR. |
-| [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) | Vytvoří plán služby Azure App Service pro hostování webových aplikací. |
-| [az webapp create](/cli/azure/webapp#az-webapp-create) | Vytvoří webovou aplikaci Azure s použitím plánu hostování služby App Service. |
-| [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Přidá nová nastavení aplikace pro webovou aplikaci. Tato nastavení aplikace slouží k uchovávání připojovacího řetězce služby SignalR a tajných kódů aplikace GitHub OAuth. |
-| [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) | Aktualizuje přihlašovací údaje nasazení. |
-| [az webapp deployment source config-local-git](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) | Získá adresu URL koncového bodu úložiště Git, do kterého se má naklonovat a odeslat nasazení webové aplikace. |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az signalr create](/cli/azure/signalr#az_signalr_create) | Vytvoří prostředek služby Azure SignalR. |
+| [az signalr key list](/cli/azure/signalr/key#az_signalr_key_list) | Vypíše klíče, které bude vaše aplikace používat při nabízení aktualizací obsahu v reálném čase pomocí SignalR. |
+| [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) | Vytvoří plán služby Azure App Service pro hostování webových aplikací. |
+| [az webapp create](/cli/azure/webapp#az_webapp_create) | Vytvoří webovou aplikaci Azure s použitím plánu hostování služby App Service. |
+| [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Přidá nová nastavení aplikace pro webovou aplikaci. Tato nastavení aplikace slouží k uchovávání připojovacího řetězce služby SignalR a tajných kódů aplikace GitHub OAuth. |
+| [az webapp deployment user set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) | Aktualizuje přihlašovací údaje nasazení. |
+| [az webapp deployment source config-local-git](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config_local_git) | Získá adresu URL koncového bodu úložiště Git, do kterého se má naklonovat a odeslat nasazení webové aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 

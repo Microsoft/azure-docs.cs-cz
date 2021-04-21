@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 9faaf79958443c252a8d913fbd7448389c610e09
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 16f937286b967aaea8ec6a16e97835b2de5a0331
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628573"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765492"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ Toto je aktuální omezení základní součásti, která ověřuje název pods�
 
 **Jak můžu škálovat spravovanou instanci?**
 
-Spravovanou instanci můžete škálovat z [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [PowerShellu](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](/cli/azure/sql/mi#az-sql-mi-update) nebo [šablon ARM](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates).
+Spravovanou instanci můžete škálovat z [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [PowerShellu](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](/cli/azure/sql/mi#az_sql_mi_update) nebo [šablon ARM](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates).
 
 **Můžu svoje spravované instance přesunout z jedné oblasti do druhé?**
 
@@ -102,7 +102,7 @@ Ano, můžete. Pokyny najdete v tématu [Přesunutí prostředků do různých o
 
 **Jak můžu odstranit spravovanou instanci?**
 
-Spravované instance můžete odstranit prostřednictvím Azure Portal, [PowerShellu](/powershell/module/az.sql/remove-azsqlinstance), rozhraní příkazového [řádku Azure CLI](/cli/azure/sql/mi#az-sql-mi-delete) nebo [Správce prostředků REST API](/rest/api/sql/managedinstances/delete).
+Spravované instance můžete odstranit prostřednictvím Azure Portal, [PowerShellu](/powershell/module/az.sql/remove-azsqlinstance), rozhraní příkazového [řádku Azure CLI](/cli/azure/sql/mi#az_sql_mi_delete) nebo [Správce prostředků REST API](/rest/api/sql/managedinstances/delete).
 
 **Jak dlouho trvá vytvoření nebo aktualizace instance nebo obnovení databáze?**
 
@@ -337,7 +337,7 @@ Ne, tato možnost není k dispozici.  Pro koncový bod privátních dat použív
 Způsob, jak to provést, je partnerský vztah okruhu Express Route. Podpora globálního partnerského vztahu virtuálních sítí se podporuje s omezením popsaným v níže uvedené poznámce.  
 
 > [!IMPORTANT]
-> [V 9/22/2020 jsme oznámili globální partnerské vztahy virtuálních sítí pro nově vytvořené virtuální clustery](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). To znamená, že globální partnerský vztah virtuálních sítí je podporován pro spravované instance SQL vytvořené v prázdných podsítích po datu oznámení a také pro všechny následné spravované instance vytvořené v těchto podsítích. Pro všechny ostatní podpory partnerského vztahu spravované instance SQL je omezená na sítě ve stejné oblasti v důsledku [omezení globálního partnerského vztahu virtuálních sítí](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Další podrobnosti najdete v článku o nejčastějších dotazech v příslušné části [Azure Virtual Networks](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
+> [22. září 2020 jsme u nově vytvořených virtuálních clusterů oznámili globální peering virtuálních sítí.](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/) To znamená, že od tohoto data je globální peering virtuálních sítí podporovaný nejen pro službu SQL Managed Instances vytvořenou v prázdných podsítích, ale také pro všechny navazující spravované instance vytvořené v těchto podsítích. Pro všechny ostatní podpory partnerského vztahu spravované instance SQL je omezená na sítě ve stejné oblasti v důsledku [omezení globálního partnerského vztahu virtuálních sítí](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Další podrobnosti najdete v článku o nejčastějších dotazech v příslušné části [Azure Virtual Networks](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
 
 Pokud není možné partnerské vztahy okruhu Express Route a globální partnerské vztahy virtuálních sítí, stačí, když vytvoříte připojení VPN typu Site-to-Site ([Azure Portal](../../vpn-gateway/tutorial-site-to-site-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)a [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)).
 

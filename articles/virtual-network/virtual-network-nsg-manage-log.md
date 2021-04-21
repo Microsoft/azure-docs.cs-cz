@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 42ce7a1760ecdb1dcbd5275927f351bef5da07a8
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0d171dee87a391c5e1d66db10363e6823ef387c1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531165"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774154"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>Protokolování prostředků pro skupinu zabezpečení sítě
 
@@ -95,9 +95,9 @@ Zobrazit a analyzovat protokoly. Další informace najdete v tématu [zobrazení
 
 Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spustit Azure CLI z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Pokud spouštíte rozhraní příkazového řádku z počítače, budete potřebovat verzi 2.0.38 nebo novější. Pokud `az --version` chcete najít nainstalovanou verzi, spusťte v počítači. Pokud potřebujete upgrade, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli). Pokud spouštíte rozhraní příkazového řádku místně, musíte také spustit `az login` pro přihlášení k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions).
 
-Pokud chcete povolit protokolování prostředků, potřebujete ID existující NSG. Pokud nemáte existující NSG, můžete ho vytvořit pomocí [AZ Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create).
+Pokud chcete povolit protokolování prostředků, potřebujete ID existující NSG. Pokud nemáte existující NSG, můžete ho vytvořit pomocí [AZ Network NSG Create](/cli/azure/network/nsg#az_network_nsg_create).
 
-Načtěte skupinu zabezpečení sítě, pro kterou chcete povolit protokolování prostředků pomocí [AZ Network NSG show](/cli/azure/network/nsg#az-network-nsg-show). Pokud například chcete načíst NSG s názvem *myNsg* , který existuje ve skupině prostředků s názvem *myResourceGroup*, zadejte následující příkaz:
+Načtěte skupinu zabezpečení sítě, pro kterou chcete povolit protokolování prostředků pomocí [AZ Network NSG show](/cli/azure/network/nsg#az_network_nsg_show). Pokud například chcete načíst NSG s názvem *myNsg* , který existuje ve skupině prostředků s názvem *myResourceGroup*, zadejte následující příkaz:
 
 ```azurecli-interactive
 nsgId=$(az network nsg show \
@@ -109,7 +109,7 @@ nsgId=$(az network nsg show \
 
 Můžete zapsat protokoly prostředků do tří cílových typů. Další informace najdete v tématu [cíle protokolu](#log-destinations). V tomto článku jsou protokoly odesílány do cíle *Log Analytics* jako příklad. Další informace najdete v tématu [Kategorie protokolů](#log-categories).
 
-Povolení protokolování prostředků pro NSG pomocí [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) V následujícím příkladu se protokoluje data kategorií událostí a čítačů do existujícího pracovního prostoru s názvem *myWorkspace*, který existuje ve skupině prostředků s názvem *MYWORKSPACES*, a ID NSG, který jste dříve získali:
+Povolení protokolování prostředků pro NSG pomocí [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) V následujícím příkladu se protokoluje data kategorií událostí a čítačů do existujícího pracovního prostoru s názvem *myWorkspace*, který existuje ve skupině prostředků s názvem *MYWORKSPACES*, a ID NSG, který jste dříve získali:
 
 ```azurecli-interactive
 az monitor diagnostic-settings create \

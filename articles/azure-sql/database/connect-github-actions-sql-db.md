@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 335879af93834665985fe2c14ce3cbd827387920
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ceb9f0f9ef2a88532d5af16a03fcfd0282da84f8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172135"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787282"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>Použití akcí GitHubu pro připojení k Azure SQL Database
 
 Začněte s [akcemi GitHubu](https://docs.github.com/en/actions) pomocí pracovního postupu k nasazení aktualizací databáze do [Azure SQL Database](../azure-sql-iaas-vs-paas-what-is-overview.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat: 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -41,7 +41,7 @@ Soubor má dvě části:
 
 ## <a name="generate-deployment-credentials"></a>Generovat přihlašovací údaje nasazení
 
-[Instanční objekt](../../active-directory/develop/app-objects-and-service-principals.md) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Spusťte tento příkaz s [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo vyberte tlačítko **vyzkoušet** .
+[Instanční objekt](../../active-directory/develop/app-objects-and-service-principals.md) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Spusťte tento příkaz s [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo vyberte tlačítko **vyzkoušet** .
 
 Zástupné symboly nahraďte `server-name` názvem vašeho SQL serveru hostovaným v Azure. Nahraďte `subscription-id` a `resource-group` pomocí ID předplatného a skupiny prostředků připojené k vašemu SQL serveru.  
 

@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: a9a9fe93ebe302a76d69249dc56933e1bcc924d1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 46caae53ed81de335c2b9d5ddbd3fd7f89424fdd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200083"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780410"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Vytvoření testu pomocí rozhraní příkazového řádku (Preview) pro Internet Analyzer
 
@@ -50,7 +50,7 @@ Rozhraní příkazového řádku pro Internet Analyzer zpřístupňuje následuj
 
 5. Vyberte ID předplatného, kterému bylo uděleno oprávnění k přístupu k Internet Analyzer Public Preview.
 
-    Po přihlášení se zobrazí seznam předplatných přidružených k vašemu účtu Azure. Informace o předplatném s `isDefault: true` je aktuálně aktivované předplatné po přihlášení. Pokud chcete vybrat jiné předplatné, přejděte k přepínači pomocí příkazu [AZ Account set](/cli/azure/account#az-account-set) s ID předplatného. Další informace o výběru předplatného najdete v tématu [použití více předplatných Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
+    Po přihlášení se zobrazí seznam předplatných přidružených k vašemu účtu Azure. Informace o předplatném s `isDefault: true` je aktuálně aktivované předplatné po přihlášení. Pokud chcete vybrat jiné předplatné, přejděte k přepínači pomocí příkazu [AZ Account set](/cli/azure/account#az_account_set) s ID předplatného. Další informace o výběru předplatného najdete v tématu [použití více předplatných Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
 
     Existují i způsoby, jak se přihlásit neinteraktivně. Ty jsou podrobně popsané v tématu [Přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli).
 

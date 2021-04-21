@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-java-uiex
-ms.openlocfilehash: 261ba24a360dd49a9759bc70f561810a9e1fd2c8
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 1a1571e83e33ee0aec40df4cf68b3d01b6ef5f04
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277075"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787498"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce Java v Azure z příkazového řádku
 
@@ -170,7 +170,7 @@ Aplikace Function App a související prostředky se vytvoří v Azure při prvn
     az login
     ```
 
-    Příkaz [AZ Login](/cli/azure/reference-index#az-login) vás přihlásí k účtu Azure.
+    Příkaz [AZ Login](/cli/azure/reference-index#az_login) vás přihlásí k účtu Azure.
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
     ```azurepowershell

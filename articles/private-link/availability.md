@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: 26485c84749b7d4c91159476b3f683c2b0f3831b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 866eb9feb152c0094cd5281fe4820ccc4589386f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103555428"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778314"
 ---
 # <a name="azure-private-link-availability"></a>Dostupnost privátního propojení Azure
 
@@ -96,7 +96,7 @@ V následujících tabulkách jsou uvedeny služby privátních odkazů a oblast
 |:-------------------|:-----------------|:----------------|:--------|
 | Úložiště objektů BLOB v Azure (včetně Data Lake Storage Gen2)       |  Všechny veřejné oblasti<br/> Všechny oblasti státní správy       |  Podporováno na druhu účtu Pro obecné účely v2 | GA <br/> [Naučte se vytvořit privátní koncový bod pro úložiště objektů BLOB.](tutorial-private-endpoint-storage-portal.md)  |
 | Azure Files | Všechny veřejné oblasti<br/> Všechny oblasti státní správy      | |   GA <br/> [Naučte se vytvářet koncové body sítě služby soubory Azure.](../storage/files/storage-files-networking-endpoints.md)   |
-| Synchronizace souborů Azure | Všechny veřejné oblasti      | |   GA <br/> [Naučte se vytvářet koncové body sítě služby soubory Azure.](../storage/files/storage-sync-files-networking-endpoints.md)   |
+| Synchronizace souborů Azure | Všechny veřejné oblasti      | |   GA <br/> [Naučte se vytvářet koncové body sítě služby soubory Azure.](../storage/file-sync/file-sync-networking-endpoints.md)   |
 | Azure Queue Storage       |  Všechny veřejné oblasti<br/> Všechny oblasti státní správy       |  Podporováno na druhu účtu Pro obecné účely v2 | GA <br/> [Naučte se vytvořit privátní koncový bod pro úložiště Queue.](tutorial-private-endpoint-storage-portal.md) |
 | Azure Table Storage       |  Všechny veřejné oblasti<br/> Všechny oblasti státní správy       |  Podporováno na druhu účtu Pro obecné účely v2 | GA <br/> [Naučte se vytvořit privátní koncový bod pro úložiště tabulek.](tutorial-private-endpoint-storage-portal.md)  |
 | Azure Batch | Všechny veřejné oblasti kromě: Německo – střed, Německo – SEVEROVÝCHOD <br/> Všechny oblasti státní správy  | | GA <br/> [Naučte se vytvořit privátní koncový bod pro Azure Batch.](../batch/private-connectivity.md) |

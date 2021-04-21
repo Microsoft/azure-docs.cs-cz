@@ -6,12 +6,12 @@ ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 32cb1a54e8d3b4cca942616bb249968c4ed9e50c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 60ac56cfda026871afa1725bbd54625b7ce7585e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107477838"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789190"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Vytvoření nastavení diagnostiky pro odesílání metrik a protokolů platformy do různých cílů
 [Protokoly platforem](./platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. [Metriky platformy](./data-platform-metrics.md) se ve výchozím nastavení shromažďují a obvykle se ukládají do databáze Azure monitor metrik. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání metrik platforem a protokolů platforem do různých umístění.
@@ -42,7 +42,7 @@ Následující video vás provede protokoly platformy směrování s nastavením
 ## <a name="destinations"></a>Cíle
 Protokoly a metriky platformy je možné odeslat do cílových umístění v následující tabulce. 
 
-| Cíl | Popis |
+| Cíl | Description |
 |:---|:---|
 | [Pracovní prostor Log Analytics](../logs/design-logs-deployment.md) | Odesílání protokolů a metrik do Log Analyticsového pracovního prostoru vám umožní je analyzovat s dalšími daty monitorování shromážděnými pomocí Azure Monitor pomocí výkonných dotazů protokolu a také využívat jiné Azure Monitor funkce, jako jsou výstrahy a vizualizace. |
 | [Centrum událostí](../../event-hubs/index.yml) | Odesílání protokolů a metrik do Event Hubs umožňuje streamování dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics.  |
@@ -148,7 +148,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 
 ## <a name="create-using-azure-cli"></a>Vytvoření pomocí Azure CLI
 
-Pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) vytvořte nastavení diagnostiky pomocí [Azure CLI](/cli/azure/monitor). Popis jeho parametrů naleznete v dokumentaci k tomuto příkazu.
+Pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) vytvořte nastavení diagnostiky pomocí [Azure CLI](/cli/azure/monitor). Popis jeho parametrů naleznete v dokumentaci k tomuto příkazu.
 
 > [!IMPORTANT]
 > Tuto metodu nelze použít pro protokol aktivit Azure. Místo toho použijte možnost [vytvořit nastavení diagnostiky v Azure monitor pomocí šablony Správce prostředků](./resource-manager-diagnostic-settings.md) k vytvoření šablony Správce prostředků a nasaďte ji pomocí rozhraní příkazového řádku.

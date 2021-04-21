@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: 10bd2c4902157b9e01b1cb0ff10b3ebdf448568c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: be51d4db6c98b63fcb1c9c60df045b494536d78f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102244703"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766513"
 ---
 V následujících částech jste nastavili terminál a pomocí Azure CLI vytvoříte službu IoT Hub. Pokud chcete nakonfigurovat terminál, který spouští příkazy rozhraní příkazového řádku Azure, můžete buď použít Azure Cloud Shell na základě prohlížeče, nebo použít místní terminál.
 * Pokud chcete použít Cloud Shell, přečtěte si další část: [spuštění Cloud Shell](#launch-the-cloud-shell). 
@@ -65,7 +65,7 @@ V této části nainstalujete Microsoft Azure rozšíření IoT pro Azure CLI do
 > [!IMPORTANT]
 > Příkazy terminálu ve zbývající části tohoto rychlého startu fungují stejně jako v Cloud Shell nebo v místním terminálu. Pokud chcete spustit příkaz, vyberte **Kopírovat** a zkopírujte blok kódu v tomto rychlém startu. Pak ho vložte do prostředí CLI a spusťte ho.
 
-Spusťte příkaz [AZ Extension Add](/cli/azure/extension#az-extension-add) . 
+Spusťte příkaz [AZ Extension Add](/cli/azure/extension#az_extension_add) . 
 
    ```azurecli
    az extension add --name azure-iot
@@ -77,7 +77,7 @@ V této části použijete Azure CLI k vytvoření centra IoT a skupiny prostře
 
 Vytvoření centra IoT a skupiny prostředků:
 
-1. Spuštěním příkazu [AZ Group Create](/cli/azure/group#az-group-create) vytvořte skupinu prostředků. Následující příkaz vytvoří skupinu prostředků s názvem *MyResourceGroup* v umístění *eastus* . 
+1. Spuštěním příkazu [AZ Group Create](/cli/azure/group#az_group_create) vytvořte skupinu prostředků. Následující příkaz vytvoří skupinu prostředků s názvem *MyResourceGroup* v umístění *eastus* . 
     >[!NOTE]
     > Volitelně můžete nastavit alternativní umístění. Chcete-li zobrazit dostupná umístění, spusťte příkaz `az account list-locations` . V tomto kurzu se používá *eastus* , jak je znázorněno v příkladu příkazu. 
 
@@ -85,7 +85,7 @@ Vytvoření centra IoT a skupiny prostředků:
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. Spuštěním příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) vytvořte centrum IoT. Vytvoření centra IoT může trvat několik minut. 
+1. Spuštěním příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az_iot_hub_create) vytvořte centrum IoT. Vytvoření centra IoT může trvat několik minut. 
 
     *YourIotHubName*. Nahraďte tento zástupný text a okolní závorky v následujícím příkazu pomocí názvu, který jste zvolili pro Centrum IoT. Název centra IoT musí být v Azure globálně jedinečný. Pokud vidíte zástupný symbol, použijte název služby IoT Hub ve zbývající části tohoto rychlého startu.
 

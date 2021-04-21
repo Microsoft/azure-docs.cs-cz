@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c29282637f6854248c98dff59f8fae46ad1a9d39
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 656443b0bc9d0e45f43634b1b4c21145de7a5bb5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640556"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792538"
 ---
 # <a name="create-and-manage-encryption-scopes"></a>Vytváření a Správa oborů šifrování
 
@@ -111,7 +111,7 @@ Pokud chcete vytvořit rozsah šifrování pomocí Azure CLI, nejdřív nainstal
 
 ### <a name="create-an-encryption-scope-protected-by-microsoft-managed-keys"></a>Vytvoří rozsah šifrování chráněný klíči spravovanými Microsoftem.
 
-Pokud chcete vytvořit nový obor šifrování, který je chráněný pomocí klíčů spravovaných Microsoftem, zavolejte na příkaz [AZ Storage Account Encryption-Scope Create](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-create) a určete `--key-source` parametr jako `Microsoft.Storage` . Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami:
+Pokud chcete vytvořit nový obor šifrování, který je chráněný pomocí klíčů spravovaných Microsoftem, zavolejte na příkaz [AZ Storage Account Encryption-Scope Create](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_create) a určete `--key-source` parametr jako `Microsoft.Storage` . Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami:
 
 ```azurecli-interactive
 az storage account encryption-scope create \
@@ -123,7 +123,7 @@ az storage account encryption-scope create \
 
 ### <a name="create-an-encryption-scope-protected-by-customer-managed-keys"></a>Vytvoření rozsahu šifrování chráněného zákazníky spravovanými klíči
 
-Pokud chcete vytvořit nový obor šifrování, který je chráněný pomocí klíčů spravovaných Microsoftem, zavolejte na příkaz [AZ Storage Account Encryption-Scope Create](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-create) a určete `--key-source` parametr jako `Microsoft.Storage` . Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami:
+Pokud chcete vytvořit nový obor šifrování, který je chráněný pomocí klíčů spravovaných Microsoftem, zavolejte na příkaz [AZ Storage Account Encryption-Scope Create](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_create) a určete `--key-source` parametr jako `Microsoft.Storage` . Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami:
 
 Pokud chcete vytvořit nový rozsah šifrování, který je chráněný pomocí klíčů spravovaných zákazníkem v trezoru klíčů nebo spravovaném HSM, nejdřív nakonfigurujte klíče spravované zákazníkem pro účet úložiště. K účtu úložiště musíte přiřadit spravovanou identitu a potom pomocí spravované identity nakonfigurovat zásady přístupu pro Trezor klíčů, aby měl účet úložiště oprávnění k přístupu. Další informace najdete v tématu [klíče spravované zákazníkem pro Azure Storage šifrování](../common/customer-managed-keys-overview.md).
 
@@ -202,7 +202,7 @@ Get-AzStorageAccount -ResourceGroupName $rgName | Get-AzStorageEncryptionScope
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Pokud chcete zobrazit seznam rozsahů šifrování dostupných pro účet úložiště pomocí Azure CLI, zavolejte příkaz [AZ Storage Account Encryption-Scope list](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-list) . Nezapomeňte nahradit hodnoty zástupných symbolů v příkladu vlastními hodnotami:
+Pokud chcete zobrazit seznam rozsahů šifrování dostupných pro účet úložiště pomocí Azure CLI, zavolejte příkaz [AZ Storage Account Encryption-Scope list](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_list) . Nezapomeňte nahradit hodnoty zástupných symbolů v příkladu vlastními hodnotami:
 
 ```azurecli-interactive
 az storage account encryption-scope list \
@@ -246,7 +246,7 @@ New-AzStorageContainer -Name $containerName1 `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Pokud chcete vytvořit kontejner s výchozím rozsahem šifrování pomocí Azure CLI, zavolejte příkaz [AZ Storage Container Create](/cli/azure/storage/container#az-storage-container-create) a určete tak rozsah `--default-encryption-scope` parametru. Chcete-li vynutit všechny objekty BLOB v kontejneru pro použití výchozího oboru kontejneru, nastavte `--prevent-encryption-scope-override` parametr na `true` .
+Pokud chcete vytvořit kontejner s výchozím rozsahem šifrování pomocí Azure CLI, zavolejte příkaz [AZ Storage Container Create](/cli/azure/storage/container#az_storage_container_create) a určete tak rozsah `--default-encryption-scope` parametru. Chcete-li vynutit všechny objekty BLOB v kontejneru pro použití výchozího oboru kontejneru, nastavte `--prevent-encryption-scope-override` parametr na `true` .
 
 Následující příklad používá účet Azure AD k autorizaci operace vytvoření kontejneru. Můžete použít i přístupový klíč účtu. Další informace najdete v tématu [autorizace přístupu k datům BLOB nebo Queue pomocí Azure CLI](./authorize-data-operations-cli.md).
 
@@ -303,7 +303,7 @@ Set-AzStorageBlobContent -Context $ctx `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Pokud chcete nahrát objekt BLOB s rozsahem šifrování přes rozhraní příkazového řádku Azure, zavolejte příkaz [AZ Storage BLOB upload](/cli/azure/storage/blob#az-storage-blob-upload) a poskytněte rozsah šifrování pro objekt BLOB.
+Pokud chcete nahrát objekt BLOB s rozsahem šifrování přes rozhraní příkazového řádku Azure, zavolejte příkaz [AZ Storage BLOB upload](/cli/azure/storage/blob#az_storage_blob_upload) a poskytněte rozsah šifrování pro objekt BLOB.
 
 Pokud používáte Azure Cloud Shell, postupujte podle kroků popsaných v části [nahrání objektu BLOB](storage-quickstart-blobs-cli.md#upload-a-blob) a vytvoření souboru v kořenovém adresáři. Tento soubor pak můžete nahrát do objektu BLOB pomocí následující ukázky.
 
@@ -354,7 +354,7 @@ Update-AzStorageEncryptionScope -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Pokud chcete změnit klíč, který chrání obor šifrování z klíče spravovaného zákazníkem na klíč spravovaný společností Microsoft pomocí Azure CLI, zavolejte příkaz [AZ Storage Account Encryption-Scope Update](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-update) a předejte `--key-source` parametr s hodnotou `Microsoft.Storage` :
+Pokud chcete změnit klíč, který chrání obor šifrování z klíče spravovaného zákazníkem na klíč spravovaný společností Microsoft pomocí Azure CLI, zavolejte příkaz [AZ Storage Account Encryption-Scope Update](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_update) a předejte `--key-source` parametr s hodnotou `Microsoft.Storage` :
 
 ```azurecli-interactive
 az storage account encryption-scope update \
@@ -398,7 +398,7 @@ Update-AzStorageEncryptionScope -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Pokud chcete zakázat rozsah šifrování pomocí Azure CLI, zavolejte příkaz [AZ Storage Account Encryption-Scope Update](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-update) a zahrňte `--state` parametr s hodnotou `Disabled` , jak je znázorněno v následujícím příkladu. Chcete-li znovu povolit rozsah šifrování, zavolejte stejný příkaz s `--state` parametrem nastaveným na `Enabled` . Nezapomeňte nahradit hodnoty zástupných symbolů v příkladu vlastními hodnotami:
+Pokud chcete zakázat rozsah šifrování pomocí Azure CLI, zavolejte příkaz [AZ Storage Account Encryption-Scope Update](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_update) a zahrňte `--state` parametr s hodnotou `Disabled` , jak je znázorněno v následujícím příkladu. Chcete-li znovu povolit rozsah šifrování, zavolejte stejný příkaz s `--state` parametrem nastaveným na `Enabled` . Nezapomeňte nahradit hodnoty zástupných symbolů v příkladu vlastními hodnotami:
 
 ```azurecli-interactive
 az storage account encryption-scope update \

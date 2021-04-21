@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: c4062dd086eeee712376a402da2792352fa3c3ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0f61cc4ef02033a2c21ce5acde68caea483e743
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98221338"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790126"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresou pomocí Azure CLI
 
@@ -32,13 +32,13 @@ Můžete vytvořit virtuální počítač se statickou veřejnou IP adresou. Ve�
 Následující kroky můžete provést z místního počítače nebo pomocí Azure Cloud Shell. Pokud chcete použít místní počítač, ujistěte se, že máte nainstalované rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete použít Azure Cloud Shell, vyberte **vyzkoušet** v pravém horním rohu libovolného příkazového řádku, který následuje. Cloud Shell vás přihlásí k Azure.
 
 1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazu a přihlaste se k Azure pomocí `az login` .
-2. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků v Východní USA oblasti Azure:
+2. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků v Východní USA oblasti Azure:
 
    ```azurecli-interactive
    az group create --name myResourceGroup --location eastus
    ```
 
-3. Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create). `--public-ip-address-allocation=static`Možnost přiřadí virtuálnímu počítači statickou veřejnou IP adresu. Následující příklad vytvoří virtuální počítač s Ubuntu se statickou veřejnou IP adresou (Basic) SKU s názvem *myPublicIpAddress*:
+3. Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). `--public-ip-address-allocation=static`Možnost přiřadí virtuálnímu počítači statickou veřejnou IP adresu. Následující příklad vytvoří virtuální počítač s Ubuntu se statickou veřejnou IP adresou (Basic) SKU s názvem *myPublicIpAddress*:
 
    ```azurecli-interactive
    az vm create \
@@ -53,7 +53,7 @@ Následující kroky můžete provést z místního počítače nebo pomocí Azu
 
    Pokud veřejná IP adresa musí být standardní SKU, přidejte `--public-ip-sku Standard` k předchozímu příkazu. Přečtěte si další informace o [SKU veřejných IP adres](./public-ip-addresses.md#sku). Pokud bude virtuální počítač přidán do fondu back-end veřejné Azure Load Balancer, musí SKU veřejné IP adresy virtuálního počítače odpovídat SKU veřejné IP adresy nástroje pro vyrovnávání zatížení. Podrobnosti najdete v tématu [Azure Load Balancer](../load-balancer/skus.md).
 
-4. Zobrazte přiřazenou veřejnou IP adresu a potvrďte, že byla vytvořená jako statická, základní adresa SKU, pomocí [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show):
+4. Zobrazte přiřazenou veřejnou IP adresu a potvrďte, že byla vytvořená jako statická, základní adresa SKU, pomocí [AZ Network Public-IP show](/cli/azure/network/public-ip#az_network_public_ip_show):
 
    ```azurecli-interactive
    az network public-ip show \
@@ -68,9 +68,11 @@ Následující kroky můžete provést z místního počítače nebo pomocí Azu
 > [!WARNING]
 > Neměňte nastavení IP adresy v operačním systému virtuálního počítače. Operační systém neznáte veřejné IP adresy Azure. I když můžete do operačního systému přidat nastavení privátních IP adres, doporučujeme, abyste to neučinili, pokud není potřeba, a ne až po čtení [Přidání privátní IP adresy do operačního systému](virtual-network-network-interface-addresses.md#private).
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít příkaz [az group delete](/cli/azure/group#az-group-delete):
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít příkaz [az group delete](/cli/azure/group#az_group_delete):
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes

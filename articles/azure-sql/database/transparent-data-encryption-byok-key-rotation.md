@@ -12,12 +12,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 4bcfc0c7e24c83f5388e49af397d66f2bad7aa9f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 67bcd8597314530f26481ef840644ffbc056b033
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310933"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777558"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>Otočení ochrany transparentní šifrování dat (TDE)
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -77,7 +77,7 @@ Set-AzSqlServerTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId <ke
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Použijte příkaz [AZ Key trezor Create](/cli/azure/keyvault/key#az-keyvault-key-create), [AZ SQL Server Key Create](/cli/azure/sql/server/key#az-sql-server-key-create)a [AZ SQL Server TDE-Key set](/cli/azure/sql/server/tde-key#az-sql-server-tde-key-set) Commands.
+Použijte příkaz [AZ Key trezor Create](/cli/azure/keyvault/key#az_keyvault_key_create), [AZ SQL Server Key Create](/cli/azure/sql/server/key#az_sql_server_key_create)a [AZ SQL Server TDE-Key set](/cli/azure/sql/server/tde-key#az_sql_server_tde_key_set) Commands.
 
 ```azurecli
 # add a new key to Key Vault

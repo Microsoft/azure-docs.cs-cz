@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: troubleshooting
 ms.date: 03/13/2021
 ms.author: banders
-ms.openlocfilehash: eedb5e7a55b50a353fd16498500b891e289e61e5
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 965e90eed0690d57b6ad3cf3a1543b1329c0fe74
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103477042"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773367"
 ---
 # <a name="find-a-reservation-purchaser-from-azure-logs"></a>Vyhledání nákupu rezervací z protokolů Azure
 
@@ -33,4 +33,4 @@ Tento článek vám pomůže najít nákupčí rezervace s informacemi z protoko
 
 ## <a name="next-steps"></a>Další kroky
 
-- V případě potřeby můžou správci fakturace [převzít vlastnictví rezervace](view-reservations.md#how-billing-administrators-view-or-manage-reservations).
+- V případě potřeby můžou správci fakturace [převzít vlastnictví rezervace](view-reservations.md#how-billing-administrators-can-view-or-manage-reservations).
