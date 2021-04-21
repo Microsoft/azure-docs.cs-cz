@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 03/08/2021
-ms.openlocfilehash: e583d39e2eed1b08dfeb17cafc1e12c583176d7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4833a5779b9c9d5edcbbe70045f2ba2ca2d72ebe
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103493029"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812529"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Geografická dostupnost a podpora měny pro komerční tržiště
 
@@ -200,7 +200,7 @@ Podrobnosti o tom, jak zadat ceny pro konkrétní typy nabídek, najdete v těch
 - [Vytvoření nabídky kontejneru Azure](./create-azure-container-offer.md)
 - [Vytvoření nabídky virtuálních počítačů Azure](azure-vm-create.md)
 - [Vytvoření nabídky konzultačních služeb](./create-consulting-service-offer.md)
-- [Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps](partner-center-portal/create-new-customer-engagement-offer.md)
+- [Vytvoření nabídky Dynamics 365 for Customer Engagement & Power Apps](dynamics-365-customer-engage-offer-setup.md)
 - [Vytvoření nabídky Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md)
 - [Vytvoření nabídky Dynamics 365 Business Central](partner-center-portal/create-new-business-central-offer.md)
 - [Vytvoření nabídky modulu IoT Edge](partner-center-portal/azure-iot-edge-module-creation.md)

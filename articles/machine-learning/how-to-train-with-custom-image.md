@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ea282cb0fcf25f7ac5f17bb9e2f693d189320078
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 953d43f93635e25da008515afd9baf9a9e9b7afa
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889157"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817066"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Výuka modelu pomocí vlastní image Docker
 
@@ -173,5 +173,5 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste proškolei model pomocí vlastní image Docker. Další informace o Azure Machine Learning najdete v těchto článcích:
-* [Sledovat metriky spuštění](how-to-track-experiments.md) během školení.
+* [Sledovat metriky spuštění](how-to-log-view-metrics.md) během školení.
 * [Nasazení modelu](how-to-deploy-custom-docker-image.md) pomocí vlastní image Docker.
