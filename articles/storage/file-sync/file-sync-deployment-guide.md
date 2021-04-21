@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 989bcbb7e509b9b7692f067af2989fcad94b6ad1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 284ef8de1c672fdc0a5bb1a996a3446010253f57
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796644"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816786"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Pomocí Synchronizace souborů Azure můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -402,10 +402,12 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 ---
 
 ## <a name="create-a-server-endpoint"></a>Vytvoření koncového bodu serveru
-Koncový bod serveru představuje konkrétní umístění na zaregistrovaném serveru, například složku na svazku serveru. Koncový bod serveru musí být cestou na zaregistrovaném serveru (spíše než připojená sdílená složka) a používat vrstvení cloudu, cesta musí být na nesystémovém svazku. Úložiště připojené k síti (NAS) není podporováno.
+Koncový bod serveru představuje konkrétní umístění na zaregistrovaném serveru, například složku na svazku serveru. Koncový bod serveru podléhá následujícím podmínkám:
 
-> [!NOTE]
-> Změna cesty nebo písmene jednotky po vytvoření koncového bodu serveru na svazku není podporována. Ujistěte se, že používáte konečnou cestu na zaregistrovaném serveru.
+- Koncový bod serveru musí být cesta na zaregistrovaném serveru (nikoli připojená sdílená složka). Úložiště připojené k síti (NAS) není podporováno.
+- I když koncový bod serveru může být na systémovém svazku, koncové body serveru na systémovém svazku nemůžou používat vrstvení cloudu.
+- Změna cesty nebo písmene jednotky po vytvoření koncového bodu serveru na svazku není podporována. Ujistěte se, že používáte konečnou cestu na zaregistrovaném serveru.
+- Registrovaný Server může podporovat více koncových bodů serveru, ale skupina synchronizace může mít v daném okamžiku pouze jeden koncový bod serveru na registrovaný Server. Další koncové body serveru v rámci skupiny synchronizace musí být na různých registrovaných serverech.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Pokud chcete přidat koncový bod serveru, přejdete do nově vytvořené skupiny synchronizace a pak vyberete **přidat koncový bod serveru**.

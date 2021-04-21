@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 1e57ae537c271e61f0b2d37f5320cb177b04802b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad498575b029f918538909a9b5b2d52c71c1389c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98164868"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816363"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker limity a hranice znalostní báze
 
@@ -108,6 +108,26 @@ Tyto hodnoty udávají omezení pro každou akci aktualizace. To znamená, že k
 * Maximální počet přidaných nebo odstraněných polí metadat: 10
 * Maximální počet adres URL, které lze aktualizovat: 5
 * Maximální počet povolených QnAs za volání: 1000
+
+## <a name="add-unstructured-file-limits"></a>Přidat nestrukturované limity souborů
+
+> [!NOTE]
+> * Pokud potřebujete použít větší soubory, než je povolený limit, můžete soubor před odesláním do rozhraní API rozdělit na menší soubory. 
+
+Tyto hodnoty představují omezení, pokud se k *Vytvoření KB* nebo volání rozhraní CreateKnowledgeBase API použijí nestrukturované soubory:
+* Délka souboru: extrahujeme prvních 32000 znaků.
+* Maximální počet 3 odpovědí na soubor
+
+## <a name="prebuilt-question-answering-limits"></a>Předem připravené limity pro zodpovězení dotazů
+
+> [!NOTE]
+> * Pokud potřebujete použít větší dokumenty, než je povolený limit, můžete text před odesláním do rozhraní API rozdělit do menších bloků textu. 
+> * Dokument je textový znak v jednom řetězci.  
+
+Tyto hodnoty udávají omezení, když se k *vygenerování odpovědi* nebo volání rozhraní GenerateAnswer API používá předem sestavené rozhraní API:
+* Počet dokumentů: 5
+* Maximální velikost jednoho dokumentu: 5 120 znaků
+* Maximální počet 3 odpovědí na dokument.
 
 ## <a name="next-steps"></a>Další kroky
 

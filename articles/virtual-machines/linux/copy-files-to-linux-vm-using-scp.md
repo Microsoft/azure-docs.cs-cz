@@ -1,26 +1,27 @@
 ---
-title: Přesun souborů do a z virtuálních počítačů Azure Linux pomocí spojovacího bodu služby
+title: Použití spojovacího bodu služby k přesunu souborů do a z virtuálního počítače
 description: Zabezpečený přesun souborů do a z virtuálního počítače se systémem Linux v Azure pomocí spojovacího bodu služby a páru klíčů SSH.
 author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 07/12/2017
+ms.date: 04/20/2021
 ms.author: cynthn
-ms.subservice: disks
-ms.openlocfilehash: 83b57055ee7a3fedab014abeab96520c3877b843
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: ''
+ms.openlocfilehash: edfc44f79cff25486fde6326ac954fe5b575d846
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558436"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816435"
 ---
-# <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Přesunutí souborů do a z virtuálního počítače se systémem Linux pomocí spojovacího bodu služby
+# <a name="use-scp-to-move-files-to-and-from-a-linux-vm"></a>Použití spojovacího bodu služby k přesunutí souborů do a z virtuálního počítače se systémem Linux 
 
 Tento článek ukazuje, jak přesunout soubory z pracovní stanice až do virtuálního počítače Azure Linux nebo z virtuálního počítače Azure Linux na pracovní stanici pomocí zabezpečeného kopírování (SCP). Rychlé a bezpečné přesouvání souborů mezi pracovními stanicemi a VIRTUÁLNÍmi počítači Linux je velmi důležité pro správu infrastruktury Azure. 
 
-Pro tento článek budete potřebovat virtuální počítač se systémem Linux nasazený v Azure pomocí [souborů veřejného a privátního klíče SSH](mac-create-ssh-keys.md). Pro místní počítač budete také potřebovat klienta SCP. Je postavená na SSH a je součástí výchozího prostředí bash většiny počítačů se systémy Linux a Mac a některých prostředí Windows.
+Pro tento článek budete potřebovat virtuální počítač se systémem Linux nasazený v Azure pomocí [souborů veřejného a privátního klíče SSH](mac-create-ssh-keys.md). Pro místní počítač budete také potřebovat klienta SCP. Je postavená na SSH a je součástí výchozího prostředí bash většiny počítačů se systémy Linux a Mac a prostředí PowerShell.
+
 
 ## <a name="quick-commands"></a>Rychlé příkazy
 
@@ -50,7 +51,7 @@ Další informace o konfiguraci `~/.ssh/config` veřejného a privátního klí�
 
 V prvním příkladu jsme zkopírovali konfigurační soubor Azure do virtuálního počítače se systémem Linux, který se používá k nasazení automatizace. Vzhledem k tomu, že tento soubor obsahuje přihlašovací údaje rozhraní Azure API, které zahrnují tajné klíče, zabezpečení je důležité. Šifrované tunely, které poskytuje SSH, chrání obsah souboru.
 
-Následující příkaz zkopíruje místní soubor *. Azure/config* do virtuálního počítače Azure s plně kvalifikovaným názvem domény *MyServer.eastus.cloudapp.Azure.com*. Uživatelské jméno správce na virtuálním počítači Azure je *azureuser*. Soubor je cílem adresáře */Home/azureuser/* . V tomto příkazu nahraďte vlastní hodnoty.
+Následující příkaz zkopíruje místní soubor *. Azure/config* do virtuálního počítače Azure s plně kvalifikovaným názvem domény *MyServer.eastus.cloudapp.Azure.com*. Pokud nemáte [nastaven plně kvalifikovaný název domény](../create-fqdn.md), můžete použít také IP adresu virtuálního počítače. Uživatelské jméno správce na virtuálním počítači Azure je *azureuser*. Soubor je cílem adresáře */Home/azureuser/* . V tomto příkazu nahraďte vlastní hodnoty.
 
 ```bash
 scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/config

@@ -1,38 +1,32 @@
 ---
-title: Kurz – nasazení LAMPy na virtuálním počítači se systémem Linux v Azure
-description: V tomto kurzu zjistíte, jak nainstalovat stack LAMP na virtuální počítač s Linuxem v Azure
-services: virtual-machines
-documentationcenter: virtual-machines
+title: Kurz – nasazení LAMP a WordPress na virtuálním počítači
+description: V tomto kurzu se naučíte, jak nainstalovat sadu LAMP a WordPress na virtuálním počítači se systémem Linux v Azure.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.collection: linux
-ms.assetid: 6c12603a-e391-4d3e-acce-442dd7ebb2fe
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 01/30/2019
+ms.date: 04/20/2021
 ms.author: cynthn
-ms.openlocfilehash: 3813931f47c110abcfb595065c1415ca9ed84c9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5365bad5fdea2a8213defc103f0cdd966ebe50a5
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564709"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816337"
 ---
-# <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Kurz: Instalace webového serveru LAMP na virtuální počítač s Linuxem v Azure
+# <a name="tutorial-install-a-lamp-stack-on-an-azure-linux-vm"></a>Kurz: Instalace zásobníku LAMP na virtuální počítač Azure Linux
 
 Tento článek vás provede nasazením webového serveru Apache, MySQL a PHP (stack LAMP) na virtuální počítač s Ubuntu v Azure. Pokud chcete zobrazit server LAMP v akci, můžete volitelně nainstalovat a nakonfigurovat web WordPress. Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření virtuálního počítače s Ubuntu (písmeno L ve stacku LAMP)
+> * Vytvoření virtuálního počítače s Ubuntu 
 > * Otevření portu 80 pro webový provoz
 > * Instalace Apache, MySQL a PHP
 > * Ověření instalace a konfigurace
-> * Instalace WordPressu na server LAMP
+> * Instalace WordPressu 
 
 Toto nastavení je určené pro rychlé testy nebo testování konceptu. Další informace o stacku LAMP, včetně doporučení pro produkční prostředí, najdete v [dokumentaci k Ubuntu](https://help.ubuntu.com/community/ApacheMySQLPHP).
 
@@ -40,7 +34,72 @@ V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](../../cloud-shell/o
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
-[!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
+## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+
+Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
+
+```azurecli-interactive
+az group create --name myResourceGroup --location eastus
+```
+
+## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). 
+
+Následující příklad vytvoří virtuální počítač *myVM*, a pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, vytvoří je. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`. Tento příkaz také jako uživatelské jméno správce nastaví *azureuser*. Toto uživatelské jméno použijete později k připojení k virtuálnímu počítači. 
+
+```azurecli-interactive
+az vm create \
+    --resource-group myResourceGroup \
+    --name myVM \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --generate-ssh-keys
+```
+
+Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné informace jako v následujícím příkladu. Poznamenejte si `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači v dalších krocích.
+
+```output
+{
+  "fqdns": "",
+  "id": "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
+  "location": "eastus",
+  "macAddress": "00-0D-3A-23-9A-49",
+  "powerState": "VM running",
+  "privateIpAddress": "10.0.0.4",
+  "publicIpAddress": "40.68.254.142",
+  "resourceGroup": "myResourceGroup"
+}
+```
+
+
+
+## <a name="open-port-80-for-web-traffic"></a>Otevření portu 80 pro webový provoz 
+
+Ve výchozím nastavení jsou k virtuálním počítačům s Linuxem, které jsou nasazené v Azure, povolená pouze připojení SSH. Protože tento virtuální počítač bude webovým serverem, budete muset otevřít port 80 z internetu. Požadovaný port otevřete pomocí příkazu [az vm open-port](/cli/azure/vm).  
+ 
+```azurecli-interactive
+az vm open-port --port 80 --resource-group myResourceGroup --name myVM
+```
+
+Další informace o otevření portů na VIRTUÁLNÍm počítači najdete v tématu [otevření portů](nsg-quickstart.md).
+
+## <a name="ssh-into-your-vm"></a>Připojení SSH k virtuálnímu počítači
+
+Pokud ještě neznáte veřejnou IP adresu svého virtuálního počítače, spusťte příkaz [az network public-ip list](/cli/azure/network/public-ip). Tuto IP adresu budete potřebovat v několika dalších krocích.
+
+```azurecli-interactive
+az network public-ip list --resource-group myResourceGroup --query [].ipAddress
+```
+
+Pomocí následujícího příkazu vytvořte s virtuálním počítačem relaci SSH. Použijte správnou veřejnou IP adresu vašeho virtuálního počítače. V tomto příkladu je IP adresa *40.68.254.142*. *azureuser* je uživatelské jméno správce, které jste nastavili při vytváření virtuálního počítače.
+
+```bash
+ssh azureuser@40.68.254.142
+```
+
 
 ## <a name="install-apache-mysql-and-php"></a>Instalace Apache, MySQL a PHP
 
@@ -53,10 +112,7 @@ sudo apt update && sudo apt install lamp-server^
 
 Zobrazí se výzva k instalaci balíčků a dalších závislostí. Tímto postupem se nainstalují minimální požadovaná rozšíření PHP potřebná k používání PHP a MySQL.  
 
-## <a name="verify-installation-and-configuration"></a>Ověření instalace a konfigurace
-
-
-### <a name="verify-apache"></a>Ověření Apache
+## <a name="verify-apache"></a>Ověření Apache
 
 Zkontrolujte verzi Apache pomocí následujícího příkazu:
 ```bash
@@ -68,7 +124,7 @@ Když je teď server Apache nainstalovaný a port 80 k virtuálnímu počítači
 ![Výchozí stránka Apache][3]
 
 
-### <a name="verify-and-secure-mysql"></a>Ověření a zabezpečení MySQL
+## <a name="verify-and-secure-mysql"></a>Ověření a zabezpečení MySQL
 
 Zkontrolujte verzi MySQL pomocí následujícího příkazu (všimněte si parametru velké `V`):
 
@@ -92,7 +148,7 @@ sudo mysql -u root -p
 
 Jakmile budete hotovi, ukončete příkazový řádek mysql zadáním `\q`.
 
-### <a name="verify-php"></a>Ověřit PHP
+## <a name="verify-php"></a>Ověřit PHP
 
 Zkontrolujte verzi PHP pomocí následujícího příkazu:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f8bde45cfdf9cf1c9d50faee76161461d8b0aa0a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6457624329d7bb5e367e9de5a1963884e11ad2e3
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607824"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816994"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Základní hodnoty zabezpečení Azure pro Azure Machine Learning
 
@@ -192,7 +192,7 @@ Pro účely zabezpečení a dodržování předpisů můžete také korelovat pr
 
 - [Principy protokolování a různých typů protokolů v Azure](/azure/azure-monitor/platform/platform-logs-overview)
 
-- [Povolit přihlašování Azure Machine Learning](how-to-track-experiments.md)
+- [Povolit přihlašování Azure Machine Learning](how-to-log-view-metrics.md)
 
 - [Azure Machine Learning monitorování](monitor-azure-machine-learning.md)
 
@@ -232,7 +232,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Postup provádění dotazů pro Azure Machine Learning v pracovních prostorech Log Analytics](https://docs.microsoft.com/azure/machine-learning/monitor-azure-machine-learning#analyzing-log-data)
 
-- [Povolit přihlašování Azure Machine Learning](how-to-track-experiments.md)
+- [Povolit přihlašování Azure Machine Learning](how-to-log-view-metrics.md)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 85dea807ee09338e7f0e9e388f6b196fd3beef33
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6c5691759983d8ec40598834e5dbcd507ccf00cf
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588660"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816867"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Kurz: analýza modelů klasifikace obrázků pomocí MNIST ručně zapsaných dat a scikit – učení 
 
@@ -39,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet
 >[!NOTE]
 > Kód v tomto článku byl testován pomocí [sady Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) 1.13.0 verze.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončete [kurz: Začínáme s vytvořením prvního experimentu Azure ml](tutorial-1st-experiment-sdk-setup.md) :
     * Vytvoření pracovního prostoru
@@ -396,7 +396,7 @@ Pomůcka bude vypadat jako na konci školení jako na následujícím místě:
 
 ![Widget Poznámkový blok](./media/tutorial-train-models-with-aml/widget.png)
 
-Pokud potřebujete běh zrušit, můžete postupovat podle [těchto pokynů](./how-to-manage-runs.md).
+Pokud potřebujete běh zrušit, můžete postupovat podle [těchto pokynů](./how-to-track-monitor-analyze-runs.md).
 
 ### <a name="get-log-results-upon-completion"></a>Získání protokolu výsledků při dokončení
 

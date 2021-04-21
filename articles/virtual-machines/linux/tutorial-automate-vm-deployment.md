@@ -1,22 +1,20 @@
 ---
 title: Kurz – přizpůsobení virtuálního počítače se systémem Linux pomocí Cloud-init v Azure
 description: V tomto kurzu se naučíte používat Cloud-init a Key Vault k přizpůsobení virtuálních počítačů se systémem Linux při prvním spuštění v Azure.
-services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: tutorial
-ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 8a8d5d5d76dc762734921dc2cb7ae575d15b626c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 461a52bca90040279ceaf2bab0bb1361336f355e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789630"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816309"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Kurz: Jak používat cloud-init k přizpůsobení virtuálního počítače s Linuxem v Azure při prvním spuštění počítače
 

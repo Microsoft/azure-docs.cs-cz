@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/01/2020
-ms.openlocfilehash: a18ee02b5e91b628a25655949a652270bd7436c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5fd0fdd5a6f9a4a7537a844b096efdfef253638
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100575138"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816849"
 ---
 # <a name="monitor-azure-machine-learning"></a>Monitorování Azure Machine Learningu
 
@@ -24,8 +24,8 @@ Pokud máte důležité aplikace a obchodní procesy spoléhající se na prost�
 > [!TIP]
 > Informace v tomto dokumentu jsou primárně určené pro __správce__, protože popisují monitorování služby Azure Machine Learning a přidružených služeb Azure. Pokud jste odborníkem na __data__ nebo __vývojářem__ a chcete monitorovat informace, které jsou specifické pro vaše *běhy školicích kurzů*, přečtěte si následující dokumenty:
 >
-> * [Spuštění, monitorování a zrušení školicích běhů](how-to-manage-runs.md)
-> * [Protokolování metrik pro tréninková spuštění](how-to-track-experiments.md)
+> * [Spuštění, monitorování a zrušení školicích běhů](how-to-track-monitor-analyze-runs.md)
+> * [Protokolování metrik pro tréninková spuštění](how-to-log-view-metrics.md)
 > * [Sledování experimentů s využitím MLflow](how-to-use-mlflow.md)
 > * [Vizualizace spuštění s využitím TensorBoardu](how-to-monitor-tensorboard.md)
 >
