@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee392666a6c6807497eeac2a2291dac915c4e136
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 418741c10dfe5f0678d7771d046781697512bafe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644302"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776496"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -104,8 +104,8 @@ Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použ
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.31 nebo novější. Pokud chcete zjistit verzi, spusťte příkaz az --version. Pokud potřebujete instalaci nebo upgrade, přečtěte si článek instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 
-1. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). 
-1. Vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm#az-vm-create) pomocí podporované distribuce v podporované oblasti. 
+1. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). 
+1. Vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm#az_vm_create) pomocí podporované distribuce v podporované oblasti. 
 1. Nainstalujte rozšíření pro přihlášení k virtuálnímu počítači Azure AD. 
 
 Následující příklad nasadí virtuální počítač s názvem myVM, který používá Win2019Datacenter, do skupiny prostředků s názvem myResourceGroup v oblasti southcentralus. V následujících příkladech můžete podle potřeby zadat vlastní skupinu prostředků a názvy virtuálních počítačů.
@@ -127,7 +127,7 @@ az vm create \
 
 Vytvoření virtuálního počítače a podpůrných prostředků trvá několik minut.
 
-Nakonec nainstalujte rozšíření Azure AD Login VM pro povolení přihlášení Azure AD pro virtuální počítač s Windows. Rozšíření virtuálních počítačů jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. Pomocí [AZ VM Extension](/cli/azure/vm/extension#az-vm-extension-set) set nainstalujete rozšíření AADLoginForWindows na virtuální počítač s názvem `myVM` ve `myResourceGroup` skupině prostředků:
+Nakonec nainstalujte rozšíření Azure AD Login VM pro povolení přihlášení Azure AD pro virtuální počítač s Windows. Rozšíření virtuálních počítačů jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. Pomocí [AZ VM Extension](/cli/azure/vm/extension#az_vm_extension_set) set nainstalujete rozšíření AADLoginForWindows na virtuální počítač s názvem `myVM` ve `myResourceGroup` skupině prostředků:
 
 > [!NOTE]
 > Rozšíření AADLoginForWindows můžete nainstalovat na stávající virtuální počítač s Windows serverem 2019 nebo Windows 10 1809 a novějším, abyste ho mohli povolit pro ověřování Azure AD. Příklad AZ CLI je uveden níže.
@@ -177,7 +177,7 @@ Po chvíli se objektu zabezpečení přiřadí role ve vybraném oboru.
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>Použití prostředí Azure Cloud Shell
 
-V následujícím příkladu se pomocí funkce [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create) přiřadí k virtuálnímu počítači role přihlášení správce virtuálního počítače pro aktuálního uživatele Azure. Uživatelské jméno vašeho aktivního účtu Azure se získá pomocí [AZ Account show](/cli/azure/account#az-account-show)a obor se nastaví na virtuální počítač vytvořený v předchozím kroku pomocí [AZ VM show](/cli/azure/vm#az-vm-show). Obor se taky dá přiřadit na úrovni skupiny prostředků nebo předplatného a platí normální oprávnění dědičnosti Azure RBAC. Další informace najdete v tématu [přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory](../../virtual-machines/linux/login-using-aad.md).
+V následujícím příkladu se pomocí funkce [AZ role Assignment Create](/cli/azure/role/assignment#az_role_assignment_create) přiřadí k virtuálnímu počítači role přihlášení správce virtuálního počítače pro aktuálního uživatele Azure. Uživatelské jméno vašeho aktivního účtu Azure se získá pomocí [AZ Account show](/cli/azure/account#az_account_show)a obor se nastaví na virtuální počítač vytvořený v předchozím kroku pomocí [AZ VM show](/cli/azure/vm#az_vm_show). Obor se taky dá přiřadit na úrovni skupiny prostředků nebo předplatného a platí normální oprávnění dědičnosti Azure RBAC. Další informace najdete v tématu [přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory](../../virtual-machines/linux/login-using-aad.md).
 
 ```   AzureCLI
 $username=$(az account show --query user.name --output tsv)
@@ -190,7 +190,7 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> Pokud se vaše doména AAD a doména přihlášení k uživatelskému jménu neshodují, je nutné zadat ID objektu vašeho uživatelského účtu s `--assignee-object-id` příponou, nikoli jenom s uživatelským jménem pro `--assignee` . ID objektu pro svůj uživatelský účet můžete získat pomocí [seznamu AZ AD User list](/cli/azure/ad/user#az-ad-user-list).
+> Pokud se vaše doména AAD a doména přihlášení k uživatelskému jménu neshodují, je nutné zadat ID objektu vašeho uživatelského účtu s `--assignee-object-id` příponou, nikoli jenom s uživatelským jménem pro `--assignee` . ID objektu pro svůj uživatelský účet můžete získat pomocí [seznamu AZ AD User list](/cli/azure/ad/user#az_ad_user_list).
 
 Další informace o tom, jak pomocí Azure RBAC spravovat přístup k prostředkům předplatného Azure, najdete v následujících článcích:
 

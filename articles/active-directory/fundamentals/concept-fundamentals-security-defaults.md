@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 04/20/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: efaf6060c0b09e071546038d9e30f2c8065059e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efa88e1be5c5df5dd09cb5a97c8ece352496ccdb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98600134"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769692"
 ---
 # <a name="what-are-security-defaults"></a>Co jsou výchozí nastavení zabezpečení?
 
-Správa zabezpečení může být obtížné díky běžným útokům souvisejícím s identitou, jako je například postřik hesla, přehrávání a útoky phishing. Výchozí hodnoty zabezpečení usnadňují ochranu vaší organizace před těmito útoky pomocí předem nakonfigurovaných nastavení zabezpečení:
+Správa zabezpečení může být obtížné díky běžným útokům souvisejícím s identitou, jako je třeba sprej, přehrávání a útoky typu phishing. Výchozí hodnoty zabezpečení usnadňují ochranu vaší organizace před těmito útoky pomocí předem nakonfigurovaných nastavení zabezpečení:
 
 - Vyžaduje se, aby se všichni uživatelé zaregistrovali Multi-Factor Authentication služby Azure AD.
 - Vyžadování správců k provádění vícefaktorového ověřování.
@@ -35,7 +35,7 @@ Další podrobnosti o tom, proč jsou k dispozici výchozí hodnoty zabezpečen�
 
 ## <a name="availability"></a>Dostupnost
 
-Microsoft zpřístupňuje výchozí nastavení zabezpečení všem uživatelům. Cílem je zajistit, aby měly všechny organizace základní úroveň zabezpečení povoleno bez dalších poplatků. Výchozí nastavení zabezpečení můžete zapnout v Azure Portal. Pokud se tenant vytvořil v nebo po 22. říjnu 2019, je možné, že ve vašem tenantovi jsou už povolené výchozí hodnoty zabezpečení. V zájmu ochrany všech našich uživatelů se ve všech nově vytvořených tenantůch zavádějí výchozí hodnoty zabezpečení.
+Microsoft zpřístupňuje výchozí nastavení zabezpečení všem uživatelům. Cílem je zajistit, aby měly všechny organizace základní úroveň zabezpečení povoleno bez dalších poplatků. Výchozí nastavení zabezpečení můžete zapnout v Azure Portal. Pokud se tenant vytvořil v nebo po 22. říjnu 2019, je možné, že ve vašem tenantovi jsou už povolené výchozí hodnoty zabezpečení. Pokud chcete chránit všechny naše uživatele, nasadí se výchozí nastavení zabezpečení pro všechny nově vytvořené klienty.
 
 ### <a name="whos-it-for"></a>Kdo je pro?
 
@@ -46,7 +46,7 @@ Microsoft zpřístupňuje výchozí nastavení zabezpečení všem uživatelům.
 
 - Pokud jste v organizaci aktuálně používali zásady podmíněného přístupu, které slouží ke spojování signálů, k rozhodování a vystavování zásad organizace, pro vás nejspíš neplatí výchozí nastavení zabezpečení. 
 - Pokud jste organizace s licencemi Azure Active Directory Premium, výchozí nastavení zabezpečení pro vás pravděpodobně nejsou správná.
-- Pokud má vaše organizace složité požadavky na zabezpečení, měli byste zvážit podmíněný přístup.
+- Pokud má vaše organizace komplexní požadavky na zabezpečení, měli byste zvážit podmíněný přístup.
 
 ## <a name="policies-enforced"></a>Zásady se vynutily
 
@@ -70,6 +70,9 @@ Po dokončení registrace ve službě Azure AD Multi-Factor Authentication bude 
 - Správce uživatelů
 - Správce ověřování
 
+> [!WARNING]
+> Zajistěte, aby měl adresář alespoň dva účty s přiřazenými oprávněními globálního správce. To vám pomůže v případě, že je jeden globální správce uzamčený. Další podrobnosti najdete v článku [Správa účtů pro nouzový přístup ve službě Azure AD](../roles/security-emergency-access.md).
+
 ### <a name="protecting-all-users"></a>Ochrana všech uživatelů
 
 Doporučujeme, abyste si myslíte, že účty správců jsou jedinými účty, které vyžadují další vrstvy ověřování. Správci mají rozsáhlý přístup k citlivým informacím a můžou provádět změny nastavení pro celé předplatné. Ale útočníci často cílí na koncové uživatele. 
@@ -80,12 +83,12 @@ Jednou z běžných metod pro zlepšení ochrany pro všechny uživatele je vyž
 
 ### <a name="blocking-legacy-authentication"></a>Blokování starších verzí ověřování
 
-Aby měli uživatelé snadný přístup k vašim cloudovým aplikacím, Azure AD podporuje nejrůznější ověřovací protokoly, včetně starší verze ověřování. *Starší verze ověřování* je termín, který odkazuje na žádost o ověření, kterou provedla:
+Aby měli uživatelé snadný přístup k vašim cloudovým aplikacím, Azure AD podporuje různé ověřovací protokoly, včetně starší verze ověřování. *Starší verze ověřování* je termín, který odkazuje na žádost o ověření, kterou provedla:
 
 - Klienti, kteří nepoužívají moderní ověřování (například klienta Office 2010).
 - Každý klient používající starší e-mailové protokoly, jako jsou IMAP, SMTP nebo POP3.
 
-V současné době většina neúspěšných pokusů o přihlášení pocházela ze staršího ověřování. Starší verze ověřování nepodporuje Multi-Factor Authentication. I v případě, že máte ve svém adresáři povolené zásady Multi-Factor Authentication, útočník se může ověřit pomocí staršího protokolu a Multi-Factor Authentication obcházení. 
+V současné době nejbezpečnější pokusy o přihlášení pocházejí ze staršího ověřování. Starší verze ověřování nepodporuje Multi-Factor Authentication. I v případě, že máte ve svém adresáři povolené zásady Multi-Factor Authentication, útočník se může ověřit pomocí staršího protokolu a Multi-Factor Authentication obcházení. 
 
 Po povolení výchozích hodnot zabezpečení ve vašem tenantovi budou všechny požadavky na ověření provedené starším protokolem blokované. Výchozí hodnoty zabezpečení blokují Exchange Active Sync základní ověřování.
 
@@ -102,7 +105,7 @@ Organizace používají různé služby Azure spravované prostřednictvím rozh
 - Azure PowerShell 
 - Azure CLI
 
-Použití Azure Resource Manager ke správě služeb je vysoce privilegovaná akce. Azure Resource Manager může měnit konfigurace v rámci tenanta, jako je například nastavení služby a fakturace předplatného. Jednotné vícefaktorové ověřování je zranitelné vůči nejrůznějším útokům, jako je útok phishing a heslo. 
+Použití Azure Resource Manager ke správě služeb je vysoce privilegovaná akce. Azure Resource Manager může měnit konfigurace v rámci tenanta, jako je například nastavení služby a fakturace předplatného. Jednotné vícefaktorové ověřování je zranitelné vůči různým útokům, jako je útok phishing a heslo. 
 
 Je důležité ověřit identitu uživatelů, kteří chtějí získat přístup k Azure Resource Manager a aktualizovat konfigurace. Než povolíte přístup, ověříte jejich identitu tím, že budete vyžadovat další ověřování.
 

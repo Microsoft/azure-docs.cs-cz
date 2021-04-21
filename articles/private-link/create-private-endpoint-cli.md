@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 11/07/2020
 ms.author: allensu
-ms.openlocfilehash: f74a143859f0a6629c88f0dcb61a97697f49d0be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5088b4e50899a2643488103ba29a7e36a7f256ea
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889225"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778350"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure CLI
 
@@ -72,7 +72,7 @@ az network vnet create \
     --subnet-prefixes 10.0.0.0/24
 ```
 
-Aktualizace podsítě pro zakázání zásad privátního koncového bodu pro privátní koncový bod pomocí [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
+Aktualizace podsítě pro zakázání zásad privátního koncového bodu pro privátní koncový bod pomocí [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -82,7 +82,7 @@ az network vnet subnet update \
     --disable-private-endpoint-network-policies true
 ```
 
-K vytvoření veřejné IP adresy pro hostitele bastionu použijte [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) :
+K vytvoření veřejné IP adresy pro hostitele bastionu použijte [AZ Network Public-IP Create](/cli/azure/network/public-ip#az_network_public_ip_create) :
 
 * Vytvořte záložní veřejnou IP adresu zóny Standard s názvem **myBastionIP**.
 * V **CreatePrivateEndpointQS-RG**.
@@ -94,7 +94,7 @@ az network public-ip create \
     --sku Standard
 ```
 
-Pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) vytvořte podsíť bastionu:
+Pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) vytvořte podsíť bastionu:
 
 * S názvem **AzureBastionSubnet**.
 * Předpona adresy **10.0.1.0/24**.
@@ -109,7 +109,7 @@ az network vnet subnet create \
     --address-prefixes 10.0.1.0/24
 ```
 
-Pomocí [AZ Network bastionu Create](/cli/azure/network/bastion#az-network-bastion-create) Vytvořte hostitele bastionu:
+Pomocí [AZ Network bastionu Create](/cli/azure/network/bastion#az_network_bastion_create) Vytvořte hostitele bastionu:
 
 * S názvem **myBastionHost**.
 * V **CreatePrivateEndpointQS-RG**.
@@ -150,6 +150,8 @@ az vm create \
     --subnet myBackendSubnet \
     --admin-username azureuser
 ```
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="create-private-endpoint"></a>Vytvořit privátní koncový bod
 

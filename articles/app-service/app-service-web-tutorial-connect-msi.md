@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 2c19ee2b8e7ec3c695b2c76c46402c118c559b40
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0012c3d208998786ef5aa34320f3bccc4e51ebe6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736234"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782778"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečení připojení ke službě Azure SQL Database ze služby App Service s využitím spravované identity
 
@@ -57,7 +57,7 @@ Nejdřív povolte ověřování Azure AD, které se SQL Database přiřazením u
 
 Pokud váš tenant služby Azure AD ještě nemá uživatele, vytvořte ho podle kroků v části [Přidání nebo odstranění uživatelů pomocí Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md).
 
-Vyhledejte ID objektu uživatele Azure AD pomocí [`az ad user list`](/cli/azure/ad/user#az-ad-user-list) a nahraďte *\<user-principal-name>* . Výsledek je uložen do proměnné.
+Vyhledejte ID objektu uživatele Azure AD pomocí [`az ad user list`](/cli/azure/ad/user#az_ad_user_list) a nahraďte *\<user-principal-name>* . Výsledek je uložen do proměnné.
 
 ```azurecli-interactive
 azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-name>'" --query [].objectId --output tsv)
@@ -66,7 +66,7 @@ azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-na
 > Pokud chcete zobrazit seznam všech hlavních názvů uživatelů v Azure AD, spusťte `az ad user list --query [].userPrincipalName` .
 >
 
-Přidejte tohoto uživatele Azure AD jako správce služby Active Directory pomocí [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) příkazu ve Cloud Shell. V následujícím příkazu nahraďte *\<server-name>* názvem serveru (bez `.database.windows.net` přípony).
+Přidejte tohoto uživatele Azure AD jako správce služby Active Directory pomocí [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) příkazu ve Cloud Shell. V následujícím příkazu nahraďte *\<server-name>* názvem serveru (bez `.database.windows.net` přípony).
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
@@ -176,7 +176,7 @@ Dále nakonfigurujete aplikaci App Service pro připojení k SQL Database se spr
 
 ### <a name="enable-managed-identity-on-app"></a>Povolit spravovanou identitu v aplikaci
 
-K povolení spravované identity u aplikace Azure použijte příkaz [az webapp identity assign](/cli/azure/webapp/identity#az-webapp-identity-assign) v prostředí Cloud Shell. V následujícím příkazu nahraďte *\<app-name>* .
+K povolení spravované identity u aplikace Azure použijte příkaz [az webapp identity assign](/cli/azure/webapp/identity#az_webapp_identity_assign) v prostředí Cloud Shell. V následujícím příkazu nahraďte *\<app-name>* .
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app-name>

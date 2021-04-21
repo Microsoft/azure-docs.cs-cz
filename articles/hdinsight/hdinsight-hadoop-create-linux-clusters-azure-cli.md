@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 02/03/2020
-ms.openlocfilehash: 9028d85346611341afec0d0598f27a77e4f37fdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c19eb58e32fec66e5fe698c82133c8583f67b8b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715492"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775092"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Vytváření clusterů HDInsight pomocí rozhraní příkazového řádku Azure
 
@@ -35,7 +35,7 @@ Kroky v tomto dokumentu vás provedou vytvořením clusteru HDInsight 3,6 pomoc�
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Nastavte proměnné prostředí. Použití proměnných v tomto článku je založené na bash. Pro ostatní prostředí se budou potřebovat mírné variace. Úplný seznam možných parametrů pro vytvoření clusteru najdete v tématu [AZ-HDInsight-Create](/cli/azure/hdinsight#az-hdinsight-create) .
+2. Nastavte proměnné prostředí. Použití proměnných v tomto článku je založené na bash. Pro ostatní prostředí se budou potřebovat mírné variace. Úplný seznam možných parametrů pro vytvoření clusteru najdete v tématu [AZ-HDInsight-Create](/cli/azure/hdinsight#az_hdinsight_create) .
 
     |Parametr | Popis |
     |---|---|
@@ -61,7 +61,7 @@ Kroky v tomto dokumentu vás provedou vytvořením clusteru HDInsight 3,6 pomoc�
     export componentVersion=Hadoop=2.7
     ```
 
-3. [Vytvořte skupinu prostředků](/cli/azure/group#az-group-create) zadáním následujícího příkazu:
+3. [Vytvořte skupinu prostředků](/cli/azure/group#az_group_create) zadáním následujícího příkazu:
 
     ```azurecli-interactive
     az group create \
@@ -71,7 +71,7 @@ Kroky v tomto dokumentu vás provedou vytvořením clusteru HDInsight 3,6 pomoc�
 
     Chcete-li zobrazit seznam platných umístění, použijte `az account list-locations` příkaz a pak použijte jedno z umístění z `name` hodnoty.
 
-4. [Vytvořte účet Azure Storage](/cli/azure/storage/account#az-storage-account-create) zadáním následujícího příkazu:
+4. [Vytvořte účet Azure Storage](/cli/azure/storage/account#az_storage_account_create) zadáním následujícího příkazu:
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -84,7 +84,7 @@ Kroky v tomto dokumentu vás provedou vytvořením clusteru HDInsight 3,6 pomoc�
         --sku Standard_LRS
     ```
 
-5. [Extrahujte primární klíč z účtu Azure Storage](/cli/azure/storage/account/keys#az-storage-account-keys-list) a uložte ho do proměnné zadáním následujícího příkazu:
+5. [Extrahujte primární klíč z účtu Azure Storage](/cli/azure/storage/account/keys#az_storage_account_keys_list) a uložte ho do proměnné zadáním následujícího příkazu:
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -93,7 +93,7 @@ Kroky v tomto dokumentu vás provedou vytvořením clusteru HDInsight 3,6 pomoc�
         --query [0].value -o tsv)
     ```
 
-6. [Vytvořte kontejner Azure Storage](/cli/azure/storage/container#az-storage-container-create) zadáním následujícího příkazu:
+6. [Vytvořte kontejner Azure Storage](/cli/azure/storage/container#az_storage_container_create) zadáním následujícího příkazu:
 
     ```azurecli-interactive
     az storage container create \
@@ -102,7 +102,7 @@ Kroky v tomto dokumentu vás provedou vytvořením clusteru HDInsight 3,6 pomoc�
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. [Vytvořte cluster HDInsight](/cli/azure/hdinsight#az-hdinsight-create) zadáním následujícího příkazu:
+7. [Vytvořte cluster HDInsight](/cli/azure/hdinsight#az_hdinsight_create) zadáním následujícího příkazu:
 
     ```azurecli-interactive
     az hdinsight create \

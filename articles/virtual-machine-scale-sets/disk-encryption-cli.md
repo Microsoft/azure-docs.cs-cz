@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: e6630cbb44157f25bd2cbfcff25ec3132c74c61c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d347be4e6727cdda659620befe20824678160020
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565567"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792430"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Šifrování operačních systémů a připojených datových disků v sadě škálování virtuálního počítače pomocí Azure CLI
 
@@ -87,7 +87,7 @@ az keyvault update --name $keyvault_name --enabled-for-disk-encryption
 
 ## <a name="enable-encryption"></a>Povolit šifrování
 
-K šifrování instancí virtuálních počítačů v sadě škálování je třeba nejprve získat informace o Key Vault ID prostředku pomocí [AZ klíčů show](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show). Tyto proměnné se používají ke spuštění procesu šifrování pomocí [AZ VMSS Encryption Enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable):
+K šifrování instancí virtuálních počítačů v sadě škálování je třeba nejprve získat informace o Key Vault ID prostředku pomocí [AZ klíčů show](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show). Tyto proměnné se používají ke spuštění procesu šifrování pomocí [AZ VMSS Encryption Enable](/cli/azure/vmss/encryption#az_vmss_encryption_enable):
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault
@@ -103,7 +103,7 @@ az vmss encryption enable \
 
 Spuštění procesu šifrování může trvat minutu nebo dvě.
 
-V případě, že je nastavena zásada upgradu v sadě škálování vytvořené v předchozím kroku na hodnotu *automaticky*, instance virtuálních počítačů spustí proces šifrování automaticky. V části sady škálování, na kterých je zásada upgradu nastavena na ruční, spusťte zásadu šifrování na instancích virtuálních počítačů pomocí [AZ VMSS Update-Instances](/cli/azure/vmss#az-vmss-update-instances).
+V případě, že je nastavena zásada upgradu v sadě škálování vytvořené v předchozím kroku na hodnotu *automaticky*, instance virtuálních počítačů spustí proces šifrování automaticky. V části sady škálování, na kterých je zásada upgradu nastavena na ruční, spusťte zásadu šifrování na instancích virtuálních počítačů pomocí [AZ VMSS Update-Instances](/cli/azure/vmss#az_vmss_update_instances).
 
 ### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Povolení šifrování pomocí KEK k zabalení klíče
 
@@ -131,7 +131,7 @@ https://[Trezor klíčů-name]. trezor. Azure. NET/Keys/[kekname]/[KEK-Unique-ID
 
 ## <a name="check-encryption-progress"></a>Průběh šifrování kontroly
 
-Pokud chcete zjistit stav šifrování disku, použijte příkaz [AZ VMSS Encryption show](/cli/azure/vmss/encryption#az-vmss-encryption-show):
+Pokud chcete zjistit stav šifrování disku, použijte příkaz [AZ VMSS Encryption show](/cli/azure/vmss/encryption#az_vmss_encryption_show):
 
 ```azurecli-interactive
 az vmss encryption show --resource-group myResourceGroup --name myScaleSet
@@ -166,7 +166,7 @@ Když jsou instance virtuálních počítačů šifrované, stavový kód hlás�
 
 ## <a name="disable-encryption"></a>Zakázat šifrování
 
-Pokud už nechcete disky s šifrovanými instancemi virtuálních počítačů používat, můžete šifrování zakázat pomocí příkazu [AZ VMSS Encryption Disable](/cli/azure/vmss/encryption#az-vmss-encryption-disable) následujícím způsobem:
+Pokud už nechcete disky s šifrovanými instancemi virtuálních počítačů používat, můžete šifrování zakázat pomocí příkazu [AZ VMSS Encryption Disable](/cli/azure/vmss/encryption#az_vmss_encryption_disable) následujícím způsobem:
 
 ```azurecli-interactive
 az vmss encryption disable --resource-group myResourceGroup --name myScaleSet

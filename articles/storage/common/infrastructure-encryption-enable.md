@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 612ba18ba71a22ad6c346b26008e688195c1d1e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23b3ca919be030490cca06f31dac623d7f80be44
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92746577"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790378"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>Vytvoření účtu úložiště s povoleným šifrováním infrastruktury pro dvojité šifrování dat
 
@@ -58,21 +58,21 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud se chcete zaregistrovat v Azure CLI, zavolejte příkaz [AZ Feature Register](/cli/azure/feature#az-feature-register) .
+Pokud se chcete zaregistrovat v Azure CLI, zavolejte příkaz [AZ Feature Register](/cli/azure/feature#az_feature_register) .
 
 ```azurecli
 az feature register --namespace Microsoft.Storage \
     --name AllowRequireInfraStructureEncryption
 ```
 
-Pokud chcete zjistit stav registrace pomocí Azure CLI, zavolejte příkaz [AZ Feature](/cli/azure/feature#az-feature-show) .
+Pokud chcete zjistit stav registrace pomocí Azure CLI, zavolejte příkaz [AZ Feature](/cli/azure/feature#az_feature_show) .
 
 ```azurecli
 az feature show --namespace Microsoft.Storage \
     --name AllowRequireInfraStructureEncryption
 ```
 
-Po schválení registrace je potřeba znovu zaregistrovat poskytovatele prostředků Azure Storage. Pokud chcete poskytovatele prostředků v Azure CLI znovu zaregistrovat, zavolejte příkaz [AZ Provider Register](/cli/azure/provider#az-provider-register) .
+Po schválení registrace je potřeba znovu zaregistrovat poskytovatele prostředků Azure Storage. Pokud chcete poskytovatele prostředků v Azure CLI znovu zaregistrovat, zavolejte příkaz [AZ Provider Register](/cli/azure/provider#az_provider_register) .
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
@@ -122,7 +122,7 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
 
 Pokud chcete pomocí Azure CLI vytvořit účet úložiště s povoleným šifrováním infrastruktury, ujistěte se, že máte nainstalovanou verzi Azure CLI 2.8.0 nebo novější. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
-Pak vytvořte účet úložiště pro obecné účely v2 voláním příkazu [AZ Storage Account Create](/cli/azure/storage/account#az-storage-account-create) a zahrňte `--require-infrastructure-encryption option` do povolení šifrování infrastruktury.
+Pak vytvořte účet úložiště pro obecné účely v2 voláním příkazu [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create) a zahrňte `--require-infrastructure-encryption option` do povolení šifrování infrastruktury.
 
 Následující příklad ukazuje, jak vytvořit účet úložiště pro obecné účely v2, který je nakonfigurovaný pro geograficky redundantní úložiště s přístupem pro čtení (RA-GRS), a má šifrování infrastruktury s povoleným šifrováním dat. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
@@ -197,7 +197,7 @@ $account.Encryption.RequireInfrastructureEncryption
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete ověřit, jestli je povolené šifrování infrastruktury pro účet úložiště pomocí Azure CLI, zavolejte příkaz [AZ Storage Account show](/cli/azure/storage/account#az-storage-account-show) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte `requireInfrastructureEncryption` pole v rámci `encryption` vlastnosti a ověřte, zda je nastaveno na `true` .
+Pokud chcete ověřit, jestli je povolené šifrování infrastruktury pro účet úložiště pomocí Azure CLI, zavolejte příkaz [AZ Storage Account show](/cli/azure/storage/account#az_storage_account_show) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte `requireInfrastructureEncryption` pole v rámci `encryption` vlastnosti a ověřte, zda je nastaveno na `true` .
 
 Následující příklad načte hodnotu `requireInfrastructureEncryption` Vlastnosti. Nezapomeňte nahradit hodnoty zástupných symbolů v lomených závorkách vlastními hodnotami:
 

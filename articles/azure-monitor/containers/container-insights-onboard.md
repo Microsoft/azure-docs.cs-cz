@@ -3,12 +3,12 @@ title: Povolit službu Container Insights | Microsoft Docs
 description: Tento článek popisuje, jak povolit a nakonfigurovat službu Container Insights, abyste mohli porozumět tomu, jak váš kontejner vykonává a jaké problémy byly zjištěny v souvislosti s výkonem.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 01246a728f204ed9cb43eee392c637b495208aaf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e0544232f40e93cce0705fff6814d29697a96218
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109331"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782112"
 ---
 # <a name="enable-container-insights"></a>Povolit službu Container Insights
 
@@ -124,7 +124,7 @@ Pokud chcete povolit službu Container Insights, použijte jednu z metod, která
 | Nový cluster Kubernetes | [Vytvoření clusteru AKS pomocí Azure CLI](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Monitorování můžete povolit pro nový cluster AKS, který vytvoříte pomocí Azure CLI. |
 | | [Vytvoření clusteru AKS pomocí Terraformu](container-insights-enable-new-cluster.md#enable-using-terraform)| Monitorování můžete povolit pro nový cluster AKS, který vytvoříte pomocí nástroje Open Source Tool Terraformu. |
 | | [Vytvoření clusteru OpenShift pomocí šablony Azure Resource Manager](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | Monitorování můžete povolit pro nový cluster OpenShift, který vytvoříte pomocí předkonfigurované šablony Azure Resource Manager. |
-| | [Vytvoření clusteru OpenShift pomocí Azure CLI](/cli/azure/openshift#az-openshift-create) | Monitorování můžete povolit, když nasadíte nový cluster OpenShift pomocí Azure CLI. |
+| | [Vytvoření clusteru OpenShift pomocí Azure CLI](/cli/azure/openshift#az_openshift_create) | Monitorování můžete povolit, když nasadíte nový cluster OpenShift pomocí Azure CLI. |
 | Existující cluster Kubernetes | [Povolení monitorování clusteru AKS pomocí Azure CLI](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Můžete povolit monitorování pro cluster AKS, který je už nasazený pomocí Azure CLI. |
 | |[Povolení pro cluster AKS pomocí Terraformu](container-insights-enable-existing-clusters.md#enable-using-terraform) | Můžete povolit monitorování pro cluster AKS, který je už nasazený, pomocí Open Source nástroje Terraformu. |
 | | [Povolit pro AKS cluster z Azure Monitor](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Monitorování můžete povolit pro jeden nebo víc clusterů AKS, které už jsou nasazené ze stránky s více clustery v Azure Monitor. |

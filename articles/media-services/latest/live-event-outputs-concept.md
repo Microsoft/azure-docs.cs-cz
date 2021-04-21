@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: dec4eec16ba24baf31d911db882625479c33fb3b
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 44ab9e4ff83fec2ddfbd1cb44f503298d12789d1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278622"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766294"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Živé události a živé výstupy v Media Services
 
@@ -169,7 +169,7 @@ Jakmile se vytvoří živá událost, můžete získat adresy URL pro ingestová
     |Jazyk|Povolit adresu URL statického názvu hostitele|Nastavení přístupového tokenu|
     |---|---|---|
     |REST|[Properties. useStaticHostname](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.useStaticHostname](/rest/api/media/liveevents/create#liveeventinput)|
-    |Rozhraní příkazového řádku|[--use-static-hostname](/cli/azure/ams/live-event#az-ams-live-event-create)|[--Access-token](/cli/azure/ams/live-event#optional-parameters)|
+    |Rozhraní příkazového řádku|[--use-static-hostname](/cli/azure/ams/live-event#az_ams_live_event_create)|[--Access-token](/cli/azure/ams/live-event#optional-parameters)|
     |.NET|[Livestream. useStaticHostname](/dotnet/api/microsoft.azure.management.media.models.liveevent.usestatichostname?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Management_Media_Models_LiveEvent_UseStaticHostname)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>Pravidla pro pojmenování adres URL pro živá přijímání

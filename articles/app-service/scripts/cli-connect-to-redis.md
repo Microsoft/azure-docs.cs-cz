@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: eaec8a8d5ffe3fcba84d834b2116b2daae442084
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 24658525ca1248aa82732a31eb9a40df1403203c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481102"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782386"
 ---
 # <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>Připojení aplikace App Service k mezipaměti Azure pro Redis pomocí rozhraní příkazového řádku
 
@@ -38,12 +38,12 @@ Tento skript k vytvoření skupiny prostředků, App Service aplikace, mezipamě
 
 | Příkaz | Poznámky |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Vytvoří aplikaci App Service. |
-| [`az redis create`](/cli/azure/redis#az-redis-create) | Vytvořte novou mezipaměť Azure pro instanci Redis. |
-| [`az redis list-keys`](/cli/azure/redis#az-redis-list-keys) | Zobrazí přístupové klíče pro instanci Azure cache pro Redis. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Vytvoří nebo aktualizuje nastavení aplikace pro App Service aplikaci. Nastavení aplikace se pro vaši aplikaci zveřejní jako proměnné prostředí. |
+| [`az group create`](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Vytvoří plán služby App Service. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Vytvoří aplikaci App Service. |
+| [`az redis create`](/cli/azure/redis#az_redis-create) | Vytvořte novou mezipaměť Azure pro instanci Redis. |
+| [`az redis list-keys`](/cli/azure/redis#az_redis_list_keys) | Zobrazí přístupové klíče pro instanci Azure cache pro Redis. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Vytvoří nebo aktualizuje nastavení aplikace pro App Service aplikaci. Nastavení aplikace se pro vaši aplikaci zveřejní jako proměnné prostředí. |
 
 ## <a name="next-steps"></a>Další kroky
 

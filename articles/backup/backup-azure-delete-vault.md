@@ -3,12 +3,12 @@ title: Odstranění trezoru Microsoft Azure Recovery Services
 description: V tomto článku se dozvíte, jak odebrat závislosti a jak odstranit Azure Backup trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 1526e9aeef1574f261dcb1a58ee12a12fbf08866
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bb6be070ac0fb408ac37c8ae7b003b54da5d6dea
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864954"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773652"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Odstranění trezoru Azure Backup Recovery Services
 
@@ -320,7 +320,7 @@ Pokud chcete odstranit existující trezor Recovery Services, proveďte následu
                              [--yes]
     ```
 
-    Další informace najdete v tomto [článku](/cli/azure/backup/protection#az-backup-protection-disable).
+    Další informace najdete v tomto [článku](/cli/azure/backup/protection#az_backup_protection_disable).
 
 - Odstranit existující trezor Recovery Services:
 

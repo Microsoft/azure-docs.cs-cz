@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8779ee2d3c4d83c06a2c1803e65219d43f0ef14
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: a88bb7904143f69a0eea84ea291c65e3244c70a1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275800"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765858"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Povolit přihlašování k bezpečnostnímu klíči s nezabezpečenými hesly 
 
@@ -90,7 +90,9 @@ Pokud chcete sdílet zpětnou vazbu nebo narazit na problémy s touto funkcí, s
 
 Bezpečnostní klíče zřizování a zrušení zřizování nejsou k dispozici.
 
-**Poznámka:** Přihlášení FIDO2 do mezipaměti se nepovede na hybridním počítači připojeném ke službě Azure AD, který je specifický pro Win10 20H2 verze (když není dostupná LOS na DC) V současné době probíhá šetření pomocí techniků.
+### <a name="cached-logon-on-hybrid-azure-ad-joined-devices"></a>Přihlášení do mezipaměti na zařízeních připojených k hybridní službě Azure AD
+
+Přihlášení do mezipaměti s klíči FIDO2 se na zařízeních připojených k Azure AD ve Windows 10 verze 20H2 nezdařila. Výsledkem je, že se uživatelé nebudou moci přihlásit, pokud je přístup k místnímu řadiči domény nedostupný. V tuto chvíli probíhá šetření.
 
 ### <a name="upn-changes"></a>Změny hlavního názvu uživatele (UPN)
 

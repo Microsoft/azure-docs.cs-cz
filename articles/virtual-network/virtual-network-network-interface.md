@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
-ms.openlocfilehash: 74e09b4798a648b6a881fb05f1128831ad5f4aff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8003bf14bcade08f36a7877fdb3a53998aff9e63
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586442"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773062"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změna nebo odstranění síťového rozhraní
 
@@ -66,6 +66,8 @@ Portál nenabízí možnost přiřazení síťového rozhraní ke skupinám zabe
 
 >[!Note]
 > Až se síťové rozhraní připojí k virtuálnímu počítači a virtuální počítač se spustí poprvé, Azure přiřadí adresu MAC k síťovému rozhraní. Nemůžete zadat adresu MAC, kterou Azure přiřadí k síťovému rozhraní. Adresa MAC zůstane přiřazená síťovému rozhraní, dokud se neodstraní síťové rozhraní nebo se nezmění privátní IP adresa přiřazená k primární konfiguraci IP rozhraní primárního síťového rozhraní. Další informace o IP adresách a konfiguracích IP adres najdete v tématu [Správa IP adres](virtual-network-network-interface-addresses.md) .
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 **Příkazy**
 
@@ -188,7 +190,7 @@ Síťové rozhraní můžete přidat do skupiny zabezpečení aplikace pomocí p
 
 **Příkazy**
 
-- Azure CLI: [AZ Network nic Update](/cli/azure/network/nic#az-network-nic-update)
+- Azure CLI: [AZ Network nic Update](/cli/azure/network/nic#az_network_nic_update)
 - PowerShell: [set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)
 
 ## <a name="delete-a-network-interface"></a>Odstranění síťového rozhraní
@@ -227,7 +229,7 @@ Funkce ověření toku protokolu IP v Azure Network Watcher vám také pomůže 
 
 **Příkazy**
 
-- Azure CLI: [AZ Network nic list-efektivní-NSG](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
+- Azure CLI: [AZ Network nic list-efektivní-NSG](/cli/azure/network/nic#az_network_nic_list_effective_nsg)
 - PowerShell: [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)
 
 ### <a name="view-effective-routes"></a>Zobrazit efektivní trasy
@@ -244,7 +246,7 @@ Funkce dalšího segmentu pro Azure Network Watcher vám také pomůže určit, 
 
 **Příkazy**
 
-- Azure CLI: [AZ Network nic show-efektivní-Route-Table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
+- Azure CLI: [AZ Network nic show-efektivní-Route-Table](/cli/azure/network/nic#az_network_nic_show_effective_route_table)
 - PowerShell: [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)
 
 ## <a name="permissions"></a>Oprávnění

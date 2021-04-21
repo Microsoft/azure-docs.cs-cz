@@ -1,24 +1,24 @@
 ---
-title: Azure Monitor pro Azure Průzkumník dat (Preview) | Microsoft Docs
-description: Tento článek popisuje Azure Monitor přehledy pro clustery Azure Průzkumník dat.
+title: Azure Průzkumník dat Insights (ADX Insights Preview) | Microsoft Docs
+description: Tento článek popisuje službu Azure Průzkumník dat Insights (ADX Insights).
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: ac147df90d3fa0c27bb4299c57ec79d9a9031710
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: a8aae2dc03ba87e9782cdf3952be1bfc4a1aae75
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107737584"
+ms.locfileid: "107767036"
 ---
-# <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor pro Azure Průzkumník dat (Preview)
+# <a name="azure-data-explorer-insights-preview"></a>Azure Průzkumník dat Insights (Preview)
 
-Azure Monitor pro Azure Průzkumník dat (Preview) poskytuje ucelený přehled o clusterech tím, že nabízí jednotný přehled o výkonu, provozu, využití a selháních clusteru.
-Tento článek vám pomůže porozumět tomu, jak začlenit a používat Azure Monitor pro Azure Průzkumník dat (Preview).
+Azure Průzkumník dat Insights (Preview) poskytuje ucelený přehled o clusterech tím, že přináší jednotný přehled o výkonu, provozu, využití a selháních clusteru.
+Tento článek vám pomůže porozumět tomu, jak se zaregistruje a jak používat Azure Průzkumník dat Insights (Preview).
 
-## <a name="introduction-to-azure-monitor-for-azure-data-explorer-preview"></a>Úvod do Azure Monitor pro Azure Průzkumník dat (Preview)
+## <a name="introduction-to-azure-data-explorer-insights-preview"></a>Seznámení se službou Azure Průzkumník dat Insights (Preview)
 
 Před přechodem na prostředí byste měli pochopit, jak prezentuje a vizualizují informace.
 -    **V perspektivě škály** , která ukazuje zobrazení snímků primárních metrik clusterů, můžete snadno sledovat výkon dotazů, přijímání a operací exportu.
@@ -73,7 +73,7 @@ Tato karta poskytuje informace o exportovaných záznamech, zpožděnosti, počt
 
 ## <a name="view-from-an-azure-data-explorer-cluster-resource-drill-down-analysis"></a>Zobrazení z prostředku clusteru Azure Průzkumník dat (analýza procházení k podrobnostem)
 
-Přístup k Azure Monitor pro clustery Azure Průzkumník dat přímo z clusteru Azure Průzkumník dat:
+Přístup k Azure Průzkumník dat Insights přímo z clusteru Azure Průzkumník dat:
 
 1. V Azure Portal vyberte **clustery Azure Průzkumník dat**.
 
@@ -81,7 +81,7 @@ Přístup k Azure Monitor pro clustery Azure Průzkumník dat přímo z clusteru
 
 Tato zobrazení jsou přístupná taky tak, že v zobrazení služby Azure Monitor Insights vyberete název prostředku clusteru Azure Průzkumník dat.
 
-Azure Monitor pro Azure Průzkumník dat kombinuje jak protokoly, tak metriky, které poskytují globální řešení monitorování. Zahrnutí vizualizací založených na protokolech vyžaduje, aby uživatelé [povolili protokolování diagnostiky svého clusteru Azure Průzkumník dat a odesílali je do pracovního prostoru Log Analytics.](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) Diagnostické protokoly, které by se měly povolit, jsou: **Command**, **Query**, **TableDetails** a **TableUsageStatistics**.
+Azure Průzkumník dat Insights kombinuje jak protokoly, tak metriky, které poskytují globální řešení monitorování. Zahrnutí vizualizací založených na protokolech vyžaduje, aby uživatelé [povolili protokolování diagnostiky svého clusteru Azure Průzkumník dat a odesílali je do pracovního prostoru Log Analytics.](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) Diagnostické protokoly, které by se měly povolit, jsou: **Command**, **Query**, **TableDetails** a **TableUsageStatistics**.
 
 ![Snímek obrazovky s modrým tlačítkem, který zobrazuje text "povolit protokoly pro monitorování"](./media/data-explorer/enable-logs.png)
 
@@ -129,7 +129,7 @@ Libovolný oddíl metriky (z perspektivy &quot;na úrovni") můžete připnout n
 
 ![Snímek obrazovky s vybranou ikonou připnutí](./media/data-explorer/pin.png)
 
-## <a name="customize-azure-monitor-for-azure-data-explorer-cluster"></a>Přizpůsobení Azure Monitor pro cluster Azure Průzkumník dat
+## <a name="customize-azure-data-explorer-insights"></a>Přizpůsobení služby Azure Průzkumník dat Insights
 
 Tato část popisuje běžné scénáře úprav sešitu pro přizpůsobení v rámci podpory vašich potřeb analýzy dat:
 * Určení rozsahu sešitu pro vždycky výběr konkrétního předplatného nebo clusterů Azure Průzkumník dat
@@ -148,7 +148,7 @@ Vlastní nastavení se ukládají do vlastního sešitu, aby se zabránilo přep
 
 Obecné pokyny k odstraňování potíží najdete v článku věnovaném [řešení problémů](troubleshoot-workbooks.md)na základě vyhrazeného sešitu.
 
-Tato část vám pomůže s diagnostikou a řešením potíží s některými běžnými problémy, se kterými se můžete setkat při použití Azure Monitor pro cluster Azure Průzkumník dat (Preview). K vyhledání informací týkajících se konkrétního problému použijte níže uvedený seznam.
+Tato část vám pomůže s diagnostikou a řešením potíží s některými běžnými problémy, se kterými se můžete setkat při používání Azure Průzkumník dat Insights (Preview). K vyhledání informací týkajících se konkrétního problému použijte níže uvedený seznam.
 
 ### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>Proč ve výběru předplatného nevidím všechna moje předplatná?
 

@@ -3,12 +3,12 @@ title: Povolit TLS s kontejnerem webpostranního vozíku
 description: Vytvoření koncového bodu SSL nebo TLS pro skupinu kontejnerů běžící v Azure Container Instances spuštěním Nginx v kontejneru webvozíku
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 6587a84e7cbe655c509f74e9e39e93010e7058be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 906a1f239d7050ea17fd7d1425138049ebf045c1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96558075"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790954"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>Povolení koncového bodu TLS v kontejneru webvozík
 
@@ -193,13 +193,13 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="deploy-the-container-group"></a>Nasazení skupiny kontejnerů
 
-Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) :
+Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create) :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
 ```
 
-Nasaďte skupinu kontejnerů pomocí příkazu [AZ Container Create](/cli/azure/container#az-container-create) a předáním souboru YAML jako argumentu.
+Nasaďte skupinu kontejnerů pomocí příkazu [AZ Container Create](/cli/azure/container#az_container_create) a předáním souboru YAML jako argumentu.
 
 ```azurecli
 az container create --resource-group <myResourceGroup> --file deploy-aci.yaml
@@ -207,7 +207,7 @@ az container create --resource-group <myResourceGroup> --file deploy-aci.yaml
 
 ### <a name="view-deployment-state"></a>Zobrazit stav nasazení
 
-Chcete-li zobrazit stav nasazení, použijte následující příkaz [AZ Container show](/cli/azure/container#az-container-show) :
+Chcete-li zobrazit stav nasazení, použijte následující příkaz [AZ Container show](/cli/azure/container#az_container_show) :
 
 ```azurecli
 az container show --resource-group <myResourceGroup> --name app-with-ssl --output table

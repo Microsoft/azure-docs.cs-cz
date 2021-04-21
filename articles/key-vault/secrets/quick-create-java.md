@@ -8,12 +8,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 804c4732ce979cd9ec46c69456b3f731284c9c73
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b45bb353ae32f1037fde7dc5d518472089edf12f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748521"
+ms.locfileid: "107766330"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Rychlý Start: Azure Key Vaulta tajná Klientská knihovna pro Java
 Začínáme s klientskou knihovnou Azure Key Vault tajných klíčů pro Java Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
@@ -175,7 +175,7 @@ Teď, když je vaše aplikace ověřená, můžete do trezoru klíčů vložit t
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
 ```
 
-Můžete ověřit, jestli je tajný kód nastavený pomocí příkazu [AZ klíčů trezor tajného zobrazení](/cli/azure/keyvault/secret?#az-keyvault-secret-show) :
+Můžete ověřit, jestli je tajný kód nastavený pomocí příkazu [AZ klíčů trezor tajného zobrazení](/cli/azure/keyvault/secret?#az_keyvault_secret_show) :
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
@@ -200,7 +200,7 @@ SyncPoller<DeletedSecret, Void> deletionPoller = secretClient.beginDeleteSecret(
 deletionPoller.waitForCompletion();
 ```
 
-Můžete ověřit, zda byl tajný klíč odstraněn pomocí příkazu [AZ klíčů trezor tajné zobrazení](/cli/azure/keyvault/secret?#az-keyvault-secret-show) :
+Můžete ověřit, zda byl tajný klíč odstraněn pomocí příkazu [AZ klíčů trezor tajné zobrazení](/cli/azure/keyvault/secret?#az_keyvault_secret_show) :
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret

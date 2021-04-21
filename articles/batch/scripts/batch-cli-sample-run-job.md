@@ -4,12 +4,12 @@ description: Tento skript vytvoří úlohu Batch a přidá do ní řadu úkolů.
 ms.topic: sample
 ms.date: 12/12/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b67925f48a9d2dbe0b4559d46d783b500e7a0773
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e51fa96370b46c9a5a5d5ed6fd7593a06e45430
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93100911"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768156"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>Příklad rozhraní příkazového řádku: Spuštění úlohy a úkolů pomocí služby Azure Batch
 
@@ -37,16 +37,16 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Vytvoří účet Batch. |
-| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Provede ověření v zadaném účtu Batch pro další práci s rozhraním příkazového řádku.  |
-| [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) | Vytvoří fond výpočetních uzlů.  |
-| [az batch job create](/cli/azure/batch/job#az-batch-job-create) | Vytvoří úlohu Batch.  |
-| [az batch task create](/cli/azure/batch/task#az-batch-task-create) | Přidá úkol do zadané úlohy Batch.  |
-| [az batch job set](/cli/azure/batch/job#az-batch-job-set) | Aktualizuje vlastnosti úlohy Batch.  |
-| [az batch job show](/cli/azure/batch/job#az-batch-job-show) | Načte podrobnosti o zadané úloze Batch.  |
-| [az batch task show](/cli/azure/batch/task#az-batch-task-show) | Načte podrobnosti o úkolu ze zadané úlohy Batch.  |
-| [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Vytvoří účet Batch. |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | Provede ověření v zadaném účtu Batch pro další práci s rozhraním příkazového řádku.  |
+| [az batch pool create](/cli/azure/batch/pool#az_batch_pool_create) | Vytvoří fond výpočetních uzlů.  |
+| [az batch job create](/cli/azure/batch/job#az_batch_job_create) | Vytvoří úlohu Batch.  |
+| [az batch task create](/cli/azure/batch/task#az_batch_task_create) | Přidá úkol do zadané úlohy Batch.  |
+| [az batch job set](/cli/azure/batch/job#az_batch_job_set) | Aktualizuje vlastnosti úlohy Batch.  |
+| [az batch job show](/cli/azure/batch/job#az_batch_job_show) | Načte podrobnosti o zadané úloze Batch.  |
+| [az batch task show](/cli/azure/batch/task#az_batch_task_show) | Načte podrobnosti o úkolu ze zadané úlohy Batch.  |
+| [az group delete](/cli/azure/group#az_group_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 

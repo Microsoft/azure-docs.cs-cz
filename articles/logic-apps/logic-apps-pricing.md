@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 01/29/2021
-ms.openlocfilehash: 2b37308bcbcd489876c21dce56878de7e0daf545
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: a3c20dd85c94c359259cf69e25bb9083d56857fc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699024"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777144"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Cenové a fakturační modely pro Azure Logic Apps
 
@@ -27,9 +27,9 @@ Například požadavek, který aktivuje Trigger cyklického dotazování, je st�
 
 | Položky | Description |
 |-------|-------------|
-| [Předdefinované](../connectors/apis-list.md#built-in) triggery a akce | Spouštějte nativně ve službě Logic Apps a měří se za použití [ceny **akcí**](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>Například Trigger HTTP a Trigger požadavku jsou vestavěné triggery a akce HTTP a akce odpovědi jsou vestavěné akce. Integrované akce jsou také operace s daty, operace dávky, operace s proměnnými a [Akce řízení pracovního postupu](../connectors/apis-list.md#control-workflow), jako jsou například smyčky, podmínky, přepínače, paralelní větve atd. |
-| Triggery a akce [konektoru Standard](../connectors/apis-list.md#managed-connectors) <p><p>Triggery a akce [vlastního konektoru](../connectors/apis-list.md#custom) | Měřeno pomocí [ceny za konektor Standard](https://azure.microsoft.com/pricing/details/logic-apps/). |
-| Aktivační události a akce [Enterprise Connectoru](../connectors/apis-list.md#managed-connectors) | Měřeno pomocí [ceny za konektor Enterprise](https://azure.microsoft.com/pricing/details/logic-apps/). Během veřejné verze Preview se ale podnikové konektory měří podle ceny za [konektor *Standard*](https://azure.microsoft.com/pricing/details/logic-apps/). |
+| [Předdefinované](../connectors/built-in.md) triggery a akce | Spouštějte nativně ve službě Logic Apps a měří se za použití [ceny **akcí**](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>Například Trigger HTTP a Trigger požadavku jsou vestavěné triggery a akce HTTP a akce odpovědi jsou vestavěné akce. Integrované akce jsou také operace s daty, operace dávky, operace s proměnnými a [Akce řízení pracovního postupu](../connectors/built-in.md), jako jsou například smyčky, podmínky, přepínače, paralelní větve atd. |
+| Triggery a akce [konektoru Standard](../connectors/managed.md) <p><p>Triggery a akce [vlastního konektoru](../connectors/apis-list.md#custom-apis-and-connectors) | Měřeno pomocí [ceny za konektor Standard](https://azure.microsoft.com/pricing/details/logic-apps/). |
+| Aktivační události a akce [Enterprise Connectoru](../connectors/managed.md) | Měřeno pomocí [ceny za konektor Enterprise](https://azure.microsoft.com/pricing/details/logic-apps/). Během veřejné verze Preview se ale podnikové konektory měří podle ceny za [konektor *Standard*](https://azure.microsoft.com/pricing/details/logic-apps/). |
 | Akce uvnitř [smyček](logic-apps-control-flow-loops.md) | Každá akce, která je spuštěna ve smyčce, je měřena pro každý cyklus cyklů, který běží. <p><p>Předpokládejme například, že máte smyčku "for each", která obsahuje akce, které zpracovávají seznam. Služba Logic Apps měřiče každé akce spuštěné v této smyčce vynásobením počtu položek seznamu s počtem akcí ve smyčce a přidá akci, která spustí smyčku. Proto je výpočet pro seznam 10 položek (10 * 1) + 1, což vede ke zpracování 11 akcí. |
 | Opakované pokusy | Chcete-li zpracovat základní výjimky a chyby, můžete nastavit [zásady opakování](logic-apps-exception-handling.md#retry-policies) pro aktivační události a akce, kde jsou podporovány. Tyto pokusy spolu s původní žádostí se účtují podle sazeb na základě toho, jestli aktivační událost nebo akce má vestavěný, standardní nebo Podnikový typ. Například akce, která se spouští se dvěma opakovanými pokusy, se účtuje za 3 provádění akcí. |
 | [Uchovávání dat a spotřeba úložiště](#data-retention) | Měřeno pomocí ceny za uchování dat, kterou najdete na stránce s cenami za [Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/)v tabulce s **podrobnostmi o cenách** . |
@@ -80,8 +80,8 @@ Pevný cenový model se vztahuje na aplikace logiky, které běží v [ *prostř
 
 | Položky | Description |
 |-------|-------------|
-| [Předdefinované](../connectors/apis-list.md#built-in) triggery a akce | Zobrazit **základní** popisek a spustit ve stejném ISE jako vaše aplikace logiky |
-| [Standardní konektory](../connectors/apis-list.md#managed-connectors) <p><p>[Podnikové konektory](../connectors/apis-list.md#enterprise-connectors) | -Spravované konektory, které zobrazují popisek **ISE** , jsou speciálně navržené tak, aby fungovaly bez místní brány dat a běžely ve stejném ISE jako vaše aplikace logiky. Ceny ISE zahrnují tolik podnikových připojení, kolik potřebujete. <p><p>– Konektory, které nezobrazují ISE, se spouštějí ve službě víceklientské Logic Apps. Ceny ISE ale zahrnují tato spuštění pro Logic Apps, která běží v ISE. |
+| [Předdefinované](../connectors/built-in.md) triggery a akce | Zobrazit **základní** popisek a spustit ve stejném ISE jako vaše aplikace logiky |
+| [Standardní konektory](../connectors/managed.md) <p><p>[Podnikové konektory](../connectors/managed.md#enterprise-connectors) | -Spravované konektory, které zobrazují popisek **ISE** , jsou speciálně navržené tak, aby fungovaly bez místní brány dat a běžely ve stejném ISE jako vaše aplikace logiky. Ceny ISE zahrnují tolik podnikových připojení, kolik potřebujete. <p><p>– Konektory, které nezobrazují ISE, se spouštějí ve službě víceklientské Logic Apps. Ceny ISE ale zahrnují tato spuštění pro Logic Apps, která běží v ISE. |
 | Akce uvnitř [smyček](logic-apps-control-flow-loops.md) | Ceny ISE zahrnují každou akci, která běží ve smyčce pro každý cyklus smyčky. <p><p>Předpokládejme například, že máte smyčku "for each", která obsahuje akce, které zpracovávají seznam. Chcete-li získat celkový počet provedených akcí, vynásobte počet položek seznamu počtem akcí ve smyčce a přidejte akci, která spustí smyčku. Proto je výpočet pro seznam 10 položek (10 * 1) + 1, což vede ke zpracování 11 akcí. |
 | Opakované pokusy | Chcete-li zpracovat základní výjimky a chyby, můžete nastavit [zásady opakování](logic-apps-exception-handling.md#retry-policies) pro aktivační události a akce, kde jsou podporovány. Ceny ISE zahrnují opakování společně s původní žádostí. |
 | [Uchovávání dat a spotřeba úložiště](#data-retention) | Logic Apps v ISE neúčtují náklady na uchovávání dat a úložiště. |

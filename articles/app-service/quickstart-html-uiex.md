@@ -8,12 +8,12 @@ ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: be555039375e2d71d00bcf8ee58898f54cc3645a
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 603d8e642cd2e88beec6ae34094a2c6c43d179ee
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379566"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768894"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Vytvoření webové aplikace ve statickém HTML ve službě Azure
 
@@ -55,7 +55,7 @@ az webapp up --location westeurope --name <app_name> --html
 <li>Nahraďte <code>&lt;app-name&gt;</code> názvem, který je jedinečný v rámci všech Azure ( <em> platné znaky jsou <code>a-z</code> , <code>0-9</code> a <code>-</code> </em> ). Dobrým vzorem je použití kombinace názvu vaší společnosti a identifikátoru aplikace.</li>
 <li><code>--sku F1</code>Argument vytvoří webovou aplikaci na cenové úrovni Free. Vynechejte tento argument pro použití rychlejší úrovně Premium, což stojí za hodinu.</li>
 <li><code>--html</code>Argument říká, že má být obsah složky považován za statický obsah a zakáže automatizaci sestavení.</li>
-<li>Volitelně můžete zahrnout argument <code>--location &lt;location-name&gt;</code> , kde <code>&lt;location-name&gt;</code> je dostupná oblast Azure. Seznam povolených oblastí pro váš účet Azure můžete načíst spuštěním <a href="/cli/azure/appservice#az-appservice-list-locations"> <code>az account list-locations</code> </a> příkazu.</li>
+<li>Volitelně můžete zahrnout argument <code>--location &lt;location-name&gt;</code> , kde <code>&lt;location-name&gt;</code> je dostupná oblast Azure. Seznam povolených oblastí pro váš účet Azure můžete načíst spuštěním <a href="/cli/azure/appservice#az_appservice_list_locations"> <code>az account list-locations</code> </a> příkazu.</li>
 </ul>
 </details>
 
@@ -67,7 +67,7 @@ Dokončení příkazu může trvat několik minut.
 <ul>
 <li>Vytvoření výchozí skupiny prostředků</li>
 <li>Vytvořte výchozí plán App Service.</li>
-<li><a href="/cli/azure/webapp#az-webapp-create">Vytvoří aplikaci App Service</a> se zadaným názvem.</li>
+<li><a href="/cli/azure/webapp#az_webapp_create">Vytvoří aplikaci App Service</a> se zadaným názvem.</li>
 <li>Soubory <a href="/azure/app-service/deploy-zip">zip nasadí</a> z aktuálního pracovního adresáře do aplikace.</li>
 <li>Při spuštění poskytuje zpráva o vytváření prostředků, protokolování a nasazení souboru ZIP.</li>
 </ul>

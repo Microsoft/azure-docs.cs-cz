@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 2f15aa394f7a271d6b3af49f0106611c4fc943a1
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: e06881d078b4e881174c3e931f7898cb622ad7f9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753077"
+ms.locfileid: "107766348"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Rychlý Start: Azure Key Vaulta klíčová knihovna klienta pro Python
 
@@ -170,7 +170,7 @@ retrieved_secret = client.get_secret(secretName)
 
 Hodnota tajného klíče je obsažena v `retrieved_secret.value` .
 
-Tajný klíč můžete také načíst pomocí příkazu Azure CLI [AZ klíčů trezor tajného zobrazení](/cli/azure/keyvault/secret?#az-keyvault-secret-show).
+Tajný klíč můžete také načíst pomocí příkazu Azure CLI [AZ klíčů trezor tajného zobrazení](/cli/azure/keyvault/secret?#az_keyvault_secret_show).
 
 ### <a name="delete-a-secret"></a>Odstranění tajného klíče
 
@@ -183,7 +183,7 @@ deleted_secret = poller.result()
 
 `begin_delete_secret`Metoda je asynchronní a vrací objekt cyklického dotazování. Volání metody cyklického dotazování `result` čeká na jeho dokončení.
 
-Můžete ověřit, jestli byl tajný klíč odebraný pomocí příkazu Azure CLI [AZ klíčů trezor tajného zobrazení](/cli/azure/keyvault/secret?#az-keyvault-secret-show).
+Můžete ověřit, jestli byl tajný klíč odebraný pomocí příkazu Azure CLI [AZ klíčů trezor tajného zobrazení](/cli/azure/keyvault/secret?#az_keyvault_secret_show).
 
 Po odstranění zůstane tajný kód v odstraněném stavu, ale po dobu. Pokud kód znovu spustíte, použijte jiný tajný název.
 

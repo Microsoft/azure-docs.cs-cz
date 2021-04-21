@@ -10,12 +10,12 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 03/12/2019
 ms.custom: seoapril2019 sqldbrb=1, devx-track-azurecli
-ms.openlocfilehash: 2ccc34d1fc48c54bce90a2cde5b14bdc7059d480
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 555b18a7edbc3cc00cd7dcaf7f4897a4608d52e7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598903"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787192"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Správa elastických fondů v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -73,12 +73,12 @@ Pokud chcete vytvořit a spravovat SQL Database elastické fondy pomocí [Azure 
 
 | Rutina | Popis |
 | --- | --- |
-|[AZ SQL elastický fond Create](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create)|Vytvoří elastický fond.|
-|[AZ SQL elastický seznam fondů](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list)|Vrátí seznam elastických fondů na serveru.|
-|[AZ SQL elastický fond list-databáze](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-dbs)|Vrátí seznam databází v elastickém fondu.|
-|[AZ SQL elastický seznam fondů – edice](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-editions)|Zahrnuje taky dostupná nastavení DTU fondu, omezení úložiště a nastavení databáze. Aby se snížila úroveň podrobností, jsou ve výchozím nastavení skryté další limity úložiště a nastavení databáze.|
-|[AZ SQL elastický fond Update](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)|Aktualizuje elastický fond.|
-|[AZ SQL elastický fond DELETE](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-delete)|Odstraní elastický fond.|
+|[AZ SQL elastický fond Create](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create)|Vytvoří elastický fond.|
+|[AZ SQL elastický seznam fondů](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list)|Vrátí seznam elastických fondů na serveru.|
+|[AZ SQL elastický fond list-databáze](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_dbs)|Vrátí seznam databází v elastickém fondu.|
+|[AZ SQL elastický seznam fondů – edice](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_editions)|Zahrnuje taky dostupná nastavení DTU fondu, omezení úložiště a nastavení databáze. Aby se snížila úroveň podrobností, jsou ve výchozím nastavení skryté další limity úložiště a nastavení databáze.|
+|[AZ SQL elastický fond Update](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update)|Aktualizuje elastický fond.|
+|[AZ SQL elastický fond DELETE](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_delete)|Odstraní elastický fond.|
 
 ## <a name="transact-sql-t-sql"></a>Transact-SQL (T-SQL)
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 13f45c96a830110bd0f4a2d4a2b422921d7a2e31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30621eceefd69cd3e08de137bb34f1079a17a406
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94654452"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780474"
 ---
 # <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Nastavení rozhraní příkazového řádku Azure pro Azure HPC Cache
 
@@ -23,7 +23,7 @@ Pomocí těchto kroků Připravte prostředí před použitím Azure CLI k vytvo
 
 ## <a name="set-default-resource-group-optional"></a>Nastavit výchozí skupinu prostředků (volitelné)
 
-Většina příkazů mezipaměti HPC vyžaduje, abyste předávali skupinu prostředků mezipaměti. Výchozí skupinu prostředků můžete nastavit pomocí [AZ Configure](/cli/azure/reference-index#az-configure).
+Většina příkazů mezipaměti HPC vyžaduje, abyste předávali skupinu prostředků mezipaměti. Výchozí skupinu prostředků můžete nastavit pomocí [AZ Configure](/cli/azure/reference-index#az_configure).
 
 ## <a name="next-steps"></a>Další kroky
 
