@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c2d4181a80f48f5f6dd5775e6eb3bd172a65df8
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 94077a1c6329aa1fecf9593f2df41fa77afc8a44
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209625"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765912"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Samoobslužné resetování hesla v Azure AD
 
@@ -93,7 +93,7 @@ Pokud nepotřebujete registraci, nebudou se uživatelé během přihlašování 
 
 Aby bylo zajištěno, že metody ověřování jsou správné, když jsou potřeba k resetování nebo změně hesla, můžete vyžadovat, aby uživatelé po uplynutí určité doby ověřili informace zaregistrované v informacích. Tato možnost je k dispozici pouze v případě, že povolíte možnost **vyžadovat registraci uživatelů při přihlášení** .
 
-Platné hodnoty pro vyzvání uživatele k potvrzení registrovaných metod jsou od *0* do *730* dnů. Nastavením hodnoty *0* znamená, že uživatelé nebudou nikdy požádáni o potvrzení ověřovacích informací.
+Platné hodnoty pro vyzvání uživatele k potvrzení registrovaných metod jsou od *0* do *730* dnů. Nastavením hodnoty *0* znamená, že uživatelé nebudou nikdy požádáni o potvrzení ověřovacích informací. Při použití kombinovaného prostředí pro registraci bude nutné před potvrzením svých informací ověřit jejich identitu.
 
 ## <a name="authentication-methods"></a>Metody ověřování
 

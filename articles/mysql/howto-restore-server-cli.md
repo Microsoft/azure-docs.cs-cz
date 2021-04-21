@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ee06eed1b8f54877d01a8b316c015938038879cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c8b0f37729ea20a62838d736dbed59f05c584c6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94535397"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780384"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Postup zálohování a obnovení serveru v Azure Database for MySQL pomocí rozhraní příkazového řádku Azure
 
@@ -56,7 +56,7 @@ Doba uchovávání záloh určuje, jak daleko se obnovení k určitému bodu v �
 ## <a name="server-point-in-time-restore"></a>Obnovení k časovému okamžiku serveru
 Server můžete obnovit k předchozímu bodu v čase. Obnovená data se zkopírují na nový server a stávající server zůstane tak, jak je. Například pokud je tabulka omylem vyřazena v poledne ještě dnes, můžete ji obnovit do času těsně před poledne. Pak můžete načíst chybějící tabulku a data z obnovené kopie serveru. 
 
-K obnovení serveru použijte příkaz Azure CLI [AZ MySQL server Restore](/cli/azure/mysql/server#az-mysql-server-restore) .
+K obnovení serveru použijte příkaz Azure CLI [AZ MySQL server Restore](/cli/azure/mysql/server#az_mysql_server_restore) .
 
 ### <a name="run-the-restore-command"></a>Spuštění příkazu RESTORE
 

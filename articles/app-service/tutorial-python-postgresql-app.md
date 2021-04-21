@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 8e9656aa1f850dc9e59ab71b5df605df8dd49269
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 882a9fb0f8d528ca21cdc8149c60b9d5bdaf1723
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732801"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767090"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: nasazení webové aplikace v Django s PostgreSQL v Azure App Service
 
@@ -160,7 +160,7 @@ Po dokončení příkazu vytvoří výstup objektu JSON, který obsahuje různé
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
-> `-l <location-name>`, lze nastavit na některou z [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/). Pomocí příkazu můžete získat oblasti dostupné pro vaše předplatné [`az account list-locations`](/cli/azure/account#az-account-list-locations) . V produkčních aplikacích uložte svou databázi a aplikaci do stejného umístění.
+> `-l <location-name>`, lze nastavit na některou z [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/). Pomocí příkazu můžete získat oblasti dostupné pro vaše předplatné [`az account list-locations`](/cli/azure/account#az_account_list_locations) . V produkčních aplikacích uložte svou databázi a aplikaci do stejného umístění.
 
 Máte problémy? [Dejte nám prosím jistotu](https://aka.ms/DjangoCLITutorialHelp).
 
@@ -172,7 +172,7 @@ V této části vytvoříte hostitele aplikací v aplikaci App Service, připoj�
 
 V terminálu se ujistěte, že jste ve složce úložiště *djangoapp* , která obsahuje kód aplikace.
 
-Vytvořte aplikaci App Service (hostitelský proces) pomocí [`az webapp up`](/cli/azure/webapp#az-webapp-up) příkazu:
+Vytvořte aplikaci App Service (hostitelský proces) pomocí [`az webapp up`](/cli/azure/webapp#az_webapp_up) příkazu:
 
 ```azurecli
 az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --plan DjangoPostgres-tutorial-plan --sku B1 --name <app-name>
@@ -205,7 +205,7 @@ S kódem teď nasazeným do App Service je dalším krokem připojení aplikace 
 
 Kód aplikace očekává nalezení informací o databázi ve čtyřech proměnných prostředí s názvem `DBHOST` , `DBNAME` , `DBUSER` a `DBPASS` .
 
-K nastavení proměnných prostředí v App Service vytvořte nastavení aplikace pomocí následujících příkazů [AZ WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) .
+K nastavení proměnných prostředí v App Service vytvořte nastavení aplikace pomocí následujících příkazů [AZ WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) .
 
 ```azurecli
 az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"

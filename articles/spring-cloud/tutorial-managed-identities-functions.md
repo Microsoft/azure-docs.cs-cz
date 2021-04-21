@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 99e3611711e9a25119a4428d7736a36073163894
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b737ea751d3b3d2132691e04a1a2cd853748db65
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104879157"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792502"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>Kurz: použití spravované identity k vyvolání Azure Functions ze jarní cloudové aplikace Azure
 
@@ -29,7 +29,7 @@ Azure Functions i App Services mají integrovanou podporu ověřování Azure Ac
 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pomocí příkazu [AZ Group Create vytvořte](/cli/azure/group#az-group-create)skupinu prostředků, která bude obsahovat aplikaci Function App i jarní Cloud.
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pomocí příkazu [AZ Group Create vytvořte](/cli/azure/group#az_group_create)skupinu prostředků, která bude obsahovat aplikaci Function App i jarní Cloud.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location eastus
 
 
 ## <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
-Pokud chcete vytvořit aplikaci Function App, musíte nejdřív vytvořit účet záložního úložiště, a to pomocí příkazu [AZ Storage Account Create](/cli/azure/storage/account#az-storage-account-create):
+Pokud chcete vytvořit aplikaci Function App, musíte nejdřív vytvořit účet záložního úložiště, a to pomocí příkazu [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create):
 
 > [!Important]
 > Každá aplikace Function App a účet úložiště musí mít jedinečný název. V následujících příkladech nahraďte <functionapp-Name> názvem vaší aplikace Function App a <Your-storageaccount-Name> názvem vašeho účtu úložiště.

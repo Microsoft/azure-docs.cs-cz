@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 12/17/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7e74a58a14bdcc2a6fe1e9f86305aae415c6abf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d13db238674cae62f528c3d730bf892a72b8f6c2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97674510"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764688"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Vytváření a Správa replik pro čtení z Azure CLI, REST API
 
@@ -62,7 +62,7 @@ Repliky pro čtení můžete vytvořit a spravovat pomocí rozhraní příkazov�
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
 
-Příkaz [AZ Postgres Server Replica Create](/cli/azure/postgres/server/replica#az-postgres-server-replica-create) vyžaduje následující parametry:
+Příkaz [AZ Postgres Server Replica Create](/cli/azure/postgres/server/replica#az_postgres_server_replica_create) vyžaduje následující parametry:
 
 | Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
@@ -93,14 +93,14 @@ Pokud jste nenastavili `azure.replication_support` parametr na **repliku** v pro
 > Než se nastavení primárního serveru aktualizuje na novou hodnotu, aktualizujte nastavení repliky na hodnotu rovná se nebo větší. Tato akce pomůže replice uchovávat všechny změny provedené v hlavní větvi.
 
 ### <a name="list-replicas"></a>Vypsat repliky
-Seznam replik primárního serveru můžete zobrazit pomocí příkazu [AZ Postgres Server Replica list](/cli/azure/postgres/server/replica#az-postgres-server-replica-list) .
+Seznam replik primárního serveru můžete zobrazit pomocí příkazu [AZ Postgres Server Replica list](/cli/azure/postgres/server/replica#az_postgres_server_replica_list) .
 
 ```azurecli-interactive
 az postgres server replica list --server-name mydemoserver --resource-group myresourcegroup 
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>Zastavení replikace na server repliky
-Replikaci mezi primárním serverem a replikou pro čtení můžete zastavit pomocí příkazu [AZ Postgres Server Replica stop](/cli/azure/postgres/server/replica#az-postgres-server-replica-stop) .
+Replikaci mezi primárním serverem a replikou pro čtení můžete zastavit pomocí příkazu [AZ Postgres Server Replica stop](/cli/azure/postgres/server/replica#az_postgres_server_replica_stop) .
 
 Po zastavení replikace na primární server a repliku pro čtení ji nejde vrátit zpátky. Replika čtení se stal samostatným serverem, který podporuje čtení i zápis. Samostatný server se nedá znovu vytvořit do repliky.
 
@@ -109,7 +109,7 @@ az postgres server replica stop --name mydemoserver-replica --resource-group myr
 ```
 
 ### <a name="delete-a-primary-or-replica-server"></a>Odstranění primárního serveru nebo serveru repliky
-K odstranění primárního serveru nebo serveru repliky použijte příkaz [AZ Postgres Server Delete](/cli/azure/postgres/server#az-postgres-server-delete) .
+K odstranění primárního serveru nebo serveru repliky použijte příkaz [AZ Postgres Server Delete](/cli/azure/postgres/server#az_postgres_server_delete) .
 
 Při odstranění primárního serveru se zastaví replikace do všech replik pro čtení. Repliky čtení se stanou samostatnými servery, které nyní podporují čtení i zápis.
 
@@ -117,7 +117,7 @@ Při odstranění primárního serveru se zastaví replikace do všech replik pr
 az postgres server delete --name myserver --resource-group myresourcegroup
 ```
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 Repliky pro čtení můžete vytvářet a spravovat pomocí [REST API Azure](/rest/api/azure/).
 
 ### <a name="prepare-the-primary-server"></a>Příprava primárního serveru

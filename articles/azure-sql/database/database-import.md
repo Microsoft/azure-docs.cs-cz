@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/29/2020
-ms.openlocfilehash: 2412d3d2851d1b4d251b50ff3068b7dcafcccee8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eddcab2c0a34ef437e4f2f1e2203fee9065133a4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642037"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781878"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: Import souboru BACPAC do databáze ve službě Azure SQL Database nebo Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -128,7 +128,7 @@ $importStatus
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pomocí příkazu [AZ-SQL-DB-import](/cli/azure/sql/db#az-sql-db-import) odešlete žádost o import databáze do Azure. V závislosti na velikosti databáze může dokončení importu nějakou dobu trvat. Model zřizování založený na DTU podporuje pro každou vrstvu výběr hodnot maximální velikosti databáze. Při importu databáze [použijte jednu z těchto podporovaných hodnot](/sql/t-sql/statements/create-database-transact-sql). 
+Pomocí příkazu [AZ-SQL-DB-import](/cli/azure/sql/db#az_sql_db_import) odešlete žádost o import databáze do Azure. V závislosti na velikosti databáze může dokončení importu nějakou dobu trvat. Model zřizování založený na DTU podporuje pro každou vrstvu výběr hodnot maximální velikosti databáze. Při importu databáze [použijte jednu z těchto podporovaných hodnot](/sql/t-sql/statements/create-database-transact-sql). 
 
 ```azurecli
 # get the storage account key
