@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 9425759de1e08bc83cac80cd1b56c602edb59fb1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c57f66eca5d15024c6b10e8fad12ddb575b9f894
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562958"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765894"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Řízení aktualizací pomocí řízení údržby a Azure CLI
 
@@ -93,7 +93,7 @@ az maintenance assignment create \
 
 Chcete-li použít konfiguraci pro vyhrazeného hostitele, je třeba zahrnout `--resource-type hosts` `--resource-parent-name` s názvem skupiny hostitelů a `--resource-parent-type hostGroups` . 
 
-Parametr `--resource-id` je ID hostitele. K získání ID vyhrazeného hostitele můžete použít [příkaz AZ VM Host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view) .
+Parametr `--resource-id` je ID hostitele. K získání ID vyhrazeného hostitele můžete použít [příkaz AZ VM Host Get-instance-View](/cli/azure/vm/host#az_vm_host_get_instance_view) .
 
 ```azurecli-interactive
 az maintenance assignment create \

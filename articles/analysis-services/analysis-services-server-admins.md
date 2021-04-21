@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 2/4/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 62acb526a247362b17c4dfd4e26c52760deecd71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c0986b8508a7e21dee7c7c87e535eb2726944de8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99573479"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769188"
 ---
 # <a name="manage-server-administrators"></a>Správa správců serveru
 
@@ -47,7 +48,7 @@ Pokud je povolená brána firewall serveru, musí být v pravidle brány firewal
 K určení parametru správce při vytváření nového serveru použijte rutinu [New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) . <br>
 Pomocí rutiny [set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) můžete změnit parametr správce existujícího serveru.
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
 K určení vlastnosti asAdministrator při vytváření nového serveru použijte [Create](/rest/api/analysisservices/servers/create) . <br>
 K určení vlastnosti asAdministrator při úpravách stávajícího serveru použijte [Update](/rest/api/analysisservices/servers/update) . <br>

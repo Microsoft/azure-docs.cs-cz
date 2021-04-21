@@ -9,12 +9,12 @@ ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 91f42ae671cb1696e5b088bafde8362cf19ce856
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 9caabb8dc7f09e4ef3852d9269d178c086744779
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717952"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789802"
 ---
 # <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 Pokud chcete vytvořit sdílenou složku Azure, musíte odpovědět na tři otázky týkající se toho, jak ji budete používat:
@@ -277,6 +277,6 @@ az storage share-rm update \
 ---
 
 ## <a name="next-steps"></a>Další kroky
-- [Plánování nasazení služby soubory Azure](storage-files-planning.md) nebo [Plánování nasazení synchronizace souborů Azure](storage-sync-files-planning.md). 
+- [Plánování nasazení služby soubory Azure](storage-files-planning.md) nebo [Plánování nasazení synchronizace souborů Azure](../file-sync/file-sync-planning.md). 
 - [Přehled sítí](storage-files-networking-overview.md).
 - Připojení a připojení sdílené složky v [systémech Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)a [Linux](storage-how-to-use-files-linux.md).

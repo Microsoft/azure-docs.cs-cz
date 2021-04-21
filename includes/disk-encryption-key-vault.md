@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 6f8cfc314c75221a88b58095cc71ea685280ac49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98922829e83f84078c3d8cadae15844dba194c93
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501005"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107799921"
 ---
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -21,7 +21,7 @@ ms.locfileid: "102501005"
 
 Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
-Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) Azure CLI, příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell nebo z [Azure Portal](https://portal.azure.com).
+Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create) Azure CLI, příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell nebo z [Azure Portal](https://portal.azure.com).
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 *Pokud už máte Trezor klíčů, můžete přeskočit k [nastavení zásad pokročilého přístupu trezoru klíčů](#set-key-vault-advanced-access-policies).*
 
-Vytvořte Trezor klíčů pomocí příkazu [AZ Key trezor Create](/cli/azure/keyvault#az-keyvault-create) Azure CLI, příkazu [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) azure PowerShellu, [Azure Portal](https://portal.azure.com)nebo [šabloně správce prostředků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
+Vytvořte Trezor klíčů pomocí příkazu [AZ Key trezor Create](/cli/azure/keyvault#az_keyvault_create) Azure CLI, příkazu [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) azure PowerShellu, [Azure Portal](https://portal.azure.com)nebo [šabloně správce prostředků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
 >[!WARNING]
 > Váš Trezor klíčů a virtuální počítače musí být ve stejném předplatném. Pro zajištění, že šifrovací tajná klíče nepatří mezi regionální hranice, Azure Disk Encryption vyžaduje, aby se Key Vault a virtuální počítače ve stejné oblasti společně nacházejí. Vytvořte a použijte Key Vault, který se nachází ve stejném předplatném a oblasti jako virtuální počítače, které mají být zašifrované. 
@@ -75,7 +75,7 @@ Pokud jste nepovolili použití trezoru klíčů pro šifrování disků, nasaze
 
 ### <a name="azure-cli"></a>Azure CLI
 
-K povolení šifrování disku pro Trezor klíčů použijte [AZ Key trezor Update](/cli/azure/keyvault#az-keyvault-update) . 
+K povolení šifrování disku pro Trezor klíčů použijte [AZ Key trezor Update](/cli/azure/keyvault#az_keyvault_update) . 
 
  - **Povolit Key Vault pro šifrování disku:** Je nutné povolit šifrování disku. 
 
@@ -129,7 +129,7 @@ K povolení šifrování disku pro Trezor klíčů použijte [AZ Key trezor Upda
 
 Pokud chcete pro další vrstvu zabezpečení pro šifrovací klíče použít klíč šifrovacího klíče (KEK), přidejte do trezoru klíčů KEK. Když je zadaný klíč šifrování klíče, Azure Disk Encryption používá tento klíč k zabalení šifrovacích tajných kódů před zápisem do Key Vault.
 
-Novou KEK můžete vygenerovat pomocí příkazu Azure CLI [AZ klíčů trezor Key create](/cli/azure/keyvault/key#az-keyvault-key-create) Azure PowerShell, rutiny [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) nebo [Azure Portal](https://portal.azure.com/). Musíte vygenerovat typ klíče RSA; Azure Disk Encryption zatím nepodporuje používání klíčů eliptické křivky.
+Novou KEK můžete vygenerovat pomocí příkazu Azure CLI [AZ klíčů trezor Key create](/cli/azure/keyvault/key#az_keyvault_key_create) Azure PowerShell, rutiny [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) nebo [Azure Portal](https://portal.azure.com/). Musíte vygenerovat typ klíče RSA; Azure Disk Encryption zatím nepodporuje používání klíčů eliptické křivky.
 
 Místo toho můžete importovat KEK z místního modulu hardwarové správy klíčů. Další informace najdete v [dokumentaci Key Vault](../articles/key-vault/keys/hsm-protected-keys.md).
 
@@ -145,15 +145,15 @@ Azure Disk Encryption nepodporuje zadání čísel portů jako součást tajnýc
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pomocí příkazu Azure CLI [AZ klíčů trezor Key Create](/cli/azure/keyvault/key#az-keyvault-key-create) vytvořte novou KEK a uložte ji do svého trezoru klíčů.
+Pomocí příkazu Azure CLI [AZ klíčů trezor Key Create](/cli/azure/keyvault/key#az_keyvault_key_create) vytvořte novou KEK a uložte ji do svého trezoru klíčů.
 
 ```azurecli-interactive
 az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA
 ```
 
-Místo toho můžete importovat privátní klíč pomocí příkazu Azure CLI [AZ klíčů trezor Key import](/cli/azure/keyvault/key#az-keyvault-key-import) :
+Místo toho můžete importovat privátní klíč pomocí příkazu Azure CLI [AZ klíčů trezor Key import](/cli/azure/keyvault/key#az_keyvault_key_import) :
 
-V obou případech dáte název KEK do Azure CLI [AZ VM Encryption Enable](/cli/azure/vm/encryption#az-vm-encryption-enable) --Key-Encryption-Key. 
+V obou případech dáte název KEK do Azure CLI [AZ VM Encryption Enable](/cli/azure/vm/encryption#az_vm_encryption_enable) --Key-Encryption-Key. 
 
 ```azurecli-interactive
 az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-keyvault "<your-unique-keyvault-name>" --key-encryption-key "myKEK"
@@ -167,7 +167,7 @@ Pomocí rutiny Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvau
 Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destination "HSM"
 ```
 
-Místo toho můžete importovat privátní klíč pomocí příkazu Azure PowerShell [AZ klíčů trezor Key import](/cli/azure/keyvault/key#az-keyvault-key-import) .
+Místo toho můžete importovat privátní klíč pomocí příkazu Azure PowerShell [AZ klíčů trezor Key import](/cli/azure/keyvault/key#az_keyvault_key_import) .
 
 V obou případech poskytnete ID vašeho trezoru klíčů KEK a adresu URL vašeho KEKu do parametrů Azure PowerShell [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) -KeyEncryptionKeyVaultId a-KeyEncryptionKeyUrl. Všimněte si, že v tomto příkladu se předpokládá, že používáte stejný Trezor klíčů pro šifrovací klíč disku i pro KEK.
 

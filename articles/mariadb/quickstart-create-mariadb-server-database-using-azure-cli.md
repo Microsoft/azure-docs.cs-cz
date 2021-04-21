@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3279150d0cb7b287f0a78581094a51356033596c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 042c70fdd08a6de2b97c4560eb2b6a24eec0bb34
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98662156"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789964"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure
 
@@ -25,7 +25,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 - Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
-Pokud máte více předplatných, zvolte předplatné, které obsahuje prostředek nebo ve kterém se vám prostředek účtuje. Pokud chcete vybrat ID konkrétního předplatného ve vašem účtu, použijte příkaz [az account set](/cli/azure/account#az-account-set):
+Pokud máte více předplatných, zvolte předplatné, které obsahuje prostředek nebo ve kterém se vám prostředek účtuje. Pokud chcete vybrat ID konkrétního předplatného ve vašem účtu, použijte příkaz [az account set](/cli/azure/account#az_account_set):
 
 ```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
@@ -33,7 +33,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina.
+Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina.
 
 Následující příklad vytvoří skupinu prostředků `myresourcegroup` v umístění `westus`:
 
@@ -43,7 +43,7 @@ az group create --name myresourcegroup --location westus
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Vytvoření serveru Azure Database for MariaDB
 
-Server Azure Database for MariaDB vytvoříte pomocí příkazu [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create). Server může spravovat více databází. Obvykle se pro jednotlivé projekty nebo uživatele používají samostatné databáze.
+Server Azure Database for MariaDB vytvoříte pomocí příkazu [az mariadb server create](/cli/azure/mariadb/server#az_mariadb_server_create). Server může spravovat více databází. Obvykle se pro jednotlivé projekty nebo uživatele používají samostatné databáze.
 
 Nastavení | Ukázková hodnota | Description
 ---|---|---
@@ -77,7 +77,7 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 
 ## <a name="configure-a-firewall-rule"></a>Konfigurace pravidla brány firewall
 
-Pravidlo brány firewall na úrovni serveru Azure Database for MariaDB vytvoříte pomocí příkazu [az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create). Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například nástroj pro příkazový řádek mysql nebo MySQL Workbench, aby se k vašemu serveru připojila prostřednictvím brány firewall služby Azure Database for MariaDB.
+Pravidlo brány firewall na úrovni serveru Azure Database for MariaDB vytvoříte pomocí příkazu [az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az_mariadb_server_firewall_rule_create). Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například nástroj pro příkazový řádek mysql nebo MySQL Workbench, aby se k vašemu serveru připojila prostřednictvím brány firewall služby Azure Database for MariaDB.
 
 Následující příklad vytvoří pravidlo brány firewall `AllowMyIP`, které povolí připojení z konkrétní IP adresy 192.168.0.1. Použijte IP adresu nebo rozsah IP adres odpovídající umístění, ze kterého se připojujete.
 
@@ -231,7 +231,7 @@ Pokud prostředky použité v tomto rychlém startu nepotřebujete pro další r
 az group delete --name myresourcegroup
 ```
 
-Pokud chcete odstranit pouze server, který jste vytvořili v tomto rychlém startu, spusťte příkaz [az mariadb server delete](/cli/azure/mariadb/server#az-mariadb-server-delete):
+Pokud chcete odstranit pouze server, který jste vytvořili v tomto rychlém startu, spusťte příkaz [az mariadb server delete](/cli/azure/mariadb/server#az_mariadb_server_delete):
 
 ```azurecli-interactive
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver

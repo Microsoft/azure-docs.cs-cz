@@ -9,12 +9,12 @@ ms.date: 03/12/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: f02aa9fc1bd31bdde6214ab906136a2cac8f1772
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 6519f3fe7335ed41f4d5ef67771aaa738a33e4a8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478304"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782598"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>Průběžné nasazování s vlastními kontejnery v Azure App Service
 
@@ -176,7 +176,7 @@ Poskytovatele sestavení akcí GitHubu můžete přizpůsobit následujícími z
 
 Tato volitelná konfigurace nahrazuje výchozí ověřování pomocí profilů publikování ve vygenerovaném souboru pracovního postupu.
 
-**Vygenerujte** instanční objekt pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). V následujícím příkladu nahraďte *\<subscription-id>* , *\<group-name>* a *\<app-name>* vlastními hodnotami. **Uložte** celý výstup JSON pro další krok, včetně nejvyšší úrovně `{}` .
+**Vygenerujte** instanční objekt pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). V následujícím příkladu nahraďte *\<subscription-id>* , *\<group-name>* a *\<app-name>* vlastními hodnotami. **Uložte** celý výstup JSON pro další krok, včetně nejvyšší úrovně `{}` .
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \
@@ -213,7 +213,7 @@ V souboru pracovního postupu vygenerovaném **centrem nasazení** **upravte** `
 
 ## <a name="automate-with-cli"></a>Automatizace pomocí rozhraní příkazového řádku
 
-Pokud chcete nakonfigurovat registr kontejneru a image Docker, **Spusťte** příkaz [AZ WebApp config Container set](/cli/azure/webapp/config/container#az-webapp-config-container-set).
+Pokud chcete nakonfigurovat registr kontejneru a image Docker, **Spusťte** příkaz [AZ WebApp config Container set](/cli/azure/webapp/config/container#az_webapp_config_container_set).
 
 # <a name="azure-container-registry"></a>[Azure Container Registry](#tab/acr)
 
@@ -240,14 +240,14 @@ az webapp config container set --name <app-name> --resource-group <group-name> -
 -----
 
 ::: zone pivot="container-linux"
-Pokud chcete nakonfigurovat aplikaci s více kontejnery (Docker Compose), **Připravte** soubor Docker Compose místně a pak **Spusťte příkaz** [AZ WebApp config Container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) s `--multicontainer-config-file` parametrem. Pokud soubor Docker Compose obsahuje soukromé image, **přidejte** `--docker-registry-server-*` parametry, jak je znázorněno v předchozím příkladu.
+Pokud chcete nakonfigurovat aplikaci s více kontejnery (Docker Compose), **Připravte** soubor Docker Compose místně a pak **Spusťte příkaz** [AZ WebApp config Container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) s `--multicontainer-config-file` parametrem. Pokud soubor Docker Compose obsahuje soukromé image, **přidejte** `--docker-registry-server-*` parametry, jak je znázorněno v předchozím příkladu.
 
 ```azurecli-interactive
 az webapp config container set --resource-group <group-name> --name <app-name> --multicontainer-config-file <docker-compose-file>
 ```
 ::: zone-end
 
-Pokud chcete nakonfigurovat CI/CD z registru kontejneru do vaší aplikace, **Spusťte příkaz** [AZ WebApp Deployment Container config](/cli/azure/webapp/deployment/container#az-webapp-deployment-container-config) s `--enable-cd` parametrem. Příkaz vypíše adresu URL Webhooku, ale musíte Webhook vytvořit v registru ručně v samostatném kroku. Následující příklad povoluje CI/CD ve vaší aplikaci a pak pomocí adresy URL Webhooku ve výstupu vytvoří Webhook v Azure Container Registry.
+Pokud chcete nakonfigurovat CI/CD z registru kontejneru do vaší aplikace, **Spusťte příkaz** [AZ WebApp Deployment Container config](/cli/azure/webapp/deployment/container#az_webapp_deployment-container-config) s `--enable-cd` parametrem. Příkaz vypíše adresu URL Webhooku, ale musíte Webhook vytvořit v registru ručně v samostatném kroku. Následující příklad povoluje CI/CD ve vaší aplikaci a pak pomocí adresy URL Webhooku ve výstupu vytvoří Webhook v Azure Container Registry.
 
 ```azurecli-interactive
 ci_cd_url=$(az webapp deployment container config --name <app-name> --resource-group <group-name> --enable-cd true --query CI_CD_URL --output tsv)

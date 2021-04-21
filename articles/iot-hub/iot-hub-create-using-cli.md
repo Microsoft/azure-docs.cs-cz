@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: e9757b94330f889869080a0e961ab2728cee86f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eff0085a4a739e0831b25b1bd28cd234fdbcde3d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94659909"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766438"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Vytvoření služby IoT Hub pomocí Azure CLI
 
@@ -42,7 +42,7 @@ Pomocí Azure CLI vytvořte skupinu prostředků a pak přidejte IoT Hub.
    > ```
    >
 
-2. Spuštěním následujícího [příkazu vytvořte IoT Hub](/cli/azure/iot/hub#az-iot-hub-create) ve skupině prostředků pomocí globálně jedinečného názvu pro vaše centrum IoT:
+2. Spuštěním následujícího [příkazu vytvořte IoT Hub](/cli/azure/iot/hub#az_iot_hub_create) ve skupině prostředků pomocí globálně jedinečného názvu pro vaše centrum IoT:
     
    ```azurecli-interactive
    az iot hub create --name {your iot hub name} \
@@ -58,14 +58,14 @@ Předchozí příkaz vytvoří centrum IoT v cenové úrovni S1, pro kterou se f
 
 Pomocí Azure CLI můžete [odstranit jednotlivý prostředek](/cli/azure/resource), jako je třeba Centrum IoT, nebo odstranit skupinu prostředků a všechny její prostředky, včetně všech rozbočovačů IoT.
 
-Pokud chcete [Odstranit centrum IoT](/cli/azure/iot/hub#az-iot-hub-delete), spusťte následující příkaz:
+Pokud chcete [Odstranit centrum IoT](/cli/azure/iot/hub#az_iot_hub_delete), spusťte následující příkaz:
 
 ```azurecli-interactive
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
-Pokud chcete [Odstranit skupinu prostředků](/cli/azure/group#az-group-delete) a všechny její prostředky, spusťte následující příkaz:
+Pokud chcete [Odstranit skupinu prostředků](/cli/azure/group#az_group_delete) a všechny její prostředky, spusťte následující příkaz:
 
 ```azurecli-interactive
 az group delete --name {your resource group name}

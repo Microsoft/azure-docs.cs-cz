@@ -10,15 +10,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/20/2020
+ms.date: 04/20/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f89f218c82505fd6bc261d41938d4619b32bf8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e9030558779be3e417383f9f32612ee3e834a1c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675961"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788074"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP
 
@@ -27,7 +27,7 @@ Obecné informace o spuštění SAP Business Suite na IBM Db2 pro LUW najdete v 
 
 Další informace a aktualizace SAP v Db2 pro LUW v Azure najdete v článku SAP Note [2233094]. 
 
-V této části najdete různé články o úlohách SAP v Azure, které jsou vydány.  Doporučuje se začít pracovat s [úlohami SAP v Azure – Začínáme](./get-started.md) a pak vybrat oblast zájmů.
+V této části najdete různé články o úlohách SAP v Azure, které jsou vydány.  Doporučuje se začít s [úlohou SAP v Azure – Začínáme](./get-started.md) a pak vybrat oblast zájmů.
 
 Následující poznámky SAP se týkají SAP v Azure, které se týkají oblasti popsané v tomto dokumentu:
 
@@ -45,7 +45,7 @@ Následující poznámky SAP se týkají SAP v Azure, které se týkají oblasti
 | [2002167] |Red Hat Enterprise Linux 7. x: instalace a upgrade |
 | [1597355] |Doporučení pro zaměněné místo pro Linux |
 
-Jako žádost o přijetí změn v tomto dokumentu byste si měli přečíst informace v dokumentu [pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) a také další příručky v [dokumentaci ke službě SAP v dokumentaci k Azure](./get-started.md). 
+Jako žádost o přijetí změn v tomto dokumentu byste si měli přečíst dokument dokumentace [pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) a další příručky v [dokumentaci ke službě SAP v dokumentaci k Azure](./get-started.md). 
 
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>Podpora IBM Db2 pro Linux, UNIX a Windows verze
@@ -55,7 +55,7 @@ Informace o podporovaných produktech SAP a typech virtuálních počítačů Az
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny pro konfiguraci IBM Db2 pro Linux, UNIX a Windows pro instalace SAP na virtuálních počítačích Azure
 ### <a name="storage-configuration"></a>Konfigurace úložiště
-Přehled typů úložiště Azure pro úlohy SAP najdete v článku [Azure Storage typy pro úlohy SAP](./planning-guide-storage.md) . všechny soubory databáze musí být uložené na připojených discích úložiště bloků Azure (Windows: NFFS, Linux: XFS, EXT4 nebo EXT3). Všechny typy síťových jednotek nebo vzdálených sdílených složek, jako jsou následující služby Azure **, nejsou pro soubory databáze podporované:** 
+Přehled typů úložiště Azure pro úlohy SAP najdete v článku [Azure Storage typy pro úlohy SAP](./planning-guide-storage.md) . všechny soubory databáze musí být uložené na připojených discích úložiště bloků Azure (Windows: NTFS, Linux: xfs nebo EXT3). Všechny typy síťových jednotek nebo vzdálených sdílených složek, jako jsou následující služby Azure **, nejsou pro soubory databáze podporované:** 
 
 * [Microsoft Azure Souborová služba](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -71,17 +71,20 @@ Informace o výkonu najdete také v části "informace o zabezpečení a výkonu
 
 Alternativně můžete použít fondy úložiště Windows (k dispozici jenom ve Windows Serveru 2012 a novějších), jak se popisuje v tématu [nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) nebo LVM nebo mdadm v systému Linux a vytvoření jednoho velkého logického zařízení na více discích.
 
-<!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
-
-Pro disky obsahující cesty úložiště Db2 pro vaše `sapdata` `saptmp` adresáře a musíte zadat velikost sektoru fyzického disku 512 KB. Při používání fondů úložiště Windows je potřeba vytvořit fondy úložiště ručně prostřednictvím rozhraní příkazového řádku pomocí parametru `-LogicalSectorSizeDefault` . Další informace naleznete v tématu <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+<!-- log_dir, sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 U virtuálních počítačů Azure řady M-Series se při použití Azure Akcelerátor zápisu můžou latence zápisu do protokolů transakcí snížit podle faktorů v porovnání s výkonem Azure Premium Storage. Proto byste měli nasadit Azure Akcelerátor zápisu pro virtuální pevné disky, které tvoří svazek pro protokoly transakcí Db2. Podrobnosti lze přečíst v dokumentu [akcelerátor zápisu](../../how-to-enable-write-accelerator.md).
+
+IBM Db2 LUW 11,5 vydala podporu pro velikost sektoru 4 KB. Pro starší verze Db2 je potřeba použít velikost sektoru 512-byte. SSD úrovně Premium disky mají nativní 4 KB a mají 512 – emulaci bajtů. Ultra disk ve výchozím nastavení používá velikost sektoru 4 – KB. Velikost sektoru 512-byte můžete povolit během vytváření Ultra disk. Podrobnosti jsou k dispozici [pomocí disků Azure Ultra](../../disks-enable-ultra-ssd.md#deploy-an-ultra-disk---512-byte-sector-size). Hodnota 512-bajtového sektoru je předpokladem pro verze IBM Db2 LUW nižší než 11,5.
+
+Ve Windows s použitím fondů úložiště pro cesty úložiště Db2 `log_dir` pro `sapdata` `saptmp` adresáře a musíte zadat velikost sektoru fyzického disku 512 KB. Při používání fondů úložiště Windows je potřeba vytvořit fondy úložiště ručně prostřednictvím rozhraní příkazového řádku pomocí parametru `-LogicalSectorSizeDefault` . Další informace naleznete v tématu <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+
 
 ## <a name="recommendation-on-vm-and-disk-structure-for-ibm-db2-deployment"></a>Doporučení k virtuálnímu počítači a struktuře disků pro nasazení IBM Db2
 
 Aplikace IBM Db2 pro SAP NetWeaver se podporují u libovolného typu virtuálního počítače uvedeného v poznámce SAP Support Note [1928533].  Doporučené rodiny virtuálních počítačů pro spuštění databáze IBM Db2 jsou Esd_v4/Eas_v4/Es_v3 a M/M_v2-Series pro velké databáze s více terabajty. Zvýšení výkonu zápisu na disk protokolu transakcí IBM Db2 lze zlepšit povolením Akcelerátor zápisu řady M-Series. 
 
-Následuje základní konfigurace pro různé velikosti a použití nasazení SAP na Db2 z malých až velkých. Seznam je založený na službě Azure Premium Storage. Azure Ultra disk se ale plně podporuje i s Db2 a dá se taky použít. Jednoduše použijte hodnoty pro kapacitu, propustnost shluku a shlukový IOPS a definujte konfiguraci Ultra disk. IOPS pro/DB2//log_dir můžete omezit na <SID> přibližně 5000 IOPS. 
+Následuje základní konfigurace pro různé velikosti a použití nasazení SAP na Db2 z malých až velkých. Seznam je založený na službě Azure Premium Storage. Azure Ultra disk se ale plně podporuje i s Db2 a dá se taky použít. Pro definování konfigurace Ultra disk použijte hodnoty pro kapacitu, propustnost shluku a shlukový IOPS. IOPS pro/DB2//log_dir můžete omezit na <SID> přibližně 5000 IOPS. 
 
 #### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>Velmi malý systém SAP: velikost databáze 50-200 GB: ukázkový správce řešení
 | Název/velikost virtuálního počítače |Přípojný bod Db2 |Disk Azure typu Premium |Počet disků |IOPS |Propustnost [MB/s] |Velikost [GB] |Shlukový IOPS |Shlukový p [GB] | Velikost pruhu | Ukládání do mezipaměti |
@@ -234,13 +237,7 @@ Přečtěte si článek
 
 - [Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md)
 
-[azure-cli]:../../../cli-install-nodejs.md
-[azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azure/
-[azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
-[azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
-[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
+
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 

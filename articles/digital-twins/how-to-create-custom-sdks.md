@@ -10,12 +10,12 @@ ms.service: digital-twins
 ms.custom:
 - devx-track-js
 - contperf-fy21q3
-ms.openlocfilehash: 35cf54199f8f2c187ad397c21fb941111f07c4a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e91bf5acc5290229afa8dc7a849e8953257bcfd
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561836"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751107"
 ---
 # <a name="create-custom-language-sdks-for-azure-digital-twins-using-autorest"></a>Vytváření vlastních jazykových sad SDK pro digitální vlákna Azure pomocí automatického REST
 
@@ -66,12 +66,12 @@ Tady je postup:
 
 1. Vytvoření nového řešení sady Visual Studio pro knihovnu tříd
 2. Jako název projektu použijte *DigitalTwinsApi*
-3. V Průzkumníku řešení klikněte pravým tlačítkem na projekt *DigitalTwinsApi* vygenerovaného řešení a zvolte *Přidat > existující položku...*
+3. V Průzkumník řešení klikněte pravým tlačítkem myši na projekt *DigitalTwinsApi* vygenerovaného řešení a zvolte *Přidat > existující položku...*
 4. Najděte složku, do které jste sadu SDK vygenerovali, a vyberte soubory na kořenové úrovni.
 5. Stiskněte OK
 6. Přidejte do projektu složku (kliknutím pravým tlačítkem vyberte projekt v Průzkumník řešení a zvolte *přidat > nová složka*).
 7. Pojmenování *modelů* složek
-8. V Průzkumníku řešení klikněte pravým tlačítkem na složku *modely* a vyberte *Přidat > existující položka...*
+8. V Průzkumník řešení klikněte pravým tlačítkem na složku *modely* a vyberte *Přidat > existující položku...*
 9. Vyberte soubory ve složce *modely* VYGENEROVANÉ sady SDK a stiskněte OK.
 
 K úspěšnému sestavení sady SDK bude projekt potřebovat tyto odkazy:

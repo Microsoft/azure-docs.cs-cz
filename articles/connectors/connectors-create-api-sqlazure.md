@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: 75c657236b6e06a7e0f6c717d746bcc8c034d423
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e06616914f1e78a71a540fbd64021c0e1bfcbab
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98013443"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785968"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatizace pracovních postupů pro databázi SQL pomocí Azure Logic Apps
 
@@ -189,7 +189,7 @@ Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql
 
 ### <a name="trigger-recurrence-shift-and-drift"></a>Aktivovat opakování a posunování
 
-Aktivační události na základě připojení, kde je třeba nejprve vytvořit připojení, jako je například Trigger SQL, se liší od integrovaných triggerů, které jsou spouštěny nativně v Azure Logic Apps, jako je například [Trigger opakování](../connectors/connectors-native-recurrence.md). V případě opakovaných triggerů založených na připojení není plán opakování jediným ovladačem, který řídí provádění, a časové pásmo určuje pouze počáteční čas spuštění. Následná spuštění závisí na plánu opakování, posledním spuštění triggeru *a* dalších faktorech, které by mohly způsobit snížení nebo zpracování neočekávaného chování, například bez zachování zadaného plánu při zahájení a ukončení letního času (DST). Chcete-li se ujistit, že se doba opakování nemění, když se letní čas projeví, proveďte ruční úpravu opakování, aby vaše aplikace logiky běžela v očekávaném čase. V opačném případě se čas zahájení posune jednu hodinu dopředu při zahájení LETNÍho času a hodinu zpětně od konce LETNÍho času. Další informace najdete v tématu [opakování pro aktivační události na základě připojení](../connectors/apis-list.md#recurrence-connection-based).
+Aktivační události na základě připojení, kde je třeba nejprve vytvořit připojení, jako je například Trigger SQL, se liší od integrovaných triggerů, které jsou spouštěny nativně v Azure Logic Apps, jako je například [Trigger opakování](../connectors/connectors-native-recurrence.md). V případě opakovaných triggerů založených na připojení není plán opakování jediným ovladačem, který řídí provádění, a časové pásmo určuje pouze počáteční čas spuštění. Následná spuštění závisí na plánu opakování, posledním spuštění triggeru *a* dalších faktorech, které by mohly způsobit snížení nebo zpracování neočekávaného chování, například bez zachování zadaného plánu při zahájení a ukončení letního času (DST). Chcete-li se ujistit, že se doba opakování nemění, když se letní čas projeví, proveďte ruční úpravu opakování, aby vaše aplikace logiky běžela v očekávaném čase. V opačném případě se čas zahájení posune jednu hodinu dopředu při zahájení LETNÍho času a hodinu zpětně od konce LETNÍho času. Další informace najdete v tématu [opakování pro aktivační události na základě připojení](../connectors/apis-list.md#recurrence-for-connection-based-triggers).
 
 <a name="add-sql-action"></a>
 

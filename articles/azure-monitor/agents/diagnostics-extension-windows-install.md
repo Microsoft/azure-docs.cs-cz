@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 174f372f9dbe8dc0449c7f9b9f5b34c6206f92de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ff752b673c49047551c48c4c8693b00d7b5edeb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708556"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787400"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)
 [Rozšíření Azure Diagnostics](diagnostics-extension-overview.md) je agent v Azure monitor, který shromažďuje data monitorování z hostovaného operačního systému a úloh virtuálních počítačů Azure a dalších výpočetních prostředků. Tento článek poskytuje podrobné informace o instalaci a konfiguraci rozšíření diagnostiky systému Windows a popis způsobu, jakým jsou data uložena v a Azure Storage účtu.
@@ -77,7 +77,7 @@ Diagnostické rozšíření můžete nainstalovat a nakonfigurovat na samostatn�
 V tématu [použití monitorování a diagnostiky pomocí virtuálního počítače s Windows a Azure Resource Manager šablon](../../virtual-machines/extensions/diagnostics-template.md) při nasazení rozšíření diagnostiky pomocí šablon Azure Resource Manager. 
 
 ## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
-Rozhraní příkazového řádku Azure můžete použít k nasazení rozšíření Azure Diagnostics do existujícího virtuálního počítače pomocí příkazů [AZ VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) , jak je uvedeno v následujícím příkladu. 
+Rozhraní příkazového řádku Azure můžete použít k nasazení rozšíření Azure Diagnostics do existujícího virtuálního počítače pomocí příkazů [AZ VM Extension set](/cli/azure/vm/extension#az_vm_extension_set) , jak je uvedeno v následujícím příkladu. 
 
 ```azurecli
 az vm extension set \
@@ -198,9 +198,9 @@ V následující tabulce jsou uvedeny různé typy dat shromážděných z rozš
 | WadLogsTable | Tabulka | Protokoly napsané v kódu pomocí naslouchacího procesu trasování. |
 | WADPerformanceCountersTable | Tabulka | Čítače výkonu. |
 | WADWindowsEventLogsTable | Tabulka | Protokoly událostí systému Windows. |
-| WAD – IIS – failedreqlogfiles | Objekt blob | Obsahuje informace z protokolů neúspěšných požadavků služby IIS. |
-| WAD – IIS – soubory protokolů | Objekt blob | Obsahuje informace o protokolech služby IIS. |
-| Uživatelská | Objekt blob | Vlastní kontejner založený na konfiguraci adresářů monitorovaných monitorováním diagnostiky.  Název tohoto kontejneru objektů BLOB se určí v WADDirectoriesTable. |
+| WAD – IIS – failedreqlogfiles | Blob | Obsahuje informace z protokolů neúspěšných požadavků služby IIS. |
+| WAD – IIS – soubory protokolů | Blob | Obsahuje informace o protokolech služby IIS. |
+| Uživatelská | Blob | Vlastní kontejner založený na konfiguraci adresářů monitorovaných monitorováním diagnostiky.  Název tohoto kontejneru objektů BLOB se určí v WADDirectoriesTable. |
 
 ## <a name="tools-to-view-diagnostic-data"></a>Nástroje pro zobrazení diagnostických dat
 K dispozici je několik nástrojů, které vám umožní zobrazit data po přenosu do úložiště. Například:

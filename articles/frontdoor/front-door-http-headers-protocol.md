@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2020
 ms.author: duau
-ms.openlocfilehash: 5989f91233448c04d50ba1c69a06851b91426a03
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 2ad97656b822bc5ffc957469842436ec84d9e812
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167800"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785752"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Podpora protokolů hlaviček protokolu HTTP v front-dveřích Azure
 Tento článek popisuje protokol, který přední dveře podporuje s částmi cesty volání (viz obrázek). V následujících částech najdete další informace o hlavičkách HTTP podporovaných předními dvířky.
@@ -37,7 +37,7 @@ Pokud nejsou odebrány z důvodu omezení, obsahují přední dvířka hlavičky
 | ------------- | ------------- |
 | Vedení |  *Přes: 1,1 Azure* </br> Přední dvířka přidávají verzi HTTP klienta následovanou *Azure* jako hodnotu pro hlavičku Via. Tato hlavička označuje verzi protokolu HTTP klienta a tato přední dvířka byla zprostředkujícím příjemcem pro požadavek mezi klientem a back-endu.  |
 | X – Azure – IP adresa klienta | *X-Azure-IP adresa klienta: 127.0.0.1* </br> Představuje IP adresu klienta přidruženou k zpracovávané žádosti. Například žádost přicházející z proxy serveru může přidat hlavičku X-pro, která označuje IP adresu původního volajícího. |
-| X – Azure – SocketIP |  *X-Azure-SocketIP: 127.0.0.1* </br> Představuje IP adresu soketu přidruženou k připojení TCP, ze kterého pochází aktuální žádost. IP adresa klienta žádosti se nemusí shodovat s IP adresou soketu, protože může být libovolně přepsána uživatelem.|
+| X – Azure – SocketIP |  *X-Azure-SocketIP: 127.0.0.1* </br> Představuje IP adresu soketu přidruženou k připojení TCP, ze kterého pochází aktuální žádost. IP adresa klienta žádosti se nemusí shodovat s IP adresou soketu, protože IP adresa klienta může být libovolně přepsána uživatelem.|
 | X – Azure – ref | *X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Jedinečný řetězec odkazu, který identifikuje požadavek obsluhující předními dveřmi. Slouží k vyhledávání protokolů přístupu a kritických pro řešení potíží.|
 | X – Azure – RequestChain | *X-Azure-RequestChain: směrování = 1* </br> Záhlaví, které používá přední dvířka k detekci smyček požadavků a uživatel by na něj neměli mít závislost. |
 | X – Azure – FDID | *X-Azure – FDID: 55ce4ed1-4B06-4bf1-B40E-4638452104da* <br/> Řetězec odkazu, který identifikuje požadavek z konkrétního prostředku front-dveří. Hodnotu lze zobrazit v Azure Portal nebo načíst pomocí rozhraní API pro správu. V kombinaci s ACL protokolu IP můžete použít tuto hlavičku k uzamknutí koncového bodu tak, aby přijímal pouze požadavky z konkrétního prostředku front-dveří. [Další podrobnosti](front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-) najdete v nejčastějších dotazech. |

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 31dabcf77f0db76047919fa76d00f1c5ed3c96d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3d05ba65e0d3918f1651c36cd17700ebf74de76
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97369136"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778332"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure CLI
 
@@ -41,7 +41,7 @@ K vytvoření vlastních rolí budete potřebovat:
 
 ## <a name="list-custom-roles"></a>Výpis vlastních rolí
 
-K vypsání vlastních rolí, které jsou k dispozici pro přiřazení, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list). Následující příklad vypíše všechny vlastní role v aktuálním předplatném.
+K vypsání vlastních rolí, které jsou k dispozici pro přiřazení, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az_role_definition_list). Následující příklad vypíše všechny vlastní role v aktuálním předplatném.
 
 ```azurecli
 az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -66,7 +66,7 @@ az role definition list --custom-role-only true --output json --query '[].{roleN
 
 ## <a name="list-a-custom-role-definition"></a>Seznam definice vlastní role
 
-Pokud chcete zobrazit seznam definice vlastní role, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list). Jedná se o stejný příkaz, který byste použili pro předdefinovanou roli.
+Pokud chcete zobrazit seznam definice vlastní role, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az_role_definition_list). Jedná se o stejný příkaz, který byste použili pro předdefinovanou roli.
 
 ```azurecli
 az role definition list --name {roleName}
@@ -140,7 +140,7 @@ az role definition list --name "Virtual Machine Operator" --output json --query 
 
 ## <a name="create-a-custom-role"></a>Vytvoření vlastní role
 
-Pokud chcete vytvořit vlastní roli, použijte příkaz [AZ role definice Create](/cli/azure/role/definition#az-role-definition-create). Definice role může být popis JSON nebo cesta k souboru obsahujícímu popis JSON.
+Pokud chcete vytvořit vlastní roli, použijte příkaz [AZ role definice Create](/cli/azure/role/definition#az_role_definition_create). Definice role může být popis JSON nebo cesta k souboru obsahujícímu popis JSON.
 
 ```azurecli
 az role definition create --role-definition {roleDefinition}
@@ -183,7 +183,7 @@ az role definition create --role-definition ~/roles/vmoperator.json
 
 ## <a name="update-a-custom-role"></a>Aktualizace vlastní role
 
-Pokud chcete aktualizovat vlastní roli, napřed načtěte definici role pomocí [seznamu AZ role definition list](/cli/azure/role/definition#az-role-definition-list) . Za druhé proveďte požadované změny definice role. Nakonec pomocí příkazu [AZ role definition Update](/cli/azure/role/definition#az-role-definition-update) uložte aktualizovanou definici role.
+Pokud chcete aktualizovat vlastní roli, napřed načtěte definici role pomocí [seznamu AZ role definition list](/cli/azure/role/definition#az_role_definition_list) . Za druhé proveďte požadované změny definice role. Nakonec pomocí příkazu [AZ role definition Update](/cli/azure/role/definition#az_role_definition_update) uložte aktualizovanou definici role.
 
 ```azurecli
 az role definition update --role-definition {roleDefinition}
@@ -228,7 +228,7 @@ az role definition update --role-definition ~/roles/vmoperator.json
 
 ## <a name="delete-a-custom-role"></a>Odstranění vlastní role
 
-Pokud chcete odstranit vlastní roli, použijte příkaz [AZ role definition Delete](/cli/azure/role/definition#az-role-definition-delete). Chcete-li určit roli, kterou chcete odstranit, použijte název role nebo ID role. Chcete-li zjistit ID role, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list).
+Pokud chcete odstranit vlastní roli, použijte příkaz [AZ role definition Delete](/cli/azure/role/definition#az_role_definition_delete). Chcete-li určit roli, kterou chcete odstranit, použijte název role nebo ID role. Chcete-li zjistit ID role, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az_role_definition_list).
 
 ```azurecli
 az role definition delete --name {roleNameOrId}

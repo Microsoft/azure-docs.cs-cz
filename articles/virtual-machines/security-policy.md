@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 291b9a210bf5f8cc18ccf8a523e282d3fc85aa28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 840045da33938d4c1cd725fd5a99bf1b8014f6b1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673350"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748461"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Zásady zabezpečení a používání virtuálních počítačů v Azure
 
@@ -53,7 +53,7 @@ Za šifrování virtuálních disků v Azure se neúčtují žádné poplatky. K
 
 Tajné klíče a certifikáty je možné modelovat jako prostředky a poskytované [Key Vault](../key-vault/general/basic-concepts.md). Azure PowerShell můžete použít k vytvoření trezorů klíčů pro [virtuální počítače s Windows](windows/key-vault-setup.md) a Azure CLI pro [virtuální počítače](linux/key-vault-setup.md)se systémem Linux. Můžete také vytvořit klíče pro šifrování.
 
-Zásady přístupu trezoru klíčů udělují samostatně oprávnění klíčům, tajným klíčům a certifikátům. Můžete tak například uživateli udělit přístup pouze ke klíčům, ale žádná oprávnění k tajným klíčům. Nicméně oprávnění pro přístup ke klíčům, tajným klíčům a certifikátům se nastavují na úrovni trezoru. [Zásady přístupu trezoru klíčů](../key-vault/general/secure-your-key-vault.md) nepodporují oprávnění na úrovni objektů.
+Zásady přístupu trezoru klíčů udělují samostatně oprávnění klíčům, tajným klíčům a certifikátům. Můžete tak například uživateli udělit přístup pouze ke klíčům, ale žádná oprávnění k tajným klíčům. Nicméně oprávnění pro přístup ke klíčům, tajným klíčům a certifikátům se nastavují na úrovni trezoru. [Zásady přístupu trezoru klíčů](../key-vault/general/security-overview.md) nepodporují oprávnění na úrovni objektů.
 
 Když se připojíte k virtuálním počítačům, měli byste použít kryptografii s veřejným klíčem k zajištění bezpečnějšího způsobu, jak se k nim přihlašovat. Tento proces zahrnuje použití příkazu Secure Shell (SSH) k ověřování, a ne k uživatelskému jménu a heslu. Hesla jsou zranitelná proti útokům hrubou silou, zejména u virtuálních počítačů s přístupem k Internetu, jako jsou webové servery. Pomocí páru klíčů SSH (Secure Shell) můžete vytvořit [virtuální počítač Linux](linux/mac-create-ssh-keys.md) , který pro ověřování používá klíče SSH. tím se eliminuje nutnost přihlášení k heslům. Klíče SSH můžete použít také k připojení z [virtuálního počítače s Windows](linux/ssh-from-windows.md) k virtuálnímu počítači se systémem Linux.
 

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1d7b6cd6d61be6df66d215613222c12a0f2c9c5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a595d677cf0964083526cb7e2c73471148be0fd4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606704"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778411"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure
 
@@ -34,11 +34,11 @@ V tomto rychlém startu se dozvíte, jak pomocí příkazů rozhraní příkazov
         az account set --subscription <subscription id>
         ```
 
-    - Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat všechna předplatná, použijte příkaz [AZ Account list](/cli/azure/account#az-account-list).
+    - Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat všechna předplatná, použijte příkaz [AZ Account list](/cli/azure/account#az_account_list).
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Vytvoření serveru Azure Database for PostgreSQL
 
-Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) a pak vytvořte server PostgreSQL v této skupině prostředků. Měli byste zadat jedinečný název. Následující příklad vytvoří skupinu prostředků s názvem `myresourcegroup` v umístění `westus`.
+Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create) a pak vytvořte server PostgreSQL v této skupině prostředků. Měli byste zadat jedinečný název. Následující příklad vytvoří skupinu prostředků s názvem `myresourcegroup` v umístění `westus`.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
@@ -62,7 +62,7 @@ sku-name|GP_Gen5_2| Název cenové úrovně a konfigurace výpočtů. V zkrácen
 
 >[!IMPORTANT] 
 >- Výchozí verze PostgreSQL serveru je 9,6. Pokud chcete zobrazit všechny podporované verze, přečtěte si článek [podporované hlavní verze PostgreSQL](./concepts-supported-versions.md).
->- Pokud chcete zobrazit všechny argumenty příkazu **AZ Postgres Server Create** , přečtěte si [Tento referenční dokument](/cli/azure/postgres/server#az-postgres-server-create).
+>- Pokud chcete zobrazit všechny argumenty příkazu **AZ Postgres Server Create** , přečtěte si [Tento referenční dokument](/cli/azure/postgres/server#az_postgres_server_create).
 >- Protokol SSL je ve výchozím nastavení povolen na vašem serveru. Další informace o protokolu SSL najdete v tématu [Konfigurace připojení SSL](./concepts-ssl-connection-security.md).
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurace pravidla brány firewall na úrovni serveru 

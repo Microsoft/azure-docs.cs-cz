@@ -3,12 +3,12 @@ title: Nasazení nabízených oznámení zip pro Azure Functions
 description: K publikování Azure Functions použijte zařízení pro nasazení souboru. zip služby nasazení Kudu.
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb6867d7719f9650acb00f80ac3a933713ce0e23
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96018417"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777646"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Komprimované nasazení pro službu Azure Functions
 
@@ -66,7 +66,7 @@ Soubor. zip si můžete také stáhnout z úložiště GitHub. Když si stáhnet
 
 ## <a name="deploy-by-using-azure-cli"></a><a name="cli"></a>Nasazení s využitím rozhraní příkazového řádku Azure
 
-K aktivaci nasazení nabízených oznámení můžete použít rozhraní příkazového řádku Azure. Pomocí příkazu [AZ functionapp Deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) nasaďte do aplikace Function app soubor. zip. Chcete-li použít tento příkaz, musíte použít Azure CLI verze 2.0.21 nebo novější. Pokud chcete zjistit, jakou verzi rozhraní příkazového řádku Azure používáte, použijte `az --version` příkaz.
+K aktivaci nasazení nabízených oznámení můžete použít rozhraní příkazového řádku Azure. Pomocí příkazu [AZ functionapp Deployment source config-zip](/cli/azure/functionapp/deployment/source#az_functionapp_deployment_source_config_zip) nasaďte do aplikace Function app soubor. zip. Chcete-li použít tento příkaz, musíte použít Azure CLI verze 2.0.21 nebo novější. Pokud chcete zjistit, jakou verzi rozhraní příkazového řádku Azure používáte, použijte `az --version` příkaz.
 
 V následujícím příkazu nahraďte `<zip_file_path>` zástupný symbol cestou k umístění souboru. zip. Nahraďte také `<app_name>` jedinečným názvem vaší aplikace Function App a nahraďte `<resource_group>` názvem vaší skupiny prostředků.
 
@@ -92,6 +92,6 @@ Nasazení souboru zip se integruje s touto funkcí, kterou můžete povolit tak,
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Průběžné nasazování se službou Azure Functions](functions-continuous-deployment.md)
+> [Průběžné nasazování pro Azure Functions](functions-continuous-deployment.md)
 
 [.zip push deployment reference topic]: https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file

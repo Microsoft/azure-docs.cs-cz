@@ -1,6 +1,6 @@
 ---
-title: Selhání spuštění instance role pro Azure Cloud Services (Rozšířená podpora)
-description: Řešení chyb při spuštění instance role pro Azure Cloud Services (Rozšířená podpora)
+title: Chyba při spuštění instance role v Azure Cloud Services (Rozšířená podpora)
+description: Řešení potíží se spuštěním instance role v Azure Cloud Services (Rozšířená podpora).
 ms.topic: article
 ms.service: cloud-services-extended-support
 author: surbhijain
@@ -8,114 +8,138 @@ ms.author: surbhijain
 ms.reviewer: gachadw
 ms.date: 04/01/2021
 ms.custom: ''
-ms.openlocfilehash: ced7675350c0e0deadf77837cf0f13ba54fffab9
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: f4892fe50c1832628181a11a5166c8cb705f79aa
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382351"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748924"
 ---
-# <a name="troubleshoot-azure-cloud-service-extended-support-roles-that-fail-to-start"></a>Řešení potíží s rolemi služby Azure Cloud Service (Rozšířená podpora), které se nedaří spustit
-Tady jsou některé běžné problémy a řešení týkající se rolí Cloud Services (Rozšířená podpora), které se nedaří spustit.
+# <a name="troubleshoot-azure-cloud-services-extended-support-roles-that-fail-to-start"></a>Řešení potíží s rolemi služby Azure Cloud Services (Rozšířená podpora), které se nedaří spustit
 
-## <a name="cloud-service-operation-failed-with-roleinstancestartuptimeouterror"></a>Operace cloudové služby selhala s RoleInstanceStartupTimeoutError
-Jedna nebo víc instancí role vaší služby může (Rozšířená podpora) se ve stanoveném čase nespustí. Je možné, že tyto instance rolí vychází z doby spuštění nebo může být recyklace a instance role může selhat s RoleInstanceStartupTimeoutError se jedná o chybu aplikace role. Aplikace role obsahuje dvě hlavní části: "úlohy po spuštění" a "kód role (implementace RoleEntryPoint)", které by mohly způsobit recyklaci rolí. Pokud dojde k chybě role, agent PaaS ho vždy znovu spustí. 
+Tady jsou některé běžné problémy a řešení týkající se rolí Azure Cloud Services (Rozšířená podpora), které se nedaří spustit.
 
-Pokud chcete získat aktuální stav a podrobnosti instancí rolí v případě chyb, použijte:
+## <a name="cloud-service-operation-fails-with-roleinstancestartuptimeouterror"></a>Operace cloudové služby se nezdařila s RoleInstanceStartupTimeoutError
 
-* PowerShell: pomocí rutiny [Get-AzCloudServiceRoleInstanceView](https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceview) můžete načíst informace o stavu běhu instance role v cloudové službě.
-```powershell
-Get-AzCloudServiceRoleInstanceView -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "WebRole1_IN_0"
- 
-Statuses           PlatformFaultDomain PlatformUpdateDomain
---------           ------------------- --------------------
-{RoleStateStarting} 0                   0
-```
+Jedna nebo více instancí rolí v Azure Cloud Services (Rozšířená podpora) může být pomalé, nebo se můžou recyklovat a instance role se nezdařila. Zobrazí se chyba aplikace role `RoleInstanceStartupTimeoutError` .
 
-* Azure Portal: Přejít na svou cloudovou službu a vybrat kartu role a instance. Kliknutím na instanci role získáte podrobnosti o jeho stavu. 
- 
-   :::image type="content" source="media/role-startup-failure-1.png" alt-text="Image znázorňuje selhání spuštění role na portálu.":::
-   
-Tady jsou některé běžné problémy a řešení týkající se rolí Azure Cloud Services (Rozšířená podpora), které se nedaří spustit nebo se zacykluje mezi inicializací, zaneprázdněním a stavem zastavení.
+Aplikace role obsahuje dvě části, které by mohly způsobit recyklaci rolí: *úlohy po spuštění* a *kód role (implementace RoleEntryPoint)*. 
+
+Pokud se role zastaví, agent platformy jako služby (PaaS) restartuje roli.
+
+Aktuální stav a podrobnosti o instanci role můžete získat pro diagnostiku chyb pomocí prostředí PowerShell nebo Azure Portal:
+
+* **PowerShell**: pomocí rutiny [Get-AzCloudServiceRoleInstanceView](/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceview) získáte informace o stavu modulu runtime instance role:
+
+    ```powershell
+    Get-AzCloudServiceRoleInstanceView -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "WebRole1_IN_0"
+     
+    Statuses           PlatformFaultDomain PlatformUpdateDomain
+    --------           ------------------- --------------------
+    {RoleStateStarting} 0                   0
+    ```
+
+* **Azure Portal**: na portálu přejdete do instance cloudové služby. Chcete-li zobrazit podrobnosti o stavu, vyberte **role a instance** a pak vyberte instanci role.
+
+  :::image type="content" source="media/role-startup-failure-portal.png" alt-text="Snímek obrazovky zobrazující selhání spuštění role ve Azure Portal.":::
 
 ## <a name="missing-dlls-or-dependencies"></a>Chybějící knihovny DLL nebo závislosti
-Nereagující role a role, které se cyklují mezi inicializací, zaneprázdnění a stavy zastavení, mohou být způsobeny chybějícími knihovnami DLL nebo sestaveními.
-Příznaky chybějících knihoven DLL nebo sestavení mohou být:
 
-* Vaše instance role se cykluje prostřednictvím **inicializace**, **zaneprázdnění** a stavu **zastavení** .
-* Vaše instance role byla přesunuta do **připraveného** , ale pokud přejdete na webovou aplikaci, stránka se nezobrazí.
+Nereagující role a role, které se cyklují mezi stavy, mohou být způsobeny chybějícími knihovnami DLL nebo sestaveními.
 
-Existuje několik doporučených metod pro zkoumání těchto problémů.
+Zde jsou některé příznaky příznaků chybějících knihoven DLL nebo sestavení:
 
-## <a name="diagnose-missing-dll-issues-in-a-web-role"></a>Diagnostika chybějících problémů knihoven DLL ve webové roli
-Když přejdete na web, který je nasazený ve webové roli, a v prohlížeči se zobrazí chyba serveru, která je podobná následujícímu, může to znamenat, že chybí knihovna DLL.
+* Vaše instance role cykluje v průběhu **inicializace**, **zaneprázdnění** a **zastavování**.
+* Vaše instance role se přesunula do stavu **připraveno** , ale pokud přejdete do webové aplikace, stránka není viditelná.
 
-:::image type="content" source="media/role-startup-failure-2.png" alt-text="Obrázek ukazuje chybu za běhu při spuštění role.":::
 
-## <a name="diagnose-issues-by-turning-off-custom-errors"></a>Diagnostikujte problémy vypnutím vlastních chyb.
-Další informace o kompletní chybě najdete v části Konfigurace web.config pro webovou roli pro nastavení vlastního režimu chyb na vypnuto a opětovné nasazení služby.
-Zobrazení dalších úplných chyb bez použití funkce Vzdálená plocha:
-1.  Otevřete řešení v Microsoft Visual Studio.
-2.  V Průzkumník řešení vyhledejte soubor web.config a otevřete ho.
-3.  V souboru web.config vyhledejte část System. Web a přidejte následující řádek:
- ```xml
-<customErrors mode="Off" />
-```
-4.  Soubor uložte.
-5.  Znovu zabalit a znovu nasaďte službu.
-Po opětovném nasazení služby se zobrazí chybová zpráva s názvem chybějícího sestavení nebo knihovny DLL.
+Web, který je nasazený ve webové roli a chybějící knihovna DLL, může zobrazit tuto chybu při běhu serveru:
 
-## <a name="diagnose-issues-by-viewing-the-error-remotely"></a>Diagnostika potíží zobrazením chyby vzdáleně
-Pomocí vzdálené plochy můžete získat přístup k roli a vzdáleně zobrazit informace o chybě. K zobrazení chyb pomocí vzdálené plochy použijte následující postup:
-1.  Povolit rozšíření vzdálené plochy pro cloudovou službu (Rozšířená podpora). Další informace najdete v tématu [použití rozšíření vzdálené plochy pro Cloud Services (Rozšířená podpora) pomocí Azure Portal](enable-rdp.md)
-2.  Na Azure Portal, jakmile instance zobrazí stav připraveno, vzdáleně do instance. Další informace o používání vzdálené plochy s Cloud Services (Rozšířená podpora) najdete v tématu [připojení k instancím rolí pomocí vzdálené plochy](https://docs.microsoft.com/azure/cloud-services-extended-support/enable-rdp#connect-to-role-instances-with-remote-desktop-enabled) .
-3.  Přihlaste se k virtuálnímu počítači pomocí přihlašovacích údajů, které jste zadali při konfiguraci vzdálené plochy.
-4.  Otevřete příkazové okno.
-5.  Zadejte příkaz IPconfig.
-6.  Poznamenejte si hodnotu adresy IPv4.
-7.  Otevřete Internet Explorer.
-8.  Zadejte adresu a název webové aplikace. Například http:// <IPV4 Address> /Default.aspx.
-Když přejdete na web, budou se teď vracet explicitní chybové zprávy:
-* Chyba serveru v aplikaci/
-* Popis: při provádění aktuálního webového požadavku došlo k neošetřené výjimce. Přečtěte si prosím trasování zásobníku, kde najdete další informace o chybě a kde vznikly v kódu.
-* Podrobnosti výjimky: System. IO. FIleNotFoundException: nelze načíst soubor nebo sestavení Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35 nebo jedna z jeho závislostí. Systém nemůže najít zadaný soubor.
-Například:
+  :::image type="content" source="media/role-startup-failure-runtime-error.png" alt-text="Snímek obrazovky, který zobrazuje chybu za běhu po selhání spuštění role.":::
 
-  :::image type="content" source="media/role-startup-failure-3.png" alt-text="Image zobrazuje výjimku při spuštění role.":::
+### <a name="resolve-missing-dlls-and-assemblies"></a>Řešení chybějících knihoven DLL a sestavení
+
+Řešení chyb chybějících knihoven DLL a sestavení:
+
+1. V aplikaci Visual Studio otevřete řešení.
+2. V Průzkumník řešení otevřete složku *odkazy* .
+3. Vyberte sestavení identifikované v chybě.
+4. V části **vlastnosti** nastavte vlastnost **Kopírovat místní** na **hodnotu true**.
+5. Znovu nasaďte cloudovou službu.
+
+Po ověření, že se již chyby nezobrazí, službu znovu nasaďte. Při nastavování nasazení nezaškrtnete políčko **Povolit IntelliTrace pro role rozhraní .NET 4** .
+
+## <a name="diagnose-role-instance-errors"></a>Diagnostika chyb instance role
+
+Pokud chcete diagnostikovat problémy s instancemi rolí, vyberte jednu z následujících možností.
+
+### <a name="turn-off-custom-errors"></a>Vypnout vlastní chyby
+
+Chcete-li zobrazit úplné informace o chybách, nastavte v souboru *web.config* pro webovou roli vlastní režim chyb na a `off` poté znovu nasaďte službu:
+
+1. V aplikaci Visual Studio otevřete řešení.
+2. V Průzkumník řešení otevřete *web.config* soubor.
+3. V `system.web` části přidejte následující kód:
+
+   ```xml
+   <customErrors mode="Off" />
+   ```
+
+4. Soubor uložte.
+5. Znovu zabalit a znovu nasaďte službu.
+
+Při opětovném nasazení služby obsahuje chybová zpráva název chybějících sestavení nebo knihoven DLL.
+
+### <a name="use-remote-desktop"></a>Použití Vzdálené plochy
+
+Pro přístup k roli použijte vzdálenou plochu a zobrazte informace o kompletní chybě:
+
+1. [Přidejte rozšíření vzdálené plochy pro Azure Cloud Services (Rozšířená podpora)](enable-rdp.md).
+2. Pokud v Azure Portal instance cloudové služby zobrazuje stav **připraveno** , přihlaste se ke cloudové službě pomocí vzdálené plochy. Další informace najdete v tématu [připojení k instancím rolí pomocí vzdálené plochy](enable-rdp.md#connect-to-role-instances-with-remote-desktop-enabled).
+3. Přihlaste se k virtuálnímu počítači pomocí přihlašovacích údajů, které jste použili k nastavení vzdálené plochy.
+4. Otevřete okno příkazového řádku.
+5. Na příkazovém řádku zadejte příkaz **ipconfig**. Poznamenejte si vrácenou hodnotu pro adresu IPv4.
+6. Otevřete aplikaci Microsoft Internet Explorer.
+7. Do adresního řádku zadejte IPv4 adresu následovaný lomítkem a názvem výchozího souboru webové aplikace. Například, `http://<IPv4 address>/default.aspx`.
+
+Pokud teď na webu přejdete, zobrazí se chybové zprávy, které obsahují další informace. Tady je příklad:
+
+:::image type="content" source="media/role-startup-failure-error-message.png" alt-text="Snímek obrazovky, který ukazuje příklad chybové zprávy.":::
   
-## <a name="diagnose-issues-by-using-the-compute-emulator"></a>Diagnostika problémů pomocí emulátoru COMPUTE
-Emulátor služby COMPUTE Azure můžete použít k diagnostice a řešení potíží s chybějícími závislostmi a web.configmi chybami.
-Pro dosažení nejlepších výsledků použití této metody diagnostiky byste měli použít počítač nebo virtuální počítač, který má čistou instalaci systému Windows. 
-1.  Instalace [sady Azure SDK](https://azure.microsoft.com/downloads/) 
-2.  Na vývojovém počítači Sestavte projekt cloudové služby.
-3.  V Průzkumníku Windows přejděte do složky bin\Debug projektu cloudové služby.
-4.  Zkopírujte složku. csx a soubor. cscfg do počítače, který používáte k ladění problémů.
-5.  Na čistém počítači otevřete okno příkazového řádku sady Azure SDK a zadejte csrun.exe/devstore: Start.
-6.  Na příkazovém řádku zadejte příkaz run csrun <cesta do složky. csx> <cesta k souboru. cscfg>/launchBrowser.
-7.  Po spuštění role se v Internet Exploreru zobrazí podrobné informace o chybě. K dalšímu diagnostikování problému můžete také použít standardní nástroje pro řešení potíží se systémem Windows.
+### <a name="use-the-compute-emulator"></a>Použití emulátoru COMPUTE
 
-## <a name="diagnose-issues-by-using-intellitrace"></a>Diagnostika problémů pomocí IntelliTrace
-U pracovních procesů a webových rolí, které používají .NET Framework 4, můžete použít [IntelliTrace](https://docs.microsoft.com/visualstudio/debugger/intellitrace), který je k dispozici v Microsoft Visual Studio Enterprise.
-Pomocí těchto kroků nasaďte službu s povoleným IntelliTrace:
-1.  Potvrďte, že je nainstalovaná sada Azure SDK 1,3 nebo novější.
-2.  Nasaďte řešení pomocí sady Visual Studio. Během nasazování zaškrtněte políčko Povolit IntelliTrace pro role .NET 4.
-3.  Po spuštění instance otevřete Průzkumník serveru.
-4.  Rozbalte uzel služby Azure\Cloud Services a vyhledejte nasazení.
-5.  Rozbalte nasazení, dokud neuvidíte instance role. Klikněte pravým tlačítkem na jednu z těchto instancí.
-6.  Vyberte možnost Zobrazit protokoly IntelliTrace. Otevře se souhrn IntelliTrace.
-7.  Vyhledejte část s výjimkami v části Souhrn. Pokud existují výjimky, oddíl bude označovat data výjimky.
-8.  Rozbalte data výjimky a vyhledejte chyby System. IO. FileNotFoundException podobné následujícímu:
+Emulátor služby COMPUTE Azure můžete použít k diagnostice a řešení potíží s chybějícími závislostmi a *web.configmi* chybami. Když použijete tuto metodu k diagnostice problémů, pro dosažení nejlepších výsledků použijte počítač nebo virtuální počítač, který má čistou instalaci systému Windows.
 
-    :::image type="content" source="media/role-startup-failure-4.png" alt-text="Při spuštění role se v imagi zobrazuje data výjimky." lightbox="media/role-startup-failure-4.png":::
+Diagnostikujte problémy pomocí emulátoru služby COMPUTE Azure:
 
-## <a name="address-missing-dlls-and-assemblies"></a>Adresa chybějících knihoven DLL a sestavení
-Chcete-li vyřešit chybějící DLL a chyby sestavení, postupujte podle následujících kroků:
-1.  Otevřete řešení v sadě Visual Studio.
-2.  V Průzkumník řešení otevřete složku odkazy.
-3.  Klikněte na sestavení identifikované v chybě.
-4.  V podokně vlastnosti Najděte položku Kopírovat místní vlastnost a nastavte hodnotu na true.
-5.  Znovu nasaďte cloudovou službu.
-Jakmile ověříte, že byly všechny chyby opraveny, můžete službu nasadit bez zaškrtnutí políčka Povolit IntelliTrace pro role .NET 4.
+1. Nainstalujte [sadu Azure SDK](https://azure.microsoft.com/downloads/).
+2. Na vývojovém počítači Sestavte projekt cloudové služby.
+3. V Průzkumníkovi souborů v projektu cloudové služby otevřete složku *bin\Debug* .
+4. Zkopírujte složku *. csx* a soubor *. cscfg* do počítače, který používáte k ladění problémů.
+5. Na čistém počítači otevřete okno příkazového řádku sady Azure SDK.
+6. Do příkazového řádku zadejte **csrun.exe/devstore: Start**.
+7. Pak zadejte **Run csrun \<path to .csx folder\> \<path to .cscfg file\> /launchBrowser**.
+8. Po spuštění role zobrazí Internet Explorer podrobné informace o chybě.
 
-## <a name="next-steps"></a>Další kroky 
-- Informace o řešení potíží s rolemi cloudové služby pomocí dat diagnostiky počítačů Azure PaaS najdete v tématu [série blogů v Kevin Williamson](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
+Pokud potřebujete další diagnostiku, můžete použít standardní nástroje pro odstraňování potíží se systémem Windows.
+
+### <a name="use-intellitrace"></a>Použití IntelliTrace
+
+U pracovních procesů a webových rolí, které používají .NET Framework 4, můžete použít [IntelliTrace](/visualstudio/debugger/intellitrace). IntelliTrace je k dispozici v Visual Studio Enterprise.
+
+Nasazení cloudové služby pomocí IntelliTrace zapnutého:
+
+1. Potvrďte, že je nainstalovaná sada Azure SDK 1,3 nebo novější.
+2. V aplikaci Visual Studio nasaďte řešení. Při nastavování nasazení zaškrtněte políčko **Povolit IntelliTrace pro role rozhraní .NET 4** .
+3. Po spuštění instance role otevřete Průzkumník serveru.
+4. Rozbalte uzel **služby Azure\Cloud Services** .
+5. Rozšířením nasazení rozbalte seznam instancí rolí. Klikněte pravým tlačítkem na instanci role.
+6. Vyberte **Zobrazit protokoly IntelliTrace**.
+7. V **souhrnu IntelliTrace** otevřete  **data výjimky**.
+8. Rozbalte **data výjimky** a vyhledejte `System.IO.FileNotFoundException` chybu:
+
+   :::image type="content" source="media/role-startup-failure-exception-data.png" alt-text="Snímek dat výjimky pro chybu spuštění role" lightbox="media/role-startup-failure-exception-data.png":::
+
+## <a name="next-steps"></a>Další kroky
+
+- Naučte se [řešit potíže s rolemi cloudové služby pomocí dat diagnostiky počítačů Azure PaaS](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

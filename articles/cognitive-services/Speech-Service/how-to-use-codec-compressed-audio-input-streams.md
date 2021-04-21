@@ -12,16 +12,16 @@ ms.date: 03/30/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: f02a9a3b493ed0f3068e6e0ccd2daa40850a4fb6
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: db902019b4fb1237c8403c719862d8fca4ba4f28
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726173"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772518"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Použití komprimovaného zvukového vstupu kodeku se sadou Speech SDK
 
-Sada Speech Service SDK poskytuje způsob, jak přímo odeslat komprimované zvukové formáty do služby pro rozpoznávání řeči pomocí `PullStream` nebo `PushStream` (ani přes streamy přímo na back-end, nezpracovaných PCM se do služby pošle).
+Sada Speech Service SDK může přijímat komprimované zvukové formáty. Decoompresses zvuk před tím, než ho pošle do služby pro rozpoznávání řeči, jako nezpracovaný PCM.
 
 Platforma | Jazyky | Podporovaná verze GStreamer
 | :--- | ---: | :---:

@@ -4,12 +4,12 @@ description: Popisuje řešení běžných chyb při nasazení prostředků do A
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 01/20/2021
-ms.openlocfilehash: 40e6317a1d879704ef00e928a971ae08fc9e0f72
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 07c197f1b54522b96a3bfa2d6a5ce7b368be3b35
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564343"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789172"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení běžných problémů s nasazením v Azure při použití Azure Resource Manageru
 
@@ -68,7 +68,7 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 | RequestDisallowedByPolicy | Vaše předplatné zahrnuje zásadu prostředků, která brání akci, kterou se pokoušíte provést během nasazování. Vyhledejte zásadu, která zablokuje akci. Pokud je to možné, změňte nasazení tak, aby splňovalo omezení ze zásad. | [Řešení zásad](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | Zadejte název prostředku, který neobsahuje rezervovaný název. | [Názvy rezervovaných prostředků](error-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Počkejte na dokončení odstranění. | |
-| ResourceGroupNotFound | Ověřte název cílové skupiny prostředků pro nasazení. Cílová skupina prostředků už musí existovat ve vašem předplatném. Ověřte svůj kontext předplatného. | [Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/Az.Accounts/Set-AzContext) |
+| ResourceGroupNotFound | Ověřte název cílové skupiny prostředků pro nasazení. Cílová skupina prostředků už musí existovat ve vašem předplatném. Ověřte svůj kontext předplatného. | [Azure CLI](/cli/azure/account?#az_account_set) [PowerShell](/powershell/module/Az.Accounts/Set-AzContext) |
 | ResourceNotFound | Vaše nasazení odkazuje na prostředek, který nelze přeložit. Ověřte, že vaše použití **referenční** funkce zahrnuje parametry požadované pro váš scénář. | [Vyřešit odkazy](error-not-found.md) |
 | ResourceQuotaExceeded | Nasazení se snaží vytvořit prostředky, které překračují kvótu pro předplatné, skupinu prostředků nebo oblast. Pokud je to možné, upravte infrastrukturu tak, aby zůstala v rámci kvót. V opačném případě zvažte, že se bude vyžadovat změna vašich kvót. | [Řešení kvót](error-resource-quota.md) |
 | SkuNotAvailable | Vyberte položku SKU (například velikost virtuálního počítače), která je k dispozici pro vybrané umístění. | [Vyřešit SKU](error-sku-not-available.md) |

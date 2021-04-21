@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: 1c7a9fd83131ea6282d2ef4860b744fa348153ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7950bfb4a57db812da87f4e5f76f3075d50a8293
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98070911"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782263"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce v Linuxu s využitím vlastního kontejneru
 
@@ -360,13 +360,13 @@ Pokud chcete kód funkce nasadit do Azure, musíte vytvořit tři prostředky:
 
 K vytvoření těchto položek použijete příkazy rozhraní příkazového řádku Azure. Každý příkaz poskytuje výstup JSON po dokončení.
 
-1. Přihlaste se k Azure pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) :
+1. Přihlaste se k Azure pomocí příkazu [AZ Login](/cli/azure/reference-index#az_login) :
 
     ```azurecli
     az login
     ```
     
-1. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků s názvem `AzureFunctionsContainers-rg` v `westeurope` oblasti. (Obecně vytvoříte skupinu prostředků a prostředky v oblasti blízko vás pomocí dostupné oblasti z `az account list-locations` příkazu.)
+1. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků s názvem `AzureFunctionsContainers-rg` v `westeurope` oblasti. (Obecně vytvoříte skupinu prostředků a prostředky v oblasti blízko vás pomocí dostupné oblasti z `az account list-locations` příkazu.)
 
     ```azurecli
     az group create --name AzureFunctionsContainers-rg --location westeurope
@@ -375,7 +375,7 @@ K vytvoření těchto položek použijete příkazy rozhraní příkazového ř�
     > [!NOTE]
     > Nemůžete hostovat aplikace pro Linux a Windows ve stejné skupině prostředků. Pokud máte existující skupinu prostředků s názvem `AzureFunctionsContainers-rg` aplikace funkcí Windows nebo webové aplikace, musíte použít jinou skupinu prostředků.
     
-1. Pomocí příkazu [AZ Storage Account Create](/cli/azure/storage/account#az-storage-account-create) vytvořte účet úložiště pro obecné účely ve vaší skupině prostředků a oblasti. V následujícím příkladu nahraďte `<storage_name>` globálně jedinečným názvem vhodným pro vás. Názvy musí obsahovat tři až 24 znaků a jenom malá písmena. `Standard_LRS` Určuje typický účet pro obecné účely.
+1. Pomocí příkazu [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create) vytvořte účet úložiště pro obecné účely ve vaší skupině prostředků a oblasti. V následujícím příkladu nahraďte `<storage_name>` globálně jedinečným názvem vhodným pro vás. Názvy musí obsahovat tři až 24 znaků a jenom malá písmena. `Standard_LRS` Určuje typický účet pro obecné účely.
 
     ```azurecli
     az storage account create --name <storage_name> --location westeurope --resource-group AzureFunctionsContainers-rg --sku Standard_LRS
@@ -397,7 +397,7 @@ K vytvoření těchto položek použijete příkazy rozhraní příkazového ř�
 
 Aplikace Function App v Azure spravuje spouštění vašich funkcí v plánu hostování. V této části použijete prostředky Azure z předchozí části k vytvoření aplikace Function App z image v Docker Hub a nakonfigurujete ji pomocí připojovacího řetězce, který Azure Storage.
 
-1. Pomocí příkazu [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) vytvořte aplikaci Functions. V následujícím příkladu nahraďte `<storage_name>` názvem, který jste použili v předchozí části pro účet úložiště. Nahraďte také `<app_name>` globálně jedinečným názvem vhodným pro vás a `<docker_id>` s ID Docker.
+1. Pomocí příkazu [AZ functionapp Create](/cli/azure/functionapp#az_functionapp_create) vytvořte aplikaci Functions. V následujícím příkladu nahraďte `<storage_name>` názvem, který jste použili v předchozí části pro účet úložiště. Nahraďte také `<app_name>` globálně jedinečným názvem vhodným pro vás a `<docker_id>` s ID Docker.
 
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
     ```azurecli
@@ -410,7 +410,7 @@ Aplikace Function App v Azure spravuje spouštění vašich funkcí v plánu hos
     ```
     ::: zone-end
     
-    Parametr *Deployment-Container-image-Name* určuje obrázek, který má být použit pro aplikaci Function App. K zobrazení informací o imagi používané pro nasazení můžete použít příkaz [AZ functionapp config Container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) . K nasazení z jiné image můžete použít taky příkaz [AZ functionapp config Container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) .
+    Parametr *Deployment-Container-image-Name* určuje obrázek, který má být použit pro aplikaci Function App. K zobrazení informací o imagi používané pro nasazení můžete použít příkaz [AZ functionapp config Container show](/cli/azure/functionapp/config/container#az_functionapp_config_container_show) . K nasazení z jiné image můžete použít taky příkaz [AZ functionapp config Container set](/cli/azure/functionapp/config/container#az_functionapp_config_container_set) .
 
 1. Zobrazte připojovací řetězec pro účet úložiště, který jste vytvořili pomocí příkazu [AZ Storage Account show-Connection-String](/cli/azure/storage/account) . Nahraďte `<storage-name>` názvem účtu úložiště, který jste vytvořili výše:
 
@@ -418,7 +418,7 @@ Aplikace Function App v Azure spravuje spouštění vašich funkcí v plánu hos
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
     ```
     
-1. Pomocí příkazu [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) přidejte toto nastavení do aplikace Function App. V následujícím příkazu nahraďte `<app_name>` názvem aplikace Function App a nahraďte `<connection_string>` připojovacím řetězcem z předchozího kroku (řetězec s dlouhým zakódovaným řetězcem začínající "DefaultEndpointProtocol ="):
+1. Pomocí příkazu [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_ppsettings_set) přidejte toto nastavení do aplikace Function App. V následujícím příkazu nahraďte `<app_name>` názvem aplikace Function App a nahraďte `<connection_string>` připojovacím řetězcem z předchozího kroku (řetězec s dlouhým zakódovaným řetězcem začínající "DefaultEndpointProtocol ="):
  
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
@@ -513,13 +513,13 @@ S imagí nasazenými do aplikace Function App v Azure teď můžete funkci vyvol
 
 Můžete povolit, aby Azure Functions automaticky aktualizovala nasazení image vždy, když aktualizujete image v registru.
 
-1. Umožněte průběžné nasazování pomocí příkazu [AZ functionapp Deployment Container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) a nahraďte `<app_name>` názvem vaší aplikace Function App:
+1. Umožněte průběžné nasazování pomocí příkazu [AZ functionapp Deployment Container config](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_config) a nahraďte `<app_name>` názvem vaší aplikace Function App:
 
     ```azurecli
     az functionapp deployment container config --enable-cd --query CI_CD_URL --output tsv --name <app_name> --resource-group AzureFunctionsContainers-rg
     ```
     
-    Tento příkaz umožňuje průběžné nasazování a vrací adresu URL Webhooku nasazení. (Tuto adresu URL můžete v pozdější době načíst pomocí příkazu [AZ functionapp Deployment Container show-CD-URL](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) .)
+    Tento příkaz umožňuje průběžné nasazování a vrací adresu URL Webhooku nasazení. (Tuto adresu URL můžete v pozdější době načíst pomocí příkazu [AZ functionapp Deployment Container show-CD-URL](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_show_cd_url) .)
 
 1. Zkopírujte adresu URL Webhooku nasazení do schránky.
 

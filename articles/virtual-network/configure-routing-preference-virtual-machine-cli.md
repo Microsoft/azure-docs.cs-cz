@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ad8f2d150c3cf17c4b24c6dc92188be9017dcfa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9155c3114d5a5a1b8729351dc189bc1e5c22369
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666001"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764472"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>Konfigurace předvolby směrování pro virtuální počítač pomocí Azure CLI
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak vytvořit virtuální počítač s veřejnou I
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazu a přihlaste se k Azure pomocí `az login` .
-2. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků v Východní USA oblasti Azure:
+2. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků v Východní USA oblasti Azure:
 
     ```azurecli
     az group create --name myResourceGroup --location eastus
@@ -54,7 +54,7 @@ Než nasadíte virtuální počítač, musíte vytvořit podpůrné síťové pr
 
 ### <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-Vytvořte skupinu zabezpečení sítě pro pravidla, která budou řídit příchozí a odchozí komunikaci ve vaší virtuální síti pomocí [AZ Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create) .
+Vytvořte skupinu zabezpečení sítě pro pravidla, která budou řídit příchozí a odchozí komunikaci ve vaší virtuální síti pomocí [AZ Network NSG Create](/cli/azure/network/nsg#az_network_nsg_create) .
 
 ```azurecli
 az network nsg create \
@@ -65,7 +65,7 @@ az network nsg create \
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Vytvořte virtuální síť pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). Následující příklad vytvoří virtuální síť s názvem *myVNET* s podsítěmi *mySubNet*:
+Vytvořte virtuální síť pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create). Následující příklad vytvoří virtuální síť s názvem *myVNET* s podsítěmi *mySubNet*:
 
 ```azurecli
 # Create a virtual network
@@ -85,7 +85,7 @@ az network vnet subnet create \
 
 ### <a name="create-a-nic"></a>Vytvoření síťové karty
 
-Vytvořte virtuální síťovou kartu pro virtuální počítač pomocí [AZ Network nic Create](/cli/azure/network/nic#az-network-nic-create). Následující příklad vytvoří virtuální síťovou kartu, která bude připojena k virtuálnímu počítači.
+Vytvořte virtuální síťovou kartu pro virtuální počítač pomocí [AZ Network nic Create](/cli/azure/network/nic#az_network_nic_create). Následující příklad vytvoří virtuální síťovou kartu, která bude připojena k virtuálnímu počítači.
 
 ```azurecli-interactive
 # Create a NIC
@@ -101,7 +101,7 @@ az network nic create \
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create). Následující příklad vytvoří virtuální počítač s Windows serverem 2019 a požadované součásti virtuální sítě, pokud ještě neexistují.
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač s Windows serverem 2019 a požadované součásti virtuální sítě, pokud ještě neexistují.
 
 ```azurecli
 az vm create \
@@ -115,7 +115,7 @@ az vm create \
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít příkaz [az group delete](/cli/azure/group#az-group-delete):
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít příkaz [az group delete](/cli/azure/group#az_group_delete):
 
 ```azurecli
 az group delete --name myResourceGroup --yes
