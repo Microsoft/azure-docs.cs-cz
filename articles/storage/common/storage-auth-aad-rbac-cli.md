@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c42061520b73966f2cd516716039d78c2b9cbeb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93d9a81ab75efe4ea38189a7280e041e545a2b7d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375982"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785320"
 ---
 # <a name="use-azure-cli-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Přiřazení role Azure pro přístup k datům objektů BLOB a front pomocí Azure CLI
 
@@ -36,7 +36,7 @@ Tento článek popisuje, jak pomocí Azure CLI vypsat předdefinované role Azur
 
 ## <a name="list-available-azure-roles"></a>Výpis dostupných rolí Azure
 
-Pokud chcete zobrazit seznam dostupných předdefinovaných rolí Azure pomocí Azure CLI, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list) :
+Pokud chcete zobrazit seznam dostupných předdefinovaných rolí Azure pomocí Azure CLI, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az_role_definition_list) :
 
 ```azurecli-interactive
 az role definition list --out table
@@ -56,7 +56,7 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 ## <a name="assign-an-azure-role-to-a-security-principal"></a>Přiřazení role Azure k objektu zabezpečení
 
-Pokud chcete k objektu zabezpečení přiřadit roli Azure, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create) . Formát příkazu se může lišit v závislosti na rozsahu přiřazení. Následující příklady ukazují, jak přiřadit roli uživateli v různých oborech, ale můžete použít stejný příkaz k přiřazení role k libovolnému objektu zabezpečení.
+Pokud chcete k objektu zabezpečení přiřadit roli Azure, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az_role_assignment_create) . Formát příkazu se může lišit v závislosti na rozsahu přiřazení. Následující příklady ukazují, jak přiřadit roli uživateli v různých oborech, ale můžete použít stejný příkaz k přiřazení role k libovolnému objektu zabezpečení.
 
 > [!IMPORTANT]
 > Když vytvoříte účet Azure Storage, nebudete automaticky přiřazovat oprávnění pro přístup k datům prostřednictvím služby Azure AD. Pro přístup k datům musíte explicitně přiřadit roli Azure RBAC. Můžete ji přiřadit na úrovni předplatného, skupiny prostředků, účtu úložiště nebo kontejneru nebo fronty.

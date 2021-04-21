@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 39fe4e77d701f8e9311ea343c88eb3b905496680
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 97dfc2db837f728b8cb4ece9a064f99006c9996b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749235"
+ms.locfileid: "107767812"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Nejčastější dotazy k importu Azure Key Vault certifikátů
 
@@ -42,7 +42,7 @@ Ne, nemůžete provádět operace s certifikáty pomocí šablony Azure Resource
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Když naimportujem certifikát přes Azure Portal, zobrazí se chyba "něco se pokazilo". Jak se dá prozkoumat?
      
-Pokud chcete zobrazit výstižnější chybu, importujte soubor certifikátu pomocí [Azure CLI](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) nebo [PowerShellu](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate).
+Pokud chcete zobrazit výstižnější chybu, importujte soubor certifikátu pomocí [Azure CLI](/cli/azure/keyvault/certificate#az_keyvault_certificate_import) nebo [PowerShellu](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate).
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>Jak můžu vyřešit typ chyby: přístup byl odepřen nebo uživatel nemá oprávnění k importu certifikátu?
     

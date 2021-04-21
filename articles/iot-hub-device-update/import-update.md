@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ecbc76651f09a9b4f2bde01c733cace5037f5fd4
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: ebfeee2828b3a36f9cf47891f8aea6d889db85bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738823"
+ms.locfileid: "107763572"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>Přidat aktualizaci do aktualizace zařízení pro IoT Hub
 Přečtěte si, jak přidat novou aktualizaci do aktualizace zařízení pro IoT Hub.
@@ -19,7 +19,7 @@ Přečtěte si, jak přidat novou aktualizaci do aktualizace zařízení pro IoT
 ## <a name="prerequisites"></a>Požadavky
 
 * [Pro IoT Hub povolený přístup k IoT Hub s aktualizací zařízení](create-device-update-account.md). 
-* Zařízení IoT (nebo simulátor) zřízené pro aktualizaci zařízení v IoT Hub.
+* Zařízení IoT (nebo simulátor) [zřízené pro aktualizaci zařízení](device-update-agent-provisioning.md) v IoT Hub.
 * [PowerShell 5](/powershell/scripting/install/installing-powershell) nebo novější (zahrnuje instalace pro Linux, MacOS a Windows)
 * Podporované prohlížeče:
   * [Microsoft Edge](https://www.microsoft.com/edge)
@@ -30,7 +30,7 @@ Přečtěte si, jak přidat novou aktualizaci do aktualizace zařízení pro IoT
 
 ## <a name="obtain-an-update-for-your-devices"></a>Získání aktualizace pro vaše zařízení
 
-Teď, když je aktualizace zařízení [nastavená](create-device-update-account.md), jste připraveni aktualizovat svoje zařízení. Dále budete potřebovat vlastní soubory aktualizací, které budete do těchto zařízení nasazovat.
+Teď, když jste nastavili aktualizace zařízení a zřídili vaše zařízení, budete potřebovat aktualizační soubory, které budete do těchto zařízení nasazovat.
 
 Pokud jste si koupili zařízení od integrátoru OEM nebo některého z integrátoru řešení, bude tato organizace pravděpodobně poskytovat soubory aktualizace za vás, aniž byste museli vytvářet aktualizace. Pokud chcete zjistit, jak jsou aktualizace k dispozici, obraťte se na integrátora OEM nebo řešení.
 

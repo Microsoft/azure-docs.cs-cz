@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 02de8ea5dd5c53192d2b8c7beba8bc36143beac6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8859293b4853cbfa8c3b3dd0e7d1bfe4f75fc40
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99626990"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766164"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
 
@@ -80,7 +80,7 @@ Každá dimenze odpovídá různým komponentám [modelu Service Fabric aplikace
 
 ### <a name="azure-monitor-cli"></a>Azure Monitor CLI
 
-Úplný seznam příkazů je k dispozici v [dokumentaci Azure monitor CLI](/cli/azure/monitor/metrics#az-monitor-metrics-list) , ale obsahujeme několik užitečných příkladů. 
+Úplný seznam příkazů je k dispozici v [dokumentaci Azure monitor CLI](/cli/azure/monitor/metrics#az_monitor_metrics_list) , ale obsahujeme několik užitečných příkladů. 
 
 V každém příkladu ID prostředku následuje tento model.
 
@@ -124,4 +124,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o službě Service Fabric Mesh najdete v článku s [přehledem služby Service Fabric Mesh](service-fabric-mesh-overview.md).
-* Další informace o příkazech Azure Monitor metrik naleznete v dokumentaci k rozhraní příkazového [řádku Azure monitor CLI](/cli/azure/monitor/metrics#az-monitor-metrics-list).
+* Další informace o příkazech Azure Monitor metrik naleznete v dokumentaci k rozhraní příkazového [řádku Azure monitor CLI](/cli/azure/monitor/metrics#az_monitor_metrics_list).

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 0bea4fbac062b498dabe04e6e58d530d09b16d6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2cd885d886a0f13783e61a04c7243efdf12967e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553098"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784978"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Kopírování obrázku z jiné galerie pomocí Azure CLI
 
@@ -36,13 +36,13 @@ Při práci s tímto článkem nahraďte názvy prostředků tam, kde je to pot�
 
 Z definice zdrojového obrázku budete potřebovat informace, abyste si mohli vytvořit jeho kopii v nové galerii.
 
-Seznam informací o dostupných galeriích imagí pomocí [AZ SIG list](/cli/azure/sig#az-sig-list) , kde najdete informace o zdrojové galerii.
+Seznam informací o dostupných galeriích imagí pomocí [AZ SIG list](/cli/azure/sig#az_sig_list) , kde najdete informace o zdrojové galerii.
 
 ```azurecli-interactive 
 az sig list -o table
 ```
 
-Seznamte se s definicemi obrázků v galerii pomocí [AZ SIG image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list). V tomto příkladu hledáme definice obrázků v galerii s názvem *myGallery* ve skupině prostředků *myGalleryRG* .
+Seznamte se s definicemi obrázků v galerii pomocí [AZ SIG image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list). V tomto příkladu hledáme definice obrázků v galerii s názvem *myGallery* ve skupině prostředků *myGalleryRG* .
 
 ```azurecli-interactive 
 az sig image-definition list \
@@ -51,7 +51,7 @@ az sig image-definition list \
    -o table
 ```
 
-Vypíšete verze obrázku v galerii a pomocí [seznamu AZ SIG Image-Version](/cli/azure/sig/image-version#az-sig-image-version-list) vyhledáte verzi image, kterou chcete zkopírovat do nové galerie. V tomto příkladu hledáme všechny verze imagí, které jsou součástí definice image *myImageDefinition* .
+Vypíšete verze obrázku v galerii a pomocí [seznamu AZ SIG Image-Version](/cli/azure/sig/image-version#az_sig_image_version_list) vyhledáte verzi image, kterou chcete zkopírovat do nové galerie. V tomto příkladu hledáme všechny verze imagí, které jsou součástí definice image *myImageDefinition* .
 
 ```azurecli-interactive
 az sig image-version list \
@@ -61,7 +61,7 @@ az sig image-version list \
    -o table
 ```
 
-Jakmile budete mít všechny potřebné informace, můžete získat ID verze zdrojového obrázku pomocí [AZ SIG Image-Version show](/cli/azure/sig/image-version#az-sig-image-version-show).
+Jakmile budete mít všechny potřebné informace, můžete získat ID verze zdrojového obrázku pomocí [AZ SIG Image-Version show](/cli/azure/sig/image-version#az_sig_image_version_show).
 
 ```azurecli-interactive
 az sig image-version show \
@@ -75,7 +75,7 @@ az sig image-version show \
 
 ## <a name="create-the-image-definition"></a>Vytvoření definice image 
 
-Musíte vytvořit definici image, která odpovídá definici image verze vašeho zdrojového obrázku. V nové galerii můžete zobrazit všechny informace, které potřebujete k opětovnému vytvoření definice image, pomocí [AZ SIG image-definition show](/cli/azure/sig/image-definition#az-sig-image-definition-show).
+Musíte vytvořit definici image, která odpovídá definici image verze vašeho zdrojového obrázku. V nové galerii můžete zobrazit všechny informace, které potřebujete k opětovnému vytvoření definice image, pomocí [AZ SIG image-definition show](/cli/azure/sig/image-definition#az_sig_image_definition_show).
 
 ```azurecli-interactive
 az sig image-definition show \
@@ -133,7 +133,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>Vytvoření verze image
 
-Vytvořte verze pomocí [AZ Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az-sig-image-version-create). Abyste mohli použít jako základ pro vytvoření verze image, budete muset předat ID spravované image. Pomocí [AZ image list](/cli/azure/image?view#az-image-list) můžete získat informace o imagích, které jsou ve skupině prostředků. 
+Vytvořte verze pomocí [AZ Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az_sig_image_version_create). Abyste mohli použít jako základ pro vytvoření verze image, budete muset předat ID spravované image. Pomocí [AZ image list](/cli/azure/image?view#az_image_list) můžete získat informace o imagích, které jsou ve skupině prostředků. 
 
 Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32 celé číslo. Formát: *MajorVersion*. *Podverze.* *Oprava*.
 
