@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 1373e0eeead805dcd3a439878c9737c46d75bf3b
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 8664f9327af37345c7104c65b2521212669ae806
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078498"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786320"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Řešení potíží se stavem back-endu ve službě Application Gateway
 ==================================================
@@ -24,7 +24,7 @@ Ve výchozím nastavení služba Azure Application Gateway PROBE back-end server
 
 ### <a name="how-to-check-backend-health"></a>Postup kontroly stavu back-endu
 
-Pokud chcete zjistit stav back-endu, můžete na Azure Portal použít stránku **stavu back-endu** . Nebo můžete použít [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth), [CLI](/cli/azure/network/application-gateway#az-network-application-gateway-show-backend-health)nebo [REST API](/rest/api/application-gateway/applicationgateways/backendhealth).
+Pokud chcete zjistit stav back-endu, můžete na Azure Portal použít stránku **stavu back-endu** . Nebo můžete použít [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth), [CLI](/cli/azure/network/application-gateway#az_network_application_gateway_show_backend_health)nebo [REST API](/rest/api/application-gateway/applicationgateways/backendhealth).
 
 Stav načtený některou z těchto metod může být kterýkoli z následujících:
 

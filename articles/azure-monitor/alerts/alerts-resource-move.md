@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 02/14/2021
-ms.openlocfilehash: 727196f274db3abae75a38d3ecdf31a78dec0fab
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: d21ee7a60d11a154737c5380ec20d3e9c4490962
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725939"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786058"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Jak aktualizovat pravidla upozornění nebo pravidla akcí, když se jejich cílový prostředek přesune do jiné oblasti Azure
 
@@ -104,8 +104,8 @@ Pokud se přesunuly **jenom některé** prostředky v oboru, je potřeba odebrat
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Změna rozsahu pravidla pomocí Azure CLI
 
-1.  Získá stávající pravidlo ([výstrahy metrik](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-show), [výstrahy protokolu aktivit](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
-2.  Přímo aktualizovat rozsah pravidla ([výstrahy metrik](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [výstrahy protokolu aktivit](/cli/azure/monitor/activity-log/alert/scope))
+1.  Získá stávající pravidlo ([výstrahy metrik](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_show), [výstrahy protokolu aktivit](/cli/azure/monitor/activity-log/alert#az_monitor_activity_log-alert_list)).
+2.  Přímo aktualizovat rozsah pravidla ([výstrahy metrik](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_update), [výstrahy protokolu aktivit](/cli/azure/monitor/activity-log/alert/scope))
 3.  V případě potřeby ho rozdělte do dvou pravidel (v některých případech upozornění na metriky, jak je uvedeno výše).
 
 ## <a name="next-steps"></a>Další kroky

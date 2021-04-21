@@ -3,12 +3,12 @@ title: Možnosti ověřování v registru
 description: Možnosti ověřování privátního služby Azure Container Registry, včetně přihlašování pomocí Azure Active Directory identity, pomocí instančních objektů a použití volitelných přihlašovacích údajů správce.
 ms.topic: article
 ms.date: 03/15/2021
-ms.openlocfilehash: d12895502ecd30991fbef836903a8ceea445b770
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 7ff55d569e2659262ce9f323e4db2ea7ed671d20
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285497"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784276"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Ověřování pomocí služby Azure Container Registry
 
@@ -31,7 +31,7 @@ Následující tabulka obsahuje seznam dostupných metod ověřování a typick�
 
 ## <a name="individual-login-with-azure-ad"></a>Individuální přihlášení pomocí Azure AD
 
-Při přímém práci s registrem, jako je například navýšení a vkládání imagí z vývojové pracovní stanice do registru, který jste vytvořili, můžete ověřit pomocí konkrétní identity Azure. Přihlaste se k [Azure CLI](/cli/azure/install-azure-cli) pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login)a potom spusťte příkaz [AZ ACR Login](/cli/azure/acr#az-acr-login) :
+Při přímém práci s registrem, jako je například navýšení a vkládání imagí z vývojové pracovní stanice do registru, který jste vytvořili, můžete ověřit pomocí konkrétní identity Azure. Přihlaste se k [Azure CLI](/cli/azure/install-azure-cli) pomocí příkazu [AZ Login](/cli/azure/reference-index#az_login)a potom spusťte příkaz [AZ ACR Login](/cli/azure/acr#az_acr_login) :
 
 ```azurecli
 az login
@@ -111,7 +111,7 @@ docker login myregistry.azurecr.io
 
 Doporučené postupy pro správu přihlašovacích údajů najdete v tématu Reference k příkazům [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) .
 
-Pokud chcete povolit uživatele s oprávněními správce pro existující registr, můžete použít `--admin-enabled` parametr příkazu [AZ ACR Update](/cli/azure/acr#az-acr-update) v rozhraní příkazového řádku Azure CLI:
+Pokud chcete povolit uživatele s oprávněními správce pro existující registr, můžete použít `--admin-enabled` parametr příkazu [AZ ACR Update](/cli/azure/acr#az_acr_update) v rozhraní příkazového řádku Azure CLI:
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

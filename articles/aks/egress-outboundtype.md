@@ -4,12 +4,12 @@ description: Naučte se definovat vlastní výstupní trasu ve službě Azure Ku
 services: container-service
 ms.topic: article
 ms.date: 06/29/2020
-ms.openlocfilehash: 72ba90510afb00ee001c97612e88f452039f53a4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e9433978c8ee855ec66901c7692e4d2b59261fd3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182124"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773040"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Přizpůsobení výstupů clusteru pomocí User-Defined trasy
 
@@ -17,7 +17,7 @@ Odchozí přenos dat z clusteru AKS se dá přizpůsobit tak, aby vyhovoval spec
 
 Tento článek vás seznámí s postupem přizpůsobení odchozí trasy clusteru pro podporu vlastních síťových scénářů, jako jsou například ty, které nepovolují veřejné IP adresy a vyžadují, aby se cluster zacházel za virtuálním síťovým zařízením (síťové virtuální zařízení).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Azure CLI verze 2.0.81 nebo vyšší
 * Verze rozhraní API `2020-01-01` nebo vyšší
 
@@ -81,5 +81,5 @@ Viz [Přehled služby Azure Networking udr](../virtual-network/virtual-networks-
 Přečtěte si téma [jak vytvořit, změnit nebo odstranit směrovací tabulku](../virtual-network/manage-route-table.md).
 
 <!-- LINKS - internal -->
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [byo-route-table]: configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet

@@ -3,12 +3,12 @@ title: Průvodce odstraňováním potíží pro Azure Service Bus | Microsoft Do
 description: Přečtěte si tipy a doporučení pro řešení potíží pro několik problémů, které se mohou zobrazit při použití Azure Service Bus.
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: b44587747a59acb3c0124c0a76b63de68d6d8ae7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 27249d7e016ea8aee0552bbbf1687647760d4b6f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105031286"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786562"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Průvodce odstraňováním potíží pro Azure Service Bus
 V tomto článku najdete tipy a doporučení pro odstraňování problémů s několika problémy, které se můžou zobrazit při použití Azure Service Bus. 
@@ -52,7 +52,7 @@ Následující postup vám může pomáhat s odstraňováním potíží s připo
     ```
     Ekvivalentní příkazy můžete použít, pokud používáte jiné nástroje `tnc` , například, `ping` a tak dále. 
 - Získejte trasování sítě, pokud předchozí kroky neumožňují a neanalyzují ho pomocí nástrojů, jako je třeba [Wireshark](https://www.wireshark.org/). V případě potřeby kontaktujte [Podpora Microsoftu](https://support.microsoft.com/) . 
-- Pokud chcete najít správné IP adresy, které se mají přidat do povolených pro vaše připojení, přečtěte si téma [Jaké IP adresy je potřeba přidat do povolených](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list). 
+- Pokud chcete najít správné IP adresy, které se mají přidat do povolených pro vaše připojení, přečtěte si téma [Jaké IP adresy je potřeba přidat do povolených](service-bus-faq.yml#what-ip-addresses-do-i-need-to-add-to-allow-list-). 
 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Problémy, které se mohou vyskytnout při upgradech nebo restartu služby

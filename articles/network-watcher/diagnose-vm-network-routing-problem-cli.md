@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 415fcc72116cc36644b58b619404d96ff63b024d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2ca7a3b25b1355e21782c1d9f736d20a14cbd4ac
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065901"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785446"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnostika potíží se síťovým směrováním virtuálního počítače – Azure CLI
 
@@ -37,13 +37,13 @@ V tomto článku nasadíte virtuální počítač (VM) a pak zkontrolujete komun
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-Než vytvoříte virtuální počítač, musíte vytvořit skupinu prostředků, která bude virtuální počítač obsahovat. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
+Než vytvoříte virtuální počítač, musíte vytvořit skupinu prostředků, která bude virtuální počítač obsahovat. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create). Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`. Následující příklad vytvoří virtuální počítač *myVm*:
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`. Následující příklad vytvoří virtuální počítač *myVm*:
 
 ```azurecli-interactive
 az vm create \
@@ -61,7 +61,7 @@ Chcete-li otestovat síťovou komunikaci s Network Watcher, je třeba nejprve po
 
 ### <a name="enable-network-watcher"></a>Povolení Network Watcheru
 
-Pokud už máte sledovací proces sítě povolený v oblasti Východní USA, přeskočte na [použít další segment směrování](#use-next-hop). Pomocí příkazu [AZ Network Watch-Configure](/cli/azure/network/watcher#az-network-watcher-configure) vytvořte sledovací proces sítě v oblasti východní USA:
+Pokud už máte sledovací proces sítě povolený v oblasti Východní USA, přeskočte na [použít další segment směrování](#use-next-hop). Pomocí příkazu [AZ Network Watch-Configure](/cli/azure/network/watcher#az_network_watcher_configure) vytvořte sledovací proces sítě v oblasti východní USA:
 
 ```azurecli-interactive
 az network watcher configure \
@@ -72,7 +72,7 @@ az network watcher configure \
 
 ### <a name="use-next-hop"></a>Použití dalšího směrování
 
-Azure automaticky vytváří trasy pro výchozí cíle. Můžete vytvořit vlastní trasy, které přepíšou ty výchozí. Někdy můžou vlastní trasy způsobit selhání komunikace. Pokud chcete testovat směrování z virtuálního počítače, použijte [příkaz AZ Network sledovacího procesu show-Next-Hop](/cli/azure/network/watcher#az-network-watcher-show-next-hop) a určete další směrování směrování, když je provoz určený pro konkrétní adresu.
+Azure automaticky vytváří trasy pro výchozí cíle. Můžete vytvořit vlastní trasy, které přepíšou ty výchozí. Někdy můžou vlastní trasy způsobit selhání komunikace. Pokud chcete testovat směrování z virtuálního počítače, použijte [příkaz AZ Network sledovacího procesu show-Next-Hop](/cli/azure/network/watcher#az_network_watcher_show_next_hop) a určete další směrování směrování, když je provoz určený pro konkrétní adresu.
 
 Otestujte odchozí komunikaci z virtuálního počítače na jednu z IP adres stránky www.bing.com:
 
@@ -104,7 +104,7 @@ Vrácený výstup vás informuje o tom, že **žádný** je **typem** a že **Ro
 
 ## <a name="view-details-of-a-route"></a>Zobrazení podrobností o trase
 
-Pokud chcete dál analyzovat směrování, Projděte si efektivní trasy pro síťové rozhraní pomocí příkazu [AZ Network nic show--Route-Table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) :
+Pokud chcete dál analyzovat směrování, Projděte si efektivní trasy pro síťové rozhraní pomocí příkazu [AZ Network nic show--Route-Table](/cli/azure/network/nic#az_network_nic_show_effective_route_table) :
 
 ```azurecli-interactive
 az network nic show-effective-route-table \
@@ -154,7 +154,7 @@ Jak vidíte ve výstupu `az network watcher nic show-effective-route-table` př�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít příkaz [az group delete](/cli/azure/group#az-group-delete):
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít příkaz [az group delete](/cli/azure/group#az_group_delete):
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes

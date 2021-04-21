@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 0dcffe6731c177d1d45c569361fcb200f23af86c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67e807e948caf1fec014457814c1b7f105630f9f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99095354"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784420"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů služeb virtuální sítě a pravidel pro servery služby Azure SQL Database
 
@@ -225,7 +225,7 @@ Tato část ukazuje, jak můžete pomocí [Azure Portal][http-azure-portal-link-
 
 ## <a name="powershell-alternative"></a>Alternativní prostředí PowerShell
 
-Skript může také vytvořit pravidla virtuální sítě pomocí rutiny prostředí PowerShell **New-AzSqlServerVirtualNetworkRule** nebo [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-create). Pokud vás zajímá, přečtěte si téma [PowerShell k vytvoření koncového bodu služby virtuální sítě a pravidla pro SQL Database][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
+Skript může také vytvořit pravidla virtuální sítě pomocí rutiny prostředí PowerShell **New-AzSqlServerVirtualNetworkRule** nebo [AZ Network VNet Create](/cli/azure/network/vnet#az_network_vnet_create). Pokud vás zajímá, přečtěte si téma [PowerShell k vytvoření koncového bodu služby virtuální sítě a pravidla pro SQL Database][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
 ## <a name="rest-api-alternative"></a>REST API alternativa
 

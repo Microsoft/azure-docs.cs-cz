@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 319bca74c8e781e5dc5022e9fb901b2edca24a80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3743697d58d0f5b167b123df59bc5638aa60489
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87485639"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771672"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>Kurz: Vytvoření vlastní role Azure pomocí Azure CLI
 
@@ -52,7 +52,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít se šablonou J
 
 1. Projděte si seznam operací pro [poskytovatele prostředků Microsoft.Support](resource-provider-operations.md#microsoftsupport). Je užitečné znát operace, které máte k dispozici k vytváření oprávnění.
 
-    | Operace | Popis |
+    | Operace | Description |
     | --- | --- |
     | Microsoft.Support/register/action | Registruje poskytovatele prostředků podpory. |
     | Microsoft.Support/supportTickets/read | Umožňuje získat podrobnosti lístku podpory (včetně stavu, závažnosti, podrobností kontaktu a komunikací) nebo seznam lístků podpory pro všechna předplatná. |
@@ -86,7 +86,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít se šablonou J
     "Microsoft.Support/*"
     ```
 
-1. Získejte ID vašeho předplatného pomocí příkazu [az account list](/cli/azure/account#az-account-list).
+1. Získejte ID vašeho předplatného pomocí příkazu [az account list](/cli/azure/account#az_account_list).
 
     ```azurecli
     az account list --output table
@@ -118,7 +118,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít se šablonou J
     }
     ```
     
-1. Pokud chcete vytvořit novou vlastní roli, použijte příkaz [az role definition create](/cli/azure/role/definition#az-role-definition-create) a zadejte soubor JSON s definicí role.
+1. Pokud chcete vytvořit novou vlastní roli, použijte příkaz [az role definition create](/cli/azure/role/definition#az_role_definition_create) a zadejte soubor JSON s definicí role.
 
     ```azurecli
     az role definition create --role-definition "~/CustomRoles/ReaderSupportRole.json"
@@ -155,7 +155,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít se šablonou J
 
 ## <a name="list-custom-roles"></a>Výpis vlastních rolí
 
-- Pokud chcete vypsat všechny vaše vlastní role, použijte příkaz [az role definition list](/cli/azure/role/definition#az-role-definition-list) s parametrem `--custom-role-only`.
+- Pokud chcete vypsat všechny vaše vlastní role, použijte příkaz [az role definition list](/cli/azure/role/definition#az_role_definition_list) s parametrem `--custom-role-only`.
 
     ```azurecli
     az role definition list --custom-role-only true
@@ -225,7 +225,7 @@ Pokud chcete aktualizovat vlastní roli, aktualizujte soubor JSON a pak aktualiz
     }
     ```
         
-1. Pokud chcete aktualizovat vlastní roli, použijte příkaz [az role definition update](/cli/azure/role/definition#az-role-definition-update) a zadejte aktualizovaný soubor JSON.
+1. Pokud chcete aktualizovat vlastní roli, použijte příkaz [az role definition update](/cli/azure/role/definition#az_role_definition_update) a zadejte aktualizovaný soubor JSON.
 
     ```azurecli
     az role definition update --role-definition "~/CustomRoles/ReaderSupportRole.json"
@@ -261,7 +261,7 @@ Pokud chcete aktualizovat vlastní roli, aktualizujte soubor JSON a pak aktualiz
     
 ## <a name="delete-a-custom-role"></a>Odstranění vlastní role
 
-- Vlastní roli odstraníte pomocí příkazu [az role definition delete](/cli/azure/role/definition#az-role-definition-delete), pro který zadáte název a ID role.
+- Vlastní roli odstraníte pomocí příkazu [az role definition delete](/cli/azure/role/definition#az_role_definition_delete), pro který zadáte název a ID role.
 
     ```azurecli
     az role definition delete --name "Reader Support Tickets"

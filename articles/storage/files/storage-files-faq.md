@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: ec8104a5fd8d1c524f75c7a5173015115d85a253
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4d7123aa22d95e3e4c3850be775ddad96f28d280
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064303"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785302"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) a [protokol NFS (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (verze Preview). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Synchronizace souborů Azure pro rychlý přístup blízko místa, kde se data používají.
@@ -90,7 +90,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="afs-region-availability"></a>
   **Které oblasti jsou podporovány pro Synchronizace souborů Azure?**  
-    Seznam oblastí, které jsou k dispozici, najdete v části [dostupnost oblasti](storage-sync-files-planning.md#azure-file-sync-region-availability) v příručce pro plánování synchronizace souborů Azure. Budeme průběžně přidávají podporu pro další oblasti, včetně neveřejných oblastí.
+    Seznam oblastí, které jsou k dispozici, najdete v části [dostupnost oblasti](../file-sync/file-sync-planning.md#azure-file-sync-region-availability) v příručce pro plánování synchronizace souborů Azure. Budeme průběžně přidávají podporu pro další oblasti, včetně neveřejných oblastí.
 
 * <a id="cross-domain-sync"></a>
   **Můžu ve stejné skupině synchronizovat servery připojené k doméně a jiné domény?**  
@@ -119,28 +119,28 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="sizeondisk-versus-size"></a>
   **Proč velikost vlastnosti *disku* pro soubor neodpovídá vlastnosti *size* po použití synchronizace souborů Azure?**  
-  Přečtěte si téma [principy synchronizace souborů Azureho vrstvení cloudu](storage-sync-cloud-tiering-overview.md#tiered-vs-locally-cached-file-behavior).
+  Přečtěte si téma [principy synchronizace souborů Azureho vrstvení cloudu](../file-sync/file-sync-cloud-tiering-overview.md#tiered-vs-locally-cached-file-behavior).
 
 * <a id="is-my-file-tiered"></a>
   **Jak zjistím, jestli byl soubor vrstvený?**  
-  Další informace najdete v tématu [správa synchronizace souborů Azure vrstvených souborů](storage-sync-how-to-manage-tiered-files.md#how-to-check-if-your-files-are-being-tiered).
+  Podívejte se na téma [Principy vrstvení cloudu](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-check-if-your-files-are-being-tiered).
 
 * <a id="afs-recall-file"></a>**Soubor, který chcete použít, byl vrstven. Jak mohu soubor odvolat na disk a použít ho místně?**  
-  Další informace najdete v tématu [správa synchronizace souborů Azure vrstvených souborů](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk).
+  Podívejte se na téma [Principy vrstvení cloudu](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk).
 
 * <a id="afs-force-tiering"></a>
   **Návody vynutit vrstvení souboru nebo adresáře?**  
-  Další informace najdete v tématu [správa synchronizace souborů Azure vrstvených souborů](storage-sync-how-to-manage-tiered-files.md#how-to-force-a-file-or-directory-to-be-tiered).
+  Podívejte se na téma [Principy vrstvení cloudu](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-force-a-file-or-directory-to-be-tiered).
 
 * <a id="afs-effective-vfs"></a>
   **Jak se interpretuje *volné místo na svazku* , když mám na svazku více koncových bodů serveru?**  
-  Podívejte se na téma [výběr synchronizace souborů Azure zásad clouding](storage-sync-cloud-tiering-policy.md#multiple-server-endpoints-on-a-local-volume).
+  Podívejte se na téma [Principy vrstvení cloudu](../file-sync/file-sync-cloud-tiering-policy.md#multiple-server-endpoints-on-a-local-volume).
   
 * <a id="afs-tiered-files-tiering-disabled"></a>
   **Mám zakázanou vrstvu cloudu, proč jsou v umístění koncového bodu serveru umístěny soubory?**  
     Existují dva důvody, proč v umístění koncového bodu serveru mohou existovat vrstvené soubory:
 
-    - Pokud při přidávání nového koncového bodu serveru do existující skupiny synchronizace zvolíte buď možnost u oboru názvů pro odvolání první možnost, nebo pro režim počátečního stahování možnost pouze odvolat pouze obor názvů, soubory se budou zobrazovat tak, aby byly v místním režimu staženy. Pokud tomu chcete předejít, vyberte možnost Nepoužívat soubory pro režim prvotního stahování. K ručnímu odvolání souborů použijte rutinu [Invoke-StorageSyncFileRecall](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk) .
+    - Pokud při přidávání nového koncového bodu serveru do existující skupiny synchronizace zvolíte buď možnost u oboru názvů pro odvolání první možnost, nebo pro režim počátečního stahování možnost pouze odvolat pouze obor názvů, soubory se budou zobrazovat tak, aby byly v místním režimu staženy. Pokud tomu chcete předejít, vyberte možnost Nepoužívat soubory pro režim prvotního stahování. K ručnímu odvolání souborů použijte rutinu [Invoke-StorageSyncFileRecall](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk) .
 
     - Pokud byla na koncovém bodu serveru povolená vrstva cloudu a pak se zakázala, soubory zůstanou vrstveny, dokud nebudou přístupné.
 
@@ -150,11 +150,11 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
     Toto chování není specifické pro Synchronizace souborů Azure, Průzkumník Windows zobrazuje "šedou X" pro všechny soubory, které mají nastaven atribut offline. Při přístupu k souborům přes SMB se zobrazí ikona X. Podrobné vysvětlení tohoto chování najdete v tématu. [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
 
-    Otázky týkající se správy vrstvených souborů najdete v tématu [Správa vrstvených souborů](storage-sync-how-to-manage-tiered-files.md).
+    Otázky týkající se správy vrstvených souborů najdete v tématu [Správa vrstvených souborů](../file-sync/file-sync-how-to-manage-tiered-files.md).
 
 * <a id="afs-files-excluded"></a>
   **Které soubory nebo složky jsou automaticky vyloučeny pomocí Synchronizace souborů Azure?**  
-  Zobrazení [souborů bylo vynecháno](storage-sync-files-planning.md#files-skipped).
+  Zobrazení [souborů bylo vynecháno](../file-sync/file-sync-planning.md#files-skipped).
 
 * <a id="afs-os-support"></a>
   **Můžu Synchronizace souborů Azure použít pro zařízení se systémem Windows Server 2008 R2, Linux nebo Network-Attached Storage (NAS)?**  
@@ -162,7 +162,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
   **Proč existují vrstvené soubory mimo obor názvů koncového bodu serveru?**  
-    Před Synchronizace souborů Azure agenta verze 3 Synchronizace souborů Azure blokované přesun vrstvených souborů mimo koncový bod serveru, ale na stejném svazku jako koncový bod serveru. Operace kopírování, přesun nevrstvených souborů a přesuny vrstvených na jiné svazky nebyly ovlivněny. Důvodem tohoto chování je implicitní předpoklad, že Průzkumník souborů a další rozhraní Windows API mají operace přesunu na stejný svazek (skoro) okamžité operace přejmenování. To znamená, že Průzkumník souborů nebo jiné metody přesunu (například příkazový řádek nebo PowerShell) nereagují při Synchronizace souborů Azure znovu zavolá data z cloudu. Počínaje [synchronizace souborů Azure agenta verze 3.0.12.0](storage-files-release-notes.md#supported-versions)synchronizace souborů Azure umožní přesunout vrstvený soubor mimo koncový bod serveru. Vyhnete se negativním dopadům, které jsme dříve uvedli, povolením vrstveného souboru jako vrstveného souboru mimo koncový bod serveru a následným vyvoláním souboru na pozadí. To znamená, že se okamžitě přesune na stejný svazek a my provedeme veškerou práci, která načte soubor na disk, až se přesun dokončí. 
+    Před Synchronizace souborů Azure agenta verze 3 Synchronizace souborů Azure blokované přesun vrstvených souborů mimo koncový bod serveru, ale na stejném svazku jako koncový bod serveru. Operace kopírování, přesun nevrstvených souborů a přesuny vrstvených na jiné svazky nebyly ovlivněny. Důvodem tohoto chování je implicitní předpoklad, že Průzkumník souborů a další rozhraní Windows API mají operace přesunu na stejný svazek (skoro) okamžité operace přejmenování. To znamená, že Průzkumník souborů nebo jiné metody přesunu (například příkazový řádek nebo PowerShell) nereagují při Synchronizace souborů Azure znovu zavolá data z cloudu. Počínaje [synchronizace souborů Azure agenta verze 3.0.12.0](../file-sync/file-sync-release-notes.md#supported-versions)synchronizace souborů Azure umožní přesunout vrstvený soubor mimo koncový bod serveru. Vyhnete se negativním dopadům, které jsme dříve uvedli, povolením vrstveného souboru jako vrstveného souboru mimo koncový bod serveru a následným vyvoláním souboru na pozadí. To znamená, že se okamžitě přesune na stejný svazek a my provedeme veškerou práci, která načte soubor na disk, až se přesun dokončí. 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
   **Mám potíže s Synchronizace souborů Azure na mém serveru (synchronizace, vrstvení cloudu atd.). Mám odebrat a znovu vytvořit koncový bod serveru?**  
@@ -170,7 +170,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
     
 * <a id="afs-resource-move"></a>
   **Můžu přesunout službu synchronizace úložiště nebo účet úložiště do jiné skupiny prostředků, předplatného nebo tenanta Azure AD?**  
-   Ano, služba synchronizace úložiště nebo účet úložiště se dají přesunout do jiné skupiny prostředků, předplatného nebo tenanta Azure AD. Po přesunu služby synchronizace úložiště nebo účtu úložiště musíte aplikaci Microsoft. StorageSync udělit přístup k účtu úložiště ( [Zkontrolujte, jestli synchronizace souborů Azure má přístup k účtu úložiště](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)).
+   Ano, služba synchronizace úložiště nebo účet úložiště se dají přesunout do jiné skupiny prostředků, předplatného nebo tenanta Azure AD. Po přesunu služby synchronizace úložiště nebo účtu úložiště musíte aplikaci Microsoft. StorageSync udělit přístup k účtu úložiště ( [Zkontrolujte, jestli synchronizace souborů Azure má přístup k účtu úložiště](../file-sync/file-sync-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)).
 
     > [!Note]  
     > Při vytváření koncového bodu cloudu musí být služba synchronizace úložiště a účet úložiště ve stejném tenantovi Azure AD. Po vytvoření koncového bodu cloudu se služba synchronizace úložiště a účet úložiště můžou přesunout do různých tenantů Azure AD.
@@ -494,4 +494,4 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 ## <a name="see-also"></a>Viz také
 * [Řešení potíží se soubory Azure v systému Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Řešení potíží se soubory Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md)
-* [Řešit problémy se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)
+* [Řešit problémy se Synchronizací souborů Azure](../file-sync/file-sync-troubleshoot.md)
