@@ -1,14 +1,14 @@
 ---
 title: Získat data dodržování zásad
 description: Azure Policy hodnocení a účinky určují dodržování předpisů. Přečtěte si, jak získat podrobnosti o dodržování předpisů pro vaše prostředky Azure.
-ms.date: 03/16/2021
+ms.date: 04/19/2021
 ms.topic: how-to
-ms.openlocfilehash: cdd23d685750fb8a5d3803f4b6030e7e67bbddce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1a9a7fcbbcbd7f490b2f665b40c7ed922ec61ee
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598537"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864590"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -35,6 +35,8 @@ K vyhodnocení přiřazených zásad a iniciativ dojde v důsledku různých ud�
 - Zásada nebo iniciativa, která je již přiřazena k oboru, je aktualizována. Cyklus hodnocení a časování pro tento scénář je stejný jako u nového přiřazení k oboru.
 
 - Prostředek se nasazuje nebo aktualizuje v rámci oboru s přiřazením prostřednictvím Azure Resource Manager, REST API nebo podporované sady SDK. V tomto scénáři se na portálu budou k dispozici informace o vlivu události (připojení, audit, zamítnutí, nasazení) a odpovídajících informací o stavu pro jednotlivé prostředky na portálu a sady SDK o 15 minutách. Tato událost nezpůsobí vyhodnocení dalších prostředků.
+
+- Předplatné (typ prostředku `Microsoft.Resource/subscriptions` ) se vytvoří nebo přesune v rámci [hierarchie skupiny pro správu](../../management-groups/overview.md) s přiřazenou definicí zásady, která cílí na typ prostředku předplatného. Vyhodnocení podporovaných efektů předplatného (audit, auditIfNotExist, deployIfNotExists, Modify), protokolování a jakékoli nápravné akce trvá přibližně 30 minut.
 
 - [Výjimka zásad](../concepts/exemption-structure.md) je vytvořena, aktualizována nebo odstraněna. V tomto scénáři se odpovídající přiřazení vyhodnocuje pro definovaný obor výjimky.
 

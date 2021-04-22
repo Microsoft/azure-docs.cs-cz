@@ -45,7 +45,7 @@ V tomto [dokumentu](../articles/event-hubs/event-hubs-dedicated-cluster-create-p
 | Funkce | Standard | Vyhrazená |
 | --- |:---|:---|
 | Šířka pásma | 20 počet propustnosti (až 40 počet propustnosti) | 20 kapacitní jednotky |
-| Obory názvů |  1 | 50 za CU |
+| Obory názvů |  100 na předplatné | 50 na CU (100 na předplatné) |
 | Event Hubs |  10 na obor názvů | 1000 na obor názvů |
 | Události příchozího přenosu dat | Plaťte za milion událostí | Zahrnuje |
 | Velikost zprávy | 1 000 000 bajtů | 1 000 000 bajtů |

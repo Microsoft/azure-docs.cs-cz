@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: be51d4db6c98b63fcb1c9c60df045b494536d78f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4999bd93f338ca7b34b141b88e06e4a769a4aaa1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766513"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876419"
 ---
 V následujících částech jste nastavili terminál a pomocí Azure CLI vytvoříte službu IoT Hub. Pokud chcete nakonfigurovat terminál, který spouští příkazy rozhraní příkazového řádku Azure, můžete buď použít Azure Cloud Shell na základě prohlížeče, nebo použít místní terminál.
 * Pokud chcete použít Cloud Shell, přečtěte si další část: [spuštění Cloud Shell](#launch-the-cloud-shell). 
@@ -97,7 +97,7 @@ Vytvoření centra IoT a skupiny prostředků:
 V této části vytvoříte simulované zařízení IoT, které je připojené ke službě IoT Hub. 
 
 Postup vytvoření simulovaného zařízení:
-1. Spusťte příkaz [AZ IoT Hub Device-identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) v prostředí CLI. Tím se vytvoří simulovaná identita zařízení. 
+1. Spusťte příkaz [AZ IoT Hub Device-identity Create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) v prostředí CLI. Tím se vytvoří simulovaná identita zařízení. 
 
     *YourIotHubName*. Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT. 
 
@@ -107,7 +107,7 @@ Postup vytvoření simulovaného zařízení:
     az iot hub device-identity create --device-id myDevice --hub-name {YourIoTHubName} 
     ```
 
-1.  Spusťte příkaz [AZ IoT Hub Device-identity Connection-String show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) . 
+1.  Spusťte příkaz [AZ IoT Hub Device-identity Connection-String show](/cli/azure/iot/hub/device-identity/connection-string#az_iot_hub_device_identity_connection_string_show) . 
 
     ```azurecli
     az iot hub device-identity connection-string show --device-id myDevice --hub-name {YourIoTHubName}

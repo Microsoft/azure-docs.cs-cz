@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: aa67a858d0396badc25a625b23dc2f2fdf1bdff9
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 61488b88b00206cb78beed4fe773bf9377848701
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551369"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861044"
 ---
 # <a name="np-series"></a>NP-Series 
 Virtuální počítače NP-Series jsou napájené [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) FPGA pro urychlení úloh, jako je odvozování strojového učení, překódování videa a hledání v databázi & Analytics. Virtuální počítače s řadou NP-Series využívají i procesory Intel Xeon 8171M (Skylake) s veškerou základní rychlostí Turbo 3,2 GHz.
@@ -135,6 +135,15 @@ Zakázání Host_Mem (SB): sudo xbutil host_mem--Disable
 **Otázka:** Jak mohu zadat dotaz na PLP informace? 
 
 **A:** Je potřeba spustit dotaz xbutil a podívat se na spodní část. 
+
+**Otázka:** Když vytvořím vlastní virtuální počítač a ručně nasadí XRT, jaké další změny je potřeba udělat? 
+
+**A:** Do/opt/Xilinx/XRT/Setup.sh přidejte položku pro XRT_INI_PATH odkazující na/opt/Xilinx/XRT/xrt.ini
+
+ 
+Obsah xrt.ini/opt/Xilinx/XRT/by měl obsahovat: <br>
+Runtime<br>
+ERT = false <br>
 
 ## <a name="other-sizes"></a>Jiné velikosti
 

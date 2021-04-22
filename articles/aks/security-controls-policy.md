@@ -1,16 +1,16 @@
 ---
 title: Azure Policy kontroly dodržování předpisů pro službu Azure Kubernetes Service (AKS)
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou k dispozici pro službu Azure Kubernetes Service (AKS). Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: sample
 ms.service: container-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: d86dcdea210c51f2668c3dffcc1319f4de391bcd
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 3deda4a55eed22a72d338fe2816eb8d5b2f7caff
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505835"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877101"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-kubernetes-service-aks"></a>Azure Policy kontroly dodržování předpisů pro službu Azure Kubernetes Service (AKS)
 

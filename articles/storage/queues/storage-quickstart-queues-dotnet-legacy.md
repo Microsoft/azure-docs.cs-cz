@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10ab1c487095fe1587a3c665d8a06e0d5cbab7e0
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: df2f3593f904c5c6c6c9af0ae635a2e152f9eb82
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275885"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871070"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Rychlý Start: použití sady Azure Storage SDK V11 pro .NET ke správě fronty
 
@@ -31,19 +31,19 @@ Dále stáhněte a nainstalujte .NET Core 2.0 pro váš operační systém. Poku
 
 ### <a name="windows"></a>Windows
 
-- Nainstalujte [.NET Core pro Windows](https://www.microsoft.com/net/download/windows) nebo [.NET Framework](https://www.microsoft.com/net/download/windows) (ten je součástí sady Visual Studio pro Windows).
+- Nainstalovat [.NET Core SDK pro Windows](https://dotnet.microsoft.com/download) nebo [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) (součástí sady Visual Studio pro Windows)
 - Nainstalujte sadu [Visual Studio pro Windows](https://www.visualstudio.com/). Pokud používáte .NET Core, instalace sady Visual Studio je volitelná.
 
 Informace o výběru mezi .NET Core a .NET Framework najdete v tématu [Výběr mezi .NET Core a .NET Framework pro serverové aplikace](/dotnet/standard/choosing-core-framework-server).
 
 ### <a name="linux"></a>Linux
 
-- Nainstalujte [.NET Core pro Linux](https://www.microsoft.com/net/download/linux).
+- Nainstalovat [.NET Core SDK pro Linux](/dotnet/core/install/linux)
 - Volitelně nainstalujte [Visual Studio Code](https://www.visualstudio.com/) a [rozšíření jazyka C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 
 ### <a name="macos"></a>macOS
 
-- Nainstalujte [.NET Core pro macOS](https://www.microsoft.com/net/download/macos).
+- Nainstalujte [.NET Core SDK pro MacOS](https://dotnet.microsoft.com/download).
 - Volitelně nainstalujte sadu [Visual Studio pro Mac](https://www.visualstudio.com/vs/visual-studio-mac/).
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
@@ -283,4 +283,4 @@ V tomto rychlém startu jste zjistili, jak přidat zprávy do fronty, prohlíže
 > [!div class="nextstepaction"]
 > [Komunikace mezi aplikacemi pomocí Azure Queue Storage](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
-- Další informace o .NET Core najdete v tématu [Začínáme s .NET během 10 minut](https://www.microsoft.com/net/learn/get-started/).
+- Další informace o .NET Core najdete v tématu [Začínáme s .NET během 10 minut](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro).

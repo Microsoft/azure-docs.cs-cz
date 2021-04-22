@@ -7,16 +7,16 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: b81d9b4a637965dd103d8fa89305424686a0c72c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8086ce0e5964d4e37a5ffc3082d5f2856058e4e5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789910"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875480"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Ukázkový skript Azure CLI – vytvoření aplikace logiky
 
-Tento skript vytvoří ukázkovou aplikaci logiky prostřednictvím [rozšíření Azure CLI Logic Apps](/cli/azure/ext/logic/logic)( `az logic` ). Podrobný průvodce vytvářením a správou Logic Apps prostřednictvím rozhraní příkazového řádku Azure najdete v tématu [rychlý start Logic Apps pro rozhraní](quickstart-logic-apps-azure-cli.md)příkazového řádku Azure CLI.
+Tento skript vytvoří ukázkovou aplikaci logiky prostřednictvím [rozšíření Azure CLI Logic Apps](/cli/azure/logic)( `az logic` ). Podrobný průvodce vytvářením a správou Logic Apps prostřednictvím rozhraní příkazového řádku Azure najdete v tématu [rychlý start Logic Apps pro rozhraní](quickstart-logic-apps-azure-cli.md)příkazového řádku Azure CLI.
 
 > [!WARNING]
 > Rozšíření Azure CLI Logic Apps v současné době *experimentální* a nezabývá se *zákaznickou podporou*. Toto rozšíření CLI používejte opatrně, zejména pokud se rozhodnete použít rozšíření v produkčním prostředí.
@@ -198,7 +198,7 @@ Tento ukázkový skript používá následující příkazy k vytvoření nové 
 | Příkaz | Poznámky |
 | ------- | ----- |
 | [`az group create`](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které jsou uložené prostředky aplikace logiky. |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | Vytvoří aplikaci logiky na základě pracovního postupu definovaného v parametru `--definition` . |
+| [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create) | Vytvoří aplikaci logiky na základě pracovního postupu definovaného v parametru `--definition` . |
 | [`az group delete`](/cli/azure/vm/extension) | Odstraní skupinu prostředků a všechny její vnořené prostředky. |
 
 ## <a name="next-steps"></a>Další kroky

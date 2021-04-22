@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: af050ae95b4ab161028229299a8de5ed3426430b
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 08bf165254c8759a978b406b3e9a990a41ab7a30
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482829"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873195"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaných dat
 
@@ -87,7 +87,7 @@ Začněte přípravou prostředí pro rozhraní příkazového řádku Azure:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-1. K zobrazení vašich aktuálních exportů po přihlášení použijte příkaz [az costmanagement export list](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_list):
+1. K zobrazení vašich aktuálních exportů po přihlášení použijte příkaz [az costmanagement export list](/cli/azure/costmanagement/export#az_costmanagement_export_list):
 
    ```azurecli
    az costmanagement export list --scope "subscriptions/00000000-0000-0000-0000-000000000000"
@@ -110,7 +110,7 @@ Začněte přípravou prostředí pro rozhraní příkazového řádku Azure:
    az storage account create --resource-group TreyNetwork --name cmdemo
    ```
 
-1. Pro vytvoření exportu spusťte příkaz [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create):
+1. Pro vytvoření exportu spusťte příkaz [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create):
 
    ```azurecli
    az costmanagement export create --name DemoExport --type ActualCost \
@@ -124,14 +124,14 @@ Začněte přípravou prostředí pro rozhraní příkazového řádku Azure:
 
    Tento příklad používá `MonthToDate`. Každý den se vytvoří soubor exportu pro náklady od začátku měsíce. Nejnovější data jsou agregována z předchozích denních exportů tohoto měsíce.
 
-1. K zobrazení podrobných informací o operaci exportu použijte příkaz [az costmanagement export show](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_show):
+1. K zobrazení podrobných informací o operaci exportu použijte příkaz [az costmanagement export show](/cli/azure/costmanagement/export#az_costmanagement_export_show):
 
    ```azurecli
    az costmanagement export show --name DemoExport \
       --scope "subscriptions/00000000-0000-0000-0000-000000000000"
    ```
 
-1. K aktualizaci exportu můžete použít příkaz [az costmanagement export update](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_update):
+1. K aktualizaci exportu můžete použít příkaz [az costmanagement export update](/cli/azure/costmanagement/export#az_costmanagement_export_update):
 
    ```azurecli
    az costmanagement export update --name DemoExport
@@ -143,7 +143,7 @@ Začněte přípravou prostředí pro rozhraní příkazového řádku Azure:
 >[!NOTE]
 >Na začátku může trvat 12 až 24 hodin, než se export spustí. Může však trvat i déle, než se v exportovaných souborech zobrazí data.
 
-K odstranění exportu můžete použít příkaz [az costmanagement export delete](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_delete):
+K odstranění exportu můžete použít příkaz [az costmanagement export delete](/cli/azure/costmanagement/export#az_costmanagement_export_delete):
 
 ```azurecli
 az costmanagement export delete --name DemoExport --scope "subscriptions/00000000-0000-0000-0000-000000000000"

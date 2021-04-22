@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 377abef31dbc4364f37161194923bbf74d272d80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 193c8b1f47960b9b42c61a9b0e394e5ebedf7bf7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98012260"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867578"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure PowerShell
 
@@ -96,7 +96,7 @@ Následující blok kódu Azure CLI provede mnoho příkazů pro přípravu vstu
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
     ```
 
-4. Pomocí příkazu [AZ IoT Hub Device-identity show-Connection-String](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) Získejte připojovací řetězec zařízení. Zkopírujte celý připojovací řetězec a při vytváření simulátoru pro maliny PI ho uložte.
+4. Pomocí příkazu [AZ IoT Hub Device-identity show-Connection-String](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_show_connection_string) Získejte připojovací řetězec zařízení. Zkopírujte celý připojovací řetězec a při vytváření simulátoru pro maliny PI ho uložte.
 
     ```azurecli
     az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table

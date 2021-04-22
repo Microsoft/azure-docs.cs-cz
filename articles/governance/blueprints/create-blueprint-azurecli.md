@@ -3,12 +3,12 @@ title: 'Rychlý Start: vytvoření podrobného plánu pomocí Azure CLI'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů pomocí Azure CLI.
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: fbe5c12f1c94d4b59dbdc2a97b6a4cb9af5a2328
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 506877eddd78ce54681bd4870e1d9040b4738c27
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563663"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877403"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Rychlý Start: definování a přiřazení Azure Blueprint pomocí Azure CLI
 
@@ -117,7 +117,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
      > [!NOTE]
      > Při importu definic podrobných plánů použijte název souboru _blueprint.js_ .
-     > Tento název souboru se používá při volání metody [AZ detail import](/cli/azure/ext/blueprint/blueprint#ext_blueprint_az_blueprint_import).
+     > Tento název souboru se používá při volání metody [AZ detail import](/cli/azure/blueprint#az_blueprint_import).
 
      Ve výchozím nastavení je ve výchozím předplatném vytvořen objekt podrobného plánu. Chcete-li určit skupinu pro správu, použijte skupinu **pro správu** parametrů. K zadání předplatného použijte parametr **Subscription**.
 

@@ -7,19 +7,19 @@ manager: femila
 ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
-ms.date: 03/17/2021
-ms.openlocfilehash: 4e4c65966ec8a6a5b47d5f68596f6d2d496fda17
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.date: 04/21/2021
+ms.openlocfilehash: 3fd7b8013ec67d718f308ccd1b72a6f90012e02e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835501"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873050"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Referenční informace o Media Services dat monitorování
 
 Tento článek se zabývá daty, která jsou užitečná pro monitorování Media Services. Další informace o všech metrikách platforem podporovaných v Azure Monitor najdete v [Azure monitor podporované metriky](../../../azure-monitor/essentials/metrics-supported.md).
 
-## <a name="media-services-metrics"></a>Media Services metriky
+## <a name="metrics"></a>Metriky
 
 Metriky se shromažďují v pravidelných intervalech bez ohledu na to, jestli se hodnota mění. Jsou užitečné pro upozorňování, protože je možné je vzorkovat často a výstraha se dá rychle aktivovat s relativně jednoduchou logikou.
 
@@ -40,12 +40,13 @@ Měli byste taky zkontrolovat [kvóty a omezení účtu](../limits-quotas-constr
 
 Další informace o tom, jaké dimenze metriky jsou, najdete v tématu multidimenzionální [metriky](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
-<!--**PLACEHOLDER** for dimensions table.-->
-OutputFormat, HttpStatusCode, ErrorCode, Track
+Služba Media Services má následující dimenze metriky.  Jsou explantory na základě metrik, které podporují.  Další informace najdete v odkazech na výše uvedené [metriky](#metrics) .   
+- OutputFormat
+- HttpStatusCode 
+- ErrorCode 
+- Stop 
 
 ## <a name="resource-logs"></a>Protokoly prostředků
-
-## <a name="media-services-resource-logs"></a>Protokoly prostředků Media Services
 
 Protokoly prostředků poskytují bohatou a častou data o provozu prostředku Azure. Další informace najdete v tématu [Jak shromažďovat a využívat data protokolu z vašich prostředků Azure](../../../azure-monitor/essentials/platform-logs-overview.md).
 

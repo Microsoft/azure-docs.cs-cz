@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů s řešeními VMware Azure pomoc
 description: Nakonfigurujte prostředí řešení Azure VMware pro zálohování virtuálních počítačů pomocí Azure Backup Server.
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: 163065556b7dbc979d68613744ea827c209d9fda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92affbf883215f0d051115fb64e9e7bf7a1430b3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618912"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871772"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů s řešeními VMware Azure pomocí Azure Backup Server
 
@@ -358,5 +358,5 @@ Jednotlivé soubory můžete obnovit z chráněného bodu obnovení virtuálníh
 
 Teď, když jste si pokryli zálohování virtuálních počítačů s řešeními Azure VMware pomocí Azure Backup Server, možná se budete chtít dozvědět něco: 
 
-- [Řešení potíží při nastavování záloh v Azure Backup Server](../backup/backup-azure-mabs-troubleshoot.md).
-- [Správa životního cyklu virtuálních počítačů řešení Azure VMware](lifecycle-management-of-azure-vmware-solution-vms.md).
+- [Řešení potíží při nastavování záloh v Azure Backup Server](../backup/backup-azure-mabs-troubleshoot.md)
+- [Správa životního cyklu virtuálních počítačů řešení Azure VMware](lifecycle-management-of-azure-vmware-solution-vms.md)

@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 28007b4e17bd698e4aaa2bddbf0c8f9ffaaa8351
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f0f0dc56dcaad73ff945d319cf98dc30483ee07e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606449"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875084"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití příkazu rozhraní příkazového řádku Azure, AZ Postgres up (Preview), vytvoření serveru Azure Database for PostgreSQL-Single
 
 > [!IMPORTANT]
-> Příkaz [AZ Postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI je ve verzi Preview.
+> Příkaz [AZ Postgres up](/cli/azure/postgres#az_postgres_up) Azure CLI je ve verzi Preview.
 
-Azure Database for PostgreSQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze PostgreSQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí příkazu [AZ Postgres nahoru](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) vytvořit server Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure CLI. Kromě vytvoření serveru `az postgres up` vytvoří příkaz ukázkovou databázi, root user v databázi, otevře bránu firewall pro služby Azure a vytvoří výchozí pravidla brány firewall pro klientský počítač. Tato výchozí nastavení usnadňují urychlení procesu vývoje.
+Azure Database for PostgreSQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze PostgreSQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí příkazu [AZ Postgres nahoru](/cli/azure/postgres#az_postgres_up) vytvořit server Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure CLI. Kromě vytvoření serveru `az postgres up` vytvoří příkaz ukázkovou databázi, root user v databázi, otevře bránu firewall pro služby Azure a vytvoří výchozí pravidla brány firewall pro klientský počítač. Tato výchozí nastavení usnadňují urychlení procesu vývoje.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,7 +42,7 @@ az account set --subscription <subscription id>
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Vytvoření serveru Azure Database for PostgreSQL
 
-Chcete-li použít příkazy, nainstalujte rozšíření [DB](/cli/azure/ext/db-up) . Pokud se vrátí chyba, ujistěte se, že máte nainstalovanou nejnovější verzi rozhraní příkazového řádku Azure CLI. Viz Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+Chcete-li použít příkazy, nainstalujte rozšíření [DB](/cli/azure/) . Pokud se vrátí chyba, ujistěte se, že máte nainstalovanou nejnovější verzi rozhraní příkazového řádku Azure CLI. Viz Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 
 ```azurecli
 az extension add --name db-up
@@ -71,7 +71,7 @@ admin-user | Vygenerované systémem | Uživatelské jméno správce.
 admin-password | Vygenerované systémem | Heslo uživatele, který je správcem.
 
 > [!NOTE]
-> Další informace o `az postgres up` příkazu a jeho dalších parametrech najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up).
+> Další informace o `az postgres up` příkazu a jeho dalších parametrech najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/postgres#az_postgres_up).
 
 Po vytvoření serveru se objeví následující nastavení:
 
@@ -87,7 +87,7 @@ Po vytvoření serveru se objeví následující nastavení:
 
 Po `az postgres up` dokončení příkazu se vám vrátí seznam připojovacích řetězců pro oblíbené programovací jazyky. Tyto připojovací řetězce jsou předem nakonfigurované s konkrétními atributy nově vytvořeného serveru Azure Database for PostgreSQL.
 
-Pomocí příkazu [AZ Postgres show-Connection-String](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-show-connection-string) můžete tyto připojovací řetězce znovu zobrazit.
+Pomocí příkazu [AZ Postgres show-Connection-String](/cli/azure/postgres#az_postgres_show_connection_string) můžete tyto připojovací řetězce znovu zobrazit.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -97,7 +97,7 @@ Všechny prostředky, které jste vytvořili v rychlém startu, vyčistěte pomo
 az postgres down --delete-group
 ```
 
-Pokud byste chtěli odstranit nově vytvořený server, můžete spustit příkaz [AZ Postgres Down](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-down) .
+Pokud byste chtěli odstranit nově vytvořený server, můžete spustit příkaz [AZ Postgres Down](/cli/azure/postgres#az_postgres_down) .
 
 ```azurecli
 az postgres down

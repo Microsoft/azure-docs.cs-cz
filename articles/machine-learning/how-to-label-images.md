@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5ba399418d8f93204b168c1058be20ffc775ef70
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8f1d648c38760865752c87624dfcb112933650c7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096962"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872618"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem 
 
@@ -74,11 +74,6 @@ Můžou se aktivovat algoritmy strojového učení. Pokud jsou tyto algoritmy v 
 * U modelů pro identifikaci objektů můžete vidět ohraničená pole a popisky, které už existují.  Opravte všechny, které jsou nesprávné před odesláním stránky.
 
 * V případě modelů segmentace můžete vidět mnohoúhelníky a popisky, které už existují.  Opravte všechny, které jsou nesprávné před odesláním stránky. 
-
-    > [!IMPORTANT]
-    > Funkce uvedené ve verzi Preview jsou ve verzi Public Preview.   
-    > Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 Model strojového učení, který je zvláště zpočátku v rámci označování projektu, může být dostatečně přesný, aby bylo možné předoznačit malou podmnožinu imagí. Po označení těchto imagí se projekt označování vrátí k ručnímu označování, aby se získalo více dat pro další kolo školení o modelu. V průběhu času se model bude spolehlivější o větší část imagí, což vede k pozdějšímu předznačení úkolů v projektu.
 

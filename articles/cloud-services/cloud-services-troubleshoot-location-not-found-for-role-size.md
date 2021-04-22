@@ -2,17 +2,17 @@
 title: Řešení potíží s LocationNotFoundForRoleSize při nasazení cloudové služby (Classic) do Azure | Microsoft Docs
 description: Tento článek popisuje, jak vyřešit výjimku LocationNotFoundForRoleSize při nasazení cloudové služby (Classic) do Azure.
 services: cloud-services
-author: mibufo
-ms.author: v-mibufo
+author: mamccrea
+ms.author: mamccrea
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 2ed889bea715ff5a26bf8e918789429e57fa31b2
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 54af2387ec0ff6c8f86f96821baad17736e8d85b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109658"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877961"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>Řešení potíží s LocationNotFoundForRoleSize při nasazení cloudové služby (Classic) do Azure
 
@@ -20,7 +20,7 @@ V tomto článku vyřešíte selhání přidělení, kde při nasazení cloudov�
 
 Když nasadíte instance do cloudové služby (Classic) nebo přidáte nové instance webových nebo pracovních rolí, Microsoft Azure přidělí výpočetní prostředky.
 
-Během těchto operací může občas docházet k chybám, i když jste dosáhli limitu předplatného Azure.
+Během těchto operací se vám mohou občas zobrazit chyby, přestože jste ještě nedosáhli limitu předplatného Azure.
 
 > [!TIP]
 > Tyto informace mohou být užitečné také při plánování nasazení služeb.
@@ -54,7 +54,7 @@ Můžete použít [az VM list-SKU] (/CLI/Azure/VM? View = Azure-CLI-nejnovějš�
 - Použijte `--size` parametr pro hledání podle názvu částečné velikosti.
 - Další informace najdete v tématu věnovaném [chybě vyřešit chybu pro SKU, který není k dispozici](../azure-resource-manager/templates/error-sku-not-available.md#solution-2---azure-cli) .
 
-    **Například:**
+    **Příklad:**
 
     ```azurecli
     az vm list-skus --location southcentralus --size Standard_F --output table
@@ -70,7 +70,7 @@ Můžete použít příkaz [Get-AzComputeResourceSku](/powershell/module/az.comp
 - Pro tento příkaz musíte mít nejnovější verzi PowerShellu.
 - Další informace najdete v tématu věnovaném [chybě vyřešit chybu pro SKU, který není k dispozici](../azure-resource-manager/templates/error-sku-not-available.md#solution-1---powershell) .
 
-**Například:**
+**Příklad:**
 
 ```azurepowershell
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}

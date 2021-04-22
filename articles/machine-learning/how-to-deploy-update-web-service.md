@@ -10,12 +10,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.custom: deploy
-ms.openlocfilehash: da018f212844e1587ad0e434902e49765f72e521
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 098dc4be33c82faff1b85a5b7224ecaf1be64944
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520092"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875462"
 ---
 # <a name="update-a-deployed-web-service"></a>Aktualizace nasazené webové služby
 
@@ -86,7 +86,7 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 >
 > Chcete-li aktualizovat službu tak, aby používala nový skriptovací skript nebo prostředí, vytvořte [konfigurační soubor odvození](./reference-azure-machine-learning-cli.md#inference-configuration-schema) a zadejte jej s `ic` parametrem.
 
-Další informace najdete v dokumentaci [AZ ml Service Update](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-update) .
+Další informace najdete v dokumentaci [AZ ml Service Update](/cli/azure/ml/service#az_ml_service_update) .
 
 ## <a name="next-steps"></a>Další kroky
 

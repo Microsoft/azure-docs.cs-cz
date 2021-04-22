@@ -9,12 +9,12 @@ ms.date: 03/24/2021
 ms.custom:
 - template-quickstart
 - devx-track-azurecli
-ms.openlocfilehash: 9af5f276e49e9eb2756dc544db353c75c99bc5a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b40407f4c4fb81bbf76bd0b552f3c9f2c827232a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105938058"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871502"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-azure-cli"></a>Rychlý Start: vytvoření Azure Data Factory pomocí Azure CLI
 
@@ -73,7 +73,7 @@ V tomto rychlém startu se používá účet Azure Storage, který zahrnuje kont
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-Pokud chcete vytvořit datovou továrnu Azure, spusťte příkaz [AZ DataFactory-Factory Create](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_create) :
+Pokud chcete vytvořit datovou továrnu Azure, spusťte příkaz [AZ DataFactory-Factory Create](/cli/azure/datafactory/factory#az_datafactory_factory_create) :
 
 ```azurecli
 az datafactory factory create --resource-group ADFQuickStartRG \
@@ -83,7 +83,7 @@ az datafactory factory create --resource-group ADFQuickStartRG \
 > [!IMPORTANT]
 > Nahraďte `ADFTutorialFactory` globálně jedinečným názvem datové továrny, například ADFTutorialFactorySP1127.
 
-Datovou továrnu, kterou jste vytvořili, můžete zobrazit pomocí příkazu [AZ DataFactory-Factory show](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_show) :
+Datovou továrnu, kterou jste vytvořili, můžete zobrazit pomocí příkazu [AZ DataFactory-Factory show](/cli/azure/datafactory/factory#az_datafactory_factory_show) :
 
 ```azurecli
 az datafactory factory show --resource-group ADFQuickStartRG \
@@ -94,7 +94,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 Dále vytvořte propojenou službu a dvě datové sady.
 
-1. Pomocí příkazu [AZ Storage Account show-Connection-String](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_show) Získejte připojovací řetězec pro váš účet úložiště:
+1. Pomocí příkazu [AZ Storage Account show-Connection-String](/cli/azure/datafactory/factory#az_datafactory_factory_show) Získejte připojovací řetězec pro váš účet úložiště:
 
    ```azurecli
    az storage account show-connection-string --resource-group ADFQuickStartRG \
@@ -115,7 +115,7 @@ Dále vytvořte propojenou službu a dvě datové sady.
    }
    ```
 
-1. Vytvořte propojenou službu s názvem `AzureStorageLinkedService` pomocí příkazu [AZ DataFactory-Link-Service Create](/cli/azure/ext/datafactory/datafactory/linked-service#ext_datafactory_az_datafactory_linked_service_create) :
+1. Vytvořte propojenou službu s názvem `AzureStorageLinkedService` pomocí příkazu [AZ DataFactory-Link-Service Create](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_create) :
 
    ```azurecli
    az datafactory linked-service create --resource-group ADFQuickStartRG \
@@ -146,7 +146,7 @@ Dále vytvořte propojenou službu a dvě datové sady.
    }
    ```
 
-1. `InputDataset`Pomocí příkazu [AZ DataFactory-DataSet Create](/cli/azure/ext/datafactory/datafactory/dataset#ext_datafactory_az_datafactory_dataset_create) vytvořte vstupní datovou sadu s názvem:
+1. `InputDataset`Pomocí příkazu [AZ DataFactory-DataSet Create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) vytvořte vstupní datovou sadu s názvem:
 
    ```azurecli
    az datafactory dataset create --resource-group ADFQuickStartRG \
@@ -177,7 +177,7 @@ Dále vytvořte propojenou službu a dvě datové sady.
    }
    ```
 
-1. Vytvořte výstupní datovou sadu s názvem `OutputDataset` pomocí příkazu [AZ DataFactory DataSet Create](/cli/azure/ext/datafactory/datafactory/dataset#ext_datafactory_az_datafactory_dataset_create) :
+1. Vytvořte výstupní datovou sadu s názvem `OutputDataset` pomocí příkazu [AZ DataFactory DataSet Create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) :
 
    ```azurecli
    az datafactory dataset create --resource-group ADFQuickStartRG \
@@ -243,7 +243,7 @@ Nakonec vytvořte a spusťte kanál.
    }
    ```
 
-1. Vytvořte kanál s názvem `Adfv2QuickStartPipeline` pomocí příkazu [AZ DataFactory Pipeline Create](/cli/azure/ext/datafactory/datafactory/pipeline#ext_datafactory_az_datafactory_pipeline_create) :
+1. Vytvořte kanál s názvem `Adfv2QuickStartPipeline` pomocí příkazu [AZ DataFactory Pipeline Create](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create) :
 
    ```azurecli
    az datafactory pipeline create --resource-group ADFQuickStartRG \
@@ -251,7 +251,7 @@ Nakonec vytvořte a spusťte kanál.
        --pipeline @Adfv2QuickStartPipeline.json
    ```
 
-1. Spusťte kanál pomocí příkazu [AZ DataFactory Pipeline Create-Run](/cli/azure/ext/datafactory/datafactory/pipeline#ext_datafactory_az_datafactory_pipeline_create_run) :
+1. Spusťte kanál pomocí příkazu [AZ DataFactory Pipeline Create-Run](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create_run) :
 
    ```azurecli
    az datafactory pipeline create-run --resource-group ADFQuickStartRG \
@@ -260,7 +260,7 @@ Nakonec vytvořte a spusťte kanál.
 
    Tento příkaz vrátí ID běhu. Zkopírujte ho pro použití v dalším příkazu.
 
-1. Ověřte, že se kanál úspěšně spustil, pomocí příkazu [AZ DataFactory Pipeline-Run show](/cli/azure/ext/datafactory/datafactory/pipeline-run#ext_datafactory_az_datafactory_pipeline_run_show) :
+1. Ověřte, že se kanál úspěšně spustil, pomocí příkazu [AZ DataFactory Pipeline-Run show](/cli/azure/datafactory/pipeline-run#az_datafactory_pipeline_run_show) :
 
    ```azurecli
    az datafactory pipeline-run show --resource-group ADFQuickStartRG \
@@ -277,7 +277,7 @@ Všechny prostředky v tomto rychlém startu jsou součástí stejné skupiny pr
 az group delete --name ADFQuickStartRG
 ```
 
-Pokud tuto skupinu prostředků používáte pro cokoliv jiného, místo toho odstraňte jednotlivé prostředky. Chcete-li například odebrat propojenou službu, použijte příkaz [AZ DataFactory-Link-Service Delete](/cli/azure/ext/datafactory/datafactory/linked-service#ext_datafactory_az_datafactory_linked_service_delete) .
+Pokud tuto skupinu prostředků používáte pro cokoliv jiného, místo toho odstraňte jednotlivé prostředky. Chcete-li například odebrat propojenou službu, použijte příkaz [AZ DataFactory-Link-Service Delete](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_delete) .
 
 V tomto rychlém startu jste vytvořili následující soubory JSON:
 

@@ -827,7 +827,7 @@
     - name: Integrované služby Azure Policy
       href: policy-reference.md
     - name: Azure CLI
-      href: /cli/azure/ext/datafactory/datafactory
+      href: /cli/azure/datafactory
 - name: Zdroje a prostředky
   items:
     - name: Dokumenty white paper

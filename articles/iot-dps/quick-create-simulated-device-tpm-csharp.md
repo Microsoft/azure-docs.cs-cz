@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: b2648382fb19fafcfc342379aa9da974f6f8d1ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 43ad18173c96c506c0df87a01fc7452065442bc9
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90528414"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868658"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení v jazyce C# pro IoT Hub Device Provisioning Service
 
@@ -37,7 +37,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí 
 
-1. Ujistěte se, že máte na svém počítači nainstalovanou [sadu .NET Core 2,1 SDK nebo novější](https://www.microsoft.com/net/download/windows) . 
+1. Ujistěte se, že máte na svém počítači nainstalovanou [sadu .NET Core 2,1 SDK nebo novější](https://dotnet.microsoft.com/download) . 
 
 1. Ujistěte se, že je na vašem počítači nainstalovaný `git` a že je přidaný do proměnných prostředí, ke kterým má příkazové okno přístup. Na stránce [klientských nástrojů Git organizace Software Freedom Conservancy](https://git-scm.com/download/) najdete nejnovější verzi nástrojů `git` k instalaci. Jejich součástí je i **Git Bash**, aplikace příkazového řádku, pomocí které můžete pracovat se svým místním úložištěm Git. 
 

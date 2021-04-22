@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: e72af412f61f2084fb78907c15a92a22b9e3bc99
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 7f919069005e8fcb813baf2521c8cb20cffafc88
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567175"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870350"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -99,7 +99,7 @@ Protokol HTTPS implementuje ověřování zahrnutím platného tokenu do hlavič
 
 Username (DeviceId rozlišuje velká a malá písmena): `iothubname.azure-devices.net/DeviceId`
 
-Heslo (můžete vygenerovat token SAS pomocí příkazu CLI Extension. [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token)nebo [Azure iot Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
+Heslo (můžete vygenerovat token SAS pomocí příkazu CLI Extension. [AZ IoT Hub Generate-SAS-token](/cli/azure/iot/hub#az_iot_hub_generate_sas_token)nebo [Azure iot Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -303,7 +303,7 @@ Výsledek, který uděluje přístup ke všem funkcím pro zařízení1, by byl:
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Je možné vygenerovat token SAS pomocí příkazu CLI rozšíření [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token)nebo [Azure iot Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+> Je možné vygenerovat token SAS pomocí příkazu CLI rozšíření [AZ IoT Hub Generate-SAS-token](/cli/azure/iot/hub#az_iot_hub_generate_sas_token)nebo [Azure iot Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
 ### <a name="use-a-shared-access-policy"></a>Použití zásad sdíleného přístupu
 
@@ -396,7 +396,7 @@ Další informace o ověřování pomocí certifikační autority najdete v tém
 
 [Sada Azure IoT Service SDK pro C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (verze 1.0.8 +) podporuje registraci zařízení, které pro ověřování používá certifikát X. 509. Další rozhraní API, jako je například import a export zařízení, podporují také certifikáty X. 509.
 
-Můžete také použít příkaz rozšíření CLI [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) ke konfiguraci certifikátů X. 509 pro zařízení.
+Můžete také použít příkaz rozšíření CLI [AZ IoT Hub Device-identity](/cli/azure/iot/hub/device-identity) ke konfiguraci certifikátů X. 509 pro zařízení.
 
 ### <a name="c-support"></a>Podpora jazyka C \#
 

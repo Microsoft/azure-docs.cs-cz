@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 62801d40295762b0066f0d2887d7d528ee7b7c2a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ff1783dd31b8139940e56d24ae82866b428838b1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656818"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861152"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
@@ -53,11 +53,7 @@ Chcete-li vytvořit projekt, vyberte možnost **Přidat projekt**. Dejte projekt
 * Vyberte možnost **klasifikace obrázků s více třídami** pro projekty, pokud chcete použít pouze *jeden štítek* ze sady štítků na obrázek.
 * Pokud chcete použít *jeden nebo více* štítků ze sady štítků na obrázek, vyberte možnost **klasifikace obrázků – vícenásobné označení** pro projekty. Například fotografie psa může být označená pomocí *psa* i *Daytime*.
 * Vyberte možnost **Identifikace objektu (ohraničovací rámeček)** pro projekty, pokud chcete přiřadit popisek a ohraničující rámeček ke každému objektu v rámci obrázku.
-* Vyberte možnost **segmentace instancí (mnohoúhelník) (Náhled)** pro projekty, pokud chcete přiřadit popisek a nakreslit mnohoúhelník kolem každého objektu v rámci obrázku.
-
-> [!IMPORTANT]
-> Segmentace instancí (mnohoúhelník) je ve verzi Public Preview.
-> Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+* Vyberte možnost **segmentace instancí (mnohoúhelník)** pro projekty, pokud chcete přiřadit popisek a nakreslit mnohoúhelník kolem každého objektu v rámci obrázku.
 
 Až budete připraveni pokračovat, vyberte **Další** .
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 91a6adecc9cf0db56fa4c433f388b05aa1bdef6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f833f3eb9e3d94da6178a0a9a9cf4f95ec0682e7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98202908"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865364"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>Přesunutí konfigurace řízení údržby do jiné oblasti
 
@@ -38,7 +38,7 @@ Než začnete přesouvat konfiguraci řízení údržby:
 
 ## <a name="prepare-and-move"></a>Příprava a přesun 
 
-1. Načte všechny konfigurace údržby v každém předplatném. Spusťte příkaz CLI [AZ Maintenance Configuration list](/cli/azure/ext/maintenance/maintenance/configuration#ext-maintenance-az-maintenance-configuration-list) a nahraďte $subId identifikátorem vašeho předplatného.
+1. Načte všechny konfigurace údržby v každém předplatném. Spusťte příkaz CLI [AZ Maintenance Configuration list](/cli/azure/maintenance/configuration#az_maintenance_configuration_list) a nahraďte $subId identifikátorem vašeho předplatného.
 
     ```
     az maintenance configuration list --subscription $subId --query "[*].{Name:name, Location:location, ResGroup:resourceGroup}" --output table

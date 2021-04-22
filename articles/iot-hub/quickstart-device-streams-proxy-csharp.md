@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: references_regions, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 3bca2701b708bfb957dce1c954f43f60f55b7dae
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 5bd33a2da6b2f1ae775f088950f14ac4df465fbf
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479917"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863942"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud zařízení IoT Hub pomocí aplikace proxy v jazyce C# (Preview)
 
@@ -37,7 +37,7 @@ Tento článek nejdřív popisuje nastavení pro SSH (pomocí portu 22) a pak po
 
 * Dvě ukázkové aplikace, které spouštíte v rámci tohoto rychlého startu, jsou napsány v jazyce C#. Ve vývojovém počítači potřebujete .NET Core SDK 2.1.0 nebo novější.
 
-    .NET Core SDK můžete stáhnout [pro více platforem od rozhraní .NET](https://www.microsoft.com/net/download/all).
+    .NET Core SDK můžete stáhnout [pro více platforem od rozhraní .NET](https://dotnet.microsoft.com/download).
 
     Ověřte aktuální verzi C# na vývojovém počítači pomocí následujícího příkazu:
 

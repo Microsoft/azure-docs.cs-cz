@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 2778f52b312e5d2fda7879b834fcd204285b7144
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5ac525ae062efca25601c9e63a5c8f16f2be29be
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628947"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861212"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Vytvoření a Správa výpočetní instance Azure Machine Learning
 
@@ -93,7 +93,7 @@ Další informace o třídách, metodách a parametrech použitých v tomto př�
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 ```
 
-Další informace najdete v tématu [AZ ml computetarget Create computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext_azure_cli_ml_az_ml_computetarget_create_computeinstance) reference.
+Další informace najdete v tématu [AZ ml computetarget Create computeinstance](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_computeinstance) reference.
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -109,7 +109,7 @@ Můžete také vytvořit výpočetní instanci pomocí [šablony Azure Resource 
 
 Jako správce můžete vytvořit instanci služby COMPUTE jménem odborníka na data a přiřadit k nim instanci s těmito možnostmi:
 * [Šablona Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Podrobnosti o tom, jak najít TenantID a ObjectID potřebné v této šabloně, najdete v tématu [Vyhledání ID objektů identity pro konfiguraci ověřování](../healthcare-apis/fhir/find-identity-object-ids.md).  Tyto hodnoty můžete také najít na portálu Azure Active Directory.
-* REST API
+* Rozhraní REST API
 
 Data, na základě kterých vytvoříte výpočetní instanci pro potřeby, jsou tato oprávnění [řízení přístupu založená na rolích Azure (Azure RBAC)](../role-based-access-control/overview.md) : 
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/spustit/akce*
@@ -181,7 +181,7 @@ V níže uvedených příkladech je název výpočetní instance **instance** .
     az ml computetarget stop computeinstance -n instance -v
     ```
 
-    Další informace najdete v tématu [AZ ml computetarget stop computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop).
+    Další informace najdete v tématu [AZ ml computetarget stop computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop).
 
 * Spustit 
 
@@ -189,7 +189,7 @@ V níže uvedených příkladech je název výpočetní instance **instance** .
     az ml computetarget start computeinstance -n instance -v
     ```
 
-    Další informace najdete v tématu [AZ ml computetarget Start computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start).
+    Další informace najdete v tématu [AZ ml computetarget Start computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_start).
 
 * Restartovat 
 
@@ -197,7 +197,7 @@ V níže uvedených příkladech je název výpočetní instance **instance** .
     az ml computetarget restart computeinstance -n instance -v
     ```
 
-    Další informace najdete v tématu [AZ ml computetarget restart computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart).
+    Další informace najdete v tématu [AZ ml computetarget restart computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart).
 
 * Odstranit
 
@@ -205,7 +205,7 @@ V níže uvedených příkladech je název výpočetní instance **instance** .
     az ml computetarget delete -n instance -v
     ```
 
-    Další informace najdete v tématu [AZ ml computetarget Delete computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget#ext-azure-cli-ml-az-ml-computetarget-delete).
+    Další informace najdete v tématu [AZ ml computetarget Delete computeinstance](/cli/azure/ml/computetarget#az_ml_computetarget_delete).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 

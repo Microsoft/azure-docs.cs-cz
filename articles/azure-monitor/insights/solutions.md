@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8a18a47331eb5d4a9ed5578cca320beef5e0ba45
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6a98571f513e25d801acd4f4a9c2901dcd56fabc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766982"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869216"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Monitorování řešení v Azure Monitor
 
@@ -48,7 +48,7 @@ Kliknutím na název řešení otevřete jeho stránku Shrnutí. Tato stránka z
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pomocí příkazu [AZ monitor Log-Analytics Solution list](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-list) můžete zobrazit seznam řešení monitorování nainstalovaných ve vašem předplatném.   Před spuštěním `list` příkazu použijte požadavky zjištěné v části [instalace řešení monitorování](#install-a-monitoring-solution).
+Pomocí příkazu [AZ monitor Log-Analytics Solution list](/cli/azure/monitor/log-analytics/solution#az_monitor_log_analytics_solution_list) můžete zobrazit seznam řešení monitorování nainstalovaných ve vašem předplatném.   Před spuštěním `list` příkazu použijte požadavky zjištěné v části [instalace řešení monitorování](#install-a-monitoring-solution).
 
 ```azurecli
 # List all log-analytics solutions in the current subscription.
@@ -142,7 +142,7 @@ Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 
 Když nainstalujete řešení, musíte vybrat [Log Analytics pracovní prostor](../logs/manage-access.md) , kde se bude řešení instalovat a kde se budou shromažďovat jeho data.  Pomocí Azure CLI můžete pracovní prostory spravovat pomocí příkazů [AZ monitor Log-Analytics pracovní prostor](/cli/azure/monitor/log-analytics/workspace) .  Pokud chcete propojit pracovní prostor a účet, postupujte podle kroků popsaných v [Log Analytics pracovního prostoru a účtu Automation](#log-analytics-workspace-and-automation-account) .
 
-K instalaci řešení monitorování použijte [řešení AZ monitor Log-Analytics Create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) .  Parametry v hranatých závorkách jsou volitelné.
+K instalaci řešení monitorování použijte [řešení AZ monitor Log-Analytics Create](/cli/azure/monitor/log-analytics/solution) .  Parametry v hranatých závorkách jsou volitelné.
 
 ```azurecli
 az monitor log-analytics solution create --name
@@ -241,7 +241,7 @@ Pokud chcete nainstalované řešení odebrat pomocí portálu, vyhledejte ho v 
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete nainstalované řešení odebrat pomocí Azure CLI, použijte příkaz [AZ monitor Log-Analytics Solution Delete](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-delete) .
+Pokud chcete nainstalované řešení odebrat pomocí Azure CLI, použijte příkaz [AZ monitor Log-Analytics Solution Delete](/cli/azure/monitor/log-analytics/solution#az_monitor_log_analytics_solution_delete) .
 
 ```azurecli
 az monitor log-analytics solution delete --name

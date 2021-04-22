@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4699649f6dc9d1adeb4bcbe44bb95d61caf88567
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 95c08aeb244a964d89c1dd03ba1c757274054f27
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499716"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876849"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Clustery Kubernetes s povolenou službou Azure ARC by měly mít nainstalované rozšíření v programu Azure Defender.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Rozšíření Azure Defenderu pro Azure ARC zajišťuje ochranu před hrozbami pro clustery Kubernetes s povoleným obloukem. Rozšíření shromažďuje data ze všech uzlů řídicí plochy v clusteru a odesílá je do Azure Defenderu pro Kubernetes back-end v cloudu pro další analýzu. Další informace najdete v [https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc) . |AuditIfNotExists, zakázáno |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ASC_Audit_Azure_Defender_Kubernetes_Arc_Extension.json) |
 |[Konfigurace clusterů Kubernetes se zadanou konfigurací GitOps pomocí tajných kódů HTTPS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6f560f4-f582-4b67-b123-a37dcd1bf7ea) |Nasaďte ' sourceControlConfiguration ' do clusterů Kubernetes a zajistěte tak, aby clustery dosáhly svého zdroje pravdy pro úlohy a konfigurace z definovaného úložiště Git. Tato definice vyžaduje, aby byl uživatel a tajné klíče HTTPS uložené v Key Vault. Pokyny najdete v tématu [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |deployIfNotExists, auditIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster-HTTPS-secrets_DINE.json) |

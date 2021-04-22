@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
-ms.openlocfilehash: 9a7a0795a15de52c34b8591c4224c3ca5883445c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ae5ca6ac822dabd32b6463c3a742901f32b34323
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772050"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862250"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Vytváření a správa účtů integrace pro podnikové integrace B2B v Azure Logic Apps
 
@@ -93,7 +93,7 @@ Pro tuto úlohu můžete použít buď Azure Portal podle kroků v této části
 
 Pomocí těchto příkazů vytvořte účet pro integraci.
 
-1. Pokud chcete přidat rozšíření [AZ Logic integr-Account](/cli/azure/ext/logic/logic/integration-account) Extension, použijte příkaz [AZ Extension Add](/cli/azure/extension#az_extension_add) :
+1. Pokud chcete přidat rozšíření [AZ Logic integr-Account](/cli/azure/logic/integration-account) Extension, použijte příkaz [AZ Extension Add](/cli/azure/extension#az_extension_add) :
 
    ```azurecli
    az extension add –-name logic
@@ -105,13 +105,13 @@ Pomocí těchto příkazů vytvořte účet pro integraci.
    az group create --name myresourcegroup --location westus
    ```
 
-   Chcete-li zobrazit seznam účtů pro integraci pro skupinu prostředků, použijte příkaz [AZ Logic Integration Account list](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_list) :
+   Chcete-li zobrazit seznam účtů pro integraci pro skupinu prostředků, použijte příkaz [AZ Logic Integration Account list](/cli/azure/logic/integration-account#az_logic_integration_account_list) :
 
    ```azurecli
    az logic integration-account list --resource-group myresourcegroup
    ```
 
-1. Pokud chcete vytvořit účet pro integraci, spusťte příkaz [AZ Logic Integration Account Create](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_create) :
+1. Pokud chcete vytvořit účet pro integraci, spusťte příkaz [AZ Logic Integration Account Create](/cli/azure/logic/integration-account#az_logic_integration_account_create) :
 
    ```azurecli
    az logic integration-account create --resource-group myresourcegroup \
@@ -123,13 +123,13 @@ Pomocí těchto příkazů vytvořte účet pro integraci.
    > [!TIP]
    > Pokud chcete vytvořit účet pro integraci v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), vyberte tento ISE jako umístění. Další informace najdete v tématu [Vytvoření integračních účtů v ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment).
 
-   Pokud chcete zobrazit konkrétní účet pro integraci, použijte příkaz [AZ Logic Integration Account show](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_show) :
+   Pokud chcete zobrazit konkrétní účet pro integraci, použijte příkaz [AZ Logic Integration Account show](/cli/azure/logic/integration-account#az_logic_integration_account_show) :
 
    ```azurecli
    az logic integration-account show --name integration_account_01 --resource-group myresourcegroup
    ```
 
-   SKLADOVOU položku nebo cenovou úroveň můžete změnit pomocí příkazu [AZ Logic Integration Account Update](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_update) :
+   SKLADOVOU položku nebo cenovou úroveň můžete změnit pomocí příkazu [AZ Logic Integration Account Update](/cli/azure/logic/integration-account#az_logic_integration_account_update) :
 
    ```azurecli
    az logic integration-account update --sku name=Basic --name integration_account_01 \
@@ -142,14 +142,14 @@ Pomocí těchto příkazů vytvořte účet pro integraci.
    * [Omezení Logic Apps a konfigurace](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)
    * [Ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/)
 
-Pokud chcete importovat účet pro integraci pomocí souboru JSON, použijte příkaz [AZ Logic Integration Account import](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_import) :
+Pokud chcete importovat účet pro integraci pomocí souboru JSON, použijte příkaz [AZ Logic Integration Account import](/cli/azure/logic/integration-account#az_logic_integration_account_import) :
 
 ```azurecli
 az logic integration-account import --name integration_account_01 \
     --resource-group myresourcegroup --input-path integration.json
 ```
 
-Účet pro integraci můžete odstranit pomocí příkazu [AZ Logic Integration Account Delete](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_delete) :
+Účet pro integraci můžete odstranit pomocí příkazu [AZ Logic Integration Account Delete](/cli/azure/logic/integration-account#az_logic_integration_account_delete) :
 
 ```azurecli
 az logic integration-account delete --name integration_account_01 --resource-group myresourcegroup

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eec4fb6e9907b36908a87c09aceabd0dd1a678
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 8c18dd231a708030e3a454ab8708e3f0f11dbecf
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075162"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861818"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Kurz: povolení odemknutí účtu nebo resetování hesla uživateli pomocí samoobslužného resetování hesla Azure Active Directory
 
@@ -37,7 +37,7 @@ Co se v tomto kurzu naučíte:
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
-* Funkční tenant Azure AD, který má povolenou aspoň bezplatnou nebo zkušební licenci Azure AD. Na úrovni Free SSPR funguje jenom pro cloudové uživatele v Azure AD.
+* Funkční tenant Azure AD, který má povolenou aspoň bezplatnou nebo zkušební licenci Azure AD. Na úrovni Free SSPR funguje jenom pro cloudové uživatele v Azure AD. Změna hesla se podporuje na úrovni Free, ale resetování hesla není. 
     * Pro pozdější kurzy v této sérii budete potřebovat Azure AD Premium P1 nebo zkušební licenci pro místní zpětný zápis hesla.
     * V případě potřeby si [můžete zdarma vytvořit účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Účet s oprávněními *globálního správce* .

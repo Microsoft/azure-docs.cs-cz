@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: wiassaf
 ms.date: 03/10/2021
-ms.openlocfilehash: 3ce07af74c3f01fd78ef15ab0e7d43b91361e556
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b7084ef045d14b9715c41bb9ffa483d1f2f7bedf
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784467"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865094"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopírování přetransakční kopie databáze v Azure SQL Database
 
@@ -218,7 +218,7 @@ Pokud chcete spravovat kopii databáze pomocí Azure Portal, budete potřebovat 
 
    Microsoft. Resources/Subscriptions/Resources/číst Microsoft. Resources/Subscriptions/Resources/Write Microsoft. Resources/nasazování/čtení Microsoft. Resources/Deployments/Write Microsoft. Resources/Deployments/
 
-Pokud chcete zobrazit operace v rámci nasazení ve skupině prostředků na portálu, operace napříč více zprostředkovateli prostředků, včetně operací SQL, budete potřebovat tyto další role Azure:
+Pokud chcete zobrazit operace v rámci nasazení ve skupině prostředků na portálu, operace napříč více zprostředkovateli prostředků, včetně operací SQL, budete potřebovat tato další oprávnění:
 
    Microsoft. Resources/Subscriptions/ResourceGroups/nasazení/operace/čtení Microsoft. Resources/Subscriptions/ResourceGroups/Deployments/operationstatuses/Read
 

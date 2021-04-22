@@ -3,12 +3,12 @@ title: Azure NetApp Files s využitím řešení Azure VMware
 description: Pomocí Azure NetApp Files s virtuálními počítači řešení VMware Azure můžete migrovat a synchronizovat data na místních serverech, virtuálních počítačích řešení Azure VMware a cloudových infrastrukturách.
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 2f2e8fdeb777e7e4b2b4e89c1bb36b51c3083257
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09b9ba2ff6b95e12558b1ac49e401ce6dede4942
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575437"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870980"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files s využitím řešení Azure VMware
 
@@ -107,7 +107,7 @@ Následuje jenom několik přesvědčivých Azure NetApp Files případů použi
 
 Teď, když jste se seznámili s integrací Azure NetApp Files s vašimi úlohami řešení Azure VMware, budete možná chtít získat informace o:
 
-- [Omezení prostředků pro Azure NetApp Files](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits).
-- [Pokyny pro Azure NetApp Files plánování sítě](../azure-netapp-files/azure-netapp-files-network-topologies.md).
+- [Omezení prostředků pro Azure NetApp Files](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits)
+- [Pokyny pro plánování sítě Azure NetApp Files](../azure-netapp-files/azure-netapp-files-network-topologies.md)
 - [Replikace Azure NetApp Files svazků mezi oblastmi](../azure-netapp-files/cross-region-replication-introduction.md) 
-- [Nejčastější dotazy týkající se Azure NetApp Files](../azure-netapp-files/azure-netapp-files-faqs.md).
+- [Nejčastější dotazy k Azure NetApp Files](../azure-netapp-files/azure-netapp-files-faqs.md)

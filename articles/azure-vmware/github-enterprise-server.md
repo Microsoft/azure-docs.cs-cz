@@ -3,12 +3,12 @@ title: Nastavení serveru GitHub Enterprise v privátním cloudu řešení Azure
 description: Přečtěte si, jak nastavit server GitHub Enterprise v privátním cloudu řešení Azure VMware.
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 59a76c3976f6fcda88423b7b78344f2abed1ea84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ff7ab87d7401cd3faaecf149fb1b07be3f8db42
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100382017"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862934"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Nastavení serveru GitHub Enterprise v privátním cloudu řešení Azure VMware
 
@@ -229,6 +229,6 @@ V tomto článku jsme na svém privátním cloudu vašeho řešení Azure VMware
 
 Teď, když jste si pokryli nastavení serveru GitHub Enterprise v privátním cloudu vašeho řešení VMware Azure, můžete chtít získat informace o: 
 
-- [Začínáme s akcemi GitHubu](https://docs.github.com/en/actions).
-- [Připojení k programu beta verze](https://resources.github.com/beta-signup/).
-- [Správa serveru GitHub Enterprise](https://githubtraining.github.io/admin-training/#/00_getting_started).
+- [Jak začít s akcemi GitHubu](https://docs.github.com/en/actions)
+- [Postup připojení beta programu](https://resources.github.com/beta-signup/)
+- [Správa serveru GitHub Enterprise](https://githubtraining.github.io/admin-training/#/00_getting_started)

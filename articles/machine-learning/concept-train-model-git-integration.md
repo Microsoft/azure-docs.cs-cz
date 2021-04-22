@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 04/08/2021
-ms.openlocfilehash: 2dc50702113f591075b790878347c4ca47beec4e
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 60dca43f95b190791c8fb593042ed612340a3af5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027801"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874544"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Integrace Gitu pro Azure Machine Learning
 
@@ -197,7 +197,7 @@ run.properties['azureml.git.commit']
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-Další informace najdete v referenční dokumentaci [AZ ml Run](/cli/azure/ext/azure-cli-ml/ml/run) reference.
+Další informace najdete v referenční dokumentaci [AZ ml Run](/cli/azure/ml/run) reference.
 
 ## <a name="next-steps"></a>Další kroky
 

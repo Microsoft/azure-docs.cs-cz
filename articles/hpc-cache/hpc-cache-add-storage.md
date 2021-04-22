@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 44b2534d7aeb12f4819a6c42cfb29d057ce26ddc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 708ad8bbfec9e3fd0176c53c111b5b5b25a5318f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259026"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862232"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -126,7 +126,7 @@ Taky ověřte nastavení brány firewall účtu úložiště. Pokud je brána fi
 
 ### <a name="add-a-blob-storage-target-with-azure-cli"></a>Přidání cíle úložiště objektů BLOB pomocí Azure CLI
 
-K definování cíle Azure Blob Storage použijte rozhraní [AZ HPC-cache BLOB-Storage-Target Add](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-add) .
+K definování cíle Azure Blob Storage použijte rozhraní [AZ HPC-cache BLOB-Storage-Target Add](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_add) .
 
 > [!NOTE]
 > Příkazy rozhraní příkazového řádku Azure v současné době vyžadují, abyste při přidávání cíle úložiště vytvořili cestu k oboru názvů. To se liší od procesu používaného s rozhraním Azure Portal.
@@ -229,7 +229,7 @@ Po dokončení klikněte na tlačítko **OK** a přidejte tak cíl úložiště.
 
 [Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
-Použijte příkaz Azure CLI [AZ HPC-cache NFS-Storage-Target Add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) k vytvoření cíle úložiště.
+Použijte příkaz Azure CLI [AZ HPC-cache NFS-Storage-Target Add](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_add) k vytvoření cíle úložiště.
 
 > [!NOTE]
 > Příkazy rozhraní příkazového řádku Azure v současné době vyžadují, abyste při přidávání cíle úložiště vytvořili cestu k oboru názvů. To se liší od procesu používaného s rozhraním Azure Portal.
@@ -240,7 +240,7 @@ Zadejte kromě názvu mezipaměti a skupiny prostředků mezipaměti tyto hodnot
 * ``--nfs3-target`` – IP adresa systému úložiště NFS. (Plně kvalifikovaný název domény můžete použít tady, pokud má vaše mezipaměť přístup k serveru DNS, který dokáže tento název přeložit.)
 * ``--nfs3-usage-model`` – Jeden z profilů ukládání dat do mezipaměti popsaný v části [Výběr modelu použití](#choose-a-usage-model)výše.
 
-  Ověřte názvy modelů použití pomocí příkazu [AZ HPC-cache Usage-model list](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list).
+  Ověřte názvy modelů použití pomocí příkazu [AZ HPC-cache Usage-model list](/cli/azure/hpc-cache/usage-model#az_hpc_cache_usage_model_list).
 
 * ``--junction`` – Parametr spojení propojuje cestu k virtuálnímu souboru pro klienta s cestou exportu v systému úložiště.
 
@@ -350,13 +350,13 @@ Další informace najdete v tématu [Úprava cílů úložiště](hpc-cache-edit
 
 [Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
-Pro zobrazení stávajících cílů úložiště pro mezipaměť použijte možnost [AZ HPC-cache Storage-Target list](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) . Zadejte název mezipaměti a skupinu prostředků (pokud ji nenastavíte globálně).
+Pro zobrazení stávajících cílů úložiště pro mezipaměť použijte možnost [AZ HPC-cache Storage-Target list](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage-target-list) . Zadejte název mezipaměti a skupinu prostředků (pokud ji nenastavíte globálně).
 
 ```azurecli
 az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
 ```
 
-Pokud chcete zobrazit podrobnosti o konkrétním cíli úložiště, použijte [příkaz AZ HPC-cache Storage-Target show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) . (Zadejte cíl úložiště podle názvu.)
+Pokud chcete zobrazit podrobnosti o konkrétním cíli úložiště, použijte [příkaz AZ HPC-cache Storage-Target show](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage-target-list) . (Zadejte cíl úložiště podle názvu.)
 
 Příklad:
 

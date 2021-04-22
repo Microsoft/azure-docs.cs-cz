@@ -1,15 +1,15 @@
 ---
 title: Předdefinované definice zásad pro Azure Backup
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Backup. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 8734e6974c252f0e146b42aebe1941544812e002
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 6ab3a4071678d61ab2d397a68955ef3c98b716b7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503676"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878126"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-backup"></a>Azure Policy předdefinované definice pro Azure Backup
 
