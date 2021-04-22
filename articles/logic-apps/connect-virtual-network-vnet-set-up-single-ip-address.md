@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: e88c4bf05d88007a6e19b568f1bc1085e24b0325
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ec495dd52607f2f65e0bef50489dd182c2a3253
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211052"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874184"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Nastavte jednu IP adresu pro jedno nebo více prostředí integrační služby v Azure Logic Apps
 
@@ -19,7 +19,7 @@ Při práci s Azure Logic Apps můžete nastavit [ *prostředí ISE (Integration
 
 V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím Azure Firewall, ale můžete použít podobné koncepty síťového virtuálního zařízení, jako je například brána firewall jiného výrobce z Azure Marketplace. I když se toto téma zaměřuje na nastavení více instancí ISE, můžete tento přístup použít i pro jeden ISE, když váš scénář vyžaduje omezení počtu IP adres, které potřebují přístup. Zvažte, jestli další náklady na zařízení s bránou firewall nebo virtuální sítí jsou pro váš scénář smysluplné. Přečtěte si další informace o [cenách Azure firewall](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Brána firewall Azure, která běží ve stejné virtuální síti jako vaše ISE. Pokud bránu firewall nemáte, přidejte nejprve [podsíť](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) s názvem `AzureFirewallSubnet` do vaší virtuální sítě. Pak můžete [vytvořit a nasadit bránu firewall](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall) ve vaší virtuální síti.
 
@@ -97,7 +97,7 @@ V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím A
    * [Logika zpracování pravidel Azure Firewall](../firewall/rule-processing.md#network-rules-and-applications-rules)
    * [Nejčastější dotazy ke službě Azure Firewall](../firewall/firewall-faq.yml)
    * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
-   * [Azure CLI: AZ Network firewall Network-Rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule#ext-azure-firewall-az-network-firewall-network-rule-create)
+   * [Azure CLI: AZ Network firewall Network-Rule](/cli/azure/network/firewall/network-rule#az_network_firewall_network_rule_create)
 
 ## <a name="next-steps"></a>Další kroky
 

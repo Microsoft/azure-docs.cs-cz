@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: 261dbb7cab2ac17a39777241d24e2c73cf550873
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 656270c80e8da0ece83bb04190fa7e5710a0203e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107800308"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107880279"
 ---
 Začněte s klientskou knihovnou anomálií lineární pro JavaScript. Pomocí těchto kroků balíček nainstalujte a začněte používat algoritmy poskytované službou. Nová rozhraní API pro detekci anomálií lineární umožňují vývojářům snadnou integraci pokročilého AI pro detekci anomálií ze skupin metrik, aniž by to mělo znalosti strojového učení nebo data s popisky. Závislosti a vzájemné korelace mezi různými signály se automaticky počítají jako klíčové faktory. To vám pomůže aktivně chránit komplexní systémy před chybami.
 
@@ -23,7 +23,7 @@ Pomocí klientské knihovny lineární detektoru anomálií pro JavaScript:
 * Když kterákoli z jednotlivých časových řad neřekne hodně a musíte se podívat na všechny signály a zjistit problém.
 * Predicative údržbu drahých fyzických prostředků s desítkou až stovkami různých typů senzorů, které měří různé aspekty stavu systému.
 
-[Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/anomalydetector/ai-anomaly-detector)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/ai-anomaly-detector)
+[Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/anomalydetector/ai-anomaly-detector)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/ai-anomaly-detector)  |  [Vzorový kód](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/anomalydetector/ai-anomaly-detector/samples/v3/javascript/sample_multivariate_detection.js)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -183,6 +183,8 @@ console.log("New model has been deleted.")
 ```
 
 ## <a name="run-the-application"></a>Spuštění aplikace
+
+Před spuštěním aplikace může být užitečné kontrolovat kód proti [kompletnímu ukázkovému kódu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/anomalydetector/ai-anomaly-detector/samples/v3/javascript/sample_multivariate_detection.js) .
 
 Spusťte aplikaci pomocí `node` příkazu v souboru rychlého startu.
 

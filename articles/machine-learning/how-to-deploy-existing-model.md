@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 8076e3f6b2198abe46ae49cd8e0fd2b02f000231
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46dc9e48ba68189253885ae823457a62c3c4426e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519346"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877799"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Nasazení stávajícího modelu pomocí Azure Machine Learning
 
@@ -61,7 +61,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 > [!TIP]
 > Můžete také nastavit objekty Add `tags` a `properties` Dictionary na registrovaný model. Tyto hodnoty můžete použít později, abyste mohli identifikovat konkrétní model. Například použitý rámec, parametry školení atd.
 
-Další informace najdete v referenčních informacích k [registru AZ ml model](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-register) .
+Další informace najdete v referenčních informacích k [registru AZ ml model](/cli/azure/ml/model#az_ml_model_register) .
 
 
 Další informace o registraci modelů obecně najdete v tématu [Správa, nasazení a monitorování modelů strojového učení](concept-model-management-and-deployment.md).
@@ -268,7 +268,7 @@ Chcete-li model nasadit z rozhraní příkazového řádku, použijte následuj�
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json
 ```
 
-Další informace najdete v referenčních informacích k [nasazení modelu AZ ml model](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) .
+Další informace najdete v referenčních informacích k [nasazení modelu AZ ml model](/cli/azure/ml/model#az_ml_model_deploy) .
 
 Další informace o nasazení najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 

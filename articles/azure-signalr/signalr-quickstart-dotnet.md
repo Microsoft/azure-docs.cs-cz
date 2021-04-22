@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: c39ef505b0cea0ad0c03b81683db8441077cd0d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ac17de3f73424994fc39ef0044d17ef83b501b7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94874538"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866138"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rychlý Start: vytvoření chatovací místnosti pomocí služby ASP.NET and Signal Service
 
@@ -29,7 +29,7 @@ V tomto rychlém startu se dozvíte, jak začít s ASP.NET a službou Azure Sign
 ## <a name="prerequisites"></a>Požadavky
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-* [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
+* [.NET Framework 4.6.1](https://dotnet.microsoft.com/download/dotnet-framework/net461)
 * [ASP.NET – signál 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
 
 Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsnet)prosím o tom.

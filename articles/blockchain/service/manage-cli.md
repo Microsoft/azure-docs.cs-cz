@@ -4,12 +4,12 @@ description: Jak spravovat službu Azure blockchain pomocí Azure CLI
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 63401f5ce5cd35f63915e03b7f0362811d2660ec
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 55df56274aa5baa946b60c27cf49723d59c928a1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768048"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865922"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Správa služby Azure Blockchain Service pomocí Azure CLI
 
@@ -39,7 +39,7 @@ Pokud dáváte přednost instalaci a používání rozhraní příkazového řá
 
     Když pracujete s odkazy na rozšíření rozhraní příkazového řádku Azure (Azure CLI), musíte nejdřív rozšíření nainstalovat.  Rozšíření rozhraní příkazového řádku Azure poskytují přístup k experimentálním a předběžným příkazům, které ještě nebyly dodány jako součást základního rozhraní příkazového řádku.  Další informace o rozšířeních, včetně aktualizace a odinstalace, najdete v tématu [Využití rozšíření v Azure CLI](/cli/azure/azure-cli-extensions-overview).
 
-    Nainstalujte [rozšíření pro službu Azure blockchain](/cli/azure/ext/blockchain/blockchain) spuštěním následujícího příkazu:
+    Nainstalujte [rozšíření pro službu Azure blockchain](/cli/azure/blockchain) spuštěním následujícího příkazu:
 
     ```azurecli-interactive
     az extension add --name blockchain
@@ -47,7 +47,7 @@ Pokud dáváte přednost instalaci a používání rozhraní příkazového řá
 
 ## <a name="create-blockchain-member"></a>Vytvořit člena blockchain
 
-Příklad [vytvoří člena blockchain](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-create) ve službě Azure blockchain, která spouští protokol hlavní knihy kvora v nové konsorcium.
+Příklad [vytvoří člena blockchain](/cli/azure/blockchain/member#az_blockchain_member_create) ve službě Azure blockchain, která spouští protokol hlavní knihy kvora v nové konsorcium.
 
 ```azurecli
 az blockchain member create \
@@ -74,7 +74,7 @@ az blockchain member create \
 
 ## <a name="change-blockchain-member-passwords-or-firewall-rules"></a>Změna hesel členů blockchain nebo pravidel brány firewall
 
-Příklad [aktualizuje heslo člena blockchain](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-update), heslo pro správu konsorcia a pravidlo brány firewall.
+Příklad [aktualizuje heslo člena blockchain](/cli/azure/blockchain/member#az_blockchain_member_update), heslo pro správu konsorcia a pravidlo brány firewall.
 
 ```azurecli
 az blockchain member update \
@@ -95,7 +95,7 @@ az blockchain member update \
 
 ## <a name="create-transaction-node"></a>Vytvořit uzel transakce
 
-[Vytvoří uzel transakce](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-create) v existujícím členu blockchain. Přidáním uzlů transakce můžete zvýšit izolaci zabezpečení a distribuovat zatížení. Například můžete mít koncový bod uzlu transakce pro různé klientské aplikace.
+[Vytvoří uzel transakce](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_create) v existujícím členu blockchain. Přidáním uzlů transakce můžete zvýšit izolaci zabezpečení a distribuovat zatížení. Například můžete mít koncový bod uzlu transakce pro různé klientské aplikace.
 
 ```azurecli
 az blockchain transaction-node create \
@@ -115,7 +115,7 @@ az blockchain transaction-node create \
 
 ## <a name="change-transaction-node-password"></a>Změnit heslo uzlu transakce
 
-Příklad [aktualizuje heslo uzlu transakce](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-update) .
+Příklad [aktualizuje heslo uzlu transakce](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_update) .
 
 ```azurecli
 az blockchain transaction-node update \
@@ -134,7 +134,7 @@ az blockchain transaction-node update \
 
 ## <a name="list-api-keys"></a>Vypsat klíče rozhraní API
 
-Klíče rozhraní API je možné použít pro přístup k uzlům podobně jako uživatelské jméno a heslo. K dispozici jsou dva klíče rozhraní API pro podporu rotace klíče. K [výpisu klíčů rozhraní API](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-list-api-key)použijte následující příkaz.
+Klíče rozhraní API je možné použít pro přístup k uzlům podobně jako uživatelské jméno a heslo. K dispozici jsou dva klíče rozhraní API pro podporu rotace klíče. K [výpisu klíčů rozhraní API](/cli/azure/blockchain/member#az_blockchain_transaction_node_list-api-key)použijte následující příkaz.
 
 ```azurecli
 az blockchain member list-api-key \
@@ -149,7 +149,7 @@ az blockchain member list-api-key \
 
 ## <a name="regenerate-api-keys"></a>Znovu vygenerovat klíče rozhraní API
 
-K [opětovnému vygenerování klíčů rozhraní API](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-regenerate-api-key)použijte následující příkaz.
+K [opětovnému vygenerování klíčů rozhraní API](/cli/azure/blockchain/member#az_blockchain_transaction_node_regenerate-api-key)použijte následující příkaz.
 
 ```azurecli
 az blockchain member regenerate-api-key \
@@ -166,7 +166,7 @@ az blockchain member regenerate-api-key \
 
 ## <a name="delete-a-transaction-node"></a>Odstraní uzel transakce.
 
-Příklad [odstraní uzel transakcí členů blockchain](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-delete).
+Příklad [odstraní uzel transakcí členů blockchain](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_delete).
 
 ```azurecli
 az blockchain transaction-node delete \
@@ -183,7 +183,7 @@ az blockchain transaction-node delete \
 
 ## <a name="delete-a-blockchain-member"></a>Odstranění člena blockchain
 
-Příklad [odstraní člen blockchain](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-delete).
+Příklad [odstraní člen blockchain](/cli/azure/blockchain/member#az_blockchain_member_delete).
 
 ```azurecli
 az blockchain member delete \

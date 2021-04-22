@@ -7,16 +7,16 @@ ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
 ms.date: 11/23/2020
-ms.openlocfilehash: bc172fd1702addf8f4e34094452a779b09320a4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afc39673a30f5c99455696c7a075cb1a6a33ecd1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97033370"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875498"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Rychlý Start: vytváření a Správa aplikací logiky pomocí Azure CLI
 
-V tomto rychlém startu se dozvíte, jak vytvářet a spravovat Logic Apps pomocí [rozšíření Azure CLI Logic Apps](/cli/azure/ext/logic/logic) ( `az logic` ). Z příkazového řádku můžete vytvořit aplikaci logiky pomocí souboru JSON pro definici pracovního postupu aplikace logiky. Aplikaci logiky pak můžete spravovat spuštěním operací, jako například `list` , `show` ( `get` ), `update` a `delete` z příkazového řádku.
+V tomto rychlém startu se dozvíte, jak vytvářet a spravovat Logic Apps pomocí [rozšíření Azure CLI Logic Apps](/cli/azure/logic) ( `az logic` ). Z příkazového řádku můžete vytvořit aplikaci logiky pomocí souboru JSON pro definici pracovního postupu aplikace logiky. Aplikaci logiky pak můžete spravovat spuštěním operací, jako například `list` , `show` ( `get` ), `update` a `delete` z příkazového řádku.
 
 > [!WARNING]
 > Rozšíření Azure CLI Logic Apps v současné době *experimentální* a nezabývá se *zákaznickou podporou*. Toto rozšíření CLI používejte opatrně, zejména pokud se rozhodnete použít rozšíření v produkčním prostředí.
@@ -69,7 +69,7 @@ Když spustíte příkazy pro vytvoření nebo aktualizaci aplikace logiky, vaš
 
 ## <a name="create-logic-apps-from-cli"></a>Vytváření aplikací logiky z CLI
 
-Pracovní postup aplikace logiky můžete vytvořit z Azure CLI pomocí příkazu [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) se souborem JSON pro definici.
+Pracovní postup aplikace logiky můžete vytvořit z Azure CLI pomocí příkazu [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create) se souborem JSON pro definici.
 
 ```azurecli
 
@@ -86,7 +86,7 @@ az logic workflow create --definition
 
 ```
 
-Váš příkaz musí zahrnovat tyto [povinné parametry](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-required-parameters):
+Váš příkaz musí zahrnovat tyto [povinné parametry](/cli/azure/logic/workflow#az_logic_workflow_create-required-parameters):
 
 | Parametr | Hodnota | Popis |
 | --------- | ----- | ----------- |
@@ -95,7 +95,7 @@ Váš příkaz musí zahrnovat tyto [povinné parametry](/cli/azure/ext/logic/lo
 | Name | `--name -n` | Název vaší aplikace logiky Název může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `()` ) a tečky ( `.` ). Název musí být také v různých oblastech jedinečný. |
 | Název skupiny prostředků | `--resource-group -g` | [Skupina prostředků Azure](../azure-resource-manager/management/overview.md) , ve které chcete vytvořit aplikaci logiky. Než začnete, [vytvořte skupinu prostředků](#example---create-resource-group) , pokud ji ještě nemáte k dispozici pro vaši aplikaci logiky. |
 
-Můžete také zahrnout další [volitelné parametry](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters) pro konfiguraci ovládacích prvků přístupu aplikace logiky, koncových bodů, účtu integrace, prostředí integrační služby, stavu a značek prostředků.
+Můžete také zahrnout další [volitelné parametry](/cli/azure/logic/workflow#az_logic_workflow_create-optional-parameters) pro konfiguraci ovládacích prvků přístupu aplikace logiky, koncových bodů, účtu integrace, prostředí integrační služby, stavu a značek prostředků.
 
 ### <a name="example---create-logic-app"></a>Příklad – vytvoření aplikace logiky
 
@@ -111,9 +111,9 @@ Po úspěšném vytvoření pracovního postupu zobrazí rozhraní příkazovéh
 
 ## <a name="update-logic-apps-from-cli"></a>Aktualizace Logic Apps z CLI
 
-Pracovní postup aplikace logiky můžete také aktualizovat z Azure CLI pomocí příkazu [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) .
+Pracovní postup aplikace logiky můžete také aktualizovat z Azure CLI pomocí příkazu [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create) .
 
-Příkaz musí zahrnovat stejné [požadované parametry](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-required-parameters) , jako když [vytvoříte aplikaci logiky](#create-logic-apps-from-cli). Můžete také přidat stejné [volitelné parametry](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters) , jako při vytváření aplikace logiky.
+Příkaz musí zahrnovat stejné [požadované parametry](/cli/azure/logic/workflow#az_logic_workflow_create-required-parameters) , jako když [vytvoříte aplikaci logiky](#create-logic-apps-from-cli). Můžete také přidat stejné [volitelné parametry](/cli/azure/logic/workflow#az_logic_workflow_create-optional-parameters) , jako při vytváření aplikace logiky.
 
 ```azurecli
 
@@ -144,16 +144,16 @@ Po úspěšné aktualizaci pracovního postupu rozhraní příkazového řádku 
 
 ## <a name="delete-logic-apps-from-cli"></a>Odstranění Logic Apps z CLI
 
-Pracovní postup aplikace logiky můžete z Azure CLI odstranit pomocí příkazu [`az logic workflow delete`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete) .
+Pracovní postup aplikace logiky můžete z Azure CLI odstranit pomocí příkazu [`az logic workflow delete`](/cli/azure/logic/workflow#az_logic_workflow_delete) .
 
-Váš příkaz musí zahrnovat tyto [povinné parametry](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-required-parameters):
+Váš příkaz musí zahrnovat tyto [povinné parametry](/cli/azure/logic/workflow#az_logic_workflow_delete-required-parameters):
 
 | Parametr | Hodnota | Popis |
 | --------- | ----- | ----------- |
 | Název | `--name -n` | Název vaší aplikace logiky |
 | Název skupiny prostředků | `-resource-group -g` | Skupina prostředků, ve které se nachází vaše aplikace logiky |
 
-Můžete také zahrnout [volitelný parametr](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-optional-parameters) pro přeskočení výzev k potvrzení, `--yes -y` .
+Můžete také zahrnout [volitelný parametr](/cli/azure/logic/workflow#az_logic_workflow_delete-optional-parameters) pro přeskočení výzev k potvrzení, `--yes -y` .
 
 ```azurecli
 
@@ -187,7 +187,7 @@ Po reakci na výzvu k potvrzení pomocí nástroje `y` se aplikace logiky odstra
 
 ## <a name="show-logic-apps-in-cli"></a>Zobrazit Logic Apps v rozhraní příkazového řádku
 
-Konkrétní pracovní postup aplikace logiky můžete získat pomocí příkazu [`az logic workflow show`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show) .
+Konkrétní pracovní postup aplikace logiky můžete získat pomocí příkazu [`az logic workflow show`](/cli/azure/logic/workflow#az_logic_workflow_show) .
 
 ```azurecli
 
@@ -196,7 +196,7 @@ az logic workflow show --name
 
 ```
 
-Váš příkaz musí zahrnovat tyto [povinné parametry](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show-required-parameters) :
+Váš příkaz musí zahrnovat tyto [povinné parametry](/cli/azure/logic/workflow#az_logic_workflow_show-required-parameters) :
 
 | Parametr | Hodnota | Popis |
 | --------- | ----- | ----------- |
@@ -215,9 +215,9 @@ az logic workflow show --resource-group "testResourceGroup" --name "testLogicApp
 
 ## <a name="list-logic-apps-in-cli"></a>Seznam aplikací logiky v rozhraní příkazového řádku
 
-Pomocí příkazu můžete vypsat své aplikace logiky podle předplatného [`az logic workflow list`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-list) . Tento příkaz vrátí kód JSON pro pracovní postupy Logic Apps.
+Pomocí příkazu můžete vypsat své aplikace logiky podle předplatného [`az logic workflow list`](/cli/azure/logic/workflow#az_logic_workflow_list) . Tento příkaz vrátí kód JSON pro pracovní postupy Logic Apps.
 
-Výsledky můžete filtrovat podle následujících [volitelných parametrů](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-list-optional-parameters):
+Výsledky můžete filtrovat podle následujících [volitelných parametrů](/cli/azure/logic/workflow#az_logic_workflow_list-optional-parameters):
 
 | Parametr | Hodnota | Popis |
 | --------- | ----- | ----------- |

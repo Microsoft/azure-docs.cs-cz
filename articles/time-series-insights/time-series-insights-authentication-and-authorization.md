@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: 225e72bc00ce0a80ff655a76562b5c6b70b7fa79
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 8e50b650eaffe3d0ec8d3d2cd1841bd139d33750
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479487"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867507"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní API služby Azure Time Series Insights
 
@@ -79,7 +79,7 @@ Když Azure Time Series Insights prostředí obdrží požadavek, nejdřív se o
 
 - Pokud chcete udělit přístup prostřednictvím uživatelského rozhraní [Azure Portal](https://portal.azure.com/) , postupujte podle pokynů uvedených v článku [udělení přístupu k datům do prostředí](concepts-access-policies.md) . Při výběru uživatele můžete vyhledat spravovanou identitu nebo registraci aplikace podle jejího názvu nebo podle ID.
 
-- Pokud chcete udělit přístup pomocí Azure CLI, spusťte následující příkaz. Úplný seznam příkazů, které jsou k dispozici pro správu přístupu, najdete [v dokumentaci.](/cli/azure/ext/timeseriesinsights/tsi/access-policy)
+- Pokud chcete udělit přístup pomocí Azure CLI, spusťte následující příkaz. Úplný seznam příkazů, které jsou k dispozici pro správu přístupu, najdete [v dokumentaci.](/cli/azure/tsi/access-policy)
 
    ```azurecli-interactive
    az tsi access-policy create --name "ap1" --environment-name "env1" --description "some description" --principal-object-id "aGuid" --roles Reader Contributor --resource-group "rg1"
@@ -148,7 +148,7 @@ Tato část popisuje společné hlavičky a parametry požadavků protokolu HTTP
 
 Požadované hlavičky požadavku jsou popsány níže.
 
-| Požadovaná hlavička žádosti | Popis |
+| Požadovaná hlavička žádosti | Description |
 | --- | --- |
 | Autorizace | Chcete-li provést ověření pomocí Azure Time Series Insights, musí být do [autorizační hlavičky](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)předána platný nosný token OAuth 2,0. |
 
@@ -157,7 +157,7 @@ Požadované hlavičky požadavku jsou popsány níže.
 
 Volitelné hlavičky požadavku jsou popsány níže.
 
-| Nepovinná hlavička požadavku | Popis |
+| Nepovinná hlavička požadavku | Description |
 | --- | --- |
 | Typ obsahu | `application/json`podporuje se jenom. |
 | x-MS-Client-Request-ID | ID žádosti klienta. Služba zaznamená tuto hodnotu. Umožňuje službě sledovat operace napříč službami. |
@@ -166,7 +166,7 @@ Volitelné hlavičky požadavku jsou popsány níže.
 
 Volitelné, ale Doporučené hlavičky odpovědí jsou popsány níže.
 
-| Hlavička odpovědi | Popis |
+| Hlavička odpovědi | Description |
 | --- | --- |
 | Typ obsahu | `application/json`Podporuje se jenom. |
 | x-MS-Request-ID | ID žádosti generované serverem Dá se použít ke kontaktování žádosti Microsoftu o vyšetření žádosti. |

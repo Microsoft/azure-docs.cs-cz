@@ -4,12 +4,12 @@ description: Naučte se používat spravované identity ve službě Azure Kubern
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 59da03985f0bc9248fdb498d7b0222158029e0d8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7eb0ab6247e8afc27f938b8b4a25d1fb1ee723f4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777666"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876989"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes
 
@@ -209,10 +209,144 @@ az aks create \
  },
 ```
 
+## <a name="bring-your-own-kubelet-mi-preview"></a>Přineste si vlastní kubelet MI (Preview)
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+Identita Kubelet umožňuje udělit přístup k existující identitě před vytvořením clusteru. Tato funkce umožňuje scénáře, jako je například připojení k ACR, s předem vytvořenou spravovanou identitou.
+
+### <a name="prerequisites"></a>Požadavky
+
+- Musíte mít nainstalované rozhraní příkazového řádku Azure CLI, verze 2.21.1 nebo novější.
+- Musíte mít nainstalovanou verzi AKS-Preview, 0.5.10 nebo novější.
+
+### <a name="limitations"></a>Omezení
+
+- Funguje jenom s User-Assigned spravovaným clusterem.
+- Azure Government se momentálně nepodporuje.
+- Azure Čína 21Vianet se momentálně nepodporuje.
+
+Nejprve Zaregistrujte příznak funkce pro Kubelet identitu:
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n CustomKubeletIdentityPreview
+```
+
+Zobrazení stavu v *registraci* trvá několik minut. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/CustomKubeletIdentityPreview')].{Name:name,State:properties.state}"
+```
+
+Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [AZ Provider Register][az-provider-register] :
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="create-or-obtain-managed-identities"></a>Vytvoření nebo získání spravovaných identit
+
+Pokud ještě nemáte spravovanou identitu pro řídicí plochu, měli byste si ji vytvořit. Následující příklad používá příkaz [AZ identity Create][az-identity-create] :
+
+```azurecli-interactive
+az identity create --name myIdentity --resource-group myResourceGroup
+```
+
+Výsledek by měl vypadat takto:
+
+```output
+{                                  
+  "clientId": "<client-id>",
+  "clientSecretUrl": "<clientSecretUrl>",
+  "id": "/subscriptions/<subscriptionid>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity", 
+  "location": "westus2",
+  "name": "myIdentity",
+  "principalId": "<principalId>",
+  "resourceGroup": "myResourceGroup",                       
+  "tags": {},
+  "tenantId": "<tenant-id>",
+  "type&quot;: &quot;Microsoft.ManagedIdentity/userAssignedIdentities"
+}
+```
+
+Pokud ještě nemáte spravovanou identitu kubelet, měli byste si ji vytvořit. Následující příklad používá příkaz [AZ identity Create][az-identity-create] :
+
+```azurecli-interactive
+az identity create --name myKubeletIdentity --resource-group myResourceGroup
+```
+
+Výsledek by měl vypadat takto:
+
+```output
+{
+  "clientId": "<client-id>",
+  "clientSecretUrl": "<clientSecretUrl>",
+  "id": "/subscriptions/<subscriptionid>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myKubeletIdentity", 
+  "location": "westus2",
+  "name": "myKubeletIdentity",
+  "principalId": "<principalId>",
+  "resourceGroup": "myResourceGroup",                       
+  "tags": {},
+  "tenantId": "<tenant-id>",
+  "type&quot;: &quot;Microsoft.ManagedIdentity/userAssignedIdentities"
+}
+```
+
+Pokud je vaše stávající spravovaná identita součástí vašeho předplatného, můžete k jejich dotazování použít příkaz [AZ identity list][az-identity-list] :
+
+```azurecli-interactive
+az identity list --query "[].{Name:name, Id:id, Location:location}" -o table
+```
+
+### <a name="create-a-cluster-using-kubelet-identity"></a>Vytvoření clusteru pomocí kubelet identity
+
+Nyní můžete pomocí následujícího příkazu vytvořit cluster se stávajícími identitami. Zadejte ID identity řídicí plochy přes `assign-identity` a spravovanou identitu kubelet prostřednictvím `assign-kublet-identity` :
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myManagedCluster \
+    --network-plugin azure \
+    --vnet-subnet-id <subnet-id> \
+    --docker-bridge-address 172.17.0.1/16 \
+    --dns-service-ip 10.2.0.10 \
+    --service-cidr 10.2.0.0/24 \
+    --enable-managed-identity \
+    --assign-identity <identity-id> \
+    --assign-kubelet-identity <kubelet-identity-id> \
+```
+
+Úspěšné vytvoření clusteru s použitím vlastní spravované identity kubelet obsahuje následující výstup:
+
+```output
+  "identity": {
+    "principalId": null,
+    "tenantId": null,
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "/subscriptions/<subscriptionid>/resourcegroups/resourcegroups/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity": {
+        "clientId": "<client-id>",
+        "principalId&quot;: &quot;<principal-id>"
+      }
+    }
+  },
+  "identityProfile": {
+    "kubeletidentity": {
+      "clientId": "<client-id>",
+      "objectId": "<object-id>",
+      "resourceId&quot;: &quot;/subscriptions/<subscriptionid>/resourcegroups/resourcegroups/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myKubeletIdentity"
+    }
+  },
+```
+
 ## <a name="next-steps"></a>Další kroky
-* Pomocí [šablon Azure Resource Manager (ARM) ][aks-arm-template] vytvoříte clustery s povolenou správou identit.
+* Pomocí [Azure Resource Manager šablon ][aks-arm-template] Vytvořte clustery s povolenou správou identit.
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
+
+<!-- LINKS - internal -->
 [az-identity-create]: /cli/azure/identity#az_identity_create
 [az-identity-list]: /cli/azure/identity#az_identity_list
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

@@ -96,6 +96,8 @@
               href: connect-azure-kubernetes-service.md
             - name: Protokoly databází Azure SQL
               href: connect-azure-sql-logs.md
+            - name: Účty úložiště Azure
+              href: connect-azure-storage-account.md
             - name: Firewall webových aplikací Azure (WAF)
               href: connect-azure-waf.md
             - name: Defender pro IoT (dříve ASC pro IoT)
@@ -298,7 +300,7 @@
     - name: Nejčastější sešity Sentinel Azure
       href: top-workbooks.md
     - name: Azure CLI
-      href: /cli/azure/ext/sentinel/sentinel
+      href: /cli/azure/sentinel
     - name: Role Azure RBAC
       items:
         - name: Všechny role Azure

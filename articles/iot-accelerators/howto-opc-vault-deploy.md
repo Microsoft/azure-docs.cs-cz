@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 98dc9345d2c8b392fd094458b612857d6d454739
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b20f6318c2e6be701446e29ab93598752e93d287
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105646056"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870278"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Sestavení a nasazení služby správy certifikátů úložiště OPC
 
@@ -175,7 +175,7 @@ Jedná se o opětovné sestavení a opětovné nasazení pouze webových aplikac
 [azure-free]:https://azure.microsoft.com/free/
 [powershell-install]:https://azure.microsoft.com/downloads/#powershell
 [docker-url]: https://www.docker.com/
-[dotnet-install]: https://www.microsoft.com/net/learn/get-started
+[dotnet-install]: https://dotnet.microsoft.com/download
 
 ## <a name="next-steps"></a>Další kroky
 

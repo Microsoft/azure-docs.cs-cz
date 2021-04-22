@@ -2,17 +2,17 @@
 title: Řešení potíží s ConstrainedAllocationFailed při nasazení cloudové služby (Classic) do Azure | Microsoft Docs
 description: Tento článek popisuje, jak vyřešit výjimku ConstrainedAllocationFailed při nasazení cloudové služby (Classic) do Azure.
 services: cloud-services
-author: mibufo
-ms.author: v-mibufo
+author: mamccrea
+ms.author: mamccrea
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 346e7eb77039ab80e6f9dffb8ea8360198040504
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4a92246f81ddd10840bb0dcf7edf2b01853fd148
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738275"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876593"
 ---
 # <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-classic-to-azure"></a>Řešení potíží s ConstrainedAllocationFailed při nasazení cloudové služby (Classic) do Azure
 
@@ -20,7 +20,7 @@ V tomto článku vyřešíte selhání přidělení, kde nejde nasadit Azure Clo
 
 Když nasadíte instance do cloudové služby (Classic) nebo přidáte nové instance webových nebo pracovních rolí, Microsoft Azure přidělí výpočetní prostředky.
 
-Během těchto operací může občas docházet k chybám, i když jste dosáhli limitu předplatného Azure.
+Během těchto operací se vám mohou občas zobrazit chyby, přestože jste ještě nedosáhli limitu předplatného Azure.
 
 > [!TIP]
 > Tyto informace mohou být užitečné také při plánování nasazení služeb.

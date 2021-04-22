@@ -2,17 +2,17 @@
 title: Řešení potíží s FabricInternalServerError nebo ServiceAllocationFailure při nasazení cloudové služby (Classic) do Azure | Microsoft Docs
 description: Tento článek ukazuje, jak vyřešit výjimku FabricInternalServerError nebo ServiceAllocationFailure při nasazení cloudové služby (Classic) do Azure.
 services: cloud-services
-author: mibufo
-ms.author: v-mibufo
+author: mamccrea
+ms.author: mamccrea
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 0a4111f569b751ace80a2a886ed2ce7e4968ce16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0883178779179df2e531123b8a500c62d42530e4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101744896"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877439"
 ---
 # <a name="troubleshoot-fabricinternalservererror-or-serviceallocationfailure-when-deploying-a-cloud-service-classic-to-azure"></a>Řešení potíží s FabricInternalServerError nebo ServiceAllocationFailure při nasazení cloudové služby (Classic) do Azure
 
@@ -20,7 +20,7 @@ V tomto článku budete řešit problémy s přidělením, kdy se kontroler pros
 
 Když nasadíte instance do cloudové služby nebo přidáte nové instance webových nebo pracovních rolí, Microsoft Azure přiděluje výpočetní prostředky.
 
-Během těchto operací může občas docházet k chybám, i když jste dosáhli limitu předplatného Azure.
+Během těchto operací se vám mohou občas zobrazit chyby, přestože jste ještě nedosáhli limitu předplatného Azure.
 
 > [!TIP]
 > Tyto informace mohou být užitečné také při plánování nasazení služeb.

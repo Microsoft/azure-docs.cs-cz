@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 04/21/2021
 ms.author: banders
-ms.openlocfilehash: 1523ca77b06281b84ed57fbc0e2e49ffede85fb4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e8a5e6d40b745efb7fcd50919cd27664b3406b7d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934338"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862844"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací prostředků Azure
 
@@ -177,23 +177,9 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o rezervacích Azure najdete v následujících článcích:
-
-- [Co jsou rezervace v Azure?](save-compute-costs-reservations.md)
-
-Zakoupení plánu služby:
-- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/prepay-reserved-vm-instances.md)
-- [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
-- [Předplacení prostředků Azure Cosmos DB pomocí rezervované kapacity služby Azure Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
-
-Zakoupení plánu softwaru:
-- [Předplacení plánů softwaru Red Hat z rezervací Azure](../../virtual-machines/linux/prepay-suse-software-charges.md)
-- [Předplacení plánů softwaru SUSE z rezervací Azure](../../virtual-machines/linux/prepay-suse-software-charges.md)
-
-Principy slevy a využití:
-- [Vysvětlení způsobu uplatnění slevy za rezervaci virtuálních počítačů](../manage/understand-vm-reservation-charges.md)
-- [Vysvětlení způsobu uplatnění slevy pro plán softwaru Red Hat Enterprise Linux](understand-rhel-reservation-charges.md)
-- [Vysvětlení způsobu uplatnění slevy pro plán softwaru SUSE Linux Enterprise](understand-suse-reservation-charges.md)
-- [Vysvětlení způsobu uplatnění slev za jiné rezervace](understand-reservation-charges.md)
-- [Vysvětlení využití rezervací u předplatného s průběžnými platbami](understand-reserved-instance-usage.md)
-- [Vysvětlení využití rezervací u smlouvy Enterprise](understand-reserved-instance-usage-ea.md)
-- [Náklady na software pro Windows nezahrnuté v rezervacích](reserved-instance-windows-software-costs.md)
+ - [Zobrazit využití rezervace](reservation-utilization.md)
+ - [Výměna a refundace](exchange-and-refund-azure-reservations.md)
+ - [Obnovení rezervací](reservation-renew.md)
+ - [Přenosy mezi klienty](troubleshoot-reservation-transfers-between-tenants.md)
+ - [Vyhledání nákupu rezervací z protokolů Azure](find-reservation-purchaser-from-logs.md)
+ - [Obnovení rezervace](reservation-renew.md)

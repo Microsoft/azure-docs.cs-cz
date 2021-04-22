@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 68b9aee49e4cf7c02c07fc7dd90e9cc6065a443c
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 6472ba7dd055de97a1855211f21fd0c75eea814f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259417"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874112"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analýza protokolů a metrik pomocí nastavení diagnostiky
 
@@ -27,7 +27,7 @@ Pomocí diagnostických funkcí Azure jarního cloudu můžete analyzovat protok
 Vyberte kategorii protokolu a kategorii metrik, které chcete monitorovat.
 
 > [!TIP]
-> Chcete jenom zasílat streamování protokolů? Podívejte se na tento [příkaz rozhraní příkazového řádku Azure](/cli/azure/ext/spring-cloud/spring-cloud/app#ext-spring-cloud-az-spring-cloud-app-logs).
+> Chcete jenom zasílat streamování protokolů? Podívejte se na tento [příkaz rozhraní příkazového řádku Azure](/cli/azure/spring-cloud/app#az_spring_cloud_app_logs).
 
 ## <a name="logs"></a>Protokoly
 

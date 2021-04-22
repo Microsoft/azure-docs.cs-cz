@@ -1,17 +1,17 @@
 ---
 title: Přehled možností sady SDK pro zařízení Azure IoT
 description: Zjistěte, kterou sadu SDK pro zařízení Azure IoT využít v závislosti na vaší vývojové roli a úlohách.
-author: elhorton
-ms.author: elhorton
+author: philmea
+ms.author: philmea
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: c9624e9a23d005185429c82199324ac570cbd63e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c35a9045bf809c03630fbb7c57f9d31e7b143422
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607726"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876452"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Přehled sad SDK pro zařízení Azure IoT
 

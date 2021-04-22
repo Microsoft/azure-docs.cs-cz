@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: 8775696a35bfccc363aa2c6ec06c6c44115916b9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 9b7b8fe9c05d0de64dcd0cf7c6c324e0d03cb1ac
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479266"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874148"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Vysoce výkonná obsluha s odvozeným serverem Triton (Preview) 
 
@@ -116,7 +116,7 @@ models
 az ml model register -n my_triton_model -p models --model-framework=Multi
 ```
 
-Další informace o nástroji `az ml model register` najdete v [referenční dokumentaci](/cli/azure/ext/azure-cli-ml/ml/model).
+Další informace o nástroji `az ml model register` najdete v [referenční dokumentaci](/cli/azure/ml/model).
 
 Při registraci modelu v Azure Machine Learning hodnota `--model-path  -p` parametru musí být název nadřazené složky Triton.  
 V předchozím příkladu je to  `--model-path` ' modely '.
@@ -339,7 +339,7 @@ print(local_service.scoring_uri)
 
 ---
 
-Po dokončení nasazení se zobrazí identifikátor URI pro vyhodnocování. Pro toto místní nasazení bude `http://localhost:6789/score` . Pokud nasadíte do cloudu, můžete pomocí příkazu [AZ ml Service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) CLI získat identifikátor URI pro vyhodnocování.
+Po dokončení nasazení se zobrazí identifikátor URI pro vyhodnocování. Pro toto místní nasazení bude `http://localhost:6789/score` . Pokud nasadíte do cloudu, můžete pomocí příkazu [AZ ml Service show](/cli/azure/ml/service#az_ml_service_show) CLI získat identifikátor URI pro vyhodnocování.
 
 Informace o tom, jak vytvořit klienta, který odesílá požadavky na odvození do identifikátoru URI pro vyhodnocování, najdete v tématu [Spotřeba modelu nasazeného jako webové služby](how-to-consume-web-service.md).
 

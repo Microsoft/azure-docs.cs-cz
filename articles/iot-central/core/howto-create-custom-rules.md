@@ -1,20 +1,20 @@
 ---
 title: Rozšiřování IoT Central Azure s vlastními pravidly a oznámeními | Microsoft Docs
 description: Jako vývojář řešení můžete nakonfigurovat aplikaci IoT Central, aby odesílala e-mailová oznámení v případě, že zařízení přestane odesílat telemetrii. Toto řešení používá Azure Stream Analytics, Azure Functions a SendGrid.
-author: TheJasonAndrew
-ms.author: v-anjaso
+author: philmea
+ms.author: philmea
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 824308b66803d2dfa05383ff06ce97c48626619d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a65d9dbaed4d197c2e0843e73ff3f45b8678017e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179336"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864212"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Rozšíření Azure IoT Central o vlastní pravidla s využitím služeb Stream Analytics, Azure Functions a SendGrid
 
@@ -28,7 +28,7 @@ V této příručce se dozvíte, jak:
 * Vytvořte Stream Analytics dotaz, který zjistí, kdy zařízení zastavilo odesílání dat.
 * Odešlete e-mailové oznámení pomocí služeb Azure Functions a SendGrid.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 

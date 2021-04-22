@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 203af340a8bd48bdb6dee70f92c2ecc39708b8e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cb778d826ef094d71fd27f3c10bc1f2c292baa47
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732325"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862394"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Monitorování prostředků Azure s využitím služby Azure Monitor
 Pokud máte důležité aplikace a obchodní procesy spoléhající se na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování vygenerovaná prostředky Azure a o tom, jak můžete pomocí funkcí Azure Monitor analyzovat tato data a upozorňovat na ně.
@@ -131,7 +131,7 @@ Protokoly Azure Monitor konsolidují protokoly a metriky z několika služeb a d
 Data monitorování shromážděná z vašeho prostředku můžete získat z příkazového řádku nebo je zahrnout do skriptu pomocí [Azure PowerShell](/powershell/azure/) nebo [rozhraní příkazového řádku Azure](/cli/azure/). 
 
 - Informace o přístupu k datům metrik z CLI najdete v tématu Referenční informace k [metrikám CLI](/cli/azure/monitor/metrics) .
-- V tématu Referenční informace o rozhraní příkazového [řádku Log Analytics](/cli/azure/ext/log-analytics/monitor/log-analytics) pro přístup k datům Azure monitor protokolů pomocí dotazu protokolu z CLI.
+- V tématu Referenční informace o rozhraní příkazového [řádku Log Analytics](/cli/azure/monitor/log-analytics) pro přístup k datům Azure monitor protokolů pomocí dotazu protokolu z CLI.
 - V tématu Referenční informace o [metrikách](/powershell/module/azurerm.insights/get-azurermmetric) pro přístup k datům metriky z Azure PowerShell najdete Azure PowerShell.
 - V tématu Referenční informace o [dotazech protokolu Azure PowerShell](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery) pro přístup k datům Azure monitor protokolů pomocí dotazu protokolu z Azure PowerShell.
 

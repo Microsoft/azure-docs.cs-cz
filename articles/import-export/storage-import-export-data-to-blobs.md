@@ -9,12 +9,12 @@ ms.date: 03/15/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 74f5565ba9dfa48dabfe56c25e3ef30a8caafe14
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 39eb6c164751ebdfa293798850a8d663fe988b82
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563279"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875678"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Použití služby Azure import/export k importu dat do Azure Blob Storage
 
@@ -166,7 +166,7 @@ Pomocí následujících kroků vytvořte v Azure CLI úlohu importu.
 
 ### <a name="create-a-job"></a>Vytvoření úlohy
 
-1. Pomocí příkazu [AZ Extension Add](/cli/azure/extension#az_extension_add) přidejte rozšíření [AZ import-export](/cli/azure/ext/import-export/import-export) :
+1. Pomocí příkazu [AZ Extension Add](/cli/azure/extension#az_extension_add) přidejte rozšíření [AZ import-export](/cli/azure/import-export) :
 
     ```azurecli
     az extension add --name import-export
@@ -184,19 +184,19 @@ Pomocí následujících kroků vytvořte v Azure CLI úlohu importu.
     az storage account create --resource-group myierg --name myssdocsstorage --https-only
     ```
 
-1. Seznam umístění, do kterých můžete dodávat disky, získáte pomocí příkazu [AZ import-export Location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) :
+1. Seznam umístění, do kterých můžete dodávat disky, získáte pomocí příkazu [AZ import-export Location list](/cli/azure/import-export/location#az_import_export_location_list) :
 
     ```azurecli
     az import-export location list
     ```
 
-1. K získání umístění pro vaši oblast použijte příkaz [AZ import-export Location show](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show) :
+1. K získání umístění pro vaši oblast použijte příkaz [AZ import-export Location show](/cli/azure/import-export/location#az_import_export_location_show) :
 
     ```azurecli
     az import-export location show --location "West US"
     ```
 
-1. Spusťte následující příkaz [AZ import-export Create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) a vytvořte úlohu importu:
+1. Spusťte následující příkaz [AZ import-export Create](/cli/azure/import-export#az_import_export_create) a vytvořte úlohu importu:
 
     ```azurecli
     az import-export create \
@@ -223,13 +223,13 @@ Pomocí následujících kroků vytvořte v Azure CLI úlohu importu.
    > [!TIP]
    > Místo zadání e-mailové adresy pro jednoho uživatele zadejte skupinu. Tím zajistíte, že budete dostávat oznámení i v případě, že správce opustí.
 
-1. Pomocí příkazu [AZ import-export list](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) zobrazíte všechny úlohy pro skupinu prostředků myierg:
+1. Pomocí příkazu [AZ import-export list](/cli/azure/import-export#az_import_export_list) zobrazíte všechny úlohy pro skupinu prostředků myierg:
 
     ```azurecli
     az import-export list --resource-group myierg
     ```
 
-1. Chcete-li aktualizovat úlohu nebo zrušit úlohu, spusťte příkaz [AZ import-export Update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) :
+1. Chcete-li aktualizovat úlohu nebo zrušit úlohu, spusťte příkaz [AZ import-export Update](/cli/azure/import-export#az_import_export_update) :
 
     ```azurecli
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true

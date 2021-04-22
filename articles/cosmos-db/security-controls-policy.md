@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroly dodržování předpisů pro Azure Cosmos DB
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou k dispozici pro Azure Cosmos DB. Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: sample
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 330ec202a5996a4359ec702c9ed40e33df2e3dbd
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 8717db7eed6472eb29551b4bb51e42eb9c9c89e5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107504085"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873720"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cosmos-db"></a>Azure Policy kontroly dodržování předpisů pro Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

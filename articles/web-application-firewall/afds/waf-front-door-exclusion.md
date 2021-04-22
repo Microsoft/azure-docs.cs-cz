@@ -7,16 +7,16 @@ ms.service: web-application-firewall
 ms.date: 11/10/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: a92679bb3114c4a60870424f3ec68a8de7b303da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83baf03c414d9b0f7acb6a93db03794a539a3c58
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499913"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107860828"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Firewall webových aplikací (WAF) se seznamy vyloučení služby front-dveří 
 
-Někdy může firewall webových aplikací (WAF) blokovat požadavek, který chcete pro vaši aplikaci použít. Například služba Active Directory vloží tokeny, které se používají pro ověřování. Tyto tokeny mohou obsahovat speciální znaky, které mohou aktivovat falešně pozitivní hodnoty z pravidel WAF. Seznamy vyloučení WAF umožňují vynechat určité atributy žádostí z vyhodnocení WAF.  Seznam vyloučení se dá nakonfigurovat pomocí  [PowerShellu](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject), rozhraní příkazového [řádku Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), [rozhraní REST API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)nebo Azure Portal. Následující příklad ukazuje konfiguraci Azure Portal. 
+Někdy může firewall webových aplikací (WAF) blokovat požadavek, který chcete pro vaši aplikaci použít. Například služba Active Directory vloží tokeny, které se používají pro ověřování. Tyto tokeny mohou obsahovat speciální znaky, které mohou aktivovat falešně pozitivní hodnoty z pravidel WAF. Seznamy vyloučení WAF umožňují vynechat určité atributy žádostí z vyhodnocení WAF.  Seznam vyloučení se dá nakonfigurovat pomocí  [PowerShellu](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject), rozhraní příkazového [řádku Azure CLI](/cli/azure/network/front-door/waf-policy/managed-rules/exclusion#az_network_front_door_waf_policy_managed_rules_exclusion_add), [rozhraní REST API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)nebo Azure Portal. Následující příklad ukazuje konfiguraci Azure Portal. 
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Konfigurace seznamů vyloučení pomocí Azure Portal
 **Správa vyloučení** je přístupná z portálu WAF v části **spravovaná pravidla**
 

@@ -10,12 +10,12 @@ ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 11323f2aec05935b9dc45187ed54597e61af924d
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 4a8d1f872ca042429276b8f0e1112bc5837d8e38
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554109"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869270"
 ---
 # <a name="enable-soft-delete-for-blobs"></a>Povolení obnovitelného odstranění pro objekty blob
 
@@ -62,7 +62,7 @@ $properties.DeleteRetentionPolicy.Days
 
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-CLI)
 
-Pokud chcete povolit obnovitelné odstranění objektů BLOB pomocí rozhraní příkazového řádku Azure, zavolejte příkaz [AZ Storage Account BLOB-Service-Properties Update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) a určete dobu uchování ve dnech.
+Pokud chcete povolit obnovitelné odstranění objektů BLOB pomocí rozhraní příkazového řádku Azure, zavolejte příkaz [AZ Storage Account BLOB-Service-Properties Update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) a určete dobu uchování ve dnech.
 
 Následující příklad povoluje dočasné odstranění objektů BLOB a nastavuje dobu uchování na sedm dní. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
@@ -73,7 +73,7 @@ az storage account blob-service-properties update --account-name <storage-accoun
     --delete-retention-days 7
 ```
 
-Chcete-li zjistit aktuální nastavení pro obnovitelné odstranění objektu blob, zavolejte příkaz [AZ Storage Account BLOB-Service-Properties show](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_show) :
+Chcete-li zjistit aktuální nastavení pro obnovitelné odstranění objektu blob, zavolejte příkaz [AZ Storage Account BLOB-Service-Properties show](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_show) :
 
 ```azurecli-interactive
 az storage account blob-service-properties show --account-name <storage-account> \

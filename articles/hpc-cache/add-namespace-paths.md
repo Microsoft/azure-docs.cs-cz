@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: 5427389f007b7598274d35425a9b3e8e10a63e49
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2cb8db4e73a8f4fa299031070bffc15a2b754d7e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798523"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870368"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Nastavení agregovaného oboru názvů
 
@@ -65,7 +65,7 @@ Z Azure Portal načtěte stránku nastavení **oboru názvů** . Z této stránk
 
 Při použití rozhraní příkazového řádku Azure je při vytváření cíle úložiště nutné přidat cestu k oboru názvů. Podrobnosti najdete v tématu [Přidání nového cíle služby Azure Blob Storage](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target) .
 
-Chcete-li aktualizovat cestu k oboru názvů cíle, použijte příkaz [AZ HPC-cache BLOB-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update) . Argumenty pro příkaz Update jsou podobné argumentům příkazu CREATE s tím rozdílem, že nepředáte název kontejneru nebo účet úložiště.
+Chcete-li aktualizovat cestu k oboru názvů cíle, použijte příkaz [AZ HPC-cache BLOB-Storage-Target Update](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_update) . Argumenty pro příkaz Update jsou podobné argumentům příkazu CREATE s tím rozdílem, že nepředáte název kontejneru nebo účet úložiště.
 
 Cestu k oboru názvů nelze odstranit z cíle úložiště objektů BLOB pomocí rozhraní příkazového řádku Azure CLI, ale můžete tuto cestu přepsat jinou hodnotou.
 
@@ -129,7 +129,7 @@ Zadejte tyto hodnoty pro každou cestu oboru názvů:
 
 Při použití rozhraní příkazového řádku Azure je při vytváření cíle úložiště nutné přidat alespoň jednu cestu k oboru názvů. Podrobnosti najdete v tématu [Přidání nového cíle úložiště NFS](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) .
 
-Pokud chcete aktualizovat cestu oboru názvů cíle nebo přidat další cesty, použijte příkaz [AZ HPC-cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) . Použijte ``--junction`` možnost k zadání všech cest oboru názvů, které chcete.
+Pokud chcete aktualizovat cestu oboru názvů cíle nebo přidat další cesty, použijte příkaz [AZ HPC-cache NFS-Storage-Target Update](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_update) . Použijte ``--junction`` možnost k zadání všech cest oboru názvů, které chcete.
 
 Možnosti použité pro příkaz Update jsou podobné příkazu "vytvořit", s tím rozdílem, že nepředáte informace o systému úložiště (IP adresa nebo název hostitele) a model použití je nepovinný. Další podrobnosti o syntaxi této možnosti najdete v tématu [Přidání nového cíle úložiště NFS](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) ``--junction`` .
 

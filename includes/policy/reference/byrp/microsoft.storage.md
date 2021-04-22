@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 1c9aa818e527b457daca7b669144c360706308eb
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 00c20b719abeaf104304f92727fe150f29f1b911
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107504264"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876000"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Synchronizace souborů Azure by měl používat privátní odkaz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d320205-c6a1-4ac6-873d-46224024e8e2) |Vytvoření privátního koncového bodu pro uvedený prostředek služby synchronizace úložiště vám umožní adresovat prostředek služby synchronizace úložiště v rámci privátního adresního prostoru IP v síti vaší organizace, nikoli prostřednictvím veřejného koncového bodu přístupného z Internetu. Vytvoření privátního koncového bodu sám o sobě nezakáže veřejný koncový bod. |AuditIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateEndpoint_AuditIfNotExists.json) |
 |[Konfigurace Synchronizace souborů Azure s privátními koncovými body](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb35dddd9-daf7-423b-8375-5a5b86806d5a) |Pro zadaný prostředek služby synchronizace úložiště se nasadí privátní koncový bod. To vám umožní vyřešit prostředek služby synchronizace úložiště z privátního adresního prostoru IP adres v síti vaší organizace, nikoli prostřednictvím veřejného koncového bodu přístupného z Internetu. Existence jednoho nebo více privátních koncových bodů samotného nezakáže veřejný koncový bod. |DeployIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateEndpoint_DeployIfNotExists.json) |

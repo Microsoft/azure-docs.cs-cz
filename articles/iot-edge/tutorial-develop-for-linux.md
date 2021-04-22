@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fea8f52ebf40ba8195de134098693f90315bb384
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 10742ec277f5742067c432a2823cbb7592e6a752
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461415"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874688"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>Kurz: vývoj modulů IoT Edge s využitím kontejnerů pro Linux
 
@@ -44,7 +44,7 @@ Vývojový počítač:
 * Většina operačních systémů, které mohou spustit kontejnerový modul, lze použít k vývoji IoT Edge moduly pro zařízení se systémem Linux. V tomto kurzu se používá počítač s Windows, ale odkazuje na známé rozdíly na macOS nebo Linux.
 * Nainstalujte [Git](https://git-scm.com/), abyste si mohli stáhnout balíčky šablon modulů dále v tomto kurzu.  
 * [Rozšíření jazyka C# pro Visual Studio Code (využívající OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
-* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
+* [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1).
 
 Zařízení Azure IoT Edge:
 

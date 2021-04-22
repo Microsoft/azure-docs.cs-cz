@@ -5,7 +5,7 @@
   items:
     - name: Informace o službě Service Fabric Mesh
       href: service-fabric-mesh-overview.md
-- name: Rychlý start
+- name: Rychlé starty
   items:
     - name: Nasazení aplikace Hello World
       href: service-fabric-mesh-quickstart-deploy-container.md
@@ -75,12 +75,12 @@
       href: move-across-regions.md
     - name: Vyhledání ukázek
       href: service-fabric-mesh-howto-find-samples.md
-- name: Odkaz
+- name: Reference
   items:
     - name: Rozhraní REST API poskytovatele prostředků služby Service Fabric Mesh
       href: /rest/api/servicefabric/sfmeshrp-index
     - name: Reference k CLI služby Service Fabric Mesh
-      href: /cli/azure/ext/mesh
+      href: /cli/azure/
     - name: Rozhraní REST API prostředků klienta služby Service Fabric
       href: /rest/api/servicefabric/sfclient-index#service-fabric-resource-model
     - name: Reference k CLI Mavenu platformy Service Fabric

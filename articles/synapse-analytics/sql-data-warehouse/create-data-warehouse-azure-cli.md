@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 11/20/2020
 ms.author: jrasnick
 ms.custom: azure-synapse, devx-track-azurecli
-ms.openlocfilehash: 532c06cc49f9fddab09c6678ee5fff9fe32347cb
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 712405ec7ba61e05bb587efc3e6393192d820e97
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565929"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865472"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-with-azure-cli"></a>Rychlý Start: vytvoření synapse fondu SQL pomocí Azure CLI
 
@@ -77,43 +77,43 @@ Vytvořte fond SQL. V tomto příkladu se jako cíl služby používá DW100c, c
 > [!NOTE]
 > Budete potřebovat dříve vytvořený pracovní prostor. Další informace najdete v tématu [rychlý Start: vytvoření pracovního prostoru Azure synapse pomocí Azure CLI](../quickstart-create-workspace-cli.md).
 
-Pomocí příkazu [AZ synapse SQL Pool Create](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_create) vytvořte fond SQL:
+Pomocí příkazu [AZ synapse SQL Pool Create](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_create) vytvořte fond SQL:
 
 ```azurecli
 az synapse sql pool create --resource-group myResourceGroup --name mySampleDataWarehouse \
    --performance-level "DW1000c" --workspace-name testsynapseworkspace
 ```
 
-Další informace o možnostech parametrů najdete v tématu [AZ synapse SQL Pool](/cli/azure/ext/synapse/synapse/sql/pool).
+Další informace o možnostech parametrů najdete v tématu [AZ synapse SQL Pool](/cli/azure/synapse/sql/pool).
 
-Fondy SQL můžete zobrazit pomocí příkazu [AZ synapse SQL Pool list](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_list) :
+Fondy SQL můžete zobrazit pomocí příkazu [AZ synapse SQL Pool list](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_list) :
 
 ```azurecli
 az synapse sql pool list --resource-group myResourceGroup --workspace-name testsynapseworkspace
 ```
 
-Pomocí příkazu [AZ synapse SQL Pool Update](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_update) aktualizujte stávající fond:
+Pomocí příkazu [AZ synapse SQL Pool Update](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_update) aktualizujte stávající fond:
 
 ```azurecli
 az synapse sql pool update --resource-group myResourceGroup --name mySampleDataWarehouse \
    --workspace-name testsynapseworkspace
 ```
 
-Pro pozastavení fondu použijte příkaz [AZ synapse SQL Pool Pause](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_pause) :
+Pro pozastavení fondu použijte příkaz [AZ synapse SQL Pool Pause](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_pause) :
 
 ```azurecli
 az synapse sql pool pause --resource-group myResourceGroup --name mySampleDataWarehouse \
    --workspace-name testsynapseworkspace
 ```
 
-Pomocí příkazu [AZ synapse SQL Pool Resume](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_resume) spusťte pozastavený fond:
+Pomocí příkazu [AZ synapse SQL Pool Resume](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_resume) spusťte pozastavený fond:
 
 ```azurecli
 az synapse sql pool resume --resource-group myResourceGroup --name mySampleDataWarehouse \
    --workspace-name testsynapseworkspace
 ```
 
-Pokud chcete odebrat existující fond SQL, použijte příkaz [AZ synapse SQL Pool Delete](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_delete) :
+Pokud chcete odebrat existující fond SQL, použijte příkaz [AZ synapse SQL Pool Delete](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_delete) :
 
 ```azurecli
 az synapse sql pool delete --resource-group myResourceGroup --name mySampleDataWarehouse \

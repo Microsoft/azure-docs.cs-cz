@@ -11,12 +11,12 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ec35a651d4d3ef9e0877463329a654bc7491f4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f87379f48f82757916aef0fa0d358835f48cb9a5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023410"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875930"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Přenos dat s využitím knihovny pro přesun dat
 
@@ -40,7 +40,7 @@ Tento dokument ukazuje, jak vytvořit konzolovou aplikaci .NET Core, která bě�
 
 ## <a name="setup"></a>Nastavení
 
-1. Navštivte [Průvodce instalací .NET Core](https://www.microsoft.com/net/core) a nainstalujte .NET Core. Při výběru prostředí zvolte možnost příkazového řádku.
+1. Instalaci .NET Core SDK najdete v [Průvodci instalací .NET Core](https://dotnet.microsoft.com/download) . Při výběru prostředí zvolte možnost příkazového řádku.
 2. Z příkazového řádku vytvořte adresář pro váš projekt. Přejděte do tohoto adresáře a pak zadejte `dotnet new console -o <sample-project-name>` a vytvořte projekt konzoly v jazyce C#.
 3. Otevřete tento adresář v Visual Studio Code. Tento krok můžete rychle provést pomocí příkazového řádku zadáním `code .` v systému Windows.
 4. Nainstalujte [rozšíření C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) z webu Visual Studio Code Marketplace. Restartujte Visual Studio Code.

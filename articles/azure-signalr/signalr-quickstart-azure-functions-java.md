@@ -10,12 +10,12 @@ ms.devlang: java
 ms.custom:
 - devx-track-java
 - mode-api
-ms.openlocfilehash: 15453fb8177248087cbec98fd734bcff3bf66868
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0d93b9b645aaf4190a36dbc523d40dec2757a18b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533237"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869792"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Rychlý Start: použití jazyka Java k vytvoření chatovací místnosti s Azure Functions a službou Signal
 
@@ -31,7 +31,7 @@ Služba signalizace Azure umožňuje snadno přidat do aplikace funkce v reáln�
    > Požadované vazby služby signalizace v jazyce Java se podporují jenom v nástrojích Azure Function Core verze 2.4.419 (hostitel verze 2.0.12332) nebo vyšší.
 
    > [!NOTE]
-   > Pro instalaci rozšíření Azure Functions Core Tools vyžaduje, aby byl [.NET Core SDK](https://www.microsoft.com/net/download) nainstalovaný. K sestavování aplikací funkcí Azure v JavaScriptu však není potřeba žádná znalost architektury .NET.
+   > Pro instalaci rozšíření Azure Functions Core Tools vyžaduje, aby byl [.NET Core SDK](https://dotnet.microsoft.com/download) nainstalovaný. K sestavování aplikací funkcí Azure v JavaScriptu však není potřeba žádná znalost architektury .NET.
 
 - [Java Developer Kit](https://www.azul.com/downloads/zulu/) verze 8
 - [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější

@@ -3,12 +3,12 @@ title: Vytváření řídicích panelů Azure prostřednictvím kódu programu
 description: K programovému vytváření řídicích panelů Azure použijte řídicí panel v Azure Portal jako šablonu. Obsahuje odkaz JSON.
 ms.topic: how-to
 ms.date: 12/4/2020
-ms.openlocfilehash: 416eeb772e347b28fcb4a4dcc93c746562ea3571
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 92848ac238ff11a90afc82713639b8abebf076ec
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767054"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878789"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Vytváření řídicích panelů Azure prostřednictvím kódu programu
 
@@ -658,27 +658,27 @@ Připravte prostředí pro rozhraní příkazového řádku Azure CLI.
 
 - Tyto příklady používají následující řídicí panel: [portal-dashboard-template-testvm.jsna](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json). Nahraďte obsah v lomených závorkách hodnotami.
 
-Spuštěním příkazu [AZ Portal Dashboard Create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) vytvořte řídicí panel:
+Spuštěním příkazu [AZ Portal Dashboard Create](/cli/azure/portal/dashboard#az_portal_dashboard_create) vytvořte řídicí panel:
 
 ```azurecli
 az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
    --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-Řídicí panel můžete aktualizovat pomocí příkazu [AZ Portal Dashboard Update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) :
+Řídicí panel můžete aktualizovat pomocí příkazu [AZ Portal Dashboard Update](/cli/azure/portal/dashboard#az_portal_dashboard_update) :
 
 ```azurecli
 az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
 --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-Podrobnosti řídicího panelu zobrazíte spuštěním příkazu [AZ Portal Dashboard show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) :
+Podrobnosti řídicího panelu zobrazíte spuštěním příkazu [AZ Portal Dashboard show](/cli/azure/portal/dashboard#az_portal_dashboard_show) :
 
 ```azurecli
 az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
 ```
 
-Pokud chcete zobrazit všechny řídicí panely aktuálního předplatného, použijte příkaz [AZ Portal Dashboard list](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list):
+Pokud chcete zobrazit všechny řídicí panely aktuálního předplatného, použijte příkaz [AZ Portal Dashboard list](/cli/azure/portal/dashboard#az_portal_dashboard_list):
 
 ```azurecli
 az portal dashboard list
@@ -694,4 +694,4 @@ az portal dashboard list --resource-group myResourceGroup
 
 Další informace o stolních počítačích najdete v tématu [Správa nastavení a předvoleb Azure Portal](set-preferences.md).
 
-Další informace o podpoře Azure CLI pro řídicí panely najdete v tématu [AZ Portal Dashboard](/cli/azure/ext/portal/portal/dashboard).
+Další informace o podpoře Azure CLI pro řídicí panely najdete v tématu [AZ Portal Dashboard](/cli/azure/portal/dashboard).

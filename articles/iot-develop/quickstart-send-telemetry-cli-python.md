@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 03/24/2021
-ms.openlocfilehash: ea0b161a9038666e1e7ddd5a6c6af2078afff8aa
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: be44ecf6dd154a21fd024ee37d92f61504350664
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766514"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876420"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-azure-iot-hub-python"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby Azure IoT Hub (Python)
 
@@ -85,7 +85,7 @@ V této části použijete sadu Python SDK k posílání zpráv ze simulovaného
     export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
     ```
 
-1. V otevřeném prostředí CLI spusťte příkaz [AZ IoT Hub monitor-Events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) a začněte monitorovat události na simulovaném zařízení IoT.  Zprávy událostí se tisknou v terminálu při jejich doručení.
+1. V otevřeném prostředí CLI spusťte příkaz [AZ IoT Hub monitor-Events](/cli/azure/iot/hub#az_iot_hub_monitor_events) a začněte monitorovat události na simulovaném zařízení IoT.  Zprávy událostí se tisknou v terminálu při jejich doručení.
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}

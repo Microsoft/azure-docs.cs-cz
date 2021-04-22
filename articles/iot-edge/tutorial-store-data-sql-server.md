@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 709c7bf352635ffb1c17f6cb24aee59dcae2e033
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: bd64c95bcf59cef27aa988712315403c00a5dfd7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479759"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871250"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Kurz: Ukládání dat na hraničních zařízeních s využitím databází SQL Serveru
 
@@ -51,7 +51,7 @@ Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastaven�
 V tomto kurzu se k posílání dat do SQL Server používá modul Azure Functions. Pokud chcete vytvořit modul IoT Edge s Azure Functions, nainstalujte na svém vývojovém počítači následující další požadavky:
 
 * [Rozšíření C# pro Visual Studio Code (s technologií OmniSharp) pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
-* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
+* [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1).
 
 ## <a name="create-a-function-project"></a>Vytvoření projektu funkce
 

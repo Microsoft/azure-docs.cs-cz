@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 2bd57344f0bd7f3b97c523f9378a5820c1a90a84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aefd52ad7b92f6cf7f702d6b8c9496ac535da70c
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93396562"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866282"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Vytvoření aplikační brány s ukončením šifrování TLS pomocí Azure PowerShellu
 
@@ -35,7 +35,7 @@ Tento článek vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Ver
 
 ## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
-V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. V tomto článku vytvoříte certifikát podepsaný svým držitelem pomocí [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate). K exportu souboru pfx z certifikátu můžete použít rutinu [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) s vráceným kryptografickým otiskem.
+V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. V tomto článku vytvoříte certifikát podepsaný svým držitelem pomocí [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate). K exportu souboru pfx z certifikátu můžete použít rutinu [Export-PfxCertificate](/powershell/module/pki/export-pfxcertificate) s vráceným kryptografickým otiskem.
 
 ```powershell
 New-SelfSignedCertificate `

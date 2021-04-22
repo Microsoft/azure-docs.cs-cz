@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 04/19/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 01c3dacc2754a3df6afb87b160ca2feea81807ad
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: af591a5defcef1e8d043d54f08447324a34a10c4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820331"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876290"
 ---
 # <a name="start-monitor-and-track-run-history"></a>Spustit, sledovat a sledovat historii spuštění
 
@@ -101,7 +101,7 @@ Budete potřebovat následující položky:
     
         Tento příkaz vytvoří `.azureml` podadresář, který obsahuje příklady souborů prostředí RunConfig a conda. Obsahuje taky `config.json` soubor, který se používá ke komunikaci s vaším pracovním prostorem Azure Machine Learning.
     
-        Další informace najdete v tématu [AZ ml složka připojit](/cli/azure/ext/azure-cli-ml/ml/folder?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
+        Další informace najdete v tématu [AZ ml složka připojit](/cli/azure/ml/folder?preserve-view=true&view=azure-cli-latest#az_ml_folder_attach).
     
     2. Chcete-li spustit spuštění, použijte následující příkaz. Při použití tohoto příkazu zadejte název souboru RunConfig (text před \* . RunConfig, pokud se díváte na systém souborů) s parametrem-c.
     
@@ -116,7 +116,7 @@ Budete potřebovat následující položky:
         >
         > Další příklady souborů RunConfig naleznete v tématu [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) .
     
-        Další informace najdete v tématu [AZ ml Run odeslání-Script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
+        Další informace najdete v tématu [AZ ml Run odeslání-Script](/cli/azure/ml/run?preserve-view=true&view=azure-cli-latest#az_ml_run_submit-script).
 
     # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -167,7 +167,7 @@ Budete potřebovat následující položky:
     
         Tento příkaz vrátí dokument JSON se seznamem informací o běhu pro tento experiment.
     
-        Další informace najdete v tématu [AZ ml experiment list](/cli/azure/ext/azure-cli-ml/ml/experiment?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
+        Další informace najdete v tématu [AZ ml experiment list](/cli/azure/ml/experiment?preserve-view=true&view=azure-cli-latest#az_ml_experiment_list).
     
     * Chcete-li zobrazit informace o konkrétním spuštění, použijte následující příkaz. Nahraďte `runid` ID běhu:
     
@@ -177,7 +177,7 @@ Budete potřebovat následující položky:
     
         Tento příkaz vrátí dokument JSON se seznamem informací o běhu.
     
-        Další informace najdete v tématu [AZ ml Run show](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
+        Další informace najdete v tématu [AZ ml Run show](/cli/azure/ml/run?preserve-view=true&view=azure-cli-latest#az_ml_run_show).
     
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
@@ -259,7 +259,7 @@ V Azure Machine Learning můžete použít vlastnosti a značky, které vám pom
     az ml run update -r runid --add-tag quality='fantastic run'
     ```
     
-    Další informace najdete v tématu [AZ ml Run Update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
+    Další informace najdete v tématu [AZ ml Run Update](/cli/azure/ml/run?preserve-view=true&view=azure-cli-latest#az_ml_run_update).
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
@@ -337,7 +337,7 @@ Chcete-li zrušit běh pomocí rozhraní příkazového řádku, použijte násl
 az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
-Další informace najdete v tématu [AZ ml Run Cancel](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
+Další informace najdete v tématu [AZ ml Run Cancel](/cli/azure/ml/run?preserve-view=true&view=azure-cli-latest#az_ml_run_cancel).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 

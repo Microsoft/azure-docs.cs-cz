@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 9678648b6417138e216ba2dce3a3605bb4c1bce4
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 077b4ea6c7d4506e29673cbb4d6d89a92657b9c1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169228"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873680"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -115,7 +115,7 @@ Další informace o tom, jak přizpůsobit ukázky pro používání konvencí [
 
 Toto úložiště obsahuje:
 
-**Ve Windows:**
+**Pro Windows:**
 
 * TelemetryMQTTWin32: obsahuje kód pro odeslání zprávy telemetrie do služby Azure IoT Hub, která je sestavená a spuštěná na počítači s Windows.
 
@@ -125,7 +125,7 @@ Toto úložiště obsahuje:
 
 * PnPMQTTWin32: obsahuje kód pro odeslání zprávy telemetrie s možnostmi zařízení IoT technologie Plug and Play do služby Azure IoT Hub, která je sestavená a spuštěná na počítači s Windows. Můžete si přečíst další informace o [IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md)
 
-**V Linuxu:**
+**Pro Linux:**
 
 * MQTTLinux: obsahuje kód a skript sestavení pro spuštění na platformě Linux (WSL, Ubuntu a Raspbian byly testovány tak daleko).
 
@@ -162,7 +162,7 @@ Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále
 
   Další informace o tom, jak generovat tokeny SAS, najdete v části zařízení [použití tokenů zabezpečení IoT Hub](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app).
 
-  Při testování můžete také použít [nástroje Azure IoT Tools pro různé platformy pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo rozšíření CLI. pomocí příkazu [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) můžete rychle vygenerovat token SAS, který můžete zkopírovat a vložit do vlastního kódu.
+  Při testování můžete také použít [nástroje Azure IoT Tools pro různé platformy pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo rozšíření CLI. pomocí příkazu [AZ IoT Hub Generate-SAS-token](/cli/azure/iot/hub#az_iot_hub_generate_sas_token) můžete rychle vygenerovat token SAS, který můžete zkopírovat a vložit do vlastního kódu.
 
 ### <a name="for-azure-iot-tools"></a>Pro Azure IoT Tools
 

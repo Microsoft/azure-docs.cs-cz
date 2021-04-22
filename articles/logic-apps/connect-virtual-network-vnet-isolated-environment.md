@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/30/2021
-ms.openlocfilehash: a56a41b704b12da08cf86b450ac1c734409c8032
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 04/21/2021
+ms.openlocfilehash: bfef9f2b5420ac9377cc369d7bf9a9bdac76743b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219310"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874220"
 ---
-# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps pomocí prostředí integrační služby (ISE)
+# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure ze služby Azure Logic Apps s využitím prostředí integrační služby (ISE)
 
 Pro scénáře, ve kterých aplikace logiky a účty pro integraci potřebují přístup k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md), vytvořte [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Prostředí integrační služby (ISE) je vyhrazené prostředí, které využívá vyhrazené úložiště a další prostředky oddělené od globální služby Logic Apps pro více tenantů. Toto oddělení také snižuje vliv na výkon, který můžou mít jiní klienti Azure na výkon vašich aplikací. Prostředí integrační služby vám také poskytuje vlastní statickou IP adresu. Tyto IP adresy jsou oddělené od statických IP adres, které jsou sdílené pomocí Logic Apps ve veřejné víceklientské službě.
 
@@ -122,7 +122,7 @@ V této tabulce jsou popsány porty, které vaše ISE vyžaduje k přístupu a �
 | Účel | Značka zdrojové služby nebo IP adresy | Zdrojové porty | Značka nebo IP adresa cílové služby | Cílové porty | Poznámky |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Komunikace mezi podsítí v rámci virtuální sítě | Adresní prostor virtuální sítě s ISEmi podsítěmi | * | Adresní prostor virtuální sítě s ISEmi podsítěmi | * | Vyžaduje se pro tok provozu *mezi* podsítěmi ve vaší virtuální síti. <p><p>**Důležité**: Pokud chcete provoz směrovat mezi *součásti* v každé podsíti, ujistěte se, že jste otevřeli všechny porty v každé podsíti. |
-| Komunikace z aplikace logiky | **VirtualNetwork** | * | Liší se v závislosti na cíli. | 80, 443 | Cíl se liší v závislosti na koncových bodech externí služby, se kterou vaše aplikace logiky potřebuje komunikovat. |
+| Komunikace z aplikace logiky | **VirtualNetwork** | * | Liší se v závislosti na cíli. | Liší se v závislosti na cíli. | Cílové porty se liší v závislosti na koncových bodech pro externí služby, se kterými vaše aplikace logiky potřebuje komunikovat. <p><p>Například cílový port je 443 pro webovou službu, port 25 pro službu SMTP, port 22 pro službu SFTP atd. |
 | Azure Active Directory | **VirtualNetwork** | * | **Azureactivedirectory selhala** | 80, 443 ||
 | Azure Storage závislost | **VirtualNetwork** | * | **Storage** | 80, 443, 445 ||
 | Správa připojení | **VirtualNetwork** | * | **AppService** | 443 ||

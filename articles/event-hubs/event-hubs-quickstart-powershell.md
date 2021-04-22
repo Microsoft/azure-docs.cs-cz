@@ -3,12 +3,12 @@ title: 'Rychlý Start: vytvoření centra událostí pomocí prostředí PowerSh
 description: Tento rychlý start popisuje, jak pomocí Azure PowerShellu vytvořit centrum událostí a pak odesílat a přijímat události pomocí sady .NET Standard SDK.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c81024a9195e463eeaaf384d5cbbd1e0054c485
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be2761bedd3198d25cb279e6a8ff188db6a51de2
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88933949"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873752"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Rychlý start: Vytvoření centra událostí pomocí Azure PowerShellu
 
@@ -24,7 +24,7 @@ Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet][] před tím, než začnete.
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
-- [NET Standard SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
+- [.NET Core SDK](https://dotnet.microsoft.com/download)verze 2,0 nebo novější.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

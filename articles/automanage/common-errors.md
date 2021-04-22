@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: 3c9f1b76bb707a296da00ac503482efe6a22385b
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 6ee0164dd8243d30cf691350352757f2503e34c8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278333"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862970"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Řešení běžných chyb při připojování běžných možností automanage
 Při autosprávě se nemusí na službu připojit počítač. Tento dokument vysvětluje, jak řešit potíže s nasazením, sdílí některé běžné důvody, proč nasazení můžou selhat, a popisuje možné další kroky při zmírnění rizik.
@@ -41,11 +41,10 @@ Neshodující se požadavky na mapování oblastí v pracovním prostoru | Autom
 "Přístup byl odepřen z důvodu přiřazení zamítnutí názvu systému, které vytvořila spravovaná aplikace" ". | Ve vašem prostředku se vytvořilo [denyAssignment](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) , což brání tomu, aby se pro přístup k vašemu prostředku spravovala. Tato denyAssignment mohla být vytvořena [buď pomocí](https://docs.microsoft.com/azure/governance/blueprints/concepts/resource-locking) podrobného plánu, nebo [spravované aplikace](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/overview).
 "Informace o operačním systému: název = ' (null) ', ver = ' (null), stav agenta = ' Nepřipraveno '. | Ujistěte se, že používáte [minimální podporovanou verzi agenta](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version), že je spuštěný agent[(Linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) a [Windows](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)) a že je agent aktuální ([Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) a [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)).
 "Nepovedlo se určit operační systém pro název operačního systému virtuálního počítače:, ver. Zkontrolujte prosím, jestli je spuštěný agent virtuálního počítače. aktuální stav je připravený. | Ujistěte se, že používáte [minimální podporovanou verzi agenta](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version), že je spuštěný agent[(Linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) a [Windows](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)) a že je agent aktuální ([Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) a [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)).
-
-"Virtuální počítač ohlásil selhání při zpracování rozšíření" IaaSAntimalware "| Ujistěte se, že na vašem VIRTUÁLNÍm počítači už není nainstalovaná jiná antimalwarová nebo antiantivirová nabídka. Pokud se tato chyba nezdařila, obraťte se na podporu.
+"Virtuální počítač ohlásil selhání při zpracování rozšíření" IaaSAntimalware ". | Ujistěte se, že na vašem VIRTUÁLNÍm počítači už není nainstalovaná jiná antimalwarová nebo antiantivirová nabídka. Pokud se tato chyba nezdařila, obraťte se na podporu.
 Pracovní prostor ASC: automanage v současné době nepodporuje službu Log Analytics v daném _umístění_. | Ověřte, že se váš virtuální počítač nachází v [podporované oblasti](./automanage-virtual-machines.md#supported-regions).
 Nasazení šablony se nepovedlo kvůli porušení zásad. Další informace najdete v podrobnostech. | K dispozici je zásada zabraňující autosprávě při připojování virtuálního počítače. Ověřte zásady, které se používají u svého předplatného nebo skupiny prostředků obsahující váš virtuální počítač, který chcete připojit k autosprávě.
-"Přiřazení nebylo úspěšné; k dispozici nejsou žádné další informace | Otevřete prosím případ s podporou Microsoft Azure.
+"Přiřazení nebylo úspěšné; nejsou k dispozici žádné další informace. " | Otevřete prosím případ s podporou Microsoft Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

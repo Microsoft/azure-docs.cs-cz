@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: ccfda4975b6453ed67edc2640520bc0a76df5709
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d063a0870616b5b977df18c56d9d66515b03d0a5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644883"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870854"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Kurz: Přijetí a získání dat prostřednictvím služby Azure Data Share  
 
@@ -106,7 +106,7 @@ Začněte přípravou prostředí pro rozhraní příkazového řádku Azure:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Spuštěním příkazu [AZ datashare Consumer pozvánky](/cli/azure/ext/datashare/datashare/consumer/invitation#ext_datashare_az_datashare_consumer_invitation_list) zobrazíte vaše aktuální pozvánky:
+Spuštěním příkazu [AZ datashare Consumer pozvánky](/cli/azure/datashare/consumer/invitation#az_datashare_consumer_invitation_list) zobrazíte vaše aktuální pozvánky:
 
 ```azurecli
 az datashare consumer invitation list --subscription 11111111-1111-1111-1111-111111111111
@@ -140,7 +140,7 @@ Zkopírujte ID pozvánky pro použití v další části.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pomocí příkazu [AZ datashare Consumer Share-Subscription Create](/cli/azure/ext/datashare/datashare/consumer/share-subscription#ext_datashare_az_datashare_consumer_share_subscription_create) vytvořte sdílenou složku dat.
+Pomocí příkazu [AZ datashare Consumer Share-Subscription Create](/cli/azure/datashare/consumer/share-subscription#az_datashare_consumer_share_subscription_create) vytvořte sdílenou složku dat.
 
 ```azurecli
 az datashare consumer share-subscription create --resource-group share-rg \
@@ -175,7 +175,7 @@ Chcete-li nakonfigurovat, kde chcete přijímat data, postupujte podle následuj
 
 Pomocí těchto příkazů můžete nakonfigurovat, kam chcete přijímat data.
 
-1. Spuštěním příkazu [AZ datashare Consumer Share-Subscription list-source-DataSet](/cli/azure/ext/datashare/datashare/consumer/share-subscription#ext_datashare_az_datashare_consumer_share_subscription_list_source_dataset) Získejte ID datové sady:
+1. Spuštěním příkazu [AZ datashare Consumer Share-Subscription list-source-DataSet](/cli/azure/datashare/consumer/share-subscription#az_datashare_consumer_share_subscription_list_source_dataset) Získejte ID datové sady:
 
    ```azurecli
    az datashare consumer share-subscription list-source-dataset \
@@ -221,7 +221,7 @@ Pomocí těchto příkazů můžete nakonfigurovat, kam chcete přijímat data.
      \"storage_account_name\":\"datashareconsumersa\",\"kind\":\"BlobFolder\",\"prefix\":\"consumer\"}'
    ```
 
-1. Pomocí příkazu [AZ datashare Consumer DataSet-Mapping Create](/cli/azure/ext/datashare/datashare/consumer/dataset-mapping#ext_datashare_az_datashare_consumer_dataset_mapping_create) vytvořte mapování datové sady:
+1. Pomocí příkazu [AZ datashare Consumer DataSet-Mapping Create](/cli/azure/datashare/consumer/dataset-mapping#az_datashare_consumer_dataset_mapping_create) vytvořte mapování datové sady:
 
    ```azurecli
    az datashare consumer dataset-mapping create --resource-group "share-rg" \
@@ -230,7 +230,7 @@ Pomocí těchto příkazů můžete nakonfigurovat, kam chcete přijímat data.
      --subscription 11111111-1111-1111-1111-111111111111
    ```
 
-1. Spuštěním příkazu [AZ datashare Consumer Share-Subscription Synchronization](/cli/azure/ext/datashare/datashare/consumer/share-subscription/synchronization#ext_datashare_az_datashare_consumer_share_subscription_synchronization_start) spusťte synchronizaci datových sad.
+1. Spuštěním příkazu [AZ datashare Consumer Share-Subscription Synchronization](/cli/azure/datashare/consumer/share-subscription/synchronization#az_datashare_consumer_share_subscription_synchronization_start) spusťte synchronizaci datových sad.
 
    ```azurecli
    az datashare consumer share-subscription synchronization start \
@@ -239,7 +239,7 @@ Pomocí těchto příkazů můžete nakonfigurovat, kam chcete přijímat data.
      --subscription 11111111-1111-1111-1111-111111111111
    ```
 
-   Spuštěním příkazu [AZ datashare Consumer Share-Subscription Synchronization list](/cli/azure/ext/datashare/datashare/consumer/share-subscription/synchronization#ext_datashare_az_datashare_consumer_share_subscription_synchronization_list) zobrazíte seznam synchronizací:
+   Spuštěním příkazu [AZ datashare Consumer Share-Subscription Synchronization list](/cli/azure/datashare/consumer/share-subscription/synchronization#az_datashare_consumer_share_subscription_synchronization_list) zobrazíte seznam synchronizací:
 
    ```azurecli
    az datashare consumer share-subscription synchronization list \
@@ -248,7 +248,7 @@ Pomocí těchto příkazů můžete nakonfigurovat, kam chcete přijímat data.
      --subscription 11111111-1111-1111-1111-111111111111
    ```
 
-   Pomocí příkazu [AZ datashare Consumer Share-Subscription list-source-Share-Synchronization-](/cli/azure/ext/datashare/datashare/consumer/share-subscription#ext_datashare_az_datashare_consumer_share_subscription_list_source_share_synchronization_setting) Settings zobrazte nastavení synchronizace nastavené ve sdílené složce.
+   Pomocí příkazu [AZ datashare Consumer Share-Subscription list-source-Share-Synchronization-](/cli/azure/datashare/consumer/share-subscription#az_datashare_consumer_share_subscription_list_source_share_synchronization_setting) Settings zobrazte nastavení synchronizace nastavené ve sdílené složce.
 
    ```azurecli
    az datashare consumer share-subscription list-source-share-synchronization-setting \
@@ -274,7 +274,7 @@ Tyto kroky platí pouze pro sdílení na základě snímků.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Spusťte příkaz [AZ datashare Consumer Trigger Create](/cli/azure/ext/datashare/datashare/consumer/trigger#ext_datashare_az_datashare_consumer_trigger_create) a aktivujte snímek:
+Spusťte příkaz [AZ datashare Consumer Trigger Create](/cli/azure/datashare/consumer/trigger#az_datashare_consumer_trigger_create) a aktivujte snímek:
 
 ```azurecli
 az datashare consumer trigger create --resource-group "share-rg" \

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4891c1c7f1871ee9dd1c6fd6572a4d407870a7ad
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 93c5cbb9c60f62e50ea4050faf22fb1ff540fa9b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505172"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878090"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Proměnné účtu Automation by se měly šifrovat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3657f5a0-770e-44a3-b44e-9431ba1e9735) |Při ukládání citlivých dat je důležité povolit šifrování prostředků proměnných účtu služby Automation. |Audit, zamítnutí, zakázáno |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |
 |[Účty služby Automation by měly zakázat přístup k veřejné síti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F955a914f-bf86-4f0e-acd5-e0766b0efcb6) |Zakázání přístupu k veřejné síti zlepšuje zabezpečení tím, že zajistí, že prostředek není zveřejněný na veřejném Internetu. Můžete omezit vystavení prostředků účtu Automation vytvořením privátních koncových bodů. Další informace najdete tady: [https://docs.microsoft.com/azure/automation/how-to/private-link-security](https://docs.microsoft.com/azure/automation/how-to/private-link-security) . |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/AutomationAccount_PublicNetworkAccess_Audit.json) |

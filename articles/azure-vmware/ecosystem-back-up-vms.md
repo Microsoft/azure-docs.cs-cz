@@ -2,13 +2,13 @@
 title: Řešení zálohování virtuálních počítačů řešení Azure VMware
 description: Přečtěte si o špičkových řešeních Backup a restore pro virtuální počítače řešení Azure VMware.
 ms.topic: how-to
-ms.date: 03/17/2021
-ms.openlocfilehash: 92726cae8a6f99140e4401763d14506f71884cc1
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 04/21/2021
+ms.openlocfilehash: fc12c21265e4615e25bb324835364cb9119ac6fa
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166339"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874715"
 ---
 # <a name="backup-solutions-for-azure-vmware-solution-virtual-machines-vms"></a>Řešení zálohování pro virtuální počítače řešení Azure VMware (VM)
 
@@ -19,8 +19,9 @@ Naši partneři záloh mají špičková řešení pro zálohování a obnovení
 Zapojte síťový provoz mezi virtuálními počítači řešení Azure VMware a úložištěm zálohování v Azure, které se přenáší přes propojení s vysokou šířkou pásma a nízkou latencí. Provoz replikace mezi oblastmi se cestuje přes interní síť Azure pro replánování, která snižuje náklady na šířku pásma pro uživatele.
 
 Další informace o těchto řešeních zálohování najdete tady:
-- [CommVault](https://documentation.commvault.com/11.21/essential/128997_support_for_azure_vmware_solution.html)
-- [Veritas](https://vrt.as/nb4avs)
-- [Veeam](https://www.veeam.com/kb4012)
 - [Cohesity](https://www.cohesity.com/blogs/expanding-cohesitys-support-for-microsofts-ecosystem-azure-stack-and-azure-vmware-solution/)
+- [CommVault](https://documentation.commvault.com/11.21/essential/128997_support_for_azure_vmware_solution.html)
 - [Technologie Dell](https://www.delltechnologies.com/resources/en-us/asset/briefs-handouts/solutions/dell-emc-data-protection-for-avs.pdf)
+- [Rubrik](https://www.rubrik.com/en/products/cloud-data-management)
+- [Veeam](https://www.veeam.com/kb4012)
+- [Veritas](https://vrt.as/nb4avs)

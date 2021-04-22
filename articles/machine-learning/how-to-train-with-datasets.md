@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: edb7ebc94d2706d1bf20db8ed9a869107163ff8d
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 0b2bb49863e07e6f06512e868ed12ecf00cc11c2
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107387985"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872384"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Výuka modelů s Azure Machine Learningmi datovými sadami 
 
@@ -316,7 +316,7 @@ Pokud používáte sdílenou složku pro jiné úlohy, jako je třeba přenos da
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Automatické učení modelů strojového učení](how-to-auto-train-remote.md) pomocí TabularDatasets.
+* [Automatické učení modelů strojového učení](how-to-configure-auto-train.md#data-source-and-format) pomocí TabularDatasets.
 
 * [Analýza modelů klasifikace obrázků](https://aka.ms/filedataset-samplenotebook) s využitím datových sad
 

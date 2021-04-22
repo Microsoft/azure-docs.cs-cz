@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 11/20/2020
 ms.author: parkerra
-ms.openlocfilehash: 596b73f8fb205b6a5681fecf3d00fd2a67c1f59f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 2c85e26d5a9115b00621c4099e3ed36afb224e3f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97628668"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107879504"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Vytvoření prostředku prostorových kotev
 
@@ -76,7 +76,7 @@ Začněte přípravou prostředí pro rozhraní příkazového řádku Azure:
 
    [!INCLUDE [resource group intro text](resource-group.md)]
 
-   Aktuální účty prostorových kotev pro skupinu prostředků můžete zobrazit pomocí příkazu [AZ prostor-kotvy-Account list](/cli/azure/ext/mixed-reality/spatial-anchors-account#ext_mixed_reality_az_spatial_anchors_account_list) :
+   Aktuální účty prostorových kotev pro skupinu prostředků můžete zobrazit pomocí příkazu [AZ prostor-kotvy-Account list](/cli/azure/spatial-anchors-account#az_spatial_anchors_account_list) :
 
    ```azurecli
    az spatial-anchors-account list --resource-group myResourceGroup
@@ -88,13 +88,13 @@ Začněte přípravou prostředí pro rozhraní příkazového řádku Azure:
    az spatial-anchors-account list
    ```
 
-1. Spuštěním příkazu [AZ prostor-anchores-Account Create](/cli/azure/ext/mixed-reality/spatial-anchors-account#ext_mixed_reality_az_spatial_anchors_account_create) vytvořte svůj účet prostorových kotev:
+1. Spuštěním příkazu [AZ prostor-anchores-Account Create](/cli/azure/spatial-anchors-account#az_spatial_anchors_account_create) vytvořte svůj účet prostorových kotev:
 
    ```azurecli
    az spatial-anchors-account create --resource-group myResourceGroup --name MySpatialAnchorsQuickStart --location eastus2
    ```
 
-1. Zobrazte vlastnosti prostředku pomocí příkazu [AZ prostor-kotvy-Account show](/cli/azure/ext/mixed-reality/spatial-anchors-account#ext_mixed_reality_az_spatial_anchors_account_show) :
+1. Zobrazte vlastnosti prostředku pomocí příkazu [AZ prostor-kotvy-Account show](/cli/azure/spatial-anchors-account#az_spatial_anchors_account_show) :
 
    ```azurecli
    az spatial-anchors-account show --resource-group myResourceGroup --name MySpatialAnchorsQuickStart
@@ -102,7 +102,7 @@ Začněte přípravou prostředí pro rozhraní příkazového řádku Azure:
 
    Zkopírujte hodnotu **ID účtu** prostředku a hodnotu **Doména účtu** prostředku do textového editoru pro pozdější použití.
 
-1. Spuštěním příkazu [AZ prostor-anchores-Account Key show](/cli/azure/ext/mixed-reality/spatial-anchors-account/key#ext_mixed_reality_az_spatial_anchors_account_key_show) získáte primární a sekundární klíče:
+1. Spuštěním příkazu [AZ prostor-anchores-Account Key show](/cli/azure/spatial-anchors-account/key#az_spatial_anchors_account_key_show) získáte primární a sekundární klíče:
 
    ```azurecli
    az spatial-anchors-account key show --resource-group myResourceGroup --name MySpatialAnchorsQuickStart
@@ -110,14 +110,14 @@ Začněte přípravou prostředí pro rozhraní příkazového řádku Azure:
 
    Zkopírujte hodnoty klíče do textového editoru pro pozdější použití.
 
-   Pokud potřebujete znovu vygenerovat klíče, použijte příkaz [AZ prostor-kotvy-účet obnovení klíče](/cli/azure/ext/mixed-reality/spatial-anchors-account/key#ext_mixed_reality_az_spatial_anchors_account_key_renew) :
+   Pokud potřebujete znovu vygenerovat klíče, použijte příkaz [AZ prostor-kotvy-účet obnovení klíče](/cli/azure/spatial-anchors-account/key#az_spatial_anchors_account_key_renew) :
 
    ```azurecli
    az spatial-anchors-account key renew --resource-group myResourceGroup --name example --key primary
    az spatial-anchors-account key renew --resource-group myResourceGroup --name example --key secondary
    ```
 
-Účet můžete odstranit pomocí příkazu [AZ prostor-kotvy-Account Delete](/cli/azure/ext/mixed-reality/spatial-anchors-account#ext_mixed_reality_az_spatial_anchors_account_delete) :
+Účet můžete odstranit pomocí příkazu [AZ prostor-kotvy-Account Delete](/cli/azure/spatial-anchors-account#az_spatial_anchors_account_delete) :
 
 ```azurecli
 az spatial-anchors-account delete --resource-group myResourceGroup --name MySpatialAnchorsQuickStart

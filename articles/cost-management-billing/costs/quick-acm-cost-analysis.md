@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2, devx-track-azurecli
-ms.openlocfilehash: 9b73eeccad6d17df8c711671c56fbb7cee20b17a
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 4d0062258919de29750b644b2f8e12990e25098b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484723"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873199"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -169,7 +169,7 @@ Začněte přípravou prostředí pro rozhraní příkazového řádku Azure:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Po přihlášení použijte příkaz [az costmanagement query](/cli/azure/ext/costmanagement/costmanagement#ext_costmanagement_az_costmanagement_query) k dotazu na informace o využití vašeho předplatného od začátku měsíce:
+Po přihlášení použijte příkaz [az costmanagement query](/cli/azure/costmanagement#az_costmanagement_query) k dotazu na informace o využití vašeho předplatného od začátku měsíce:
 
 ```azurecli
 az costmanagement query --timeframe MonthToDate --type Usage \
@@ -186,7 +186,7 @@ az costmanagement query --timeframe MonthToDate --type Usage \
 
 Jako parametr **--dataset-filter** je možné použít řetězec JSON nebo `@json-file`.
 
-Máte také možnost použít příkaz [az costmanagement export](/cli/azure/ext/costmanagement/costmanagement/export) a vyexportovat údaje o využití do účtu služby Azure Storage. Data si potom můžete stáhnout odtud.
+Máte také možnost použít příkaz [az costmanagement export](/cli/azure/costmanagement/export) a vyexportovat údaje o využití do účtu služby Azure Storage. Data si potom můžete stáhnout odtud.
 
 1. Vytvořte skupinu prostředků nebo použijte stávající skupinu prostředků. Skupinu prostředků vytvoříte pomocí příkazu [az group create](/cli/azure/group#az_group_create):
 
@@ -200,7 +200,7 @@ Máte také možnost použít příkaz [az costmanagement export](/cli/azure/ext
    az storage account create --resource-group TreyNetwork --name cmdemo
    ```
 
-1. Pro vytvoření exportu spusťte příkaz [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create):
+1. Pro vytvoření exportu spusťte příkaz [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create):
 
    ```azurecli
    az costmanagement export create --name DemoExport --type Usage \
