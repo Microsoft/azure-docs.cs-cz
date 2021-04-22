@@ -3,12 +3,12 @@ title: Chraňte své virtuální počítače s řešeními VMware Azure pomocí 
 description: Chraňte své virtuální počítače řešení Azure VMware pomocí nástrojů pro nativní zabezpečení Azure na řídicím panelu Azure Security Center.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 7292ea4486a61f5b0cfd8f656d2763a3ce655e79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d04f0ac3e3934442ce5b6d5fbf4b53e18b3dff18
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578258"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877511"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Chraňte své virtuální počítače s řešeními VMware Azure pomocí Integrace Azure Security Center
 
@@ -242,6 +242,6 @@ Můžete vytvářet dotazy nebo používat dostupný předem definovaný dotaz v
 
 Teď, když jste se seznámili s postupem ochrany vašich virtuálních počítačů s Azure VMware, se můžete seznámit s těmito řešeními:
 
-- Pomocí [řídicího panelu Azure Defenderu](../security-center/azure-defender-dashboard.md).
-- [Pokročilá detekce útoků s více fázemi v Azure Sentinel](../azure-monitor/logs/quick-create-workspace.md).
-- [Správa životního cyklu virtuálních počítačů řešení Azure VMware](lifecycle-management-of-azure-vmware-solution-vms.md).
+- Používání [řídicího panelu Azure Defenderu](../security-center/azure-defender-dashboard.md)
+- [Rozšířená detekce útoků s více fázemi v Azure Sentinel](../azure-monitor/logs/quick-create-workspace.md)
+- [Správa životního cyklu virtuálních počítačů řešení Azure VMware](lifecycle-management-of-azure-vmware-solution-vms.md)

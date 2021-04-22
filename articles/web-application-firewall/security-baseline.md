@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/08/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 54582456e5c55f7cbe513f8ab83fbc87ef6a3931
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 6aa3e2b84c4349e2134ddeb2a60fd193f56f84e8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285407"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875952"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Základní hodnota zabezpečení Azure pro Firewall webových aplikací Azure
 
@@ -88,7 +88,7 @@ Použijte pravidla a skupiny pravidel na zásady firewallu webových aplikací (
 
 - [Zásady WAF na Application Gateway](/cli/azure/network/application-gateway/waf-policy)
 
-- [Zásady WAF na front-dveří](/cli/azure/ext/front-door/network/front-door/waf-policy)
+- [Zásady WAF na front-dveří](/cli/azure/network/front-door/waf-policy)
 
 **Odpovědnost:** Zákazník
 

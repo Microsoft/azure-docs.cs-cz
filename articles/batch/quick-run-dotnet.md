@@ -4,12 +4,12 @@ description: V tomto rychlém startu spustíte ukázkovou úlohu Azure Batch a �
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 48166faa016defb719d8b48c2fff84de32f6c2e4
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1c2328db520042ceff1861b740313befbed0e20d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168242"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876719"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rychlý start: Spuštění první úlohy služby Azure Batch pomocí rozhraní API .NET
 
@@ -25,7 +25,7 @@ Po dokončení tohoto rychlého startu budete rozumět klíčovým konceptům sl
 
 - Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch.
 
-- [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)nebo [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, MacOS nebo Windows. 
+- [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)nebo [.NET Core 2,1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1) pro Linux, MacOS nebo Windows. 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
