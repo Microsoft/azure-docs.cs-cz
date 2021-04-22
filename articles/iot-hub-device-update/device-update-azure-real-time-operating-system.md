@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 3/18/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 66da860a5cdae1f5c7c18e4136b1f2d960492ca8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 40ff9431288e7afa39ea1b83706170e94866db11
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629049"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107887356"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-azure-real-time-operating-system-rtos"></a>Kurz aktualizace zařízení pro Azure IoT Hub s využitím operačního systému Azure v reálném čase (RTO)
 
@@ -29,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 * Přístup k IoT Hub. Doporučuje se použít úroveň S1 (Standard) nebo vyšší.
-* Instance aktualizace zařízení a účet propojený s vaším IoT Hub. Podle pokynů v průvodci [vytvořte a propojte](http://create-device-update-account.md/) účet aktualizace zařízení, pokud jste to ještě neudělali dříve.
+* Instance aktualizace zařízení a účet propojený s vaším IoT Hub. Podle pokynů v průvodci [vytvořte a propojte](create-device-update-account.md) účet aktualizace zařízení, pokud jste to ještě neudělali dříve.
 
 ## <a name="get-started"></a>Začínáme
 

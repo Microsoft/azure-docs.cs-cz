@@ -267,6 +267,8 @@
             - name: Vývoj s využitím základních nástrojů
               href: functions-run-local.md
               displayName: 'local, runtime'
+            - name: Místní vývoj triggeru Event Gridového objektu BLOB
+              href: functions-event-grid-blob-trigger.md
         - name: Vytváření funkcí
           items:
             - name: Trigger HTTP

@@ -10,16 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: f9215469b1436ce9dc95c140e6969366d80d1ced
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5214d914c104fdf6df302c7879230bba2b3d2928
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607129"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891837"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Poznámky k verzi: sada Speech SDK pro zařízení
 
 V následujících částech jsou uvedeny změny v posledních verzích.
+
+## <a name="speech-devices-sdk-1160"></a>Sada Speech 1.16.0 SDK pro zařízení:
+
+- Pevný [#22 problému GitHubu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues/22).
+- Byla aktualizována součást [sady Speech SDK](./speech-sdk.md) na verzi 1.16.0. Další informace najdete v [poznámkách k verzi](./releasenotes.md).
 
 ## <a name="speech-devices-sdk-1150"></a>Sada Speech 1.15.0 SDK pro zařízení:
 

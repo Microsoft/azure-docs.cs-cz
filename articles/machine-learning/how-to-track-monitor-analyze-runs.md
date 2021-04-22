@@ -9,14 +9,14 @@ author: swinner95
 ms.author: shwinne
 ms.reviewer: sgilley
 ms.date: 04/19/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: af591a5defcef1e8d043d54f08447324a34a10c4
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.topic: how-to
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: d50820e954c1a34f1ccffe133a338538bf0abd18
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876290"
+ms.locfileid: "107888525"
 ---
 # <a name="start-monitor-and-track-run-history"></a>Spustit, sledovat a sledovat historii spuštění
 

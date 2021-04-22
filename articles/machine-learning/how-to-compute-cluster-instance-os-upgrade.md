@@ -9,14 +9,13 @@ ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 03/03/2021
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 7445de8349d025679b1560e065ed15d9eec3b08f
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.topic: how-to
+ms.openlocfilehash: 8f2264cbe316f9be32b74e6d26169da4038d9e28
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/22/2021
-ms.locfileid: "107872006"
+ms.locfileid: "107885879"
 ---
 # <a name="upgrade-compute-instance-and-compute-cluster-host-os"></a>Upgradovat výpočetní instanci a operační systém hostitele výpočetního clusteru
 

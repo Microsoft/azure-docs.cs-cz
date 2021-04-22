@@ -3,12 +3,12 @@ title: Přehled připojování partnerů (Azure Event Grid)
 description: Poskytuje přehled o tom, jak se dá připojit jako partner Event Grid.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 40d0afe0aaeb40412948eb304a36a3627566551b
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 9af80efc1ba342768f9bb6d504f921b52494d955
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869684"
+ms.locfileid: "107890703"
 ---
 # <a name="partner-onboarding-overview-azure-event-grid"></a>Přehled připojování partnerů (Azure Event Grid)
 
@@ -153,7 +153,7 @@ Po odeslání do koncového bodu oboru názvů partnera obdržíte odpověď. Od
   * [Šablona ARM](/azure/templates/microsoft.eventgrid/allversions)
   * [Schéma šablony ARM](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
   * [Rozhraní REST API](/azure/templates/microsoft.eventgrid/2020-04-01-preview/partnernamespaces)
-  * [Rozšíření CLI](/cli/azure/)
+  * [Rozšíření CLI](/cli/azure/eventgrid)
 
 ### <a name="sdks"></a>Sady SDK
   * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/5.3.1-preview)

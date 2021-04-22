@@ -9,14 +9,14 @@ ms.author: vaidyas
 author: vaidya-s
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.topic: conceptual
-ms.custom: how-to, racking-python, devx-track-azurecli
-ms.openlocfilehash: abb38ebbdacdf4f153148fbe121e54ede88f066a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: racking-python, devx-track-azurecli
+ms.openlocfilehash: bdeecf02e81ba3c8143f707896bbf3e5c36cf212
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519261"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885393"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Nasazení modelu Machine Learning do Azure Functions (Preview)
 

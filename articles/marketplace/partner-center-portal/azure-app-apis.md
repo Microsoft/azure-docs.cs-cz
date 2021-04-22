@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 9863ed24da9e427f885a4794bda7e103b0c1cc8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed8f5b8567e5808ebccfdc2a6d2d3b5d530da5cc
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96455446"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884007"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>Rozhraní API pro odeslání partnerského centra pro zprovoznění aplikací Azure v partnerském centru
 
@@ -73,5 +73,5 @@ https://apidocs.microsoft.com/services/partneringestion/
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte se vytvořit [technický Asset virtuálního počítače Azure](../create-azure-container-technical-assets.md)
-* Zjistěte, jak vytvořit [nabídku kontejneru Azure](../create-azure-container-offer.md) .
+* [Vytvoření technického prostředku kontejneru Azure](../azure-container-technical-assets.md)
+* [Vytvoření nabídky kontejnerů Azure](../azure-container-offer-setup.md)

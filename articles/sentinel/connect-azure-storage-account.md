@@ -8,14 +8,17 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: b4260d31b587f2a20d7bc9d4c4e3e6a0d225a416
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: e9f27b5cc3c4cb526dbcf6e6511fcd53e3c2fe67
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/22/2021
-ms.locfileid: "107879125"
+ms.locfileid: "107891715"
 ---
 # <a name="connect-azure-storage-account-diagnostics-logs"></a>Připojit protokoly diagnostiky Azure Storage účtu
+
+> [!IMPORTANT]
+> Konektor účtu Azure Storage je v tuto chvíli ve **verzi Preview**. Další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti, najdete v tématu dodatečné [podmínky použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
 
 Azure Storage účet je cloudové řešení pro scénáře moderních úložišť dat. Obsahuje všechny vaše datové objekty: objekty blob, soubory, fronty, tabulky a disky.
 

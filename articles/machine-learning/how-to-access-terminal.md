@@ -8,15 +8,15 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: how-to
 ms.date: 02/05/2021
-ms.openlocfilehash: 6f6c8e309fde92b0c2cf6fabac3489557b0b6b93
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 44167abd3c602b62dc101298d227744c6bc485b6
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106062382"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890278"
 ---
 # <a name="access-a-compute-instance-terminal-in-your-workspace"></a>Přístup k terminálu výpočetních instancí v pracovním prostoru
 

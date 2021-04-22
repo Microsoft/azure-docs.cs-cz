@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial , devx-track-azurecli
-ms.openlocfilehash: 0f1172ffa0d29734e7ec005bf2812eeca215aa0d
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 66d00ae738cc693d46f1df333ce64accea4b12a8
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484162"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107883935"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Kurz: nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC Azure 
 
@@ -243,7 +243,7 @@ Při vytvoření nebo aktualizaci konfigurace se stane několik věcí:
 
 Během procesu zřizování se prostředek konfigurace přesune po několika změnách stavu. Sledujte průběh pomocí `az k8s-configuration show ...` příkazu výše:
 
-| Změna fáze | Popis |
+| Změna fáze | Description |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | Představuje počáteční a průběžné stavy. |
 | `complianceStatus` -> `Installed`  | `config-agent` cluster byl úspěšně nakonfigurován a nasazen `flux` bez chyby. |

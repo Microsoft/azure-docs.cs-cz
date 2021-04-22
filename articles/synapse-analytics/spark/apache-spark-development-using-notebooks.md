@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: c28bc47945882e6b7bbd39d1ba8524a1f7491ceb
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 203ac7252f06b342e7f553bb1900cdf9ac959e0a
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835198"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891373"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a údržba poznámkových bloků synapse Studio v Azure synapse Analytics
 
@@ -36,10 +36,12 @@ Synapse tým přenesl novou součást poznámkových bloků do synapse studia, a
 |Funkce|Klasický notebook|Náhled poznámkového bloku|
 |--|--|--|
 |% běh| Nepodporováno | &#9745;|
-|% Historie| Nepodporováno |&#9745;
+|% Historie| Nepodporováno |&#9745;|
 |% zatížení| Nepodporováno |&#9745;|
 |%% HTML| Nepodporováno |&#9745;|
 |Přesunutí buňky přetažením myší| Nepodporováno |&#9745;|
+|Osnova (tabulka obsahu)| Nepodporováno |&#9745;|
+|Průzkumník proměnných| Nepodporováno |&#9745;|
 |Formátování textové buňky pomocí tlačítek panelu nástrojů|&#9745;| Není k dispozici |
 |Operace vrácení buňky zpět| &#9745;| Není k dispozici |
 
@@ -258,6 +260,20 @@ Vyberte tři  tečky (...) na panelu nástrojů a ve **výstupu** , abyste mohli
 
 
 ---
+
+### <a name="notebook-outline"></a>Osnova poznámkového bloku
+
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
+
+Nepodporováno
+
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+Obrysy (obsah) představují první hlavičku Markdownu libovolné buňky Markdownu v okně postranení pro rychlou navigaci. Postranní panel obrysy je možné měnit a sbalitelný tak, aby se vešel na obrazovku co nejlépe. Kliknutím na tlačítko **Osnova** na panelu příkazů poznámkového bloku můžete otevřít nebo skrýt postranní panel.
+
+<a name="azure-notebook-outline"></a>![Azure – Poznámkový blok – osnova](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-outline.png)
+---
+
 
 ## <a name="run-notebooks"></a>Spouštění poznámkových bloků
 

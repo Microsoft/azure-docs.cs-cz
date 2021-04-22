@@ -11,16 +11,19 @@ ms.date: 03/29/2019
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c04f61aaef5f5072ce0fb39ff111ba07ee151700
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aab2897b4042657492d04494b589fbaa2605cc6d
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375897"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886779"
 ---
 # <a name="rest-apis-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Rozhraní REST API pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics
 
 Rozhraní REST API pro správu výpočetních prostředků pro vyhrazený fond SQL (dříve SQL DW) ve službě Azure synapse Analytics.
+
+> [!NOTE]
+> Rozhraní REST API, která jsou popsaná v tomto článku, se nevztahují na vyhrazený fond SQL, který je vytvořený v pracovním prostoru Azure synapse Analytics. Informace o rozhraní REST API, která se použijí konkrétně pro pracovní prostor Azure synapse Analytics, najdete v tématu [pracovní prostor Azure synapse analytics REST API](/rest/api/synapse/).
 
 ## <a name="scale-compute"></a>Škálování výpočetního výkonu
 

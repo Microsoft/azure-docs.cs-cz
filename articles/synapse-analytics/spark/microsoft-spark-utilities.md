@@ -10,16 +10,16 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 8b3bc99d4391e2079d1b0ecc39011f1b2afc4440
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: cccfb71f485268f5eb5f9ea9b7275618e840737b
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096032"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107887538"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Seznámení s nástroji Microsoft Spark
 
-Sady nástrojů Microsoft Spark (MSSparkUtils) jsou předplatným balíčkem, který usnadňuje snadné provádění běžných úloh. Pomocí MSSparkUtils můžete pracovat se systémy souborů, získat proměnné prostředí a pracovat s tajnými kódy. MSSparkUtils jsou k dispozici v `PySpark (Python)` `Scala` `.NET Spark (C#)` poznámkových blocích, a a v kanálech synapse.
+Sady nástrojů Microsoft Spark (MSSparkUtils) jsou předplatným balíčkem, který usnadňuje snadné provádění běžných úloh. MSSparkUtils můžete použít k práci se systémy souborů, k získání proměnných prostředí, k zřetězení poznámkových bloků společně a k práci s tajnými kódy. MSSparkUtils jsou k dispozici v `PySpark (Python)` `Scala` `.NET Spark (C#)` poznámkových blocích, a a v kanálech synapse.
 
 ## <a name="pre-requisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ K datům v ADLS Gen2 pomocí synapse Spark můžete přistupovat pomocí násled
 
 ### <a name="configure-access-to-azure-blob-storage"></a>Konfigurace přístupu k Azure Blob Storage  
 
-Synapse využívá **sdílený přístupový podpis (SAS)** pro přístup k Azure Blob Storage. Aby nedocházelo k vystavování klíčů SAS v kódu, doporučujeme vytvořit novou propojenou službu v pracovním prostoru synapse do účtu Azure Blob Storage, ke kterému chcete získat přístup.
+Synapse pro přístup k Azure Blob Storage použít [**sdílený přístupový podpis (SAS)**](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) . Aby nedocházelo k vystavování klíčů SAS v kódu, doporučujeme vytvořit novou propojenou službu v pracovním prostoru synapse do účtu Azure Blob Storage, ke kterému chcete získat přístup.
 
 Pomocí následujících kroků přidejte novou propojenou službu pro účet Azure Blob Storage:
 
@@ -392,7 +392,7 @@ Připojí daný řetězec k souboru kódovanému v kódování UTF-8.
 :::zone pivot = "programming-language-python"
 
 ```python
-mssparkutils.fs.append('file path','content to append',True) # Set the last parameter as True to create the file if it does not exist
+mssparkutils.fs.append("file path", "content to append", True) # Set the last parameter as True to create the file if it does not exist
 ```
 ::: zone-end
 
@@ -407,7 +407,7 @@ mssparkutils.fs.append("file path","content to append",true) // Set the last par
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-FS.Append("file path","content to append",true) // Set the last parameter as True to create the file if it does not exist
+FS.Append("file path", "content to append", true) // Set the last parameter as True to create the file if it does not exist
 ```
 
 ::: zone-end
@@ -437,6 +437,178 @@ mssparkutils.fs.rm("file path", true) // Set the last parameter as True to remov
 FS.Rm("file path", true) // Set the last parameter as True to remove all files and directories recursively 
 ```
 
+::: zone-end
+
+:::zone pivot = "programming-language-python"
+
+## <a name="notebook-utilities"></a>Nástroje pro poznámkové bloky 
+
+Pomocí nástrojů pro Poznámkový blok MSSparkUtils můžete spustit Poznámkový blok nebo ukončit Poznámkový blok s hodnotou. Spusťte následující příkaz, který vám umožní získat přehled dostupných metod:
+
+```python
+mssparkutils.notebook.help()
+```
+
+Získat výsledky:
+```
+The notebook module.
+
+exit(value: String): void -> This method lets you exit a notebook with a value.
+run(path: String, timeoutSeconds: int, arguments: Map): String -> This method runs a notebook and returns its exit value.
+
+```
+
+### <a name="run-a-notebook"></a>Spuštění poznámkového bloku
+Spustí Poznámkový blok a vrátí jeho výstupní hodnotu. Volání funkcí vnořené do poznámkového bloku můžete spustit interaktivně nebo v kanálu. Odkaz na Poznámkový blok se spustí ve fondu Spark, ve kterém Poznámkový blok volá tuto funkci.  
+
+```python
+
+mssparkutils.notebook.run("notebook path", <timeoutSeconds>, <parameterMap>)
+
+```
+
+Například:
+
+```python
+mssparkutils.notebook.run("folder/Sample1", 90, {"input": 20 })
+```
+
+### <a name="exit-a-notebook"></a>Ukončit Poznámkový blok
+Ukončí Poznámkový blok s hodnotou. Volání funkcí vnořené do poznámkového bloku můžete spustit interaktivně nebo v kanálu. 
+
+- Když zavoláte interaktivní `exit()` Poznámkový blok, Azure synapse vyvolá výjimku, přeskočí běžící buňky dílčí sekvence a zachová relaci Sparku.
+
+- Když orchestrujte Poznámkový blok, který volá `exit()` funkci v kanálu synapse, Azure synapse vrátí ukončovací hodnotu, dokončí běh kanálu a zastaví relaci Spark.  
+
+- Když zavoláte `exit()` funkci na odkaz na Poznámkový blok, Azure synapse zastaví další provádění v odkazovaném poznámkovém bloku a pokračuje v provádění dalších buněk v poznámkovém bloku, který volá `run()` funkci. Například: Notebook1 má tři buňky a volá `exit()` funkci do druhé buňky. Notebook2 má pět buněk a volání `run(notebook1)` ve třetí buňce. Když spustíte Notebook2, Notebook1 se zastaví v druhé buňce při použití `exit()` funkce. Notebook2 bude pokračovat v používání čtvrté buňky a páté buňky. 
+
+
+```python
+mssparkutils.notebook.exit("value string")
+```
+
+Například:
+
+**Sample1** Poznámkový blok se vyhledá ve **složce/** s následujícími dvěma buňkami: 
+- Buňka 1 definuje **vstupní** parametr s výchozí hodnotou nastavenou na hodnotu 10.
+- Buňka 2 ukončí Poznámkový blok se **vstupem** jako výstupní hodnota. 
+
+![Snímek obrazovky ukázkového poznámkového bloku](./media/microsoft-spark-utilities/spark-utilities-run-notebook-sample.png)
+
+**Sample1** můžete spustit v jiném poznámkovém bloku s výchozími hodnotami:
+
+```python
+
+exitVal = mssparkutils.notebook.run("folder/Sample1")
+print (exitVal)
+
+```
+Výsledky:
+
+```
+Sample1 run success with input is 10
+```
+
+**Sample1** můžete spustit v jiném poznámkovém bloku a zadat **vstupní** hodnotu 20:
+
+```python
+exitVal = mssparkutils.notebook.run("mssparkutils/folder/Sample1", 90, {"input": 20 })
+print (exitVal)
+```
+
+Výsledky:
+
+```
+Sample1 run success with input is 20
+```
+::: zone-end
+
+
+:::zone pivot = "programming-language-scala"
+
+## <a name="notebook-utilities"></a>Nástroje pro poznámkové bloky 
+
+Pomocí nástrojů pro Poznámkový blok MSSparkUtils můžete spustit Poznámkový blok nebo ukončit Poznámkový blok s hodnotou. Spusťte následující příkaz, který vám umožní získat přehled dostupných metod:
+
+```scala
+mssparkutils.notebook.help()
+```
+
+Získat výsledky:
+```
+The notebook module.
+
+exit(value: String): void -> This method lets you exit a notebook with a value.
+run(path: String, timeoutSeconds: int, arguments: Map): String -> This method runs a notebook and returns its exit value.
+
+```
+
+### <a name="run-a-notebook"></a>Spuštění poznámkového bloku
+Spustí Poznámkový blok a vrátí jeho výstupní hodnotu. Volání funkcí vnořené do poznámkového bloku můžete spustit interaktivně nebo v kanálu. Odkaz na Poznámkový blok se spustí ve fondu Spark, ve kterém Poznámkový blok volá tuto funkci.  
+
+```scala
+
+mssparkutils.notebook.run("notebook path", <timeoutSeconds>, <parameterMap>)
+
+```
+
+Například:
+
+```scala
+mssparkutils.notebook.run("folder/Sample1", 90, {"input": 20 })
+```
+
+### <a name="exit-a-notebook"></a>Ukončit Poznámkový blok
+Ukončí Poznámkový blok s hodnotou. Volání funkcí vnořené do poznámkového bloku můžete spustit interaktivně nebo v kanálu. 
+
+- Když zavoláte interaktivní `exit()` Poznámkový blok, Azure synapse vyvolá výjimku, přeskočí běžící buňky dílčí sekvence a zachová relaci Sparku.
+
+- Když orchestrujte Poznámkový blok, který volá `exit()` funkci v kanálu synapse, Azure synapse vrátí ukončovací hodnotu, dokončí běh kanálu a zastaví relaci Spark.  
+
+- Když zavoláte `exit()` funkci na odkaz na Poznámkový blok, Azure synapse zastaví další provádění v odkazovaném poznámkovém bloku a pokračuje v provádění dalších buněk v poznámkovém bloku, který volá `run()` funkci. Například: Notebook1 má tři buňky a volá `exit()` funkci do druhé buňky. Notebook2 má pět buněk a volání `run(notebook1)` ve třetí buňce. Když spustíte Notebook2, Notebook1 se zastaví v druhé buňce při použití `exit()` funkce. Notebook2 bude pokračovat v používání čtvrté buňky a páté buňky. 
+
+
+```python
+mssparkutils.notebook.exit("value string")
+```
+
+Například:
+
+**Sample1** Poznámkový blok najde v části **mssparkutils/Folder/** s následujícími dvěma buňkami: 
+- Buňka 1 definuje **vstupní** parametr s výchozí hodnotou nastavenou na hodnotu 10.
+- Buňka 2 ukončí Poznámkový blok se **vstupem** jako výstupní hodnota. 
+
+![Snímek obrazovky ukázkového poznámkového bloku](./media/microsoft-spark-utilities/spark-utilities-run-notebook-sample.png)
+
+**Sample1** můžete spustit v jiném poznámkovém bloku s výchozími hodnotami:
+
+```scala
+
+val exitVal = mssparkutils.notebook.run("mssparkutils/folder/Sample1")
+print(exitVal)
+
+```
+Výsledky:
+
+```
+exitVal: String = Sample1 run success with input is 10
+Sample1 run success with input is 10
+```
+
+
+**Sample1** můžete spustit v jiném poznámkovém bloku a zadat **vstupní** hodnotu 20:
+
+```scala
+val exitVal = mssparkutils.notebook.run("mssparkutils/folder/Sample1", 90, {"input": 20 })
+print(exitVal)
+```
+
+Výsledky:
+
+```
+exitVal: String = Sample1 run success with input is 20
+Sample1 run success with input is 20
+```
 ::: zone-end
 
 

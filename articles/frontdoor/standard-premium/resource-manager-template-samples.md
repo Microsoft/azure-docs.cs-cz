@@ -7,12 +7,12 @@ ms.author: jodowns
 ms.service: frontdoor
 ms.topic: sample
 ms.date: 04/16/2021
-ms.openlocfilehash: e939aec8f1cf5fa615904bb81bad82ea3cf22c61
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 0da7da3748f9c1dc088d0cee615b429927a40f92
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587472"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890685"
 ---
 # <a name="azure-resource-manager-templates-for-azure-front-door"></a>Šablony Azure Resource Manager pro přední dveře Azure
 
@@ -27,6 +27,8 @@ Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro p�
 | [Sada pravidel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set/) | Vytvoří profil přední vrátka a sadu pravidel.  |
 | [Zásady WAF se sadou spravovaných pravidel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-waf-managed/) | Vytvoří profil front-dveří a WAF se spravovanou sadou pravidel.  |
 | [Zásady WAF s vlastním pravidlem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-waf-custom/) | Vytvoří profil front-dveří a WAF s vlastním pravidlem.  |
+| [Zásady WAF s omezením četnosti](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rate-limit/) | Vytvoří profil front dveří a WAF vlastní pravidlo, které provede omezení četnosti.  |
+| [Zásady WAF s geografickým filtrováním](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-geo-filtering/) | Vytvoří profil front-dveří a WAF vlastní pravidlo pro provádění geografického filtrování.  |
 |**App Service zdroje**| **Popis** |
 | [App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-app-service-public) | Vytvoří aplikaci App Service s veřejným koncovým bodem a profilem front-dveří.  |
 | [App Service s privátním odkazem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-private-link) | Vytvoří aplikaci App Service s privátním koncovým bodem a profilem front-dveří.  |

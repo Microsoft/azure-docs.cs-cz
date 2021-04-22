@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Naučte se aktualizovat webovou službu, která je už nasazená v Azure Machine Learning. Můžete aktualizovat nastavení, jako je model, prostředí a vstupní skript.
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.custom: deploy
-ms.openlocfilehash: 098dc4be33c82faff1b85a5b7224ecaf1be64944
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 5a586d29fd25ee7332f11737345aef8209de8824
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/22/2021
-ms.locfileid: "107875462"
+ms.locfileid: "107889335"
 ---
 # <a name="update-a-deployed-web-service"></a>Aktualizace nasazené webové služby
 

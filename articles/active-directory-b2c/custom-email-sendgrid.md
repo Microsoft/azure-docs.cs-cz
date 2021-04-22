@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 04/21/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d63e7916423038e53c375b2be4114582cf4d6152
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: a56f8339535c64c6eeac1b06c04aa7c89cd38356
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725759"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886383"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Vlastní ověření e-mailu pomocí SendGrid
 
@@ -304,7 +304,7 @@ V části definice obsahu dál `<BuildingBlocks>` přidejte do zásady následuj
 `GenerateOtp`Technický profil generuje kód pro e-mailovou adresu. `VerifyOtp`Technický profil ověří kód přidružený k e-mailové adrese. Můžete změnit konfiguraci formátu a vypršení platnosti jednorázového hesla. Další informace o technických profilech pro jednorázové heslo najdete v tématu [definice technického profilu s](one-time-password-technical-profile.md)jednorázovým heslem.
 
 > [!NOTE]
-> Kódy jednorázového hesla generované protokolem Web. TPEngine. Providers. OneTimePasswordProtocolProvider jsou vázané na relaci prohlížeče. To znamená, že uživatel může generovat jedinečné kódy jednorázového hesla v různých relacích prohlížeče, které jsou každý platný pro příslušné relace. Naproti tomu kód jednorázového hesla generovaný integrovaným uživatelským tokem je nezávislý na relaci prohlížeče, takže pokud uživatel v nové relaci prohlížeče vygeneruje nový kód jednorázového hesla, nahradí předchozí kód pro jednorázové heslo.
+> Kódy jednorázového hesla generované protokolem Web. TPEngine. Providers. OneTimePasswordProtocolProvider jsou vázané na relaci prohlížeče. To znamená, že uživatel může generovat jedinečné kódy jednorázového hesla v různých relacích prohlížeče, které jsou každý platný pro příslušné relace. Naproti tomu kód jednorázového hesla generovaný integrovaným poskytovatelem e-mailu je nezávislý na relaci prohlížeče, takže pokud uživatel v nové relaci prohlížeče vygeneruje nový kód jednorázového hesla, nahradí předchozí kód pro jednorázové heslo.
 
 Do prvku přidejte následující technické profily `<ClaimsProviders>` .
 

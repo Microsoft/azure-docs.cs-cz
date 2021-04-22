@@ -9,14 +9,14 @@ ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
 ms.date: 04/01/2021
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q3
-ms.openlocfilehash: 9021c3f70c9fc053998d1b31271a1ca3b0124b4d
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.topic: how-to
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 2a55fedd0fe059e7bff8203924389956dce36f3b
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169534"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889803"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Používání pracovního prostoru s vlastním serverem DNS
 

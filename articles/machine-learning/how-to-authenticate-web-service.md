@@ -9,14 +9,14 @@ ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 11/06/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: how-to
-ms.openlocfilehash: 5bd938fce347d439c2acb4e3fcace04d5b27d770
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b97bdd8f060aa22ea7bc6ca4901586be6d09505e
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94447586"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886059"
 ---
 # <a name="configure-authentication-for-models-deployed-as-web-services"></a>Konfigurace ověřování pro modely nasazené jako webové služby
 

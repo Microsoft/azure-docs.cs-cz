@@ -286,7 +286,7 @@
             - name: Hyperškálování
               href: database/service-tier-hyperscale.md
             - name: Nejčastější dotazy k hyperškálování
-              href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
+              href: database/service-tier-hyperscale-frequently-asked-questions-faq.yml
         - name: Plánování a správa nákladů
           href: database/cost-management.md
     - name: Rychlé starty
