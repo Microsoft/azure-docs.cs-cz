@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/03/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 710a860b1ed87f176b6f42b4963dad17acb323b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7445de8349d025679b1560e065ed15d9eec3b08f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954050"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872006"
 ---
 # <a name="upgrade-compute-instance-and-compute-cluster-host-os"></a>Upgradovat výpočetní instanci a operační systém hostitele výpočetního clusteru
 
@@ -41,7 +41,7 @@ Pokud jste již vytvořili výpočetní clustery nebo výpočetní instance vytv
     * Pokud je cluster nakonfigurovaný s __minimálními uzly = 0__, automaticky se upgraduje po dokončení všech úloh a zkracuje se na nula uzlů.
     * Pokud je minimální počet __uzlů > 0__, dočasně změňte minimální uzly na hodnotu nula a umožněte clusteru zmenšení na nulové uzly.
 
-    Další informace o tom, jak změnit minimální počet uzlů, najdete v tématu [AZ ml computetarget Update amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/update#ext_azure_cli_ml_az_ml_computetarget_update_amlcompute) příkaz Azure CLI nebo referenční informace k sadě SDK [amlcompute. Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#update-min-nodes-none--max-nodes-none--idle-seconds-before-scaledown-none-) .
+    Další informace o tom, jak změnit minimální počet uzlů, najdete v tématu [AZ ml computetarget Update amlcompute](https://docs.microsoft.com/cli/azure/ml/computetarget/update#az_ml_computetarget_update_amlcompute) příkaz Azure CLI nebo referenční informace k sadě SDK [amlcompute. Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#update-min-nodes-none--max-nodes-none--idle-seconds-before-scaledown-none-) .
 
 * __Azure Machine Learning výpočetní instance__: Vytvořte novou výpočetní instanci (která bude používat Ubuntu 18,04) a odstraňte starou instanci.
 

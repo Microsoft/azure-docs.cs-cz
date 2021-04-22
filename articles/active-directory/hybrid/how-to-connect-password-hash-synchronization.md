@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47d7d541ed7d9805641ffdfde381d482c8700006
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee22ba3816e667bc58247fa81142e54587124fd6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96858735"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865292"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek poskytuje informace, které potřebujete k synchronizaci uživatelských hesel z místní instance služby Active Directory s instancí cloudové Azure Active Directory (Azure AD).
@@ -210,7 +210,7 @@ Pokud byl server uzamčen podle standardu FIPS (Federal Information Processing S
 
 **Pokud chcete povolit MD5 pro synchronizaci hodnot hash hesel, proveďte následující kroky:**
 
-1. Přejít na%programfiles%\Azure AD Sync\Bin.
+1. Přejít na%programfiles%\Microsoft Azure AD Sync\Bin.
 2. Otevřete miiserver.exe.config.
 3. Na konci souboru přejít na uzel Configuration/runtime.
 4. Přidejte následující uzel: `<enforceFIPSPolicy enabled="false"/>`

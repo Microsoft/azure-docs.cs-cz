@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy
-ms.openlocfilehash: a7d1212d1106f0883d05a860b498b90e4e5f8e00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75836580fc2dc5a2090047865610e26d856387b0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517510"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861207"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Nasazení modelů vyškolených pomocí Azure Machine Learning na místních počítačích 
 
@@ -185,7 +185,7 @@ Použití Docker k nasazení modelu jako webové služby je nejběžnější mo�
 Můžete si stáhnout model:  
 
 - Na portálu vyberte kartu **modely** , vyberte požadovaný model a na stránce **Podrobnosti** vyberte **Stáhnout**.
-- Z příkazového řádku pomocí `az ml model download` . (Viz [stažení modelu.](/cli/azure/ext/azure-cli-ml/ml/model#ext_azure_cli_ml_az_ml_model_download))
+- Z příkazového řádku pomocí `az ml model download` . (Viz [stažení modelu.](/cli/azure/ml/model#az_ml_model_download))
 - Pomocí metody Python SDK `Model.download()` . (Viz [třída modelu.](/python/api/azureml-core/azureml.core.model.model#download-target-dir------exist-ok-false--exists-ok-none-))
 
 Model Azure je jeden nebo víc serializovaných objektů Pythonu, které se zabalí jako soubor s rozevíracími seznamy Pythonu (přípona. pkl). Obsah souboru rozevíracího seznamu závisí na knihovně strojového učení nebo na technice, která se používá pro výuku modelu. Například pokud používáte model z kurzu, můžete model načíst pomocí:

@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 04/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 5e9df582ce6eddd50fbecf02858f4afe611dcf18
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 8a00f5474fb73677125b85e48fcc2a42f34fdeb0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220211"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876398"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
 
@@ -283,7 +283,7 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 ]
 ```
 
-Další informace najdete v dokumentaci [AZ ml Workspace list](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-list) .
+Další informace najdete v dokumentaci [AZ ml Workspace list](/cli/azure/ml/workspace#az_ml_workspace_list) .
 
 ## <a name="get-workspace-information"></a>Získat informace o pracovním prostoru
 
@@ -316,7 +316,7 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 }
 ```
 
-Další informace najdete v tématu o tom, jak [zobrazit dokumentaci AZ ml Workspace](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-show) .
+Další informace najdete v tématu o tom, jak [zobrazit dokumentaci AZ ml Workspace](/cli/azure/ml/workspace#az_ml_workspace_show) .
 
 ## <a name="update-a-workspace"></a>Aktualizovat pracovní prostor
 
@@ -349,7 +349,7 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 }
 ```
 
-Další informace najdete v dokumentaci [AZ ml Workspace Update](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-update) .
+Další informace najdete v dokumentaci [AZ ml Workspace Update](/cli/azure/ml/workspace#az_ml_workspace_update) .
 
 ## <a name="share-a-workspace-with-another-user"></a>Sdílení pracovního prostoru s jiným uživatelem
 
@@ -361,7 +361,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 Další informace o řízení přístupu na základě role Azure (Azure RBAC) s Azure Machine Learning najdete v tématu [Správa uživatelů a rolí](how-to-assign-roles.md).
 
-Další informace najdete v dokumentaci ke [sdílení pracovního prostoru AZ ml](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-share) .
+Další informace najdete v dokumentaci ke [sdílení pracovního prostoru AZ ml](/cli/azure/ml/workspace#az_ml_workspace_share) .
 
 ## <a name="sync-keys-for-dependent-resources"></a>Synchronizace klíčů pro závislé prostředky
 
@@ -373,7 +373,7 @@ az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
 
 Další informace o změně klíčů najdete v tématu [obnovení přístupových klíčů k úložišti](how-to-change-storage-access-key.md).
 
-Další informace najdete v dokumentaci [AZ ml pracovní prostor Sync-Keys](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-sync-keys) .
+Další informace najdete v dokumentaci [AZ ml pracovní prostor Sync-Keys](/cli/azure/ml/workspace#az_ml_workspace_sync-keys) .
 
 ## <a name="delete-a-workspace"></a>Odstranění pracovního prostoru
 
@@ -392,7 +392,7 @@ Můžete také odstranit skupinu prostředků, která odstraní pracovní prosto
 az group delete -g <resource-group-name>
 ```
 
-Další informace najdete v tématu [AZ ml Workspace Delete](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-delete) Document.
+Další informace najdete v tématu [AZ ml Workspace Delete](/cli/azure/ml/workspace#az_ml_workspace_delete) Document.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -413,4 +413,4 @@ Azure Machine Learning pracovní prostor používá pro některé operace Azure 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozšíření Azure CLI pro Machine Learning najdete v dokumentaci [AZ ml](/cli/azure/ext/azure-cli-ml/ml) .
+Další informace o rozšíření Azure CLI pro Machine Learning najdete v dokumentaci [AZ ml](/cli/azure/ml) .

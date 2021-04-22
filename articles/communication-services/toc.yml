@@ -152,7 +152,7 @@
     - name: Přehled referenční dokumentace
       href: concepts/reference.md
     - name: Azure CLI
-      href: /cli/azure/ext/communication/communication
+      href: /cli/azure/communication
     - name: Rozhraní REST API dokumentace
       href: /rest/api/communication/
     - name: Knihovny pro volání

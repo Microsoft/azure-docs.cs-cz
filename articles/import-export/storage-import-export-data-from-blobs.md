@@ -9,18 +9,18 @@ ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: e878be5351362923e163c0a6f617b96ab72a36d8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2d4885f23e775f84a412d176568d992ebe01166b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102177518"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875696"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Službu Azure Import/Export můžete použít k exportu dat z úložiště objektů blob v Azure.
 
 Tento článek poskytuje podrobné pokyny, jak pomocí služby importu a exportu Azure bezpečně exportovat velké objemy dat z úložiště objektů BLOB v Azure. Služba vyžaduje, abyste dodali prázdné jednotky v datacentru Azure. Služba exportuje data z vašeho účtu úložiště na jednotky a pak dohraje jednotky zpátky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než vytvoříte úlohu exportu pro přenos dat z Azure Blob Storage, pečlivě zkontrolujte a dokončete následující seznam požadavků pro tuto službu.
 Musíte:
@@ -190,19 +190,19 @@ Pomocí následujících kroků můžete vytvořit úlohu exportu v Azure Portal
 
 ### <a name="create-a-job"></a>Vytvoření úlohy
 
-1. Pomocí příkazu [AZ Extension Add](/cli/azure/extension#az_extension_add) přidejte rozšíření [AZ import-export](/cli/azure/ext/import-export/import-export) :
+1. Pomocí příkazu [AZ Extension Add](/cli/azure/extension#az_extension_add) přidejte rozšíření [AZ import-export](/cli/azure/import-export) :
 
     ```azurecli
     az extension add --name import-export
     ```
 
-1. Seznam umístění, ze kterých můžete přijímat disky, získáte pomocí příkazu [AZ import-export Location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) :
+1. Seznam umístění, ze kterých můžete přijímat disky, získáte pomocí příkazu [AZ import-export Location list](/cli/azure/import-export/location#az_import_export_location_list) :
 
     ```azurecli
     az import-export location list
     ```
 
-1. Spusťte následující příkaz [AZ import-export Create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) a vytvořte úlohu exportu, která používá váš stávající účet úložiště:
+1. Spusťte následující příkaz [AZ import-export Create](/cli/azure/import-export#az_import_export_create) a vytvořte úlohu exportu, která používá váš stávající účet úložiště:
 
     ```azurecli
     az import-export create \
@@ -245,13 +245,13 @@ Pomocí následujících kroků můžete vytvořit úlohu exportu v Azure Portal
    > [!NOTE]
    > Pokud se objekt blob, který se má exportovat, používá během kopírování dat, služba Azure import/export pořizuje snímek objektu BLOB a zkopíruje snímek.
 
-1. Pomocí příkazu [AZ import-export list](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) zobrazíte všechny úlohy pro skupinu prostředků myierg:
+1. Pomocí příkazu [AZ import-export list](/cli/azure/import-export#az_import_export_list) zobrazíte všechny úlohy pro skupinu prostředků myierg:
 
     ```azurecli
     az import-export list --resource-group myierg
     ```
 
-1. Chcete-li aktualizovat úlohu nebo zrušit úlohu, spusťte příkaz [AZ import-export Update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) :
+1. Chcete-li aktualizovat úlohu nebo zrušit úlohu, spusťte příkaz [AZ import-export Update](/cli/azure/import-export#az_import_export_update) :
 
     ```azurecli
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true

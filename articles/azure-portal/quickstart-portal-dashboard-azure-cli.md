@@ -4,12 +4,12 @@ description: 'Rychlý Start: Naučte se vytvořit řídicí panel v Azure Portal
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.date: 12/4/2020
-ms.openlocfilehash: d951c692c7d3c282ae68c5f9b53e9cda5407df10
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 581c8cc4c2da275467bc39c5c2008b29a5bc0e0e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481017"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875750"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>Rychlý Start: Vytvoření řídicího panelu Azure Portal pomocí Azure CLI
 
@@ -73,20 +73,20 @@ Další informace najdete v referenčních informacích k [šabloně řídicích
 
 Tuto šablonu teď můžete nasadit v rámci Azure CLI.
 
-1. Spusťte příkaz [AZ Portal Dashboard Create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) a nasaďte šablonu:
+1. Spusťte příkaz [AZ Portal Dashboard Create](/cli/azure/portal/dashboard#az_portal_dashboard_create) a nasaďte šablonu:
 
    ```azurecli
    az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
       --input-path portal-dashboard-template-testvm.json --location centralus
    ```
 
-1. Ověřte, že se řídicí panel úspěšně vytvořil, spuštěním příkazu [AZ Portal Dashboard show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) :
+1. Ověřte, že se řídicí panel úspěšně vytvořil, spuštěním příkazu [AZ Portal Dashboard show](/cli/azure/portal/dashboard#az_portal_dashboard_show) :
 
    ```azurecli
    az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
    ```
 
-Pokud chcete zobrazit všechny řídicí panely aktuálního předplatného, použijte příkaz [AZ Portal Dashboard list](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list):
+Pokud chcete zobrazit všechny řídicí panely aktuálního předplatného, použijte příkaz [AZ Portal Dashboard list](/cli/azure/portal/dashboard#az_portal_dashboard_list):
 
 ```azurecli
 az portal dashboard list
@@ -98,7 +98,7 @@ Můžete také zobrazit všechny řídicí panely pro skupinu prostředků:
 az portal dashboard list --resource-group myResourceGroup
 ```
 
-Řídicí panel můžete aktualizovat pomocí příkazu [AZ Portal Dashboard Update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) :
+Řídicí panel můžete aktualizovat pomocí příkazu [AZ Portal Dashboard Update](/cli/azure/portal/dashboard#az_portal_dashboard_update) :
 
 ```azurecli
 az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
@@ -119,7 +119,7 @@ Pokud chcete odebrat virtuální počítač a přidružený řídicí panel, ods
 az group delete --name myResourceGroup
 ```
 
-Pokud chcete odebrat jenom řídicí panel, použijte příkaz [AZ Portal Dashboard Delete](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_delete) :
+Pokud chcete odebrat jenom řídicí panel, použijte příkaz [AZ Portal Dashboard Delete](/cli/azure/portal/dashboard#az_portal_dashboard_delete) :
 
 ```azurecli
 az portal dashboard delete --resource-group myResourceGroup --name "Simple VM Dashboard"
@@ -127,4 +127,4 @@ az portal dashboard delete --resource-group myResourceGroup --name "Simple VM Da
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o podpoře Azure CLI pro řídicí panely najdete v tématu [AZ Portal Dashboard](/cli/azure/ext/portal/portal/dashboard).
+Další informace o podpoře Azure CLI pro řídicí panely najdete v tématu [AZ Portal Dashboard](/cli/azure/portal/dashboard).

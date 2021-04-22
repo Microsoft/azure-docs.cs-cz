@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/17/2021
-ms.openlocfilehash: a8419ff2ba269b05d1fbf7e9d08a284085465fd8
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 96b52c80fa06be8c157ad39fd65be4e491e0cbe3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257411"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874850"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Články Azure SQL Database a Azure SQL Managed instance Connect a dotazy
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -86,7 +86,7 @@ Následující tabulka obsahuje seznam knihoven nebo *ovladačů* připojení, k
 
 | Jazyk | Platforma | Další zdroje informací | Stáhnout | Začínáme |
 | :-- | :-- | :-- | :-- | :-- |
-| C# | Windows, Linux, macOS | [Microsoft ADO.NET pro SQL Server](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [Stáhnout](https://www.microsoft.com/net/download/) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
+| C# | Windows, Linux, macOS | [Microsoft ADO.NET pro SQL Server](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [Stáhnout](https://dotnet.microsoft.com/download) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [Ovladač Microsoft JDBC pro SQL Server](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [Stáhnout](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows, Linux, macOS| [Ovladač PHP SQL pro SQL Server](/sql/connect/php/microsoft-php-driver-for-sql-server) | [Stáhnout](/sql/connect/php/download-drivers-php-sql-server) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows, Linux, macOS | [Node.js ovladače pro SQL Server](/sql/connect/node-js/node-js-driver-for-sql-server/) | [Instalace](/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)

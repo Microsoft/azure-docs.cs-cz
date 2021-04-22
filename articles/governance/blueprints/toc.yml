@@ -272,7 +272,7 @@
 - name: Referenční informace
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/blueprint/blueprint
+      href: /cli/azure/blueprint
     - name: Azure PowerShell
       href: /powershell/module/az.blueprint/#blueprint
     - name: Sada Azure SDK pro .NET

@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/01/2020
-ms.openlocfilehash: 1a681cd3f1c624268fdc9bc62cf9841e9ac28827
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ec26e4a42cdeb7a693c8078c0f065241f32da949
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057503"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863978"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a její čtení pomocí aplikace služby (.NET)
 
@@ -35,7 +35,7 @@ V tomto rychlém startu se používají dvě předem napsané aplikace C#, jedna
 
 * Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí C#. Ve vývojovém počítači potřebujete .NET Core SDK 3,1 nebo vyšší.
 
-    Sadu .NET Core SDK pro různé platformy si můžete stáhnout z webu [.NET](https://www.microsoft.com/net/download/all).
+    Sadu .NET Core SDK pro různé platformy si můžete stáhnout z webu [.NET](https://dotnet.microsoft.com/download).
 
     Aktuální verzi C# na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
 

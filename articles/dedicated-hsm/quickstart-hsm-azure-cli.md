@@ -9,16 +9,16 @@ ms.service: key-vault
 ms.devlang: azurecli
 ms.date: 01/06/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e07bc758b1ef86b3d8c605cbce72f6db564a355f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80d5bbb54715c5a1a5102f8991f366e273145edc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020959"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868946"
 ---
 # <a name="quickstart-create-an-azure-dedicated-hsm-by-using-the-azure-cli"></a>Rychlý Start: vytvoření vyhrazeného modulu HARDWAROVÉho zabezpečení Azure pomocí rozhraní příkazového řádku Azure
 
-Tento článek popisuje, jak vytvořit a spravovat službu Azure vyhrazený modul HSM pomocí rozšíření [AZ vyhrazené-HSM](/cli/azure/ext/hardware-security-modules/dedicated-hsm) Azure CLI.
+Tento článek popisuje, jak vytvořit a spravovat službu Azure vyhrazený modul HSM pomocí rozšíření [AZ vyhrazené-HSM](/cli/azure/dedicated-hsm) Azure CLI.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,7 +44,7 @@ az group create --name myRG --location westus
 
 ## <a name="create-a-dedicated-hsm"></a>Vytvoření vyhrazeného modulu HSM
 
-Pokud chcete vytvořit vyhrazený modul HSM, použijte příkaz [AZ vyhrazené-HSM Create](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_create) . Následující příklad zřídí vyhrazený modul HARDWAROVÉho zabezpečení s názvem `hsm1` v `westus` oblasti, `myRG` skupině prostředků a určeném předplatném, virtuální síti a podsíti. Požadované parametry jsou `name` , `location` a `resource group` .
+Pokud chcete vytvořit vyhrazený modul HSM, použijte příkaz [AZ vyhrazené-HSM Create](/cli/azure/dedicated-hsm#az_dedicated_hsm_create) . Následující příklad zřídí vyhrazený modul HARDWAROVÉho zabezpečení s názvem `hsm1` v `westus` oblasti, `myRG` skupině prostředků a určeném předplatném, virtuální síti a podsíti. Požadované parametry jsou `name` , `location` a `resource group` .
 
 ```azurecli-interactive
 az dedicated-hsm create \
@@ -63,7 +63,7 @@ Dokončení nasazení trvá přibližně 25 až 30 minut.
 
 ## <a name="get-a-dedicated-hsm"></a>Získání vyhrazeného modulu HSM
 
-Pokud chcete získat aktuální vyhrazený modul hardwarového zabezpečení (HSM), spusťte příkaz [AZ vyhrazené-HSM show](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_show) . Následující příklad získá vyhrazený modul `hsm1` hardwarového zabezpečení ve `myRG` skupině prostředků.
+Pokud chcete získat aktuální vyhrazený modul hardwarového zabezpečení (HSM), spusťte příkaz [AZ vyhrazené-HSM show](/cli/azure/dedicated-hsm#az_dedicated_hsm_show) . Následující příklad získá vyhrazený modul `hsm1` hardwarového zabezpečení ve `myRG` skupině prostředků.
 
 ```azurecli-interactive
 az dedicated-hsm show --resource-group myRG --name hsm1
@@ -71,7 +71,7 @@ az dedicated-hsm show --resource-group myRG --name hsm1
 
 ## <a name="update-a-dedicated-hsm"></a>Aktualizace vyhrazeného modulu HSM
 
-Pomocí příkazu [AZ vyhrazené-HSM Update](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_update) aktualizujte vyhrazený modul HSM. Následující příklad aktualizuje vyhrazený modul `hsm1` hardwarového zabezpečení ve `myRG` skupině prostředků a jeho značky:
+Pomocí příkazu [AZ vyhrazené-HSM Update](/cli/azure/dedicated-hsm#az_dedicated_hsm_update) aktualizujte vyhrazený modul HSM. Následující příklad aktualizuje vyhrazený modul `hsm1` hardwarového zabezpečení ve `myRG` skupině prostředků a jeho značky:
 
 ```azurecli-interactive
 az dedicated-hsm update --resource-group myRG –-name hsm1 --tags resourceType="hsm" Environment="prod" Slice="A"
@@ -79,7 +79,7 @@ az dedicated-hsm update --resource-group myRG –-name hsm1 --tags resourceType=
 
 ## <a name="list-dedicated-hsms"></a>Vypsat vyhrazené HSM
 
-Spuštěním příkazu [AZ vyhrazené-HSM list](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_list) získáte informace o aktuálních vyhrazených HSM. Následující příklad vypíše vyhrazené HSM ve `myRG` skupině prostředků:
+Spuštěním příkazu [AZ vyhrazené-HSM list](/cli/azure/dedicated-hsm#az_dedicated_hsm_list) získáte informace o aktuálních vyhrazených HSM. Následující příklad vypíše vyhrazené HSM ve `myRG` skupině prostředků:
 
 ```azurecli-interactive
 az dedicated-hsm list --resource-group myRG
@@ -87,7 +87,7 @@ az dedicated-hsm list --resource-group myRG
 
 ## <a name="remove-a-dedicated-hsm"></a>Odebrat vyhrazený modul HSM
 
-Pokud chcete odebrat vyhrazený modul HSM, použijte příkaz [AZ vyhrazené-HSM Delete](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_delete) . Následující příklad odstraní vyhrazený modul `hsm1` HSM ze `myRG` skupiny prostředků:
+Pokud chcete odebrat vyhrazený modul HSM, použijte příkaz [AZ vyhrazené-HSM Delete](/cli/azure/dedicated-hsm#az_dedicated_hsm_delete) . Následující příklad odstraní vyhrazený modul `hsm1` HSM ze `myRG` skupiny prostředků:
 
 ```azurecli-interactive
 az dedicated-hsm delete --resource-group myRG –-name hsm1

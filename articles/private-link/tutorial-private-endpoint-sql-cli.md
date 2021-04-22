@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: a8fafeaaf974893c9a1a71115912f2a7b019ddd9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5a66749a3e773328e6c6c02375e76998bd6531cd
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771816"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871952"
 ---
 # <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>Kurz: připojení k serveru SQL Azure pomocí privátního koncového bodu Azure – Azure CLI
 
@@ -220,9 +220,9 @@ az network private-endpoint create \
 
 ## <a name="configure-the-private-dns-zone"></a>Konfigurace privátní zóny DNS
 
-V této části vytvoříte a nakonfigurujete privátní zónu DNS pomocí [AZ Network Private-DNS Zone Create](/cli/azure/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create).  
+V této části vytvoříte a nakonfigurujete privátní zónu DNS pomocí [AZ Network Private-DNS Zone Create](/cli/azure/network/private-dns/zone#az_network_private_dns_zone_create).  
 
-Pomocí [AZ Network Private-DNS Link VNet Create](/cli/azure/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) vytvoříte propojení virtuální sítě k zóně DNS.
+Pomocí [AZ Network Private-DNS Link VNet Create](/cli/azure/network/private-dns/link/vnet#az_network_private_dns_link_vnet_create) vytvoříte propojení virtuální sítě k zóně DNS.
 
 Vytvoříte skupinu zón DNS pomocí [AZ Network Private-Endpoint DNS-Zone-Group Create](/cli/azure/network/private-endpoint/dns-zone-group#az_network_private_endpoint_dns_zone_group_create).
 

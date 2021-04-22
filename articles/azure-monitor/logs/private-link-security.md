@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 97e589755602c14a11873fee5288ee8c6e24ba83
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: b3bbd8510c47831c9568bb10c62e2a5ca751902a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714273"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863024"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
@@ -294,7 +294,7 @@ Proces popsaný výše můžete automatizovat pomocí Azure Resource Manager ša
 
 Pokud chcete vytvořit a spravovat obory privátních odkazů, použijte [REST API](/rest/api/monitor/privatelinkscopes(preview)/private%20link%20scoped%20resources%20(preview)) nebo [Azure CLI (AZ monitor Private-Link-Scope)](/cli/azure/monitor/private-link-scope).
 
-Ke správě přístupu k síti použijte příznaky `[--ingestion-access {Disabled, Enabled}]` a `[--query-access {Disabled, Enabled}]` v [Log Analytics pracovní prostory](/cli/azure/monitor/log-analytics/workspace) nebo [Application Insights součásti](/cli/azure/ext/application-insights/monitor/app-insights/component).
+Ke správě přístupu k síti použijte příznaky `[--ingestion-access {Disabled, Enabled}]` a `[--query-access {Disabled, Enabled}]` v [Log Analytics pracovní prostory](/cli/azure/monitor/log-analytics/workspace) nebo [Application Insights součásti](/cli/azure/monitor/app-insights/component).
 
 ## <a name="collect-custom-logs-and-iis-log-over-private-link"></a>Shromažďování vlastních protokolů a privátního propojení protokolem IIS
 

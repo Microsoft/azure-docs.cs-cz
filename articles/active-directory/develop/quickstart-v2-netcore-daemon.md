@@ -13,12 +13,12 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1b539c168deab7c1893f071a2453be28310fc132
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a31bf345f523eea940be5d56495890e8ab5c6dbd
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022921"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861638"
 ---
 # <a name="quickstart-get-a-token-and-call-the-microsoft-graph-api-by-using-a-console-apps-identity"></a>Rychlý Start: získání tokenu a volání rozhraní Microsoft Graph API pomocí identity konzolové aplikace
 
@@ -32,7 +32,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento rychlý Start vyžaduje [.NET core 3,1](https://www.microsoft.com/net/download/dotnet-core) , ale bude fungovat i s .net Core 5,0.
+Tento rychlý Start vyžaduje [sadu .NET Core 3,1 SDK](https://dotnet.microsoft.com/download) , ale bude fungovat i s .NET 5,0 SDK.
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-the-app"></a>Registrace a stažení aplikace

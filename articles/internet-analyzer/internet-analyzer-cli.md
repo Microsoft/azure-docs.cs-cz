@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 46caae53ed81de335c2b9d5ddbd3fd7f89424fdd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4e200440bd37d3593d5fc096b3dd79eff25dc1d8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780410"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877222"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Vytvoření testu pomocí rozhraní příkazového řádku (Preview) pro Internet Analyzer
 
@@ -132,6 +132,6 @@ Rozhraní příkazového řádku pro Internet Analyzer zpřístupňuje následuj
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úplný seznam podporovaných příkazů a příkladů použití najdete v [referenčních informacích](/cli/azure/ext/internet-analyzer/internet-analyzer) k rozhraní příkazového řádku Internet Analyzer.
+* Úplný seznam podporovaných příkazů a příkladů použití najdete v [referenčních informacích](/cli/azure/internet-analyzer) k rozhraní příkazového řádku Internet Analyzer.
 * Přečtěte si [Nejčastější dotazy k Internet Analyzer](internet-analyzer-faq.md).
 * Přečtěte si další informace o vložení [klienta Internet Analyzer](internet-analyzer-embed-client.md) a vytvoření [vlastního koncového bodu](internet-analyzer-custom-endpoint.md).

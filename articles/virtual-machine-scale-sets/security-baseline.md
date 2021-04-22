@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/08/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9ea9720e719fbf7c1e0952f1d31b2eb952be0e4d
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 60b1de12f031a55388960a6e3c4e7df00c43e3c8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285543"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867708"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Základní hodnoty zabezpečení Azure pro Virtual Machine Scale Sets
 
@@ -307,7 +307,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Principy Log Analyticsho pracovního prostoru](/azure/azure-monitor/logs/get-started-portal)
+- [Principy Log Analyticsho pracovního prostoru](/azure/azure-monitor/logs/get-started-queries)
 
 - [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md)
 
@@ -509,7 +509,7 @@ Pro virtuální počítače se systémem Linux můžete ručně nakonfigurovat p
 
 - [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
-- [Jak monitorovat virtuální počítače v Azure](/azure/azure-monitor/vm/monitor-vm-azur)
+- [Jak monitorovat virtuální počítače v Azure](/azure/azure-monitor/vm/monitor-vm-azure)
 
 **Odpovědnost:** Zákazník
 

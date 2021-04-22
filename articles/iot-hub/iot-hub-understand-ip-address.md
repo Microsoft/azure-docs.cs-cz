@@ -6,13 +6,13 @@ ms.author: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 1bfae8c7afbfdc6e73dd8bb17b94e6543361e9ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/21/2021
+ms.openlocfilehash: 7d807a15d358bd621baedbff253f0c731e43ed26
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83848224"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874166"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub IP adresy
 
@@ -45,7 +45,7 @@ Tyto předpony IP adres můžete použít k řízení připojení mezi IoT Hub a
 
 ## <a name="limitations-and-workarounds"></a>Omezení a alternativní řešení
 
-* Funkce filtru IP IoT Hub má omezení 10 pravidel. Tento limit je možné vydávat prostřednictvím požadavků Azure Customer Support. 
+* Funkce filtru IP IoT Hub má omezení 100 pravidel. Tento limit je možné vydávat prostřednictvím požadavků Azure Customer Support. 
 
 * Nakonfigurovaná [pravidla filtrování IP adres](iot-hub-ip-filtering.md) se aplikují jenom na koncové body IP adres IoT Hub a ne na integrovaném koncovém bodu centra událostí služby IoT Hub. Pokud budete také vyžadovat, aby se filtry IP používaly v centru událostí, kde jsou uložené vaše zprávy, můžete tak učinit vlastní prostředek centra událostí, kde můžete nakonfigurovat požadovaná pravidla filtrování IP adres přímo. Pokud to chcete udělat, musíte zřídit vlastní prostředek centra událostí a nastavit [směrování zpráv](./iot-hub-devguide-messages-d2c.md) pro posílání zpráv k tomuto prostředku místo integrovaného centra událostí IoT Hub. A nakonec jak je popsáno v tabulce výše, aby bylo možné povolit funkci směrování zpráv, musíte také povolit připojení z předpon IP adres IoT Hub k vašemu zřízenému prostředku centra událostí.
 

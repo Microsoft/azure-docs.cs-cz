@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 04/01/2021
 ms.author: cshoe
-ms.openlocfilehash: e81f0a9e4fc50cf0d80f2905b9328af3c721865c
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 945979daa3c766b737e5b312a6c14e60204a6a55
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166393"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874058"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Co je Azure static Web Apps Preview?
 
@@ -44,7 +44,7 @@ Statické Web Apps jsou statické prostředky oddělené od tradičního webové
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Co se dá dělat se statickými Web Apps
 
-- Vytvářejte **moderní webové aplikace** pomocí rozhraní JavaScript a knihoven, jako je například [úhlová](getting-started.md?tabs=angular), [reakce](getting-started.md?tabs=react), [Svelte](/learn/modules/publish-app-service-static-web-app-api/), [Vue](getting-started.md?tabs=react), nebo pomocí [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) pro vytváření aplikací pro WebAssembly s back-endu [Azure Functions](apis.md) .
+- Vytvářejte **moderní webové aplikace** pomocí rozhraní JavaScript a knihoven, jako je například [úhlová](getting-started.md?tabs=angular), [reakce](getting-started.md?tabs=react), [Svelte](/learn/modules/publish-app-service-static-web-app-api/), [Vue](getting-started.md?tabs=vue), nebo pomocí [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) pro vytváření aplikací pro WebAssembly s back-endu [Azure Functions](apis.md) .
 - **Publikování statických webů** pomocí platforem, jako je [Gatsby](publish-gatsby.md), [Hugo](publish-hugo.md), [VuePress](publish-vuepress.md).
 - **Nasaďte webové aplikace** s rozhraními, jako jsou [Next.js](deploy-nextjs.md) a [Nuxt.js](deploy-nuxtjs.md).
 

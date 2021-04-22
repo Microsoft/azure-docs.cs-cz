@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 284ef8de1c672fdc0a5bb1a996a3446010253f57
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 64b9ce78f05e1c8d14317f33f21758a86baeabd6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816786"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869180"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Pomocí Synchronizace souborů Azure můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -88,7 +88,7 @@ Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, a
 
     Dokončete proces ověřování podle kroků zobrazených v terminálu.
 
-1. Nainstalujte rozhraní [AZ. Sync](/cli/azure/ext/storagesync/storagesync) Azure CLI Extension.
+1. Nainstalujte rozhraní [AZ. Sync](/cli/azure/storagesync) Azure CLI Extension.
 
    ```azurecli
    az extension add --name storagesync
@@ -380,7 +380,7 @@ New-AzStorageSyncCloudEndpoint `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pomocí příkazu [AZ storagesync Sync-Group](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create) vytvořte novou skupinu synchronizace.  Chcete-li nastavit výchozí skupinu prostředků pro všechny příkazy rozhraní příkazového řádku, použijte příkaz [AZ Configure](/cli/azure/reference-index#az_configure).
+Pomocí příkazu [AZ storagesync Sync-Group](/cli/azure/storagesync/sync-group#az_storagesync_sync_group_create) vytvořte novou skupinu synchronizace.  Chcete-li nastavit výchozí skupinu prostředků pro všechny příkazy rozhraní příkazového řádku, použijte příkaz [AZ Configure](/cli/azure/reference-index#az_configure).
 
 ```azurecli
 az storagesync sync-group create --resource-group myResourceGroupName \
@@ -388,7 +388,7 @@ az storagesync sync-group create --resource-group myResourceGroupName \
                                  --storage-sync-service myStorageSyncServiceName \
 ```
 
-Pomocí příkazu [AZ storagesync Sync-Group Cloud-Endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/cloud-endpoint#ext-storagesync-az-storagesync-sync-group-cloud-endpoint-create) vytvořte nový koncový bod cloudu.
+Pomocí příkazu [AZ storagesync Sync-Group Cloud-Endpoint](/cli/azure/storagesync/sync-group/cloud-endpoint#az_storagesync_sync_group_cloud_endpoint_create) vytvořte nový koncový bod cloudu.
 
 ```azurecli
 az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup \
@@ -464,7 +464,7 @@ if ($cloudTieringDesired) {
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pomocí příkazu [AZ storagesync Sync-Group Server-Endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create) vytvořte nový koncový bod serveru.
+Pomocí příkazu [AZ storagesync Sync-Group Server-Endpoint](/cli/azure/storagesync/sync-group/server-endpoint#az_storagesync_sync_group_server_endpoint_create) vytvořte nový koncový bod serveru.
 
 ```azurecli
 # Create a new sync group server endpoint 

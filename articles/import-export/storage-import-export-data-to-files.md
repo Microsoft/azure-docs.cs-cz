@@ -9,12 +9,12 @@ ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: b62c3c4be4fdffd9f509b86d248cd028518ae89a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c13ffc597349cdd2b304889d142ca7c2f89c713
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181937"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861530"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Import dat do služby Soubory Azure pomocí služby Azure Import/Export
 
@@ -22,7 +22,7 @@ Tento článek poskytuje podrobné pokyny, jak pomocí služby importu a exportu
 
 Služba import/export podporuje pouze import souborů Azure do Azure Storage. Export souborů Azure se nepodporuje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před vytvořením úlohy importu pro přenos dat do souborů Azure pečlivě zkontrolujte a dokončete následující seznam požadovaných součástí. Musíte:
 
@@ -183,7 +183,7 @@ Pomocí následujících kroků vytvořte v Azure CLI úlohu importu.
 
 ### <a name="create-a-job"></a>Vytvoření úlohy
 
-1. Pomocí příkazu [AZ Extension Add](/cli/azure/extension#az_extension_add) přidejte rozšíření [AZ import-export](/cli/azure/ext/import-export/import-export) :
+1. Pomocí příkazu [AZ Extension Add](/cli/azure/extension#az_extension_add) přidejte rozšíření [AZ import-export](/cli/azure/import-export) :
 
     ```azurecli
     az extension add --name import-export
@@ -201,19 +201,19 @@ Pomocí následujících kroků vytvořte v Azure CLI úlohu importu.
     az storage account create -resource-group myierg -name myssdocsstorage --https-only
     ```
 
-1. Seznam umístění, do kterých můžete dodávat disky, získáte pomocí příkazu [AZ import-export Location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) :
+1. Seznam umístění, do kterých můžete dodávat disky, získáte pomocí příkazu [AZ import-export Location list](/cli/azure/import-export/location#az_import_export_location_list) :
 
     ```azurecli
     az import-export location list
     ```
 
-1. K získání umístění pro vaši oblast použijte příkaz [AZ import-export Location show](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show) :
+1. K získání umístění pro vaši oblast použijte příkaz [AZ import-export Location show](/cli/azure/import-export/location#az_import_export_location_show) :
 
     ```azurecli
     az import-export location show --location "West US"
     ```
 
-1. Spusťte následující příkaz [AZ import-export Create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) a vytvořte úlohu importu:
+1. Spusťte následující příkaz [AZ import-export Create](/cli/azure/import-export#az_import_export_create) a vytvořte úlohu importu:
 
     ```azurecli
     az import-export create \
@@ -241,13 +241,13 @@ Pomocí následujících kroků vytvořte v Azure CLI úlohu importu.
    > Místo zadání e-mailové adresy pro jednoho uživatele zadejte skupinu. Tím zajistíte, že budete dostávat oznámení i v případě, že správce opustí.
 
 
-1. Pomocí příkazu [AZ import-export list](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) zobrazíte všechny úlohy pro skupinu prostředků myierg:
+1. Pomocí příkazu [AZ import-export list](/cli/azure/import-export#az_import_export_list) zobrazíte všechny úlohy pro skupinu prostředků myierg:
 
     ```azurecli
     az import-export list --resource-group myierg
     ```
 
-1. Chcete-li aktualizovat úlohu nebo zrušit úlohu, spusťte příkaz [AZ import-export Update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) :
+1. Chcete-li aktualizovat úlohu nebo zrušit úlohu, spusťte příkaz [AZ import-export Update](/cli/azure/import-export#az_import_export_update) :
 
     ```azurecli
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 28fc465627032522afb9da8f6ec0fad704834d09
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: d3ca94524c334a20f5ee75e5300ad419fa1542c5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813699"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873266"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -116,7 +116,7 @@ Před vytvořením svazku SMB je potřeba vytvořit připojení ke službě Acti
         > [!IMPORTANT]   
         > Funkce nepřetržité dostupnosti SMB je aktuálně ve verzi Public Preview. Pro přístup k této funkci musíte odeslat žádost pořadníku pomocí **[sdílených složek Azure NETAPP Files SMB nepřetržité dostupnosti Public Preview stránky pro odeslání pořadníku](https://aka.ms/anfsmbcasharespreviewsignup)**. Před použitím funkce nepřetržité dostupnosti počkejte na oficiální e-mail s potvrzením od Azure NetApp Files týmu.   
         > 
-        > Měli byste povolit nepřetržitou dostupnost jenom pro SQL Server a [FsLogix kontejnery profilů uživatelů](../virtual-desktop/create-fslogix-profile-container.md). Použití sdílených složek SMB pro jiné úlohy než SQL Server a FsLogix kontejnerů profilů *uživatelů se nepodporuje* . Tato funkce je v současnosti podporovaná ve Windows SQL Server. Linux SQL Server se momentálně nepodporuje. Pokud k instalaci SQL Server používáte účet bez oprávnění správce (doména), ujistěte se, že má účet přiřazená požadovaná oprávnění zabezpečení. Pokud účet domény nemá požadovaná oprávnění zabezpečení ( `SeSecurityPrivilege` ) a oprávnění nelze nastavit na úrovni domény, můžete oprávnění účtu udělit pomocí pole **uživatelé oprávnění zabezpečení** připojení služby Active Directory. Viz téma [vytvoření připojení ke službě Active Directory](create-active-directory-connections.md#create-an-active-directory-connection).
+        > Měli byste povolit nepřetržitou dostupnost jenom pro SQL Server a [FSLogix kontejnery profilů uživatelů](../virtual-desktop/create-fslogix-profile-container.md). Použití sdílených složek SMB pro jiné úlohy než SQL Server a FSLogix kontejnerů profilů *uživatelů se nepodporuje* . Tato funkce je v současnosti podporovaná ve Windows SQL Server. Linux SQL Server se momentálně nepodporuje. Pokud k instalaci SQL Server používáte účet bez oprávnění správce (doména), ujistěte se, že má účet přiřazená požadovaná oprávnění zabezpečení. Pokud účet domény nemá požadovaná oprávnění zabezpečení ( `SeSecurityPrivilege` ) a oprávnění nelze nastavit na úrovni domény, můžete oprávnění účtu udělit pomocí pole **uživatelé oprávnění zabezpečení** připojení služby Active Directory. Viz téma [vytvoření připojení ke službě Active Directory](create-active-directory-connections.md#create-an-active-directory-connection).
 
     <!-- [1/13/21] Commenting out command-based steps below, because the plan is to use form-based (URL) registration, similar to CRR feature registration -->
     <!-- 

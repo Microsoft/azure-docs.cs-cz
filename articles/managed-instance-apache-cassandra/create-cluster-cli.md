@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/15/2021
-ms.openlocfilehash: 53fe53e1406bfcde1f2d8c7b2a1ce8369303426f
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 56fe69ad7f56d62c9f61738448ea0276fee47063
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379362"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862520"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Rychlý Start: vytvoření spravované instance Azure pro cluster Apache Cassandra pomocí rozhraní příkazového řádku Azure (Preview)
 
@@ -66,7 +66,7 @@ Tento rychlý Start ukazuje, jak pomocí příkazů Azure CLI vytvořit cluster 
    > [!NOTE]
    > `assignee`Hodnoty a `role` v předchozím příkazu jsou pevné hodnoty. Tyto hodnoty zadejte přesně tak, jak je uvedeno v příkazu. V takovém případě se to nepovede, takže při vytváření clusteru dojde k chybám. Pokud narazíte na chyby při spuštění tohoto příkazu, možná nemáte oprávnění k jeho spuštění, kontaktujte svého správce a požádejte ho o oprávnění.
 
-1. Potom vytvořte cluster nově vytvořeným Virtual Network pomocí příkazu [AZ Managed-Cassandra cluster Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) . Spusťte následující příkaz s hodnotou `delegatedManagementSubnetId` proměnné:
+1. Potom vytvořte cluster nově vytvořeným Virtual Network pomocí příkazu [AZ Managed-Cassandra cluster Create](/cli/azure/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_cluster_create) . Spusťte následující příkaz s hodnotou `delegatedManagementSubnetId` proměnné:
 
    > [!NOTE]
    > Hodnota proměnné, kterou poskytnete `delegatedManagementSubnetId` níže, je přesně stejná jako hodnota `--scope` , kterou jste zadali v příkazu výše:
@@ -87,7 +87,7 @@ Tento rychlý Start ukazuje, jak pomocí příkazů Azure CLI vytvořit cluster 
       --debug
    ```
 
-1. Nakonec vytvořte datacentrum pro cluster se třemi uzly pomocí příkazu [AZ Managed-Cassandra datadatacenter Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create) :
+1. Nakonec vytvořte datacentrum pro cluster se třemi uzly pomocí příkazu [AZ Managed-Cassandra datadatacenter Create](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_create) :
 
    ```azurecli-interactive
    dataCenterName='dc1'
@@ -102,7 +102,7 @@ Tento rychlý Start ukazuje, jak pomocí příkazů Azure CLI vytvořit cluster 
       --node-count 3 
    ```
 
-1. Pokud chcete horizontální navýšení kapacity nebo horizontální navýšení kapacity uzlů v datovém centru, spusťte příkaz [AZ Managed-Cassandra Datacenter Update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update) . Změňte hodnotu `node-count` parametru na požadovanou hodnotu:
+1. Pokud chcete horizontální navýšení kapacity nebo horizontální navýšení kapacity uzlů v datovém centru, spusťte příkaz [AZ Managed-Cassandra Datacenter Update](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_update) . Změňte hodnotu `node-count` parametru na požadovanou hodnotu:
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'
