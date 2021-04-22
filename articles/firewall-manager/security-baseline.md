@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bec5cafaf7d506d9ab25228c680d00af91dbf3d0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7cb37de7c5f101ea5f72ff87ccdf94e5925a95d4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200134"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864410"
 ---
 # <a name="azure-security-baseline-for-azure-firewall-manager"></a>Základní hodnoty zabezpečení Azure pro správce Azure Firewall
 
@@ -338,7 +338,7 @@ Použijte značky pro prostředky Azure, skupiny prostředků a předplatná k j
 
 **Pokyny**: odeberte prostředky Azure firewall Manageru, když už nepotřebujete k minimalizaci prostoru pro útoky. Uživatelé můžou spravovat svoje prostředky Azure Firewall Manageru prostřednictvím Azure Portal, CLI nebo rozhraní REST API.
 
-- [Rozhraní příkazového řádku zásad Azure Firewall](/cli/azure/ext/azure-firewall/network/firewall/policy)
+- [Rozhraní příkazového řádku zásad Azure Firewall](/cli/azure/network/firewall/policy)
 
 - [Rozhraní příkazového řádku Azure](/powershell/module/az.network/?preserve-view=true&view=azps-5.1.0#networking)
 
@@ -557,7 +557,7 @@ Kromě toho můžete prostředky označit pomocí značek a vytvořit systém vy
 
 - [Odkaz na šablonu zásad Azure Firewall](/azure/templates/microsoft.network/firewallpolicies)
 
-- [Rozhraní příkazového řádku zásad Azure Firewall](/cli/azure/ext/azure-firewall/network/firewall/policy)
+- [Rozhraní příkazového řádku zásad Azure Firewall](/cli/azure/network/firewall/policy)
 
 - [Ilustrace implementace guardrails v hraniční zóně na podnikové úrovni](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
 

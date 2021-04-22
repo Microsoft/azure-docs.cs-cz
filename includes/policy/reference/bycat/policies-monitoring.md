@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 29c6ca6a394c2fe4343159f985a90f8bc13cadfb
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 837ee0669c0dbd1743b47dc4a31a40ee950d0af3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498755"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862901"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[\[Preview \] : \[ ASC Private Preview \] nasazení – konfigurace spravované identity přiřazené systémem pro povolení Azure monitor přiřazení na virtuálních počítačích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17b3de92-f710-4cf4-aa55-0e7859f1ed7b) |[ASC Private Preview] Nakonfigurujte spravovanou identitu přiřazenou systémem na virtuální počítače hostované v Azure, které jsou podporované Azure Monitor, které nemají spravovanou identitu přiřazenou systémem. Spravovaná identita přiřazená systémem je předpokladem pro všechna Azure Monitor přiřazení a musí se do počítačů přidat předtím, než použijete rozšíření Azure Monitor. Cílové virtuální počítače musí být v podporovaném umístění. |modify (úprava) |[1.2.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_AddSystemIdentity_Prerequisite.json) |
 |[Protokol aktivit by se měl uchovávat aspoň po dobu jednoho roku.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb02aacc0-b073-424e-8298-42b22829ee0a) |Tato zásada Audituje protokol aktivit, pokud doba uchování není nastavená na 365 dní nebo trvale (dny uchování nastavené na 0). |AuditIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLogRetention_365orGreater.json) |

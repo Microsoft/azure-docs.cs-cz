@@ -3,12 +3,12 @@ title: Nasazení Traffic Manager pro vyrovnávání zatížení řešení Azure 
 description: Naučte se integrovat Traffic Manager s řešením Azure VMware a vyrovnávat aplikační úlohy napříč několika koncovými body v různých oblastech.
 ms.topic: how-to
 ms.date: 02/08/2021
-ms.openlocfilehash: 46570c5a61fc0a641d83126fd0f8ef35b3dc42cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 029bb9512bd19effd1c7aeb5104c7bb6d7ccdca5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99988587"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876917"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-workloads"></a>Nasazení Traffic Manager pro vyrovnávání zatížení řešení Azure VMware
 
@@ -132,7 +132,7 @@ Následující kroky ověřují konfiguraci segmentu NSX-T v prostředí řešen
 
 Teď, když jste se seznámili s integrací Azure Traffic Manager s řešením Azure VMware, budete možná chtít získat informace o:
 
-- [Použití azure Application Gateway v řešení VMware Azure](protect-azure-vmware-solution-with-application-gateway.md).
-- [Traffic Manager metody směrování](../traffic-manager/traffic-manager-routing-methods.md).
-- [Kombinování služeb vyrovnávání zatížení v Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
-- [Měření výkonu Traffic Manager](../traffic-manager/traffic-manager-performance-considerations.md).
+- [Použití Azure Application Gateway v řešení VMware Azure](protect-azure-vmware-solution-with-application-gateway.md)
+- [Traffic Manager metody směrování](../traffic-manager/traffic-manager-routing-methods.md)
+- [Kombinování služeb vyrovnávání zatížení v Azure](../traffic-manager/traffic-manager-load-balancing-azure.md)
+- [Měření výkonu Traffic Manager](../traffic-manager/traffic-manager-performance-considerations.md)

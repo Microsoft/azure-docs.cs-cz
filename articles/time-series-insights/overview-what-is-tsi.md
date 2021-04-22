@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: ae5887657e7657e60348217c21aa0ed17f9f4b07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ff26289962aa06f9638644e28da23b646554281
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97606296"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865310"
 ---
 # <a name="what-is-azure-time-series-insights-gen2"></a>Co je Azure Time Series Insights Gen2
 
@@ -86,6 +86,21 @@ Díky zavedení těchto klíčových funkcí pro průmyslové účely IoT Azure 
 | Zkoumání dat téměř v reálném čase | Prostředí [Azure Time Series Insights Průzkumník Gen2](./concepts-ux-panels.md) poskytuje vizualizaci pro všechna streamování dat prostřednictvím kanálu přijímání. Po připojení zdroje událostí můžete zobrazit, prozkoumat a dotazovat data událostí. Tímto způsobem můžete ověřit, jestli zařízení vysílá data podle očekávání. Můžete také monitorovat prostředek IoT pro stav, produktivitu a celkovou efektivitu. |
 | Rozšiřitelnost a integrace | Integrace konektoru Power BI je k dispozici přímo v uživatelském prostředí Průzkumníka časových řad prostřednictvím možnosti **exportovat** , což zákazníkům umožňuje exportovat dotazy časových řad, které vytvoří v prostředí uživatele přímo do Power BI plochy, a zobrazit grafy časových řad společně s dalšími analýzami BI. Tím se otevře dvířka nové třídy scénářů pro podniky IoT v průmyslu, které investovaly do Power BI tím, že v různých zdrojích dat, včetně časových řad IoT, poskytneme jedno podokno ze skleněných zdrojů. |
 | Vlastní aplikace založené na Azure Time Series Insights platformě Gen2 | Azure Time Series Insights Gen2 podporuje [sadu JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Sada SDK poskytuje bohatý ovládací prvky a zjednodušený přístup k dotazům. Pomocí sady SDK můžete sestavovat vlastní aplikace IoT nad Azure Time Series Insights Gen2 tak, aby vyhovovaly vašim obchodním potřebám. Můžete také použít [rozhraní API](./concepts-query-overview.md) pro Azure Time Series Insights Gen2 pro dotazy přímo na data na vlastní aplikace IoT. |
+
+## <a name="region-availability"></a>Dostupnost v oblastech
+
+Navštivte stránku [globální infrastruktura Azure podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=time-series-insights) , kde najdete informace o tom, kde je Azure Time Series Insights k dispozici.
+
+Azure Time Series Insights se nachází v jedné oblasti. Ukládá ale data zákazníků mimo oblast, ve které zákazník nasadí instanci služby, s výjimkou následujících oblastí, ve kterých nejsou data replikovaná mimo oblast:
+
+* Východní Asie
+* Southeast Asia
+*   Austrálie – jihovýchod
+*   West Europe
+*   Spojené království – jih
+*   USA – západ
+*   Francie – střed
+*   Střední Kanada
 
 ## <a name="next-steps"></a>Další kroky
 

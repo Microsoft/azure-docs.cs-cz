@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: 1c9434d137114560b5585b081961497412dfbf69
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 375a8f6613ff90edd3df635c8236196aab62b6ac
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770250"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861134"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Vytvoření a připojení clusteru služby Azure Kubernetes
 
@@ -198,7 +198,7 @@ Další informace o třídách, metodách a parametrech použitých v tomto př�
 az ml computetarget create aks -n myaks
 ```
 
-Další informace najdete v tématu [AZ ml computetarget Create AKS](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference.
+Další informace najdete v tématu [AZ ml computetarget Create AKS](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks) reference.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -275,7 +275,7 @@ Pokud chcete připojit existující cluster k pracovnímu prostoru, použijte n�
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-Další informace najdete v referenčních informacích [AZ ml computetarget Attach AKS](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach#ext-azure-cli-ml-az-ml-computetarget-attach-aks) .
+Další informace najdete v referenčních informacích [AZ ml computetarget Attach AKS](/cli/azure/ml/computetarget/attach#az_ml_computetarget_attach_aks) .
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 

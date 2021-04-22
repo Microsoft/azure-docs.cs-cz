@@ -677,7 +677,7 @@
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.streamanalytics/allversions
     - name: Azure CLI
-      href: /cli/azure/ext/stream-analytics/stream-analytics
+      href: /cli/azure/stream-analytics
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

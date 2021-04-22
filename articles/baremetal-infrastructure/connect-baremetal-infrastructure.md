@@ -4,12 +4,12 @@ description: Přečtěte si, jak identifikovat a pracovat s BareMetal instancemi
 ms.topic: how-to
 ms.subservice: workloads
 ms.date: 04/06/2021
-ms.openlocfilehash: a7fdc17aa4271915f7dc02aaa2d7a688016bf892
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: e67ede85608f2a33dcc179005f0090ca2ce6a640
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579132"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871646"
 ---
 # <a name="connect-baremetal-infrastructure-instances-in-azure"></a>Propojení instancí infrastruktury BareMetal v Azure
 
@@ -83,7 +83,7 @@ Během nasazování instancí BareMetal se v předplatném Azure, které jste po
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete zobrazit všechny instance BareMetal, spusťte příkaz [AZ baremetalinstance list](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_list) pro vaši skupinu prostředků:
+Pokud chcete zobrazit všechny instance BareMetal, spusťte příkaz [AZ baremetalinstance list](/cli/azure/baremetalinstance#az_baremetalinstance_list) pro vaši skupinu prostředků:
 
 ```azurecli
 az baremetalinstance list --resource-group DSM05A-T550 –output table
@@ -127,7 +127,7 @@ Na pravé straně se také nachází název [skupiny umístění s blízkostií 
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete zobrazit podrobnosti o instanci BareMetal, spusťte příkaz [AZ baremetalinstance show](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_show) :
+Pokud chcete zobrazit podrobnosti o instanci BareMetal, spusťte příkaz [AZ baremetalinstance show](/cli/azure/baremetalinstance#az_baremetalinstance_show) :
 
 ```azurecli
 az baremetalinstance show --resource-group DSM05A-T550 --instance-name orcllabdsm01
@@ -159,7 +159,7 @@ Odstraňování značek funguje také stejně jako u virtuálních počítačů.
 
 Přiřazení značek k instancím BareMetal funguje stejně jako přiřazení značek pro virtuální počítače. Stejně jako u virtuálních počítačů existují značky v metadatech Azure. Značky mají stejná omezení pro instance BareMetal jako pro virtuální počítače.
 
-Chcete-li přidat značky do instance BareMetal, spusťte příkaz [AZ baremetalinstance Update](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_update) :
+Chcete-li přidat značky do instance BareMetal, spusťte příkaz [AZ baremetalinstance Update](/cli/azure/baremetalinstance#az_baremetalinstance_update) :
 
 ```azurecli
 az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --set tags.Dept=Finance tags.Status=Normal
@@ -197,7 +197,7 @@ Po restartování instance BareMetal se dostanou zpoždění. Během této prodl
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete restartovat instanci BareMetal, použijte příkaz [AZ baremetalinstance restart](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_restart) :
+Pokud chcete restartovat instanci BareMetal, použijte příkaz [AZ baremetalinstance restart](/cli/azure/baremetalinstance#az_baremetalinstance_restart) :
 
 ```azurecli
 az baremetalinstance restart --resource-group DSM05a-T550 --instance-name orcllabdsm01

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: 684c61dfb34d55681904943160ca389c19a4c8db
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: b0eba6d0be1d6a65b911f05dabf3cdbecc9c666d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107732644"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107880748"
 ---
 Začněte s klientskou knihovnou anomálií lineární pro Python. Pomocí těchto kroků nainstalujete balíček Start s použitím algoritmů poskytovaných službou. Nová rozhraní API pro detekci anomálií lineární umožňují vývojářům snadnou integraci pokročilého AI pro detekci anomálií ze skupin metrik, aniž by to mělo znalosti strojového učení nebo data s popisky. Závislosti a vzájemné korelace mezi různými signály se automaticky počítají jako klíčové faktory. To vám pomůže aktivně chránit komplexní systémy před chybami.
 
@@ -23,7 +23,7 @@ Použijte klientskou knihovnu anomálie lineární pro Python k těmto akcím:
 * Když kterákoli z jednotlivých časových řad neřekne hodně a musíte se podívat na všechny signály a zjistit problém.
 * Predicative údržbu drahých fyzických prostředků s desítkou až stovkami různých typů senzorů, které měří různé aspekty stavu systému.
 
-[Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Balíček (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/)
+[Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Balíček (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/)  |  [Vzorový kód](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py)  |  [Jupyter notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -236,6 +236,11 @@ if __name__ == '__main__':
 
 ```
 
+Před spuštěním aplikace může být užitečné kontrolovat projekt před [úplným ukázkovým kódem](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb) , ze kterého je tento rychlý Start odvozen.
+
+Máme také [podrobný Jupyter notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb) , které vám pomůžou začít.
+
 Spusťte aplikaci pomocí `python` příkazu a názvu souboru.
+
 
 [!INCLUDE [anomaly-detector-next-steps](../quickstart-cleanup-next-steps.md)]

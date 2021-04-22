@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.custom: devx-track-js
-ms.openlocfilehash: a655199d854462285ca98a2d8f454c483c061f99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d54b4b048632324a58708f893a4778a56137916
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92316661"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876074"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric pro Visual Studio Code
 
@@ -48,7 +48,7 @@ Pro vývoj v jazyce Java je nutné nainstalovat následující požadavky:
 
 Pro vývoj pro .NET Core/C# je nutné nainstalovat následující požadavky:
 
-* [.NET Core](https://www.microsoft.com/net/learn/get-started) (verze 2.0.0 nebo novější)
+* [.NET Core](https://dotnet.microsoft.com/download) (verze 2.0.0 nebo novější)
 * [Rozšíření jazyka C# pro Visual Studio Code (s technologií OmniSharp) vs Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) Nutné pro ladění služeb C#. Instalaci můžete provést kliknutím na ikonu rozšíření na **řádku aktivity** vs Code a hledáním rozšíření nebo na webu vs Code Marketplace.
 
 ## <a name="setup"></a>Nastavení

@@ -3,12 +3,12 @@ title: Vytvoření knihovny obsahu pro nasazení virtuálních počítačů v ř
 description: Vytvořte knihovnu obsahu pro nasazení virtuálního počítače v privátním cloudu řešení Azure VMware.
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: a50b12ef8e139bf7de171398fd28f74fc3f310c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b27d2682d8799bec6b09a08e5063359113b20a88
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100382000"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873878"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Vytvoření knihovny obsahu pro nasazení virtuálních počítačů v řešení Azure VMware
 
@@ -94,8 +94,8 @@ Teď, když je knihovna obsahu vytvořená, můžete přidat bitovou kopii ISO p
 
 Teď, když jste se seznámili s vytvářením knihovny obsahu pro nasazení virtuálních počítačů v řešení Azure VMware, se můžete setkat s těmito informacemi:
 
-- [Nasazení a konfigurace HCX VMware](tutorial-deploy-vmware-hcx.md) pro migraci úloh virtuálních počítačů do privátního cloudu.
-- [Správa životního cyklu virtuálních počítačů řešení Azure VMware](lifecycle-management-of-azure-vmware-solution-vms.md).
+- [Postup migrace úloh virtuálních počítačů do privátního cloudu](tutorial-deploy-vmware-hcx.md)
+- [Správa životního cyklu virtuálních počítačů řešení Azure VMware](lifecycle-management-of-azure-vmware-solution-vms.md)
 
 <!-- LINKS - external-->
 

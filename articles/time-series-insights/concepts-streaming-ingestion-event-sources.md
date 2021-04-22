@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 499cb3c978a67f9ef71e6ad9dd03be9f05b45729
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: e0d40a4e0e376a42841bd8df5d76e5c83d11b1e3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726965"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865477"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights zdroje událostí Gen2
 
@@ -29,7 +29,7 @@ Události se musí odesílat jako JSON kódovaný ve formátu UTF-8.
 
 Zdroj události je propojení mezi vaším centrem a prostředím Azure Time Series Insights Gen2 a `Time Series Insights event source` ve vaší skupině prostředků se vytvoří samostatný prostředek typu. Prostředky IoT Hub nebo centra událostí můžou být ve stejném předplatném Azure jako vaše prostředí Azure Time Series Insights Gen2 nebo jiné předplatné. Osvědčeným postupem je ale Azure Time Series Insights prostředí a IoT Hub nebo centrum událostí v rámci stejné oblasti Azure.
 
-K vytváření, úpravám a odebírání zdrojů událostí vašeho prostředí můžete použít [Azure Portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment), [Azure CLI](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/event-source), [šablony Azure Resource Manager](time-series-insights-manage-resources-using-azure-resource-manager-template.md)a [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) .
+K vytváření, úpravám a odebírání zdrojů událostí vašeho prostředí můžete použít [Azure Portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment), [Azure CLI](/cli/azure/tsi/event-source), [šablony Azure Resource Manager](time-series-insights-manage-resources-using-azure-resource-manager-template.md)a [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) .
 
 > [!WARNING]
 > Neomezovat veřejný internetový přístup k rozbočovači nebo zdroji událostí, který používá Time Series Insights, nebo dojde k přerušení potřebného připojení.

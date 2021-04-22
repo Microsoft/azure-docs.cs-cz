@@ -12,20 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 04/21/2021
 ms.author: b-juche
-ms.openlocfilehash: 3c6da2137f2db43284ce7a533ff763e9ef157f35
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: fa028d8fffd2a4097b5bf7d7326d355ae56aebd7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726641"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862808"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Co je nového v Azure NetApp Files
 
 Azure NetApp Files se pravidelně aktualizují. Tento článek obsahuje souhrn nejnovějších nových funkcí a vylepšení. 
 
 ## <a name="april-2021"></a>Duben 2021
+
+* [Podpora sdílených složek SMB s nepřetržitou dostupností (CA) pro kontejnery profilů uživatelů FSLogix](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Preview)  
+
+    [FSLogix](/fslogix/overview) je sada řešení, která zlepšují, povolují a zjednodušují netrvalá výpočetní prostředí Windows. Řešení FSLogix jsou vhodná pro virtuální prostředí v veřejných i privátních cloudech. Řešení FSLogix můžete také použít k vytvoření více přenosných relací při použití fyzických zařízení. FSLogix se dá použít k poskytnutí dynamického přístupu k trvalým kontejnerům profilů uživatelů uložených ve sdílených síťových úložištích SMB, včetně Azure NetApp Files. Kvůli další podpoře FSLogix odolnosti proti událostem údržby služby úložiště Azure NetApp Files má Rozšířená podpora protokolu SMB transparentního převzetí služeb při selhání prostřednictvím [sdílených složek SMB (CA continuoation) na Azure NetApp Files](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) pro kontejnery profilů uživatelů. Další informace najdete v tématu Azure NetApp Files [řešení pro virtuální počítače s Windows](azure-netapp-files-solution-architectures.md#windows-virtual-desktop) .  
 
 * [Šifrování protokolu SMB3](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Preview) 
 

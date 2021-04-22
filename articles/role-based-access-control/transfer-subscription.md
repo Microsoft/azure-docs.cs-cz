@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 5baf5f503542f31b26c4c210741f1ce986f6a549
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 72dc92ae211034e2a49bc77f60880f17ab15dec7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580111"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868172"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Přenos předplatného Azure do jiného adresáře Azure AD
 
@@ -116,7 +116,7 @@ K provedení těchto kroků budete potřebovat:
 
 ### <a name="install-the-azure-resource-graph-extension"></a>Instalace rozšíření Azure Resource graphu
 
- Rozšíření Azure CLI pro [graf prostředků Azure](../governance/resource-graph/index.yml), *Resource-Graph* umožňuje použít příkaz [AZ Graph](/cli/azure/ext/resource-graph/graph) k dotazování prostředků spravovaných pomocí Azure Resource Manager. Tento příkaz použijete v pozdějších krocích.
+ Rozšíření Azure CLI pro [graf prostředků Azure](../governance/resource-graph/index.yml), *Resource-Graph* umožňuje použít příkaz [AZ Graph](/cli/azure/graph) k dotazování prostředků spravovaných pomocí Azure Resource Manager. Tento příkaz použijete v pozdějších krocích.
 
 1. Chcete-li zjistit, zda je nainstalováno rozšíření *grafu prostředků* , použijte příkaz [AZ Extension List](/cli/azure/extension#az_extension_list) .
 
@@ -233,7 +233,7 @@ Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klien
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Vypsání databází Azure SQL pomocí ověřování Azure AD
 
-- Pomocí [AZ SQL Server AD – admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) a [AZ Graph](/cli/azure/ext/resource-graph/graph) Extension zjistíte, jestli používáte Azure SQL Database s povolenou integrací ověřování Azure AD. Další informace najdete v tématu [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL](../azure-sql/database/authentication-aad-configure.md).
+- Pomocí [AZ SQL Server AD – admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) a [AZ Graph](/cli/azure/graph) Extension zjistíte, jestli používáte Azure SQL Database s povolenou integrací ověřování Azure AD. Další informace najdete v tématu [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL](../azure-sql/database/authentication-aad-configure.md).
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -255,7 +255,7 @@ Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klien
     subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
     ```
 
-1. K vypsání dalších prostředků Azure se známými závislostmi adresáře Azure AD použijte rozšíření [AZ Graph](/cli/azure/ext/resource-graph/graph) Extension.
+1. K vypsání dalších prostředků Azure se známými závislostmi adresáře Azure AD použijte rozšíření [AZ Graph](/cli/azure/graph) Extension.
 
     ```azurecli
     az graph query -q \

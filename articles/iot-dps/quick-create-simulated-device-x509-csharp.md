@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 7d2a21a30cefbc6e83e48c29d81191323387b8f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7aca75d1abed5470d51de22f9285459381f684bd
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101705539"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868586"
 ---
 # <a name="quickstart-create-and-provision-an-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení zařízení X. 509 pomocí sady SDK pro zařízení v jazyce C# pro IoT Hub Device Provisioning Service
 
@@ -45,7 +45,7 @@ V tomto článku si předvedeme jednotlivé registrace.
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     ```
 
-1. Ujistěte se, že máte na počítači nainstalovanou [sadu .NET Core 3.0.0 SDK nebo novější](https://www.microsoft.com/net/download/windows) . K ověření vaší verze můžete použít následující příkaz.
+1. Ujistěte se, že máte na svém počítači nainstalovanou [sadu .NET Core 3,1 SDK nebo novější](https://dotnet.microsoft.com/download) . K ověření vaší verze můžete použít následující příkaz.
 
     ```bash
     dotnet --info

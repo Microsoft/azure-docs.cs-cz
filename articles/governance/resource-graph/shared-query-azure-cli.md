@@ -3,12 +3,12 @@ title: 'Rychlý Start: vytvoření sdíleného dotazu pomocí Azure CLI'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení rozšíření grafu prostředků pro Azure CLI a vytvoření sdíleného dotazu.
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: ec1b010771790339a13777624f04c7bd2db01f11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2befc2b6895cd9d2c797fc8ed0e28a27eb6e73e8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594362"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870548"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Rychlý Start: vytvoření sdíleného dotazu v diagramu prostředků pomocí Azure CLI
 
@@ -58,7 +58,7 @@ S rozšířením Azure CLI přidaným do vašeho prostředí podle vašeho výb�
    az group create --name 'resource-graph-queries' --location 'westus2'
    ```
 
-1. Pomocí `graph` rozšíření a příkazu [AZ Graph Shared-Query Create](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_create) vytvořte sdílený dotaz Azure Resource Graph:
+1. Pomocí `graph` rozšíření a příkazu [AZ Graph Shared-Query Create](/cli/azure/graph/shared-query#az_graph_shared_query_create) vytvořte sdílený dotaz Azure Resource Graph:
 
    ```azurecli-interactive
    # Create the Azure Resource Graph shared query
@@ -68,14 +68,14 @@ S rozšířením Azure CLI přidaným do vašeho prostředí podle vašeho výb�
       --resource-group 'resource-graph-queries'
    ```
 
-1. Vypíše sdílené dotazy v nové skupině prostředků. Příkaz [AZ Graph Shared-Query list](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_list) vrátí pole hodnot.
+1. Vypíše sdílené dotazy v nové skupině prostředků. Příkaz [AZ Graph Shared-Query list](/cli/azure/graph/shared-query#az_graph_shared_query_list) vrátí pole hodnot.
 
    ```azurecli-interactive
    # List all the Azure Resource Graph shared queries in a resource group
    az graph shared-query list --resource-group 'resource-graph-queries'
    ```
 
-1. Chcete-li získat pouze jeden sdílený výsledek dotazu, použijte příkaz [AZ Graph Share-Query show](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_show) .
+1. Chcete-li získat pouze jeden sdílený výsledek dotazu, použijte příkaz [AZ Graph Share-Query show](/cli/azure/graph/shared-query#az_graph_shared_query_show) .
 
    ```azurecli-interactive
    # Show a specific Azure Resource Graph shared query
@@ -83,7 +83,7 @@ S rozšířením Azure CLI přidaným do vašeho prostředí podle vašeho výb�
       --name 'Summarize resources by location'
    ```
 
-1. Spusťte v Azure CLI sdílený dotaz pomocí `{{shared-query-uri}}` syntaxe v příkazu [AZ Graph Query](/cli/azure/ext/resource-graph/graph#ext_resource_graph_az_graph_query) .
+1. Spusťte v Azure CLI sdílený dotaz pomocí `{{shared-query-uri}}` syntaxe v příkazu [AZ Graph Query](/cli/azure/graph#az_graph_query) .
    Nejdřív zkopírujte `id` pole z výsledku předchozího `show` příkazu. Nahraďte `shared-query-uri` text v příkladu hodnotou z `id` pole, ale ponechte okolní `{{` `}}` znaky a.
 
    ```azurecli-interactive
@@ -100,7 +100,7 @@ Dalším způsobem, jak najít sdílené dotazy grafu prostředků, je prostřed
 
 Pokud chcete z prostředí Azure CLI odebrat sdílený dotaz, skupinu prostředků a rozšíření grafu prostředků, můžete to udělat pomocí následujících příkazů:
 
-- [AZ Graph Shared-Query DELETE](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_delete)
+- [AZ Graph Shared-Query DELETE](/cli/azure/graph/shared-query#az_graph_shared_query_delete)
 - [az group delete](/cli/azure/group#az_group_delete)
 - [AZ Extension Remove](/cli/azure/extension#az_extension_remove)
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroly dodržování předpisů pro Azure Virtual Machines
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou k dispozici pro Azure Virtual Machines. Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 227f26f6d9b1026bc78421d8d55e42e9202ef3b6
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 0afe3279bbce3e47e1a87c8189f273ccb9e273f4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501636"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865331"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-virtual-machines"></a>Azure Policy kontroly dodržování předpisů pro Azure Virtual Machines 
 

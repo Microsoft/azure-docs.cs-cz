@@ -1,14 +1,14 @@
 ---
 title: Vysvětlení fungování efektů
 description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
-ms.date: 02/17/2021
+ms.date: 04/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 67445b3d0d63b3827f82822de00412bdab67c5ab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e0d6eb5fb37ecf1b13edd945de52398b1e12f192
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741816"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861548"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -64,7 +64,8 @@ Efekt připojení má pouze pole **Details** , které je povinné. Vzhledem k to
 
 ### <a name="append-examples"></a>Připojit příklady
 
-Příklad 1: pár **pole/hodnota** **\[\*\]** s **hodnotou** pole, která pro nastavení pravidel IP v účtu úložiště používá jinou hodnotu než [alias](definition-structure.md#aliases) . Když **\[\*\]** je objekt, který není aliasem pole, efekt připojí **hodnotu** jako celé pole. Pokud pole již existuje, dojde ke konfliktu události odepřít.
+Příklad 1: pár **pole/hodnota** **\[\*\]** 
+ s hodnotou pole, která pro nastavení pravidel IP v účtu úložiště používá jinou **hodnotu** než [alias](definition-structure.md#aliases) . Když **\[\*\]** je objekt, který není aliasem pole, efekt připojí **hodnotu** jako celé pole. Pokud pole již existuje, dojde ke konfliktu události odepřít.
 
 ```json
 "then": {
@@ -485,7 +486,7 @@ Příkaz Upravit se používá k přidání, aktualizaci nebo odebrání vlastno
 
 Následující operace jsou podporovány úpravou:
 
-- Přidání, nahrazení nebo odebrání značek prostředků. U značek by měly být zásady úprav `mode` nastavené na _indexované_ , pokud cílový prostředek není skupina prostředků.
+- Přidejte, nahraďte nebo odeberte značky prostředků. U značek by měly být zásady úprav `mode` nastavené na _indexované_ , pokud cílový prostředek není skupina prostředků.
 - Přidejte nebo nahraďte hodnotu spravovaného typu identity ( `identity.type` ) virtuálních počítačů a sady škálování virtuálních počítačů.
 - Přidejte nebo nahraďte hodnoty určitých aliasů (Preview).
   - Použití `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }`
@@ -518,7 +519,7 @@ Vlastnost **Details** pro efekt úpravy obsahuje všechny podvlastnosti, které 
   - Tato vlastnost musí zahrnovat pole řetězců, které odpovídají ID role řízení přístupu na základě rolí přístupné pro předplatné. Další informace najdete v tématu [náprava – konfigurace definice zásad](../how-to/remediate-resources.md#configure-policy-definition).
   - Definovaná role musí zahrnovat všechny operace udělené roli [přispěvatele](../../../role-based-access-control/built-in-roles.md#contributor) .
 - **conflictEffect** (volitelné)
-  - Určuje, která definice zásad "WINS" v případě, že více než jedna definice zásad upravuje stejnou vlastnost nebo když operace úpravy nefunguje na zadaném aliasu.
+  - Určuje, která definice zásad "WINS", pokud více než jedna definice zásad upravuje stejnou vlastnost nebo když operace úpravy nefunguje na zadaném aliasu.
     - U nových nebo aktualizovaných prostředků má přednost definice zásad s _odepřením_ . Definice zásad s _auditem_ přeskočí všechny **operace**. Pokud má _zamítnutí_ více než jedna definice zásady, je žádost zamítnuta jako konflikt. Pokud všechny definice zásad mají _audit_, nezpracovávají se žádné **operace** pro konfliktní definice zásad.
     - V případě existujících prostředků, pokud více než jedna definice zásad má _odepření_, je stav dodržování předpisů _konflikt_. Pokud jeden nebo více definic zásad má _zamítnutí_, každé přiřazení vrátí stav dodržování předpisů jako _nevyhovující_.
   - Dostupné hodnoty: _audit_, _Deny_, _zakázáno_.

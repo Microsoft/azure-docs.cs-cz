@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: e9fb801fce3e47fc83febeddd6f331ce2af207e6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8cab9331cdd4c15ab76b7c33f956be15ec2259ef
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506969"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861188"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využívání modelu služby Azure Machine Learning nasazeného jako webová služba
 
@@ -77,7 +77,7 @@ Existuje několik způsobů, jak načíst tyto informace pro nasazené webové s
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud znáte název nasazené služby, použijte příkaz [AZ ml Service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) :
+Pokud znáte název nasazené služby, použijte příkaz [AZ ml Service show](/cli/azure/ml/service#az_ml_service_show) :
 
 ```azurecli
 az ml service show -n <service-name>

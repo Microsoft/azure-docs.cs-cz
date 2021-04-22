@@ -4,15 +4,15 @@ description: Tento článek poskytuje informace o tom, jak přizpůsobit pravidl
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 04/21/2021
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ab122d178e5390a53e5a3a39f1b7763b298dc6d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "74048383"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878321"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>Přizpůsobení pravidel firewallu webových aplikací pomocí Azure Portal
 
@@ -21,7 +21,7 @@ Firewall webových aplikací (WAF) služby Azure Application Gateway poskytuje o
 >[!NOTE]
 > Pokud Aplikační brána nepoužívá úroveň WAF, v pravém podokně se zobrazí možnost upgradovat aplikační bránu na úroveň WAF. 
 
-![Povolit WAF][fig1]
+:::image type="content" source="../media/application-gateway-customize-waf-rules-portal/1.png" alt-text="Povolit WAF"::: 
 
 ## <a name="view-rule-groups-and-rules"></a>Zobrazení skupin pravidel a pravidel
 
@@ -37,16 +37,13 @@ Firewall webových aplikací (WAF) služby Azure Application Gateway poskytuje o
 > [!IMPORTANT]
 > Při zakázání libovolných skupin pravidel nebo pravidel buďte opatrní. To vám může vystavit zvýšené bezpečnostní rizika.
 
-Když pravidla zakážete, můžete zakázat celou skupinu pravidel nebo specifická pravidla v rámci jedné nebo více skupin pravidel. 
-
 **Zakázání skupin pravidel nebo specifických pravidel**
 
    1. Vyhledejte pravidla nebo skupiny pravidel, které chcete zakázat.
    2. Zaškrtněte políčka pro pravidla, která chcete zakázat. 
    3. Vyberte akci v horní části stránky (Povolit/zakázat) pro vybraná pravidla.
-   2. Vyberte **Uložit**. 
-
-![Uložit změny][3]
+   2. Vyberte **Uložit**.
+    :::image type="content" source="../media/application-gateway-customize-waf-rules-portal/figure3.png" alt-text="Uložit zakázaná pravidla"::: 
 
 ## <a name="mandatory-rules"></a>Povinná pravidla
 
@@ -66,6 +63,3 @@ Specifické pro počítačový počítač 3. x:
 ## <a name="next-steps"></a>Další kroky
 
 Po konfiguraci zakázaných pravidel se můžete dozvědět, jak zobrazit protokoly WAF. Další informace najdete v tématu [diagnostika Application Gateway](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
-
-[fig1]: ../media/application-gateway-customize-waf-rules-portal/1.png
-[3]: ../media/application-gateway-customize-waf-rules-portal/figure3.png

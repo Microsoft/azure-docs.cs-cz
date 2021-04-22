@@ -8,12 +8,12 @@ ms.custom:
 - devx-track-azurecli
 - devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: fb287333ba8b0b4fc0bb35ce91d2e3113ff50e2b
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 45173a74c0e3189c1f356aea2f8024ff15409f32
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831109"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866192"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce jazyka C# v Azure z příkazového řádku
 
@@ -35,7 +35,7 @@ K dispozici je také [Visual Studio Codeá verze](create-first-function-vs-code-
 
 + Získat Azure <abbr title="Profil, který uchovává fakturační informace pro využití Azure">account</abbr> s aktivní <abbr title="Základní organizační struktura, ve které spravujete prostředky v Azure, obvykle přidružené k jednotlivcům nebo oddělením v rámci organizace.">předplatné</abbr>. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ Nainstalovat [.NET Core SDK 3,1](https://www.microsoft.com/net/download)
++ Nainstalovat [sadu .NET Core 3,1 SDK](https://dotnet.microsoft.com/download)
 
 + Nainstalujte [Azure Functions Core Tools](functions-run-local.md#v2) verze 3. x.
 

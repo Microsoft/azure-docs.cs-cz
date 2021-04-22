@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 22f63675f3d0224e7bbf3ee9b5f9fa497833ebe7
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 76285208d07851925041c0f7504797a67e642d03
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498568"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866543"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[\[Verze Preview \] : clustery Kubernetes s povoleným ARC Azure by měly mít nainstalované rozšíření v programu Azure Defender.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Rozšíření Azure Defenderu pro Azure ARC zajišťuje ochranu před hrozbami pro clustery Kubernetes s povoleným obloukem. Rozšíření shromažďuje data ze všech uzlů řídicí plochy v clusteru a odesílá je do Azure Defenderu pro Kubernetes back-end v cloudu pro další analýzu. Další informace najdete v [https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc) . |AuditIfNotExists, zakázáno |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ASC_Audit_Azure_Defender_Kubernetes_Arc_Extension.json) |
 |[Musí být povolené privátní clustery služby Azure Kubernetes.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F040732e8-d947-40b8-95d6-854c95024bf8) |Povolením funkce privátního clusteru pro cluster služby Azure Kubernetes zajistíte, že síťový provoz mezi serverem API a fondy uzlů zůstane jenom v privátní síti. To je běžný požadavek v mnoha zákonných a oborových normách dodržování předpisů. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_PrivateCluster_Deny.json) |

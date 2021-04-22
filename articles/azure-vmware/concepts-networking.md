@@ -3,12 +3,12 @@ title: Koncepty – Network vzájemné propojení
 description: Přečtěte si o klíčových aspektech a případech použití sítě a vzájemné propojení v řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 4c964151c49e2fea56031dd24bacf4655753a18d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a6c86c0a9eb8e07a91a094ddf5d6fb77b0eddf67
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491805"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871682"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Sítě řešení Azure VMware a koncepty vzájemné propojení
 
@@ -67,9 +67,9 @@ Pokud chcete plně vzájemné propojení do svého privátního cloudu, musíte 
 
 Teď, když jste se seznámili s koncepty sítě řešení Azure VMware a vzájemné propojení, se můžete seznámit s těmito informacemi:
 
-- [Koncepty úložiště řešení Azure VMware](concepts-storage.md).
-- [Koncepty identity řešení Azure VMware](concepts-identity.md).
-- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md).
+- [Koncepty úložiště řešení Azure VMware](concepts-storage.md)
+- [Koncepty identity řešení Azure VMware](concepts-identity.md)
+- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md)
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md

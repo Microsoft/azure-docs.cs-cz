@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31d915cd44bcf60f3515eb1a84309980f45d40b0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94887259"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868280"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Rychlý Start: nastavení nabízených oznámení v centru oznámení
 
@@ -75,13 +75,13 @@ Pro projekt Google Firebase Cloud Messaging (FCM) budete potřebovat **klíč ro
 
 ### <a name="set-up-push-notifications-for-google-fcm"></a>Nastavení nabízených oznámení pro Google FCM
 
-1. Pomocí příkazu [AZ Notification-hub Credential GCM Update](/cli/azure/ext/notification-hub/notification-hub/credential/gcm#ext-notification-hub-az-notification-hub-credential-gcm-update) přidejte svůj klíč Google API do centra oznámení.
+1. Pomocí příkazu [AZ Notification-hub Credential GCM Update](/cli/azure/notification-hub/credential/gcm#az_notification_hub_credential_gcm_update) přidejte svůj klíč Google API do centra oznámení.
 
    ```azurecli
    az notification-hub credential gcm update --resource-group spnhubrg --namespace-name spnhubns    --notification-hub-name spfcmtutorial1nhub --google-api-key myKey
    ```
 
-2. Aplikace pro Android potřebuje připojovací řetězec pro připojení k centru oznámení.  Pomocí příkazu [AZ Notification-hub Authorization-Rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) zobrazíte seznam dostupných zásad přístupu.  K získání připojovacích řetězců zásad přístupu použijte příkaz [AZ Notification-Center Authorization-Rule list-Keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) .  Chcete-  li  `--query` získat primární připojovací řetězec přímo, zadejte v parametru parametr primaryConnectionString nebo secondaryConnectionString.
+2. Aplikace pro Android potřebuje připojovací řetězec pro připojení k centru oznámení.  Pomocí příkazu [AZ Notification-hub Authorization-Rule list](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization_rule_list) zobrazíte seznam dostupných zásad přístupu.  K získání připojovacích řetězců zásad přístupu použijte příkaz [AZ Notification-Center Authorization-Rule list-Keys](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization_rule_list_keys) .  Chcete-  li  `--query` získat primární připojovací řetězec přímo, zadejte v parametru parametr primaryConnectionString nebo secondaryConnectionString.
 
    ```azurecli
    #list access policies for a notification hub
@@ -94,7 +94,7 @@ Pro projekt Google Firebase Cloud Messaging (FCM) budete potřebovat **klíč ro
    az notification-hub authorization-rule list-keys --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name myAccessPolicyName --query primaryConnectionString
    ```
 
-3. Pomocí příkazu [AZ Notification-hub test-Send](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-test-send) otestujte odesílání zpráv do aplikace pro Android.
+3. Pomocí příkazu [AZ Notification-hub test-Send](/cli/azure/notification-hub#az_notification_hub_test_send) otestujte odesílání zpráv do aplikace pro Android.
 
    ```azurecli
    #test with message body
@@ -104,7 +104,7 @@ Pro projekt Google Firebase Cloud Messaging (FCM) budete potřebovat **klíč ro
    az notification-hub test-send --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --notification-format gcm --payload "{\"data\":{\"message\":\"my JSON string\"}}"
    ```
 
-Reference k rozhraní příkazového řádku Azure CLI pro jiné platformy získáte pomocí příkazu [AZ Notification-hub Credential](/cli/azure/ext/notification-hub/notification-hub/credential) .
+Reference k rozhraní příkazového řádku Azure CLI pro jiné platformy získáte pomocí příkazu [AZ Notification-hub Credential](/cli/azure/notification-hub/credential) .
 
 Další informace o odesílání oznámení do aplikace pro Android najdete v tématu [Posílání nabízených oznámení na zařízení s Androidem pomocí Firebase](notification-hubs-android-push-notification-google-fcm-get-started.md).
 

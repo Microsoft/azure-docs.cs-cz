@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: fa1c01c2d9da19ec1f60878de83a509b7cf561e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b845ecabe74040e154886476a8ba28efecc99325
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606823"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868856"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>Kurz: nasazení HSM do existující virtuální sítě pomocí Azure CLI
 
@@ -102,7 +102,7 @@ az network vnet subnet create \
 
 Po nakonfigurování sítě použijte tyto příkazy rozhraní příkazového řádku Azure ke zřízení vaší HSM.
 
-1. K zřízení prvního HSM použijte příkaz [AZ vyhrazené-HSM Create](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_create) . Modul HARDWAROVÉho zabezpečení má název hsm1. Nahraďte své předplatné:
+1. K zřízení prvního HSM použijte příkaz [AZ vyhrazené-HSM Create](/cli/azure/dedicated-hsm#az_dedicated_hsm_create) . Modul HARDWAROVÉho zabezpečení má název hsm1. Nahraďte své předplatné:
 
    ```azurecli
    az dedicated-hsm create --location westus --name hsm1 --resource-group myRG --network-profile-network-interfaces \
@@ -111,7 +111,7 @@ Po nakonfigurování sítě použijte tyto příkazy rozhraní příkazového ř
 
    Toto nasazení by mělo trvat přibližně 25 až 30 minut, než se dokončí v době, kdy se jedná o zařízení HSM.
 
-1. Pokud chcete zobrazit aktuální modul HARDWAROVÉho zabezpečení, spusťte příkaz [AZ vyhrazené-HSM show](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_show) :
+1. Pokud chcete zobrazit aktuální modul HARDWAROVÉho zabezpečení, spusťte příkaz [AZ vyhrazené-HSM show](/cli/azure/dedicated-hsm#az_dedicated_hsm_show) :
 
    ```azurecli
    az dedicated-hsm show --resource group myRG --name hsm1
@@ -124,19 +124,19 @@ Po nakonfigurování sítě použijte tyto příkazy rozhraní příkazového ř
         /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/MyHSM-vnet/subnets/MyHSM-vnet
    ```
 
-1. Spuštěním příkazu [AZ vyhrazené-HSM list](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_list) zobrazíte podrobnosti o aktuálním HSM:
+1. Spuštěním příkazu [AZ vyhrazené-HSM list](/cli/azure/dedicated-hsm#az_dedicated_hsm_list) zobrazíte podrobnosti o aktuálním HSM:
 
    ```azurecli
    az dedicated-hsm list --resource-group myRG
    ```
 
-K dispozici jsou některé další příkazy, které mohou být užitečné. Aktualizujte modul HSM pomocí příkazu [AZ vyhrazeného HSM Update](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_update) :
+K dispozici jsou některé další příkazy, které mohou být užitečné. Aktualizujte modul HSM pomocí příkazu [AZ vyhrazeného HSM Update](/cli/azure/dedicated-hsm#az_dedicated_hsm_update) :
 
 ```azurecli
 az dedicated-hsm update --resource-group myRG –name hsm1
 ```
 
-Chcete-li odstranit modul HARDWAROVÉho zabezpečení, použijte příkaz [AZ vyhrazené-HSM Delete](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_delete) :
+Chcete-li odstranit modul HARDWAROVÉho zabezpečení, použijte příkaz [AZ vyhrazené-HSM Delete](/cli/azure/dedicated-hsm#az_dedicated_hsm_delete) :
 
 ```azurecli
 az dedicated-hsm delete --resource-group myRG –name hsm1

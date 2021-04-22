@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 11/07/2020
 ms.author: allensu
-ms.openlocfilehash: 5088b4e50899a2643488103ba29a7e36a7f256ea
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 036052dc45b8d029dac6e137b3a878b75e6e015c
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778350"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873392"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure CLI
 
@@ -185,9 +185,9 @@ az network private-endpoint create \
 
 ## <a name="configure-the-private-dns-zone"></a>Konfigurace privátní zóny DNS
 
-V této části vytvoříte a nakonfigurujete privátní zónu DNS pomocí [AZ Network Private-DNS Zone Create](/cli/azure/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create).  
+V této části vytvoříte a nakonfigurujete privátní zónu DNS pomocí [AZ Network Private-DNS Zone Create](/cli/azure/network/private-dns/zone#az_network_private_dns_zone_create).  
 
-Pomocí [AZ Network Private-DNS Link VNet Create](/cli/azure/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) vytvoříte propojení virtuální sítě k zóně DNS.
+Pomocí [AZ Network Private-DNS Link VNet Create](/cli/azure/network/private-dns/link/vnet#az_network_private_dns_link_vnet_create) vytvoříte propojení virtuální sítě k zóně DNS.
 
 Vytvoříte skupinu zón DNS pomocí [AZ Network Private-Endpoint DNS-Zone-Group Create](/cli/azure/network/private-endpoint/dns-zone-group#az_network_private_endpoint_dns_zone_group_create).
 

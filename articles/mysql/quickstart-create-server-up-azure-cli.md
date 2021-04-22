@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d89cc41ed26124ae4ad2e6689be6d59278c3d9da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d753061c6141dd0ca75415cab5502e7fa350cd90
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94542163"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873536"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Rychlý Start: vytvoření Azure Database for MySQL pomocí jednoduchého příkazu rozhraní příkazového řádku Azure – AZ MySQL up (Preview)
 
 > [!IMPORTANT]
-> Příkaz [AZ MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI je ve verzi Preview.
+> Příkaz [AZ MySQL up](/cli/azure/mysql#az_mysql_up) Azure CLI je ve verzi Preview.
 
-Azure Database for MySQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí příkazu [AZ MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) vytvořit server Azure Database for MySQL pomocí rozhraní příkazového řádku Azure CLI. Kromě vytvoření serveru `az mysql up` vytvoří příkaz ukázkovou databázi, root user v databázi, otevře bránu firewall pro služby Azure a vytvoří výchozí pravidla brány firewall pro klientský počítač. To pomáhá urychlit proces vývoje.
+Azure Database for MySQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí příkazu [AZ MySQL up](/cli/azure/mysql#az_mysql_up) vytvořit server Azure Database for MySQL pomocí rozhraní příkazového řádku Azure CLI. Kromě vytvoření serveru `az mysql up` vytvoří příkaz ukázkovou databázi, root user v databázi, otevře bránu firewall pro služby Azure a vytvoří výchozí pravidla brány firewall pro klientský počítač. To pomáhá urychlit proces vývoje.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,7 +42,7 @@ az account set --subscription <subscription id>
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
 
-Chcete-li použít příkazy, nainstalujte rozšíření [DB](/cli/azure/ext/db-up) . Pokud se vrátí chyba, ujistěte se, že máte nainstalovanou nejnovější verzi rozhraní příkazového řádku Azure CLI. Viz Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+Chcete-li použít příkazy, nainstalujte rozšíření [DB](/cli/azure/) . Pokud se vrátí chyba, ujistěte se, že máte nainstalovanou nejnovější verzi rozhraní příkazového řádku Azure CLI. Viz Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 
 ```azurecli
 az extension add --name db-up
@@ -71,7 +71,7 @@ admin-user | Vygenerované systémem | Uživatelské jméno pro přihlášení s
 admin-password | Vygenerované systémem | Heslo uživatele, který je správcem.
 
 > [!NOTE]
-> Další informace o `az mysql up` příkazu a jeho dalších parametrech najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up).
+> Další informace o `az mysql up` příkazu a jeho dalších parametrech najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/mysql#az_mysql_up).
 
 Po vytvoření serveru se objeví následující nastavení:
 
@@ -88,7 +88,7 @@ Po vytvoření serveru se objeví následující nastavení:
 
 Po `az mysql up` dokončení příkazu se vám vrátí seznam připojovacích řetězců pro oblíbené programovací jazyky. Tyto připojovací řetězce jsou předem nakonfigurované s konkrétními atributy nově vytvořeného serveru Azure Database for MySQL.
 
-Pomocí příkazu [AZ MySQL show-Connection-String](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-show-connection-string) můžete tyto připojovací řetězce znovu zobrazit.
+Pomocí příkazu [AZ MySQL show-Connection-String](/cli/azure/mysql#az_mysql_show_connection_string) můžete tyto připojovací řetězce znovu zobrazit.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -98,7 +98,7 @@ Všechny prostředky, které jste vytvořili v rychlém startu, vyčistěte pomo
 az mysql down --delete-group
 ```
 
-Pokud byste chtěli odstranit nově vytvořený server, můžete spustit příkaz [AZ MySQL Down](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-down) .
+Pokud byste chtěli odstranit nově vytvořený server, můžete spustit příkaz [AZ MySQL Down](/cli/azure/mysql#az_mysql_down) .
 
 ```azurecli
 az mysql down

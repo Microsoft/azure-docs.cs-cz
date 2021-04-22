@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: 68fc4a10f5a54af7bab82843b7a921fd84e7af40
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 6030462fc7c9678200aa14fa852a82d35f8703b6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259264"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877817"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 
@@ -184,7 +184,7 @@ az ml model deploy --ct myaks -m mymodel:1 -n myservice --ic inferenceconfig.jso
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-Další informace najdete v referenčních informacích k [nasazení modelu AZ ml model](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) .
+Další informace najdete v referenčních informacích k [nasazení modelu AZ ml model](/cli/azure/ml/model#az_ml_model_deploy) .
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -372,7 +372,7 @@ print(token)
 >
 > Microsoft důrazně doporučuje vytvořit pracovní prostor Azure Machine Learning ve stejné oblasti jako cluster služby Azure Kubernetes. K ověřování pomocí tokenu webová služba provede volání do oblasti, ve které je vytvořen Azure Machine Learning pracovní prostor. Pokud oblast pracovního prostoru není k dispozici, nebudete moci načíst token pro webovou službu, a to i v případě, že se váš cluster nachází v jiné oblasti než váš pracovní prostor. To efektivně vede k nedostupnosti ověřování na základě tokenů, dokud nebude oblast pracovního prostoru znovu dostupná. Navíc čím větší je vzdálenost mezi oblastí vašeho clusteru a oblastí vašeho pracovního prostoru, tím déle bude trvat Načtení tokenu.
 >
-> K načtení tokenu je nutné použít sadu SDK Azure Machine Learning nebo příkaz [AZ ml Service Get-Access-token](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-get-access-token) .
+> K načtení tokenu je nutné použít sadu SDK Azure Machine Learning nebo příkaz [AZ ml Service Get-Access-token](/cli/azure/ml/service#az_ml_service_get_access_token) .
 
 
 ### <a name="vulnerability-scanning"></a>Kontrola ohrožení zabezpečení

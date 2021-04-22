@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/19/2021
 ms.author: duau
-ms.openlocfilehash: 99204a2d4c3a2455f0916878fb09a348dc79ac7a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3567d5af31b0c7bc2443e3d02426a5bb7aba06f7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778749"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861998"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Rychlý Start: vytvoření přední dveře pro globální webovou aplikaci s vysokou dostupností pomocí Azure CLI
 
@@ -105,7 +105,7 @@ Poznamenejte si výchozí název hostitele každé webové aplikace, abyste mohl
 
 Vytvořte základní front-dvířka s výchozím nastavením vyrovnávání zatížení, sondou stavu a pravidly směrování, a to spuštěním následujícího postupu:
 
-Vytvoření front-dveří pomocí [AZ Network front-dvířk Create](/cli/azure/ext/front-door/network/front-door#ext_front_door_az_network_front_door_create&preserve-view=true):
+Vytvoření front-dveří pomocí [AZ Network front-dvířk Create](/cli/azure/network/front-door#az_network_front_door_create&preserve-view=true):
 
 ```azurecli-interactive
 az network front-door create \

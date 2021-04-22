@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84fe935c1122d3d5c65423341b8760643257f992
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94966560"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868566"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Kurz: registrace zařízení do služby IoT Hub pomocí klienta služby Azure IoT Hub Provisioning Service (.NET)
 
@@ -32,7 +32,7 @@ Než budete pokračovat, nezapomeňte nakonfigurovat své zařízení a *modul h
 * Visual Studio
 
 > [!NOTE]
-> Sada Visual Studio se nevyžaduje. Stačí nainstalovat [.NET](https://www.microsoft.com/net) a vývojáři můžou používat svůj upřednostňovaný editor ve Windows nebo v Linuxu.  
+> Sada Visual Studio se nevyžaduje. Stačí nainstalovat [.NET](https://dotnet.microsoft.com) a vývojáři můžou používat svůj upřednostňovaný editor ve Windows nebo v Linuxu.  
 
 Tento kurz simuluje období během výrobního procesu hardwaru nebo těsně po něm, kdy se do zřizovací služby přidají informace o zařízení. Tento kód se obvykle spouští na počítači nebo továrním zařízení, které umožňuje spouštění kódu .NET, a neměl by se přidávat do samotných zařízení.
 

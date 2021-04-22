@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 8e149270d8f98cbf72d3864d238a3d8ddfd61c67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b8d49e3b3c6f6407fe241e00ada5039bd94fd706
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639537"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870872"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Kurz: Sdílení dat prostřednictvím služby Azure Data Share  
 
@@ -136,13 +136,13 @@ K vytvoření prostředku použijte tyto příkazy:
    az group create --name testresourcegroup --location "East US 2"
    ```
 
-1. Spuštěním příkazu [AZ datashare Account Create](/cli/azure/ext/datashare/datashare/account#ext_datashare_az_datashare_account_create) vytvořte účet pro sdílení dat:
+1. Spuštěním příkazu [AZ datashare Account Create](/cli/azure/datashare/account#az_datashare_account_create) vytvořte účet pro sdílení dat:
 
    ```azurecli
    az datashare account create --resource-group testresourcegroup --name datashareaccount --location "East US 2" 
    ```
 
-   Pomocí příkazu [AZ data Share Account list](/cli/azure/ext/datashare/datashare/account#ext_datashare_az_datashare_account_list) zobrazíte vaše účty pro sdílení dat:
+   Pomocí příkazu [AZ data Share Account list](/cli/azure/datashare/account#az_datashare_account_list) zobrazíte vaše účty pro sdílení dat:
 
    ```azurecli
    az datashare account list --resource-group testresourcegroup
@@ -210,7 +210,7 @@ K vytvoření prostředku použijte tyto příkazy:
    az storage container create --name ContosoMarketplaceContainer --account-name ContosoMarketplaceAccount
    ```
 
-1. Spuštěním příkazu [AZ datashare Create](/cli/azure/ext/datashare/datashare#ext_datashare_az_datashare_create) vytvořte sdílenou složku dat:
+1. Spuštěním příkazu [AZ datashare Create](/cli/azure/datashare#az_datashare_create) vytvořte sdílenou složku dat:
 
    ```azurecli
    az datashare create --resource-group testresourcegroup \
@@ -218,7 +218,7 @@ K vytvoření prostředku použijte tyto příkazy:
      --description "Data Share" --share-kind "CopyBased" --terms "Confidential"
    ```
 
-1. Pomocí příkazu [AZ datashare Pozvánka Create](/cli/azure/ext/datashare/datashare/invitation#ext_datashare_az_datashare_invitation_create) vytvořte pozvánku pro zadanou adresu:
+1. Pomocí příkazu [AZ datashare Pozvánka Create](/cli/azure/datashare/invitation#az_datashare_invitation_create) vytvořte pozvánku pro zadanou adresu:
 
    ```azurecli
    az datashare invitation create --resource-group testresourcegroup \
