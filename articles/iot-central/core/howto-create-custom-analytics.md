@@ -1,22 +1,22 @@
 ---
 title: Rozšiřování Azure IoT Central s využitím vlastních analýz | Microsoft Docs
 description: Jako vývojář řešení můžete nakonfigurovat aplikaci IoT Central, aby vlastní analýzy a vizualizace. Toto řešení používá Azure Databricks.
-author: TheRealJasonAndrew
-ms.author: v-anjaso
+author: philmea
+ms.author: philmea
 ms.date: 03/15/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 3132ec8fb3cb123653887d92a2f33788f40564c0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ada9947b217944d9aec9f785f4716bfe43315b1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105033819"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872762"
 ---
-# <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks
+# <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozšíření Azure IoT Central o vlastní analýzy s využitím služby Azure Databricks
 
 V této příručce se dozvíte, jak pomocí vývojářů řešení rozšíříte svou IoT Centralovou aplikaci s využitím vlastních analýz a vizualizací. V tomto příkladu se používá pracovní prostor [Azure Databricks](/azure/azure-databricks/) k analýze IoT Centralho datového proudu telemetrie a k vygenerování vizualizací, jako je například [krabicový graf](https://wikipedia.org/wiki/Box_plot).  
 

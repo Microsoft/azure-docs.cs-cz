@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 99dc8cb2acf06faae16df6d3a48c4d38b1be46d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e05435f364cc30b351275439a04caff47c35512
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577780"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871790"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS nebo SSL ve službě Azure App Service
 
@@ -217,7 +217,7 @@ Po dokončení operace se certifikát zobrazí v seznamu **certifikáty privátn
 ![Import certifikátu Key Vault byl dokončen.](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
 
 > [!NOTE]
-> Pokud certifikát aktualizujete v Key Vault pomocí nového certifikátu, App Service automaticky synchronizuje certifikát během 48 hodin.
+> Pokud certifikát aktualizujete v Key Vault pomocí nového certifikátu, App Service certifikát automaticky synchronizuje během 24 hodin.
 
 > [!IMPORTANT] 
 > Chcete-li zabezpečit vlastní doménu pomocí tohoto certifikátu, je stále nutné vytvořit vazbu certifikátu. Postupujte podle kroků v části [vytvoření vazby](configure-ssl-bindings.md#create-binding).
@@ -325,7 +325,7 @@ Po opětovném vytvoření klíče se certifikát zahrne do nového certifikátu
 Jakmile je operace obnovení klíčů dokončena, klikněte na tlačítko **synchronizovat**. Operace synchronizace automaticky aktualizuje vazby hostitelů pro certifikát v App Service, aniž by to mělo za následek jakékoliv výpadky aplikací.
 
 > [!NOTE]
-> Pokud nekliknete na **synchronizovat**, App Service certifikát automaticky synchronizuje během 48 hodin.
+> Pokud nekliknete na **synchronizovat**, App Service se certifikát automaticky synchronizuje během 24 hodin.
 
 ### <a name="renew-certificate"></a>Prodloužit platnost certifikátu
 
@@ -340,7 +340,7 @@ Pokud chcete certifikát místo toho ručně obnovit, klikněte na **Ruční obn
 Po dokončení operace obnovení klikněte na **synchronizovat**. Operace synchronizace automaticky aktualizuje vazby hostitelů pro certifikát v App Service, aniž by to mělo za následek jakékoliv výpadky aplikací.
 
 > [!NOTE]
-> Pokud nekliknete na **synchronizovat**, App Service certifikát automaticky synchronizuje během 48 hodin.
+> Pokud nekliknete na **synchronizovat**, App Service se certifikát automaticky synchronizuje během 24 hodin.
 
 ### <a name="export-certificate"></a>Export certifikátu
 

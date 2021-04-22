@@ -3,12 +3,12 @@ title: Vytvoření funkce PowerShellu pomocí Visual Studio Code-Azure Functions
 description: Naučte se vytvořit funkci PowerShellu a pak publikovat místní projekt na hostování bez serveru v Azure Functions pomocí rozšíření Azure Functions v Visual Studio Code.
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 9833b154cdba24f8760e7e8d9040bfc72bbcd271
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58a2b8a5fb386603361afa9fc26b4d323c487691
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99493583"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862538"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce PowerShellu v Azure pomocí Visual Studio Code
 
@@ -30,7 +30,7 @@ Než začnete, ujistěte se, že máte zavedené následující požadavky:
 
 + [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-+ Runtime [.NET core 3,1](https://www.microsoft.com/net/download) a [.NET Core 2,1 runtime](https://dotnet.microsoft.com/download/dotnet-core/2.1)  
++ Runtime [.NET core 3,1](https://dotnet.microsoft.com/download) a [.NET Core 2,1 runtime](https://dotnet.microsoft.com/download/dotnet/2.1)  
 
 + [Visual Studio Code](https://code.visualstudio.com/) na jedné z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms)    
 

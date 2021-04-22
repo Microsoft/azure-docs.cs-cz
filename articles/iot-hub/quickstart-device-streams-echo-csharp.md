@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 3eb65db27e5b96f4b12973154bc860a2ab3df020
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4f6e06524412c76661623cb5ef2985a41f2d7fc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624604"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864068"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v jazyce C# prostřednictvím datových proudů zařízení IoT Hub (Preview)
 
@@ -36,7 +36,7 @@ Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve verzi Pre
 
 * Dvě ukázkové aplikace, které spouštíte v rámci tohoto rychlého startu, jsou napsány v jazyce C#. Ve vývojovém počítači potřebujete .NET Core SDK 2.1.0 nebo novější.
 
-    Stáhněte si [.NET Core SDK pro více platforem od .NET](https://www.microsoft.com/net/download/all).
+    Stáhněte si [.NET Core SDK pro více platforem od .NET](https://dotnet.microsoft.com/download).
 
     Ověřte aktuální verzi C# na vývojovém počítači pomocí následujícího příkazu:
 

@@ -4,12 +4,12 @@ description: Přečtěte si, jak řešení Azure VMware monitoruje a opravuje VM
 ms.topic: conceptual
 ms.custom: contperf-fy21q2
 ms.date: 02/16/2021
-ms.openlocfilehash: 59319b5598be9770e82b9676a28444648230a019
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fa94d6093e03432f20672ecf5c0160ce479e175
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100633134"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871664"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>Monitorování a oprava privátních cloudů řešení VMware Azure
 
@@ -45,5 +45,5 @@ Náprava hostitelů začíná přidáním nového uzlu v pořádku v clusteru. P
 
 Teď, když jste se seznámili s tím, jak řešení Azure VMware monitoruje a opravuje privátní cloudy, může být vhodné získat informace o:
 
-- [Upgrade privátního cloudu řešení Azure VMware](concepts-upgrades.md).
-- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md).
+- [Upgrade privátního cloudu řešení Azure VMware](concepts-upgrades.md)
+- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md)

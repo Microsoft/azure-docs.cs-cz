@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: b89cc9dfb0a98f61b74ecf42471d08129661fb22
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 92f27c16b5dd45352a3a6cb65dd4bf78e88188f0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059853"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868541"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (.NET)
 
@@ -39,7 +39,7 @@ Rychlý start používá dvě předem vytvořené aplikace .NET:
 
 * Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí C#. Ve vývojovém počítači potřebujete .NET Core SDK 3,1 nebo vyšší.
 
-    Sadu .NET Core SDK pro různé platformy si můžete stáhnout z webu [.NET](https://www.microsoft.com/net/download/all).
+    Sadu .NET Core SDK pro různé platformy si můžete stáhnout z webu [.NET](https://dotnet.microsoft.com/download).
 
     Aktuální verzi C# na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
 

@@ -4,12 +4,12 @@ description: Nainstalujte modul runtime a sadu SDK a vytvořte místní vývojov
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcf0aeec27415d03c528e42ad5341a92bd299d88
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93086886"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869396"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
 > [!div class="op_single_selector"]
@@ -261,7 +261,7 @@ Po nainstalování generátorů vytvořte spustitelné soubory hosta nebo služb
 
 ## <a name="set-up-net-core-31-development"></a>Nastavení vývoje .NET Core 3,1
 
-Pokud chcete začít [vytvářet aplikace Service Fabric C#](service-fabric-create-your-first-linux-application-with-csharp.md), nainstalujte [sadu .NET Core 3,1 SDK pro Ubuntu](https://www.microsoft.com/net/core#linuxubuntu) . Balíčky pro aplikace .NET Core Service Fabric se hostují na NuGet.org.
+Pokud chcete začít [vytvářet aplikace Service Fabric C#](service-fabric-create-your-first-linux-application-with-csharp.md), nainstalujte [sadu .NET Core 3,1 SDK pro Ubuntu](/dotnet/core/install/linux-ubuntu) . Balíčky pro aplikace .NET Core Service Fabric se hostují na NuGet.org.
 
 ## <a name="set-up-java-development"></a>Nastavení pro vývoj v Javě
 

@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 721fe31f514cb948c93dc2a779a92ef3b2775ef9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 915856e3f9875c0a3318bc19138eaae8742bf72f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779232"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871736"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Rychlý Start: Vytvoření vlastního zprostředkovatele a nasazení vlastních prostředků
 
@@ -265,7 +265,7 @@ Dostanete odpověď:
 
 ## <a name="custom-resource-provider-commands"></a>Příkazy vlastního poskytovatele prostředků
 
-K práci s vaším vlastním poskytovatelem prostředků použijte příkazy [Custom-Providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) .
+K práci s vaším vlastním poskytovatelem prostředků použijte příkazy [Custom-Providers](/cli/azure/custom-providers/resource-provider) .
 
 ### <a name="list-custom-resource-providers"></a>Vypsat vlastní poskytovatele prostředků
 

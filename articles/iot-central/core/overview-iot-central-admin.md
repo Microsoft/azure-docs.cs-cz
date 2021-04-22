@@ -1,19 +1,19 @@
 ---
 title: Příručka pro správce Azure IoT Central
 description: Azure IoT Central je aplikační platforma IoT, která zjednodušuje vytváření řešení IoT. Tento článek poskytuje přehled role správce v IoT Central.
-author: TheJasonAndrew
-ms.author: v-anjaso
+author: philmea
+ms.author: philmea
 ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 16a8aecae70d73399acb3878d7088e5086c053a1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 658ebe027565a3acaf427a7b3dbf3963701069d8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110487"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868640"
 ---
 # <a name="iot-central-administrator-guide"></a>Příručka pro správce IoT Central
 

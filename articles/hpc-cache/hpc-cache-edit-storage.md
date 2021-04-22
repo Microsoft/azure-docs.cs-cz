@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.author: v-erkel
-ms.openlocfilehash: d61612b6e491fae550559e499cb360efc0f7c044
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ebf68c1eb06984e2de8114c53e1bb55d52aed70a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258907"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862628"
 ---
 # <a name="edit-storage-targets"></a>Úprava cílů úložiště
 
@@ -45,7 +45,7 @@ Pokud chcete cíl úložiště odebrat, otevřete stránku **cíle úložiště*
 
 [Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
-Pomocí [AZ HPC-cache Storage-Target Remove](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-remove) odstraňte cíl úložiště z mezipaměti.
+Pomocí [AZ HPC-cache Storage-Target Remove](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage_target_remove) odstraňte cíl úložiště z mezipaměti.
 
 ```azurecli
 $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-cache0629 --name blob1
@@ -84,7 +84,7 @@ Po provedení změn aktualizujte cíl úložiště kliknutím na tlačítko **OK
 
 [Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
-Pokud chcete změnit obor názvů cíle služby Blob Storage pomocí Azure CLI, použijte příkaz [AZ HPC-cache BLOB-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update). `--virtual-namespace-path`Lze změnit pouze hodnotu.
+Pokud chcete změnit obor názvů cíle služby Blob Storage pomocí Azure CLI, použijte příkaz [AZ HPC-cache BLOB-Storage-Target Update](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_update). `--virtual-namespace-path`Lze změnit pouze hodnotu.
 
   ```azurecli
   az hpc-cache blob-storage-target update --cache-name cache-name --name target-name \
@@ -125,7 +125,7 @@ Pro aktualizaci hodnot oboru názvů použijte stránku **oboru názvů** pro me
 
 [Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
-Použijte ``--junction`` možnost v příkazu [AZ HPC-cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target) a změňte cestu k oboru názvů, export NFS nebo export podadresáře.
+Použijte ``--junction`` možnost v příkazu [AZ HPC-cache NFS-Storage-Target Update](/cli/azure/hpc-cache/nfs-storage-target) a změňte cestu k oboru názvů, export NFS nebo export podadresáře.
 
 ``--junction``Parametr používá tyto hodnoty:
 
@@ -170,7 +170,7 @@ Pomocí rozevíracího selektoru vyberte nový model využití. Kliknutím na tl
 
 [Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
-Použijte příkaz [AZ HPC-cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) .
+Použijte příkaz [AZ HPC-cache NFS-Storage-Target Update](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_update) .
 
 Příkaz Update je skoro stejný jako příkaz, který používáte k přidání cíle úložiště systému souborů NFS. Podrobnosti a příklady najdete v tématu [Vytvoření cíle úložiště NFS](hpc-cache-add-storage.md#create-an-nfs-storage-target) .
 
@@ -178,7 +178,7 @@ Chcete-li změnit model použití, aktualizujte ``--nfs3-usage-model`` možnost.
 
 Také jsou požadovány názvy mezipaměti, název cíle úložiště a skupiny prostředků.
 
-Pokud chcete ověřit názvy modelů použití, použijte příkaz [AZ HPC-cache Usage-model list](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list).
+Pokud chcete ověřit názvy modelů použití, použijte příkaz [AZ HPC-cache Usage-model list](/cli/azure/hpc-cache/usage-model#az_hpc_cache_usage-model-list).
 
 Pokud je mezipaměť zastavená nebo není v dobrém stavu, bude aktualizace platit až po dobrém stavu mezipaměti.
 

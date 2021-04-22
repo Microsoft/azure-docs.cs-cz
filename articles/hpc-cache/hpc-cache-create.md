@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 63a179f7123f088c9c60fbfb8996a5b21d1c704d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 02934a1943ef37d282dd2a2e7862c5695bbd6ecb
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773262"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862700"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Vytvoření mezipaměti prostředí Azure HPC
 
@@ -107,7 +107,7 @@ Po dokončení vytváření se zobrazí oznámení s odkazem na novou instanci m
 > [!NOTE]
 > Rozhraní příkazového řádku Azure v současné době nepodporuje vytváření mezipaměti pomocí šifrovacích klíčů spravovaných zákazníkem. Použijete Azure Portal
 
-Pomocí příkazu [AZ HPC-cache Create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create) vytvořte novou mezipaměť prostředí Azure HPC.
+Pomocí příkazu [AZ HPC-cache Create](/cli/azure/hpc-cache#az_hpc_cache_create) vytvořte novou mezipaměť prostředí Azure HPC.
 
 Zadejte tyto hodnoty:
 
@@ -126,7 +126,7 @@ nets/<cache_subnet_name>"``
   * Velikost mezipaměti (v GB)
   * SKU virtuálních počítačů použitých v infrastruktuře mezipaměti
 
-  [AZ HPC-cache list](/cli/azure/ext/hpc-cache/hpc-cache/skus) zobrazí dostupné SKU a možnosti platné velikosti mezipaměti pro každé z nich. Možnosti velikosti mezipaměti jsou v rozsahu od 3 TB do 48 TB, ale podporují se jenom některé hodnoty.
+  [AZ HPC-cache list](/cli/azure/hpc-cache/skus) zobrazí dostupné SKU a možnosti platné velikosti mezipaměti pro každé z nich. Možnosti velikosti mezipaměti jsou v rozsahu od 3 TB do 48 TB, ale podporují se jenom některé hodnoty.
 
   Tento graf znázorňuje, která velikost mezipaměti a kombinace SKU jsou platné v době přípravy tohoto dokumentu (červenec 2020).
 

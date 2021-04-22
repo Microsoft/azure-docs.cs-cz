@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51e6cd7efcd0e851c15975aba5ff9b99c615eb7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d586294f101c271f139867d0046576dc9a32f076
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653469"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861782"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator 
 
@@ -38,6 +38,7 @@ Pokud chcete používat přihlášení bez hesla pro telefonickou práci s aplik
 
 - Multi-Factor Authentication Azure AD s nabízenými oznámeními, která jsou povolená jako metoda ověřování.
 - Na zařízeních se systémem iOS 8,0 nebo vyšším je nainstalovaná nejnovější verze Microsoft Authenticator nebo Android 6,0 nebo novější.
+- Zařízení, na kterém je nainstalovaná aplikace Microsoft Authenticator, musí být zaregistrovaná v tenantovi Azure AD pro jednotlivé uživatele. 
 
 > [!NOTE]
 > Pokud jste povolili Microsoft Authenticator přihlašování bez hesla pomocí Azure AD PowerShellu, je povolený pro celý adresář. Pokud povolíte použití této nové metody, bude nahrazena zásadou PowerShellu. Doporučujeme povolit pro všechny uživatele ve vašem tenantovi prostřednictvím nové nabídky *metody ověřování* , jinak se uživatelé, kteří nejsou v nové zásadě, už nebudou moct přihlásit bez hesla.

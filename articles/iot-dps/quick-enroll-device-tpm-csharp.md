@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 14f17c6716fe98a11d03e8d1021bcdb1058fe671
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73a9b27c7b9119ee49fc451ca0a1c03d8db3db0e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94968107"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868622"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Rychlý Start: registrace zařízení TPM pro IoT Hub Device Provisioning Service pomocí sady SDK služby C#
 
@@ -26,7 +26,7 @@ Tento článek ukazuje, jak programově vytvořit jednotlivou registraci pro za�
 
 1. Ověřte, že máte v počítači nainstalovanou [aplikaci Visual Studio 2019](https://www.visualstudio.com/vs/) .
 
-1. Ověřte, že máte v počítači nainstalovanou [.NET Core SDK](https://www.microsoft.com/net/download/windows) .
+1. Ověřte, že máte v počítači nainstalovanou [.NET Core SDK](https://dotnet.microsoft.com/download) .
 
 1. Než budete pokračovat, proveďte kroky v části [nastavení IoT Hub Device Provisioning Service s Azure Portal](./quick-setup-auto-provision.md) .
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09f98e3d6c7997d9cae2737b25f4323021e29bfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84c8b82219f2b2aea39bbcd23f030243d9ea8635
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98892435"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861800"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postup: Blokování starší verze ověřování v Azure AD pomocí podmíněného přístupu   
 
@@ -33,7 +33,7 @@ Alex Weinert, ředitel pro zabezpečení identity v Microsoftu, v jeho 12. břez
 > - Účty Azure AD v organizacích, které mají zakázané starší verze ověřování 67% méně ohrožení než u těch, kde je povolené starší verze ověřování
 >
 
-Pokud je vaše prostředí připravené k blokování starší verze ověřování, aby se zlepšila ochrana vašeho tenanta, můžete tento cíl dosáhnout pomocí podmíněného přístupu. Tento článek vysvětluje, jak můžete nakonfigurovat zásady podmíněného přístupu, které blokují ověřování starší verze pro vašeho tenanta.
+Pokud je vaše prostředí připravené k blokování starší verze ověřování, aby se zlepšila ochrana vašeho tenanta, můžete tento cíl dosáhnout pomocí podmíněného přístupu. Tento článek vysvětluje, jak můžete nakonfigurovat zásady podmíněného přístupu, které blokují ověřování starší verze pro vašeho tenanta. Zákazníci bez licencí, které zahrnují podmíněný přístup, můžou využít [výchozí hodnoty zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md)a blokovat tak starší ověřování.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -46,7 +46,7 @@ Azure AD podporuje několik nejčastěji používaných ověřovacích a autoriz
 - Starší aplikace systém Microsoft Office
 - Aplikace používající poštovní protokoly jako POP, IMAP a SMTP
 
-Jeden faktor ověřování (například uživatelské jméno a heslo) není dostatečný počet dnů. Hesla jsou chybná, protože je lze snadno uhodnout a my (lidi) jsou při volbě dobrých hesel špatná. Hesla jsou taky zranitelná u různých útoků, jako je phishing a sprej hesla. Jedním z nejjednodušších věcí, které můžete chránit před hrozbami hesla, je implementace vícefaktorového ověřování (MFA). V případě vícefaktorového ověřování, a to i v případě, že útočník získá heslo uživatele, nestačí k úspěšnému ověření a přístupu k datům použít heslo samotné.
+Jeden faktor ověřování (například uživatelské jméno a heslo) není dostatečný počet dnů. Hesla jsou chybná, protože je lze snadno uhodnout a my (lidi) jsou při volbě dobrých hesel špatná. Hesla jsou taky zranitelná vůči různým útokům, jako je phishing a sprej hesla. Jedním z nejjednodušších věcí, které můžete chránit před hrozbami hesla, je implementace vícefaktorového ověřování (MFA). V případě vícefaktorového ověřování, a to i v případě, že útočník získá heslo uživatele, nestačí k úspěšnému ověření a přístupu k datům použít heslo samotné.
 
 Jak můžete zabránit tomu, aby aplikace používaly starší ověřování pro přístup k prostředkům vašeho tenanta? Doporučení je jednoduše zablokované zásadou podmíněného přístupu. V případě potřeby povolujete použití aplikací, které jsou založené na starších verzích ověřování, jenom určitým uživatelům a konkrétním síťovým umístěním.
 

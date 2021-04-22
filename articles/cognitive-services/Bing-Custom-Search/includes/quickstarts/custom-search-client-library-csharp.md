@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: 70f97b73b5cc6a06caf8f1dac4dec61b6ad6de29
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 504057be85902307a121a57dd421254d94167341
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948341"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107880251"
 ---
 Začněte s knihovnou klienta Vlastní vyhledávání Bingu pro C#. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Rozhraní API pro vlastní vyhledávání Bingu vám umožní vytvářet v přizpůsobených prostředích vyhledávání bez reklamy pro témata, která vás zajímají. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch).
 
@@ -26,7 +26,7 @@ Pomocí klientské knihovny Vlastní vyhledávání Bingu pro jazyk C#:
 ## <a name="prerequisites"></a>Požadavky
 
 - Instance Vlastní vyhledávání Bingu. Další informace najdete v tématu [rychlý Start: Vytvoření první instance vlastní vyhledávání Bingu](../../quick-start.md) .
-- Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
+- Microsoft [.NET Core](https://dotnet.microsoft.com/download)
 - Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
 - Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 - Balíček NuGet [Vlastní vyhledávání Bingu](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0)  . 

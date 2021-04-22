@@ -4,12 +4,12 @@ description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místn
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: d08046c8f29901dd9650a1edc886efa2ff226e00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fe551f8371322af8d955b5233e6d9d05741f3d9
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93086773"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868118"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Nastavení vývojového prostředí v Mac OS X
 > [!div class="op_single_selector"]
@@ -195,7 +195,7 @@ Po vytvoření a sestavení aplikace Service Fabric ji můžete nasadit pomocí 
 
 ## <a name="set-up-net-core-31-development"></a>Nastavení vývoje .NET Core 3,1
 
-Pokud chcete začít [vytvářet aplikace Service Fabric C#](service-fabric-create-your-first-linux-application-with-csharp.md), nainstalujte [sadu .NET Core 3,1 SDK pro Mac](https://www.microsoft.com/net/core#macos) . Balíčky pro aplikace .NET Core Service Fabric se hostují na NuGet.org.
+Pokud chcete začít [vytvářet aplikace Service Fabric C#](service-fabric-create-your-first-linux-application-with-csharp.md), nainstalujte [sadu .NET Core 3,1 SDK pro Mac](https://dotnet.microsoft.com/download?initial-os=macos) . Balíčky pro aplikace .NET Core Service Fabric se hostují na NuGet.org.
 
 ## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Instalace modulu plug-in Service Fabric pro Eclipse na počítači Mac
 

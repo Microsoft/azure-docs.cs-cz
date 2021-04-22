@@ -11,12 +11,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6325a890ea297a3aa2bdad76a1d95c10448a7b61
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0e6a872891f09f60ea963fa783e6f49dc4e94a54
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033902"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861836"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Přidání podmíněného přístupu do toků uživatelů v Azure Active Directory B2C
 
@@ -86,7 +86,7 @@ Při použití podmíněného přístupu Azure AD Vezměte v úvahu následujíc
 - V Azure AD B2C tenantech jsou k dispozici pouze podmnožina zásad [podmíněného přístupu Azure AD](../active-directory/conditional-access/overview.md) .
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
 
@@ -160,6 +160,71 @@ Postup přidání zásady podmíněného přístupu:
 Po přidání zásady podmíněného přístupu Azure AD povolte podmíněný přístup v toku uživatele nebo vlastní zásady. Pokud povolíte podmíněný přístup, nemusíte zadávat název zásady.
 
 V každém okamžiku se může vztahovat na jednotlivé uživatele víc zásad podmíněného přístupu. V takovém případě má přednost zásada řízení přístupu nejpřísnějším zásadám. Pokud třeba jedna zásada vyžaduje vícefaktorové ověřování (MFA), zatímco ostatní blokují přístup, uživatel se zablokuje.
+
+## <a name="conditional-access-template-1-sign-in-risk-based-conditional-access"></a>Šablona podmíněného přístupu 1: podmíněný přístup na základě rizik přihlašování
+
+Většina uživatelů se chová běžným způsobem, který je možné sledovat. Když se mimo tento běžný způsob vychýlí, může být nebezpečné jim povolit se normálně přihlásit. Je možné, že budete chtít tohoto uživatele zablokovat nebo ho můžete jednoduše požádat, aby provedl ověřování pomocí vícefaktorového ověřování, aby prokázal, že jsou ve skutečnosti, na kterých říkají.
+
+Riziko přihlášení představuje pravděpodobnost, že daný požadavek na ověření není autorizovaný vlastníkem identity. Organizace s licencemi P2 můžou vytvářet zásady podmíněného přístupu, které zahrnují [Azure AD Identity Protection detekci rizik přihlašování](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks#sign-in-risk). Všimněte si [omezení detekce ochrany identit pro B2C](https://docs.microsoft.com/azure/active-directory-b2c/identity-protection-investigate-risk?pivots=b2c-user-flow#service-limitations-and-considerations).
+
+Pokud se zjistí riziko, můžou uživatelé provádět ověřování pomocí služby Multi-Factor Authentication a odstranit událost rizikového přihlašování a zabránit tak zbytečnému hluku správcům.
+
+Organizace by si měli vybrat jednu z následujících možností, aby bylo možné povolit zásady podmíněného přístupu na základě rizik přihlašování vyžadující vícefaktorové ověřování (MFA), pokud je riziko při přihlašování střední nebo vysoké.
+
+### <a name="enable-with-conditional-access-policy"></a>Povolit se zásadami podmíněného přístupu
+
+1. Přihlaste se na **Azure Portal**.
+2. Vyhledejte **Azure AD B2C**  >    >  **podmíněný přístup** zabezpečení.
+3. Vyberte **nové zásady**.
+4. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
+5. V části **Přiřazení** vyberte **Uživatelé a skupiny**.
+   1. V části **Zahrnout** vyberte **Všichni uživatelé**.
+   2. V části **vyloučit** vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
+   3. Vyberte **Hotovo**.
+6. V části **cloudové aplikace nebo akce**  >  vyberte **všechny cloudové aplikace**.
+7. V části **podmínky**  >  **přihlášení** nastavte nastavit na **Ano**.  V části **Vyberte úroveň rizika přihlašování, na kterou se budou tyto zásady vztahovat** . 
+   1. Vyberte **vysoké** a **střední**.
+   2. Vyberte **Hotovo**.
+8. V části **řízení přístupu**  >  **udělení** přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování** a vyberte **Vybrat**.
+9. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
+10. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
+
+### <a name="enable-with-conditional-access-apis"></a>Povolit s rozhraními API pro podmíněné přístupy
+
+Chcete-li vytvořit zásadu podmíněného přístupu na základě rizika přihlašování pomocí rozhraní API pro podmíněné přístupu, přečtěte si dokumentaci k [rozhraním API pro podmíněné přístupy](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-apis#graph-api).
+
+Následující šablonu lze použít k vytvoření zásady podmíněného přístupu s názvem zobrazení "CA002: vyžadovat MFA pro střední + rizikové riziko" v režimu pouze pro sestavy.
+
+```json
+{
+    "displayName": "Template 1: Require MFA for medium+ sign-in risk",
+    "state": "enabledForReportingButNotEnforced",
+    "conditions": {
+        "signInRiskLevels": [ "high" ,
+            "medium"
+        ],
+        "applications": {
+            "includeApplications": [
+                "All"
+            ]
+        },
+        "users": {
+            "includeUsers": [
+                "All"
+            ],
+            "excludeUsers": [
+                "f753047e-de31-4c74-a6fb-c38589047723"
+            ]
+        }
+    },
+    "grantControls": {
+        "operator": "OR",
+        "builtInControls": [
+            "mfa"
+        ]
+    }
+}
+```
 
 ## <a name="enable-multi-factor-authentication-optional"></a>Povolit službu Multi-Factor Authentication (volitelné)
 

@@ -11,19 +11,19 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 146697dec7e3d22e745fba2a1e9fae5d486195ef
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: d0a15b16c04a28bcc67caeeceedfcbad485b7157
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107819303"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861458"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 
 
 V této příručce se dozvíte, jak definovat různé konfigurační nastavení pro automatizované experimenty strojového učení pomocí [sady Azure Machine Learning SDK](/python/api/overview/azure/ml/intro). Automatický strojové učení vybere pro vás algoritmus a parametry a vygeneruje model připravený pro nasazení. K dispozici je několik možností, pomocí kterých můžete nakonfigurovat automatizované experimenty strojového učení.
 
-Příklady automatických experimentů strojového učení najdete v tématu [kurz: výuka modelu klasifikace pomocí automatizovaného strojového učení](tutorial-auto-train-models.md) nebo [výukových modelů pomocí automatizovaného strojového učení v cloudu](how-to-auto-train-remote.md).
+Konečný příklad automatizovaného experimentu strojového učení najdete v tématu [kurz: výuka modelu klasifikace pomocí automatizovaného strojového učení](tutorial-auto-train-models.md).
 
 Možnosti konfigurace dostupné v automatizovaném strojovém učení:
 
@@ -552,7 +552,7 @@ Obecné informace o tom, jak je možné povolit vysvětlení modelu a důležito
 
 + Přečtěte si další informace o [tom, jak a kde model nasadit](how-to-deploy-and-where.md).
 
-+ Přečtěte si další informace o [tom, jak vytvořit regresní model pomocí automatizovaného strojového učení](tutorial-auto-train-models.md) nebo [jak pomocí automatizovaného strojového učení na vzdáleném prostředku vyškolit](how-to-auto-train-remote.md).
++ Přečtěte si další informace o [tom, jak naučit regresní model pomocí automatizovaného strojového učení](tutorial-auto-train-models.md).
 
 + Naučte se, jak proškolit několik modelů pomocí AutoML v [mnoha akcelerátorech řešení modelů](https://aka.ms/many-models).
 

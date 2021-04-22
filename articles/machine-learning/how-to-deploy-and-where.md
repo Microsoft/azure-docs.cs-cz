@@ -12,12 +12,12 @@ ms.date: 03/25/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2
 adobe-target: true
-ms.openlocfilehash: 598da277214a2ee8e52cc5baaf2c792dfdc0429d
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: f2128949090ce0ec2aa4ed66eb476384d662953a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220228"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872636"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Nasazení modelů strojového učení do Azure
 
@@ -112,7 +112,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
 Pokud chcete do registrace modelu zahrnout více souborů, nastavte `-p` na cestu ke složce, která obsahuje soubory.
 
-Další informace o nástroji `az ml model register` najdete v [referenční dokumentaci](/cli/azure/ext/azure-cli-ml/ml/model).
+Další informace o nástroji `az ml model register` najdete v [referenční dokumentaci](/cli/azure/ml/model).
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -390,7 +390,7 @@ Pokud chcete odstranit nasazenou webovou službu, použijte `az ml service <name
 
 Pokud chcete z pracovního prostoru odstranit registrovaný model, použijte `az ml model delete <model id>`
 
-Přečtěte si další informace o [odstranění webové](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete) služby a [odstranění modelu](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete).
+Přečtěte si další informace o [odstranění webové](/cli/azure/ml/service#az_ml_service_delete) služby a [odstranění modelu](/cli/azure/ml/model#az_ml_model_delete).
 
 # <a name="python"></a>[Python](#tab/python)
 

@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: adc78dceb5269d65bcf76dc99af309fb5e28f450
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3277d5836d85f1071b7aa169cc83896934a2f63d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774106"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872402"
 ---
 # <a name="manage-public-ip-addresses"></a>Správa veřejných IP adres
 
@@ -93,7 +93,7 @@ Další podrobnosti o specifických atributech veřejné IP adresy během vytvá
 |---|---|---|---|
 |[Virtuální počítač](./remove-public-ip-address-vm.md)|Vyberte **zrušit, pokud chcete** oddělit IP adresu od konfigurace síťových adaptérů, a pak vyberte **Odstranit**.|[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) oddělit IP adresu od konfigurace síťové karty; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) k odstranění|[AZ Network Public-IP Update--Remove pro zrušení](/cli/azure/network/public-ip#az_network_public_ip_update) přidružení IP adresy z konfigurace síťové karty; [AZ Network Public-IP Delete](/cli/azure/network/public-ip#az_network_public_ip_delete) to Delete |
 |Load Balancer front-endu | Přejděte na nepoužitou veřejnou IP adresu a vyberte **přidružit** a vyberte Load Balancer s příslušnou konfigurací IP adresy front-endu, která se má nahradit (pak se stará IP adresa dá odstranit pomocí stejné metody jako u virtuálního počítače).  | [Set-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) Přidruží novou konfiguraci protokolu IP front-endu k veřejným Load Balancer; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) , který se má odstranit; k odebrání konfigurace IP adresy front-endu taky můžete použít [Remove-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) , pokud existuje víc než jeden. |[AZ Network disendu-IP Update](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_update) pro přidružení nové konfigurace IP adresy front-endu k veřejnému Load Balancer; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) , který se má odstranit; dá se taky použít [AZ Network disendu-IP Delete](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_delete) , aby se odebrala konfigurace IP adresy front-endu, pokud existuje víc než jeden.|
-|Brána firewall|–| Zrušení [přidělení ()](../firewall/firewall-faq.yml#how-can-i-stop-and-start-azure-firewall) pro uvolnění brány firewall a odebrání všech konfigurací IP | [AZ Network firewall IP-config Delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) pro odebrání IP adresy (ale k navrácení se musí použít PowerShell)|
+|Brána firewall|–| Zrušení [přidělení ()](../firewall/firewall-faq.yml#how-can-i-stop-and-start-azure-firewall) pro uvolnění brány firewall a odebrání všech konfigurací IP | [AZ Network firewall IP-config Delete](/cli/azure/network/firewall/ip-config#az_network_firewall_ip_config_delete) pro odebrání IP adresy (ale k navrácení se musí použít PowerShell)|
 
 ## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 

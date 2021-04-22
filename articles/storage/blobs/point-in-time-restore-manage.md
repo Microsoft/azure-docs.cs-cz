@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b62e341d35a4ff7fd5a7ddd6d9f19b138aaf0aa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8c926c2fbc5b19f67fb78d321ee3293c73be939
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071643"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869342"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Provedení obnovení k určitému bodu v čase u dat objektů blob bloku
 
@@ -86,7 +86,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete nakonfigurovat obnovení k bodu v čase pomocí rozhraní příkazového řádku Azure, nejdřív nainstalujte Azure CLI verze 2.2.0 nebo novější. Pak zavolejte příkaz [AZ Storage Account BLOB-Service-Properties Update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) , který povolí obnovení k bodu v čase a další požadovaná nastavení ochrany dat pro účet úložiště.
+Pokud chcete nakonfigurovat obnovení k bodu v čase pomocí rozhraní příkazového řádku Azure, nejdřív nainstalujte Azure CLI verze 2.2.0 nebo novější. Pak zavolejte příkaz [AZ Storage Account BLOB-Service-Properties Update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) , který povolí obnovení k bodu v čase a další požadovaná nastavení ochrany dat pro účet úložiště.
 
 Následující příklad umožňuje obnovitelné odstranění a nastavuje dobu uchování obnovitelného odstranění na 14 dní, umožňuje změnit kanál a správu verzí a umožňuje obnovení k určitému bodu v čase s obdobím obnovení 7 dní. Při spuštění tohoto příkladu Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
 

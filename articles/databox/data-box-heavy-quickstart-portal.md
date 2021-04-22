@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 3a7f9179822720b0e5ffc21bc560b4c6ccad9463
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
-ms.translationtype: HT
+ms.openlocfilehash: 8c418f7cbeb56b94b7a85b12e833301b979bff32
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347418"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871537"
 ---
 ::: zone target = "docs"
 
@@ -89,7 +89,7 @@ Pomocí těchto příkazů rozhraní příkazového řádku Azure můžete vytvo
    az storage account create --resource-group databox-rg --name databoxtestsa
    ```
 
-1. Spusťte příkaz [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) pro vytvoření úlohy Data Box a nastavte **--sku** na hodnotu `DataBoxHeavy`:
+1. Spusťte příkaz [az databox job create](/cli/azure/databox/job#az_databox_job_create) pro vytvoření úlohy Data Box a nastavte **--sku** na hodnotu `DataBoxHeavy`:
 
    ```azurecli
    az databox job create --resource-group databox-rg --name databoxheavy-job \
@@ -102,37 +102,37 @@ Pomocí těchto příkazů rozhraní příkazového řádku Azure můžete vytvo
    > [!NOTE]
    > Ujistěte se, že vaše předplatné podporuje Data Box Heavy.
 
-1. Pro aktualizaci úlohy spusťte příkaz [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) jako v tomto příkladě, kde měníte e-mail a jméno kontaktu:
+1. Pro aktualizaci úlohy spusťte příkaz [az databox job update](/cli/azure/databox/job#az_databox_job_update) jako v tomto příkladě, kde měníte e-mail a jméno kontaktu:
 
    ```azurecli
    az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
    ```
 
-   Pro získání informací o úloze spusťte [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show):
+   Pro získání informací o úloze spusťte [az databox job show](/cli/azure/databox/job#az_databox_job_show):
 
    ```azurecli
    az databox job show --resource-group databox-rg --name databox-job
    ```
 
-   Pro zobrazení všech úloh Data Box pro skupinu prostředků použijte příkaz [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list):
+   Pro zobrazení všech úloh Data Box pro skupinu prostředků použijte příkaz [az databox job list]( /cli/azure/databox/job#az_databox_job_list):
 
    ```azurecli
    az databox job list --resource-group databox-rg
    ```
 
-   Pro zrušení úlohy spusťte příkaz [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel):
+   Pro zrušení úlohy spusťte příkaz [az databox job cancel](/cli/azure/databox/job#az_databox_job_cancel):
 
    ```azurecli
    az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
    ```
 
-   Pro odstranění úlohy spusťte příkaz [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete):
+   Pro odstranění úlohy spusťte příkaz [az databox job delete](/cli/azure/databox/job#az_databox_job_delete):
 
    ```azurecli
    az databox job delete –resource-group databox-rg --name databox-job
    ```
 
-1. Pro vypsání přihlašovacích údajů pro úlohu Data Box použijte příkaz [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials):
+1. Pro vypsání přihlašovacích údajů pro úlohu Data Box použijte příkaz [az databox job list-credentials]( /cli/azure/databox/job#az_databox_job_list_credentials):
 
    ```azurecli
    az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
@@ -234,7 +234,7 @@ Dokončení tohoto kroku trvá 2 až 3 minuty.
 
 - Před zpracováním objednávky můžete objednávku Data Boxu Heavy zrušit na webu Azure Portal. Po zpracování objednávky už se objednávka zrušit nedá. Průběh objednávky bude pokračovat až do fáze Dokončeno. Pokud chcete objednávku zrušit, přejděte do části **Přehled** a na panelu příkazů klikněte na **Zrušit**.
 
-- Jakmile se na webu Azure Portal objeví stav **Dokončeno** nebo **Zrušeno** , můžete objednávku odstranit. Pokud chcete odstranit objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
+- Jakmile se na webu Azure Portal objeví stav **Dokončeno** nebo **Zrušeno**, můžete objednávku odstranit. Pokud chcete odstranit objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 514f1af2a1b120254840986fc5ceb803dfc24345
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 42b469963761ae1ffc736c719487ee93c3a1c149
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363372"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863114"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
 
@@ -183,6 +183,12 @@ Než se odsouhlaste s **zakázáním**, důkladně si přečtěte zprávy ve vý
 
 
 První a první, nebudeme virtuální počítač od žádné ze služeb, které jsme připojili a nakonfigurovali, mimo kartu. Všechny poplatky, které tyto služby vznikly, budou i nadále Fakturovatelné. V případě potřeby budete potřebovat mimo panel. Jakékoli chování funkce automanage se okamžitě zastaví. Například už nebudeme monitorovat virtuální počítač pro posun.
+
+## <a name="automanage-and-azure-disk-encryption"></a>Automanage a Azure Disk Encryption
+Automanage je kompatibilní s virtuálními počítači s povoleným Azure Disk Encryption (ADE).
+
+Pokud používáte produkční prostředí, budete mít také k disAzure Backup. K úspěšnému použití ADE a Azure Backup je k dispozici jeden požadavek:
+* Než zahájíte připojení virtuálního počítače s povoleným ADE pro automatické spravování produkčního prostředí, ujistěte se, že jste postupovali podle kroků uvedených v části **než začnete** v [tomto dokumentu](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption#before-you-start).
 
 ## <a name="next-steps"></a>Další kroky
 
