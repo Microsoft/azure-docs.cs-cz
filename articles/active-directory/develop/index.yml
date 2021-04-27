@@ -50,7 +50,7 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
-    - text: Úhlová
+    - text: Angular
       url: quickstart-v2-angular.md
     - text: JavaScript – tok ověřovacího kódu
       url: quickstart-v2-javascript-auth-code.md
