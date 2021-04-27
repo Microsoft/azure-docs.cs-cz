@@ -250,7 +250,7 @@ Parametry odpovědi znamenají stejnou věc bez ohledu na tok, který je použí
 | Parametr | Popis |
 | --- | --- |
 | `access_token` | Token, který bude použit pro volání koncového bodu UserInfo.|
-| `token_type` | Vždy "nosič" |
+| `token_type` | Vždy "Bearer" |
 | `expires_in`| Doba do vypršení platnosti přístupového tokenu (v sekundách) |
 | `scope` | Oprávnění udělená u přístupového tokenu.  Vzhledem k tomu, že koncový bod UserInfo je hostovaný v MS graphu, můžou zde uvedené další obory grafu (třeba User. Read), pokud se jim dřív udělila aplikace.  Důvodem je skutečnost, že token pro daný prostředek vždy zahrnuje každé oprávnění, které je aktuálně uděleno klientovi.  |
 | `id_token` | Token ID, který aplikace požadovala Token ID můžete použít k ověření identity uživatele a zahájení relace s uživatelem. Další podrobnosti o tokenech ID a jejich obsahu najdete v [ `id_tokens` referenčních](id-tokens.md)informacích. |
